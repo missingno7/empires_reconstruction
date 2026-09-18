@@ -1,0 +1,32 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "4244e57f709b9ea6a6bb49c20665d46f8641077841c377cce55cdd6b46e94697",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 574,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_929E",
+      "kind": "MATCHING_C",
+      "bytes": 268,
+      "sha256": "438f9a6abdaacf6998b5e0c1cf24f54d7d5503c87181c60c1b3df2f3cac7a4a7",
+      "source_sha256": "40c858b5251ed97c78f528fee25acaf5171e5c3f5c463538dc06d039620c58b9",
+      "fixups": 10,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_950C",
+      "kind": "MATCHING_C",
+      "bytes": 306,
+      "sha256": "0daf73921796cb2f21e46c58571feecc3384e4f414e5d3e82eb23d482de8b020",
+      "source_sha256": "7509aa65dae7fdb7ae92f435917fd660a291c781b277ee21e0b3cff3667dc11a",
+      "fixups": 11,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

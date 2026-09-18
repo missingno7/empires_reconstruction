@@ -93,13 +93,16 @@ a 64-byte header, ten 1,000-byte room records, a four-byte separator and a
 duplicated or normalized. The remaining record block and unknown fields stay
 explicitly opaque; this does not claim actor/script recovery.
 
-All **69 structured payloads round-trip exactly**. Twenty-five bitmaps and
-uncompressed level AE001:000 additionally reproduce their complete original
-resource blocks and now use structured canonical sources. The other 43
-structured payloads remain derived research under `build/resource-structures/`
-because recompression differs. One further exact compressed resource uses a
-decoded-byte source, for **27 matching resources overall**. The other 193
-resources retain raw encoded payloads. `probe_resource_formats.py --promote`
+The initial 69 bitmap/level payloads now extend to **153 structured payloads
+that round-trip exactly**, including 75 nested banks, seven sequential banks
+and both fonts. Twenty-five bitmaps use canonical PNG-plus-JSON sources;
+AE000:080 uses a structured four-image bank and uncompressed AE001:000 uses
+structured level source, for **27 matching resources overall**. The other
+126 structured payloads remain derived research under `build/resource-structures/`
+because recompression differs. The other 193 resources retain raw encoded
+payloads. See [resource-sources.md](resource-sources.md) for internal derived
+offsets, preserved opaque records and editable image constraints.
+`probe_resource_formats.py --promote`
 rechecks full resource and archive identity before promoting a structured form.
 
 These levels/bitmaps follow the physical formats documented in the read-only

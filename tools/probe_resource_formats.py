@@ -1,13 +1,14 @@
 """Prove bitmap and level payload round trips; promote only whole-resource matches."""
 import argparse
 import copy
+from collections import Counter
 from archive_recipe import update_existing_recipe
 
 from dat_archive import assemble_archive
 from reconstruct import ROOT, project_path, read_json, sha, write_json
 from reconstruct_archives import NAMES
 from resource_codecs import decode_payload, encode_payload
-from resource_formats import bitmap_document, encode_bitmap, level_document, encode_level
+from resource_formats import decode_document, encode_document
 
 
 def probe(root=ROOT, promote=False):
@@ -28,14 +29,10 @@ def probe(root=ROOT, promote=False):
             if not block:
                 continue
             decoded = decode_payload(block[2:], entry['flags'])
-            if entry['rtype'] == 0x47:
-                document = bitmap_document(decoded)
-                rebuilt = encode_bitmap(document)
-            elif name == 'AE001' and entry['index'] < 20:
-                document = level_document(decoded)
-                rebuilt = encode_level(document)
-            else:
+            document = decode_document(name, entry, decoded)
+            if document is None:
                 continue
+            rebuilt = encode_document(document)
             if rebuilt != decoded or sha(rebuilt) != entry['decoded']['sha256']:
                 raise ValueError(f"{entry['id']}: structured payload mismatch")
             encoded = encode_payload(rebuilt, entry['flags'])
@@ -43,8 +40,11 @@ def probe(root=ROOT, promote=False):
             write_json(output / f'{entry["id"]}.json', document)
             rows.append({'id': entry['id'], 'format': document['format'], 'payload_bytes': len(rebuilt),
                          'payload_sha256': sha(rebuilt), 'payload_round_trip': 'EQUAL',
+                         'nested_record_counts': dict(Counter(r['format'] for r in document.get('records', []))),
+                         'opaque_nested_record_bytes': sum(len(bytes.fromhex(r['bytes'])) for r in document.get('records', []) if r['format'] == 'opaque-record-v1'),
                          'compressed_round_trip': 'EQUAL' if exact else 'DIFFERS'})
-            if promote and exact and entry.get('source_format') != document['format']:
+            preserve_png = entry.get('source_format') == 'bitmap4-png-v1' and document['format'] == 'bitmap4-json-v1'
+            if promote and exact and entry.get('source_format') != document['format'] and not preserve_png:
                 entry['kind'] = 'MATCHING_RESOURCE'
                 entry['encoder'] = 'greedy-rle-pair-span-v1'
                 entry['source_format'] = document['format']
@@ -68,6 +68,9 @@ def probe(root=ROOT, promote=False):
             temporary.replace(path)
             update_existing_recipe(root, path.stem, manifest)
     report = {'payloads_round_tripped': len(rows), 'payload_bytes': sum(r['payload_bytes'] for r in rows),
+              'payload_format_counts': dict(Counter(r['format'] for r in rows)),
+              'nested_record_counts': dict(sum((Counter(r['nested_record_counts']) for r in rows), Counter())),
+              'opaque_nested_record_bytes': sum(r['opaque_nested_record_bytes'] for r in rows),
               'whole_resource_matches': sum(r['compressed_round_trip'] == 'EQUAL' for r in rows),
               'implementation_sha256': sha((root / 'tools/resource_formats.py').read_bytes()), 'resources': rows}
     write_json(root / 'build/resource-formats-report.json', report)

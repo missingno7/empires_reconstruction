@@ -74,15 +74,18 @@ present and with file-read guards restricting generation to component inputs.
 
 The DAT **packing rule** is recovered for these archives. The DAT **component
 reconstruction** remains incomplete: 193 resources are opaque encoded fallbacks,
-one exact compressed resource uses unstructured decoded bytes, and 26 resources
-use structured bitmap/level sources. No unknown payload became understood merely
+and 27 resources use structured sources (25 PNG/JSON images, one image bank,
+one level). Mixed banks and level records retain explicitly opaque fields.
+No unknown payload became understood merely
 because its offset is now computed. This step does not recover the historical
 compressor's remaining match-selection behavior.
 
 The EXE remains at fixed placement with manually declared bindings, 57,777 raw
 bytes, and no proven reconstruction of its original source modules or historical
 linker topology. Its 146 source proof units do not count as recovered original
-modules. The combined report therefore explicitly sets
+modules. One [compatible shared-compilation experiment](module-group-evidence.md)
+now proves four functions' relative placement in a single OBJ, without yet
+establishing historical module identity. The combined report explicitly sets
 `whole_build_reconstruction_complete` to false.
 
 Next structural work should recover module/data ownership and symbol resolution

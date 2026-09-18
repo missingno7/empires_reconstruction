@@ -154,7 +154,7 @@ class ArchiveBuildTests(unittest.TestCase):
         (self.root / 'tools').mkdir()
         for name in NAMES:
             shutil.copyfile(ROOT / f'assets/{name}.DAT', self.root / f'assets/{name}.DAT')
-        for name in ('resource_codecs.py', 'resource_formats.py', 'dat_archive.py', 'reconstruct_archives.py'):
+        for name in ('resource_codecs.py', 'resource_formats.py', 'bitmap_sources.py', 'indexed_png.py', 'dat_archive.py', 'reconstruct_archives.py'):
             shutil.copyfile(ROOT / f'tools/{name}', self.root / f'tools/{name}')
         prepare(self.root)
 
@@ -164,7 +164,7 @@ class ArchiveBuildTests(unittest.TestCase):
     def test_clean_archive_bootstrap_builds_without_upstream(self):
         reports = rebuild(self.root)
         self.assertEqual(sum(r['resources_exact_matching'] for r in reports.values()), 27)
-        self.assertEqual(sum(r['structured_asset_sources'] for r in reports.values()), 26)
+        self.assertEqual(sum(r['structured_asset_sources'] for r in reports.values()), 27)
         for name in NAMES:
             self.assertEqual((self.root / f'build/{name}.DAT').read_bytes(), (self.root / f'assets/{name}.DAT').read_bytes())
 
@@ -185,7 +185,7 @@ class ArchiveBuildTests(unittest.TestCase):
 
     def test_structured_pixel_mutation_is_rejected(self):
         manifest = read_json(self.root / 'layout/archives/AE000.json')
-        entry = next(r for r in manifest['resources'] if r.get('source_format') == 'bitmap4-json-v1')
+        entry = next(r for r in manifest['resources'] if r.get('source_format') == 'bitmap4-png-v1')
         source = self.root / entry['source']
         document = read_json(source)
         document['vga_table'][0] ^= 1

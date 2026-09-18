@@ -7,7 +7,7 @@ The build compiles 126 C regions, assembles 20 ASM
 regions, and extracts 35 pinned Borland library modules. The MZ header is
 encoded from explicit metadata; 66 raw regions cover the remaining EXE bytes.
 Both archives have explicit resource ownership. Twenty-six compressed resources
-re-encode exactly; 25 of those use structured bitmap sources. The uncompressed
+re-encode exactly; 25 use PNG plus JSON and one uses a structured image bank. The uncompressed
 first level also rebuilds from structured source, for 27 matching resources.
 The other 193 retain raw payloads. Library, header, structured and fallback
 coverage are reported separately.
@@ -88,9 +88,14 @@ compilation; altered fields or padding fail with the `MZ_HEADER` owner named.
 Unimported code, data, and embedded assets retain raw ownership. Archive tables
 and type/flag headers are encoded from metadata. Matching payloads are encoded
 from local decoded or structured sources; all other payloads retain raw bytes.
-All 220 resources decode, and 49 bitmap plus 20 level payloads also pass strict
-structural round trips. Payload encoding and exact recompression are separate
+All 220 resources decode; 153 payloads pass strict structural round trips,
+including standalone/nested bitmaps, banks, fonts and levels. Payload encoding and exact recompression are separate
 metrics. See [archive formats and proof boundaries](docs/archive-formats.md).
+The [editable image and nested-format pipeline](docs/resource-sources.md)
+accepts PNG edits through the same DOS encoders and archive packer. A separate
+[shared-compilation experiment](docs/module-group-evidence.md) proves four
+adjacent C functions can emit matching relative layout in one OBJ; it does not
+yet establish historical module ownership or real linking.
 
 ```powershell
 python -m unittest discover -s tests -v

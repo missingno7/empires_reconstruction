@@ -7,10 +7,11 @@ import sys
 
 from reconstruct import ROOT, project_path, read_json, sha, write_json
 from resource_codecs import encode_payload
-from resource_formats import encode_bitmap, encode_level
+from resource_formats import SOURCE_FORMATS, encode_document
+from bitmap_sources import BUILD_SOURCE_FORMATS, encode_source, image_path
 
 NAMES = ('AE000', 'AE001')
-REPRESENTATIONS = ('opaque-encoded-fallback', 'decoded-bytes', 'bitmap4-json-v1', 'level-parts-json-v1')
+REPRESENTATIONS = ('opaque-encoded-fallback', 'decoded-bytes', *BUILD_SOURCE_FORMATS)
 
 
 def exact_keys(document, expected, context):
@@ -76,16 +77,25 @@ def build_archive(root, recipe):
         representation = entry['representation']
         source = b'' if representation == 'empty' else project_path(root, entry['source']).read_bytes()
         payload = source
-        if representation == 'bitmap4-json-v1':
-            payload = encode_bitmap(json.loads(source))
-        elif representation == 'level-parts-json-v1':
-            payload = encode_level(json.loads(source))
+        dependencies = []
+        if representation == 'bitmap4-png-v1':
+            metadata_path = project_path(root, entry['source'])
+            document = json.loads(source)
+            payload = encode_source(document, metadata_path)
+            path = image_path(document, metadata_path)
+            dependencies.append({'path': path.relative_to(root.resolve()).as_posix(), 'sha256': sha(path.read_bytes())})
+        if representation in SOURCE_FORMATS:
+            document = json.loads(source)
+            if document['format'] != representation:
+                raise ValueError(f"{entry['id']}: structured source format differs from recipe")
+            payload = encode_document(document)
         if representation not in ('empty', 'opaque-encoded-fallback'):
             payload = encode_payload(payload, entry['flags'])
         block = b'' if representation == 'empty' else bytes((entry['rtype'], entry['flags'])) + payload
         blocks.append(block)
         rows.append({'id': entry['id'], 'representation': representation,
-                     'source_sha256': sha(source), 'resource_sha256': sha(block), 'bytes': len(block)})
+                     'source_sha256': sha(source), 'resource_sha256': sha(block), 'bytes': len(block),
+                     'source_dependencies': dependencies})
     trailing = project_path(root, recipe['trailing']['source']).read_bytes() if recipe['trailing'] else b''
     packed, offsets = pack_blocks(blocks, trailing)
     for i, row in enumerate(rows):
@@ -96,7 +106,7 @@ def build_archive(root, recipe):
                     'opaque_fallback_resources': sum(r['representation'] == 'opaque-encoded-fallback' for r in rows),
                     'opaque_fallback_resource_bytes': sum(r['bytes'] for r in rows if r['representation'] == 'opaque-encoded-fallback'),
                     'unstructured_decoded_resources': sum(r['representation'] == 'decoded-bytes' for r in rows),
-                    'structured_resources': sum(r['representation'] in ('bitmap4-json-v1', 'level-parts-json-v1') for r in rows),
+                    'structured_resources': sum(r['representation'] in BUILD_SOURCE_FORMATS for r in rows),
                     'trailing_bytes': len(trailing), 'resources': rows}
 
 
@@ -117,7 +127,7 @@ def pack(root=ROOT, output=None):
         print(f'{name}.DAT: packed {len(data):,} bytes; offsets derived from {len(reports[name]["resources"])} components')
     report = {'status': 'BUILT_UNVERIFIED', 'archives': reports,
               'implementation_sha256': {name: sha((root / 'tools' / name).read_bytes())
-                                         for name in ('pack_archives.py', 'resource_codecs.py', 'resource_formats.py')}}
+                                         for name in ('pack_archives.py', 'resource_codecs.py', 'resource_formats.py', 'bitmap_sources.py', 'indexed_png.py')}}
     write_json(output / 'packing-report.json', report)
     return report
 
@@ -128,6 +138,8 @@ def verify(root=ROOT, output=None, fixed_output=None):
     from dat_archive import validate_manifest
     output = output or root / 'build/packed'
     (output / 'verification.json').unlink(missing_ok=True)
+    if output.resolve() == (root / 'build/packed').resolve():
+        (root / 'build/game-report.json').unlink(missing_ok=True)
     if fixed_output is not None and fixed_output.resolve() == output.resolve():
         raise ValueError('Fixed and derived outputs must be separate for independent comparison')
     report = read_json(output / 'packing-report.json')
@@ -148,6 +160,9 @@ def verify(root=ROOT, output=None, fixed_output=None):
             source = b'' if entry['representation'] == 'empty' else project_path(root, entry['source']).read_bytes()
             if sha(source) != receipt['source_sha256']:
                 raise ValueError(f"{entry['id']}: packing report predates component source changes")
+            for dependency in receipt.get('source_dependencies', []):
+                if sha(project_path(root, dependency['path']).read_bytes()) != dependency['sha256']:
+                    raise ValueError(f"{entry['id']}: packing report predates image source changes")
         actual = (output / f'{name}.DAT').read_bytes()
         if sha(actual) != report['archives'][name]['sha256']:
             raise ValueError(f'{name}: packed file differs from build receipt')

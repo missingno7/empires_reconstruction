@@ -1,0 +1,310 @@
+{
+  "status": "EQUAL",
+  "candidate": "C_6C26_6C87",
+  "historical_module_proven": false,
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "c2c2bc0b685825d8493b7a6d45322263a448c7bc86dd09684c67d3697b7774b5",
+    "staged_sha256": "298af98952d476b4cf504d8048ecdf4fbd49a57962ef17f86d78f5655c581227",
+    "object_sha256": "2f8593751361282788f139eb5730a2000d5b47b44ab149f49cde8cf4520a228d"
+  },
+  "source_recipe_sha256": "9fc69189dc75ab0bb2d4477b644ffc09d95512454f4f5d59de743c243b7ba7e9",
+  "text_bytes": 128,
+  "source_units_combined": 4,
+  "fixups_checked": 16,
+  "module_load_base_in_comparison_scaffold": 27686,
+  "publics": [
+    {
+      "name": "_f6c26",
+      "segment": "_TEXT",
+      "offset": 0
+    },
+    {
+      "name": "_f6c57",
+      "segment": "_TEXT",
+      "offset": 49
+    },
+    {
+      "name": "_f6c6f",
+      "segment": "_TEXT",
+      "offset": 73
+    },
+    {
+      "name": "_f6c87",
+      "segment": "_TEXT",
+      "offset": 97
+    }
+  ],
+  "owners": [
+    {
+      "owner": "F_6C26",
+      "bytes": 49,
+      "public_offset": 0,
+      "source_sha256": "342830f401e0d7c6bdc5473b1315236ca507c062ca81d797392e0ad66aaea331",
+      "status": "EQUAL",
+      "object_span": [
+        0,
+        49
+      ],
+      "module_load_base": 27686,
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 12,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 12,
+          "addend": 0,
+          "resolved_value": 2934
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 16,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 16,
+          "addend": 2,
+          "resolved_value": 2936
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 28,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 28,
+          "addend": 2,
+          "resolved_value": 2936
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 31,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 31,
+          "addend": 0,
+          "resolved_value": 2934
+        }
+      ],
+      "load_relocations": []
+    },
+    {
+      "owner": "F_6C57",
+      "bytes": 24,
+      "public_offset": 49,
+      "source_sha256": "2b9005ca6c2c830282583f95809cfc229107748b9cc393ff21f6f5117519ed73",
+      "status": "EQUAL",
+      "object_span": [
+        49,
+        73
+      ],
+      "module_load_base": 27686,
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 58,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 9,
+          "addend": 0,
+          "resolved_value": 2934
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 62,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 13,
+          "addend": 2,
+          "resolved_value": 2936
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 66,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d0",
+          "displacement": 0,
+          "extent_offset": 17,
+          "addend": 2,
+          "resolved_value": 49362
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 69,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d0",
+          "displacement": 0,
+          "extent_offset": 20,
+          "addend": 0,
+          "resolved_value": 49360
+        }
+      ],
+      "load_relocations": []
+    },
+    {
+      "owner": "F_6C6F",
+      "bytes": 24,
+      "public_offset": 73,
+      "source_sha256": "1f8abdde8f009fac686bbc85f4b716ce3df9d445d12bc097b398b9b98003b6b4",
+      "status": "EQUAL",
+      "object_span": [
+        73,
+        97
+      ],
+      "module_load_base": 27686,
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 77,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 4,
+          "addend": 2,
+          "resolved_value": 2936
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 80,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 7,
+          "addend": 0,
+          "resolved_value": 2934
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 84,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d0",
+          "displacement": 0,
+          "extent_offset": 11,
+          "addend": 2,
+          "resolved_value": 49362
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 92,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d0",
+          "displacement": 0,
+          "extent_offset": 19,
+          "addend": 0,
+          "resolved_value": 49360
+        }
+      ],
+      "load_relocations": []
+    },
+    {
+      "owner": "F_6C87",
+      "bytes": 31,
+      "public_offset": 97,
+      "source_sha256": "6b4420035c5d217ca4508a89330b9d9ede667930cdbb52639d7b2b99d3aa4b12",
+      "status": "EQUAL",
+      "object_span": [
+        97,
+        128
+      ],
+      "module_load_base": 27686,
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 99,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 2,
+          "addend": 2,
+          "resolved_value": 2936
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 102,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb76",
+          "displacement": 0,
+          "extent_offset": 5,
+          "addend": 0,
+          "resolved_value": 2934
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 106,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d0",
+          "displacement": 0,
+          "extent_offset": 9,
+          "addend": 2,
+          "resolved_value": 49362
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 114,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d0",
+          "displacement": 0,
+          "extent_offset": 17,
+          "addend": 0,
+          "resolved_value": 49360
+        }
+      ],
+      "load_relocations": []
+    }
+  ],
+  "limitation": "Proves compatible shared compilation and emitted relative layout, not historical module boundaries, data ownership or linker reconstruction."
+}

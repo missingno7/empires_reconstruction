@@ -62,7 +62,7 @@ class IndependentPackingTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         shutil.copytree(ROOT / 'recipes', self.root / 'recipes')
         (self.root / 'tools').mkdir()
-        for name in ('pack_archives.py', 'resource_codecs.py', 'resource_formats.py'):
+        for name in ('pack_archives.py', 'resource_codecs.py', 'resource_formats.py', 'bitmap_sources.py', 'indexed_png.py'):
             shutil.copyfile(ROOT / 'tools' / name, self.root / 'tools' / name)
         for name in ('AE000', 'AE001'):
             recipe = read_json(self.root / f'recipes/archives/{name}.json')
@@ -71,6 +71,9 @@ class IndependentPackingTests(unittest.TestCase):
                     target = self.root / entry['source']
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copyfile(ROOT / entry['source'], target)
+                    if entry['representation'] == 'bitmap4-png-v1':
+                        image = read_json(target)['image']
+                        shutil.copyfile((ROOT / entry['source']).parent / image, target.parent / image)
 
     def tearDown(self):
         self.temp.cleanup()
@@ -108,6 +111,16 @@ class IndependentPackingTests(unittest.TestCase):
             verify(self.root, fixed_output=self.root / 'build/packed')
         result = verify(self.root, fixed_output=self.root / 'fixed')
         self.assertTrue(all(r['fixed_equal'] for r in result['archives'].values()))
+        recipe = read_json(self.root / 'recipes/archives/AE000.json')
+        entry = next(r for r in recipe['resources'] if r['representation'] == 'bitmap4-png-v1')
+        metadata = self.root / entry['source']
+        image = metadata.parent / read_json(metadata)['image']
+        image.write_bytes(image.read_bytes() + b'changed')
+        (self.root / 'build/game-report.json').write_bytes(b'previous combined success')
+        with self.assertRaisesRegex(ValueError, 'image source changes'):
+            verify(self.root)
+        self.assertFalse((self.root / 'build/packed/verification.json').exists())
+        self.assertFalse((self.root / 'build/game-report.json').exists())
 
     def test_changed_component_length_moves_following_offsets_without_fixture(self):
         recipe = read_json(self.root / 'recipes/archives/AE000.json')

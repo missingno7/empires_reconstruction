@@ -7,6 +7,13 @@ opaque regions with rebuildable structure.
 
 **First reconstruct what exists. Later explain why it exists.**
 
+Current priority: **first make it reconstructible, then understandable, finally
+beautiful**. Prefer the highest practical lossless source form. The same
+component encoders/toolchain should accept edited PNG/JSON/level/C/ASM inputs
+to produce modified DOS files; unchanged inputs must still match originals.
+Semantic reasoning is allowed to unblock structure, not as a substitute for
+mechanical progress on another available frontier.
+
 The [architectural end-state](build-reconstruction.md), clarified on 2026-09-18,
 requires layout to emerge from reconstructed components and build rules.
 Placement matching is an intermediate proof. Original files ultimately belong

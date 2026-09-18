@@ -14,7 +14,7 @@
         "docs/archive-formats.md"
       ],
       "unblock": "Infer dictionary insertion/search availability and match selection from token traces; test candidate policies against full original streams.",
-      "leverage": "156 compressed resources; includes 43 already losslessly structured bitmap/level payloads."
+      "leverage": "156 compressed resources; includes 126 already losslessly structured payloads."
     },
     {
       "target": "Held C linkage closure",
@@ -32,12 +32,14 @@
     {
       "target": "Original modules and historical linker",
       "state": "open investigation, not demonstrated blocked",
-      "matches": "146 independent source proof units, 35 complete pinned library code contributions and all 106 MZ relocations. Fixed placement proves the full EXE.",
+      "matches": "146 independent source proof units, 35 complete pinned library code contributions and all 106 MZ relocations. Fixed placement proves the full EXE. A four-function shared-compilation candidate reproduces 128 bytes, emitted relative public order and 16 fixups in one fresh OBJ; historical boundaries remain unproven.",
       "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
       "evidence": [
         "layout/manifest.json",
         "layout/mz-header.json",
-        "tools/omf.py"
+        "tools/omf.py",
+        "recipes/modules/C_6C26_6C87.json",
+        "docs/module-group-evidence.json"
       ],
       "unblock": "Test shared units using public order and shared data evidence; compare linker experiments against the fixed-placement output.",
       "leverage": "787 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
@@ -58,12 +60,14 @@
     {
       "target": "Nested resources, fonts, level record blocks and actor bytecode",
       "state": "productive frontier remains open",
-      "matches": "All 220 resources partition and decode; 49 standalone bitmap and 20 level payloads structurally round-trip. Twenty-six structured sources reproduce complete resource blocks.",
-      "first_unresolved_fact": "Nested bank ownership, font tables, level record-block subdivisions and bytecode instruction boundaries need strict lossless adapters. Most level recompression also needs the compressor policy.",
+      "matches": "All 220 resources partition and decode; 153 payloads structurally round-trip (49 bitmaps, 75 banks, 7 sequences, 2 fonts, 20 levels). All 27 matching resources have structured sources, including 25 PNG/JSON pairs.",
+      "first_unresolved_fact": "100 nested bank records remain opaque; level record-block subdivisions and bytecode instruction boundaries need lossless adapters. 126 structured payloads also need the historical compressor policy before canonical promotion.",
       "evidence": [
         "docs/resource-format-evidence.json",
         "tools/resource_formats.py",
-        "docs/archive-formats.md"
+        "docs/archive-formats.md",
+        "docs/resource-sources.md",
+        "docs/bitmap-source-evidence.json"
       ],
       "unblock": "Import upstream format facts incrementally, preserve unknown bytes and prove exact payload encoding before requiring original compressed-stream identity.",
       "leverage": "Further structure in the 193 raw resources; do not count decoded-only data as matching compressed source."
@@ -76,7 +80,13 @@
       "target": "DAT packing rules",
       "state": "derived packing verified against fixed scaffold and originals",
       "rules": "Resource list order; LE32 table size from count plus sentinel; offsets from actual emitted block lengths; preserved trailing component.",
-      "remaining": "193 opaque encoded resources and one unstructured decoded source; fixture-free generation is not fallback-free component reconstruction."
+      "remaining": "193 opaque encoded resource fallbacks; nested banks retain 100 unknown records and levels retain uninterpreted fields. Fixture-free generation is not fallback-free component reconstruction."
+    },
+    {
+      "target": "Nested banks, fonts and editable PNG components",
+      "state": "153 payloads round-trip; 25 canonical PNG sources match complete original resources; modified PNG packing tested",
+      "rules": "LE16 bank tables and split font offset tables derive from emitted component sizes; PNG logical indices remain distinct from DOS colour tables.",
+      "remaining": "Compressor policy blocks 126 structured payload promotions; opaque nested records remain explicit."
     }
   ]
 }

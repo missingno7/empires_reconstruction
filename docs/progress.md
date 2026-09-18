@@ -100,11 +100,11 @@ bootstrap/structural milestone, not completion of the original build system.
 |---|---:|---:|
 | Exact complete bytes | 227,560 | 383,874 |
 | Partitioned and decoded resources | 89 | 131 |
-| Structured payloads round-tripped | 44 | 25 |
+| Structured payloads round-tripped | 67 | 86 |
 | Canonical matching resources | 26 | 1 |
 | Canonical matching resource bytes (including headers) | 3,773 | 26,138 |
 | Exact recompressed payload bytes | 3,721 | 0 |
-| Structured canonical sources | 25 | 1 |
+| Structured canonical sources | 26 | 1 |
 | Remaining raw resources | 63 | 130 |
 
 All 155 RLE stages match exactly. Twenty-six of 182 pair-span streams match
@@ -113,11 +113,13 @@ original selecting a shorter span than the greedy candidate. Both tested
 duplicate-span tie policies yield the same 26 matches. Token/byte differences
 are recorded in [codec-evidence.json](codec-evidence.json).
 
-All 49 standalone bitmaps and all 20 level payloads round-trip through strict
-structural encoders. Twenty-five bitmaps and the uncompressed first level
-also reproduce their whole original resources and are canonical structured
-sources. Forty-three other structural payloads remain derived research until
-their compression matches. Original game files and all raw/decoded/structured
+All 49 standalone bitmaps, 75 nested banks, seven sequential banks, two fonts
+and 20 level payloads round-trip through strict structural encoders. Twenty-five
+bitmaps now use PNG-plus-JSON sources; the four-image AE000:080 bank and first
+level also reproduce their whole original resources from structure. Another
+126 structural payloads remain derived research until their compression matches.
+Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs,
+while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
 The combined EXE metrics distinguish 146 source proof units from **zero proven
@@ -135,7 +137,7 @@ candidate sets overlap, so the leverage counts must not be added. This is
 historical evidence, not a fresh match grant. `tools/inventory_linkage.py`
 refreshes the ranking without modifying upstream.
 
-Thirty-nine tests pass, including independent hand-authored codec streams,
+Forty-eight tests pass, including independent hand-authored codec streams,
 all observed RLE policies, complete structured payload round trips, mutations,
 failure invalidation and archive bootstrap from only supplied local inputs.
 All 220 decoded resources also agree with the independent upstream decoder.
@@ -159,6 +161,18 @@ and explicitly reports whole-build reconstruction incomplete. The 193 opaque
 DAT payloads and 57,777 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
+
+The [PNG edit test](resource-sources.md) changes dimensions and pixel indices,
+encodes a valid modified resource and verifies the packer's resulting offset
+shift without fixtures. Original-equality checks remain separate and reject
+the modified output. All 25 unchanged adopted PNG sources reproduce the
+original compressed bytes.
+
+On the EXE frontier, [C_6C26_6C87](module-group-evidence.md) compiles four existing
+contiguous sources into one fresh OBJ: 128 bytes, public offsets 0/49/73/97,
+and 16 fixups match. This is compatible module grouping evidence; original
+module/data ownership and linking remain unproven, so no historical-module
+or linker-binding coverage has been inflated.
 
 The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
 retain the user's broader agenda. Matching is **not globally saturated**:

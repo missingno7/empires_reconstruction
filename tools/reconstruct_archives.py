@@ -7,7 +7,8 @@ import sys
 from dat_archive import make_manifest, validate_manifest, assemble_archive
 from reconstruct import ROOT, read_json, write_json, project_path, sha, mismatch
 from resource_codecs import decode_payload, encode_payload
-from resource_formats import bitmap_document, encode_bitmap, level_document, encode_level
+from resource_formats import SOURCE_FORMATS, decode_document, encode_document
+from bitmap_sources import BUILD_SOURCE_FORMATS, encode_source, source_files
 
 NAMES = ('AE000', 'AE001')
 
@@ -42,19 +43,27 @@ def prepare(root=ROOT):
             raise ValueError(f'{name}: original archive identity differs')
         outputs = []
         for entry in manifest['resources']:
+            target = project_path(root, entry['source'])
+            if not target.is_relative_to((root / 'raw').resolve()):
+                raise ValueError('Archive extraction may only write local raw sources')
             block = original[entry['start']:entry['end']]
             if sha(block) != entry['expected_sha256']:
                 raise ValueError(f"{entry['id']}: original resource identity differs")
             payload = block[2:]
             if entry['kind'] == 'MATCHING_RESOURCE':
                 payload = decode_payload(payload, entry['flags'])
-                if entry.get('source_format') == 'bitmap4-json-v1':
-                    payload = (json.dumps(bitmap_document(payload), indent=2) + '\n').encode('utf-8')
-                elif entry.get('source_format') == 'level-parts-json-v1':
-                    payload = (json.dumps(level_document(payload), indent=2) + '\n').encode('utf-8')
-            target = project_path(root, entry['source'])
-            if not target.is_relative_to((root / 'raw').resolve()):
-                raise ValueError('Archive extraction may only write local raw sources')
+                if entry.get('source_format') == 'bitmap4-png-v1':
+                    document = decode_document(name, entry, payload)
+                    if document is None or document['format'] != 'bitmap4-json-v1':
+                        raise ValueError('PNG source needs a standalone bitmap')
+                    document, png = source_files(document, target.with_suffix('.png').name)
+                    outputs.append((target.with_suffix('.png'), png))
+                    payload = (json.dumps(document, indent=2) + '\n').encode('utf-8')
+                elif entry.get('source_format') in SOURCE_FORMATS:
+                    document = decode_document(name, entry, payload)
+                    if document is None or document['format'] != entry['source_format']:
+                        raise ValueError(f"{entry['id']}: source format does not match decoded structure")
+                    payload = (json.dumps(document, indent=2) + '\n').encode('utf-8')
             outputs.append((target, payload))
         trailing = manifest.get('trailing')
         if trailing:
@@ -90,10 +99,13 @@ def rebuild(root=ROOT, output=None):
                 if entry.get('encoder') != 'greedy-rle-pair-span-v1':
                     raise ValueError(f"{entry['id']}: unknown encoder recipe")
                 source_format = entry.get('source_format', 'decoded-bytes')
-                if source_format == 'bitmap4-json-v1':
-                    payload = encode_bitmap(json.loads(source))
-                elif source_format == 'level-parts-json-v1':
-                    payload = encode_level(json.loads(source))
+                if source_format == 'bitmap4-png-v1':
+                    payload = encode_source(json.loads(source), project_path(root, entry['source']))
+                elif source_format in SOURCE_FORMATS:
+                    document = json.loads(source)
+                    if document['format'] != source_format:
+                        raise ValueError(f"{entry['id']}: structured source format differs")
+                    payload = encode_document(document)
                 elif source_format != 'decoded-bytes':
                     raise ValueError(f"{entry['id']}: unknown source format {source_format}")
                 if sha(payload) != entry['decoded']['sha256'] or len(payload) != entry['decoded']['size']:
@@ -105,17 +117,10 @@ def rebuild(root=ROOT, output=None):
             decoded = decode_payload(payload, entry['flags']) if block else b''
             if block and (len(decoded) != entry['decoded']['size'] or sha(decoded) != entry['decoded']['sha256']):
                 raise ValueError(f"{entry['id']}: decoded payload differs from established identity")
-            structured_format = None
-            if entry['rtype'] == 0x47:
-                document = bitmap_document(decoded)
-                structured_format = document['format']
-                if encode_bitmap(document) != decoded:
-                    raise ValueError(f"{entry['id']}: bitmap round trip differs")
-            elif name == 'AE001' and entry['index'] < 20:
-                document = level_document(decoded)
-                structured_format = document['format']
-                if encode_level(document) != decoded:
-                    raise ValueError(f"{entry['id']}: level round trip differs")
+            document = decode_document(name, entry, decoded) if block else None
+            structured_format = document['format'] if document else None
+            if document and encode_document(document) != decoded:
+                raise ValueError(f"{entry['id']}: structured payload round trip differs")
             payloads[entry['id']] = payload
             rows.append({'id': entry['id'], 'kind': entry['kind'], 'rtype': entry['rtype'], 'flags': entry['flags'],
                          'start': entry['start'], 'end': entry['end'], 'encoded_bytes': len(block),
@@ -134,10 +139,12 @@ def rebuild(root=ROOT, output=None):
                          'decoded_payload_bytes': sum(r['decoded_bytes'] for r in rows),
                          'structured_payloads_rebuildable': sum(r['structured_payload_format'] is not None for r in rows),
                          'structured_payload_bytes_rebuildable': sum(r['decoded_bytes'] for r in rows if r['structured_payload_format']),
+                         'structured_payload_format_counts': dict(Counter(r['structured_payload_format'] for r in rows if r['structured_payload_format'])),
+                         'structured_source_format_counts': dict(Counter(r['source_format'] for r in manifest['resources'] if r.get('source_format') in BUILD_SOURCE_FORMATS)),
                          'resources_rebuildable': len(matched), 'resources_exact_matching': len(matched),
                          'resource_bytes_exact_matching': sum(r['encoded_bytes'] for r in matched),
                          'compressed_bytes_exact_matching': sum(r['encoded_bytes'] - 2 for r in compressed_matched),
-                         'structured_asset_sources': sum(r.get('source_format') in ('bitmap4-json-v1', 'level-parts-json-v1') for r in manifest['resources']),
+                         'structured_asset_sources': sum(r.get('source_format') in BUILD_SOURCE_FORMATS for r in manifest['resources']),
                          'raw_resources': sum(r['kind'] == 'RAW_RESOURCE' for r in rows),
                          'raw_resource_bytes': sum(r['encoded_bytes'] for r in rows if r['kind'] == 'RAW_RESOURCE'),
                          'type_counts': dict(Counter(f'0x{r["rtype"]:02X}' for r in rows if r['rtype'] is not None)),
@@ -145,7 +152,7 @@ def rebuild(root=ROOT, output=None):
                          'manifest_sha256': sha((root / f'layout/archives/{name}.json').read_bytes()), 'resources': rows}
         reports[name]['implementation_sha256'] = {
             path: sha((root / 'tools' / path).read_bytes())
-            for path in ('resource_codecs.py', 'resource_formats.py', 'dat_archive.py', 'reconstruct_archives.py')}
+            for path in ('resource_codecs.py', 'resource_formats.py', 'bitmap_sources.py', 'indexed_png.py', 'dat_archive.py', 'reconstruct_archives.py')}
         built[name] = rebuilt
         print(f'{name}.DAT: EQUAL; {len(rebuilt):,} bytes, {len(rows)} resources, {len(matched)} re-encoded exactly, '
               f'{reports[name]["raw_resources"]} raw fallback')

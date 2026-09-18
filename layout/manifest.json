@@ -8702,16 +8702,106 @@
       }
     },
     {
-      "id": "RAW_009D68",
+      "id": "F_9B68",
+      "kind": "MATCHING_C",
       "start": 40296,
       "end": 40825,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/009D68-009F79.bin",
-      "original_symbol": null,
-      "artifact": "raw/009D68-009F79.bin",
+      "source": "src/F_9B68.C",
+      "original_symbol": "F_9B68",
+      "artifact": "regions/F_9B68.bin",
       "expected_sha256": "53a965ebb680942a21b5a42906c101c19e5b238ae7830b846a72e242853f4021",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9b68",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_gc35b": {
+            "offset": 50011,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset from complete function fixup"
+          },
+          "_gc354": {
+            "offset": 50004,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset from complete function fixup"
+          },
+          "_face7": {
+            "offset": 44263,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_gc35d": {
+            "offset": 50013,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset from complete function fixup"
+          },
+          "_g0dcc": {
+            "owner": "DATA_0DCC",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "40 records of 24 bytes at DS:0DCC"
+          },
+          "_ff90f": {
+            "offset": 63759,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_gc359": {
+            "offset": 50009,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset from complete function fixup"
+          },
+          "_f656c": {
+            "offset": 25964,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_a1271": {
+            "owner": "DATA_1271",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "24-word table at DS:1271"
+          },
+          "_f01ce": {
+            "offset": 462,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_f0355": {
+            "offset": 853,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_f9a0e": {
+            "offset": 39438,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
+          },
+          "_gc356": {
+            "offset": 50006,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset from complete function fixup"
+          },
+          "_gc352": {
+            "offset": 50002,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset from complete function fixup"
+          }
+        }
+      }
     },
     {
       "id": "F_9D79",
@@ -16062,13 +16152,65 @@
     {
       "id": "RAW_0107E2",
       "start": 67554,
+      "end": 68092,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/0107E2-0109FC.bin",
+      "original_symbol": null,
+      "artifact": "raw/0107E2-0109FC.bin",
+      "expected_sha256": "7251098353a973722eb7627a9d519abdf34438c3f806df3fc98001dd6e8e6995",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_0DCC",
+      "kind": "EXACT_DATA",
+      "start": 68092,
+      "end": 69052,
+      "source": "src/data/DATA_0DCC.json",
+      "artifact": "regions/DATA_0DCC.bin",
+      "expected_sha256": "ef33d6b8a317b19a9660383422b3cc1e7126fa09784952aee27327e74120f2b5",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "fixed-records-v1"
+      },
+      "classification": "static_data"
+    },
+    {
+      "id": "RAW_010DBC",
+      "start": 69052,
+      "end": 69281,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/010DBC-010EA1.bin",
+      "original_symbol": null,
+      "artifact": "raw/010DBC-010EA1.bin",
+      "expected_sha256": "b15f4954b546186eab859cf4704f4ddde1081db88cf91241c17afcb06962009b",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_1271",
+      "kind": "EXACT_DATA",
+      "start": 69281,
+      "end": 69329,
+      "source": "src/data/DATA_1271.json",
+      "artifact": "regions/DATA_1271.bin",
+      "expected_sha256": "43b8d277b37433ce15539778237dcbd6f79bcff1b37908432230a045ef4f7292",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      },
+      "classification": "static_data"
+    },
+    {
+      "id": "RAW_010ED1",
+      "start": 69329,
       "end": 69376,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0107E2-010F00.bin",
+      "source": "raw/010ED1-010F00.bin",
       "original_symbol": null,
-      "artifact": "raw/0107E2-010F00.bin",
-      "expected_sha256": "8892ada5854a0e85115cc2847212f16a5b8231b8a768e684f208bfc61d152be0",
+      "artifact": "raw/010ED1-010F00.bin",
+      "expected_sha256": "a9ecd76b2bc4ed119fa002227f4b35620d06acd117097266a7586b80f452ed85",
       "matching_status": "EQUAL"
     },
     {

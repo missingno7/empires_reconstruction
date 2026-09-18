@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 15,
-  "held_extent_bytes": 8761,
+  "held_candidates": 14,
+  "held_extent_bytes": 8232,
   "reason_counts": {
-    "PROVIDER_REFUSED": 15
+    "PROVIDER_REFUSED": 14
   },
-  "unique_unresolved_symbols": 59,
-  "unresolved_fixup_sites": 104,
+  "unique_unresolved_symbols": 57,
+  "unresolved_fixup_sites": 101,
   "symbols": [
     {
       "symbol": "_b437a",
@@ -270,24 +270,6 @@
       "fixup_sites": 1,
       "candidate_ids": [
         "F_338A"
-      ]
-    },
-    {
-      "symbol": "_a1271",
-      "candidate_count": 1,
-      "candidate_bytes": 529,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_9B68"
-      ]
-    },
-    {
-      "symbol": "_g0dcc",
-      "candidate_count": 1,
-      "candidate_bytes": 529,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_9B68"
       ]
     },
     {
@@ -881,31 +863,6 @@
         {
           "offset": 638,
           "symbol": "_gc0c2"
-        }
-      ]
-    },
-    {
-      "id": "F_9B68",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "9098f0982fd681b98866c4a368315ca2823b4f427dc687fad8f860bc499437ac",
-      "extent_bytes": 529,
-      "draft": "c/F_9B68.C",
-      "draft_sha256": "e78db81238a2deb406dc932dea25190a6946e5ff4ba3815f5b7db61ebcb95e92",
-      "refusal": "3 of the candidate's 37 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g0dcc at offset 111. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 111,
-          "symbol": "_g0dcc"
-        },
-        {
-          "offset": 173,
-          "symbol": "_a1271"
-        },
-        {
-          "offset": 191,
-          "symbol": "_a1271"
         }
       ]
     },

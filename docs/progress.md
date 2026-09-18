@@ -1,22 +1,22 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 19,355 bytes from raw
-fallback: 16,549 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 20,892 bytes from raw
+fallback: 17,078 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 26,750 | 223 |
+| Freshly compiled matching C | 14,077 | 27,279 | 224 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,524 | 36 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 60 | 5 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 43,266 | 61 |
-| Total | 79,154 | 79,154 | 348 |
+| Exact raw fallback | 62,621 | 41,729 | 62 |
+| Total | 79,154 | 79,154 | 356 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -422,3 +422,9 @@ module. See [the wave-thirty proof](matching-c-wave30.md).
 F_622C and F_625D add 58 matching C bytes. The critical-error handler and its
 installer bind to exact helper/library entries, while DS:C0C8 byte storage is
 independently observed as read and write. See [the wave-thirty-one proof](matching-c-wave31.md).
+
+## Thirty-second local C wave
+
+F_9B68 adds 529 matching C bytes. Its DS:0DCC fixed-record table and DS:1271
+word table now have independent encoders and exact ownership. See [the
+wave-thirty-two proof](matching-c-wave32.md).

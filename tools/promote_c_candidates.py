@@ -4,7 +4,7 @@ from pathlib import Path
 import tempfile
 
 from mz import MZ
-from exe_data import encode_data, TEXT_FORMAT
+from exe_data import encode_data, TEXT_FORMAT, RECORDS_FORMAT, U16_TABLE_FORMAT
 from storage_evidence import verify_bindings
 from promote_upstream import replace_raw_owners
 from reconstruct import (ROOT, read_json, write_json, project_path, sha, compile_sources,
@@ -23,7 +23,7 @@ def promote(recipe_path, root=ROOT):
     existing = {r['id']: r for r in manifest['regions']}
     candidates = []
     for owner in recipe['owners']:
-        if owner['kind'] not in ('MATCHING_C', 'KNOWN_TOOLCHAIN_LIBRARY') and not (owner['kind'] == 'EXACT_DATA' and owner['build']['encoder'] in ('omf-segment-v1', TEXT_FORMAT)):
+        if owner['kind'] not in ('MATCHING_C', 'KNOWN_TOOLCHAIN_LIBRARY') and not (owner['kind'] == 'EXACT_DATA' and owner['build']['encoder'] in ('omf-segment-v1', TEXT_FORMAT, RECORDS_FORMAT, U16_TABLE_FORMAT)):
             raise ValueError('Recipe may only promote matching C, pinned libraries, compiled data and identified text')
         if owner['id'] in existing:
             if owner != existing[owner['id']]:
@@ -60,7 +60,7 @@ def promote(recipe_path, root=ROOT):
             data, proof = compiled_data(owner, proposed['regions'], modules, MZ.parse(original))
         else:
             source = project_path(root, owner['source'])
-            data = encode_data(read_json(source), TEXT_FORMAT)
+            data = encode_data(read_json(source), owner['build']['encoder'])
             mz = MZ.parse(original)
             if any(mz.load_offset(owner['start']) - 1 <= r['load_offset'] < mz.load_offset(owner['end']) for r in mz.relocations):
                 raise ValueError('Text owner overlaps an MZ relocation')

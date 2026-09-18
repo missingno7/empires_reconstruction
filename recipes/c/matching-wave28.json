@@ -1,0 +1,62 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_21DB",
+      "kind": "MATCHING_C",
+      "start": 9179,
+      "end": 9292,
+      "source": "src/F_21DB.C",
+      "original_symbol": "F_21DB",
+      "artifact": "regions/F_21DB.bin",
+      "expected_sha256": "36aebb04e74dec158d010483588598c6ddbf627fa47fe6e15391e4817955f9cd",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f21db",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_f656c": {
+            "coordinate": "code_offset",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0,
+            "evidence": "functions/F_656C.entry"
+          },
+          "_g99d2": {
+            "offset": 39378,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_29502.phys"
+          },
+          "_gc5c6": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_movmem": {
+            "coordinate": "code_offset",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0,
+            "evidence": "CC.LIB/MOVMEM"
+          },
+          "_g96ee": {
+            "offset": 38638,
+            "coordinate": "DGROUP_offset",
+            "storage_evidence": "DS_96EE",
+            "evidence": "docs/storage-binding-evidence.json#DS_96EE"
+          },
+          "_malloc": {
+            "coordinate": "code_offset",
+            "owner": "LIB_FMALLOC",
+            "public": "_malloc",
+            "addend": 0,
+            "evidence": "CC.LIB/FMALLOC"
+          }
+        },
+        "module_segments": {}
+      }
+    }
+  ]
+}

@@ -80,9 +80,9 @@ No unknown payload became understood merely
 because its offset is now computed. This step does not recover the historical
 compressor's remaining match-selection behavior.
 
-The EXE remains at fixed placement with declared bindings (including 380 owner-derived code/data references and four owned module-data bindings), 43,782 raw
+The EXE remains at fixed placement with declared bindings (including 380 owner-derived code/data references and four owned module-data bindings), 43,669 raw
 bytes, and no proven reconstruction of its original source modules or historical
-linker topology. Its 237 source proof units do not count as recovered original
+linker topology. Its 239 source proof units do not count as recovered original
 modules. One [compatible shared-compilation experiment](module-group-evidence.md)
 now proves four functions' relative placement in a single OBJ, without yet
 establishing historical module identity. The combined report explicitly sets
@@ -93,3 +93,6 @@ alongside component recovery and encoder policy. Keep both EXE paths until a
 linked output independently agrees with the fixed scaffold and originals. The
 primary build can stop depending on the scaffold only when this relationship
 is established without unknown fallback or externally forced placement.
+
+
+Buffer-storage evidence can now bind an independently observed runtime buffer outside the on-disk load image while keeping its uninitialized bytes out of the EXE source. The first such declaration is DS:96EE, shared by the F_21DB loader and F_2269 blitter.

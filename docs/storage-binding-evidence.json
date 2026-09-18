@@ -87,6 +87,34 @@
           "instruction": "ds-indexed-byte-zero-test"
         }
       ]
+    },
+    {
+      "id": "DS_96EE",
+      "kind": "buffer-storage",
+      "offset": 38638,
+      "size": 674,
+      "observations": [
+        {
+          "function_extent": {
+            "id": "F_21DB",
+            "start": 9179,
+            "end": 9292,
+            "sha256": "36aebb04e74dec158d010483588598c6ddbf627fa47fe6e15391e4817955f9cd"
+          },
+          "load_offset": 8756,
+          "access": "write"
+        },
+        {
+          "function_extent": {
+            "id": "F_2269",
+            "start": 9321,
+            "end": 9393,
+            "sha256": "101c6462f00de9efc3053502a5dfae71461b77b34ae51cfdc85e8590029bbcf5"
+          },
+          "load_offset": 8820,
+          "access": "read"
+        }
+      ]
     }
   ]
 }

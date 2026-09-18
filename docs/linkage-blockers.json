@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 19,
-  "held_extent_bytes": 9227,
+  "held_candidates": 18,
+  "held_extent_bytes": 9114,
   "reason_counts": {
-    "PROVIDER_REFUSED": 19
+    "PROVIDER_REFUSED": 18
   },
   "unique_unresolved_symbols": 61,
-  "unresolved_fixup_sites": 108,
+  "unresolved_fixup_sites": 107,
   "symbols": [
     {
       "symbol": "_b437a",
@@ -100,16 +100,6 @@
       "candidate_ids": [
         "LIB_SETARGV",
         "LIB_SETENVP"
-      ]
-    },
-    {
-      "symbol": "_g96ee",
-      "candidate_count": 2,
-      "candidate_bytes": 185,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_21DB",
-        "F_2269"
       ]
     },
     {
@@ -500,6 +490,15 @@
       ]
     },
     {
+      "symbol": "_g96ee",
+      "candidate_count": 1,
+      "candidate_bytes": 72,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2269"
+      ]
+    },
+    {
       "symbol": "__envSize",
       "candidate_count": 1,
       "candidate_bytes": 64,
@@ -599,23 +598,6 @@
         {
           "offset": 47,
           "symbol": "_ga6b6"
-        }
-      ]
-    },
-    {
-      "id": "F_21DB",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 11",
-      "answered_about_entry_sha256": "9fe100631bc22f454de08735f09a7f268ab485d7d4d21e760fc299880cbca268",
-      "extent_bytes": 113,
-      "draft": "c/F_21DB.C",
-      "draft_sha256": "1377fedaa958fd5b2d51994312baeb273cfdb2fd0ad073e2a83831bc721b632d",
-      "refusal": "1 of the candidate's 13 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g96ee at offset 90. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 90,
-          "symbol": "_g96ee"
         }
       ]
     },

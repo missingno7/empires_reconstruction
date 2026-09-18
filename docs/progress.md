@@ -1,22 +1,22 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 18,593 bytes from raw
-fallback: 16,436 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 18,952 bytes from raw
+fallback: 16,549 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 26,235 | 218 |
+| Freshly compiled matching C | 14,077 | 26,348 | 219 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,524 | 36 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 59 | 4 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 43,782 | 60 |
-| Total | 79,154 | 79,154 | 346 |
+| Exact raw fallback | 62,621 | 43,669 | 62 |
+| Total | 79,154 | 79,154 | 348 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -397,3 +397,10 @@ Both complete extents and negative controls are freshly compiled. See
 ## Twenty-seventh local C wave
 
 F_A768 adds 246 matching C bytes. Its historical switch-table case order and DS:13D9 record binding are proven by fresh OMF comparison. See [the wave-twenty-seven proof](matching-c-wave27.md).
+
+## Twenty-eighth local C wave
+
+F_21DB adds 113 matching C bytes. Its complete staging-buffer loader binds the
+historical `_malloc` and `movmem` library publics and proves the DS:96EE
+674-byte runtime buffer through independent read/write observations. See [the
+wave-twenty-eight proof](matching-c-wave28.md).

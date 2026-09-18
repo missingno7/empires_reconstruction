@@ -19,6 +19,36 @@ def verify(document, original, frames):
             verify_indexed_base(item, original, mz, frames)
             result[item['id']] = offset
             continue
+        if item.get('kind') == 'buffer-storage':
+            size = item.get('size')
+            if (type(offset) is not int or not 0 <= offset <= 65535 or
+                    type(size) is not int or size < 1 or offset + size > 65536):
+                raise ValueError('Invalid buffer storage declaration')
+            if frames['DGROUP'] + offset < mz.declared_size - mz.header_size:
+                raise ValueError('Expected buffer storage beyond on-disk load image')
+            accesses, functions = set(), set()
+            for observation in item['observations']:
+                extent = observation['function_extent']
+                code = original[extent['start']:extent['end']]
+                if hashlib.sha256(code).hexdigest() != extent['sha256']:
+                    raise ValueError('Buffer storage observation function identity mismatch')
+                at = mz.file_offset(observation['load_offset'])
+                if not extent['start'] <= at or at + 3 > extent['end']:
+                    raise ValueError('Buffer storage observation outside function')
+                if original[at:at + 3] != b'\xb8' + offset.to_bytes(2, 'little'):
+                    raise ValueError('Buffer storage address instruction mismatch')
+                access = observation.get('access')
+                if access not in ('read', 'write'):
+                    raise ValueError('Buffer storage observation must declare read or write')
+                if any(at - mz.header_size <= r['load_offset'] < at - mz.header_size + 3
+                       for r in mz.relocations):
+                    raise ValueError('Buffer storage observation overlaps relocation')
+                accesses.add(access)
+                functions.add(extent['id'])
+            if accesses != {'read', 'write'} or len(functions) < 2:
+                raise ValueError('Buffer storage requires independent read and write observations')
+            result[item['id']] = offset
+            continue
         if item['id'] in result or item['size'] != 2 or not 0 <= offset <= 65534:
             raise ValueError('Invalid storage word declaration')
         if frames['DGROUP'] + offset < mz.declared_size - mz.header_size:

@@ -8,15 +8,15 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 35,785 | 240 |
+| Freshly compiled matching C | 14,077 | 35,820 | 241 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 32,058 | 52 |
-| Total | 79,154 | 79,154 | 366 |
+| Exact raw fallback | 62,621 | 32,023 | 52 |
+| Total | 79,154 | 79,154 | 373 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -126,13 +126,13 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 261 source proof units from **zero proven
-historical source modules**, and 1,706 declared owner-symbol bindings from
+The combined EXE metrics distinguish 262 source proof units from **zero proven
+historical source modules**, and 1,710 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-12,492 raw EXE bytes as unresolved machine code; overlapping entry/parent
-extents count once. The other 19,566 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 563 component-owned bindings
-within fixed placement: 481 C/ASM entry references, 73 library bindings,
+12,465 raw EXE bytes as unresolved machine code; overlapping entry/parent
+extents count once. The other 19,558 raw bytes remain unknown. Two palette owners account for
+1,536 embedded-asset bytes. There are now 565 component-owned bindings
+within fixed placement: 482 C/ASM entry references, 74 library bindings,
 and nine structured-data references. Five module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 32,058 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 32,023 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -188,7 +188,7 @@ classification and nested-resource adapters remain mechanical frontiers.
 
 ## Owned code references
 
-481 code bindings across 150 callers now identify selected entry publics of
+482 code bindings across 151 callers now identify selected entry publics of
 224 owned C/ASM components. Migration requires both the established address
 and the selected public name to agree, followed by a fresh complete EXE match.
 Near and far fixups resolve through owners. The remaining numeric bindings,
@@ -197,7 +197,7 @@ See [code-bindings.md](code-bindings.md).
 
 ## Owned library references
 
-73 additional references across 50 callers now resolve through publics read
+74 additional references across 51 callers now resolve through publics read
 from 27 pinned library modules. Eleven target nonzero module-relative offsets.
 Public offsets are read from OMF at build time, while module placement remains
 fixed. Full EXE bytes and relocations remain EQUAL. See
@@ -513,3 +513,11 @@ F_CE2A adds 62 matching C bytes after recovering the complete cleanup/return
 tail beyond the stale upstream boundary. Its fresh object has 11 bound fixups,
 including the pinned `_longjmp` public, and no loader relocations. See [the
 wave-fifty proof](matching-c-wave50.md).
+
+## Fifty-first matching-C wave
+
+`F_CDDD` adds 35 matching C bytes after recovering the eight-byte
+cleanup/return tail omitted by the upstream boundary. Its fresh object has
+four bound fixups, including the already owned `F_86C9` entry and pinned
+`_longjmp` public, and no loader relocations. See [the wave-fifty-one
+proof](matching-c-wave51.md).

@@ -13983,13 +13983,72 @@
     {
       "id": "RAW_00CD5C",
       "start": 52572,
+      "end": 53213,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/00CD5C-00CFDD.bin",
+      "original_symbol": null,
+      "artifact": "raw/00CD5C-00CFDD.bin",
+      "expected_sha256": "b9e4945055118cf5c0354e9868fa41c3b2e35a6d6c3ec6baf19ae10f054c98dd",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_CDDD",
+      "kind": "MATCHING_C",
+      "source": "src/F_CDDD.C",
+      "start": 53213,
+      "end": 53248,
+      "expected_sha256": "22b042e0279cc779ee8a2c85ccc005ae704f6472d8ee506e4a79b2d69594c4bf",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fcddd",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0
+          },
+          "_longjmp": {
+            "coordinate": "code_offset",
+            "owner": "LIB_SETJMP",
+            "public": "_longjmp",
+            "addend": 0
+          },
+          "_g219c": {
+            "offset": 8604,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g8bfe": {
+            "offset": 35838,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_CDDD",
+      "artifact": "regions/F_CDDD.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete boundary and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "09088e472d67513b638038a0a46cfd77725b7a23d29a7036b21a785a01b1db2c",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover the 8-byte cleanup/return tail after the stale inventory extent"
+      }
+    },
+    {
+      "id": "RAW_00D000",
+      "start": 53248,
       "end": 53290,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00CD5C-00D02A.bin",
+      "source": "raw/00D000-00D02A.bin",
       "original_symbol": null,
-      "artifact": "raw/00CD5C-00D02A.bin",
-      "expected_sha256": "96307c31fc26f224efea323117d9400575c4130716d3636858ecce6565832230",
+      "artifact": "raw/00D000-00D02A.bin",
+      "expected_sha256": "f255549323c3b2684907bd4c591a5f65f4631d02d42eea442f568b323eda692c",
       "matching_status": "EQUAL"
     },
     {

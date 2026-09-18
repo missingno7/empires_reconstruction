@@ -1,0 +1,382 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_020F",
+      "kind": "MATCHING_C",
+      "start": 1039,
+      "end": 1045,
+      "source": "src/F_020F.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f020f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g3902": {
+            "offset": 14594,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P23432.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_020F.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "b76251dece65e0f8437af0e5faddd1cad01ba5d2b6e07efa8796ed7972342b52",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "8573986fd51cc93f37b8b0fe1741d2b262978ff441071c5a128892c3347bfd5e",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_6FC3",
+      "kind": "MATCHING_C",
+      "start": 29123,
+      "end": 29130,
+      "source": "src/F_6FC3.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6fc3",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gb83": {
+            "offset": 2947,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B3.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_6FC3.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "d00fc5c41be1d0c47be5c46f3205eeb88dafee0f3c597cfb28a944ae993076a9",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "644996b96a6ea2c0d44823dd432d22a23d1778987b5425ed17655c130629ff47",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_7856",
+      "kind": "MATCHING_C",
+      "start": 31318,
+      "end": 31427,
+      "source": "src/F_7856.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7856",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gb83": {
+            "offset": 2947,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B3.phys"
+          },
+          "_gc0f2": {
+            "offset": 49394,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC22.phys"
+          },
+          "_gc0fc": {
+            "offset": 49404,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC2C.phys"
+          },
+          "_gc0ec": {
+            "offset": 49388,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC1C.phys"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_7856.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "0ca745a239df939502cfcc8f8ce77ed8c895418e25407da165174a6d59cd980e",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "fec8598c385171e046bc3aee520ccced8e8fcb94154325bf662c6e585e5b9db5",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_791E",
+      "kind": "MATCHING_C",
+      "start": 31518,
+      "end": 31525,
+      "source": "src/F_791E.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f791e",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbb2": {
+            "offset": 2994,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206E2.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_791E.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "b0edf67bf977c978f16e36faf5cb67ae4132c384176ef98202946d7c40af01c1",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "0eaca3ec1bcc86e205ea2dca02917d5f5e61081363e14db1ccd921173741a30d",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_7D91",
+      "kind": "MATCHING_C",
+      "start": 32657,
+      "end": 32753,
+      "source": "src/F_7D91.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7d91",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f8480": {
+            "offset": 33920,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8480.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_7D91.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "82e6596fb979881d0452e4247a68f278f1f09a4bc644acf89e9663ca4aa62e96",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "ebb4235e2008468819cb603756a9f65969571e40c3d57cd786228535ed706d14",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_8BA5",
+      "kind": "MATCHING_C",
+      "start": 36261,
+      "end": 36267,
+      "source": "src/F_8BA5.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f8ba5",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc130": {
+            "offset": 49456,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC60.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_8BA5.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "a7bdfbeed22ba719bc671612ae89fffb0aabf917668cf5d6da09f4f54197b1a3",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "23bb96b630773f43b024500437ee861745632e9ec4e4ecb9aebc658e7f776ba8",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_93AA",
+      "kind": "MATCHING_C",
+      "start": 38314,
+      "end": 38402,
+      "source": "src/F_93AA.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f93aa",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gdc4": {
+            "offset": 3524,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P208F4.phys"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_93AA.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "e9386304cd9edd19f79b3607db28347e922247713b2dd2665d69d4e0376dc3bf",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "53689dbddf71398898d317295722df67f318e38f85ffe9bfdf4c3909bd07010a",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_9440",
+      "kind": "MATCHING_C",
+      "start": 38464,
+      "end": 38502,
+      "source": "src/F_9440.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9440",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc136": {
+            "offset": 49462,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2BC66.phys"
+          },
+          "_f778b": {
+            "offset": 30603,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_778B.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_9440.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "81bb824c2b23a0276e3dbe424f95edb71b5c7ad01215f4a849486b7f956d9d8a",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "83ed1efb8640b7e799f8323e1a1abe515476eaabc0fd35126b8c65aef055a7a9",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_963E",
+      "kind": "MATCHING_C",
+      "start": 38974,
+      "end": 39069,
+      "source": "src/F_963E.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f963e",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_963E.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "cd96fab79f8caf42469dbc1212b40020c6e7d3c36562430e7487b307ac8217bf",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "976d2dd227ad56ec269d4dd991c5a8445ac277ddaef0046f8e71cec027cb5d2f",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    },
+    {
+      "id": "F_9908",
+      "kind": "MATCHING_C",
+      "start": 39688,
+      "end": 39778,
+      "source": "src/F_9908.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9908",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03ba": {
+            "offset": 954,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03BA.entry"
+          },
+          "_f03b7": {
+            "offset": 951,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B7.entry"
+          },
+          "_gc34e": {
+            "offset": 49998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE7E.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_9908.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "05be11aaff00be10fa1332b1ee63f11a4bd0a9e249143dc8c80e494675112bc0",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "0ceacae073deb468ce0e625da68c2010c97806c1d8663cf521c8722a449e1596",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Reconstruct complete C function from original instructions"
+      }
+    }
+  ]
+}

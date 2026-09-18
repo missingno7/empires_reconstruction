@@ -1,0 +1,1 @@
+extern int f03c9(),f01ce(),f03a8(),f039f(); extern int gb83,gc0fc,gc0ec; extern char *gc0f2; f7856(p,a) char *p; int a; {gb83=5;gc0f2=p;gc0fc=1;gc0ec=a;f03c9(6,0xa2,p);if(a){f01ce(1);f03a8(13,0xb5,0x6a,12);}f039f(6,0xa2,0x134,0x24);}

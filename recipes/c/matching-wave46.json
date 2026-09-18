@@ -1,0 +1,39 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_B967",
+      "start": 47975,
+      "end": 48031,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_B967.C",
+      "artifact": "regions/F_B967.bin",
+      "expected_sha256": "c701924d7bf50b4c4de3f7bda6e5b9a1e8623c5ca2f48ae0fb851b36576af3e7",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb967",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbfbc": {"offset": 49084, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_2C0F6.phys"},
+          "_f4b0c": {"offset": 19212, "coordinate": "code_offset", "evidence": "functions/F_4B0C.entry"},
+          "_f1ecd": {"coordinate": "code_offset", "owner": "F_1ECD", "public": "_f1ecd", "addend": 0, "evidence": "functions/F_1ECD.entry"},
+          "_f6c57": {"coordinate": "code_offset", "owner": "F_6C57", "public": "_f6c57", "addend": 0, "evidence": "functions/F_6C57.entry"},
+          "_gc5ca": {"offset": 50634, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_2C0FA.phys"},
+          "_g40c4": {"offset": 16580, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_23BF4.phys"},
+          "_f4e9f": {"coordinate": "code_offset", "owner": "F_4E9F", "public": "_f4e9f", "addend": 0, "evidence": "functions/F_4E9F.entry"},
+          "_f6c6f": {"coordinate": "code_offset", "owner": "F_6C6F", "public": "_f6c6f", "addend": 0, "evidence": "functions/F_6C6F.entry"},
+          "_gb6cf": {"offset": 46799, "coordinate": "DGROUP_offset", "evidence": "independent write in F_B7F9 and read in complete F_B967"}
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_B967.json",
+        "upstream_extent_sha256": "c701924d7bf50b4c4de3f7bda6e5b9a1e8623c5ca2f48ae0fb851b36576af3e7"
+      }
+    }
+  ]
+}

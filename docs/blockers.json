@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "historical refusals inventoried; fresh candidate work remains",
-      "matches": "Current build proves 211 C and 20 ASM extents. The refreshed historical snapshot retains 20 provider-refused candidates; four previously listed candidates are now owned, including TOUPPER reconstructed directly as C.",
+      "matches": "Current build proves 212 C and 20 ASM extents. The refreshed historical snapshot retains 20 provider-refused candidates; four previously listed candidates are now owned, including TOUPPER reconstructed directly as C.",
       "first_unresolved_fact": "62 external symbols across 109 fixup sites remain undecided in the historical held snapshot. Source comments and comparison operand addresses alone are not independent linkage ownership.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -32,7 +32,7 @@
     {
       "target": "Original modules and historical linker",
       "state": "open investigation, not demonstrated blocked",
-      "matches": "231 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
+      "matches": "232 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
       "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
       "evidence": [
         "layout/manifest.json",
@@ -42,12 +42,12 @@
         "docs/module-group-evidence.json"
       ],
       "unblock": "Test shared units using public order and shared data evidence; compare linker experiments against the fixed-placement output.",
-      "leverage": "1,217 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
+      "leverage": "1,222 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
     },
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "25,697 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 20,882 raw bytes are unknown.",
+      "matches": "25,323 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 20,882 raw bytes are unknown.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",

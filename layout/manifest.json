@@ -9074,16 +9074,59 @@
       }
     },
     {
-      "id": "RAW_00AFCF",
+      "id": "F_ADCF",
+      "kind": "MATCHING_C",
       "start": 45007,
       "end": 45381,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00AFCF-00B145.bin",
-      "original_symbol": null,
-      "artifact": "raw/00AFCF-00B145.bin",
+      "source": "src/F_ADCF.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fadcf",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc360": {
+            "offset": 50016,
+            "coordinate": "DGROUP_offset",
+            "storage_evidence": "DS_C360",
+            "evidence": "docs/storage-binding-evidence.json#DS_C360"
+          },
+          "_g13ed": {
+            "offset": 5101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20F1D.phys"
+          },
+          "_gc470": {
+            "offset": 50288,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BFA0.phys"
+          },
+          "SCOPY@": {
+            "coordinate": "code_offset",
+            "evidence": "SCOPY OMF public SCOPY@",
+            "owner": "LIB_SCOPY",
+            "public": "SCOPY@",
+            "addend": 0
+          },
+          "_fa13f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_A13F.entry",
+            "owner": "F_A13F",
+            "public": "_fa13f",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_ADCF.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
       "expected_sha256": "103b576406ae2c7feb41a0b46a5a2819f8af5ad355a8ea4beea8b2bc00b84331",
-      "matching_status": "EQUAL"
+      "provenance": {
+        "method": "local C reconstruction with independent indexed storage-base evidence",
+        "upstream_entry_sha256": "23a8bc17cf8301a1f85fa737eaff99fa9176881f90049e54f38113625d09ec32",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
     },
     {
       "id": "F_AF45",

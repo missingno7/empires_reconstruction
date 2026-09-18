@@ -1,0 +1,26 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "294b3393a531f6cee5874a655371463d2255f5a3a52a579ffb897db7c25ece57",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 374,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_ADCF",
+      "kind": "MATCHING_C",
+      "bytes": 374,
+      "sha256": "103b576406ae2c7feb41a0b46a5a2819f8af5ad355a8ea4beea8b2bc00b84331",
+      "source_sha256": "01261c1c4c3c1fdc0490192d05435060f99b5b06106266e799bd2cd4f8dd46ec",
+      "fixups": 33,
+      "load_relocations": [
+        44558,
+        44615,
+        44650
+      ],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

@@ -560,3 +560,10 @@ relocations. See [the wave-fifty-six proof](matching-c-wave56.md).
 `F_E114` adds 61 matching C bytes for the complete far-pointer staging
 wrapper between `F_E0C0` and `F_E151`. Its fresh object has one bound code
 fixup and no loader relocations. See [the wave-fifty-seven proof](matching-c-wave57.md).
+
+## Fifty-eighth matching-C audit
+
+The next raw-code audit records `F_D386`, the `F_CA03` call cluster, and
+`F_C232` as concrete segment/register and boundary frontiers. Their `LDS`/
+`LES`/`LOOP` or live-register behavior is not promoted as speculative C; see
+[the wave-fifty-eight audit](matching-c-wave58.md).

@@ -1,0 +1,35 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_7932",
+      "start": 31538,
+      "end": 31588,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_7932.C",
+      "artifact": "regions/F_7932.bin",
+      "expected_sha256": "83441f093418db4d3034bbe618dca84380db32250a187a20e5aacacc180b0245",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7932",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc0fe": {"offset": 49406, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_2BC2E.phys"},
+          "_g0bb4": {"offset": 2996, "coordinate": "DGROUP_offset", "evidence": "direct default far-pointer base in complete F_7932 fixups"},
+          "_f7bfc": {"coordinate": "code_offset", "owner": "F_7BFC", "public": "_f7bfc", "addend": 0, "evidence": "functions/F_7BFC.entry"},
+          "_f791e": {"coordinate": "code_offset", "owner": "F_791E", "public": "_f791e", "addend": 0, "evidence": "functions/F_791E.entry"},
+          "_f7925": {"coordinate": "code_offset", "owner": "F_7925", "public": "_f7925", "addend": 0, "evidence": "functions/F_7925.entry"}
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_7932.json",
+        "upstream_extent_sha256": "83441f093418db4d3034bbe618dca84380db32250a187a20e5aacacc180b0245"
+      }
+    }
+  ]
+}

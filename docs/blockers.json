@@ -19,20 +19,20 @@
     {
       "target": "Held C linkage closure",
       "state": "historical refusals inventoried; fresh candidate work remains",
-      "matches": "Current build proves 213 C and 20 ASM extents. The refreshed historical snapshot retains 20 provider-refused candidates; four previously listed candidates are now owned, including TOUPPER reconstructed directly as C.",
-      "first_unresolved_fact": "62 external symbols across 109 fixup sites remain undecided in the historical held snapshot. Source comments and comparison operand addresses alone are not independent linkage ownership.",
+      "matches": "Current build proves 215 C and 20 ASM extents. The refreshed historical snapshot retains 19 provider-refused candidates; resolved extents include TOUPPER reconstructed directly as C.",
+      "first_unresolved_fact": "61 external symbols across 108 fixup sites remain undecided in the historical held snapshot. Source comments and comparison operand addresses alone are not independent linkage ownership.",
       "evidence": [
         "docs/linkage-blockers.json",
         "tools/inventory_linkage.py",
         "layout/manifest.json"
       ],
       "unblock": "Establish storage/module ownership from OMF, declared objects or independent cross-reference evidence; then freshly compile and verify every byte and relocation.",
-      "leverage": "20 historical held extents total 9,258 bytes (candidate extent sum). _b437a, _b4380 and _b4386 each affect two candidates totalling 4,484 bytes; these overlapping totals must not be added. Additional local probes are documented in the matching-wave notes."
+      "leverage": "19 historical held extents total 9,227 bytes (candidate extent sum). _b437a, _b4380 and _b4386 each affect two candidates totalling 4,484 bytes; these overlapping totals must not be added. Additional local probes are documented in the matching-wave notes."
     },
     {
       "target": "Original modules and historical linker",
       "state": "open investigation, not demonstrated blocked",
-      "matches": "233 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
+      "matches": "235 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
       "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
       "evidence": [
         "layout/manifest.json",
@@ -42,12 +42,12 @@
         "docs/module-group-evidence.json"
       ],
       "unblock": "Test shared units using public order and shared data evidence; compare linker experiments against the fixed-placement output.",
-      "leverage": "1,238 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
+      "leverage": "1,260 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
     },
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "25,002 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 20,882 raw bytes are unknown.",
+      "matches": "24,136 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 20,882 raw bytes are unknown.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",

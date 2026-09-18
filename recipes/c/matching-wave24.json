@@ -1,0 +1,183 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_969D",
+      "kind": "MATCHING_C",
+      "start": 39069,
+      "end": 39500,
+      "source": "src/F_969D.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f969d",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc316": {
+            "offset": 49942,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2BE46.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_969D.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "42867dd4c833ebfe7df95f601ab3c759c21f39ec412275e429c8418d7d5cf742",
+      "provenance": {
+        "method": "local C reconstruction and fresh complete OMF comparison",
+        "upstream_entry_sha256": "9d448dd569bd5fa0c1ed770019d47644f4d217939b9de96db032963973561f57",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_90A6",
+      "kind": "MATCHING_C",
+      "start": 37542,
+      "end": 37977,
+      "source": "src/F_90A6.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f90a6",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f1ea5": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_1EA5.entry",
+            "owner": "F_1EA5",
+            "public": "_f1ea5",
+            "addend": 0
+          },
+          "_gdc4": {
+            "offset": 3524,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P208F4.phys"
+          },
+          "_f1eb4": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_1EB4.entry",
+            "owner": "F_1EB4",
+            "public": "_f1eb4",
+            "addend": 0
+          },
+          "_face7": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_ACE7.entry",
+            "owner": "F_ACE7",
+            "public": "_face7",
+            "addend": 0
+          },
+          "_f684a": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_684A.entry",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0
+          },
+          "_f656c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
+          },
+          "_gc5c6": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_gc136": {
+            "offset": 49462,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2BC66.phys"
+          },
+          "_ff2db": {
+            "offset": 62171,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F2DB.entry"
+          },
+          "_gdc8": {
+            "offset": 3528,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P208F8.phys"
+          },
+          "_gc134": {
+            "offset": 49460,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC64.phys"
+          },
+          "_f9440": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_9440.entry",
+            "owner": "F_9440",
+            "public": "_f9440",
+            "addend": 0
+          },
+          "_gc132": {
+            "offset": 49458,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC62.phys"
+          },
+          "_f9402": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_9402.entry",
+            "owner": "F_9402",
+            "public": "_f9402",
+            "addend": 0
+          },
+          "_gc316": {
+            "offset": 49942,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2BE46.phys"
+          },
+          "_f929e": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_929E.entry",
+            "owner": "F_929E",
+            "public": "_f929e",
+            "addend": 0
+          },
+          "_f93aa": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_93AA.entry",
+            "owner": "F_93AA",
+            "public": "_f93aa",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_90A6.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "99eb518d33249973386725cb9a0c681794458be164cc7f91601079c3657ca12c",
+      "provenance": {
+        "method": "local C reconstruction and fresh complete OMF comparison",
+        "upstream_entry_sha256": "7b2cec228fbab73f798fe5f4a6008950c3fed2d84f7a0f5633869d1e0c65ebf8",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

@@ -132,7 +132,7 @@ class ReconstructionTests(unittest.TestCase):
             receipts, _ = compile_sources(directory, owners, work, ROOT / 'toolchain', dosbox, lock)
             for owner in owners:
                 module = read_object((work / receipts[owner['id']]['object']).read_bytes())
-                result, _ = bind_region(owner, module, self.mz, self.manifest['frames'])
+                result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
                 expected = self.original[owner['start']:owner['end']]
                 if owner['id'].endswith('_MUTANT'):
                     with self.assertRaisesRegex(ValueError, 'First mismatch.*' + owner['id']):
@@ -142,7 +142,7 @@ class ReconstructionTests(unittest.TestCase):
             owner = owners[0]
             owner['build']['bindings']['_mode']['offset'] += 1
             module = read_object((work / receipts[owner['id']]['object']).read_bytes())
-            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'])
+            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
             with self.assertRaisesRegex(ValueError, 'First mismatch.*F_56C6'):
                 mismatch(self.original[owner['start']:owner['end']], result, owner)
 
@@ -155,7 +155,7 @@ class ReconstructionTests(unittest.TestCase):
         module = library_candidate(owner, modules)
         # Whole module ownership does not depend on a first-public selector.
         module.publics = []
-        result, detail = bind_region(owner, module, self.mz, self.manifest['frames'])
+        result, detail = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
         self.assertEqual(detail['object_span'], [0, 25])
         mismatch(self.original[owner['start']:owner['end']], result, owner)
         with self.assertRaisesRegex(ValueError, 'Library identity mismatch'):
@@ -181,9 +181,9 @@ class ReconstructionTests(unittest.TestCase):
             else:
                 module.fixups = [f for f in module.fixups if f['loc'] != 'base16']
                 with self.assertRaisesRegex(ValueError, 'relocation map differs'):
-                    bind_region(owner, module, self.mz, self.manifest['frames'])
+                    bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
                 continue
-            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'])
+            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
             with self.assertRaisesRegex(ValueError, 'First mismatch.*' + name):
                 mismatch(self.original[owner['start']:owner['end']], result, owner)
 

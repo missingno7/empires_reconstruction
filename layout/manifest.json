@@ -320,19 +320,25 @@
             "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
           },
           "_f01bc": {
-            "offset": 444,
             "coordinate": "code_offset",
-            "evidence": "functions/F_01BC.entry"
+            "evidence": "functions/F_01BC.entry",
+            "owner": "F_01BC",
+            "public": "_f01bc",
+            "addend": 0
           },
           "_f0232": {
-            "offset": 562,
             "coordinate": "code_offset",
-            "evidence": "functions/F_0232.entry"
+            "evidence": "functions/F_0232.entry",
+            "owner": "F_0232",
+            "public": "_f0232",
+            "addend": 0
           },
           "_f025b": {
-            "offset": 603,
             "coordinate": "code_offset",
-            "evidence": "functions/F_025B.entry"
+            "evidence": "functions/F_025B.entry",
+            "owner": "F_025B",
+            "public": "_f025b",
+            "addend": 0
           },
           "_f039c": {
             "offset": 924,
@@ -665,9 +671,11 @@
             "evidence": "functions/F_2119.entry"
           },
           "_f6fca": {
-            "offset": 28618,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6FCA.entry"
+            "evidence": "functions/F_6FCA.entry",
+            "owner": "F_6FCA",
+            "public": "_f6fca",
+            "addend": 0
           },
           "_farmalloc": {
             "offset": 59828,
@@ -884,9 +892,11 @@
             "evidence": "functions/F_03B4.entry"
           },
           "_f1ecd": {
-            "offset": 7885,
             "coordinate": "code_offset",
-            "evidence": "functions/F_1ECD.entry"
+            "evidence": "functions/F_1ECD.entry",
+            "owner": "F_1ECD",
+            "public": "_f1ecd",
+            "addend": 0
           },
           "_f2269": {
             "offset": 8809,
@@ -894,9 +904,11 @@
             "evidence": "functions/F_2269.entry"
           },
           "_f22b1": {
-            "offset": 8881,
             "coordinate": "code_offset",
-            "evidence": "functions/F_22B1.entry"
+            "evidence": "functions/F_22B1.entry",
+            "owner": "F_22B1",
+            "public": "_f22b1",
+            "addend": 0
           },
           "_f2ae2": {
             "offset": 10978,
@@ -904,29 +916,39 @@
             "evidence": "functions/F_2AE2.entry"
           },
           "_f4eeb": {
-            "offset": 20203,
             "coordinate": "code_offset",
-            "evidence": "functions/F_4EEB.entry"
+            "evidence": "functions/F_4EEB.entry",
+            "owner": "F_4EEB",
+            "public": "_f4eeb",
+            "addend": 0
           },
           "_f6c26": {
-            "offset": 27686,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C26.entry"
+            "evidence": "functions/F_6C26.entry",
+            "owner": "F_6C26",
+            "public": "_f6c26",
+            "addend": 0
           },
           "_f6c57": {
-            "offset": 27735,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C57.entry"
+            "evidence": "functions/F_6C57.entry",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0
           },
           "_f6c6f": {
-            "offset": 27759,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C6F.entry"
+            "evidence": "functions/F_6C6F.entry",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
+            "addend": 0
           },
           "_f6fda": {
-            "offset": 28634,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6FDA.entry"
+            "evidence": "functions/F_6FDA.entry",
+            "owner": "F_6FDA",
+            "public": "_f6fda",
+            "addend": 0
           },
           "_f8bab": {
             "offset": 35755,
@@ -998,9 +1020,11 @@
             "evidence": "functions/F_2AE2.entry"
           },
           "_f4eeb": {
-            "offset": 20203,
             "coordinate": "code_offset",
-            "evidence": "functions/F_4EEB.entry"
+            "evidence": "functions/F_4EEB.entry",
+            "owner": "F_4EEB",
+            "public": "_f4eeb",
+            "addend": 0
           },
           "_g40ce": {
             "offset": 16590,
@@ -1089,9 +1113,11 @@
             "evidence": "functions/F_2986.entry"
           },
           "_fcaf1": {
-            "offset": 51953,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAF1.entry"
+            "evidence": "functions/F_CAF1.entry",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0
           },
           "_g96": {
             "offset": 150,
@@ -1138,9 +1164,11 @@
         "flags_append": "",
         "bindings": {
           "_f4eeb": {
-            "offset": 20203,
             "coordinate": "code_offset",
-            "evidence": "functions/F_4EEB.entry"
+            "evidence": "functions/F_4EEB.entry",
+            "owner": "F_4EEB",
+            "public": "_f4eeb",
+            "addend": 0
           },
           "_f7343": {
             "offset": 29507,
@@ -1148,9 +1176,11 @@
             "evidence": "functions/F_7343.entry"
           },
           "_f9f40": {
-            "offset": 40768,
             "coordinate": "code_offset",
-            "evidence": "functions/F_9F40.entry"
+            "evidence": "functions/F_9F40.entry",
+            "owner": "F_9F40",
+            "public": "_f9f40",
+            "addend": 0
           },
           "_fa768": {
             "offset": 42856,
@@ -1249,9 +1279,11 @@
             "evidence": "functions/F_1D47.entry"
           },
           "_f1ec0": {
-            "offset": 7872,
             "coordinate": "code_offset",
-            "evidence": "functions/F_1EC0.entry"
+            "evidence": "functions/F_1EC0.entry",
+            "owner": "F_1EC0",
+            "public": "_f1ec0",
+            "addend": 0
           },
           "_f4517": {
             "offset": 17687,
@@ -1259,9 +1291,11 @@
             "evidence": "functions/F_4517.entry"
           },
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry"
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
           },
           "_face7": {
             "offset": 44263,
@@ -1358,9 +1392,11 @@
             "evidence": "storage_objects/M_23EA6.phys"
           },
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry"
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
           },
           "_f039f": {
             "offset": 927,
@@ -1378,14 +1414,18 @@
             "evidence": "functions/F_1EA5.entry"
           },
           "_f1eb4": {
-            "offset": 7860,
             "coordinate": "code_offset",
-            "evidence": "functions/F_1EB4.entry"
+            "evidence": "functions/F_1EB4.entry",
+            "owner": "F_1EB4",
+            "public": "_f1eb4",
+            "addend": 0
           },
           "_f1ec0": {
-            "offset": 7872,
             "coordinate": "code_offset",
-            "evidence": "functions/F_1EC0.entry"
+            "evidence": "functions/F_1EC0.entry",
+            "owner": "F_1EC0",
+            "public": "_f1ec0",
+            "addend": 0
           },
           "_f2269": {
             "offset": 8809,
@@ -1403,34 +1443,46 @@
             "evidence": "functions/F_3A75.entry"
           },
           "_f462e": {
-            "offset": 17966,
             "coordinate": "code_offset",
-            "evidence": "functions/F_462E.entry"
+            "evidence": "functions/F_462E.entry",
+            "owner": "F_462E",
+            "public": "_f462e",
+            "addend": 0
           },
           "_f4eeb": {
-            "offset": 20203,
             "coordinate": "code_offset",
-            "evidence": "functions/F_4EEB.entry"
+            "evidence": "functions/F_4EEB.entry",
+            "owner": "F_4EEB",
+            "public": "_f4eeb",
+            "addend": 0
           },
           "_f6fda": {
-            "offset": 28634,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6FDA.entry"
+            "evidence": "functions/F_6FDA.entry",
+            "owner": "F_6FDA",
+            "public": "_f6fda",
+            "addend": 0
           },
           "_f726a": {
-            "offset": 29290,
             "coordinate": "code_offset",
-            "evidence": "functions/F_726A.entry"
+            "evidence": "functions/F_726A.entry",
+            "owner": "F_726A",
+            "public": "_f726a",
+            "addend": 0
           },
           "_f7df1": {
-            "offset": 32241,
             "coordinate": "code_offset",
-            "evidence": "functions/F_7DF1.entry"
+            "evidence": "functions/F_7DF1.entry",
+            "owner": "F_7DF1",
+            "public": "_f7df1",
+            "addend": 0
           },
           "_f8a37": {
-            "offset": 35383,
             "coordinate": "code_offset",
-            "evidence": "functions/F_8A37.entry"
+            "evidence": "functions/F_8A37.entry",
+            "owner": "F_8A37",
+            "public": "_f8a37",
+            "addend": 0
           },
           "_f9b68": {
             "offset": 39784,
@@ -1438,9 +1490,11 @@
             "evidence": "functions/F_9B68.entry"
           },
           "_f9f40": {
-            "offset": 40768,
             "coordinate": "code_offset",
-            "evidence": "functions/F_9F40.entry"
+            "evidence": "functions/F_9F40.entry",
+            "owner": "F_9F40",
+            "public": "_f9f40",
+            "addend": 0
           },
           "_fc15e": {
             "offset": 49502,
@@ -1448,14 +1502,18 @@
             "evidence": "functions/F_C15E.entry"
           },
           "_fd4b3": {
-            "offset": 54451,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D4B3.entry"
+            "evidence": "functions/F_D4B3.entry",
+            "owner": "F_D4B3",
+            "public": "_fd4b3",
+            "addend": 0
           },
           "_fd5f9": {
-            "offset": 54777,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D5F9.entry"
+            "evidence": "functions/F_D5F9.entry",
+            "owner": "F_D5F9",
+            "public": "_fd5f9",
+            "addend": 0
           },
           "_g1776": {
             "offset": 6006,
@@ -1577,9 +1635,11 @@
             "evidence": "functions/F_039C.entry"
           },
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry"
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
           },
           "_gbfcd": {
             "offset": 49101,
@@ -1626,9 +1686,11 @@
         "flags_append": "",
         "bindings": {
           "_f0281": {
-            "offset": 641,
             "coordinate": "code_offset",
-            "evidence": "functions/F_0281.entry"
+            "evidence": "functions/F_0281.entry",
+            "owner": "F_0281",
+            "public": "_f0281",
+            "addend": 0
           },
           "_f21a9": {
             "offset": 8617,
@@ -1641,9 +1703,11 @@
             "evidence": "functions/F_21DB.entry"
           },
           "_f48be": {
-            "offset": 18622,
             "coordinate": "code_offset",
-            "evidence": "functions/F_48BE.entry"
+            "evidence": "functions/F_48BE.entry",
+            "owner": "F_48BE",
+            "public": "_f48be",
+            "addend": 0
           },
           "_f625d": {
             "offset": 25181,
@@ -1651,9 +1715,11 @@
             "evidence": "functions/F_625D.entry"
           },
           "_f695e": {
-            "offset": 26974,
             "coordinate": "code_offset",
-            "evidence": "functions/F_695E.entry"
+            "evidence": "functions/F_695E.entry",
+            "owner": "F_695E",
+            "public": "_f695e",
+            "addend": 0
           },
           "_f6b7a": {
             "offset": 27514,
@@ -1666,14 +1732,18 @@
             "evidence": "functions/F_6CA6.entry"
           },
           "_fd344": {
-            "offset": 54084,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D344.entry"
+            "evidence": "functions/F_D344.entry",
+            "owner": "F_D344",
+            "public": "_fd344",
+            "addend": 0
           },
           "_fd555": {
-            "offset": 54613,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D555.entry"
+            "evidence": "functions/F_D555.entry",
+            "owner": "F_D555",
+            "public": "_fd555",
+            "addend": 0
           },
           "_ff8fe": {
             "offset": 63742,
@@ -1727,9 +1797,11 @@
         "flags_append": "",
         "bindings": {
           "_f224c": {
-            "offset": 8780,
             "coordinate": "code_offset",
-            "evidence": "functions/F_224C.entry"
+            "evidence": "functions/F_224C.entry",
+            "owner": "F_224C",
+            "public": "_f224c",
+            "addend": 0
           },
           "_f4943": {
             "offset": 18755,
@@ -1737,14 +1809,18 @@
             "evidence": "functions/F_4943.entry"
           },
           "_f56c6": {
-            "offset": 22214,
             "coordinate": "code_offset",
-            "evidence": "functions/F_56C6.entry"
+            "evidence": "functions/F_56C6.entry",
+            "owner": "F_56C6",
+            "public": "_f56c6",
+            "addend": 0
           },
           "_f71fb": {
-            "offset": 29179,
             "coordinate": "code_offset",
-            "evidence": "functions/F_71FB.entry"
+            "evidence": "functions/F_71FB.entry",
+            "owner": "F_71FB",
+            "public": "_f71fb",
+            "addend": 0
           },
           "_f7343": {
             "offset": 29507,
@@ -1752,9 +1828,11 @@
             "evidence": "functions/F_7343.entry"
           },
           "_f9259": {
-            "offset": 37465,
             "coordinate": "code_offset",
-            "evidence": "functions/F_9259.entry"
+            "evidence": "functions/F_9259.entry",
+            "owner": "F_9259",
+            "public": "_f9259",
+            "addend": 0
           },
           "_fab66": {
             "offset": 43878,
@@ -1772,9 +1850,11 @@
             "evidence": "functions/F_D26C.entry"
           },
           "_fd5b3": {
-            "offset": 54707,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D5B3.entry"
+            "evidence": "functions/F_D5B3.entry",
+            "owner": "F_D5B3",
+            "public": "_fd5b3",
+            "addend": 0
           },
           "_ff953": {
             "offset": 63827,
@@ -1831,9 +1911,11 @@
             "evidence": "functions/F_034F.entry"
           },
           "_f490d": {
-            "offset": 18701,
             "coordinate": "code_offset",
-            "evidence": "functions/F_490D.entry"
+            "evidence": "functions/F_490D.entry",
+            "owner": "F_490D",
+            "public": "_f490d",
+            "addend": 0
           },
           "_f49e3": {
             "offset": 18915,
@@ -1841,14 +1923,18 @@
             "evidence": "functions/F_49E3.entry"
           },
           "_f49f0": {
-            "offset": 18928,
             "coordinate": "code_offset",
-            "evidence": "functions/F_49F0.entry"
+            "evidence": "functions/F_49F0.entry",
+            "owner": "F_49F0",
+            "public": "_f49f0",
+            "addend": 0
           },
           "_f520a": {
-            "offset": 21002,
             "coordinate": "code_offset",
-            "evidence": "functions/F_520A.entry"
+            "evidence": "functions/F_520A.entry",
+            "owner": "F_520A",
+            "public": "_f520a",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -1938,9 +2024,11 @@
         "flags_append": "",
         "bindings": {
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry"
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
           },
           "_f03a5": {
             "offset": 933,
@@ -2109,14 +2197,18 @@
             "evidence": "functions/F_4F96.entry"
           },
           "_f50c1": {
-            "offset": 20673,
             "coordinate": "code_offset",
-            "evidence": "functions/F_50C1.entry"
+            "evidence": "functions/F_50C1.entry",
+            "owner": "F_50C1",
+            "public": "_f50c1",
+            "addend": 0
           },
           "_f50d2": {
-            "offset": 20690,
             "coordinate": "code_offset",
-            "evidence": "functions/F_50D2.entry"
+            "evidence": "functions/F_50D2.entry",
+            "owner": "F_50D2",
+            "public": "_f50d2",
+            "addend": 0
           },
           "_f51bf": {
             "offset": 20927,
@@ -2188,9 +2280,11 @@
         "flags_append": "",
         "bindings": {
           "_f5382": {
-            "offset": 21378,
             "coordinate": "code_offset",
-            "evidence": "functions/F_5382.entry"
+            "evidence": "functions/F_5382.entry",
+            "owner": "F_5382",
+            "public": "_f5382",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -2237,9 +2331,11 @@
             "evidence": "functions/F_03CC.entry"
           },
           "_fcaf1": {
-            "offset": 51953,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAF1.entry"
+            "evidence": "functions/F_CAF1.entry",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0
           },
           "_fcb48": {
             "offset": 52040,
@@ -2291,9 +2387,11 @@
             "evidence": "functions/F_03C9.entry"
           },
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry"
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
           },
           "_gc5c6": {
             "offset": 50630,
@@ -2330,19 +2428,25 @@
         "flags_append": "",
         "bindings": {
           "_f6b1a": {
-            "offset": 27418,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6B1A.entry"
+            "evidence": "functions/F_6B1A.entry",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0
           },
           "_f6b4a": {
-            "offset": 27466,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6B4A.entry"
+            "evidence": "functions/F_6B4A.entry",
+            "owner": "F_6B4A",
+            "public": "_f6b4a",
+            "addend": 0
           },
           "_f6c87": {
-            "offset": 27783,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C87.entry"
+            "evidence": "functions/F_6C87.entry",
+            "owner": "F_6C87",
+            "public": "_f6c87",
+            "addend": 0
           },
           "_g8fc": {
             "offset": 2300,
@@ -2379,9 +2483,11 @@
         "flags_append": "",
         "bindings": {
           "_f684a": {
-            "offset": 26698,
             "coordinate": "code_offset",
-            "evidence": "functions/F_684A.entry"
+            "evidence": "functions/F_684A.entry",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0
           },
           "_g99d2": {
             "offset": 39378,
@@ -2504,19 +2610,25 @@
             "evidence": "functions/F_6C57.entry"
           },
           "_f555b": {
-            "offset": 21851,
             "coordinate": "code_offset",
-            "evidence": "functions/F_555B.entry"
+            "evidence": "functions/F_555B.entry",
+            "owner": "F_555B",
+            "public": "_f555b",
+            "addend": 0
           },
           "_f55c7": {
-            "offset": 21959,
             "coordinate": "code_offset",
-            "evidence": "functions/F_55C7.entry"
+            "evidence": "functions/F_55C7.entry",
+            "owner": "F_55C7",
+            "public": "_f55c7",
+            "addend": 0
           },
           "_f5673": {
-            "offset": 22131,
             "coordinate": "code_offset",
-            "evidence": "functions/F_5673.entry"
+            "evidence": "functions/F_5673.entry",
+            "owner": "F_5673",
+            "public": "_f5673",
+            "addend": 0
           },
           "_f568c": {
             "offset": 22156,
@@ -2524,14 +2636,18 @@
             "evidence": "functions/F_568C.entry"
           },
           "_f6c26": {
-            "offset": 27686,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C26.entry"
+            "evidence": "functions/F_6C26.entry",
+            "owner": "F_6C26",
+            "public": "_f6c26",
+            "addend": 0
           },
           "_f6d3c": {
-            "offset": 27964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6D3C.entry"
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
           },
           "_f75f3": {
             "offset": 30195,
@@ -2539,9 +2655,11 @@
             "evidence": "functions/F_75F3.entry"
           },
           "_fcaf1": {
-            "offset": 51953,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAF1.entry"
+            "evidence": "functions/F_CAF1.entry",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0
           },
           "_fcb48": {
             "offset": 52040,
@@ -2549,14 +2667,18 @@
             "evidence": "functions/F_CB48.entry"
           },
           "_fd5ba": {
-            "offset": 54714,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D5BA.entry"
+            "evidence": "functions/F_D5BA.entry",
+            "owner": "F_D5BA",
+            "public": "_fd5ba",
+            "addend": 0
           },
           "_fd5f9": {
-            "offset": 54777,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D5F9.entry"
+            "evidence": "functions/F_D5F9.entry",
+            "owner": "F_D5F9",
+            "public": "_fd5f9",
+            "addend": 0
           },
           "_g1770": {
             "offset": 6000,
@@ -2790,9 +2912,11 @@
         "flags_append": "",
         "bindings": {
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry"
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
           },
           "_f020f": {
             "offset": 527,
@@ -3129,9 +3253,11 @@
         "flags_append": "",
         "bindings": {
           "_f6266": {
-            "offset": 25190,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6266.entry"
+            "evidence": "functions/F_6266.entry",
+            "owner": "F_6266",
+            "public": "_f6266",
+            "addend": 0
           },
           "_f6771": {
             "offset": 26481,
@@ -3144,14 +3270,18 @@
             "evidence": "functions/F_67DC.entry"
           },
           "_f6d86": {
-            "offset": 28038,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6D86.entry"
+            "evidence": "functions/F_6D86.entry",
+            "owner": "F_6D86",
+            "public": "_f6d86",
+            "addend": 0
           },
           "_f6dcc": {
-            "offset": 28108,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6DCC.entry"
+            "evidence": "functions/F_6DCC.entry",
+            "owner": "F_6DCC",
+            "public": "_f6dcc",
+            "addend": 0
           },
           "_f6eff": {
             "offset": 28415,
@@ -3305,9 +3435,11 @@
             "evidence": "functions/F_4F63.entry"
           },
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry"
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
           },
           "_farmalloc": {
             "offset": 59828,
@@ -3359,9 +3491,11 @@
         "flags_append": "",
         "bindings": {
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry"
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
           },
           "_gc5c6": {
             "offset": 50630,
@@ -3415,9 +3549,11 @@
         "flags_append": "",
         "bindings": {
           "_f699e": {
-            "offset": 27038,
             "coordinate": "code_offset",
-            "evidence": "functions/F_699E.entry"
+            "evidence": "functions/F_699E.entry",
+            "owner": "F_699E",
+            "public": "_f699e",
+            "addend": 0
           },
           "_gc0cc": {
             "offset": 49356,
@@ -3613,9 +3749,11 @@
         "flags_append": "",
         "bindings": {
           "_f792c": {
-            "offset": 31020,
             "coordinate": "code_offset",
-            "evidence": "functions/F_792C.entry"
+            "evidence": "functions/F_792C.entry",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0
           },
           "_f7964": {
             "offset": 31076,
@@ -3680,9 +3818,11 @@
         "flags_append": "",
         "bindings": {
           "_f6b4a": {
-            "offset": 27466,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6B4A.entry"
+            "evidence": "functions/F_6B4A.entry",
+            "owner": "F_6B4A",
+            "public": "_f6b4a",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3760,9 +3900,11 @@
         "flags_append": "",
         "bindings": {
           "_fc1a0": {
-            "offset": 49568,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C1A0.entry"
+            "evidence": "functions/F_C1A0.entry",
+            "owner": "F_C1A0",
+            "public": "_fc1a0",
+            "addend": 0
           },
           "_g0b76": {
             "offset": 2934,
@@ -4208,9 +4350,11 @@
         "flags_append": "",
         "bindings": {
           "_f684a": {
-            "offset": 26698,
             "coordinate": "code_offset",
-            "evidence": "functions/F_684A.entry"
+            "evidence": "functions/F_684A.entry",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0
           },
           "_gc0ee": {
             "offset": 49390,
@@ -4282,9 +4426,11 @@
             "evidence": "functions/F_7443.entry"
           },
           "_f747b": {
-            "offset": 29819,
             "coordinate": "code_offset",
-            "evidence": "functions/F_747B.entry"
+            "evidence": "functions/F_747B.entry",
+            "owner": "F_747B",
+            "public": "_f747b",
+            "addend": 0
           },
           "_g0b83": {
             "offset": 2947,
@@ -4574,9 +4720,11 @@
             "evidence": "functions/F_738A.entry"
           },
           "_fd4b3": {
-            "offset": 54451,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D4B3.entry"
+            "evidence": "functions/F_D4B3.entry",
+            "owner": "F_D4B3",
+            "public": "_fd4b3",
+            "addend": 0
           },
           "_gb82": {
             "offset": 2946,
@@ -4625,9 +4773,11 @@
         "flags_append": "",
         "bindings": {
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry"
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
           },
           "_f020f": {
             "offset": 527,
@@ -4873,9 +5023,11 @@
         "flags_append": "",
         "bindings": {
           "_f6cf6": {
-            "offset": 27894,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6CF6.entry"
+            "evidence": "functions/F_6CF6.entry",
+            "owner": "F_6CF6",
+            "public": "_f6cf6",
+            "addend": 0
           },
           "_gc102": {
             "offset": 49410,
@@ -5032,9 +5184,11 @@
             "evidence": "functions/F_03A5.entry"
           },
           "_f6d3c": {
-            "offset": 27964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6D3C.entry"
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
           },
           "_gc10c": {
             "offset": 49420,
@@ -5155,14 +5309,18 @@
         "flags_append": "",
         "bindings": {
           "_f6c26": {
-            "offset": 27686,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C26.entry"
+            "evidence": "functions/F_6C26.entry",
+            "owner": "F_6C26",
+            "public": "_f6c26",
+            "addend": 0
           },
           "_f8378": {
-            "offset": 33656,
             "coordinate": "code_offset",
-            "evidence": "functions/F_8378.entry"
+            "evidence": "functions/F_8378.entry",
+            "owner": "F_8378",
+            "public": "_f8378",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -5525,9 +5683,11 @@
         "flags_append": "",
         "bindings": {
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry"
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
           },
           "_f03cf": {
             "offset": 975,
@@ -5619,14 +5779,18 @@
             "evidence": "functions/F_039F.entry"
           },
           "_f6c26": {
-            "offset": 27686,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C26.entry"
+            "evidence": "functions/F_6C26.entry",
+            "owner": "F_6C26",
+            "public": "_f6c26",
+            "addend": 0
           },
           "_fcaf1": {
-            "offset": 51953,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAF1.entry"
+            "evidence": "functions/F_CAF1.entry",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0
           },
           "_fcb48": {
             "offset": 52040,
@@ -5634,9 +5798,11 @@
             "evidence": "functions/F_CB48.entry"
           },
           "_fd4b3": {
-            "offset": 54451,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D4B3.entry"
+            "evidence": "functions/F_D4B3.entry",
+            "owner": "F_D4B3",
+            "public": "_fd4b3",
+            "addend": 0
           },
           "_wipe": {
             "offset": 948,
@@ -5695,9 +5861,11 @@
             "evidence": "functions/F_03B4.entry"
           },
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry"
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
           },
           "_f7343": {
             "offset": 29507,
@@ -5705,9 +5873,11 @@
             "evidence": "functions/F_7343.entry"
           },
           "_f734e": {
-            "offset": 29518,
             "coordinate": "code_offset",
-            "evidence": "functions/F_734E.entry"
+            "evidence": "functions/F_734E.entry",
+            "owner": "F_734E",
+            "public": "_f734e",
+            "addend": 0
           },
           "_f7747": {
             "offset": 30535,
@@ -5831,14 +6001,18 @@
             "evidence": "functions/F_039F.entry"
           },
           "_f6c57": {
-            "offset": 27735,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C57.entry"
+            "evidence": "functions/F_6C57.entry",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0
           },
           "_f6c6f": {
-            "offset": 27759,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C6F.entry"
+            "evidence": "functions/F_6C6F.entry",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
+            "addend": 0
           },
           "_f9ec3": {
             "offset": 40643,
@@ -5989,14 +6163,18 @@
         "flags_append": "",
         "bindings": {
           "_fc1f7": {
-            "offset": 49655,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C1F7.entry"
+            "evidence": "functions/F_C1F7.entry",
+            "owner": "F_C1F7",
+            "public": "_fc1f7",
+            "addend": 0
           },
           "_fc8e2": {
-            "offset": 51426,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C8E2.entry"
+            "evidence": "functions/F_C8E2.entry",
+            "owner": "F_C8E2",
+            "public": "_fc8e2",
+            "addend": 0
           },
           "_snd_flag": {
             "offset": 6000,
@@ -6063,9 +6241,11 @@
             "evidence": "functions/F_C232.entry"
           },
           "_fc27d": {
-            "offset": 49789,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C27D.entry"
+            "evidence": "functions/F_C27D.entry",
+            "owner": "F_C27D",
+            "public": "_fc27d",
+            "addend": 0
           },
           "_snd_flag2": {
             "offset": 6006,
@@ -6383,14 +6563,18 @@
         "flags_append": "-k -B",
         "bindings": {
           "_fc914": {
-            "offset": 51476,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C914.entry"
+            "evidence": "functions/F_C914.entry",
+            "owner": "F_C914",
+            "public": "_fc914",
+            "addend": 0
           },
           "_fcadb": {
-            "offset": 51931,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CADB.entry"
+            "evidence": "functions/F_CADB.entry",
+            "owner": "F_CADB",
+            "public": "_fcadb",
+            "addend": 0
           },
           "_snd_delay": {
             "offset": 7824,
@@ -6447,9 +6631,11 @@
         "flags_append": "",
         "bindings": {
           "_fc988": {
-            "offset": 51592,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C988.entry"
+            "evidence": "functions/F_C988.entry",
+            "owner": "F_C988",
+            "public": "_fc988",
+            "addend": 0
           },
           "_fc9a4": {
             "offset": 51620,
@@ -6467,14 +6653,18 @@
             "evidence": "functions/F_CA9B.entry"
           },
           "_fcadb": {
-            "offset": 51931,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CADB.entry"
+            "evidence": "functions/F_CADB.entry",
+            "owner": "F_CADB",
+            "public": "_fcadb",
+            "addend": 0
           },
           "_fcaf1": {
-            "offset": 51953,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAF1.entry"
+            "evidence": "functions/F_CAF1.entry",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0
           },
           "_fcb48": {
             "offset": 52040,
@@ -6531,14 +6721,18 @@
         "flags_append": "",
         "bindings": {
           "_fcad0": {
-            "offset": 51920,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAD0.entry"
+            "evidence": "functions/F_CAD0.entry",
+            "owner": "F_CAD0",
+            "public": "_fcad0",
+            "addend": 0
           },
           "_fcae6": {
-            "offset": 51942,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CAE6.entry"
+            "evidence": "functions/F_CAE6.entry",
+            "owner": "F_CAE6",
+            "public": "_fcae6",
+            "addend": 0
           },
           "_notetab": {
             "offset": 6140,
@@ -6879,9 +7073,11 @@
         "flags_append": "",
         "bindings": {
           "_f684a": {
-            "offset": 26698,
             "coordinate": "code_offset",
-            "evidence": "functions/F_684A.entry"
+            "evidence": "functions/F_684A.entry",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0
           },
           "_f86c9": {
             "offset": 34505,
@@ -6943,9 +7139,11 @@
         "flags_append": "",
         "bindings": {
           "_f684a": {
-            "offset": 26698,
             "coordinate": "code_offset",
-            "evidence": "functions/F_684A.entry"
+            "evidence": "functions/F_684A.entry",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0
           },
           "_farmalloc": {
             "offset": 59828,
@@ -7027,9 +7225,11 @@
         "flags_append": "",
         "bindings": {
           "_f6c26": {
-            "offset": 27686,
             "coordinate": "code_offset",
-            "evidence": "functions/F_6C26.entry"
+            "evidence": "functions/F_6C26.entry",
+            "owner": "F_6C26",
+            "public": "_f6c26",
+            "addend": 0
           },
           "_fc877": {
             "offset": 51319,
@@ -7144,9 +7344,11 @@
         "flags_append": "",
         "bindings": {
           "_f68aa": {
-            "offset": 26794,
             "coordinate": "code_offset",
-            "evidence": "functions/F_68AA.entry"
+            "evidence": "functions/F_68AA.entry",
+            "owner": "F_68AA",
+            "public": "_f68aa",
+            "addend": 0
           },
           "_g1778": {
             "offset": 6008,
@@ -7198,9 +7400,11 @@
             "evidence": "functions/F_C7CB.entry"
           },
           "_fd5ba": {
-            "offset": 54714,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D5BA.entry"
+            "evidence": "functions/F_D5BA.entry",
+            "owner": "F_D5BA",
+            "public": "_fd5ba",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -7312,9 +7516,11 @@
         "flags_append": "",
         "bindings": {
           "_fda66": {
-            "offset": 55910,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DA66.entry"
+            "evidence": "functions/F_DA66.entry",
+            "owner": "F_DA66",
+            "public": "_fda66",
+            "addend": 0
           },
           "_ff32a": {
             "offset": 62250,
@@ -7381,39 +7587,53 @@
         "flags_append": "",
         "bindings": {
           "_fd9d9": {
-            "offset": 55769,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D9D9.entry"
+            "evidence": "functions/F_D9D9.entry",
+            "owner": "F_D9D9",
+            "public": "_fd9d9",
+            "addend": 0
           },
           "_fd9e1": {
-            "offset": 55777,
             "coordinate": "code_offset",
-            "evidence": "functions/F_D9E1.entry"
+            "evidence": "functions/F_D9E1.entry",
+            "owner": "F_D9E1",
+            "public": "_fd9e1",
+            "addend": 0
           },
           "_fda20": {
-            "offset": 55840,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DA20.entry"
+            "evidence": "functions/F_DA20.entry",
+            "owner": "F_DA20",
+            "public": "_fda20",
+            "addend": 0
           },
           "_fda49": {
-            "offset": 55881,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DA49.entry"
+            "evidence": "functions/F_DA49.entry",
+            "owner": "F_DA49",
+            "public": "_fda49",
+            "addend": 0
           },
           "_fddc7": {
-            "offset": 56775,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DDC7.entry"
+            "evidence": "functions/F_DDC7.entry",
+            "owner": "F_DDC7",
+            "public": "_fddc7",
+            "addend": 0
           },
           "_fdefa": {
-            "offset": 57082,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DEFA.entry"
+            "evidence": "functions/F_DEFA.entry",
+            "owner": "F_DEFA",
+            "public": "_fdefa",
+            "addend": 0
           },
           "_fe52a": {
-            "offset": 58666,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E52A.entry"
+            "evidence": "functions/F_E52A.entry",
+            "owner": "F_E52A",
+            "public": "_fe52a",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -7445,9 +7665,11 @@
         "flags_append": "",
         "bindings": {
           "_fe420": {
-            "offset": 58400,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E420.entry"
+            "evidence": "functions/F_E420.entry",
+            "owner": "F_E420",
+            "public": "_fe420",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -7479,9 +7701,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2fe4": {
             "offset": 12260,
@@ -7562,14 +7786,18 @@
         "flags_append": "",
         "bindings": {
           "_fe262": {
-            "offset": 57954,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E262.entry"
+            "evidence": "functions/F_E262.entry",
+            "owner": "F_E262",
+            "public": "_fe262",
+            "addend": 0
           },
           "_fe420": {
-            "offset": 58400,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E420.entry"
+            "evidence": "functions/F_E420.entry",
+            "owner": "F_E420",
+            "public": "_fe420",
+            "addend": 0
           },
           "_gc6aa": {
             "offset": 50858,
@@ -7616,9 +7844,11 @@
         "flags_append": "",
         "bindings": {
           "_fe0c0": {
-            "offset": 57536,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E0C0.entry"
+            "evidence": "functions/F_E0C0.entry",
+            "owner": "F_E0C0",
+            "public": "_fe0c0",
+            "addend": 0
           },
           "_g2fd2": {
             "offset": 12242,
@@ -7672,14 +7902,18 @@
             "evidence": "storage_objects/REGION_2C1DB.phys"
           },
           "_fe48a": {
-            "offset": 58506,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E48A.entry"
+            "evidence": "functions/F_E48A.entry",
+            "owner": "F_E48A",
+            "public": "_fe48a",
+            "addend": 0
           },
           "_fe52a": {
-            "offset": 58666,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E52A.entry"
+            "evidence": "functions/F_E52A.entry",
+            "owner": "F_E52A",
+            "public": "_fe52a",
+            "addend": 0
           },
           "_off": {
             "offset": 51810,
@@ -7721,9 +7955,11 @@
             "evidence": "storage_objects/REGION_2C1DB.phys"
           },
           "_fdd72": {
-            "offset": 56690,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DD72.entry"
+            "evidence": "functions/F_DD72.entry",
+            "owner": "F_DD72",
+            "public": "_fdd72",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -7755,14 +7991,18 @@
         "flags_append": "",
         "bindings": {
           "_fe095": {
-            "offset": 57493,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E095.entry"
+            "evidence": "functions/F_E095.entry",
+            "owner": "F_E095",
+            "public": "_fe095",
+            "addend": 0
           },
           "_fe48a": {
-            "offset": 58506,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E48A.entry"
+            "evidence": "functions/F_E48A.entry",
+            "owner": "F_E48A",
+            "public": "_fe48a",
+            "addend": 0
           },
           "_g2fd2": {
             "offset": 12242,
@@ -7892,9 +8132,11 @@
             "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
           },
           "_fddd9": {
-            "offset": 56793,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DDD9.entry"
+            "evidence": "functions/F_DDD9.entry",
+            "owner": "F_DDD9",
+            "public": "_fddd9",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -7926,9 +8168,11 @@
         "flags_append": "",
         "bindings": {
           "_fde7e": {
-            "offset": 56958,
             "coordinate": "code_offset",
-            "evidence": "functions/F_DE7E.entry"
+            "evidence": "functions/F_DE7E.entry",
+            "owner": "F_DE7E",
+            "public": "_fde7e",
+            "addend": 0
           },
           "_gc5ea": {
             "offset": 50666,
@@ -7997,9 +8241,11 @@
         "flags_append": "",
         "bindings": {
           "_fe151": {
-            "offset": 57681,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E151.entry"
+            "evidence": "functions/F_E151.entry",
+            "owner": "F_E151",
+            "public": "_fe151",
+            "addend": 0
           },
           "_gc91b": {
             "offset": 51483,
@@ -8036,9 +8282,11 @@
         "flags_append": "",
         "bindings": {
           "_fe1c4": {
-            "offset": 57796,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E1C4.entry"
+            "evidence": "functions/F_E1C4.entry",
+            "owner": "F_E1C4",
+            "public": "_fe1c4",
+            "addend": 0
           },
           "_gc91b": {
             "offset": 51483,
@@ -8087,44 +8335,60 @@
         "flags_append": "",
         "bindings": {
           "_fe1f2": {
-            "offset": 57842,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E1F2.entry"
+            "evidence": "functions/F_E1F2.entry",
+            "owner": "F_E1F2",
+            "public": "_fe1f2",
+            "addend": 0
           },
           "_fe262": {
-            "offset": 57954,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E262.entry"
+            "evidence": "functions/F_E262.entry",
+            "owner": "F_E262",
+            "public": "_fe262",
+            "addend": 0
           },
           "_fe27b": {
-            "offset": 57979,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E27B.entry"
+            "evidence": "functions/F_E27B.entry",
+            "owner": "F_E27B",
+            "public": "_fe27b",
+            "addend": 0
           },
           "_fe2d6": {
-            "offset": 58070,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E2D6.entry"
+            "evidence": "functions/F_E2D6.entry",
+            "owner": "F_E2D6",
+            "public": "_fe2d6",
+            "addend": 0
           },
           "_fe324": {
-            "offset": 58148,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E324.entry"
+            "evidence": "functions/F_E324.entry",
+            "owner": "F_E324",
+            "public": "_fe324",
+            "addend": 0
           },
           "_fe372": {
-            "offset": 58226,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E372.entry"
+            "evidence": "functions/F_E372.entry",
+            "owner": "F_E372",
+            "public": "_fe372",
+            "addend": 0
           },
           "_fe420": {
-            "offset": 58400,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E420.entry"
+            "evidence": "functions/F_E420.entry",
+            "owner": "F_E420",
+            "public": "_fe420",
+            "addend": 0
           },
           "_fe44b": {
-            "offset": 58443,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E44B.entry"
+            "evidence": "functions/F_E44B.entry",
+            "owner": "F_E44B",
+            "public": "_fe44b",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -8156,44 +8420,60 @@
         "flags_append": "",
         "bindings": {
           "_fe1f2": {
-            "offset": 57842,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E1F2.entry"
+            "evidence": "functions/F_E1F2.entry",
+            "owner": "F_E1F2",
+            "public": "_fe1f2",
+            "addend": 0
           },
           "_fe262": {
-            "offset": 57954,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E262.entry"
+            "evidence": "functions/F_E262.entry",
+            "owner": "F_E262",
+            "public": "_fe262",
+            "addend": 0
           },
           "_fe27b": {
-            "offset": 57979,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E27B.entry"
+            "evidence": "functions/F_E27B.entry",
+            "owner": "F_E27B",
+            "public": "_fe27b",
+            "addend": 0
           },
           "_fe2d6": {
-            "offset": 58070,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E2D6.entry"
+            "evidence": "functions/F_E2D6.entry",
+            "owner": "F_E2D6",
+            "public": "_fe2d6",
+            "addend": 0
           },
           "_fe324": {
-            "offset": 58148,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E324.entry"
+            "evidence": "functions/F_E324.entry",
+            "owner": "F_E324",
+            "public": "_fe324",
+            "addend": 0
           },
           "_fe372": {
-            "offset": 58226,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E372.entry"
+            "evidence": "functions/F_E372.entry",
+            "owner": "F_E372",
+            "public": "_fe372",
+            "addend": 0
           },
           "_fe420": {
-            "offset": 58400,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E420.entry"
+            "evidence": "functions/F_E420.entry",
+            "owner": "F_E420",
+            "public": "_fe420",
+            "addend": 0
           },
           "_fe44b": {
-            "offset": 58443,
             "coordinate": "code_offset",
-            "evidence": "functions/F_E44B.entry"
+            "evidence": "functions/F_E44B.entry",
+            "owner": "F_E44B",
+            "public": "_fe44b",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -8225,9 +8505,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2fe4": {
             "offset": 12260,
@@ -8274,9 +8556,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_gc6b4": {
             "offset": 50868,
@@ -8313,9 +8597,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2ff6": {
             "offset": 12278,
@@ -8362,9 +8648,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2fe4": {
             "offset": 12260,
@@ -8406,9 +8694,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2fe4": {
             "offset": 12260,
@@ -8450,9 +8740,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2fe4": {
             "offset": 12260,
@@ -8494,9 +8786,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_gc6aa": {
             "offset": 50858,
@@ -8538,9 +8832,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g2fe4": {
             "offset": 12260,
@@ -8587,9 +8883,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_gc6b6": {
             "offset": 50870,
@@ -8651,9 +8949,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -8685,9 +8985,11 @@
         "flags_append": "",
         "bindings": {
           "_fc898": {
-            "offset": 51352,
             "coordinate": "code_offset",
-            "evidence": "functions/F_C898.entry"
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
           },
           "_g1830": {
             "offset": 6192,

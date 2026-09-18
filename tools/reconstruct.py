@@ -178,22 +178,31 @@ def library_candidate(owner, modules):
 
 
 def component_binding(binding, owners, mz, frames):
-    """Resolve a declared source symbol through owned data, not a duplicated address."""
+    """Resolve a declared source symbol through identified component ownership."""
     if 'owner' not in binding:
         return binding
     if 'offset' in binding:
         raise ValueError('Component binding cannot also declare an absolute offset')
     target = next((r for r in owners or [] if r['id'] == binding['owner']), None)
-    if target is None or target['kind'] != 'EXACT_DATA':
-        raise ValueError('Component binding must name an identified EXACT_DATA owner')
-    if binding['coordinate'] != 'DGROUP_offset':
-        raise ValueError('Component binding currently requires DGROUP coordinates')
+    if target is None:
+        raise ValueError('Component binding must name an identified owner')
+    coordinate = binding['coordinate']
+    if coordinate == 'DGROUP_offset' and target['kind'] == 'EXACT_DATA':
+        base = frames['DGROUP']
+    elif coordinate == 'code_offset' and target['kind'] in ('MATCHING_C', 'MATCHING_ASM'):
+        if binding.get('public') != target['build']['public'] or binding.get('addend', 0) != 0:
+            raise ValueError('Code component binding must name its selected entry public with zero addend')
+        if frames['_TEXT'] != 0 or target['build']['segment'] != '_TEXT':
+            raise ValueError('Code component binding requires the established zero-based _TEXT frame')
+        base = 0
+    else:
+        raise ValueError('Component binding coordinate and owner kind are incompatible')
     addend = binding.get('addend', 0)
     if type(addend) is not int or not 0 <= addend < target['end'] - target['start']:
         raise ValueError('Component binding addend lies outside its owner')
-    offset = mz.load_offset(target['start']) - frames['DGROUP'] + addend
+    offset = mz.load_offset(target['start']) - base + addend
     if not 0 <= offset <= 65535:
-        raise ValueError('Component binding does not fit a DGROUP offset')
+        raise ValueError('Component binding does not fit a 16-bit offset')
     return {**binding, 'offset': offset}
 
 
@@ -239,7 +248,7 @@ def bind_region(owner, module, mz, frames, owners=None):
         if f['loc'] == 'pointer32' and width == 4 and not f['self_relative']:
             if kind != 'external' or symbol not in build['bindings']:
                 raise ValueError(f'Undeclared far pointer {symbol}')
-            binding = build['bindings'][symbol]
+            binding = component_binding(build['bindings'][symbol], owners, mz, frames)
             if binding['coordinate'] != 'code_offset':
                 raise ValueError(f'Unsupported far data pointer {symbol}')
             addend = int.from_bytes(result[offset:offset+2], 'little')

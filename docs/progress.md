@@ -129,8 +129,8 @@ historical source modules**, and 787 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 34,965 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 21,276 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes and two component-owned bindings within fixed
-placement. See [embedded-palettes.md](embedded-palettes.md).
+1,536 embedded-asset bytes. There are now 153 component-owned bindings
+within fixed placement: two palette references and 151 C/ASM entry references. See [embedded-palettes.md](embedded-palettes.md).
 
 [linkage-blockers.json](linkage-blockers.json) snapshots 27 held upstream
 candidates (10,488 extent bytes): 24 linkage refusals and three byte differences,
@@ -181,3 +181,12 @@ The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
 retain the user's broader agenda. Matching is **not globally saturated**:
 compressor search policy, linkage closure, module grouping, embedded-data
 classification and nested-resource adapters remain mechanical frontiers.
+
+## Owned code references
+
+151 code bindings across 75 callers now identify selected entry publics of
+92 owned C/ASM components. Migration requires both the established address
+and the selected public name to agree, followed by a fresh complete EXE match.
+Near and far fixups resolve through owners. The remaining numeric bindings,
+fixed placement and zero historical-linker coverage remain explicit.
+See [code-bindings.md](code-bindings.md).

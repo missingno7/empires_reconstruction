@@ -8,6 +8,7 @@ regions, and extracts 35 pinned Borland library modules. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
 RGB tables (1,536 bytes); 67 raw regions cover the remaining 56,241 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
+151 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Both archives have explicit resource ownership. Twenty-six compressed resources
 re-encode exactly; 25 use PNG plus JSON and one uses a structured image bank. The uncompressed
 first level also rebuilds from structured source, for 27 matching resources.

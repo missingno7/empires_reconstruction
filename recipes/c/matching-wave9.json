@@ -1,0 +1,213 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_B60F",
+      "kind": "MATCHING_C",
+      "start": 47119,
+      "end": 47309,
+      "source": "src/F_B60F.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb60f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gb3ae": {
+            "offset": 45998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2AEDE.phys"
+          },
+          "_gbfba": {
+            "offset": 49082,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAEA.phys"
+          },
+          "_g9bfc": {
+            "offset": 39932,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2972C.phys"
+          },
+          "_gbf66": {
+            "offset": 48998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2BA96.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_B60F.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "46a32a9dd82582021e941303c04a8e6648bde98c8025c271e529c34777c06fe5",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "dc9ba2260ead2577238be3d25add7d086dbed04ab850070cf21483f5af5018fd",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover full C loop; derive record pointer from declared count-byte base plus one"
+      }
+    },
+    {
+      "id": "F_B6CD",
+      "kind": "MATCHING_C",
+      "start": 47309,
+      "end": 47474,
+      "source": "src/F_B6CD.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb6cd",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f7925": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7925.entry",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0
+          },
+          "_f6fc3": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6FC3.entry",
+            "owner": "F_6FC3",
+            "public": "_f6fc3",
+            "addend": 0
+          },
+          "_g8fe": {
+            "offset": 2302,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2042E.phys"
+          },
+          "_gbc": {
+            "offset": 188,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FAEC.phys"
+          },
+          "_gbfba": {
+            "offset": 49082,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAEA.phys"
+          },
+          "_g40ce": {
+            "offset": 16590,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_23BFE.phys"
+          },
+          "_g98": {
+            "offset": 152,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FAC8.phys"
+          },
+          "_g94": {
+            "offset": 148,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FAC4.phys"
+          },
+          "_g96": {
+            "offset": 150,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FAC6.phys"
+          },
+          "_g9a": {
+            "offset": 154,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FACA.phys"
+          },
+          "_fb3d7": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_B3D7.entry",
+            "owner": "F_B3D7",
+            "public": "_fb3d7",
+            "addend": 0
+          },
+          "_fb40f": {
+            "offset": 46095,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_B40F.entry"
+          },
+          "_f4eeb": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_4EEB.entry",
+            "owner": "F_4EEB",
+            "public": "_f4eeb",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6C57.entry",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0
+          },
+          "_gc5ca": {
+            "offset": 50634,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0FA.phys"
+          },
+          "_g40c4": {
+            "offset": 16580,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_23BF4.phys"
+          },
+          "_fb60f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_B60F.entry",
+            "owner": "F_B60F",
+            "public": "_fb60f",
+            "addend": 0
+          },
+          "_f4b0c": {
+            "offset": 19212,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_4B0C.entry"
+          },
+          "_f1ecd": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_1ECD.entry",
+            "owner": "F_1ECD",
+            "public": "_f1ecd",
+            "addend": 0
+          },
+          "_f6c6f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6C6F.entry",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
+            "addend": 0
+          },
+          "_g1776": {
+            "offset": 6006,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A6.phys"
+          },
+          "_g1784": {
+            "offset": 6020,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B4.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_B6CD.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "c9f361755a94f4be4ad57dab346a4e8d20172a2e3b7183f5ecdf7a52ef6bc167",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "fa996b79b2debab152362c9c2d12ead694184cbc8cb1b6caa2bc97e36028ebc8",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover full C loop; derive record pointer from declared count-byte base plus one"
+      }
+    }
+  ]
+}

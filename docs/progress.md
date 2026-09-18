@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 11,244 bytes from raw
-fallback: 9,137 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 11,599 bytes from raw
+fallback: 9,492 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, and 59 bytes of compiled C data.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 18,947 | 187 |
+| Freshly compiled matching C | 14,077 | 19,302 | 189 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,267 | 35 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 59 | 4 |
-| Exact raw fallback | 62,621 | 51,377 | 68 |
-| Total | 79,154 | 79,154 | 317 |
+| Exact raw fallback | 62,621 | 51,022 | 69 |
+| Total | 79,154 | 79,154 | 320 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -125,15 +125,15 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 207 source proof units from **zero proven
-historical source modules**, and 1,012 declared owner-symbol bindings from
+The combined EXE metrics distinguish 209 source proof units from **zero proven
+historical source modules**, and 1,040 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-30,160 raw EXE bytes as unresolved machine code; overlapping entry/parent
+29,805 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 21,217 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 251 component-owned bindings
+1,536 embedded-asset bytes. There are now 259 component-owned bindings
 within fixed placement: two palette references, 151 C/ASM entry references,
-and 38 library public references from earlier checkpoints, plus 60 owned references
-in the eight local C waves. Four module-segment bindings also resolve through
+and 38 library public references from earlier checkpoints, plus 68 owned references
+in the nine local C waves. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
 [linkage-blockers.json](linkage-blockers.json) snapshots 24 held upstream
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 51,377 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 51,022 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -274,3 +274,10 @@ Three routines add 424 matching C bytes, preserving a pointer-to-integer
 return, register allocation and arithmetic branches. Two additional code-exact
 probes remain held on data-base evidence. See
 [the wave-eight proof](matching-c-wave8.md).
+
+## Ninth local C wave
+
+Two routines add 355 matching C bytes. A record base is expressed as the
+existing declared count-byte base plus one, resolving an interior reference
+without inventing a standalone storage object. Assignment expressions preserve
+the original register/stack behavior. See [the wave-nine proof](matching-c-wave9.md).

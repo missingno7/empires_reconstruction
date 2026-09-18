@@ -1,0 +1,1 @@
+extern int f03b4();extern int gbfba;extern unsigned char gb3ae[],g9bfc[],gbf66[];struct R{char a,b;int x,y;char c,d,e;char rest[23];};fb60f(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(gb3ae+1);for(i=0;i<gb3ae[0];i++,p++){if(!p->e&&p->b==gbfba){r=(x=p->x)+g9bfc[p->c]-1;b=(y=p->y)+gbf66[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)f03b4(x,y+200,r-x+1,b-y+1,x,y);}}}

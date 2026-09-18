@@ -80,9 +80,9 @@ No unknown payload became understood merely
 because its offset is now computed. This step does not recover the historical
 compressor's remaining match-selection behavior.
 
-The EXE remains at fixed placement with declared bindings (including 234 owner-derived code/data references and three owned module-data bindings), 53,243 raw
+The EXE remains at fixed placement with declared bindings (including 240 owner-derived code/data references and three owned module-data bindings), 52,573 raw
 bytes, and no proven reconstruction of its original source modules or historical
-linker topology. Its 193 source proof units do not count as recovered original
+linker topology. Its 199 source proof units do not count as recovered original
 modules. One [compatible shared-compilation experiment](module-group-evidence.md)
 now proves four functions' relative placement in a single OBJ, without yet
 establishing historical module identity. The combined report explicitly sets

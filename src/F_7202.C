@@ -1,0 +1,1 @@
+extern int f8ba5(),f03c9(),f039f();extern char *gc0ee;extern int gc0fa;f7202(){register int i,x;int n;x=16;n=f8ba5()/2;for(i=0;i<n;i++){f03c9(x,0xb0,gc0ee+((unsigned *)gc0ee)[1]+2);x+=18;}if(gc0fa)f039f(16,0xb0,0x6a,4);}

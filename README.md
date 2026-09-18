@@ -3,15 +3,15 @@
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.
-The build compiles 173 C regions, assembles 20 ASM
+The build compiles 179 C regions, assembles 20 ASM
 regions, and extracts 35 pinned Borland library modules. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); 71 raw regions cover the remaining 53,243 EXE bytes.
+RGB tables (1,536 bytes); 68 raw regions cover the remaining 52,573 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 151 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 38 resolve through [publics read from pinned library modules](docs/library-bindings.md).
-The latest [C matching wave](docs/matching-c-wave5.md) adds ten functions and
-542 code bytes, including local structure construction and arithmetic branches.
+The latest [C matching wave](docs/matching-c-wave6.md) adds six functions and
+670 code bytes, including pointer loops and an exact compiler-generated switch table.
 Both archives have explicit resource ownership. Twenty-six compressed resources
 re-encode exactly; 25 use PNG plus JSON and one uses a structured image bank. The uncompressed
 first level also rebuilds from structured source, for 27 matching resources.

@@ -1,0 +1,32 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "edabd47cb519fb4e9db833ab530a84962541384b269bec730cd3ad896291d47d",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 491,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_CE9E",
+      "kind": "MATCHING_C",
+      "bytes": 158,
+      "sha256": "63231e8ac95a57453ce0a7e22d970a6819ba5ac7ed471b733ebc2a4682d0f634",
+      "source_sha256": "e23e8fdab9b2ea663cc8b64ed520a93d1133cecb34cb299c16dd286876412f46",
+      "fixups": 8,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_CF3C",
+      "kind": "MATCHING_C",
+      "bytes": 333,
+      "sha256": "270e1fbdd2deb32ba2c81aa2102388be6b6eba1ab45d7b3005845c83c53e9b89",
+      "source_sha256": "5282ae7ba822ab6d5b8b99bbe4caa4c6195271499eb82b50a7ae9a1968527b88",
+      "fixups": 35,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

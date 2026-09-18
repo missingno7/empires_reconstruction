@@ -1,0 +1,1 @@
+extern int f03b4(),f03cc();extern int g22e0[],g22e8[];extern char *gc5c6;fce9e(){register int i,x;int y;for(i=0;i<4;i++){x=g22e0[i];y=g22e8[i];f03b4(x,y,42,32,i*42,400);f03cc(x,y,gc5c6,0);f03b4(x,y,42,32,i*42,432);f03b4(i*42,400,42,32,x,y);}}

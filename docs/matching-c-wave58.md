@@ -11,6 +11,11 @@ entry and contains a second entry-shaped tail after the first `RET`. A C claim
 would therefore require both the segment/register calling convention and a
 proved internal boundary before a complete extent could be asserted.
 
+A fresh structured C probe using far-pointer records, the observed table base,
+and the owned `F_03C9` call emitted 191 bytes for the 84-byte extent. That
+measured mismatch is retained as negative evidence; the probe is not a source
+component and no opaque slice is hidden inside a C owner.
+
 The `F_CA03`/`F_CA35`/`F_CA51`/`F_CA83`/`F_CA91`/`F_CA9B` cluster has standard
 stack frames in places, but its inputs are live `AL`, `BL`, `CH`, or `ES:DI`
 state rather than declared stack arguments. `F_C232` has the same `ES:DI` and

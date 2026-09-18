@@ -7,7 +7,7 @@ from exe_data import DAC_FORMAT, palette_document, encode_data
 from mz import MZ
 from promote_upstream import replace_raw_owners
 from reconstruct import (ROOT, read_json, write_json, sha, project_path,
-                         compile_sources, read_object, bind_region, mismatch)
+                         compile_sources, read_object, bind_region, mismatch, owned_library_modules)
 
 
 def promote(root=ROOT):
@@ -59,9 +59,10 @@ def promote(root=ROOT):
         Path(os.environ.get('DOSBOX', 'C:/Program Files/DOSBox Staging/dosbox.exe')),
         read_json(root / 'layout/toolchain.json'))
     evidence = []
+    component_modules = owned_library_modules(updated['regions'], root / 'toolchain', read_json(root / 'layout/toolchain.json'))
     for code in evidence_owners:
         module = read_object((work / receipts[code['id']]['object']).read_bytes())
-        part, proof = bind_region(code, module, mz, frames, updated['regions'])
+        part, proof = bind_region(code, module, mz, frames, updated['regions'], component_modules)
         mismatch(original[code['start']:code['end']], part, code)
         evidence.append({'id': code['id'], 'source_sha256': sha(project_path(root, code['source']).read_bytes()),
                          'matched_sha256': sha(part)})

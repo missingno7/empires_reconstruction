@@ -253,9 +253,11 @@
             "evidence": "storage_objects/ARRAY_FAEB.phys + 0x23"
           },
           "_movmem": {
-            "offset": 62280,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x0"
+            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x0",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -315,9 +317,11 @@
         "flags_append": "",
         "bindings": {
           "LXMUL@": {
-            "offset": 62119,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
+            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0",
+            "owner": "LIB_LXMUL",
+            "public": "LXMUL@",
+            "addend": 0
           },
           "_f01bc": {
             "coordinate": "code_offset",
@@ -346,9 +350,11 @@
             "evidence": "functions/F_039C.entry"
           },
           "_farmalloc": {
-            "offset": 59828,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB"
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB",
+            "owner": "LIB_FMALLOC",
+            "public": "_farmalloc",
+            "addend": 0
           },
           "_g11e": {
             "owner": "PALETTE_DAC6_011E",
@@ -678,9 +684,11 @@
             "addend": 0
           },
           "_farmalloc": {
-            "offset": 59828,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB"
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB",
+            "owner": "LIB_FMALLOC",
+            "public": "_farmalloc",
+            "addend": 0
           },
           "_g99d6": {
             "offset": 39382,
@@ -1652,9 +1660,11 @@
             "evidence": "storage_objects/M_2C0F6.phys"
           },
           "_memmove": {
-            "offset": 62364,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x54"
+            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x54",
+            "owner": "LIB_MOVMEM",
+            "public": "_memmove",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3442,9 +3452,11 @@
             "addend": 0
           },
           "_farmalloc": {
-            "offset": 59828,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB"
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB",
+            "owner": "LIB_FMALLOC",
+            "public": "_farmalloc",
+            "addend": 0
           },
           "_gb42": {
             "offset": 2882,
@@ -3457,9 +3469,11 @@
             "evidence": "storage_objects/M_2C0F6.phys"
           },
           "_movmem": {
-            "offset": 62280,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x0"
+            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x0",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3503,9 +3517,11 @@
             "evidence": "storage_objects/M_2C0F6.phys"
           },
           "_movmem": {
-            "offset": 62280,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x0"
+            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x0",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3561,14 +3577,18 @@
             "evidence": "storage_objects/M_2BBFC.phys"
           },
           "_getvect": {
-            "offset": 63294,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x0"
+            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x0",
+            "owner": "LIB_GETVECT",
+            "public": "_getvect",
+            "addend": 0
           },
           "_setvect": {
-            "offset": 63312,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x12"
+            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x12",
+            "owner": "LIB_GETVECT",
+            "public": "_setvect",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -7012,9 +7032,11 @@
         "flags_append": "",
         "bindings": {
           "_farmalloc": {
-            "offset": 59828,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB"
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB",
+            "owner": "LIB_FMALLOC",
+            "public": "_farmalloc",
+            "addend": 0
           },
           "_gc5be": {
             "offset": 50622,
@@ -7146,9 +7168,11 @@
             "addend": 0
           },
           "_farmalloc": {
-            "offset": 59828,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB"
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB",
+            "owner": "LIB_FMALLOC",
+            "public": "_farmalloc",
+            "addend": 0
           },
           "_fc77a": {
             "offset": 51066,
@@ -8078,19 +8102,25 @@
         "flags_append": "",
         "bindings": {
           "LDIV@": {
-            "offset": 63511,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LDIV.json extent.address + CC.LIB/LDIV _TEXT+0x0"
+            "evidence": "substrate/LIB_LDIV.json extent.address + CC.LIB/LDIV _TEXT+0x0",
+            "owner": "LIB_LDIV",
+            "public": "LDIV@",
+            "addend": 0
           },
           "LXLSH@": {
-            "offset": 63674,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LLSH.json extent.address + CC.LIB/LLSH _TEXT+0x0"
+            "evidence": "substrate/LIB_LLSH.json extent.address + CC.LIB/LLSH _TEXT+0x0",
+            "owner": "LIB_LLSH",
+            "public": "LXLSH@",
+            "addend": 0
           },
           "LXMUL@": {
-            "offset": 62119,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
+            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0",
+            "owner": "LIB_LXMUL",
+            "public": "LXMUL@",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -8122,14 +8152,18 @@
         "flags_append": "",
         "bindings": {
           "LDIV@": {
-            "offset": 63511,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LDIV.json extent.address + CC.LIB/LDIV _TEXT+0x0"
+            "evidence": "substrate/LIB_LDIV.json extent.address + CC.LIB/LDIV _TEXT+0x0",
+            "owner": "LIB_LDIV",
+            "public": "LDIV@",
+            "addend": 0
           },
           "LXMUL@": {
-            "offset": 62119,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
+            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0",
+            "owner": "LIB_LXMUL",
+            "public": "LXMUL@",
+            "addend": 0
           },
           "_fddd9": {
             "coordinate": "code_offset",
@@ -8997,9 +9031,11 @@
             "evidence": "storage_objects/G_P21360.phys"
           },
           "_inport": {
-            "offset": 63487,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_INPORT.json extent.address + CC.LIB/INPORT _TEXT+0x0"
+            "evidence": "substrate/LIB_INPORT.json extent.address + CC.LIB/INPORT _TEXT+0x0",
+            "owner": "LIB_INPORT",
+            "public": "_inport",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -9040,19 +9076,25 @@
         "segment": "_TEXT",
         "bindings": {
           "PADD@": {
-            "offset": 60431,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0"
+            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0",
+            "owner": "LIB_PADD",
+            "public": "PADD@",
+            "addend": 0
           },
           "PCMP@": {
-            "offset": 60522,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0",
+            "owner": "LIB_PCMP",
+            "public": "PCMP@",
+            "addend": 0
           },
           "__sbrk": {
-            "offset": 60308,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FBRK.json extent.address + CC.LIB/FBRK _TEXT+0xD5"
+            "evidence": "substrate/LIB_FBRK.json extent.address + CC.LIB/FBRK _TEXT+0xD5",
+            "owner": "LIB_FBRK",
+            "public": "__sbrk",
+            "addend": 0
           }
         },
         "module_segments": {
@@ -9090,14 +9132,18 @@
         "segment": "_TEXT",
         "bindings": {
           "PADD@": {
-            "offset": 60431,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0"
+            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0",
+            "owner": "LIB_PADD",
+            "public": "PADD@",
+            "addend": 0
           },
           "PCMP@": {
-            "offset": 60522,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0",
+            "owner": "LIB_PCMP",
+            "public": "PCMP@",
+            "addend": 0
           },
           "__brklvl": {
             "offset": 139,
@@ -9120,9 +9166,11 @@
             "evidence": "library_public_votes/__psp"
           },
           "_setblock": {
-            "offset": 60555,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_SETBLOCK.json extent.address + CC.LIB/SETBLOCK _TEXT+0x0"
+            "evidence": "substrate/LIB_SETBLOCK.json extent.address + CC.LIB/SETBLOCK _TEXT+0x0",
+            "owner": "LIB_SETBLOCK",
+            "public": "_setblock",
+            "addend": 0
           }
         },
         "module_segments": {
@@ -9340,9 +9388,11 @@
             "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
           },
           "__close": {
-            "offset": 61146,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_CLOSEA.json extent.address + CC.LIB/CLOSEA _TEXT+0x0"
+            "evidence": "substrate/LIB_CLOSEA.json extent.address + CC.LIB/CLOSEA _TEXT+0x0",
+            "owner": "LIB_CLOSEA",
+            "public": "__close",
+            "addend": 0
           },
           "__openfd": {
             "offset": 14540,
@@ -9423,14 +9473,18 @@
             "evidence": "library_public_votes/__openfd"
           },
           "__read": {
-            "offset": 61373,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_READA.json extent.address + CC.LIB/READA _TEXT+0x0"
+            "evidence": "substrate/LIB_READA.json extent.address + CC.LIB/READA _TEXT+0x0",
+            "owner": "LIB_READA",
+            "public": "__read",
+            "addend": 0
           },
           "_lseek": {
-            "offset": 61827,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LSEEK.json extent.address + CC.LIB/LSEEK _TEXT+0x0"
+            "evidence": "substrate/LIB_LSEEK.json extent.address + CC.LIB/LSEEK _TEXT+0x0",
+            "owner": "LIB_LSEEK",
+            "public": "_lseek",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -9501,9 +9555,11 @@
             "evidence": "library_public_votes/__openfd"
           },
           "__write": {
-            "offset": 61755,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_WRITEA.json extent.address + CC.LIB/WRITEA _TEXT+0x0"
+            "evidence": "substrate/LIB_WRITEA.json extent.address + CC.LIB/WRITEA _TEXT+0x0",
+            "owner": "LIB_WRITEA",
+            "public": "__write",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -9545,9 +9601,11 @@
             "evidence": "library_public_votes/__openfd"
           },
           "_lseek": {
-            "offset": 61827,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LSEEK.json extent.address + CC.LIB/LSEEK _TEXT+0x0"
+            "evidence": "substrate/LIB_LSEEK.json extent.address + CC.LIB/LSEEK _TEXT+0x0",
+            "owner": "LIB_LSEEK",
+            "public": "_lseek",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -9758,9 +9816,11 @@
         "segment": "_TEXT",
         "bindings": {
           "PCMP@": {
-            "offset": 60522,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0",
+            "owner": "LIB_PCMP",
+            "public": "PCMP@",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -9826,9 +9886,11 @@
         "segment": "_TEXT",
         "bindings": {
           "PSBP@": {
-            "offset": 63705,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PSBP.json extent.address + CC.LIB/PSBP _TEXT+0x0"
+            "evidence": "substrate/LIB_PSBP.json extent.address + CC.LIB/PSBP _TEXT+0x0",
+            "owner": "LIB_PSBP",
+            "public": "PSBP@",
+            "addend": 0
           },
           "__brklvl": {
             "offset": 139,
@@ -9870,19 +9932,25 @@
         "segment": "_TEXT",
         "bindings": {
           "PADD@": {
-            "offset": 60431,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0"
+            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0",
+            "owner": "LIB_PADD",
+            "public": "PADD@",
+            "addend": 0
           },
           "PCMP@": {
-            "offset": 60522,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0",
+            "owner": "LIB_PCMP",
+            "public": "PCMP@",
+            "addend": 0
           },
           "__brk": {
-            "offset": 60237,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FBRK.json extent.address + CC.LIB/FBRK _TEXT+0x8E"
+            "evidence": "substrate/LIB_FBRK.json extent.address + CC.LIB/FBRK _TEXT+0x8E",
+            "owner": "LIB_FBRK",
+            "public": "__brk",
+            "addend": 0
           },
           "__first": {
             "offset": 14268,
@@ -9895,9 +9963,11 @@
             "evidence": "library_public_votes/__last"
           },
           "__pull_free_block": {
-            "offset": 59340,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x13"
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x13",
+            "owner": "LIB_FMALLOC",
+            "public": "__pull_free_block",
+            "addend": 0
           },
           "__rover": {
             "offset": 14276,
@@ -9996,14 +10066,18 @@
         "segment": "_TEXT",
         "bindings": {
           "_bdos": {
-            "offset": 63983,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_BDOS.json extent.address + CC.LIB/BDOS _TEXT+0x0"
+            "evidence": "substrate/LIB_BDOS.json extent.address + CC.LIB/BDOS _TEXT+0x0",
+            "owner": "LIB_BDOS",
+            "public": "_bdos",
+            "addend": 0
           },
           "_setvect": {
-            "offset": 63312,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x12"
+            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x12",
+            "owner": "LIB_GETVECT",
+            "public": "_setvect",
+            "addend": 0
           }
         },
         "module_segments": {
@@ -10153,9 +10227,11 @@
         "segment": "_TEXT",
         "bindings": {
           "LXMUL@": {
-            "offset": 62119,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
+            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0",
+            "owner": "LIB_LXMUL",
+            "public": "LXMUL@",
+            "addend": 0
           }
         },
         "module_segments": {

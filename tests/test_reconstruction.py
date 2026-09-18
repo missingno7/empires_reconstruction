@@ -14,6 +14,7 @@ from mz import MZ
 from omf import ObjectModule
 from reconstruct import (bind_region, compile_sources, mismatch, read_object,
                          reconstruct, validate_layout, library_modules, library_candidate)
+from reconstruct import owned_library_modules
 import promote_upstream
 from promote_upstream import replace_raw_owners
 
@@ -23,6 +24,7 @@ class ReconstructionTests(unittest.TestCase):
         self.manifest = json.loads((ROOT / 'layout/manifest.json').read_text())
         self.original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         self.mz = MZ.parse(self.original)
+        self.component_modules = owned_library_modules(self.manifest['regions'], ROOT / 'toolchain', json.loads((ROOT / 'layout/toolchain.json').read_text()))
 
     def test_partition_rejects_gaps_overlaps_zero_and_wrong_total(self):
         for delta, error in ((1, 'gap'), (-1, 'overlap')):
@@ -132,7 +134,7 @@ class ReconstructionTests(unittest.TestCase):
             receipts, _ = compile_sources(directory, owners, work, ROOT / 'toolchain', dosbox, lock)
             for owner in owners:
                 module = read_object((work / receipts[owner['id']]['object']).read_bytes())
-                result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
+                result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'], self.component_modules)
                 expected = self.original[owner['start']:owner['end']]
                 if owner['id'].endswith('_MUTANT'):
                     with self.assertRaisesRegex(ValueError, 'First mismatch.*' + owner['id']):
@@ -142,7 +144,7 @@ class ReconstructionTests(unittest.TestCase):
             owner = owners[0]
             owner['build']['bindings']['_mode']['offset'] += 1
             module = read_object((work / receipts[owner['id']]['object']).read_bytes())
-            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
+            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'], self.component_modules)
             with self.assertRaisesRegex(ValueError, 'First mismatch.*F_56C6'):
                 mismatch(self.original[owner['start']:owner['end']], result, owner)
 
@@ -155,7 +157,7 @@ class ReconstructionTests(unittest.TestCase):
         module = library_candidate(owner, modules)
         # Whole module ownership does not depend on a first-public selector.
         module.publics = []
-        result, detail = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
+        result, detail = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'], self.component_modules)
         self.assertEqual(detail['object_span'], [0, 25])
         mismatch(self.original[owner['start']:owner['end']], result, owner)
         with self.assertRaisesRegex(ValueError, 'Library identity mismatch'):
@@ -181,9 +183,9 @@ class ReconstructionTests(unittest.TestCase):
             else:
                 module.fixups = [f for f in module.fixups if f['loc'] != 'base16']
                 with self.assertRaisesRegex(ValueError, 'relocation map differs'):
-                    bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
+                    bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'], self.component_modules)
                 continue
-            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'])
+            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'], self.component_modules)
             with self.assertRaisesRegex(ValueError, 'First mismatch.*' + name):
                 mismatch(self.original[owner['start']:owner['end']], result, owner)
 

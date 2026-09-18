@@ -1,0 +1,274 @@
+{
+  "status": "EQUAL",
+  "reconstructed_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "bindings_promoted": 38,
+  "changes": [
+    {
+      "caller": "F_0232",
+      "symbol": "_movmem",
+      "owner": "LIB_MOVMEM",
+      "previous_code_offset": 62280,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_0281",
+      "symbol": "LXMUL@",
+      "owner": "LIB_LXMUL",
+      "previous_code_offset": 62119,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_0281",
+      "symbol": "_farmalloc",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59828,
+      "omf_public_offset": 507
+    },
+    {
+      "caller": "F_224C",
+      "symbol": "_farmalloc",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59828,
+      "omf_public_offset": 507
+    },
+    {
+      "caller": "F_48BE",
+      "symbol": "_memmove",
+      "owner": "LIB_MOVMEM",
+      "previous_code_offset": 62364,
+      "omf_public_offset": 84
+    },
+    {
+      "caller": "F_684A",
+      "symbol": "_farmalloc",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59828,
+      "omf_public_offset": 507
+    },
+    {
+      "caller": "F_684A",
+      "symbol": "_movmem",
+      "owner": "LIB_MOVMEM",
+      "previous_code_offset": 62280,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_68AA",
+      "symbol": "_movmem",
+      "owner": "LIB_MOVMEM",
+      "previous_code_offset": 62280,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_695E",
+      "symbol": "_getvect",
+      "owner": "LIB_GETVECT",
+      "previous_code_offset": 63294,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_695E",
+      "symbol": "_setvect",
+      "owner": "LIB_GETVECT",
+      "previous_code_offset": 63312,
+      "omf_public_offset": 18
+    },
+    {
+      "caller": "F_D344",
+      "symbol": "_farmalloc",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59828,
+      "omf_public_offset": 507
+    },
+    {
+      "caller": "F_D555",
+      "symbol": "_farmalloc",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59828,
+      "omf_public_offset": 507
+    },
+    {
+      "caller": "F_DDD9",
+      "symbol": "LDIV@",
+      "owner": "LIB_LDIV",
+      "previous_code_offset": 63511,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_DDD9",
+      "symbol": "LXLSH@",
+      "owner": "LIB_LLSH",
+      "previous_code_offset": 63674,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_DDD9",
+      "symbol": "LXMUL@",
+      "owner": "LIB_LXMUL",
+      "previous_code_offset": 62119,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_DE7E",
+      "symbol": "LDIV@",
+      "owner": "LIB_LDIV",
+      "previous_code_offset": 63511,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_DE7E",
+      "symbol": "LXMUL@",
+      "owner": "LIB_LXMUL",
+      "previous_code_offset": 62119,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "F_E54D",
+      "symbol": "_inport",
+      "owner": "LIB_INPORT",
+      "previous_code_offset": 63487,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FMALLOC",
+      "symbol": "PADD@",
+      "owner": "LIB_PADD",
+      "previous_code_offset": 60431,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FMALLOC",
+      "symbol": "PCMP@",
+      "owner": "LIB_PCMP",
+      "previous_code_offset": 60522,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FMALLOC",
+      "symbol": "__sbrk",
+      "owner": "LIB_FBRK",
+      "previous_code_offset": 60308,
+      "omf_public_offset": 213
+    },
+    {
+      "caller": "LIB_FBRK",
+      "symbol": "PADD@",
+      "owner": "LIB_PADD",
+      "previous_code_offset": 60431,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FBRK",
+      "symbol": "PCMP@",
+      "owner": "LIB_PCMP",
+      "previous_code_offset": 60522,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FBRK",
+      "symbol": "_setblock",
+      "owner": "LIB_SETBLOCK",
+      "previous_code_offset": 60555,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_CLOSE",
+      "symbol": "__close",
+      "owner": "LIB_CLOSEA",
+      "previous_code_offset": 61146,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_READ",
+      "symbol": "__read",
+      "owner": "LIB_READA",
+      "previous_code_offset": 61373,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_READ",
+      "symbol": "_lseek",
+      "owner": "LIB_LSEEK",
+      "previous_code_offset": 61827,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_WRITE",
+      "symbol": "__write",
+      "owner": "LIB_WRITEA",
+      "previous_code_offset": 61755,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_WRITEA",
+      "symbol": "_lseek",
+      "owner": "LIB_LSEEK",
+      "previous_code_offset": 61827,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_MOVMEM",
+      "symbol": "PCMP@",
+      "owner": "LIB_PCMP",
+      "previous_code_offset": 60522,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FCORELFT",
+      "symbol": "PSBP@",
+      "owner": "LIB_PSBP",
+      "previous_code_offset": 63705,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FFREE",
+      "symbol": "PADD@",
+      "owner": "LIB_PADD",
+      "previous_code_offset": 60431,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FFREE",
+      "symbol": "PCMP@",
+      "owner": "LIB_PCMP",
+      "previous_code_offset": 60522,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_FFREE",
+      "symbol": "__brk",
+      "owner": "LIB_FBRK",
+      "previous_code_offset": 60237,
+      "omf_public_offset": 142
+    },
+    {
+      "caller": "LIB_FFREE",
+      "symbol": "__pull_free_block",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59340,
+      "omf_public_offset": 19
+    },
+    {
+      "caller": "LIB_HARDERR",
+      "symbol": "_bdos",
+      "owner": "LIB_BDOS",
+      "previous_code_offset": 63983,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_HARDERR",
+      "symbol": "_setvect",
+      "owner": "LIB_GETVECT",
+      "previous_code_offset": 63312,
+      "omf_public_offset": 18
+    },
+    {
+      "caller": "LIB_RAND",
+      "symbol": "LXMUL@",
+      "owner": "LIB_LXMUL",
+      "previous_code_offset": 62119,
+      "omf_public_offset": 0
+    }
+  ],
+  "scope": "Pinned OMF public offsets plus fixed module placement; not historical linking"
+}

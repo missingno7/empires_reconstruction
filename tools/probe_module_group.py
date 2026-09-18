@@ -8,6 +8,7 @@ import tempfile
 
 from mz import MZ
 from reconstruct import ROOT, bind_region, compile_sources, mismatch, project_path, read_json, read_object, sha, write_json
+from reconstruct import owned_library_modules
 
 
 def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
@@ -44,13 +45,14 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
     if module.segment_length(recipe['segment']) != selected[-1]['end'] - selected[0]['start']:
         raise ValueError('Combined module emitted extent size differs')
     mz, results, bases, all_fixups = MZ.parse(original), [], set(), []
+    component_modules = owned_library_modules(manifest['regions'], toolchain or root / 'toolchain', read_json(root / 'layout/toolchain.json'))
     for spec, owner, public in zip(recipe['sources'], selected, publics):
         if owner['source'] != spec['path'] or owner['build']['flags_append'] != recipe['flags_append']:
             raise ValueError('Recipe differs from established source/flags')
         expected_offset = owner['start'] - selected[0]['start']
         if public['offset'] != expected_offset:
             raise ValueError(f"{owner['id']}: emitted module-relative public offset differs")
-        data, proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'])
+        data, proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'], component_modules)
         mismatch(original[owner['start']:owner['end']], data, owner)
         bases.add(proof['module_load_base'])
         all_fixups.extend(proof['fixups'])

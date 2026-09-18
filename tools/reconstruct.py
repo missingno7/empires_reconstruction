@@ -177,7 +177,23 @@ def library_candidate(owner, modules):
     return read_object(blob)
 
 
-def component_binding(binding, owners, mz, frames):
+def owned_library_modules(owners, toolchain, lock):
+    """Load each owned module from its pinned library, without placement bytes."""
+    libraries, modules = {}, {}
+    for owner in owners:
+        if owner['kind'] != 'KNOWN_TOOLCHAIN_LIBRARY':
+            continue
+        name = owner['build']['library']
+        pinned = next((x for x in lock.get('libraries', []) if x['path'] == name), None)
+        if pinned is None:
+            raise ValueError(f'Library is not pinned in toolchain lock: {name}')
+        if name not in libraries:
+            libraries[name] = library_modules(project_path(toolchain, name), pinned['sha256'])
+        modules[owner['id']] = library_candidate(owner, libraries[name])
+    return modules
+
+
+def component_binding(binding, owners, mz, frames, component_modules=None):
     """Resolve a declared source symbol through identified component ownership."""
     if 'owner' not in binding:
         return binding
@@ -187,10 +203,23 @@ def component_binding(binding, owners, mz, frames):
     if target is None:
         raise ValueError('Component binding must name an identified owner')
     coordinate = binding['coordinate']
+    public_offset = 0
     if coordinate == 'DGROUP_offset' and target['kind'] == 'EXACT_DATA':
         base = frames['DGROUP']
-    elif coordinate == 'code_offset' and target['kind'] in ('MATCHING_C', 'MATCHING_ASM'):
-        if binding.get('public') != target['build']['public'] or binding.get('addend', 0) != 0:
+    elif coordinate == 'code_offset' and target['kind'] in ('MATCHING_C', 'MATCHING_ASM', 'KNOWN_TOOLCHAIN_LIBRARY'):
+        if binding.get('addend', 0) != 0:
+            raise ValueError('Code component binding must name its selected entry public with zero addend')
+        if target['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+            module = (component_modules or {}).get(target['id'])
+            if module is None:
+                raise ValueError('Library public binding requires its verified component module')
+            publics = [p for p in module.publics_in(target['build']['segment']) if p['name'] == binding.get('public')]
+            if len(publics) != 1:
+                raise ValueError('Library public binding requires exactly one matching OMF public')
+            public_offset = publics[0]['offset']
+            if not 0 <= public_offset < target['end'] - target['start']:
+                raise ValueError('Library public lies outside its owned contribution')
+        elif binding.get('public') != target['build']['public']:
             raise ValueError('Code component binding must name its selected entry public with zero addend')
         if frames['_TEXT'] != 0 or target['build']['segment'] != '_TEXT':
             raise ValueError('Code component binding requires the established zero-based _TEXT frame')
@@ -200,13 +229,13 @@ def component_binding(binding, owners, mz, frames):
     addend = binding.get('addend', 0)
     if type(addend) is not int or not 0 <= addend < target['end'] - target['start']:
         raise ValueError('Component binding addend lies outside its owner')
-    offset = mz.load_offset(target['start']) - base + addend
+    offset = mz.load_offset(target['start']) - base + public_offset + addend
     if not 0 <= offset <= 65535:
         raise ValueError('Component binding does not fit a 16-bit offset')
     return {**binding, 'offset': offset}
 
 
-def bind_region(owner, module, mz, frames, owners=None):
+def bind_region(owner, module, mz, frames, owners=None, component_modules=None):
     """Bind only from source OBJ and declared metadata; never receives original bytes."""
     build = owner['build']
     segment = build['segment']
@@ -248,7 +277,7 @@ def bind_region(owner, module, mz, frames, owners=None):
         if f['loc'] == 'pointer32' and width == 4 and not f['self_relative']:
             if kind != 'external' or symbol not in build['bindings']:
                 raise ValueError(f'Undeclared far pointer {symbol}')
-            binding = component_binding(build['bindings'][symbol], owners, mz, frames)
+            binding = component_binding(build['bindings'][symbol], owners, mz, frames, component_modules)
             if binding['coordinate'] != 'code_offset':
                 raise ValueError(f'Unsupported far data pointer {symbol}')
             addend = int.from_bytes(result[offset:offset+2], 'little')
@@ -273,7 +302,7 @@ def bind_region(owner, module, mz, frames, owners=None):
             elif kind == 'segment' and symbol in build['module_segments']:
                 value = build['module_segments'][symbol]['offset']
             elif kind == 'external' and symbol in build['bindings']:
-                binding = component_binding(build['bindings'][symbol], owners, mz, frames)
+                binding = component_binding(build['bindings'][symbol], owners, mz, frames, component_modules)
                 if f['self_relative'] and binding['coordinate'] != 'code_offset':
                     raise ValueError('Self-relative fixup requires a code address')
                 value = binding['offset']
@@ -336,15 +365,7 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
     work = Path(tempfile.mkdtemp(prefix='session-', dir=output)).resolve()
     receipts, session = {}, None
     lock = read_json(root / 'layout/toolchain.json')
-    libraries = {}
-    for owner in manifest['regions']:
-        if owner['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
-            name = owner['build']['library']
-            pinned = next((x for x in lock.get('libraries', []) if x['path'] == name), None)
-            if pinned is None:
-                raise ValueError(f'Library is not pinned in toolchain lock: {name}')
-            if name not in libraries:
-                libraries[name] = library_modules(project_path(toolchain, name), pinned['sha256'])
+    component_modules = owned_library_modules(manifest['regions'], toolchain, lock)
     if sources:
         receipts, session = compile_sources(root, sources, work, toolchain, dosbox, lock)
     image, reports = bytearray(), []
@@ -359,13 +380,13 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
             artifact.write_bytes(part)
         else:
             if owner['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
-                module = library_candidate(owner, libraries[owner['build']['library']])
+                module = component_modules[owner['id']]
                 proof['library'] = {key: owner['build'][key] for key in ('library', 'library_module', 'module_sha256')}
             else:
                 receipt = receipts[owner['id']]
                 module = read_object((work / receipt['object']).read_bytes())
                 proof['compile'] = receipt
-            part, binding_proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'])
+            part, binding_proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'], component_modules)
             proof.update(binding_proof)
             artifact = project_path(output, owner['artifact'])
             artifact.parent.mkdir(parents=True, exist_ok=True)

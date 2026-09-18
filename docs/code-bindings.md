@@ -2,14 +2,14 @@
 
 488 declarations across 156 callers now refer to the selected entry publics of
 227 matching C/ASM owners. Together with 75 library bindings and nine
-structured-data references, 572 of the 1,725 declared
+structured-data references, 572 of the 1,720 declared
 owner-symbol bindings resolve through component ownership.
 
 `python tools/recover_code_bindings.py` replaces a numeric code address only
 when it is exactly an existing C/ASM owner's entry and the external symbol
 matches that owner's selected public. Interior addresses, raw targets and
 library publics are left unchanged. Existing evidence strings are retained.
-The command compiles all 268 source proof units and checks the complete EXE
+The command compiles all 269 source proof units and checks the complete EXE
 before publishing the updated manifest. Repeating it makes no further changes.
 The migration receipt in `code-binding-evidence.json` records each old address
 and its replacement owner, with the verified whole-file hash.

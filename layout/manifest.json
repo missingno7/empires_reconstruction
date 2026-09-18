@@ -6534,16 +6534,33 @@
       }
     },
     {
-      "id": "RAW_006EF0",
+      "id": "F_6CF0",
+      "kind": "MATCHING_C",
+      "source": "src/F_6CF0.C",
       "start": 28400,
       "end": 28406,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/006EF0-006EF6.bin",
-      "original_symbol": null,
-      "artifact": "raw/006EF0-006EF6.bin",
       "expected_sha256": "bc6eafe4a4068866490e844ba5ad9b49f9344c5fd3e099379543ef5d0d68499c",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6cf0",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc0e8": {
+            "coordinate": "DGROUP_offset",
+            "offset": 49384
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_6CF0",
+      "artifact": "regions/F_6CF0.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from raw code extent and fresh full-extent OMF binding",
+        "change": "Decode the complete 6-byte DGROUP-return routine at load offset 6CF0"
+      }
     },
     {
       "id": "F_6CF6",

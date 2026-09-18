@@ -1,0 +1,38 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_338A",
+      "kind": "MATCHING_C",
+      "start": 13706,
+      "end": 14576,
+      "source": "src/F_338A.C",
+      "artifact": "regions/F_338A.bin",
+      "expected_sha256": "53e5ba1fa7e067777ef3ea4310b07bf5412f3229e02097ecf9cd2413ebf40e18",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f338a",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03b4": {"offset": 948, "coordinate": "code_offset", "evidence": "functions/F_03B4.entry"},
+          "_f03cc": {"offset": 972, "coordinate": "code_offset", "evidence": "functions/F_03CC.entry"},
+          "_fcaf1": {"offset": 51953, "coordinate": "code_offset", "evidence": "functions/F_CAF1.entry"},
+          "_f250c": {"offset": 9484, "coordinate": "code_offset", "evidence": "functions/F_250C.entry"},
+          "_f32fa": {"offset": 13050, "coordinate": "code_offset", "evidence": "functions/F_32FA.entry"},
+          "_f6181": {"offset": 24961, "coordinate": "code_offset", "evidence": "functions/F_6181.entry"},
+          "_g96": {"offset": 150, "coordinate": "DGROUP_offset", "evidence": "storage_objects/G_FAC6.phys"},
+          "_g43b4": {"offset": 17332, "coordinate": "DGROUP_offset", "evidence": "storage_objects/REGION_43B4.phys"},
+          "_s9a5c": {"offset": 39516, "coordinate": "DGROUP_offset", "evidence": "independent far-pointer loads in F_2AE2 and F_338A"},
+          "_s99da": {"offset": 39386, "coordinate": "DGROUP_offset", "evidence": "independent far-pointer loads in F_2AE2 and F_338A"},
+          "_s9b6e": {"offset": 39790, "coordinate": "DGROUP_offset", "evidence": "independent far-pointer loads in F_2AE2 and F_338A"},
+          "_s9ae0": {"offset": 39648, "coordinate": "DGROUP_offset", "evidence": "independent far-pointer loads in F_2AE2 and F_338A"},
+          "_gb3af": {"offset": 45999, "coordinate": "DGROUP_offset", "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F"}
+        }
+      },
+      "classification": "code"
+    }
+  ]
+}

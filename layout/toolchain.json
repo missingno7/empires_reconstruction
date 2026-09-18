@@ -1,0 +1,20 @@
+{
+  "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+  "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+  "flags": "-c -mc -1- -f- -N-",
+  "files": [
+    {
+      "path": "TCC.EXE",
+      "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+    },
+    {
+      "path": "CPP.EXE",
+      "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+    },
+    {
+      "path": "TASM.EXE",
+      "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+    }
+  ],
+  "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+}

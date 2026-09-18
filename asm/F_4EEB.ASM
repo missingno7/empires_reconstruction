@@ -1,0 +1,89 @@
+; F_4EEB -- called as f4eeb(y0) from F_329F/F_3986/F_31C4: walks a fixed
+; 0x20-byte-stride table at gb3ae (count byte at [0], records from [1]),
+; and for every live record whose "screen id" word matches gbfba, does a
+; copy() (03CC) of a jump-table sprite selected by [di+6] and, if a
+; trailing shadow-height byte at [di+0x1a] is set, an f03a5() strip too.
+; census R6 (loop): not a C translation unit.
+_TEXT   segment byte public 'CODE'
+DGROUP  group   _DATA,_BSS
+        assume  cs:_TEXT,ds:DGROUP
+_TEXT   ends
+_DATA   segment word public 'DATA'
+d@      label   byte
+_DATA   ends
+_BSS    segment word public 'BSS'
+b@      label   byte
+_BSS    ends
+_TEXT   segment byte public 'CODE'
+_f4eeb  proc    near
+        push    bp
+        mov     bp,sp
+        mov     ax,0fh
+        push    ax
+        call    _f01ce
+        pop     ax
+        push    si
+        push    di
+        mov     di,offset _gb3ae
+        xor     cx,cx
+        mov     cl,byte ptr [di]
+        or      cx,cx
+        je      @@end
+        inc     di
+@@loop:
+        xor     ax,ax
+        mov     al,byte ptr [di+1]
+        cmp     ax,_gbfba
+        jne     @@skip
+        cmp     byte ptr [di+8],1
+        je      @@skip
+        push    cx
+        xor     bx,bx
+        mov     bl,byte ptr [di+7]
+        push    bx
+        mov     bl,byte ptr [di+6]
+        shl     bx,1
+        shl     bx,1
+        les     ax,dword ptr _gb07c[bx]
+        push    es
+        push    ax
+        mov     ax,[bp+4]
+        add     ax,word ptr [di+4]
+        push    ax
+        push    word ptr [di+2]
+        call    _f03cc
+        add     sp,0ah
+        cmp     byte ptr [di+1ah],0
+        je      @@skip2
+        mov     ax,word ptr [di+2]
+        add     ax,10h
+        mov     bx,word ptr [di+4]
+        mov     dl,byte ptr [di+1ah]
+        xor     dh,dh
+        sub     bx,dx
+        inc     bx
+        push    bx
+        push    dx
+        push    ax
+        call    _f03a5
+        add     sp,6
+@@skip2:
+        pop     cx
+@@skip:
+        add     di,20h
+        loop    @@loop
+@@end:
+        pop     di
+        pop     si
+        pop     bp
+        ret
+_f4eeb  endp
+_TEXT   ends
+        public  _f4eeb
+        extrn   _f01ce:near
+        extrn   _f03cc:near
+        extrn   _f03a5:near
+        extrn   _gb3ae:byte
+        extrn   _gbfba:word
+        extrn   _gb07c:word
+        end

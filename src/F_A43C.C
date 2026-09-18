@@ -1,0 +1,1 @@
+extern int f6c57(),f6c87(),fa40a(),f03b4(),f03ba(),f039f(),f6b4a(),f6b1a();extern int g13ef;fa43c(a,b) int a,b;{register int t,c;c=15;t=0;f6c57(23);while(!f6b4a()){if(f6c87()){if(t=!t)fa40a(a,b,c^=15);if(++g13ef>=3)g13ef=0;f03b4(g13ef*18,400,18,33,4,85);f03ba(4,85,18,33,0x12a,85);f039f(4,85,18,33);f039f(0x12a,85,18,33);f6c57(23);}}fa40a(a,b,15);return f6b1a();}

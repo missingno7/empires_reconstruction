@@ -1,0 +1,54 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "094335f75144b09bb8e94fb7c2f06633037baf150bc7859f70f3d18f7f4cca13",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 609,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 14,
+  "owners": [
+    {
+      "id": "F_4943",
+      "kind": "MATCHING_C",
+      "bytes": 160,
+      "sha256": "43dd3ad6f322a7b78f1deed7a42d5409ae08b30a88a19263ab65ca552cd78405",
+      "source_sha256": "296abbcd6f65d7ac2ecb2bbebe8b28dafde396cd33212f12aecf616dc72f65b6",
+      "fixups": 15,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_A43C",
+      "kind": "MATCHING_C",
+      "bytes": 233,
+      "sha256": "e672697db0d5753a53d526f7c8f817ddcf677ff66a19570979e1c3f87b08f7d3",
+      "source_sha256": "b793340e3b2934c5c95cc13ee3a1644a38e631c1c56fb5d535fc6407ef5d90b3",
+      "fixups": 15,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_D26C",
+      "kind": "MATCHING_C",
+      "bytes": 216,
+      "sha256": "24444a64104309af8a1c75f25b7bc7414139c5e4ad5e580210e02268fd9d469c",
+      "source_sha256": "516442546454136288ae66e23037fa93fea50456eff8e97abfa537827a41102f",
+      "fixups": 31,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "TEXT_22D2",
+      "kind": "EXACT_DATA",
+      "bytes": 14,
+      "sha256": "62deb609c79812bbdfe8c0079faa48ca9ff0c01b96f74094aeba0d4a2762893b",
+      "source_sha256": "e80346e21220b63f0c50a064616627dd5edbf1c94c746470be4feb81b39829f3",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

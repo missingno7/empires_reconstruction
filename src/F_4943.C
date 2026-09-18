@@ -1,0 +1,1 @@
+extern int f1ec0(),f4713();extern int g13ed,g9ade,g73e;struct R{char a[12];char b;char c[9];char s[4];char e;};extern struct R gc470[];f4943(i) register int i;{gc470[g13ed].b=i+1;g9ade=gc470[g13ed].s[i]*2+i*8;g73e=-1;while(1){if(f1ec0(g9ade)){if(!f4713())g9ade-=2;else{gc470[g13ed].s[i]++;if((g9ade&7)==7)break;}}else{while(!f4713());}g9ade++;}}

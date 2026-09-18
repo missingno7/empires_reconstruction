@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "historical refusals inventoried; fresh candidate work remains",
-      "matches": "Current build proves 217 C and 20 ASM extents. The refreshed historical snapshot retains 19 provider-refused candidates; resolved extents include TOUPPER reconstructed directly as C.",
+      "matches": "Current build proves 218 C and 20 ASM extents. The refreshed historical snapshot retains 19 provider-refused candidates; resolved extents include TOUPPER reconstructed directly as C.",
       "first_unresolved_fact": "61 external symbols across 108 fixup sites remain undecided in the historical held snapshot. Source comments and comparison operand addresses alone are not independent linkage ownership.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -32,7 +32,7 @@
     {
       "target": "Original modules and historical linker",
       "state": "open investigation, not demonstrated blocked",
-      "matches": "237 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
+      "matches": "238 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
       "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
       "evidence": [
         "layout/manifest.json",
@@ -55,7 +55,7 @@
         "docs/vision.md"
       ],
       "unblock": "Prove individual palettes, tables, strings, alignment and data ranges from existing format evidence and xrefs, then add strict structural encoders.",
-      "leverage": "44,028 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
+      "leverage": "43,782 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
     },
     {
       "target": "Nested resources, fonts, level record blocks and actor bytecode",

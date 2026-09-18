@@ -1,0 +1,155 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_A768",
+      "kind": "MATCHING_C",
+      "start": 43368,
+      "end": 43614,
+      "source": "src/F_A768.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa768",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B74.entry",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0
+          },
+          "_fd593": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D593.entry",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0
+          },
+          "_f792c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_792C.entry",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7925.entry",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6990.entry",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0
+          },
+          "_f703e": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_703E.entry",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0
+          },
+          "_g13d9": {
+            "offset": 5081,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20F09.phys"
+          },
+          "_f8480": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8480.entry",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a2": {
+            "offset": 930,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A2.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f03ab": {
+            "offset": 939,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03AB.entry"
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B1A.entry",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0
+          },
+          "_fa1e0": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_A1E0.entry",
+            "owner": "F_A1E0",
+            "public": "_fa1e0",
+            "addend": 0
+          },
+          "_f8453": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8453.entry",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0
+          },
+          "_f7162": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7162.entry",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0
+          },
+          "_f6997": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6997.entry",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0
+          },
+          "_f791e": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_791E.entry",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0
+          },
+          "_fd5a6": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D5A6.entry",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_A768.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "3c40ef79fe7c40d293773850b0fb50f7151396b7cdd3c3686637e891190f9d0a",
+      "provenance": {
+        "method": "local C reconstruction and fresh complete OMF comparison",
+        "upstream_entry_sha256": "343c54c4deeb32f111a05ffbe07eadf7ad0d272229d66b297cab888e9406ffcb",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

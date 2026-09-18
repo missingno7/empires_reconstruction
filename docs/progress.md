@@ -8,15 +8,15 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 25,989 | 217 |
+| Freshly compiled matching C | 14,077 | 26,235 | 218 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,524 | 36 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 59 | 4 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 44,028 | 61 |
-| Total | 79,154 | 79,154 | 345 |
+| Exact raw fallback | 62,621 | 43,782 | 60 |
+| Total | 79,154 | 79,154 | 346 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -126,10 +126,10 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 237 source proof units from **zero proven
+The combined EXE metrics distinguish 238 source proof units from **zero proven
 historical source modules**, and 1,297 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-23,146 raw EXE bytes as unresolved machine code; overlapping entry/parent
+22,900 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 20,882 raw bytes remain unknown. Two palette owners account for
 1,536 embedded-asset bytes. There are now 365 component-owned bindings
 within fixed placement: two palette references, 151 C/ASM entry references,
@@ -392,3 +392,8 @@ F_8480 and F_7BFC add 990 matching C bytes. Exact pointer conversion supplies
 the DS segment, while the 20-byte structure copy uses the pinned SCOPY public.
 Both complete extents and negative controls are freshly compiled. See
 [the wave-twenty-five proof](matching-c-wave25.md).
+
+
+## Twenty-seventh local C wave
+
+F_A768 adds 246 matching C bytes. Its historical switch-table case order and DS:13D9 record binding are proven by fresh OMF comparison. See [the wave-twenty-seven proof](matching-c-wave27.md).

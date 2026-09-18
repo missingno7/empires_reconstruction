@@ -14993,16 +14993,109 @@
       }
     },
     {
-      "id": "RAW_00D671",
+      "id": "F_D471",
+      "kind": "MATCHING_C",
+      "source": "src/F_D471.C",
       "start": 54897,
+      "end": 54919,
+      "expected_sha256": "60ae921e6906de565ee547b8e63987a84ca3ee51b6cb9f8f59217f3254b2af36",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd471",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd3da": {
+            "coordinate": "code_offset",
+            "owner": "F_D3DA",
+            "public": "_fd3da",
+            "addend": 0
+          },
+          "_g2315": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8981
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_D471",
+      "artifact": "regions/F_D471.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
+        "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
+      }
+    },
+    {
+      "id": "F_D487",
+      "kind": "MATCHING_C",
+      "source": "src/F_D487.C",
+      "start": 54919,
+      "end": 54941,
+      "expected_sha256": "2f4027c1b69a19aa411ab533ec23bd3637dd12f42c3e69e8f5f7af1f72b5e2ff",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd487",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd3da": {
+            "coordinate": "code_offset",
+            "owner": "F_D3DA",
+            "public": "_fd3da",
+            "addend": 0
+          },
+          "_g2326": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8998
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_D487",
+      "artifact": "regions/F_D487.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
+        "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
+      }
+    },
+    {
+      "id": "F_D49D",
+      "kind": "MATCHING_C",
+      "source": "src/F_D49D.C",
+      "start": 54941,
       "end": 54963,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00D671-00D6B3.bin",
-      "original_symbol": null,
-      "artifact": "raw/00D671-00D6B3.bin",
-      "expected_sha256": "ee3deb67d607cc39d92eb6854b44fa279e42fe8c0794cf6155cab1069ff792b6",
-      "matching_status": "EQUAL"
+      "expected_sha256": "503fdaf7eadb6a174f92acdbb8caeff5423b817e03cf4010b4d66939b34bf5ba",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd49d",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd3da": {
+            "coordinate": "code_offset",
+            "owner": "F_D3DA",
+            "public": "_fd3da",
+            "addend": 0
+          },
+          "_g233b": {
+            "coordinate": "DGROUP_offset",
+            "offset": 9019
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_D49D",
+      "artifact": "regions/F_D49D.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
+        "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
+      }
     },
     {
       "id": "F_D4B3",

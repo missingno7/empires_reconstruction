@@ -1,0 +1,52 @@
+{
+  "format": "empires-mechanical-frontiers-v1",
+  "phase": "matching and structural reconstruction",
+  "globally_saturated": false,
+  "frontiers": [
+    {
+      "target": "Exact pair-span compressor policy",
+      "state": "partial match; concrete mechanical blocker",
+      "matches": "All 182 compressed resources decode; all 155 RLE stages encode exactly; 26 compressed resources encode exactly.",
+      "first_unresolved_fact": "The original selects shorter dictionary spans than greedy longest matching at the first divergence in all 156 remaining streams. Neither earliest nor latest duplicate-span ties fixes this.",
+      "evidence": ["docs/codec-evidence.json", "tools/probe_archive_codecs.py", "docs/archive-formats.md"],
+      "unblock": "Infer dictionary insertion/search availability and match selection from token traces; test candidate policies against full original streams.",
+      "leverage": "156 compressed resources; includes 43 already losslessly structured bitmap/level payloads."
+    },
+    {
+      "target": "Held C linkage closure",
+      "state": "historical refusals inventoried; fresh candidate work remains",
+      "matches": "Current build proves 126 C and 20 ASM extents. Upstream reports 24 held candidates with undecided linkage and 3 candidates with byte differences.",
+      "first_unresolved_fact": "69 external symbols across 118 fixup sites remain undecided in the held snapshot. Source comments and comparison operand addresses alone are not independent linkage ownership.",
+      "evidence": ["docs/linkage-blockers.json", "tools/inventory_linkage.py", "layout/manifest.json"],
+      "unblock": "Establish storage/module ownership from OMF, declared objects or independent cross-reference evidence; then freshly compile and verify every byte and relocation.",
+      "leverage": "27 held extents total 10,488 bytes (candidate extent sum). _b437a, _b4380 and _b4386 each affect two candidates totalling 4,484 bytes; these overlapping leverage totals must not be added."
+    },
+    {
+      "target": "Original modules and historical linker",
+      "state": "open investigation, not demonstrated blocked",
+      "matches": "146 independent source proof units, 35 complete pinned library code contributions and all 106 MZ relocations. Fixed placement proves the full EXE.",
+      "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
+      "evidence": ["layout/manifest.json", "layout/mz-header.json", "tools/omf.py"],
+      "unblock": "Test shared units using public order and shared data evidence; compare linker experiments against the fixed-placement output.",
+      "leverage": "787 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
+    },
+    {
+      "target": "EXE raw-data classification and embedded assets",
+      "state": "machine extents classified; remaining structures not exhausted",
+      "matches": "34,965 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 22,812 raw bytes are unknown.",
+      "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
+      "evidence": ["docs/upstream-inventory.json", "tools/reconstruct_game.py", "docs/vision.md"],
+      "unblock": "Prove individual palettes, tables, strings, alignment and data ranges from existing format evidence and xrefs, then add strict structural encoders.",
+      "leverage": "57,777 raw EXE bytes retain exact fallback; known embedded-palette evidence is a productive next candidate."
+    },
+    {
+      "target": "Nested resources, fonts, level record blocks and actor bytecode",
+      "state": "productive frontier remains open",
+      "matches": "All 220 resources partition and decode; 49 standalone bitmap and 20 level payloads structurally round-trip. Twenty-six structured sources reproduce complete resource blocks.",
+      "first_unresolved_fact": "Nested bank ownership, font tables, level record-block subdivisions and bytecode instruction boundaries need strict lossless adapters. Most level recompression also needs the compressor policy.",
+      "evidence": ["docs/resource-format-evidence.json", "tools/resource_formats.py", "docs/archive-formats.md"],
+      "unblock": "Import upstream format facts incrementally, preserve unknown bytes and prove exact payload encoding before requiring original compressed-stream identity.",
+      "leverage": "Further structure in the 193 raw resources; do not count decoded-only data as matching compressed source."
+    }
+  ]
+}

@@ -2,7 +2,8 @@
 
 Full EXE identity is preserved. Follow-ups to MVP1 remove 4,844 bytes from raw
 fallback: 4,332 bytes of matching C/library regions and the 512-byte header.
-Embedded assets and gameplay semantics remain outside this mechanical work.
+Archive/resource structure now has a separate exact build. Broad gameplay
+semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
@@ -74,7 +75,7 @@ ignored files alone rather than deleting evidence automatically.
 
 ## Verification and next boundary
 
-Eighteen tests pass, including fresh C/ASM mutations, library/module identity
+The eighteen original EXE tests cover fresh C/ASM mutations, library/module identity
 errors, a modified library instruction, a wrong library global address,
 missing relocation, and a failed promotion preserving canonical files.
 Header tests cover changed fields, checksum, uninterpreted bytes and padding;
@@ -86,7 +87,60 @@ copy is also bootstrapped with only locally supplied game/compiler inputs,
 recreates its raw files, and produces the same EXE without accessing upstream
 or having a raw header file.
 
-The next useful step is to assess remaining upstream refused regions one at
-a time when a missing binding has independent evidence. Runtime-generated
-memory must remain distinct from original on-disk bytes; full native linking,
-semantic recovery and asset decoding are still separate work.
+## Complete-game reconstruction
+
+`python tools/reconstruct_game.py` freshly rebuilds all **690,588 bytes** of
+the EXE and both DAT archives, and publishes `build/game-report.json` only
+after all components pass. The former EXE-only command remains available.
+
+| Archive coverage | AE000 | AE001 |
+|---|---:|---:|
+| Exact complete bytes | 227,560 | 383,874 |
+| Partitioned and decoded resources | 89 | 131 |
+| Structured payloads round-tripped | 44 | 25 |
+| Canonical matching resources | 26 | 1 |
+| Canonical matching resource bytes (including headers) | 3,773 | 26,138 |
+| Exact recompressed payload bytes | 3,721 | 0 |
+| Structured canonical sources | 25 | 1 |
+| Remaining raw resources | 63 | 130 |
+
+All 155 RLE stages match exactly. Twenty-six of 182 pair-span streams match
+the current encoder. The other 156 first token differences all reflect the
+original selecting a shorter span than the greedy candidate. Both tested
+duplicate-span tie policies yield the same 26 matches. Token/byte differences
+are recorded in [codec-evidence.json](codec-evidence.json).
+
+All 49 standalone bitmaps and all 20 level payloads round-trip through strict
+structural encoders. Twenty-five bitmaps and the uncompressed first level
+also reproduce their whole original resources and are canonical structured
+sources. Forty-three other structural payloads remain derived research until
+their compression matches. Original game files and all raw/decoded/structured
+asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
+
+The combined EXE metrics distinguish 146 source proof units from **zero proven
+historical source modules**, and 787 declared owner-symbol bindings from
+**zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
+34,965 raw EXE bytes as unresolved machine code; overlapping entry/parent
+extents count once. The other 22,812 raw bytes remain unknown. No speculative
+static-data or embedded-asset coverage is claimed.
+
+[linkage-blockers.json](linkage-blockers.json) snapshots 27 held upstream
+candidates (10,488 extent bytes): 24 linkage refusals and three byte differences,
+with 69 undecided symbols at 118 fixup sites. The shared `_b437a`, `_b4380`,
+and `_b4386` symbols each affect two candidates covering 4,484 bytes; these
+candidate sets overlap, so the leverage counts must not be added. This is
+historical evidence, not a fresh match grant. `tools/inventory_linkage.py`
+refreshes the ranking without modifying upstream.
+
+Thirty-one tests pass, including independent hand-authored codec streams,
+all observed RLE policies, complete structured payload round trips, mutations,
+failure invalidation and archive bootstrap from only supplied local inputs.
+All 220 decoded resources also agree with the independent upstream decoder.
+A separate clean source copy, supplied only the three original game files and
+four pinned compiler/library binaries, recreates every local source and builds
+the same three files without upstream access.
+
+The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
+retain the user's broader agenda. Matching is **not globally saturated**:
+compressor search policy, linkage closure, module grouping, embedded-data
+classification and nested-resource adapters remain mechanical frontiers.

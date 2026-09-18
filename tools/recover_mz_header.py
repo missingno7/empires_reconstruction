@@ -35,7 +35,7 @@ def main():
                            'image_sha256': sha(original), 'previous_owner': previous['id']}
     validate_layout(proposed)
     # No canonical state changes before the candidate has passed exact comparison.
-    for name in ('AEPROG.EXE', 'report.json'):
+    for name in ('AEPROG.EXE', 'report.json', 'game-report.json'):
         (ROOT / 'build' / name).unlink(missing_ok=True)
     write_json(target, document)
     pending = manifest_path.with_suffix('.json.pending')

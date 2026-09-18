@@ -188,7 +188,7 @@ def promote(upstream, ids, all_libraries, dosbox, toolchain):
                                  'compile': receipts.get(owner['id'])})
     write_json(work / 'proof.json', proof)
     # Publication only after every candidate and the proposed partition passed.
-    for name in ('report.json', 'AEPROG.EXE'):
+    for name in ('report.json', 'AEPROG.EXE', 'game-report.json'):
         (ROOT / 'build' / name).unlink(missing_ok=True)
     for source, data in sources.items():
         project_path(ROOT, source).write_bytes(data)

@@ -268,7 +268,7 @@ def bind_region(owner, module, mz, frames):
 def reconstruct(root, manifest_path, output, toolchain, dosbox):
     output.mkdir(parents=True, exist_ok=True)
     # Invalidate old success before even checking inputs, including manifest errors.
-    for name in ('AEPROG.EXE', 'report.json'):
+    for name in ('AEPROG.EXE', 'report.json', 'game-report.json'):
         (output / name).unlink(missing_ok=True)
     manifest = read_json(manifest_path)
     validate_layout(manifest)

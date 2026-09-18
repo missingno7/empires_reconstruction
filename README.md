@@ -1,32 +1,41 @@
 # Empires reconstruction
 
-Rebuild `AEPROG.EXE` as fixed, independently owned file ranges. **The complete
-79,154-byte EXE matches the original byte-for-byte**, including its MZ header
-and relocation table. The build compiles 126 C regions, assembles 20 ASM
+Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
+ranges and resources. **All 690,588 bytes across the three files match the
+originals exactly**, including executable relocations and archive offsets.
+The build compiles 126 C regions, assembles 20 ASM
 regions, and extracts 35 pinned Borland library modules. The MZ header is
-encoded from explicit metadata; 66 raw regions cover everything else. Library
-and header bytes are reported separately from compiled source.
+encoded from explicit metadata; 66 raw regions cover the remaining EXE bytes.
+Both archives have explicit resource ownership. Twenty-six compressed resources
+re-encode exactly; 25 of those use structured bitmap sources. The uncompressed
+first level also rebuilds from structured source, for 27 matching resources.
+The other 193 retain raw payloads. Library, header, structured and fallback
+coverage are reported separately.
 
 From this directory, with Python 3.10+:
 
 ```powershell
-python tools/reconstruct.py
+python tools/reconstruct_game.py
 ```
 
-This produces `build/AEPROG.EXE` and `build/report.json`, prints coverage and
-hashes, and exits nonzero on a failure. Every invocation builds fresh objects.
+This produces all three files, `build/report.json`, `build/archives-report.json`
+and `build/game-report.json`, prints coverage and hashes, and exits nonzero on
+a failure. Every invocation builds fresh objects. For only the EXE, use
+`python tools/reconstruct.py`; for only DATs, use
+`python tools/reconstruct_archives.py`.
 It needs DOSBox Staging (installed here at
 `C:/Program Files/DOSBox Staging/dosbox.exe`) and the three pinned Borland
 executables plus `CC.LIB`, installed locally in `toolchain/`. There are no Python
 package dependencies and no PortForge dependency at build or game runtime.
 
 Game files, raw byte extracts, compiler binaries, and build output are not
-distributed in Git. On a fresh checkout, place your own original `AEPROG.EXE`
-in `assets/`, then recreate the raw owners and copy the compiler tools from
+distributed in Git. On a fresh checkout, place your own original `AEPROG.EXE`,
+`AE000.DAT` and `AE001.DAT` in `assets/`, then recreate the local sources and copy the compiler tools from
 the existing local upstream installation once:
 
 ```powershell
 python tools/extract_raw.py
+python tools/reconstruct_archives.py prepare
 python tools/setup_toolchain.py
 # Alternatively: python tools/setup_toolchain.py --from "X:/your/TC/BIN"
 # If libraries are elsewhere, add --lib-from "X:/your/TC/LIB".
@@ -37,8 +46,9 @@ The entire toolchain directory is ignored by Git and is not redistributed. Overr
 emulator location with `--dosbox PATH` or the `DOSBOX` environment variable;
 override the Borland directory with `--toolchain PATH`.
 
-The build follows [layout/manifest.json](layout/manifest.json), the sole
-authority for ownership. Ranges use **file offsets, start inclusive and end
+The EXE build follows [layout/manifest.json](layout/manifest.json), the sole
+authority for executable ownership. DAT manifests live in `layout/archives/`.
+Ranges use **file offsets, start inclusive and end
 exclusive**. Each source owner includes its public-symbol selection, compiler
 flags, address bindings, provenance and expected byte digest. `src/` and `asm/`
 contain preserved upstream source; `layout/mz-header.json` contains all header
@@ -53,8 +63,12 @@ Library owners use complete `_TEXT` contributions extracted from the pinned
 `CC.LIB`, through the same binding and relocation checks. The original in
 `assets/` is the comparison fixture. The header is encoded and verified before
 compilation; altered fields or padding fail with the `MZ_HEADER` owner named.
-Unimported code, data, and embedded assets retain raw ownership. `AE000.DAT` and
-`AE001.DAT` remain untouched; reconstructing those files is outside MVP1.
+Unimported code, data, and embedded assets retain raw ownership. Archive tables
+and type/flag headers are encoded from metadata. Matching payloads are encoded
+from local decoded or structured sources; all other payloads retain raw bytes.
+All 220 resources decode, and 49 bitmap plus 20 level payloads also pass strict
+structural round trips. Payload encoding and exact recompression are separate
+metrics. See [archive formats and proof boundaries](docs/archive-formats.md).
 
 ```powershell
 python -m unittest discover -s tests -v
@@ -64,7 +78,10 @@ Tests include freshly compiled C and ASM mutations, library identity/selection
 errors, changed library code, wrong symbol bindings, raw corruption, length
 errors, gaps, overlaps, malformed OMF, relocation errors, header fields/padding,
 relocation ordering, stale-success invalidation, and failed promotions leaving
-ownership unchanged. Compiler logs, bound regions, fixups,
+ownership unchanged. Archive tests also cover malformed tables, empty slots,
+trailing bytes, codec truncation, exact historical RLE streams, structured
+pixel/level data, clean bootstrap and corrupted-source failures.
+Compiler logs, bound regions, fixups,
 tool identities and per-owner results are retained under `build/` for review.
 Failed runs remove the previous published EXE/report. Session directories can
 be removed when their evidence is no longer needed.
@@ -73,5 +90,6 @@ See [address and layout rules](docs/layout.md),
 [upstream inventory](docs/upstream-inventory.md), and
 [current progress and promotion workflow](docs/progress.md).
 [MVP1 results](docs/mvp1-report.md) preserve the original milestone.
-The longer-term direction is in
-[docs/vision.md](docs/vision.md).
+The active [mechanical reconstruction phase](docs/matching-phase.md) follows
+[docs/vision.md](docs/vision.md); [the blocker ledger](docs/blockers.json)
+separates concrete blockers from still-open productive frontiers.

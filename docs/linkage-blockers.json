@@ -1,0 +1,1485 @@
+{
+  "format": "empires-held-linkage-evidence-v1",
+  "upstream": "D:\\Games\\DOS\\dos_recosystem\\empires_forged",
+  "source": "controls\\correspondence\\held-by-provider.json",
+  "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
+  "scope": "Historical provider refusals, excluding currently owned IDs; fresh compilation still required.",
+  "held_candidates": 27,
+  "held_extent_bytes": 10488,
+  "reason_counts": {
+    "PROVIDER_REFUSED": 24,
+    "DIFFERS": 3
+  },
+  "unique_unresolved_symbols": 69,
+  "unresolved_fixup_sites": 118,
+  "symbols": [
+    {
+      "symbol": "_b437a",
+      "candidate_count": 2,
+      "candidate_bytes": 4484,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_b4380",
+      "candidate_count": 2,
+      "candidate_bytes": 4484,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_b4386",
+      "candidate_count": 2,
+      "candidate_bytes": 4484,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_s99da",
+      "candidate_count": 2,
+      "candidate_bytes": 2632,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_338A"
+      ]
+    },
+    {
+      "symbol": "_s9a5c",
+      "candidate_count": 2,
+      "candidate_bytes": 2632,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_338A"
+      ]
+    },
+    {
+      "symbol": "_s9ae0",
+      "candidate_count": 2,
+      "candidate_bytes": 2632,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_338A"
+      ]
+    },
+    {
+      "symbol": "_s9b6e",
+      "candidate_count": 2,
+      "candidate_bytes": 2632,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_2AE2",
+        "F_338A"
+      ]
+    },
+    {
+      "symbol": "_DATA",
+      "candidate_count": 2,
+      "candidate_bytes": 721,
+      "fixup_sites": 4,
+      "candidate_ids": [
+        "F_A658",
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_g9bfc",
+      "candidate_count": 2,
+      "candidate_bytes": 426,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_1D47",
+        "F_4E9F"
+      ]
+    },
+    {
+      "symbol": "_gbf66",
+      "candidate_count": 2,
+      "candidate_bytes": 426,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_1D47",
+        "F_4E9F"
+      ]
+    },
+    {
+      "symbol": "_abort",
+      "candidate_count": 2,
+      "candidate_bytes": 317,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "LIB_SETARGV",
+        "LIB_SETENVP"
+      ]
+    },
+    {
+      "symbol": "_g96ee",
+      "candidate_count": 2,
+      "candidate_bytes": 185,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_21DB",
+        "F_2269"
+      ]
+    },
+    {
+      "symbol": "_b438c",
+      "candidate_count": 1,
+      "candidate_bytes": 2722,
+      "fixup_sites": 3,
+      "candidate_ids": [
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_b43aa",
+      "candidate_count": 1,
+      "candidate_bytes": 2722,
+      "fixup_sites": 3,
+      "candidate_ids": [
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_c470",
+      "candidate_count": 1,
+      "candidate_bytes": 2722,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_str96ee",
+      "candidate_count": 1,
+      "candidate_bytes": 2722,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_a6f2a",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_a74a2",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_a893c",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_s6e88",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_s735e",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_s7400",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_s79bf",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_s8c12",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 8,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_s9c50",
+      "candidate_count": 1,
+      "candidate_bytes": 1762,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_gc0b2",
+      "candidate_count": 1,
+      "candidate_bytes": 981,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_gc0b4",
+      "candidate_count": 1,
+      "candidate_bytes": 981,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_gc0c2",
+      "candidate_count": 1,
+      "candidate_bytes": 981,
+      "fixup_sites": 5,
+      "candidate_ids": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_gc0c4",
+      "candidate_count": 1,
+      "candidate_bytes": 981,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_sprbase",
+      "candidate_count": 1,
+      "candidate_bytes": 981,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_wig",
+      "candidate_count": 1,
+      "candidate_bytes": 981,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_gb3af",
+      "candidate_count": 1,
+      "candidate_bytes": 870,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_338A"
+      ]
+    },
+    {
+      "symbol": "_a1271",
+      "candidate_count": 1,
+      "candidate_bytes": 529,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_9B68"
+      ]
+    },
+    {
+      "symbol": "_g0dcc",
+      "candidate_count": 1,
+      "candidate_bytes": 529,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_9B68"
+      ]
+    },
+    {
+      "symbol": "_cel",
+      "candidate_count": 1,
+      "candidate_bytes": 462,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_233E"
+      ]
+    },
+    {
+      "symbol": "_cur",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 3,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_done_a",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_done_b",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_done_c",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_done_d",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_done_e",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_done_f",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_err",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 3,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_init_b",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_init_c",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_init_d",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_init_e",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_tbl",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 10,
+      "candidate_ids": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "__fmode",
+      "candidate_count": 1,
+      "candidate_bytes": 398,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_OPEN"
+      ]
+    },
+    {
+      "symbol": "__notUmask",
+      "candidate_count": 1,
+      "candidate_bytes": 398,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_OPEN"
+      ]
+    },
+    {
+      "symbol": "_g40d4",
+      "candidate_count": 1,
+      "candidate_bytes": 350,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_1D47"
+      ]
+    },
+    {
+      "symbol": "_gbfc8",
+      "candidate_count": 1,
+      "candidate_bytes": 350,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_1D47"
+      ]
+    },
+    {
+      "symbol": "__argc",
+      "candidate_count": 1,
+      "candidate_bytes": 253,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_SETARGV"
+      ]
+    },
+    {
+      "symbol": "__envLng",
+      "candidate_count": 1,
+      "candidate_bytes": 253,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_SETARGV"
+      ]
+    },
+    {
+      "symbol": "__osmajor",
+      "candidate_count": 1,
+      "candidate_bytes": 253,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_SETARGV"
+      ]
+    },
+    {
+      "symbol": "_g1650",
+      "candidate_count": 1,
+      "candidate_bytes": 178,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A28D"
+      ]
+    },
+    {
+      "symbol": "_g1659",
+      "candidate_count": 1,
+      "candidate_bytes": 178,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A28D"
+      ]
+    },
+    {
+      "symbol": "__envSize",
+      "candidate_count": 1,
+      "candidate_bytes": 64,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_SETENVP"
+      ]
+    },
+    {
+      "symbol": "_errno",
+      "candidate_count": 1,
+      "candidate_bytes": 59,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_IOERROR"
+      ]
+    },
+    {
+      "symbol": "_g9cf2",
+      "candidate_count": 1,
+      "candidate_bytes": 50,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_21A9"
+      ]
+    },
+    {
+      "symbol": "_ga6b6",
+      "candidate_count": 1,
+      "candidate_bytes": 50,
+      "fixup_sites": 2,
+      "candidate_ids": [
+        "F_21A9"
+      ]
+    },
+    {
+      "symbol": "__ctype",
+      "candidate_count": 1,
+      "candidate_bytes": 49,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_TOUPPER"
+      ]
+    },
+    {
+      "symbol": "__atexittbl",
+      "candidate_count": 1,
+      "candidate_bytes": 48,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_EXIT"
+      ]
+    },
+    {
+      "symbol": "__exit",
+      "candidate_count": 1,
+      "candidate_bytes": 48,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_EXIT"
+      ]
+    },
+    {
+      "symbol": "_BSS",
+      "candidate_count": 1,
+      "candidate_bytes": 38,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "LIB_ATEXIT"
+      ]
+    },
+    {
+      "symbol": "_arr",
+      "candidate_count": 1,
+      "candidate_bytes": 38,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_9440"
+      ]
+    },
+    {
+      "symbol": "_gg",
+      "candidate_count": 1,
+      "candidate_bytes": 38,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_9440"
+      ]
+    },
+    {
+      "symbol": "_gc360",
+      "candidate_count": 1,
+      "candidate_bytes": 31,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_A13F"
+      ]
+    },
+    {
+      "symbol": "_f622c",
+      "candidate_count": 1,
+      "candidate_bytes": 9,
+      "fixup_sites": 1,
+      "candidate_ids": [
+        "F_625D"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "F_1D47",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "13aa5c1132633739b7b94086a8e469c34592b8fdb8ce6554d435c262fc86c060",
+      "extent_bytes": 350,
+      "draft": "c/F_1D47.C",
+      "draft_sha256": "a8eae3bad5fc8bf0680add7f61157d557028f594d617ed4113be367630480888",
+      "refusal": "4 of the candidate's 42 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _gbfc8 at offset 235. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 235,
+          "symbol": "_gbfc8"
+        },
+        {
+          "offset": 270,
+          "symbol": "_g9bfc"
+        },
+        {
+          "offset": 301,
+          "symbol": "_gbf66"
+        },
+        {
+          "offset": 332,
+          "symbol": "_g40d4"
+        }
+      ]
+    },
+    {
+      "id": "F_21A9",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "1fdde0603d7fd91fa6a91cfda13e48f582c2058fe12fe18ade6f313a4e09a2ac",
+      "extent_bytes": 50,
+      "draft": "c/F_21A9.C",
+      "draft_sha256": "0b04faed305e54d62081a1a0d4630bcfd220a81b4986262abb0a6e7dbcea1c54",
+      "refusal": "4 of the candidate's 10 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g9cf2 at offset 2. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 2,
+          "symbol": "_g9cf2"
+        },
+        {
+          "offset": 16,
+          "symbol": "_ga6b6"
+        },
+        {
+          "offset": 37,
+          "symbol": "_g9cf2"
+        },
+        {
+          "offset": 47,
+          "symbol": "_ga6b6"
+        }
+      ]
+    },
+    {
+      "id": "F_21DB",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "9fe100631bc22f454de08735f09a7f268ab485d7d4d21e760fc299880cbca268",
+      "extent_bytes": 113,
+      "draft": "c/F_21DB.C",
+      "draft_sha256": "1377fedaa958fd5b2d51994312baeb273cfdb2fd0ad073e2a83831bc721b632d",
+      "refusal": "1 of the candidate's 13 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g96ee at offset 90. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 90,
+          "symbol": "_g96ee"
+        }
+      ]
+    },
+    {
+      "id": "F_2269",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "2984b729b4525a85cbc7f307beb0956da614eb80d7bd01eb6cbf58a33cc1882a",
+      "extent_bytes": 72,
+      "draft": "c/F_2269.C",
+      "draft_sha256": "6cf10f6ff1f2eb07cda76decb1495fe782a2a2b958816919a5000c84aea10519",
+      "refusal": "1 of the candidate's 13 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g96ee at offset 12. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 12,
+          "symbol": "_g96ee"
+        }
+      ]
+    },
+    {
+      "id": "F_233E",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "a6ee8b509676fc03e3bb147e86606a5aad0791e1a09a9ff478bdcb3e3f3ce0ca",
+      "extent_bytes": 462,
+      "draft": "c/F_233E.C",
+      "draft_sha256": "53ee93dafafd2eda948282a7fc511e9e8f18f58025e30c5c48dd1392174acfb7",
+      "refusal": "2 of the candidate's 59 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _cel at offset 75. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 75,
+          "symbol": "_cel"
+        },
+        {
+          "offset": 389,
+          "symbol": "_cel"
+        }
+      ]
+    },
+    {
+      "id": "F_2AE2",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "239a3a0fc5d81316daef9ba8c6791b2a9b5bd18618882b62aca4d290b8cb46ee",
+      "extent_bytes": 1762,
+      "draft": "c/F_2AE2.C",
+      "draft_sha256": "a8bd02dc3cd80510e62a768e48a387a7b29e2ea57f743054f92ea2f987159817",
+      "refusal": "23 of the candidate's 111 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _s8c12 at offset 36. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 36,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 55,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 74,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 93,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 112,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 131,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 150,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 169,
+          "symbol": "_s8c12"
+        },
+        {
+          "offset": 452,
+          "symbol": "_a74a2"
+        },
+        {
+          "offset": 530,
+          "symbol": "_a6f2a"
+        },
+        {
+          "offset": 759,
+          "symbol": "_s79bf"
+        },
+        {
+          "offset": 858,
+          "symbol": "_b437a"
+        },
+        {
+          "offset": 871,
+          "symbol": "_s7400"
+        },
+        {
+          "offset": 876,
+          "symbol": "_b4386"
+        },
+        {
+          "offset": 890,
+          "symbol": "_b4380"
+        },
+        {
+          "offset": 960,
+          "symbol": "_s735e"
+        },
+        {
+          "offset": 1157,
+          "symbol": "_s9b6e"
+        },
+        {
+          "offset": 1185,
+          "symbol": "_s9ae0"
+        },
+        {
+          "offset": 1262,
+          "symbol": "_s9a5c"
+        },
+        {
+          "offset": 1290,
+          "symbol": "_s99da"
+        },
+        {
+          "offset": 1346,
+          "symbol": "_s9c50"
+        },
+        {
+          "offset": 1472,
+          "symbol": "_s6e88"
+        },
+        {
+          "offset": 1508,
+          "symbol": "_a893c"
+        }
+      ]
+    },
+    {
+      "id": "F_338A",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "79555d1351055e2891d6b744295a2f50b04e23d42d81555401878af730767f91",
+      "extent_bytes": 870,
+      "draft": "c/F_338A.C",
+      "draft_sha256": "a8c0c8db8f9cdba784679a97e5ad5e5809c6963d13069873aea1ba63ebb3a4d2",
+      "refusal": "5 of the candidate's 24 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _s9a5c at offset 148. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 148,
+          "symbol": "_s9a5c"
+        },
+        {
+          "offset": 171,
+          "symbol": "_s99da"
+        },
+        {
+          "offset": 298,
+          "symbol": "_s9b6e"
+        },
+        {
+          "offset": 321,
+          "symbol": "_s9ae0"
+        },
+        {
+          "offset": 844,
+          "symbol": "_gb3af"
+        }
+      ]
+    },
+    {
+      "id": "F_3A75",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "a7ec5ec0fd2cbfde994b47fc2cdeb167b807def789db06544ebbe042c8f29a86",
+      "extent_bytes": 2722,
+      "draft": "c/F_3A75.C",
+      "draft_sha256": "c13be6f836cc4644a6a2172ccdea6bc741785fdab1ab0caa58f8c5756b6976e3",
+      "refusal": "12 of the candidate's 329 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _b4380 at offset 195. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 195,
+          "symbol": "_b4380"
+        },
+        {
+          "offset": 208,
+          "symbol": "_b4386"
+        },
+        {
+          "offset": 220,
+          "symbol": "_b437a"
+        },
+        {
+          "offset": 348,
+          "symbol": "_c470"
+        },
+        {
+          "offset": 2086,
+          "symbol": "_b43aa"
+        },
+        {
+          "offset": 2103,
+          "symbol": "_b43aa"
+        },
+        {
+          "offset": 2119,
+          "symbol": "_b43aa"
+        },
+        {
+          "offset": 2161,
+          "symbol": "_b438c"
+        },
+        {
+          "offset": 2178,
+          "symbol": "_b438c"
+        },
+        {
+          "offset": 2194,
+          "symbol": "_b438c"
+        },
+        {
+          "offset": 2418,
+          "symbol": "_str96ee"
+        },
+        {
+          "offset": 2594,
+          "symbol": "_c470"
+        }
+      ]
+    },
+    {
+      "id": "F_4E9F",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_ASM",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "d822e4f9c2116b0780d1b27733352e5c51ce3505b93838719d13794e5517ce54",
+      "extent_bytes": 76,
+      "draft": "asm/F_4E9F.ASM",
+      "draft_sha256": "a331ed5ab10b52aec9ed955e61c6a54b35d9235695ab3842a5b303d43f783f81",
+      "refusal": "2 of the candidate's 5 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _gbf66 at offset 44. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 44,
+          "symbol": "_gbf66"
+        },
+        {
+          "offset": 49,
+          "symbol": "_g9bfc"
+        }
+      ]
+    },
+    {
+      "id": "F_5AC3",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "913bbebf5944a3050ef629c4ce4685068515066da591edc51df854ec56513750",
+      "extent_bytes": 981,
+      "draft": "c/F_5AC3.C",
+      "draft_sha256": "890a6a7f8c87ac36656060b9f2106374966c214a1e59a2803be1ae8ee9ba19de",
+      "refusal": "12 of the candidate's 96 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _wig at offset 123. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 123,
+          "symbol": "_wig"
+        },
+        {
+          "offset": 156,
+          "symbol": "_wig"
+        },
+        {
+          "offset": 480,
+          "symbol": "_gc0b2"
+        },
+        {
+          "offset": 488,
+          "symbol": "_gc0b4"
+        },
+        {
+          "offset": 499,
+          "symbol": "_gc0c2"
+        },
+        {
+          "offset": 502,
+          "symbol": "_gc0c2"
+        },
+        {
+          "offset": 511,
+          "symbol": "_sprbase"
+        },
+        {
+          "offset": 520,
+          "symbol": "_gc0c4"
+        },
+        {
+          "offset": 524,
+          "symbol": "_gc0c4"
+        },
+        {
+          "offset": 571,
+          "symbol": "_gc0c2"
+        },
+        {
+          "offset": 603,
+          "symbol": "_gc0c2"
+        },
+        {
+          "offset": 638,
+          "symbol": "_gc0c2"
+        }
+      ]
+    },
+    {
+      "id": "F_625D",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "93c04f9503f4748d838f69f4d8df198b4827c001e2cad594c0943fff80232cfe",
+      "extent_bytes": 9,
+      "draft": "c/F_625D.C",
+      "draft_sha256": "59644dd4bb1dea2974c21e150068328d05cc7d6aea64d75d7f9cb187bb102a07",
+      "refusal": "1 of the candidate's 2 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _f622c at offset 1. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 1,
+          "symbol": "_f622c"
+        }
+      ]
+    },
+    {
+      "id": "F_68CF",
+      "reason": "DIFFERS",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "98afcdb193a582eca79ed3e156c2cd93302e785c426a5f7283637f795ef14388",
+      "extent_bytes": 143,
+      "draft": "c/F_68CF.C",
+      "draft_sha256": "7920dc6dea6688f2c2ee9bf911ee896c8a38803a95d25ef8a5775aa00e7670df",
+      "first_difference": {
+        "where": "offset 2 of the extent (address 0x68D1)",
+        "component": "offset16 fixup to _f2",
+        "both_sides": {
+          "original": "0x1772",
+          "candidate": "the the profile's declared convention \"empires_forged pilot naming, extended 2026-09-06 (docs/history/matching-pilot/runL/fixups.py: _gNNNN DGROUP offset, _fNNNN code ip; this substrate's drafts also write _bNNNN/_wNNNN/_sNNNN/_aNNNN for the same DGROUP offset)\" for _f2 (model key functions/F_0000.entry + 0x2) says 0x0002"
+        }
+      }
+    },
+    {
+      "id": "F_75F3",
+      "reason": "DIFFERS",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "be1e1701747e2ee0e45b16559d362e9377edb0a923cd16b2519cd00abc1b0392",
+      "extent_bytes": 131,
+      "draft": "c/F_75F3.C",
+      "draft_sha256": "44adfc662b9be1451fff2028ec5aaf13d7b009e1fe20fd5d582fd052205e66e0",
+      "first_difference": {
+        "where": "offset 8 of the extent (address 0x75FB)",
+        "component": "byte",
+        "both_sides": {
+          "original": "16",
+          "candidate": "8D",
+          "aligned instruction": "lea [8d5ef0]"
+        }
+      }
+    },
+    {
+      "id": "F_9440",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 6",
+      "answered_about_entry_sha256": "df85b1b1824c1993c19836ced552b3e8bdc57f914a7d4bb3a2e90a31bf600ef1",
+      "extent_bytes": 38,
+      "draft": "c/F_9440.C",
+      "draft_sha256": "f07ec7ed2e706ff7229ff9e865a652faa74a070d9f476dd5e36e7542e9658737",
+      "refusal": "2 of the candidate's 2 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _arr at offset 28. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 28,
+          "symbol": "_arr"
+        },
+        {
+          "offset": 32,
+          "symbol": "_gg"
+        }
+      ]
+    },
+    {
+      "id": "F_9B68",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 9",
+      "answered_about_entry_sha256": "9098f0982fd681b98866c4a368315ca2823b4f427dc687fad8f860bc499437ac",
+      "extent_bytes": 529,
+      "draft": "c/F_9B68.C",
+      "draft_sha256": "e78db81238a2deb406dc932dea25190a6946e5ff4ba3815f5b7db61ebcb95e92",
+      "refusal": "3 of the candidate's 37 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g0dcc at offset 111. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 111,
+          "symbol": "_g0dcc"
+        },
+        {
+          "offset": 173,
+          "symbol": "_a1271"
+        },
+        {
+          "offset": 191,
+          "symbol": "_a1271"
+        }
+      ]
+    },
+    {
+      "id": "F_A13F",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "2dcc58c68a50fc9f0df1eb7125eabd5a25975e29d9f51706e387858e9f035798",
+      "extent_bytes": 31,
+      "draft": "c/F_A13F.C",
+      "draft_sha256": "312b1826d066dc8d09e6b41b20f1f409860ec8966612c2f9a03b7c7fcc4d3480",
+      "refusal": "1 of the candidate's 4 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _gc360 at offset 17. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 17,
+          "symbol": "_gc360"
+        }
+      ]
+    },
+    {
+      "id": "F_A28D",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "21b0861a85fc7b73cddd04dc219cf716ed2782a32af342dc892d9966077432a3",
+      "extent_bytes": 178,
+      "draft": "c/F_A28D.C",
+      "draft_sha256": "44038df56da8e7d683473a3cf256c69d9009b2522efcb65ae1ca8636a8257a87",
+      "refusal": "2 of the candidate's 8 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g1650 at offset 55. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 55,
+          "symbol": "_g1650"
+        },
+        {
+          "offset": 64,
+          "symbol": "_g1659"
+        }
+      ]
+    },
+    {
+      "id": "F_A658",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 10",
+      "answered_about_entry_sha256": "5ad51c7b8eadf7d943ee86dfa5af6028861d6e632cd4f127c48fbabb7f3c0a89",
+      "extent_bytes": 272,
+      "draft": "c/F_A658.C",
+      "draft_sha256": "1ea3dc8f50e1366b621bd403a28e06910d9ed87b84b20acbdf5f62edeb54cd3a",
+      "refusal": "1 of the candidate's 28 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _DATA at offset 66. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 66,
+          "symbol": "_DATA"
+        }
+      ]
+    },
+    {
+      "id": "F_A85E",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 6",
+      "answered_about_entry_sha256": "e059eff65f6b8828e90cdadd5921677abe22d3b62cf286a24a036ace2e72b7af",
+      "extent_bytes": 449,
+      "draft": "c/F_A85E.C",
+      "draft_sha256": "38c67e5600e31712f64ca25c86207d3883e064a24db54ce87a7aea9286cdbf42",
+      "refusal": "29 of the candidate's 43 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _cur at offset 10. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 10,
+          "symbol": "_cur"
+        },
+        {
+          "offset": 17,
+          "symbol": "_DATA"
+        },
+        {
+          "offset": 27,
+          "symbol": "_err"
+        },
+        {
+          "offset": 43,
+          "symbol": "_init_b"
+        },
+        {
+          "offset": 46,
+          "symbol": "_init_c"
+        },
+        {
+          "offset": 49,
+          "symbol": "_init_d"
+        },
+        {
+          "offset": 52,
+          "symbol": "_init_e"
+        },
+        {
+          "offset": 69,
+          "symbol": "_DATA"
+        },
+        {
+          "offset": 135,
+          "symbol": "_done_a"
+        },
+        {
+          "offset": 144,
+          "symbol": "_done_b"
+        },
+        {
+          "offset": 147,
+          "symbol": "_done_c"
+        },
+        {
+          "offset": 150,
+          "symbol": "_done_d"
+        },
+        {
+          "offset": 157,
+          "symbol": "_done_e"
+        },
+        {
+          "offset": 160,
+          "symbol": "_done_f"
+        },
+        {
+          "offset": 172,
+          "symbol": "_cur"
+        },
+        {
+          "offset": 189,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 218,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 245,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 265,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 290,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 314,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 334,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 356,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 377,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 389,
+          "symbol": "_DATA"
+        },
+        {
+          "offset": 401,
+          "symbol": "_tbl"
+        },
+        {
+          "offset": 414,
+          "symbol": "_err"
+        },
+        {
+          "offset": 425,
+          "symbol": "_cur"
+        },
+        {
+          "offset": 432,
+          "symbol": "_err"
+        }
+      ]
+    },
+    {
+      "id": "F_AF45",
+      "reason": "DIFFERS",
+      "kind_withheld": "MATCHING_C",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "0448da1ee81db69c950befcfbc2c2de8676de07efaf1faa8b97a4719d728cafb",
+      "extent_bytes": 341,
+      "draft": "c/F_AF45.C",
+      "draft_sha256": "84c420defb27518c280e61b421b2e0722a7eb54fe143644a99946b809b11c56b",
+      "first_difference": {
+        "where": "offset 178 of the extent (address 0xAFF7)",
+        "component": "jmp target",
+        "both_sides": {
+          "original": "extent offset 325",
+          "candidate": "extent offset 324",
+          "aligned instruction": "jmp [e99000]"
+        }
+      }
+    },
+    {
+      "id": "LIB_ATEXIT",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "230c2c0ad89b1e912780370b91fd094e2fece8e7ac6d96b215b56fadcdd8f93e",
+      "extent_bytes": 38,
+      "library_module": "ATEXIT",
+      "refusal": "1 of the candidate's 4 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _BSS at offset 26. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 26,
+          "symbol": "_BSS"
+        }
+      ]
+    },
+    {
+      "id": "LIB_EXIT",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "fc76f1573f85fcbd12f88d73e554a083c0534bb0445cb4760ae30397b531634f",
+      "extent_bytes": 48,
+      "library_module": "EXIT",
+      "refusal": "2 of the candidate's 8 fixup target(s) are decided by no declared binding, frame or naming convention, the first being __atexittbl at offset 14. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 14,
+          "symbol": "__atexittbl"
+        },
+        {
+          "offset": 43,
+          "symbol": "__exit"
+        }
+      ]
+    },
+    {
+      "id": "LIB_IOERROR",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "d8294dd1c0d5693807c7aa75651f1942097fff25cf4bcee5689a24bd2e77202d",
+      "extent_bytes": 59,
+      "library_module": "IOERROR",
+      "refusal": "1 of the candidate's 4 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _errno at offset 47. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 47,
+          "symbol": "_errno"
+        }
+      ]
+    },
+    {
+      "id": "LIB_OPEN",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "b47d0fd9cfa869247fe9e4b284e079340b1c2f79cbcbc2590b7e7136b6cb963a",
+      "extent_bytes": 398,
+      "library_module": "OPEN",
+      "refusal": "2 of the candidate's 12 fixup target(s) are decided by no declared binding, frame or naming convention, the first being __fmode at offset 67. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 67,
+          "symbol": "__fmode"
+        },
+        {
+          "offset": 84,
+          "symbol": "__notUmask"
+        }
+      ]
+    },
+    {
+      "id": "LIB_SETARGV",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "9227b85bf79b97a5a68748a4b307f8e995f56b6de5ab4fe7302182a073d83dcf",
+      "extent_bytes": 253,
+      "library_module": "SETARGV",
+      "refusal": "4 of the candidate's 12 fixup target(s) are decided by no declared binding, frame or naming convention, the first being __envLng at offset 36. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 36,
+          "symbol": "__envLng"
+        },
+        {
+          "offset": 46,
+          "symbol": "__osmajor"
+        },
+        {
+          "offset": 184,
+          "symbol": "_abort"
+        },
+        {
+          "offset": 196,
+          "symbol": "__argc"
+        }
+      ]
+    },
+    {
+      "id": "LIB_SETENVP",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "3c1ae500aeec0173200d03a702e295b96915fd5305e74eeab6a10c3b93aaef8a",
+      "extent_bytes": 64,
+      "library_module": "SETENVP",
+      "refusal": "2 of the candidate's 6 fixup target(s) are decided by no declared binding, frame or naming convention, the first being __envSize at offset 9. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 9,
+          "symbol": "__envSize"
+        },
+        {
+          "offset": 35,
+          "symbol": "_abort"
+        }
+      ]
+    },
+    {
+      "id": "LIB_TOUPPER",
+      "reason": "PROVIDER_REFUSED",
+      "kind_withheld": "KNOWN_TOOLCHAIN_LIBRARY",
+      "provider": "pf_match 11",
+      "answered_about_entry_sha256": "2b162656b9f11b45f3b194521d0a3478ba123ec3526ea44c04d473b8f94580fd",
+      "extent_bytes": 49,
+      "library_module": "TOUPPER",
+      "refusal": "1 of the candidate's 1 fixup target(s) are decided by no declared binding, frame or naming convention, the first being __ctype at offset 23. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
+      "undecided": [
+        {
+          "offset": 23,
+          "symbol": "__ctype"
+        }
+      ]
+    }
+  ]
+}

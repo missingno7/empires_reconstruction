@@ -1,0 +1,66 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_2269",
+      "kind": "MATCHING_C",
+      "start": 9321,
+      "end": 9393,
+      "source": "src/F_2269.C",
+      "original_symbol": "F_2269",
+      "artifact": "regions/F_2269.bin",
+      "expected_sha256": "101c6462f00de9efc3053502a5dfae71461b77b34ae51cfdc85e8590029bbcf5",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f2269",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_g072c": {
+            "offset": 1836,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2025C.phys"
+          },
+          "_g072e": {
+            "offset": 1838,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2025E.phys"
+          },
+          "_g0736": {
+            "offset": 1846,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2025E.phys + 0x8"
+          },
+          "_g0738": {
+            "offset": 1848,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2025E.phys + 0xA"
+          },
+          "_g073a": {
+            "offset": 1850,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2025E.phys + 0xC"
+          },
+          "_g96ee": {
+            "offset": 38638,
+            "coordinate": "DGROUP_offset",
+            "storage_evidence": "DS_96EE",
+            "evidence": "docs/storage-binding-evidence.json#DS_96EE"
+          },
+          "_g99d2": {
+            "offset": 39378,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_29502.phys"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          }
+        },
+        "module_segments": {}
+      }
+    }
+  ]
+}

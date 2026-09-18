@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 18,
-  "held_extent_bytes": 9114,
+  "held_candidates": 17,
+  "held_extent_bytes": 9042,
   "reason_counts": {
-    "PROVIDER_REFUSED": 18
+    "PROVIDER_REFUSED": 17
   },
-  "unique_unresolved_symbols": 61,
-  "unresolved_fixup_sites": 107,
+  "unique_unresolved_symbols": 60,
+  "unresolved_fixup_sites": 106,
   "symbols": [
     {
       "symbol": "_b437a",
@@ -490,15 +490,6 @@
       ]
     },
     {
-      "symbol": "_g96ee",
-      "candidate_count": 1,
-      "candidate_bytes": 72,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_2269"
-      ]
-    },
-    {
       "symbol": "__envSize",
       "candidate_count": 1,
       "candidate_bytes": 64,
@@ -598,23 +589,6 @@
         {
           "offset": 47,
           "symbol": "_ga6b6"
-        }
-      ]
-    },
-    {
-      "id": "F_2269",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "2984b729b4525a85cbc7f307beb0956da614eb80d7bd01eb6cbf58a33cc1882a",
-      "extent_bytes": 72,
-      "draft": "c/F_2269.C",
-      "draft_sha256": "6cf10f6ff1f2eb07cda76decb1495fe782a2a2b958816919a5000c84aea10519",
-      "refusal": "1 of the candidate's 13 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g96ee at offset 12. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 12,
-          "symbol": "_g96ee"
         }
       ]
     },

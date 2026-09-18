@@ -1,0 +1,39 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "c62628a1c7098d5e363b53d402ec17f973f454ad72355a3d40606a1b0550f1b4",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 424,
+  "promoted_compiled_data_bytes": 0,
+  "owners": [
+    {
+      "id": "F_2A70",
+      "kind": "MATCHING_C",
+      "bytes": 114,
+      "sha256": "dbe2aa553464e92ff9ed918e949a09a4b29c532f5e8da44916113f3dcdd781d9",
+      "source_sha256": "4ddcdc9754927ae90da2a29eda021e8062447c47f3484a9869482372cae3fafc",
+      "fixups": 3,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_32FA",
+      "kind": "MATCHING_C",
+      "bytes": 144,
+      "sha256": "6abf6b32b0b3011a6460af2b8740e8db16d4941bb353310fb4c9c4288ce35988",
+      "source_sha256": "36488b8b0c0e1693e49e589f151dd829ce95b8d2f1eea8dcf7d43d52c13e027d",
+      "fixups": 2,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_9466",
+      "kind": "MATCHING_C",
+      "bytes": 166,
+      "sha256": "836aa9940d6d8475ab94dd5b25b35071ff53a4e57b982899f5ac150d832ad9fe",
+      "source_sha256": "5a4d139a65659f67322995902e86960f5922bd6d003b6eec72f0a2e5734892ae",
+      "fixups": 2,
+      "load_relocations": [],
+      "status": "EQUAL"
+    }
+  ]
+}

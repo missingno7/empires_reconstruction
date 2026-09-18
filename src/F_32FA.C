@@ -1,0 +1,1 @@
+extern unsigned char *gbfc0,*gbfbc;f32fa(a) int a;{register int i;int j;int x,y,n;unsigned char *p;p=gbfc0+a*4+1;p[3]=(p[3]+4)&7;n=p[2]+2;x=p[0];y=p[1];j=(x+2)/4+((y+4)/8-2)*38-1;for(i=0;i<n;i++,j++)gbfbc[j]^=16;}

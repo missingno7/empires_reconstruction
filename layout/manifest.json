@@ -922,15 +922,53 @@
       }
     },
     {
-      "id": "RAW_002C70",
+      "id": "F_2A70",
+      "kind": "MATCHING_C",
       "start": 11376,
+      "end": 11490,
+      "source": "src/F_2A70.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f2a70",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbfc0": {
+            "offset": 49088,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAF0.phys"
+          },
+          "_f2a2d": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_2A2D.entry",
+            "owner": "F_2A2D",
+            "public": "_f2a2d",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_2A70.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "dbe2aa553464e92ff9ed918e949a09a4b29c532f5e8da44916113f3dcdd781d9",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "cbcfe8f430edeb29bf24feae13b1a8c5dc093064ef38b6da5a84a31565b7039b",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C body with original pointer conversion and register allocation"
+      }
+    },
+    {
+      "id": "RAW_002CE2",
+      "start": 11490,
       "end": 13252,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/002C70-0033C4.bin",
+      "source": "raw/002CE2-0033C4.bin",
       "original_symbol": null,
-      "artifact": "raw/002C70-0033C4.bin",
-      "expected_sha256": "b238772c0027e48d743ce34b66221f8eba3aac6144b7a7b79d91c65d7be2d073",
+      "artifact": "raw/002CE2-0033C4.bin",
+      "expected_sha256": "ac6790f8c94583fa0fb3509f98947d7bb8d67932cb0eb9c4a8121e4e9091f0a5",
       "matching_status": "EQUAL"
     },
     {
@@ -1143,15 +1181,51 @@
       }
     },
     {
-      "id": "RAW_0034FA",
+      "id": "F_32FA",
+      "kind": "MATCHING_C",
       "start": 13562,
+      "end": 13706,
+      "source": "src/F_32FA.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f32fa",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbfc0": {
+            "offset": 49088,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAF0.phys"
+          },
+          "_gbfbc": {
+            "offset": 49084,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAEC.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_32FA.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "6abf6b32b0b3011a6460af2b8740e8db16d4941bb353310fb4c9c4288ce35988",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "b97123bf1094b698e747a02cba201e5691fe6b0ee0c190a383e2dea7c7666802",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C body with original pointer conversion and register allocation"
+      }
+    },
+    {
+      "id": "RAW_00358A",
+      "start": 13706,
       "end": 14576,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0034FA-0038F0.bin",
+      "source": "raw/00358A-0038F0.bin",
       "original_symbol": null,
-      "artifact": "raw/0034FA-0038F0.bin",
-      "expected_sha256": "ffc2fb81483b1d511cc0b9fd23600c358f7f454cb353ea08eaf43b2266b7ead0",
+      "artifact": "raw/00358A-0038F0.bin",
+      "expected_sha256": "53e5ba1fa7e067777ef3ea4310b07bf5412f3229e02097ecf9cd2413ebf40e18",
       "matching_status": "EQUAL"
     },
     {
@@ -7004,15 +7078,46 @@
       }
     },
     {
-      "id": "RAW_009666",
+      "id": "F_9466",
+      "kind": "MATCHING_C",
       "start": 38502,
+      "end": 38668,
+      "source": "src/F_9466.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9466",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_9466.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "836aa9940d6d8475ab94dd5b25b35071ff53a4e57b982899f5ac150d832ad9fe",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "f09726d7ce63128127f6b4f3a4f185aa2bd7f2ac8462604e3e751dd7fe2b85e8",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C body with original pointer conversion and register allocation"
+      }
+    },
+    {
+      "id": "RAW_00970C",
+      "start": 38668,
       "end": 38974,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/009666-00983E.bin",
+      "source": "raw/00970C-00983E.bin",
       "original_symbol": null,
-      "artifact": "raw/009666-00983E.bin",
-      "expected_sha256": "ba38703b8885054fee152950f8b64151f733661383530e67b3ed437e80490a16",
+      "artifact": "raw/00970C-00983E.bin",
+      "expected_sha256": "0daf73921796cb2f21e46c58571feecc3384e4f414e5d3e82eb23d482de8b020",
       "matching_status": "EQUAL"
     },
     {

@@ -504,3 +504,7 @@ complete-length probe blocked by Turbo C's argument-evaluation register choice,
 and the latter is a segment-manipulation routine whose C forms exceed its
 extent. These are concrete compiler frontiers, alongside the earlier
 conversion and switch-layout probes, rather than reasons to weaken ownership.
+
+## Forty-ninth matching-C audit
+
+Fresh Turbo C probes for F_D818, F_C877 and F_D825 did not pass complete-extent equality. F_7202 is already canonical from wave six; the audit records the current register-allocation and pointer-lowering blockers without promoting opaque bytes. See [the wave-forty-nine audit](matching-c-wave49.md).

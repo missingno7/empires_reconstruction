@@ -22,10 +22,8 @@ Matching C coverage is now 239 regions / 35,723 bytes. The wave also removes
 
 ## Additional probe audit
 
-Two newly tested raw extents remain outside canonical ownership. `F_7202` has
-a complete 104-byte C-shaped probe, but the pinned compiler emits a direct
-`push [gc0f0]` while the original loads `CX` before evaluating the far-pointer
-argument; making that value non-direct changes register allocation or extent
-length. `F_6CA6` uses `LES`, `ES` extraction and several direct segment-state
-stores; C probes spill the far pointer and exceed its complete 68-byte extent.
-Neither probe is promoted, and neither receives opaque fallback bytes.
+`F_7202` is already canonical C from wave six. The current raw audit instead
+tested `F_D818`, `F_C877` and `F_D825`; their fresh probe objects are recorded in
+the [wave-forty-nine audit](matching-c-wave49.md). `F_6CA6` remains the earlier
+segment-manipulation blocker. None of these probes changes ownership merely by
+being C-shaped.

@@ -1,0 +1,45 @@
+{
+  "format": "empires-c-probe-audit-v1",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "probes": [
+    {
+      "id": "F_D818",
+      "source_sha256": "e2671b6f55e95f7fe3ae66791f783ab497100be3e0dfafbd54537b17927d2643",
+      "expected_bytes": 13,
+      "probe_bytes": 21,
+      "probe_sha256": "351899f65e740f2475f6da57b3969ab3fb361206d989e07fca70e3b1b2e6a44b",
+      "probe_hex": "558bec56be302f8bc6998bd88ec226c607005e5dc3",
+      "result": "BLOCKED",
+      "first_mismatch_offset": 3,
+      "first_mismatch_original": 87,
+      "first_mismatch_probe": 86,
+      "compiler_output": "ValueError: F_D818: wrong compiled extent length 21, expected 13"
+    },
+    {
+      "id": "F_C877",
+      "source_sha256": "efbeeb140b7ecff0f30177b363d5ce89cff531b61221d992049aa0c244fd1172",
+      "expected_bytes": 33,
+      "probe_bytes": 33,
+      "probe_sha256": "1a15ffff14e975a9134f8e1621d6ca8daed265d198fc154153c8387727af0487",
+      "probe_hex": "558bec565733ff8b360000833e0000027503be0400e8000047474e75f85f5e5dc3",
+      "result": "BLOCKED",
+      "first_mismatch_offset": 3,
+      "first_mismatch_original": 81,
+      "first_mismatch_probe": 86,
+      "compiler_output": "ValueError: First mismatch file 0x00CA7A, owner F_C877 (MATCHING_C, build/c-wave49/F_C877_p0.C), region +0x3: original=51, reconstructed=56"
+    },
+    {
+      "id": "F_D825",
+      "source_sha256": "ea4206a2a5ccd131e6140d9f3c784d0f82099bfc598a4722bf4c2c3fe3945ad2",
+      "expected_bytes": 58,
+      "probe_bytes": 76,
+      "probe_sha256": "7342aa8aa9260610f26b506412f5f012de5454a8d717f137ce80032153a51372",
+      "probe_hex": "558bec83ec04a00000b400ba0300f7e233db8ec3bb312f03d88c46fe895efcfe0600008a4604c45efc2688078b4606c45efc268947018b460ac45efc268947038b46fc05fcffeb008be55dc3",
+      "result": "BLOCKED",
+      "first_mismatch_offset": 3,
+      "first_mismatch_original": 87,
+      "first_mismatch_probe": 131,
+      "compiler_output": "ValueError: F_D825: wrong compiled extent length 76, expected 58"
+    }
+  ]
+}

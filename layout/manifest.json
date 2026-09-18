@@ -1934,15 +1934,440 @@
       }
     },
     {
-      "id": "RAW_003C75",
+      "id": "F_3A75",
+      "kind": "MATCHING_C",
       "start": 15477,
+      "end": 18199,
+      "source": "src/F_3A75.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f3a75",
+        "span": 1,
+        "flags_append": "-B",
+        "bindings": {
+          "_g732": {
+            "offset": 1842,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g730": {
+            "offset": 1840,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g96e4": {
+            "offset": 38628,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g8fe": {
+            "offset": 2302,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gb70": {
+            "offset": 2928,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g0bc": {
+            "offset": 188,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6997": {
+            "offset": 27031,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6c57": {
+            "offset": 27735,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g40ce": {
+            "offset": 16590,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6b4a": {
+            "offset": 27466,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6b1a": {
+            "offset": 27418,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f727d": {
+            "offset": 29309,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fce2a": {
+            "offset": 52778,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gc5ca": {
+            "offset": 50634,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g40c4": {
+            "offset": 16580,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g738": {
+            "offset": 1848,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g736": {
+            "offset": 1846,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fd89a": {
+            "offset": 55450,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fd85f": {
+            "offset": 55391,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b4380": {
+            "offset": 17280,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b4386": {
+            "offset": 17286,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b437a": {
+            "offset": 17274,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f8aa2": {
+            "offset": 35490,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gb07a": {
+            "offset": 45178,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fcaf1": {
+            "offset": 51953,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f2269": {
+            "offset": 8809,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f1ecd": {
+            "offset": 7885,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f31c4": {
+            "offset": 12740,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g13ed": {
+            "offset": 5101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_c470": {
+            "offset": 50288,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f734e": {
+            "offset": 29518,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gbfbc": {
+            "offset": 49084,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f2a2d": {
+            "offset": 10797,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f338a": {
+            "offset": 13194,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f36f0": {
+            "offset": 14064,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g40d0": {
+            "offset": 16592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f60a9": {
+            "offset": 24745,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6021": {
+            "offset": 24609,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gb68": {
+            "offset": 2920,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g722": {
+            "offset": 1826,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_w8bf4": {
+            "offset": 35828,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_w8bea": {
+            "offset": 35818,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g71e": {
+            "offset": 1822,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f233e": {
+            "offset": 9022,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f9dcc": {
+            "offset": 40396,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f22b1": {
+            "offset": 8881,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f4e9f": {
+            "offset": 20127,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f5e98": {
+            "offset": 24216,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f25b3": {
+            "offset": 9651,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gbfc0": {
+            "offset": 49088,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fd79c": {
+            "offset": 55196,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gbfc4": {
+            "offset": 49092,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fd386": {
+            "offset": 54150,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gb6e": {
+            "offset": 2926,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g73a": {
+            "offset": 1850,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f1f91": {
+            "offset": 8081,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g734": {
+            "offset": 1844,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g72e": {
+            "offset": 1838,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gb6c": {
+            "offset": 2924,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f1f17": {
+            "offset": 7959,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gb6a": {
+            "offset": 2922,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b740": {
+            "offset": 1856,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f7277": {
+            "offset": 29303,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g72c": {
+            "offset": 1836,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f7313": {
+            "offset": 29459,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f5a3b": {
+            "offset": 23099,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f4b0c": {
+            "offset": 19212,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gbfba": {
+            "offset": 49082,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b43a0": {
+            "offset": 17312,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f329f": {
+            "offset": 12959,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b43aa": {
+            "offset": 17322,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b438c": {
+            "offset": 17292,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_b4396": {
+            "offset": 17302,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f5ac3": {
+            "offset": 23235,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g99d2": {
+            "offset": 39378,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_str96ee": {
+            "offset": 38638,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f3986": {
+            "offset": 14726,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6c6f": {
+            "offset": 27759,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f9ac7": {
+            "offset": 39623,
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          }
+        },
+        "module_segments": {}
+      },
+      "artifact": "regions/F_3A75.bin",
+      "expected_sha256": "d199ef351c62aaecbba096c093543c2ac78252b5769f100c42441b0f7a432e1b",
+      "matching_status": "EQUAL",
+      "classification": "code"
+    },
+    {
+      "id": "RAW_004717",
+      "start": 18199,
       "end": 18478,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/003C75-00482E.bin",
+      "source": "raw/004717-00482E.bin",
       "original_symbol": null,
-      "artifact": "raw/003C75-00482E.bin",
-      "expected_sha256": "7cfc51af40418be5d92819f8712481a6ef990d07e4c177edc29c48a2b1a6eb19",
+      "artifact": "raw/004717-00482E.bin",
+      "expected_sha256": "3bc647cc2cb5a264b5f5ec78c0ecfee2447b57ba2b665e2ba8ddeb964ba35609",
       "matching_status": "EQUAL"
     },
     {

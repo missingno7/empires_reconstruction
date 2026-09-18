@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 10,
-  "held_extent_bytes": 4170,
+  "held_candidates": 9,
+  "held_extent_bytes": 1448,
   "reason_counts": {
-    "PROVIDER_REFUSED": 10
+    "PROVIDER_REFUSED": 9
   },
-  "unique_unresolved_symbols": 23,
-  "unresolved_fixup_sites": 32,
+  "unique_unresolved_symbols": 16,
+  "unresolved_fixup_sites": 20,
   "symbols": [
     {
       "symbol": "_abort",
@@ -20,69 +20,6 @@
       "candidate_ids": [
         "LIB_SETARGV",
         "LIB_SETENVP"
-      ]
-    },
-    {
-      "symbol": "_b437a",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_b4380",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_b4386",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_b438c",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 3,
-      "candidate_ids": [
-        "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_b43aa",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 3,
-      "candidate_ids": [
-        "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_c470",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_str96ee",
-      "candidate_count": 1,
-      "candidate_bytes": 2722,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_3A75"
       ]
     },
     {
@@ -269,67 +206,6 @@
         {
           "offset": 389,
           "symbol": "_cel"
-        }
-      ]
-    },
-    {
-      "id": "F_3A75",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "a7ec5ec0fd2cbfde994b47fc2cdeb167b807def789db06544ebbe042c8f29a86",
-      "extent_bytes": 2722,
-      "draft": "c/F_3A75.C",
-      "draft_sha256": "c13be6f836cc4644a6a2172ccdea6bc741785fdab1ab0caa58f8c5756b6976e3",
-      "refusal": "12 of the candidate's 329 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _b4380 at offset 195. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 195,
-          "symbol": "_b4380"
-        },
-        {
-          "offset": 208,
-          "symbol": "_b4386"
-        },
-        {
-          "offset": 220,
-          "symbol": "_b437a"
-        },
-        {
-          "offset": 348,
-          "symbol": "_c470"
-        },
-        {
-          "offset": 2086,
-          "symbol": "_b43aa"
-        },
-        {
-          "offset": 2103,
-          "symbol": "_b43aa"
-        },
-        {
-          "offset": 2119,
-          "symbol": "_b43aa"
-        },
-        {
-          "offset": 2161,
-          "symbol": "_b438c"
-        },
-        {
-          "offset": 2178,
-          "symbol": "_b438c"
-        },
-        {
-          "offset": 2194,
-          "symbol": "_b438c"
-        },
-        {
-          "offset": 2418,
-          "symbol": "_str96ee"
-        },
-        {
-          "offset": 2594,
-          "symbol": "_c470"
         }
       ]
     },

@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "38c9e03567c58c68e4b18322795a7a432822bb081fb76b674d3d51786e0b8803",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 21,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_D45C",
+      "kind": "MATCHING_C",
+      "bytes": 21,
+      "sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
+      "source_sha256": "807345945da03115db8d25a9499f74ef3fefc43cedbf974e280dcc6cdb5a1dd1",
+      "fixups": 2,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

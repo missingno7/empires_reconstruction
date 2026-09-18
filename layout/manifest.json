@@ -14958,15 +14958,50 @@
       }
     },
     {
-      "id": "RAW_00D65C",
+      "id": "F_D45C",
+      "kind": "MATCHING_C",
+      "source": "src/F_D45C.C",
       "start": 54876,
+      "end": 54897,
+      "expected_sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd45c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd3da": {
+            "coordinate": "code_offset",
+            "owner": "F_D3DA",
+            "public": "_fd3da",
+            "addend": 0
+          },
+          "_g2302": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8962
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_D45C",
+      "artifact": "regions/F_D45C.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
+        "change": "Recover the complete 21-byte far-pointer wrapper and return path after the stale short boundary"
+      }
+    },
+    {
+      "id": "RAW_00D671",
+      "start": 54897,
       "end": 54963,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00D65C-00D6B3.bin",
+      "source": "raw/00D671-00D6B3.bin",
       "original_symbol": null,
-      "artifact": "raw/00D65C-00D6B3.bin",
-      "expected_sha256": "ebb78b988d5b2f17e21f8193deec0247be718ce5c384444425dd59d007a10df2",
+      "artifact": "raw/00D671-00D6B3.bin",
+      "expected_sha256": "ee3deb67d607cc39d92eb6854b44fa279e42fe8c0794cf6155cab1069ff792b6",
       "matching_status": "EQUAL"
     },
     {

@@ -1,15 +1,15 @@
 # Component-owned code references
 
-484 declarations across 152 callers now refer to the selected entry publics of
+485 declarations across 153 callers now refer to the selected entry publics of
 224 matching C/ASM owners. Together with 75 library bindings and nine
-structured-data references, 568 of the 1,715 declared
+structured-data references, 569 of the 1,719 declared
 owner-symbol bindings resolve through component ownership.
 
 `python tools/recover_code_bindings.py` replaces a numeric code address only
 when it is exactly an existing C/ASM owner's entry and the external symbol
 matches that owner's selected public. Interior addresses, raw targets and
 library publics are left unchanged. Existing evidence strings are retained.
-The command compiles all 263 source proof units and checks the complete EXE
+The command compiles all 265 source proof units and checks the complete EXE
 before publishing the updated manifest. Repeating it makes no further changes.
 The migration receipt in `code-binding-evidence.json` records each old address
 and its replacement owner, with the verified whole-file hash.
@@ -24,5 +24,5 @@ This removes duplicated placement facts from call-site declarations. It does
 not recover source-module boundaries, library ordering, a historical linker,
 or the remaining unknown symbols. Target locations still come from the fixed
 ownership manifest. `linker_resolved_bindings` therefore remains zero; the
-separate `owned_component_bindings` metric is now 568. No raw bytes are promoted by
+separate `owned_component_bindings` metric is now 569. No raw bytes are promoted by
 this step, and the three-file reconstructed game remains byte-identical.

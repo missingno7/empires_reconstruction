@@ -1,0 +1,40 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_D45C",
+      "kind": "MATCHING_C",
+      "source": "src/F_D45C.C",
+      "start": 54876,
+      "end": 54897,
+      "expected_sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd45c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd3da": {
+            "coordinate": "code_offset",
+            "owner": "F_D3DA",
+            "public": "_fd3da",
+            "addend": 0
+          },
+          "_g2302": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8962
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_D45C",
+      "artifact": "regions/F_D45C.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
+        "change": "Recover the complete 21-byte far-pointer wrapper and return path after the stale short boundary"
+      }
+    }
+  ]
+}

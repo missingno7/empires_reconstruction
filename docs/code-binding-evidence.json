@@ -1,7 +1,7 @@
 {
   "status": "EQUAL",
   "reconstructed_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "bindings_promoted": 294,
+  "bindings_promoted": 295,
   "changes": [
     {
       "caller": "F_0281",
@@ -1766,6 +1766,12 @@
       "symbol": "_f86c9",
       "owner": "F_86C9",
       "previous_code_offset": 34505
+    },
+    {
+      "caller": "F_D45C",
+      "symbol": "_fd3da",
+      "owner": "F_D3DA",
+      "previous_code_offset": 54234
     }
   ],
   "scope": "Owned selected entry publics; fixed placement remains; no historical linker claim"

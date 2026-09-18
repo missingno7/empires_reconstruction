@@ -18,7 +18,7 @@ class ExeDataTests(unittest.TestCase):
     def setUp(self):
         self.manifest = json.loads((ROOT / 'layout/manifest.json').read_text())
         self.original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
-        self.owners = [r for r in self.manifest['regions'] if r['kind'] == 'EXACT_DATA']
+        self.owners = [r for r in self.manifest['regions'] if r.get('classification') == 'embedded_palette']
 
     def test_real_palettes_and_editable_channels(self):
         self.assertEqual(len(self.owners), 2)

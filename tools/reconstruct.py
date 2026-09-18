@@ -300,7 +300,7 @@ def bind_region(owner, module, mz, frames, owners=None, component_modules=None):
             if kind == 'segment' and symbol == segment:
                 value = module_base
             elif kind == 'segment' and symbol in build['module_segments']:
-                value = build['module_segments'][symbol]['offset']
+                value = component_binding(build['module_segments'][symbol], owners, mz, frames, component_modules)['offset']
             elif kind == 'external' and symbol in build['bindings']:
                 binding = component_binding(build['bindings'][symbol], owners, mz, frames, component_modules)
                 if f['self_relative'] and binding['coordinate'] != 'code_offset':
@@ -322,6 +322,33 @@ def bind_region(owner, module, mz, frames, owners=None, component_modules=None):
         raise ValueError(f"{owner['id']}: source relocation map differs: {relocations} != {expected_relocations}")
     return bytes(result), {'object_span': [start, end], 'module_load_base': module_base,
                            'fixups': patches, 'load_relocations': relocations}
+
+
+def compiled_data(owner, owners, modules, mz):
+    """Take an entire relocation-free initialized segment from its fresh C OBJ."""
+    build = owner['build']
+    code = next((r for r in owners if r['id'] == build['code_owner']), None)
+    if code is None or code['kind'] != 'MATCHING_C' or code['source'] != owner['source']:
+        raise ValueError('Compiled data must share its matching C owner source')
+    segment = build['segment']
+    if segment != '_DATA' or build['encoder'] != 'omf-segment-v1':
+        raise ValueError('Unsupported compiled data segment')
+    binding = code['build'].get('module_segments', {}).get(segment, {})
+    if binding.get('owner') != owner['id'] or binding.get('coordinate') != 'DGROUP_offset' or binding.get('addend') != 0 or 'offset' in binding:
+        raise ValueError('Compiled data placement must own the C module segment binding')
+    module = modules.get(code['id'])
+    if module is None:
+        raise ValueError('Compiled data requires a freshly compiled C module')
+    part = module.segment_bytes(segment)
+    if len(part) != module.segment_length(segment) or len(part) != owner['end'] - owner['start']:
+        raise ValueError('Compiled data segment length differs from ownership')
+    if module.fixups_in(segment):
+        raise ValueError('Relocated compiled data is not supported yet')
+    lo, hi = mz.load_offset(owner['start']), mz.load_offset(owner['end'] - 1) + 1
+    if any(lo <= r['load_offset'] < hi for r in mz.relocations):
+        raise ValueError('Compiled data owner unexpectedly contains MZ relocations')
+    return part, {'encoder': build['encoder'], 'code_owner': code['id'], 'segment': segment,
+                  'object_span': [0, len(part)], 'load_relocations': []}
 
 
 def reconstruct(root, manifest_path, output, toolchain, dosbox):
@@ -355,6 +382,8 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
         elif owner['kind'] == 'EXACT_DATA':
             source = project_path(root, owner['source'])
             encoder = owner['build']['encoder']
+            if encoder == 'omf-segment-v1':
+                continue
             part = encode_data(read_json(source), encoder)
             mismatch(original[owner['start']:owner['end']], part, owner)
             if sha(part) != owner['expected_sha256']:
@@ -368,13 +397,19 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
     component_modules = owned_library_modules(manifest['regions'], toolchain, lock)
     if sources:
         receipts, session = compile_sources(root, sources, work, toolchain, dosbox, lock)
+        for code in sources:
+            component_modules[code['id']] = read_object((work / receipts[code['id']]['object']).read_bytes())
     image, reports = bytearray(), []
     for owner in manifest['regions']:
         proof = {}
         if owner['kind'] == 'RAW':
             part = project_path(root, owner['source']).read_bytes()
         elif owner['kind'] in ('MZ_HEADER', 'EXACT_DATA'):
-            part, proof = encoded_parts[owner['id']]
+            if owner.get('build', {}).get('encoder') == 'omf-segment-v1':
+                part, proof = compiled_data(owner, manifest['regions'], component_modules, mz)
+                proof['compile'] = receipts[owner['build']['code_owner']]
+            else:
+                part, proof = encoded_parts[owner['id']]
             artifact = project_path(output, owner['artifact'])
             artifact.parent.mkdir(parents=True, exist_ok=True)
             artifact.write_bytes(part)
@@ -384,7 +419,7 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
                 proof['library'] = {key: owner['build'][key] for key in ('library', 'library_module', 'module_sha256')}
             else:
                 receipt = receipts[owner['id']]
-                module = read_object((work / receipt['object']).read_bytes())
+                module = component_modules[owner['id']]
                 proof['compile'] = receipt
             part, binding_proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'], component_modules)
             proof.update(binding_proof)

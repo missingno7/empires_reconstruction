@@ -4,11 +4,10 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs; fresh compilation still required.",
-  "held_candidates": 25,
-  "held_extent_bytes": 10004,
+  "held_candidates": 24,
+  "held_extent_bytes": 9873,
   "reason_counts": {
-    "PROVIDER_REFUSED": 24,
-    "DIFFERS": 1
+    "PROVIDER_REFUSED": 24
   },
   "unique_unresolved_symbols": 69,
   "unresolved_fixup_sites": 118,
@@ -1058,25 +1057,6 @@
           "symbol": "_f622c"
         }
       ]
-    },
-    {
-      "id": "F_75F3",
-      "reason": "DIFFERS",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "be1e1701747e2ee0e45b16559d362e9377edb0a923cd16b2519cd00abc1b0392",
-      "extent_bytes": 131,
-      "draft": "c/F_75F3.C",
-      "draft_sha256": "44adfc662b9be1451fff2028ec5aaf13d7b009e1fe20fd5d582fd052205e66e0",
-      "first_difference": {
-        "where": "offset 8 of the extent (address 0x75FB)",
-        "component": "byte",
-        "both_sides": {
-          "original": "16",
-          "candidate": "8D",
-          "aligned instruction": "lea [8d5ef0]"
-        }
-      }
     },
     {
       "id": "F_9440",

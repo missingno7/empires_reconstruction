@@ -56,6 +56,7 @@ def exe_metrics(root, manifest, report):
             'declared_owner_symbol_bindings': sum(len(r.get('build', {}).get('bindings', {})) for r in manifest['regions']),
             'linker_resolved_bindings': 0,
             'owned_component_bindings': sum('owner' in b for r in manifest['regions'] for b in r.get('build', {}).get('bindings', {}).values()),
+            'owned_module_segment_bindings': sum('owner' in b for r in manifest['regions'] for b in r.get('build', {}).get('module_segments', {}).values()),
             'unresolved_external_symbols_in_held_snapshot': linkage['unique_unresolved_symbols'],
             'unresolved_fixup_sites_in_held_snapshot': linkage['unresolved_fixup_sites'],
             'classification_scope': 'Pinned upstream on-disk machine extents intersected with current RAW owners; all other raw bytes remain unknown.',

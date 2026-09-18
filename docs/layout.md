@@ -59,6 +59,14 @@ expected length. A module may contain support bytes outside that selected
 extent: those bytes do not acquire ownership merely because they appear in an
 OBJ. They remain owned by the manifest's other regions.
 
+An `EXACT_DATA` owner with encoder `omf-segment-v1` explicitly claims an entire
+initialized `_DATA` contribution from a matching C owner's fresh OBJ. The
+source paths must agree, the emitted segment must cover exactly the owner,
+and its placement must be the C owner's component-based module-segment
+binding. Relocated data segments are currently rejected. `C_DATA_75F3` is
+the first such owner: its 15-byte initializer is generated with the function,
+not extracted from the original EXE. Bootstrap extraction skips this source.
+
 Library owners select the **complete** named module's `_TEXT` contribution,
 including private helpers. `build.library`, `build.library_module` and
 `build.module_sha256` fix the binary input; `layout/toolchain.json` pins the

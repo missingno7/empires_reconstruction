@@ -477,3 +477,16 @@ references are now bound to the established table addresses, and the call to
 F_4AA8 resolves through the owned code entry. The complete TASM object and all
 five fixups match; the linkage inventory is now empty. See
 [the ASM closure proof](matching-c-wave40-asm.md).
+
+## Forty-seventh matching C wave
+
+F_7932 adds 50 matching C bytes. Its far-pointer dispatch, three owned helper
+entries and eight fixups match from a fresh Turbo C object; its default pointer
+base remains an explicit numeric DGROUP binding because it targets a raw static
+table. See [the wave-forty-seven proof](matching-c-wave47.md).
+
+The remaining byte-equal F_9D8E probe is intentionally still held: DS:125D
+falls in the final 20 bytes of an adjacent raw owner, and no identified data
+component or lossless source format yet owns those bytes. F_28AC and F_4F96
+remain compiler-selection experiments with complete but byte-different C
+probes. No opaque binding is promoted merely to increase C coverage.

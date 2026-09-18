@@ -55,11 +55,12 @@ python tools/promote_c_candidates.py --recipe recipes/c/matching-wave3.json
 python tools/reconstruct_game.py
 ```
 
-Three additional local probes matched code bytes but remain unpromoted:
-F_7932 (50 bytes, DS:0BB4), F_9D8E (62 bytes, DS:125D), and F_B967
-(56 bytes, DS:B6CF). Those referenced data bases lack the exact corroborating
-storage-object declarations used for this wave. The drafts remain ignored
-research under `build/c-wave3/`; equality of a probe is not a linkage grant.
+The F_7932 (50 bytes, DS:0BB4) and F_B967 (56 bytes, DS:B6CF) probes have
+since been promoted after independent storage and caller evidence closed their
+bindings. F_9D8E remains a byte-equal probe at DS:125D. That pointer lands in
+the final 20 bytes of an adjacent raw owner rather than an identified data
+component, so it remains local research under `build/c-wave3/`; equality of a
+probe is not a linkage grant.
 
 All three historical byte-differing C drafts are now resolved across the
 three local waves. The historical held snapshot still has 24 linkage refusals;

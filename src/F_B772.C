@@ -1,0 +1,1 @@
+extern unsigned char gb52f,gb3ae[];extern int gc588,gc5a2;struct R{char a,b;int x,y;char c;char rest[25];};fb772(){register int i,j;int *q;int n;gc588=gb52f=0;gc5a2=13;n=gb3ae[0];j=n*32+1;for(i=5;i<=11;i+=2){if(gb3ae[i*32+1]==0&&gb3ae[i*32+7]==9){q=(int *)(gb3ae+14+i*32);q[0]=(i-5)/2*3+j;q[2]=0;}}}

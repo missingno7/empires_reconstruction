@@ -15,6 +15,7 @@ import tempfile
 from mz import MZ, encode_header
 from omf import OmfReader
 from exe_data import encode_data
+from storage_evidence import verify_bindings
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -390,6 +391,7 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
                 raise ValueError(f"{owner['id']}: encoded data digest differs")
             encoded_parts[owner['id']] = (part, {'encoder': encoder, 'source_sha256': sha(source.read_bytes()),
                                                 'classification': owner['classification']})
+    verify_bindings(root, manifest, original)
     sources = [r for r in manifest['regions'] if r['kind'] in ('MATCHING_C', 'MATCHING_ASM')]
     work = Path(tempfile.mkdtemp(prefix='session-', dir=output)).resolve()
     receipts, session = {}, None

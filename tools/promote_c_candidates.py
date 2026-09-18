@@ -5,6 +5,7 @@ import tempfile
 
 from mz import MZ
 from exe_data import encode_data, TEXT_FORMAT
+from storage_evidence import verify_bindings
 from promote_upstream import replace_raw_owners
 from reconstruct import (ROOT, read_json, write_json, project_path, sha, compile_sources,
                          read_object, bind_region, mismatch, owned_library_modules, compiled_data)
@@ -35,6 +36,7 @@ def promote(recipe_path, root=ROOT):
         print('No new C candidates to promote')
         return
     proposed = replace_raw_owners(manifest, candidates, original)
+    verify_bindings(root, proposed, original)
     (root / 'build').mkdir(exist_ok=True)
     work = Path(tempfile.mkdtemp(prefix='c-promotion-', dir=root / 'build'))
     lock = read_json(root / 'layout/toolchain.json')

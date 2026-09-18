@@ -1,0 +1,61 @@
+{
+  "format": "empires-storage-observations-v1",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "scope": "Observed word access addresses beyond disk image; no historical symbol, allocation extent or linker ownership claim",
+  "objects": [
+    {
+      "id": "DS_C588",
+      "offset": 50568,
+      "size": 2,
+      "observations": [
+        {
+          "function_extent": {
+            "id": "F_B772",
+            "start": 47474,
+            "end": 47609,
+            "sha256": "04d55dc08fb53f83512cff541c3f471a4bcb7539f671ea5c6404868dc3b31d49"
+          },
+          "load_offset": 46977,
+          "instruction": "mov-moffs16-ax"
+        },
+        {
+          "function_extent": {
+            "id": "F_B99F",
+            "start": 48031,
+            "end": 49888,
+            "sha256": "a38fbf30e6aaf5849c1f1eb1e36c7b71956a3ccb8b3b681b2bcebfcc8c792b2e"
+          },
+          "load_offset": 47995,
+          "instruction": "cmp-word-imm8"
+        }
+      ]
+    },
+    {
+      "id": "DS_C5A2",
+      "offset": 50594,
+      "size": 2,
+      "observations": [
+        {
+          "function_extent": {
+            "id": "F_B772",
+            "start": 47474,
+            "end": 47609,
+            "sha256": "04d55dc08fb53f83512cff541c3f471a4bcb7539f671ea5c6404868dc3b31d49"
+          },
+          "load_offset": 46980,
+          "instruction": "mov-word-imm16"
+        },
+        {
+          "function_extent": {
+            "id": "F_B99F",
+            "start": 48031,
+            "end": 49888,
+            "sha256": "a38fbf30e6aaf5849c1f1eb1e36c7b71956a3ccb8b3b681b2bcebfcc8c792b2e"
+          },
+          "load_offset": 47621,
+          "instruction": "mov-bx-word"
+        }
+      ]
+    }
+  ]
+}

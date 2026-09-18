@@ -9078,15 +9078,62 @@
       }
     },
     {
-      "id": "RAW_00B972",
+      "id": "F_B772",
+      "kind": "MATCHING_C",
       "start": 47474,
+      "end": 47609,
+      "source": "src/F_B772.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb772",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gb52f": {
+            "offset": 46383,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2B05F.phys"
+          },
+          "_gc588": {
+            "offset": 50568,
+            "coordinate": "DGROUP_offset",
+            "evidence": "docs/storage-binding-evidence.json#DS_C588",
+            "storage_evidence": "DS_C588"
+          },
+          "_gc5a2": {
+            "offset": 50594,
+            "coordinate": "DGROUP_offset",
+            "evidence": "docs/storage-binding-evidence.json#DS_C5A2",
+            "storage_evidence": "DS_C5A2"
+          },
+          "_gb3ae": {
+            "offset": 45998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2AEDE.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_B772.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "04d55dc08fb53f83512cff541c3f471a4bcb7539f671ea5c6404868dc3b31d49",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding with independently checked storage observations",
+        "upstream_entry_sha256": "25ed2c88cbb40cced6bebd0cd790713293cf36f6b871b4db00e5785d5809afbe",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "RAW_00B9F9",
+      "start": 47609,
       "end": 50080,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00B972-00C3A0.bin",
+      "source": "raw/00B9F9-00C3A0.bin",
       "original_symbol": null,
-      "artifact": "raw/00B972-00C3A0.bin",
-      "expected_sha256": "f1dbae2c603328765e9daa3f96f718de7f9ce5bf3c2280c8fdd14400af80ae57",
+      "artifact": "raw/00B9F9-00C3A0.bin",
+      "expected_sha256": "d441a0b2ee217b46fe744de145db18e6760e9c0093fe6600674dbd7b7adce4ba",
       "matching_status": "EQUAL"
     },
     {

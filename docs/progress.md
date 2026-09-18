@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 14,191 bytes from raw
-fallback: 12,043 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 14,483 bytes from raw
+fallback: 12,335 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 41 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 21,853 | 203 |
+| Freshly compiled matching C | 14,077 | 22,145 | 204 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,267 | 35 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 59 | 4 |
 | Independently encoded text | 0 | 41 | 3 |
-| Exact raw fallback | 62,621 | 48,430 | 67 |
+| Exact raw fallback | 62,621 | 48,138 | 66 |
 | Total | 79,154 | 79,154 | 335 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -104,7 +104,7 @@ bootstrap/structural milestone, not completion of the original build system.
 |---|---:|---:|
 | Exact complete bytes | 227,560 | 383,874 |
 | Partitioned and decoded resources | 89 | 131 |
-| Structured payloads round-tripped | 67 | 86 |
+| Structured payloads round-tripped | 66 | 86 |
 | Canonical matching resources | 26 | 1 |
 | Canonical matching resource bytes (including headers) | 3,773 | 26,138 |
 | Exact recompressed payload bytes | 3,721 | 0 |
@@ -126,15 +126,15 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 223 source proof units from **zero proven
-historical source modules**, and 1,172 declared owner-symbol bindings from
+The combined EXE metrics distinguish 224 source proof units from **zero proven
+historical source modules**, and 1,181 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-27,282 raw EXE bytes as unresolved machine code; overlapping entry/parent
+26,990 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 21,148 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 306 component-owned bindings
+1,536 embedded-asset bytes. There are now 309 component-owned bindings
 within fixed placement: two palette references, 151 C/ASM entry references,
-and 38 library public references from earlier checkpoints, plus 115 owned references
-in the sixteen local C waves. Four module-segment bindings also resolve through
+and 38 library public references from earlier checkpoints, plus 118 owned references
+in the seventeen local C waves. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
 [linkage-blockers.json](linkage-blockers.json) snapshots 24 held upstream
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 48,430 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 48,138 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -330,3 +330,10 @@ F_1D47 and F_B4FB add 449 matching C bytes. Three offset-table loops and
 a sequence of byte stores reproduce the original instruction order. Fresh
 negative controls reject a changed loop bound and storage displacement. See
 [the wave-sixteen proof](matching-c-wave16.md).
+
+## Seventeenth local C wave
+
+F_703E adds 292 matching C bytes, including its five-entry switch table and
+default target. Fresh compiler checks reject a changed case selector. F_28AC
+remains held on conversion instruction selection; see
+[the wave-seventeen proof](matching-c-wave17.md).

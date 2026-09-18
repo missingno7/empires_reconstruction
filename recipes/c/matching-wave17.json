@@ -1,0 +1,81 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_703E",
+      "kind": "MATCHING_C",
+      "start": 29246,
+      "end": 29538,
+      "source": "src/F_703E.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f703e",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gb85": {
+            "offset": 2949,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B5.phys"
+          },
+          "_f020f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_020F.entry",
+            "owner": "F_020F",
+            "public": "_f020f",
+            "addend": 0
+          },
+          "_gb83": {
+            "offset": 2947,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B3.phys"
+          },
+          "_gc0fc": {
+            "offset": 49404,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC2C.phys"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_f0355": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_0355.entry",
+            "owner": "F_0355",
+            "public": "_f0355",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_703E.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "80d0a2d25cd87ab9b9e137295935041fa5383e4f01325f8c450dea6387e0c699",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "6b20a6db852d98b8d0a4bfa131061eb1effea7234e03bc5df4b779532ba226eb",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

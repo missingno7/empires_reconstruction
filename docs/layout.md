@@ -135,3 +135,12 @@ promotion after proving an exact round trip. It is now a no-op so it cannot
 overwrite edits to the canonical JSON source. Generated header bytes are
 written to `build/regions/MZ_HEADER.bin`; the old ignored raw header file is
 not consumed and is not required on a fresh checkout.
+
+## Independent terminated text
+
+`ascii-nul-v1` sources contain exactly `format` and `text`. The encoder emits
+ASCII text followed by one zero byte, rejecting embedded terminators and
+non-ASCII characters. Control characters remain explicit JSON escapes. Each
+complete string has an EXACT_DATA owner and C references derive its DGROUP
+offset from that owner. Canonical text documents live under src/data and are
+never overwritten by raw extraction. See [the first text ownership proof](matching-c-wave10.md).

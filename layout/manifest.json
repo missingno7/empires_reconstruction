@@ -8171,16 +8171,101 @@
       }
     },
     {
-      "id": "RAW_00A53F",
+      "id": "F_A33F",
+      "kind": "MATCHING_C",
       "start": 42303,
       "end": 42506,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00A53F-00A60A.bin",
-      "original_symbol": null,
-      "artifact": "raw/00A53F-00A60A.bin",
+      "source": "src/F_A33F.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa33f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_gc470": {
+            "offset": 50288,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BFA0.phys"
+          },
+          "_fa28d": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_A28D.entry",
+            "owner": "F_A28D",
+            "public": "_fa28d",
+            "addend": 0
+          },
+          "_gc57e": {
+            "offset": 50558,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0AE.phys"
+          },
+          "_gc46e": {
+            "offset": 50286,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BF9E.phys"
+          },
+          "_g12d9": {
+            "owner": "TEXT_12D9",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "Complete null-terminated ASCII source component"
+          },
+          "_f7695": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7695.entry",
+            "owner": "F_7695",
+            "public": "_f7695",
+            "addend": 0
+          },
+          "_g1660": {
+            "owner": "TEXT_1660",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "Complete null-terminated ASCII source component"
+          },
+          "_f6d3c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
+          },
+          "_f6fc3": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6FC3.entry",
+            "owner": "F_6FC3",
+            "public": "_f6fc3",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_A33F.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
       "expected_sha256": "521f2cf8b06dfc8bdda2014854d55ab6ca870528792f66f8e888961132505e90",
-      "matching_status": "EQUAL"
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding to independently encoded text",
+        "upstream_entry_sha256": "dab0a6dde22a7ac9970594226f23223df912b324750ffa243066b3a01792547e",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
     },
     {
       "id": "F_A40A",
@@ -13519,13 +13604,39 @@
     {
       "id": "RAW_0107E2",
       "start": 67554,
+      "end": 69385,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/0107E2-010F09.bin",
+      "original_symbol": null,
+      "artifact": "raw/0107E2-010F09.bin",
+      "expected_sha256": "b15fe1083c2d02a623a8f7183ea5514367a3997cb52ac355b9698f87f15bb582",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "TEXT_12D9",
+      "kind": "EXACT_DATA",
+      "start": 69385,
+      "end": 69397,
+      "classification": "static_data",
+      "source": "src/data/TEXT_12D9.json",
+      "artifact": "regions/TEXT_12D9.bin",
+      "expected_sha256": "44ba3ed91d9e5b666c1ad7e67dac70b6b120f913432f53591da3155802fd0703",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_010F15",
+      "start": 69397,
       "end": 70272,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0107E2-011280.bin",
+      "source": "raw/010F15-011280.bin",
       "original_symbol": null,
-      "artifact": "raw/0107E2-011280.bin",
-      "expected_sha256": "51a9dcf83c0e8988adac3de804c34deec9a42fc7679953400cf06339ba10837d",
+      "artifact": "raw/010F15-011280.bin",
+      "expected_sha256": "d48048b47515a94f2f35d00f799035acf430df7e310091017914ba3a2e48ef06",
       "matching_status": "EQUAL"
     },
     {
@@ -13545,15 +13656,29 @@
       }
     },
     {
-      "id": "RAW_011290",
+      "id": "TEXT_1660",
+      "kind": "EXACT_DATA",
       "start": 70288,
+      "end": 70303,
+      "classification": "static_data",
+      "source": "src/data/TEXT_1660.json",
+      "artifact": "regions/TEXT_1660.bin",
+      "expected_sha256": "6f336dd9a665fe13f7d1ec363a4c7e67237462bf38f9b85d984d957f56f45376",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_01129F",
+      "start": 70303,
       "end": 79154,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/011290-013532.bin",
+      "source": "raw/01129F-013532.bin",
       "original_symbol": null,
-      "artifact": "raw/011290-013532.bin",
-      "expected_sha256": "1f8da99bedc97147c95a952bd98981ed49f44d7325daa2a598c9aaee0d3be4d2",
+      "artifact": "raw/01129F-013532.bin",
+      "expected_sha256": "eceb0da381b18941da55bff193ab12b549c311bd4bf096d6a427414fae9a2989",
       "matching_status": "EQUAL"
     }
   ]

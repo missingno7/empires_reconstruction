@@ -17,8 +17,8 @@ def main():
     for owner in manifest['regions']:
         if owner['kind'] not in ('RAW', 'EXACT_DATA'):
             continue
-        if owner.get('build', {}).get('encoder') == 'omf-segment-v1':
-            continue  # Initialized C data is rebuilt by the compiler, never extracted.
+        if owner.get('build', {}).get('encoder') in ('omf-segment-v1', 'ascii-nul-v1'):
+            continue  # Canonical compiler/text sources must never be overwritten by extraction.
         target = project_path(ROOT, owner['source'])
         if not target.is_relative_to(raw_root):
             raise SystemExit(f'Raw owner outside raw directory: {owner["id"]}')

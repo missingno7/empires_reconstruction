@@ -4,6 +4,7 @@ from pathlib import Path
 import tempfile
 
 from mz import MZ
+from exe_data import encode_data, TEXT_FORMAT
 from promote_upstream import replace_raw_owners
 from reconstruct import (ROOT, read_json, write_json, project_path, sha, compile_sources,
                          read_object, bind_region, mismatch, owned_library_modules, compiled_data)
@@ -21,8 +22,8 @@ def promote(recipe_path, root=ROOT):
     existing = {r['id']: r for r in manifest['regions']}
     candidates = []
     for owner in recipe['owners']:
-        if owner['kind'] != 'MATCHING_C' and not (owner['kind'] == 'EXACT_DATA' and owner['build']['encoder'] == 'omf-segment-v1'):
-            raise ValueError('Recipe may only promote matching C and its compiled data')
+        if owner['kind'] != 'MATCHING_C' and not (owner['kind'] == 'EXACT_DATA' and owner['build']['encoder'] in ('omf-segment-v1', TEXT_FORMAT)):
+            raise ValueError('Recipe may only promote matching C, compiled data and identified text')
         if owner['id'] in existing:
             if owner != existing[owner['id']]:
                 raise ValueError('Existing ownership differs from candidate recipe')
@@ -38,7 +39,7 @@ def promote(recipe_path, root=ROOT):
     work = Path(tempfile.mkdtemp(prefix='c-promotion-', dir=root / 'build'))
     lock = read_json(root / 'layout/toolchain.json')
     modules = owned_library_modules(proposed['regions'], root / 'toolchain', lock)
-    needed = {o['id'] if o['kind'] == 'MATCHING_C' else o['build']['code_owner'] for o in candidates}
+    needed = {o['id'] if o['kind'] == 'MATCHING_C' else o['build'].get('code_owner') for o in candidates}
     sources = [o for o in proposed['regions'] if o['id'] in needed and o['kind'] == 'MATCHING_C']
     receipts, session = compile_sources(root, sources, work, root / 'toolchain',
                                        Path(lock['dosbox_default']), lock)
@@ -49,17 +50,26 @@ def promote(recipe_path, root=ROOT):
         if owner['kind'] == 'MATCHING_C':
             receipt = receipts[owner['id']]
             data, proof = bind_region(owner, modules[owner['id']], MZ.parse(original), proposed['frames'], proposed['regions'], modules)
-        else:
+        elif owner['build']['encoder'] == 'omf-segment-v1':
             receipt = receipts[owner['build']['code_owner']]
             data, proof = compiled_data(owner, proposed['regions'], modules, MZ.parse(original))
+        else:
+            source = project_path(root, owner['source'])
+            data = encode_data(read_json(source), TEXT_FORMAT)
+            mz = MZ.parse(original)
+            if any(mz.load_offset(owner['start']) - 1 <= r['load_offset'] < mz.load_offset(owner['end']) for r in mz.relocations):
+                raise ValueError('Text owner overlaps an MZ relocation')
+            receipt = {'source_sha256': sha(source.read_bytes())}
+            proof = {'load_relocations': []}
         mismatch(original[owner['start']:owner['end']], data, owner)
         results.append({'id': owner['id'], 'kind': owner['kind'], 'bytes': len(data), 'sha256': sha(data),
                         'source_sha256': receipt['source_sha256'],
                         'fixups': len(proof.get('fixups', [])), 'load_relocations': proof['load_relocations'],
-                        'status': 'EQUAL'})
+                        'encoder': owner.get('build', {}).get('encoder'), 'status': 'EQUAL'})
     report = {'status': 'EQUAL', 'recipe_sha256': sha(recipe_path.read_bytes()),
               'original_sha256': sha(original), 'promoted_c_bytes': sum(r['bytes'] for r in results if r['kind'] == 'MATCHING_C'),
-              'promoted_compiled_data_bytes': sum(r['bytes'] for r in results if r['kind'] == 'EXACT_DATA'),
+              'promoted_compiled_data_bytes': sum(r['bytes'] for r in results if r['encoder'] == 'omf-segment-v1'),
+              'promoted_text_bytes': sum(r['bytes'] for r in results if r['encoder'] == TEXT_FORMAT),
               'owners': results}
     write_json(work / 'proof.json', {**report, 'compile': receipts, 'session': session})
     # No canonical ownership changes until every proposed C extent has passed.
@@ -74,7 +84,7 @@ def promote(recipe_path, root=ROOT):
     write_json(manifest_path, proposed)
     evidence_name = 'c-matching-evidence.json' if recipe_path.stem == 'matching-wave1' else recipe_path.stem + '-evidence.json'
     write_json(root / 'docs' / evidence_name, report)
-    print(f"Promoted {len(sources)} matching C functions, {report['promoted_c_bytes']} code bytes and {report['promoted_compiled_data_bytes']} compiled data bytes")
+    print(f"Promoted {len(sources)} matching C functions, {report['promoted_c_bytes']} code bytes, {report['promoted_compiled_data_bytes']} compiled data bytes and {report['promoted_text_bytes']} text bytes")
     return report
 
 

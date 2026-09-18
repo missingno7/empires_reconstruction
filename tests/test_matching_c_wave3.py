@@ -16,7 +16,8 @@ class MatchingCWave3Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.manifest = read_json(ROOT / 'layout/manifest.json')
-        cls.owners = read_json(ROOT / 'recipes/c/matching-wave3.json')['owners']
+        cls.owners = (read_json(ROOT / 'recipes/c/matching-wave3.json')['owners'] +
+                      read_json(ROOT / 'recipes/c/matching-wave4.json')['owners'])
         cls.original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         cls.mz = MZ.parse(cls.original)
         cls.lock = read_json(ROOT / 'layout/toolchain.json')
@@ -46,7 +47,7 @@ class MatchingCWave3Tests(unittest.TestCase):
                 data, _ = compiled_data(owner, self.manifest['regions'], self.modules, self.mz)
             mismatch(self.original[owner['start']:owner['end']], data, owner)
             counts[owner['kind']] += len(data)
-        self.assertEqual(counts, {'MATCHING_C': 821, 'EXACT_DATA': 15})
+        self.assertEqual(counts, {'MATCHING_C': 1202, 'EXACT_DATA': 43})
 
     def test_initializer_edit_changes_emitted_data_even_when_code_stays_equal(self):
         code = next(o for o in self.owners if o['id'] == 'F_75F3')

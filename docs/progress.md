@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 8,427 bytes from raw
-fallback: 6,364 bytes of matching C/library regions, the 512-byte header,
-1,536 bytes of structured DAC palettes, and 15 bytes of compiled C data.
+Full EXE identity is preserved. Follow-ups to MVP1 remove 8,836 bytes from raw
+fallback: 6,745 bytes of matching C/library regions, the 512-byte header,
+1,536 bytes of structured DAC palettes, and 43 bytes of compiled C data.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 16,174 | 161 |
+| Freshly compiled matching C | 14,077 | 16,555 | 163 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,267 | 35 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
-| Compiled C initializer | 0 | 15 | 1 |
-| Exact raw fallback | 62,621 | 54,194 | 73 |
-| Total | 79,154 | 79,154 | 293 |
+| Compiled C initializer | 0 | 43 | 3 |
+| Exact raw fallback | 62,621 | 53,785 | 72 |
+| Total | 79,154 | 79,154 | 296 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -125,16 +125,16 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 181 source proof units from **zero proven
-historical source modules**, and 906 declared owner-symbol bindings from
+The combined EXE metrics distinguish 183 source proof units from **zero proven
+historical source modules**, and 928 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-32,933 raw EXE bytes as unresolved machine code; overlapping entry/parent
-extents count once. The other 21,261 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 225 component-owned bindings
+32,552 raw EXE bytes as unresolved machine code; overlapping entry/parent
+extents count once. The other 21,233 raw bytes remain unknown. Two palette owners account for
+1,536 embedded-asset bytes. There are now 233 component-owned bindings
 within fixed placement: two palette references, 151 C/ASM entry references,
-and 38 library public references from earlier checkpoints, plus 34 owned references
-in the three local C waves. One module-segment binding also resolves through
-a compiler-initialized data owner. See [embedded-palettes.md](embedded-palettes.md).
+and 38 library public references from earlier checkpoints, plus 42 owned references
+in the four local C waves. Three module-segment bindings also resolve through
+compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
 [linkage-blockers.json](linkage-blockers.json) snapshots 24 held upstream
 candidates (9,873 extent bytes), all linkage refusals,
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 54,194 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 53,785 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -236,3 +236,11 @@ historical byte-differing C draft: its local array initializer produces both
 the exact call sequence and 15 bytes of owned compiler-generated data.
 Three additional byte-equal probes remain held for uncorroborated data bases.
 See [matching-c-wave3.md](matching-c-wave3.md).
+
+## Fourth local C wave
+
+F_7695 and F_778B now rebuild from newly reconstructed C: 381 code bytes
+and 28 initialized data bytes. Both complete functions use the local-array
+initializer pattern established by F_75F3. Their complete fresh OMF data
+segments have separate owners, with no raw initializer fallback. See
+[the wave-four proof](matching-c-wave4.md).

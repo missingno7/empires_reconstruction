@@ -1,0 +1,53 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "2b2ddd191809e1d4ec6461de181bf8eab93ddd95eb6e01ec1a415e6362c9aea8",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 381,
+  "promoted_compiled_data_bytes": 28,
+  "owners": [
+    {
+      "id": "F_7695",
+      "kind": "MATCHING_C",
+      "bytes": 178,
+      "sha256": "72735a0f3c2dfa2452466fd5482a52108d34c1d1da36efb4feab69ffd8192ae6",
+      "source_sha256": "347b0cdfb2fc64f0fe6cf3f98ff1b4eac800d56a0a275aeb61857e85cdd13f60",
+      "fixups": 17,
+      "load_relocations": [
+        30381
+      ],
+      "status": "EQUAL"
+    },
+    {
+      "id": "C_DATA_7695",
+      "kind": "EXACT_DATA",
+      "bytes": 13,
+      "sha256": "e0c1dc2a356c8ef98ae500e893a51c5d969e877f8fda35937ad5051ea05102c0",
+      "source_sha256": "347b0cdfb2fc64f0fe6cf3f98ff1b4eac800d56a0a275aeb61857e85cdd13f60",
+      "fixups": 0,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_778B",
+      "kind": "MATCHING_C",
+      "bytes": 203,
+      "sha256": "807015e404d9a4ee7a392954530c15faf35e6b025174645f070b0a916128f3df",
+      "source_sha256": "18352c96999b48bd72d9dd3556cd2d6e32fb8664bd76938fa8a8e01bfcc65a8d",
+      "fixups": 17,
+      "load_relocations": [
+        30627
+      ],
+      "status": "EQUAL"
+    },
+    {
+      "id": "C_DATA_778B",
+      "kind": "EXACT_DATA",
+      "bytes": 15,
+      "sha256": "9094a3fd0df152b0282221d8cf99ae5b6c0c7e133226c30a648d4fc296b0f02d",
+      "source_sha256": "18352c96999b48bd72d9dd3556cd2d6e32fb8664bd76938fa8a8e01bfcc65a8d",
+      "fixups": 0,
+      "load_relocations": [],
+      "status": "EQUAL"
+    }
+  ]
+}

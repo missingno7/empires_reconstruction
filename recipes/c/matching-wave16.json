@@ -1,0 +1,139 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_1D47",
+      "kind": "MATCHING_C",
+      "start": 8007,
+      "end": 8357,
+      "source": "src/F_1D47.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f1d47",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g720": {
+            "offset": 1824,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20250.phys"
+          },
+          "_fb593": {
+            "offset": 46483,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_B593.entry"
+          },
+          "_g7352": {
+            "offset": 29522,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_26E82.phys"
+          },
+          "_f684a": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_684A.entry",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0
+          },
+          "_gb07c": {
+            "offset": 45180,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2ABAC.phys"
+          },
+          "_g7356": {
+            "offset": 29526,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_26E86.phys"
+          },
+          "_g735a": {
+            "offset": 29530,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_26E8A.phys"
+          },
+          "_gbfc8": {
+            "offset": 49096,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAF8.phys"
+          },
+          "_f656c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
+          },
+          "_gc5c6": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_g9bfc": {
+            "offset": 39932,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2972C.phys"
+          },
+          "_ff39c": {
+            "offset": 62364,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F39C.entry"
+          },
+          "_gbf66": {
+            "offset": 48998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2BA96.phys"
+          },
+          "_g40d4": {
+            "offset": 16596,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_23C04.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_1D47.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "80e9dd4ab7e0eab4131d95836618185cce8ceade7fd4524756c57f501f007633",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "72dafe086655b4b9ea0addbe02d88c6d0d76bfc3824956efeced1f5645ab8803",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_B4FB",
+      "kind": "MATCHING_C",
+      "start": 46843,
+      "end": 46942,
+      "source": "src/F_B4FB.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb4fb",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g40d4": {
+            "offset": 16596,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_23C04.phys"
+          },
+          "_ff304": {
+            "offset": 62212,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F304.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_B4FB.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "f4e7cd28b9c768d5a1bb06412d7649d781a843ba5872648eeaa219d459b60f4f",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "36c88b7b4ef336f5b4d13383d32b68b12e50115559046bd040a3fd0cbc9ca1dd",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

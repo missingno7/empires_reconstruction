@@ -115,6 +115,44 @@
           "access": "read"
         }
       ]
+    },
+    {
+      "id": "DS_C0C8",
+      "kind": "byte-storage",
+      "offset": 49352,
+      "size": 1,
+      "observations": [
+        {
+          "function_extent": {
+            "id": "F_622C",
+            "start": 25644,
+            "end": 25693,
+            "sha256": "47947fdf28e29bf213e58fac3b5841677473d6db37fad28521286add02069467"
+          },
+          "load_offset": 25146,
+          "instruction": "mov-moffs8-al"
+        },
+        {
+          "function_extent": {
+            "id": "F_643A",
+            "start": 26170,
+            "end": 26410,
+            "sha256": "8f97e01ad3059dd42d94d61038e74b0736a016b57168bdd897699a4de5e9b5e0"
+          },
+          "load_offset": 25837,
+          "instruction": "mov-al-moffs8"
+        },
+        {
+          "function_extent": {
+            "id": "F_652A",
+            "start": 26410,
+            "end": 26476,
+            "sha256": "dc0c10d92378824b1922c8ec4762c486d5a4d760b9cd8ba5c84704c7a704704a"
+          },
+          "load_offset": 25912,
+          "instruction": "mov-dl-moffs8"
+        }
+      ]
     }
   ]
 }

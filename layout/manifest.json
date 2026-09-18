@@ -3685,14 +3685,94 @@
     {
       "id": "RAW_006381",
       "start": 25473,
-      "end": 25702,
+      "end": 25644,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/006381-006466.bin",
+      "source": "raw/006381-00642C.bin",
       "original_symbol": null,
-      "artifact": "raw/006381-006466.bin",
-      "expected_sha256": "d7ac9dacd44c7d2a0c93c1c44dfbf6fe3c667efa8f64f82617d1faea7db53f33",
+      "artifact": "raw/006381-00642C.bin",
+      "expected_sha256": "b7ce3dabfad43ac93731dd4ee5f77e608819dd8800b05cbbdc26a890993b230b",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_622C",
+      "kind": "MATCHING_C",
+      "start": 25644,
+      "end": 25693,
+      "source": "src/F_622C.C",
+      "original_symbol": "F_622C",
+      "artifact": "regions/F_622C.bin",
+      "expected_sha256": "47947fdf28e29bf213e58fac3b5841677473d6db37fad28521286add02069467",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f622c",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_gb3e": {
+            "offset": 2878,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2066E.phys"
+          },
+          "_gc0c8": {
+            "offset": 49352,
+            "coordinate": "DGROUP_offset",
+            "storage_evidence": "DS_C0C8",
+            "evidence": "docs/storage-binding-evidence.json#DS_C0C8"
+          },
+          "_gb40": {
+            "offset": 2880,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20670.phys"
+          },
+          "_fF7CD": {
+            "offset": 63437,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F7CD.entry"
+          },
+          "_fF7B2": {
+            "offset": 63410,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F7B2.entry"
+          }
+        },
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_625D",
+      "kind": "MATCHING_C",
+      "start": 25693,
+      "end": 25702,
+      "source": "src/F_625D.C",
+      "original_symbol": "F_625D",
+      "artifact": "regions/F_625D.bin",
+      "expected_sha256": "b078d586124cd9e6033f45295ed2228e3454c6439ee5197a160c04b084d4a10f",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f625d",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_f622c": {
+            "coordinate": "code_offset",
+            "owner": "F_622C",
+            "public": "_f622c",
+            "addend": 0,
+            "evidence": "functions/F_622C.entry"
+          },
+          "_harderr": {
+            "coordinate": "code_offset",
+            "owner": "LIB_HARDERR",
+            "public": "_harderr",
+            "addend": 0,
+            "evidence": "CC.LIB/HARDERR"
+          }
+        },
+        "module_segments": {}
+      }
     },
     {
       "id": "F_6266",

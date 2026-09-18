@@ -49,6 +49,44 @@ def verify(document, original, frames):
                 raise ValueError('Buffer storage requires independent read and write observations')
             result[item['id']] = offset
             continue
+        if item.get('kind') == 'byte-storage':
+            if type(offset) is not int or not 0 <= offset <= 65535 or item.get('size') != 1:
+                raise ValueError('Invalid byte storage declaration')
+            if frames['DGROUP'] + offset < mz.declared_size - mz.header_size:
+                raise ValueError('Expected byte storage beyond on-disk load image')
+            accesses, functions = set(), set()
+            forms = {
+                'mov-moffs8-al': (b'\xa2', 3, 'write'),
+                'mov-al-moffs8': (b'\xa0', 3, 'read'),
+                'mov-dl-moffs8': (b'\x8a\x16', 4, 'read'),
+            }
+            for observation in item['observations']:
+                extent = observation['function_extent']
+                code = original[extent['start']:extent['end']]
+                if hashlib.sha256(code).hexdigest() != extent['sha256']:
+                    raise ValueError('Byte storage observation function identity mismatch')
+                at = mz.file_offset(observation['load_offset'])
+                kind = observation.get('instruction')
+                if kind not in forms:
+                    raise ValueError('Unknown byte storage instruction')
+                prefix, width, access = forms[kind]
+                if not extent['start'] <= at or at + width > extent['end']:
+                    raise ValueError('Byte storage observation outside function')
+                instruction = original[at:at + width]
+                if not instruction.startswith(prefix):
+                    raise ValueError('Byte storage instruction mismatch')
+                address_at = 2 if kind == 'mov-dl-moffs8' else 1
+                if int.from_bytes(instruction[address_at:address_at + 2], 'little') != offset:
+                    raise ValueError('Byte storage address mismatch')
+                if any(at - mz.header_size <= r['load_offset'] < at - mz.header_size + width
+                       for r in mz.relocations):
+                    raise ValueError('Byte storage observation overlaps relocation')
+                accesses.add(access)
+                functions.add(extent['id'])
+            if accesses != {'read', 'write'} or len(functions) < 2:
+                raise ValueError('Byte storage requires independent read and write observations')
+            result[item['id']] = offset
+            continue
         if item['id'] in result or item['size'] != 2 or not 0 <= offset <= 65534:
             raise ValueError('Invalid storage word declaration')
         if frames['DGROUP'] + offset < mz.declared_size - mz.header_size:

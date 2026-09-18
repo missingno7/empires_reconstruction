@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "3f738df146caf8effd6304e19d363ecfe6d371a375b200a5dc08c0cd4a14f8a3",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 266,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_200F",
+      "kind": "MATCHING_C",
+      "bytes": 266,
+      "sha256": "60c7bd69c9439105440010bce7e71c32e85cd3677d09c50643586ebc7220b8f3",
+      "source_sha256": "d7c8554734565fa8fc44780e355466f33272a0a27191c683f44420cc6adce298",
+      "fixups": 30,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

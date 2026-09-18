@@ -1,0 +1,112 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_200F",
+      "start": 8719,
+      "end": 8985,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_200F.C",
+      "artifact": "regions/F_200F.bin",
+      "expected_sha256": "60c7bd69c9439105440010bce7e71c32e85cd3677d09c50643586ebc7220b8f3",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f200f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f68aa": {
+            "owner": "F_68AA",
+            "public": "_f68aa",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "owned F_68AA entry"
+          },
+          "_g6f2a": {
+            "offset": 28458,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS base in complete F_200F fixup"
+          },
+          "_g893c": {
+            "offset": 35132,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS base in complete F_200F fixup"
+          },
+          "_g6e88": {
+            "offset": 28296,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_gb1cc": {
+            "offset": 45516,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g9990": {
+            "offset": 39312,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g7904": {
+            "offset": 30980,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g6ac4": {
+            "offset": 27332,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g6ca6": {
+            "offset": 27814,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g9ae0": {
+            "offset": 39648,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g99da": {
+            "offset": 39386,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g9c50": {
+            "offset": 40016,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g9b6e": {
+            "offset": 39790,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g9a5c": {
+            "offset": 39516,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g7400": {
+            "offset": 29696,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          },
+          "_g735e": {
+            "offset": 29534,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS target in complete F_200F fixup"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_200F.json",
+        "upstream_extent_sha256": "60c7bd69c9439105440010bce7e71c32e85cd3677d09c50643586ebc7220b8f3"
+      }
+    }
+  ]
+}

@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 35,862 | 242 |
+| Freshly compiled matching C | 14,077 | 35,891 | 243 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,981 | 52 |
+| Exact raw fallback | 62,621 | 31,952 | 52 |
 | Total | 79,154 | 79,154 | 373 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -126,11 +126,11 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 263 source proof units from **zero proven
-historical source modules**, and 1,715 declared owner-symbol bindings from
+The combined EXE metrics distinguish 264 source proof units from **zero proven
+historical source modules**, and 1,717 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 12,465 raw EXE bytes as unresolved machine code; overlapping entry/parent
-extents count once. The other 19,516 raw bytes remain unknown. Two palette owners account for
+extents count once. The other 19,487 raw bytes remain unknown. Two palette owners account for
 1,536 embedded-asset bytes. There are now 568 component-owned bindings
 within fixed placement: 484 C/ASM entry references, 75 library bindings,
 and nine structured-data references. Six module-segment bindings also resolve through
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,981 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,952 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -528,3 +528,9 @@ proof](matching-c-wave51.md).
 `F_CDDD` and `F_CE2A`. Its fresh object has five bound fixups, including the
 owned `F_86C9` and `F_A13F` entries and pinned `_longjmp` public, and no loader
 relocations. See [the wave-fifty-two proof](matching-c-wave52.md).
+
+## Fifty-third matching-C wave
+
+`F_0215` adds 29 matching C bytes for the complete indexed DGROUP store
+routine at load offset `0215`. Its fresh object has two bound DGROUP fixups
+and no loader relocations. See [the wave-fifty-three proof](matching-c-wave53.md).

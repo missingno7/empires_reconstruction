@@ -235,16 +235,37 @@
       }
     },
     {
-      "id": "RAW_000415",
+      "id": "F_0215",
+      "kind": "MATCHING_C",
+      "source": "src/F_0215.C",
       "start": 1045,
       "end": 1074,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/000415-000432.bin",
-      "original_symbol": null,
-      "artifact": "raw/000415-000432.bin",
       "expected_sha256": "61e12c0e0eed22c4e7a91743117626a0edf9b6ab96d81684a4323466f83021c8",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_0215",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g3904": {
+            "coordinate": "DGROUP_offset",
+            "offset": 14596
+          },
+          "_g00be": {
+            "coordinate": "DGROUP_offset",
+            "offset": 190
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_0215",
+      "artifact": "regions/F_0215.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from raw code extent and fresh full-extent OMF binding",
+        "change": "Decode the complete 29-byte indexed DGROUP store routine at load offset 0215"
+      }
     },
     {
       "id": "F_0232",

@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "closed for the currently inventoried held candidates",
-      "matches": "Current build proves 242 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
+      "matches": "Current build proves 243 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
       "first_unresolved_fact": "No unresolved symbols remain in the current held-candidate inventory. Further work moves to raw-data classification, module topology and format recovery.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -42,12 +42,12 @@
         "docs/module-group-evidence.json"
       ],
       "unblock": "Test shared units using public order and shared data evidence; compare linker experiments against the fixed-placement output.",
-      "leverage": "1,715 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
+      "leverage": "1,717 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
     },
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "12,465 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 19,516 raw bytes are unknown.",
+      "matches": "12,465 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 19,487 raw bytes are unknown.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",
@@ -55,7 +55,7 @@
         "docs/vision.md"
       ],
       "unblock": "Prove individual palettes, tables, strings, alignment and data ranges from existing format evidence and xrefs, then add strict structural encoders.",
-      "leverage": "31,981 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
+      "leverage": "31,952 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
     },
     {
       "target": "Nested resources, fonts, level record blocks and actor bytecode",

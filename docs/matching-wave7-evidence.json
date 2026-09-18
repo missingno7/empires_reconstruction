@@ -1,0 +1,69 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "8108c4415336dc3d8f918c494657f6799a7725eeee9396ca0453c4fb07743350",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 756,
+  "promoted_compiled_data_bytes": 16,
+  "owners": [
+    {
+      "id": "F_7162",
+      "kind": "MATCHING_C",
+      "bytes": 153,
+      "sha256": "8c395edb7fdaf5ff8ec269c5a93713e3b03ee85fa480ca45f26c30508e80d53f",
+      "source_sha256": "3f6a9774048506379f5304cb86d17196d60f9c88902f93f82b654a14e3d8a450",
+      "fixups": 23,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_738A",
+      "kind": "MATCHING_C",
+      "bytes": 141,
+      "sha256": "3070b1081993ed4db4c950ac6105d505d194b6ab3e3272c4097f1d4d6ef4e149",
+      "source_sha256": "6c603341b14ff90925617015f2bf46acc050c649685be9bc6a4522bad49e3d91",
+      "fixups": 11,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_A28D",
+      "kind": "MATCHING_C",
+      "bytes": 178,
+      "sha256": "1c27e74e683ff6a7a213c4706faec87ffa27f3165de047f1f367f2003d160c0d",
+      "source_sha256": "6b986345586854b17171876a8a2994fffd494faf2ab5db19833a715c44f41f93",
+      "fixups": 8,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_B09A",
+      "kind": "MATCHING_C",
+      "bytes": 136,
+      "sha256": "c2251dd0a866dae2efbfc537db15f8cd2073923b8e5af7d8bad9cf134d8f3a06",
+      "source_sha256": "09c3b216619c1f10ad04b65ed6da88e4b6a9800ad6b59097672cd6665e9883df",
+      "fixups": 12,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_D1D8",
+      "kind": "MATCHING_C",
+      "bytes": 148,
+      "sha256": "2cbbdbfa0b150b6bf3576387a1ae63844afcbea5593a3a9fbd92f219d6f7cb86",
+      "source_sha256": "d3924d20f7527e89c2b4658c1049aac0be04e2775ccd5ce9712a21e73a8949a1",
+      "fixups": 5,
+      "load_relocations": [],
+      "status": "EQUAL"
+    },
+    {
+      "id": "C_DATA_A28D",
+      "kind": "EXACT_DATA",
+      "bytes": 16,
+      "sha256": "557eab64a41036d0ef8beb71a6f720f3db5bb9de3b5ca4e191be5b1c446434ab",
+      "source_sha256": "6b986345586854b17171876a8a2994fffd494faf2ab5db19833a715c44f41f93",
+      "fixups": 0,
+      "load_relocations": [],
+      "status": "EQUAL"
+    }
+  ]
+}

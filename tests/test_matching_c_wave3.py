@@ -17,7 +17,8 @@ class MatchingCWave3Tests(unittest.TestCase):
     def setUpClass(cls):
         cls.manifest = read_json(ROOT / 'layout/manifest.json')
         cls.owners = (read_json(ROOT / 'recipes/c/matching-wave3.json')['owners'] +
-                      read_json(ROOT / 'recipes/c/matching-wave4.json')['owners'])
+                      read_json(ROOT / 'recipes/c/matching-wave4.json')['owners'] +
+                      read_json(ROOT / 'recipes/c/matching-wave7.json')['owners'])
         cls.original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         cls.mz = MZ.parse(cls.original)
         cls.lock = read_json(ROOT / 'layout/toolchain.json')
@@ -32,7 +33,13 @@ class MatchingCWave3Tests(unittest.TestCase):
         path = work / 'mutant.C'
         path.write_bytes(original_source.replace(b'to Continue', b'to continue'))
         owner.update(id='CHANGED_INITIALIZER', source=path.relative_to(ROOT).as_posix())
-        receipts, _ = compile_sources(ROOT, sources + [owner], work / 'compiler', ROOT / 'toolchain',
+        static_owner = copy.deepcopy(next(o for o in sources if o['id'] == 'F_A28D'))
+        static_source = (ROOT / static_owner['source']).read_bytes()
+        assert static_source.count(b'Explorer') == 1
+        static_path = work / 'static_mutant.C'
+        static_path.write_bytes(static_source.replace(b'Explorer', b'explorer'))
+        static_owner.update(id='CHANGED_STATIC', source=static_path.relative_to(ROOT).as_posix())
+        receipts, _ = compile_sources(ROOT, sources + [owner, static_owner], work / 'compiler', ROOT / 'toolchain',
                                       Path(cls.lock['dosbox_default']), cls.lock)
         for name, receipt in receipts.items():
             cls.modules[name] = read_object((work / 'compiler' / receipt['object']).read_bytes())
@@ -47,7 +54,7 @@ class MatchingCWave3Tests(unittest.TestCase):
                 data, _ = compiled_data(owner, self.manifest['regions'], self.modules, self.mz)
             mismatch(self.original[owner['start']:owner['end']], data, owner)
             counts[owner['kind']] += len(data)
-        self.assertEqual(counts, {'MATCHING_C': 1202, 'EXACT_DATA': 43})
+        self.assertEqual(counts, {'MATCHING_C': 1958, 'EXACT_DATA': 59})
 
     def test_initializer_edit_changes_emitted_data_even_when_code_stays_equal(self):
         code = next(o for o in self.owners if o['id'] == 'F_75F3')
@@ -57,6 +64,16 @@ class MatchingCWave3Tests(unittest.TestCase):
         mismatch(self.original[code['start']:code['end']], data, code)
         changed, _ = compiled_data(owner, self.manifest['regions'], modules, self.mz)
         with self.assertRaisesRegex(ValueError, 'First mismatch.*C_DATA_75F3'):
+            mismatch(self.original[owner['start']:owner['end']], changed, owner)
+
+    def test_static_string_edit_changes_data_without_changing_code(self):
+        code = next(o for o in self.owners if o['id'] == 'F_A28D')
+        owner = next(o for o in self.owners if o['id'] == 'C_DATA_A28D')
+        modules = {**self.modules, 'F_A28D': self.modules['CHANGED_STATIC']}
+        data, _ = bind_region(code, modules['F_A28D'], self.mz, self.manifest['frames'], self.manifest['regions'], modules)
+        mismatch(self.original[code['start']:code['end']], data, code)
+        changed, _ = compiled_data(owner, self.manifest['regions'], modules, self.mz)
+        with self.assertRaisesRegex(ValueError, 'First mismatch.*C_DATA_A28D'):
             mismatch(self.original[owner['start']:owner['end']], changed, owner)
 
     def test_compiled_data_ownership_length_and_fixup_rejections(self):

@@ -4825,14 +4825,101 @@
     {
       "id": "RAW_00723E",
       "start": 29246,
-      "end": 29691,
+      "end": 29538,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00723E-0073FB.bin",
+      "source": "raw/00723E-007362.bin",
       "original_symbol": null,
-      "artifact": "raw/00723E-0073FB.bin",
-      "expected_sha256": "36c471184da679e7eb5b8a4bef2e86ad12b39937cd9f650050b5560774935d8b",
+      "artifact": "raw/00723E-007362.bin",
+      "expected_sha256": "80d0a2d25cd87ab9b9e137295935041fa5383e4f01325f8c450dea6387e0c699",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_7162",
+      "kind": "MATCHING_C",
+      "start": 29538,
+      "end": 29691,
+      "source": "src/F_7162.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7162",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gb85": {
+            "offset": 2949,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B5.phys"
+          },
+          "_gb83": {
+            "offset": 2947,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B3.phys"
+          },
+          "_gc0ee": {
+            "offset": 49390,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC1E.phys"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f75f3": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_75F3.entry",
+            "owner": "F_75F3",
+            "public": "_f75f3",
+            "addend": 0
+          },
+          "_gc0f6": {
+            "offset": 49398,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC26.phys"
+          },
+          "_f7695": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7695.entry",
+            "owner": "F_7695",
+            "public": "_f7695",
+            "addend": 0
+          },
+          "_gc0ec": {
+            "offset": 49388,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC1C.phys"
+          },
+          "_gc0f2": {
+            "offset": 49394,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC22.phys"
+          },
+          "_f7856": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7856.entry",
+            "owner": "F_7856",
+            "public": "_f7856",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_7162.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "8c395edb7fdaf5ff8ec269c5a93713e3b03ee85fa480ca45f26c30508e80d53f",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "fa9ad8dc2c8d9e7ced6fd6d5fe7226eee0d92be940dbfa247639ee0df33fc58c",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C routine and initialized static strings where present"
+      }
     },
     {
       "id": "F_71FB",
@@ -5205,16 +5292,69 @@
       }
     },
     {
-      "id": "RAW_00758A",
+      "id": "F_738A",
+      "kind": "MATCHING_C",
       "start": 30090,
       "end": 30231,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00758A-007617.bin",
-      "original_symbol": null,
-      "artifact": "raw/00758A-007617.bin",
+      "source": "src/F_738A.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f738a",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f020f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_020F.entry",
+            "owner": "F_020F",
+            "public": "_f020f",
+            "addend": 0
+          },
+          "_gb82": {
+            "offset": 2946,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B2.phys"
+          },
+          "_gbfcd": {
+            "offset": 49101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAFD.phys"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_gc0fa": {
+            "offset": 49402,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC2A.phys"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_738A.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
       "expected_sha256": "3070b1081993ed4db4c950ac6105d505d194b6ab3e3272c4097f1d4d6ef4e149",
-      "matching_status": "EQUAL"
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "d8b1cfcaed8cb86be5864bfe54b50630e78a9b019d129f5cfbc0196ec2443f49",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C routine and initialized static strings where present"
+      }
     },
     {
       "id": "F_7417",
@@ -7865,15 +8005,76 @@
       }
     },
     {
-      "id": "RAW_00A48D",
+      "id": "F_A28D",
+      "kind": "MATCHING_C",
       "start": 42125,
+      "end": 42303,
+      "source": "src/F_A28D.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa28d",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {
+          "_DATA": {
+            "owner": "C_DATA_A28D",
+            "addend": 0,
+            "coordinate": "DGROUP_offset",
+            "evidence": "F_A28D fresh OMF initialized static strings; original DS:1650"
+          }
+        },
+        "bindings": {
+          "_f6d3c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
+          },
+          "_ff25e": {
+            "owner": "LIB_LTOA",
+            "public": "_ultoa",
+            "addend": 0,
+            "coordinate": "code_offset",
+            "evidence": "LTOA OMF public _ultoa at module offset 176"
+          },
+          "_f6cf6": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CF6.entry",
+            "owner": "F_6CF6",
+            "public": "_f6cf6",
+            "addend": 0
+          },
+          "_f78c3": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_78C3.entry",
+            "owner": "F_78C3",
+            "public": "_f78c3",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_A28D.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "1c27e74e683ff6a7a213c4706faec87ffa27f3165de047f1f367f2003d160c0d",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "1af0453cf267cf4b3f70eeea77f39e479df30ae596f6bad25cfab2fe330f64e3",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C routine and initialized static strings where present"
+      }
+    },
+    {
+      "id": "RAW_00A53F",
+      "start": 42303,
       "end": 42506,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00A48D-00A60A.bin",
+      "source": "raw/00A53F-00A60A.bin",
       "original_symbol": null,
-      "artifact": "raw/00A48D-00A60A.bin",
-      "expected_sha256": "9236d27cec9d3c967678bae97190edfe4a113d198fa82103bfb701f4bfb0cd0a",
+      "artifact": "raw/00A53F-00A60A.bin",
+      "expected_sha256": "521f2cf8b06dfc8bdda2014854d55ab6ca870528792f66f8e888961132505e90",
       "matching_status": "EQUAL"
     },
     {
@@ -8088,15 +8289,73 @@
       }
     },
     {
-      "id": "RAW_00B29A",
+      "id": "F_B09A",
+      "kind": "MATCHING_C",
       "start": 45722,
+      "end": 45858,
+      "source": "src/F_B09A.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb09a",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f656c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
+          },
+          "_gc5c6": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_g96": {
+            "offset": 150,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FAC6.phys"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_B09A.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "c2251dd0a866dae2efbfc537db15f8cd2073923b8e5af7d8bad9cf134d8f3a06",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "51eac4acbb23ff27e558ab262835c62ce6a91a13a868c483d3157db6cf395dd9",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C routine and initialized static strings where present"
+      }
+    },
+    {
+      "id": "RAW_00B322",
+      "start": 45858,
       "end": 46551,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00B29A-00B5D7.bin",
+      "source": "raw/00B322-00B5D7.bin",
       "original_symbol": null,
-      "artifact": "raw/00B29A-00B5D7.bin",
-      "expected_sha256": "bad5404abfca165edbd10847e2c019a7c115a2c80d2fa8b18c6a42d19ceccd8e",
+      "artifact": "raw/00B322-00B5D7.bin",
+      "expected_sha256": "52ab97c346ff6a20986e1ad2a7897186e40ea419eab174cb171de93e943c4849",
       "matching_status": "EQUAL"
     },
     {
@@ -9385,15 +9644,51 @@
       }
     },
     {
-      "id": "RAW_00D3D8",
+      "id": "F_D1D8",
+      "kind": "MATCHING_C",
       "start": 54232,
+      "end": 54380,
+      "source": "src/F_D1D8.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd1d8",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_D1D8.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "2cbbdbfa0b150b6bf3576387a1ae63844afcbea5593a3a9fbd92f219d6f7cb86",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "bd5682ac9755daa61667123dbf8b8140c76a6c11afbb8261cd4be9c6222d82b4",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover complete C routine and initialized static strings where present"
+      }
+    },
+    {
+      "id": "RAW_00D46C",
+      "start": 54380,
       "end": 54596,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00D3D8-00D544.bin",
+      "source": "raw/00D46C-00D544.bin",
       "original_symbol": null,
-      "artifact": "raw/00D3D8-00D544.bin",
-      "expected_sha256": "9cb6c6bf3f33a8da0d3e38be305a18b40883afedf66c7289d9fb70e553ddadfb",
+      "artifact": "raw/00D46C-00D544.bin",
+      "expected_sha256": "24444a64104309af8a1c75f25b7bc7414139c5e4ad5e580210e02268fd9d469c",
       "matching_status": "EQUAL"
     },
     {
@@ -12899,13 +13194,41 @@
     {
       "id": "RAW_0107E2",
       "start": 67554,
+      "end": 70272,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/0107E2-011280.bin",
+      "original_symbol": null,
+      "artifact": "raw/0107E2-011280.bin",
+      "expected_sha256": "51a9dcf83c0e8988adac3de804c34deec9a42fc7679953400cf06339ba10837d",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "C_DATA_A28D",
+      "kind": "EXACT_DATA",
+      "start": 70272,
+      "end": 70288,
+      "classification": "static_data",
+      "source": "src/F_A28D.C",
+      "artifact": "regions/C_DATA_A28D.bin",
+      "expected_sha256": "557eab64a41036d0ef8beb71a6f720f3db5bb9de3b5ca4e191be5b1c446434ab",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_A28D",
+        "segment": "_DATA"
+      }
+    },
+    {
+      "id": "RAW_011290",
+      "start": 70288,
       "end": 79154,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0107E2-013532.bin",
+      "source": "raw/011290-013532.bin",
       "original_symbol": null,
-      "artifact": "raw/0107E2-013532.bin",
-      "expected_sha256": "5714d0a7d8cb85a93fc5c7bafe4ee1d6f32a8c8a81e6ceb25113b3a9ac0f3b3d",
+      "artifact": "raw/011290-013532.bin",
+      "expected_sha256": "1f8da99bedc97147c95a952bd98981ed49f44d7325daa2a598c9aaee0d3be4d2",
       "matching_status": "EQUAL"
     }
   ]

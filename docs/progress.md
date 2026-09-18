@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 29,390 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 29,534 bytes from raw
 fallback: 25,234 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 34,841 | 232 |
+| Freshly compiled matching C | 14,077 | 34,985 | 233 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 60 | 5 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 33,231 | 56 |
+| Exact raw fallback | 62,621 | 33,087 | 56 |
 | Total | 79,154 | 79,154 | 356 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -126,13 +126,13 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 253 source proof units from **zero proven
-historical source modules**, and 1,646 declared owner-symbol bindings from
+The combined EXE metrics distinguish 254 source proof units from **zero proven
+historical source modules**, and 1,650 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 22,900 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 20,882 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 529 component-owned bindings
-within fixed placement: 451 C/ASM entry references, 70 library public references,
+1,536 embedded-asset bytes. There are now 531 component-owned bindings
+within fixed placement: 452 C/ASM entry references, 71 library public references,
 and eight structured-data references. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
@@ -188,7 +188,7 @@ classification and nested-resource adapters remain mechanical frontiers.
 
 ## Owned code references
 
-451 code bindings across 171 callers now identify selected entry publics of
+452 code bindings across 172 callers now identify selected entry publics of
 215 owned C/ASM components. Migration requires both the established address
 and the selected public name to agree, followed by a fresh complete EXE match.
 Near and far fixups resolve through owners. The remaining numeric bindings,
@@ -197,7 +197,7 @@ See [code-bindings.md](code-bindings.md).
 
 ## Owned library references
 
-70 additional references across 47 callers now resolve through publics read
+71 additional references across 48 callers now resolve through publics read
 from 26 pinned library modules. Eleven target nonzero module-relative offsets.
 Public offsets are read from OMF at build time, while module placement remains
 fixed. Full EXE bytes and relocations remain EQUAL. See

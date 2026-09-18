@@ -1,0 +1,54 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_2119",
+      "start": 8985,
+      "end": 9129,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_2119.C",
+      "artifact": "regions/F_2119.bin",
+      "expected_sha256": "94599249633577feebb84d0b13a0c905679e20e2171b37816d8f5174471f264c",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f2119",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f656c": {
+            "owner": "F_656C",
+            "public": "_f656c",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "owned F_656C entry"
+          },
+          "_memmove": {
+            "owner": "LIB_MOVMEM",
+            "public": "_memmove",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "owned CC.LIB MOVMEM public at module offset 84"
+          },
+          "_gc5c6": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS far-pointer base in complete F_2119 fixup"
+          },
+          "_g2380": {
+            "offset": 9088,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS destination base in complete F_2119 fixup"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_2119.json",
+        "upstream_extent_sha256": "94599249633577feebb84d0b13a0c905679e20e2171b37816d8f5174471f264c"
+      }
+    }
+  ]
+}

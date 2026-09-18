@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "closed for the currently inventoried held candidates",
-      "matches": "Current build proves 232 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
+      "matches": "Current build proves 233 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
       "first_unresolved_fact": "No unresolved symbols remain in the current held-candidate inventory. Further work moves to raw-data classification, module topology and format recovery.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -32,7 +32,7 @@
     {
       "target": "Original modules and historical linker",
       "state": "open investigation, not demonstrated blocked",
-      "matches": "253 independent source proof units, 41 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
+      "matches": "254 independent source proof units, 41 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
       "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
       "evidence": [
         "layout/manifest.json",

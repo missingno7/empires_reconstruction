@@ -3721,16 +3721,181 @@
       }
     },
     {
-      "id": "RAW_005CC3",
+      "id": "F_5AC3",
+      "kind": "MATCHING_C",
       "start": 23747,
       "end": 24728,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/005CC3-006098.bin",
-      "original_symbol": null,
-      "artifact": "raw/005CC3-006098.bin",
+      "source": "src/F_5AC3.C",
+      "artifact": "regions/F_5AC3.bin",
       "expected_sha256": "4c1bfabab95657023bf0277f897c308a3a5c2707598160ec9c0a3ece12982c99",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f5ac3",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc0be": {
+            "offset": 49342,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc04e": {
+            "offset": 49230,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_tx": {
+            "offset": 49232,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_ty": {
+            "offset": 49280,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0b8": {
+            "offset": 49336,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_wig": {
+            "offset": 2304,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0b0": {
+            "offset": 49328,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_vram": {
+            "offset": 49084,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0ba": {
+            "offset": 49338,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0b6": {
+            "offset": 49334,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_objtab": {
+            "offset": 16592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0b2": {
+            "offset": 49330,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0b4": {
+            "offset": 49332,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0c2": {
+            "offset": 49346,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_sprbase": {
+            "offset": 49096,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0c4": {
+            "offset": 49348,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_g8fe": {
+            "offset": 2302,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc046": {
+            "offset": 49222,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc048": {
+            "offset": 49224,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc04a": {
+            "offset": 49226,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc04c": {
+            "offset": 49228,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_gc0c0": {
+            "offset": 49344,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_edge": {
+            "offset": 16580,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_5AC3 fixup"
+          },
+          "_f020f": {
+            "offset": 527,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_fd89a": {
+            "offset": 55450,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_f2a2d": {
+            "offset": 10797,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_f5f3c": {
+            "offset": 24380,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_fcaf1": {
+            "offset": 51953,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_f01ce": {
+            "offset": 462,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_f03d2": {
+            "offset": 978,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "SCOPY@": {
+            "coordinate": "code_offset",
+            "evidence": "SCOPY OMF public SCOPY@",
+            "owner": "LIB_SCOPY",
+            "public": "SCOPY@",
+            "addend": 0
+          }
+        }
+      },
+      "classification": "code"
     },
     {
       "id": "F_5E98",

@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 12,
-  "held_extent_bytes": 5600,
+  "held_candidates": 11,
+  "held_extent_bytes": 4619,
   "reason_counts": {
-    "PROVIDER_REFUSED": 12
+    "PROVIDER_REFUSED": 11
   },
-  "unique_unresolved_symbols": 43,
-  "unresolved_fixup_sites": 73,
+  "unique_unresolved_symbols": 37,
+  "unresolved_fixup_sites": 61,
   "symbols": [
     {
       "symbol": "_abort",
@@ -83,60 +83,6 @@
       "fixup_sites": 1,
       "candidate_ids": [
         "F_3A75"
-      ]
-    },
-    {
-      "symbol": "_gc0b2",
-      "candidate_count": 1,
-      "candidate_bytes": 981,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_5AC3"
-      ]
-    },
-    {
-      "symbol": "_gc0b4",
-      "candidate_count": 1,
-      "candidate_bytes": 981,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_5AC3"
-      ]
-    },
-    {
-      "symbol": "_gc0c2",
-      "candidate_count": 1,
-      "candidate_bytes": 981,
-      "fixup_sites": 5,
-      "candidate_ids": [
-        "F_5AC3"
-      ]
-    },
-    {
-      "symbol": "_gc0c4",
-      "candidate_count": 1,
-      "candidate_bytes": 981,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_5AC3"
-      ]
-    },
-    {
-      "symbol": "_sprbase",
-      "candidate_count": 1,
-      "candidate_bytes": 981,
-      "fixup_sites": 1,
-      "candidate_ids": [
-        "F_5AC3"
-      ]
-    },
-    {
-      "symbol": "_wig",
-      "candidate_count": 1,
-      "candidate_bytes": 981,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_5AC3"
       ]
     },
     {
@@ -531,67 +477,6 @@
         {
           "offset": 49,
           "symbol": "_g9bfc"
-        }
-      ]
-    },
-    {
-      "id": "F_5AC3",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "913bbebf5944a3050ef629c4ce4685068515066da591edc51df854ec56513750",
-      "extent_bytes": 981,
-      "draft": "c/F_5AC3.C",
-      "draft_sha256": "890a6a7f8c87ac36656060b9f2106374966c214a1e59a2803be1ae8ee9ba19de",
-      "refusal": "12 of the candidate's 96 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _wig at offset 123. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 123,
-          "symbol": "_wig"
-        },
-        {
-          "offset": 156,
-          "symbol": "_wig"
-        },
-        {
-          "offset": 480,
-          "symbol": "_gc0b2"
-        },
-        {
-          "offset": 488,
-          "symbol": "_gc0b4"
-        },
-        {
-          "offset": 499,
-          "symbol": "_gc0c2"
-        },
-        {
-          "offset": 502,
-          "symbol": "_gc0c2"
-        },
-        {
-          "offset": 511,
-          "symbol": "_sprbase"
-        },
-        {
-          "offset": 520,
-          "symbol": "_gc0c4"
-        },
-        {
-          "offset": 524,
-          "symbol": "_gc0c4"
-        },
-        {
-          "offset": 571,
-          "symbol": "_gc0c2"
-        },
-        {
-          "offset": 603,
-          "symbol": "_gc0c2"
-        },
-        {
-          "offset": 638,
-          "symbol": "_gc0c2"
         }
       ]
     },

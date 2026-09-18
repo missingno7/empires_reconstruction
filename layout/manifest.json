@@ -9602,16 +9602,131 @@
       }
     },
     {
-      "id": "RAW_00A858",
+      "id": "F_A658",
+      "kind": "MATCHING_C",
       "start": 43096,
       "end": 43368,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00A858-00A968.bin",
-      "original_symbol": null,
-      "artifact": "raw/00A858-00A968.bin",
+      "source": "src/F_A658.C",
+      "original_symbol": "F_A658",
+      "artifact": "regions/F_A658.bin",
       "expected_sha256": "8e1cfdddfce2caf61ffc6e8c9506c7b56b81a437ce10589bf2698e86a17fcf36",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa658",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_init_a": {
+            "offset": 27508,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_A.entry"
+          },
+          "_init_b": {
+            "offset": 27024,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_B.entry"
+          },
+          "_init_c": {
+            "offset": 27494,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_C.entry"
+          },
+          "_init_d": {
+            "offset": 28734,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_D.entry"
+          },
+          "_init_e": {
+            "offset": 54675,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_E.entry"
+          },
+          "_init_f": {
+            "offset": 31020,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_F.entry"
+          },
+          "_init_g": {
+            "offset": 31013,
+            "coordinate": "code_offset",
+            "evidence": "functions/INIT_G.entry"
+          },
+          "_box": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/BOX.entry"
+          },
+          "_text": {
+            "offset": 33920,
+            "coordinate": "code_offset",
+            "evidence": "functions/TEXT.entry"
+          },
+          "_mode": {
+            "offset": 462,
+            "coordinate": "code_offset",
+            "evidence": "functions/MODE.entry"
+          },
+          "_bar": {
+            "offset": 930,
+            "coordinate": "code_offset",
+            "evidence": "functions/BAR.entry"
+          },
+          "_fill": {
+            "offset": 939,
+            "coordinate": "code_offset",
+            "evidence": "functions/FILL.entry"
+          },
+          "_getkey": {
+            "offset": 44869,
+            "coordinate": "code_offset",
+            "evidence": "functions/GETKEY.entry"
+          },
+          "_act": {
+            "offset": 41373,
+            "coordinate": "code_offset",
+            "evidence": "functions/ACT.entry"
+          },
+          "_done_a": {
+            "offset": 33875,
+            "coordinate": "code_offset",
+            "evidence": "functions/DONE_A.entry"
+          },
+          "_done_b": {
+            "offset": 31006,
+            "coordinate": "code_offset",
+            "evidence": "functions/DONE_B.entry"
+          },
+          "_done_c": {
+            "offset": 54694,
+            "coordinate": "code_offset",
+            "evidence": "functions/DONE_C.entry"
+          },
+          "_done_d": {
+            "offset": 29026,
+            "coordinate": "code_offset",
+            "evidence": "functions/DONE_D.entry"
+          },
+          "_done_e": {
+            "offset": 27031,
+            "coordinate": "code_offset",
+            "evidence": "functions/DONE_E.entry"
+          },
+          "_done_f": {
+            "offset": 27494,
+            "coordinate": "code_offset",
+            "evidence": "functions/DONE_F.entry"
+          }
+        },
+        "module_segments": {
+          "_DATA": {
+            "owner": "C_DATA_A658",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "compiled empty-string initializer at DS:13C5"
+          }
+        }
+      }
     },
     {
       "id": "F_A768",
@@ -15907,13 +16022,40 @@
     {
       "id": "RAW_010F15",
       "start": 69397,
+      "end": 69621,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/010F15-010FF5.bin",
+      "original_symbol": null,
+      "artifact": "raw/010F15-010FF5.bin",
+      "expected_sha256": "dff2a7b8ec7c3a80bedcabfc36fb731a2716045c0af771e184b9a70f45af1f20",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "C_DATA_A658",
+      "kind": "EXACT_DATA",
+      "start": 69621,
+      "end": 69622,
+      "source": "src/F_A658.C",
+      "artifact": "regions/C_DATA_A658.bin",
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_A658",
+        "segment": "_DATA"
+      }
+    },
+    {
+      "id": "RAW_010FF6",
+      "start": 69622,
       "end": 70272,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/010F15-011280.bin",
+      "source": "raw/010FF6-011280.bin",
       "original_symbol": null,
-      "artifact": "raw/010F15-011280.bin",
-      "expected_sha256": "d48048b47515a94f2f35d00f799035acf430df7e310091017914ba3a2e48ef06",
+      "artifact": "raw/010FF6-011280.bin",
+      "expected_sha256": "1c939c8333f95f8d21c02a20ced14b8d15f83eeb8c9a292dd0890945fdf0125e",
       "matching_status": "EQUAL"
     },
     {

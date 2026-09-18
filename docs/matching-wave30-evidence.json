@@ -1,0 +1,33 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "7c9a22990074bbe78d9b98fdc32d11328c717dc14525dbb3fec63f4626cd6af9",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 272,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 1,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_A658",
+      "kind": "MATCHING_C",
+      "bytes": 272,
+      "sha256": "8e1cfdddfce2caf61ffc6e8c9506c7b56b81a437ce10589bf2698e86a17fcf36",
+      "source_sha256": "d84af8fa5c8e8406e98f898bd84f8dbb586ddb92f0abad137617a07d884a8a0c",
+      "fixups": 28,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "C_DATA_A658",
+      "kind": "EXACT_DATA",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "source_sha256": "d84af8fa5c8e8406e98f898bd84f8dbb586ddb92f0abad137617a07d884a8a0c",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "omf-segment-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

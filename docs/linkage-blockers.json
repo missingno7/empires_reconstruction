@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 17,
-  "held_extent_bytes": 9042,
+  "held_candidates": 16,
+  "held_extent_bytes": 8770,
   "reason_counts": {
-    "PROVIDER_REFUSED": 17
+    "PROVIDER_REFUSED": 16
   },
   "unique_unresolved_symbols": 60,
-  "unresolved_fixup_sites": 106,
+  "unresolved_fixup_sites": 105,
   "symbols": [
     {
       "symbol": "_b437a",
@@ -80,16 +80,6 @@
       "candidate_ids": [
         "F_2AE2",
         "F_338A"
-      ]
-    },
-    {
-      "symbol": "_DATA",
-      "candidate_count": 2,
-      "candidate_bytes": 721,
-      "fixup_sites": 4,
-      "candidate_ids": [
-        "F_A658",
-        "F_A85E"
       ]
     },
     {
@@ -307,6 +297,15 @@
       "fixup_sites": 2,
       "candidate_ids": [
         "F_233E"
+      ]
+    },
+    {
+      "symbol": "_DATA",
+      "candidate_count": 1,
+      "candidate_bytes": 449,
+      "fixup_sites": 3,
+      "candidate_ids": [
+        "F_A85E"
       ]
     },
     {
@@ -933,23 +932,6 @@
         {
           "offset": 191,
           "symbol": "_a1271"
-        }
-      ]
-    },
-    {
-      "id": "F_A658",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 10",
-      "answered_about_entry_sha256": "5ad51c7b8eadf7d943ee86dfa5af6028861d6e632cd4f127c48fbabb7f3c0a89",
-      "extent_bytes": 272,
-      "draft": "c/F_A658.C",
-      "draft_sha256": "1ea3dc8f50e1366b621bd403a28e06910d9ed87b84b20acbdf5f62edeb54cd3a",
-      "refusal": "1 of the candidate's 28 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _DATA at offset 66. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 66,
-          "symbol": "_DATA"
         }
       ]
     },

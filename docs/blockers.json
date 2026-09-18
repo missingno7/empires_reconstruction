@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "closed for the currently inventoried held candidates",
-      "matches": "Current build proves 239 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
+      "matches": "Current build proves 240 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
       "first_unresolved_fact": "No unresolved symbols remain in the current held-candidate inventory. Further work moves to raw-data classification, module topology and format recovery.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -55,7 +55,7 @@
         "docs/vision.md"
       ],
       "unblock": "Prove individual palettes, tables, strings, alignment and data ranges from existing format evidence and xrefs, then add strict structural encoders.",
-      "leverage": "32,120 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
+      "leverage": "32,058 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
     },
     {
       "target": "Nested resources, fonts, level record blocks and actor bytecode",

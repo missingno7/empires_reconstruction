@@ -1,0 +1,90 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_CE2A",
+      "kind": "MATCHING_C",
+      "source": "src/F_CE2A.C",
+      "start": 53290,
+      "end": 53352,
+      "expected_sha256": "b67d569eb8334480969cb84767b702ab7a87d3cf1e4c2f48fb35422690269868",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fce2a",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd593": {
+            "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0
+          },
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0
+          },
+          "_fa13f": {
+            "coordinate": "code_offset",
+            "owner": "F_A13F",
+            "public": "_fa13f",
+            "addend": 0
+          },
+          "_fcb48": {
+            "coordinate": "code_offset",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0
+          },
+          "_fc834": {
+            "coordinate": "code_offset",
+            "owner": "F_C834",
+            "public": "_fc834",
+            "addend": 0
+          },
+          "_longjmp": {
+            "coordinate": "code_offset",
+            "owner": "LIB_SETJMP",
+            "public": "_longjmp",
+            "addend": 0
+          },
+          "_fd5a6": {
+            "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0
+          },
+          "_g21ec": {
+            "offset": 8684,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g8bfe": {
+            "offset": 35838,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g1772": {
+            "offset": 6002,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g176e": {
+            "offset": 5998,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_CE2A",
+      "artifact": "regions/F_CE2A.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete boundary and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "ab71c646c8c8c848aef4e2ee45345174e237787496573c280aef0a7963610574",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover the 12-byte cleanup/return tail and the full 62-byte C body"
+      }
+    }
+  ]
+}

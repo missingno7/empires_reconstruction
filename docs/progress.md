@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 35,723 | 239 |
+| Freshly compiled matching C | 14,077 | 35,785 | 240 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 32,120 | 52 |
+| Exact raw fallback | 62,621 | 32,058 | 52 |
 | Total | 79,154 | 79,154 | 366 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -126,14 +126,14 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 260 source proof units from **zero proven
-historical source modules**, and 1,695 declared owner-symbol bindings from
+The combined EXE metrics distinguish 261 source proof units from **zero proven
+historical source modules**, and 1,706 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-12,542 raw EXE bytes as unresolved machine code; overlapping entry/parent
-extents count once. The other 19,578 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 543 component-owned bindings
-within fixed placement: 462 C/ASM entry references, 72 library public references,
-and eight structured-data references. Five module-segment bindings also resolve through
+12,492 raw EXE bytes as unresolved machine code; overlapping entry/parent
+extents count once. The other 19,566 raw bytes remain unknown. Two palette owners account for
+1,536 embedded-asset bytes. There are now 563 component-owned bindings
+within fixed placement: 481 C/ASM entry references, 73 library bindings,
+and nine structured-data references. Five module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
 [linkage-blockers.json](linkage-blockers.json) now records zero held upstream
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 32,120 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 32,058 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -188,8 +188,8 @@ classification and nested-resource adapters remain mechanical frontiers.
 
 ## Owned code references
 
-462 code bindings across 174 callers now identify selected entry publics of
-219 owned C/ASM components. Migration requires both the established address
+481 code bindings across 150 callers now identify selected entry publics of
+224 owned C/ASM components. Migration requires both the established address
 and the selected public name to agree, followed by a fresh complete EXE match.
 Near and far fixups resolve through owners. The remaining numeric bindings,
 fixed placement and zero historical-linker coverage remain explicit.
@@ -197,8 +197,8 @@ See [code-bindings.md](code-bindings.md).
 
 ## Owned library references
 
-72 additional references across 49 callers now resolve through publics read
-from 26 pinned library modules. Eleven target nonzero module-relative offsets.
+73 additional references across 50 callers now resolve through publics read
+from 27 pinned library modules. Eleven target nonzero module-relative offsets.
 Public offsets are read from OMF at build time, while module placement remains
 fixed. Full EXE bytes and relocations remain EQUAL. See
 [library-bindings.md](library-bindings.md).
@@ -499,12 +499,17 @@ F_9D8E adds 62 matching C bytes. Its source now also emits the complete
 relocation are bound and verified, so the former raw data-base blocker is
 closed without preserving an opaque slice. See [the wave-forty-eight proof](matching-c-wave48.md).
 
-The current C audit also covers `F_7202` and `F_6CA6`: the former is a
-complete-length probe blocked by Turbo C's argument-evaluation register choice,
-and the latter is a segment-manipulation routine whose C forms exceed its
-extent. These are concrete compiler frontiers, alongside the earlier
-conversion and switch-layout probes, rather than reasons to weaken ownership.
+`F_7202` is already canonical C from wave six. The current open audit covers
+`F_6CA6` and the wave-forty-nine register/pointer probes; these remain concrete
+compiler frontiers alongside the earlier conversion and switch-layout probes.
 
 ## Forty-ninth matching-C audit
 
 Fresh Turbo C probes for F_D818, F_C877 and F_D825 did not pass complete-extent equality. F_7202 is already canonical from wave six; the audit records the current register-allocation and pointer-lowering blockers without promoting opaque bytes. See [the wave-forty-nine audit](matching-c-wave49.md).
+
+## Fiftieth matching-C wave
+
+F_CE2A adds 62 matching C bytes after recovering the complete cleanup/return
+tail beyond the stale upstream boundary. Its fresh object has 11 bound fixups,
+including the pinned `_longjmp` public, and no loader relocations. See [the
+wave-fifty proof](matching-c-wave50.md).

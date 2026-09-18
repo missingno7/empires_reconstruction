@@ -508,9 +508,11 @@
             "evidence": "storage_objects/G_P20250.phys"
           },
           "_fb593": {
-            "offset": 46483,
             "coordinate": "code_offset",
-            "evidence": "functions/F_B593.entry"
+            "evidence": "functions/F_B593.entry",
+            "owner": "F_B593",
+            "public": "_fb593",
+            "addend": 0
           },
           "_g7352": {
             "offset": 29522,
@@ -1070,14 +1072,18 @@
         "flags_append": "",
         "bindings": {
           "_f200f": {
-            "offset": 8207,
             "coordinate": "code_offset",
-            "evidence": "functions/F_200F.entry"
+            "evidence": "functions/F_200F.entry",
+            "owner": "F_200F",
+            "public": "_f200f",
+            "addend": 0
           },
           "_f2119": {
-            "offset": 8473,
             "coordinate": "code_offset",
-            "evidence": "functions/F_2119.entry"
+            "evidence": "functions/F_2119.entry",
+            "owner": "F_2119",
+            "public": "_f2119",
+            "addend": 0
           },
           "_f6fca": {
             "coordinate": "code_offset",
@@ -1791,9 +1797,11 @@
             "evidence": "near-call target from complete function fixup"
           },
           "_f2986": {
-            "offset": 10630,
             "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
+            "evidence": "near-call target from complete function fixup",
+            "owner": "F_2986",
+            "public": "_f2986",
+            "addend": 0
           },
           "_f6036": {
             "offset": 24630,
@@ -2171,9 +2179,11 @@
             "evidence": "functions/F_03B4.entry"
           },
           "_f2986": {
-            "offset": 10630,
             "coordinate": "code_offset",
-            "evidence": "functions/F_2986.entry"
+            "evidence": "functions/F_2986.entry",
+            "owner": "F_2986",
+            "public": "_f2986",
+            "addend": 0
           },
           "_fcaf1": {
             "coordinate": "code_offset",
@@ -2394,9 +2404,11 @@
             "addend": 0
           },
           "_fce2a": {
-            "offset": 52778,
             "coordinate": "code_offset",
-            "evidence": "complete fixup target with object addend subtraction"
+            "evidence": "complete fixup target with object addend subtraction",
+            "owner": "F_CE2A",
+            "public": "_fce2a",
+            "addend": 0
           },
           "_gc5ca": {
             "offset": 50634,
@@ -2920,9 +2932,11 @@
             "addend": 0
           },
           "_f4517": {
-            "offset": 17687,
             "coordinate": "code_offset",
-            "evidence": "functions/F_4517.entry"
+            "evidence": "functions/F_4517.entry",
+            "owner": "F_4517",
+            "public": "_f4517",
+            "addend": 0
           },
           "_f656c": {
             "coordinate": "code_offset",
@@ -8407,9 +8421,11 @@
         "flags_append": "",
         "bindings": {
           "_f7932": {
-            "offset": 31026,
             "coordinate": "code_offset",
-            "evidence": "functions/F_7932.entry"
+            "evidence": "functions/F_7932.entry",
+            "owner": "F_7932",
+            "public": "_f7932",
+            "addend": 0
           },
           "_g0d36": {
             "offset": 3382,
@@ -8447,9 +8463,11 @@
             "evidence": "storage_objects/G_P208A8.phys"
           },
           "_f7932": {
-            "offset": 31026,
             "coordinate": "code_offset",
-            "evidence": "functions/F_7932.entry"
+            "evidence": "functions/F_7932.entry",
+            "owner": "F_7932",
+            "public": "_f7932",
+            "addend": 0
           }
         }
       },
@@ -10528,9 +10546,11 @@
         },
         "bindings": {
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
-            "evidence": "function entry from complete F_9D8E fixups"
+            "evidence": "function entry from complete F_9D8E fixups",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
           },
           "_f03a8": {
             "offset": 936,
@@ -10633,9 +10653,11 @@
             "addend": 0
           },
           "_f9d8e": {
-            "offset": 40334,
             "coordinate": "code_offset",
-            "evidence": "functions/F_9D8E.entry"
+            "evidence": "functions/F_9D8E.entry",
+            "owner": "F_9D8E",
+            "public": "_f9d8e",
+            "addend": 0
           },
           "_g0dcc": {
             "offset": 3532,
@@ -12975,9 +12997,11 @@
             "evidence": "functions/F_B99F.entry"
           },
           "_fb593": {
-            "offset": 46483,
             "coordinate": "code_offset",
-            "evidence": "functions/F_B593.entry"
+            "evidence": "functions/F_B593.entry",
+            "owner": "F_B593",
+            "public": "_fb593",
+            "addend": 0
           }
         }
       },
@@ -13959,14 +13983,99 @@
     {
       "id": "RAW_00CD5C",
       "start": 52572,
-      "end": 53352,
+      "end": 53290,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00CD5C-00D068.bin",
+      "source": "raw/00CD5C-00D02A.bin",
       "original_symbol": null,
-      "artifact": "raw/00CD5C-00D068.bin",
-      "expected_sha256": "94270495ca0da620050984d4ed8de3178f00e628df224899a7a450f2cc53f17e",
+      "artifact": "raw/00CD5C-00D02A.bin",
+      "expected_sha256": "96307c31fc26f224efea323117d9400575c4130716d3636858ecce6565832230",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_CE2A",
+      "kind": "MATCHING_C",
+      "source": "src/F_CE2A.C",
+      "start": 53290,
+      "end": 53352,
+      "expected_sha256": "b67d569eb8334480969cb84767b702ab7a87d3cf1e4c2f48fb35422690269868",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fce2a",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fd593": {
+            "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0
+          },
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0
+          },
+          "_fa13f": {
+            "coordinate": "code_offset",
+            "owner": "F_A13F",
+            "public": "_fa13f",
+            "addend": 0
+          },
+          "_fcb48": {
+            "coordinate": "code_offset",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0
+          },
+          "_fc834": {
+            "coordinate": "code_offset",
+            "owner": "F_C834",
+            "public": "_fc834",
+            "addend": 0
+          },
+          "_longjmp": {
+            "coordinate": "code_offset",
+            "owner": "LIB_SETJMP",
+            "public": "_longjmp",
+            "addend": 0
+          },
+          "_fd5a6": {
+            "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0
+          },
+          "_g21ec": {
+            "offset": 8684,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g8bfe": {
+            "offset": 35838,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g1772": {
+            "offset": 6002,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g176e": {
+            "offset": 5998,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_CE2A",
+      "artifact": "regions/F_CE2A.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from recovered complete boundary and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "ab71c646c8c8c848aef4e2ee45345174e237787496573c280aef0a7963610574",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "change": "Recover the 12-byte cleanup/return tail and the full 62-byte C body"
+      }
     },
     {
       "id": "F_CE68",
@@ -14373,9 +14482,11 @@
             "addend": 0
           },
           "_fce2a": {
-            "offset": 52778,
             "coordinate": "code_offset",
-            "evidence": "functions/F_CE2A.entry"
+            "evidence": "functions/F_CE2A.entry",
+            "owner": "F_CE2A",
+            "public": "_fce2a",
+            "addend": 0
           }
         }
       },

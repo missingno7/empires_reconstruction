@@ -1,7 +1,7 @@
 {
   "status": "EQUAL",
   "reconstructed_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "bindings_promoted": 274,
+  "bindings_promoted": 293,
   "changes": [
     {
       "caller": "F_0281",
@@ -1646,7 +1646,121 @@
       "symbol": "_fcb48",
       "owner": "F_CB48",
       "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_1D47",
+      "symbol": "_fb593",
+      "owner": "F_B593",
+      "previous_code_offset": 46483
+    },
+    {
+      "caller": "F_224C",
+      "symbol": "_f200f",
+      "owner": "F_200F",
+      "previous_code_offset": 8207
+    },
+    {
+      "caller": "F_224C",
+      "symbol": "_f2119",
+      "owner": "F_2119",
+      "previous_code_offset": 8473
+    },
+    {
+      "caller": "F_2AE2",
+      "symbol": "_f2986",
+      "owner": "F_2986",
+      "previous_code_offset": 10630
+    },
+    {
+      "caller": "F_36F0",
+      "symbol": "_f2986",
+      "owner": "F_2986",
+      "previous_code_offset": 10630
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_fce2a",
+      "owner": "F_CE2A",
+      "previous_code_offset": 52778
+    },
+    {
+      "caller": "F_462E",
+      "symbol": "_f4517",
+      "owner": "F_4517",
+      "previous_code_offset": 17687
+    },
+    {
+      "caller": "F_7DF1",
+      "symbol": "_f7932",
+      "owner": "F_7932",
+      "previous_code_offset": 31026
+    },
+    {
+      "caller": "F_7DFC",
+      "symbol": "_f7932",
+      "owner": "F_7932",
+      "previous_code_offset": 31026
+    },
+    {
+      "caller": "F_9D8E",
+      "symbol": "_f01ce",
+      "owner": "F_01CE",
+      "previous_code_offset": 462
+    },
+    {
+      "caller": "F_9DCC",
+      "symbol": "_f9d8e",
+      "owner": "F_9D8E",
+      "previous_code_offset": 40334
+    },
+    {
+      "caller": "F_C0E0",
+      "symbol": "_fb593",
+      "owner": "F_B593",
+      "previous_code_offset": 46483
+    },
+    {
+      "caller": "F_CE2A",
+      "symbol": "_fd593",
+      "owner": "F_D593",
+      "previous_code_offset": 54675
+    },
+    {
+      "caller": "F_CE2A",
+      "symbol": "_f86c9",
+      "owner": "F_86C9",
+      "previous_code_offset": 34505
+    },
+    {
+      "caller": "F_CE2A",
+      "symbol": "_fa13f",
+      "owner": "F_A13F",
+      "previous_code_offset": 41279
+    },
+    {
+      "caller": "F_CE2A",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_CE2A",
+      "symbol": "_fc834",
+      "owner": "F_C834",
+      "previous_code_offset": 51252
+    },
+    {
+      "caller": "F_CE2A",
+      "symbol": "_fd5a6",
+      "owner": "F_D5A6",
+      "previous_code_offset": 54694
+    },
+    {
+      "caller": "F_D15D",
+      "symbol": "_fce2a",
+      "owner": "F_CE2A",
+      "previous_code_offset": 52778
     }
   ],
-  "scope": "Cumulative owned C/ASM entry-public migrations: prior 151 bindings plus the 123 newly eligible numeric references"
+  "scope": "Owned selected entry publics; fixed placement remains; no historical linker claim"
 }

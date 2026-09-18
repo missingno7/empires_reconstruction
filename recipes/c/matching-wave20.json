@@ -1,0 +1,39 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_F9BE",
+      "kind": "MATCHING_C",
+      "start": 64446,
+      "end": 64495,
+      "source": "src/F_F9BE.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_ff9be",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g37cb": {
+            "owner": "LIB_CTYPE_DATA",
+            "coordinate": "DGROUP_offset",
+            "public": "__ctype",
+            "addend": 1,
+            "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
+          }
+        }
+      },
+      "artifact": "regions/F_F9BE.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "ec1d1a4997267a141c47e8a1949ad3b004e5783ed147efc58679b12808829b3c",
+      "provenance": {
+        "method": "Fresh matching C for complete 49-byte TOUPPER contribution with verified CTYPE data binding",
+        "upstream_entry_sha256": "39ce2144dc293001832817ae0dbc2beda10f0d79f7330d78ac31b0251facc4a3",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "extent_evidence": "docs/matching-c-wave20.md",
+        "resolves_held_candidate": "LIB_TOUPPER"
+      }
+    }
+  ]
+}

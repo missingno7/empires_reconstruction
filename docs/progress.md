@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 15,630 bytes from raw
-fallback: 13,473 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 15,679 bytes from raw
+fallback: 13,522 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 23,026 | 207 |
+| Freshly compiled matching C | 14,077 | 23,075 | 208 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,524 | 36 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 59 | 4 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 46,991 | 65 |
+| Exact raw fallback | 62,621 | 46,942 | 64 |
 | Total | 79,154 | 79,154 | 339 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -104,7 +104,7 @@ bootstrap/structural milestone, not completion of the original build system.
 |---|---:|---:|
 | Exact complete bytes | 227,560 | 383,874 |
 | Partitioned and decoded resources | 89 | 131 |
-| Structured payloads round-tripped | 65 | 86 |
+| Structured payloads round-tripped | 64 | 86 |
 | Canonical matching resources | 26 | 1 |
 | Canonical matching resource bytes (including headers) | 3,773 | 26,138 |
 | Exact recompressed payload bytes | 3,721 | 0 |
@@ -126,20 +126,20 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 227 source proof units from **zero proven
-historical source modules**, and 1,201 declared owner-symbol bindings from
+The combined EXE metrics distinguish 228 source proof units from **zero proven
+historical source modules**, and 1,202 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-26,109 raw EXE bytes as unresolved machine code; overlapping entry/parent
+26,060 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 20,882 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 318 component-owned bindings
+1,536 embedded-asset bytes. There are now 319 component-owned bindings
 within fixed placement: two palette references, 151 C/ASM entry references,
-and 38 library public references from earlier checkpoints, plus 127 owned references
-in the nineteen local C waves. Four module-segment bindings also resolve through
+and 38 library public references from earlier checkpoints, plus 128 owned references
+in the twenty local C waves. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
-[linkage-blockers.json](linkage-blockers.json) snapshots 24 held upstream
-candidates (9,873 extent bytes), all linkage refusals,
-with 69 undecided symbols at 118 fixup sites. The shared `_b437a`, `_b4380`,
+[linkage-blockers.json](linkage-blockers.json) snapshots 20 held upstream
+candidates (9,258 extent bytes), all linkage refusals,
+with 62 undecided symbols at 109 fixup sites. The shared `_b437a`, `_b4380`,
 and `_b4386` symbols each affect two candidates covering 4,484 bytes; these
 candidate sets overlap, so the leverage counts must not be added. This is
 historical evidence, not a fresh match grant. `tools/inventory_linkage.py`
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 46,991 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 46,942 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -351,3 +351,10 @@ F_A525 adds 307 matching C bytes. The complete pinned CTYPE data segment
 (257 bytes) and a nine-byte string resolve two previously missing bindings.
 Library coverage now separates 4,267 code bytes from 257 data bytes. See
 [the library-data proof and limits](matching-c-wave19.md).
+
+## Twentieth local C wave and refreshed held inventory
+
+F_F9BE reproduces the complete 49-byte TOUPPER routine directly from C.
+Verified CTYPE data resolves its former library-candidate linkage blocker.
+The historical held snapshot now excludes exact owned extents under different
+IDs as well as owned IDs. See [the wave-twenty proof](matching-c-wave20.md).

@@ -129,9 +129,9 @@ asset content remain ignored local inputs. See [archive-formats.md](archive-form
 The combined EXE metrics distinguish 269 source proof units from **zero proven
 historical source modules**, and 1,720 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-12,465 raw EXE bytes as unresolved machine code; overlapping entry/parent
-extents count once. The other 19,394 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 568 component-owned bindings
+12,450 raw EXE bytes as unresolved machine code; overlapping entry/parent
+extents count once. The other 19,409 raw bytes remain unknown. Two palette owners account for
+1,536 embedded-asset bytes. There are now 572 component-owned bindings
 within fixed placement: 488 C/ASM entry references, 75 library bindings,
 and nine structured-data references. Six module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).

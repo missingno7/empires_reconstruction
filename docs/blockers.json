@@ -47,7 +47,7 @@
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "12,465 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 19,394 raw bytes are unknown.",
+      "matches": "12,450 raw bytes fall within pinned on-disk unrecovered-machine extents; overlapping evidence is counted once. Remaining 19,409 raw bytes are unknown.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",

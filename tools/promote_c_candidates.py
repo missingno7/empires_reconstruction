@@ -63,7 +63,8 @@ def promote(recipe_path, root=ROOT):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(original[owner['start']:owner['end']])
     write_json(manifest_path, proposed)
-    write_json(root / 'docs/c-matching-evidence.json', report)
+    evidence_name = 'c-matching-evidence.json' if recipe_path.stem == 'matching-wave1' else recipe_path.stem + '-evidence.json'
+    write_json(root / 'docs' / evidence_name, report)
     print(f"Promoted {len(results)} matching C functions, {report['promoted_c_bytes']} bytes")
     return report
 

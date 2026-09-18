@@ -4,11 +4,11 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs; fresh compilation still required.",
-  "held_candidates": 26,
-  "held_extent_bytes": 10345,
+  "held_candidates": 25,
+  "held_extent_bytes": 10004,
   "reason_counts": {
     "PROVIDER_REFUSED": 24,
-    "DIFFERS": 2
+    "DIFFERS": 1
   },
   "unique_unresolved_symbols": 69,
   "unresolved_fixup_sites": 118,
@@ -1307,25 +1307,6 @@
           "symbol": "_err"
         }
       ]
-    },
-    {
-      "id": "F_AF45",
-      "reason": "DIFFERS",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 11",
-      "answered_about_entry_sha256": "0448da1ee81db69c950befcfbc2c2de8676de07efaf1faa8b97a4719d728cafb",
-      "extent_bytes": 341,
-      "draft": "c/F_AF45.C",
-      "draft_sha256": "84c420defb27518c280e61b421b2e0722a7eb54fe143644a99946b809b11c56b",
-      "first_difference": {
-        "where": "offset 178 of the extent (address 0xAFF7)",
-        "component": "jmp target",
-        "both_sides": {
-          "original": "extent offset 325",
-          "candidate": "extent offset 324",
-          "aligned instruction": "jmp [e99000]"
-        }
-      }
     },
     {
       "id": "LIB_ATEXIT",

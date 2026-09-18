@@ -1,0 +1,560 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_568C",
+      "kind": "MATCHING_C",
+      "start": 22668,
+      "end": 22726,
+      "source": "src/F_568C.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f568c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f7676": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7676.entry",
+            "owner": "F_7676",
+            "public": "_f7676",
+            "addend": 0
+          },
+          "_f9f40": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_9F40.entry",
+            "owner": "F_9F40",
+            "public": "_f9f40",
+            "addend": 0
+          },
+          "_f5673": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_5673.entry",
+            "owner": "F_5673",
+            "public": "_f5673",
+            "addend": 0
+          },
+          "_f75f3": {
+            "offset": 30195,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_75F3.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_568C.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "d37dfa7fdaf0cb753da0b4e2898dc14faa17d0b2ede05ff5cc41b86673551a7a",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "80c5c4d4af2a7027411d37d56d9d66eee2a178c641f7d00aa966db17a966f52f",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_7417",
+      "kind": "MATCHING_C",
+      "start": 30231,
+      "end": 30275,
+      "source": "src/F_7417.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7417",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f1eb4": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_1EB4.entry",
+            "owner": "F_1EB4",
+            "public": "_f1eb4",
+            "addend": 0
+          },
+          "_gc0ee": {
+            "offset": 49390,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC1E.phys"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_7417.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "59aec46293473258839991c06174c0661ab0282562aecb1fd1d0d025200f6a98",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "5b35f7e0720b014506127e6d57faef9c54745785d776c3a21eacaf702c70a845",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_7443",
+      "kind": "MATCHING_C",
+      "start": 30275,
+      "end": 30331,
+      "source": "src/F_7443.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7443",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f1ea5": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_1EA5.entry",
+            "owner": "F_1EA5",
+            "public": "_f1ea5",
+            "addend": 0
+          },
+          "_gc0ee": {
+            "offset": 49390,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC1E.phys"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_7443.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "11839f3c190c5280c8824841f4f2becb82dbbe6619279cdecb2d7e35cbd45f35",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "5333307673d0db5c7372def7c8abb98ab25d476bbdd51e988f5354ad5b9ee8b1",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_7676",
+      "kind": "MATCHING_C",
+      "start": 30838,
+      "end": 30869,
+      "source": "src/F_7676.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7676",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f9f40": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_9F40.entry",
+            "owner": "F_9F40",
+            "public": "_f9f40",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_7676.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "11a7a7870e7f67a4de964bf81167b11951769e9a8dc0ffc7cca4f1d1e89d40b2",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "08b62cd0585ed0fe7d293f3a0f2ef17b555b2d32808f4209101c91e0ca30b242",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_9402",
+      "kind": "MATCHING_C",
+      "start": 38402,
+      "end": 38464,
+      "source": "src/F_9402.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9402",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_face7": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_ACE7.entry",
+            "owner": "F_ACE7",
+            "public": "_face7",
+            "addend": 0
+          },
+          "_g0dc8": {
+            "offset": 3528,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P208F8.phys"
+          },
+          "_f7856": {
+            "offset": 30806,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7856.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_9402.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "0aaf9fd8d866bf780fef8615a2a3bfc670dd3321202f42861381e6e0df4bf8dc",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "9e04a75528656a016c455bb0c8c0fce46b92fa06129e2213904287c6be8edbc4",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_984C",
+      "kind": "MATCHING_C",
+      "start": 39500,
+      "end": 39537,
+      "source": "src/F_984C.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f984c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_984C.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "298984c761a098cd36b0948cefec258596c4a3df777674f475951df21430f59a",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "60009217a4003042c6b06f19cfcdd30ae40e4df8b682d32af3d6574fd22bae2b",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_9871",
+      "kind": "MATCHING_C",
+      "start": 39537,
+      "end": 39567,
+      "source": "src/F_9871.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9871",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc350": {
+            "offset": 50000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE80.phys"
+          },
+          "_gc34e": {
+            "offset": 49998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE7E.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_9871.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "2e8c813ab3fcb2c67e8ff68bb4966c648e28aa2a7b5906d9e022edcc672b4543",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "73cf853aef3a30bd9477ea414577dc10ecbba69771a575f086ad9313e519f865",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_9962",
+      "kind": "MATCHING_C",
+      "start": 39778,
+      "end": 39842,
+      "source": "src/F_9962.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9962",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03c3": {
+            "offset": 963,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C3.entry"
+          },
+          "_gc350": {
+            "offset": 50000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE80.phys"
+          },
+          "_gc34e": {
+            "offset": 49998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE7E.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_9962.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "40f947094d6085336f0a63daee9fba8695d96506cbc7566cfd1c26c978aebc72",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "a99f47873f5ff883b042de8df63a124f89978393eb9b1711428d792b60d85cb8",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_99A2",
+      "kind": "MATCHING_C",
+      "start": 39842,
+      "end": 39906,
+      "source": "src/F_99A2.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f99a2",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03c0": {
+            "offset": 960,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C0.entry"
+          },
+          "_gc350": {
+            "offset": 50000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE80.phys"
+          },
+          "_gc34e": {
+            "offset": 49998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE7E.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_99A2.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "92867c73bb97c81bc9d31287d970f13589aa3666e281bb625d13d7ff8aaf978b",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "88b66c92c681a58ed61d8796e5520032ba03c4c45554171209df0f064e0fc49d",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_99E2",
+      "kind": "MATCHING_C",
+      "start": 39906,
+      "end": 39950,
+      "source": "src/F_99E2.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f99e2",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g1271": {
+            "offset": 4721,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20DA1.phys"
+          },
+          "_gc34e": {
+            "offset": 49998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE7E.phys"
+          },
+          "_gc350": {
+            "offset": 50000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BE80.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_99E2.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "48f5891a9ae37e0c942fbc4531b67a1a4e5fd19fc2505df7b9f9d9b2d5070b01",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "707a4f64e4abb3228623fd38cf60b2e031d6c09dc8090de100eeac2a58293031",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_A004",
+      "kind": "MATCHING_C",
+      "start": 41476,
+      "end": 41526,
+      "source": "src/F_A004.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa004",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {}
+      },
+      "artifact": "regions/F_A004.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "f2a66a50e76d53dd56fb12885fec1f330017311f91afad41bd74fe56c6122b04",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "e2dd9760fabac41af8b68fc6d9f70c4aacd4977d4bb2968477bbd0dcdf7c1743",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_ACE7",
+      "kind": "MATCHING_C",
+      "start": 44775,
+      "end": 44814,
+      "source": "src/F_ACE7.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_face7",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g13ed": {
+            "offset": 5101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20F1D.phys"
+          },
+          "_gc470": {
+            "offset": 50288,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BFA0.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_ACE7.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "8a1f47ff88356359d99f6ad0ebd88b4b75e0605a7bd2cd54ba1a437bfb82610e",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "113a8a5e03adec1aa2c7b90ca6c4261e367ff5f284420322e51f8af1e7a734bc",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_AF45",
+      "kind": "MATCHING_C",
+      "start": 45381,
+      "end": 45722,
+      "source": "src/F_AF45.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_faf45",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g13ef": {
+            "offset": 5103,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20F1F.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_f03ba": {
+            "offset": 954,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03BA.entry"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6C57.entry",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0
+          },
+          "_f6c87": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6C87.entry",
+            "owner": "F_6C87",
+            "public": "_f6c87",
+            "addend": 0
+          },
+          "_f6b4a": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B4A.entry",
+            "owner": "F_6B4A",
+            "public": "_f6b4a",
+            "addend": 0
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B1A.entry",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_AF45.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "79d3d6abba1ff9c028d111af3ed1816ba2c4529e521cd74af832eb35bcf8f6b7",
+      "provenance": {
+        "method": "local C reconstruction and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "f6fb6b7832bb29edd09d38582ea1eae905af0c22704426bbfe43e1e5c7f02a22",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "upstream_draft_sha256": "84c420defb27518c280e61b421b2e0722a7eb54fe143644a99946b809b11c56b",
+        "change": "Use the preincrement value directly in the comparison to reproduce the AX load and branch layout"
+      }
+    }
+  ]
+}

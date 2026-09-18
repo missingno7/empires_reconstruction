@@ -1,0 +1,34 @@
+/* Preincrement must feed the comparison: separate statements emit a shorter
+   memory comparison. Explicit return preserves the final epilogue jump. */
+extern void f03b4();
+extern void f03ba();
+extern void f039f();
+extern void f6c57();
+extern int f6c87();
+extern int f6b4a();
+extern void f6b1a();
+extern int g13ef[];                     /* DS:13EF, the frame index */
+
+void faf45()
+{
+    f03b4(g13ef[0] * 0x12, 0x190, 0x12, 0x21, 0x04, 0x55);
+    f03ba(0x04, 0x55, 0x12, 0x21, 0x12a, 0x55);
+    f03b4(0x04, 0x55, 0x12, 0x21, 0x04, 0x11d);
+    f03b4(0x12a, 0x55, 0x12, 0x21, 0x12a, 0x11d);
+    f039f(0x04, 0x55, 0x12, 0x21);
+    f039f(0x12a, 0x55, 0x12, 0x21);
+    f6c57(0x17);
+    while (!f6b4a()) {
+        if (f6c87()) {
+            if (++g13ef[0] >= 3)
+                g13ef[0] = 0;
+            f03b4(g13ef[0] * 0x12, 0x190, 0x12, 0x21, 0x04, 0x55);
+            f03ba(0x04, 0x55, 0x12, 0x21, 0x12a, 0x55);
+            f039f(0x04, 0x55, 0x12, 0x21);
+            f039f(0x12a, 0x55, 0x12, 0x21);
+            f6c57(0x17);
+        }
+    }
+    f6b1a();
+    return;
+}

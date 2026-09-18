@@ -199,3 +199,13 @@ from 17 pinned library modules. Eleven target nonzero module-relative offsets.
 Public offsets are read from OMF at build time, while module placement remains
 fixed. Full EXE bytes and relocations remain EQUAL. See
 [library-bindings.md](library-bindings.md).
+
+## Explicit compression sources
+
+An independent research path now rebuilds both DATs (611,434 bytes) from
+decoded sources and explicit compression syntax: 182 pair-span plans, 153
+structured payloads, and 67 opaque decoded payloads. Generation reads only
+these exported components; source-only read isolation is tested. This isolates
+the unresolved parse policy and does not change canonical resource ownership
+or the 26 automatic compression-policy matches. See
+[compression-sources.md](compression-sources.md).

@@ -21,6 +21,9 @@ build. The [architectural target](docs/build-reconstruction.md) requires layout
 to emerge from independent components and recovered build rules. DAT packing
 now derives offsets from component order and emitted sizes; the EXE still uses
 fixed placement, and both paths retain explicitly counted opaque fallbacks.
+A separate [compression-source experiment](docs/compression-sources.md) rebuilds
+both DATs from decoded payloads and explicit compression instructions. It
+preserves unresolved parse choices without claiming the historical encoder policy.
 
 From this directory, with Python 3.10+:
 

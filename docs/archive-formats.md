@@ -102,6 +102,9 @@ structured level source, for **27 matching resources overall**. The other
 because recompression differs. The other 193 resources retain raw encoded
 payloads. See [resource-sources.md](resource-sources.md) for internal derived
 offsets, preserved opaque records and editable image constraints.
+The independent [compression-source experiment](compression-sources.md) now
+rebuilds all resources exactly using explicit parse instructions where needed.
+That research path leaves canonical ownership and policy-match counts unchanged.
 `probe_resource_formats.py --promote`
 rechecks full resource and archive identity before promoting a structured form.
 

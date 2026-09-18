@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 27,676 bytes from raw
-fallback: 23,862 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 28,188 bytes from raw
+fallback: 24,374 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 34,063 | 230 |
+| Freshly compiled matching C | 14,077 | 34,575 | 232 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,524 | 36 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 60 | 5 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 34,945 | 57 |
+| Exact raw fallback | 62,621 | 34,433 | 55 |
 | Total | 79,154 | 79,154 | 356 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -459,3 +459,9 @@ without a fabricated local `_DATA` segment. See [the wave-thirty-six proof](matc
 F_3A75 adds 2,722 matching C bytes. Its complete turn loop now rebuilds with
 the original `-B` flag and all 81 external fixups explicitly bound. See [the
 wave-thirty-seven proof](matching-c-wave37.md).
+
+## Thirty-eighth local C wave
+
+F_21A9 and F_233E add 512 matching C bytes. Their boot sprite buffers and
+cell table now bind to exact DS addresses from complete fixups. See [the
+wave-thirty-eight proof](matching-c-wave38.md).

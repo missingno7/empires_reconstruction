@@ -4,13 +4,13 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs and exactly matching owned extents under other IDs; this is an ownership snapshot, not a fresh compiler proof.",
-  "held_candidates": 9,
-  "held_extent_bytes": 1448,
+  "held_candidates": 7,
+  "held_extent_bytes": 936,
   "reason_counts": {
-    "PROVIDER_REFUSED": 9
+    "PROVIDER_REFUSED": 7
   },
-  "unique_unresolved_symbols": 16,
-  "unresolved_fixup_sites": 20,
+  "unique_unresolved_symbols": 13,
+  "unresolved_fixup_sites": 14,
   "symbols": [
     {
       "symbol": "_abort",
@@ -20,15 +20,6 @@
       "candidate_ids": [
         "LIB_SETARGV",
         "LIB_SETENVP"
-      ]
-    },
-    {
-      "symbol": "_cel",
-      "candidate_count": 1,
-      "candidate_bytes": 462,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_233E"
       ]
     },
     {
@@ -113,24 +104,6 @@
       ]
     },
     {
-      "symbol": "_g9cf2",
-      "candidate_count": 1,
-      "candidate_bytes": 50,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_21A9"
-      ]
-    },
-    {
-      "symbol": "_ga6b6",
-      "candidate_count": 1,
-      "candidate_bytes": 50,
-      "fixup_sites": 2,
-      "candidate_ids": [
-        "F_21A9"
-      ]
-    },
-    {
       "symbol": "__atexittbl",
       "candidate_count": 1,
       "candidate_bytes": 48,
@@ -159,56 +132,6 @@
     }
   ],
   "candidates": [
-    {
-      "id": "F_21A9",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 11",
-      "answered_about_entry_sha256": "1fdde0603d7fd91fa6a91cfda13e48f582c2058fe12fe18ade6f313a4e09a2ac",
-      "extent_bytes": 50,
-      "draft": "c/F_21A9.C",
-      "draft_sha256": "0b04faed305e54d62081a1a0d4630bcfd220a81b4986262abb0a6e7dbcea1c54",
-      "refusal": "4 of the candidate's 10 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _g9cf2 at offset 2. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 2,
-          "symbol": "_g9cf2"
-        },
-        {
-          "offset": 16,
-          "symbol": "_ga6b6"
-        },
-        {
-          "offset": 37,
-          "symbol": "_g9cf2"
-        },
-        {
-          "offset": 47,
-          "symbol": "_ga6b6"
-        }
-      ]
-    },
-    {
-      "id": "F_233E",
-      "reason": "PROVIDER_REFUSED",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "a6ee8b509676fc03e3bb147e86606a5aad0791e1a09a9ff478bdcb3e3f3ce0ca",
-      "extent_bytes": 462,
-      "draft": "c/F_233E.C",
-      "draft_sha256": "53ee93dafafd2eda948282a7fc511e9e8f18f58025e30c5c48dd1392174acfb7",
-      "refusal": "2 of the candidate's 59 fixup target(s) are decided by no declared binding, frame or naming convention, the first being _cel at offset 75. The bytes agree; the LINK this source would have produced is not checked, and a match that skips it is not established",
-      "undecided": [
-        {
-          "offset": 75,
-          "symbol": "_cel"
-        },
-        {
-          "offset": 389,
-          "symbol": "_cel"
-        }
-      ]
-    },
     {
       "id": "F_4E9F",
       "reason": "PROVIDER_REFUSED",

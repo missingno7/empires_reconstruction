@@ -9,7 +9,7 @@ and one 257-byte data contribution). The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
 RGB tables (1,536 bytes); 56 raw regions cover the remaining 33,497 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
-151 code references also resolve through [owned entry publics](docs/code-bindings.md).
+450 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 70 resolve through [publics read from pinned library modules](docs/library-bindings.md).
 The latest [runtime ownership wave](docs/runtime-library-wave1.md) identifies
 six pinned CC.LIB modules; the latest ASM wave adds the 76-byte record-table

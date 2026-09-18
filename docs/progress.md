@@ -131,8 +131,8 @@ historical source modules**, and 1,630 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 22,900 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 20,882 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 405 component-owned bindings
-within fixed placement: 327 C/ASM entry references, 70 library public references,
+1,536 embedded-asset bytes. There are now 528 component-owned bindings
+within fixed placement: 450 C/ASM entry references, 70 library public references,
 and eight structured-data references. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
@@ -188,8 +188,8 @@ classification and nested-resource adapters remain mechanical frontiers.
 
 ## Owned code references
 
-327 code bindings across 149 callers now identify selected entry publics of
-123 owned C/ASM components. Migration requires both the established address
+450 code bindings across 170 callers now identify selected entry publics of
+215 owned C/ASM components. Migration requires both the established address
 and the selected public name to agree, followed by a fresh complete EXE match.
 Near and far fixups resolve through owners. The remaining numeric bindings,
 fixed placement and zero historical-linker coverage remain explicit.

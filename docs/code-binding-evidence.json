@@ -1,7 +1,7 @@
 {
   "status": "EQUAL",
   "reconstructed_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "bindings_promoted": 151,
+  "bindings_promoted": 274,
   "changes": [
     {
       "caller": "F_0281",
@@ -908,7 +908,745 @@
       "symbol": "_fc898",
       "owner": "F_C898",
       "previous_code_offset": 51352
+    },
+    {
+      "caller": "F_21A9",
+      "symbol": "_f68aa",
+      "owner": "F_68AA",
+      "previous_code_offset": 26794
+    },
+    {
+      "caller": "F_2AE2",
+      "symbol": "_f1ec0",
+      "owner": "F_1EC0",
+      "previous_code_offset": 7872
+    },
+    {
+      "caller": "F_2AE2",
+      "symbol": "_f656c",
+      "owner": "F_656C",
+      "previous_code_offset": 25964
+    },
+    {
+      "caller": "F_2AE2",
+      "symbol": "_f2a70",
+      "owner": "F_2A70",
+      "previous_code_offset": 10864
+    },
+    {
+      "caller": "F_31C4",
+      "symbol": "_f2269",
+      "owner": "F_2269",
+      "previous_code_offset": 8809
+    },
+    {
+      "caller": "F_31C4",
+      "symbol": "_f2ae2",
+      "owner": "F_2AE2",
+      "previous_code_offset": 10978
+    },
+    {
+      "caller": "F_31C4",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_329F",
+      "symbol": "_f2ae2",
+      "owner": "F_2AE2",
+      "previous_code_offset": 10978
+    },
+    {
+      "caller": "F_338A",
+      "symbol": "_fcaf1",
+      "owner": "F_CAF1",
+      "previous_code_offset": 51953
+    },
+    {
+      "caller": "F_338A",
+      "symbol": "_f250c",
+      "owner": "F_250C",
+      "previous_code_offset": 9484
+    },
+    {
+      "caller": "F_338A",
+      "symbol": "_f32fa",
+      "owner": "F_32FA",
+      "previous_code_offset": 13050
+    },
+    {
+      "caller": "F_3986",
+      "symbol": "_f7343",
+      "owner": "F_7343",
+      "previous_code_offset": 29507
+    },
+    {
+      "caller": "F_3986",
+      "symbol": "_fa768",
+      "owner": "F_A768",
+      "previous_code_offset": 42856
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f6997",
+      "owner": "F_6997",
+      "previous_code_offset": 27031
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f6c57",
+      "owner": "F_6C57",
+      "previous_code_offset": 27735
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f6b4a",
+      "owner": "F_6B4A",
+      "previous_code_offset": 27466
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f6b1a",
+      "owner": "F_6B1A",
+      "previous_code_offset": 27418
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f727d",
+      "owner": "F_727D",
+      "previous_code_offset": 29309
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_fd89a",
+      "owner": "F_D89A",
+      "previous_code_offset": 55450
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_fd85f",
+      "owner": "F_D85F",
+      "previous_code_offset": 55391
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f8aa2",
+      "owner": "F_8AA2",
+      "previous_code_offset": 35490
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_fcaf1",
+      "owner": "F_CAF1",
+      "previous_code_offset": 51953
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f2269",
+      "owner": "F_2269",
+      "previous_code_offset": 8809
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f1ecd",
+      "owner": "F_1ECD",
+      "previous_code_offset": 7885
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f31c4",
+      "owner": "F_31C4",
+      "previous_code_offset": 12740
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f734e",
+      "owner": "F_734E",
+      "previous_code_offset": 29518
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f2a2d",
+      "owner": "F_2A2D",
+      "previous_code_offset": 10797
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f338a",
+      "owner": "F_338A",
+      "previous_code_offset": 13194
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f36f0",
+      "owner": "F_36F0",
+      "previous_code_offset": 14064
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f60a9",
+      "owner": "F_60A9",
+      "previous_code_offset": 24745
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f6021",
+      "owner": "F_6021",
+      "previous_code_offset": 24609
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f233e",
+      "owner": "F_233E",
+      "previous_code_offset": 9022
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f9dcc",
+      "owner": "F_9DCC",
+      "previous_code_offset": 40396
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f22b1",
+      "owner": "F_22B1",
+      "previous_code_offset": 8881
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f4e9f",
+      "owner": "F_4E9F",
+      "previous_code_offset": 20127
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f5e98",
+      "owner": "F_5E98",
+      "previous_code_offset": 24216
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f1f91",
+      "owner": "F_1F91",
+      "previous_code_offset": 8081
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f1f17",
+      "owner": "F_1F17",
+      "previous_code_offset": 7959
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f7277",
+      "owner": "F_7277",
+      "previous_code_offset": 29303
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f7313",
+      "owner": "F_7313",
+      "previous_code_offset": 29459
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f5a3b",
+      "owner": "F_5A3B",
+      "previous_code_offset": 23099
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f329f",
+      "owner": "F_329F",
+      "previous_code_offset": 12959
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f5ac3",
+      "owner": "F_5AC3",
+      "previous_code_offset": 23235
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f3986",
+      "owner": "F_3986",
+      "previous_code_offset": 14726
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f6c6f",
+      "owner": "F_6C6F",
+      "previous_code_offset": 27759
+    },
+    {
+      "caller": "F_3A75",
+      "symbol": "_f9ac7",
+      "owner": "F_9AC7",
+      "previous_code_offset": 39623
+    },
+    {
+      "caller": "F_462E",
+      "symbol": "_f1d47",
+      "owner": "F_1D47",
+      "previous_code_offset": 7495
+    },
+    {
+      "caller": "F_462E",
+      "symbol": "_face7",
+      "owner": "F_ACE7",
+      "previous_code_offset": 44263
+    },
+    {
+      "caller": "F_4713",
+      "symbol": "_f1ea5",
+      "owner": "F_1EA5",
+      "previous_code_offset": 7845
+    },
+    {
+      "caller": "F_4713",
+      "symbol": "_f2269",
+      "owner": "F_2269",
+      "previous_code_offset": 8809
+    },
+    {
+      "caller": "F_4713",
+      "symbol": "_f2ae2",
+      "owner": "F_2AE2",
+      "previous_code_offset": 10978
+    },
+    {
+      "caller": "F_4713",
+      "symbol": "_f3a75",
+      "owner": "F_3A75",
+      "previous_code_offset": 14965
+    },
+    {
+      "caller": "F_4713",
+      "symbol": "_f9b68",
+      "owner": "F_9B68",
+      "previous_code_offset": 39784
+    },
+    {
+      "caller": "F_4713",
+      "symbol": "_fc15e",
+      "owner": "F_C15E",
+      "previous_code_offset": 49502
+    },
+    {
+      "caller": "F_490D",
+      "symbol": "_f21a9",
+      "owner": "F_21A9",
+      "previous_code_offset": 8617
+    },
+    {
+      "caller": "F_490D",
+      "symbol": "_f21db",
+      "owner": "F_21DB",
+      "previous_code_offset": 8667
+    },
+    {
+      "caller": "F_490D",
+      "symbol": "_f625d",
+      "owner": "F_625D",
+      "previous_code_offset": 25181
+    },
+    {
+      "caller": "F_49F0",
+      "symbol": "_f4943",
+      "owner": "F_4943",
+      "previous_code_offset": 18755
+    },
+    {
+      "caller": "F_49F0",
+      "symbol": "_f7343",
+      "owner": "F_7343",
+      "previous_code_offset": 29507
+    },
+    {
+      "caller": "F_49F0",
+      "symbol": "_fad25",
+      "owner": "F_AD25",
+      "previous_code_offset": 44325
+    },
+    {
+      "caller": "F_49F0",
+      "symbol": "_fd26c",
+      "owner": "F_D26C",
+      "previous_code_offset": 53868
+    },
+    {
+      "caller": "F_4A93",
+      "symbol": "_f49e3",
+      "owner": "F_49E3",
+      "previous_code_offset": 18915
+    },
+    {
+      "caller": "F_4E9F",
+      "symbol": "_f4aa8",
+      "owner": "F_4AA8",
+      "previous_code_offset": 19112
+    },
+    {
+      "caller": "F_5382",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_568C",
+      "symbol": "_f75f3",
+      "owner": "F_75F3",
+      "previous_code_offset": 30195
+    },
+    {
+      "caller": "F_56C6",
+      "symbol": "_f568c",
+      "owner": "F_568C",
+      "previous_code_offset": 22156
+    },
+    {
+      "caller": "F_56C6",
+      "symbol": "_f75f3",
+      "owner": "F_75F3",
+      "previous_code_offset": 30195
+    },
+    {
+      "caller": "F_56C6",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_5AC3",
+      "symbol": "_f020f",
+      "owner": "F_020F",
+      "previous_code_offset": 527
+    },
+    {
+      "caller": "F_5AC3",
+      "symbol": "_fd89a",
+      "owner": "F_D89A",
+      "previous_code_offset": 55450
+    },
+    {
+      "caller": "F_5AC3",
+      "symbol": "_f2a2d",
+      "owner": "F_2A2D",
+      "previous_code_offset": 10797
+    },
+    {
+      "caller": "F_5AC3",
+      "symbol": "_f5f3c",
+      "owner": "F_5F3C",
+      "previous_code_offset": 24380
+    },
+    {
+      "caller": "F_5AC3",
+      "symbol": "_fcaf1",
+      "owner": "F_CAF1",
+      "previous_code_offset": 51953
+    },
+    {
+      "caller": "F_5AC3",
+      "symbol": "_f01ce",
+      "owner": "F_01CE",
+      "previous_code_offset": 462
+    },
+    {
+      "caller": "F_5E98",
+      "symbol": "_f020f",
+      "owner": "F_020F",
+      "previous_code_offset": 527
+    },
+    {
+      "caller": "F_6021",
+      "symbol": "_f338a",
+      "owner": "F_338A",
+      "previous_code_offset": 13194
+    },
+    {
+      "caller": "F_6266",
+      "symbol": "_f86c9",
+      "owner": "F_86C9",
+      "previous_code_offset": 34505
+    },
+    {
+      "caller": "F_656C",
+      "symbol": "_f6771",
+      "owner": "F_6771",
+      "previous_code_offset": 26481
+    },
+    {
+      "caller": "F_656C",
+      "symbol": "_f67dc",
+      "owner": "F_67DC",
+      "previous_code_offset": 26588
+    },
+    {
+      "caller": "F_656C",
+      "symbol": "_f86c9",
+      "owner": "F_86C9",
+      "previous_code_offset": 34505
+    },
+    {
+      "caller": "F_684A",
+      "symbol": "_f49e3",
+      "owner": "F_49E3",
+      "previous_code_offset": 18915
+    },
+    {
+      "caller": "F_699E",
+      "symbol": "_f68cf",
+      "owner": "F_68CF",
+      "previous_code_offset": 26831
+    },
+    {
+      "caller": "F_6FDA",
+      "symbol": "_f7202",
+      "owner": "F_7202",
+      "previous_code_offset": 29186
+    },
+    {
+      "caller": "F_6FDA",
+      "symbol": "_f7298",
+      "owner": "F_7298",
+      "previous_code_offset": 29336
+    },
+    {
+      "caller": "F_6FDA",
+      "symbol": "_f738a",
+      "owner": "F_738A",
+      "previous_code_offset": 29578
+    },
+    {
+      "caller": "F_6FDA",
+      "symbol": "_f7417",
+      "owner": "F_7417",
+      "previous_code_offset": 29719
+    },
+    {
+      "caller": "F_6FDA",
+      "symbol": "_f7443",
+      "owner": "F_7443",
+      "previous_code_offset": 29763
+    },
+    {
+      "caller": "F_727D",
+      "symbol": "_f7298",
+      "owner": "F_7298",
+      "previous_code_offset": 29336
+    },
+    {
+      "caller": "F_7313",
+      "symbol": "_f7298",
+      "owner": "F_7298",
+      "previous_code_offset": 29336
+    },
+    {
+      "caller": "F_734E",
+      "symbol": "_f738a",
+      "owner": "F_738A",
+      "previous_code_offset": 29578
+    },
+    {
+      "caller": "F_747B",
+      "symbol": "_f020f",
+      "owner": "F_020F",
+      "previous_code_offset": 527
+    },
+    {
+      "caller": "F_75F3",
+      "symbol": "_f020f",
+      "owner": "F_020F",
+      "previous_code_offset": 527
+    },
+    {
+      "caller": "F_7695",
+      "symbol": "_f020f",
+      "owner": "F_020F",
+      "previous_code_offset": 527
+    },
+    {
+      "caller": "F_7747",
+      "symbol": "_f778b",
+      "owner": "F_778B",
+      "previous_code_offset": 30603
+    },
+    {
+      "caller": "F_7747",
+      "symbol": "_f791e",
+      "owner": "F_791E",
+      "previous_code_offset": 31006
+    },
+    {
+      "caller": "F_778B",
+      "symbol": "_f020f",
+      "owner": "F_020F",
+      "previous_code_offset": 527
+    },
+    {
+      "caller": "F_778B",
+      "symbol": "_f0355",
+      "owner": "F_0355",
+      "previous_code_offset": 853
+    },
+    {
+      "caller": "F_7D91",
+      "symbol": "_f8480",
+      "owner": "F_8480",
+      "previous_code_offset": 33920
+    },
+    {
+      "caller": "F_86C9",
+      "symbol": "_f8480",
+      "owner": "F_8480",
+      "previous_code_offset": 33920
+    },
+    {
+      "caller": "F_8AA2",
+      "symbol": "_f7202",
+      "owner": "F_7202",
+      "previous_code_offset": 29186
+    },
+    {
+      "caller": "F_8AA2",
+      "symbol": "_face7",
+      "owner": "F_ACE7",
+      "previous_code_offset": 44263
+    },
+    {
+      "caller": "F_9402",
+      "symbol": "_f7856",
+      "owner": "F_7856",
+      "previous_code_offset": 30806
+    },
+    {
+      "caller": "F_9440",
+      "symbol": "_f778b",
+      "owner": "F_778B",
+      "previous_code_offset": 30603
+    },
+    {
+      "caller": "F_9A0E",
+      "symbol": "_f984c",
+      "owner": "F_984C",
+      "previous_code_offset": 38988
+    },
+    {
+      "caller": "F_9A0E",
+      "symbol": "_f99e2",
+      "owner": "F_99E2",
+      "previous_code_offset": 39394
+    },
+    {
+      "caller": "F_9AC7",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_9B68",
+      "symbol": "_face7",
+      "owner": "F_ACE7",
+      "previous_code_offset": 44263
+    },
+    {
+      "caller": "F_9B68",
+      "symbol": "_f656c",
+      "owner": "F_656C",
+      "previous_code_offset": 25964
+    },
+    {
+      "caller": "F_9B68",
+      "symbol": "_f01ce",
+      "owner": "F_01CE",
+      "previous_code_offset": 462
+    },
+    {
+      "caller": "F_9B68",
+      "symbol": "_f0355",
+      "owner": "F_0355",
+      "previous_code_offset": 853
+    },
+    {
+      "caller": "F_9B68",
+      "symbol": "_f9a0e",
+      "owner": "F_9A0E",
+      "previous_code_offset": 39438
+    },
+    {
+      "caller": "F_9DCC",
+      "symbol": "_f7343",
+      "owner": "F_7343",
+      "previous_code_offset": 29507
+    },
+    {
+      "caller": "F_9DCC",
+      "symbol": "_f7747",
+      "owner": "F_7747",
+      "previous_code_offset": 30535
+    },
+    {
+      "caller": "F_9DCC",
+      "symbol": "_f99e2",
+      "owner": "F_99E2",
+      "previous_code_offset": 39394
+    },
+    {
+      "caller": "F_9DCC",
+      "symbol": "_f9d79",
+      "owner": "F_9D79",
+      "previous_code_offset": 40313
+    },
+    {
+      "caller": "F_A525",
+      "symbol": "_ff9be",
+      "owner": "F_F9BE",
+      "previous_code_offset": 63934
+    },
+    {
+      "caller": "F_A85E",
+      "symbol": "_fa658",
+      "owner": "F_A658",
+      "previous_code_offset": 42584
+    },
+    {
+      "caller": "F_C0E0",
+      "symbol": "_fb4fb",
+      "owner": "F_B4FB",
+      "previous_code_offset": 46331
+    },
+    {
+      "caller": "F_C0E0",
+      "symbol": "_f2269",
+      "owner": "F_2269",
+      "previous_code_offset": 8809
+    },
+    {
+      "caller": "F_C914",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
+    },
+    {
+      "caller": "F_D26C",
+      "symbol": "_fcf3c",
+      "owner": "F_CF3C",
+      "previous_code_offset": 53052
+    },
+    {
+      "caller": "F_D4B3",
+      "symbol": "_f86c9",
+      "owner": "F_86C9",
+      "previous_code_offset": 34505
+    },
+    {
+      "caller": "F_D593",
+      "symbol": "_fcb48",
+      "owner": "F_CB48",
+      "previous_code_offset": 52040
     }
   ],
-  "scope": "Owned selected entry publics; fixed placement remains; no historical linker claim"
+  "scope": "Cumulative owned C/ASM entry-public migrations: prior 151 bindings plus the 123 newly eligible numeric references"
 }

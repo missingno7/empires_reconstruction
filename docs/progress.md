@@ -1,22 +1,22 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 12,452 bytes from raw
-fallback: 10,304 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 12,794 bytes from raw
+fallback: 10,646 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 41 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 20,114 | 193 |
+| Freshly compiled matching C | 14,077 | 20,456 | 195 |
 | Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
 | Known toolchain library | 0 | 4,267 | 35 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 59 | 4 |
 | Independently encoded text | 0 | 41 | 3 |
-| Exact raw fallback | 62,621 | 50,169 | 68 |
-| Total | 79,154 | 79,154 | 326 |
+| Exact raw fallback | 62,621 | 49,827 | 67 |
+| Total | 79,154 | 79,154 | 327 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -126,15 +126,15 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 213 source proof units from **zero proven
-historical source modules**, and 1,092 declared owner-symbol bindings from
+The combined EXE metrics distinguish 215 source proof units from **zero proven
+historical source modules**, and 1,098 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
-28,996 raw EXE bytes as unresolved machine code; overlapping entry/parent
+28,654 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 21,173 raw bytes remain unknown. Two palette owners account for
 1,536 embedded-asset bytes. There are now 289 component-owned bindings
 within fixed placement: two palette references, 151 C/ASM entry references,
 and 38 library public references from earlier checkpoints, plus 98 owned references
-in the eleven local C waves. Four module-segment bindings also resolve through
+in the twelve local C waves. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
 [linkage-blockers.json](linkage-blockers.json) snapshots 24 held upstream
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 50,169 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 49,827 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -296,3 +296,9 @@ Three routines add 609 matching C bytes and one independent text component
 adds 14 bytes. F_4943 now includes the three-byte epilogue missing from the
 upstream extent; the next owned function starts immediately afterward.
 See [the boundary and compiler proof](matching-c-wave11.md).
+
+## Twelfth local C wave
+
+F_250C and F_5F3C add 342 matching C bytes. The latter preserves explicit
+shift/subtract indexing rather than an algebraically equivalent multiplication.
+See [the wave-twelve proof](matching-c-wave12.md).

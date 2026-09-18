@@ -1,0 +1,85 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_250C",
+      "kind": "MATCHING_C",
+      "start": 9996,
+      "end": 10109,
+      "source": "src/F_250C.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f250c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbfbc": {
+            "offset": 49084,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAEC.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_250C.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "22ff631eb81b63d3242a19ceeb0b6758a5ffde6e38ba60253613f2aa49cfb572",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "c5d44899961ab6c6311f7c5dbd0eed951b99db13f73976e45bd9a16ed7dbc0a6",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_5F3C",
+      "kind": "MATCHING_C",
+      "start": 24892,
+      "end": 25121,
+      "source": "src/F_5F3C.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f5f3c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbfcd": {
+            "offset": 49101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAFD.phys"
+          },
+          "_f03d5": {
+            "offset": 981,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03D5.entry"
+          },
+          "_gc0b2": {
+            "offset": 49330,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BBE2.phys"
+          },
+          "_gc0b4": {
+            "offset": 49332,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BBE4.phys"
+          },
+          "_gc0c4": {
+            "offset": 49348,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BBF4.phys"
+          }
+        }
+      },
+      "artifact": "regions/F_5F3C.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "acb563d4fac15367b4bfa78cc6732f9eb81d557191abf702f751759bbbc32892",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry_sha256": "3b43ff6894537e6418ed48bce5cb80f14ecf068deb698609963f7503cc50fd83",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

@@ -498,3 +498,9 @@ F_9D8E adds 62 matching C bytes. Its source now also emits the complete
 209-byte independently encoded text component. The OMF data fixup and its MZ
 relocation are bound and verified, so the former raw data-base blocker is
 closed without preserving an opaque slice. See [the wave-forty-eight proof](matching-c-wave48.md).
+
+The current C audit also covers `F_7202` and `F_6CA6`: the former is a
+complete-length probe blocked by Turbo C's argument-evaluation register choice,
+and the latter is a segment-manipulation routine whose C forms exceed its
+extent. These are concrete compiler frontiers, alongside the earlier
+conversion and switch-layout probes, rather than reasons to weaken ownership.

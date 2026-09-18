@@ -3,15 +3,16 @@
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.
-The build compiles 206 C regions, assembles 20 ASM
-regions, and extracts 35 pinned Borland library modules. The MZ header is
+The build compiles 207 C regions, assembles 20 ASM
+regions, and extracts 36 pinned Borland library modules (35 code contributions
+and one 257-byte data contribution). The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); 64 raw regions cover the remaining 47,564 EXE bytes.
+RGB tables (1,536 bytes); 65 raw regions cover the remaining 46,991 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 151 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 38 resolve through [publics read from pinned library modules](docs/library-bindings.md).
-The latest [C matching wave](docs/matching-c-wave18.md) adds two functions totaling 574 bytes,
-including a by-value structure argument and compiler-generated switch dispatch.
+The latest [C matching wave](docs/matching-c-wave19.md) adds a 307-byte function,
+unblocked by independently encoded text and verified Borland CTYPE data.
 Both archives have explicit resource ownership. Twenty-six compressed resources
 re-encode exactly; 25 use PNG plus JSON and one uses a structured image bank. The uncompressed
 first level also rebuilds from structured source, for 27 matching resources.
@@ -90,7 +91,7 @@ the original EXE.
 Turbo C/TASM emit OMF objects in a fresh `build/session-*` directory. The
 builder selects each declared public extent, applies its declared address
 bindings, verifies its MZ relocation obligations, and concatenates all owners.
-Library owners use complete `_TEXT` contributions extracted from the pinned
+Library owners use complete `_TEXT` or `_DATA` contributions extracted from the pinned
 `CC.LIB`, through the same binding and relocation checks. The original in
 `assets/` is the comparison fixture. The header is encoded and verified before
 compilation; altered fields or padding fail with the `MZ_HEADER` owner named.

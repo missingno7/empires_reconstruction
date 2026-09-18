@@ -8755,15 +8755,101 @@
       }
     },
     {
-      "id": "RAW_00A725",
+      "id": "F_A525",
+      "kind": "MATCHING_C",
       "start": 42789,
+      "end": 43096,
+      "source": "src/F_A525.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa525",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g12d0": {
+            "owner": "TEXT_12D0",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "Complete independently encoded initialized string"
+          },
+          "_ff304": {
+            "offset": 62212,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F304.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_f6d3c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f6cf6": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CF6.entry",
+            "owner": "F_6CF6",
+            "public": "_f6cf6",
+            "addend": 0
+          },
+          "_fa43c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_A43C.entry",
+            "owner": "F_A43C",
+            "public": "_fa43c",
+            "addend": 0
+          },
+          "_g37cb": {
+            "owner": "LIB_CTYPE_DATA",
+            "coordinate": "DGROUP_offset",
+            "public": "__ctype",
+            "addend": 1,
+            "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
+          },
+          "_ff9be": {
+            "offset": 63934,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F9BE.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_A525.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "48549c77a414f6679f7a2f5d9b5bf7d775a54c7fcfda0ac5a527755c5a41b75f",
+      "provenance": {
+        "method": "local C reconstruction bound to identified text and pinned library data",
+        "upstream_entry_sha256": "9f16b048a007c8df3f4e416314a0856ac2671bccbddb6843b757765b284bb150",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "RAW_00A858",
+      "start": 43096,
       "end": 44775,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00A725-00AEE7.bin",
+      "source": "raw/00A858-00AEE7.bin",
       "original_symbol": null,
-      "artifact": "raw/00A725-00AEE7.bin",
-      "expected_sha256": "d94b886c566a885b81dd8b33ce20f6c8ca1d11b925ffe621bb50a9e3fdaee155",
+      "artifact": "raw/00A858-00AEE7.bin",
+      "expected_sha256": "60cf761af05a9c0f4bdc64fd1afffa5aa316a510ad107bdafaf21a02a9c3b4b2",
       "matching_status": "EQUAL"
     },
     {
@@ -14731,14 +14817,28 @@
     {
       "id": "RAW_0107E2",
       "start": 67554,
-      "end": 69385,
+      "end": 69376,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0107E2-010F09.bin",
+      "source": "raw/0107E2-010F00.bin",
       "original_symbol": null,
-      "artifact": "raw/0107E2-010F09.bin",
-      "expected_sha256": "b15fe1083c2d02a623a8f7183ea5514367a3997cb52ac355b9698f87f15bb582",
+      "artifact": "raw/0107E2-010F00.bin",
+      "expected_sha256": "8892ada5854a0e85115cc2847212f16a5b8231b8a768e684f208bfc61d152be0",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "TEXT_12D0",
+      "kind": "EXACT_DATA",
+      "start": 69376,
+      "end": 69385,
+      "classification": "static_data",
+      "source": "src/data/TEXT_12D0.json",
+      "artifact": "regions/TEXT_12D0.bin",
+      "matching_status": "EQUAL",
+      "expected_sha256": "2e8e5e4e5dc9756c570f4f433268c33a56adcfa3633de7d530cbbb1ae9ee4f45",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
     },
     {
       "id": "TEXT_12D9",
@@ -14825,13 +14925,48 @@
     {
       "id": "RAW_011F10",
       "start": 73488,
+      "end": 78842,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/011F10-0133FA.bin",
+      "original_symbol": null,
+      "artifact": "raw/011F10-0133FA.bin",
+      "expected_sha256": "aacb0e175cbc9932154aaa6f8a3a1b55b017b3169f204db3923c2bcbe2a91270",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "LIB_CTYPE_DATA",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "start": 78842,
+      "end": 79099,
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_CTYPE_DATA.bin",
+      "matching_status": "EQUAL",
+      "expected_sha256": "efd41fc97beae6b6a50208af78c3788adad1c04aa7652e6e89b9f022f9ddc088",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "CTYPE",
+        "module_sha256": "099281b47a8ab616a91c74516c8f084301b442cf1e1fea24765ada2bd59f7083",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "provenance": {
+        "method": "Complete pinned CTYPE module _DATA contribution; __ctype public at zero",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "RAW_0134FB",
+      "start": 79099,
       "end": 79154,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/011F10-013532.bin",
+      "source": "raw/0134FB-013532.bin",
       "original_symbol": null,
-      "artifact": "raw/011F10-013532.bin",
-      "expected_sha256": "c413b2e29240ff31d3e3f8361127a598b8b4a236833740f4e95d1249d881c526",
+      "artifact": "raw/0134FB-013532.bin",
+      "expected_sha256": "f69ccbee796c5d97f39dac76d087f139708b0251cb138b1f1c0e61bca26c3826",
       "matching_status": "EQUAL"
     }
   ]

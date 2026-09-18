@@ -1,0 +1,44 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "97aa82ed319096db3663fb82d993aaa9449356831e55439ccbfb5ec918c916a7",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 307,
+  "promoted_library_bytes": 257,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 9,
+  "owners": [
+    {
+      "id": "F_A525",
+      "kind": "MATCHING_C",
+      "bytes": 307,
+      "sha256": "48549c77a414f6679f7a2f5d9b5bf7d775a54c7fcfda0ac5a527755c5a41b75f",
+      "source_sha256": "723165f61959c19088a265033bdd533b7f5b193e0f3491b0fa37dbc2e2c7f49b",
+      "fixups": 26,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "TEXT_12D0",
+      "kind": "EXACT_DATA",
+      "bytes": 9,
+      "sha256": "2e8e5e4e5dc9756c570f4f433268c33a56adcfa3633de7d530cbbb1ae9ee4f45",
+      "source_sha256": "72d2523ae6193a5ebf440c64ddf570738c36bc93954dbbb56cf838e0634a399d",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "LIB_CTYPE_DATA",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 257,
+      "sha256": "efd41fc97beae6b6a50208af78c3788adad1c04aa7652e6e89b9f022f9ddc088",
+      "source_sha256": "099281b47a8ab616a91c74516c8f084301b442cf1e1fea24765ada2bd59f7083",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

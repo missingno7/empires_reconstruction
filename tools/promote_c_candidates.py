@@ -23,8 +23,8 @@ def promote(recipe_path, root=ROOT):
     existing = {r['id']: r for r in manifest['regions']}
     candidates = []
     for owner in recipe['owners']:
-        if owner['kind'] != 'MATCHING_C' and not (owner['kind'] == 'EXACT_DATA' and owner['build']['encoder'] in ('omf-segment-v1', TEXT_FORMAT)):
-            raise ValueError('Recipe may only promote matching C, compiled data and identified text')
+        if owner['kind'] not in ('MATCHING_C', 'KNOWN_TOOLCHAIN_LIBRARY') and not (owner['kind'] == 'EXACT_DATA' and owner['build']['encoder'] in ('omf-segment-v1', TEXT_FORMAT)):
+            raise ValueError('Recipe may only promote matching C, pinned libraries, compiled data and identified text')
         if owner['id'] in existing:
             if owner != existing[owner['id']]:
                 raise ValueError('Existing ownership differs from candidate recipe')
@@ -52,6 +52,9 @@ def promote(recipe_path, root=ROOT):
         if owner['kind'] == 'MATCHING_C':
             receipt = receipts[owner['id']]
             data, proof = bind_region(owner, modules[owner['id']], MZ.parse(original), proposed['frames'], proposed['regions'], modules)
+        elif owner['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+            data, proof = bind_region(owner, modules[owner['id']], MZ.parse(original), proposed['frames'], proposed['regions'], modules)
+            receipt = {'source_sha256': owner['build']['module_sha256']}
         elif owner['build']['encoder'] == 'omf-segment-v1':
             receipt = receipts[owner['build']['code_owner']]
             data, proof = compiled_data(owner, proposed['regions'], modules, MZ.parse(original))
@@ -70,6 +73,7 @@ def promote(recipe_path, root=ROOT):
                         'encoder': owner.get('build', {}).get('encoder'), 'status': 'EQUAL'})
     report = {'status': 'EQUAL', 'recipe_sha256': sha(recipe_path.read_bytes()),
               'original_sha256': sha(original), 'promoted_c_bytes': sum(r['bytes'] for r in results if r['kind'] == 'MATCHING_C'),
+              'promoted_library_bytes': sum(r['bytes'] for r in results if r['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY'),
               'promoted_compiled_data_bytes': sum(r['bytes'] for r in results if r['encoder'] == 'omf-segment-v1'),
               'promoted_text_bytes': sum(r['bytes'] for r in results if r['encoder'] == TEXT_FORMAT),
               'owners': results}
@@ -86,7 +90,7 @@ def promote(recipe_path, root=ROOT):
     write_json(manifest_path, proposed)
     evidence_name = 'c-matching-evidence.json' if recipe_path.stem == 'matching-wave1' else recipe_path.stem + '-evidence.json'
     write_json(root / 'docs' / evidence_name, report)
-    print(f"Promoted {len(sources)} matching C functions, {report['promoted_c_bytes']} code bytes, {report['promoted_compiled_data_bytes']} compiled data bytes and {report['promoted_text_bytes']} text bytes")
+    print(f"Promoted {len(sources)} matching C functions, {report['promoted_c_bytes']} code bytes, {report['promoted_library_bytes']} library bytes, {report['promoted_compiled_data_bytes']} compiled data bytes and {report['promoted_text_bytes']} text bytes")
     return report
 
 

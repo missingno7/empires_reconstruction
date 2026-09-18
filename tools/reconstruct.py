@@ -207,6 +207,18 @@ def component_binding(binding, owners, mz, frames, component_modules=None):
     public_offset = 0
     if coordinate == 'DGROUP_offset' and target['kind'] == 'EXACT_DATA':
         base = frames['DGROUP']
+    elif coordinate == 'DGROUP_offset' and target['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+        module = (component_modules or {}).get(target['id'])
+        if module is None or target['build']['segment'] != '_DATA':
+            raise ValueError('Library data binding requires its verified _DATA module')
+        publics = [p for p in module.publics_in('_DATA') if p['name'] == binding.get('public')]
+        if len(publics) != 1:
+            raise ValueError('Library data binding requires exactly one matching OMF public')
+        public_offset = publics[0]['offset']
+        addend = binding.get('addend', 0)
+        if type(addend) is not int or not 0 <= public_offset + addend < target['end'] - target['start']:
+            raise ValueError('Library data public plus addend lies outside its contribution')
+        base = frames['DGROUP']
     elif coordinate == 'code_offset' and target['kind'] in ('MATCHING_C', 'MATCHING_ASM', 'KNOWN_TOOLCHAIN_LIBRARY'):
         if binding.get('addend', 0) != 0:
             raise ValueError('Code component binding must name its selected entry public with zero addend')

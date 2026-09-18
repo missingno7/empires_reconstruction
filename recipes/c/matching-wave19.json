@@ -1,0 +1,128 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_A525",
+      "kind": "MATCHING_C",
+      "start": 42789,
+      "end": 43096,
+      "source": "src/F_A525.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa525",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g12d0": {
+            "owner": "TEXT_12D0",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "Complete independently encoded initialized string"
+          },
+          "_ff304": {
+            "offset": 62212,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F304.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_f6d3c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f6cf6": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CF6.entry",
+            "owner": "F_6CF6",
+            "public": "_f6cf6",
+            "addend": 0
+          },
+          "_fa43c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_A43C.entry",
+            "owner": "F_A43C",
+            "public": "_fa43c",
+            "addend": 0
+          },
+          "_g37cb": {
+            "owner": "LIB_CTYPE_DATA",
+            "coordinate": "DGROUP_offset",
+            "public": "__ctype",
+            "addend": 1,
+            "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
+          },
+          "_ff9be": {
+            "offset": 63934,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F9BE.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_A525.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "48549c77a414f6679f7a2f5d9b5bf7d775a54c7fcfda0ac5a527755c5a41b75f",
+      "provenance": {
+        "method": "local C reconstruction bound to identified text and pinned library data",
+        "upstream_entry_sha256": "9f16b048a007c8df3f4e416314a0856ac2671bccbddb6843b757765b284bb150",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "TEXT_12D0",
+      "kind": "EXACT_DATA",
+      "start": 69376,
+      "end": 69385,
+      "classification": "static_data",
+      "source": "src/data/TEXT_12D0.json",
+      "artifact": "regions/TEXT_12D0.bin",
+      "matching_status": "EQUAL",
+      "expected_sha256": "2e8e5e4e5dc9756c570f4f433268c33a56adcfa3633de7d530cbbb1ae9ee4f45",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "LIB_CTYPE_DATA",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "start": 78842,
+      "end": 79099,
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_CTYPE_DATA.bin",
+      "matching_status": "EQUAL",
+      "expected_sha256": "efd41fc97beae6b6a50208af78c3788adad1c04aa7652e6e89b9f022f9ddc088",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "CTYPE",
+        "module_sha256": "099281b47a8ab616a91c74516c8f084301b442cf1e1fea24765ada2bd59f7083",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "provenance": {
+        "method": "Complete pinned CTYPE module _DATA contribution; __ctype public at zero",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    }
+  ]
+}

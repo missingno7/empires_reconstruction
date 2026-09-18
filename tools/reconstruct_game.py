@@ -47,6 +47,8 @@ def exe_metrics(root, manifest, report):
             'matching_asm_bytes': counts.get('MATCHING_ASM', 0),
             'source_derived_code_bytes': counts.get('MATCHING_C', 0) + counts.get('MATCHING_ASM', 0),
             'known_library_runtime_bytes': counts.get('KNOWN_TOOLCHAIN_LIBRARY', 0),
+            'known_library_code_bytes': sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY' and r['build']['segment'] == '_TEXT'),
+            'known_library_data_bytes': sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY' and r['build']['segment'] == '_DATA'),
             'structured_header_bytes': counts.get('MZ_HEADER', 0),
             'classified_static_data_bytes': sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'EXACT_DATA' and r.get('classification') == 'static_data'),
             'classified_embedded_asset_bytes': sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'EXACT_DATA' and r.get('classification') == 'embedded_palette'),

@@ -4,11 +4,11 @@
   "source": "controls\\correspondence\\held-by-provider.json",
   "source_sha256": "32e513bc0d5e881bb1cb5c8a7dd7f6a921b7b05ca16d0144834924853b95ad42",
   "scope": "Historical provider refusals, excluding currently owned IDs; fresh compilation still required.",
-  "held_candidates": 27,
-  "held_extent_bytes": 10488,
+  "held_candidates": 26,
+  "held_extent_bytes": 10345,
   "reason_counts": {
     "PROVIDER_REFUSED": 24,
-    "DIFFERS": 3
+    "DIFFERS": 2
   },
   "unique_unresolved_symbols": 69,
   "unresolved_fixup_sites": 118,
@@ -1058,24 +1058,6 @@
           "symbol": "_f622c"
         }
       ]
-    },
-    {
-      "id": "F_68CF",
-      "reason": "DIFFERS",
-      "kind_withheld": "MATCHING_C",
-      "provider": "pf_match 9",
-      "answered_about_entry_sha256": "98afcdb193a582eca79ed3e156c2cd93302e785c426a5f7283637f795ef14388",
-      "extent_bytes": 143,
-      "draft": "c/F_68CF.C",
-      "draft_sha256": "7920dc6dea6688f2c2ee9bf911ee896c8a38803a95d25ef8a5775aa00e7670df",
-      "first_difference": {
-        "where": "offset 2 of the extent (address 0x68D1)",
-        "component": "offset16 fixup to _f2",
-        "both_sides": {
-          "original": "0x1772",
-          "candidate": "the the profile's declared convention \"empires_forged pilot naming, extended 2026-09-06 (docs/history/matching-pilot/runL/fixups.py: _gNNNN DGROUP offset, _fNNNN code ip; this substrate's drafts also write _bNNNN/_wNNNN/_sNNNN/_aNNNN for the same DGROUP offset)\" for _f2 (model key functions/F_0000.entry + 0x2) says 0x0002"
-        }
-      }
     },
     {
       "id": "F_75F3",

@@ -23,6 +23,12 @@ state rather than declared stack arguments. `F_C232` has the same `ES:DI` and
 `F_6B7A`, `F_6BAC`) remain hardware-facing sequences. These observations are
 concrete ABI or boundary blockers; no opaque bytes are hidden inside a C owner.
 
+`F_6CA6` is a related far-table setup routine. A C form reconstructed from its
+`gc0d6` table and `C0DE`/`C0E0`/`C0E2`/`C0E4`/`C0E6`/`C0E8` stores still emitted
+99 bytes for the original 68-byte extent, even with register locals. Turbo C's
+far-pointer segment/offset extraction and spills do not reproduce the original
+`LES`/`SI` sequence, so this candidate remains unpromoted.
+
 The next useful recovery step for this set is matching ASM or recovered module
 calling convention evidence. The matching-C frontier remains open, while all
 previously proven C owners continue to rebuild the exact EXE and DAT files.

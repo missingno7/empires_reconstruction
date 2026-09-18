@@ -7,8 +7,9 @@ unresolved fixups, relocation differences and mismatched bytes. All owners
 carry expected SHA-256 digests. `matching_status: EQUAL` records the imported
 status; only the current build's `build/report.json` establishes a fresh result.
 
-`kind` selects representation (`MATCHING_C`, `MATCHING_ASM`, `RAW`, or
-`EXACT_DATA`); `classification` is independent descriptive metadata. Future
+`kind` selects representation (`MATCHING_C`, `MATCHING_ASM`,
+`KNOWN_TOOLCHAIN_LIBRARY`, `MZ_HEADER`, `RAW`, or `EXACT_DATA`); `classification` is
+independent descriptive metadata. Future
 font/table/asset encoders can add a representation while retaining the same
 range and verification model. No semantic classification is inferred for raw
 load-image regions in MVP1.
@@ -58,6 +59,15 @@ expected length. A module may contain support bytes outside that selected
 extent: those bytes do not acquire ownership merely because they appear in an
 OBJ. They remain owned by the manifest's other regions.
 
+Library owners select the **complete** named module's `_TEXT` contribution,
+including private helpers. `build.library`, `build.library_module` and
+`build.module_sha256` fix the binary input; `layout/toolchain.json` pins the
+whole library. The library itself is local and Git-ignored. These owners are
+not counted as matching C/ASM and do not claim newly recovered source.
+Data/BSS bases and library-public offsets taken from established upstream
+receipts are frozen explicitly in `build.module_segments` and `build.bindings`.
+They are never inferred from the original comparison bytes during a build.
+
 In particular, `F_56C6.C` contains `static char q139d[2] = {7, 0}` as a
 matching stand-in. Its `_DATA` base is explicitly fixed at DGROUP offset
 `0x139D`, from the upstream proof's `module_data_base_votes/_DATA` evidence
@@ -67,10 +77,53 @@ against original bytes. The two actual data bytes retain their raw owner.
 The build makes no claim about historical translation-unit ownership or
 whether these standalone objects could be linked as a conventional program.
 
-The 512-byte MZ header is one raw owner, including its 106 relocation entries
-at file offset `0x22`. The declared load image is 78,642 bytes. This EXE has no
+The 512-byte MZ header is the `MZ_HEADER` owner, encoded from
+`layout/mz-header.json`. It includes 106 relocation entries at file offset
+`0x22`. The declared load image is 78,642 bytes. This EXE has no
 bytes beyond its declared MZ size, but the parser/importer retain trailing
 file bytes as a separate owner when present. Entry state is relative
 `CS:IP = 0000:0000`, `SS:SP = 1C50:00E6`; minimum allocation is `0x92C`
 paragraphs, maximum `0xFFFF`. Runtime allocation and generated memory are not
 extra bytes in the executable file.
+
+## Structured MZ source
+
+`tools/mz.py` owns both parsing and encoding. `header_document` decodes a
+fixture only during the explicit one-time recovery operation;
+`encode_header` takes the JSON document and total file length, never executable
+bytes. Normal builds encode this source and compare it to the original header
+before invoking the compiler. The source-derived header then supplies the MZ
+layout and relocation obligations used to bind code regions.
+
+All 14 fixed words are explicit unsigned 16-bit integers:
+
+| Fields | Meaning |
+|---|---|
+| `e_magic` | `0x5A4D`, the two signature bytes |
+| `e_cblp`, `e_cp` | Last-page byte count and 512-byte page count; zero last-page count means a full page |
+| `e_crlc` | Number of relocation entries; must equal the explicit list length |
+| `e_cparhdr` | Header size in 16-byte paragraphs |
+| `e_minalloc`, `e_maxalloc` | Additional allocation bounds in paragraphs |
+| `e_ss`, `e_sp`, `e_ip`, `e_cs` | Initial segment-relative execution state |
+| `e_csum` | Original checksum word, preserved rather than recalculated |
+| `e_lfarlc` | File offset of the relocation table |
+| `e_ovno` | Original overlay-number word |
+
+The relocation list preserves its exact order and each original segment:offset
+pair. Entries are neither sorted, deduplicated nor normalized to equivalent
+linear addresses. Those operations could preserve some loader behavior but
+would change the executable bytes. Relocation targets must address complete
+words within the declared load image.
+
+`before_relocations_hex` preserves six uninterpreted bytes at `[0x1C,0x22)`:
+`01 00 FB 20 72 6A`. `after_relocations_hex` preserves the 54 zero padding
+bytes at `[0x1CA,0x200)`. They are explicit source bytes, with lengths checked
+against `e_lfarlc`, `e_crlc` and `e_cparhdr`; the encoder supplies no implicit
+padding or corrected count/size fields. Unknown fields and malformed values
+are rejected instead of silently ignored.
+
+`python tools/recover_mz_header.py` performed the initial RAW-to-header
+promotion after proving an exact round trip. It is now a no-op so it cannot
+overwrite edits to the canonical JSON source. Generated header bytes are
+written to `build/regions/MZ_HEADER.bin`; the old ignored raw header file is
+not consumed and is not required on a fresh checkout.

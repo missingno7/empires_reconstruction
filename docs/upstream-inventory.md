@@ -1,5 +1,11 @@
 # Upstream audit and reuse
 
+This records the initial MVP1 audit/import. Subsequent promotions, including
+`F_01CE` and all 35 library modules, are described in [progress.md](progress.md).
+The canonical manifest and fresh build report describe current ownership;
+the JSON inventory below retains the initial audit rather than being another
+source of current ownership.
+
 Read-only source audited on 2026-09-18:
 `D:/Games/DOS/dos_recosystem/empires_forged`.
 The current matching material is in `controls/correspondence/`; older pilot
@@ -41,6 +47,12 @@ receipt and profile hashes; new build receipts record the actual compiler
 commands, source/OBJ digests and applied fixups.
 
 ## Reimporting (maintenance only)
+
+For incremental work, prefer `tools/promote_upstream.py`, documented in
+[progress.md](progress.md). It replaces only raw owners, freshly verifies all
+candidates before publication, and preserves existing recovered regions.
+The initial bulk importer below resets ownership to its initial C/ASM subset,
+so it would discard later library promotions from the layout.
 
 ```powershell
 python tools/import_upstream.py

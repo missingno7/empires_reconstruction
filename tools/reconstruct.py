@@ -12,7 +12,7 @@ import subprocess
 import sys
 import tempfile
 
-from mz import MZ
+from mz import MZ, encode_header
 from omf import OmfReader
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,8 +51,10 @@ def validate_layout(manifest):
             raise ValueError(f'Ownership {defect} at file 0x{cursor:X}: {name} starts 0x{start:X}')
         if end <= start or end > manifest['original']['size']:
             raise ValueError(f'{name}: invalid range size')
-        if owner['kind'] not in ('RAW', 'MATCHING_C', 'MATCHING_ASM', 'EXACT_DATA'):
+        if owner['kind'] not in ('RAW', 'MATCHING_C', 'MATCHING_ASM', 'EXACT_DATA', 'KNOWN_TOOLCHAIN_LIBRARY', 'MZ_HEADER'):
             raise ValueError(f'{name}: unsupported owner kind')
+        if owner['kind'] == 'MZ_HEADER' and start != 0:
+            raise ValueError(f'{name}: MZ header owner must begin at file offset zero')
         cursor = end
     if cursor != manifest['original']['size']:
         raise ValueError(f'Ownership gap at file 0x{cursor:X} through EOF')
@@ -150,21 +152,50 @@ def read_object(data):
     return OmfReader().read(data)
 
 
+def library_modules(path, expected_sha256):
+    """Read a pinned local library; duplicate names must never silently win."""
+    data = path.read_bytes()
+    if sha(data) != expected_sha256:
+        raise ValueError(f'Library identity mismatch: {path}')
+    modules = {}
+    for name, blob in OmfReader().split_library(data):
+        if name in modules:
+            raise ValueError(f'Duplicate library module: {name}')
+        modules[name] = blob
+    return modules
+
+
+def library_candidate(owner, modules):
+    build = owner['build']
+    name = build['library_module']
+    if name not in modules:
+        raise ValueError(f"{owner['id']}: missing library module {name}")
+    blob = modules[name]
+    if sha(blob) != build['module_sha256']:
+        raise ValueError(f"{owner['id']}: library module identity mismatch")
+    return read_object(blob)
+
+
 def bind_region(owner, module, mz, frames):
     """Bind only from source OBJ and declared metadata; never receives original bytes."""
     build = owner['build']
     segment = build['segment']
     data = module.segment_bytes(segment)
-    publics = module.publics_in(segment)
-    index = next((i for i, p in enumerate(publics) if p['name'] == build['public']), None)
-    if index is None:
-        raise ValueError(f"{owner['id']}: missing public {build['public']}")
-    start = publics[index]['offset']
-    following = [p['offset'] for p in publics[index + 1:] if p['offset'] > start]
-    span = build.get('span', 1)
-    if span < 1:
-        raise ValueError('Public span must be positive')
-    end = following[span-1] if span <= len(following) else len(data)
+    if owner.get('kind') == 'KNOWN_TOOLCHAIN_LIBRARY':
+        # The upstream library proofs cover the entire module contribution,
+        # including private helpers before or between public symbols.
+        start, end = 0, len(data)
+    else:
+        publics = module.publics_in(segment)
+        index = next((i for i, p in enumerate(publics) if p['name'] == build['public']), None)
+        if index is None:
+            raise ValueError(f"{owner['id']}: missing public {build['public']}")
+        start = publics[index]['offset']
+        following = [p['offset'] for p in publics[index + 1:] if p['offset'] > start]
+        span = build.get('span', 1)
+        if span < 1:
+            raise ValueError('Public span must be positive')
+        end = following[span-1] if span <= len(following) else len(data)
     if len(data) != module.segment_length(segment):
         raise ValueError(f"{owner['id']}: emitted code does not cover SEGDEF length")
     result = bytearray(data[start:end])
@@ -244,26 +275,62 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
     original = project_path(root, manifest['original']['path']).read_bytes()
     if len(original) != manifest['original']['size'] or sha(original) != manifest['original']['sha256']:
         raise ValueError('Original EXE identity does not match the manifest')
-    mz = MZ.parse(original)
+    reference_mz = MZ.parse(original)
+    mz = reference_mz
+    header_parts = {}
+    for owner in manifest['regions']:
+        if owner['kind'] == 'MZ_HEADER':
+            source = project_path(root, owner['source'])
+            part = encode_header(read_json(source), len(original))
+            # Fail before launching the compiler when header source has changed.
+            mismatch(original[owner['start']:owner['end']], part, owner)
+            if sha(part) != owner['expected_sha256']:
+                raise ValueError(f"{owner['id']}: manifest extent digest differs")
+            mz = MZ.parse_header(part, len(original))
+            header_parts[owner['id']] = (part, {
+                'encoder': 'empires-mz-header-v1', 'source_sha256': sha(source.read_bytes()),
+                'relocation_entries': len(mz.relocations),
+                'fixed_field_bytes': 28, 'relocation_bytes': len(mz.relocations) * 4,
+                'preserved_gap_bytes': len(part) - 28 - len(mz.relocations) * 4,
+            })
     sources = [r for r in manifest['regions'] if r['kind'] in ('MATCHING_C', 'MATCHING_ASM')]
     work = Path(tempfile.mkdtemp(prefix='session-', dir=output)).resolve()
     receipts, session = {}, None
+    lock = read_json(root / 'layout/toolchain.json')
+    libraries = {}
+    for owner in manifest['regions']:
+        if owner['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+            name = owner['build']['library']
+            pinned = next((x for x in lock.get('libraries', []) if x['path'] == name), None)
+            if pinned is None:
+                raise ValueError(f'Library is not pinned in toolchain lock: {name}')
+            if name not in libraries:
+                libraries[name] = library_modules(project_path(toolchain, name), pinned['sha256'])
     if sources:
-        lock = read_json(root / 'layout/toolchain.json')
         receipts, session = compile_sources(root, sources, work, toolchain, dosbox, lock)
     image, reports = bytearray(), []
     for owner in manifest['regions']:
         proof = {}
         if owner['kind'] in ('RAW', 'EXACT_DATA'):
             part = project_path(root, owner['source']).read_bytes()
-        else:
-            receipt = receipts[owner['id']]
-            module = read_object((work / receipt['object']).read_bytes())
-            part, proof = bind_region(owner, module, mz, manifest['frames'])
+        elif owner['kind'] == 'MZ_HEADER':
+            part, proof = header_parts[owner['id']]
             artifact = project_path(output, owner['artifact'])
             artifact.parent.mkdir(parents=True, exist_ok=True)
             artifact.write_bytes(part)
-            proof['compile'] = receipt
+        else:
+            if owner['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+                module = library_candidate(owner, libraries[owner['build']['library']])
+                proof['library'] = {key: owner['build'][key] for key in ('library', 'library_module', 'module_sha256')}
+            else:
+                receipt = receipts[owner['id']]
+                module = read_object((work / receipt['object']).read_bytes())
+                proof['compile'] = receipt
+            part, binding_proof = bind_region(owner, module, mz, manifest['frames'])
+            proof.update(binding_proof)
+            artifact = project_path(output, owner['artifact'])
+            artifact.parent.mkdir(parents=True, exist_ok=True)
+            artifact.write_bytes(part)
         mismatch(original[owner['start']:owner['end']], part, owner)
         if sha(part) != owner['expected_sha256']:
             raise ValueError(f"{owner['id']}: manifest extent digest differs")
@@ -272,8 +339,8 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
                         'end': owner['end'], 'sha256': sha(part), 'status': 'EQUAL', **proof})
     rebuilt = bytes(image)
     rebuilt_mz = MZ.parse(rebuilt)
-    checks = {'load_image': mz.load_image(original) == rebuilt_mz.load_image(rebuilt),
-              'relocations': mz.relocations == rebuilt_mz.relocations and mz.relocation_bytes(original) == rebuilt_mz.relocation_bytes(rebuilt),
+    checks = {'load_image': reference_mz.load_image(original) == rebuilt_mz.load_image(rebuilt),
+              'relocations': reference_mz.relocations == rebuilt_mz.relocations and reference_mz.relocation_bytes(original) == rebuilt_mz.relocation_bytes(rebuilt),
               'full_exe': original == rebuilt}
     if not all(checks.values()):
         raise ValueError(f'Whole-file verification failed: {checks}')
@@ -285,13 +352,16 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
               'reconstructed_sha256': sha(rebuilt), 'total_bytes': len(rebuilt),
               'bytes_by_kind': dict(counts), 'mz': asdict(mz),
               'manifest_sha256': sha(manifest_path.read_bytes()),
+              'toolchain_lock_sha256': sha((root / 'layout/toolchain.json').read_bytes()),
               'builder_sha256': sha(Path(__file__).read_bytes()),
               'omf_reader_sha256': sha((root / 'tools/omf.py').read_bytes()),
+              'mz_codec_sha256': sha((root / 'tools/mz.py').read_bytes()),
               'session_directory': str(work), 'session': session, 'regions': reports}
     write_json(output / 'report.json', report)
     print(f'Total executable bytes: {len(rebuilt):,}\nAccounted bytes:        100% ({len(manifest["regions"])} owners)')
-    for kind in ('MATCHING_C', 'MATCHING_ASM', 'RAW', 'EXACT_DATA'):
-        print(f'{kind + " bytes:":24s}{counts[kind]:,}')
+    for kind in ('MATCHING_C', 'MATCHING_ASM', 'KNOWN_TOOLCHAIN_LIBRARY', 'MZ_HEADER', 'RAW', 'EXACT_DATA'):
+        label = 'Library bytes:' if kind == 'KNOWN_TOOLCHAIN_LIBRARY' else kind + ' bytes:'
+        print(f'{label:24s}{counts[kind]:,}')
     print('Load image match:       PASS\nRelocation match:       PASS\nFull EXE match:         PASS')
     print(f'Original SHA256:        {sha(original)}\nReconstructed SHA256:   {sha(rebuilt)}')
     print(f'Output: {output / "AEPROG.EXE"}\nReport: {output / "report.json"}')

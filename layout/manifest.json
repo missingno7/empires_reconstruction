@@ -12,16 +12,21 @@
   },
   "regions": [
     {
-      "id": "RAW_000000",
+      "id": "MZ_HEADER",
       "start": 0,
       "end": 512,
-      "kind": "RAW",
+      "kind": "MZ_HEADER",
       "classification": "MZ_header_and_relocations",
-      "source": "raw/000000-000200.bin",
+      "source": "layout/mz-header.json",
       "original_symbol": null,
-      "artifact": "raw/000000-000200.bin",
+      "artifact": "regions/MZ_HEADER.bin",
       "expected_sha256": "8161680c1fff862bf69dd0dbbfbf7179f6bcc85a8da52a8154d0a808e3ff2c31",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "provenance": {
+        "decoded_from": "assets/AEPROG.EXE",
+        "image_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+        "previous_owner": "RAW_000000"
+      }
     },
     {
       "id": "RAW_000200",
@@ -138,15 +143,76 @@
       }
     },
     {
-      "id": "RAW_0003CE",
+      "id": "F_01CE",
       "start": 974,
+      "end": 1039,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_01CE.C",
+      "original_symbol": "F_01CE",
+      "artifact": "regions/F_01CE.bin",
+      "expected_sha256": "941efb7ebb255c523baf5fc82b3549fabc50052315770098417bba2e7d2d6f10",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "_cur_idx": {
+            "offset": 14594,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P23432.phys"
+          },
+          "_g3904": {
+            "offset": 14596,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P23434.phys"
+          },
+          "_gbe": {
+            "offset": 190,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/ARRAY_FAEB.phys + 0x3"
+          },
+          "_gfe": {
+            "offset": 254,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/ARRAY_FAEB.phys + 0x43"
+          },
+          "_mode": {
+            "offset": 49101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAFD.phys"
+          },
+          "_result": {
+            "offset": 16584,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_23BF8.phys"
+          }
+        },
+        "module_segments": {},
+        "public": "_f01ce",
+        "span": 1,
+        "flags_append": ""
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/F_01CE.json",
+        "entry_sha256": "e63df4b98ee64492bccef21246c54a43cca4d7ae9a1baac1226097408509d802",
+        "record_sha256": "c6cbcdd1ed332ec7a07b99c243d34e477c6d7fa232ec3438435acf602172f60a",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "source_sha256": "f370e646b00d033e028ff08a011fffdc693ccb5330be61df1552e04fd5147fae",
+        "upstream_record_source_sha256": "6024af2220bc376dd7b014d94c5c6dd58e570659ae5171f8b2eafff8e6a663a6",
+        "upstream_source_receipt_current": false
+      }
+    },
+    {
+      "id": "RAW_00040F",
+      "start": 1039,
       "end": 1074,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0003CE-000432.bin",
+      "source": "raw/00040F-000432.bin",
       "original_symbol": null,
-      "artifact": "raw/0003CE-000432.bin",
-      "expected_sha256": "faba76d857b482e365621a59836038e6870693e329677c82101307ea1769c54e",
+      "artifact": "raw/00040F-000432.bin",
+      "expected_sha256": "c25a8f08cfa41a806c6c46811ebb2dbeea6dd101674360af7dc8cab72e154edf",
       "matching_status": "EQUAL"
     },
     {
@@ -8646,13 +8712,1302 @@
     {
       "id": "RAW_00E7EB",
       "start": 59371,
+      "end": 59833,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/00E7EB-00E9B9.bin",
+      "original_symbol": null,
+      "artifact": "raw/00E7EB-00E9B9.bin",
+      "expected_sha256": "67f41cfb75c1c5a5641d4e18a377cf2818950b020e9ebe5a6b88316522cf3c62",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "LIB_FMALLOC",
+      "start": 59833,
+      "end": 60607,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_FMALLOC",
+      "artifact": "regions/LIB_FMALLOC.bin",
+      "expected_sha256": "adb6f15c9e9f7c51b6ac50541c019ee308d46f2f47ce7d39feb9ad2389b1b958",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "PADD@": {
+            "offset": 60431,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0"
+          },
+          "PCMP@": {
+            "offset": 60522,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+          },
+          "__sbrk": {
+            "offset": 60308,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_FBRK.json extent.address + CC.LIB/FBRK _TEXT+0xD5"
+          }
+        },
+        "module_segments": {
+          "_DATA": {
+            "offset": 14268,
+            "coordinate": "DGROUP_offset",
+            "evidence": "module_data_base_votes/_DATA"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "FMALLOC",
+        "module_sha256": "bcb5ef2c3d7ad9071ddff3188155edb9e6197dbdc9c3d745319b3581569a1ef0"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_FMALLOC.json",
+        "entry_sha256": "ac2703abc98423c65e3612e69c6fb05eac55937a8f365e611df385b561b9663c",
+        "record_sha256": "26239b1dc4101dacd31a9ce33e46b961d34c159d6f869d8287cf7f417e02f74c",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_FBRK",
+      "start": 60607,
+      "end": 60943,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_FBRK",
+      "artifact": "regions/LIB_FBRK.bin",
+      "expected_sha256": "b66e30496770c5eccdbeeb4f54b8793da5a1164403804cb0a5b481b27371f008",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "PADD@": {
+            "offset": 60431,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0"
+          },
+          "PCMP@": {
+            "offset": 60522,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+          },
+          "__brklvl": {
+            "offset": 139,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__brklvl"
+          },
+          "__heapbase": {
+            "offset": 135,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__heapbase"
+          },
+          "__heaptop": {
+            "offset": 143,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__heaptop"
+          },
+          "__psp": {
+            "offset": 123,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__psp"
+          },
+          "_setblock": {
+            "offset": 60555,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_SETBLOCK.json extent.address + CC.LIB/SETBLOCK _TEXT+0x0"
+          }
+        },
+        "module_segments": {
+          "_DATA": {
+            "offset": 14280,
+            "coordinate": "DGROUP_offset",
+            "evidence": "module_data_base_votes/_DATA"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "FBRK",
+        "module_sha256": "76b76c6ca277e1302f640a8012fe83343ae969e19442700a1d5533c2aca317cf"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_FBRK.json",
+        "entry_sha256": "b709d70fb8cc2c1cb1e8b026f2dbacccda7a46f1cbff61172255490867efcad0",
+        "record_sha256": "0617cc0d02053d0b4e07cf766a9192564c2e9a63fdda2e3fdd16629b69cbca4f",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_PADD",
+      "start": 60943,
+      "end": 61034,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_PADD",
+      "artifact": "regions/LIB_PADD.bin",
+      "expected_sha256": "425f145eaa919b5c896ccbb00bb6d0cd461d3a34ef8530434fb641cd4743a11f",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "PADD",
+        "module_sha256": "771b25fd7ac32e0b66a94986ab05a8dc290cd231298a710c9aaa28f94835807f"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_PADD.json",
+        "entry_sha256": "9974531977b114017975c177fb723445c2ad3659d4c31465fba1c4fc8a643d8f",
+        "record_sha256": "d858506da3e8a38e8294d9dea0f7dd5073b23a9f88a676c779ba92c2f93739c4",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_PCMP",
+      "start": 61034,
+      "end": 61067,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_PCMP",
+      "artifact": "regions/LIB_PCMP.bin",
+      "expected_sha256": "99e1d684e37b744dcf2893fa36b1998100bae358b8e381cd0d06907dc6c34a1e",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "PCMP",
+        "module_sha256": "8c6d89bb382b0e60ede7d720e219a64a03eda3d62ff18618268034e5954363e4"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_PCMP.json",
+        "entry_sha256": "c3c0c2e6b080b3defa1b235ee45d9dde85e6b524534e4fd55de40808da1a6ca3",
+        "record_sha256": "0d32df6f0b4f68d68b702078770aa22ca8b5c57d9f0fcb2e8fa1769d4173e940",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_SETBLOCK",
+      "start": 61067,
+      "end": 61097,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_SETBLOCK",
+      "artifact": "regions/LIB_SETBLOCK.bin",
+      "expected_sha256": "de7d883379c63afef1819fa5c5b974c0743d3954b2d845776fcefba0ba27eeab",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "SETBLOCK",
+        "module_sha256": "a1709ed39e68b932096fc0938f80a3227ccedda7b217f5698cda9990846259c7"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_SETBLOCK.json",
+        "entry_sha256": "98ce5ed4e94e3c9255a9350584fbfc308e9bd4cc5473124642ca60c776accb2b",
+        "record_sha256": "42932984e2190511e882f6ed1ee7629bab4abd7647efdd29047297271f98ba1f",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "RAW_00EEA9",
+      "start": 61097,
+      "end": 61495,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/00EEA9-00F037.bin",
+      "original_symbol": null,
+      "artifact": "raw/00EEA9-00F037.bin",
+      "expected_sha256": "4386c34f106398dc254daff9d811c94ee279cfb1a8e1c8b49ab32d7b4e6dc864",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "LIB_OPENA",
+      "start": 61495,
+      "end": 61570,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_OPENA",
+      "artifact": "regions/LIB_OPENA.bin",
+      "expected_sha256": "f7de743996cb5a990dbe8efac22a187ca9f4544ab7e43c5914d29b9f06f7414d",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          },
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "OPENA",
+        "module_sha256": "d8ae4a1084a7d53119899f69ec2a593e3bd245dcab3eaf20ea30e79499b4f143"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_OPENA.json",
+        "entry_sha256": "bd664ce3904121be91f271c615f7e4ec7159116361102838fcb1237507ddeaf8",
+        "record_sha256": "84e50652f666e245121aa1a32fa43a6dc80a6ddba8a4601146042ead89086f6e",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_IOCTL",
+      "start": 61570,
+      "end": 61613,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_IOCTL",
+      "artifact": "regions/LIB_IOCTL.bin",
+      "expected_sha256": "9767d5209ac21947bf5cdb3888a7a5cee6c707a9f6a888bf79212ac2766baff3",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "IOCTL",
+        "module_sha256": "fddcf67f3e4127159566d3cfe58f48a0bbd2a27f5b77f48b59d281573f35456b"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_IOCTL.json",
+        "entry_sha256": "da38e99949a77893878ef053f4e8517dc5567bafcbaf14ce79fb4f8d4ca5eda7",
+        "record_sha256": "f5c9677b706c8adc32f00111fd096dad33ab5e3f926accfd2ef1de1434d33d7e",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_CLOSE",
+      "start": 61613,
+      "end": 61658,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_CLOSE",
+      "artifact": "regions/LIB_CLOSE.bin",
+      "expected_sha256": "20b2047e22067607a6a3582b972a290bbce1833781aadd0d339da4e1d344a014",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          },
+          "__close": {
+            "offset": 61146,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_CLOSEA.json extent.address + CC.LIB/CLOSEA _TEXT+0x0"
+          },
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "CLOSE",
+        "module_sha256": "f8d856885bab53813aa274a5eaafdde1fc46d8e2760dff5dd5720ee59433e6c9"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_CLOSE.json",
+        "entry_sha256": "1321321f682c2610d62d04c7398a6f4d0f6be1e44958eb863d605466c3dfd4f3",
+        "record_sha256": "18406f2501c161972458897fd8407b2cdcc9fdaab1b86d46651045a02cf28f46",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_CLOSEA",
+      "start": 61658,
+      "end": 61694,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_CLOSEA",
+      "artifact": "regions/LIB_CLOSEA.bin",
+      "expected_sha256": "76f619667b2dd5c640a2d7f78901528ec94699208d647136bcb5a629d297e626",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          },
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "CLOSEA",
+        "module_sha256": "432d9d78a18a16b977286951e7edbc02e4dcb84a02581b1be6b1f7652533e63c"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_CLOSEA.json",
+        "entry_sha256": "98ddf6f93d88522b0201d4f25c425ee5bfaa0f909408591e9e5fa8402db97b71",
+        "record_sha256": "8c241b4ec637b494d12072dabbc71bf1a8ef2b6de176db0720dda84a6f8581fd",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_READ",
+      "start": 61694,
+      "end": 61885,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_READ",
+      "artifact": "regions/LIB_READ.bin",
+      "expected_sha256": "e6bfb8d0ff83b562f3a2f9f8022002389c8e54bfb7af3f4728f776fb2c2f2032",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          },
+          "__read": {
+            "offset": 61373,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_READA.json extent.address + CC.LIB/READA _TEXT+0x0"
+          },
+          "_lseek": {
+            "offset": 61827,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_LSEEK.json extent.address + CC.LIB/LSEEK _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "READ",
+        "module_sha256": "196128684d2369f2aa403f103ee151dd5c52810fd98d5b15c1ef9c7e28172793"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_READ.json",
+        "entry_sha256": "b36d590e67d76bc9902c2c8bc93ed6532dea45a6aafa563d2c380f3ce9560b7a",
+        "record_sha256": "995a86cff2037cd39f36b47fe6c32d5b9350b2460a8a9cc3b0bbb3914d21ed4d",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_READA",
+      "start": 61885,
+      "end": 61915,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_READA",
+      "artifact": "regions/LIB_READA.bin",
+      "expected_sha256": "77a027b9b21d058a776b9f1fba4a8685705adc4036e774abcf9048f1180b6776",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "READA",
+        "module_sha256": "0ef8d36e90ddf895537c00616c8538c03dd2456242cb338bfb7efb03d790ddbb"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_READA.json",
+        "entry_sha256": "6e9d34878d087f58429c42d4c17fc9d32177cbf505c9dcc39a73174b89275ab7",
+        "record_sha256": "2cc2a3856dcfadd4c8888ac9d0e5cd8ebd38fcf77261fa7ee28a1f4aec02d615",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_WRITE",
+      "start": 61915,
+      "end": 62267,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_WRITE",
+      "artifact": "regions/LIB_WRITE.bin",
+      "expected_sha256": "84801582a04f14f84304e93ce5b0d73cf3e9e28d50d57e8c43ea2d0cc3026f69",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          },
+          "__write": {
+            "offset": 61755,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_WRITEA.json extent.address + CC.LIB/WRITEA _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "WRITE",
+        "module_sha256": "6b1ad2eeeb92ee388d7acb2dbf6bb9b7bf94cbb771b4fd8525ed7a0e9f2e9ec0"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_WRITE.json",
+        "entry_sha256": "8733e7f3b505d8456ec8229c445eaaef7128e086650f0e69f6562bb2f62cebbd",
+        "record_sha256": "49b5685804b7f6430907a77c11ad4764869e5f2d8e45c34d09f30778ad828a4b",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_WRITEA",
+      "start": 62267,
+      "end": 62339,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_WRITEA",
+      "artifact": "regions/LIB_WRITEA.bin",
+      "expected_sha256": "c9bef86f06a500e8983fab52939c840f666aa8f60bf0dc104c3703c94e86354f",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          },
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          },
+          "_lseek": {
+            "offset": 61827,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_LSEEK.json extent.address + CC.LIB/LSEEK _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "WRITEA",
+        "module_sha256": "a8e2bf6ed573be6c4b6eaacbcbe89033bebbf8c5efb1e01dfe515b24ebbb59be"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_WRITEA.json",
+        "entry_sha256": "79b1bac684889182cb5562815a3e93535ddd6c9018085b012475a375c6f5341f",
+        "record_sha256": "3d574eb12f88682cc866cdc7f5f396aad1ada6fc4509694c57a30c92ee2c4251",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_LSEEK",
+      "start": 62339,
+      "end": 62382,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_LSEEK",
+      "artifact": "regions/LIB_LSEEK.bin",
+      "expected_sha256": "3d7b5706a70010916958699989603c593390e12e0cd5e566541c5da8375cbc67",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          },
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__openfd"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "LSEEK",
+        "module_sha256": "66e95033e98bc5ee62c7a16eeb4cb865800edf78f1afd8b3e32b85d6eada2f7f"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_LSEEK.json",
+        "entry_sha256": "64acd239bffd5c44a8b6361b83b97f968fcfc023cce9a20a9664339b8e30f3cd",
+        "record_sha256": "b89cc7ceeaea58a1cd93394f8180e867f1fb15b0a816311fb6717fde5ebcaf73",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_LTOA",
+      "start": 62382,
+      "end": 62631,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_LTOA",
+      "artifact": "regions/LIB_LTOA.bin",
+      "expected_sha256": "d1b417840b1508438f94a6b7c42e0063f2afdba25dedcbc2b8fea9c56ef4c3f0",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "LTOA",
+        "module_sha256": "e87251ac98d5c29894ef12dc0788143a80380c4174cfe37541afc5fe6b4f9e2f"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_LTOA.json",
+        "entry_sha256": "a5616cd12dc9a0e4f88c981cbe966b6064df8cd890ffe6513c091481a1942d2b",
+        "record_sha256": "818421f437a52a7dcb14ef0ac00071597fbdf53e2853fd9cb7115b451b670a94",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_LXMUL",
+      "start": 62631,
+      "end": 62656,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_LXMUL",
+      "artifact": "regions/LIB_LXMUL.bin",
+      "expected_sha256": "7b988740161c2fe88e6106ba3a244aa9da7a1be4d086f3e5fdae4a8a92681afb",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "LXMUL",
+        "module_sha256": "5a600baba3ba69a26ecd78473149e1c0e492c1fbda794b349701f74dbb72e464"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_LXMUL.json",
+        "entry_sha256": "4b2ddbf4de129c830510326c84956ac3ca776446607829f663371240ee0f17a2",
+        "record_sha256": "b61f77c3e74f3670f3e4dcc169c000ade788c76120a3156b944a0af94406c84c",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_STRLEN",
+      "start": 62656,
+      "end": 62683,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_STRLEN",
+      "artifact": "regions/LIB_STRLEN.bin",
+      "expected_sha256": "4baa21e23c45a710acb0ce3a209f3cbf06c12006754fa42552c7131fe4062d0e",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "STRLEN",
+        "module_sha256": "1d7eea610c2ec8e95322277394fee72c44a323df8941cb8ddc9ce6f45f3dfe00"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_STRLEN.json",
+        "entry_sha256": "a5d34f4fa37499922bd35d6d8beb704df6b33874ec193bbbe8eef476b7bf5056",
+        "record_sha256": "d6eb718c31959cf6e6c68742da8231f032be21e0dc4c381568e3848cfaaf306e",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_STRCPY",
+      "start": 62683,
+      "end": 62724,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_STRCPY",
+      "artifact": "regions/LIB_STRCPY.bin",
+      "expected_sha256": "9c4aa3646d4f395358ca69775390851ff66eda1bd29cf65515d2bcf200ce5b57",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "STRCPY",
+        "module_sha256": "48e6c367d6a2d08a6861ba549a27c4b8165f85e2aceeb848ec2fd8b7c13e46c0"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_STRCPY.json",
+        "entry_sha256": "62a999852784c73395e270659efea6356fc573b498e074b7fc2311d8818e3d86",
+        "record_sha256": "1e856e638109207701002bcbe045711aa3a58cdd18bda625311845bda3b61210",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_MEMSET",
+      "start": 62724,
+      "end": 62792,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_MEMSET",
+      "artifact": "regions/LIB_MEMSET.bin",
+      "expected_sha256": "1d7b4ffe1dfce9f70b0b3ceefac77fb6ab97cf1e481f9b6d8eff337581ee0fb6",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "MEMSET",
+        "module_sha256": "fec48988478f6f8fc3f61a2f6dac99e70624a220ba397c81f00d977466a9fff2"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_MEMSET.json",
+        "entry_sha256": "f84a104f51b1933c90c90b012812bad89647259a7e6d886f294bb4c1425a86cb",
+        "record_sha256": "12bfafffd40c8d19d68889d223b558401b3467c51b002ecd1dd1182ccf0e5b95",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_MOVMEM",
+      "start": 62792,
+      "end": 62907,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_MOVMEM",
+      "artifact": "regions/LIB_MOVMEM.bin",
+      "expected_sha256": "4085ee7390e8739bfa19ec0a1500de4e883c58e89f42432441262b1ca630a26a",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "PCMP@": {
+            "offset": 60522,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "MOVMEM",
+        "module_sha256": "725ee5d7e1eada8c24cc54adcdc622dce896b25857085ebfeb1cc64a235505db"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_MOVMEM.json",
+        "entry_sha256": "02f4e784a869a4e1d26eb5666f3460d97f7620aa7606be98d0f26c9beeeb6761",
+        "record_sha256": "2e973f36d0ef8434e51afd4476e2e403b640ff986810c28586c4ca2769c28679",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_CHMODA",
+      "start": 62907,
+      "end": 62938,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_CHMODA",
+      "artifact": "regions/LIB_CHMODA.bin",
+      "expected_sha256": "f319e897f3a35a78b853b8995621b0797560a1c06e39bdf6fd61e1335c97d5fa",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "CHMODA",
+        "module_sha256": "6596fd90eddbca504c35b65f9827de6149b794e892023119c50a53bd608da0df"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_CHMODA.json",
+        "entry_sha256": "0f7eec2ba823bafaa43eb2d2692fa5ca816d13b310c6e205486c7a04c822cd99",
+        "record_sha256": "492630fe02f0a2d96912df4f9fee5d1d67fc5194394112dd02a18bfcba04d32b",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_FCORELFT",
+      "start": 62938,
+      "end": 62967,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_FCORELFT",
+      "artifact": "regions/LIB_FCORELFT.bin",
+      "expected_sha256": "46ec6fc62ed4cba7f0034392d4b287783997bc009fdffa857960eafd02b4040b",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "PSBP@": {
+            "offset": 63705,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PSBP.json extent.address + CC.LIB/PSBP _TEXT+0x0"
+          },
+          "__brklvl": {
+            "offset": 139,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__brklvl"
+          },
+          "__heaptop": {
+            "offset": 143,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__heaptop"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "FCORELFT",
+        "module_sha256": "09fff2aba9cc88add81fe73409b3511571993fea8f57d694cc26ad06390eb96b"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_FCORELFT.json",
+        "entry_sha256": "4225a8581789e1e08f1dac4b21c3e5af532e1fc265ff0e134dd169398d4ac397",
+        "record_sha256": "901dd5115327ad10b1ed92307efc44a82e695d9efffda2113309e5d42f018ef3",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_FFREE",
+      "start": 62967,
+      "end": 63755,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_FFREE",
+      "artifact": "regions/LIB_FFREE.bin",
+      "expected_sha256": "7c7e6ac0dcd0b1f023667e1919b8da5039d530a83bccdae45abae0f8b1138af6",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "PADD@": {
+            "offset": 60431,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PADD.json extent.address + CC.LIB/PADD _TEXT+0x0"
+          },
+          "PCMP@": {
+            "offset": 60522,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_PCMP.json extent.address + CC.LIB/PCMP _TEXT+0x0"
+          },
+          "__brk": {
+            "offset": 60237,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_FBRK.json extent.address + CC.LIB/FBRK _TEXT+0x8E"
+          },
+          "__first": {
+            "offset": 14268,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__first"
+          },
+          "__last": {
+            "offset": 14272,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__last"
+          },
+          "__pull_free_block": {
+            "offset": 59340,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x13"
+          },
+          "__rover": {
+            "offset": 14276,
+            "coordinate": "DGROUP_offset",
+            "evidence": "library_public_votes/__rover"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "FFREE",
+        "module_sha256": "711e9f6bd43981893d755ef86befa2e65b5f3777ff51a5be02bc1cc5e4d14c43"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_FFREE.json",
+        "entry_sha256": "427db0e19f1a846c0f8e2314530936bc0275a3a8ce494e02c86eedb775b6d89f",
+        "record_sha256": "532a3cbe6703572f89a218584e3a9da0e060da0227f3c8b1f30473f6caf1f61d",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_CHDIR",
+      "start": 63755,
+      "end": 63806,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_CHDIR",
+      "artifact": "regions/LIB_CHDIR.bin",
+      "expected_sha256": "7fc9b51d2abbfb425c272b44cdc6fb08f9459cee609effea9fc9e9d6670c0909",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "offset": 58859,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "CHDIR",
+        "module_sha256": "0f5c37b8ea6eeae412d0a21ffe3331edb4ea3936f287df73e6029d74f3482cdd"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_CHDIR.json",
+        "entry_sha256": "b9d7c054a3d13af9af97719e71af8f0de95b32d1408a9081f27d996f292622e1",
+        "record_sha256": "e4cbd3efbcf9adc9a3cb4dab6e4bed09e0a5829d96f86ce2e995f35bb3d83cb8",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_GETVECT",
+      "start": 63806,
+      "end": 63841,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_GETVECT",
+      "artifact": "regions/LIB_GETVECT.bin",
+      "expected_sha256": "e32599bacef22b2c6621e6225f338d0945cf47207bb01be8757fb11de8368082",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "GETVECT",
+        "module_sha256": "addfe1e8042715b6cf604968275ba625cc99bdcae340ebe9f1f1220aa9e20327"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_GETVECT.json",
+        "entry_sha256": "96542b8a2664d0fea3b4adc76b5a3d85f75001896c2714e57d1a24fa38e31b1e",
+        "record_sha256": "44d91b90032ceb11363471825dd510542965bf61b7b323ebe7dd43e01b2e2ea4",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_HARDERR",
+      "start": 63841,
+      "end": 63999,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_HARDERR",
+      "artifact": "regions/LIB_HARDERR.bin",
+      "expected_sha256": "c736016c03618d4f75cf179aed50741baacac40311ce6cce795d0311f1e16dca",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "_bdos": {
+            "offset": 63983,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_BDOS.json extent.address + CC.LIB/BDOS _TEXT+0x0"
+          },
+          "_setvect": {
+            "offset": 63312,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_GETVECT.json extent.address + CC.LIB/GETVECT _TEXT+0x12"
+          }
+        },
+        "module_segments": {
+          "_BSS": {
+            "offset": 51908,
+            "coordinate": "DGROUP_offset",
+            "evidence": "module_data_base_votes/_BSS"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "HARDERR",
+        "module_sha256": "257aa04d6d09fe0bb820a15b63ce9c0fe910a731708ebd9ee0c4c830bb430112"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_HARDERR.json",
+        "entry_sha256": "fc092764beddf9330375b3e1eb0449b40ee11b4ea013dee261a41b3d9556ee58",
+        "record_sha256": "384295726017747f5e65631d059aacbc10567c7aced04fe2b0d863043144849c",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_INPORT",
+      "start": 63999,
+      "end": 64023,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_INPORT",
+      "artifact": "regions/LIB_INPORT.bin",
+      "expected_sha256": "f82e625a99d74e7524e47b291481c2ab16e1d744ceb79da5eab201f2ad505be1",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "INPORT",
+        "module_sha256": "5a545a89789278f3ddfa29d9057355726bc2bed40fe78f5a6986ec0ab8f77904"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_INPORT.json",
+        "entry_sha256": "f0f124e686e19e9aacf8b3a9b954a61a02073b9b09544d9c02f732add3f98a22",
+        "record_sha256": "171e1e6b67926ab72671c4b93c595f511a874363872807133fd902d0c51eeb1c",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_LDIV",
+      "start": 64023,
+      "end": 64186,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_LDIV",
+      "artifact": "regions/LIB_LDIV.bin",
+      "expected_sha256": "b73e0d041e62e2a843f6b03c91d99234de57b2c7e26f6a46bfd61e482a1351a4",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "LDIV",
+        "module_sha256": "34ed81d510516466b4753a2864e00353025ca9c07d1fe2aed4b5ff090d3223a7"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_LDIV.json",
+        "entry_sha256": "538189fd379bb35fa9ae61b8df8d70d4173e56248a629b30e50944917553920c",
+        "record_sha256": "d368fb08ccd8080557ee434083b78b58f3704b8fa939ca49c2c6d59c74337e6c",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_LLSH",
+      "start": 64186,
+      "end": 64217,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_LLSH",
+      "artifact": "regions/LIB_LLSH.bin",
+      "expected_sha256": "44cd1cf882c0cb4bd98c3f940e12e13d0b5137b8d80235a2fa0a93289b05ca7f",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "LLSH",
+        "module_sha256": "32a2396283a6182f4fe8fc194bcd2006898d8e64d5f359a62bd7c99d008dac60"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_LLSH.json",
+        "entry_sha256": "ef8cdbf14f87d4e85882874c17b0f9ca827b81887005fdac83f636ba06a8ae2a",
+        "record_sha256": "4aa4321780f31e1de7930fbf7cc20edc6ff8fc05740fb422c912aff3a48e0115",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_PSBP",
+      "start": 64217,
+      "end": 64254,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_PSBP",
+      "artifact": "regions/LIB_PSBP.bin",
+      "expected_sha256": "5f703ea49eab607a0b5c8f26d65919883f2800bb3356ab86b49324bc61acc06a",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "PSBP",
+        "module_sha256": "1f419392796017edf48867bc2344ef3b064704cf7a21737247f086cf5ffd2a5b"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_PSBP.json",
+        "entry_sha256": "0fbb0f3e19919bcb380a0850723feba98f3058420ad143e215ec5e48f50e43eb",
+        "record_sha256": "9bc2e6ce85fa5989af6d3c7ffd5c0a08594ebcc1ccfde510ed72173e2325a30a",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_RAND",
+      "start": 64254,
+      "end": 64311,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_RAND",
+      "artifact": "regions/LIB_RAND.bin",
+      "expected_sha256": "7c19d24f37104e920b4dae666f4dd2667e1e1d7386b4dd899ea4fff3a52288a9",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "LXMUL@": {
+            "offset": 62119,
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0"
+          }
+        },
+        "module_segments": {
+          "_DATA": {
+            "offset": 14584,
+            "coordinate": "DGROUP_offset",
+            "evidence": "module_data_base_votes/_DATA"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "RAND",
+        "module_sha256": "9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_RAND.json",
+        "entry_sha256": "8d79dfc62fd8d02ed067ed338a230fa970d49af4053e76ff43c2dad115479492",
+        "record_sha256": "2b3013d98da7c773d0c49892f2e21a70cc4bd53859c989ea7a6fbcd5d41d60be",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_SCOPY",
+      "start": 64311,
+      "end": 64339,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_SCOPY",
+      "artifact": "regions/LIB_SCOPY.bin",
+      "expected_sha256": "38d2310516257b589b834174ee0d6b2a99d532607e208b7bd48742d2f753f65c",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "SCOPY",
+        "module_sha256": "fd751fa9d65e6a736abaa16061534fb1be54561527adf18f6f426274f5bb6ab5"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_SCOPY.json",
+        "entry_sha256": "4fbadbb818939a29951a00d3152dc636e4d869c2acb95a047067d31e983e2828",
+        "record_sha256": "d934b977414b6cdbc67dc50676eaeb1d7b08957ac84ff0be7678d9f5d99f74f1",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_SETJMP",
+      "start": 64339,
+      "end": 64446,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_SETJMP",
+      "artifact": "regions/LIB_SETJMP.bin",
+      "expected_sha256": "b6c752b05dda45579c744a907d0e2c2245bb88caae5638d2b5c3e0b84d0b7e03",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "SETJMP",
+        "module_sha256": "8238a613c50747ae3a4b03f36186c76b20016881ebc93e26dccbd6424e19f803"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_SETJMP.json",
+        "entry_sha256": "21a089718767b9c4db23c7432fbc4f2753f09346569ef6e8c583b15270148edb",
+        "record_sha256": "8309cbe8ea197496a77bb7af431ce2e59bb8450262d9ea7d276b5f413dd61d21",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "RAW_00FBBE",
+      "start": 64446,
+      "end": 64495,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/00FBBE-00FBEF.bin",
+      "original_symbol": null,
+      "artifact": "raw/00FBBE-00FBEF.bin",
+      "expected_sha256": "ec1d1a4997267a141c47e8a1949ad3b004e5783ed147efc58679b12808829b3c",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "LIB_BDOS",
+      "start": 64495,
+      "end": 64517,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_BDOS",
+      "artifact": "regions/LIB_BDOS.bin",
+      "expected_sha256": "fae5787d842f3ecf5c2bd4de353c91e7092d28039eb981bfabb48a9b4a0fd29a",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "BDOS",
+        "module_sha256": "828ac6a855fe6016028d5542bf9b435394c0ad190f85a80bbc8555d6388c69bd"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_BDOS.json",
+        "entry_sha256": "c8c93b338495ad6bf7b8457e60c12d7192e3a08e0a9421a51c7b8e77ab9416da",
+        "record_sha256": "5169b111d1e2b30f3b4c83a436f54f4a7f567045a636529c0a38428f4a704637",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "LIB_BIOSEQU",
+      "start": 64517,
+      "end": 64547,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_BIOSEQU",
+      "artifact": "regions/LIB_BIOSEQU.bin",
+      "expected_sha256": "3165d5ed2e1aef8fe0dbdfb2fd80e7cbda3d2657a9749db1a82ca5327d588fd6",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "BIOSEQU",
+        "module_sha256": "3e415409e4400fe6b8ae5cfd8256638357c820d6c627ad1ab7a8431221c710d3"
+      },
+      "provenance": {
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_BIOSEQU.json",
+        "entry_sha256": "354d09ceb7ab1c6404b346a54a32f0710606cda7765bff0efc0ab536808c5936",
+        "record_sha256": "3bd4dff8dbc49bf3d9fae12be410168fb56e66ecd2ccda56aa68d74a1131af03",
+        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+      }
+    },
+    {
+      "id": "RAW_00FC23",
+      "start": 64547,
       "end": 79154,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00E7EB-013532.bin",
+      "source": "raw/00FC23-013532.bin",
       "original_symbol": null,
-      "artifact": "raw/00E7EB-013532.bin",
-      "expected_sha256": "fe10fb2ca11970724d47abd35cca8ccaad85e80b50de107b5cfff384db7564ee",
+      "artifact": "raw/00FC23-013532.bin",
+      "expected_sha256": "b1b7c56dd59c4d8ea12d9ff4dbe98b6c48fa5d1ae7b137b63b59b6e4b6ace121",
       "matching_status": "EQUAL"
     }
   ]

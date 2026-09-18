@@ -1,0 +1,48 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "evidence_functions": [
+    {
+      "id": "F_01BC",
+      "source_sha256": "0eacb2cd1ff9ab5f6c52412de4da29b752177671ae3be2e5a6ffa8640cb1273f",
+      "matched_sha256": "36ca896253f8b8c87e97d086cf5ad8a37860bcec318713cae830b0b2843c3b94"
+    },
+    {
+      "id": "F_0281",
+      "source_sha256": "343ac02c477fbb07e0eda3aad05fe7c011ad31f6cd399482c051a913a5c33fe8",
+      "matched_sha256": "470785a08e4441974b8e0aff6ba24de044d86fda4a630a8cfbf0af93db401971"
+    }
+  ],
+  "components": [
+    {
+      "id": "PALETTE_DAC6_011E",
+      "start": 64846,
+      "end": 65614,
+      "kind": "EXACT_DATA",
+      "classification": "embedded_palette",
+      "source": "raw/exe-data/PALETTE_DAC6_011E.json",
+      "artifact": "regions/PALETTE_DAC6_011E.bin",
+      "expected_sha256": "b6dd34314102e429fdd98390b1fda27d3ea94d16bfcefa2983e3e319a2a20eae",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "dac6-rgb256-v1"
+      }
+    },
+    {
+      "id": "PALETTE_DAC6_041E",
+      "start": 65614,
+      "end": 66382,
+      "kind": "EXACT_DATA",
+      "classification": "embedded_palette",
+      "source": "raw/exe-data/PALETTE_DAC6_041E.json",
+      "artifact": "regions/PALETTE_DAC6_041E.bin",
+      "expected_sha256": "06a30628fe5979ab4c3d6070a91cc3ecb2e750dc734ea6ab0a78934aed1b4316",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "dac6-rgb256-v1"
+      }
+    }
+  ],
+  "palette_bytes": 1536,
+  "address_model": "component-owned bindings within fixed placement; not real linking"
+}

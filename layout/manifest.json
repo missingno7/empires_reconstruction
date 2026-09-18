@@ -345,9 +345,10 @@
             "evidence": "substrate/LIB_FMALLOC.json extent.address + CC.LIB/FMALLOC _TEXT+0x1FB"
           },
           "_g11e": {
-            "offset": 286,
+            "owner": "PALETTE_DAC6_011E",
+            "addend": 0,
             "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/ARRAY_FAEB.phys + 0x63"
+            "evidence": "F_0281 passes this table to F_01BC; INT 10h AX=1012h CX=0100h"
           },
           "_g3924": {
             "offset": 14628,
@@ -360,9 +361,10 @@
             "evidence": "storage_objects/M_23BFA.phys"
           },
           "_g41e": {
-            "offset": 1054,
+            "owner": "PALETTE_DAC6_041E",
+            "addend": 0,
             "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/ARRAY_FAEB.phys + 0x363"
+            "evidence": "F_0281 passes this table to F_01BC; INT 10h AX=1012h CX=0100h"
           },
           "_gbfcd": {
             "offset": 49101,
@@ -10001,13 +10003,53 @@
     {
       "id": "RAW_00FC23",
       "start": 64547,
+      "end": 64846,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/00FC23-00FD4E.bin",
+      "original_symbol": null,
+      "artifact": "raw/00FC23-00FD4E.bin",
+      "expected_sha256": "f85426142c7ca87c8838e1d9493dd14b9ef0daf5753aa090ea478e22f2bac823",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "PALETTE_DAC6_011E",
+      "start": 64846,
+      "end": 65614,
+      "kind": "EXACT_DATA",
+      "classification": "embedded_palette",
+      "source": "raw/exe-data/PALETTE_DAC6_011E.json",
+      "artifact": "regions/PALETTE_DAC6_011E.bin",
+      "expected_sha256": "b6dd34314102e429fdd98390b1fda27d3ea94d16bfcefa2983e3e319a2a20eae",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "dac6-rgb256-v1"
+      }
+    },
+    {
+      "id": "PALETTE_DAC6_041E",
+      "start": 65614,
+      "end": 66382,
+      "kind": "EXACT_DATA",
+      "classification": "embedded_palette",
+      "source": "raw/exe-data/PALETTE_DAC6_041E.json",
+      "artifact": "regions/PALETTE_DAC6_041E.bin",
+      "expected_sha256": "06a30628fe5979ab4c3d6070a91cc3ecb2e750dc734ea6ab0a78934aed1b4316",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "dac6-rgb256-v1"
+      }
+    },
+    {
+      "id": "RAW_01034E",
+      "start": 66382,
       "end": 79154,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00FC23-013532.bin",
+      "source": "raw/01034E-013532.bin",
       "original_symbol": null,
-      "artifact": "raw/00FC23-013532.bin",
-      "expected_sha256": "b1b7c56dd59c4d8ea12d9ff4dbe98b6c48fa5d1ae7b137b63b59b6e4b6ace121",
+      "artifact": "raw/01034E-013532.bin",
+      "expected_sha256": "c23cc464f3fb75aebf3336f06132843c4a12be9c49d201bad0a82c84a396d938",
       "matching_status": "EQUAL"
     }
   ]

@@ -50,7 +50,7 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
         expected_offset = owner['start'] - selected[0]['start']
         if public['offset'] != expected_offset:
             raise ValueError(f"{owner['id']}: emitted module-relative public offset differs")
-        data, proof = bind_region(owner, module, mz, manifest['frames'])
+        data, proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'])
         mismatch(original[owner['start']:owner['end']], data, owner)
         bases.add(proof['module_load_base'])
         all_fixups.extend(proof['fixups'])

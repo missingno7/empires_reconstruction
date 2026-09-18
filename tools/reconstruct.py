@@ -14,6 +14,7 @@ import tempfile
 
 from mz import MZ, encode_header
 from omf import OmfReader
+from exe_data import encode_data
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -176,7 +177,27 @@ def library_candidate(owner, modules):
     return read_object(blob)
 
 
-def bind_region(owner, module, mz, frames):
+def component_binding(binding, owners, mz, frames):
+    """Resolve a declared source symbol through owned data, not a duplicated address."""
+    if 'owner' not in binding:
+        return binding
+    if 'offset' in binding:
+        raise ValueError('Component binding cannot also declare an absolute offset')
+    target = next((r for r in owners or [] if r['id'] == binding['owner']), None)
+    if target is None or target['kind'] != 'EXACT_DATA':
+        raise ValueError('Component binding must name an identified EXACT_DATA owner')
+    if binding['coordinate'] != 'DGROUP_offset':
+        raise ValueError('Component binding currently requires DGROUP coordinates')
+    addend = binding.get('addend', 0)
+    if type(addend) is not int or not 0 <= addend < target['end'] - target['start']:
+        raise ValueError('Component binding addend lies outside its owner')
+    offset = mz.load_offset(target['start']) - frames['DGROUP'] + addend
+    if not 0 <= offset <= 65535:
+        raise ValueError('Component binding does not fit a DGROUP offset')
+    return {**binding, 'offset': offset}
+
+
+def bind_region(owner, module, mz, frames, owners=None):
     """Bind only from source OBJ and declared metadata; never receives original bytes."""
     build = owner['build']
     segment = build['segment']
@@ -243,7 +264,7 @@ def bind_region(owner, module, mz, frames):
             elif kind == 'segment' and symbol in build['module_segments']:
                 value = build['module_segments'][symbol]['offset']
             elif kind == 'external' and symbol in build['bindings']:
-                binding = build['bindings'][symbol]
+                binding = component_binding(build['bindings'][symbol], owners, mz, frames)
                 if f['self_relative'] and binding['coordinate'] != 'code_offset':
                     raise ValueError('Self-relative fixup requires a code address')
                 value = binding['offset']
@@ -277,7 +298,7 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
         raise ValueError('Original EXE identity does not match the manifest')
     reference_mz = MZ.parse(original)
     mz = reference_mz
-    header_parts = {}
+    encoded_parts = {}
     for owner in manifest['regions']:
         if owner['kind'] == 'MZ_HEADER':
             source = project_path(root, owner['source'])
@@ -287,12 +308,21 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
             if sha(part) != owner['expected_sha256']:
                 raise ValueError(f"{owner['id']}: manifest extent digest differs")
             mz = MZ.parse_header(part, len(original))
-            header_parts[owner['id']] = (part, {
+            encoded_parts[owner['id']] = (part, {
                 'encoder': 'empires-mz-header-v1', 'source_sha256': sha(source.read_bytes()),
                 'relocation_entries': len(mz.relocations),
                 'fixed_field_bytes': 28, 'relocation_bytes': len(mz.relocations) * 4,
                 'preserved_gap_bytes': len(part) - 28 - len(mz.relocations) * 4,
             })
+        elif owner['kind'] == 'EXACT_DATA':
+            source = project_path(root, owner['source'])
+            encoder = owner['build']['encoder']
+            part = encode_data(read_json(source), encoder)
+            mismatch(original[owner['start']:owner['end']], part, owner)
+            if sha(part) != owner['expected_sha256']:
+                raise ValueError(f"{owner['id']}: encoded data digest differs")
+            encoded_parts[owner['id']] = (part, {'encoder': encoder, 'source_sha256': sha(source.read_bytes()),
+                                                'classification': owner['classification']})
     sources = [r for r in manifest['regions'] if r['kind'] in ('MATCHING_C', 'MATCHING_ASM')]
     work = Path(tempfile.mkdtemp(prefix='session-', dir=output)).resolve()
     receipts, session = {}, None
@@ -311,10 +341,10 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
     image, reports = bytearray(), []
     for owner in manifest['regions']:
         proof = {}
-        if owner['kind'] in ('RAW', 'EXACT_DATA'):
+        if owner['kind'] == 'RAW':
             part = project_path(root, owner['source']).read_bytes()
-        elif owner['kind'] == 'MZ_HEADER':
-            part, proof = header_parts[owner['id']]
+        elif owner['kind'] in ('MZ_HEADER', 'EXACT_DATA'):
+            part, proof = encoded_parts[owner['id']]
             artifact = project_path(output, owner['artifact'])
             artifact.parent.mkdir(parents=True, exist_ok=True)
             artifact.write_bytes(part)
@@ -326,7 +356,7 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
                 receipt = receipts[owner['id']]
                 module = read_object((work / receipt['object']).read_bytes())
                 proof['compile'] = receipt
-            part, binding_proof = bind_region(owner, module, mz, manifest['frames'])
+            part, binding_proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'])
             proof.update(binding_proof)
             artifact = project_path(output, owner['artifact'])
             artifact.parent.mkdir(parents=True, exist_ok=True)
@@ -356,6 +386,7 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
               'builder_sha256': sha(Path(__file__).read_bytes()),
               'omf_reader_sha256': sha((root / 'tools/omf.py').read_bytes()),
               'mz_codec_sha256': sha((root / 'tools/mz.py').read_bytes()),
+              'exe_data_codec_sha256': sha((root / 'tools/exe_data.py').read_bytes()),
               'session_directory': str(work), 'session': session, 'regions': reports}
     write_json(output / 'report.json', report)
     print(f'Total executable bytes: {len(rebuilt):,}\nAccounted bytes:        100% ({len(manifest["regions"])} owners)')

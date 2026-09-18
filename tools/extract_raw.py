@@ -1,5 +1,7 @@
 """Recreate ignored raw owners from a locally supplied, identity-checked EXE."""
 from pathlib import Path
+import json
+from exe_data import decode_data, encode_data
 
 from reconstruct import ROOT, project_path, read_json, sha, validate_layout
 
@@ -13,7 +15,7 @@ def main():
     outputs = []
     raw_root = (ROOT / 'raw').resolve()
     for owner in manifest['regions']:
-        if owner['kind'] != 'RAW':
+        if owner['kind'] not in ('RAW', 'EXACT_DATA'):
             continue
         target = project_path(ROOT, owner['source'])
         if not target.is_relative_to(raw_root):
@@ -21,11 +23,16 @@ def main():
         data = original[owner['start']:owner['end']]
         if sha(data) != owner['expected_sha256']:
             raise SystemExit(f'Extent digest mismatch: {owner["id"]}; no files extracted')
+        if owner['kind'] == 'EXACT_DATA':
+            document = decode_data(data, owner['build']['encoder'])
+            if encode_data(document, owner['build']['encoder']) != data:
+                raise SystemExit(f'Structured data round trip differs: {owner["id"]}')
+            data = (json.dumps(document, indent=2) + '\n').encode('utf-8')
         outputs.append((target, data))
     for target, data in outputs:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(data)
-    print(f'Extracted {len(outputs)} exact raw owners ({sum(len(data) for _, data in outputs):,} bytes)')
+    print(f'Prepared {len(outputs)} local EXE sources (raw owners and structured data; {sum(len(data) for _, data in outputs):,} source bytes)')
 
 
 if __name__ == '__main__':

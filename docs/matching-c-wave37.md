@@ -6,7 +6,7 @@ cursor and sprite tables plus the recovered neighboring C entry points; each
 DGROUP binding accounts for the compiler-emitted object addend before matching
 the linked address.
 
-Coverage is now 230 matching C routines / 34,063 bytes. The full EXE and both
+Coverage is now 229 matching C routines / 34,063 bytes. The full EXE and both
 DAT archives remain byte-identical.
 
 ```powershell

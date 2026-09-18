@@ -1,0 +1,77 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "4bf7e22195e6b86dddbdc1cbcdac0840079d9139e9c3175e01dee2759b93b10c",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_library_bytes": 860,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "LIB_ATEXIT",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 38,
+      "sha256": "2fa3b055901e3248ca2a4d9602a3bab449e81a67cfabe9263614737a5e9d0413",
+      "source_sha256": "8b957d011beae6358958cc99b3fd555a1d422e036f6aaa409eabb2b9c03330b7",
+      "fixups": 4,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "LIB_EXIT",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 48,
+      "sha256": "d0b6f403c46c6f9beb4bb3f10c86faca978ab2c0596177f3a5d3da4141d24a66",
+      "source_sha256": "d9054d59994bf79366643b98e27c5b13589bd599270e548d1207adab308dfa0a",
+      "fixups": 8,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "LIB_IOERROR",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 59,
+      "sha256": "0f77d561b8d3670d0a47c5d96b43db7be6c738fc14c5942c5cf22d4301dc9cf6",
+      "source_sha256": "fc0ad2b5f1c8935d7a704ffae9186593ef45b062ef23f19345214c8e0c1586aa",
+      "fixups": 4,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "LIB_OPEN",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 398,
+      "sha256": "4386c34f106398dc254daff9d811c94ee279cfb1a8e1c8b49ab32d7b4e6dc864",
+      "source_sha256": "18adeaeaa480c629d5d08cd093cfe143f7c17f08b47702ec18ee753aa5266384",
+      "fixups": 12,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "LIB_SETARGV",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 253,
+      "sha256": "26d9e56c96a5d594a4988f1745155edfd19d07b8469cbe3b4eeb85c50be980aa",
+      "source_sha256": "d87fce0aaced66168608c8645c9490efb44b7254ddca43c1d99ad7180a168cce",
+      "fixups": 12,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "LIB_SETENVP",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "bytes": 64,
+      "sha256": "8e146c247f2137fe12b292f35299b3f05def85d2ccc62c1e56d398efbbf28308",
+      "source_sha256": "c570d61cfc173efc9ee0f74157f5fa86240a32e14a54911cea9197872608c8a7",
+      "fixups": 6,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

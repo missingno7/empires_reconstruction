@@ -5,7 +5,7 @@ buffers at DS:9CF2 and DS:A6B6 before publishing their far pointers. F_233E
 binds the DS:79BF cell table and rebuilds both animation loops; its helper calls
 and indexed DGROUP references are resolved from complete fixup targets.
 
-Coverage is now 232 matching C routines / 34,575 bytes. The full EXE and both
+Coverage is now 231 matching C routines / 34,575 bytes. The full EXE and both
 DAT archives remain byte-identical.
 
 ```powershell

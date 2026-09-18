@@ -7,7 +7,7 @@ historical `-B` compiler flag is preserved from the recovered source; the
 fresh object matches the entire extent and all 111 fixups are explicitly
 resolved.
 
-Coverage is now 227 matching C routines / 29,911 bytes. The full EXE and both
+Coverage is now 226 matching C routines / 29,911 bytes. The full EXE and both
 DAT archives remain byte-identical.
 
 ```powershell

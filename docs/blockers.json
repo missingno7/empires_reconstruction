@@ -18,21 +18,21 @@
     },
     {
       "target": "Held C linkage closure",
-      "state": "historical refusals inventoried; fresh candidate work remains",
-      "matches": "Current build proves 218 C and 20 ASM extents. The refreshed historical snapshot retains 19 provider-refused candidates; resolved extents include TOUPPER reconstructed directly as C.",
-      "first_unresolved_fact": "61 external symbols across 108 fixup sites remain undecided in the historical held snapshot. Source comments and comparison operand addresses alone are not independent linkage ownership.",
+      "state": "closed for the currently inventoried held candidates",
+      "matches": "Current build proves 231 C and 21 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
+      "first_unresolved_fact": "No unresolved symbols remain in the current held-candidate inventory. Further work moves to raw-data classification, module topology and format recovery.",
       "evidence": [
         "docs/linkage-blockers.json",
         "tools/inventory_linkage.py",
         "layout/manifest.json"
       ],
-      "unblock": "Establish storage/module ownership from OMF, declared objects or independent cross-reference evidence; then freshly compile and verify every byte and relocation.",
-      "leverage": "19 historical held extents total 9,227 bytes (candidate extent sum). _b437a, _b4380 and _b4386 each affect two candidates totalling 4,484 bytes; these overlapping totals must not be added. Additional local probes are documented in the matching-wave notes."
+      "unblock": "Continue source and module recovery on newly classified raw extents; preserve the same fresh complete extent, fixup and relocation proof for each promotion.",
+      "leverage": "The final 76-byte F_4E9F ASM extent closed the last two unresolved symbols."
     },
     {
       "target": "Original modules and historical linker",
       "state": "open investigation, not demonstrated blocked",
-      "matches": "238 independent source proof units, 35 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
+      "matches": "252 independent source proof units, 41 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
       "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
       "evidence": [
         "layout/manifest.json",

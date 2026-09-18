@@ -6,7 +6,7 @@ DGROUP references are bound to the exact board, object, sprite and beam state
 offsets; the compiler-generated `SCOPY@` helper resolves through the pinned
 library public.
 
-Coverage is now 228 matching C routines / 30,892 bytes. The full EXE and both
+Coverage is now 227 matching C routines / 30,892 bytes. The full EXE and both
 DAT archives remain byte-identical.
 
 ```powershell

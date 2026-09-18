@@ -1,0 +1,54 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_4E9F",
+      "start": 20639,
+      "end": 20715,
+      "kind": "MATCHING_ASM",
+      "classification": "code",
+      "source": "asm/F_4E9F.ASM",
+      "artifact": "regions/F_4E9F.bin",
+      "expected_sha256": "18c1c6b2bc455d464346c5396bffcda0199942bc9c068703061766ad0fa5bc48",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f4e9f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f4aa8": {
+            "offset": 19112,
+            "coordinate": "code_offset",
+            "evidence": "F_4AA8 owned code entry"
+          },
+          "_gb3ae": {
+            "offset": 45998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_gbfba": {
+            "offset": 49082,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_gbf66": {
+            "offset": 48998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_g9bfc": {
+            "offset": 39932,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local hand-written ASM reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

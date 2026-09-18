@@ -3379,14 +3379,63 @@
     {
       "id": "RAW_004D0C",
       "start": 19724,
-      "end": 20715,
+      "end": 20639,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/004D0C-0050EB.bin",
+      "source": "raw/004D0C-00509F.bin",
       "original_symbol": null,
-      "artifact": "raw/004D0C-0050EB.bin",
-      "expected_sha256": "be82685f9d4e5aa548c5989121a37d80f795b92443e1316541c4c87e5f0658a2",
+      "artifact": "raw/004D0C-00509F.bin",
+      "expected_sha256": "aeb7a31da8434417bbbd45c5eb5aa2ba223e58faa0e3abf93772b8e9fccd2521",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_4E9F",
+      "start": 20639,
+      "end": 20715,
+      "kind": "MATCHING_ASM",
+      "classification": "code",
+      "source": "asm/F_4E9F.ASM",
+      "artifact": "regions/F_4E9F.bin",
+      "expected_sha256": "18c1c6b2bc455d464346c5396bffcda0199942bc9c068703061766ad0fa5bc48",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f4e9f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f4aa8": {
+            "offset": 19112,
+            "coordinate": "code_offset",
+            "evidence": "F_4AA8 owned code entry"
+          },
+          "_gb3ae": {
+            "offset": 45998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_gbfba": {
+            "offset": 49082,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_gbf66": {
+            "offset": 48998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_g9bfc": {
+            "offset": 39932,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local hand-written ASM reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
     },
     {
       "id": "F_4EEB",
@@ -5194,9 +5243,11 @@
         "flags_append": "",
         "bindings": {
           "_exit": {
-            "offset": 58919,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_EXIT.json extent.address + CC.LIB/EXIT _TEXT+0x1"
+            "evidence": "substrate/LIB_EXIT.json extent.address + CC.LIB/EXIT _TEXT+0x1",
+            "owner": "LIB_EXIT",
+            "public": "_exit",
+            "addend": 0
           },
           "_f034f": {
             "offset": 847,
@@ -15933,16 +15984,213 @@
       }
     },
     {
-      "id": "RAW_00E7EB",
+      "id": "LIB_IOERROR",
       "start": 59371,
+      "end": 59430,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_IOERROR",
+      "artifact": "regions/LIB_IOERROR.bin",
+      "expected_sha256": "0f77d561b8d3670d0a47c5d96b43db7be6c738fc14c5942c5cf22d4301dc9cf6",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "_errno": {
+            "offset": 127,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          }
+        },
+        "module_segments": {
+          "_DATA": {
+            "offset": 14166,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library segment fixup target with object addend subtraction"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "IOERROR",
+        "module_sha256": "fc0ad2b5f1c8935d7a704ffae9186593ef45b062ef23f19345214c8e0c1586aa"
+      }
+    },
+    {
+      "id": "LIB_EXIT",
+      "start": 59430,
+      "end": 59478,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_EXIT",
+      "artifact": "regions/LIB_EXIT.bin",
+      "expected_sha256": "d0b6f403c46c6f9beb4bb3f10c86faca978ab2c0596177f3a5d3da4141d24a66",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__atexitcnt": {
+            "offset": 14266,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__atexittbl": {
+            "offset": 51844,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__exit": {
+            "offset": 260,
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          }
+        },
+        "module_segments": {
+          "_DATA": {
+            "offset": 14258,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library segment fixup target with object addend subtraction"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "EXIT",
+        "module_sha256": "d9054d59994bf79366643b98e27c5b13589bd599270e548d1207adab308dfa0a"
+      }
+    },
+    {
+      "id": "LIB_SETARGV",
+      "start": 59478,
+      "end": 59731,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_SETARGV",
+      "artifact": "regions/LIB_SETARGV.bin",
+      "expected_sha256": "26d9e56c96a5d594a4988f1745155edfd19d07b8469cbe3b4eeb85c50be980aa",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__psp": {
+            "offset": 123,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__envLng": {
+            "offset": 117,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__osmajor": {
+            "offset": 125,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__envseg": {
+            "offset": 119,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "_abort": {
+            "offset": 420,
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__argc": {
+            "offset": 107,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__argv": {
+            "offset": 109,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "SETARGV",
+        "module_sha256": "d87fce0aaced66168608c8645c9490efb44b7254ddca43c1d99ad7180a168cce"
+      }
+    },
+    {
+      "id": "LIB_SETENVP",
+      "start": 59731,
+      "end": 59795,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_SETENVP",
+      "artifact": "regions/LIB_SETENVP.bin",
+      "expected_sha256": "8e146c247f2137fe12b292f35299b3f05def85d2ccc62c1e56d398efbbf28308",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__envseg": {
+            "offset": 119,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__envSize": {
+            "offset": 121,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "_malloc": {
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction",
+            "owner": "LIB_FMALLOC",
+            "public": "_malloc",
+            "addend": 0
+          },
+          "_environ": {
+            "offset": 113,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "_abort": {
+            "offset": 420,
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "SETENVP",
+        "module_sha256": "c570d61cfc173efc9ee0f74157f5fa86240a32e14a54911cea9197872608c8a7"
+      }
+    },
+    {
+      "id": "LIB_ATEXIT",
+      "start": 59795,
       "end": 59833,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00E7EB-00E9B9.bin",
-      "original_symbol": null,
-      "artifact": "raw/00E7EB-00E9B9.bin",
-      "expected_sha256": "67f41cfb75c1c5a5641d4e18a377cf2818950b020e9ebe5a6b88316522cf3c62",
-      "matching_status": "EQUAL"
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_ATEXIT",
+      "artifact": "regions/LIB_ATEXIT.bin",
+      "expected_sha256": "2fa3b055901e3248ca2a4d9602a3bab449e81a67cfabe9263614737a5e9d0413",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {},
+        "module_segments": {
+          "_DATA": {
+            "offset": 14266,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library segment fixup target with object addend subtraction"
+          },
+          "_BSS": {
+            "offset": 51844,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library segment fixup target with object addend subtraction"
+          }
+        },
+        "library": "CC.LIB",
+        "library_module": "ATEXIT",
+        "module_sha256": "8b957d011beae6358958cc99b3fd555a1d422e036f6aaa409eabb2b9c03330b7"
+      }
     },
     {
       "id": "LIB_FMALLOC",
@@ -16147,9 +16395,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -16167,16 +16417,75 @@
       }
     },
     {
-      "id": "RAW_00EEA9",
+      "id": "LIB_OPEN",
       "start": 61097,
       "end": 61495,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00EEA9-00F037.bin",
-      "original_symbol": null,
-      "artifact": "raw/00EEA9-00F037.bin",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
+      "original_symbol": "LIB_OPEN",
+      "artifact": "regions/LIB_OPEN.bin",
       "expected_sha256": "4386c34f106398dc254daff9d811c94ee279cfb1a8e1c8b49ab32d7b4e6dc864",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "bindings": {
+          "__IOERROR": {
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
+          },
+          "__fmode": {
+            "offset": 14580,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__notUmask": {
+            "offset": 14582,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__chmod": {
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction",
+            "owner": "LIB_CHMODA",
+            "public": "__chmod",
+            "addend": 0
+          },
+          "__close": {
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction",
+            "owner": "LIB_CLOSEA",
+            "public": "__close",
+            "addend": 0
+          },
+          "__open": {
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction",
+            "owner": "LIB_OPENA",
+            "public": "__open",
+            "addend": 0
+          },
+          "_ioctl": {
+            "coordinate": "code_offset",
+            "evidence": "complete library fixup target with object addend subtraction",
+            "owner": "LIB_IOCTL",
+            "public": "_ioctl",
+            "addend": 0
+          },
+          "__openfd": {
+            "offset": 14540,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          }
+        },
+        "module_segments": {},
+        "library": "CC.LIB",
+        "library_module": "OPEN",
+        "module_sha256": "18adeaeaa480c629d5d08cd093cfe143f7c17f08b47702ec18ee753aa5266384"
+      }
     },
     {
       "id": "LIB_OPENA",
@@ -16193,9 +16502,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           },
           "__openfd": {
             "offset": 14540,
@@ -16232,9 +16543,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -16266,9 +16579,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           },
           "__close": {
             "coordinate": "code_offset",
@@ -16312,9 +16627,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           },
           "__openfd": {
             "offset": 14540,
@@ -16399,9 +16716,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -16474,9 +16793,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           },
           "__openfd": {
             "offset": 14540,
@@ -16520,9 +16841,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           },
           "__openfd": {
             "offset": 14540,
@@ -16735,9 +17058,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           }
         },
         "module_segments": {},
@@ -16887,9 +17212,11 @@
         "segment": "_TEXT",
         "bindings": {
           "__IOERROR": {
-            "offset": 58859,
             "coordinate": "code_offset",
-            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0"
+            "evidence": "substrate/LIB_IOERROR.json extent.address + CC.LIB/IOERROR _TEXT+0x0",
+            "owner": "LIB_IOERROR",
+            "public": "__IOERROR",
+            "addend": 0
           }
         },
         "module_segments": {},

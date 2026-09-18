@@ -6,7 +6,7 @@ matching the original linked data pool. Its remaining state and helper
 references are bound from complete fixups, so the source emits no fabricated
 local `_DATA` segment.
 
-Coverage is now 229 matching C routines / 31,341 bytes. The full EXE and both
+Coverage is now 228 matching C routines / 31,341 bytes. The full EXE and both
 DAT archives remain byte-identical.
 
 ```powershell

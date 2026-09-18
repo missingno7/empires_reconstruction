@@ -64,7 +64,7 @@ class LibraryBindingTests(unittest.TestCase):
             binding['offset'] = change['previous_code_offset']
         updated, changes = derive(restored, self.mz, self.modules)
         self.assertEqual(updated, self.manifest)
-        self.assertEqual(len(changes), 38)
+        self.assertEqual(len(changes), 55)
         self.assertEqual(derive(updated, self.mz, self.modules), (updated, []))
 
     def test_ambiguous_public_is_not_promoted(self):

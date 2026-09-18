@@ -1,7 +1,7 @@
 {
   "status": "EQUAL",
   "reconstructed_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "bindings_promoted": 38,
+  "bindings_promoted": 55,
   "changes": [
     {
       "caller": "F_0232",
@@ -268,7 +268,126 @@
       "owner": "LIB_LXMUL",
       "previous_code_offset": 62119,
       "omf_public_offset": 0
+    },
+    {
+      "caller": "F_684A",
+      "symbol": "_exit",
+      "owner": "LIB_EXIT",
+      "previous_code_offset": 58919,
+      "omf_public_offset": 1
+    },
+    {
+      "caller": "LIB_SETENVP",
+      "symbol": "_malloc",
+      "owner": "LIB_FMALLOC",
+      "previous_code_offset": 59321,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_SETBLOCK",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_OPEN",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_OPEN",
+      "symbol": "__chmod",
+      "owner": "LIB_CHMODA",
+      "previous_code_offset": 62395,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_OPEN",
+      "symbol": "__close",
+      "owner": "LIB_CLOSEA",
+      "previous_code_offset": 61146,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_OPEN",
+      "symbol": "__open",
+      "owner": "LIB_OPENA",
+      "previous_code_offset": 60983,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_OPEN",
+      "symbol": "_ioctl",
+      "owner": "LIB_IOCTL",
+      "previous_code_offset": 61058,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_OPENA",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_IOCTL",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_CLOSE",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_CLOSEA",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_READA",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_WRITEA",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_LSEEK",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_CHMODA",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
+    },
+    {
+      "caller": "LIB_CHDIR",
+      "symbol": "__IOERROR",
+      "owner": "LIB_IOERROR",
+      "previous_code_offset": 58859,
+      "omf_public_offset": 0
     }
   ],
-  "scope": "Pinned OMF public offsets plus fixed module placement; not historical linking"
+  "scope": "Cumulative OMF public migrations: prior 38 bindings plus the 17 newly unlocked by runtime-library ownership"
 }

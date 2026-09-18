@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 28,188 bytes from raw
-fallback: 24,374 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 29,124 bytes from raw
+fallback: 25,234 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 34,575 | 232 |
-| Freshly assembled matching ASM | 2,456 | 2,456 | 20 |
-| Known toolchain library | 0 | 4,524 | 36 |
+| Freshly compiled matching C | 14,077 | 34,575 | 231 |
+| Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
+| Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 60 | 5 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 34,433 | 55 |
+| Exact raw fallback | 62,621 | 33,497 | 56 |
 | Total | 79,154 | 79,154 | 356 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -126,20 +126,19 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 238 source proof units from **zero proven
-historical source modules**, and 1,297 declared owner-symbol bindings from
+The combined EXE metrics distinguish 252 source proof units from **zero proven
+historical source modules**, and 1,630 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 22,900 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 20,882 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 365 component-owned bindings
-within fixed placement: two palette references, 151 C/ASM entry references,
-and 38 library public references from earlier checkpoints, plus 174 owned references
-in the twenty-five local C waves. Four module-segment bindings also resolve through
+1,536 embedded-asset bytes. There are now 405 component-owned bindings
+within fixed placement: 327 C/ASM entry references, 70 library public references,
+and eight structured-data references. Four module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
-[linkage-blockers.json](linkage-blockers.json) snapshots 19 held upstream
-candidates (9,227 extent bytes), all linkage refusals,
-with 61 undecided symbols at 108 fixup sites. The shared `_b437a`, `_b4380`,
+[linkage-blockers.json](linkage-blockers.json) now records zero held upstream
+candidates and zero unresolved symbols after the final ASM linkage proof. The
+historical linkage ledger is retained as an audit trail. The shared `_b437a`, `_b4380`,
 and `_b4386` symbols each affect two candidates covering 4,484 bytes; these
 candidate sets overlap, so the leverage counts must not be added. This is
 historical evidence, not a fresh match grant. `tools/inventory_linkage.py`
@@ -166,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 44,028 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 33,497 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -189,8 +188,8 @@ classification and nested-resource adapters remain mechanical frontiers.
 
 ## Owned code references
 
-151 code bindings across 75 callers now identify selected entry publics of
-92 owned C/ASM components. Migration requires both the established address
+327 code bindings across 149 callers now identify selected entry publics of
+123 owned C/ASM components. Migration requires both the established address
 and the selected public name to agree, followed by a fresh complete EXE match.
 Near and far fixups resolve through owners. The remaining numeric bindings,
 fixed placement and zero historical-linker coverage remain explicit.
@@ -198,8 +197,8 @@ See [code-bindings.md](code-bindings.md).
 
 ## Owned library references
 
-38 additional references across 23 callers now resolve through publics read
-from 17 pinned library modules. Eleven target nonzero module-relative offsets.
+70 additional references across 47 callers now resolve through publics read
+from 26 pinned library modules. Eleven target nonzero module-relative offsets.
 Public offsets are read from OMF at build time, while module placement remains
 fixed. Full EXE bytes and relocations remain EQUAL. See
 [library-bindings.md](library-bindings.md).
@@ -465,3 +464,16 @@ wave-thirty-seven proof](matching-c-wave37.md).
 F_21A9 and F_233E add 512 matching C bytes. Their boot sprite buffers and
 cell table now bind to exact DS addresses from complete fixups. See [the
 wave-thirty-eight proof](matching-c-wave38.md).
+
+## Runtime library ownership wave
+
+ATEXIT, EXIT, IOERROR, OPEN, SETARGV and SETENVP now have explicit CC.LIB
+ownership and fresh complete fixups. See [the runtime library wave](runtime-library-wave1.md).
+
+## ASM linkage closure wave
+
+F_4E9F adds 76 freshly assembled bytes. Its two previously undecided DS
+references are now bound to the established table addresses, and the call to
+F_4AA8 resolves through the owned code entry. The complete TASM object and all
+five fixups match; the linkage inventory is now empty. See
+[the ASM closure proof](matching-c-wave40-asm.md).

@@ -10525,15 +10525,185 @@
       }
     },
     {
-      "id": "RAW_00AA5E",
+      "id": "F_A85E",
+      "kind": "MATCHING_C",
       "start": 43614,
+      "end": 44063,
+      "source": "src/F_A85E.C",
+      "artifact": "regions/F_A85E.bin",
+      "expected_sha256": "4e53b12220009be921152ef8ec2ff4ba70eeb8747fd49e1fdb39ddcfb8d7f6f5",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fa85e",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_cur": {
+            "offset": 50558,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_err": {
+            "offset": 50286,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_tbl": {
+            "offset": 50288,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_g176e": {
+            "offset": 5998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_g1772": {
+            "offset": 6002,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_g1389": {
+            "offset": 5001,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_g1375": {
+            "offset": 4981,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_g12d0": {
+            "offset": 4816,
+            "coordinate": "DGROUP_offset",
+            "evidence": "pooled string or direct DS offset from complete fixup"
+          },
+          "_msg": {
+            "offset": 34505,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_a": {
+            "offset": 27508,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_b": {
+            "offset": 27024,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_c": {
+            "offset": 27494,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_d": {
+            "offset": 28734,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_e": {
+            "offset": 54675,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_f": {
+            "offset": 31020,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_init_g": {
+            "offset": 31013,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_text": {
+            "offset": 33920,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_mode": {
+            "offset": 462,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_frame": {
+            "offset": 853,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_box": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_pick": {
+            "offset": 42277,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_done_a": {
+            "offset": 33875,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_done_b": {
+            "offset": 31006,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_done_c": {
+            "offset": 54694,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_done_d": {
+            "offset": 29026,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_done_e": {
+            "offset": 27031,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_done_f": {
+            "offset": 27494,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_clr": {
+            "offset": 62212,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_fa658": {
+            "offset": 42584,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          },
+          "_put": {
+            "offset": 62171,
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup"
+          }
+        }
+      },
+      "classification": "code"
+    },
+    {
+      "id": "RAW_00AC1F",
+      "start": 44063,
       "end": 44775,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00AA5E-00AEE7.bin",
+      "source": "raw/00AC1F-00AEE7.bin",
       "original_symbol": null,
-      "artifact": "raw/00AA5E-00AEE7.bin",
-      "expected_sha256": "d7994b42b68ec46521ee5ad9e2535a1de7d386a013153f50ae217807b575f375",
+      "artifact": "raw/00AC1F-00AEE7.bin",
+      "expected_sha256": "4826542f5e676097b7714c32b241b56a9a47fda215ca96f518caa4385c1b92f5",
       "matching_status": "EQUAL"
     },
     {

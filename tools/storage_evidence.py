@@ -13,6 +13,12 @@ def verify(document, original, frames):
     result = {}
     for item in document['objects']:
         offset = item['offset']
+        if item.get('kind') == 'indexed-storage-base':
+            if item['id'] in result:
+                raise ValueError('Duplicate storage declaration')
+            verify_indexed_base(item, original, mz, frames)
+            result[item['id']] = offset
+            continue
         if item['id'] in result or item['size'] != 2 or not 0 <= offset <= 65534:
             raise ValueError('Invalid storage word declaration')
         if frames['DGROUP'] + offset < mz.declared_size - mz.header_size:
@@ -49,6 +55,48 @@ def verify(document, original, frames):
     return result
 
 
+def verify_indexed_base(item, original, mz, frames):
+    """Corroborate a passed DS base with an independent scaled-index read."""
+    offset, stride = item['offset'], item['record_stride']
+    if type(offset) is not int or not 0 <= offset <= 65535 or type(stride) is not int or not 1 <= stride <= 65535:
+        raise ValueError('Invalid indexed storage base')
+    if frames['DGROUP'] + offset < mz.declared_size - mz.header_size:
+        raise ValueError('Expected indexed storage beyond disk image')
+    forms, extents = set(), set()
+    for observation in item['observations']:
+        extent = observation['function_extent']
+        if hashlib.sha256(original[extent['start']:extent['end']]).hexdigest() != extent['sha256']:
+            raise ValueError('Indexed storage function identity mismatch')
+        at = mz.file_offset(observation['load_offset'])
+        kind = observation['instruction']
+        width = {'push-ds-buffer-call': 15, 'ds-indexed-byte-zero-test': 19}.get(kind)
+        if width is None or not extent['start'] <= at or at + width > extent['end']:
+            raise ValueError('Indexed storage observation outside function or unsupported')
+        data = original[at:at + width]
+        if kind == 'push-ds-buffer-call':
+            if data[:2] != bytes.fromhex('1e b8') or data[4:6] != bytes.fromhex('50 b8') or data[8:10] != bytes.fromhex('50 e8') or data[12:] != bytes.fromhex('83 c4 06'):
+                raise ValueError('DS buffer call instruction mismatch')
+            address = int.from_bytes(data[2:4], 'little')
+            target = (observation['load_offset'] + 12 + int.from_bytes(data[10:12], 'little', signed=True)) & 65535
+            if target != observation['call_target'] or int.from_bytes(data[6:8], 'little') != observation['record_id']:
+                raise ValueError('DS buffer call target or record mismatch')
+        else:
+            if data[:3] != bytes.fromhex('8b c6 ba') or data[5:11] != bytes.fromhex('f7 e2 8b d8 81 c3') or data[13:] != bytes.fromhex('1e 07 26 80 3f 00'):
+                raise ValueError('Indexed DS byte test instruction mismatch')
+            if int.from_bytes(data[3:5], 'little') != stride:
+                raise ValueError('Indexed DS byte test stride mismatch')
+            address = int.from_bytes(data[11:13], 'little')
+        if address != offset:
+            raise ValueError('Indexed storage address mismatch')
+        if any(at - mz.header_size - 1 <= r['load_offset'] < at - mz.header_size + width for r in mz.relocations):
+            raise ValueError('Indexed storage observation overlaps relocation')
+        forms.add(kind)
+        extents.add((extent['start'], extent['end']))
+    ordered = sorted(extents)
+    if forms != {'push-ds-buffer-call', 'ds-indexed-byte-zero-test'} or len(ordered) < 2 or any(a[1] > b[0] for a, b in zip(ordered, ordered[1:])):
+        raise ValueError('Indexed base needs independent nonoverlapping call and read functions')
+
+
 def verify_bindings(root, manifest, original):
     bindings = [b for owner in manifest['regions']
                 for b in owner.get('build', {}).get('bindings', {}).values()
@@ -57,6 +105,15 @@ def verify_bindings(root, manifest, original):
         return
     document = json.loads((root / 'docs/storage-binding-evidence.json').read_text())
     offsets = verify(document, original, manifest['frames'])
+    for item in document['objects']:
+        if item.get('kind') != 'indexed-storage-base':
+            continue
+        for observation in item['observations']:
+            if observation['instruction'] != 'push-ds-buffer-call':
+                continue
+            target = next((r for r in manifest['regions'] if r['id'] == observation['callee_owner']), None)
+            if target is None or target['kind'] != 'MATCHING_C' or MZ.parse(original).load_offset(target['start']) != observation['call_target']:
+                raise ValueError('Storage call requires its matching C callee owner')
     for binding in bindings:
         if (binding.get('coordinate') != 'DGROUP_offset' or 'owner' in binding or
                 binding.get('offset') != offsets.get(binding['storage_evidence'])):

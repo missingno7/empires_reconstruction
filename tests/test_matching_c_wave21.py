@@ -1,4 +1,4 @@
-"""Full fresh comparisons and expression/layout mutants for the thirteenth C wave."""
+"""Full fresh comparisons and expression/layout mutants for the twenty-first C wave."""
 import copy
 from pathlib import Path
 import sys
@@ -9,14 +9,15 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
 from storage_evidence import verify, verify_bindings
+import hashlib
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
 
-class MatchingCWave13Tests(unittest.TestCase):
+class MatchingCWave21Tests(unittest.TestCase):
     def test_fresh_wave_and_expression_layout_mutants(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
-        owners = read_json(ROOT / 'recipes/c/matching-wave13.json')['owners']
+        owners = read_json(ROOT / 'recipes/c/matching-wave21.json')['owners']
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         lock = read_json(ROOT / 'layout/toolchain.json')
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
@@ -24,7 +25,9 @@ class MatchingCWave13Tests(unittest.TestCase):
             work = Path(temporary)
             mutants = []
             for name, before, after in (
-                ('F_B772', b'i<=11', b'i<=10'),):
+                ('F_AD25', b'a[27]', b'a[26]'),
+                ('F_A09D', b'f68aa(62,', b'f68aa(63,'),
+                ('F_A13F', b'0x3e', b'0x3f')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
                 self.assertEqual(source.count(before), 1)
@@ -40,37 +43,48 @@ class MatchingCWave13Tests(unittest.TestCase):
                 data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
                 mismatch(original[owner['start']:owner['end']], data, owner)
                 checked += len(data)
-            self.assertEqual(checked, 135)
+            self.assertEqual(checked, 363)
             for owner in mutants:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())
                 with self.assertRaises(ValueError):
                     data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
                     mismatch(original[owner['start']:owner['end']], data, owner)
 
-    def test_storage_evidence_rejects_changed_address_site_and_missing_access(self):
+    def test_indexed_base_evidence_controls(self):
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         manifest = read_json(ROOT / 'layout/manifest.json')
-        evidence = read_json(ROOT / 'docs/storage-binding-evidence.json')
-        verified = verify(evidence, original, manifest['frames'])
-        self.assertEqual({k: verified[k] for k in ('DS_C588', 'DS_C5A2')},
-                         {'DS_C588': 0xc588, 'DS_C5A2': 0xc5a2})
-        for variant in ('address', 'site', 'missing', 'extent', 'identity'):
-            changed = copy.deepcopy(evidence)
-            item = changed['objects'][0]
-            if variant == 'address':
-                item['offset'] += 2
-            elif variant == 'site':
-                item['observations'][0]['load_offset'] += 1
-            elif variant == 'missing':
-                item['observations'].pop()
-            elif variant == 'extent':
-                item['observations'][0]['function_extent']['end'] -= 1
-            else:
-                changed['original_sha256'] = '0' * 64
+        document = read_json(ROOT / 'docs/storage-binding-evidence.json')
+        self.assertEqual(verify(document, original, manifest['frames'])['DS_C360'], 0xc360)
+        verify_bindings(ROOT, manifest, original)
+        for variant in ('base', 'stride', 'target', 'record', 'site', 'extent', 'missing'):
+            changed = copy.deepcopy(document)
+            item = next(o for o in changed['objects'] if o['id'] == 'DS_C360')
+            first = item['observations'][0]
+            if variant == 'base': item['offset'] += 1
+            elif variant == 'stride': item['record_stride'] += 1
+            elif variant == 'target': first['call_target'] += 1
+            elif variant == 'record': first['record_id'] += 1
+            elif variant == 'site': first['load_offset'] += 1
+            elif variant == 'extent': first['function_extent']['end'] -= 1
+            else: item['observations'].pop()
             with self.subTest(variant=variant), self.assertRaises(ValueError):
                 verify(changed, original, manifest['frames'])
+        # Re-pin altered bytes to exercise instruction-form checks after identity checks.
+        for index, displacement in ((0, 0), (1, 13)):
+            changed = copy.deepcopy(document)
+            observation = next(o for o in changed['objects'] if o['id'] == 'DS_C360')['observations'][index]
+            modified = bytearray(original)
+            modified[512 + observation['load_offset'] + displacement] = 0x0e
+            changed['original_sha256'] = hashlib.sha256(modified).hexdigest()
+            extent = observation['function_extent']
+            extent['sha256'] = hashlib.sha256(modified[extent['start']:extent['end']]).hexdigest()
+            with self.assertRaises(ValueError):
+                verify(changed, bytes(modified), manifest['frames'])
         changed = copy.deepcopy(manifest)
-        owner = next(o for o in changed['regions'] if o['id'] == 'F_B772')
-        owner['build']['bindings']['_gc588']['offset'] += 2
+        next(o for o in changed['regions'] if o['id'] == 'F_68AA')['start'] += 1
+        with self.assertRaisesRegex(ValueError, 'callee owner'):
+            verify_bindings(ROOT, changed, original)
+        changed = copy.deepcopy(manifest)
+        next(o for o in changed['regions'] if o['id'] == 'F_A13F')['build']['bindings']['_gc360']['offset'] += 1
         with self.assertRaisesRegex(ValueError, 'Binding contradicts'):
             verify_bindings(ROOT, changed, original)

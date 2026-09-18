@@ -1,0 +1,48 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "e5564dcd60705d5de5de7b2739bdb9993c8bb03cf9cb239af1d968faa34e7071",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 363,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_A09D",
+      "kind": "MATCHING_C",
+      "bytes": 162,
+      "sha256": "4b75c234d1fa1684ea3e28935a472a8105f157ab438b53b41984f5aa1c55825a",
+      "source_sha256": "a68499334c212fbd4af9a2092b8be4af1e4543eb04a414c1cb6f49dde9ca6b52",
+      "fixups": 18,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_AD25",
+      "kind": "MATCHING_C",
+      "bytes": 170,
+      "sha256": "5d2d0966ee53a808a0b685309a08392b4a8aa7b4839bc87f0f028e8bae598791",
+      "source_sha256": "fee7d8f890fa18f97a52dce31d37f1fc45bd068a3bbeded79b4990dce450d315",
+      "fixups": 15,
+      "load_relocations": [
+        44388,
+        44445,
+        44480
+      ],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_A13F",
+      "kind": "MATCHING_C",
+      "bytes": 31,
+      "sha256": "f67750c79cfd13fb245a4781ed581dc418f0a97c22f0f4dbd61f54235ad8ced7",
+      "source_sha256": "64ba8b517fa7192dc1c658f33415e66a29841db484ccd46325bddd5a691d01e6",
+      "fixups": 4,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

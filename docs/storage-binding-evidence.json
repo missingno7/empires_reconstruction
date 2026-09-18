@@ -1,7 +1,7 @@
 {
   "format": "empires-storage-observations-v1",
   "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "scope": "Observed word access addresses beyond disk image; no historical symbol, allocation extent or linker ownership claim",
+  "scope": "Observed storage addresses beyond disk image; word accesses or independently corroborated indexed bases, with no complete allocation or linker ownership claim",
   "objects": [
     {
       "id": "DS_C588",
@@ -54,6 +54,37 @@
           },
           "load_offset": 47621,
           "instruction": "mov-bx-word"
+        }
+      ]
+    },
+    {
+      "id": "DS_C360",
+      "kind": "indexed-storage-base",
+      "offset": 50016,
+      "record_stride": 27,
+      "observations": [
+        {
+          "function_extent": {
+            "id": "F_A09D",
+            "start": 41629,
+            "end": 41791,
+            "sha256": "4b75c234d1fa1684ea3e28935a472a8105f157ab438b53b41984f5aa1c55825a"
+          },
+          "load_offset": 41133,
+          "instruction": "push-ds-buffer-call",
+          "call_target": 26794,
+          "callee_owner": "F_68AA",
+          "record_id": 62
+        },
+        {
+          "function_extent": {
+            "id": "F_AD25",
+            "start": 44837,
+            "end": 45007,
+            "sha256": "5d2d0966ee53a808a0b685309a08392b4a8aa7b4839bc87f0f028e8bae598791"
+          },
+          "load_offset": 44330,
+          "instruction": "ds-indexed-byte-zero-test"
         }
       ]
     }

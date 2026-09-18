@@ -21,8 +21,8 @@ old addresses and observed OMF-relative offsets for auditing; the build does
 not use this receipt to resolve references. Repeating the command is a no-op.
 
 Together with 454 C/ASM entry references and eight structured-data references,
-534 of 1,665 owner-symbol declarations now use component ownership. This is partial
+534 of 1,676 owner-symbol declarations now use component ownership. This is partial
 symbol resolution within the fixed placement scaffold. It does not establish
 historical library selection order, source module boundaries, or real linker
-layout. Raw coverage is 32,641 EXE bytes, and all three
+layout. Raw coverage is 32,517 EXE bytes, and all three
 reconstructed game files remain byte-identical.

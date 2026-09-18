@@ -3,16 +3,16 @@
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.
-The build compiles 235 C regions, assembles 21 ASM
+The build compiles 236 C regions, assembles 21 ASM
 regions, and extracts 42 pinned Borland library modules (41 code contributions
 and one 257-byte data contribution). The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); 54 raw regions cover the remaining 32,641 EXE bytes.
+RGB tables (1,536 bytes); 53 raw regions cover the remaining 32,517 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 454 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 72 resolve through [publics read from pinned library modules](docs/library-bindings.md).
-The latest [matching-C wave](docs/matching-c-wave44.md) adds the 279-byte
-far-buffer loader; the latest [runtime ownership wave](docs/runtime-library-wave1.md)
+The latest [matching-C wave](docs/matching-c-wave45.md) adds the 124-byte
+far-pointer cleanup routine; the latest [runtime ownership wave](docs/runtime-library-wave1.md)
 identifies
 six pinned CC.LIB modules; the latest ASM wave adds the 76-byte record-table
 dispatcher whose bindings close the remaining executable linkage frontier.

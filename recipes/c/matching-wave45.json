@@ -1,0 +1,41 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_B593",
+      "start": 46995,
+      "end": 47119,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_B593.C",
+      "artifact": "regions/F_B593.bin",
+      "expected_sha256": "74defe01ba94b69aae7b1dbb0eb4a3a0456e221523ce096438fe4cdc7b99f0e6",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fb593",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_free": {"offset": 63171, "coordinate": "code_offset", "evidence": "functions/F_B122.entry; F_B593 free call target"},
+          "_gc5a8": {"offset": 50600, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc580": {"offset": 50560, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc5ac": {"offset": 50604, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc59a": {"offset": 50586, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc5a4": {"offset": 50596, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc58a": {"offset": 50570, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc58e": {"offset": 50574, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc584": {"offset": 50564, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_gc59e": {"offset": 50590, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
+          "_g720": {"offset": 1824, "coordinate": "DGROUP_offset", "evidence": "direct DS word in complete F_B593 fixups"}
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_B593.json",
+        "upstream_extent_sha256": "74defe01ba94b69aae7b1dbb0eb4a3a0456e221523ce096438fe4cdc7b99f0e6"
+      }
+    }
+  ]
+}

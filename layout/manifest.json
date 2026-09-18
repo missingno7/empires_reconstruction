@@ -7015,13 +7015,160 @@
     {
       "id": "RAW_008680",
       "start": 34432,
+      "end": 35017,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/008680-0088C9.bin",
+      "original_symbol": null,
+      "artifact": "raw/008680-0088C9.bin",
+      "expected_sha256": "11dc1d08d89e16701066128b11f5240e7e2f6ccee5ac58cf07c7c1e4fcbab371",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_86C9",
+      "kind": "MATCHING_C",
+      "start": 35017,
+      "end": 35338,
+      "source": "src/F_86C9.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f86c9",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B74.entry",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6990.entry",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0
+          },
+          "_f703e": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_703E.entry",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0
+          },
+          "_fd593": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D593.entry",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0
+          },
+          "_f792c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_792C.entry",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7925.entry",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B66.entry",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0
+          },
+          "_f8480": {
+            "offset": 33920,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8480.entry"
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6B1A.entry",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0
+          },
+          "_f8378": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8378.entry",
+            "owner": "F_8378",
+            "public": "_f8378",
+            "addend": 0
+          },
+          "_f8414": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8414.entry",
+            "owner": "F_8414",
+            "public": "_f8414",
+            "addend": 0
+          },
+          "_f8453": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8453.entry",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0
+          },
+          "_f791e": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_791E.entry",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0
+          },
+          "_fd5a6": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D5A6.entry",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0
+          },
+          "_f7162": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7162.entry",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0
+          },
+          "_f6997": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6997.entry",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0
+          }
+        }
+      },
+      "artifact": "regions/F_86C9.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "ab7a85aa67b42a2e189d7100f5139b14c06a8ce9a1e1c912433e638f40f291d2",
+      "provenance": {
+        "method": "local C reconstruction and fresh complete OMF comparison including nested switch tables",
+        "upstream_entry_sha256": "48ed80c4f4e31a1d497127060613a613b5115417fde4d360870d49623aa68df5",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "RAW_008A0A",
+      "start": 35338,
       "end": 35895,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/008680-008C37.bin",
+      "source": "raw/008A0A-008C37.bin",
       "original_symbol": null,
-      "artifact": "raw/008680-008C37.bin",
-      "expected_sha256": "7086e708b6d4e8a2008cb8738d0cbd66e981a4fb103dfabdf3a366421e0e21de",
+      "artifact": "raw/008A0A-008C37.bin",
+      "expected_sha256": "23d421e823ac73924d559d6d3749d997b1d6318645101860ecda5d918f7801c7",
       "matching_status": "EQUAL"
     },
     {

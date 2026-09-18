@@ -52,6 +52,38 @@ original game
 
 The original files remain the ground truth.
 
+## Architectural end-state: layout must emerge
+
+The fixed-layout builder is a bootstrap scaffold and comparison oracle. It is
+not the intended final build system. This requirement, clarified by the project
+owner on 2026-09-18, governs the intermediate examples below.
+
+The final build must compile, assemble, encode and compress independent source
+components, then link and pack them. Historical addresses and resource offsets
+must emerge from module/resource order, emitted sizes, segment organization,
+alignment, library inclusion and recovered linker/packer behavior. They must
+not remain externally imposed original placements.
+
+Original EXE/DAT files eventually serve only as verification fixtures. Unknown
+byte ranges and opaque resource copies are temporary fallbacks, even when
+stored in separate local files. An understood binary format may intentionally
+remain a canonical component; that requires established format/ownership
+evidence and is distinct from relabeling an unknown blob.
+
+Track four levels separately: **placement reconstruction**, **independent
+component reconstruction**, **structural build reconstruction**, and
+**emergent whole-build reconstruction**. Byte equality alone does not establish
+the final level. Retain the fixed builder while independently proving:
+
+```text
+fixed reconstruction == component-driven link/pack == original fixtures
+```
+
+The final target is the original **buildable software system**, including its
+code, data, assets, modules, compression, libraries, linking and packing rules.
+See [build-reconstruction.md](build-reconstruction.md) for the contract and
+current evidence boundaries.
+
 ---
 
 # North Star
@@ -369,7 +401,7 @@ compression
         ↓
 player.bin
         ↓
-placed at original executable offset
+    linked through recovered module/segment rules
 ```
 
 and:
@@ -921,7 +953,9 @@ hash / structural comparison
 identical to original
 ```
 
-Where some original files are immutable resource archives and no higher-level representation has yet been recovered, exact binary fallback is acceptable.
+Where no higher-level representation has yet been recovered, exact binary
+fallback is acceptable during reconstruction. Unknown fallback is not an
+acceptable final substitute for independently reconstructed components.
 
 ---
 
@@ -942,11 +976,10 @@ For DOS, rebuilding `AEPROG.EXE` may require reconstructing more than code:
 
 Where historically exact build metadata is unknown, the project may initially reconstruct the executable through explicit original layout placement.
 
-This is acceptable.
-
-The priority is losslessness first.
-
-Historical reconstruction of the exact original Borland project structure is a separate and harder question.
+This is acceptable as the bootstrap scaffold. The priority is losslessness
+throughout the transition. Recovering compatible modules and linker behavior
+is required for the final build to derive the original layout; recovering the
+historical developers' exact filenames is not required.
 
 ---
 

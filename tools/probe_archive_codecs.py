@@ -2,6 +2,7 @@
 import argparse
 import copy
 import sys
+from archive_recipe import update_existing_recipe
 
 from dat_archive import assemble_archive, validate_manifest
 from reconstruct import ROOT, project_path, read_json, sha, write_json
@@ -95,6 +96,7 @@ def probe(root=ROOT, promote=False):
             temporary = path.with_suffix('.json.tmp')
             write_json(temporary, manifest)
             temporary.replace(path)
+            update_existing_recipe(root, path.stem, manifest)
     print(summary)
     print(f'Promoted {sum(len(p[2]) for p in changed_plans)} compressed resources; report: {build / "codec-probe.json"}')
     return report

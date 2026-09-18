@@ -7,6 +7,13 @@ into `layout/archives/`; all game payloads and structured asset sources stay
 under ignored `raw/`. No original DAT, extracted image, level or compiler
 binary is distributed.
 
+This page describes the fixed-layout scaffold and component proofs. The
+independent [structural packing path](build-reconstruction.md) now derives
+all offsets from emitted component sizes. It uses `recipes/archives/`, builds
+without original files or fixed manifests, and verifies against this scaffold
+and the originals afterward. Unknown payload fallback remains temporary; full
+byte equality is not a claim that the original build system is recovered.
+
 ```powershell
 python tools/reconstruct_archives.py prepare # restore local sources once
 python tools/reconstruct_game.py             # fresh EXE plus both DATs

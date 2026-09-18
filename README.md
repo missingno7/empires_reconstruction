@@ -12,6 +12,12 @@ first level also rebuilds from structured source, for 27 matching resources.
 The other 193 retain raw payloads. Library, header, structured and fallback
 coverage are reported separately.
 
+This is a matching bootstrap, not yet reconstruction of the complete original
+build. The [architectural target](docs/build-reconstruction.md) requires layout
+to emerge from independent components and recovered build rules. DAT packing
+now derives offsets from component order and emitted sizes; the EXE still uses
+fixed placement, and both paths retain explicitly counted opaque fallbacks.
+
 From this directory, with Python 3.10+:
 
 ```powershell
@@ -23,6 +29,8 @@ and `build/game-report.json`, prints coverage and hashes, and exits nonzero on
 a failure. Every invocation builds fresh objects. For only the EXE, use
 `python tools/reconstruct.py`; for only DATs, use
 `python tools/reconstruct_archives.py`.
+The whole-game command also checks independently packed DATs against both
+the fixed-layout archive output and the original fixtures.
 It needs DOSBox Staging (installed here at
 `C:/Program Files/DOSBox Staging/dosbox.exe`) and the three pinned Borland
 executables plus `CC.LIB`, installed locally in `toolchain/`. There are no Python
@@ -42,9 +50,23 @@ python tools/setup_toolchain.py
 ```
 
 The setup and build both verify the hashes in `layout/toolchain.json`.
-The entire toolchain directory is ignored by Git and is not redistributed. Override the
-emulator location with `--dosbox PATH` or the `DOSBOX` environment variable;
-override the Borland directory with `--toolchain PATH`.
+The entire toolchain directory is ignored by Git and is not redistributed.
+Override the emulator location with `--dosbox PATH` or the `DOSBOX` environment
+variable; override the Borland directory with `--toolchain PATH`.
+
+Once local component sources are prepared, the independent DAT packer can run
+without original files or fixed-layout manifests:
+
+```powershell
+python tools/pack_archives.py
+# Verification is separate and needs the original fixtures:
+python tools/pack_archives.py verify --fixed-output build
+```
+
+Its component recipes live in `recipes/archives/`; generated offsets, lengths
+and receipts live in `build/packed/`. These recipes contain no historical
+placement or expected-byte fields. Original files are used only by verification
+in this path. The opaque local payload fallbacks are still temporary sources.
 
 The EXE build follows [layout/manifest.json](layout/manifest.json), the sole
 authority for executable ownership. DAT manifests live in `layout/archives/`.

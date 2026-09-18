@@ -7,6 +7,7 @@ import sys
 
 from reconstruct import ROOT, project_path, read_json, reconstruct, sha, write_json
 from reconstruct_archives import rebuild
+from pack_archives import pack, verify
 
 
 def exe_metrics(root, manifest, report):
@@ -67,11 +68,18 @@ def reconstruct_game(root, output, toolchain, dosbox):
     (output / 'game-report.json').unlink(missing_ok=True)
     exe = reconstruct(root, root / 'layout/manifest.json', output, toolchain, dosbox)
     archives = rebuild(root, output)
+    packed = pack(root, output / 'packed')
+    packing_verification = verify(root, output / 'packed', output)
     metrics = exe_metrics(root, read_json(root / 'layout/manifest.json'), exe)
     report = {'status': 'EQUAL', 'files': {'AEPROG.EXE': exe['reconstructed_sha256'],
                                         **{name + '.DAT': data['reconstructed_sha256'] for name, data in archives.items()}},
               'total_bytes': exe['total_bytes'] + sum(r['total_bytes'] for r in archives.values()),
-              'exe': metrics, 'archives': archives}
+              'exe': metrics, 'archives': archives,
+              'build_reconstruction': {'whole_build_reconstruction_complete': False,
+                                       'exe_layout': 'fixed_placement_bootstrap',
+                                       'dat_layout': 'derived_from_component_order_and_sizes',
+                                       'dat_opaque_fallback_resources': sum(r['opaque_fallback_resources'] for r in packed['archives'].values()),
+                                       'dat_verification': packing_verification}}
     write_json(output / 'game-report.json', report)
     print(f"Complete game: EQUAL; {report['total_bytes']:,} bytes in three files")
     return report

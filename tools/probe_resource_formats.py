@@ -1,6 +1,7 @@
 """Prove bitmap and level payload round trips; promote only whole-resource matches."""
 import argparse
 import copy
+from archive_recipe import update_existing_recipe
 
 from dat_archive import assemble_archive
 from reconstruct import ROOT, project_path, read_json, sha, write_json
@@ -65,6 +66,7 @@ def probe(root=ROOT, promote=False):
             temporary = path.with_suffix('.json.tmp')
             write_json(temporary, manifest)
             temporary.replace(path)
+            update_existing_recipe(root, path.stem, manifest)
     report = {'payloads_round_tripped': len(rows), 'payload_bytes': sum(r['payload_bytes'] for r in rows),
               'whole_resource_matches': sum(r['compressed_round_trip'] == 'EQUAL' for r in rows),
               'implementation_sha256': sha((root / 'tools/resource_formats.py').read_bytes()), 'resources': rows}

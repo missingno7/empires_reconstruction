@@ -1,0 +1,925 @@
+{
+  "format": "empires-dat-build-v1",
+  "packing": "ordered-contiguous-le32-v1",
+  "resources": [
+    {
+      "id": "AE001_000",
+      "rtype": 0,
+      "flags": 0,
+      "source": "raw/AE001/structured/000.json",
+      "representation": "level-parts-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE001_001",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/001.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_002",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/002.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_003",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/003.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_004",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/004.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_005",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/005.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_006",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/006.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_007",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/007.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_008",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/008.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_009",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/009.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_010",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/010.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_011",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/011.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_012",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/012.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_013",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/013.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_014",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/014.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_015",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/015.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_016",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/016.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_017",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/017.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_018",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/018.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_019",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/019.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_020",
+      "rtype": 77,
+      "flags": 3,
+      "source": "raw/AE001/020.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_021",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/021.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_022",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/022.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_023",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/023.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_024",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE001/024.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_025",
+      "rtype": 1,
+      "flags": 2,
+      "source": "raw/AE001/025.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_026",
+      "rtype": 1,
+      "flags": 2,
+      "source": "raw/AE001/026.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_027",
+      "rtype": 1,
+      "flags": 2,
+      "source": "raw/AE001/027.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_028",
+      "rtype": 1,
+      "flags": 2,
+      "source": "raw/AE001/028.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_029",
+      "rtype": 1,
+      "flags": 2,
+      "source": "raw/AE001/029.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_030",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE001/030.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_031",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE001/031.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_032",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE001/032.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_033",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE001/033.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_034",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/034.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_035",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/035.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_036",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/036.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_037",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/037.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_038",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/038.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_039",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/039.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_040",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/040.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_041",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/041.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_042",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/042.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_043",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/043.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_044",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/044.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_045",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/045.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_046",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/046.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_047",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/047.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_048",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/048.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_049",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/049.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_050",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/050.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_051",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/051.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_052",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/052.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_053",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/053.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_054",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/054.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_055",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/055.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_056",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/056.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_057",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/057.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_058",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/058.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_059",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/059.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_060",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/060.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_061",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/061.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_062",
+      "rtype": 104,
+      "flags": 0,
+      "source": "raw/AE001/062.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_063",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE001/063.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_064",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/064.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_065",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/065.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_066",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/066.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_067",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/067.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_068",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/068.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_069",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/069.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_070",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/070.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_071",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/071.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_072",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/072.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_073",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/073.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_074",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/074.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_075",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/075.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_076",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/076.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_077",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/077.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_078",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/078.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_079",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/079.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_080",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/080.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_081",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/081.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_082",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/082.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_083",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/083.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_084",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/084.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_085",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/085.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_086",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/086.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_087",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/087.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_088",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/088.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_089",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/089.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_090",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/090.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_091",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/091.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_092",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/092.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_093",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/093.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_094",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/094.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_095",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/095.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_096",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/096.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_097",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/097.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_098",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/098.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_099",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/099.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_100",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/100.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_101",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/101.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_102",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/102.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_103",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/103.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_104",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/104.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_105",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/105.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_106",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/106.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_107",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/107.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_108",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/108.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_109",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/109.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_110",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/110.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_111",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/111.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_112",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/112.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_113",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/113.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_114",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE001/114.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_115",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/115.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_116",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/116.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_117",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/117.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_118",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/118.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_119",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/119.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_120",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/120.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_121",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/121.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_122",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/122.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_123",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/123.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_124",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/124.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_125",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/125.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_126",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/126.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_127",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/127.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_128",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/128.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_129",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/129.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE001_130",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE001/130.bin",
+      "representation": "opaque-encoded-fallback"
+    }
+  ],
+  "trailing": null
+}

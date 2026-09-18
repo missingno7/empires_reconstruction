@@ -92,6 +92,9 @@ or having a raw header file.
 `python tools/reconstruct_game.py` freshly rebuilds all **690,588 bytes** of
 the EXE and both DAT archives, and publishes `build/game-report.json` only
 after all components pass. The former EXE-only command remains available.
+It also independently packs both DATs from component recipes and requires
+`derived pack == fixed rebuild == original`. These matching bytes are a
+bootstrap/structural milestone, not completion of the original build system.
 
 | Archive coverage | AE000 | AE001 |
 |---|---:|---:|
@@ -132,13 +135,30 @@ candidate sets overlap, so the leverage counts must not be added. This is
 historical evidence, not a fresh match grant. `tools/inventory_linkage.py`
 refreshes the ranking without modifying upstream.
 
-Thirty-one tests pass, including independent hand-authored codec streams,
+Thirty-nine tests pass, including independent hand-authored codec streams,
 all observed RLE policies, complete structured payload round trips, mutations,
 failure invalidation and archive bootstrap from only supplied local inputs.
 All 220 decoded resources also agree with the independent upstream decoder.
 A separate clean source copy, supplied only the three original game files and
 four pinned compiler/library binaries, recreates every local source and builds
 the same three files without upstream access.
+
+## Layout as generated output
+
+Following the owner's architectural clarification, `recipes/archives/*.json`
+contains order and source/encoding rules without offsets, original-file paths,
+expected sizes or digests. `tools/pack_archives.py` generates the LE32 table
+from actual emitted component sizes and builds with no fixtures or fixed
+manifests present. A separate verifier proves equality. Size/order/count
+mutation tests demonstrate that placement is calculated, not prescribed.
+The fixed archive builder remains an independent oracle. Verified resource
+promotions update both source descriptions and invalidate older packed outputs.
+
+The combined report distinguishes derived DAT packing from fixed EXE placement
+and explicitly reports whole-build reconstruction incomplete. The 193 opaque
+DAT payloads and 57,777 raw EXE bytes remain temporary fallbacks. See
+[build-reconstruction.md](build-reconstruction.md) for the four reconstruction
+levels and the requirement to recover a buildable software system.
 
 The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
 retain the user's broader agenda. Matching is **not globally saturated**:

@@ -7,6 +7,12 @@ opaque regions with rebuildable structure.
 
 **First reconstruct what exists. Later explain why it exists.**
 
+The [architectural end-state](build-reconstruction.md), clarified on 2026-09-18,
+requires layout to emerge from reconstructed components and build rules.
+Placement matching is an intermediate proof. Original files ultimately belong
+only to verification; unknown byte/resource fallbacks must disappear. Keep
+placement, component, structural-build and whole-build progress distinct.
+
 Keep the fixed-layout EXE builder as an independent comparison scaffold.
 Never weaken matching, discard quirks, normalize padding or duplicate data,
 infer linkage from comparison operands at build time, or turn this into a

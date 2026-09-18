@@ -1,0 +1,656 @@
+{
+  "format": "empires-dat-build-v1",
+  "packing": "ordered-contiguous-le32-v1",
+  "resources": [
+    {
+      "id": "AE000_000",
+      "rtype": 70,
+      "flags": 3,
+      "source": "raw/AE000/000.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_001",
+      "rtype": 70,
+      "flags": 3,
+      "source": "raw/AE000/001.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_002",
+      "rtype": 70,
+      "flags": 3,
+      "source": "raw/AE000/002.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_003",
+      "rtype": 70,
+      "flags": 3,
+      "source": "raw/AE000/003.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_004",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE000/004.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_005",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/005.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_006",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/006.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_007",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/007.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_008",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/008.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_009",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/009.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_010",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/010.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_011",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/011.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_012",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/012.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_013",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/013.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_014",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/014.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_015",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/015.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_016",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/016.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_017",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/017.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_018",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/018.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_019",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE000/019.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_020",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/020.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_021",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/021.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_022",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/022.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_023",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/023.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_024",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/024.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_025",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/025.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_026",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/026.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_027",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/027.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_028",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/028.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_029",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/029.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_030",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/030.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_031",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/031.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_032",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/032.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_033",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/033.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_034",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/034.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_035",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/035.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_036",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/036.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_037",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/037.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_038",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE000/038.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_039",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/039.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_040",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/040.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_041",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/041.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_042",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/042.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_043",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/043.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_044",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/044.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_045",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/045.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_046",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/structured/046.json",
+      "representation": "bitmap4-json-v1",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_047",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/047.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_048",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/048.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_049",
+      "rtype": 68,
+      "flags": 3,
+      "source": "raw/AE000/049.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_050",
+      "rtype": 68,
+      "flags": 3,
+      "source": "raw/AE000/050.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_051",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/051.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_052",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/052.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_053",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE000/053.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_054",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE000/054.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_055",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/055.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_056",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE000/056.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_057",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/057.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_058",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/058.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_059",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/059.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_060",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/060.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_061",
+      "rtype": 68,
+      "flags": 0,
+      "source": "raw/AE000/061.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_062",
+      "rtype": 68,
+      "flags": 0,
+      "source": "raw/AE000/062.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_063",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/063.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_064",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/064.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_065",
+      "rtype": 68,
+      "flags": 3,
+      "source": "raw/AE000/065.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_066",
+      "rtype": 0,
+      "flags": 3,
+      "source": "raw/AE000/066.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_067",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE000/067.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_068",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE000/068.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_069",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE000/069.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_070",
+      "rtype": 68,
+      "flags": 2,
+      "source": "raw/AE000/070.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_071",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/071.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_072",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/072.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_073",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/073.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_074",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/074.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_075",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/075.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_076",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/076.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_077",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/077.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_078",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/078.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_079",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/079.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_080",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/decoded/080.bin",
+      "representation": "decoded-bytes",
+      "encoder": "greedy-rle-pair-span-v1"
+    },
+    {
+      "id": "AE000_081",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/081.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_082",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/082.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_083",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/083.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_084",
+      "rtype": 71,
+      "flags": 3,
+      "source": "raw/AE000/084.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_085",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/085.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_086",
+      "rtype": 1,
+      "flags": 3,
+      "source": "raw/AE000/086.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_087",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/087.bin",
+      "representation": "opaque-encoded-fallback"
+    },
+    {
+      "id": "AE000_088",
+      "rtype": 32,
+      "flags": 0,
+      "source": "raw/AE000/088.bin",
+      "representation": "opaque-encoded-fallback"
+    }
+  ],
+  "trailing": null
+}

@@ -14040,16 +14040,52 @@
       }
     },
     {
-      "id": "RAW_00D000",
+      "id": "F_CE00",
+      "kind": "MATCHING_C",
+      "source": "src/F_CE00.C",
       "start": 53248,
       "end": 53290,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00D000-00D02A.bin",
-      "original_symbol": null,
-      "artifact": "raw/00D000-00D02A.bin",
       "expected_sha256": "f255549323c3b2684907bd4c591a5f65f4631d02d42eea442f568b323eda692c",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fce00",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9"
+          },
+          "_fa13f": {
+            "coordinate": "code_offset",
+            "owner": "F_A13F",
+            "public": "_fa13f"
+          },
+          "_longjmp": {
+            "coordinate": "code_offset",
+            "owner": "LIB_SETJMP",
+            "public": "_longjmp"
+          },
+          "_g21b0": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8624
+          },
+          "_g8bfe": {
+            "coordinate": "DGROUP_offset",
+            "offset": 35838
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_CE00",
+      "artifact": "regions/F_CE00.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from raw code extent and fresh full-extent OMF binding",
+        "change": "Decode and reconstruct the complete 42-byte routine at load offset CE00 between F_CDDD and F_CE2A"
+      }
     },
     {
       "id": "F_CE2A",

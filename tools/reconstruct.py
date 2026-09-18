@@ -291,12 +291,13 @@ def bind_region(owner, module, mz, frames, owners=None, component_modules=None):
             if kind != 'external' or symbol not in build['bindings']:
                 raise ValueError(f'Undeclared far pointer {symbol}')
             binding = component_binding(build['bindings'][symbol], owners, mz, frames, component_modules)
-            if binding['coordinate'] != 'code_offset':
+            if binding['coordinate'] not in ('code_offset', 'DGROUP_offset'):
                 raise ValueError(f'Unsupported far data pointer {symbol}')
             addend = int.from_bytes(result[offset:offset+2], 'little')
             segment_addend = int.from_bytes(result[offset+2:offset+4], 'little')
             value = (binding['offset'] + f['displacement'] + addend) & 0xFFFF
-            segment_value = (frames[segment] // 16 + segment_addend) & 0xFFFF
+            frame = frames[segment] if binding['coordinate'] == 'code_offset' else frames['DGROUP']
+            segment_value = (frame // 16 + segment_addend) & 0xFFFF
             result[offset:offset+4] = struct.pack('<HH', value, segment_value)
             relocations.append(load_base + offset + 2)
             patches.append(dict(f, extent_offset=offset, addend=addend,
@@ -337,8 +338,8 @@ def bind_region(owner, module, mz, frames, owners=None, component_modules=None):
                            'fixups': patches, 'load_relocations': relocations}
 
 
-def compiled_data(owner, owners, modules, mz):
-    """Take an entire relocation-free initialized segment from its fresh C OBJ."""
+def compiled_data(owner, owners, modules, mz, frames=None):
+    """Bind an entire initialized C data segment from its fresh C OBJ."""
     build = owner['build']
     code = next((r for r in owners if r['id'] == build['code_owner']), None)
     if code is None or code['kind'] != 'MATCHING_C' or code['source'] != owner['source']:
@@ -355,13 +356,46 @@ def compiled_data(owner, owners, modules, mz):
     part = module.segment_bytes(segment)
     if len(part) != module.segment_length(segment) or len(part) != owner['end'] - owner['start']:
         raise ValueError('Compiled data segment length differs from ownership')
-    if module.fixups_in(segment):
-        raise ValueError('Relocated compiled data is not supported yet')
+    frames = frames or {'_TEXT': 0, 'DGROUP': 0}
+    result = bytearray(part)
+    relocations, patches, occupied = [], [], set()
+    for f in module.fixups_in(segment):
+        try:
+            offset, width = f['offset'], f['width']
+        except (KeyError, TypeError) as error:
+            raise ValueError('Malformed compiled data fixup') from error
+        if offset < 0 or offset + width > len(result):
+            raise ValueError('Compiled data fixup straddles its owned segment')
+        positions = set(range(offset, offset + width))
+        if occupied & positions:
+            raise ValueError('Overlapping compiled data fixups')
+        occupied |= positions
+        symbol, kind = f['target'], f['target_kind']
+        if f['loc'] == 'pointer32' and width == 4 and not f['self_relative']:
+            if kind != 'external' or symbol not in code['build'].get('bindings', {}):
+                raise ValueError(f'Undeclared compiled data far pointer {symbol}')
+            binding = component_binding(code['build']['bindings'][symbol], owners, mz, frames, modules)
+            if binding['coordinate'] not in ('code_offset', 'DGROUP_offset'):
+                raise ValueError(f'Unsupported compiled data far pointer {symbol}')
+            addend = int.from_bytes(result[offset:offset + 2], 'little')
+            segment_addend = int.from_bytes(result[offset + 2:offset + 4], 'little')
+            value = (binding['offset'] + f['displacement'] + addend) & 0xFFFF
+            frame = frames['_TEXT'] if binding['coordinate'] == 'code_offset' else frames['DGROUP']
+            segment_value = (frame // 16 + segment_addend) & 0xFFFF
+            result[offset:offset + 4] = struct.pack('<HH', value, segment_value)
+            relocations.append(mz.load_offset(owner['start']) + offset + 2)
+            patches.append(dict(f, extent_offset=offset, addend=addend,
+                                resolved_value=value, segment_value=segment_value))
+            continue
+        raise ValueError(f'Unsupported compiled data fixup {f}')
     lo, hi = mz.load_offset(owner['start']), mz.load_offset(owner['end'] - 1) + 1
-    if any(lo <= r['load_offset'] < hi for r in mz.relocations):
-        raise ValueError('Compiled data owner unexpectedly contains MZ relocations')
-    return part, {'encoder': build['encoder'], 'code_owner': code['id'], 'segment': segment,
-                  'object_span': [0, len(part)], 'load_relocations': []}
+    expected_relocations = sorted(r['load_offset'] for r in mz.relocations
+                                  if lo <= r['load_offset'] < hi)
+    if sorted(relocations) != expected_relocations:
+        raise ValueError(f'{owner["id"]}: source relocation map differs: {relocations} != {expected_relocations}')
+    return bytes(result), {'encoder': build['encoder'], 'code_owner': code['id'], 'segment': segment,
+                          'object_span': [0, len(part)], 'fixups': patches,
+                          'load_relocations': relocations}
 
 
 def reconstruct(root, manifest_path, output, toolchain, dosbox):
@@ -420,7 +454,8 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
             part = project_path(root, owner['source']).read_bytes()
         elif owner['kind'] in ('MZ_HEADER', 'EXACT_DATA'):
             if owner.get('build', {}).get('encoder') == 'omf-segment-v1':
-                part, proof = compiled_data(owner, manifest['regions'], component_modules, mz)
+                part, proof = compiled_data(owner, manifest['regions'], component_modules, mz,
+                                            manifest['frames'])
                 proof['compile'] = receipts[owner['build']['code_owner']]
             else:
                 part, proof = encoded_parts[owner['id']]

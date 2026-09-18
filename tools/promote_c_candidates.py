@@ -57,7 +57,8 @@ def promote(recipe_path, root=ROOT):
             receipt = {'source_sha256': owner['build']['module_sha256']}
         elif owner['build']['encoder'] == 'omf-segment-v1':
             receipt = receipts[owner['build']['code_owner']]
-            data, proof = compiled_data(owner, proposed['regions'], modules, MZ.parse(original))
+            data, proof = compiled_data(owner, proposed['regions'], modules, MZ.parse(original),
+                                        proposed['frames'])
         else:
             source = project_path(root, owner['source'])
             data = encode_data(read_json(source), owner['build']['encoder'])

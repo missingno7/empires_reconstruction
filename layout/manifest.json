@@ -10504,16 +10504,64 @@
       }
     },
     {
-      "id": "RAW_009F8E",
+      "id": "F_9D8E",
       "start": 40846,
       "end": 40908,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/009F8E-009FCC.bin",
-      "original_symbol": null,
-      "artifact": "raw/009F8E-009FCC.bin",
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_9D8E.C",
+      "artifact": "regions/F_9D8E.bin",
       "expected_sha256": "c49179e559c15edf0fcf4ac1fcdfd6132e1374a9ea1b02343b38d160d2843930",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9d8e",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {
+          "_DATA": {
+            "owner": "DATA_125D",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "20-byte initialized C data segment"
+          }
+        },
+        "bindings": {
+          "_f01ce": {
+            "offset": 462,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete F_9D8E fixups"
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete F_9D8E fixups"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "direct call target from complete F_9D8E fixups"
+          },
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0,
+            "evidence": "functions/F_86C9.entry"
+          },
+          "_text118c": {
+            "owner": "TEXT_118C",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "initialized far pointer to the complete DS:118C text component"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly, initialized data and fresh full-extent OMF binding",
+        "upstream_entry": "docs/upstream-inventory.json:F_9D8E",
+        "upstream_extent_sha256": "c49179e559c15edf0fcf4ac1fcdfd6132e1374a9ea1b02343b38d160d2843930"
+      }
     },
     {
       "id": "F_9DCC",
@@ -18460,16 +18508,34 @@
       "classification": "static_data"
     },
     {
-      "id": "RAW_010DBC",
+      "id": "TEXT_118C",
       "start": 69052,
+      "end": 69261,
+      "kind": "EXACT_DATA",
+      "classification": "static_text",
+      "source": "src/data/TEXT_118C.json",
+      "artifact": "regions/TEXT_118C.bin",
+      "expected_sha256": "15906bc790213fbc39e32c7b51c0166ac5a404b5b2ab1401315d2bc82f859795",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_125D",
+      "start": 69261,
       "end": 69281,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010DBC-010EA1.bin",
-      "original_symbol": null,
-      "artifact": "raw/010DBC-010EA1.bin",
-      "expected_sha256": "b15f4954b546186eab859cf4704f4ddde1081db88cf91241c17afcb06962009b",
-      "matching_status": "EQUAL"
+      "kind": "EXACT_DATA",
+      "classification": "static_data",
+      "source": "src/F_9D8E.C",
+      "artifact": "regions/DATA_125D.bin",
+      "expected_sha256": "ae9355c01436b50e26ce34efc08a3774db1a7d1532694cd824944ca34a33615a",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_9D8E",
+        "segment": "_DATA"
+      }
     },
     {
       "id": "DATA_1271",

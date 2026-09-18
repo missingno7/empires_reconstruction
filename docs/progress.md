@@ -1,21 +1,21 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 29,534 bytes from raw
-fallback: 25,234 bytes of matching C/library regions, the 512-byte header,
+Full EXE identity is preserved. Follow-ups to MVP1 remove 29,701 bytes from raw
+fallback: 25,811 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 34,985 | 233 |
+| Freshly compiled matching C | 14,077 | 35,152 | 234 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 60 | 5 |
 | Independently encoded text | 0 | 50 | 4 |
-| Exact raw fallback | 62,621 | 33,087 | 56 |
+| Exact raw fallback | 62,621 | 32,920 | 56 |
 | Total | 79,154 | 79,154 | 356 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -126,8 +126,8 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 254 source proof units from **zero proven
-historical source modules**, and 1,650 declared owner-symbol bindings from
+The combined EXE metrics distinguish 255 source proof units from **zero proven
+historical source modules**, and 1,654 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 22,900 raw EXE bytes as unresolved machine code; overlapping entry/parent
 extents count once. The other 20,882 raw bytes remain unknown. Two palette owners account for

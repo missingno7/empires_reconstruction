@@ -1422,14 +1422,59 @@
     {
       "id": "RAW_0027B3",
       "start": 10163,
-      "end": 11309,
+      "end": 11142,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0027B3-002C2D.bin",
+      "source": "raw/0027B3-002B86.bin",
       "original_symbol": null,
-      "artifact": "raw/0027B3-002C2D.bin",
-      "expected_sha256": "f0314422f87144ba0c27f7b8482a94791f3e37f5c1092094ecc07f5c70160080",
+      "artifact": "raw/0027B3-002B86.bin",
+      "expected_sha256": "044c343a35d93d38ba8c910a70cc23e96958356a3a22417a7b183a967e69ee31",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_2986",
+      "start": 11142,
+      "end": 11309,
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/F_2986.C",
+      "artifact": "regions/F_2986.bin",
+      "expected_sha256": "95a624b99cf886b1c432150732b391e4b8959e7029f7ae2ff3e17fa2bbc3a98f",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f2986",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "raw F_03CC entry used by complete call fixups"
+          },
+          "_g00bc": {
+            "offset": 188,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word in complete F_2986 fixups"
+          },
+          "_gb1cc": {
+            "offset": 45516,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS far-array base in complete F_2986 fixup"
+          },
+          "_g893c": {
+            "offset": 35132,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS far-array base in complete F_2986 fixup"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_2986.json",
+        "upstream_extent_sha256": "95a624b99cf886b1c432150732b391e4b8959e7029f7ae2ff3e17fa2bbc3a98f"
+      }
     },
     {
       "id": "F_2A2D",

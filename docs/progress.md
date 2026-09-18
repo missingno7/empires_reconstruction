@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 35,984 | 248 |
+| Freshly compiled matching C | 14,077 | 36,045 | 249 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,859 | 51 |
+| Exact raw fallback | 62,621 | 31,798 | 51 |
 | Total | 79,154 | 79,154 | 376 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -126,13 +126,13 @@ Nested formats expose 596 four-bit images, 182 monochrome records and 256 glyphs
 while preserving 100 unknown records explicitly. Original game files and all raw/decoded/structured
 asset content remain ignored local inputs. See [archive-formats.md](archive-formats.md).
 
-The combined EXE metrics distinguish 269 source proof units from **zero proven
-historical source modules**, and 1,720 declared owner-symbol bindings from
+The combined EXE metrics distinguish 270 source proof units from **zero proven
+historical source modules**, and 1,727 declared owner-symbol bindings from
 **zero linker-resolved bindings**. Hash-pinned on-disk machine extents classify
 12,450 raw EXE bytes as unresolved machine code; overlapping entry/parent
-extents count once. The other 19,409 raw bytes remain unknown. Two palette owners account for
-1,536 embedded-asset bytes. There are now 572 component-owned bindings
-within fixed placement: 488 C/ASM entry references, 75 library bindings,
+extents count once. The other 19,348 raw bytes remain unknown. Two palette owners account for
+1,536 embedded-asset bytes. There are now 573 component-owned bindings
+within fixed placement: 489 C/ASM entry references, 75 library bindings,
 and nine structured-data references. Six module-segment bindings also resolve through
 compiler-initialized data owners. See [embedded-palettes.md](embedded-palettes.md).
 
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,859 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,798 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -554,3 +554,9 @@ wave-fifty-five proof](matching-c-wave55.md).
 `F_6CF0` adds six matching C bytes for the complete DGROUP-return routine at
 load offset `6CF0`. Its fresh object has one bound DGROUP fixup and no loader
 relocations. See [the wave-fifty-six proof](matching-c-wave56.md).
+
+## Fifty-seventh matching-C wave
+
+`F_E114` adds 61 matching C bytes for the complete far-pointer staging
+wrapper between `F_E0C0` and `F_E151`. Its fresh object has one bound code
+fixup and no loader relocations. See [the wave-fifty-seven proof](matching-c-wave57.md).

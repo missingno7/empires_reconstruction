@@ -16417,16 +16417,35 @@
       }
     },
     {
-      "id": "RAW_00E314",
+      "id": "F_E114",
+      "kind": "MATCHING_C",
+      "source": "src/F_E114.C",
       "start": 58132,
       "end": 58193,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00E314-00E351.bin",
-      "original_symbol": null,
-      "artifact": "raw/00E314-00E351.bin",
       "expected_sha256": "11fc272a2b30864576456162961c369681fd779581806f3636e890163937ac7d",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fe114",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_fe0c0": {
+            "coordinate": "code_offset",
+            "owner": "F_E0C0",
+            "public": "_fe0c0",
+            "addend": 0
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_E114",
+      "artifact": "regions/F_E114.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from raw code extent and fresh full-extent OMF binding",
+        "change": "Decode the complete 61-byte far-pointer staging wrapper and its 28-byte int buffer"
+      }
     },
     {
       "id": "F_E151",

@@ -20,9 +20,9 @@ publishing a changed manifest. `library-binding-evidence.json` records the
 old addresses and observed OMF-relative offsets for auditing; the build does
 not use this receipt to resolve references. Repeating the command is a no-op.
 
-Together with 488 C/ASM entry references and nine structured-data references,
-572 of 1,720 owner-symbol declarations now use component ownership. This is partial
+Together with 489 C/ASM entry references and nine structured-data references,
+573 of 1,727 owner-symbol declarations now use component ownership. This is partial
 symbol resolution within the fixed placement scaffold. It does not establish
 historical library selection order, source module boundaries, or real linker
-layout. Raw coverage is 31,859 EXE bytes, and all three
+layout. Raw coverage is 31,798 EXE bytes, and all three
 reconstructed game files remain byte-identical.

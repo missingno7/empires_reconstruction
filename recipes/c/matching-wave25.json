@@ -1,0 +1,270 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_8480",
+      "kind": "MATCHING_C",
+      "start": 34432,
+      "end": 35017,
+      "source": "src/F_8480.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f8480",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f020f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_020F.entry",
+            "owner": "F_020F",
+            "public": "_f020f",
+            "addend": 0
+          },
+          "_f6cea": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CEA.entry",
+            "owner": "F_6CEA",
+            "public": "_f6cea",
+            "addend": 0
+          },
+          "_f6ca6": {
+            "offset": 27814,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CA6.entry"
+          },
+          "_f7e07": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_7E07.entry",
+            "owner": "F_7E07",
+            "public": "_f7e07",
+            "addend": 0
+          },
+          "_f8434": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8434.entry",
+            "owner": "F_8434",
+            "public": "_f8434",
+            "addend": 0
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_gc11a": {
+            "offset": 49434,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC4A.phys"
+          },
+          "_gc108": {
+            "offset": 49416,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC38.phys"
+          },
+          "_gc106": {
+            "offset": 49414,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC36.phys"
+          },
+          "_gc10a": {
+            "offset": 49418,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC3A.phys"
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_f0355": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_0355.entry",
+            "owner": "F_0355",
+            "public": "_f0355",
+            "addend": 0
+          },
+          "_f03a5": {
+            "offset": 933,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A5.entry"
+          },
+          "_f03a2": {
+            "offset": 930,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A2.entry"
+          },
+          "_gc122": {
+            "offset": 49442,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC52.phys"
+          },
+          "_f6d3c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
+          },
+          "_gc128": {
+            "offset": 49448,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC58.phys"
+          },
+          "_gc12a": {
+            "offset": 49450,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC5A.phys"
+          },
+          "_gc104": {
+            "offset": 49412,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC34.phys"
+          },
+          "_gc110": {
+            "offset": 49424,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC40.phys"
+          },
+          "_gc120": {
+            "offset": 49440,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC50.phys"
+          },
+          "_gc10c": {
+            "offset": 49420,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC3C.phys"
+          },
+          "_f8267": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8267.entry",
+            "owner": "F_8267",
+            "public": "_f8267",
+            "addend": 0
+          },
+          "_f8378": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_8378.entry",
+            "owner": "F_8378",
+            "public": "_f8378",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_8480.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "11dc1d08d89e16701066128b11f5240e7e2f6ccee5ac58cf07c7c1e4fcbab371",
+      "provenance": {
+        "method": "local C reconstruction and fresh complete OMF comparison",
+        "upstream_entry_sha256": "cc60f69a07487d528310bedc0e3ebf4c8308fd0e7f023a22b11196027e29feff",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    },
+    {
+      "id": "F_7BFC",
+      "kind": "MATCHING_C",
+      "start": 32252,
+      "end": 32657,
+      "source": "src/F_7BFC.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7bfc",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f020f": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_020F.entry",
+            "owner": "F_020F",
+            "public": "_f020f",
+            "addend": 0
+          },
+          "_f6cea": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CEA.entry",
+            "owner": "F_6CEA",
+            "public": "_f6cea",
+            "addend": 0
+          },
+          "_f6ca6": {
+            "offset": 27814,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6CA6.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_01CE.entry",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A8.entry"
+          },
+          "_gc0fe": {
+            "offset": 49406,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC2E.phys"
+          },
+          "SCOPY@": {
+            "coordinate": "code_offset",
+            "evidence": "SCOPY OMF public SCOPY@",
+            "owner": "LIB_SCOPY",
+            "public": "SCOPY@",
+            "addend": 0
+          },
+          "_f6d3c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_6D3C.entry",
+            "owner": "F_6D3C",
+            "public": "_f6d3c",
+            "addend": 0
+          },
+          "_f03a5": {
+            "offset": 933,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A5.entry"
+          },
+          "_f03a2": {
+            "offset": 930,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A2.entry"
+          },
+          "_f0355": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_0355.entry",
+            "owner": "F_0355",
+            "public": "_f0355",
+            "addend": 0
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          }
+        }
+      },
+      "artifact": "regions/F_7BFC.bin",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "expected_sha256": "648f9c0f20591313109647707e3a65f388bdbe9d6bed30d7abf8b0ff7669028f",
+      "provenance": {
+        "method": "local C reconstruction and fresh complete OMF comparison",
+        "upstream_entry_sha256": "0cdd99f1c44a6c970009ec5c8c3d823db9be21c1e39c54247998bfc18e74ec9b",
+        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+      }
+    }
+  ]
+}

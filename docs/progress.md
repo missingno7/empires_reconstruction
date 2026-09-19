@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,596 | 262 |
+| Freshly compiled matching C | 14,077 | 36,733 | 265 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 31,156 | 34 |
+| Exact raw fallback | 62,621 | 31,019 | 34 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,156 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,019 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -658,3 +658,23 @@ The Turbo C source preserves the historical frame, far-string length
 calculation, DOS `INT 21h/AH=40h` register setup, and return sequence through
 inline assembler. Its fresh object has one `_strlen` fixup to the pinned
 `LIB_STRLEN` public and no loader relocations. See [the wave-seventy-seven proof](matching-c-wave77.md).
+
+## Seventy-eighth matching-C wave
+
+`F_652A` adds its complete 66-byte BIOS disk-sector reader as matching C. The
+fresh Turbo C object preserves the 0x200-byte stack buffer, three-sector
+`INT 13h` loop, direct `DS:C0C8` drive byte, and final DOS reset call. It has
+one verified DGROUP fixup and no MZ loader relocations. See [the wave-seventy-eight proof](matching-c-wave78.md).
+
+## Seventy-ninth matching-C wave
+
+`F_D818` adds its complete 13-byte DS:2F30 counter reset as matching C. The
+fresh object reproduces the exact frame, direct table-byte store, and return
+sequence with no fixups or loader relocations. See [the wave-seventy-nine proof](matching-c-wave79.md).
+
+## Eightieth matching-C wave
+
+`F_D825` adds its complete 58-byte DS:2F30 record append routine as matching C.
+The source preserves the historical byte counter update, compact three-byte
+record writes, and returned table pointer. The fresh object has no fixups or
+loader relocations. See [the wave-eighty proof](matching-c-wave80.md).

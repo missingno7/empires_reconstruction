@@ -5565,14 +5565,39 @@
     {
       "id": "RAW_00663A",
       "start": 26170,
-      "end": 26476,
+      "end": 26410,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00663A-00676C.bin",
+      "source": "raw/00663A-00672A.bin",
       "original_symbol": null,
-      "artifact": "raw/00663A-00676C.bin",
-      "expected_sha256": "d5e8bded00abadd3b6d5c7fb8149cfd06cf5386291f3db1027bdef22c5228ac6",
+      "artifact": "raw/00663A-00672A.bin",
+      "expected_sha256": "8f97e01ad3059dd42d94d61038e74b0736a016b57168bdd897699a4de5e9b5e0",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_652A",
+      "kind": "MATCHING_C",
+      "source": "src/F_652A.C",
+      "start": 26410,
+      "end": 26476,
+      "expected_sha256": "dc0c10d92378824b1922c8ec4762c486d5a4d760b9cd8ba5c84704c7a704704a",
+      "classification": "code",
+      "artifact": "regions/F_652A.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f652a",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_gc0c8": {
+            "offset": 49352,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS byte read at DS:C0C8"
+          }
+        },
+        "module_segments": {}
+      }
     },
     {
       "id": "F_656C",
@@ -15970,14 +15995,52 @@
     {
       "id": "RAW_00D81B",
       "start": 55323,
-      "end": 55903,
+      "end": 55832,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00D81B-00DA5F.bin",
+      "source": "raw/00D81B-00DA18.bin",
       "original_symbol": null,
-      "artifact": "raw/00D81B-00DA5F.bin",
-      "expected_sha256": "33b4b4918e0f866d2bf1faa7ddd102070b43666db7265b3ca002a8657b4a4d40",
+      "artifact": "raw/00D81B-00DA18.bin",
+      "expected_sha256": "c8bb7d8c3734b84a28fa9fca8edb822a913254a08d0516e22e725743568f0075",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "F_D818",
+      "kind": "MATCHING_C",
+      "source": "src/F_D818.C",
+      "start": 55832,
+      "end": 55845,
+      "expected_sha256": "df46e15c6875236761c89018a9df8d57bdfa106f337f8cf34f20b24153b0a805",
+      "classification": "code",
+      "artifact": "regions/F_D818.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd818",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_D825",
+      "kind": "MATCHING_C",
+      "source": "src/F_D825.C",
+      "start": 55845,
+      "end": 55903,
+      "expected_sha256": "e51476579f8aaa4e624797021a93d15157f3409af018062fb5f2919d52aff183",
+      "classification": "code",
+      "artifact": "regions/F_D825.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd825",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_D85F",

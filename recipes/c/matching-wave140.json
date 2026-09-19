@@ -1,0 +1,33 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_01138B_ZERO_PREFIX",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01138B_ZERO_PREFIX.json",
+      "start": 70539,
+      "end": 70558,
+      "expected_sha256": "d6fd62f5ce537d90ea3ea45841b17f34d727bcbc4128748cba14fb87c0ffd9d1",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_01138B_ZERO_PREFIX.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_011FAB_ZERO_PREFIX",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011FAB_ZERO_PREFIX.json",
+      "start": 73643,
+      "end": 73646,
+      "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_011FAB_ZERO_PREFIX.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    }
+  ]
+}

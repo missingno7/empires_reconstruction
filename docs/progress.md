@@ -8,9 +8,9 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 58,895 | 345 |
+| Freshly compiled matching C | 14,077 | 58,922 | 346 |
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
-| Known toolchain library | 0 | 5,384 | 42 |
+| Known toolchain library | 0 | 5,357 | 41 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
@@ -1190,3 +1190,19 @@ Wave 144 decodes two aligned relocation-free control tables with the strict
 `u16le-table-v1` encoder. Their 326 bytes are exact; mixed-format and
 relocation-backed regions remain raw. The raw frontier is now 4,611 bytes
 across 13 owners.
+
+## One-hundred-forty-fifth executable-data wave
+
+Wave 145 separates the relocation-free 151-byte level-completion message from
+the preceding 55-byte relocation-backed control prefix. The new unterminated
+`ascii-v1` source preserves every CR separator and the exact owner boundary.
+The raw frontier is now 4,460 bytes across 13 owners.
+
+## One-hundred-forty-sixth matching-C wave
+
+Wave 146 replaces the 27-byte `CC.LIB` `STRLEN` ownership source with a fresh
+Turbo C translation unit. Its inline historical instruction bytes compile to
+the exact `_strlen` public with no OMF fixups; the proprietary library module
+remains an independent cross-check. Matching-C coverage is now 58,922 bytes
+across 346 owners, and known-library ownership is 5,357 bytes across 41
+owners.

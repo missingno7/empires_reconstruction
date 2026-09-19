@@ -19,6 +19,11 @@ class TlinkStructureTests(unittest.TestCase):
         if report.get('mode', '').startswith(
                 'library_toupper_with_historical_demand_and_symbol_normalization'):
             self.assertIsNone(comparison['first_divergence'])
+            replacements = report.get('library_replacements', [])
+            strlen = next((item for item in replacements if item['owner'] == 'LIB_STRLEN'), None)
+            if strlen is not None:
+                self.assertEqual(strlen['expected_start'], strlen['actual']['offset'])
+                self.assertEqual(strlen['expected_length'], strlen['actual']['length'])
             toupper = report['library_comparison']['actual_toupper']
             self.assertIsNotNone(toupper)
             self.assertEqual(toupper['length'], report['library_comparison']['expected_length'])

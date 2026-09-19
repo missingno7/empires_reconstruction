@@ -1,10 +1,11 @@
 # First relocatable TLINK experiment
 
 The fixed-placement reconstruction remains the executable oracle. The new
-`tools/probe_tlink_layout.py` path compiles the 339 proven post-startup C
-owners with the pinned Turbo C toolchain, trims each OMF contribution to its
-owned `_TEXT` extent, inserts classified code-gap padding as temporary
-relocatable OMF contributions, and invokes a local Borland TLINK candidate.
+`tools/probe_tlink_layout.py` path compiles the 340 proven post-startup C
+owners with the pinned Turbo C toolchain. It stages 339 ordinary relocatable
+OMF contributions and one source-generated replacement for the `STRLEN`
+library module, inserts classified code-gap padding, and invokes a local
+Borland TLINK candidate.
 No load address is written into these objects.
 
 The local `C0C.OBJ` startup object is pinned in `layout/toolchain.json`. The
@@ -78,3 +79,12 @@ The initialized DATA tail and BSS tail remain explicitly temporary and are
 the next ownership frontier. The machine-readable report is generated at
 `build/tlink-structural-report.json` (ignored by Git), and the fixed
 reconstruction path is unchanged.
+
+Wave 146 also proves that a source-owned library contribution can retain its
+historical extraction position. The probe compiles `src/LIB_STRLEN.C`, replaces
+only the matching `_TEXT` LEDATA record in a temporary CC.LIB view, and lets
+TLINK select the `STRLEN` module from unresolved `_strlen` demand. The map
+places it at `0xF2C0` (load offset `62144`), exactly matching the fixed owner;
+the ordinary source rows, `_TEXT`, DGROUP, BSS and stack remain exact with no
+unresolved symbols. This is a linker adapter for the experiment, not a claim
+that the historical translation-unit boundary has been recovered.

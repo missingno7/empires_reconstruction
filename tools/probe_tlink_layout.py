@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
@@ -68,6 +69,63 @@ def linker_files(linker):
     return result
 
 
+def _omf_records(data):
+    """Yield ``(kind, start, end)`` for one OMF module or object."""
+    at = 0
+    while at < len(data):
+        if at + 3 > len(data):
+            raise ValueError('truncated OMF record')
+        length = struct.unpack_from('<H', data, at + 1)[0]
+        end = at + 3 + length
+        if end > len(data) or length < 1:
+            raise ValueError('invalid OMF record length')
+        yield data[at], at, end
+        at = end
+
+
+def replace_library_module_text(library, module_name, replacement_object):
+    """Replace one library LEDATA record with fresh source-object bytes.
+
+    The replacement is deliberately limited to a same-sized ``_TEXT`` LEDATA
+    record.  The library's page layout, dictionary and module metadata remain
+    unchanged, so this is a structural linker experiment rather than a new
+    library format claim.
+    """
+    page = struct.unpack_from('<H', library, 1)[0] + 3
+    module_start = page
+    while module_start < len(library) and library[module_start] == OmfReader.THEADR:
+        at = module_start
+        name = ''
+        while at < len(library):
+            kind = library[at]
+            length = struct.unpack_from('<H', library, at + 1)[0]
+            if kind == OmfReader.THEADR:
+                size = library[at + 3]
+                name = library[at + 4:at + 4 + size].decode('latin1')
+            at += 3 + length
+            if kind in (OmfReader.MODEND16, OmfReader.MODEND32):
+                break
+        module_end = at
+        if name == module_name:
+            module = library[module_start:module_end]
+            candidate = next((replacement_object[a:b] for k, a, b in _omf_records(replacement_object)
+                              if k == OmfReader.LEDATA16), None)
+            original = next(((a, b) for k, a, b in _omf_records(module)
+                             if k == OmfReader.LEDATA16), None)
+            if candidate is None or original is None:
+                raise ValueError(f'{module_name}: missing _TEXT LEDATA record')
+            a, b = original
+            if len(candidate) != b - a:
+                raise ValueError(f'{module_name}: source LEDATA size differs from library module')
+            patched_module = module[:a] + candidate + module[b:]
+            if OmfReader().read(patched_module, module_name).segment_bytes('_TEXT') != \
+                    OmfReader().read(replacement_object, module_name).segment_bytes('_TEXT'):
+                raise ValueError(f'{module_name}: source/library text replacement failed')
+            return library[:module_start] + patched_module + library[module_end:]
+        module_start = ((module_end + page - 1) // page) * page
+    raise ValueError(f'{module_name}: module not found in library')
+
+
 def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         demand_historical_library=False, normalize_recovered_symbols=False,
         scaffold_dgroup=False, normalize_case_symbols=False,
@@ -88,6 +146,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
               if o['kind'] == 'MATCHING_C' and o['start'] >= 512 + startup_length]
     compile_owners = [o for o in owners
                       if not (promote_toupper and o['id'] == 'F_F9BE')]
+    library_replacements = {
+        o['id']: o['build']['linker_library_module']
+        for o in compile_owners
+        if o.get('build', {}).get('linker_library_module')
+    }
+    linkable_owners = [o for o in compile_owners if o['id'] not in library_replacements]
     root_build = root / 'build'
     root_build.mkdir(exist_ok=True)
     work = Path(tempfile.mkdtemp(prefix='tlink-structural-', dir=root_build)).resolve()
@@ -102,8 +166,13 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                              OmfReader().read(c0c.read_bytes()).publics)
     owner_by_id = {owner['id']: owner for owner in compile_owners}
     load_regions = sorted(manifest['regions'], key=lambda item: item['start'])
+    library_blob = cc_lib.read_bytes()
+    for owner_id, module_name in library_replacements.items():
+        library_blob = replace_library_module_text(
+            library_blob, module_name,
+            (compile_work / receipts[owner_id]['object']).read_bytes())
     library_available = {name: blob for name, blob in
-                         OmfReader().split_library(cc_lib.read_bytes())}
+                         OmfReader().split_library(library_blob)}
 
     def library_symbol_at(module_name, offset):
         """Return the public that best names an internal library offset."""
@@ -194,7 +263,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     bc_bin.mkdir(parents=True)
     dos_work.mkdir(parents=True)
     shutil.copyfile(c0c, tc_lib / 'C0C.OBJ')
-    shutil.copyfile(cc_lib, tc_lib / 'CC.LIB')
+    (tc_lib / 'CC.LIB').write_bytes(library_blob)
     for path in linker_files(linker):
         shutil.copyfile(path, bc_bin / path.name.upper())
     scaffold = []
@@ -263,9 +332,11 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             trimmed = trim_text_contribution(source_bytes, owned_length)
             staged = dos_work / Path(receipt['object']).name
             staged.write_bytes(trimmed)
-            object_names.append(staged.name)
+            replacement_module = library_replacements.get(owner['id'])
+            if replacement_module is None:
+                object_names.append(staged.name)
             scaffold.append({
-                'kind': 'owner',
+                'kind': 'library_replacement_source' if replacement_module else 'owner',
                 'owner': owner['id'],
                 'object': staged.name,
                 'original_sha256': sha(original_bytes),
@@ -273,6 +344,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                 'original_size': len(source_bytes),
                 'staged_size': len(trimmed),
                 'owned_text_length': owned_length,
+                **({'library_module': replacement_module} if replacement_module else {}),
                 **({'transforms': transforms} if transforms else {}),
             })
         elif (region.get('classification') == 'alignment_padding'
@@ -407,7 +479,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     segments, rows = parse_map(map_path) if map_path.exists() else ([], [])
     code_rows = [row for row in rows if row['module'].startswith('R')]
     divergences = []
-    for index, owner in enumerate(compile_owners):
+    for index, owner in enumerate(linkable_owners):
         expected_start = owner['start'] - 512
         expected_length = owner['end'] - owner['start']
         if index >= len(code_rows):
@@ -456,9 +528,18 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                  'dgroup_sizing': sizing},
         'segments': segments,
         'code_rows': rows,
-        'code_comparison': {'expected_owner_count': len(compile_owners),
+        'code_comparison': {'expected_owner_count': len(linkable_owners),
+                            'source_owner_count': len(compile_owners),
+                            'library_replacement_count': len(library_replacements),
                             'actual_code_row_count': len(code_rows),
                             'first_divergence': divergences[0] if divergences else None},
+        'library_replacements': [
+            {'owner': owner_id, 'module': module_name,
+             'expected_start': next(o['start'] - 512 for o in owners if o['id'] == owner_id),
+             'expected_length': next(o['end'] - o['start'] for o in owners if o['id'] == owner_id),
+             'actual': next((row for row in rows if row['module'].upper() == module_name.upper()), None)}
+            for owner_id, module_name in library_replacements.items()
+        ],
         'library_comparison': {
             'target_owner': 'F_F9BE',
             'expected_start': next(o['start'] - 512 for o in owners if o['id'] == 'F_F9BE'),

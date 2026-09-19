@@ -375,11 +375,19 @@ def make_dgroup_scaffold(data: bytes, bss_length: int, publics=None,
         public_records[segment].append(bytes((len(encoded),)) + encoded
                                         + struct.pack('<H', offset) + b'\x00')
     for segment, entries in public_records.items():
-        if entries:
-            records.append(_record(OmfReader.PUBDEF16,
-                                   bytes((0, segment)) + b''.join(entries)))
-    if data:
-        records.append(_record(OmfReader.LEDATA16, bytes((1, 0, 0)) + data))
+        body = bytes((0, segment))
+        for entry in entries:
+            if len(body) + len(entry) > 1000:
+                records.append(_record(OmfReader.PUBDEF16, body))
+                body = bytes((0, segment))
+            body += entry
+        if len(body) > 2:
+            records.append(_record(OmfReader.PUBDEF16, body))
+    # Keep records within the historical linker's input buffer. Offsets are
+    # contribution-relative; chunking changes neither layout nor contents.
+    for offset in range(0, len(data), 1000):
+        records.append(_record(OmfReader.LEDATA16,
+                               b'\x01' + struct.pack('<H', offset) + data[offset:offset + 1000]))
     records.append(_record(OmfReader.MODEND16, b'\x00'))
     result = b''.join(records)
     checked = OmfReader().read(result, module_name + '.OBJ')

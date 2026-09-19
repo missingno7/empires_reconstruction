@@ -31,18 +31,20 @@
     },
     {
       "target": "Original modules and historical linker",
-      "state": "open investigation, not demonstrated blocked",
-      "matches": "268 independent source proof units, 41 complete pinned library code contributions, one complete library data contribution and all 106 MZ relocations. Fixed placement proves the full EXE. The four-function shared-compilation experiment does not establish historical module boundaries.",
-      "first_unresolved_fact": "Original translation-unit grouping, module DATA/BSS bases, linker input ordering and relocation-generation ordering are not reconstructed.",
+      "state": "exact historical linker runs; byte-level DATA/BSS and binding divergence",
+      "matches": "Turbo Link 2.0 full scaffold: zero errors/unresolved symbols; complete code placement and DGROUP/BSS/STACK bases match. With/without demand object produces identical EXE hashes. C0C extent and invariant bytes strongly evidenced.",
+      "first_unresolved_fact": "File 0x06: relocation count 56 versus 106. Load 0xC8: C0C _BSSEND fixup CACC versus CAC8. DATA starts differing at load FAC4.",
       "evidence": [
         "layout/manifest.json",
         "layout/mz-header.json",
         "tools/omf.py",
         "recipes/modules/C_6C26_6C87.json",
-        "docs/module-group-evidence.json"
+        "docs/module-group-evidence.json",
+        "docs/tlink20-full-scaffold.md",
+        "docs/structural-status.json"
       ],
-      "unblock": "Test shared units using public order and shared data evidence; compare linker experiments against the fixed-placement output.",
-      "leverage": "1,727 declared owner-symbol bindings could progressively acquire module/linker relationships. Historical source modules and linker-resolved bindings remain zero proven."
+      "unblock": "Recover source-specific aliases, actual DATA contributions and BSS boundaries; encode data pointer fixups. Preserve natural layout without adjusting arbitrary padding.",
+      "leverage": "Remove 13931 oracle-copied DATA bytes and 37253 synthetic BSS bytes; restore 51 missing relocation sites and explain one extra site."
     },
     {
       "target": "EXE raw-data classification and embedded assets",

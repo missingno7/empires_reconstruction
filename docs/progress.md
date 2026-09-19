@@ -1,5 +1,11 @@
 # Incremental reconstruction — 2026-09-18
 
+Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
+demand object, with zero errors/unresolved symbols and exact segment bases.
+The linked bytes still differ (56/106 relocations; first load difference 0xC8).
+See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
+
+
 Full EXE identity is preserved. Follow-ups to MVP1 remove 53,970 bytes from raw
 fallback through matching C, toolchain libraries, structured headers, palettes,
 compiled data, independently encoded text and static data.
@@ -1224,7 +1230,7 @@ known-library ownership is 5,300 bytes across 40 owners.
 ## Structural linker milestone
 
 The local Turbo C 2.0 archive also supplies Turbo Link 2.0. Its pinned hash is
-`997fcac6089fa88d3f868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7`.
+`997fcac6089fa88f3d868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7`.
 With the current recovered objects and temporary symbol adapters, a no-demand
 Turbo Link 2.0 run produces `_TEXT` `0x00000..0x0FA22`, 342 map rows, and no
 code-placement divergence. Removing the historical-library demand object does

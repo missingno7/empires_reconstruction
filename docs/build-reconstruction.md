@@ -1,5 +1,11 @@
 # Reconstruct the build, not only its output
 
+Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
+demand object, with zero errors/unresolved symbols and exact segment bases.
+The linked bytes still differ (56/106 relocations; first load difference 0xC8).
+See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
+
+
 Project-owner clarification, 2026-09-18. The final build must emerge from
 independent reconstructed components. Original game files are verification
 fixtures, not normal sources for unknown ranges or resources. Keep the

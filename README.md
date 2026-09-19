@@ -1,5 +1,11 @@
 # Empires reconstruction
 
+Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
+demand object, with zero errors/unresolved symbols and exact segment bases.
+The linked bytes still differ (56/106 relocations; first load difference 0xC8).
+See [the checkpoint](docs/tlink20-full-scaffold.md) and [generated metrics](docs/structural-status.json).
+
+
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.

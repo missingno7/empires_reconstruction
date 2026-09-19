@@ -30,11 +30,13 @@ class TlinkStructureTests(unittest.TestCase):
             self.assertEqual(toupper['offset'], report['library_comparison']['expected_start'])
             self.assertEqual(report['segments'][0]['length'], 0xFA23)
             self.assertEqual(report['segments'][1]['start'], 0xFA30)
-            if report.get('mode', '').endswith('_and_dgroup_scaffold'):
+            if (report.get('options', {}).get('scaffold_dgroup') or
+                    report.get('mode', '').endswith('_and_dgroup_scaffold')):
                 stack = next(segment for segment in report['segments']
                              if segment['name'] == '_STACK')
                 self.assertEqual(stack['start'], 0x1C500)
                 self.assertEqual(report['link']['unresolved_count'], 0)
+                self.assertEqual(report['link'].get('errors', []), [])
         else:
             divergence = comparison['first_divergence']
             if report.get('mode') == 'library_toupper_promotion':

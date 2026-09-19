@@ -26,10 +26,6 @@ from reconstruct import ROOT, compile_sources, read_json, sha, write_json
 
 
 DEFAULT_LINKER = ROOT / 'toolchain/TLINK.EXE'
-if not DEFAULT_LINKER.exists():
-    # Keep the older comparison candidate as a fallback for checkouts that
-    # have not installed the optional historical linker yet.
-    DEFAULT_LINKER = Path(r'D:/Games/DOS/dos_recosystem/aladdin_forged/toolchain/dos/BC/BIN/TLINK.EXE')
 RECOVERED_SYMBOL_ALIASES = {
     'F_233E': [('_delay', '_f6c57')],
     'F_56C6': [('_delay', '_f6c57')],
@@ -100,6 +96,10 @@ def compare_linked_executable(candidate, oracle):
         'fields_equal': candidate_fields == oracle_fields,
         'relocation_count_equal': len(candidate_mz.relocations) == len(oracle_mz.relocations),
         'relocation_order_equal': candidate_mz.relocations == oracle_mz.relocations,
+        'missing_sites': sorted({r['load_offset'] for r in oracle_mz.relocations} -
+                                {r['load_offset'] for r in candidate_mz.relocations}),
+        'extra_sites': sorted({r['load_offset'] for r in candidate_mz.relocations} -
+                              {r['load_offset'] for r in oracle_mz.relocations}),
     }
     candidate_load = candidate_mz.load_image(candidate_bytes)
     oracle_load = oracle_mz.load_image(oracle_bytes)
@@ -569,6 +569,8 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     result, command, log, map_path, exe_path, response = link_once('FINAL', object_names)
     unresolved = [line.strip() for line in log.splitlines()
                   if 'Undefined symbol' in line]
+    errors = [line.strip() for line in log.splitlines()
+              if re.search(r'error:|undefined symbol|bad object file|fatal', line, re.I)]
     segments, rows = parse_map(map_path) if map_path.exists() else ([], [])
     code_rows = [row for row in rows if row['module'].startswith('R')]
     divergences = []
@@ -605,7 +607,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                  else 'library_toupper_with_historical_demand' if demand_historical_library
                  else 'library_toupper_promotion' if promote_toupper
                  else 'ordinary_c_owners'),
-        'status': 'MAP_AVAILABLE' if map_path.exists() else 'LINK_FAILED',
+        'status': 'MAP_AVAILABLE' if map_path.exists() and exe_path.exists() and not errors else 'LINK_FAILED',
+        'options': {'demand_historical_library': demand_historical_library,
+                    'scaffold_dgroup': scaffold_dgroup,
+                    'normalize_recovered_symbols': normalize_recovered_symbols,
+                    'normalize_case_symbols': normalize_case_symbols,
+                    'expose_internal_labels': expose_internal_labels},
         'linker': {'path': str(linker), 'sha256': sha(linker.read_bytes()),
                    'files': [{'name': p.name, 'sha256': sha(p.read_bytes())}
                              for p in linker_files(linker)]},
@@ -616,6 +623,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                     'session': compile_session},
         'relocatable_scaffold': scaffold,
         'link': {'returncode': result.returncode, 'command': command,
+                 'errors': errors, 'log': log,
                  'unresolved_symbols': unresolved[:200],
                  'unresolved_count': len(unresolved),
                  'dgroup_sizing': sizing},

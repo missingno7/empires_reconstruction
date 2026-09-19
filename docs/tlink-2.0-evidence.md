@@ -1,5 +1,11 @@
 # Turbo Link 2.0 evidence
 
+Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
+demand object, with zero errors/unresolved symbols and exact segment bases.
+The linked bytes still differ (56/106 relocations; first load difference 0xC8).
+See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
+
+
 The pinned Turbo C 2.0 distribution contains `disk2/TLINK.EXE` in the local
 `turboc20.zip` archive. Its DOS banner is:
 

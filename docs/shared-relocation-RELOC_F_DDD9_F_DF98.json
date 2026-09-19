@@ -1,5 +1,5 @@
 {
-  "status": "COMPATIBLE_MODULE_FIXUPP_ORDER_OPEN",
+  "status": "COMPATIBLE_MODULE_WITH_CHECKED_FIXUPP_ADAPTER",
   "candidate": "RELOC_F_DDD9_F_DF98",
   "historical_module_proven": false,
   "source_units_combined": 4,
@@ -12,9 +12,14 @@
     {"name": "_fdf98", "offset": 447}
   ],
   "group_relocation_order": {
-    "actual": [56837, 56859, 56872, 56891, 56913, 56938, 57020, 57044, 57266, 57344],
+    "actual": [57344, 57266, 57044, 57020, 56938, 56913, 56891, 56872, 56859, 56837],
     "expected": [57344, 57266, 57044, 57020, 56938, 56913, 56891, 56872, 56859, 56837],
-    "equal": false
+    "equal": true
+  },
+  "fixupp_order_adapter": {
+    "segment": "_TEXT",
+    "order": "descending",
+    "semantic_fixups_unchanged": true
   },
   "link": {
     "code_placement_equal": true,
@@ -23,6 +28,8 @@
     "relocation_pairs_equal": true,
     "differing_bytes_outside_relocation_table": 0
   },
-  "source_recipe_sha256": "8043f6993b19c365d3c6f45927b4136913ed41e452e4fb4f62eb0b4d49ae5276",
-  "limitation": "Exact compatible compiler object; current inline-ASM FIXUPP batching does not reproduce historical relocation order"
+  "source_recipe_sha256": "224959eccb09e120ffe10fbdc6727eabe9f2ef5c5cbc29884fdc7875cd225722",
+  "source_object_sha256": "a12d2671ea49684f82e97b9c8aa511ccb1c321ab39ab8eea5230e996d4fabe20",
+  "staged_object_sha256": "8c25eb1157529a41722a6d711aa5e5724f1fff31ec23d9cbfc0a26d2150a765a",
+  "limitation": "Exact compatible compiler object; historical source that naturally emits the observed FIXUPP order remains open"
 }

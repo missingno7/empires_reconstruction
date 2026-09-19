@@ -12,7 +12,7 @@ All three candidates now pass fresh compilation and the complete source-DATA lin
 |---|---:|---:|---:|---|
 | C_75F3_7856 | 5 | 611 | 53 | All 3 entries match |
 | RELOC_F_AD25_F_ADCF | 2 | 544 | 48 | All 6 entries match |
-| RELOC_F_DDD9_F_DF98 | 4 | 700 | 17 | 10 sites match; order differs |
+| RELOC_F_DDD9_F_DF98 | 4 | 700 | 17 | Checked adapter makes all 10 match |
 
 The second interval needed one shared, guarded declaration of the existing
 27-byte record type. Both independent functions still compile exactly. The
@@ -26,9 +26,11 @@ inline-ASM capsule suppresses duplicate helper declarations in shared mode and
 lets Turbo C supply the final `ret`; standalone compilation remains unchanged.
 The grouped object has the exact public offsets and 17 checked fixups, and it
 replaces four TEXT objects without moving downstream code. Its ten MZ entries
-remain ascending rather than the original descending order because the current
-inline assembler emits separate FIXUPP batches. This is a compatible module,
-not yet a strongly evidenced historical module.
+are ascending in the fresh compiler object because the current inline-ASM
+capsule differs from ordinary Turbo C FIXUPP emission. A checked relocatable
+adapter orders those explicit subrecords descending without changing any
+relocation semantics. TLINK then emits the original order. This is still a
+compatible module, not yet a strongly evidenced historical module.
 
 Reproduce both replacements:
 
@@ -41,6 +43,6 @@ python tools/probe_shared_module_link.py --source-data --recipe recipes/modules/
 Receipts: [five-function group](shared-relocation-C_75F3_7856.json),
 [combined link after the second group](shared-relocation-RELOC_F_AD25_F_ADCF.json).
 The [arithmetic group receipt](shared-relocation-RELOC_F_DDD9_F_DF98.json)
-records the exact load image and remaining FIXUPP ordering difference. The
-fixed game build also remains byte-identical. After the verified DATA/code
-interleaving constraints, the first relocation-order mismatch is this group.
+records the exact load image and the explicit FIXUPP adapter. The fixed game
+build also remains byte-identical. With verified DATA/code interleaving, the
+historical linker now emits the complete byte-identical EXE.

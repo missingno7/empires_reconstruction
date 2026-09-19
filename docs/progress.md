@@ -1,14 +1,20 @@
-# Incremental reconstruction — 2026-09-18
+# Incremental reconstruction — 2026-09-19
+
+[The exact structural-link experiment](exact-structural-link.md) now makes
+Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
+inputs. All 106 relocation entries match in order. Candidate DATA/code
+interleaving, a checked arithmetic FIXUPP-order adapter, synthetic BSS and
+symbol adapters remain explicitly open.
 
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table
-prefix to 72 entries. The first remaining file difference is at `0x142`; these
+prefix to all 106 entries and produces the byte-identical EXE. These
 ordering constraints do not prove historical translation-unit boundaries.
 
-[Relocation-order grouping](relocation-grouping.md) now puts two verified
-compiler TEXT modules in one source-DATA link, replacing seven separate objects.
-All nine relocations within those groups have the original order and the full
-load image remains exact. A third interval is blocked by an inline-ASM capsule.
+[Relocation-order grouping](relocation-grouping.md) now puts three verified
+compatible compiler TEXT modules in one source-DATA link, replacing eleven
+separate objects. The inline-ASM arithmetic group needs a checked relocatable
+FIXUPP-order adapter; TLINK then emits its ten relocations in historical order.
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
@@ -35,10 +41,10 @@ full links with and without demand still have identical output. Empty-segment
 extent accounting is corrected; BSSEND remains two bytes above its oracle value.
 See [the detailed checkpoint](tlink20-full-scaffold.md).
 
-Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
-demand object, with zero errors/unresolved symbols and exact segment bases.
-The linked bytes still differ (56/106 relocations; first load difference 0xC8).
-See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
+The older aggregate full-scaffold remains a diagnostic comparison. The current
+source-DATA/interleaving path is byte-identical under Turbo Link 2.0; see
+[the exact checkpoint](exact-structural-link.md) and
+[generated metrics](structural-status.json).
 
 
 Full EXE identity is preserved. Follow-ups to MVP1 remove 58,566 bytes from raw

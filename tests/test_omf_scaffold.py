@@ -5,7 +5,9 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from omf import OmfReader
-from omf_scaffold import make_text_padding, remove_public, trim_text_contribution, make_dgroup_scaffold, _records
+from omf_scaffold import (make_text_padding, remove_public, trim_text_contribution,
+                          make_dgroup_scaffold, order_explicit_fixupp_subrecords, _records)
+from pointer_records import records_object
 
 
 class OmfScaffoldTests(unittest.TestCase):
@@ -46,6 +48,19 @@ class OmfScaffoldTests(unittest.TestCase):
         self.assertEqual(trimmed.segment_bytes('_TEXT'), original.segment_bytes('_TEXT'))
         self.assertEqual(trimmed.fixups, original.fixups)
         self.assertNotIn('_getkey', {public['name'] for public in trimmed.publics})
+
+    def test_explicit_fixupp_order_changes_only_encounter_order(self):
+        document = {'format': 'u16-farptr-u8-farptr-u8-tail8-v1', 'records': [
+            {'word': 0, 'pointer_a': {'target': 'A', 'addend': 0}, 'byte_a': 0,
+             'pointer_b': {'target': 'B', 'addend': 0}, 'byte_b': 0,
+             'tail': [0] * 8}]}
+        source = records_object(document, 'TABLE')
+        ordered = order_explicit_fixupp_subrecords(source, '_DATA', descending=True)
+        before, after = OmfReader().read(source), OmfReader().read(ordered)
+        self.assertEqual([f['offset'] for f in before.fixups], [2, 7])
+        self.assertEqual([f['offset'] for f in after.fixups], [7, 2])
+        self.assertEqual(before.segment_bytes('_DATA'), after.segment_bytes('_DATA'))
+        self.assertEqual(sorted(before.fixups, key=repr), sorted(after.fixups, key=repr))
 
 
 if __name__ == '__main__':

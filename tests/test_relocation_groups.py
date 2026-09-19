@@ -28,7 +28,7 @@ class RelocationGroupTests(unittest.TestCase):
             self.assertEqual(len(report['group_relocation_order']['actual']), relocations)
             self.assertFalse(report['historical_module_proven'])
 
-    def test_arithmetic_group_preserves_image_but_exposes_fixupp_order(self):
+    def test_arithmetic_group_adapter_preserves_image_and_fixupp_order(self):
         path = ROOT / 'build/shared-source-data-link-report_RELOC_F_DDD9_F_DF98.json'
         if not path.exists():
             self.skipTest('local arithmetic shared-source link has not run')
@@ -36,7 +36,9 @@ class RelocationGroupTests(unittest.TestCase):
         self.assertTrue(report['source_data_mode'])
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertEqual(len(report['group_relocation_order']['actual']), 10)
-        self.assertFalse(report['group_relocation_order']['equal'])
+        self.assertTrue(report['group_relocation_order']['equal'])
+        self.assertEqual(report['fixupp_order_adapter'],
+                         {'segment': '_TEXT', 'order': 'descending'})
         self.assertFalse(report['historical_module_proven'])
 
 

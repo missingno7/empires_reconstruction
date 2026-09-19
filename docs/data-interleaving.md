@@ -1,9 +1,8 @@
 # Source DATA and code object interleaving
 
-Turbo Link 2.0 now matches the first 72 relocation-table entries in order,
+Turbo Link 2.0 now matches all 106 relocation-table entries in order,
 with the complete load image, fixed MZ fields, all 106 relocation pairs, and
-segment/code placement unchanged. The first remaining EXE difference is at
-file offset `0x142`. There are no differences outside the relocation table.
+segment/code placement unchanged. The complete EXE is byte-identical.
 
 The [candidate recipe](../recipes/data/interleaving-candidate.json) moves four
 advancing prefixes of existing DATA objects between code contributions:
@@ -22,7 +21,7 @@ boundary that preserves the observed alignment. Nonrelocating contributions leav
 module boundaries ambiguous, so this is an ordering constraint rather than
 proof of historical translation units.
 
-After the two shared-module links described in
+After the three shared-module links described in
 [relocation grouping](relocation-grouping.md), run:
 
 ```powershell
@@ -33,7 +32,8 @@ python -m unittest tests.test_data_interleaving tests.test_relocation_groups
 The [receipt](data-interleaving.json) records the linked byte comparison.
 The former four-record component, one-byte compiled initializer, and 43-byte
 raw owner are now one six-record typed table plus a four-byte u16 trailer.
-The next divergence is the arithmetic interval F_DDD9 through F_DF98, whose
-inline-ASM capsule currently blocks a single shared compilation. Raw DATA, the
-unpartitioned BSS reserve, and symbol adapters still prevent claiming a
-recovered build.
+The arithmetic interval F_DDD9 through F_DF98 now compiles as one exact object.
+A checked OMF adapter orders its explicit FIXUPP subrecords like historical
+Turbo C output; TLINK then produces the byte-identical file. Raw DATA, the
+unpartitioned BSS reserve, object-order evidence and symbol adapters still
+prevent claiming a recovered build.

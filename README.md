@@ -5,11 +5,12 @@ without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module
 adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
-Current source-DATA checkpoint: Turbo Link 2.0 links without the historical
-demand object, with zero errors/unresolved symbols, exact segment bases, the
-exact load image, and all 106 relocation sites. Source-object ordering now
-matches the first 72 relocation entries; historical module grouping remains.
-See [the checkpoint](docs/data-interleaving.md) and [generated metrics](docs/structural-status.json).
+Current structural checkpoint: the pinned Turbo Link 2.0 now emits a
+byte-identical `AEPROG.EXE` from relocatable code and source-DATA inputs, with
+all 106 relocations in order. Temporary object-order, FIXUPP, BSS and symbol
+adapters remain, so this is not yet the recovered historical build. See
+[the exact-link checkpoint](docs/exact-structural-link.md) and
+[generated metrics](docs/structural-status.json).
 
 
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file

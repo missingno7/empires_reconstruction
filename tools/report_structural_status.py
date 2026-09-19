@@ -17,6 +17,8 @@ def status(root, report):
     scaffolds = [s for s in report['relocatable_scaffold'] if s['kind'] != 'owner']
     source_path = root / 'build/source-data-link-report.json'
     source = read_json(source_path) if source_path.exists() else None
+    exact_path = root / 'build/exact-structural-link-report.json'
+    exact = read_json(exact_path) if exact_path.exists() else None
     return {
         'format': 'empires-structural-status-v1',
         'ownership': {kind: {'bytes': sizes[kind], 'owners': counts[kind]} for kind in sorted(counts)},
@@ -46,6 +48,15 @@ def status(root, report):
             'oracle_copied_initialized_data_bytes': source['oracle_copied_initialized_data_bytes'],
             'local_raw_source_bytes': source['local_raw_source_bytes'],
             'synthetic_bss_bytes': source['synthetic_bss_bytes'],
+        },
+        'exact_structural_experiment': None if exact is None else {
+            'status': exact['status'],
+            'whole_exe_equal': exact['byte_comparison']['full_file']['equal'],
+            'sha256': exact['byte_comparison']['candidate_sha256'],
+            'relocation_order_equal': exact['byte_comparison']['mz']['relocation_order_equal'],
+            'load_image_equal': exact['byte_comparison']['load_image']['equal'],
+            'remaining_adapters': exact['remaining_adapters'],
+            'whole_build_reconstruction_complete': exact['whole_build_reconstruction_complete'],
         },
     }
 

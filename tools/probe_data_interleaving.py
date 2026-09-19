@@ -107,7 +107,7 @@ def run(input_path, recipe_path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input-report', type=Path, default=ROOT / 'build/shared-source-data-link-report_RELOC_F_AD25_F_ADCF.json')
+    parser.add_argument('--input-report', type=Path, default=ROOT / 'build/shared-source-data-link-report_RELOC_F_DDD9_F_DF98.json')
     parser.add_argument('--recipe', type=Path, default=ROOT / 'recipes/data/interleaving-candidate.json')
     args = parser.parse_args()
     run(args.input_report, args.recipe)

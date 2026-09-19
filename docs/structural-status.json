@@ -247,5 +247,22 @@
     "oracle_copied_initialized_data_bytes": 0,
     "local_raw_source_bytes": 4006,
     "synthetic_bss_bytes": 37250
+  },
+  "exact_structural_experiment": {
+    "status": "BYTE_IDENTICAL_STRUCTURAL_EXPERIMENT",
+    "whole_exe_equal": true,
+    "sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+    "relocation_order_equal": true,
+    "load_image_equal": true,
+    "remaining_adapters": [
+      "candidate DATA/code object interleaving",
+      "arithmetic-module FIXUPP subrecord ordering",
+      "unpartitioned synthetic BSS reserve",
+      "recovered symbol aliases",
+      "EXTDEF case normalization",
+      "injected internal publics",
+      "local raw DATA source components"
+    ],
+    "whole_build_reconstruction_complete": false
   }
 }

@@ -1,31 +1,39 @@
 {
-  "status": "LAYOUT_PRESERVED",
-  "moves": [
+  "format": "empires-exact-structural-link-v1",
+  "status": "BYTE_IDENTICAL_STRUCTURAL_EXPERIMENT",
+  "linker": {
+    "path": "TLINK.EXE",
+    "version_banner": "Turbo Link  Version 2.0  Copyright (c) 1987, 1988 Borland International",
+    "sha256": "997fcac6089fa88f3d868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7",
+    "role": "historical_linker_candidate"
+  },
+  "steps": [
     {
-      "data_through": "RAW_01075A",
-      "after_code": "F_6181",
-      "before_next_relocating_code": "F_699E"
+      "name": "source_data",
+      "status": "LINKED"
     },
     {
-      "data_through": "PAD_10EDD",
-      "after_code": "F_7BFC",
-      "before_next_relocating_code": "F_9EC3"
+      "name": "C_75F3_7856",
+      "status": "CODE_PLACEMENT_EQUAL"
     },
     {
-      "data_through": "DATA_0101220_ENERGY_PROMPT",
-      "after_code": "F_9EC3",
-      "before_next_relocating_code": "F_A09D"
+      "name": "RELOC_F_AD25_F_ADCF",
+      "status": "CODE_PLACEMENT_EQUAL"
     },
     {
-      "data_through": "RAW_011FAE",
-      "after_code": "F_ADCF",
-      "before_next_relocating_code": "F_DDD9"
+      "name": "RELOC_F_DDD9_F_DF98",
+      "status": "CODE_PLACEMENT_EQUAL",
+      "fixupp_order_adapter": {
+        "segment": "_TEXT",
+        "order": "descending"
+      }
+    },
+    {
+      "name": "data_code_interleaving",
+      "status": "LAYOUT_PRESERVED",
+      "matching_relocation_prefix_entries": 106
     }
   ],
-  "errors": [],
-  "segment_map_equal": true,
-  "code_contributions_equal": true,
-  "matching_relocation_prefix_entries": 106,
   "byte_comparison": {
     "available": true,
     "candidate_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
@@ -102,6 +110,15 @@
       "first_difference": null
     }
   },
-  "historical_module_proven": false,
-  "limitation": "Candidate source-object order; nonrelocating owners do not identify exact historical boundaries"
+  "remaining_adapters": [
+    "candidate DATA/code object interleaving",
+    "arithmetic-module FIXUPP subrecord ordering",
+    "unpartitioned synthetic BSS reserve",
+    "recovered symbol aliases",
+    "EXTDEF case normalization",
+    "injected internal publics",
+    "local raw DATA source components"
+  ],
+  "whole_build_reconstruction_complete": false,
+  "limitation": "Byte-identical TLINK output from relocatable inputs; temporary adapters, raw DATA, BSS ownership and historical module proof remain."
 }

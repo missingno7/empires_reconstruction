@@ -6,7 +6,8 @@ import subprocess
 import tempfile
 
 from omf import OmfReader
-from omf_scaffold import _record, _records, add_publics, normalize_external_case, externalize_data_segment
+from omf_scaffold import (_record, _records, add_publics, normalize_external_case,
+                          externalize_data_segment, order_explicit_fixupp_subrecords)
 from mz import MZ
 from probe_module_group import probe
 from probe_tlink_layout import parse_map, link_errors, compare_linked_executable
@@ -46,6 +47,11 @@ def run(recipe_path, source_data=False, input_report_path=None):
         for public in old.publics_in('_TEXT'):
             labels[public['name']] = base + public['offset']
     data = add_publics(data, labels)
+    fixupp_adapter = recipe.get('fixupp_order_adapter')
+    if fixupp_adapter:
+        if fixupp_adapter != {'segment': '_TEXT', 'order': 'descending'}:
+            raise ValueError('Unknown FIXUPP order adapter')
+        data = order_explicit_fixupp_subrecords(data, '_TEXT', descending=True)
     if source_data and module.segment_length('_DATA'):
         if not proof['data_evidence']:
             raise ValueError('Shared DATA externalization requires proven contiguous ownership')
@@ -105,6 +111,7 @@ def run(recipe_path, source_data=False, input_report_path=None):
               'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),
               'source_object_sha256': sha(Path(proof['object_path']).read_bytes()),
               'staged_object_sha256': sha(data),
+              'fixupp_order_adapter': fixupp_adapter,
               'limitation': 'Real shared C object in full TLINK experiment; existing DATA/BSS and symbol scaffolds remain.'}
     report_path = 'shared-source-data-link-report.json' if source_data else 'shared-module-link-report.json'
     write_json(ROOT / 'build' / report_path, report)

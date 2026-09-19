@@ -5,10 +5,10 @@ without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module
 adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
-Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
-demand object, with zero errors/unresolved symbols and exact segment bases.
-The linked bytes still differ (56/106 relocations; first load difference 0xC8).
-See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
+Current exact structural checkpoint: Turbo Link 2.0 emits the byte-identical
+EXE from relocatable inputs with zero unresolved symbols. The result still uses
+explicitly tracked object-order, FIXUPP, BSS and symbol adapters. See
+[the checkpoint](exact-structural-link.md) and [generated metrics](structural-status.json).
 
 
 Project-owner clarification, 2026-09-18. The final build must emerge from

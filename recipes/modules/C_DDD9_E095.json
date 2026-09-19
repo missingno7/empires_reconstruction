@@ -4,6 +4,10 @@
   "segment": "_TEXT",
   "flags_append": "",
   "prelude": "#define EMPIRES_SHARED_ARITHMETIC_MODULE 1",
+  "fixupp_order_adapter": {
+    "segment": "_TEXT",
+    "order": "descending"
+  },
   "sources": [
     {
       "owner": "F_DDD9",

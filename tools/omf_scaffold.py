@@ -127,6 +127,71 @@ def normalize_external_case(data: bytes, public_names) -> bytes:
     return renamed
 
 
+def order_explicit_fixupp_subrecords(data: bytes, segment_name: str,
+                                     descending: bool = True) -> bytes:
+    """Order explicit FIXUPP subrecords without changing relocation meaning.
+
+    This deliberately refuses frame/target threads: moving a threaded fixup
+    could change which earlier thread definition it consumes.  Turbo C's
+    arithmetic module uses one explicit FIXUPP record, so the narrow operation
+    is sufficient and independently checkable.
+    """
+    records = list(_records(data))
+    target_segment = _text_segment_index(records) if segment_name == '_TEXT' else None
+    if target_segment is None:
+        module = OmfReader().read(data)
+        segment = next((item for item in module.segment_defs
+                        if item['name'] == segment_name), None)
+        if segment is None:
+            raise MatchError(f'OMF contribution has no {segment_name} SEGDEF')
+        target_segment = segment['index']
+    out = []
+    last_segment = None
+    changed = 0
+    for kind, body in records:
+        if kind in (OmfReader.LEDATA16, OmfReader.LIDATA16):
+            last_segment, _ = _index(body, 0)
+        if kind != OmfReader.FIXUPP16 or last_segment != target_segment:
+            out.append((kind, body))
+            continue
+        at, entries = 0, []
+        while at < len(body):
+            start = at
+            if not body[at] & 0x80:
+                raise MatchError('FIXUPP ordering refuses thread subrecords')
+            locat = (body[at] << 8) | body[at + 1]
+            at += 2
+            fixdat = body[at]
+            at += 1
+            frame_thread = fixdat >> 7
+            frame_method = (fixdat >> 4) & 7
+            target_thread = (fixdat >> 3) & 1
+            no_displacement = (fixdat >> 2) & 1
+            if frame_thread or target_thread:
+                raise MatchError('FIXUPP ordering refuses threaded fixups')
+            if frame_method in (0, 1, 2):
+                _, at = _index(body, at)
+            _, at = _index(body, at)
+            if not no_displacement:
+                at += 2
+            if at > len(body):
+                raise MatchError('truncated explicit FIXUPP subrecord')
+            entries.append((locat & 0x3FF, body[start:at]))
+        ordered = sorted(entries, key=lambda entry: entry[0], reverse=descending)
+        rebuilt = b''.join(entry for _, entry in ordered)
+        changed += rebuilt != body
+        out.append((kind, rebuilt))
+    if not changed:
+        raise MatchError('FIXUPP subrecords already have the requested order')
+    result = b''.join(_record(kind, body) for kind, body in out)
+    before, after = OmfReader().read(data), OmfReader().read(result)
+    if (before.segments != after.segments or before.segment_lengths != after.segment_lengths
+            or before.publics != after.publics or before.externals != after.externals
+            or sorted(before.fixups, key=repr) != sorted(after.fixups, key=repr)):
+        raise MatchError('FIXUPP ordering changed relocatable object semantics')
+    return result
+
+
 def add_publics(data: bytes, publics, segment_name: str = '_TEXT') -> bytes:
     """Add verified labels to an existing segment without changing its bytes."""
     if not publics:

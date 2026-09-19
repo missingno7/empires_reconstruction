@@ -162,16 +162,18 @@
       }
     },
     {
-      "id": "RAW_0003BA",
+      "id": "DATA_01BA",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01BA.json",
       "start": 954,
       "end": 956,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0003BA-0003BC.bin",
-      "original_symbol": null,
-      "artifact": "raw/0003BA-0003BC.bin",
       "expected_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
-      "matching_status": "EQUAL"
+      "classification": "static_data",
+      "artifact": "regions/DATA_01BA.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
     },
     {
       "id": "F_01BC",

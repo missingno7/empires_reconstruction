@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_01BA",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01BA.json",
+      "start": 954,
+      "end": 956,
+      "expected_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "classification": "static_data",
+      "artifact": "regions/DATA_01BA.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    }
+  ]
+}

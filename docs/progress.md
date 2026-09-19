@@ -8,14 +8,15 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,545 | 260 |
+| Freshly compiled matching C | 14,077 | 36,545 | 261 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,265 | 41 |
+| Structured static data | 0 | 1,010 | 3 |
+| Exact raw fallback | 62,621 | 31,263 | 38 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -165,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,265 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,263 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -619,3 +620,13 @@ F_D3CF adds 11 matching ASM bytes for the branch continuation targeted by the re
 ## Seventy-third matching-ASM wave
 
 F_01A4 adds 22 matching ASM bytes for the complete DOS write setup after F_019C. Its fresh TASM object binds F_019C and the numeric F_0104 target, with no loader relocations; the final two-byte self-referential data word remains raw. See [the wave-seventy-three proof](matching-c-wave73.md).
+
+## Seventy-fourth structured-data wave
+
+`DATA_01BA` replaces the final two-byte tail after `F_01A4` with a typed
+little-endian one-word table source. The word is read by the surrounding DOS
+setup through `CS:01BA`; the source is therefore a deterministic
+`u16le-table-v1` encoder rather than an opaque byte fallback. The fresh encoder
+reproduces the original `00 00` bytes exactly, and the complete EXE and DAT
+rebuild remains byte-identical. Five data-heavy raw extents remain for further
+mechanical classification. See [the wave-seventy-four proof](matching-c-wave74.md).

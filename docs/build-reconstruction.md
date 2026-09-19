@@ -110,8 +110,8 @@ DATA from component sources, including 38 relocatable near pointers in the
 sound tables. Recovered sources now use historical library and owner publics
 directly, so ordinary aliases, case normalization and injected internal labels
 are gone. It still has candidate object interleaving, a checked arithmetic
-FIXUPP ordering adapter and checked empty-DGROUP metadata for standalone TASM
-owners. These are
+FIXUPP ordering adapter. Standalone TASM owners now declare their empty-DGROUP
+topology directly in source. These are
 tracked in [the adapter ledger](linker-adapter-ledger.md). The 347 source proof
 units do not count as recovered original modules. The combined report
 explicitly sets `whole_build_reconstruction_complete` to false.

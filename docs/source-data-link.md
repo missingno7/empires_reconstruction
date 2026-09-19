@@ -29,10 +29,11 @@ rewrites are applied by the structural link.
 
 The copied DATA adapter and synthetic DGROUP object are eliminated in this
 experiment. A generated, canonical [Turbo Assembler BSS module](tasm-bss-source.md)
-declares an ordered 34-byte symbolic prefix, the 1,952-byte `F_0281` row-pointer
-table, a 16-byte shared command/render state island, the ten-record C470
-table, and 34,978 bytes of anchored aggregate storage covering the verified
-reserve and its currently recovered public map. Independent runtime fixups verify its boundary;
+declares ordered symbolic storage for the 34-byte prefix, the 1,952-byte
+`F_0281` row-pointer table, bounded render/record/animation state, paired
+96-byte note tables, and the 44-byte eleven-entry far-pointer table initialized
+by `F_DEFA`; 34,398 bytes remain anchored aggregate storage covering the
+verified reserve and its currently recovered public map. Independent runtime fixups verify its boundary;
 [boundary evidence](bss-boundary.md)
 explains why the previous stack-rounded estimate was two bytes high. Local
 all game DATA sources are canonical structured or compiled components, with

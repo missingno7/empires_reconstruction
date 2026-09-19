@@ -20019,15 +20019,19 @@
       "id": "LIB_RAND",
       "start": 64254,
       "end": 64311,
-      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
-      "classification": "runtime_library",
-      "source": "toolchain/CC.LIB",
+      "kind": "MATCHING_C",
+      "classification": "code",
+      "source": "src/LIB_RAND.C",
       "original_symbol": "LIB_RAND",
       "artifact": "regions/LIB_RAND.bin",
       "expected_sha256": "7c19d24f37104e920b4dae666f4dd2667e1e1d7386b4dd899ea4fff3a52288a9",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
+        "public": "_srand",
+        "span": 2,
+        "flags_append": "",
+        "linker_library_module": "RAND",
         "bindings": {
           "LXMUL@": {
             "coordinate": "code_offset",
@@ -20043,18 +20047,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "module_data_base_votes/_DATA"
           }
-        },
-        "library": "CC.LIB",
-        "library_module": "RAND",
-        "module_sha256": "9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/LIB_RAND.json",
-        "entry_sha256": "8d79dfc62fd8d02ed067ed338a230fa970d49af4053e76ff43c2dad115479492",
-        "record_sha256": "2b3013d98da7c773d0c49892f2e21a70cc4bd53859c989ea7a6fbcd5d41d60be",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
-        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        "method": "Fresh semantic matching C for the exact SRAND/RAND contribution",
+        "source_sha256": "58a90fceeb2d79afa99c99a54577ef70a2e8fa1272c75d20fc43b85bf58c6234",
+        "omf_publics": ["_srand", "_rand"],
+        "omf_text_length": 57,
+        "omf_data_length": 4,
+        "omf_bss_length": 0,
+        "omf_fixups": 8,
+        "extent_evidence": "docs/matching-c-wave147.md",
+        "library_crosscheck": "CC.LIB RAND module sha256 9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
       }
     },
     {

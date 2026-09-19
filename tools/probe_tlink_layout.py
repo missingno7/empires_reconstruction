@@ -83,13 +83,13 @@ def _omf_records(data):
         at = end
 
 
-def replace_library_module_text(library, module_name, replacement_object):
-    """Replace one library LEDATA record with fresh source-object bytes.
+def replace_library_module_segments(library, module_name, replacement_object):
+    """Replace one library module's LEDATA records with source-object bytes.
 
-    The replacement is deliberately limited to a same-sized ``_TEXT`` LEDATA
-    record.  The library's page layout, dictionary and module metadata remain
-    unchanged, so this is a structural linker experiment rather than a new
-    library format claim.
+    Every initialized segment contribution must have the same OMF record size
+    in both modules. The library's page layout, dictionary and module metadata
+    remain unchanged, so this is a structural linker experiment rather than a
+    new library format claim.
     """
     page = struct.unpack_from('<H', library, 1)[0] + 3
     module_start = page
@@ -108,19 +108,25 @@ def replace_library_module_text(library, module_name, replacement_object):
         module_end = at
         if name == module_name:
             module = library[module_start:module_end]
-            candidate = next((replacement_object[a:b] for k, a, b in _omf_records(replacement_object)
-                              if k == OmfReader.LEDATA16), None)
-            original = next(((a, b) for k, a, b in _omf_records(module)
-                             if k == OmfReader.LEDATA16), None)
-            if candidate is None or original is None:
-                raise ValueError(f'{module_name}: missing _TEXT LEDATA record')
-            a, b = original
-            if len(candidate) != b - a:
-                raise ValueError(f'{module_name}: source LEDATA size differs from library module')
-            patched_module = module[:a] + candidate + module[b:]
-            if OmfReader().read(patched_module, module_name).segment_bytes('_TEXT') != \
-                    OmfReader().read(replacement_object, module_name).segment_bytes('_TEXT'):
-                raise ValueError(f'{module_name}: source/library text replacement failed')
+            candidate_records = [replacement_object[a:b] for k, a, b in _omf_records(replacement_object)
+                                 if k == OmfReader.LEDATA16]
+            original_records = [(a, b) for k, a, b in _omf_records(module)
+                                 if k == OmfReader.LEDATA16]
+            if not candidate_records or len(candidate_records) != len(original_records):
+                raise ValueError(f'{module_name}: initialized OMF segment contributions differ')
+            replacements = []
+            for (a, b), candidate_record in zip(original_records, candidate_records):
+                if len(candidate_record) != b - a:
+                    raise ValueError(f'{module_name}: source LEDATA size differs from library module')
+                replacements.append((a, b, candidate_record))
+            patched_module = module
+            for a, b, candidate_record in reversed(replacements):
+                patched_module = patched_module[:a] + candidate_record + patched_module[b:]
+            source_module = OmfReader().read(replacement_object, module_name)
+            patched = OmfReader().read(patched_module, module_name)
+            for segment in source_module.segments:
+                if patched.segment_bytes(segment) != source_module.segment_bytes(segment):
+                    raise ValueError(f'{module_name}: source/library {segment} replacement failed')
             return library[:module_start] + patched_module + library[module_end:]
         module_start = ((module_end + page - 1) // page) * page
     raise ValueError(f'{module_name}: module not found in library')
@@ -168,7 +174,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     load_regions = sorted(manifest['regions'], key=lambda item: item['start'])
     library_blob = cc_lib.read_bytes()
     for owner_id, module_name in library_replacements.items():
-        library_blob = replace_library_module_text(
+        library_blob = replace_library_module_segments(
             library_blob, module_name,
             (compile_work / receipts[owner_id]['object']).read_bytes())
     library_available = {name: blob for name, blob in
@@ -225,7 +231,9 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                             internal_labels.setdefault(target_region['id'], {})[symbol] = (
                                 target - (target_region['start'] - 512))
                 if target_region and target_region.get('build', {}).get('segment') == '_TEXT':
-                    module_name = target_region.get('build', {}).get('library_module')
+                    target_build = target_region.get('build', {})
+                    module_name = (target_build.get('library_module') or
+                                   target_build.get('linker_library_module'))
                     if module_name in library_available:
                         target_offset = target - (target_region['start'] - 512)
                         selected = library_symbol_at(module_name, target_offset)
@@ -243,7 +251,9 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                                       if item['start'] - 512 <= target < item['end'] - 512), None)
                 if not target_region or target_region['id'] in owner_by_id:
                     continue
-                module_name = target_region.get('build', {}).get('library_module')
+                target_build = target_region.get('build', {})
+                module_name = (target_build.get('library_module') or
+                               target_build.get('linker_library_module'))
                 if module_name not in library_available:
                     continue
                 selected = library_symbol_at(module_name, target - (target_region['start'] - 512))
@@ -271,8 +281,11 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     if demand_historical_library:
         library_modules = []
         for region in manifest['regions']:
-            if region['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+            if (region['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY' or
+                    region.get('build', {}).get('linker_library_module')):
                 module = region.get('build', {}).get('library_module')
+                if not module:
+                    module = region.get('build', {}).get('linker_library_module')
                 if module and module not in library_modules:
                     library_modules.append(module)
         demands = []

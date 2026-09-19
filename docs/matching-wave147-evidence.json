@@ -1,0 +1,21 @@
+{
+  "format": "empires-matching-c-wave-evidence-v1",
+  "wave": 147,
+  "owners": [
+    {
+      "id": "LIB_RAND",
+      "status": "EQUAL",
+      "bytes": 57,
+      "sha256": "7c19d24f37104e920b4dae666f4dd2667e1e1d7386b4dd899ea4fff3a52288a9",
+      "source_sha256": "58a90fceeb2d79afa99c99a54577ef70a2e8fa1272c75d20fc43b85bf58c6234",
+      "publics": ["_srand", "_rand"],
+      "text_length": 57,
+      "data_length": 4,
+      "bss_length": 0,
+      "external": "LXMUL@",
+      "fixups": 8,
+      "library_module": "RAND",
+      "library_module_sha256": "9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
+    }
+  ]
+}

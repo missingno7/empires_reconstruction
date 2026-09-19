@@ -2,7 +2,7 @@
 
 The pinned correspondence currently contains 146 proven C/ASM entries. Every
 one of those extents is already covered by a current matching-C owner (or by a
-matching-C owner replacing an earlier ASM proof). The current manifest has 346 matching-C owners, zero
+matching-C owner replacing an earlier ASM proof). The current manifest has 347 matching-C owners, zero
 matching-ASM owners and no unresolved machine extent intersecting a RAW owner.
 The held-linkage snapshot also has zero candidates and zero unresolved symbols.
 Independently, the load-image prefix before the established `DATA_00FC23_PAD`

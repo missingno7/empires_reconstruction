@@ -8,9 +8,9 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 58,922 | 346 |
+| Freshly compiled matching C | 14,077 | 58,979 | 347 |
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
-| Known toolchain library | 0 | 5,357 | 41 |
+| Known toolchain library | 0 | 5,300 | 40 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
@@ -1206,3 +1206,11 @@ the exact `_strlen` public with no OMF fixups; the proprietary library module
 remains an independent cross-check. Matching-C coverage is now 58,922 bytes
 across 346 owners, and known-library ownership is 5,357 bytes across 41
 owners.
+
+## One-hundred-forty-seventh matching-C wave
+
+Wave 147 replaces the 57-byte `CC.LIB` `RAND` ownership source with a fresh
+semantic Turbo C translation unit. The source reproduces `_srand` and `_rand`,
+the four-byte initialized state, the `LXMUL@` external, and all eight OMF
+fixups. Matching-C coverage is now 58,979 bytes across 347 owners, and
+known-library ownership is 5,300 bytes across 40 owners.

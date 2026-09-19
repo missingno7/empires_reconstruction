@@ -1,10 +1,10 @@
 # First relocatable TLINK experiment
 
 The fixed-placement reconstruction remains the executable oracle. The new
-`tools/probe_tlink_layout.py` path compiles the 340 proven post-startup C
+`tools/probe_tlink_layout.py` path compiles the 341 proven post-startup C
 owners with the pinned Turbo C toolchain. It stages 339 ordinary relocatable
-OMF contributions and one source-generated replacement for the `STRLEN`
-library module, inserts classified code-gap padding, and invokes a local
+OMF contributions and two source-generated replacements for the `STRLEN` and
+`RAND` library modules, inserts classified code-gap padding, and invokes a local
 Borland TLINK candidate.
 No load address is written into these objects.
 
@@ -88,3 +88,10 @@ places it at `0xF2C0` (load offset `62144`), exactly matching the fixed owner;
 the ordinary source rows, `_TEXT`, DGROUP, BSS and stack remain exact with no
 unresolved symbols. This is a linker adapter for the experiment, not a claim
 that the historical translation-unit boundary has been recovered.
+
+Wave 147 extends the same experiment to `RAND`, including its initialized
+`_DATA` contribution and eight fixups. The temporary `CC.LIB` view replaces
+both initialized LEDATA records, and TLINK still selects the module at its
+oracle position `0xF8FE` (load offset `63742`). This cross-check demonstrates
+that source ownership can preserve a library module's code and DGROUP
+contribution together while placement remains linker-derived.

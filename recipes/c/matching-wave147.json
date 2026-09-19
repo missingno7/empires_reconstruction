@@ -1,0 +1,39 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "LIB_RAND",
+      "kind": "MATCHING_C",
+      "start": 64254,
+      "end": 64311,
+      "source": "src/LIB_RAND.C",
+      "artifact": "regions/LIB_RAND.bin",
+      "expected_sha256": "7c19d24f37104e920b4dae666f4dd2667e1e1d7386b4dd899ea4fff3a52288a9",
+      "classification": "code",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_srand",
+        "span": 2,
+        "flags_append": "",
+        "linker_library_module": "RAND",
+        "module_segments": {
+          "_DATA": {
+            "offset": 14584,
+            "coordinate": "DGROUP_offset",
+            "evidence": "module_data_base_votes/_DATA"
+          }
+        },
+        "bindings": {
+          "LXMUL@": {
+            "coordinate": "code_offset",
+            "evidence": "substrate/LIB_LXMUL.json extent.address + CC.LIB/LXMUL _TEXT+0x0",
+            "owner": "LIB_LXMUL",
+            "public": "LXMUL@",
+            "addend": 0
+          }
+        }
+      }
+    }
+  ]
+}

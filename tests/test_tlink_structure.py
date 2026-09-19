@@ -20,10 +20,11 @@ class TlinkStructureTests(unittest.TestCase):
                 'library_toupper_with_historical_demand_and_symbol_normalization'):
             self.assertIsNone(comparison['first_divergence'])
             replacements = report.get('library_replacements', [])
-            strlen = next((item for item in replacements if item['owner'] == 'LIB_STRLEN'), None)
-            if strlen is not None:
-                self.assertEqual(strlen['expected_start'], strlen['actual']['offset'])
-                self.assertEqual(strlen['expected_length'], strlen['actual']['length'])
+            for owner_id in ('LIB_STRLEN', 'LIB_RAND'):
+                replacement = next((item for item in replacements if item['owner'] == owner_id), None)
+                if replacement is not None:
+                    self.assertEqual(replacement['expected_start'], replacement['actual']['offset'])
+                    self.assertEqual(replacement['expected_length'], replacement['actual']['length'])
             toupper = report['library_comparison']['actual_toupper']
             self.assertIsNotNone(toupper)
             self.assertEqual(toupper['length'], report['library_comparison']['expected_length'])

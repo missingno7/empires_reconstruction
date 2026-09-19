@@ -9,7 +9,7 @@ semantic cleanup remains outside this mechanical phase.
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
 | Freshly compiled matching C | 14,077 | 36,545 | 260 |
-| Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
+| Freshly assembled matching ASM | 2,456 | 2,543 | 22 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,298 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,287 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -611,3 +611,7 @@ F_C877 adds 33 matching C bytes for the complete timer-slice pump. Its fresh Tur
 ## Seventy-first matching-C wave
 
 F_D386 adds 73 matching C bytes for the far-record decoder main routine. Its fresh Turbo C object binds the far input table, 72b2, and the numeric F_03C9 call target; the immediately following 11-byte branch tail remains raw under a proven split. See [the wave-seventy-one proof](matching-c-wave71.md).
+
+## Seventy-second matching-ASM wave
+
+F_D3CF adds 11 matching ASM bytes for the branch continuation targeted by the recovered F_D386 C main routine. Its hand-written TASM object has no fixups or loader relocations. See [the wave-seventy-two proof](matching-c-wave72.md).

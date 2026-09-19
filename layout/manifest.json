@@ -15271,16 +15271,28 @@
       }
     },
     {
-      "id": "RAW_00D5CF",
+      "id": "F_D3CF",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_D3CF.ASM",
       "start": 54735,
       "end": 54746,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00D5CF-00D5DA.bin",
-      "original_symbol": null,
-      "artifact": "raw/00D5CF-00D5DA.bin",
       "expected_sha256": "470037ef91a639b045272f3919bb2396e9ce24c7f30453f99438f9ee5b7830e1",
-      "matching_status": "EQUAL"
+      "classification": "code",
+      "original_symbol": "F_D3CF",
+      "artifact": "regions/F_D3CF.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd3cf",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {}
+      },
+      "provenance": {
+        "method": "local hand-written ASM reconstruction from complete disassembly subextent and fresh full-extent OMF binding",
+        "change": "Recover the 11-byte branch continuation targeted by F_D386"
+      }
     },
     {
       "id": "F_D3DA",

@@ -1,0 +1,155 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "f620d7d89912f42c16de0c4ee4ad39ad4a1b4045d0b55f22742018c209b78232",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 17,
+  "owners": [
+    {
+      "id": "DATA_01065F_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "source_sha256": "c9cf19371f5d5754fa3a5d126837731be5ef1380bd103f375fa7c035ee7a45dc",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01066F_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "source_sha256": "c9cf19371f5d5754fa3a5d126837731be5ef1380bd103f375fa7c035ee7a45dc",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01067F_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "source_sha256": "c9cf19371f5d5754fa3a5d126837731be5ef1380bd103f375fa7c035ee7a45dc",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01067F_TABLE",
+      "kind": "EXACT_DATA",
+      "bytes": 12,
+      "sha256": "651bdd89b2cee95710165cd2469265d8e2192d057fecf74df5d15fc777198947",
+      "source_sha256": "98978eb8e67c4619f1b299bae26f7861301281d884a0979ad5745787fe35e7b0",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "u16le-table-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0106AE_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 3,
+      "sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "source_sha256": "c9cf19371f5d5754fa3a5d126837731be5ef1380bd103f375fa7c035ee7a45dc",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_010798_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 24,
+      "sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+      "source_sha256": "374e8d241451f4068af8c8eb6786919c4cb8997196f2861c44323d0ae6ad372c",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0107B0_TABLE",
+      "kind": "EXACT_DATA",
+      "bytes": 6,
+      "sha256": "bfefee9c96d0d9fd8ef4e230abeb23ef63e97872b53cbedb07867265ff0e29b8",
+      "source_sha256": "ea498e9c7669b3934d542a630f8185008b89ddec7f743e26159964a31d7aedff",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "u16le-table-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0107B6_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "source_sha256": "33b1cab5cf9450a41405ffcd1a33db7e5f35351dded7cb6c6a233e25234a341b",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_011EE1_TABLE",
+      "kind": "EXACT_DATA",
+      "bytes": 32,
+      "sha256": "dd7322908d079683eaf9d5a564616eb9d4fe74ee87a750630e0e6cc2429d2da1",
+      "source_sha256": "2be1d4cad0b8e68d94229479a3b0ecbb9fb51fdd53d4f7478424c0d8e40376fb",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "u16le-table-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_011F01_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "source_sha256": "33b1cab5cf9450a41405ffcd1a33db7e5f35351dded7cb6c6a233e25234a341b",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_011F10_TABLE",
+      "kind": "EXACT_DATA",
+      "bytes": 16,
+      "sha256": "fb2998b6cf4b672c749bfb84eec09be5ff356859fbcc0a8edc3cda7fcee11b62",
+      "source_sha256": "f7a62cb47e3fdd9061a387ff343247cec6375e433f0f581a1740fe18bc384125",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "u16le-table-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_011F20_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 5,
+      "sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4",
+      "source_sha256": "bfbd7d2d7be6f1186fa7df160c1483a6a8c54790247b97084fb6c694e1c82e88",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_011F9A_NEW_USER_MESSAGE",
+      "kind": "EXACT_DATA",
+      "bytes": 17,
+      "sha256": "3c94970c24f08224de7297207772834d56eff251581741f00b7f8fb1d9f558c6",
+      "source_sha256": "fc68c28aba08acfb41d7238d43d938fc6d88c63768dbe8b779d5c1ebc0b0e73f",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

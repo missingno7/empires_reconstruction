@@ -1,0 +1,187 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_01065F_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01065F_PAD.json",
+      "start": 67167,
+      "end": 67170,
+      "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01065F_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_01066F_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01066F_PAD.json",
+      "start": 67183,
+      "end": 67186,
+      "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01066F_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_01067F_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01067F_PAD.json",
+      "start": 67199,
+      "end": 67202,
+      "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01067F_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_01067F_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01067F_TABLE.json",
+      "start": 67202,
+      "end": 67214,
+      "expected_sha256": "651bdd89b2cee95710165cd2469265d8e2192d057fecf74df5d15fc777198947",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_01067F_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_0106AE_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106AE_PAD.json",
+      "start": 67246,
+      "end": 67249,
+      "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_0106AE_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_010798_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010798_PAD.json",
+      "start": 67480,
+      "end": 67504,
+      "expected_sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_010798_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_0107B0_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107B0_TABLE.json",
+      "start": 67504,
+      "end": 67510,
+      "expected_sha256": "bfefee9c96d0d9fd8ef4e230abeb23ef63e97872b53cbedb07867265ff0e29b8",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_0107B0_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_0107B6_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107B6_PAD.json",
+      "start": 67510,
+      "end": 67511,
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_0107B6_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_011EE1_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011EE1_TABLE.json",
+      "start": 73441,
+      "end": 73473,
+      "expected_sha256": "dd7322908d079683eaf9d5a564616eb9d4fe74ee87a750630e0e6cc2429d2da1",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_011EE1_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_011F01_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F01_PAD.json",
+      "start": 73473,
+      "end": 73474,
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_011F01_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_011F10_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F10_TABLE.json",
+      "start": 73488,
+      "end": 73504,
+      "expected_sha256": "fb2998b6cf4b672c749bfb84eec09be5ff356859fbcc0a8edc3cda7fcee11b62",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_011F10_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_011F20_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F20_PAD.json",
+      "start": 73504,
+      "end": 73509,
+      "expected_sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_011F20_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_011F9A_NEW_USER_MESSAGE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F9A_NEW_USER_MESSAGE.json",
+      "start": 73626,
+      "end": 73643,
+      "expected_sha256": "3c94970c24f08224de7297207772834d56eff251581741f00b7f8fb1d9f558c6",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011F9A_NEW_USER_MESSAGE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

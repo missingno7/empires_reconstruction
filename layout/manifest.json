@@ -20362,16 +20362,18 @@
       }
     },
     {
-      "id": "RAW_01065F",
+      "id": "DATA_01065F_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01065F_PAD.json",
       "start": 67167,
       "end": 67170,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/01065F-010662.bin",
-      "original_symbol": null,
-      "artifact": "raw/01065F-010662.bin",
       "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01065F_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "DATA_010662_AE001_PATH",
@@ -20388,16 +20390,18 @@
       }
     },
     {
-      "id": "RAW_01066F",
+      "id": "DATA_01066F_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01066F_PAD.json",
       "start": 67183,
       "end": 67186,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/01066F-010672.bin",
-      "original_symbol": null,
-      "artifact": "raw/01066F-010672.bin",
       "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01066F_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "DATA_010672_AE002_PATH",
@@ -20414,16 +20418,32 @@
       }
     },
     {
-      "id": "RAW_01067F",
+      "id": "DATA_01067F_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01067F_PAD.json",
       "start": 67199,
+      "end": 67202,
+      "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01067F_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_01067F_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01067F_TABLE.json",
+      "start": 67202,
       "end": 67214,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/01067F-01068E.bin",
-      "original_symbol": null,
-      "artifact": "raw/01067F-01068E.bin",
-      "expected_sha256": "2fa29f3ae7f9e4cca38ed9521d94cc0e70391f872d840a13c44acc2686f1e586",
-      "matching_status": "EQUAL"
+      "expected_sha256": "651bdd89b2cee95710165cd2469265d8e2192d057fecf74df5d15fc777198947",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_01067F_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
     },
     {
       "id": "DATA_01068E_PROGRAM_DISK",
@@ -20440,16 +20460,18 @@
       }
     },
     {
-      "id": "RAW_0106AE",
+      "id": "DATA_0106AE_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106AE_PAD.json",
       "start": 67246,
       "end": 67249,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0106AE-0106B1.bin",
-      "original_symbol": null,
-      "artifact": "raw/0106AE-0106B1.bin",
       "expected_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_0106AE_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "DATA_0106B1_ARTIFACTS_DISK",
@@ -20492,16 +20514,46 @@
       }
     },
     {
-      "id": "RAW_010798",
+      "id": "DATA_010798_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010798_PAD.json",
       "start": 67480,
+      "end": 67504,
+      "expected_sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_010798_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_0107B0_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107B0_TABLE.json",
+      "start": 67504,
+      "end": 67510,
+      "expected_sha256": "bfefee9c96d0d9fd8ef4e230abeb23ef63e97872b53cbedb07867265ff0e29b8",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_0107B0_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_0107B6_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107B6_PAD.json",
+      "start": 67510,
       "end": 67511,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010798-0107B7.bin",
-      "original_symbol": null,
-      "artifact": "raw/010798-0107B7.bin",
-      "expected_sha256": "d91cd0f004aaf250a77e8dab101552a51f69ed7d313494899622a826aad89796",
-      "matching_status": "EQUAL"
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_0107B6_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "C_DATA_75F3",
@@ -21385,16 +21437,32 @@
       }
     },
     {
-      "id": "RAW_011EE1",
+      "id": "DATA_011EE1_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011EE1_TABLE.json",
       "start": 73441,
+      "end": 73473,
+      "expected_sha256": "dd7322908d079683eaf9d5a564616eb9d4fe74ee87a750630e0e6cc2429d2da1",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_011EE1_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_011F01_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F01_PAD.json",
+      "start": 73473,
       "end": 73474,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/011EE1-011F02.bin",
-      "original_symbol": null,
-      "artifact": "raw/011EE1-011F02.bin",
-      "expected_sha256": "e38faa26e5a0becd05de8cff161d12d4bf1cea6de87349b508c3575c560feb96",
-      "matching_status": "EQUAL"
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_011F01_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "TEXT_22D2",
@@ -21411,15 +21479,43 @@
       }
     },
     {
-      "id": "RAW_011F10",
+      "id": "DATA_011F10_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F10_TABLE.json",
       "start": 73488,
+      "end": 73504,
+      "expected_sha256": "fb2998b6cf4b672c749bfb84eec09be5ff356859fbcc0a8edc3cda7fcee11b62",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_011F10_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_011F20_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F20_PAD.json",
+      "start": 73504,
+      "end": 73509,
+      "expected_sha256": "8855508aade16ec573d21e6a485dfd0a7624085c1a14b5ecdd6485de0c6839a4",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_011F20_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "RAW_011F25",
+      "start": 73509,
       "end": 73522,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/011F10-011F32.bin",
+      "source": "raw/011F25-011F32.bin",
       "original_symbol": null,
-      "artifact": "raw/011F10-011F32.bin",
-      "expected_sha256": "93870434040f17ea3850281fd2f189e9045261e839a540c1b26df3d8162e5693",
+      "artifact": "raw/011F25-011F32.bin",
+      "expected_sha256": "f37b41bab4b4142f34c972ea028c93116918d20169c753d184704cb3120856eb",
       "matching_status": "EQUAL"
     },
     {
@@ -21481,13 +21577,39 @@
     {
       "id": "RAW_011F86",
       "start": 73606,
+      "end": 73626,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/011F86-011F9A.bin",
+      "original_symbol": null,
+      "artifact": "raw/011F86-011F9A.bin",
+      "expected_sha256": "d9a0231b68e2cb0fe0834222f1c48f6f9587dd55ff17cea9a3becfb2345e5592",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_011F9A_NEW_USER_MESSAGE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F9A_NEW_USER_MESSAGE.json",
+      "start": 73626,
+      "end": 73643,
+      "expected_sha256": "3c94970c24f08224de7297207772834d56eff251581741f00b7f8fb1d9f558c6",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011F9A_NEW_USER_MESSAGE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_011FAB",
+      "start": 73643,
       "end": 78842,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/011F86-0133FA.bin",
+      "source": "raw/011FAB-0133FA.bin",
       "original_symbol": null,
-      "artifact": "raw/011F86-0133FA.bin",
-      "expected_sha256": "e31790057c64a96b011185837c28509d704bd73fb9d224b8637966a3604ddcd0",
+      "artifact": "raw/011FAB-0133FA.bin",
+      "expected_sha256": "e3aa83a6c70cb87b6ca0f211086bfd8f50466bf3e52e52cec5b8f198ee60f5d3",
       "matching_status": "EQUAL"
     },
     {

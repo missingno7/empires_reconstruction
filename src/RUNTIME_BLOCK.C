@@ -1,9 +1,79 @@
 /* RUNTIME_BLOCK -- exact startup/runtime dispatch block. */
 void f039c()
 {
-    asm db 0e9h,091h,001h,0e9h,094h,002h,0e9h,036h,00fh,0e9h,07ch,00fh,0e9h,0b2h,00fh,0e9h,026h,010h,0e9h,092h,010h,0e9h,0d6h,010h
-    asm db 0e9h,008h,011h,0e9h,07eh,011h,0e9h,0d4h,011h,0e9h,02ch,012h,0e9h,093h,012h,0e9h,031h,013h,0e9h,0dbh,013h,0e9h,064h,015h
-    asm db 0e9h,0c9h,016h,0e9h,02ah,018h,0e9h,0f5h,018h,0e9h,033h,019h,000h,000h,03dh,005h,000h,000h,0f4h,005h,030h,006h,000h,000h
+    asm db 0e9h,091h,001h
+    asm public _f039f
+    asm _f039f label near
+    asm public _box
+    asm _box label near
+    asm db 0e9h,094h,002h
+    asm public _f03a2
+    asm _f03a2 label near
+    asm public _bar
+    asm _bar label near
+    asm db 0e9h,036h,00fh
+    asm public _f03a5
+    asm _f03a5 label near
+    asm db 0e9h,07ch,00fh
+    asm public _f03a8
+    asm _f03a8 label near
+    asm public _clear
+    asm _clear label near
+    asm db 0e9h,0b2h,00fh
+    asm public _f03ab
+    asm _f03ab label near
+    asm public _fill
+    asm _fill label near
+    asm db 0e9h,026h,010h
+    asm public _f03ae
+    asm _f03ae label near
+    asm db 0e9h,092h,010h
+    asm public _f03b1
+    asm _f03b1 label near
+    asm db 0e9h,0d6h,010h
+    asm public _f03b4
+    asm _f03b4 label near
+    asm public _wipe
+    asm _wipe label near
+    asm db 0e9h,008h,011h
+    asm public _f03b7
+    asm _f03b7 label near
+    asm db 0e9h,07eh,011h
+    asm public _f03ba
+    asm _f03ba label near
+    asm db 0e9h,0d4h,011h
+    asm public _f03bd
+    asm _f03bd label near
+    asm db 0e9h,02ch,012h
+    asm public _f03c0
+    asm _f03c0 label near
+    asm db 0e9h,093h,012h
+    asm public _f03c3
+    asm _f03c3 label near
+    asm db 0e9h,031h,013h
+    asm public _f03c6
+    asm _f03c6 label near
+    asm db 0e9h,0dbh,013h
+    asm public _f03c9
+    asm _f03c9 label near
+    asm public _blit
+    asm _blit label near
+    asm db 0e9h,064h,015h
+    asm public _f03cc
+    asm _f03cc label near
+    asm public _copy
+    asm _copy label near
+    asm db 0e9h,0c9h,016h
+    asm public _f03cf
+    asm _f03cf label near
+    asm db 0e9h,02ah,018h
+    asm public _f03d2
+    asm _f03d2 label near
+    asm db 0e9h,0f5h,018h
+    asm public _f03d5
+    asm _f03d5 label near
+    asm db 0e9h,033h,019h
+    asm db 000h,000h,03dh,005h,000h,000h,0f4h,005h,030h,006h,000h,000h
     asm db 043h,006h,000h,000h,061h,00bh,0d7h,00bh,0e3h,0ffh,0e3h,0ffh,0d4h,0ffh,0c5h,0ffh,0b6h,0ffh,0a7h,0ffh,098h,0ffh,089h,0ffh
     asm db 07ah,0ffh,06bh,0ffh,05ch,0ffh,04dh,0ffh,03eh,0ffh,02fh,0ffh,020h,0ffh,011h,0ffh,002h,0ffh,0f3h,0feh,0e4h,0feh,0d5h,0feh
     asm db 0c6h,0feh,0b7h,0feh,0a8h,0feh,099h,0feh,08ah,0feh,07bh,0feh,06ch,0feh,05dh,0feh,04eh,0feh,03fh,0feh,030h,0feh,021h,0feh

@@ -270,10 +270,16 @@ def bind_region(owner, module, mz, frames, owners=None, component_modules=None):
             raise ValueError(f"{owner['id']}: missing public {build['public']}")
         start = publics[index]['offset']
         following = [p['offset'] for p in publics[index + 1:] if p['offset'] > start]
-        span = build.get('span', 1)
-        if span < 1:
-            raise ValueError('Public span must be positive')
-        end = following[span-1] if span <= len(following) else len(data)
+        if build.get('end_public'):
+            endings = [p['offset'] for p in publics if p['name'] == build['end_public']]
+            if len(endings) != 1 or endings[0] <= start:
+                raise ValueError(f"{owner['id']}: invalid end public {build['end_public']}")
+            end = endings[0]
+        else:
+            span = build.get('span', 1)
+            if span < 1:
+                raise ValueError('Public span must be positive')
+            end = following[span-1] if span <= len(following) else len(data)
     if len(data) != module.segment_length(segment):
         raise ValueError(f"{owner['id']}: emitted code does not cover SEGDEF length")
     result = bytearray(data[start:end])

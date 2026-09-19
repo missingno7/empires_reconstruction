@@ -37,7 +37,9 @@ case, library, caller-scoped, or runtime-DATA symbol rewrites. A following
 entry-public pass reduced internal PUBDEF injection from 43 objects to the 27
 genuine entries inside `RUNTIME_BLOCK`. `main`, `f039c`, and 64 reconstructed
 cross-owner references now export or consume their selected publics directly.
-See [the entry-public checkpoint](reconstructed-entry-publics.md).
+Canonical inline assembly now emits the final 27 OMF publics and an explicit
+end public, leaving zero object transforms in the structural link. See
+[the natural-public checkpoint](natural-runtime-publics.md).
 
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table

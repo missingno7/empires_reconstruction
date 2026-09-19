@@ -23,7 +23,7 @@ each can be removed against a measurable linker invariant.
 | Oracle-copied initialized DATA tail | Originally supplied initialized bytes to the aggregate scaffold | Holds the unresolved initialized-data extent | Ordered source encoders and compiler DATA contributions | **Removed in the source DATA experiment**; canonical and source-link raw DATA are both zero |
 | Recovered symbol aliases | Recovered objects previously used numeric/source-local names while startup and callers used historical publics | Resolved verified call targets without changing code bytes | Name the actual library or reconstructed-owner public in source | **Removed**. Source now names historical CC.LIB publics and reconstructed entry publics directly; numeric entry bindings are canonical owner/public references |
 | EXTDEF case normalization | Turbo C previously emitted case variants that differed from explicit recovered publics | Resolved case-sensitive OMF externals under the linker candidate | Reconstruct the declaration/public spelling in source | **Removed from the current structural link** |
-| Injected internal publics | The 6,571-byte runtime dispatch block contains multiple callable entries but currently compiles as one aggregate function | Exposes 27 exact internal entries to the relocatable experiment | Partition the runtime block into relocatable source contributions or emit its publics naturally | **Temporary and isolated to `RUNTIME_BLOCK`**; every other reconstructed object links without symbol transformation |
+| Injected internal publics | The 6,571-byte runtime dispatch block contains multiple callable entries but compiles as one aggregate function | Exposed 27 exact internal entries to the relocatable experiment | Emit the publics naturally from canonical source | **Removed**. Inline assembly now produces all 27 OMF PUBDEFs and the structural path performs zero object transforms |
 | Candidate DATA/code object interleaving | Historical object boundaries and response-file order remain partly unknown | Reproduces the four observed cross-segment relocation-order constraints | Recover containing modules and their natural object order | **Active**; exact TLINK output, but nonrelocating boundaries remain ambiguous |
 | Arithmetic FIXUPP subrecord ordering | The inline-ASM capsule emits ascending explicit fixups unlike ordinary Turbo C output | Reproduces the historical descending ten-entry run before TLINK | Recover source/assembly that naturally emits the observed OMF record topology | **Active and narrowly checked**; changes no bytes, publics, targets, addends or sites |
 
@@ -32,7 +32,8 @@ demand object is unnecessary under the remaining adapters. The older aggregate
 scaffold still differs; the source-DATA/interleaving path is the exact result.
 The former `_getkey`, `_mode`, `_delay`, and runtime-library aliases are now
 direct source references. Exact entry bindings use their owner/public identity,
-leaving internal-entry PUBDEF injection as the sole active code-symbol adapter.
-It is now confined to 27 entries inside `RUNTIME_BLOCK`; see
-[the entry-public checkpoint](reconstructed-entry-publics.md). The earlier zero-diagnostic claim missed two
+leaving internal-entry PUBDEF injection as the sole code-symbol adapter at that
+checkpoint. Canonical inline assembly now emits those final 27 publics, so the
+current path has no symbol adapter; see
+[the natural-public checkpoint](natural-runtime-publics.md). The earlier zero-diagnostic claim missed two
 map-only fixup overflows; both are eliminated and now covered by detection.

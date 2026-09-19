@@ -22,8 +22,9 @@ After these changes the structural linker report contains zero EXTDEF rename,
 case-normalization, runtime-DATA alias, or caller-scoped alias transforms. Its
 only remaining code-symbol transform class is internal-entry PUBDEF injection
 for 27 genuine entries in `RUNTIME_BLOCK`. All reconstructed function-entry
-aliases have since been replaced by their selected owner publics; see
-[the entry-public checkpoint](reconstructed-entry-publics.md).
+aliases were then replaced by their selected owner publics, and the final 27
+publics are now emitted by canonical inline assembly. See
+[the natural-public checkpoint](natural-runtime-publics.md).
 
 Both independent checks remain exact:
 

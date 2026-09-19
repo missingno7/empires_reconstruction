@@ -15,10 +15,10 @@ remain, so this is not yet the recovered historical build. See
 
 The ordinary symbol-alias layer is now removed: recovered sources call actual
 historical library publics and reconstructed owner publics, and exact entry
-bindings remain relocatable. The only active code-symbol adapter is 27 internal
-PUBDEFs inside `RUNTIME_BLOCK`; every other reconstructed object links without
-symbol transformation. See
-[the entry-public checkpoint](docs/reconstructed-entry-publics.md).
+bindings remain relocatable. `RUNTIME_BLOCK` now emits its 27 internal OMF
+publics from canonical inline assembly, so the structural link performs zero
+object transforms. See
+[the natural-public checkpoint](docs/natural-runtime-publics.md).
 
 
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file

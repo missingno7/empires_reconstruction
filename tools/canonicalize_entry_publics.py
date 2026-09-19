@@ -74,6 +74,7 @@ def run():
     runtime_path.write_bytes(runtime_path.read_bytes().replace(
         b'void runtime_block()', b'void f039c()', 1))
     runtime['build']['public'] = '_f039c'
+    runtime['build']['end_public'] = '_runtime_block_end'
     mappings = entry_renames(manifest)
     for owner_id, mapping in mappings.items():
         rename_source(ROOT / owners[owner_id]['source'], mapping)
@@ -111,6 +112,7 @@ def run():
                 changed = True
             if owner.get('id') == 'RUNTIME_BLOCK':
                 owner['build']['public'] = '_f039c'
+                owner['build']['end_public'] = '_runtime_block_end'
                 changed = True
         if changed:
             write_json(path, recipe)

@@ -17,7 +17,7 @@ removes the false `_f53bf` internal label at code offset `0x53BF`; that spelling
 already belongs to the reconstructed owner whose evidenced entry is `0x51BF`.
 
 The active code-symbol adapter set consequently fell from 43 transformed
-objects to one:
+objects to one at this checkpoint:
 
 ```text
 RUNTIME_BLOCK: 27 internal PUBDEF labels
@@ -25,10 +25,9 @@ all other reconstructed objects: no symbol transform
 ```
 
 Those 27 labels name genuine entry points at offsets inside the 6,571-byte
-runtime dispatch block. Removing them requires partitioning that block into
-relocatable source contributions or emitting the publics naturally from its
-canonical source. They are now isolated from ordinary caller/public naming.
+runtime dispatch block. Canonical inline assembly now emits them naturally,
+closing this final symbol adapter in the subsequent
+[runtime-public checkpoint](natural-runtime-publics.md).
 
 The fixed reconstruction and exact Turbo Link 2.0 structural link remain
 byte-identical with zero unresolved symbols and no code-placement divergence.
-

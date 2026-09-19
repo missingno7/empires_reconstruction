@@ -279,15 +279,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSSJ.OBJ",
-      "assembly": "GAMEBSSJ.ASM",
+      "id": "VIDEO_BOARD_STATE_BSS",
+      "object": "VIDSTATE.OBJ",
+      "assembly": "VIDSTATE.ASM",
       "logical_start": 34488,
       "logical_end": 35348,
-      "owner_candidate": "aggregate leading remainder",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared video, board, and UI state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "SLOT_GRID_BSS",

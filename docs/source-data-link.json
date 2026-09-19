@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 29616,
-  "unpartitioned_bss_source_bytes": 7634,
+  "partitioned_bss_source_bytes": 30476,
+  "unpartitioned_bss_source_bytes": 6774,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1239,15 +1239,15 @@
         "source_sha256": "5728143119d22c4a486d8382331b20f8ba8528b2fe98dd9da71cf004e622ec10"
       },
       {
-        "id": "GAMEBSS_LEADING_REMAINDER",
-        "owner_candidate": "aggregate leading remainder",
+        "id": "VIDEO_BOARD_STATE_BSS",
+        "owner_candidate": "shared video, board, and UI state",
         "logical_start": 34488,
         "bytes": 860,
         "publics": 89,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
-        "object_sha256": "f04b770c96ef637390e77a4ee238079709b34a4e252cc77d5317eb1e8447eaa7",
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
+        "object_sha256": "c25e15c1771d92f2906ef25dbcc8b625d08f07cb08b5257bc7540af90010681e",
         "source_sha256": "da39e80e7fea2323d80cef4a94d460611db086adc9b67ce8aab2f253c017f4d6"
       },
       {

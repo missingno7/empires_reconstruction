@@ -1,0 +1,32 @@
+# Shared-module interface constraints
+
+This ledger records compiler evidence that prevents independently matching C
+fragments from being compiled as one translation unit. Each item is a source
+interface recovery task, not evidence of an original module boundary.
+
+## F_9D79 through F_A525
+
+The contiguous 19-owner compact-model run was compiled in source order on
+2026-09-19. Turbo C 2.0 rejected the combined input with 18 declaration
+errors. The first mechanically relevant conflicts are:
+
+- `F_9DCC` declares `f9d79` and `f9d8e` as returning `int`; their recovered
+  definitions return `void` and their return values are not consumed.
+- the fragments disagree on the prototype of `f039f`.
+- `F_A004` returns a far character pointer while `F_A036` declares `fa004`
+  with a near pointer type.
+- several fragments describe the DS:C470 table with incompatible temporary
+  record declarations; `F_A24E` also declares a local `struct R` that clashes
+  with the UI record used by `F_A28D`.
+
+The compiler also reports unresolved type conflicts for `f01ce`, `f03a8`, and
+the C470 declarations. These diagnostics establish the immediate work order:
+recover a shared declaration for the C470 record family and normalize only
+call signatures whose individual-object bytes remain equal. No source was
+changed by this experiment, and the failed candidate is intentionally not a
+linker input.
+
+Reproduce the evidence by concatenating the listed owners with the ordinary
+`tools/probe_module_group.py` workflow after preparing an explicit candidate
+recipe. A future successful probe must still verify public order, all relative
+offsets, `_TEXT`, DATA/BSS, and fixups before entering the exact-link chain.

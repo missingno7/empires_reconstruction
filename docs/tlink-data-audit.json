@@ -1,0 +1,390 @@
+{
+  "format": "empires-tlink-data-audit-v1",
+  "linked_exe_sha256": "46367ddaabd7fcc74f8436c3b2c138e38ee5adedf9e4c14a2348935715446300",
+  "data_contributions": [
+    {
+      "load_start": 64048,
+      "length": 147,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "C0C",
+      "acbp": 104,
+      "code_owner": null
+    },
+    {
+      "load_start": 64196,
+      "length": 2,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0066.C",
+      "acbp": 72,
+      "code_owner": "F_56C6",
+      "ownership": "no canonical compiled DATA owner; not proven module storage"
+    },
+    {
+      "load_start": 64198,
+      "length": 15,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0129.C",
+      "acbp": 72,
+      "code_owner": "F_75F3",
+      "data_owner": "C_DATA_75F3",
+      "expected_load_start": 66999,
+      "expected_length": 15,
+      "placement_delta": -2801,
+      "length_matches": true
+    },
+    {
+      "load_start": 64214,
+      "length": 13,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0131.C",
+      "acbp": 72,
+      "code_owner": "F_7695",
+      "data_owner": "C_DATA_7695",
+      "expected_load_start": 67014,
+      "expected_length": 13,
+      "placement_delta": -2800,
+      "length_matches": true
+    },
+    {
+      "load_start": 64228,
+      "length": 15,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0133.C",
+      "acbp": 72,
+      "code_owner": "F_778B",
+      "data_owner": "C_DATA_778B",
+      "expected_load_start": 67027,
+      "expected_length": 15,
+      "placement_delta": -2799,
+      "length_matches": true
+    },
+    {
+      "load_start": 64244,
+      "length": 20,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0182.C",
+      "acbp": 72,
+      "code_owner": "F_9D8E",
+      "data_owner": "DATA_125D",
+      "expected_load_start": 68749,
+      "expected_length": 20,
+      "placement_delta": -4505,
+      "length_matches": true
+    },
+    {
+      "load_start": 64264,
+      "length": 16,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0195.C",
+      "acbp": 72,
+      "code_owner": "F_A28D",
+      "data_owner": "C_DATA_A28D",
+      "expected_load_start": 69760,
+      "expected_length": 16,
+      "placement_delta": -5496,
+      "length_matches": true
+    },
+    {
+      "load_start": 64280,
+      "length": 1,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "R0200.C",
+      "acbp": 72,
+      "code_owner": "F_A658",
+      "data_owner": "C_DATA_A658",
+      "expected_load_start": 69109,
+      "expected_length": 1,
+      "placement_delta": -4829,
+      "length_matches": true
+    },
+    {
+      "load_start": 64282,
+      "length": 13932,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "DGSCF",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78214,
+      "length": 91,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "(none)",
+      "module": "IOERROR",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78306,
+      "length": 6,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "EXIT",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78312,
+      "length": 2,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "STKLEN",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78314,
+      "length": 2,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "ATEXIT",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78316,
+      "length": 12,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "FMALLOC",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78328,
+      "length": 2,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "FBRK",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78330,
+      "length": 257,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "CTYPE",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78588,
+      "length": 40,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "FILES2",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78628,
+      "length": 4,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "FMODE",
+      "acbp": 72,
+      "code_owner": null
+    },
+    {
+      "load_start": 78632,
+      "length": 4,
+      "class": "DATA",
+      "segment": "_DATA",
+      "group": "DGROUP",
+      "module": "RAND",
+      "acbp": 72,
+      "code_owner": null
+    }
+  ],
+  "bss_contributions": [
+    {
+      "load_start": 78642,
+      "length": 37252,
+      "class": "BSS",
+      "segment": "_BSS",
+      "group": "DGROUP",
+      "module": "DGSCF",
+      "acbp": 72
+    },
+    {
+      "load_start": 115894,
+      "length": 64,
+      "class": "BSS",
+      "segment": "_BSS",
+      "group": "DGROUP",
+      "module": "ATEXIT",
+      "acbp": 72
+    },
+    {
+      "load_start": 115958,
+      "length": 4,
+      "class": "BSS",
+      "segment": "_BSS",
+      "group": "DGROUP",
+      "module": "HARDERR",
+      "acbp": 72
+    }
+  ],
+  "missing_relocation_owners": [
+    {
+      "owner": "RAW_01075A",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        66915
+      ]
+    },
+    {
+      "owner": "RAW_010924",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        67372,
+        67380,
+        67384,
+        67392,
+        67400,
+        67404,
+        67412,
+        67420,
+        67424,
+        67434,
+        67438,
+        67446,
+        67450,
+        67458,
+        67466,
+        67470,
+        67478,
+        67486,
+        67490,
+        67500
+      ]
+    },
+    {
+      "owner": "DATA_125D",
+      "kind": "EXACT_DATA",
+      "encoder": "omf-segment-v1",
+      "missing_sites": [
+        68758
+      ]
+    },
+    {
+      "owner": "RAW_010FA5",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        69033,
+        69038,
+        69058,
+        69073,
+        69078,
+        69093,
+        69098
+      ]
+    },
+    {
+      "owner": "RAW_010FF6",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        69113,
+        69118,
+        69138
+      ]
+    },
+    {
+      "owner": "RAW_01129F_CONTROL_PREFIX",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        69801
+      ]
+    },
+    {
+      "owner": "RAW_011D90",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        72596,
+        72601,
+        72616,
+        72621,
+        72636,
+        72641,
+        72656,
+        72661,
+        72676,
+        72681,
+        72696,
+        72701,
+        72716,
+        72721,
+        72736,
+        72741
+      ]
+    },
+    {
+      "owner": "RAW_011F25",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        72999
+      ]
+    },
+    {
+      "owner": "RAW_011F86",
+      "kind": "RAW",
+      "encoder": null,
+      "missing_sites": [
+        73098
+      ]
+    }
+  ],
+  "adjacent_compiled_data_constraints": [
+    {
+      "left": "C_DATA_75F3",
+      "right": "C_DATA_7695",
+      "left_length": 15,
+      "right_load_start": 67014,
+      "constraint": "contiguous canonical DATA; test shared compilation or byte-aligned contribution"
+    },
+    {
+      "left": "C_DATA_7695",
+      "right": "C_DATA_778B",
+      "left_length": 13,
+      "right_load_start": 67027,
+      "constraint": "contiguous canonical DATA; test shared compilation or byte-aligned contribution"
+    }
+  ],
+  "historical_module_proven": false,
+  "scope": "post-link verification only; fixed ownership does not drive linking"
+}

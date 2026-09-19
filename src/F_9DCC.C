@@ -5,14 +5,10 @@ struct anim {
     char pad[0x17];
     char f17;
 };
-struct unit {
-    char pad[0x15];
-    char f15;
-    char tail[5];      /* the record is 0x1b bytes, as F_D4B3's is */
-};
+#include "C470.H"
 
 extern struct anim g0dcc[];
-extern struct unit gc470[];
+extern struct c470_record gc470[];
 extern int g13ed;
 extern int gc34e, gc350, gc352, gc354, gc359, gc35b, gc35d;
 extern char far *gc5ca;
@@ -32,12 +28,12 @@ int f9dcc(int n)
             return 0;
         } else {
             f9d8e();
-            f7343(gc470[g13ed].f15 = 4);
+            f7343(gc470[g13ed].state = 4);
             return -1;
         }
     }
     if (gc35b == 1) {
-        f734e(gc470[g13ed].f15 = 4);
+        f734e(gc470[g13ed].state = 4);
     }
     f99e2(gc359);
     x = gc34e;

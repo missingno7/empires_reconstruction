@@ -18,8 +18,10 @@ errors. The first mechanically relevant conflicts are:
 - `F_A004` returns a far character pointer while `F_A036` declares `fa004`
   with a near pointer type.
 - several fragments describe the DS:C470 table with incompatible temporary
-  record declarations; `F_A24E` also declares a local `struct R` that clashes
-  with the UI record used by `F_A28D`.
+  record declarations. A shared 27-byte `c470_record` layout is now recovered
+  in [C470.H](../include/C470.H) and used by the compatible fragments; see the
+  [record evidence](c470-record.md). F_A33F retains a byte-exact matrix view
+  pending a compiler-equivalent typed expression.
 
 The compiler also reports unresolved type conflicts for `f01ce`, `f03a8`, and
 the C470 declarations. These diagnostics establish the immediate work order:

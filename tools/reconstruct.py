@@ -80,6 +80,13 @@ def compile_sources(root, owners, work, toolchain, dosbox, lock):
     units = work / 'WORK'
     tc.mkdir(parents=True)
     units.mkdir()
+    # Recovered headers are staged beside every generated source unit so the
+    # historical compiler sees the same source-level interfaces in isolated
+    # fresh sessions as it will in a normal project build.
+    include_dir = root / 'include'
+    if include_dir.exists():
+        for header in include_dir.glob('*.H'):
+            shutil.copyfile(header, units / header.name)
     for item in lock['files']:
         src = toolchain / item['path']
         if sha(src.read_bytes()) != item['sha256']:

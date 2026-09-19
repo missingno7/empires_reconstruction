@@ -1,0 +1,25 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_C1F7",
+      "source": "src/F_C1F7.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc1f7",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_dv": {"offset": 6028, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
+          "_fc232": {"offset": 49714, "coordinate": "code_offset", "evidence": "F_C232 owned code entry"},
+          "_fc27d": {"coordinate": "code_offset", "evidence": "F_C27D owned code entry"},
+          "_snd_flag2": {"offset": 6006, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
+          "_snd_mode": {"offset": 6020, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
+          "_sv": {"offset": 6036, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to Turbo C inline assembly with thirteen fresh OMF fixups"
+    }
+  ]
+}

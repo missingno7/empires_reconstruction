@@ -1,0 +1,227 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_C1F7",
+  "bytes": 59,
+  "source_sha256": "cd48c3a5220b0de76dbf4347b6bd973360a9b40367d9680d6c2de4573c9ecd7c",
+  "matched_sha256": "2bb2e7df506e73c85a2e7b65c1a5ca482c506b48b1b71c5954a9623e2fe8212e",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 5,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_mode",
+      "displacement": 0,
+      "extent_offset": 5,
+      "addend": 0,
+      "resolved_value": 6020
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 11,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc232",
+      "displacement": 0,
+      "extent_offset": 11,
+      "addend": 0,
+      "resolved_value": 46
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 14,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc27d",
+      "displacement": 0,
+      "extent_offset": 14,
+      "addend": 0,
+      "resolved_value": 118
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 18,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_mode",
+      "displacement": 0,
+      "extent_offset": 18,
+      "addend": 0,
+      "resolved_value": 6020
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 24,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_flag2",
+      "displacement": 0,
+      "extent_offset": 24,
+      "addend": 0,
+      "resolved_value": 6006
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 32,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_sv",
+      "displacement": 0,
+      "extent_offset": 32,
+      "addend": 0,
+      "resolved_value": 6036
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 35,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_dv",
+      "displacement": 0,
+      "extent_offset": 35,
+      "addend": 0,
+      "resolved_value": 6028
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 38,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_sv",
+      "displacement": 0,
+      "extent_offset": 38,
+      "addend": 2,
+      "resolved_value": 6038
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 41,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_dv",
+      "displacement": 0,
+      "extent_offset": 41,
+      "addend": 2,
+      "resolved_value": 6030
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 44,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_sv",
+      "displacement": 0,
+      "extent_offset": 44,
+      "addend": 4,
+      "resolved_value": 6040
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 47,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_dv",
+      "displacement": 0,
+      "extent_offset": 47,
+      "addend": 4,
+      "resolved_value": 6032
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 50,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_sv",
+      "displacement": 0,
+      "extent_offset": 50,
+      "addend": 6,
+      "resolved_value": 6042
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 53,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_dv",
+      "displacement": 0,
+      "extent_offset": 53,
+      "addend": 6,
+      "resolved_value": 6034
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "cd48c3a5220b0de76dbf4347b6bd973360a9b40367d9680d6c2de4573c9ecd7c",
+    "staged_sha256": "a9ac35b20512e9d8e8b193c92002c014c9509cdb08d2ffdc5669c306ef0bac53",
+    "object_sha256": "8b3ccc8f50bc793348a4700baefb86c076f267de077a3e41dc96a6d415d7781b"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-fc1f7-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "c1ec31622c0ee8394174717bef408bbe453c56b8ca093d4608b172b8c468dccb",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

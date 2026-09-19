@@ -13845,9 +13845,9 @@
       "id": "F_C1F7",
       "start": 50167,
       "end": 50226,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_C1F7.ASM",
+      "source": "src/F_C1F7.C",
       "original_symbol": "F_C1F7",
       "artifact": "regions/F_C1F7.bin",
       "expected_sha256": "2bb2e7df506e73c85a2e7b65c1a5ca482c506b48b1b71c5954a9623e2fe8212e",
@@ -13857,6 +13857,7 @@
         "public": "_fc1f7",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_dv": {
             "offset": 6028,
@@ -13890,16 +13891,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212C4.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C1F7.json",
-        "entry_sha256": "d3e2a9a4a17afa0da0029b21ca931b8a253513a07295ab82f303236bdb5486d0",
-        "record_sha256": "2d38a6005d081fbb385768853d83ba8cbf16abf0658084a1ff943c2fab71676c",
-        "source_sha256": "105322935eea16b26432bcb6eb92d321a83f302dcab47a683acd24715e7cefef",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "105322935eea16b26432bcb6eb92d321a83f302dcab47a683acd24715e7cefef",
+        "source_sha256": "cd48c3a5220b0de76dbf4347b6bd973360a9b40367d9680d6c2de4573c9ecd7c",
+        "change": "Translate the complete sound voice pump into Turbo C inline assembly with thirteen existing fixups and no loader relocations."
       }
     },
     {

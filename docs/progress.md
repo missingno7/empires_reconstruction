@@ -270,9 +270,10 @@ original compressed bytes.
 
 On the EXE frontier, [C_6C26_6C87](module-group-evidence.md) compiles four existing
 contiguous sources into one fresh OBJ: 128 bytes, public offsets 0/49/73/97,
-and 16 fixups match. This is compatible module grouping evidence; original
-module/data ownership and linking remain unproven, so no historical-module
-or linker-binding coverage has been inflated.
+and 16 fixups match. The canonical exact-link experiment now uses that object
+in place of the four proof objects and retains whole-EXE equality. This is
+compatible module grouping evidence; original module/data ownership remains
+unproven, so no historical-module or linker-binding coverage has been inflated.
 
 The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
 retain the user's broader agenda. Matching is **not globally saturated**:

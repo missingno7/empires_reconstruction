@@ -30,5 +30,6 @@ No compensating padding was inserted and the baseline path remains available.
 This is a compatible shared-compilation group with exact DATA and a tested
 structural linker input. It is stronger evidence than code-only concatenation,
 but does not prove the historical translation-unit boundaries. The known
-four-function C_6C26_6C87 experiment still passes. Full fixed reconstruction
-still reproduces all 690,588 bytes of the three original game files.
+four-function C_6C26_6C87 group is likewise now an earlier real object in the
+canonical exact-link chain. Full fixed reconstruction remains the independent
+oracle.

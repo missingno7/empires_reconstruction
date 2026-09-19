@@ -16,11 +16,13 @@ fixups** match through the existing independent binding/relocation scaffold.
 The recipe supplies source order and compiler flags, not public offsets.
 The compiler sees neither original bytes nor desired addresses.
 
-This proves **compatible shared compilation and relative code layout**. It
-does not prove these were the original translation-unit boundaries, recover
-ownership of their external data, or establish linker ordering. The primary
-EXE build still keeps its independent proof units. Historical modules proven
-and linker-resolved bindings therefore remain zero.
+This proves **compatible shared compilation and relative code layout**. The
+canonical exact structural-link experiment now replaces these four proof
+objects with this one fresh object before its later shared-module and DATA
+stages; TLINK preserves every downstream code address and the final EXE is
+byte-identical. It does not prove these were the original translation-unit
+boundaries or recover ownership of their external data. Historical modules
+proven and linker-resolved bindings therefore remain zero.
 
 The tool saves source/OBJ/compiler digests, publics and per-owner fixup results
 under `build/module-group-*` and `build/module-group-report.json`. The compact

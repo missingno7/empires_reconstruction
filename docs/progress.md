@@ -275,6 +275,11 @@ in place of the four proof objects and retains whole-EXE equality. This is
 compatible module grouping evidence; original module/data ownership remains
 unproven, so no historical-module or linker-binding coverage has been inflated.
 
+The adjacent ten-owner [C_C5D1_C898](module-group-evidence.md) source group
+likewise enters the canonical link as one 771-byte Turbo C contribution. Its
+ordered publics and 11 fixups are freshly verified before TLINK preserves
+whole-EXE equality.
+
 The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
 retain the user's broader agenda. Matching is **not globally saturated**:
 compressor search policy, linkage closure, module grouping, embedded-data

@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_C5D1_C898",
+  "flags_append": "",
+  "segment": "_TEXT",
+  "sources": [
+    {"owner":"F_C5D1","path":"src/F_C5D1.C","public":"_f_c5d1"},
+    {"owner":"F_C678","path":"src/F_C678.C","public":"_f_c678"},
+    {"owner":"F_C6B9","path":"src/F_C6B9.C","public":"_f_c6b9"},
+    {"owner":"F_C706","path":"src/F_C706.C","public":"_f_c706"},
+    {"owner":"F_C755","path":"src/F_C755.C","public":"_f_c755"},
+    {"owner":"F_C77A","path":"src/F_C77A.C","public":"_f_c77a"},
+    {"owner":"F_C7CB","path":"src/F_C7CB.C","public":"_f_c7cb"},
+    {"owner":"F_C834","path":"src/F_C834.C","public":"_fc834"},
+    {"owner":"F_C877","path":"src/F_C877.C","public":"_fc877"},
+    {"owner":"F_C898","path":"src/F_C898.C","public":"_fc898"}
+  ],
+  "evidence":"Ten contiguous matching-C code extents with identical compact-model flags. This candidate tests only compatible shared compilation and is not a historical-module claim."
+}

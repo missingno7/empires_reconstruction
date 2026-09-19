@@ -13,13 +13,15 @@ def run():
         raise ValueError('Source DATA link no longer has an exact load image')
     first = shared_module_link(ROOT / 'recipes/modules/C_6C26_6C87.json', True)
     first_path = ROOT / 'build/shared-source-data-link-report_C_6C26_6C87.json'
-    second = shared_module_link(ROOT / 'recipes/modules/C_75F3_7856.json', True, first_path)
-    second_path = ROOT / 'build/shared-source-data-link-report_C_75F3_7856.json'
-    third = shared_module_link(ROOT / 'recipes/modules/C_AD25_AF45.json', True, second_path)
-    third_path = ROOT / 'build/shared-source-data-link-report_RELOC_F_AD25_F_ADCF.json'
-    fourth = shared_module_link(ROOT / 'recipes/modules/C_DDD9_E095.json', True, third_path)
-    fourth_path = ROOT / 'build/shared-source-data-link-report_RELOC_F_DDD9_F_DF98.json'
-    final = data_interleaving(fourth_path, ROOT / 'recipes/data/interleaving-candidate.json')
+    second = shared_module_link(ROOT / 'recipes/modules/C_C5D1_C898.json', True, first_path)
+    second_path = ROOT / 'build/shared-source-data-link-report_C_C5D1_C898.json'
+    third = shared_module_link(ROOT / 'recipes/modules/C_75F3_7856.json', True, second_path)
+    third_path = ROOT / 'build/shared-source-data-link-report_C_75F3_7856.json'
+    fourth = shared_module_link(ROOT / 'recipes/modules/C_AD25_AF45.json', True, third_path)
+    fourth_path = ROOT / 'build/shared-source-data-link-report_RELOC_F_AD25_F_ADCF.json'
+    fifth = shared_module_link(ROOT / 'recipes/modules/C_DDD9_E095.json', True, fourth_path)
+    fifth_path = ROOT / 'build/shared-source-data-link-report_RELOC_F_DDD9_F_DF98.json'
+    final = data_interleaving(fifth_path, ROOT / 'recipes/data/interleaving-candidate.json')
     comparison = final['byte_comparison']
     if (final['status'] != 'LAYOUT_PRESERVED'
             or final['matching_relocation_prefix_entries'] != 106
@@ -35,8 +37,9 @@ def run():
             {'name': first['candidate'], 'status': first['status']},
             {'name': second['candidate'], 'status': second['status']},
             {'name': third['candidate'], 'status': third['status']},
-            {'name': fourth['candidate'], 'status': fourth['status'],
-             'fixupp_order_adapter': fourth['fixupp_order_adapter']},
+            {'name': fourth['candidate'], 'status': fourth['status']},
+            {'name': fifth['candidate'], 'status': fifth['status'],
+             'fixupp_order_adapter': fifth['fixupp_order_adapter']},
             {'name': 'data_code_interleaving', 'status': final['status'],
              'matching_relocation_prefix_entries': final['matching_relocation_prefix_entries']},
         ],

@@ -28,3 +28,13 @@ The tool saves source/OBJ/compiler digests, publics and per-owner fixup results
 under `build/module-group-*` and `build/module-group-report.json`. The compact
 snapshot in [module-group-evidence.json](module-group-evidence.json) is historical
 experiment evidence; rerun the command for a fresh comparison.
+
+## C_C5D1_C898
+
+`recipes/modules/C_C5D1_C898.json` combines ten contiguous matching-C owners
+from F_C5D1 through F_C898. A fresh compact-model compilation emits one
+771-byte `_TEXT` contribution with the expected ordered publics and all 11
+known fixups. The canonical exact-link experiment uses the object before the
+other established shared groups and remains byte-identical. This establishes a
+**compatible shared compilation and linker input**, not a historical source-file
+identity.

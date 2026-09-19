@@ -280,6 +280,10 @@ likewise enters the canonical link as one 771-byte Turbo C contribution. Its
 ordered publics and 11 fixups are freshly verified before TLINK preserves
 whole-EXE equality.
 
+The contiguous [C_D61C_D79C](module-group-evidence.md) pair likewise enters
+the exact-link chain as one 507-byte contribution. It improves linker topology
+while retaining its separately tracked symbolic-assembly recovery work.
+
 The [phase direction](matching-phase.md) and [blocker ledger](blockers.json)
 retain the user's broader agenda. Matching is **not globally saturated**:
 compressor search policy, linkage closure, module grouping, embedded-data

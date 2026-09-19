@@ -38,3 +38,11 @@ known fixups. The canonical exact-link experiment uses the object before the
 other established shared groups and remains byte-identical. This establishes a
 **compatible shared compilation and linker input**, not a historical source-file
 identity.
+
+## C_D61C_D79C
+
+`recipes/modules/C_D61C_D79C.json` combines F_D61C and F_D79C into one fresh
+507-byte `_TEXT` contribution with no fixups. The canonical exact-link chain
+uses it in place of both proof objects and retains byte-identical output. This
+is structural module evidence only: both source owners are still classified as
+mechanical inline-assembly capsules and need symbolic recovery separately.

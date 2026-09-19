@@ -10,9 +10,8 @@ def load(path):
     return json.loads((ROOT / path).read_text())
 
 
-def covered(start, end, regions):
-    return any(r['start'] <= start and end <= r['end'] and
-               r['kind'] in ('MATCHING_C', 'MATCHING_ASM', 'KNOWN_TOOLCHAIN_LIBRARY')
+def covered(start, end, regions, allowed):
+    return any(r['start'] <= start and end <= r['end'] and r['kind'] in allowed
                for r in regions)
 
 
@@ -31,7 +30,8 @@ def audit():
     for entry in proven:
         start = entry['extent']['file_offset']
         end = start + entry['extent']['length']
-        if not covered(start, end, regions):
+        allowed = ('MATCHING_C',) if entry['kind'] == 'MATCHING_C' else ('MATCHING_C', 'MATCHING_ASM')
+        if not covered(start, end, regions, allowed):
             unowned_proven.append(entry['id'])
     unresolved_in_raw = []
     for entry in inventory['entries']:

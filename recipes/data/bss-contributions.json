@@ -246,10 +246,21 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSSG.OBJ",
-      "assembly": "GAMEBSSG.ASM",
+      "id": "GB1CC_RESOURCE_BUFFER_BSS",
+      "object": "GB1CCB.OBJ",
+      "assembly": "GB1CCB.ASM",
       "logical_start": 30922,
+      "logical_end": 31404,
+      "owner_candidate": "F_200F resource-17 buffer",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSH.OBJ",
+      "assembly": "GAMEBSSH.ASM",
+      "logical_start": 31404,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

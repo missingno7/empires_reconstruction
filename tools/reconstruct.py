@@ -226,10 +226,16 @@ def component_binding(binding, owners, mz, frames, component_modules=None):
             module = (component_modules or {}).get(target['id'])
             if module is None:
                 raise ValueError('Library public binding requires its verified component module')
-            publics = [p for p in module.publics_in(target['build']['segment']) if p['name'] == binding.get('public')]
-            if len(publics) != 1:
-                raise ValueError('Library public binding requires exactly one matching OMF public')
-            public_offset = publics[0]['offset']
+            if 'module_segment' in binding:
+                segment = binding['module_segment']
+                if ('public' in binding or segment != target['build']['segment'] or
+                        module.segment_length(segment) != target['end'] - target['start']):
+                    raise ValueError('Library segment binding requires complete matching ownership')
+            else:
+                publics = [p for p in module.publics_in(target['build']['segment']) if p['name'] == binding.get('public')]
+                if len(publics) != 1:
+                    raise ValueError('Library public binding requires exactly one matching OMF public')
+                public_offset = publics[0]['offset']
             if not 0 <= public_offset < target['end'] - target['start']:
                 raise ValueError('Library public lies outside its owned contribution')
         elif binding.get('public') != target['build']['public']:

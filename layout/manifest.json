@@ -21899,14 +21899,149 @@
     {
       "id": "RAW_012C03",
       "start": 76803,
-      "end": 78842,
+      "end": 78726,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/012C03-0133FA.bin",
+      "source": "raw/012C03-013386.bin",
       "original_symbol": null,
-      "artifact": "raw/012C03-0133FA.bin",
-      "expected_sha256": "e59987fa51709792e4e7153cf0192142f36f1fbb13205d3088c7be2f886d0c3f",
+      "artifact": "raw/012C03-013386.bin",
+      "expected_sha256": "1e3c99340362bcc453e49cb766ff258ae01e55ffaa9b3d777146580036be332d",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "LIB_IOERROR_DATA",
+      "start": 78726,
+      "end": 78817,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_IOERROR_DATA.bin",
+      "expected_sha256": "2d6f27ec2c9f8dc456ed9cfc7cb85064df1bb610659737b2f2cb6e3a48fd0a3a",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "IOERROR",
+        "module_sha256": "fc0ad2b5f1c8935d7a704ffae9186593ef45b062ef23f19345214c8e0c1586aa",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "DATA_0133E1_LIB_ALIGN",
+      "start": 78817,
+      "end": 78818,
+      "kind": "EXACT_DATA",
+      "classification": "alignment_padding",
+      "source": "src/data/DATA_0133E1_LIB_ALIGN.json",
+      "artifact": "regions/DATA_0133E1_LIB_ALIGN.bin",
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "LIB_EXIT_DATA",
+      "start": 78818,
+      "end": 78824,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_EXIT_DATA.bin",
+      "expected_sha256": "e711767b74268c38c15ccbedbda924474de49a3fd678455959ab3152c57d48f7",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "EXIT",
+        "module_sha256": "d9054d59994bf79366643b98e27c5b13589bd599270e548d1207adab308dfa0a",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {
+          "_TEXT": {
+            "owner": "LIB_EXIT",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "module_segment": "_TEXT"
+          }
+        }
+      }
+    },
+    {
+      "id": "LIB_STKLEN_DATA",
+      "start": 78824,
+      "end": 78826,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_STKLEN_DATA.bin",
+      "expected_sha256": "0298d122906dcfc10892cb53a73992fc5b9f493ea4c9badb27b791b4127a7fe7",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "STKLEN",
+        "module_sha256": "460f7af16286edec24caec3f1681a3d0c31996b1ec91747bc9551ef993f9f9c1",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "LIB_ATEXIT_DATA",
+      "start": 78826,
+      "end": 78828,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_ATEXIT_DATA.bin",
+      "expected_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "ATEXIT",
+        "module_sha256": "8b957d011beae6358958cc99b3fd555a1d422e036f6aaa409eabb2b9c03330b7",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "LIB_FMALLOC_DATA",
+      "start": 78828,
+      "end": 78840,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_FMALLOC_DATA.bin",
+      "expected_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "FMALLOC",
+        "module_sha256": "bcb5ef2c3d7ad9071ddff3188155edb9e6197dbdc9c3d745319b3581569a1ef0",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "LIB_FBRK_DATA",
+      "start": 78840,
+      "end": 78842,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_FBRK_DATA.bin",
+      "expected_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "FBRK",
+        "module_sha256": "76b76c6ca277e1302f640a8012fe83343ae969e19442700a1d5533c2aca317cf",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "LIB_CTYPE_DATA",
@@ -21932,15 +22067,86 @@
       }
     },
     {
-      "id": "RAW_0134FB",
+      "id": "DATA_0134FB_LIB_ALIGN",
       "start": 79099,
+      "end": 79100,
+      "kind": "EXACT_DATA",
+      "classification": "alignment_padding",
+      "source": "src/data/DATA_0134FB_LIB_ALIGN.json",
+      "artifact": "regions/DATA_0134FB_LIB_ALIGN.bin",
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "LIB_FILES2_DATA",
+      "start": 79100,
+      "end": 79140,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_FILES2_DATA.bin",
+      "expected_sha256": "67f38fa9c1fdc2d496b9463a27653bc785ffd37823d2d550a9301e3e9f4f21df",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "FILES2",
+        "module_sha256": "a2129a097756942de02c996b8939e9d7383d51170c6db204c1f90ac00ade8f24",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "LIB_FMODE_DATA",
+      "start": 79140,
+      "end": 79144,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_FMODE_DATA.bin",
+      "expected_sha256": "4bb9fff72a453214eb235a29018d786379d314ffa1a19a7866f2fb2ff4ee34a0",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "FMODE",
+        "module_sha256": "ddf1e527ae7498bd8ae996cd652739eceab24f3924763069b8869d8407c7d757",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "LIB_RAND_DATA",
+      "start": 79144,
+      "end": 79148,
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library_data",
+      "source": "toolchain/CC.LIB",
+      "artifact": "regions/LIB_RAND_DATA.bin",
+      "expected_sha256": "67abdd721024f0ff4e0b3f4c2fc13bc5bad42d0b7851d456d88d203d15aaa450",
+      "matching_status": "EQUAL",
+      "build": {
+        "library": "CC.LIB",
+        "library_module": "RAND",
+        "module_sha256": "9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b",
+        "segment": "_DATA",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "RAW_01352C",
+      "start": 79148,
       "end": 79154,
       "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0134FB-013532.bin",
+      "classification": "startup_segment_data",
+      "source": "raw/01352C-013532.bin",
       "original_symbol": null,
-      "artifact": "raw/0134FB-013532.bin",
-      "expected_sha256": "f69ccbee796c5d97f39dac76d087f139708b0251cb138b1f1c0e61bca26c3826",
+      "artifact": "raw/01352C-013532.bin",
+      "expected_sha256": "2f8c3166a20150ffc910e906ba2260543939ede1aaff6d39a7b5147b173ec4e3",
       "matching_status": "EQUAL"
     }
   ]

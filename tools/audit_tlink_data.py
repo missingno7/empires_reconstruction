@@ -27,6 +27,8 @@ def audit(manifest, report, map_text):
     owners = manifest['regions']
     by_code = {o['build']['code_owner']: o for o in owners
                if o.get('build', {}).get('encoder') == 'omf-segment-v1'}
+    by_library = {o['build']['library_module']: o for o in owners
+                  if o['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY' and o['build']['segment'] == '_DATA'}
     staged = {Path(s['object']).stem.upper(): s['owner']
               for s in report['relocatable_scaffold'] if s.get('owner')}
     checked = []
@@ -34,7 +36,7 @@ def audit(manifest, report, map_text):
         if row['segment'] != '_DATA' or not row['length']:
             continue
         code_owner = staged.get(Path(row['module']).stem.upper())
-        owner = by_code.get(code_owner)
+        owner = by_code.get(code_owner) or by_library.get(row['module'])
         entry = dict(row, code_owner=code_owner)
         if owner:
             entry.update(data_owner=owner['id'], expected_load_start=owner['start'] - 512,

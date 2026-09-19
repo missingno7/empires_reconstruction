@@ -131,7 +131,12 @@
       "group": "(none)",
       "module": "IOERROR",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_IOERROR_DATA",
+      "expected_load_start": 78214,
+      "expected_length": 91,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78306,
@@ -141,7 +146,12 @@
       "group": "DGROUP",
       "module": "EXIT",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_EXIT_DATA",
+      "expected_load_start": 78306,
+      "expected_length": 6,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78312,
@@ -151,7 +161,12 @@
       "group": "DGROUP",
       "module": "STKLEN",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_STKLEN_DATA",
+      "expected_load_start": 78312,
+      "expected_length": 2,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78314,
@@ -161,7 +176,12 @@
       "group": "DGROUP",
       "module": "ATEXIT",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_ATEXIT_DATA",
+      "expected_load_start": 78314,
+      "expected_length": 2,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78316,
@@ -171,7 +191,12 @@
       "group": "DGROUP",
       "module": "FMALLOC",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_FMALLOC_DATA",
+      "expected_load_start": 78316,
+      "expected_length": 12,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78328,
@@ -181,7 +206,12 @@
       "group": "DGROUP",
       "module": "FBRK",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_FBRK_DATA",
+      "expected_load_start": 78328,
+      "expected_length": 2,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78330,
@@ -191,7 +221,12 @@
       "group": "DGROUP",
       "module": "CTYPE",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_CTYPE_DATA",
+      "expected_load_start": 78330,
+      "expected_length": 257,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78588,
@@ -201,7 +236,12 @@
       "group": "DGROUP",
       "module": "FILES2",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_FILES2_DATA",
+      "expected_load_start": 78588,
+      "expected_length": 40,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78628,
@@ -211,7 +251,12 @@
       "group": "DGROUP",
       "module": "FMODE",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_FMODE_DATA",
+      "expected_load_start": 78628,
+      "expected_length": 4,
+      "placement_delta": 0,
+      "length_matches": true
     },
     {
       "load_start": 78632,
@@ -221,7 +266,12 @@
       "group": "DGROUP",
       "module": "RAND",
       "acbp": 72,
-      "code_owner": null
+      "code_owner": null,
+      "data_owner": "LIB_RAND_DATA",
+      "expected_load_start": 78632,
+      "expected_length": 4,
+      "placement_delta": 0,
+      "length_matches": true
     }
   ],
   "bss_contributions": [

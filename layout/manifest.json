@@ -10591,16 +10591,42 @@
       }
     },
     {
-      "id": "RAW_009A8F",
+      "id": "F_988F",
+      "kind": "MATCHING_C",
+      "source": "src/F_988F.C",
       "start": 39567,
+      "end": 39627,
+      "expected_sha256": "0441b4ada7167fafe197d400930f5483b4ae708893dcba4902f8538b995877e9",
+      "classification": "code",
+      "artifact": "regions/F_988F.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_988f",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_98CB",
+      "kind": "MATCHING_C",
+      "source": "src/F_98CB.C",
+      "start": 39627,
       "end": 39688,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/009A8F-009B08.bin",
-      "original_symbol": null,
-      "artifact": "raw/009A8F-009B08.bin",
-      "expected_sha256": "87e08bd13f3a08da67486926224bc9700b533cb3ca06e153bf216ea90b04f695",
-      "matching_status": "EQUAL"
+      "expected_sha256": "eb7e0760ddca8b6423f8de2daa4400465e8e483d260828871cf10184a760cf9a",
+      "classification": "code",
+      "artifact": "regions/F_98CB.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_98cb",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_9908",
@@ -15153,16 +15179,99 @@
       }
     },
     {
-      "id": "RAW_00CD5C",
+      "id": "F_CB5C",
+      "kind": "MATCHING_C",
+      "source": "src/F_CB5C.C",
       "start": 52572,
+      "end": 52669,
+      "expected_sha256": "5e237817ebfb718ed14e5ee536605a5795b8739b50418bb4ca1cadf4f2923269",
+      "classification": "code",
+      "artifact": "regions/F_CB5C.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_cb5c",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_CBBB",
+      "kind": "MATCHING_C",
+      "source": "src/F_CBBB.C",
+      "start": 52669,
+      "end": 52759,
+      "expected_sha256": "731f094b8289af2c172c6664b29ee5ef059107bbf727abb19c6376bc958e45a1",
+      "classification": "code",
+      "artifact": "regions/F_CBBB.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_cbbb",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_CC17",
+      "kind": "MATCHING_C",
+      "source": "src/F_CC17.C",
+      "start": 52759,
+      "end": 52844,
+      "expected_sha256": "437e800262e329a02d76d86bfe3e7fcc31ddaec006c9fbcf999adc6873e6b641",
+      "classification": "code",
+      "artifact": "regions/F_CC17.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_cc17",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_CC6B",
+      "kind": "MATCHING_C",
+      "source": "src/F_CC6B.C",
+      "start": 52844,
+      "end": 53028,
+      "expected_sha256": "0b6ae47af617bce8fb6679c82548c7c4c86d88d0e29d81c13e7895496db53638",
+      "classification": "code",
+      "artifact": "regions/F_CC6B.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_cc6b",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_CD23",
+      "kind": "MATCHING_C",
+      "source": "src/F_CD23.C",
+      "start": 53028,
       "end": 53213,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00CD5C-00CFDD.bin",
-      "original_symbol": null,
-      "artifact": "raw/00CD5C-00CFDD.bin",
-      "expected_sha256": "b9e4945055118cf5c0354e9868fa41c3b2e35a6d6c3ec6baf19ae10f054c98dd",
-      "matching_status": "EQUAL"
+      "expected_sha256": "76661ae27049679545a7a982ef631e1444dc5d0f0fad66e19c1b4b68ae091115",
+      "classification": "code",
+      "artifact": "regions/F_CD23.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_cd23",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_CDDD",
@@ -17240,16 +17349,61 @@
       }
     },
     {
-      "id": "RAW_00DCD7",
+      "id": "F_DAD7",
+      "kind": "MATCHING_C",
+      "source": "src/F_DAD7.C",
       "start": 56535,
+      "end": 56599,
+      "expected_sha256": "39f8929d3a7e77c1ac62908c2b36727ceaf0a99d047f20c8850fa6fc687d7648",
+      "classification": "code",
+      "artifact": "regions/F_DAD7.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_dad7",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_DB17",
+      "kind": "MATCHING_C",
+      "source": "src/F_DB17.C",
+      "start": 56599,
+      "end": 56629,
+      "expected_sha256": "1b3430042a344345298a9129d1f75bfa6b47951ea2117ba1ed90e354125cf645",
+      "classification": "code",
+      "artifact": "regions/F_DB17.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_db17",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_DB35",
+      "kind": "MATCHING_C",
+      "source": "src/F_DB35.C",
+      "start": 56629,
       "end": 56672,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00DCD7-00DD60.bin",
-      "original_symbol": null,
-      "artifact": "raw/00DCD7-00DD60.bin",
-      "expected_sha256": "1defb63d256b715db2d42ce4329b251332452f5e1325f8ef6d11b2bde162dca7",
-      "matching_status": "EQUAL"
+      "expected_sha256": "c8c53717eb645ce7703aa4500b8e53d7d059d777db12d22a06c08de351d5f509",
+      "classification": "code",
+      "artifact": "regions/F_DB35.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_db35",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_DB60",

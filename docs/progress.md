@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 41,742 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 42,641 bytes from raw
 fallback: 26,382 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 48,456 | 310 |
+| Freshly compiled matching C | 14,077 | 49,355 | 320 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 19,296 | 33 |
+| Exact raw fallback | 62,621 | 18,397 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 19,296 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 18,397 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -821,4 +821,13 @@ object binds the verified `LXMUL@` and `LDIV@` library publics, proving two OMF
 fixups and two MZ relocations. See [the wave 103 proof](matching-c-wave103.md).
 
 Coverage is now 48,456 matching-C bytes across 310 owners, with 19,296 raw
+bytes remaining.
+
+## One-hundred-second matching-C wave
+
+Ten instruction-level return-bounded routines add 899 bytes from four compound
+raw spans. Exact second OMF labels preserve every split boundary, with no
+external fixups or loader relocations. See [the wave 102 proof](matching-c-wave102.md).
+
+Coverage is now 49,355 matching-C bytes across 320 owners, with 18,397 raw
 bytes remaining.

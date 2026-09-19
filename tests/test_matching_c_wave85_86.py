@@ -57,7 +57,17 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                     ('F_4B0C', 'matching-wave100.json', 915, 0, []),
                     ('F_7DD3', 'matching-wave101.json', 41, 0, []),
                     ('F_8C04', 'matching-wave101.json', 51, 0, []),
-                    ('F_DF98', 'matching-wave103.json', 253, 2, [57266, 57344])]:
+                    ('F_DF98', 'matching-wave103.json', 253, 2, [57266, 57344]),
+                    ('F_988F', 'matching-wave102.json', 60, 0, []),
+                    ('F_98CB', 'matching-wave102.json', 61, 0, []),
+                    ('F_CB5C', 'matching-wave102.json', 97, 0, []),
+                    ('F_CBBB', 'matching-wave102.json', 90, 0, []),
+                    ('F_CC17', 'matching-wave102.json', 85, 0, []),
+                    ('F_CC6B', 'matching-wave102.json', 184, 0, []),
+                    ('F_CD23', 'matching-wave102.json', 185, 0, []),
+                    ('F_DAD7', 'matching-wave102.json', 64, 0, []),
+                    ('F_DB17', 'matching-wave102.json', 30, 0, []),
+                    ('F_DB35', 'matching-wave102.json', 43, 0, [])]:
                 owner = next(r for r in manifest['regions'] if r['id'] == ident)
                 recipe = read_json(ROOT / 'recipes/c' / recipe_name)
                 self.assertEqual(next(r for r in recipe['owners'] if r['id'] == ident), owner)

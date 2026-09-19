@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,120 | 250 |
+| Freshly compiled matching C | 14,077 | 36,130 | 251 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,723 | 50 |
+| Exact raw fallback | 62,621 | 31,713 | 49 |
 | Total | 79,154 | 79,154 | 376 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,723 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,713 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -571,3 +571,7 @@ The next raw-code audit records `F_D386`, the `F_CA03` call cluster, and
 ## Sixty-first matching-C wave
 
 F_C232 adds 75 matching C bytes for the complete ES:DI table-scan routine. Its fresh Turbo C object preserves the historical frame and loop bytes through inline assembler, binds twelve DGROUP references, and has no loader relocations. See [the wave-sixty-one proof](matching-c-wave61.md).
+
+## Sixty-second matching-C wave
+
+F_CA91 adds 10 matching C bytes for the complete live-AL widening store. Its fresh Turbo C object preserves the historical frame and return bytes through inline assembler, binds one DGROUP reference, and has no loader relocations. See [the wave-sixty-two proof](matching-c-wave62.md).

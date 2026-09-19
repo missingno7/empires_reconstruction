@@ -1,0 +1,34 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_CA91",
+      "kind": "MATCHING_C",
+      "source": "src/F_CA91.C",
+      "start": 52369,
+      "end": 52379,
+      "expected_sha256": "458c83f920938024c7995c29949061cf27e6c9760898868bdb93757e2e9ee785",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fca91",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g1e92": {
+            "offset": 7826,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_CA91",
+      "artifact": "regions/F_CA91.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the 10-byte live-AL widening store with its explicit historical frame bytes"
+      }
+    }
+  ]
+}

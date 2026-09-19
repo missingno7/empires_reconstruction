@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "3fdcedc150ba4f48e755f4f8bc1dc3ed76df96a465ad080cbc3b9597b6dbfce2",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 10,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_CA91",
+      "kind": "MATCHING_C",
+      "bytes": 10,
+      "sha256": "458c83f920938024c7995c29949061cf27e6c9760898868bdb93757e2e9ee785",
+      "source_sha256": "b77bd957f3dcd3bd3733bdbb82dfd9ce885c956be14d657fed5150344efea606",
+      "fixups": 1,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

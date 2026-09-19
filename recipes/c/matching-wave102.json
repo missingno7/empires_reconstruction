@@ -182,8 +182,8 @@
     },
     {
       "id": "F_DB35",
-      "kind": "MATCHING_C",
-      "source": "src/F_DB35.C",
+      "kind": "MATCHING_ASM",
+      "source": "src/F_DB35.ASM",
       "start": 56629,
       "end": 56672,
       "expected_sha256": "c8c53717eb645ce7703aa4500b8e53d7d059d777db12d22a06c08de351d5f509",
@@ -195,7 +195,15 @@
         "public": "_f_db35",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_fc898": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C898.entry",
+            "owner": "F_C898",
+            "public": "_fc898",
+            "addend": 0
+          }
+        },
         "module_segments": {}
       }
     }

@@ -1,9 +1,9 @@
 {
   "status": "EQUAL",
-  "recipe_sha256": "f8cf68df03be22b4de4c84c22ed50a0f0f42981b8d01c3e16c45f077ff598173",
+  "recipe_sha256": "aa6ac8c0adca9447198b754b2e90136bcd46577a192b3843e68157be21bcfabe",
   "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "promoted_c_bytes": 869,
-  "promoted_asm_bytes": 30,
+  "promoted_c_bytes": 826,
+  "promoted_asm_bytes": 73,
   "promoted_library_bytes": 0,
   "promoted_compiled_data_bytes": 0,
   "promoted_text_bytes": 0,
@@ -109,11 +109,11 @@
     },
     {
       "id": "F_DB35",
-      "kind": "MATCHING_C",
+      "kind": "MATCHING_ASM",
       "bytes": 43,
       "sha256": "c8c53717eb645ce7703aa4500b8e53d7d059d777db12d22a06c08de351d5f509",
-      "source_sha256": "9a0d84099c15c5f4519bebc6903d1839b696170df4cfdbcac61c9dc134bb130a",
-      "fixups": 0,
+      "source_sha256": "6c877cb2598d5a6330242d5754fbbbc345b328a0406d7e2e3677c0852171d84a",
+      "fixups": 1,
       "load_relocations": [],
       "encoder": null,
       "status": "EQUAL"

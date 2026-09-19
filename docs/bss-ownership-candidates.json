@@ -248,6 +248,16 @@
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
       "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
       "contribution": {"object": "OCTAVES.OBJ", "logical_start": 36072, "logical_end": 36168}
+    },
+    {
+      "id": "NOTE_INDEX_TABLE_BSS",
+      "start": 36168,
+      "end": 36264,
+      "declarations": [{"symbols": ["_gc64a", "_tab_ix"], "type": "unsigned char[96]", "size": 96}],
+      "evidence": ["F_DEFA writes gc64a by note index", "F_E48A reads tab_ix as one byte per note", "next anchor _gc6aa is at 36264"],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {"object": "NOTEIDX.OBJ", "logical_start": 36168, "logical_end": 36264}
     }
   ]
 }

@@ -158,10 +158,21 @@
       "aggregate_storage": false
     },
     {
+      "id": "NOTE_INDEX_TABLE_BSS",
+      "object": "NOTEIDX.OBJ",
+      "assembly": "NOTEIDX.ASM",
+      "logical_start": 36168,
+      "logical_end": 36264,
+      "owner_candidate": "sound note index table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
       "id": "GAMEBSS_REMAINDER",
       "object": "GAMEBSS5.OBJ",
       "assembly": "GAMEBSS5.ASM",
-      "logical_start": 36168,
+      "logical_start": 36264,
       "logical_end": 37250,
       "owner_candidate": "aggregate remainder",
       "representation": "ANCHORED_BSS",

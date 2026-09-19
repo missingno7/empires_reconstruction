@@ -85,8 +85,8 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertTrue(report['byte_comparison']['text']['equal'])
         self.assertEqual(report['synthetic_bss_bytes'], 0)
-        self.assertEqual(report['partitioned_bss_source_bytes'], 2608)
-        self.assertEqual(report['unpartitioned_bss_source_bytes'], 34642)
+        self.assertEqual(report['partitioned_bss_source_bytes'], 2616)
+        self.assertEqual(report['unpartitioned_bss_source_bytes'], 34634)
         self.assertFalse(report['dgroup_scaffold_present'])
         self.assertEqual(report['bss_source']['kind'], 'TASM_SOURCE_CONTRIBUTIONS')
         self.assertTrue(report['bss_source']['binding_evidence_equal'])
@@ -100,7 +100,8 @@ class SourceDataLinkTests(unittest.TestCase):
                           ('SLOT_GRID_BSS', 48), ('GAMEBSS_MID_REMAINDER', 8),
                           ('ANIMATION_STATE_BSS', 18), ('GC360_RECORD_TABLE_BSS', 270),
                           ('GAMEBSS_ERR_REMAINDER', 2),
-                          ('C470_RECORD_TABLE_BSS', 270), ('GAMEBSS_REMAINDER', 1286)])
+                          ('C470_RECORD_TABLE_BSS', 270), ('GAMEBSS_REMAINDER_PREFIX', 52),
+                          ('GC5B2_FLAGS_BSS', 8), ('GAMEBSS_REMAINDER', 1226)])
         self.assertEqual(report['oracle_copied_initialized_data_bytes'], 0)
         reloc = report['byte_comparison']['mz']
         self.assertEqual(reloc['candidate_fields']['e_crlc'], 106)

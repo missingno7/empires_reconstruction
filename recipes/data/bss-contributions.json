@@ -114,10 +114,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_REMAINDER",
+      "id": "GAMEBSS_REMAINDER_PREFIX",
       "object": "GAMEBSS.OBJ",
       "assembly": "GAMEBSS.ASM",
       "logical_start": 35964,
+      "logical_end": 36016,
+      "owner_candidate": "aggregate remainder prefix",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "GC5B2_FLAGS_BSS",
+      "object": "FLAGSBS.OBJ",
+      "assembly": "FLAGSBS.ASM",
+      "logical_start": 36016,
+      "logical_end": 36024,
+      "owner_candidate": "shared four-flag state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_REMAINDER",
+      "object": "GAMEBSS4.OBJ",
+      "assembly": "GAMEBSS4.ASM",
+      "logical_start": 36024,
       "logical_end": 37250,
       "owner_candidate": "aggregate remainder",
       "representation": "ANCHORED_BSS",

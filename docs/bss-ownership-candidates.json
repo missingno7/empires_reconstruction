@@ -228,6 +228,16 @@
       "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
       "contribution": {"object": "GC360BSS.OBJ", "logical_start": 35422, "logical_end": 35692},
       "limitation": "The compatible table extent is proven; historical source-module ownership is open."
+    },
+    {
+      "id": "GC5B2_FLAGS_BSS",
+      "start": 36016,
+      "end": 36024,
+      "declarations": [{"symbol": "_gc5b2", "type": "int[4]", "size": 8}],
+      "evidence": ["F_D089 initializes gc5b2[0..3]", "F_CE68, F_CF3C, F_D15D, and F_D26C consume the same four flags", "next anchor _gc5ba is at 36024"],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {"object": "FLAGSBS.OBJ", "logical_start": 36016, "logical_end": 36024}
     }
   ]
 }

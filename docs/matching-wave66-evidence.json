@@ -1,0 +1,34 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "f54e03073707723bf0e305782b69ff14b63f161c5552d463ca5b3dca67047b64",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 85,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_6B7A",
+      "kind": "MATCHING_C",
+      "bytes": 50,
+      "sha256": "7ae49dbdcd0c6fe7d78ba2c8215970167403d4dd296959edb1f0880e9f24a0ee",
+      "source_sha256": "0d5445bf795eedd923449492cf08ea349c93bd3e695b9349220a98832c85fd47",
+      "fixups": 2,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    },
+    {
+      "id": "F_6BAC",
+      "kind": "MATCHING_C",
+      "bytes": 35,
+      "sha256": "879bdc64c4d791dfaf24239eab1bbc4e941a6518f2e33a1e93901a9b2d395a3b",
+      "source_sha256": "61897881e035d140d04d95b0dc4eff7f0f30d478167d1c93c1456f9e06fcd4d5",
+      "fixups": 2,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,264 | 254 |
+| Freshly compiled matching C | 14,077 | 36,349 | 255 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,579 | 46 |
+| Exact raw fallback | 62,621 | 31,494 | 44 |
 | Total | 79,154 | 79,154 | 376 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,579 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,494 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -587,3 +587,7 @@ F_034F adds 6 matching C bytes for the complete BIOS mode-switch routine. Its fr
 ## Sixty-fifth matching-C wave
 
 F_53BF adds 75 matching C bytes for the complete display-mode and VGA probe. Its fresh Turbo C object binds the existing F_E54D call and two DGROUP state locations, with no loader relocations. See [the wave-sixty-five proof](matching-c-wave65.md).
+
+## Sixty-sixth matching-C wave
+
+F_6B7A and F_6BAC add 85 matching C bytes for the complete timer-vector and PIT install/restore routines. Their fresh Turbo C objects bind the two recovered DGROUP words each and have no loader relocations. See [the wave-sixty-six proof](matching-c-wave66.md).

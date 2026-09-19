@@ -1,0 +1,71 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_6B7A",
+      "kind": "MATCHING_C",
+      "source": "src/F_6B7A.C",
+      "start": 28026,
+      "end": 28076,
+      "expected_sha256": "7ae49dbdcd0c6fe7d78ba2c8215970167403d4dd296959edb1f0880e9f24a0ee",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6b7a",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g0b7a": {
+            "offset": 2938,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g0b7c": {
+            "offset": 2940,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_6B7A",
+      "artifact": "regions/F_6B7A.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 50-byte timer-vector install and PIT programming routine"
+      }
+    },
+    {
+      "id": "F_6BAC",
+      "kind": "MATCHING_C",
+      "source": "src/F_6BAC.C",
+      "start": 28076,
+      "end": 28111,
+      "expected_sha256": "879bdc64c4d791dfaf24239eab1bbc4e941a6518f2e33a1e93901a9b2d395a3b",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6bac",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g0b7a": {
+            "offset": 2938,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g0b7c": {
+            "offset": 2940,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_6BAC",
+      "artifact": "regions/F_6BAC.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 35-byte timer-vector restore and PIT reset routine"
+      }
+    }
+  ]
+}

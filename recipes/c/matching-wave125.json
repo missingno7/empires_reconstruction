@@ -1,0 +1,18 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_6D86",
+      "source": "src/F_6D86.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6d86",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to Turbo C inline assembly with no OMF fixups or loader relocations"
+    }
+  ]
+}

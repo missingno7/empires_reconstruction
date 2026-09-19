@@ -7112,9 +7112,9 @@
       "id": "F_6D86",
       "start": 28550,
       "end": 28613,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_6D86.ASM",
+      "source": "src/F_6D86.C",
       "original_symbol": "F_6D86",
       "artifact": "regions/F_6D86.bin",
       "expected_sha256": "cd87f9da0d7af9fab6895ec031768588fc821349b792abf3c94f124ded0146a5",
@@ -7124,16 +7124,14 @@
         "public": "_f6d86",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
+        "module_segments": {},
+        "bindings": {}
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6D86.json",
-        "entry_sha256": "96a0fb30f6163b73acd8ca0f1b492207fd134a185ed170f64ced57117f7fd8bf",
-        "record_sha256": "3c6b31692c95dff3fa5e69b20818f16e3752921ef827816e996375a3291dc0d7",
-        "source_sha256": "acc13ea27fa0371d8c1d89016363ca386f910f16288736d6b87c33ad51c20da7",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "acc13ea27fa0371d8c1d89016363ca386f910f16288736d6b87c33ad51c20da7",
+        "source_sha256": "2aae6c3ec56772b37d23be10470caa88d3921b97219ebed2d398849caf4f0880",
+        "change": "Translate the complete far RLE stage into Turbo C inline assembly with no external fixups or loader relocations."
       }
     },
     {

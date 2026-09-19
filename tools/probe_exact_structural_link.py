@@ -42,7 +42,7 @@ def run():
         'remaining_adapters': [
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
-            'unpartitioned TASM BSS source and recovered public map',
+            'unpartitioned TASM BSS reserve and historical storage ownership',
         ],
         'whole_build_reconstruction_complete': False,
         'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA '

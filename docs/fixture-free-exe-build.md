@@ -20,3 +20,7 @@ The four remaining topology adapters are unchanged: candidate DATA/code
 interleaving, arithmetic FIXUPP ordering, aggregate BSS ownership, and empty
 Turbo-C-compatible DGROUP metadata. See the machine-readable
 [audit](fixture-dependency-audit.json).
+
+The DGROUP adapter now applies only where TASM actually lacks the topology:
+eight source modules already emit it naturally, reducing active metadata
+rewrites from 24 to 16 while retaining exact output.

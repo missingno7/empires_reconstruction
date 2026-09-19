@@ -434,10 +434,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             transforms = []
             if owner['kind'] == 'MATCHING_ASM':
                 try:
-                    source_bytes = ensure_turbo_c_dgroup(source_bytes)
+                    normalized = ensure_turbo_c_dgroup(source_bytes)
                 except ValueError as error:
                     raise ValueError(f"{owner['id']}: DGROUP normalization failed: {error}") from error
-                transforms.append('Turbo C-compatible empty DGROUP metadata')
+                if normalized != source_bytes:
+                    source_bytes = normalized
+                    transforms.append('Turbo C-compatible empty DGROUP metadata')
             if expose_internal_labels:
                 for old, new in scoped_aliases.get(owner['id'], {}).items():
                     source_bytes = rename_external(source_bytes, old, new)

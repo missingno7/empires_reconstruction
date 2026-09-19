@@ -68,6 +68,14 @@ def ensure_turbo_c_dgroup(data: bytes) -> bytes:
     compiler's linker-facing empty-segment topology.
     """
     before = OmfReader().read(data)
+    existing_group = next((entry for entry in before.groups if entry['name'] == 'DGROUP'), None)
+    existing_segments = {item['name'] for item in before.segment_defs}
+    # A number of reconstructed TASM modules already declare the complete
+    # topology themselves.  Preserve their untouched OMF object rather than
+    # treating a mechanically redundant rewrite as an active adapter.
+    if ({'_DATA', '_BSS'} <= existing_segments and existing_group and
+            existing_group['segments'] == ['_BSS', '_DATA']):
+        return data
     records = list(_records(data))
 
     names = []

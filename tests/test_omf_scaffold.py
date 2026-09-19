@@ -13,6 +13,19 @@ from reconstruct import read_json
 
 
 class OmfScaffoldTests(unittest.TestCase):
+    def test_existing_turbo_c_dgroup_topology_is_untouched(self):
+        data = (ROOT / 'asm/F_652A.ASM').read_text()
+        self.assertIn('DGROUP group _DATA,_BSS', data)
+        report_path = ROOT / 'build/tlink-structural-report.json'
+        if not report_path.exists():
+            self.skipTest('structural TLINK probe has not produced F_652A')
+        report = read_json(report_path)
+        entry = next(item for item in report['relocatable_scaffold']
+                     if item.get('owner') == 'F_652A')
+        work = Path(report['byte_comparison']['candidate']).parent.parent
+        source = (work / 'compile' / 'WORK' / entry['object']).read_bytes()
+        self.assertEqual(ensure_turbo_c_dgroup(source), source)
+
     def test_large_dgroup_records_preserve_all_bytes_and_publics(self):
         data = bytes(range(256)) * 55
         publics = {'_data_%04d' % i: ('_DATA', i * 17) for i in range(400)}

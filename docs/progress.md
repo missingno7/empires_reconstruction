@@ -849,3 +849,13 @@ fixups or loader relocations. See [the wave 105 proof](matching-c-wave105.md).
 
 Coverage is now 56,330 matching-C bytes across 322 owners, with 11,422 raw
 bytes remaining.
+
+## Raw frontier audit after wave 105
+
+The remaining raw bytes are now mechanically classified as two one-byte
+alignment gaps, Borland runtime strings, DGROUP-relocated numeric tables,
+help/dialog/player strings, message tables, and terminal initialized data. No
+remaining upstream machine extent lies wholly inside these ranges as a
+complete executable routine. See [the raw frontier audit](raw-frontier-wave106.md).
+The next productive frontier is lossless data/text decoding and relocation-aware
+encoders; the exact executable and archive outputs remain unchanged.

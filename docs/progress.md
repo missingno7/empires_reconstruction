@@ -1,5 +1,10 @@
 # Incremental reconstruction — 2026-09-18
 
+[Relocation-order grouping](relocation-grouping.md) now puts two verified
+compiler TEXT modules in one source-DATA link, replacing seven separate objects.
+All nine relocations within those groups have the original order and the full
+load image remains exact. A third interval is blocked by an inline-ASM capsule.
+
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module

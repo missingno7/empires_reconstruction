@@ -1,0 +1,186 @@
+{
+  "status": "CODE_PLACEMENT_EQUAL",
+  "candidate": "C_75F3_7856",
+  "historical_module_proven": false,
+  "source_data_mode": true,
+  "group_relocation_order": {
+    "actual": [
+      30627,
+      30381,
+      30219
+    ],
+    "expected": [
+      30627,
+      30381,
+      30219
+    ],
+    "equal": true
+  },
+  "code_bytes": 611,
+  "data_evidence": {
+    "bytes": 43,
+    "sha256": "e02667f488f1bf4e3644e09650d7513a24c69d83181a12865017de96a00b31ff",
+    "owners": [
+      "C_DATA_75F3",
+      "C_DATA_7695",
+      "C_DATA_778B"
+    ],
+    "fixups": 0,
+    "status": "EQUAL"
+  },
+  "objects_replaced": 5,
+  "objects_added": 1,
+  "shared_contribution": {
+    "segment": 0,
+    "offset": 30195,
+    "length": 611,
+    "module": "RGB8FB12",
+    "acbp": 40
+  },
+  "downstream_code_divergences": [],
+  "errors": [],
+  "segments": [
+    {
+      "start": 0,
+      "stop": 64034,
+      "length": 64035,
+      "name": "_TEXT",
+      "class": "CODE"
+    },
+    {
+      "start": 64048,
+      "stop": 78635,
+      "length": 14588,
+      "name": "_DATA",
+      "class": "DATA"
+    },
+    {
+      "start": 78636,
+      "stop": 78639,
+      "length": 4,
+      "name": "_EMUSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78640,
+      "stop": 78641,
+      "length": 2,
+      "name": "_CRTSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78642,
+      "stop": 78642,
+      "length": 0,
+      "name": "_CVTSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78642,
+      "stop": 78642,
+      "length": 0,
+      "name": "_SCNSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78642,
+      "stop": 115959,
+      "length": 37318,
+      "name": "_BSS",
+      "class": "BSS"
+    },
+    {
+      "start": 115960,
+      "stop": 115960,
+      "length": 0,
+      "name": "_BSSEND",
+      "class": "STACK"
+    },
+    {
+      "start": 115968,
+      "stop": 116197,
+      "length": 230,
+      "name": "_STACK",
+      "class": "STACK"
+    }
+  ],
+  "byte_comparison": {
+    "available": true,
+    "candidate_sha256": "77e891647f2ef50406438b8892974f97fd501fce3e6a3c2b025714b07a17b88e",
+    "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+    "candidate_size": 79154,
+    "oracle_size": 79154,
+    "mz": {
+      "candidate_fields": {
+        "e_magic": 23117,
+        "e_cblp": 306,
+        "e_cp": 155,
+        "e_crlc": 106,
+        "e_cparhdr": 32,
+        "e_minalloc": 2348,
+        "e_maxalloc": 65535,
+        "e_ss": 7248,
+        "e_sp": 230,
+        "e_csum": 0,
+        "e_ip": 0,
+        "e_cs": 0,
+        "e_lfarlc": 34,
+        "e_ovno": 0
+      },
+      "oracle_fields": {
+        "e_magic": 23117,
+        "e_cblp": 306,
+        "e_cp": 155,
+        "e_crlc": 106,
+        "e_cparhdr": 32,
+        "e_minalloc": 2348,
+        "e_maxalloc": 65535,
+        "e_ss": 7248,
+        "e_sp": 230,
+        "e_csum": 0,
+        "e_ip": 0,
+        "e_cs": 0,
+        "e_lfarlc": 34,
+        "e_ovno": 0
+      },
+      "fields_equal": true,
+      "relocation_count_equal": true,
+      "relocation_order_equal": false,
+      "relocation_pairs_equal": true,
+      "missing_sites": [],
+      "extra_sites": []
+    },
+    "load_image": {
+      "equal": true,
+      "first_difference": null,
+      "candidate_length": 78642,
+      "oracle_length": 78642
+    },
+    "text": {
+      "equal": true,
+      "start": 0,
+      "end": 64035,
+      "candidate_length": 64035,
+      "oracle_length": 64035,
+      "differing_byte_count": 0,
+      "first_difference": null
+    },
+    "initialized_data": {
+      "equal": true,
+      "start": 64048,
+      "end": 78642,
+      "candidate_length": 14594,
+      "oracle_length": 14594,
+      "differing_byte_count": 0,
+      "first_difference": null
+    },
+    "full_file": {
+      "equal": false,
+      "differing_bytes_outside_relocation_table": 0,
+      "first_difference": 58
+    }
+  },
+  "source_object_sha256": "a24a5d38b5ea4360410d8ef5e9bffbb0fc22f92e25a933a60a6861e85eeafb1f",
+  "staged_object_sha256": "864d21f7094d256f74fffc38990ca05c2dbfa413053183ef52575edf5b380d22",
+  "limitation": "Real shared C object in full TLINK experiment; existing DATA/BSS and symbol scaffolds remain."
+}

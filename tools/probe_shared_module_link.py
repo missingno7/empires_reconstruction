@@ -6,19 +6,24 @@ import subprocess
 import tempfile
 
 from omf import OmfReader
-from omf_scaffold import _record, _records, add_publics, normalize_external_case
+from omf_scaffold import _record, _records, add_publics, normalize_external_case, externalize_data_segment
+from mz import MZ
 from probe_module_group import probe
 from probe_tlink_layout import parse_map, link_errors, compare_linked_executable
 from reconstruct import ROOT, read_json, sha, write_json
 
 
-def run(recipe_path):
+def run(recipe_path, source_data=False, input_report_path=None):
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link'].get('errors'):
         raise ValueError('Shared replacement requires a successful baseline link')
     recipe = read_json(recipe_path)
     proof = probe(recipe_path)
-    original_work = Path(baseline['byte_comparison']['candidate']).parent.parent
+    input_report = (read_json(input_report_path) if input_report_path else
+                    read_json(ROOT / 'build/source-data-link-report.json') if source_data else baseline)
+    original_work = Path(input_report['byte_comparison']['candidate']).parent.parent
+    comparison_rows = parse_map(original_work / 'WORK/OUT.MAP')[1]
+    group_name = 'RG' + sha(recipe_path.read_bytes())[:6].upper()
     work = Path(tempfile.mkdtemp(prefix='shared-link-', dir=ROOT / 'build')).resolve()
     for name in ('TC', 'BC', 'WORK'):
         shutil.copytree(original_work / name, work / name)
@@ -41,16 +46,22 @@ def run(recipe_path):
         for public in old.publics_in('_TEXT'):
             labels[public['name']] = base + public['offset']
     data = add_publics(data, labels)
+    if source_data and module.segment_length('_DATA'):
+        if not proof['data_evidence']:
+            raise ValueError('Shared DATA externalization requires proven contiguous ownership')
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        first_data = next(o for o in manifest['regions'] if o['id'] == proof['data_evidence']['owners'][0])
+        data = externalize_data_segment(data, '__DATA_' + first_data['build']['code_owner'])
     # A unique module name makes the shared contribution identifiable in TLINK's map.
-    data = b''.join(_record(kind, b'\x06RGROUP' if kind == OmfReader.THEADR else body)
+    data = b''.join(_record(kind, bytes([len(group_name)]) + group_name.encode('ascii') if kind == OmfReader.THEADR else body)
                     for kind, body in _records(data))
-    (work / 'WORK/GROUP.OBJ').write_bytes(data)
+    (work / 'WORK' / (group_name + '.OBJ')).write_bytes(data)
     response = (original_work / 'LINK.RSP').read_text()
     for index, entry in enumerate(selected):
         token = 'C:\\WORK\\' + entry['object']
         if response.count(token) != 1:
             raise ValueError('Expected exactly one staged object in baseline response')
-        response = response.replace(token, 'C:\\WORK\\GROUP.OBJ' if index == 0 else '')
+        response = response.replace(token, 'C:\\WORK\\' + group_name + '.OBJ' if index == 0 else '')
     while '++' in response:
         response = response.replace('++', '+')
     response = response.replace('+,', ',')
@@ -66,18 +77,27 @@ def run(recipe_path):
     text = map_path.read_text(errors='replace')
     errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), text)
     segments, rows = parse_map(map_path)
-    shared = next(r for r in rows if r['module'] == 'RGROUP')
-    base_rows = {r['module']: r for r in baseline['code_rows']}
+    shared = next(r for r in rows if r['module'] == group_name)
+    base_rows = {r['module']: r for r in comparison_rows}
     selected_names = {Path(e['object']).stem + '.C' for e in selected}
-    downstream = [r for r in rows if r['module'] != 'RGROUP' and r['module'] in base_rows
+    downstream = [r for r in rows if r['module'] != group_name and r['module'] in base_rows
                   and r != base_rows[r['module']]]
     first_base = base_rows[Path(selected[0]['object']).stem + '.C']['offset']
-    expected_names = (set(base_rows) - selected_names) | {'RGROUP'}
+    expected_names = (set(base_rows) - selected_names) | {group_name}
     code_equal = (set(r['module'] for r in rows) == expected_names
                   and not downstream and shared['offset'] == first_base
                   and shared['length'] == proof['text_bytes'])
+    linked_bytes = (work / 'WORK/OUT.EXE').read_bytes()
+    oracle_bytes = (ROOT / 'assets/AEPROG.EXE').read_bytes()
+    def group_relocations(blob):
+        return [r['load_offset'] for r in MZ.parse(blob).relocations
+                if shared['offset'] <= r['load_offset'] < shared['offset'] + shared['length']]
+    actual_relocations, expected_relocations = group_relocations(linked_bytes), group_relocations(oracle_bytes)
     report = {'status': 'CODE_PLACEMENT_EQUAL' if code_equal and not errors else 'DIVERGED',
               'candidate': recipe['id'], 'historical_module_proven': False,
+              'source_data_mode': source_data,
+              'group_relocation_order': {'actual': actual_relocations, 'expected': expected_relocations,
+                                         'equal': actual_relocations == expected_relocations},
               'code_bytes': proof['text_bytes'], 'data_evidence': proof['data_evidence'],
               'objects_replaced': len(selected), 'objects_added': 1,
               'shared_contribution': shared, 'downstream_code_divergences': downstream,
@@ -86,7 +106,9 @@ def run(recipe_path):
               'source_object_sha256': sha(Path(proof['object_path']).read_bytes()),
               'staged_object_sha256': sha(data),
               'limitation': 'Real shared C object in full TLINK experiment; existing DATA/BSS and symbol scaffolds remain.'}
-    write_json(ROOT / 'build/shared-module-link-report.json', report)
+    report_path = 'shared-source-data-link-report.json' if source_data else 'shared-module-link-report.json'
+    write_json(ROOT / 'build' / report_path, report)
+    write_json(ROOT / 'build' / (Path(report_path).stem + '_' + recipe['id'] + '.json'), report)
     print(f"Shared module TLINK: {report['status']}; downstream code divergences {len(downstream)}")
     if report['status'] != 'CODE_PLACEMENT_EQUAL':
         raise ValueError('Shared module changed code placement or introduced linker errors')
@@ -96,4 +118,7 @@ def run(recipe_path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--recipe', type=Path, default=ROOT / 'recipes/modules/C_75F3_7856.json')
-    run(parser.parse_args().recipe)
+    parser.add_argument('--source-data', action='store_true')
+    parser.add_argument('--input-report', type=Path)
+    args = parser.parse_args()
+    run(args.recipe, args.source_data, args.input_report)

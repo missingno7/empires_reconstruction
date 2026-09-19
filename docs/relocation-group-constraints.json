@@ -1,0 +1,121 @@
+{
+  "format": "empires-relocation-group-constraints-v1",
+  "groups": [
+    {
+      "owners": [
+        "F_75F3",
+        "F_7676",
+        "F_7695",
+        "F_7747",
+        "F_778B"
+      ],
+      "relocation_run": [
+        {
+          "load_offset": 30627,
+          "owner": "F_778B"
+        },
+        {
+          "load_offset": 30381,
+          "owner": "F_7695"
+        },
+        {
+          "load_offset": 30219,
+          "owner": "F_75F3"
+        }
+      ],
+      "compatible_flags": true,
+      "constraint": "minimal interval containing descending cross-owner run; boundaries may extend",
+      "recipe_id": "RELOC_F_75F3_F_778B"
+    },
+    {
+      "owners": [
+        "F_AD25",
+        "F_ADCF"
+      ],
+      "relocation_run": [
+        {
+          "load_offset": 44650,
+          "owner": "F_ADCF"
+        },
+        {
+          "load_offset": 44615,
+          "owner": "F_ADCF"
+        },
+        {
+          "load_offset": 44558,
+          "owner": "F_ADCF"
+        },
+        {
+          "load_offset": 44480,
+          "owner": "F_AD25"
+        },
+        {
+          "load_offset": 44445,
+          "owner": "F_AD25"
+        },
+        {
+          "load_offset": 44388,
+          "owner": "F_AD25"
+        }
+      ],
+      "compatible_flags": true,
+      "constraint": "minimal interval containing descending cross-owner run; boundaries may extend",
+      "recipe_id": "RELOC_F_AD25_F_ADCF"
+    },
+    {
+      "owners": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ],
+      "relocation_run": [
+        {
+          "load_offset": 57344,
+          "owner": "F_DF98"
+        },
+        {
+          "load_offset": 57266,
+          "owner": "F_DF98"
+        },
+        {
+          "load_offset": 57044,
+          "owner": "F_DE7E"
+        },
+        {
+          "load_offset": 57020,
+          "owner": "F_DE7E"
+        },
+        {
+          "load_offset": 56938,
+          "owner": "F_DDD9"
+        },
+        {
+          "load_offset": 56913,
+          "owner": "F_DDD9"
+        },
+        {
+          "load_offset": 56891,
+          "owner": "F_DDD9"
+        },
+        {
+          "load_offset": 56872,
+          "owner": "F_DDD9"
+        },
+        {
+          "load_offset": 56859,
+          "owner": "F_DDD9"
+        },
+        {
+          "load_offset": 56837,
+          "owner": "F_DDD9"
+        }
+      ],
+      "compatible_flags": true,
+      "constraint": "minimal interval containing descending cross-owner run; boundaries may extend",
+      "recipe_id": "RELOC_F_DDD9_F_DF98"
+    }
+  ],
+  "historical_modules_proven": 0,
+  "limitation": "Relocation-order constraints; candidates require fresh compilation and linker checks"
+}

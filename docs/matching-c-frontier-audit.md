@@ -5,6 +5,9 @@ one of those extents is already covered by a current matching-C, matching-ASM or
 known-library owner. The current manifest has 345 matching-C owners, zero
 matching-ASM owners and no unresolved machine extent intersecting a RAW owner.
 The held-linkage snapshot also has zero candidates and zero unresolved symbols.
+Independently, the load-image prefix before the established `DATA_00FC23_PAD`
+boundary contains no RAW or unclassified region; every owner there is matching C,
+pinned library code, the MZ header or exact classified data.
 
 `python tools/audit_matching_c_frontier.py` derives these facts from
 `docs/upstream-inventory.json`, `docs/linkage-blockers.json` and

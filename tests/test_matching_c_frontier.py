@@ -14,6 +14,8 @@ class MatchingCFrontierTests(unittest.TestCase):
         self.assertEqual(evidence['matching_asm'], {'owners': 0, 'bytes': 0})
         self.assertEqual(evidence['unowned_pinned_proven_code_entries'], [])
         self.assertEqual(evidence['unrecovered_machine_entries_intersecting_raw'], [])
+        self.assertEqual(evidence['executable_prefix']['raw_owners_before_boundary'], [])
+        self.assertEqual(evidence['executable_prefix']['unclassified_regions_before_boundary'], [])
         self.assertEqual(evidence['held_candidates'], 0)
         self.assertEqual(evidence['unresolved_symbols'], 0)
 

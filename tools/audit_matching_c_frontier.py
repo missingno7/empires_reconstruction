@@ -24,6 +24,7 @@ def audit():
     c = [r for r in regions if r['kind'] == 'MATCHING_C']
     asm = [r for r in regions if r['kind'] == 'MATCHING_ASM']
     raw = [r for r in regions if r['kind'] == 'RAW']
+    data_boundary = next(r['start'] for r in regions if r['id'] == 'DATA_00FC23_PAD')
     proven = [e for e in inventory['entries']
               if e['kind'] in ('MATCHING_C', 'MATCHING_ASM') and e['verdict'] == 'EQUAL']
     unowned_proven = []
@@ -40,12 +41,23 @@ def audit():
         end = start + entry['extent']['length']
         if any(r['start'] < end and start < r['end'] for r in raw):
             unresolved_in_raw.append(entry['id'])
+    raw_before_data_boundary = [r['id'] for r in raw if r['start'] < data_boundary]
+    unclassified_prefix_regions = [
+        r['id'] for r in regions
+        if r['start'] < data_boundary and r['kind'] not in
+        ('MZ_HEADER', 'MATCHING_C', 'MATCHING_ASM', 'KNOWN_TOOLCHAIN_LIBRARY', 'EXACT_DATA')
+    ]
     result = {
         'format': 'empires-matching-c-frontier-audit-v1',
         'status': 'EXTERNAL_CODE_CANDIDATES_EXHAUSTED' if not unowned_proven and not unresolved_in_raw and not asm else 'OPEN',
         'matching_c': {'owners': len(c), 'bytes': sum(r['end'] - r['start'] for r in c)},
         'matching_asm': {'owners': len(asm), 'bytes': sum(r['end'] - r['start'] for r in asm)},
         'raw': {'owners': len(raw), 'bytes': sum(r['end'] - r['start'] for r in raw)},
+        'executable_prefix': {
+            'end': data_boundary,
+            'raw_owners_before_boundary': raw_before_data_boundary,
+            'unclassified_regions_before_boundary': unclassified_prefix_regions,
+        },
         'pinned_proven_code_entries': len(proven),
         'unowned_pinned_proven_code_entries': sorted(unowned_proven),
         'unrecovered_machine_entries_intersecting_raw': sorted(unresolved_in_raw),

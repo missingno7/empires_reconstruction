@@ -144,3 +144,8 @@ non-ASCII characters. Control characters remain explicit JSON escapes. Each
 complete string has an EXACT_DATA owner and C references derive its DGROUP
 offset from that owner. Canonical text documents live under src/data and are
 never overwritten by raw extraction. See [the first text ownership proof](matching-c-wave10.md).
+
+`ascii-v1` is the corresponding exact adapter for an unterminated ASCII span.
+It emits the source text byte-for-byte, preserving CR separators and any
+non-NUL control bytes. It is used only when the complete owner extent is
+relocation-free and the boundary is independently established.

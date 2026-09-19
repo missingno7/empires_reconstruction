@@ -14,9 +14,9 @@ semantic cleanup remains outside this mechanical phase.
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
-| Independently encoded text | 0 | 2,728 | 61 |
+| Independently encoded text | 0 | 2,879 | 62 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 4,611 | 13 |
+| Exact raw fallback | 62,621 | 4,460 | 13 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and

@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_0112D6_LEVEL_COMPLETE",
+      "start": 70358,
+      "end": 70509,
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0112D6_LEVEL_COMPLETE.json",
+      "artifact": "regions/DATA_0112D6_LEVEL_COMPLETE.bin",
+      "expected_sha256": "8f26a07d02ec839e9ea34eede078d293f29624e8e3725ccae941334870b2e372",
+      "classification": "static_text",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-v1"
+      }
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 DAC_FORMAT = 'dac6-rgb256-v1'
 TEXT_FORMAT = 'ascii-nul-v1'
+ASCII_FORMAT = 'ascii-v1'
 RECORDS_FORMAT = 'fixed-records-v1'
 U16_TABLE_FORMAT = 'u16le-table-v1'
 ZERO_PAD_FORMAT = 'zero-pad-v1'
@@ -14,6 +15,15 @@ def palette_document(data):
 
 
 def encode_data(document, encoder):
+    if encoder == ASCII_FORMAT:
+        if set(document) != {'format', 'text'} or document.get('format') != encoder or not isinstance(document['text'], str):
+            raise ValueError('ASCII source requires format and text only')
+        if '\0' in document['text']:
+            raise ValueError('ASCII source cannot contain an embedded NUL')
+        try:
+            return document['text'].encode('ascii')
+        except UnicodeEncodeError as error:
+            raise ValueError('ASCII source contains non-ASCII text') from error
     if encoder == TEXT_FORMAT:
         if set(document) != {'format', 'text'} or document.get('format') != encoder or not isinstance(document['text'], str):
             raise ValueError('ASCII string source requires format and text only')
@@ -66,6 +76,13 @@ def encode_data(document, encoder):
 
 
 def decode_data(data, encoder):
+    if encoder == ASCII_FORMAT:
+        if b'\0' in data:
+            raise ValueError('ASCII data contains an embedded NUL')
+        try:
+            return {'format': encoder, 'text': data.decode('ascii')}
+        except UnicodeDecodeError as error:
+            raise ValueError('ASCII data contains non-ASCII bytes') from error
     if encoder == TEXT_FORMAT:
         if not data.endswith(b'\0') or b'\0' in data[:-1]:
             raise ValueError('Expected one terminated ASCII string')

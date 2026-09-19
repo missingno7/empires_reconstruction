@@ -17,7 +17,7 @@ def main():
     for owner in manifest['regions']:
         if owner['kind'] not in ('RAW', 'EXACT_DATA'):
             continue
-        if owner.get('build', {}).get('encoder') in ('omf-segment-v1', 'ascii-nul-v1'):
+        if owner.get('build', {}).get('encoder') in ('omf-segment-v1', 'ascii-nul-v1', 'ascii-v1'):
             continue  # Canonical compiler/text sources must never be overwritten by extraction.
         target = project_path(ROOT, owner['source'])
         if not target.is_relative_to(raw_root):

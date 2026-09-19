@@ -1,0 +1,449 @@
+{
+  "format": "empires-source-quality-v1",
+  "scope": "Game-owned matching C plus legitimate historical library inputs",
+  "levels": [
+    {
+      "level": "ASM_DB_CAPSULE",
+      "bytes": 22113,
+      "owners": 83,
+      "sources": 83
+    },
+    {
+      "level": "C_WITH_SYMBOLIC_INLINE_ASM",
+      "bytes": 2645,
+      "owners": 30,
+      "sources": 30
+    },
+    {
+      "level": "MECHANICAL_C",
+      "bytes": 34221,
+      "owners": 234,
+      "sources": 234
+    },
+    {
+      "level": "HISTORICAL_LIBRARY",
+      "bytes": 5463,
+      "owners": 49,
+      "sources": 1
+    }
+  ],
+  "asm_db_capsules": [
+    {
+      "owner": "RUNTIME_BLOCK",
+      "source": "src/RUNTIME_BLOCK.C",
+      "bytes": 6571
+    },
+    {
+      "owner": "F_B99F",
+      "source": "src/F_B99F.C",
+      "bytes": 1857
+    },
+    {
+      "owner": "F_8BAB",
+      "source": "src/F_8BAB.C",
+      "bytes": 1275
+    },
+    {
+      "owner": "F_4B0C",
+      "source": "src/F_4B0C.C",
+      "bytes": 915
+    },
+    {
+      "owner": "F_25B3",
+      "source": "src/F_25B3.C",
+      "bytes": 761
+    },
+    {
+      "owner": "F_B122",
+      "source": "src/F_B122.C",
+      "bytes": 693
+    },
+    {
+      "owner": "F_7964",
+      "source": "src/F_7964.C",
+      "bytes": 623
+    },
+    {
+      "owner": "F_880A",
+      "source": "src/F_880A.C",
+      "bytes": 506
+    },
+    {
+      "owner": "DOS_STUB",
+      "source": "src/DOS_STUB.C",
+      "bytes": 404
+    },
+    {
+      "owner": "F_AB66",
+      "source": "src/F_AB66.C",
+      "bytes": 385
+    },
+    {
+      "owner": "F_D61C",
+      "source": "src/F_D61C.C",
+      "bytes": 384
+    },
+    {
+      "owner": "F_699E",
+      "source": "src/F_699E.C",
+      "bytes": 380
+    },
+    {
+      "owner": "F_B7F9",
+      "source": "src/F_B7F9.C",
+      "bytes": 366
+    },
+    {
+      "owner": "F_AA1F",
+      "source": "src/F_AA1F.C",
+      "bytes": 327
+    },
+    {
+      "owner": "F_6DCC",
+      "source": "src/F_6DCC.C",
+      "bytes": 307
+    },
+    {
+      "owner": "F_4F96",
+      "source": "src/F_4F96.C",
+      "bytes": 299
+    },
+    {
+      "owner": "F_DF98",
+      "source": "src/F_DF98.C",
+      "bytes": 253
+    },
+    {
+      "owner": "F_643A",
+      "source": "src/F_643A.C",
+      "bytes": 240
+    },
+    {
+      "owner": "F_50D2",
+      "source": "src/F_50D2.C",
+      "bytes": 237
+    },
+    {
+      "owner": "F_B40F",
+      "source": "src/F_B40F.C",
+      "bytes": 236
+    },
+    {
+      "owner": "F_28AC",
+      "source": "src/F_28AC.C",
+      "bytes": 218
+    },
+    {
+      "owner": "F_60A9",
+      "source": "src/F_60A9.C",
+      "bytes": 216
+    },
+    {
+      "owner": "F_C440",
+      "source": "src/F_C440.C",
+      "bytes": 193
+    },
+    {
+      "owner": "F_CD23",
+      "source": "src/F_CD23.C",
+      "bytes": 185
+    },
+    {
+      "owner": "F_CC6B",
+      "source": "src/F_CC6B.C",
+      "bytes": 184
+    },
+    {
+      "owner": "F_6181",
+      "source": "src/F_6181.C",
+      "bytes": 171
+    },
+    {
+      "owner": "F_C5D1",
+      "source": "src/F_C5D1.C",
+      "bytes": 167
+    },
+    {
+      "owner": "F_C359",
+      "source": "src/F_C359.C",
+      "bytes": 130
+    },
+    {
+      "owner": "F_9EC3",
+      "source": "src/F_9EC3.C",
+      "bytes": 125
+    },
+    {
+      "owner": "F_D79C",
+      "source": "src/F_D79C.C",
+      "bytes": 123
+    },
+    {
+      "owner": "F_4EEB",
+      "source": "src/F_4EEB.C",
+      "bytes": 120
+    },
+    {
+      "owner": "F_6F4B",
+      "source": "src/F_6F4B.C",
+      "bytes": 120
+    },
+    {
+      "owner": "F_C914",
+      "source": "src/F_C914.C",
+      "bytes": 116
+    },
+    {
+      "owner": "F_6036",
+      "source": "src/F_6036.C",
+      "bytes": 115
+    },
+    {
+      "owner": "F_C2EA",
+      "source": "src/F_C2EA.C",
+      "bytes": 111
+    },
+    {
+      "owner": "F_C27D",
+      "source": "src/F_C27D.C",
+      "bytes": 109
+    },
+    {
+      "owner": "F_C7CB",
+      "source": "src/F_C7CB.C",
+      "bytes": 105
+    },
+    {
+      "owner": "F_C3DB",
+      "source": "src/F_C3DB.C",
+      "bytes": 101
+    },
+    {
+      "owner": "F_CB5C",
+      "source": "src/F_CB5C.C",
+      "bytes": 97
+    },
+    {
+      "owner": "F_C9A4",
+      "source": "src/F_C9A4.C",
+      "bytes": 95
+    },
+    {
+      "owner": "F_CBBB",
+      "source": "src/F_CBBB.C",
+      "bytes": 90
+    },
+    {
+      "owner": "F_6BCF",
+      "source": "src/F_6BCF.C",
+      "bytes": 87
+    },
+    {
+      "owner": "F_C1A0",
+      "source": "src/F_C1A0.C",
+      "bytes": 87
+    },
+    {
+      "owner": "F_CAF1",
+      "source": "src/F_CAF1.C",
+      "bytes": 87
+    },
+    {
+      "owner": "F_CC17",
+      "source": "src/F_CC17.C",
+      "bytes": 85
+    },
+    {
+      "owner": "F_C77A",
+      "source": "src/F_C77A.C",
+      "bytes": 81
+    },
+    {
+      "owner": "F_C706",
+      "source": "src/F_C706.C",
+      "bytes": 79
+    },
+    {
+      "owner": "F_C6B9",
+      "source": "src/F_C6B9.C",
+      "bytes": 77
+    },
+    {
+      "owner": "F_4E9F",
+      "source": "src/F_4E9F.C",
+      "bytes": 76
+    },
+    {
+      "owner": "F_6EFF",
+      "source": "src/F_6EFF.C",
+      "bytes": 76
+    },
+    {
+      "owner": "F_53BF",
+      "source": "src/F_53BF.C",
+      "bytes": 75
+    },
+    {
+      "owner": "F_C232",
+      "source": "src/F_C232.C",
+      "bytes": 75
+    },
+    {
+      "owner": "F_D386",
+      "source": "src/F_D386.C",
+      "bytes": 73
+    },
+    {
+      "owner": "F_C501",
+      "source": "src/F_C501.C",
+      "bytes": 72
+    },
+    {
+      "owner": "F_6CA6",
+      "source": "src/F_6CA6.C",
+      "bytes": 68
+    },
+    {
+      "owner": "F_C834",
+      "source": "src/F_C834.C",
+      "bytes": 67
+    },
+    {
+      "owner": "F_652A",
+      "source": "src/F_652A.C",
+      "bytes": 66
+    },
+    {
+      "owner": "F_C678",
+      "source": "src/F_C678.C",
+      "bytes": 65
+    },
+    {
+      "owner": "F_DAD7",
+      "source": "src/F_DAD7.C",
+      "bytes": 64
+    },
+    {
+      "owner": "F_98CB",
+      "source": "src/F_98CB.C",
+      "bytes": 61
+    },
+    {
+      "owner": "F_988F",
+      "source": "src/F_988F.C",
+      "bytes": 60
+    },
+    {
+      "owner": "F_D825",
+      "source": "src/F_D825.C",
+      "bytes": 58
+    },
+    {
+      "owner": "F_CA9B",
+      "source": "src/F_CA9B.C",
+      "bytes": 53
+    },
+    {
+      "owner": "F_4F63",
+      "source": "src/F_4F63.C",
+      "bytes": 51
+    },
+    {
+      "owner": "F_8C04",
+      "source": "src/F_8C04.C",
+      "bytes": 51
+    },
+    {
+      "owner": "F_C567",
+      "source": "src/F_C567.C",
+      "bytes": 51
+    },
+    {
+      "owner": "F_CA03",
+      "source": "src/F_CA03.C",
+      "bytes": 50
+    },
+    {
+      "owner": "F_CA51",
+      "source": "src/F_CA51.C",
+      "bytes": 50
+    },
+    {
+      "owner": "F_DB35",
+      "source": "src/F_DB35.C",
+      "bytes": 43
+    },
+    {
+      "owner": "F_7DD3",
+      "source": "src/F_7DD3.C",
+      "bytes": 41
+    },
+    {
+      "owner": "F_C755",
+      "source": "src/F_C755.C",
+      "bytes": 37
+    },
+    {
+      "owner": "F_C877",
+      "source": "src/F_C877.C",
+      "bytes": 33
+    },
+    {
+      "owner": "F_C549",
+      "source": "src/F_C549.C",
+      "bytes": 30
+    },
+    {
+      "owner": "F_DB17",
+      "source": "src/F_DB17.C",
+      "bytes": 30
+    },
+    {
+      "owner": "F_CA35",
+      "source": "src/F_CA35.C",
+      "bytes": 28
+    },
+    {
+      "owner": "LIB_STRLEN",
+      "source": "src/LIB_STRLEN.C",
+      "bytes": 27
+    },
+    {
+      "owner": "F_C5B3",
+      "source": "src/F_C5B3.C",
+      "bytes": 19
+    },
+    {
+      "owner": "F_C8D4",
+      "source": "src/F_C8D4.C",
+      "bytes": 14
+    },
+    {
+      "owner": "F_D818",
+      "source": "src/F_D818.C",
+      "bytes": 13
+    },
+    {
+      "owner": "F_C5A8",
+      "source": "src/F_C5A8.C",
+      "bytes": 11
+    },
+    {
+      "owner": "F_C5C6",
+      "source": "src/F_C5C6.C",
+      "bytes": 11
+    },
+    {
+      "owner": "F_D3CF",
+      "source": "src/F_D3CF.C",
+      "bytes": 11
+    },
+    {
+      "owner": "F_CA91",
+      "source": "src/F_CA91.C",
+      "bytes": 10
+    }
+  ],
+  "asm_db_source_files": 83,
+  "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
+}

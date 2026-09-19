@@ -9983,8 +9983,8 @@
     },
     {
       "id": "F_8C04",
-      "kind": "MATCHING_C",
-      "source": "src/F_8C04.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_8C04.ASM",
       "start": 35844,
       "end": 35895,
       "expected_sha256": "b0f6648ea80e55ab9bec42832c6fb7e7896eb0aa73960519aea38fdfdcc092c5",
@@ -9996,7 +9996,14 @@
         "public": "_f_8c04",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f8453": {"coordinate": "code_offset", "evidence": "functions/F_8453.entry", "owner": "F_8453", "public": "_f8453", "addend": 0},
+          "_f791e": {"coordinate": "code_offset", "evidence": "functions/F_791E.entry", "owner": "F_791E", "public": "_f791e", "addend": 0},
+          "_fd5a6": {"coordinate": "code_offset", "evidence": "functions/F_D5A6.entry", "owner": "F_D5A6", "public": "_fd5a6", "addend": 0},
+          "_f7162": {"coordinate": "code_offset", "evidence": "functions/F_7162.entry", "owner": "F_7162", "public": "_f7162", "addend": 0},
+          "_f6997": {"coordinate": "code_offset", "evidence": "functions/F_6997.entry", "owner": "F_6997", "public": "_f6997", "addend": 0},
+          "_f6b66": {"coordinate": "code_offset", "evidence": "functions/F_6B66.entry", "owner": "F_6B66", "public": "_f6b66", "addend": 0}
+        },
         "module_segments": {}
       }
     },

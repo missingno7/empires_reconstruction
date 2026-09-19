@@ -29,7 +29,7 @@ class SourceQualityTests(unittest.TestCase):
         result = report(read_json(ROOT / 'layout/manifest.json'))
         matching = [item for item in result['levels'] if item['level'] != 'HISTORICAL_LIBRARY']
         self.assertEqual(sum(item['owners'] for item in matching), 347)
-        self.assertEqual(result['asm_db_source_files'], 58)
+        self.assertEqual(result['asm_db_source_files'], 57)
         self.assertGreater(result['asm_db_capsules'][0]['bytes'], 1000)
 
 

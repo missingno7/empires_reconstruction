@@ -1,10 +1,13 @@
 # Sixty-first matching-C wave
 
-`F_C232` is now canonical C for its complete 75-byte executable extent. The
+`F_C232` was recovered as canonical C for its complete 75-byte executable extent. The
 routine scans the ES:DI table selected by the caller, updates the adjacent
 DGROUP records, and retains the historical Turbo C frame and loop bytes through
 inline assembler. All twelve DGROUP references bind to declared storage
 coordinates; the fresh OMF object has no loader relocations.
+
+The canonical source is now symbolic TASM. It preserves the ES:DI live-input
+contract and all twelve source-level DGROUP references without raw opcodes.
 
 ```powershell
 python tools/promote_c_candidates.py --recipe recipes/c/matching-wave61.json

@@ -1,0 +1,34 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "817ff382f3cc979e6dcbb69042c7439e40b734120824468cb456f1472e8f98fc",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "DATA_01052B_ZERO_PREFIX",
+      "kind": "EXACT_DATA",
+      "bytes": 7,
+      "sha256": "837885c8f8091aeaeb9ec3c3f85a6ff470a415e610b8ba3e49f9b33c9cf9d619",
+      "source_sha256": "07397bf677ca975a66c0815f46b42545231572ea7ee011202cf1041fa6239daa",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01076E_ZERO_SUFFIX",
+      "kind": "EXACT_DATA",
+      "bytes": 4,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "source_sha256": "f85a99743c2757bbb00525f4545571e0d734bca49c6a125fe19c3053f5d505cc",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

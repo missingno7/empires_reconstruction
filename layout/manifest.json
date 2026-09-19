@@ -20396,15 +20396,29 @@
       }
     },
     {
-      "id": "RAW_01052B",
+      "id": "DATA_01052B_ZERO_PREFIX",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01052B_ZERO_PREFIX.json",
       "start": 66859,
+      "end": 66866,
+      "expected_sha256": "837885c8f8091aeaeb9ec3c3f85a6ff470a415e610b8ba3e49f9b33c9cf9d619",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_01052B_ZERO_PREFIX.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "RAW_010532",
+      "start": 66866,
       "end": 67154,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/01052B-010652.bin",
+      "source": "raw/010532-010652.bin",
       "original_symbol": null,
-      "artifact": "raw/01052B-010652.bin",
-      "expected_sha256": "78c05b798b3de6c6622638962294edca9acb0e688a808012b0a089063edd6d88",
+      "artifact": "raw/010532-010652.bin",
+      "expected_sha256": "5b8d053a64d7d50c97e72cb07bedce4cb3c7d6d73c8a0c33803befcec3677ea9",
       "matching_status": "EQUAL"
     },
     {
@@ -20564,14 +20578,28 @@
     {
       "id": "RAW_0106F7",
       "start": 67319,
-      "end": 67442,
+      "end": 67438,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0106F7-010772.bin",
+      "source": "raw/0106F7-01076E.bin",
       "original_symbol": null,
-      "artifact": "raw/0106F7-010772.bin",
-      "expected_sha256": "4f1754618c1893f4ddc44264cc55126ae3a6ddba993f1a00ea33084da5031b1c",
+      "artifact": "raw/0106F7-01076E.bin",
+      "expected_sha256": "7ed641d1f3d5dcde64cf653652fa3b360a5bac5adaeb21cd71941a14b74f1eb5",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_01076E_ZERO_SUFFIX",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01076E_ZERO_SUFFIX.json",
+      "start": 67438,
+      "end": 67442,
+      "expected_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_01076E_ZERO_SUFFIX.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "DATA_010772_RESOURCE_ERROR",

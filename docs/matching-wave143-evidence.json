@@ -1,0 +1,20 @@
+{
+  "format": "empires-matching-c-wave-evidence-v1",
+  "wave": 143,
+  "owners": [
+    {
+      "id": "DATA_0106F7_WRITE_PROTECTED",
+      "status": "EQUAL",
+      "bytes": 99,
+      "sha256": "b2816270679558d6b2f98bceb0e3cd5b6059b35f4e549fc1b0df6c58be0dd6d3",
+      "encoder": "ascii-nul-v1"
+    }
+  ],
+  "raw_tail": {
+    "id": "RAW_01075A",
+    "bytes": 20,
+    "sha256": "df1594aa876c7049d632cb359e83a88b1b62f16b9e92cfb9f396b483f8c60d39",
+    "status": "EQUAL",
+    "reason": "relocation-backed control bytes retained until record format is established"
+  }
+}

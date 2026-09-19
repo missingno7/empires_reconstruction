@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_0106F7_WRITE_PROTECTED",
+      "start": 67319,
+      "end": 67418,
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106F7_WRITE_PROTECTED.json",
+      "artifact": "regions/DATA_0106F7_WRITE_PROTECTED.bin",
+      "expected_sha256": "b2816270679558d6b2f98bceb0e3cd5b6059b35f4e549fc1b0df6c58be0dd6d3",
+      "classification": "dialog_text",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

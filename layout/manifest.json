@@ -20590,15 +20590,29 @@
       }
     },
     {
-      "id": "RAW_0106F7",
+      "id": "DATA_0106F7_WRITE_PROTECTED",
       "start": 67319,
+      "end": 67418,
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106F7_WRITE_PROTECTED.json",
+      "artifact": "regions/DATA_0106F7_WRITE_PROTECTED.bin",
+      "expected_sha256": "b2816270679558d6b2f98bceb0e3cd5b6059b35f4e549fc1b0df6c58be0dd6d3",
+      "classification": "dialog_text",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_01075A",
+      "start": 67418,
       "end": 67438,
       "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0106F7-01076E.bin",
+      "classification": "relocation_backed_control_tail",
+      "source": "raw/01075A-01076E.bin",
       "original_symbol": null,
-      "artifact": "raw/0106F7-01076E.bin",
-      "expected_sha256": "7ed641d1f3d5dcde64cf653652fa3b360a5bac5adaeb21cd71941a14b74f1eb5",
+      "artifact": "raw/01075A-01076E.bin",
+      "expected_sha256": "df1594aa876c7049d632cb359e83a88b1b62f16b9e92cfb9f396b483f8c60d39",
       "matching_status": "EQUAL"
     },
     {

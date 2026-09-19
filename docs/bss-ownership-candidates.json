@@ -111,6 +111,40 @@
         "logical_end": 2002
       },
       "limitation": "The shared fields form a well-bounded state block, but current evidence does not identify one historical source object which allocated it."
+    },
+    {
+      "id": "ROW_POINTER_TABLE_BSS",
+      "owner_candidate": "F_0281",
+      "start": 34,
+      "end": 1986,
+      "alignment": "word",
+      "declarations": [
+        {
+          "symbol": "_g3924",
+          "source_name": "g3924",
+          "type": "char far *[488]",
+          "offset": 34,
+          "size": 1952
+        }
+      ],
+      "references": [
+        "F_0281 declares g3924 as char far *[] and fills every entry",
+        "F_9EC3 indexes the same table through two direct OMF references"
+      ],
+      "evidence": [
+        "F_0281 iterates i from 0 through 487 and assigns g3924[i] on every iteration",
+        "A Turbo C compact-model far pointer occupies four bytes, giving 488 * 4 = 1952 bytes",
+        "The next canonical BSS anchor _g40c4 begins at 34 + 1952 = 1986"
+      ],
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {
+        "recipe": "recipes/data/bss-contributions.json",
+        "object": "ROWPTRS.OBJ",
+        "logical_start": 34,
+        "logical_end": 1986
+      },
+      "limitation": "The allocation and exact typed extent are directly evidenced. The symbolic TASM contribution is compatible with F_0281 storage ownership but does not prove its original object boundary."
     }
   ]
 }

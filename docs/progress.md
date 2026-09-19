@@ -4,9 +4,10 @@
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
 inputs. All 106 relocation entries match in order. Candidate DATA/code
 interleaving, a checked arithmetic FIXUPP-order adapter, and mostly aggregate
-BSS ownership remain explicitly open. The first 34 BSS bytes and a separate
-16-byte shared command/render-state island are compatible symbolic TASM
-contributions; the 37,200-byte remainder retains the canonical anchor map.
+BSS ownership remain explicitly open. The first 34 BSS bytes, the 1,952-byte
+row-pointer table initialized by `F_0281`, and a 16-byte shared command/render
+state island are compatible symbolic TASM contributions; the 35,248-byte
+remainder retains the canonical anchor map.
 All 247 BSS public anchors are
 checked against linker-binding evidence. The structural path performs zero object
 symbol transforms, and the synthetic DGROUP/BSS object is now

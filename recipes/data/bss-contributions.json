@@ -15,15 +15,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSS0.OBJ",
-      "assembly": "GAMEBSS0.ASM",
+      "id": "ROW_POINTER_TABLE_BSS",
+      "object": "ROWPTRS.OBJ",
+      "assembly": "ROWPTRS.ASM",
       "logical_start": 34,
       "logical_end": 1986,
-      "owner_candidate": "aggregate leading remainder",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "F_0281",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
     },
     {
       "id": "RENDER_STATE_BSS",

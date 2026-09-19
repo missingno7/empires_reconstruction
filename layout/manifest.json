@@ -14622,8 +14622,8 @@
     },
     {
       "id": "F_C755",
-      "kind": "MATCHING_C",
-      "source": "src/F_C755.C",
+      "kind": "MATCHING_ASM",
+      "source": "src/F_C755.ASM",
       "start": 51541,
       "end": 51578,
       "expected_sha256": "20694ec851ec75e255354f434ed2a8e9239bf771f5c188dba7527688d17b76a3",
@@ -14635,8 +14635,41 @@
         "public": "_f_c755",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_g1784": {
+            "offset": 6020,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B4.phys; independently bound by F_C834"
+          },
+          "_g1786": {
+            "offset": 6022,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B6.phys; independently bound by F_C834"
+          },
+          "_g177a": {
+            "offset": 6010,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212AA.phys; independently bound by F_C27D and F_C834"
+          },
+          "_g17ac": {
+            "offset": 6060,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212DC.phys; independently bound by F_C27D and F_C834"
+          },
+          "_f_c6b9": {
+            "coordinate": "code_offset",
+            "owner": "F_C6B9",
+            "public": "_f_c6b9",
+            "addend": 0,
+            "evidence": "functions/F_C6B9.entry; independently bound by F_C27D, F_C834 and F_C877"
+          }
+        },
         "module_segments": {}
+      },
+      "provenance": {
+        "method": "symbolic TASM reconstruction from complete routine disassembly and fresh full-extent OMF binding",
+        "source_sha256": "66e1763caf3769cad999cc265fbf4482052fe028294f586560d89abc873c5fb9",
+        "change": "Replace the 37-byte asm-db capsule with symbolic DGROUP references and an exact five-fixup TASM contribution."
       }
     },
     {

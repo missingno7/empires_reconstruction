@@ -29,15 +29,19 @@ under `build/module-group-*` and `build/module-group-report.json`. The compact
 snapshot in [module-group-evidence.json](module-group-evidence.json) is historical
 experiment evidence; rerun the command for a fresh comparison.
 
-## C_C5D1_C898
+## C_C5D1_C706 and C_C77A_C898
 
-`recipes/modules/C_C5D1_C898.json` combines ten contiguous matching-C owners
-from F_C5D1 through F_C898. A fresh compact-model compilation emits one
-771-byte `_TEXT` contribution with the expected ordered publics and all 11
-known fixups. The canonical exact-link experiment uses the object before the
-other established shared groups and remains byte-identical. This establishes a
-**compatible shared compilation and linker input**, not a historical source-file
-identity.
+`F_C755` now has a separately proved symbolic TASM representation, so it is
+no longer appropriate to retain an `asm db` C capsule solely to keep a
+C-only ten-owner experiment intact. The former compatible C range is therefore
+represented by two contiguous C candidates: `C_C5D1_C706` (four functions,
+388 `_TEXT` bytes, no fixups) and `C_C77A_C898` (five functions, 346 bytes,
+13 fixups). `F_C755` remains its own ordinary TASM object between them.
+
+The canonical link uses both fresh C contributions and the symbolic TASM
+object at their established offsets, then remains byte-identical. These are
+compatible linker inputs, not claims about historical source-file identity or
+mixed C/TASM translation-unit ownership.
 
 ## C_D61C_D79C
 

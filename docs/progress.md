@@ -279,10 +279,13 @@ in place of the four proof objects and retains whole-EXE equality. This is
 compatible module grouping evidence; original module/data ownership remains
 unproven, so no historical-module or linker-binding coverage has been inflated.
 
-The adjacent ten-owner [C_C5D1_C898](module-group-evidence.md) source group
-likewise enters the canonical link as one 771-byte Turbo C contribution. Its
-ordered publics and 11 fixups are freshly verified before TLINK preserves
-whole-EXE equality.
+The adjacent C range is split around the independently recovered symbolic
+[F_C755](fc755-symbolic-assembly.md) TASM object: [C_C5D1_C706 and
+C_C77A_C898](module-group-evidence.md) enter as 388-byte and 346-byte Turbo C
+contributions. Their ordered publics and 13 total fixups are freshly verified
+before TLINK preserves whole-EXE equality. This keeps the canonical link free
+of an `asm db` capsule while leaving mixed C/TASM historical module ownership
+explicitly open.
 
 The contiguous [C_D61C_D79C](module-group-evidence.md) pair likewise enters
 the exact-link chain as one 507-byte contribution. It improves linker topology

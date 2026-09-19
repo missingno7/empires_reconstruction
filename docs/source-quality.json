@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 20872,
-      "owners": 56,
-      "sources": 56
+      "bytes": 20835,
+      "owners": 55,
+      "sources": 55
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 1163,
-      "owners": 25,
-      "sources": 25
+      "bytes": 1200,
+      "owners": 26,
+      "sources": 26
     },
     {
       "level": "MECHANICAL_C",
@@ -300,11 +300,6 @@
       "bytes": 61
     },
     {
-      "owner": "F_C755",
-      "source": "src/F_C755.C",
-      "bytes": 37
-    },
-    {
       "owner": "F_C877",
       "source": "src/F_C877.C",
       "bytes": 33
@@ -315,6 +310,6 @@
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 56,
+  "asm_db_source_files": 55,
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
 }

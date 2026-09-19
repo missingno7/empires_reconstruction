@@ -22,7 +22,7 @@ from dos_runner import resolve_runner
 
 
 ORIGINAL_SHA256 = '1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10'
-MODULE_RECIPES = ('C_6C26_6C87.json', 'C_C5D1_C898.json', 'C_D61C_D79C.json',
+MODULE_RECIPES = ('C_6C26_6C87.json', 'C_C5D1_C706.json', 'C_C77A_C898.json', 'C_D61C_D79C.json',
                   'C_75F3_7856.json', 'C_AD25_AF45.json', 'C_DDD9_E095.json')
 TRANSIENT_REPORTS = ('tlink-structural-report.json', 'source-data-link-report.json',
                      'shared-source-data-link-report.json', 'data-interleaving-report.json',

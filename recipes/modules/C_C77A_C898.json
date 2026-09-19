@@ -1,0 +1,14 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_C77A_C898",
+  "flags_append": "",
+  "segment": "_TEXT",
+  "sources": [
+    {"owner":"F_C77A","path":"src/F_C77A.C","public":"_f_c77a"},
+    {"owner":"F_C7CB","path":"src/F_C7CB.C","public":"_f_c7cb"},
+    {"owner":"F_C834","path":"src/F_C834.C","public":"_fc834"},
+    {"owner":"F_C877","path":"src/F_C877.C","public":"_fc877"},
+    {"owner":"F_C898","path":"src/F_C898.C","public":"_fc898"}
+  ],
+  "evidence":"Contiguous matching-C suffix of the former C_C5D1_C898 compatible-compilation candidate. F_C755 is now an independently proved symbolic TASM owner, so it remains a separate object until mixed C/TASM historical module ownership is recovered."
+}

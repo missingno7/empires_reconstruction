@@ -9,8 +9,8 @@ from reconstruct import ROOT, read_json, write_json
 
 def publish(source, shared_modules, final):
     """Validate and publish an exact-link receipt from freshly built stages."""
-    if len(shared_modules) != 6:
-        raise ValueError('Exact structural link requires six shared source-module stages')
+    if len(shared_modules) != 7:
+        raise ValueError('Exact structural link requires seven shared source-module stages')
     if not source['byte_comparison']['load_image']['equal']:
         raise ValueError('Source DATA link no longer has an exact load image')
     comparison = final['byte_comparison']
@@ -53,7 +53,7 @@ def publish(source, shared_modules, final):
 
 def run():
     source = source_data_link()
-    recipes = ('C_6C26_6C87.json', 'C_C5D1_C898.json', 'C_D61C_D79C.json',
+    recipes = ('C_6C26_6C87.json', 'C_C5D1_C706.json', 'C_C77A_C898.json', 'C_D61C_D79C.json',
                'C_75F3_7856.json', 'C_AD25_AF45.json', 'C_DDD9_E095.json')
     shared_modules, previous = [], None
     for recipe in recipes:

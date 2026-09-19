@@ -1,0 +1,13 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_C5D1_C706",
+  "flags_append": "",
+  "segment": "_TEXT",
+  "sources": [
+    {"owner":"F_C5D1","path":"src/F_C5D1.C","public":"_f_c5d1"},
+    {"owner":"F_C678","path":"src/F_C678.C","public":"_f_c678"},
+    {"owner":"F_C6B9","path":"src/F_C6B9.C","public":"_f_c6b9"},
+    {"owner":"F_C706","path":"src/F_C706.C","public":"_f_c706"}
+  ],
+  "evidence":"Contiguous matching-C prefix of the former C_C5D1_C898 compatible-compilation candidate. F_C755 is now an independently proved symbolic TASM owner, so it remains a separate object until mixed C/TASM historical module ownership is recovered."
+}

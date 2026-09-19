@@ -452,32 +452,9 @@
       "format": "u16-farptr-u8-farptr-u8-tail8-v1"
     },
     {
-      "id": "C_DATA_A658",
-      "source": "src/F_A658.C",
-      "format": "compiled-data",
-      "code_owner": "F_A658"
-    },
-    {
-      "id": "RAW_010FF6",
-      "source": "raw/010FF6-011021.bin",
-      "format": "raw-local",
-      "symbolic_pointer_fields": [
-        {
-          "offset": 1,
-          "target": "DATA_0101125_DIFFICULTY_TITLE",
-          "addend": 0
-        },
-        {
-          "offset": 6,
-          "target": "DATA_0101140_DIFFICULTY_PROMPT",
-          "addend": 0
-        },
-        {
-          "offset": 26,
-          "target": "DATA_0101220_ENERGY_PROMPT",
-          "addend": 0
-        }
-      ]
+      "id": "DATA_01101D_TRAILER",
+      "source": "src/data/DATA_01101D_TRAILER.json",
+      "format": "u16le-table-v1"
     },
     {
       "id": "DATA_0101021_PLAYER_NAME_TITLE",

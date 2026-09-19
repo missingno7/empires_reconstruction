@@ -96,6 +96,10 @@ def run(input_path, recipe_path):
               'historical_module_proven': False,
               'limitation': 'Candidate source-object order; nonrelocating owners do not identify exact historical boundaries'}
     write_json(output_path, report)
+    receipt = dict(report)
+    receipt['byte_comparison'] = {key: value for key, value in comparison.items()
+                                  if key not in ('candidate', 'oracle')}
+    write_json(ROOT / 'docs/data-interleaving.json', receipt)
     print(f"DATA interleaving: {report['status']}; {prefix} leading relocation entries match")
     print(comparison['full_file'])
     return report

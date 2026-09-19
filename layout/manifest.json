@@ -12234,10 +12234,10 @@
         },
         "module_segments": {
           "_DATA": {
-            "owner": "C_DATA_A658",
+            "owner": "DATA_010FA5_RECORDS",
             "coordinate": "DGROUP_offset",
-            "addend": 0,
-            "evidence": "compiled empty-string initializer at DS:13C5"
+            "addend": 80,
+            "evidence": "compiled empty string aliases the zero word beginning record 5"
           }
         }
       }
@@ -21195,44 +21195,31 @@
     {
       "id": "DATA_010FA5_RECORDS",
       "start": 69541,
-      "end": 69621,
+      "end": 69661,
       "kind": "EXACT_DATA",
       "classification": "static_pointer_records",
       "source": "src/data/DATA_010FA5_RECORDS.json",
       "original_symbol": null,
       "artifact": "regions/DATA_010FA5_RECORDS.bin",
-      "expected_sha256": "6bf6b2a370c2bd7f571255a21d63695fca20efb2f81d41b9548835c8eb3400a4",
+      "expected_sha256": "4da8f01dc7d1782f63dc52492a0a8554d96e73b81c39920f8ee05033187a386a",
       "matching_status": "EQUAL",
       "build": {
         "encoder": "u16-farptr-u8-farptr-u8-tail8-v1"
       }
     },
     {
-      "id": "C_DATA_A658",
+      "id": "DATA_01101D_TRAILER",
       "kind": "EXACT_DATA",
-      "start": 69621,
-      "end": 69622,
-      "source": "src/F_A658.C",
-      "artifact": "regions/C_DATA_A658.bin",
-      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "start": 69661,
+      "end": 69665,
+      "classification": "u16_table",
+      "source": "src/data/DATA_01101D_TRAILER.json",
+      "artifact": "regions/DATA_01101D_TRAILER.bin",
+      "expected_sha256": "08efea1c0957a5a1fe019e6edb21fdc9fbe5de2213487eab7a05e06eca1c9784",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "omf-segment-v1",
-        "code_owner": "F_A658",
-        "segment": "_DATA"
+        "encoder": "u16le-table-v1"
       }
-    },
-    {
-      "id": "RAW_010FF6",
-      "start": 69622,
-      "end": 69665,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010FF6-011021.bin",
-      "original_symbol": null,
-      "artifact": "raw/010FF6-011021.bin",
-      "expected_sha256": "65777d81e56aeceb96f42390a8556acbc5cc08962794d0abc6e874df41aa955d",
-      "matching_status": "EQUAL"
     },
     {
       "id": "DATA_0101021_PLAYER_NAME_TITLE",

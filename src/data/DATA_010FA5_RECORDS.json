@@ -89,6 +89,49 @@
         255,
         255
       ]
+    },
+    {
+      "word": 0,
+      "pointer_a": {
+        "target": "DATA_0101125_DIFFICULTY_TITLE",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_0101140_DIFFICULTY_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 0,
+      "pointer_a": null,
+      "byte_a": 0,
+      "pointer_b": {
+        "target": "DATA_0101220_ENERGY_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
     }
   ]
 }

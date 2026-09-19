@@ -2,7 +2,7 @@
 
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table
-prefix to 36 entries. The first remaining file difference is at `0xB2`; these
+prefix to 72 entries. The first remaining file difference is at `0x142`; these
 ordering constraints do not prove historical translation-unit boundaries.
 
 [Relocation-order grouping](relocation-grouping.md) now puts two verified
@@ -59,9 +59,9 @@ linker adapters are now the primary work.
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
 | Known toolchain library | 0 | 5,463 | 49 |
 | Structured MZ header | 0 | 512 | 1 |
-| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 10,145 | 120 |
-| Exact raw fallback | 62,621 | 4,055 | 11 |
-| Total | 79,154 | 79,154 | 528 |
+| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 10,188 | 120 |
+| Exact raw fallback | 62,621 | 4,012 | 10 |
+| Total | 79,154 | 79,154 | 527 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -215,7 +215,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 4,055 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 4,012 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -1240,7 +1240,8 @@ across 12 owners.
 Wave 145 separates the relocation-free 151-byte level-completion message from
 the preceding 55-byte relocation-backed control prefix. The new unterminated
 `ascii-v1` source preserves every CR separator and the exact owner boundary.
-The raw frontier is now 4,055 bytes across 12 owners.
+The raw frontier at that checkpoint was 4,055 bytes. The current generated
+status supersedes it with 4,012 bytes across 10 owners.
 
 ## One-hundred-forty-sixth matching-C wave
 

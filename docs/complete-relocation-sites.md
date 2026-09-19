@@ -5,10 +5,11 @@ the original segment:offset pairs. The load image and all fixed MZ fields match.
 The first file mismatch is 0x3A; every differing byte lies inside the relocation
 table. No output header or relocation-table rewriting is performed.
 
-Another four 20-byte records are now symbolic source (DATA_010FA5_RECORDS):
-seven far pointers and one null pointer. This removes 80 canonical raw bytes.
+Another six 20-byte records are now symbolic source (DATA_010FA5_RECORDS):
+ten far pointers and two null pointers. The last two records replace the
+misleading split between a one-byte compiled initializer and 43 raw bytes.
 Fresh Turbo C compilation independently reproduces both typed record tables,
-240 DATA bytes and 23 fixups. Its [receipt](record-compiler-evidence.json) proves
+280 DATA bytes and 26 fixups. Its [receipt](record-compiler-evidence.json) proves
 the layout and descending fixup order, not historical translation units.
 
 The remaining 27 pointer fields are described in the ordered DATA recipe as
@@ -17,7 +18,7 @@ replaces their raw words with unbound pointers and emits genuine OMF FIXUPPs.
 One target is within the source-declared game BSS reserve. Surrounding payloads
 remain explicitly `raw-local`: annotating their pointers does not make their
 unknown record or command structure understood. Canonical raw ownership is
-4,055 bytes across 11 owners; the source DATA path uses 4,049 of those bytes.
+4,012 bytes across 10 owners; the source DATA path uses 4,006 of those bytes.
 
 DATA fixups are emitted in the descending order independently observed in
 fresh Turbo C objects. Remaining relocation order differences cross source

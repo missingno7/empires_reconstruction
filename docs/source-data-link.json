@@ -532,367 +532,360 @@
     },
     {
       "owner": "DATA_010FA5_RECORDS",
-      "bytes": 80,
+      "bytes": 120,
       "format": "u16-farptr-u8-farptr-u8-tail8-v1",
-      "pointer_fixups": 7,
-      "object_sha256": "5b2ca26b58f86f335d26f360fef96852bd66cd0d3a40f3b63200bc3137b5eeb8"
+      "pointer_fixups": 10,
+      "object_sha256": "e35457ce8d4a910b01fe940d521dd75c6b5a762a34d99921f7e2b9680a1932bb"
     },
     {
-      "owner": "C_DATA_A658",
-      "bytes": 1,
-      "format": "compiled-data",
+      "owner": "DATA_01101D_TRAILER",
+      "bytes": 4,
+      "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "f04a766ff9135719ccea369ff10eefa1911eaa0fe8302994a3774c5e4a944a7b"
-    },
-    {
-      "owner": "RAW_010FF6",
-      "bytes": 43,
-      "format": "raw-local",
-      "pointer_fixups": 3,
-      "object_sha256": "87b60c0147004d44ac48fcc693b8567dbaf290ae4c8b9f34e04a82c780e6da98"
+      "object_sha256": "f0f6a860af0ba02995669df6dada139a6f5904f962a53f569836a8bbdb00dd7d"
     },
     {
       "owner": "DATA_0101021_PLAYER_NAME_TITLE",
       "bytes": 22,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "fd3bc8e456cb872efd8f83b396eedfab14e9b4c3260d85c0969d844f07a0e218"
+      "object_sha256": "e9132e2c27a489c07da7c93348596acfdd63278bb4e5a1f8228ccb608ed1bad4"
     },
     {
       "owner": "DATA_011037_PLAYER_NAME_INSTRUCTION",
       "bytes": 51,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "304ccceee07409563922367be47a63556df0bf18dec11ecb376652115cb61551"
+      "object_sha256": "ce6dfa3e22c259005495ff560d4efa2855bfea0835f2cb466f98365b2a0fe3b1"
     },
     {
       "owner": "DATA_010106A_PLAYER_LIST_FULL",
       "bytes": 72,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "e8ab2fb7c494b6fe19f4cd2d49b2e3aa189b56801cb81ca8e0d8c5bb9cc1eab0"
+      "object_sha256": "8095281bb5a9982273819126e98ccb7959ee0c5b5a1428d8050c82de05b4bff9"
     },
     {
       "owner": "DATA_01010B2_EXIT_PROGRAM_TITLE",
       "bytes": 13,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "cf08d9ffb7bf0190eb63a9f55aa13cf3a470103b25025ebe0d14b962d762fc1c"
+      "object_sha256": "08d316eac4a6e5ee2eb82a1810dd91a8c85361dd55d406ab241f2f4369f017a5"
     },
     {
       "owner": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
       "bytes": 79,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "b86da0b2b2df301a3bd33ee0e1be6dc374982760ad516bb68a77e948aba0b0d0"
+      "object_sha256": "fdd5aa435daf1d81770bc61d249285a61f85dd14d07dcd0fd716d0566af5afd4"
     },
     {
       "owner": "DATA_010110E_REMOVE_PLAYER_TITLE",
       "bytes": 23,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "f18e8314325dea7d3cf7ed32d62a83095361f8bd9326209d19bd84aa20e11fb6"
+      "object_sha256": "22bf7055a0995d393d59b7ac84599410f7645d16348c787c09dc79af5750cebb"
     },
     {
       "owner": "DATA_0101125_DIFFICULTY_TITLE",
       "bytes": 27,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "cf455d3747a7d9fffe3b7992c3de152ae53381575d157c2b172474585c119dcb"
+      "object_sha256": "208dea68dc09059c38a40eb8e5cbb7f35fe99133f8176436a0f66c604a74bf98"
     },
     {
       "owner": "DATA_0101140_DIFFICULTY_PROMPT",
       "bytes": 224,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "8b8b3cf9e0dee0bb5f8b64d31dd8ef1ff778f72b6cb8566dbf0b902b84b42e87"
+      "object_sha256": "4de06449a01f6527725061ba97056d20c4a1e594dd02ff51af8ac6e3677e1630"
     },
     {
       "owner": "DATA_0101220_ENERGY_PROMPT",
       "bytes": 96,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "ed55daca82337a5771258aaccc7ab69b2d6b76bdd5a7ace7397fc8f5ca59d108"
+      "object_sha256": "e216f8ac771837496bbd6905a6ae03c6a21bb5ef9bdc88ab6e9fdb19dfcd945e"
     },
     {
       "owner": "C_DATA_A28D",
       "bytes": 16,
       "format": "compiled-data",
       "pointer_fixups": 0,
-      "object_sha256": "ab5355cf0970228c05bf7cbaed0f2e955a975d14a9f595a40e337aa1c164e194"
+      "object_sha256": "41a114bc05483e192c672ba3dbecb30a8ccdcc197058d0280d7b93791b7ed098"
     },
     {
       "owner": "TEXT_1660",
       "bytes": 15,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "193dae4e0a85fe4a9d91cb5b7808b178b040fee2ae8f3fe656ba79f95a0382a0"
+      "object_sha256": "4bd5bb1d4ee94573af7c1e477d45d38564bbbb0a56f58f32bb97cc5cd63ba9d0"
     },
     {
       "owner": "RAW_01129F_CONTROL_PREFIX",
       "bytes": 55,
       "format": "raw-local",
       "pointer_fixups": 1,
-      "object_sha256": "9c7a74f4b5100b61b9419902b8171e3dd5fa079093492532e3e189caaf247343"
+      "object_sha256": "eb6bcfb78a7950e0f4939ec607057c54b05db43f10f849d761da2807694fd643"
     },
     {
       "owner": "DATA_0112D6_LEVEL_COMPLETE",
       "bytes": 151,
       "format": "ascii-v1",
       "pointer_fixups": 0,
-      "object_sha256": "36eb29a9768b6142435cb8f37c5ea7b180f6e2bad5136e0aa009fa0a679c9bd2"
+      "object_sha256": "0001da65371a3971840d9b71865a6cdaae7d139cf03ca3e79178198a757b1b2d"
     },
     {
       "owner": "DATA_01136D_ARTIFACTS_REMAIN",
       "bytes": 30,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "66bda69c7faa3e44c8a2ebe5a21313a87341820f7e3ffa7f2f1fef2d620cbe0a"
+      "object_sha256": "e843c22ac5f335c237e2e18ab7ff74aee6497d6a9057a1e44e8d0074a8e01f3b"
     },
     {
       "owner": "DATA_01138B_ZERO_PREFIX",
       "bytes": 19,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "9ce5164acd926209001f4916997eeca6f03ca4b8972467903e3bbeec7d4a210f"
+      "object_sha256": "bc0d50c9cf7385a81970c114de473d937cb45b56bb5ef55e5b1649ec16b014cd"
     },
     {
       "owner": "RAW_01139E",
       "bytes": 1832,
       "format": "raw-local",
       "pointer_fixups": 0,
-      "object_sha256": "48f1f47734e775decd575d8492e2772a2bba39dd3f3505cf9a1f70fd9b7a26c6"
+      "object_sha256": "d9a31e2f8c2c117fa48aea9224a7ee6ef76c3d528e2244a080d34e956fa0af20"
     },
     {
       "owner": "DATA_011AC6_NEW_USER_PROMPT",
       "bytes": 124,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "cde92cdebb4d964bb9faf9e617cbfa8dc1489df953ac5b1fca93d66ef67790e2"
+      "object_sha256": "d0170053a8a71643246eb5164865e545112ca0ea87e70688f2718a7ab2b51f26"
     },
     {
       "owner": "DATA_011B42_PLAYER_HEADER",
       "bytes": 45,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "47a4149b79fbeafb1d8648881d9781a85dc692ad6c6bdba50a46be610b358127"
+      "object_sha256": "d0c6a027af32df878ec865faa41d880e416c253f8966bbfeefa8117022d97e4e"
     },
     {
       "owner": "DATA_011B6F_PLAYER_CAVERNS",
       "bytes": 43,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "978504f8e283ce5ee022c0a3820c02a842f2086468fe4ecd7e43bd929c8f7b8e"
+      "object_sha256": "b3a933f236d63fb247f37d8532fb61aefc2085ecff0969f163e2c6e5c96ddaa5"
     },
     {
       "owner": "DATA_011B9A_RETURN_MAP_PROMPT",
       "bytes": 212,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "406e4a71dec97fcc782f2e87168ccc82d5e8721ca577374a2c12010823f5552f"
+      "object_sha256": "b9e4a1a81feb4daa7f7c2e967e4ab49a1f1a20ca99579ea39e43b156fe8f17ed"
     },
     {
       "owner": "DATA_011C6E_START_GAME_PROMPT",
       "bytes": 123,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "3be5e35672df63911852fd8610ca5351cbfce49827cf2b33ba37e744252c35f6"
+      "object_sha256": "f9a1048df85eaf99186a38a091a759163fdb9fd841108e6ed0f283c69be7e615"
     },
     {
       "owner": "DATA_011CE9_EXIT_PROMPT",
       "bytes": 167,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "908dc9c4da1b0bf6a593da59b2405b3ac638a54d77e0a232b05bd3806cd615b9"
+      "object_sha256": "fe1d0d5581f699abdc4e48fdd7a61df14b03e2fb7309b608be3828550913f813"
     },
     {
       "owner": "DATA_011D90_RECORDS",
       "bytes": 160,
       "format": "u16-farptr-u8-farptr-u8-tail8-v1",
       "pointer_fixups": 16,
-      "object_sha256": "6553f6f666ee70d4494cde3c11185412bdabbbc314205c98c32d704ee7963bba"
+      "object_sha256": "305267dee2a0f4715cf5cc5fc356e6841d67c2e4509788fcc48a591bf1e42b78"
     },
     {
       "owner": "DATA_011E30_MUSIC",
       "bytes": 6,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "80f8be5f0945d538e8baaa9b5b1604acb9d6ed235ac282a780c2dfb77bcc86b3"
+      "object_sha256": "633959c488be23e1ba740ce10d79e681c369e7e7bbfed1f791cba68fa989b34b"
     },
     {
       "owner": "DATA_011E36_MUSIC_PROMPT",
       "bytes": 27,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "65673040912d620dffead01920ce1e64c5e2b0dc0646b2290009bdaf0a9869e8"
+      "object_sha256": "2bcc0791c2a094c83f3fe127ddf7794742bb3472892a30b939701cc75d4f2ceb"
     },
     {
       "owner": "DATA_011E51_SOUND_EFFECTS",
       "bytes": 14,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "c77048bc14729b1ace7d3068929decc77045c9d4115f294896a15ad77b2850e6"
+      "object_sha256": "e5a7a5b21d948fae32ec2fcd1520bb7662d9632d26ffe5781f48e4a74439346d"
     },
     {
       "owner": "DATA_011E5F_SOUND_PROMPT",
       "bytes": 35,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "8af7513a2a1ee95907bf8ae019a0e3e227a3b22f2cff92c3451bed0de0c33f18"
+      "object_sha256": "3ba97bdae470f693efe484a00acf423ebf1f5e9dc071a653e4671ba2493708da"
     },
     {
       "owner": "DATA_011E82_NEW_USER_LABEL",
       "bytes": 18,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "721a576625fd1c9a027659b0539322f9c759a0c5bf5804e8ee8cea56e7a4f017"
+      "object_sha256": "9e3f9cd3ff4b801fc6bb55a399f76467fba9675516ee8771058bbd197656e259"
     },
     {
       "owner": "DATA_011E94_RETURN_MAP_LABEL",
       "bytes": 19,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "be6406ac5d3c7a6dbdc10481c66466646febf717c4a92b7cd24839d25e176aea"
+      "object_sha256": "46fda31e8088ce1bcbafaa27175dfc7133f91996c4239367058540909c0070ea"
     },
     {
       "owner": "DATA_011EA7_START_GAME_LABEL",
       "bytes": 15,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "498efdb8254abfd32417fa054f97697145b24e48e24d6eeb72488209bd1a7d52"
+      "object_sha256": "b3f2a94082951d453d2c6f73677b1651bcd8f70eb5d69bbbcf83b78e27959ba2"
     },
     {
       "owner": "DATA_011EB6_HALL_LABEL",
       "bytes": 13,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "5fe20e805b666b6c665a39a5b5dc119b10053c3ace87b84ab20522bb8cfd0d6d"
+      "object_sha256": "3d09fc8b2cd6229762cf7dffae21e6ee45ddd9145089f09cf69cfe6aafeae823"
     },
     {
       "owner": "DATA_011EC3_PLAYERS_LABEL",
       "bytes": 16,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "c0d5d8b5b2b8a89145c45b38390b54c5fadb285242ae265743bb80da657c15b7"
+      "object_sha256": "9cb9ed03a2898763c8f89a58a41bb7916597ed371b20b6f266ad96c608cd270f"
     },
     {
       "owner": "DATA_011ED3_EXIT_SAVE_LABEL",
       "bytes": 14,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "106a07c12cfcde7fe61b2a450884d709ea5f0a45628f44af5d630b1d8d574402"
+      "object_sha256": "f773ac49e5498bc51b01b388ad473310386a420eb46bdd3a8b9b8c0cda2deafa"
     },
     {
       "owner": "DATA_011EE1_TABLE",
       "bytes": 32,
       "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "d1789e4698d73e1ff4221e4ee3d86f872e142fe11e3151f47333fec58ae4f65d"
+      "object_sha256": "fcd30341e1eaafcc1c06702e8d67017df9f235e2c053d53f483e2e8b784e854f"
     },
     {
       "owner": "DATA_011F01_PAD",
       "bytes": 1,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "6071cf00daea92d68fdcf64678c671f41240efcebdd22fa06dd31e830333718b"
+      "object_sha256": "55303dd29ea5c03ae3bb725d3f32bcc4ca9aba27111197242247c986dc3cb154"
     },
     {
       "owner": "TEXT_22D2",
       "bytes": 14,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "1a6a85954ba1fe0e80e4176f0c846c04db069ac218e6aaf5bbd2260fd28ba585"
+      "object_sha256": "920829af9c3b90c18de7fcd59827a474cf31dac9b7607d11cd3d3f842e2b4968"
     },
     {
       "owner": "DATA_011F10_TABLE",
       "bytes": 16,
       "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "d90316168afd0a79d9374fe5cb57cb1e2dc61bb68e2e885ad93276c20120b1dd"
+      "object_sha256": "c4aeb56bde2f1f2465a2342845efef8668af4107eba8edcc56e1888b620ec0bd"
     },
     {
       "owner": "DATA_011F20_PAD",
       "bytes": 5,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "221b221e7ef83e86b405ac84bc4379b62f766701896260eeccf068904de2be34"
+      "object_sha256": "beff269a6e6f0f42734951e511c7e2b83609b4dce2284a06f41240a298e39eec"
     },
     {
       "owner": "RAW_011F25",
       "bytes": 13,
       "format": "raw-local",
       "pointer_fixups": 1,
-      "object_sha256": "517f6abd4ccec066feea4f35c09a7aa17d72d59d34c1f36add3a6fc7fcf15fab"
+      "object_sha256": "7a527a0a729925f43639afbc653829714dc5da2b0a4c00e42620d8654b5b23c1"
     },
     {
       "owner": "DATA_011F32_KEYBOARD_LABEL",
       "bytes": 19,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "1e8b9bbcbf0fa62057be2cdeaa6cc336c52445c11745d8fa8962ffbf616be983"
+      "object_sha256": "8fccc8107153d2b22e4485f4ed8b6589f0f897dcdfc1f60fa6f1dd509274a91b"
     },
     {
       "owner": "DATA_011F45_PLAYING_LABEL",
       "bytes": 17,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "2b3ab9ad8f33f079f8c9204a83990690f1882fdd863d775d0dd588f74e16643a"
+      "object_sha256": "6e62915910989291fcf4d66f1c84f4cf1fa37a46a560d5af796f5dd57c58b671"
     },
     {
       "owner": "DATA_011F56_OBSTACLES_LABEL",
       "bytes": 21,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "d3070676cc5c076ef8f96b6fd202a8c45294f96b81325fb959b9097ad56554e5"
+      "object_sha256": "3013249068cbbe7cd87255dd9dfe014156dc3b455e47102439183944475eefbd"
     },
     {
       "owner": "DATA_011F6B_PUZZLES_LABEL",
       "bytes": 27,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "d6aecf7bdbc375833542a972b9c4e8d1455f517ccfdf757956c754761495a3b2"
+      "object_sha256": "16936ccabf8c5d7b1cf59ffae520f619746a6925e9bcf2a7323e47ef0a62c3b8"
     },
     {
       "owner": "RAW_011F86",
       "bytes": 20,
       "format": "raw-local",
       "pointer_fixups": 1,
-      "object_sha256": "3b3d44e6402596ee85b8475a9744f780fedcb3af66019ccff319186388cb9167"
+      "object_sha256": "2b8ede1e675dafb45fe667050409bec8bde93436c39dbcf9cf6e448de89f9ec6"
     },
     {
       "owner": "DATA_011F9A_NEW_USER_MESSAGE",
       "bytes": 17,
       "format": "ascii-nul-v1",
       "pointer_fixups": 0,
-      "object_sha256": "5f0365058ad3a2cbd4f61b5b07436de0d0841e7c89c80c64bd67f812ec090cce"
+      "object_sha256": "9be32f77dbf9219e4bc59fb200dbdf569f68f11a8a683e64ae6fd5f27b181e3d"
     },
     {
       "owner": "DATA_011FAB_ZERO_PREFIX",
       "bytes": 3,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "484076d0959dcca9cb60ba5b60716fcb8590c25dc6145346f7e9f8e89a7052e6"
+      "object_sha256": "450df26f52587dc06814e93673575b921400634528bbd7452256b8e32c5f4ea5"
     },
     {
       "owner": "RAW_011FAE",
       "bytes": 2,
       "format": "raw-local",
       "pointer_fixups": 0,
-      "object_sha256": "0320176270a5771015d7049dd134d089e21c2a381a4bf42c77bfc0efb7dbdcc4"
+      "object_sha256": "5a3c02e6ce0bb95cd09466e8c10fe1596769fffab373ec7b28ca30367be3233f"
     },
     {
       "owner": "DATA_011FB0_ZERO_REGION",
       "bytes": 3155,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "ca6ba36e9895629069374365a247e1b18f4b0b08e84706b760d39fefb2776602"
+      "object_sha256": "8e87a55990ae5459f28d2cc66cf69d9598014376b9debf310a509ab449b2478d"
     },
     {
       "owner": "RAW_012C03",
       "bytes": 1923,
       "format": "raw-local",
       "pointer_fixups": 0,
-      "object_sha256": "3458355edaa1c82b2ce74640b2e2701b1fe9368e53389728f6e145bd10afbe50"
+      "object_sha256": "ca7bffedd3ee11998338df7e5af30789ba77581ffe7d264bed0f3a1c852ed7c8"
     }
   ],
   "separated_data": [
@@ -926,7 +919,7 @@
     }
   ],
   "oracle_copied_initialized_data_bytes": 0,
-  "local_raw_source_bytes": 4049,
+  "local_raw_source_bytes": 4006,
   "synthetic_bss_bytes": 37250,
   "temporary_startup_data_aliases": {
     "_g6d": 109,
@@ -941,7 +934,7 @@
   },
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "fac4f162901f17c5c9c7927e8c1c55135408ca9e2bd5ca9d53f76d5ae6ee4c8c",
+    "candidate_sha256": "bc47909f86bf3ec443fdd7f7e76085f318e66ad4261d67361902c9b1fc65c310",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,

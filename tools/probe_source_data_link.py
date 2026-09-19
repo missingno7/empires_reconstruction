@@ -168,6 +168,10 @@ def run():
               'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),
               'limitation': 'Ordered source DATA; raw sources, recovered aliases, synthetic BSS and module grouping remain.'}
     write_json(ROOT / 'build/source-data-link-report.json', report)
+    receipt = dict(report)
+    receipt['byte_comparison'] = {key: value for key, value in report['byte_comparison'].items()
+                                  if key not in ('candidate', 'oracle')}
+    write_json(ROOT / 'docs/source-data-link.json', receipt)
     print(f"Source DATA link: {report['status']}; code unchanged: {report['code_contributions_equal']}")
     print(report['byte_comparison']['load_image'])
     print(report['byte_comparison']['initialized_data'])

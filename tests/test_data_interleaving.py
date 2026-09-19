@@ -27,7 +27,7 @@ class InterleavingTests(unittest.TestCase):
         self.assertEqual(report['status'], 'LAYOUT_PRESERVED')
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertTrue(report['byte_comparison']['mz']['relocation_pairs_equal'])
-        self.assertEqual(report['matching_relocation_prefix_entries'], 36)
+        self.assertEqual(report['matching_relocation_prefix_entries'], 72)
         self.assertFalse(report['historical_module_proven'])
 
 

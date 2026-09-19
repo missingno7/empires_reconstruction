@@ -12,14 +12,15 @@ from mz import MZ
 
 
 class PointerRecordTests(unittest.TestCase):
-    def test_four_record_table_has_one_null_pointer(self):
+    def test_six_record_table_has_two_null_pointers(self):
         manifest = json.loads((ROOT / 'layout/manifest.json').read_text())
         owners = {o['id']: o for o in manifest['regions']}
         owner = owners['DATA_010FA5_RECORDS']
         doc = json.loads((ROOT / owner['source']).read_text())
         data, refs = compile_records(doc)
-        self.assertEqual((len(data), len(refs)), (80, 7))
+        self.assertEqual((len(data), len(refs)), (120, 10))
         self.assertIsNone(doc['records'][1]['pointer_a'])
+        self.assertIsNone(doc['records'][5]['pointer_a'])
         self.assertEqual(data[22:26], bytes(4))
         frame = manifest['frames']['DGROUP']
         bound = bind_records(doc, lambda target: (owners[target]['start'] - 512 - frame, frame // 16))

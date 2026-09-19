@@ -10,15 +10,25 @@
       "data_through": "PAD_10EDD",
       "after_code": "F_7BFC",
       "before_next_relocating_code": "F_9EC3"
+    },
+    {
+      "data_through": "DATA_0101220_ENERGY_PROMPT",
+      "after_code": "F_9EC3",
+      "before_next_relocating_code": "F_A09D"
+    },
+    {
+      "data_through": "RAW_011FAE",
+      "after_code": "F_ADCF",
+      "before_next_relocating_code": "F_DDD9"
     }
   ],
   "errors": [],
   "segment_map_equal": true,
   "code_contributions_equal": true,
-  "matching_relocation_prefix_entries": 36,
+  "matching_relocation_prefix_entries": 72,
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "7ff97439c782d7588e8c0a2cb0e944c426e961f32186eff4cff26efc3061f52c",
+    "candidate_sha256": "263a673ad117e1b5e3e5cbc65bfd83b0340c80fafbde1817bd1e505b9b8d8260",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -89,7 +99,7 @@
     "full_file": {
       "equal": false,
       "differing_bytes_outside_relocation_table": 0,
-      "first_difference": 178
+      "first_difference": 322
     }
   },
   "historical_module_proven": false,

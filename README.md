@@ -5,10 +5,11 @@ without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module
 adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
-Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
-demand object, with zero errors/unresolved symbols and exact segment bases.
-The linked bytes still differ (56/106 relocations; first load difference 0xC8).
-See [the checkpoint](docs/tlink20-full-scaffold.md) and [generated metrics](docs/structural-status.json).
+Current source-DATA checkpoint: Turbo Link 2.0 links without the historical
+demand object, with zero errors/unresolved symbols, exact segment bases, the
+exact load image, and all 106 relocation sites. Source-object ordering now
+matches the first 72 relocation entries; historical module grouping remains.
+See [the checkpoint](docs/data-interleaving.md) and [generated metrics](docs/structural-status.json).
 
 
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
@@ -17,7 +18,7 @@ originals exactly**, including executable relocations and archive offsets.
 The fixed build compiles 347 C regions and no ASM regions, and retains 40 pinned
 Borland library contributions as independent historical inputs. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); eleven raw regions cover the remaining 4,055 EXE bytes.
+RGB tables (1,536 bytes); ten raw regions cover the remaining 4,012 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 488 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 75 resolve through [publics read from pinned library modules](docs/library-bindings.md).

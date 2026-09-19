@@ -39,7 +39,7 @@ def run():
               'historical_translation_unit_proven': False,
               'evidence': 'Fresh Turbo C struct layout and descending DATA fixup order; no oracle bytes used'}
     write_json(ROOT / 'docs/record-compiler-evidence.json', report)
-    print('Turbo C pointer records: 240 DATA bytes and 23 reverse-ordered fixups EQUAL')
+    print('Turbo C pointer records: 280 DATA bytes and 26 reverse-ordered fixups EQUAL')
     return report
 
 

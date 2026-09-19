@@ -1,6 +1,6 @@
 {
   "format": "empires-data-interleaving-candidate-v1",
-  "status": "Two relocation-order constraints; not a historical translation-unit claim",
+  "status": "Four relocation-order constraints; not a historical translation-unit claim",
   "moves": [
     {
       "data_through": "RAW_01075A",
@@ -11,6 +11,16 @@
       "data_through": "PAD_10EDD",
       "after_code": "F_7BFC",
       "before_next_relocating_code": "F_9EC3"
+    },
+    {
+      "data_through": "DATA_0101220_ENERGY_PROMPT",
+      "after_code": "F_9EC3",
+      "before_next_relocating_code": "F_A09D"
+    },
+    {
+      "data_through": "RAW_011FAE",
+      "after_code": "F_ADCF",
+      "before_next_relocating_code": "F_DDD9"
     }
   ]
 }

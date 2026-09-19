@@ -23,8 +23,8 @@ canonical source files, not AEPROG.EXE. The minimal DATA-only executable has no
 stack, producing the expected warning. This is a component link test, not a
 claim of a runnable game or historical module recovery.
 
-The full fixed build still matches all three original files. Canonical raw EXE
-ownership is now 4,300 bytes across 12 owners. Full structural-link integration
-remains open: the existing DGROUP tail still duplicates these bytes and lacks
-their relocations. Replacement must remove that duplication and preserve
-natural contribution order; merely appending TABLE.OBJ would be incorrect.
+The full fixed build still matches all three original files. Both typed tables
+are integrated into the source-DATA TLINK path, including the six-record table's
+10 descending fixups. Canonical raw EXE ownership is now 4,012 bytes across 10
+owners. Exact historical module ownership remains open; the typed objects prove
+layout and fixup behavior rather than translation-unit boundaries.

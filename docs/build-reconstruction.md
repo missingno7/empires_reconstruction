@@ -91,7 +91,7 @@ No unknown payload became understood merely
 because its offset is now computed. This step does not recover the historical
 compressor's remaining match-selection behavior.
 
-The fixed EXE remains the byte-identical oracle with declared bindings, 4,055
+The fixed EXE remains the byte-identical oracle with declared bindings, 4,012
 raw bytes, and no proven reconstruction of its original source modules. The
 relocatable experiment now uses the locally verified Turbo Link 2.0 candidate:
 the no-demand run places `_TEXT` through `0xFA23` with zero code-placement

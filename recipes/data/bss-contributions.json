@@ -268,10 +268,21 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSSI.OBJ",
-      "assembly": "GAMEBSSI.ASM",
+      "id": "GBF66_RESOURCE_TABLE_BSS",
+      "object": "GBF66B.OBJ",
+      "assembly": "GBF66B.ASM",
       "logical_start": 34404,
+      "logical_end": 34488,
+      "owner_candidate": "F_1D47 84-byte resource-24 table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSJ.OBJ",
+      "assembly": "GAMEBSSJ.ASM",
+      "logical_start": 34488,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

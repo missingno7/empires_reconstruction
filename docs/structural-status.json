@@ -105,10 +105,10 @@
   "demand_object_present": false,
   "synthetic_data_bytes": 13932,
   "synthetic_bss_bytes": 37252,
-  "symbol_transform_owners": 104,
+  "symbol_transform_owners": 75,
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "46367ddaabd7fcc74f8436c3b2c138e38ee5adedf9e4c14a2348935715446300",
+    "candidate_sha256": "8344601f45de5ade046b4a57de91da0978aeb0f8348a8940e5e272cd6aad3603",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -217,6 +217,7 @@
       "end": 64035,
       "candidate_length": 64035,
       "oracle_length": 64035,
+      "differing_byte_count": 1469,
       "first_difference": 200
     },
     "initialized_data": {
@@ -225,6 +226,7 @@
       "end": 78642,
       "candidate_length": 14594,
       "oracle_length": 14594,
+      "differing_byte_count": 9569,
       "first_difference": 64196
     },
     "full_file": {
@@ -237,12 +239,13 @@
   "source_data_experiment": {
     "status": "LINKED",
     "initialized_data_equal": true,
-    "text_differing_bytes": 32,
+    "load_image_equal": true,
+    "text_differing_bytes": 0,
     "relocation_count": 72,
     "missing_relocations": 34,
     "extra_relocations": 0,
     "oracle_copied_initialized_data_bytes": 0,
     "local_raw_source_bytes": 4129,
-    "synthetic_bss_bytes": 37252
+    "synthetic_bss_bytes": 37250
   }
 }

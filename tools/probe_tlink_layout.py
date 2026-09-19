@@ -304,6 +304,13 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                     if not target_owner:
                         continue
                     target = target_owner['start'] - 512 + binding.get('addend', 0)
+                    if target_owner['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY' and binding.get('public'):
+                        module_name = target_owner['build']['library_module']
+                        publics = OmfReader().read(library_available[module_name]).publics_in('_TEXT')
+                        public = next((p for p in publics if p['name'] == binding['public']), None)
+                        if public is None:
+                            raise ValueError('Declared library target public is absent')
+                        target += public['offset']
                 else:
                     continue
                 target_region = next((item for item in load_regions
@@ -326,7 +333,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                         selected = library_symbol_at(module_name, target_offset)
                         if selected:
                             owner_id = source_region['id']
-                            if symbol in module_externals.get(owner_id, set()):
+                            if symbol in module_externals.get(owner_id, set()) and selected != (symbol, 0):
                                 library_internal_aliases.setdefault(owner_id, {})[symbol] = selected
         for owner_id, externals in module_externals.items():
             for external in externals:

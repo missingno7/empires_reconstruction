@@ -51,6 +51,9 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertEqual(report['errors'], [])
         self.assertTrue(report['code_contributions_equal'])
         self.assertTrue(report['byte_comparison']['initialized_data']['equal'])
+        self.assertTrue(report['byte_comparison']['load_image']['equal'])
+        self.assertTrue(report['byte_comparison']['text']['equal'])
+        self.assertEqual(report['synthetic_bss_bytes'], 37250)
         self.assertEqual(report['oracle_copied_initialized_data_bytes'], 0)
         reloc = report['byte_comparison']['mz']
         self.assertEqual(reloc['candidate_fields']['e_crlc'], 72)

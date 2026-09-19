@@ -46,14 +46,14 @@
     },
     {
       "start": 78642,
-      "stop": 115961,
-      "length": 37320,
+      "stop": 115959,
+      "length": 37318,
       "name": "_BSS",
       "class": "BSS"
     },
     {
-      "start": 115962,
-      "stop": 115962,
+      "start": 115960,
+      "stop": 115960,
       "length": 0,
       "name": "_BSSEND",
       "class": "STACK"
@@ -927,7 +927,7 @@
   ],
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 4129,
-  "synthetic_bss_bytes": 37252,
+  "synthetic_bss_bytes": 37250,
   "temporary_startup_data_aliases": {
     "_g6d": 109,
     "_g7d": 125,
@@ -941,7 +941,7 @@
   },
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "13fdbd13660aec21e972143f9d7ebf5eb482b3116ecd5b23f8179baa4cb1d723",
+    "candidate_sha256": "e50eb1e586515d757707ecb767ef79ab8108e0178de41212b363587341551189",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -1020,19 +1020,19 @@
       "extra_sites": []
     },
     "load_image": {
-      "equal": false,
-      "first_difference": 200,
+      "equal": true,
+      "first_difference": null,
       "candidate_length": 78642,
       "oracle_length": 78642
     },
     "text": {
-      "equal": false,
+      "equal": true,
       "start": 0,
       "end": 64035,
       "candidate_length": 64035,
       "oracle_length": 64035,
-      "differing_byte_count": 32,
-      "first_difference": 200
+      "differing_byte_count": 0,
+      "first_difference": null
     },
     "initialized_data": {
       "equal": true,

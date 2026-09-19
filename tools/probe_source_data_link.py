@@ -123,7 +123,10 @@ def run():
         separated.append({'owner': owner_id, 'bytes': module.segment_length('_DATA')})
     bss_publics = {p['name']: ('_BSS', p['offset']) for p in dg.publics_in('_BSS')}
     startup_path.write_bytes(add_publics(startup_path.read_bytes(), startup_aliases, '_DATA'))
-    (work / 'WORK/DGSCF.OBJ').write_bytes(make_dgroup_scaffold(b'', dg.segment_length('_BSS'), bss_publics))
+    bss_source = read_json(ROOT / 'src/data/GAME_BSS.json')
+    if bss_source['format'] != 'unpartitioned-bss-reserve-v1' or bss_source['alignment'] != 'word':
+        raise ValueError('Unsupported game BSS source')
+    (work / 'WORK/DGSCF.OBJ').write_bytes(make_dgroup_scaffold(b'', bss_source['length'], bss_publics))
     names, sources = [], []
     for index, part in enumerate(parts):
         name = f'D{index:04}.OBJ'
@@ -150,7 +153,7 @@ def run():
               'source_contributions': sources, 'separated_data': separated,
               'oracle_copied_initialized_data_bytes': 0,
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
-              'synthetic_bss_bytes': dg.segment_length('_BSS'),
+              'synthetic_bss_bytes': bss_source['length'],
               'temporary_startup_data_aliases': startup_aliases,
               'temporary_runtime_data_aliases': runtime_aliases,
               'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),

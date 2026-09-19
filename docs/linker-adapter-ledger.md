@@ -1,7 +1,7 @@
 # Linker adapter ledger
 
 The newer [source DATA experiment](source-data-link.md) eliminates the copied
-initialized tail and reproduces all initialized DATA bytes, with 72/106 correct
+initialized tail and reproduces the entire load image, with 72/106 correct
 relocations and no extra sites. The aggregate baseline below remains available
 for comparison; BSS and recovered-symbol adapters remain in both paths.
 

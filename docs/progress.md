@@ -2,7 +2,8 @@
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 72 correct relocations with no
-extras; 32 TEXT bytes still differ. Raw sources and BSS/symbol adapters remain.
+extras; the entire load image now matches. Raw sources and symbol/module
+adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
 The [runtime DATA tail](runtime-data-tail.md) is now verified against pinned
 CC.LIB modules and the real linked output: ten contributions, 420 source bytes

@@ -1,0 +1,53 @@
+{
+  "status": "EQUAL",
+  "game_reserve_bytes": 37250,
+  "runtime_bss_bytes": 68,
+  "dgroup_bss_start": 14594,
+  "dgroup_bss_end": 51912,
+  "witnesses": [
+    {
+      "owner": "LIB_EXIT",
+      "target": "__atexittbl",
+      "load_site": 58932,
+      "recovered_dgroup_offset": 51844
+    },
+    {
+      "owner": "LIB_ATEXIT",
+      "target": "_BSS",
+      "load_site": 59309,
+      "recovered_dgroup_offset": 51844
+    },
+    {
+      "owner": "LIB_HARDERR",
+      "target": "_BSS",
+      "load_site": 63348,
+      "recovered_dgroup_offset": 51908
+    },
+    {
+      "owner": "LIB_HARDERR",
+      "target": "_BSS",
+      "load_site": 63368,
+      "recovered_dgroup_offset": 51908
+    },
+    {
+      "owner": "LIB_HARDERR",
+      "target": "_BSS",
+      "load_site": 63392,
+      "recovered_dgroup_offset": 51908
+    },
+    {
+      "owner": "LIB_HARDERR",
+      "target": "_BSS",
+      "load_site": 63420,
+      "recovered_dgroup_offset": 51908
+    },
+    {
+      "owner": "LIB_HARDERR",
+      "target": "_BSS",
+      "load_site": 63463,
+      "recovered_dgroup_offset": 51908
+    }
+  ],
+  "startup_bssend_load_site": 200,
+  "internal_game_bss_partition_recovered": false
+}

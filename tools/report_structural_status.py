@@ -38,6 +38,7 @@ def status(root, report):
         'source_data_experiment': None if source is None else {
             'status': source['status'],
             'initialized_data_equal': source['byte_comparison']['initialized_data']['equal'],
+            'load_image_equal': source['byte_comparison']['load_image']['equal'],
             'text_differing_bytes': source['byte_comparison']['text']['differing_byte_count'],
             'relocation_count': source['byte_comparison']['mz']['candidate_fields']['e_crlc'],
             'missing_relocations': len(source['byte_comparison']['mz']['missing_sites']),

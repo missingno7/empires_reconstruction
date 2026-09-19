@@ -2,7 +2,8 @@
 
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 72 correct relocations with no
-extras; 32 TEXT bytes still differ. Raw sources and BSS/symbol adapters remain.
+extras; the entire load image now matches. Raw sources and symbol/module
+adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
 Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
 demand object, with zero errors/unresolved symbols and exact segment bases.

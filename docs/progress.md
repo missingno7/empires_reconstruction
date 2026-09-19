@@ -1,5 +1,9 @@
 # Incremental reconstruction — 2026-09-18
 
+The [symbolic pointer-record component](pointer-records.md) now independently
+links 160 bytes and 16 relocations from source through Turbo Link 2.0. Its full
+structural-link integration remains open; fixed whole-game verification passes.
+
 The latest structural check scopes conflicting code aliases to their actual callers
 and detects map-only fixup overflows. The two observed overflows are eliminated;
 full links with and without demand still have identical output. Empty-segment
@@ -12,7 +16,7 @@ The linked bytes still differ (56/106 relocations; first load difference 0xC8).
 See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
 
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 53,970 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 58,321 bytes from raw
 fallback through matching C, toolchain libraries, structured headers, palettes,
 compiled data, independently encoded text and static data.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -30,12 +34,9 @@ linker adapters are now the primary work.
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
 | Known toolchain library | 0 | 5,300 | 40 |
 | Structured MZ header | 0 | 512 | 1 |
-| Structured DAC palettes | 0 | 1,536 | 2 |
-| Compiled C initializer | 0 | 80 | 6 |
-| Independently encoded text | 0 | 2,879 | 62 |
-| Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 4,460 | 13 |
-| Total | 79,154 | 79,154 | 381 |
+| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 10,063 | 117 |
+| Exact raw fallback | 62,621 | 4,300 | 12 |
+| Total | 79,154 | 79,154 | 517 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -189,7 +190,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 4,460 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 4,300 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -998,7 +999,7 @@ F_C1F7 converts from its verified ASM owner to matching C. The complete
 See [the wave 118 proof](matching-c-wave118.md).
 
 Current matching-C coverage is 56,994 bytes across 332 owners, with 1,901
-matching-ASM bytes across 13 owners. The raw frontier remains 10,173 bytes.
+matching-ASM bytes across 12 owners. The raw frontier remains 10,173 bytes.
 
 ## One-hundred-nineteenth matching-C conversion
 
@@ -1207,14 +1208,14 @@ its record format is established. The raw frontier is now 4,937 bytes across
 Wave 144 decodes two aligned relocation-free control tables with the strict
 `u16le-table-v1` encoder. Their 326 bytes are exact; mixed-format and
 relocation-backed regions remain raw. The raw frontier is now 4,611 bytes
-across 13 owners.
+across 12 owners.
 
 ## One-hundred-forty-fifth executable-data wave
 
 Wave 145 separates the relocation-free 151-byte level-completion message from
 the preceding 55-byte relocation-backed control prefix. The new unterminated
 `ascii-v1` source preserves every CR separator and the exact owner boundary.
-The raw frontier is now 4,460 bytes across 13 owners.
+The raw frontier is now 4,300 bytes across 12 owners.
 
 ## One-hundred-forty-sixth matching-C wave
 

@@ -14,7 +14,12 @@ def palette_document(data):
     return {'format': DAC_FORMAT, 'entries': [list(data[i:i + 3]) for i in range(0, 768, 3)]}
 
 
-def encode_data(document, encoder):
+def encode_data(document, encoder, resolve_pointer=None):
+    from pointer_records import FORMAT, bind_records
+    if encoder == FORMAT:
+        if resolve_pointer is None:
+            raise ValueError('Symbolic pointer records require a target resolver')
+        return bind_records(document, resolve_pointer)
     if encoder == ASCII_FORMAT:
         if set(document) != {'format', 'text'} or document.get('format') != encoder or not isinstance(document['text'], str):
             raise ValueError('ASCII source requires format and text only')

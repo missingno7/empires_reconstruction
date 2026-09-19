@@ -330,9 +330,9 @@
       ]
     },
     {
-      "owner": "RAW_011D90",
-      "kind": "RAW",
-      "encoder": null,
+      "owner": "DATA_011D90_RECORDS",
+      "kind": "EXACT_DATA",
+      "encoder": "u16-farptr-u8-farptr-u8-tail8-v1",
       "missing_sites": [
         72596,
         72601,

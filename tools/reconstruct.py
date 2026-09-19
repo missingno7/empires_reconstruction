@@ -431,7 +431,11 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
             encoder = owner['build']['encoder']
             if encoder == 'omf-segment-v1':
                 continue
-            part = encode_data(read_json(source), encoder)
+            def resolve_data_pointer(target_id):
+                target = next(r for r in manifest['regions'] if r['id'] == target_id)
+                frame = manifest['frames']['DGROUP']
+                return target['start'] - 512 - frame, frame // 16
+            part = encode_data(read_json(source), encoder, resolve_data_pointer)
             mismatch(original[owner['start']:owner['end']], part, owner)
             if sha(part) != owner['expected_sha256']:
                 raise ValueError(f"{owner['id']}: encoded data digest differs")

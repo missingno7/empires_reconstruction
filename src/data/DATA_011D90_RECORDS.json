@@ -1,0 +1,189 @@
+{
+  "format": "u16-farptr-u8-farptr-u8-tail8-v1",
+  "records": [
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_011E30_MUSIC",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011E36_MUSIC_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 1,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_011E51_SOUND_EFFECTS",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011E5F_SOUND_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 1,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_011E82_NEW_USER_LABEL",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011AC6_NEW_USER_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 1,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_011E94_RETURN_MAP_LABEL",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011B9A_RETURN_MAP_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_011EA7_START_GAME_LABEL",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011C6E_START_GAME_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 0,
+      "pointer_a": {
+        "target": "DATA_011EB6_HALL_LABEL",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011B42_PLAYER_HEADER",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 0,
+      "pointer_a": {
+        "target": "DATA_011EC3_PLAYERS_LABEL",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011B6F_PLAYER_CAVERNS",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_011ED3_EXIT_SAVE_LABEL",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011CE9_EXIT_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    }
+  ]
+}

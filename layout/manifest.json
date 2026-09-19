@@ -20052,7 +20052,10 @@
       "provenance": {
         "method": "Fresh semantic matching C for the exact SRAND/RAND contribution",
         "source_sha256": "58a90fceeb2d79afa99c99a54577ef70a2e8fa1272c75d20fc43b85bf58c6234",
-        "omf_publics": ["_srand", "_rand"],
+        "omf_publics": [
+          "_srand",
+          "_rand"
+        ],
         "omf_text_length": 57,
         "omf_data_length": 4,
         "omf_bss_length": 0,
@@ -21535,16 +21538,19 @@
       }
     },
     {
-      "id": "RAW_011D90",
+      "id": "DATA_011D90_RECORDS",
       "start": 73104,
       "end": 73264,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/011D90-011E30.bin",
+      "kind": "EXACT_DATA",
+      "classification": "static_pointer_records",
+      "source": "src/data/DATA_011D90_RECORDS.json",
       "original_symbol": null,
-      "artifact": "raw/011D90-011E30.bin",
+      "artifact": "regions/DATA_011D90_RECORDS.bin",
       "expected_sha256": "0c5c140bbef4e38e3b7c318bfedfe8044624e5583ca3cdc4a2de91fbafa47e7d",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16-farptr-u8-farptr-u8-tail8-v1"
+      }
     },
     {
       "id": "DATA_011E30_MUSIC",

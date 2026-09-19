@@ -44,9 +44,9 @@ The former four-record component, one-byte compiled initializer, and 43-byte
 raw owner are now one six-record typed table plus a four-byte u16 trailer.
 The arithmetic interval F_DDD9 through F_DF98 now compiles as one exact object.
 A checked OMF adapter orders its explicit FIXUPP subrecords like historical
-Turbo C output; TLINK then produces the byte-identical file. Raw DATA, the
-unpartitioned BSS reserve and object-order evidence still
-prevent claiming a recovered build.
+Turbo C output; TLINK then produces the byte-identical file. The remaining
+interleaving and arithmetic FIXUPP adapters, plus incomplete historical
+translation-unit evidence, still prevent claiming a recovered build.
 
 Construction now reads the ordered relocation expectation from
 `layout/mz-header.json`; the original EXE is opened only when an optional

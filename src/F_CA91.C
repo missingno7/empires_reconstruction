@@ -2,8 +2,9 @@
 extern unsigned g1e92;
 void fca91()
 {
-    asm db 055h,08bh,0ech
+    asm push bp
+    asm mov bp,sp
     asm xor ah,ah
     asm mov g1e92,ax
-    asm db 05dh
+    asm pop bp
 }

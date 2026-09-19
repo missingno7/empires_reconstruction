@@ -14,9 +14,9 @@ linker candidate is recorded separately in `docs/tlink-candidate.json` because
 the available binary is Borland C++ TLINK 5.1 from a different local toolchain;
 it is evidence for linker behavior, not yet a verified Turbo C 2.0 input.
 
-The latest run produced a detailed map and placed the startup plus the first
-339 reconstructed code owners at the expected load offsets without explicit
-per-function addresses. The first divergence is now concrete:
+The ordinary-owner run produced a detailed map and placed the startup plus the
+first 339 reconstructed code owners at the expected load offsets without
+explicit per-function addresses. Its first divergence was concrete:
 
 ```text
 owner       expected      TLINK         length
@@ -30,6 +30,29 @@ modules. This identifies library extraction/order as the next structural
 problem. Before this point, the only divergence was the classified one-byte
 `PAD_004CA7` gap; representing code-gap pads as relocatable contributions
 removed that mismatch without hard-coding its address.
+
+The probe now also has an explicit `--promote-toupper` experiment. It removes
+the ordinary `F_F9BE` object, renames the caller's temporary `_ff9be` EXTDEF to
+the verified library public `_toupper`, and lets TLINK select `TOUPPER` from
+`CC.LIB`. The promoted module is selected with the correct 49-byte extent, but
+the current link places it at `0xF63E` while the oracle expects `0xF9BE`. The
+code-owner prefix then remains exact; the earliest remaining mismatch is the
+set of library modules that must be pulled before `TOUPPER` (the current
+synthetic DATA/DGROUP and unresolved startup bindings do not yet provide all
+historical references).
+
+Adding the temporary historical-public demand object, together with the
+verified `_delay` → `_f6c57` caller normalization, closes that library-order
+experiment. TLINK then reports `_TEXT` length `0xFA23`, `_DATA` beginning at
+`0xFA30`, and `TOUPPER` at `0xF9BE`; every supplied C-owner row remains at its
+oracle offset. This is the first proof that the complete code/library prefix
+can emerge from TLINK segment placement and library selection rather than
+per-function address forcing.
+
+The demand object is intentionally temporary. It asks for the publics already
+evidenced by the fixed library manifest so linker placement can be tested
+before the historical data/startup translation units are recovered. It does
+not claim those publics are the final reconstructed source bindings.
 
 The map still has unresolved symbols because DGROUP, BSS and the historical
 startup bindings have not yet been represented by synthetic relocatable data

@@ -57,6 +57,61 @@ def make_text_padding(length: int, name: str = 'PAD') -> bytes:
     return data
 
 
+def rename_external(data: bytes, old: str, new: str) -> bytes:
+    """Rename an EXTDEF symbol while preserving all OMF reference indices."""
+    if not old or not new or len(new.encode('ascii')) > 255:
+        raise MatchError('invalid external symbol rename')
+    records = list(_records(data))
+    changed = 0
+    out = []
+    for kind, body in records:
+        if kind in (OmfReader.EXTDEF, OmfReader.LEXTDEF):
+            at = 0
+            rebuilt = bytearray()
+            while at < len(body):
+                size = body[at]
+                end = at + 1 + size
+                if end > len(body):
+                    raise MatchError('truncated EXTDEF name')
+                name = body[at + 1:end].decode('latin1')
+                _, type_end = _index(body, end)
+                replacement = new.encode('ascii') if name == old else body[at + 1:end]
+                if name == old:
+                    changed += 1
+                rebuilt.append(len(replacement))
+                rebuilt.extend(replacement)
+                rebuilt.extend(body[end:type_end])
+                at = type_end
+            body = bytes(rebuilt)
+        out.append((kind, body))
+    if changed != 1:
+        raise MatchError(f'expected one EXTDEF {old!r}, found {changed}')
+    renamed = b''.join(_record(kind, body) for kind, body in out)
+    checked = OmfReader().read(renamed)
+    if old in checked.externals or new not in checked.externals:
+        raise MatchError('external symbol rename did not round-trip')
+    return renamed
+
+
+def make_external_demand(names, module_name: str = 'LIBDEMAND') -> bytes:
+    """Build a temporary OMF object containing unresolved external demands."""
+    names = sorted(set(names))
+    if not names:
+        raise MatchError('external demand set is empty')
+    if any(len(name.encode('ascii')) > 255 for name in names):
+        raise MatchError('external demand name is too long')
+    body = b''.join(bytes((len(name),)) + name.encode('ascii') + b'\x00'
+                    for name in names)
+    theadr = bytes((len(module_name),)) + module_name.encode('ascii')
+    data = b''.join((_record(OmfReader.THEADR, theadr),
+                     _record(OmfReader.EXTDEF, body),
+                     _record(OmfReader.MODEND16, b'\x00')))
+    checked = OmfReader().read(data, module_name + '.OBJ')
+    if set(checked.externals) != set(names):
+        raise MatchError('external demand object did not round-trip')
+    return data
+
+
 def _text_segment_index(records):
     names = []
     segment_index = 0

@@ -14,11 +14,17 @@ import subprocess
 import sys
 import tempfile
 
-from omf_scaffold import make_text_padding, trim_text_contribution
+from omf_scaffold import (make_external_demand, make_text_padding,
+                          rename_external, trim_text_contribution)
+from omf import OmfReader
 from reconstruct import ROOT, compile_sources, read_json, sha, write_json
 
 
 DEFAULT_LINKER = Path(r'D:/Games/DOS/dos_recosystem/aladdin_forged/toolchain/dos/BC/BIN/TLINK.EXE')
+RECOVERED_SYMBOL_ALIASES = {
+    'F_233E': [('_delay', '_f6c57')],
+    'F_56C6': [('_delay', '_f6c57')],
+}
 CODE_ROW = re.compile(
     r'^\s*([0-9A-F]+):([0-9A-F]+)\s+([0-9A-F]+)\s+C=CODE\s+S=_TEXT\s+.*?M=(\S+)\s+ACBP=([0-9A-F]+)')
 SEGMENT_ROW = re.compile(
@@ -58,7 +64,8 @@ def linker_files(linker):
     return result
 
 
-def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
+def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
+        demand_historical_library=False, normalize_recovered_symbols=False):
     linker = Path(linker).resolve()
     if not linker.exists():
         raise ValueError(f'linker candidate is unavailable: {linker}')
@@ -73,11 +80,13 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
     startup_length = 0x1BC
     owners = [o for o in manifest['regions']
               if o['kind'] == 'MATCHING_C' and o['start'] >= 512 + startup_length]
+    compile_owners = [o for o in owners
+                      if not (promote_toupper and o['id'] == 'F_F9BE')]
     root_build = root / 'build'
     root_build.mkdir(exist_ok=True)
     work = Path(tempfile.mkdtemp(prefix='tlink-structural-', dir=root_build)).resolve()
     compile_work = work / 'compile'
-    receipts, compile_session = compile_sources(root, owners, compile_work,
+    receipts, compile_session = compile_sources(root, compile_owners, compile_work,
                                                 root / 'toolchain', dosbox, lock)
     tc_lib = work / 'TC/LIB'
     bc_bin = work / 'BC/BIN'
@@ -91,7 +100,34 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
         shutil.copyfile(path, bc_bin / path.name.upper())
     scaffold = []
     object_names = []
-    owner_by_id = {owner['id']: owner for owner in owners}
+    if demand_historical_library:
+        library_modules = []
+        for region in manifest['regions']:
+            if region['kind'] == 'KNOWN_TOOLCHAIN_LIBRARY':
+                module = region.get('build', {}).get('library_module')
+                if module and module not in library_modules:
+                    library_modules.append(module)
+        available = {name: blob for name, blob in OmfReader().split_library(cc_lib.read_bytes())}
+        demands = []
+        for module in library_modules:
+            if module not in available:
+                raise ValueError(f'expected CC.LIB module is unavailable: {module}')
+            parsed = OmfReader().read(available[module], module)
+            demands.extend(public['name'] for public in parsed.publics)
+        demand = make_external_demand(demands)
+        demand_name = 'LBDMD.OBJ'
+        (dos_work / demand_name).write_bytes(demand)
+        object_names.append(demand_name)
+        scaffold.append({
+            'kind': 'historical_library_demand',
+            'object': demand_name,
+            'module_count': len(library_modules),
+            'public_demand_count': len(set(demands)),
+            'modules': library_modules,
+            'staged_sha256': sha(demand),
+            'staged_size': len(demand),
+        })
+    owner_by_id = {owner['id']: owner for owner in compile_owners}
     code_end = max(owner['end'] for owner in owners)
     pad_index = 0
     for region in sorted(manifest['regions'], key=lambda item: item['start']):
@@ -99,7 +135,17 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
             owner = owner_by_id[region['id']]
             receipt = receipts[owner['id']]
             source = compile_work / receipt['object']
-            source_bytes = source.read_bytes()
+            original_bytes = source.read_bytes()
+            source_bytes = original_bytes
+            transforms = []
+            if promote_toupper and owner['id'] == 'F_A525':
+                source_bytes = rename_external(source_bytes, '_ff9be', '_toupper')
+                transforms.append('EXTDEF _ff9be -> _toupper')
+            if normalize_recovered_symbols:
+                for old, new in RECOVERED_SYMBOL_ALIASES.get(owner['id'], []):
+                    if old in OmfReader().read(source_bytes).externals:
+                        source_bytes = rename_external(source_bytes, old, new)
+                        transforms.append(f'EXTDEF {old} -> {new}')
             owned_length = owner['end'] - owner['start']
             trimmed = trim_text_contribution(source_bytes, owned_length)
             staged = dos_work / Path(receipt['object']).name
@@ -109,11 +155,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
                 'kind': 'owner',
                 'owner': owner['id'],
                 'object': staged.name,
-                'original_sha256': sha(source_bytes),
+                'original_sha256': sha(original_bytes),
                 'staged_sha256': sha(trimmed),
                 'original_size': len(source_bytes),
                 'staged_size': len(trimmed),
                 'owned_text_length': owned_length,
+                **({'transforms': transforms} if transforms else {}),
             })
         elif (region.get('classification') == 'alignment_padding'
               and startup_length + 512 <= region['start'] < code_end):
@@ -160,7 +207,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
     segments, rows = parse_map(map_path) if map_path.exists() else ([], [])
     code_rows = [row for row in rows if row['module'].startswith('R')]
     divergences = []
-    for index, owner in enumerate(owners):
+    for index, owner in enumerate(compile_owners):
         expected_start = owner['start'] - 512
         expected_length = owner['end'] - owner['start']
         if index >= len(code_rows):
@@ -178,22 +225,35 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
             break
     report = {
         'format': 'empires-tlink-structural-experiment-v1',
+        'mode': ('library_toupper_with_historical_demand_and_symbol_normalization'
+                 if demand_historical_library and normalize_recovered_symbols
+                 else 'library_toupper_with_historical_demand' if demand_historical_library
+                 else 'library_toupper_promotion' if promote_toupper
+                 else 'ordinary_c_owners'),
         'status': 'MAP_AVAILABLE' if map_path.exists() else 'LINK_FAILED',
         'linker': {'path': str(linker), 'sha256': sha(linker.read_bytes()),
                    'files': [{'name': p.name, 'sha256': sha(p.read_bytes())}
                              for p in linker_files(linker)]},
         'startup_object': {'path': 'C0C.OBJ', 'sha256': sha(c0c.read_bytes()),
                            'text_bytes': startup_length},
-        'compile': {'owner_count': len(owners), 'session': compile_session},
+        'compile': {'owner_count': len(compile_owners),
+                    'all_matching_c_owner_count': len(owners),
+                    'session': compile_session},
         'relocatable_scaffold': scaffold,
         'link': {'returncode': result.returncode, 'command': command,
                  'unresolved_symbols': unresolved[:200],
                  'unresolved_count': len(unresolved)},
         'segments': segments,
         'code_rows': rows,
-        'code_comparison': {'expected_owner_count': len(owners),
+        'code_comparison': {'expected_owner_count': len(compile_owners),
                             'actual_code_row_count': len(code_rows),
                             'first_divergence': divergences[0] if divergences else None},
+        'library_comparison': {
+            'target_owner': 'F_F9BE',
+            'expected_start': next(o['start'] - 512 for o in owners if o['id'] == 'F_F9BE'),
+            'expected_length': next(o['end'] - o['start'] for o in owners if o['id'] == 'F_F9BE'),
+            'actual_toupper': next((row for row in rows if row['module'].upper() == 'TOUPPER'), None),
+        },
         'outputs': {
             'exe_sha256': sha((dos_work / 'OUT.EXE').read_bytes())
             if (dos_work / 'OUT.EXE').exists() else None,
@@ -202,7 +262,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None):
         'interpretation': 'TLINK placement is experimental; the fixed manifest remains the oracle and unresolved data symbols are expected until the synthetic DGROUP scaffold exists.'
     }
     write_json(root_build / 'tlink-structural-report.json', report)
-    print(f"TLINK map: {report['status']}; code rows {len(code_rows)}/{len(owners)}; unresolved {len(unresolved)}")
+    print(f"TLINK map: {report['status']}; code rows {len(code_rows)}/{len(compile_owners)}; unresolved {len(unresolved)}")
     print(f"First code divergence: {report['code_comparison']['first_divergence']}")
     print(f"Report: {root_build / 'tlink-structural-report.json'}")
     return report
@@ -212,9 +272,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--linker', type=Path, default=DEFAULT_LINKER)
     parser.add_argument('--dosbox', type=Path)
+    parser.add_argument('--promote-toupper', action='store_true',
+                        help='use CC.LIB TOUPPER via a temporary external-symbol normalization')
+    parser.add_argument('--demand-historical-library', action='store_true',
+                        help='add a temporary unresolved-public demand object for manifest library modules')
+    parser.add_argument('--normalize-recovered-symbols', action='store_true',
+                        help='apply verified temporary aliases for recovered function publics')
     args = parser.parse_args()
     try:
-        run(linker=args.linker, dosbox=args.dosbox)
+        run(linker=args.linker, dosbox=args.dosbox, promote_toupper=args.promote_toupper,
+            demand_historical_library=args.demand_historical_library,
+            normalize_recovered_symbols=args.normalize_recovered_symbols)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}', file=sys.stderr)
         return 1

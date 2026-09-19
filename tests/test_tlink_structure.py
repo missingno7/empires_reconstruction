@@ -15,10 +15,24 @@ class TlinkStructureTests(unittest.TestCase):
         report = read_json(path)
         self.assertEqual(report['status'], 'MAP_AVAILABLE')
         comparison = report['code_comparison']
-        self.assertGreaterEqual(comparison['actual_code_row_count'], 340)
-        divergence = comparison['first_divergence']
-        self.assertEqual(divergence['owner'], 'F_F9BE')
-        self.assertNotEqual(divergence['expected_start'], divergence['actual_start'])
+        self.assertGreaterEqual(comparison['actual_code_row_count'], 339)
+        if report.get('mode') == 'library_toupper_with_historical_demand_and_symbol_normalization':
+            self.assertIsNone(comparison['first_divergence'])
+            toupper = report['library_comparison']['actual_toupper']
+            self.assertIsNotNone(toupper)
+            self.assertEqual(toupper['length'], report['library_comparison']['expected_length'])
+            self.assertEqual(toupper['offset'], report['library_comparison']['expected_start'])
+            self.assertEqual(report['segments'][0]['length'], 0xFA23)
+            self.assertEqual(report['segments'][1]['start'], 0xFA30)
+        else:
+            divergence = comparison['first_divergence']
+            if report.get('mode') == 'library_toupper_promotion':
+                self.assertIsNone(divergence)
+                self.assertNotEqual(report['library_comparison']['actual_toupper']['offset'],
+                                    report['library_comparison']['expected_start'])
+            else:
+                self.assertEqual(divergence['owner'], 'F_F9BE')
+                self.assertNotEqual(divergence['expected_start'], divergence['actual_start'])
         self.assertTrue(any(item['kind'] == 'alignment_padding'
                             for item in report['relocatable_scaffold']))
 

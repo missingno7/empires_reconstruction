@@ -24,5 +24,5 @@ Together with 489 C/ASM entry references and nine structured-data references,
 573 of 1,727 owner-symbol declarations now use component ownership. This is partial
 symbol resolution within the fixed placement scaffold. It does not establish
 historical library selection order, source module boundaries, or real linker
-layout. Raw coverage is 31,019 EXE bytes, and all three
+layout. Raw coverage is 30,823 EXE bytes, and all three
 reconstructed game files remain byte-identical.

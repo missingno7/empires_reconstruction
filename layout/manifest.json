@@ -6978,16 +6978,42 @@
       }
     },
     {
-      "id": "RAW_0070FF",
+      "id": "F_6EFF",
+      "kind": "MATCHING_C",
+      "source": "src/F_6EFF.C",
       "start": 28927,
+      "end": 29003,
+      "expected_sha256": "8de49aeafa69cea044fb111836bee070aebd396bc7db4783ea629cb83b35a586",
+      "classification": "code",
+      "artifact": "regions/F_6EFF.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6eff",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_6F4B",
+      "kind": "MATCHING_C",
+      "source": "src/F_6F4B.C",
+      "start": 29003,
       "end": 29123,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0070FF-0071C3.bin",
-      "original_symbol": null,
-      "artifact": "raw/0070FF-0071C3.bin",
-      "expected_sha256": "607fb2ee9dd5b9b3c8281ac118a7eb56d1014186ace9c4115e37079aeaeec9d1",
-      "matching_status": "EQUAL"
+      "expected_sha256": "1eace2df86b082f568d66031ad704fa5cbc242725210c08ffc994c36edb43763",
+      "classification": "code",
+      "artifact": "regions/F_6F4B.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6f4b",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_6FC3",

@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,733 | 265 |
+| Freshly compiled matching C | 14,077 | 36,929 | 267 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 31,019 | 34 |
+| Exact raw fallback | 62,621 | 30,823 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,019 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 30,823 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -678,3 +678,16 @@ sequence with no fixups or loader relocations. See [the wave-seventy-nine proof]
 The source preserves the historical byte counter update, compact three-byte
 record writes, and returned table pointer. The fresh object has no fixups or
 loader relocations. See [the wave-eighty proof](matching-c-wave80.md).
+
+## Eighty-first matching-C wave
+
+`F_6EFF` adds its complete 76-byte packed-nibble transform as matching C. The
+fresh object preserves the far-pointer setup, ES:DI table scan, `XLATB` lookups,
+and loop structure with no external fixups or loader relocations. See [the wave-eighty-one proof](matching-c-wave81.md).
+
+## Eighty-second matching-C wave
+
+`F_6F4B` adds the adjacent 120-byte packed-stream decoder as matching C. Its
+fresh object preserves the `LDS`/`LES` state transition, nibble rotations,
+`XLATB` table accesses, and compact output loops with no external fixups or
+loader relocations. See [the wave-eighty-two proof](matching-c-wave82.md).

@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 32894,
-  "unpartitioned_bss_source_bytes": 4356,
+  "partitioned_bss_source_bytes": 37046,
+  "unpartitioned_bss_source_bytes": 204,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1083,14 +1083,14 @@
         "source_sha256": "a1f21192d57135253390cf90f23824f8b75365d8606be7186121692f82b4ef34"
       },
       {
-        "id": "GAMEBSS_CEL_REGION",
-        "owner_candidate": "aggregate CEL-region remainder",
+        "id": "RESOURCE46_CEL_STATE_BSS",
+        "owner_candidate": "F_200F resource-46 buffer plus F_233E/F_4517 five-record CEL workspace",
         "logical_start": 16386,
         "bytes": 4152,
         "publics": 3,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "23e4d9912c55922722cb34d80f7d798f2f4327aa83adb9625ebe94704e3c9c0a",
         "source_sha256": "6c24a2be03a1084c47f2986ed3d33f7e8f155e9e3f082b0915d644a3efb82b5d"
       },

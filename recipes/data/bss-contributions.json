@@ -136,15 +136,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_CEL_REGION",
+      "id": "RESOURCE46_CEL_STATE_BSS",
       "object": "GAMEBSS8.OBJ",
       "assembly": "GAMEBSS8.ASM",
       "logical_start": 16386,
       "logical_end": 20538,
-      "owner_candidate": "aggregate CEL-region remainder",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "F_200F resource-46 buffer plus F_233E/F_4517 five-record CEL workspace",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "G893C_RECORD_TABLE_BSS",

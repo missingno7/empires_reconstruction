@@ -1,0 +1,18 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_D3CF",
+      "source": "src/F_D3CF.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd3cf",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "method": "complete non-returning ASM continuation translated to C with an exact second OMF public boundary"
+    }
+  ]
+}

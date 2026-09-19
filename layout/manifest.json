@@ -3998,15 +3998,42 @@
       }
     },
     {
-      "id": "RAW_005163",
+      "id": "F_4F63",
+      "kind": "MATCHING_C",
+      "source": "src/F_4F63.C",
       "start": 20835,
+      "end": 20886,
+      "expected_sha256": "7641c4223e2652ec646ba11639522824006c22e23b275d3a8d5459d84f842b1b",
+      "classification": "code",
+      "artifact": "regions/F_4F63.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f4f63",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_strlen": {
+            "owner": "LIB_STRLEN",
+            "public": "_strlen",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/STRLEN public _strlen"
+          }
+        },
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "RAW_005196",
+      "start": 20886,
       "end": 21185,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/005163-0052C1.bin",
+      "source": "raw/005196-0052C1.bin",
       "original_symbol": null,
-      "artifact": "raw/005163-0052C1.bin",
-      "expected_sha256": "841c01a70c77d6c3116b30141de3b34e076194bca1b3b61549b26db24797ef7e",
+      "artifact": "raw/005196-0052C1.bin",
+      "expected_sha256": "439951f6eb58b814bc86849bccc2df31a9b9ee4f627512678d4aeb5bb303eaf7",
       "matching_status": "EQUAL"
     },
     {

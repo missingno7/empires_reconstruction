@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,545 | 261 |
+| Freshly compiled matching C | 14,077 | 36,596 | 262 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 31,207 | 34 |
+| Exact raw fallback | 62,621 | 31,156 | 34 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,207 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,156 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -650,3 +650,11 @@ bytes are two complete 16-entry permutations, each containing every value from
 now use `u16le-table-v1`, `zero-pad-v1`, and `fixed-records-v1` sources. The
 47-byte extent matches exactly, leaving only the final 55-byte data tail as an
 unclassified EXE range. See [the wave-seventy-six proof](matching-c-wave76.md).
+
+## Seventy-seventh matching-C wave
+
+`F_4F63` adds its complete 51-byte DOS far-buffer write helper as matching C.
+The Turbo C source preserves the historical frame, far-string length
+calculation, DOS `INT 21h/AH=40h` register setup, and return sequence through
+inline assembler. Its fresh object has one `_strlen` fixup to the pinned
+`LIB_STRLEN` public and no loader relocations. See [the wave-seventy-seven proof](matching-c-wave77.md).

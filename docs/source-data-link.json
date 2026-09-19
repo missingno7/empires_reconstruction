@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 30476,
-  "unpartitioned_bss_source_bytes": 6774,
+  "partitioned_bss_source_bytes": 31602,
+  "unpartitioned_bss_source_bytes": 5648,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1011,15 +1011,15 @@
         "source_sha256": "e024c93176d305ff40870df1d421ae5dee5b6ae644319f50aaf289c72267087f"
       },
       {
-        "id": "GAMEBSS_LEADING_PREFIX",
-        "owner_candidate": "aggregate leading remainder",
+        "id": "F200F_RESOURCE_BUFFER_BSS",
+        "owner_candidate": "F_200F resources 47, 48, and 9",
         "logical_start": 12738,
         "bytes": 1126,
         "publics": 4,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
-        "object_sha256": "d419f19b5f22e30376a4e8a6579b1affce9cff353076b45721a866f6810f1f46",
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "COMPATIBLE_SOURCE_OWNER",
+        "aggregate_storage": false,
+        "object_sha256": "a12d0fd482883e9f4a984b36c97889a2c187d108ac6c2dcd80c9f23f370ba825",
         "source_sha256": "c86a0044dd993f416d6f284740f3022d1f402e187f162a290a55f4d26fb138ed"
       },
       {

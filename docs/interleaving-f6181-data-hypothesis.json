@@ -1,0 +1,34 @@
+{
+  "format": "empires-interleaving-module-hypothesis-v1",
+  "constraint": {
+    "data_through": "DATA_01075A_FILE_ERROR_CONTROL",
+    "after_code": "F_6181",
+    "before_next_relocating_code": "F_699E"
+  },
+  "experiment": {
+    "source": "F_6181 C source plus a Turbo C FileErrorControl declaration",
+    "compiler": "Turbo C 2.0",
+    "result": "COMPATIBLE_COMBINED_OBJECT",
+    "text": {
+      "bytes": 171,
+      "sha256": "1a251b8d09e0172431863f3829f02f1fe795a1ed92cb1958d02612fe0f6e7c96",
+      "equal_to_fresh_F_6181_object": true
+    },
+    "data": {
+      "bytes": 20,
+      "sha256": "f93954fcb3e53fd99a35156fb4a2564b16abd250e737d909d7a9b7505978416c",
+      "equal_to_canonical_relocatable_component": true,
+      "pointer_fixup": {"offset": 7, "width": 4, "target": "_data_01068e_program_disk", "addend": 0}
+    }
+  },
+  "evidence": {
+    "program_disk_owner": "DATA_01068E_PROGRAM_DISK",
+    "program_disk_context": "The string belongs to the earlier AE000/AE001/AE002 path and file-error DATA cluster, not to F_6181 sprite code.",
+    "historical_module_status": "not established"
+  },
+  "conclusion": {
+    "interleaving_constraint_removed": false,
+    "reason": "The mechanically compatible combined object would need either a reconstructed owner for the earlier program-disk string or a non-natural external naming bridge. Neither is evidence for F_6181 owning this error-control data.",
+    "next_frontier": "Recover the enclosing file/error DATA translation unit and its source-facing public relationship to PROGRAM_DISK."
+  }
+}

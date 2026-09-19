@@ -1,0 +1,43 @@
+{
+  "format": "empires-bss-ownership-candidates-v1",
+  "source_layout": "src/data/GAME_BSS.json",
+  "status": "Evidence candidates only; GAME_BSS remains the canonical linker contribution",
+  "candidates": [
+    {
+      "id": "F_01CE_BSS_PREFIX",
+      "owner_candidate": "F_01CE",
+      "start": 0,
+      "end": 34,
+      "alignment": "word",
+      "declarations": [
+        {
+          "symbol": "_cur_idx",
+          "source_name": "cur_idx",
+          "type": "int",
+          "offset": 0,
+          "size": 2
+        },
+        {
+          "symbol": "_g3904",
+          "source_name": "g3904",
+          "type": "int[16]",
+          "offset": 2,
+          "size": 32
+        }
+      ],
+      "references": [
+        "F_01CE declares both symbols",
+        "F_020F binds _g3902 at offset 0",
+        "F_0215 and F_0232 bind _g3904 at offset 2"
+      ],
+      "evidence": [
+        "GAME_BSS anchors _cur_idx and _g3902 at 0, _g3904 at 2, and _g3924 at 34",
+        "src/F_01CE.C declares extern int cur_idx and extern int g3904[]",
+        "The next independent anchor makes g3904's 32-byte extent exact"
+      ],
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "migration_status": "NOT_MIGRATED",
+      "limitation": "Moving this storage out of GAME_BSS requires a BSS contribution-order model; the current canonical map assumes GAMEBSS begins the combined _BSS segment."
+    }
+  ]
+}

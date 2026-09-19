@@ -46,3 +46,8 @@ checkpoint. Canonical inline assembly now emits those final 27 publics, so the
 current path has no symbol adapter; see
 [the natural-public checkpoint](natural-runtime-publics.md). The earlier zero-diagnostic claim missed two
 map-only fixup overflows; both are eliminated and now covered by detection.
+
+The first source-compatible BSS island is recorded in
+[the ownership candidates](bss-ownership-candidates.json): `F_01CE` has a
+fully bounded 34-byte prefix containing `cur_idx` and `g3904[16]`. It remains
+in `GAME_BSS` until BSS contribution order is modeled rather than assumed.

@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,929 | 267 |
+| Freshly compiled matching C | 14,077 | 37,215 | 269 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 30,823 | 33 |
+| Exact raw fallback | 62,621 | 30,537 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 30,823 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 30,537 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -691,3 +691,17 @@ and loop structure with no external fixups or loader relocations. See [the wave-
 fresh object preserves the `LDS`/`LES` state transition, nibble rotations,
 `XLATB` table accesses, and compact output loops with no external fixups or
 loader relocations. See [the wave-eighty-two proof](matching-c-wave82.md).
+
+## Eighty-third matching-C wave
+
+`F_6036` adds its complete 115-byte sprite/table traversal as matching C. The
+fresh object binds both far-table bases, the owned `F_D825` writer, numeric
+`F_03CC`, and the DS counter store, while preserving its DGROUP segment load
+and one MZ relocation. See [the wave-eighty-three proof](matching-c-wave83.md).
+
+## Eighty-fourth matching-C wave
+
+`F_6181` adds the complete 171-byte adjacent sprite update and draw routine as
+matching C. Its fresh object binds both far-table bases and the three numeric
+draw calls, preserves its DGROUP segment load, and matches one MZ relocation.
+See [the wave-eighty-four proof](matching-c-wave84.md).

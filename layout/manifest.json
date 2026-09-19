@@ -5304,16 +5304,51 @@
       }
     },
     {
-      "id": "RAW_006236",
+      "id": "F_6036",
+      "kind": "MATCHING_C",
+      "source": "src/F_6036.C",
       "start": 25142,
       "end": 25257,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/006236-0062A9.bin",
-      "original_symbol": null,
-      "artifact": "raw/006236-0062A9.bin",
       "expected_sha256": "4bdc81dd1f27a93ccc7d533eea5ddee08fa566cb72ef77178e4796845390424b",
-      "matching_status": "EQUAL"
+      "classification": "code",
+      "artifact": "regions/F_6036.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6036",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_sprbase": {
+            "offset": 49096,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct LES source far-pointer at DS:BFC8"
+          },
+          "_objtab": {
+            "offset": 16592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct LDS object table at DS:40D0"
+          },
+          "_fd825": {
+            "owner": "F_D825",
+            "public": "_fd825",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "owned F_D825 record append"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "numeric near call target 03CC"
+          },
+          "_g0a20": {
+            "offset": 2592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS counter store at DS:0A20"
+          }
+        },
+        "module_segments": {}
+      }
     },
     {
       "id": "F_60A9",
@@ -5375,16 +5410,44 @@
       }
     },
     {
-      "id": "RAW_006381",
+      "id": "F_6181",
+      "kind": "MATCHING_C",
+      "source": "src/F_6181.C",
       "start": 25473,
       "end": 25644,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/006381-00642C.bin",
-      "original_symbol": null,
-      "artifact": "raw/006381-00642C.bin",
       "expected_sha256": "b7ce3dabfad43ac93731dd4ee5f77e608819dd8800b05cbbdc26a890993b230b",
-      "matching_status": "EQUAL"
+      "classification": "code",
+      "artifact": "regions/F_6181.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6181",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_sprbase": {
+            "offset": 49096,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct LES source far-pointer at DS:BFC8"
+          },
+          "_objtab": {
+            "offset": 16592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct LDS object table at DS:40D0"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "numeric near call target 03B4"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "numeric near call target 03CC"
+          }
+        },
+        "module_segments": {}
+      }
     },
     {
       "id": "F_622C",

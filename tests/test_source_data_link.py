@@ -101,7 +101,7 @@ class SourceDataLinkTests(unittest.TestCase):
                           ('GAMEBSS_LEADING_PREFIX', 1126), ('G6F2A_RECORD_TABLE_BSS', 904),
                           ('A72B2_POINTER_TABLE_BSS', 160), ('GAMEBSS_RESOURCE_PREFIX', 336),
                           ('A74A2_RECORD_TABLE_BSS', 1122), ('GAMEBSS_CEL_REGION', 4152),
-                          ('G893C_RECORD_TABLE_BSS', 686), ('GAMEBSS_LEADING_REMAINDER', 18276),
+                          ('G893C_RECORD_TABLE_BSS', 686), ('GAMEBSS_LEADING_REMAINDER', 14124),
                           ('SLOT_GRID_BSS', 48), ('GAMEBSS_MID_REMAINDER', 8),
                           ('ANIMATION_STATE_BSS', 18), ('GC360_RECORD_TABLE_BSS', 270),
                           ('GAMEBSS_ERR_REMAINDER', 2),

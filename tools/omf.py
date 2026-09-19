@@ -20,13 +20,20 @@ class ObjectModule:
 
     def __init__(self, segments: dict, publics: list, fixups: list,
                  externals: list, name: str = "",
-                 segment_lengths: dict | None = None) -> None:
+                 segment_lengths: dict | None = None,
+                 segment_defs: list | None = None, groups: list | None = None,
+                 comments: list | None = None) -> None:
         self.name = name
         self.segments = segments
         self.publics = publics      # [{"name", "segment", "offset"}]
         self.fixups = fixups        # see OmfReader.read for the shape
         self.externals = externals  # [name]
         self.segment_lengths = dict(segment_lengths or {})
+        # Full linker-facing declarations.  The older maps above remain for
+        # callers that only need byte/fixup comparison.
+        self.segment_defs = list(segment_defs or [])
+        self.groups = list(groups or [])
+        self.comments = list(comments or [])
 
     def segment_bytes(self, segment: str) -> bytes:
         if segment not in self.segments:
@@ -97,6 +104,14 @@ class OmfReader(ObjectReader):
     LOC_NAME = {0: "lobyte", 1: "offset16", 2: "base16", 3: "pointer32",
                 4: "hibyte", 5: "loader-offset16", 9: "offset32",
                 11: "pointer48", 13: "loader-offset32"}
+    ALIGNMENT_NAMES = {
+        0: "absolute", 1: "byte", 2: "word", 3: "paragraph",
+        4: "page", 5: "dword", 6: "unknown6", 7: "unknown7",
+    }
+    COMBINE_NAMES = {
+        0: "private", 1: "reserved1", 2: "public", 3: "reserved3",
+        4: "public", 5: "stack", 6: "common", 7: "public",
+    }
 
     REFUSED_32 = {MODEND32, PUBDEF32, SEGDEF32, FIXUPP32, LEDATA32, LIDATA32,
                   LINNUM32}
@@ -151,10 +166,13 @@ class OmfReader(ObjectReader):
         segment_names: list = []      # 1-based SEGDEF index -> name
         segment_lengths: list = []    # 1-based SEGDEF index -> declared length
         group_names: list = []
+        segment_defs: list = []       # linker-facing SEGDEF records
+        groups: list = []             # linker-facing GRPDEF records
         externals: list = []
         publics: list = []
         segment_data: dict = {}       # SEGDEF index -> bytearray
         fixups: list = []
+        comments: list = []
         module_name = label
         last_segment, last_offset = None, 0
         frame_threads: dict = {}
@@ -169,6 +187,17 @@ class OmfReader(ObjectReader):
             if kind in (self.THEADR, self.LHEADR):
                 length = body[0] if body else 0
                 module_name = body[1:1 + length].decode("latin1")
+            elif kind == self.COMENT:
+                # Preserve both bytes and the two OMF classification bytes.
+                # Default-library and linker directives are version-specific;
+                # callers can classify them without the reader discarding data.
+                attribute = body[0] if body else None
+                comment_class = body[1] if len(body) > 1 else None
+                payload = body[2:] if len(body) > 2 else b""
+                comments.append({"attribute": attribute,
+                                 "class": comment_class,
+                                 "data": payload,
+                                 "data_hex": payload.hex()})
             elif kind == self.LNAMES:
                 at = 0
                 while at < len(body):
@@ -178,20 +207,58 @@ class OmfReader(ObjectReader):
             elif kind == self.SEGDEF16:
                 acbp = body[0]
                 at = 1
+                alignment_code = (acbp >> 5) & 7
+                combine_code = (acbp >> 2) & 7
+                big = bool(acbp & 2)
+                use_32bit_offset = bool(acbp & 1)
+                frame = offset = None
                 if (acbp >> 5) == 0:          # absolute segment: frame + offset
+                    frame = struct.unpack_from("<H", body, at)[0]
+                    offset = body[at + 2]
                     at += 3
                 seg_length = struct.unpack_from("<H", body, at)[0]
                 at += 2                        # segment length
                 name_index, at = self._index(body, at)
-                segment_names.append(
-                    lnames[name_index - 1] if 0 < name_index <= len(lnames)
-                    else f"?{name_index}")
+                class_index, at = self._index(body, at)
+                overlay_index, at = self._index(body, at)
+                segment_name = (lnames[name_index - 1]
+                                if 0 < name_index <= len(lnames)
+                                else f"?{name_index}")
+                class_name = (lnames[class_index - 1]
+                              if 0 < class_index <= len(lnames)
+                              else f"?{class_index}")
+                segment_defs.append({
+                    "index": len(segment_names) + 1,
+                    "name": segment_name,
+                    "class": class_name,
+                    "length": seg_length,
+                    "alignment_code": alignment_code,
+                    "alignment": self.ALIGNMENT_NAMES[alignment_code],
+                    "combine_code": combine_code,
+                    "combine": self.COMBINE_NAMES[combine_code],
+                    "big": big,
+                    "use_32bit_offset": use_32bit_offset,
+                    "frame": frame,
+                    "offset": offset,
+                    "overlay_index": overlay_index,
+                    "acbp": acbp,
+                })
+                segment_names.append(segment_name)
                 segment_lengths.append(seg_length)
             elif kind == self.GRPDEF:
-                name_index, _ = self._index(body, 0)
-                group_names.append(
-                    lnames[name_index - 1] if 0 < name_index <= len(lnames)
-                    else f"?{name_index}")
+                name_index, at = self._index(body, 0)
+                group_name = (lnames[name_index - 1]
+                              if 0 < name_index <= len(lnames)
+                              else f"?{name_index}")
+                segment_indices = []
+                while at < len(body):
+                    if body[at] != 0xFF:
+                        raise MatchError(f"Unsupported GRPDEF component 0x{body[at]:02X}")
+                    segment_index, at = self._index(body, at + 1)
+                    segment_indices.append(segment_index)
+                group_names.append(group_name)
+                groups.append({"index": len(group_names), "name": group_name,
+                               "segment_indices": segment_indices})
             elif kind in (self.EXTDEF, self.LEXTDEF):
                 at = 0
                 while at < len(body):
@@ -356,8 +423,12 @@ class OmfReader(ObjectReader):
                 "target": target["name"],
                 "displacement": fixup["target_displacement"],
             })
+        for group in groups:
+            group["segments"] = [segment_name(i) for i in group["segment_indices"]]
         return ObjectModule(segments, out_publics, out_fixups, externals,
-                            module_name, segment_lengths=out_segment_lengths)
+                            module_name, segment_lengths=out_segment_lengths,
+                            segment_defs=segment_defs, groups=groups,
+                            comments=comments)
 
     def split_library(self, data: bytes) -> list:
         """An OMF library (0xF0) into its modules, in page order."""

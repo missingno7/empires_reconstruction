@@ -18,6 +18,8 @@ def main():
     inputs = [(entry, args.source / entry['path']) for entry in lock['files']]
     library_dir = args.lib_from or args.source.parent / 'LIB'
     inputs += [(entry, library_dir / entry['path']) for entry in lock.get('libraries', [])]
+    inputs += [(entry, library_dir / entry.get('source', entry['path']))
+               for entry in lock.get('objects', [])]
     for entry, source in inputs:
         if hashlib.sha256(source.read_bytes()).hexdigest() != entry['sha256']:
             raise SystemExit(f'Wrong toolchain binary: {source}')

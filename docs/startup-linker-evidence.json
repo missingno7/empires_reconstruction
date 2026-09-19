@@ -1,0 +1,76 @@
+{
+  "format": "empires-startup-object-evidence-v1",
+  "status": "EQUAL",
+  "object": "C0C.OBJ",
+  "object_sha256": "3575676cbea21093cc2b1d50d039b915144887fa537dbd7d49c629489385c2b4",
+  "segment": "_TEXT",
+  "declared_text_bytes": 444,
+  "materialized_text_bytes": 442,
+  "original_load_offset": 0,
+  "fixups": 52,
+  "fixup_bytes_ignored": 104,
+  "non_fixup_mismatches": [],
+  "segment_definition": {
+    "index": 1,
+    "name": "_TEXT",
+    "class": "CODE",
+    "length": 444,
+    "alignment_code": 1,
+    "alignment": "byte",
+    "combine_code": 2,
+    "combine": "public",
+    "big": false,
+    "use_32bit_offset": false,
+    "frame": null,
+    "offset": null,
+    "overlay_index": 1,
+    "acbp": 40
+  },
+  "groups": [
+    {
+      "index": 1,
+      "name": "DGROUP",
+      "segment_indices": [
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2
+      ],
+      "segments": [
+        "_BSSEND",
+        "_BSS",
+        "_SCNSEG",
+        "_CVTSEG",
+        "_CRTSEG",
+        "_EMUSEG",
+        "_DATA"
+      ]
+    }
+  ],
+  "publics": [
+    {
+      "name": "__exit",
+      "segment": "_TEXT",
+      "offset": 260
+    },
+    {
+      "name": "__restorezero",
+      "segment": "_TEXT",
+      "offset": 359
+    },
+    {
+      "name": "_abort",
+      "segment": "_TEXT",
+      "offset": 420
+    },
+    {
+      "name": "DGROUP@",
+      "segment": "_TEXT",
+      "offset": 442
+    }
+  ],
+  "interpretation": "C0C.OBJ accounts for the complete first _TEXT segment extent; unresolved fixup values remain a linker task."
+}

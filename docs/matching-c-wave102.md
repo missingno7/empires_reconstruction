@@ -12,5 +12,8 @@ wave-102 proof units have no external fixups or loader relocations. `F_DF98`
 from the adjacent span is tracked separately in wave 103 because it has
 library far-call relocations.
 
+`F_988F` is now symbolic TASM. Its calls to the runtime draw helpers and its
+reads of canonical `_gc34e`/`_gc350` BSS anchors are explicit OMF bindings.
+
 The complete EXE and DAT archives remain equal; raw executable ownership is
 now 18,397 bytes.

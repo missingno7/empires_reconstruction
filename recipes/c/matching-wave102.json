@@ -3,8 +3,8 @@
   "owners": [
     {
       "id": "F_988F",
-      "kind": "MATCHING_C",
-      "source": "src/F_988F.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_988F.ASM",
       "start": 39567,
       "end": 39627,
       "expected_sha256": "0441b4ada7167fafe197d400930f5483b4ae708893dcba4902f8538b995877e9",
@@ -16,7 +16,12 @@
         "public": "_f_988f",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f03ba": {"offset": 954, "coordinate": "code_offset", "evidence": "complete F_988F call"},
+          "_f03b4": {"offset": 948, "coordinate": "code_offset", "evidence": "complete F_988F call"},
+          "_gc350": {"offset": 50000, "coordinate": "DGROUP_offset", "evidence": "canonical GAME_BSS anchor"},
+          "_gc34e": {"offset": 49998, "coordinate": "DGROUP_offset", "evidence": "canonical GAME_BSS anchor"}
+        },
         "module_segments": {}
       }
     },

@@ -1,0 +1,136 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_1ECD",
+  "bytes": 74,
+  "source_sha256": "a16e1a7e9f7190bf38e499a0743f7172c4baa64054c221ba4387c84bfb6898ff",
+  "matched_sha256": "4d9c3788c56e1462cfcdc2aa0fc72ada78faf3fa120ae659d2127c2d6764d8bf",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 7,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_g40c4",
+      "displacement": 0,
+      "extent_offset": 7,
+      "addend": 0,
+      "resolved_value": 16580
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 11,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_gc5ca",
+      "displacement": 0,
+      "extent_offset": 11,
+      "addend": 0,
+      "resolved_value": 50634
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 48,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_f039f",
+      "displacement": 0,
+      "extent_offset": 48,
+      "addend": 0,
+      "resolved_value": 58528
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 61,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_gc5ca",
+      "displacement": 0,
+      "extent_offset": 61,
+      "addend": 0,
+      "resolved_value": 50634
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 65,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_g40c6",
+      "displacement": 0,
+      "extent_offset": 65,
+      "addend": 0,
+      "resolved_value": 16582
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 69,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_g40c4",
+      "displacement": 0,
+      "extent_offset": 69,
+      "addend": 0,
+      "resolved_value": 16580
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "a16e1a7e9f7190bf38e499a0743f7172c4baa64054c221ba4387c84bfb6898ff",
+    "staged_sha256": "716e57712510f537687ecf07a94965ab47e143089ba1927e5f6703212549efc7",
+    "object_sha256": "e3bef05700b7a4894830b0e5b4431a6dae92af88b4a17fcfcbafa003c38d1224"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-f1ecd-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "16bad42509ee3ad94ab83637e330527c08dd0e53c1867348a90f7e4fbc8154df",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

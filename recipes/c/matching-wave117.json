@@ -1,0 +1,23 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_1ECD",
+      "source": "src/F_1ECD.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f1ecd",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_f039f": {"offset": 927, "coordinate": "code_offset", "evidence": "F_039F owned code entry"},
+          "_g40c4": {"offset": 16580, "coordinate": "DGROUP_offset", "evidence": "complete F_1ECD fixup"},
+          "_g40c6": {"offset": 16582, "coordinate": "DGROUP_offset", "evidence": "complete F_1ECD fixup"},
+          "_gc5ca": {"offset": 50634, "coordinate": "DGROUP_offset", "evidence": "complete F_1ECD fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to Turbo C inline assembly with six fresh OMF fixups"
+    }
+  ]
+}

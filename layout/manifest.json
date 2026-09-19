@@ -796,9 +796,9 @@
       "id": "F_1ECD",
       "start": 8397,
       "end": 8471,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_1ECD.ASM",
+      "source": "src/F_1ECD.C",
       "original_symbol": "F_1ECD",
       "artifact": "regions/F_1ECD.bin",
       "expected_sha256": "4d9c3788c56e1462cfcdc2aa0fc72ada78faf3fa120ae659d2127c2d6764d8bf",
@@ -808,6 +808,7 @@
         "public": "_f1ecd",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_f039f": {
             "offset": 927,
@@ -829,16 +830,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FA.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_1ECD.json",
-        "entry_sha256": "fd21572eb58de87f7dd8ad0c525a293cfc3333c701a1a3ff497548cbd30a5546",
-        "record_sha256": "f6fb7835c06940eec72bbc2fca1fad7a3523baa2c4b9bae43d0733cfa46554a6",
-        "source_sha256": "18ff214d322a1ad38d8af7a0992e7489a8a026fab96b7c490ca31261e4f4800d",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "18ff214d322a1ad38d8af7a0992e7489a8a026fab96b7c490ca31261e4f4800d",
+        "source_sha256": "a16e1a7e9f7190bf38e499a0743f7172c4baa64054c221ba4387c84bfb6898ff",
+        "change": "Translate the complete far rectangle-queue drain into Turbo C inline assembly with six existing fixups and no loader relocations."
       }
     },
     {

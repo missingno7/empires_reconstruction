@@ -15,6 +15,8 @@ def status(root, report):
                   for o in manifest['regions'] if o['kind'] == 'RAW'),
                  key=lambda item: -item['bytes'])
     scaffolds = [s for s in report['relocatable_scaffold'] if s['kind'] != 'owner']
+    source_path = root / 'build/source-data-link-report.json'
+    source = read_json(source_path) if source_path.exists() else None
     return {
         'format': 'empires-structural-status-v1',
         'ownership': {kind: {'bytes': sizes[kind], 'owners': counts[kind]} for kind in sorted(counts)},
@@ -33,6 +35,17 @@ def status(root, report):
                             if k not in ('candidate', 'oracle')},
         'historical_translation_units': 'open; C0C invariant bytes and module extent strongly evidenced',
         'whole_build_reconstruction_complete': False,
+        'source_data_experiment': None if source is None else {
+            'status': source['status'],
+            'initialized_data_equal': source['byte_comparison']['initialized_data']['equal'],
+            'text_differing_bytes': source['byte_comparison']['text']['differing_byte_count'],
+            'relocation_count': source['byte_comparison']['mz']['candidate_fields']['e_crlc'],
+            'missing_relocations': len(source['byte_comparison']['mz']['missing_sites']),
+            'extra_relocations': len(source['byte_comparison']['mz']['extra_sites']),
+            'oracle_copied_initialized_data_bytes': source['oracle_copied_initialized_data_bytes'],
+            'local_raw_source_bytes': source['local_raw_source_bytes'],
+            'synthetic_bss_bytes': source['synthetic_bss_bytes'],
+        },
     }
 
 

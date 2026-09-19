@@ -125,6 +125,7 @@ def compare_linked_executable(candidate, oracle):
             first = start + min(len(left), len(right))
         return {'equal': left == right, 'start': start, 'end': end,
                 'candidate_length': len(left), 'oracle_length': len(right),
+                'differing_byte_count': sum(a != b for a, b in zip(left, right)) + abs(len(left) - len(right)),
                 'first_difference': first}
 
     result['load_image'] = {

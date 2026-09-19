@@ -233,5 +233,16 @@
     }
   },
   "historical_translation_units": "open; C0C invariant bytes and module extent strongly evidenced",
-  "whole_build_reconstruction_complete": false
+  "whole_build_reconstruction_complete": false,
+  "source_data_experiment": {
+    "status": "LINKED",
+    "initialized_data_equal": true,
+    "text_differing_bytes": 32,
+    "relocation_count": 72,
+    "missing_relocations": 34,
+    "extra_relocations": 0,
+    "oracle_copied_initialized_data_bytes": 0,
+    "local_raw_source_bytes": 4129,
+    "synthetic_bss_bytes": 37252
+  }
 }

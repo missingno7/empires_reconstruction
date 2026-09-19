@@ -1,0 +1,1052 @@
+{
+  "status": "LINKED",
+  "errors": [],
+  "segments": [
+    {
+      "start": 0,
+      "stop": 64034,
+      "length": 64035,
+      "name": "_TEXT",
+      "class": "CODE"
+    },
+    {
+      "start": 64048,
+      "stop": 78635,
+      "length": 14588,
+      "name": "_DATA",
+      "class": "DATA"
+    },
+    {
+      "start": 78636,
+      "stop": 78639,
+      "length": 4,
+      "name": "_EMUSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78640,
+      "stop": 78641,
+      "length": 2,
+      "name": "_CRTSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78642,
+      "stop": 78642,
+      "length": 0,
+      "name": "_CVTSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78642,
+      "stop": 78642,
+      "length": 0,
+      "name": "_SCNSEG",
+      "class": "DATA"
+    },
+    {
+      "start": 78642,
+      "stop": 115961,
+      "length": 37320,
+      "name": "_BSS",
+      "class": "BSS"
+    },
+    {
+      "start": 115962,
+      "stop": 115962,
+      "length": 0,
+      "name": "_BSSEND",
+      "class": "STACK"
+    },
+    {
+      "start": 115968,
+      "stop": 116197,
+      "length": 230,
+      "name": "_STACK",
+      "class": "STACK"
+    }
+  ],
+  "code_contributions_equal": true,
+  "source_contributions": [
+    {
+      "owner": "DATA_00FCC2",
+      "bytes": 138,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "bce7319ea0de460cbeb1b17da5c6439dc1de49e85a0882bef721b2441b4e648a"
+    },
+    {
+      "owner": "PALETTE_DAC6_011E",
+      "bytes": 768,
+      "format": "dac6-rgb256-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "db553bdea7fcf69ed9f8da3c520fe219da2714d8f7fbaa642bbb86cd512d104f"
+    },
+    {
+      "owner": "PALETTE_DAC6_041E",
+      "bytes": 768,
+      "format": "dac6-rgb256-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "05ff6c36be474efa26143b22011940bb8d8238b63b787ee0158bc8cf464b72b6"
+    },
+    {
+      "owner": "DATA_01034E_ALIGNMENT",
+      "bytes": 6,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "575db94d53ba88bdb72e1ac07e0ac34cfa2cbcdc01029b089bf8060daedfd552"
+    },
+    {
+      "owner": "DATA_010354_CONTROL_TABLE",
+      "bytes": 38,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "bf1b3a4d1be859a64dedb031e08fa3dbe310d36ebb22f35dc08677cde10ec880"
+    },
+    {
+      "owner": "DATA_01037A_POINTER_TABLE",
+      "bytes": 56,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "c597ed11e0c7613d9ffdf3645c7b62c19c28f1658bc94298c273cff63189bb45"
+    },
+    {
+      "owner": "DATA_0103B2_POINTER_ATTRIBUTES",
+      "bytes": 28,
+      "format": "fixed-records-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "b18237090a716d3eb783a5d86db90682408fb6d0574056fdcbbd6ab09ef7f5be"
+    },
+    {
+      "owner": "DATA_0103CE_RECORDS",
+      "bytes": 184,
+      "format": "fixed-records-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "c4b89303f27ca4aab4ef1e96005eac01861f2e1a0404aedefedf9d8c51996d19"
+    },
+    {
+      "owner": "DATA_010486_PAD",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "7bab51e2698a5b160426223ce7f3b9a5a7948c6bf62af3d980f8066dde727d0e"
+    },
+    {
+      "owner": "DATA_010489_GFX_ERROR",
+      "bytes": 79,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "f162de439420731e03bbc78dd2caceedf22a9690fe6f612e2e7b6c4e03b90547"
+    },
+    {
+      "owner": "DATA_0104D8_MEMORY_ERROR",
+      "bytes": 83,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "60314a8c4aad9010f6aa56a20860458034219796bc3ae1356f61d3cc2827c219"
+    },
+    {
+      "owner": "DATA_01052B_ZERO_PREFIX",
+      "bytes": 7,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "b1e7a7c5c886026e0f161a061f20c9b54c0bf82afaf901d210941936529a281a"
+    },
+    {
+      "owner": "DATA_010532_CONTROL_TABLE",
+      "bytes": 288,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "b25f82468f01462ee664dc700119b1f3951a815562b7c8e937a982b1157722a4"
+    },
+    {
+      "owner": "DATA_010652_AE000_PATH",
+      "bytes": 13,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "e1f35476f2bdfda3e9c5173a8a4c85e726a925677398fc45cc688c786215a202"
+    },
+    {
+      "owner": "DATA_01065F_PAD",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "ff960c6ac3d2686f00ea58eb372d418e280cc881a8297eb90593edaf2c242c32"
+    },
+    {
+      "owner": "DATA_010662_AE001_PATH",
+      "bytes": 13,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "25d80865d3f00ea57077a3d310cf34fd94cd39ff4bd5ced0b45576bc46fa238f"
+    },
+    {
+      "owner": "DATA_01066F_PAD",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "8f5d24435e3fe70aa4c13a0a9f10631dd8ca5ae4bfd00bab03411485600f2dd8"
+    },
+    {
+      "owner": "DATA_010672_AE002_PATH",
+      "bytes": 13,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "9bc2784e8f86d8eb23f948632f404684a5e1c8fc6937e36e229a2430b058b0ea"
+    },
+    {
+      "owner": "DATA_01067F_PAD",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "81ac1a625e0c4b6ec7de744f0c09d25d9446c10fa73eae0b08e0bd902ddd76a1"
+    },
+    {
+      "owner": "DATA_01067F_TABLE",
+      "bytes": 12,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "3a1d1c5095bf78da8ebe7b13706b1ce75974907353b6f9c105c8a588a45de71e"
+    },
+    {
+      "owner": "DATA_01068E_PROGRAM_DISK",
+      "bytes": 32,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "607c5f072012abc72a82ae90c9e64768275fe44a6beeef86eee199554ca8f5c3"
+    },
+    {
+      "owner": "DATA_0106AE_PAD",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "b135a3ed57871fc3e7a08c7337b9093b566f672140e49db3c986e59f22887592"
+    },
+    {
+      "owner": "DATA_0106B1_ARTIFACTS_DISK",
+      "bytes": 34,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "cfde9143ef01b1cb3e5bd2f89e6ad396b681ddf545b97a92f31bec17b1c032b5"
+    },
+    {
+      "owner": "DATA_0106D3_ZERO_RUN",
+      "bytes": 36,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "4dfc6a44d21410e251066d0a8065ca58d990fdd55cffd9a992e01a9003d3a062"
+    },
+    {
+      "owner": "DATA_0106F7_WRITE_PROTECTED",
+      "bytes": 99,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "ed88bd31059958d83c1da132f64320e18e52fa575f32b38788e00fcd3041cb5d"
+    },
+    {
+      "owner": "RAW_01075A",
+      "bytes": 20,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "5f44315832ee02d54d5e6677a9338684f2011cada0a9d71f3e6ec860198e8569"
+    },
+    {
+      "owner": "DATA_01076E_ZERO_SUFFIX",
+      "bytes": 4,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "10330061f1eef8e6d31715c8ef6006a084b87a2eda0e41912777adab4cd8e627"
+    },
+    {
+      "owner": "DATA_010772_RESOURCE_ERROR",
+      "bytes": 38,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "e4ffc26acf4e6cb370a080c4e35e0e749862891fc316744a931250ed5ef14330"
+    },
+    {
+      "owner": "DATA_010798_PAD",
+      "bytes": 24,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "19c594cfd5f9381e00e4ac3ef54cb9ee9f14f5e4a11dae36f73055797cbd6c43"
+    },
+    {
+      "owner": "DATA_0107B0_TABLE",
+      "bytes": 6,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "076a61efaa138395c01d2a94bc65886583541e8e2bafbb0014e53c60393b86dd"
+    },
+    {
+      "owner": "DATA_0107B6_PAD",
+      "bytes": 1,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "77447e6ae23008c952f2c789a3711c236f200f446e9cb88e857df6bb6652f02d"
+    },
+    {
+      "owner": "C_DATA_75F3",
+      "bytes": 15,
+      "format": "compiled-data",
+      "pointer_fixups": 0,
+      "object_sha256": "9eab94547756acc56ee81c9057456cb57bdacf64930c017f1f7e32c09618d3d9"
+    },
+    {
+      "owner": "C_DATA_7695",
+      "bytes": 13,
+      "format": "compiled-data",
+      "pointer_fixups": 0,
+      "object_sha256": "157bff9eff40bf6a40c4e6103607d65e38e7e4c6a3dcef58023b9f0ef4ec7f83"
+    },
+    {
+      "owner": "C_DATA_778B",
+      "bytes": 15,
+      "format": "compiled-data",
+      "pointer_fixups": 0,
+      "object_sha256": "d01725cba2646f81134072c5a715459c800ad66966aabd9e6c8ed88e8402d114"
+    },
+    {
+      "owner": "DATA_0107E2_PAD",
+      "bytes": 8,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "37131781f2867ce6f3c74c292515124bf95a2677385222376889afb42d49d73c"
+    },
+    {
+      "owner": "DATA_0107EA_HELP_TITLE",
+      "bytes": 10,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "b64900cf6b903cef059d6a57a16d2dbd0b478281a7b2d48f2016ff942f49e588"
+    },
+    {
+      "owner": "DATA_0107F4_HELP_TOPICS",
+      "bytes": 84,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "68c90f882690092d67768f00f31cce32fe39162c626a9fddbb3e3a7cb2efc62d"
+    },
+    {
+      "owner": "DATA_010848_FILE_F2_TABLE",
+      "bytes": 8,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "ad700a296ba76c456225b6fe793ff0495cc36dcaeaf0374ed226f6148bd499cb"
+    },
+    {
+      "owner": "DATA_010848_FILE_F2_TEXT",
+      "bytes": 10,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "61c0a743543b2df2a9cb5fc13e60c041409e5ffefd42f5b6ff98e88042c38e40"
+    },
+    {
+      "owner": "DATA_01085A_MENU_TOPICS",
+      "bytes": 77,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "4942ae724bb16d5df9c42afdeccf23a8c74d1a11f0603b67e70df914058a1a05"
+    },
+    {
+      "owner": "DATA_0108A7_MENU_TABLE_A",
+      "bytes": 10,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "85c433c82003773b1b4e1e81c7160006a402bb671d818a3da46da9e3a6b21694"
+    },
+    {
+      "owner": "DATA_0108A7_MENU_HALL",
+      "bytes": 58,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "0cf9054147e26b8b5ede81ee85f1176ecd7bf218b9c75c29ea692d3c3656aba7"
+    },
+    {
+      "owner": "DATA_0108A7_MENU_TABLE_B",
+      "bytes": 8,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "fc1d2094b10a4b5131908b2d3aa7860d7881b4b558b9715111ef91967b0a1d68"
+    },
+    {
+      "owner": "DATA_0108A7_MENU_OPTIONS",
+      "bytes": 11,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "4db6c016fc8a24a988cb1bb34bbc575fffc4f37f9e6aa1db5071805ccd270394"
+    },
+    {
+      "owner": "DATA_0108FE_OPTION_TOPICS",
+      "bytes": 38,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "3cfb0a3f734c645969a9e40085a9441876a81be389e275218b1afcb248303fbf"
+    },
+    {
+      "owner": "RAW_010924",
+      "bytes": 139,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "c1fc75852579a8716fbcbb0742910eaa11f76b197f92743f5636fbfaebe69a62"
+    },
+    {
+      "owner": "DATA_0109AF_GO_BACK",
+      "bytes": 12,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "256ea844a1d429ae196bfff51f9a2a96b61593b5ace22d57052516b10d87c17c"
+    },
+    {
+      "owner": "RAW_0109BB",
+      "bytes": 2,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "361785dc9c60fd5b241cce32a412daad411e6d66015606be63580317b6f4504e"
+    },
+    {
+      "owner": "DATA_0109BD_CONTINUE",
+      "bytes": 13,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "17c73aa47583e7eed876ec2cf979f7abf2b2923bd5622d4cba788c2b09f74aeb"
+    },
+    {
+      "owner": "DATA_0109CA_BACK_PAGE",
+      "bytes": 15,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "001ecf4b7865b949cb4e66553f676077b712b6d4db08ec0b115021eeb76b1e0d"
+    },
+    {
+      "owner": "DATA_0109D9_NEXT_PAGE",
+      "bytes": 14,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "5af4163b69622e8a4c9e19c221042c6e16b7df1d47cc4367c6bcaf7e2fb4984e"
+    },
+    {
+      "owner": "DATA_0109E7_DONE",
+      "bytes": 5,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "56b9472a9d7de75069997d76e296ce86702dc1102674510ad8f1149d593c55ec"
+    },
+    {
+      "owner": "DATA_0109EC_YES",
+      "bytes": 4,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "5e0ef79b9f19c7f8e6a5521101811bd98a1fcc20ef33b668c8fc16ed0c06b0d9"
+    },
+    {
+      "owner": "DATA_0109F0_NO",
+      "bytes": 3,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "a6431fcb06c7ed31e34463b5bad09beaa4b0453e3640e20648df4467ffaa9cf6"
+    },
+    {
+      "owner": "DATA_0109F3_PAD",
+      "bytes": 9,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "a987d0659355749cfef70926aaf05eb110a9a4c7e16989eb92780dca7b18b012"
+    },
+    {
+      "owner": "DATA_0DCC",
+      "bytes": 960,
+      "format": "fixed-records-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "630ff669f00889969634cfa8d336439d33b4bdbc13e2bea20d0a896affbf811e"
+    },
+    {
+      "owner": "TEXT_118C",
+      "bytes": 209,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "0ee972f9854abb99c88d0e88867839a2ff236d4ae5b338908fe828b4e610737f"
+    },
+    {
+      "owner": "DATA_125D",
+      "bytes": 20,
+      "format": "compiled-data",
+      "pointer_fixups": 1,
+      "object_sha256": "229590cec7e177bb26d5152f1eaf2ccf753a844a9aa854a8a9b8cde5a71f22c7"
+    },
+    {
+      "owner": "DATA_1271",
+      "bytes": 48,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "127defa775cb5459b15e5dbbfad6f5e43ff5a51cf75e4a1e5bb7eb2de490c23d"
+    },
+    {
+      "owner": "DATA_10ED1",
+      "bytes": 12,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "595f558366dae8cec4562a0c8fcd1f22a6acaac9942de1199c42776951fdc1b0"
+    },
+    {
+      "owner": "PAD_10EDD",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "a05b03fb3d21a5298b9db060ff2f903121238d625b9686f484a2a7913afed12e"
+    },
+    {
+      "owner": "DATA_10EE0",
+      "bytes": 32,
+      "format": "fixed-records-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "22f4f2ed81768d4cf9160c003e177f10c0d0f02ea808ef32cd45989a0f6f2843"
+    },
+    {
+      "owner": "TEXT_12D0",
+      "bytes": 9,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "5dff70410f365cd41dec01afc3336e7d46a20d424570b6ebf043fd8700c4f1c8"
+    },
+    {
+      "owner": "TEXT_12D9",
+      "bytes": 12,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "4c47261038461314a0169094dfb051c39846139ff1f74f7ed9fb8d6067d92666"
+    },
+    {
+      "owner": "DATA_010F15_DIALOG_REMOVE_INTRO",
+      "bytes": 113,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "3eebc2f4f81f375c5ff78a7a552132d6ab994ad61b4546ceafdbc38524d49d72"
+    },
+    {
+      "owner": "DATA_010F86_DIALOG_REMOVE_SUFFIX",
+      "bytes": 31,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "741bb5bc72a6f98a608eda450832681245caadfb3998528614bb890cf81e973a"
+    },
+    {
+      "owner": "RAW_010FA5",
+      "bytes": 80,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "377dcf84cf8570ee5d9d7bb6f16aad6a0a887c666d5b69e4d6c29d19fe3c36a6"
+    },
+    {
+      "owner": "C_DATA_A658",
+      "bytes": 1,
+      "format": "compiled-data",
+      "pointer_fixups": 0,
+      "object_sha256": "f04a766ff9135719ccea369ff10eefa1911eaa0fe8302994a3774c5e4a944a7b"
+    },
+    {
+      "owner": "RAW_010FF6",
+      "bytes": 43,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "b5810cde7b4681677024eba99d3f2f6adc25a82b727cbde57faef09efc3edfb9"
+    },
+    {
+      "owner": "DATA_0101021_PLAYER_NAME_TITLE",
+      "bytes": 22,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "fd3bc8e456cb872efd8f83b396eedfab14e9b4c3260d85c0969d844f07a0e218"
+    },
+    {
+      "owner": "DATA_011037_PLAYER_NAME_INSTRUCTION",
+      "bytes": 51,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "304ccceee07409563922367be47a63556df0bf18dec11ecb376652115cb61551"
+    },
+    {
+      "owner": "DATA_010106A_PLAYER_LIST_FULL",
+      "bytes": 72,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "e8ab2fb7c494b6fe19f4cd2d49b2e3aa189b56801cb81ca8e0d8c5bb9cc1eab0"
+    },
+    {
+      "owner": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+      "bytes": 13,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "cf08d9ffb7bf0190eb63a9f55aa13cf3a470103b25025ebe0d14b962d762fc1c"
+    },
+    {
+      "owner": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+      "bytes": 79,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "b86da0b2b2df301a3bd33ee0e1be6dc374982760ad516bb68a77e948aba0b0d0"
+    },
+    {
+      "owner": "DATA_010110E_REMOVE_PLAYER_TITLE",
+      "bytes": 23,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "f18e8314325dea7d3cf7ed32d62a83095361f8bd9326209d19bd84aa20e11fb6"
+    },
+    {
+      "owner": "DATA_0101125_DIFFICULTY_TITLE",
+      "bytes": 27,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "cf455d3747a7d9fffe3b7992c3de152ae53381575d157c2b172474585c119dcb"
+    },
+    {
+      "owner": "DATA_0101140_DIFFICULTY_PROMPT",
+      "bytes": 224,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "8b8b3cf9e0dee0bb5f8b64d31dd8ef1ff778f72b6cb8566dbf0b902b84b42e87"
+    },
+    {
+      "owner": "DATA_0101220_ENERGY_PROMPT",
+      "bytes": 96,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "ed55daca82337a5771258aaccc7ab69b2d6b76bdd5a7ace7397fc8f5ca59d108"
+    },
+    {
+      "owner": "C_DATA_A28D",
+      "bytes": 16,
+      "format": "compiled-data",
+      "pointer_fixups": 0,
+      "object_sha256": "ab5355cf0970228c05bf7cbaed0f2e955a975d14a9f595a40e337aa1c164e194"
+    },
+    {
+      "owner": "TEXT_1660",
+      "bytes": 15,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "193dae4e0a85fe4a9d91cb5b7808b178b040fee2ae8f3fe656ba79f95a0382a0"
+    },
+    {
+      "owner": "RAW_01129F_CONTROL_PREFIX",
+      "bytes": 55,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "d46ab1b27a54e0db439e1750733de853ef8cdaf83367433ddbcabe5bd54ca46c"
+    },
+    {
+      "owner": "DATA_0112D6_LEVEL_COMPLETE",
+      "bytes": 151,
+      "format": "ascii-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "36eb29a9768b6142435cb8f37c5ea7b180f6e2bad5136e0aa009fa0a679c9bd2"
+    },
+    {
+      "owner": "DATA_01136D_ARTIFACTS_REMAIN",
+      "bytes": 30,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "66bda69c7faa3e44c8a2ebe5a21313a87341820f7e3ffa7f2f1fef2d620cbe0a"
+    },
+    {
+      "owner": "DATA_01138B_ZERO_PREFIX",
+      "bytes": 19,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "9ce5164acd926209001f4916997eeca6f03ca4b8972467903e3bbeec7d4a210f"
+    },
+    {
+      "owner": "RAW_01139E",
+      "bytes": 1832,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "48f1f47734e775decd575d8492e2772a2bba39dd3f3505cf9a1f70fd9b7a26c6"
+    },
+    {
+      "owner": "DATA_011AC6_NEW_USER_PROMPT",
+      "bytes": 124,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "cde92cdebb4d964bb9faf9e617cbfa8dc1489df953ac5b1fca93d66ef67790e2"
+    },
+    {
+      "owner": "DATA_011B42_PLAYER_HEADER",
+      "bytes": 45,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "47a4149b79fbeafb1d8648881d9781a85dc692ad6c6bdba50a46be610b358127"
+    },
+    {
+      "owner": "DATA_011B6F_PLAYER_CAVERNS",
+      "bytes": 43,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "978504f8e283ce5ee022c0a3820c02a842f2086468fe4ecd7e43bd929c8f7b8e"
+    },
+    {
+      "owner": "DATA_011B9A_RETURN_MAP_PROMPT",
+      "bytes": 212,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "406e4a71dec97fcc782f2e87168ccc82d5e8721ca577374a2c12010823f5552f"
+    },
+    {
+      "owner": "DATA_011C6E_START_GAME_PROMPT",
+      "bytes": 123,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "3be5e35672df63911852fd8610ca5351cbfce49827cf2b33ba37e744252c35f6"
+    },
+    {
+      "owner": "DATA_011CE9_EXIT_PROMPT",
+      "bytes": 167,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "908dc9c4da1b0bf6a593da59b2405b3ac638a54d77e0a232b05bd3806cd615b9"
+    },
+    {
+      "owner": "DATA_011D90_RECORDS",
+      "bytes": 160,
+      "format": "u16-farptr-u8-farptr-u8-tail8-v1",
+      "pointer_fixups": 16,
+      "object_sha256": "0b0e82c40b247dc3f46f0738761572dc1f901f26b2ead006d00f0b5157ad5b10"
+    },
+    {
+      "owner": "DATA_011E30_MUSIC",
+      "bytes": 6,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "80f8be5f0945d538e8baaa9b5b1604acb9d6ed235ac282a780c2dfb77bcc86b3"
+    },
+    {
+      "owner": "DATA_011E36_MUSIC_PROMPT",
+      "bytes": 27,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "65673040912d620dffead01920ce1e64c5e2b0dc0646b2290009bdaf0a9869e8"
+    },
+    {
+      "owner": "DATA_011E51_SOUND_EFFECTS",
+      "bytes": 14,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "c77048bc14729b1ace7d3068929decc77045c9d4115f294896a15ad77b2850e6"
+    },
+    {
+      "owner": "DATA_011E5F_SOUND_PROMPT",
+      "bytes": 35,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "8af7513a2a1ee95907bf8ae019a0e3e227a3b22f2cff92c3451bed0de0c33f18"
+    },
+    {
+      "owner": "DATA_011E82_NEW_USER_LABEL",
+      "bytes": 18,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "721a576625fd1c9a027659b0539322f9c759a0c5bf5804e8ee8cea56e7a4f017"
+    },
+    {
+      "owner": "DATA_011E94_RETURN_MAP_LABEL",
+      "bytes": 19,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "be6406ac5d3c7a6dbdc10481c66466646febf717c4a92b7cd24839d25e176aea"
+    },
+    {
+      "owner": "DATA_011EA7_START_GAME_LABEL",
+      "bytes": 15,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "498efdb8254abfd32417fa054f97697145b24e48e24d6eeb72488209bd1a7d52"
+    },
+    {
+      "owner": "DATA_011EB6_HALL_LABEL",
+      "bytes": 13,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "5fe20e805b666b6c665a39a5b5dc119b10053c3ace87b84ab20522bb8cfd0d6d"
+    },
+    {
+      "owner": "DATA_011EC3_PLAYERS_LABEL",
+      "bytes": 16,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "c0d5d8b5b2b8a89145c45b38390b54c5fadb285242ae265743bb80da657c15b7"
+    },
+    {
+      "owner": "DATA_011ED3_EXIT_SAVE_LABEL",
+      "bytes": 14,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "106a07c12cfcde7fe61b2a450884d709ea5f0a45628f44af5d630b1d8d574402"
+    },
+    {
+      "owner": "DATA_011EE1_TABLE",
+      "bytes": 32,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "d1789e4698d73e1ff4221e4ee3d86f872e142fe11e3151f47333fec58ae4f65d"
+    },
+    {
+      "owner": "DATA_011F01_PAD",
+      "bytes": 1,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "6071cf00daea92d68fdcf64678c671f41240efcebdd22fa06dd31e830333718b"
+    },
+    {
+      "owner": "TEXT_22D2",
+      "bytes": 14,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "1a6a85954ba1fe0e80e4176f0c846c04db069ac218e6aaf5bbd2260fd28ba585"
+    },
+    {
+      "owner": "DATA_011F10_TABLE",
+      "bytes": 16,
+      "format": "u16le-table-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "d90316168afd0a79d9374fe5cb57cb1e2dc61bb68e2e885ad93276c20120b1dd"
+    },
+    {
+      "owner": "DATA_011F20_PAD",
+      "bytes": 5,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "221b221e7ef83e86b405ac84bc4379b62f766701896260eeccf068904de2be34"
+    },
+    {
+      "owner": "RAW_011F25",
+      "bytes": 13,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "97fb71be672ed6281b5520f026e96bcfc90dfec6d1eaf125983e55966d37e7ca"
+    },
+    {
+      "owner": "DATA_011F32_KEYBOARD_LABEL",
+      "bytes": 19,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "1e8b9bbcbf0fa62057be2cdeaa6cc336c52445c11745d8fa8962ffbf616be983"
+    },
+    {
+      "owner": "DATA_011F45_PLAYING_LABEL",
+      "bytes": 17,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "2b3ab9ad8f33f079f8c9204a83990690f1882fdd863d775d0dd588f74e16643a"
+    },
+    {
+      "owner": "DATA_011F56_OBSTACLES_LABEL",
+      "bytes": 21,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "d3070676cc5c076ef8f96b6fd202a8c45294f96b81325fb959b9097ad56554e5"
+    },
+    {
+      "owner": "DATA_011F6B_PUZZLES_LABEL",
+      "bytes": 27,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "d6aecf7bdbc375833542a972b9c4e8d1455f517ccfdf757956c754761495a3b2"
+    },
+    {
+      "owner": "RAW_011F86",
+      "bytes": 20,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "0760cd809c4f3b04fc5be10c71ce5f56fc23a3e3a494a3d1297bf0189b8fc5bc"
+    },
+    {
+      "owner": "DATA_011F9A_NEW_USER_MESSAGE",
+      "bytes": 17,
+      "format": "ascii-nul-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "5f0365058ad3a2cbd4f61b5b07436de0d0841e7c89c80c64bd67f812ec090cce"
+    },
+    {
+      "owner": "DATA_011FAB_ZERO_PREFIX",
+      "bytes": 3,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "484076d0959dcca9cb60ba5b60716fcb8590c25dc6145346f7e9f8e89a7052e6"
+    },
+    {
+      "owner": "RAW_011FAE",
+      "bytes": 2,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "0320176270a5771015d7049dd134d089e21c2a381a4bf42c77bfc0efb7dbdcc4"
+    },
+    {
+      "owner": "DATA_011FB0_ZERO_REGION",
+      "bytes": 3155,
+      "format": "zero-pad-v1",
+      "pointer_fixups": 0,
+      "object_sha256": "ca6ba36e9895629069374365a247e1b18f4b0b08e84706b760d39fefb2776602"
+    },
+    {
+      "owner": "RAW_012C03",
+      "bytes": 1923,
+      "format": "raw-local",
+      "pointer_fixups": 0,
+      "object_sha256": "3458355edaa1c82b2ce74640b2e2701b1fe9368e53389728f6e145bd10afbe50"
+    }
+  ],
+  "separated_data": [
+    {
+      "owner": "F_56C6",
+      "bytes": 2
+    },
+    {
+      "owner": "F_75F3",
+      "bytes": 15
+    },
+    {
+      "owner": "F_7695",
+      "bytes": 13
+    },
+    {
+      "owner": "F_778B",
+      "bytes": 15
+    },
+    {
+      "owner": "F_9D8E",
+      "bytes": 20
+    },
+    {
+      "owner": "F_A28D",
+      "bytes": 16
+    },
+    {
+      "owner": "F_A658",
+      "bytes": 1
+    }
+  ],
+  "oracle_copied_initialized_data_bytes": 0,
+  "local_raw_source_bytes": 4129,
+  "synthetic_bss_bytes": 37252,
+  "temporary_startup_data_aliases": {
+    "_g6d": 109,
+    "_g7d": 125,
+    "_g81": 129
+  },
+  "temporary_runtime_data_aliases": {
+    "_g37cb": [
+      "__ctype",
+      1
+    ]
+  },
+  "byte_comparison": {
+    "available": true,
+    "candidate_sha256": "13fdbd13660aec21e972143f9d7ebf5eb482b3116ecd5b23f8179baa4cb1d723",
+    "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+    "candidate_size": 79154,
+    "oracle_size": 79154,
+    "mz": {
+      "candidate_fields": {
+        "e_magic": 23117,
+        "e_cblp": 306,
+        "e_cp": 155,
+        "e_crlc": 72,
+        "e_cparhdr": 32,
+        "e_minalloc": 2348,
+        "e_maxalloc": 65535,
+        "e_ss": 7248,
+        "e_sp": 230,
+        "e_csum": 0,
+        "e_ip": 0,
+        "e_cs": 0,
+        "e_lfarlc": 34,
+        "e_ovno": 0
+      },
+      "oracle_fields": {
+        "e_magic": 23117,
+        "e_cblp": 306,
+        "e_cp": 155,
+        "e_crlc": 106,
+        "e_cparhdr": 32,
+        "e_minalloc": 2348,
+        "e_maxalloc": 65535,
+        "e_ss": 7248,
+        "e_sp": 230,
+        "e_csum": 0,
+        "e_ip": 0,
+        "e_cs": 0,
+        "e_lfarlc": 34,
+        "e_ovno": 0
+      },
+      "fields_equal": false,
+      "relocation_count_equal": false,
+      "relocation_order_equal": false,
+      "missing_sites": [
+        66915,
+        67372,
+        67380,
+        67384,
+        67392,
+        67400,
+        67404,
+        67412,
+        67420,
+        67424,
+        67434,
+        67438,
+        67446,
+        67450,
+        67458,
+        67466,
+        67470,
+        67478,
+        67486,
+        67490,
+        67500,
+        69033,
+        69038,
+        69058,
+        69073,
+        69078,
+        69093,
+        69098,
+        69113,
+        69118,
+        69138,
+        69801,
+        72999,
+        73098
+      ],
+      "extra_sites": []
+    },
+    "load_image": {
+      "equal": false,
+      "first_difference": 200,
+      "candidate_length": 78642,
+      "oracle_length": 78642
+    },
+    "text": {
+      "equal": false,
+      "start": 0,
+      "end": 64035,
+      "candidate_length": 64035,
+      "oracle_length": 64035,
+      "differing_byte_count": 32,
+      "first_difference": 200
+    },
+    "initialized_data": {
+      "equal": true,
+      "start": 64048,
+      "end": 78642,
+      "candidate_length": 14594,
+      "oracle_length": 14594,
+      "differing_byte_count": 0,
+      "first_difference": null
+    },
+    "full_file": {
+      "equal": false,
+      "first_difference": 6
+    }
+  },
+  "limitation": "Ordered source DATA; raw sources, recovered aliases, synthetic BSS and module grouping remain."
+}

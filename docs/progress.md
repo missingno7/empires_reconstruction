@@ -1,5 +1,9 @@
 # Incremental reconstruction — 2026-09-18
 
+The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
+without copying them from AEPROG.EXE. It emits 72 correct relocations with no
+extras; 32 TEXT bytes still differ. Raw sources and BSS/symbol adapters remain.
+
 The [runtime DATA tail](runtime-data-tail.md) is now verified against pinned
 CC.LIB modules and the real linked output: ten contributions, 420 source bytes
 and three checked offset fixups. Canonical ownership removes another 165 raw

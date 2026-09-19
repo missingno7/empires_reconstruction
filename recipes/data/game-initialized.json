@@ -1,0 +1,603 @@
+{
+  "format": "empires-ordered-data-v1",
+  "status": "structural source sequence; historical module grouping open",
+  "components": [
+    {
+      "id": "DATA_00FCC2",
+      "source": "src/data/DATA_00FCC2.json",
+      "format": "u16le-table-v1",
+      "skip": 2
+    },
+    {
+      "id": "PALETTE_DAC6_011E",
+      "source": "raw/exe-data/PALETTE_DAC6_011E.json",
+      "format": "dac6-rgb256-v1"
+    },
+    {
+      "id": "PALETTE_DAC6_041E",
+      "source": "raw/exe-data/PALETTE_DAC6_041E.json",
+      "format": "dac6-rgb256-v1"
+    },
+    {
+      "id": "DATA_01034E_ALIGNMENT",
+      "source": "src/data/DATA_01034E_ALIGNMENT.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_010354_CONTROL_TABLE",
+      "source": "src/data/DATA_010354_CONTROL_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_01037A_POINTER_TABLE",
+      "source": "src/data/DATA_01037A_POINTER_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_0103B2_POINTER_ATTRIBUTES",
+      "source": "src/data/DATA_0103B2_POINTER_ATTRIBUTES.json",
+      "format": "fixed-records-v1"
+    },
+    {
+      "id": "DATA_0103CE_RECORDS",
+      "source": "src/data/DATA_0103CE_RECORDS.json",
+      "format": "fixed-records-v1"
+    },
+    {
+      "id": "DATA_010486_PAD",
+      "source": "src/data/DATA_010486_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_010489_GFX_ERROR",
+      "source": "src/data/DATA_010489_GFX_ERROR.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0104D8_MEMORY_ERROR",
+      "source": "src/data/DATA_0104D8_MEMORY_ERROR.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01052B_ZERO_PREFIX",
+      "source": "src/data/DATA_01052B_ZERO_PREFIX.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_010532_CONTROL_TABLE",
+      "source": "src/data/DATA_010532_CONTROL_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_010652_AE000_PATH",
+      "source": "src/data/DATA_010652_AE000_PATH.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01065F_PAD",
+      "source": "src/data/DATA_01065F_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_010662_AE001_PATH",
+      "source": "src/data/DATA_010662_AE001_PATH.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01066F_PAD",
+      "source": "src/data/DATA_01066F_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_010672_AE002_PATH",
+      "source": "src/data/DATA_010672_AE002_PATH.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01067F_PAD",
+      "source": "src/data/DATA_01067F_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_01067F_TABLE",
+      "source": "src/data/DATA_01067F_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_01068E_PROGRAM_DISK",
+      "source": "src/data/DATA_01068E_PROGRAM_DISK.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0106AE_PAD",
+      "source": "src/data/DATA_0106AE_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_0106B1_ARTIFACTS_DISK",
+      "source": "src/data/DATA_0106B1_ARTIFACTS_DISK.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0106D3_ZERO_RUN",
+      "source": "src/data/DATA_0106D3_ZERO_RUN.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_0106F7_WRITE_PROTECTED",
+      "source": "src/data/DATA_0106F7_WRITE_PROTECTED.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "RAW_01075A",
+      "source": "raw/01075A-01076E.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_01076E_ZERO_SUFFIX",
+      "source": "src/data/DATA_01076E_ZERO_SUFFIX.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_010772_RESOURCE_ERROR",
+      "source": "src/data/DATA_010772_RESOURCE_ERROR.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_010798_PAD",
+      "source": "src/data/DATA_010798_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_0107B0_TABLE",
+      "source": "src/data/DATA_0107B0_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_0107B6_PAD",
+      "source": "src/data/DATA_0107B6_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "C_DATA_75F3",
+      "source": "src/F_75F3.C",
+      "format": "compiled-data",
+      "code_owner": "F_75F3"
+    },
+    {
+      "id": "C_DATA_7695",
+      "source": "src/F_7695.C",
+      "format": "compiled-data",
+      "code_owner": "F_7695"
+    },
+    {
+      "id": "C_DATA_778B",
+      "source": "src/F_778B.C",
+      "format": "compiled-data",
+      "code_owner": "F_778B"
+    },
+    {
+      "id": "DATA_0107E2_PAD",
+      "source": "src/data/DATA_0107E2_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_0107EA_HELP_TITLE",
+      "source": "src/data/DATA_0107EA_HELP_TITLE.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0107F4_HELP_TOPICS",
+      "source": "src/data/DATA_0107F4_HELP_TOPICS.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_010848_FILE_F2_TABLE",
+      "source": "src/data/DATA_010848_FILE_F2_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_010848_FILE_F2_TEXT",
+      "source": "src/data/DATA_010848_FILE_F2_TEXT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01085A_MENU_TOPICS",
+      "source": "src/data/DATA_01085A_MENU_TOPICS.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0108A7_MENU_TABLE_A",
+      "source": "src/data/DATA_0108A7_MENU_TABLE_A.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_0108A7_MENU_HALL",
+      "source": "src/data/DATA_0108A7_MENU_HALL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0108A7_MENU_TABLE_B",
+      "source": "src/data/DATA_0108A7_MENU_TABLE_B.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_0108A7_MENU_OPTIONS",
+      "source": "src/data/DATA_0108A7_MENU_OPTIONS.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0108FE_OPTION_TOPICS",
+      "source": "src/data/DATA_0108FE_OPTION_TOPICS.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "RAW_010924",
+      "source": "raw/010924-0109AF.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_0109AF_GO_BACK",
+      "source": "src/data/DATA_0109AF_GO_BACK.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "RAW_0109BB",
+      "source": "raw/0109BB-0109BD.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_0109BD_CONTINUE",
+      "source": "src/data/DATA_0109BD_CONTINUE.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0109CA_BACK_PAGE",
+      "source": "src/data/DATA_0109CA_BACK_PAGE.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0109D9_NEXT_PAGE",
+      "source": "src/data/DATA_0109D9_NEXT_PAGE.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0109E7_DONE",
+      "source": "src/data/DATA_0109E7_DONE.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0109EC_YES",
+      "source": "src/data/DATA_0109EC_YES.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0109F0_NO",
+      "source": "src/data/DATA_0109F0_NO.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0109F3_PAD",
+      "source": "src/data/DATA_0109F3_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_0DCC",
+      "source": "src/data/DATA_0DCC.json",
+      "format": "fixed-records-v1"
+    },
+    {
+      "id": "TEXT_118C",
+      "source": "src/data/TEXT_118C.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_125D",
+      "source": "src/F_9D8E.C",
+      "format": "compiled-data",
+      "code_owner": "F_9D8E"
+    },
+    {
+      "id": "DATA_1271",
+      "source": "src/data/DATA_1271.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_10ED1",
+      "source": "src/data/DATA_10ED1.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "PAD_10EDD",
+      "source": "src/data/PAD_10EDD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "DATA_10EE0",
+      "source": "src/data/DATA_10EE0.json",
+      "format": "fixed-records-v1"
+    },
+    {
+      "id": "TEXT_12D0",
+      "source": "src/data/TEXT_12D0.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "TEXT_12D9",
+      "source": "src/data/TEXT_12D9.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_010F15_DIALOG_REMOVE_INTRO",
+      "source": "src/data/DATA_010F15_dialog_remove_intro.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_010F86_DIALOG_REMOVE_SUFFIX",
+      "source": "src/data/DATA_010F86_dialog_remove_suffix.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "RAW_010FA5",
+      "source": "raw/010FA5-010FF5.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "C_DATA_A658",
+      "source": "src/F_A658.C",
+      "format": "compiled-data",
+      "code_owner": "F_A658"
+    },
+    {
+      "id": "RAW_010FF6",
+      "source": "raw/010FF6-011021.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_0101021_PLAYER_NAME_TITLE",
+      "source": "src/data/DATA_0101021_player_name_title.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011037_PLAYER_NAME_INSTRUCTION",
+      "source": "src/data/DATA_011037_PLAYER_NAME_INSTRUCTION.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_010106A_PLAYER_LIST_FULL",
+      "source": "src/data/DATA_010106A_player_list_full.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+      "source": "src/data/DATA_01010B2_exit_program_title.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+      "source": "src/data/DATA_01010BF_exit_program_prompt.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_010110E_REMOVE_PLAYER_TITLE",
+      "source": "src/data/DATA_010110E_remove_player_title.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0101125_DIFFICULTY_TITLE",
+      "source": "src/data/DATA_0101125_difficulty_title.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0101140_DIFFICULTY_PROMPT",
+      "source": "src/data/DATA_0101140_difficulty_prompt.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_0101220_ENERGY_PROMPT",
+      "source": "src/data/DATA_0101220_energy_prompt.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "C_DATA_A28D",
+      "source": "src/F_A28D.C",
+      "format": "compiled-data",
+      "code_owner": "F_A28D"
+    },
+    {
+      "id": "TEXT_1660",
+      "source": "src/data/TEXT_1660.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "RAW_01129F_CONTROL_PREFIX",
+      "source": "raw/01129F-0112D6.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_0112D6_LEVEL_COMPLETE",
+      "source": "src/data/DATA_0112D6_LEVEL_COMPLETE.json",
+      "format": "ascii-v1"
+    },
+    {
+      "id": "DATA_01136D_ARTIFACTS_REMAIN",
+      "source": "src/data/DATA_01136D_ARTIFACTS_REMAIN.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_01138B_ZERO_PREFIX",
+      "source": "src/data/DATA_01138B_ZERO_PREFIX.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "RAW_01139E",
+      "source": "raw/01139E-011AC6.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_011AC6_NEW_USER_PROMPT",
+      "source": "src/data/DATA_011AC6_NEW_USER_PROMPT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011B42_PLAYER_HEADER",
+      "source": "src/data/DATA_011B42_PLAYER_HEADER.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011B6F_PLAYER_CAVERNS",
+      "source": "src/data/DATA_011B6F_PLAYER_CAVERNS.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011B9A_RETURN_MAP_PROMPT",
+      "source": "src/data/DATA_011B9A_RETURN_MAP_PROMPT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011C6E_START_GAME_PROMPT",
+      "source": "src/data/DATA_011C6E_START_GAME_PROMPT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011CE9_EXIT_PROMPT",
+      "source": "src/data/DATA_011CE9_EXIT_PROMPT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011D90_RECORDS",
+      "source": "src/data/DATA_011D90_RECORDS.json",
+      "format": "u16-farptr-u8-farptr-u8-tail8-v1"
+    },
+    {
+      "id": "DATA_011E30_MUSIC",
+      "source": "src/data/DATA_011E30_MUSIC.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011E36_MUSIC_PROMPT",
+      "source": "src/data/DATA_011E36_MUSIC_PROMPT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011E51_SOUND_EFFECTS",
+      "source": "src/data/DATA_011E51_SOUND_EFFECTS.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011E5F_SOUND_PROMPT",
+      "source": "src/data/DATA_011E5F_SOUND_PROMPT.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011E82_NEW_USER_LABEL",
+      "source": "src/data/DATA_011E82_NEW_USER_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011E94_RETURN_MAP_LABEL",
+      "source": "src/data/DATA_011E94_RETURN_MAP_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011EA7_START_GAME_LABEL",
+      "source": "src/data/DATA_011EA7_START_GAME_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011EB6_HALL_LABEL",
+      "source": "src/data/DATA_011EB6_HALL_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011EC3_PLAYERS_LABEL",
+      "source": "src/data/DATA_011EC3_PLAYERS_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011ED3_EXIT_SAVE_LABEL",
+      "source": "src/data/DATA_011ED3_EXIT_SAVE_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011EE1_TABLE",
+      "source": "src/data/DATA_011EE1_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_011F01_PAD",
+      "source": "src/data/DATA_011F01_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "TEXT_22D2",
+      "source": "src/data/TEXT_22D2.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011F10_TABLE",
+      "source": "src/data/DATA_011F10_TABLE.json",
+      "format": "u16le-table-v1"
+    },
+    {
+      "id": "DATA_011F20_PAD",
+      "source": "src/data/DATA_011F20_PAD.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "RAW_011F25",
+      "source": "raw/011F25-011F32.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_011F32_KEYBOARD_LABEL",
+      "source": "src/data/DATA_011F32_KEYBOARD_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011F45_PLAYING_LABEL",
+      "source": "src/data/DATA_011F45_PLAYING_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011F56_OBSTACLES_LABEL",
+      "source": "src/data/DATA_011F56_OBSTACLES_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011F6B_PUZZLES_LABEL",
+      "source": "src/data/DATA_011F6B_PUZZLES_LABEL.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "RAW_011F86",
+      "source": "raw/011F86-011F9A.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_011F9A_NEW_USER_MESSAGE",
+      "source": "src/data/DATA_011F9A_NEW_USER_MESSAGE.json",
+      "format": "ascii-nul-v1"
+    },
+    {
+      "id": "DATA_011FAB_ZERO_PREFIX",
+      "source": "src/data/DATA_011FAB_ZERO_PREFIX.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "RAW_011FAE",
+      "source": "raw/011FAE-011FB0.bin",
+      "format": "raw-local"
+    },
+    {
+      "id": "DATA_011FB0_ZERO_REGION",
+      "source": "src/data/DATA_011FB0_ZERO_REGION.json",
+      "format": "zero-pad-v1"
+    },
+    {
+      "id": "RAW_012C03",
+      "source": "raw/012C03-013386.bin",
+      "format": "raw-local"
+    }
+  ]
+}

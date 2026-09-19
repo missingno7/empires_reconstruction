@@ -1,5 +1,10 @@
 # Linker adapter ledger
 
+The newer [source DATA experiment](source-data-link.md) eliminates the copied
+initialized tail and reproduces all initialized DATA bytes, with 72/106 correct
+relocations and no extra sites. The aggregate baseline below remains available
+for comparison; BSS and recovered-symbol adapters remain in both paths.
+
 Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
 demand object, with zero errors/unresolved symbols and exact segment bases.
 The linked bytes still differ (56/106 relocations; first load difference 0xC8).
@@ -14,7 +19,7 @@ each can be removed against a measurable linker invariant.
 |---|---|---|---|---|
 | `LIBDEMAND.OBJ` historical-library demand | Previously requested historical library publics explicitly | Requests the publics that select the observed `CC.LIB` modules | Actual reconstructed EXTDEFs must preserve selection and order | **Unnecessary in the full scaffold**: fresh demand and no-demand Turbo Link 2.0 outputs have identical maps and EXE hashes, with zero unresolved symbols |
 | `DGSCF.OBJ` synthetic DGROUP | Most initialized data and BSS ownership is not yet represented by relocatable objects | Supplies temporary `_DATA`, `_BSS`, and stack sizing plus selected data publics | Replace its 13,932 initialized bytes and 37,252 BSS bytes with canonical data/BSS source objects | **Active**; bounded OMF records are accepted by Turbo Link 2.0. `_BSSEND` is two bytes above the original fixup value despite an identical stack base |
-| Oracle-copied initialized DATA tail | The synthetic DGROUP needs bytes to reach the observed initialized-image span | Holds the unresolved initialized-data extent | Decode the two largest raw data owners and compile/encode their records into `_DATA` contributions | **Active and prohibited in the final path** |
+| Oracle-copied initialized DATA tail | Originally supplied initialized bytes to the aggregate scaffold | Holds the unresolved initialized-data extent | Ordered source encoders and compiler DATA contributions | **Removed in the source DATA experiment**; retained only in the baseline comparison path. Local raw source components still require decoding |
 | Recovered symbol aliases (`_delay` → `_f6c57`, `_main`) | Recovered objects use numeric/source-local names while startup and callers use historical publics | Resolves verified call targets without changing code bytes | Recover the containing translation unit and its actual public names | **Temporary, tracked per binding** |
 | EXTDEF case normalization | Turbo C emits case variants that differ from explicit recovered publics | Resolves case-sensitive OMF externals under the linker candidate | Reconstruct the historical declaration/public spelling in the source module | **Temporary** |
 | Injected internal numeric publics (`_Fxxxx`) | Separate recovered objects refer to internal addresses before their owning module is known | Exposes exact code-offset targets to the relocatable experiment | Group contiguous owners into shared historical modules or expose proven real publics | **Temporary** |

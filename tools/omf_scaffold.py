@@ -470,3 +470,104 @@ def trim_text_contribution(data: bytes, length: int) -> bytes:
     if checked.segment_bytes('_TEXT') != original.segment_bytes('_TEXT')[:length]:
         raise MatchError('trimmed OMF bytes differ from the source prefix')
     return rebuilt
+
+
+def externalize_data_segment(data: bytes, symbol: str) -> bytes:
+    """Separate initialized DATA while preserving code and its symbolic fixups.
+
+    The empty segment declaration remains for DGROUP/frame semantics. Code
+    references to its contribution become references to the new source public.
+    No placement coordinate is accepted by this transformation.
+    """
+    original = OmfReader().read(data)
+    definition = next(s for s in original.segment_defs if s['name'] == '_DATA')
+    data_index = definition['index']
+    if not original.segment_length('_DATA'):
+        raise MatchError('externalization requires a nonempty DATA contribution')
+    for public in original.publics_in('_DATA'):
+        data = remove_public(data, public['name'])
+    records = list(_records(data))
+    external_index = len(original.externals) + 1
+    if external_index > 127 or len(symbol.encode('ascii')) > 255:
+        raise MatchError('externalization exceeds bounded EXTDEF encoding')
+    extdef = bytes([len(symbol)]) + symbol.encode('ascii') + b'\x00'
+    out, targets, last_segment, seg_index, inserted = [], {}, None, 0, False
+    for kind, body in records:
+        if kind in (OmfReader.LEDATA16, OmfReader.LIDATA16):
+            if not inserted:
+                out.append((OmfReader.EXTDEF, extdef))
+                inserted = True
+            last_segment, _ = _index(body, 0)
+            if last_segment == data_index:
+                continue
+        if kind == OmfReader.EXTDEF and inserted:
+            raise MatchError('late EXTDEF would invalidate externalization index')
+        if kind == OmfReader.SEGDEF16:
+            seg_index += 1
+            if seg_index == data_index:
+                if body[0] >> 5 == 0:
+                    raise MatchError('absolute DATA cannot be externalized')
+                body = body[:1] + b'\x00\x00' + body[3:]
+        if kind == OmfReader.FIXUPP16:
+            at, rebuilt = 0, bytearray()
+            while at < len(body):
+                begin = at
+                if not body[at] & 0x80:
+                    thread = body[at]
+                    at += 1
+                    method, number = (thread >> 2) & 7, thread & 3
+                    datum = 0
+                    if not (thread & 0x40 and method >= 4):
+                        datum, at = _index(body, at)
+                    if not thread & 0x40:
+                        targets[number] = (method, datum)
+                    # Keep threads even when their DATA fixups are removed;
+                    # later TEXT fixups may reference them.
+                    rebuilt.extend(body[begin:at])
+                    continue
+                at += 2
+                fixdat_at = at
+                fixdat = body[at]
+                at += 1
+                frame = (fixdat >> 4) & 7
+                if not fixdat & 0x80 and frame in (0, 1, 2):
+                    _, at = _index(body, at)
+                target_at = at
+                if fixdat & 8:
+                    method, datum = targets[fixdat & 3]
+                else:
+                    method = fixdat & 3
+                    datum, at = _index(body, at)
+                displacement_at = at
+                if not fixdat & 4:
+                    at += 2
+                if last_segment == data_index:
+                    continue
+                if method == 0 and datum == data_index:
+                    # Retain the original frame, source location and addend.
+                    rebuilt.extend(body[begin:fixdat_at])
+                    rebuilt.append((fixdat & 0xF4) | 2)
+                    rebuilt.extend(body[fixdat_at + 1:target_at])
+                    rebuilt.append(external_index)
+                    rebuilt.extend(body[displacement_at:at])
+                else:
+                    rebuilt.extend(body[begin:at])
+            if not rebuilt:
+                continue
+            body = bytes(rebuilt)
+        out.append((kind, body))
+    if not inserted:
+        raise MatchError('object has no initialized records')
+    result = b''.join(_record(kind, body) for kind, body in out)
+    checked = OmfReader().read(result)
+    if checked.segment_length('_DATA') != 0 or checked.segment_bytes('_TEXT') != original.segment_bytes('_TEXT'):
+        raise MatchError('DATA externalization changed code or retained DATA')
+    expected = []
+    for fixup in original.fixups_in('_TEXT'):
+        fixup = dict(fixup)
+        if fixup['target_kind'] == 'segment' and fixup['target'] == '_DATA':
+            fixup.update(target_kind='external', target=symbol)
+        expected.append(fixup)
+    if checked.fixups_in('_TEXT') != expected:
+        raise MatchError('DATA externalization changed unrelated TEXT fixups')
+    return result

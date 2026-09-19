@@ -21701,13 +21701,39 @@
     {
       "id": "RAW_011FAB",
       "start": 73643,
+      "end": 73648,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/011FAB-011FB0.bin",
+      "original_symbol": null,
+      "artifact": "raw/011FAB-011FB0.bin",
+      "expected_sha256": "eb6ab504da0b43841740cc4223263cb4f7e9953da3698ffe0776a661934c5ab8",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_011FB0_ZERO_REGION",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011FB0_ZERO_REGION.json",
+      "start": 73648,
+      "end": 76803,
+      "expected_sha256": "93336159b3dd7d16c4328b7b132f1c047d965fa70f2ac526e93f2653374bfd68",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_011FB0_ZERO_REGION.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "RAW_012C03",
+      "start": 76803,
       "end": 78842,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/011FAB-0133FA.bin",
+      "source": "raw/012C03-0133FA.bin",
       "original_symbol": null,
-      "artifact": "raw/011FAB-0133FA.bin",
-      "expected_sha256": "e3aa83a6c70cb87b6ca0f211086bfd8f50466bf3e52e52cec5b8f198ee60f5d3",
+      "artifact": "raw/012C03-0133FA.bin",
+      "expected_sha256": "e59987fa51709792e4e7153cf0192142f36f1fbb13205d3088c7be2f886d0c3f",
       "matching_status": "EQUAL"
     },
     {

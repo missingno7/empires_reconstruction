@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "dd6aed7008aad12c97106366e64fc2b7cabc1e3ce653b7b14860c4e9a1ac4b7f",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "DATA_011FB0_ZERO_REGION",
+      "kind": "EXACT_DATA",
+      "bytes": 3155,
+      "sha256": "93336159b3dd7d16c4328b7b132f1c047d965fa70f2ac526e93f2653374bfd68",
+      "source_sha256": "15e0e6f61a981aa5a95e4ae105bcb1aaa25c6863021efade5d1a0738f962f94a",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

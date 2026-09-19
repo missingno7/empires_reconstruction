@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_011FB0_ZERO_REGION",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011FB0_ZERO_REGION.json",
+      "start": 73648,
+      "end": 76803,
+      "expected_sha256": "93336159b3dd7d16c4328b7b132f1c047d965fa70f2ac526e93f2653374bfd68",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_011FB0_ZERO_REGION.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    }
+  ]
+}

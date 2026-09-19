@@ -42,7 +42,8 @@ class MatchingCTests(unittest.TestCase):
                 if owner['id'] == 'F_D60C':
                     self.assertEqual(data[-1], 0xc3)
                     raw = next(r for r in manifest['regions'] if r['start'] <= owner['end'] < r['end'])
-                    self.assertEqual(raw['kind'], 'RAW')
+                    self.assertEqual(raw['kind'], 'EXACT_DATA')
+                    self.assertEqual(raw['build']['encoder'], 'zero-pad-v1')
                     self.assertEqual(original[owner['end']], 0)
             self.assertEqual(checked, 291)
             module = read_object((work / 'compiler' / receipts['WRONG_ORDER']['object']).read_bytes())

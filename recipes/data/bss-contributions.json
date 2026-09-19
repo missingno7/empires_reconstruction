@@ -59,10 +59,21 @@
       "aggregate_storage": false
     },
     {
+      "id": "G43B4_RECORD_TABLE_BSS",
+      "object": "G43B4B.OBJ",
+      "assembly": "G43B4B.ASM",
+      "logical_start": 2738,
+      "logical_end": 12738,
+      "owner_candidate": "shared G43B4 ten-record table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
       "id": "GAMEBSS_LEADING_REMAINDER",
       "object": "GAMEBSS0.OBJ",
       "assembly": "GAMEBSS0.ASM",
-      "logical_start": 2738,
+      "logical_start": 12738,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

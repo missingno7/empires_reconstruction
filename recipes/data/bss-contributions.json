@@ -257,10 +257,21 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSSH.OBJ",
-      "assembly": "GAMEBSSH.ASM",
+      "id": "GB3AE_WORKSPACE_BSS",
+      "object": "GB3AEB.OBJ",
+      "assembly": "GB3AEB.ASM",
       "logical_start": 31404,
+      "logical_end": 34404,
+      "owner_candidate": "F_462E 0xBB8-byte board workspace",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSI.OBJ",
+      "assembly": "GAMEBSSI.ASM",
+      "logical_start": 34404,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

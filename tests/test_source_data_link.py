@@ -65,6 +65,8 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertEqual(report['unpartitioned_bss_source_bytes'], 37250)
         self.assertFalse(report['dgroup_scaffold_present'])
         self.assertEqual(report['bss_source']['kind'], 'TASM_SOURCE')
+        self.assertTrue(report['bss_source']['binding_evidence_equal'])
+        self.assertEqual(report['bss_source']['publics'], 247)
         self.assertEqual(report['bss_source']['initialized_bytes'], 0)
         self.assertEqual(report['bss_source']['group'], 'DGROUP')
         self.assertEqual(report['bss_source']['object_sha256'],

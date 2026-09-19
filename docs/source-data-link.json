@@ -931,7 +931,8 @@
     "initialized_bytes": 0,
     "group": "DGROUP",
     "segment": "_BSS",
-    "source_mtime_epoch": 315532800
+    "source_mtime_epoch": 315532800,
+    "binding_evidence_equal": true
   },
   "temporary_startup_data_aliases": {},
   "temporary_runtime_data_aliases": {},
@@ -1011,5 +1012,5 @@
       "first_difference": 58
     }
   },
-  "limitation": "Ordered source DATA; raw sources, recovered aliases, unpartitioned BSS and module grouping remain."
+  "limitation": "Ordered source DATA and canonical BSS anchors; unpartitioned BSS storage and historical module grouping remain."
 }

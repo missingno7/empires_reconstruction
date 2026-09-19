@@ -20,7 +20,7 @@ the byte-level comparison.
 This is the first byte-identical historical-linker output, not completion of
 the reconstruction. It still uses a candidate object-interleaving recipe, one
 checked FIXUPP-order adapter for the inline-ASM arithmetic module, the
-unpartitioned 37,250-byte BSS reserve, and four evidenced DATA/code ordering
+unpartitioned 37,250-byte BSS reserve with 247 canonical public anchors, and four evidenced DATA/code ordering
 constraints. Canonical EXE and source-link raw DATA are both zero, and the
 structural path performs zero object symbol transforms. The arithmetic adapter changes only the order of explicit OMF fixup
 subrecords; it rejects threads and verifies that segment bytes, publics,

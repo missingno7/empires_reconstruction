@@ -2,7 +2,7 @@
 
 The exact structural link no longer supplies game BSS through `DGSCF.OBJ` or a
 custom OMF writer. `tools/bss_asm.py` generates a TASM source module from the
-canonical 37,250-byte reserve and the recovered public map. The pinned TASM 1.0
+canonical 37,250-byte reserve and its 247 canonical public anchors. The pinned TASM 1.0
 assembles a word-aligned public `_BSS` segment in `DGROUP`; Turbo Link 2.0 then
 derives the unchanged BSS base, runtime BSS placement, stack base and MZ fields.
 
@@ -16,7 +16,8 @@ comment; two fresh assemblies produce the same object hash. The full
 historical-linker output remains byte-identical.
 
 This removes the synthetic DGROUP/BSS object from the exact path. It does not
-prove that the game historically used one BSS translation unit. The public map
-still consolidates recovered aliases from separate source proofs, and the
-reserve is not internally partitioned into historical modules. Those are the
-next ownership constraints rather than reasons to retain a synthetic object.
+prove that the game historically used one BSS translation unit. The canonical
+anchor map is checked against linker-binding evidence on every structural link,
+but the reserve is not internally partitioned into historical modules. Those
+are the next ownership constraints rather than reasons to retain a synthetic
+object.

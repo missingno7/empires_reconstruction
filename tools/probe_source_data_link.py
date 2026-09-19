@@ -99,8 +99,14 @@ def run():
     library = {name: OmfReader().read(blob) for name, blob in
                OmfReader().split_library((work / 'TC/LIB/CC.LIB').read_bytes())}
     bss_source = read_json(ROOT / 'src/data/GAME_BSS.json')
-    if bss_source['format'] != 'unpartitioned-bss-reserve-v1' or bss_source['alignment'] != 'word':
+    if bss_source['format'] != 'anchored-bss-layout-v1' or bss_source['alignment'] != 'word':
         raise ValueError('Unsupported game BSS source')
+    source_bss_publics = bss_source.get('publics')
+    if (not isinstance(source_bss_publics, dict) or not source_bss_publics
+            or any(not isinstance(name, str) or type(offset) is not int
+                   or not 0 <= offset < bss_source['length']
+                   for name, offset in source_bss_publics.items())):
+        raise ValueError('Invalid canonical BSS public map')
     def add_alias(symbol, dgroup_offset):
         if 0 <= dgroup_offset <= startup.segment_length('_DATA'):
             startup_aliases[symbol] = dgroup_offset
@@ -153,6 +159,8 @@ def run():
                 if symbol in bss_public_offsets and bss_public_offsets[symbol] != bss_offset:
                     raise ValueError('Conflicting recovered BSS public offset')
                 bss_public_offsets[symbol] = bss_offset
+    if source_bss_publics != bss_public_offsets:
+        raise ValueError('Canonical BSS public map differs from linker-binding evidence')
     separated = []
     for owner_id, entry in staged.items():
         path = work / 'WORK' / entry['object']
@@ -174,7 +182,7 @@ def run():
         path.write_bytes(externalize_data_segment(path.read_bytes(), symbol))
         separated.append({'owner': owner_id, 'bytes': module.segment_length('_DATA')})
     startup_path.write_bytes(add_publics(startup_path.read_bytes(), startup_aliases, '_DATA'))
-    bss_asm = bss_asm_source(bss_source['length'], bss_public_offsets)
+    bss_asm = bss_asm_source(bss_source['length'], source_bss_publics)
     bss_asm_path = work / 'WORK/GAMEBSS.ASM'
     bss_asm_path.write_bytes(bss_asm.encode('ascii'))
     # TASM records the source mtime in a COMENT record. Pin it so identical
@@ -217,7 +225,7 @@ def run():
                                                    for group in bss_module.groups))
     if (bss_module is None or bss_module.segment_length('_BSS') != bss_source['length']
             or '_BSS' in bss_module.segments or not bss_grouped
-            or actual_bss_publics != bss_public_offsets):
+            or actual_bss_publics != source_bss_publics):
         errors.append('TASM BSS object metadata differs from source')
     segments, rows = parse_map(map_path)
     report = {'status': 'LINKED' if not errors else 'LINK_FAILED', 'errors': errors,
@@ -230,13 +238,15 @@ def run():
               'dgroup_scaffold_present': False,
               'bss_source': {'kind': 'TASM_SOURCE', 'source_sha256': sha(bss_asm.encode()),
                              'object_sha256': sha(bss_object.read_bytes()) if bss_object.exists() else None,
-                             'publics': len(bss_public_offsets), 'initialized_bytes': 0,
+                             'publics': len(source_bss_publics), 'initialized_bytes': 0,
                              'group': 'DGROUP', 'segment': '_BSS',
-                             'source_mtime_epoch': 315532800},
+                             'source_mtime_epoch': 315532800,
+                             'binding_evidence_equal': source_bss_publics == bss_public_offsets},
               'temporary_startup_data_aliases': startup_aliases,
               'temporary_runtime_data_aliases': runtime_aliases,
               'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),
-              'limitation': 'Ordered source DATA; raw sources, recovered aliases, unpartitioned BSS and module grouping remain.'}
+              'limitation': ('Ordered source DATA and canonical BSS anchors; '
+                             'unpartitioned BSS storage and historical module grouping remain.')}
     write_json(ROOT / 'build/source-data-link-report.json', report)
     receipt = dict(report)
     receipt['byte_comparison'] = {key: value for key, value in report['byte_comparison'].items()

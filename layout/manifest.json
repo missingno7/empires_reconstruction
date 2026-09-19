@@ -103,15 +103,39 @@
       }
     },
     {
-      "id": "RAW_00039C",
+      "id": "F_019C",
+      "kind": "MATCHING_C",
+      "source": "src/F_019C.C",
       "start": 924,
+      "end": 932,
+      "expected_sha256": "aeb19f82e11c3536e82c536624996546d70e20ca9fceb262fdf497ba2408e372",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f019c",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {}
+      },
+      "classification": "code",
+      "original_symbol": "F_019C",
+      "artifact": "regions/F_019C.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly subextent and fresh full-extent OMF binding",
+        "change": "Recover the complete 8-byte DOS write helper preceding the remaining setup/data tail"
+      }
+    },
+    {
+      "id": "RAW_0003A4",
+      "start": 932,
       "end": 956,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/00039C-0003BC.bin",
+      "source": "raw/0003A4-0003BC.bin",
       "original_symbol": null,
-      "artifact": "raw/00039C-0003BC.bin",
-      "expected_sha256": "ea769aab4d24c5d7c210530dceb02c96757652c8d83b8fccb9515bcef8eca48b",
+      "artifact": "raw/0003A4-0003BC.bin",
+      "expected_sha256": "6fef080693b69d6005c6e9e0408f97d543b427dc8b82e7225736f3cf983bdfdd",
       "matching_status": "EQUAL"
     },
     {

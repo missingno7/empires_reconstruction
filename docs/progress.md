@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,431 | 257 |
+| Freshly compiled matching C | 14,077 | 36,439 | 258 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,412 | 42 |
+| Exact raw fallback | 62,621 | 31,404 | 42 |
 | Total | 79,154 | 79,154 | 376 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,412 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,404 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -599,3 +599,7 @@ F_C8D4 adds 14 matching C bytes for the complete live-AL port-write wrapper. Its
 ## Sixty-eighth matching-C wave
 
 F_6CA6 adds 68 matching C bytes for the complete far-resource-table span setup. Its fresh Turbo C object binds eight DGROUP references, preserves the parameter-forced frame, and has no loader relocations. See [the wave-sixty-eight proof](matching-c-wave68.md).
+
+## Sixty-ninth matching-C wave
+
+F_019C adds 8 matching C bytes for the complete DOS handle-2 write helper. Its fresh Turbo C object has no fixups or loader relocations; the following 24-byte setup/data tail remains raw with a proven split boundary. See [the wave-sixty-nine proof](matching-c-wave69.md).

@@ -1,0 +1,71 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_D89A",
+  "bytes": 86,
+  "source_sha256": "a592b2ec2fd434ac7a9726bd9ebc1302fbf67c6f198f9d463328513cbad02048",
+  "matched_sha256": "bd141cdc44868cafc87d1c421d198f74a02bff7de6924f2bdc593a6a8db1c35d",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 33,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_g2f30",
+      "displacement": 0,
+      "extent_offset": 33,
+      "addend": 0,
+      "resolved_value": 12080
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "a592b2ec2fd434ac7a9726bd9ebc1302fbf67c6f198f9d463328513cbad02048",
+    "staged_sha256": "4015917a742c8e032d2f466416365a3de54118644b0fff9eaa0c7917cc8e60f5",
+    "object_sha256": "93c20f3621059ea806f7323b582674f518c80f93f486f5d3d389d86283f746a9"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-fd89a-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "ccb15749873704df7fc738c857ae50f40bf30b8b810a8ef50aa1ef31cc1069b8",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_D89A",
+      "source": "src/F_D89A.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd89a",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_g2f30": {"offset": 12080, "coordinate": "DGROUP_offset", "evidence": "complete F_D89A fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to Turbo C inline assembly with one fresh OMF fixup"
+    }
+  ]
+}

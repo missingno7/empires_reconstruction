@@ -16947,9 +16947,9 @@
       "id": "F_D89A",
       "start": 55962,
       "end": 56048,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_D89A.ASM",
+      "source": "src/F_D89A.C",
       "original_symbol": "F_D89A",
       "artifact": "regions/F_D89A.bin",
       "expected_sha256": "bd141cdc44868cafc87d1c421d198f74a02bff7de6924f2bdc593a6a8db1c35d",
@@ -16959,22 +16959,20 @@
         "public": "_fd89a",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_g2f30": {
             "offset": 12080,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P22A60.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_D89A.json",
-        "entry_sha256": "9444cab3c76631aa03a7246ecaa18e83469748901da67443a6163e438e6ba32f",
-        "record_sha256": "694a74995e2ffb6601f82fb9ebe7fe142a95095126a360121344f3a5c10559f9",
-        "source_sha256": "cc5122c7c4cc47efeb179570a8e29091f2e9d11eb65a6d240f1a57b38fd31646",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "cc5122c7c4cc47efeb179570a8e29091f2e9d11eb65a6d240f1a57b38fd31646",
+        "source_sha256": "a592b2ec2fd434ac7a9726bd9ebc1302fbf67c6f198f9d463328513cbad02048",
+        "change": "Translate the complete rectangle hit-test into Turbo C inline assembly with one data fixup and no loader relocations."
       }
     },
     {

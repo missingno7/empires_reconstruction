@@ -1,16 +1,16 @@
 {
   "status": "EQUAL",
-  "recipe_sha256": "e6e46c68887abfc89e1c23ac64d81605209b1cc01d79d46529977a5280656eaa",
+  "recipe_sha256": "1b9bb606ccb14a634dd448f43eab350cc26dc6afa6d7c848e49e35617e56f897",
   "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
-  "promoted_c_bytes": 1512,
-  "promoted_asm_bytes": 0,
+  "promoted_c_bytes": 1484,
+  "promoted_asm_bytes": 28,
   "promoted_library_bytes": 0,
   "promoted_compiled_data_bytes": 0,
   "promoted_text_bytes": 0,
   "owners": [
     {
       "id": "F_C2EA",
-      "kind": "MATCHING_C",
+        "kind": "MATCHING_C",
       "bytes": 111,
       "sha256": "21e0080919fa704106383aa723b3a442c4856be94736a353da751790de24c9d9",
       "source_sha256": "c7a6230f6433b19c157167ca3f5414a9fe3c2b9a54c97dc918f590d4b738aa09",
@@ -208,10 +208,10 @@
     },
     {
       "id": "F_CA35",
-      "kind": "MATCHING_C",
+        "kind": "MATCHING_ASM",
       "bytes": 28,
       "sha256": "499cbfd6422b55b61c7f670d35313a16af3636dccd3f01fd28b71c5d7d0c0524",
-      "source_sha256": "f7070af75e4706288a206d8b6fb272c83d46079c31187fc7e430eb0de863f1ea",
+        "source_sha256": "1ff035ca47baadba866068a87eb7fdcb283c899435c09ac8d41c36ed5f2178d8",
       "fixups": 0,
       "load_relocations": [],
       "encoder": null,

@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "RUNTIME_BLOCK",
+      "kind": "MATCHING_C",
+      "source": "src/RUNTIME_BLOCK.C",
+      "start": 1436,
+      "end": 8007,
+      "expected_sha256": "1a3f517688ed204f52e8d9991ea7098ce138d53880cb2692003af0fb70561783",
+      "classification": "runtime-code-block",
+      "artifact": "regions/RUNTIME_BLOCK.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_runtime_block",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

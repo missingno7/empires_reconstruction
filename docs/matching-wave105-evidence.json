@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "4001e232aa8facd6716c7c6d6fbbc84552ebb2e445c9bf3c3e0ca6014de72843",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 6571,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "RUNTIME_BLOCK",
+      "kind": "MATCHING_C",
+      "bytes": 6571,
+      "sha256": "1a3f517688ed204f52e8d9991ea7098ce138d53880cb2692003af0fb70561783",
+      "source_sha256": "589cf7a4bf78f686dd5cca5187f4821a449b9b5a9b06e3d4f196c41d2652cdea",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

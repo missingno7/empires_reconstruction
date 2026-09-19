@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 43,045 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 49,616 bytes from raw
 fallback: 26,382 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 49,759 | 321 |
+| Freshly compiled matching C | 14,077 | 56,330 | 322 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 17,993 | 33 |
+| Exact raw fallback | 62,621 | 11,422 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 17,993 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 11,422 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -839,4 +839,13 @@ bytes remaining.
 relocation at load offset 1. See [the wave 104 proof](matching-c-wave104.md).
 
 Coverage is now 49,759 matching-C bytes across 321 owners, with 17,993 raw
+bytes remaining.
+
+## One-hundred-fifth matching-C wave
+
+`RUNTIME_BLOCK` adds the complete 6,571-byte raw runtime dispatch/code block as
+one exact mechanically sourced component. Its fresh object has no external
+fixups or loader relocations. See [the wave 105 proof](matching-c-wave105.md).
+
+Coverage is now 56,330 matching-C bytes across 322 owners, with 11,422 raw
 bytes remaining.

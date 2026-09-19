@@ -21,6 +21,8 @@ def main():
             continue  # Canonical compiler/text sources must never be overwritten by extraction.
         target = project_path(ROOT, owner['source'])
         if not target.is_relative_to(raw_root):
+            if owner['kind'] == 'EXACT_DATA':
+                continue  # Structured sources under src/data are canonical too.
             raise SystemExit(f'Raw owner outside raw directory: {owner["id"]}')
         data = original[owner['start']:owner['end']]
         if sha(data) != owner['expected_sha256']:

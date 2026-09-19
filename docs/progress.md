@@ -23,6 +23,12 @@ contain named scalar/array fields, signed sentinels and 24 symbolic far
 pointers, including one into GAME_BSS. Both canonical raw ownership and the
 source link's `raw-local` byte count are zero; exact TLINK output is preserved.
 
+Four numeric DATA aliases are also gone. Matching C now names the actual C0C
+publics `__8087`, `__argv`, and `__osmajor`, plus the CC.LIB CTYPE public
+`__ctype`. TLINK resolves them from the historical objects without injected
+DATA publics or external-addend rewriting; both temporary DATA-alias maps are
+empty.
+
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table
 prefix to all 106 entries and produces the byte-identical EXE. These

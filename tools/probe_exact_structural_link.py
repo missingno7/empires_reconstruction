@@ -46,11 +46,10 @@ def run():
             'recovered symbol aliases',
             'EXTDEF case normalization',
             'injected internal publics',
-            'local raw DATA source components',
         ],
         'whole_build_reconstruction_complete': False,
-        'limitation': ('Byte-identical TLINK output from relocatable inputs; temporary adapters, '
-                       'raw DATA, BSS ownership and historical module proof remain.'),
+        'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA; '
+                       'temporary symbol/order adapters, BSS ownership and historical module proof remain.'),
     }
     write_json(ROOT / 'build/exact-structural-link-report.json', report)
     write_json(ROOT / 'docs/exact-structural-link.json', report)

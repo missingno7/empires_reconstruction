@@ -6,8 +6,8 @@
 extern int f4f63(), f4f96(), f50c1(), f50d2(), f51bf();
 extern char ff725();
 extern long ff3da();
-extern unsigned char g7d;
-extern char **g6d;
+extern unsigned char _osmajor;
+extern char **_argv;
 extern char gbfcd;
 extern char ba22[3][16];
 extern char s859[], s8a8[];
@@ -18,8 +18,8 @@ int f520a()
     long n;
     int i;
 
-    if (g7d >= 3 && g6d[0][1] == ':')
-        c = g6d[0][0];
+    if (_osmajor >= 3 && _argv[0][1] == ':')
+        c = _argv[0][0];
     else
         c = ff725() + 0x41;
     for (i = 0; i < 3; i++)

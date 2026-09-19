@@ -64,7 +64,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_g81": {
+          "__8087": {
             "offset": 129,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAB1.phys"
@@ -4257,12 +4257,12 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_F725.entry"
           },
-          "_g6d": {
+          "__argv": {
             "offset": 109,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FA9D.phys"
           },
-          "_g7d": {
+          "__osmajor": {
             "offset": 125,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAAD.phys"
@@ -12089,11 +12089,11 @@
             "public": "_fa43c",
             "addend": 0
           },
-          "_g37cb": {
+          "__ctype": {
             "owner": "LIB_CTYPE_DATA",
             "coordinate": "DGROUP_offset",
             "public": "__ctype",
-            "addend": 1,
+            "addend": 0,
             "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
           },
           "_ff9be": {
@@ -20133,11 +20133,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g37cb": {
+          "__ctype": {
             "owner": "LIB_CTYPE_DATA",
             "coordinate": "DGROUP_offset",
             "public": "__ctype",
-            "addend": 1,
+            "addend": 0,
             "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
           }
         }

@@ -53,21 +53,21 @@ class MatchingCWave19Tests(unittest.TestCase):
         modules = owned_library_modules(owners, ROOT / 'toolchain', lock)
         owner = next(o for o in owners if o['id'] == 'LIB_CTYPE_DATA')
         caller = next(o for o in owners if o['id'] == 'F_A525')
-        binding = caller['build']['bindings']['_g37cb']
+        binding = caller['build']['bindings']['__ctype']
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         mz = MZ.parse(original)
         module = modules[owner['id']]
         data, _ = bind_region(owner, module, mz, manifest['frames'], owners, modules)
         mismatch(original[owner['start']:owner['end']], data, owner)
         self.assertEqual(len(data), 257)
-        self.assertEqual(component_binding(binding, owners, mz, manifest['frames'], modules)['offset'], 0x37cb)
+        self.assertEqual(component_binding(binding, owners, mz, manifest['frames'], modules)['offset'], 0x37ca)
         for change in ({'public': '__missing'}, {'addend': 257}, {'addend': -1}, {'coordinate': 'code_offset'}):
             with self.assertRaises(ValueError):
                 component_binding(dict(binding, **change), owners, mz, manifest['frames'], modules)
         with self.assertRaises(ValueError):
             component_binding(binding, owners, mz, manifest['frames'], {})
         shifted = copy.deepcopy(module)
-        shifted.publics[0]['offset'] = 256
+        shifted.publics[0]['offset'] = 257
         with self.assertRaises(ValueError):
             component_binding(binding, owners, mz, manifest['frames'], {owner['id']: shifted})
         with self.assertRaises(ValueError):

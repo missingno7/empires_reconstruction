@@ -27,7 +27,7 @@
         "layout/manifest.json"
       ],
       "unblock": "Continue source and module recovery on newly classified raw extents; preserve the same fresh complete extent, fixup and relocation proof for each promotion.",
-      "leverage": "The 76-byte F_4E9F extent is now matching C; continue testing the remaining ASM owners for compiler-reproducible extents."
+      "leverage": "The pinned matching-C/ASM correspondence is exhausted; further executable recovery requires new disassembly or module evidence outside the current held snapshot."
     },
     {
       "target": "Original modules and historical linker",
@@ -47,7 +47,7 @@
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "The current manifest retains 5,397 raw EXE bytes across 21 explicit fallback owners after executable-data partitioning; no remaining raw owner has been promoted as code without a complete extent proof.",
+      "matches": "The current manifest retains 5,397 raw EXE bytes across 16 explicit fallback owners after executable-data partitioning; no remaining raw owner has been promoted as code without a complete extent proof.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",

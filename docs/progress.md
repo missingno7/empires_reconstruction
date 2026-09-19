@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 2,728 | 61 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 5,397 | 21 |
+| Exact raw fallback | 62,621 | 5,397 | 16 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -1080,7 +1080,7 @@ one loader relocation in each handler.
 
 The matching-ASM frontier is now exhausted: matching-C coverage is 58,895
 bytes across 345 owners and matching-ASM coverage is 0 bytes across 0 owners.
-The raw frontier remains 5,397 bytes.
+The raw frontier remains 10,173 bytes.
 
 ## One-hundred-thirty-first executable-data wave
 
@@ -1105,7 +1105,7 @@ wave splits zero padding from adjacent word tables, encodes four relocation-free
 little-endian tables, and promotes the remaining `New User Message` record as
 terminated ASCII. The full EXE and both DAT archives remain byte-identical.
 
-The raw frontier is now 8,651 bytes across 21 owners.
+The raw frontier is now 8,651 bytes across 15 owners.
 
 ## One-hundred-thirty-fourth executable-data wave
 
@@ -1113,7 +1113,7 @@ Wave 134 partitions 99 bytes from isolated alignment bytes, a zero-initialized
 run and four terminated ASCII records. The full EXE and both DAT archives remain
 byte-identical.
 
-The raw frontier is now 8,552 bytes across 20 owners.
+The raw frontier is now 8,552 bytes across 15 owners.
 
 ## One-hundred-thirty-fifth executable-data wave
 
@@ -1122,4 +1122,4 @@ owner. The strict zero-run source sits between the post-message fields and the
 next nonzero table; surrounding interleaved fields remain raw. The full EXE and
 both DAT archives remain byte-identical.
 
-The raw frontier is now 5,397 bytes across 21 owners.
+The raw frontier is now 5,397 bytes across 16 owners.

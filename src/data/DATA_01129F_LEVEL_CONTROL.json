@@ -1,0 +1,64 @@
+{
+  "format": "typed-data-v1",
+  "owner": "DATA_01129F_LEVEL_CONTROL",
+  "fields": [
+    {
+      "name": "header",
+      "type": "u8",
+      "values": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "name": "level_complete_text",
+      "type": "pointer32",
+      "target": "DATA_0112D6_LEVEL_COMPLETE",
+      "addend": 0
+    },
+    {
+      "name": "sentinel_prefix",
+      "type": "u8",
+      "values": [
+        0,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "name": "control_words",
+      "type": "i16",
+      "values": [
+        4,
+        6,
+        8,
+        10,
+        6,
+        4,
+        8,
+        10,
+        4,
+        8,
+        10,
+        6,
+        -1,
+        6,
+        8,
+        10,
+        -1
+      ]
+    }
+  ]
+}

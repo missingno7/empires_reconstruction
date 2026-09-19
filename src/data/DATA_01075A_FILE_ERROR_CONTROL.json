@@ -1,0 +1,45 @@
+{
+  "format": "typed-data-v1",
+  "owner": "DATA_01075A_FILE_ERROR_CONTROL",
+  "fields": [
+    {
+      "name": "enabled",
+      "type": "u16",
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "control_bytes",
+      "type": "u8",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "name": "message",
+      "type": "pointer32",
+      "target": "DATA_01068E_PROGRAM_DISK",
+      "addend": 0
+    },
+    {
+      "name": "terminator",
+      "type": "u8",
+      "values": [
+        0,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    }
+  ]
+}

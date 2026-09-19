@@ -9,10 +9,10 @@ advancing prefixes of existing DATA objects between code contributions:
 
 | DATA through | After code | Before next relocating code |
 |---|---|---|
-| RAW_01075A | F_6181 | F_699E |
+| DATA_01075A_FILE_ERROR_CONTROL | F_6181 | F_699E |
 | PAD_10EDD | F_7BFC | F_9EC3 |
 | DATA_0101220_ENERGY_PROMPT | F_9EC3 | F_A09D |
-| RAW_011FAE | F_ADCF | F_DDD9 |
+| DATA_011FAE_CACHED_INDEX | F_ADCF | F_DDD9 |
 
 DATA contribution order is preserved. TLINK reads the reordered objects and
 generates the executable itself; the experiment adds no padding, final

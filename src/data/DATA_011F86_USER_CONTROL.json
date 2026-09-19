@@ -1,0 +1,38 @@
+{
+  "format": "typed-data-v1",
+  "owner": "DATA_011F86_USER_CONTROL",
+  "fields": [
+    {
+      "name": "enabled",
+      "type": "u16",
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "message",
+      "type": "pointer32",
+      "target": "DATA_011F9A_NEW_USER_MESSAGE",
+      "addend": 0
+    },
+    {
+      "name": "mode",
+      "type": "u16",
+      "values": [
+        2
+      ]
+    },
+    {
+      "name": "state_words",
+      "type": "i16",
+      "values": [
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1
+      ]
+    }
+  ]
+}

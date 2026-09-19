@@ -20617,16 +20617,17 @@
       }
     },
     {
-      "id": "RAW_01075A",
+      "id": "DATA_01075A_FILE_ERROR_CONTROL",
       "start": 67418,
       "end": 67438,
-      "kind": "RAW",
-      "classification": "relocation_backed_control_tail",
-      "source": "raw/01075A-01076E.bin",
+      "kind": "EXACT_DATA",
+      "classification": "file_error_control",
+      "source": "src/data/DATA_01075A_FILE_ERROR_CONTROL.json",
       "original_symbol": null,
-      "artifact": "raw/01075A-01076E.bin",
+      "artifact": "regions/DATA_01075A_FILE_ERROR_CONTROL.bin",
       "expected_sha256": "df1594aa876c7049d632cb359e83a88b1b62f16b9e92cfb9f396b483f8c60d39",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_01076E_ZERO_SUFFIX",
@@ -20901,16 +20902,17 @@
       }
     },
     {
-      "id": "RAW_010924",
+      "id": "DATA_010924_MENU_DESCRIPTORS",
       "start": 67876,
       "end": 68015,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010924-0109AF.bin",
+      "kind": "EXACT_DATA",
+      "classification": "menu_descriptor_tables",
+      "source": "src/data/DATA_010924_MENU_DESCRIPTORS.json",
       "original_symbol": null,
-      "artifact": "raw/010924-0109AF.bin",
+      "artifact": "regions/DATA_010924_MENU_DESCRIPTORS.bin",
       "expected_sha256": "15bb4775398874b1c975a93cadf5fe362f5ee940b960c17de09d30ae0d061c27",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_0109AF_GO_BACK",
@@ -20927,16 +20929,17 @@
       }
     },
     {
-      "id": "RAW_0109BB",
+      "id": "DATA_0109BB_CONTROL_CODES",
       "start": 68027,
       "end": 68029,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0109BB-0109BD.bin",
+      "kind": "EXACT_DATA",
+      "classification": "control_codes",
+      "source": "src/data/DATA_0109BB_CONTROL_CODES.json",
       "original_symbol": null,
-      "artifact": "raw/0109BB-0109BD.bin",
+      "artifact": "regions/DATA_0109BB_CONTROL_CODES.bin",
       "expected_sha256": "c292bfe6d12ec9a0ff84564959d0085353a00836d39f2bc541473cea1390f64b",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_0109BD_CONTINUE",
@@ -21378,16 +21381,17 @@
       }
     },
     {
-      "id": "RAW_01129F_CONTROL_PREFIX",
+      "id": "DATA_01129F_LEVEL_CONTROL",
       "start": 70303,
       "end": 70358,
-      "kind": "RAW",
-      "classification": "relocation_backed_control_prefix",
-      "source": "raw/01129F-0112D6.bin",
+      "kind": "EXACT_DATA",
+      "classification": "level_control_table",
+      "source": "src/data/DATA_01129F_LEVEL_CONTROL.json",
       "original_symbol": null,
-      "artifact": "raw/01129F-0112D6.bin",
+      "artifact": "regions/DATA_01129F_LEVEL_CONTROL.bin",
       "expected_sha256": "60afdb477b7cb24373212b31e327fa1e0b1a340f43298b0796db2cd567dcd266",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_0112D6_LEVEL_COMPLETE",
@@ -21756,16 +21760,17 @@
       }
     },
     {
-      "id": "RAW_011F25",
+      "id": "DATA_011F25_KEYBOARD_CONTROL",
       "start": 73509,
       "end": 73522,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/011F25-011F32.bin",
+      "kind": "EXACT_DATA",
+      "classification": "keyboard_control",
+      "source": "src/data/DATA_011F25_KEYBOARD_CONTROL.json",
       "original_symbol": null,
-      "artifact": "raw/011F25-011F32.bin",
+      "artifact": "regions/DATA_011F25_KEYBOARD_CONTROL.bin",
       "expected_sha256": "f37b41bab4b4142f34c972ea028c93116918d20169c753d184704cb3120856eb",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_011F32_KEYBOARD_LABEL",
@@ -21824,16 +21829,17 @@
       }
     },
     {
-      "id": "RAW_011F86",
+      "id": "DATA_011F86_USER_CONTROL",
       "start": 73606,
       "end": 73626,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/011F86-011F9A.bin",
+      "kind": "EXACT_DATA",
+      "classification": "user_control",
+      "source": "src/data/DATA_011F86_USER_CONTROL.json",
       "original_symbol": null,
-      "artifact": "raw/011F86-011F9A.bin",
+      "artifact": "regions/DATA_011F86_USER_CONTROL.bin",
       "expected_sha256": "d9a0231b68e2cb0fe0834222f1c48f6f9587dd55ff17cea9a3becfb2345e5592",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_011F9A_NEW_USER_MESSAGE",
@@ -21864,16 +21870,17 @@
       }
     },
     {
-      "id": "RAW_011FAE",
+      "id": "DATA_011FAE_CACHED_INDEX",
       "start": 73646,
       "end": 73648,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/011FAE-011FB0.bin",
+      "kind": "EXACT_DATA",
+      "classification": "cached_index_sentinel",
+      "source": "src/data/DATA_011FAE_CACHED_INDEX.json",
       "original_symbol": null,
-      "artifact": "raw/011FAE-011FB0.bin",
+      "artifact": "regions/DATA_011FAE_CACHED_INDEX.bin",
       "expected_sha256": "ca2fd00fa001190744c15c317643ab092e7048ce086a243e2be9437c898de1bb",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     },
     {
       "id": "DATA_011FB0_ZERO_REGION",
@@ -22134,16 +22141,17 @@
       }
     },
     {
-      "id": "RAW_01352C",
+      "id": "DATA_01352C_RUNTIME_LIMITS",
       "start": 79148,
       "end": 79154,
-      "kind": "RAW",
-      "classification": "startup_segment_data",
-      "source": "raw/01352C-013532.bin",
+      "kind": "EXACT_DATA",
+      "classification": "runtime_limit_words",
+      "source": "src/data/DATA_01352C_RUNTIME_LIMITS.json",
       "original_symbol": null,
-      "artifact": "raw/01352C-013532.bin",
+      "artifact": "regions/DATA_01352C_RUNTIME_LIMITS.bin",
       "expected_sha256": "2f8c3166a20150ffc910e906ba2260543939ede1aaff6d39a7b5147b173ec4e3",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": { "encoder": "typed-data-v1" }
     }
   ]
 }

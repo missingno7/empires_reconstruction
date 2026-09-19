@@ -218,7 +218,7 @@ class ArchiveBuildTests(unittest.TestCase):
         for row in metrics['unresolved_machine_ranges']:
             covered.update(range(row['start'], row['end']))
         self.assertEqual(metrics['unresolved_machine_code_bytes'], len(covered))
-        self.assertEqual(metrics['raw_unknown_bytes'] + len(covered), counts['RAW'])
+        self.assertEqual(metrics['raw_unknown_bytes'] + len(covered), counts.get('RAW', 0))
 
 
 if __name__ == '__main__':

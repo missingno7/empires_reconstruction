@@ -20,8 +20,8 @@ class RawDataWave143Tests(unittest.TestCase):
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         self.assertEqual(encoded, original[owner['start']:owner['end']])
         self.assertEqual(len(encoded), 99)
-        tail = next(r for r in manifest['regions'] if r['id'] == 'RAW_01075A')
-        self.assertEqual(tail['kind'], 'RAW')
+        tail = next(r for r in manifest['regions'] if r['id'] == 'DATA_01075A_FILE_ERROR_CONTROL')
+        self.assertEqual(tail['kind'], 'EXACT_DATA')
         self.assertEqual(tail['end'] - tail['start'], 20)
         self.assertEqual(evidence['raw_tail']['bytes'], 20)
 

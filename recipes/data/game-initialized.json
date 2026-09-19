@@ -129,16 +129,9 @@
       "format": "ascii-nul-v1"
     },
     {
-      "id": "RAW_01075A",
-      "source": "raw/01075A-01076E.bin",
-      "format": "raw-local",
-      "symbolic_pointer_fields": [
-        {
-          "offset": 7,
-          "target": "DATA_01068E_PROGRAM_DISK",
-          "addend": 0
-        }
-      ]
+      "id": "DATA_01075A_FILE_ERROR_CONTROL",
+      "source": "src/data/DATA_01075A_FILE_ERROR_CONTROL.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_01076E_ZERO_SUFFIX",
@@ -239,111 +232,9 @@
       "format": "ascii-nul-v1"
     },
     {
-      "id": "RAW_010924",
-      "source": "raw/010924-0109AF.bin",
-      "format": "raw-local",
-      "symbolic_pointer_fields": [
-        {
-          "offset": 6,
-          "target": "DATA_0107EA_HELP_TITLE",
-          "addend": 0
-        },
-        {
-          "offset": 14,
-          "target": "DATA_0107F4_HELP_TOPICS",
-          "addend": 0
-        },
-        {
-          "offset": 18,
-          "target": "DATA_010848_FILE_F2_TABLE",
-          "addend": 0
-        },
-        {
-          "offset": 26,
-          "target": "DATA_010848_FILE_F2_TEXT",
-          "addend": 0
-        },
-        {
-          "offset": 34,
-          "target": "DATA_01085A_MENU_TOPICS",
-          "addend": 0
-        },
-        {
-          "offset": 38,
-          "target": "DATA_0108A7_MENU_TABLE_A",
-          "addend": 0
-        },
-        {
-          "offset": 46,
-          "target": "DATA_0108A7_MENU_OPTIONS",
-          "addend": 0
-        },
-        {
-          "offset": 54,
-          "target": "DATA_0108FE_OPTION_TOPICS",
-          "addend": 0
-        },
-        {
-          "offset": 58,
-          "target": "RAW_010924",
-          "addend": 0
-        },
-        {
-          "offset": 68,
-          "target": "RAW_010924",
-          "addend": 6
-        },
-        {
-          "offset": 72,
-          "target": "DATA_0107EA_HELP_TITLE",
-          "addend": 0
-        },
-        {
-          "offset": 80,
-          "target": "DATA_0107F4_HELP_TOPICS",
-          "addend": 0
-        },
-        {
-          "offset": 84,
-          "target": "DATA_010848_FILE_F2_TABLE",
-          "addend": 0
-        },
-        {
-          "offset": 92,
-          "target": "DATA_010848_FILE_F2_TEXT",
-          "addend": 0
-        },
-        {
-          "offset": 100,
-          "target": "DATA_0108A7_MENU_HALL",
-          "addend": 0
-        },
-        {
-          "offset": 104,
-          "target": "DATA_0108A7_MENU_TABLE_B",
-          "addend": 0
-        },
-        {
-          "offset": 112,
-          "target": "DATA_0108A7_MENU_OPTIONS",
-          "addend": 0
-        },
-        {
-          "offset": 120,
-          "target": "DATA_0108FE_OPTION_TOPICS",
-          "addend": 0
-        },
-        {
-          "offset": 124,
-          "target": "RAW_010924",
-          "addend": 0
-        },
-        {
-          "offset": 134,
-          "target": "RAW_010924",
-          "addend": 72
-        }
-      ]
+      "id": "DATA_010924_MENU_DESCRIPTORS",
+      "source": "src/data/DATA_010924_MENU_DESCRIPTORS.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_0109AF_GO_BACK",
@@ -351,9 +242,9 @@
       "format": "ascii-nul-v1"
     },
     {
-      "id": "RAW_0109BB",
-      "source": "raw/0109BB-0109BD.bin",
-      "format": "raw-local"
+      "id": "DATA_0109BB_CONTROL_CODES",
+      "source": "src/data/DATA_0109BB_CONTROL_CODES.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_0109BD_CONTINUE",
@@ -513,16 +404,9 @@
       "format": "ascii-nul-v1"
     },
     {
-      "id": "RAW_01129F_CONTROL_PREFIX",
-      "source": "raw/01129F-0112D6.bin",
-      "format": "raw-local",
-      "symbolic_pointer_fields": [
-        {
-          "offset": 8,
-          "target": "DATA_0112D6_LEVEL_COMPLETE",
-          "addend": 0
-        }
-      ]
+      "id": "DATA_01129F_LEVEL_CONTROL",
+      "source": "src/data/DATA_01129F_LEVEL_CONTROL.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_0112D6_LEVEL_COMPLETE",
@@ -655,16 +539,9 @@
       "format": "zero-pad-v1"
     },
     {
-      "id": "RAW_011F25",
-      "source": "raw/011F25-011F32.bin",
-      "format": "raw-local",
-      "symbolic_pointer_fields": [
-        {
-          "offset": 0,
-          "target": "GAME_BSS",
-          "addend": 36044
-        }
-      ]
+      "id": "DATA_011F25_KEYBOARD_CONTROL",
+      "source": "src/data/DATA_011F25_KEYBOARD_CONTROL.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_011F32_KEYBOARD_LABEL",
@@ -687,16 +564,9 @@
       "format": "ascii-nul-v1"
     },
     {
-      "id": "RAW_011F86",
-      "source": "raw/011F86-011F9A.bin",
-      "format": "raw-local",
-      "symbolic_pointer_fields": [
-        {
-          "offset": 2,
-          "target": "DATA_011F9A_NEW_USER_MESSAGE",
-          "addend": 0
-        }
-      ]
+      "id": "DATA_011F86_USER_CONTROL",
+      "source": "src/data/DATA_011F86_USER_CONTROL.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_011F9A_NEW_USER_MESSAGE",
@@ -709,9 +579,9 @@
       "format": "zero-pad-v1"
     },
     {
-      "id": "RAW_011FAE",
-      "source": "raw/011FAE-011FB0.bin",
-      "format": "raw-local"
+      "id": "DATA_011FAE_CACHED_INDEX",
+      "source": "src/data/DATA_011FAE_CACHED_INDEX.json",
+      "format": "typed-data-v1"
     },
     {
       "id": "DATA_011FB0_ZERO_REGION",

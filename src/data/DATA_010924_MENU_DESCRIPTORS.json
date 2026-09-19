@@ -1,0 +1,240 @@
+{
+  "format": "typed-data-v1",
+  "owner": "DATA_010924_MENU_DESCRIPTORS",
+  "fields": [
+    {
+      "name": "descriptor_words_00",
+      "type": "u16",
+      "values": [
+        52060,
+        52157,
+        52247
+      ]
+    },
+    {
+      "name": "descriptor_pointer_006",
+      "type": "pointer32",
+      "target": "DATA_0107EA_HELP_TITLE",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_01",
+      "type": "u16",
+      "values": [
+        66,
+        4
+      ]
+    },
+    {
+      "name": "descriptor_pointer_014",
+      "type": "pointer32",
+      "target": "DATA_0107F4_HELP_TOPICS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_pointer_018",
+      "type": "pointer32",
+      "target": "DATA_010848_FILE_F2_TABLE",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_02",
+      "type": "u16",
+      "values": [
+        203,
+        1
+      ]
+    },
+    {
+      "name": "descriptor_pointer_026",
+      "type": "pointer32",
+      "target": "DATA_010848_FILE_F2_TEXT",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_03",
+      "type": "u16",
+      "values": [
+        63,
+        5
+      ]
+    },
+    {
+      "name": "descriptor_pointer_034",
+      "type": "pointer32",
+      "target": "DATA_01085A_MENU_TOPICS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_pointer_038",
+      "type": "pointer32",
+      "target": "DATA_0108A7_MENU_TABLE_A",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_04",
+      "type": "u16",
+      "values": [
+        181,
+        70
+      ]
+    },
+    {
+      "name": "descriptor_pointer_046",
+      "type": "pointer32",
+      "target": "DATA_0108A7_MENU_OPTIONS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_05",
+      "type": "u16",
+      "values": [
+        78,
+        3
+      ]
+    },
+    {
+      "name": "descriptor_pointer_054",
+      "type": "pointer32",
+      "target": "DATA_0108FE_OPTION_TOPICS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_pointer_058",
+      "type": "pointer32",
+      "target": "DATA_010924_MENU_DESCRIPTORS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_06",
+      "type": "u16",
+      "values": [
+        149,
+        136,
+        3
+      ]
+    },
+    {
+      "name": "descriptor_pointer_068",
+      "type": "pointer32",
+      "target": "DATA_010924_MENU_DESCRIPTORS",
+      "addend": 6
+    },
+    {
+      "name": "descriptor_pointer_072",
+      "type": "pointer32",
+      "target": "DATA_0107EA_HELP_TITLE",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_07",
+      "type": "u16",
+      "values": [
+        66,
+        4
+      ]
+    },
+    {
+      "name": "descriptor_pointer_080",
+      "type": "pointer32",
+      "target": "DATA_0107F4_HELP_TOPICS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_pointer_084",
+      "type": "pointer32",
+      "target": "DATA_010848_FILE_F2_TABLE",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_08",
+      "type": "u16",
+      "values": [
+        203,
+        1
+      ]
+    },
+    {
+      "name": "descriptor_pointer_092",
+      "type": "pointer32",
+      "target": "DATA_010848_FILE_F2_TEXT",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_09",
+      "type": "u16",
+      "values": [
+        63,
+        4
+      ]
+    },
+    {
+      "name": "descriptor_pointer_100",
+      "type": "pointer32",
+      "target": "DATA_0108A7_MENU_HALL",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_pointer_104",
+      "type": "pointer32",
+      "target": "DATA_0108A7_MENU_TABLE_B",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_10",
+      "type": "u16",
+      "values": [
+        181,
+        70
+      ]
+    },
+    {
+      "name": "descriptor_pointer_112",
+      "type": "pointer32",
+      "target": "DATA_0108A7_MENU_OPTIONS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_11",
+      "type": "u16",
+      "values": [
+        78,
+        3
+      ]
+    },
+    {
+      "name": "descriptor_pointer_120",
+      "type": "pointer32",
+      "target": "DATA_0108FE_OPTION_TOPICS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_pointer_124",
+      "type": "pointer32",
+      "target": "DATA_010924_MENU_DESCRIPTORS",
+      "addend": 0
+    },
+    {
+      "name": "descriptor_words_12",
+      "type": "u16",
+      "values": [
+        149,
+        136,
+        3
+      ]
+    },
+    {
+      "name": "descriptor_pointer_134",
+      "type": "pointer32",
+      "target": "DATA_010924_MENU_DESCRIPTORS",
+      "addend": 72
+    },
+    {
+      "name": "terminal_control",
+      "type": "u8",
+      "values": [
+        31
+      ]
+    }
+  ]
+}

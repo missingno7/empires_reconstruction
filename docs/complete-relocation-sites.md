@@ -23,8 +23,9 @@ component-relative offsets, symbolic target owners and addends. The emitter
 replaces their raw words with unbound pointers and emits genuine OMF FIXUPPs.
 One target is within the source-declared game BSS reserve. Surrounding payloads
 remain explicitly `raw-local`: annotating their pointers does not make their
-unknown record or command structure understood. Canonical raw ownership is
-257 bytes across 8 owners; the source DATA path uses 251 of those bytes.
+unknown record or command structure understood. The former eight small raw
+owners are now typed DATA source with 24 symbolic far pointers. Canonical raw
+ownership and source-link `raw-local` input are both zero bytes.
 
 DATA fixups are emitted in the descending order independently observed in
 fresh Turbo C objects. Remaining relocation order differences cross source

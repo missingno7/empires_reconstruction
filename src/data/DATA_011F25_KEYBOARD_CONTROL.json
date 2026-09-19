@@ -1,0 +1,29 @@
+{
+  "format": "typed-data-v1",
+  "owner": "DATA_011F25_KEYBOARD_CONTROL",
+  "fields": [
+    {
+      "name": "runtime_buffer",
+      "type": "pointer32",
+      "target": "GAME_BSS",
+      "addend": 36044
+    },
+    {
+      "name": "mode",
+      "type": "u8",
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "control_words",
+      "type": "u16",
+      "values": [
+        11,
+        14,
+        285,
+        11
+      ]
+    }
+  ]
+}

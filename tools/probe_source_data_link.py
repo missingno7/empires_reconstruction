@@ -17,6 +17,7 @@ from omf import OmfReader
 from omf_scaffold import add_publics, externalize_data_segment, rename_external_addend
 from pointer_records import FORMAT, compile_records
 from sound_data import FORMAT as SOUND_FORMAT, compile_sound_data
+from typed_data import FORMAT as TYPED_FORMAT, compile_typed_data
 from probe_tlink_layout import compare_linked_executable, link_errors, parse_map
 from reconstruct import ROOT, read_json, sha, write_json
 
@@ -69,6 +70,8 @@ def run():
                 if binding.get('addend', 0) or fixup['displacement']:
                     raise ValueError('Compiled pointer addend requires explicit normalization')
                 refs.append({'offset': fixup['offset'], 'target': binding['owner']})
+        elif spec['format'] == TYPED_FORMAT:
+            data, refs, typed_publics = compile_typed_data(read_json(ROOT / spec['source']))
         elif spec['format'] == FORMAT:
             data, refs = compile_records(read_json(ROOT / spec['source']))
         elif spec['format'] == SOUND_FORMAT:
@@ -81,7 +84,8 @@ def run():
         data = data[skip:]
         parts.append({'spec': spec, 'data': data, 'refs': refs,
                       'publics': ({} if skip else
-                                  sound_publics if spec['format'] == SOUND_FORMAT else {spec['id']: 0})})
+                                  sound_publics if spec['format'] == SOUND_FORMAT else
+                                  typed_publics if spec['format'] == TYPED_FORMAT else {spec['id']: 0})})
 
     # Existing fixed binding evidence routes aliases to source components. It
     # supplies no placement directive or padding; TLINK concatenates sources.

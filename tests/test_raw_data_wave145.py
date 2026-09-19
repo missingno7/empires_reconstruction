@@ -25,7 +25,7 @@ class RawDataWave145Tests(unittest.TestCase):
         load_start = owner['start'] - 512
         load_end = owner['end'] - 512
         self.assertFalse(any(load_start <= r['load_offset'] < load_end for r in mz.relocations))
-        prefix = next(r for r in manifest['regions'] if r['id'] == 'RAW_01129F_CONTROL_PREFIX')
+        prefix = next(r for r in manifest['regions'] if r['id'] == 'DATA_01129F_LEVEL_CONTROL')
         self.assertEqual(prefix['end'], owner['start'])
 
 

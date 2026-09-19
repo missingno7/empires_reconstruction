@@ -244,11 +244,11 @@
       "object_sha256": "ed88bd31059958d83c1da132f64320e18e52fa575f32b38788e00fcd3041cb5d"
     },
     {
-      "owner": "RAW_01075A",
+      "owner": "DATA_01075A_FILE_ERROR_CONTROL",
       "bytes": 20,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 1,
-      "object_sha256": "16da175dd353a66e9c92496ebf448c8b95f54e6a1ef7a7395eef04022d6ee137"
+      "object_sha256": "176bc40d8f3b11095730406816d0d22c8c0019a8e5b8f09b1b3eab84a666b326"
     },
     {
       "owner": "DATA_01076E_ZERO_SUFFIX",
@@ -384,11 +384,11 @@
       "object_sha256": "3cfb0a3f734c645969a9e40085a9441876a81be389e275218b1afcb248303fbf"
     },
     {
-      "owner": "RAW_010924",
+      "owner": "DATA_010924_MENU_DESCRIPTORS",
       "bytes": 139,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 20,
-      "object_sha256": "52cb732c0cc2c19e9f8089bf4f0867a7019e44c834ad93316f18bb50634159f2"
+      "object_sha256": "80b429bad01299116b7ddbe317db5c0f198f37a6f5fc47add3283239aafb8ed2"
     },
     {
       "owner": "DATA_0109AF_GO_BACK",
@@ -398,11 +398,11 @@
       "object_sha256": "256ea844a1d429ae196bfff51f9a2a96b61593b5ace22d57052516b10d87c17c"
     },
     {
-      "owner": "RAW_0109BB",
+      "owner": "DATA_0109BB_CONTROL_CODES",
       "bytes": 2,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 0,
-      "object_sha256": "361785dc9c60fd5b241cce32a412daad411e6d66015606be63580317b6f4504e"
+      "object_sha256": "88b3834a1908aa9aa0f2a1ce7ca0243402eb0ba02e4f570121f50e5f84076b59"
     },
     {
       "owner": "DATA_0109BD_CONTINUE",
@@ -622,11 +622,11 @@
       "object_sha256": "4bd5bb1d4ee94573af7c1e477d45d38564bbbb0a56f58f32bb97cc5cd63ba9d0"
     },
     {
-      "owner": "RAW_01129F_CONTROL_PREFIX",
+      "owner": "DATA_01129F_LEVEL_CONTROL",
       "bytes": 55,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 1,
-      "object_sha256": "eb6bcfb78a7950e0f4939ec607057c54b05db43f10f849d761da2807694fd643"
+      "object_sha256": "23c40edabdbe7d0234e7579e17c21c3f43c40e565ad8444dae29e32a70884d24"
     },
     {
       "owner": "DATA_0112D6_LEVEL_COMPLETE",
@@ -811,11 +811,11 @@
       "object_sha256": "beff269a6e6f0f42734951e511c7e2b83609b4dce2284a06f41240a298e39eec"
     },
     {
-      "owner": "RAW_011F25",
+      "owner": "DATA_011F25_KEYBOARD_CONTROL",
       "bytes": 13,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 1,
-      "object_sha256": "7a527a0a729925f43639afbc653829714dc5da2b0a4c00e42620d8654b5b23c1"
+      "object_sha256": "22a0e9504a2c9c93434964003b34db36ae712b31d7afe68ad2b4cec8a3d9d14d"
     },
     {
       "owner": "DATA_011F32_KEYBOARD_LABEL",
@@ -846,11 +846,11 @@
       "object_sha256": "16936ccabf8c5d7b1cf59ffae520f619746a6925e9bcf2a7323e47ef0a62c3b8"
     },
     {
-      "owner": "RAW_011F86",
+      "owner": "DATA_011F86_USER_CONTROL",
       "bytes": 20,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 1,
-      "object_sha256": "2b8ede1e675dafb45fe667050409bec8bde93436c39dbcf9cf6e448de89f9ec6"
+      "object_sha256": "c0cc4fa8ec0bd40d6262ba572f5a64e755221e98dfdd8894316303b1a778ae86"
     },
     {
       "owner": "DATA_011F9A_NEW_USER_MESSAGE",
@@ -867,11 +867,11 @@
       "object_sha256": "450df26f52587dc06814e93673575b921400634528bbd7452256b8e32c5f4ea5"
     },
     {
-      "owner": "RAW_011FAE",
+      "owner": "DATA_011FAE_CACHED_INDEX",
       "bytes": 2,
-      "format": "raw-local",
+      "format": "typed-data-v1",
       "pointer_fixups": 0,
-      "object_sha256": "5a3c02e6ce0bb95cd09466e8c10fe1596769fffab373ec7b28ca30367be3233f"
+      "object_sha256": "e63c4c46bd07330fa25c5bdc4fbb28db24c7e3f6d04f73257c123b43ce1e34dc"
     },
     {
       "owner": "DATA_011FB0_ZERO_REGION",
@@ -919,7 +919,7 @@
     }
   ],
   "oracle_copied_initialized_data_bytes": 0,
-  "local_raw_source_bytes": 251,
+  "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
   "unpartitioned_bss_source_bytes": 37250,
   "dgroup_scaffold_present": false,

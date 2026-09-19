@@ -438,6 +438,10 @@ def reconstruct(root, manifest_path, output, toolchain, dosbox):
             if encoder == 'omf-segment-v1':
                 continue
             def resolve_data_pointer(target_id):
+                if target_id == 'GAME_BSS':
+                    frame = manifest['frames']['DGROUP']
+                    initialized_end = max(r['end'] for r in manifest['regions'])
+                    return initialized_end - 512 - frame, frame // 16
                 target = next(r for r in manifest['regions'] if r['id'] == target_id)
                 frame = manifest['frames']['DGROUP']
                 return target['start'] - 512 - frame, frame // 16

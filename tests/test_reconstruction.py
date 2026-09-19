@@ -41,15 +41,16 @@ class ReconstructionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'gap'):
             validate_layout(manifest)
 
-    def test_raw_corruption_and_truncation_identify_owner(self):
-        owner = next(r for r in self.manifest['regions'] if r['kind'] == 'RAW' and r['end'] - r['start'] > 40)
-        raw = (ROOT / owner['source']).read_bytes()
-        corrupt = bytearray(raw)
+    def test_component_corruption_and_truncation_identify_owner(self):
+        owner = next(r for r in self.manifest['regions']
+                     if r['kind'] == 'EXACT_DATA' and r['end'] - r['start'] > 40)
+        expected = self.original[owner['start']:owner['end']]
+        corrupt = bytearray(expected)
         corrupt[40] ^= 1
         with self.assertRaisesRegex(ValueError, f"file 0x{owner['start']+40:06X}, owner {owner['id']}"):
-            mismatch(raw, corrupt, owner)
+            mismatch(expected, corrupt, owner)
         with self.assertRaisesRegex(ValueError, 'wrong output length'):
-            mismatch(raw, raw[:-1], owner)
+            mismatch(expected, expected[:-1], owner)
 
     def test_mz_coordinates_relocations_and_invalid_header(self):
         self.assertEqual(self.mz.file_offset(0x56C6), 0x58C6)
@@ -190,18 +191,21 @@ class ReconstructionTests(unittest.TestCase):
                 mismatch(self.original[owner['start']:owner['end']], result, owner)
 
     def test_promotion_preserves_existing_owners_and_rejects_overlap(self):
-        raw = next(r for r in self.manifest['regions'] if r['kind'] == 'RAW' and r['end'] - r['start'] > 20)
+        fixture = copy.deepcopy(self.manifest)
+        raw = next(r for r in fixture['regions']
+                   if r['kind'] == 'EXACT_DATA' and r['end'] - r['start'] > 20)
+        raw['kind'] = 'RAW'
         candidate = dict(raw, id='NEW', start=raw['start'] + 2, end=raw['end'] - 2, kind='EXACT_DATA')
-        proposed = replace_raw_owners(self.manifest, [candidate], self.original)
-        self.assertEqual(len(proposed['regions']), len(self.manifest['regions']) + 2)
-        for region in self.manifest['regions']:
+        proposed = replace_raw_owners(fixture, [candidate], self.original)
+        self.assertEqual(len(proposed['regions']), len(fixture['regions']) + 2)
+        for region in fixture['regions']:
             if region['id'] != raw['id']:
                 self.assertIn(region, proposed['regions'])
         with self.assertRaisesRegex(ValueError, 'Overlapping'):
-            replace_raw_owners(self.manifest, [candidate, dict(candidate, id='OTHER')], self.original)
+            replace_raw_owners(fixture, [candidate, dict(candidate, id='OTHER')], self.original)
         existing = next(r for r in self.manifest['regions'] if r['kind'] == 'MATCHING_C')
         with self.assertRaisesRegex(ValueError, 'Cannot replace non-RAW'):
-            replace_raw_owners(self.manifest, [dict(existing, id='OTHER')], self.original)
+            replace_raw_owners(fixture, [dict(existing, id='OTHER')], self.original)
 
     def test_failed_promotion_leaves_canonical_files_and_success_untouched(self):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build', prefix='test-') as tmp:

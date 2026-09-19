@@ -102,7 +102,7 @@ class SourceDataLinkTests(unittest.TestCase):
                           ('GAMEBSS_ERR_REMAINDER', 2),
                           ('C470_RECORD_TABLE_BSS', 270), ('GAMEBSS_REMAINDER_PREFIX', 52),
                           ('GC5B2_FLAGS_BSS', 8), ('GAMEBSS_SOUND_PREFIX', 48),
-                          ('NOTE_OCTAVE_TABLE_BSS', 96), ('GAMEBSS_REMAINDER', 1130)])
+                          ('NOTE_OCTAVE_TABLE_BSS', 96), ('GAMEBSS_REMAINDER', 1082)])
         self.assertEqual(report['oracle_copied_initialized_data_bytes'], 0)
         reloc = report['byte_comparison']['mz']
         self.assertEqual(reloc['candidate_fields']['e_crlc'], 106)

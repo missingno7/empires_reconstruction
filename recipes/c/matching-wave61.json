@@ -1,0 +1,74 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_C232",
+      "kind": "MATCHING_C",
+      "source": "src/F_C232.C",
+      "start": 50226,
+      "end": 50301,
+      "expected_sha256": "73cb49feb03e6cbf5f43912e103ee9c071243e7178219775c525c7139bd05b65",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc232",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g1784": {
+            "offset": 6020,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g178a": {
+            "offset": 6026,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g177a": {
+            "offset": 6010,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g178c": {
+            "offset": 6028,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17ac": {
+            "offset": 6060,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g179c": {
+            "offset": 6044,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17a4": {
+            "offset": 6052,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17b4": {
+            "offset": 6068,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17ec": {
+            "offset": 6124,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17f4": {
+            "offset": 6132,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17bc": {
+            "offset": 6076,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_C232",
+      "artifact": "regions/F_C232.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 75-byte ES:DI table scan as Turbo C inline-assembler source with explicit historical frame bytes"
+      }
+    }
+  ]
+}

@@ -20,7 +20,8 @@ The construction-time EXE-fixture dependency has been removed. The normal
 and manifest metadata; `assets/AEPROG.EXE` is now only an optional verification
 oracle. The [fixture audit](fixture-dependency-audit.json) records each former
 read and its replacement. This changes the construction-adapter count from
-one to zero; the four topology adapters below remain active.
+one to zero. Source-level TASM declarations have also removed the empty-DGROUP
+metadata adapter; the three remaining topology adapters below remain active.
 
 | Adapter | Why it exists now | Satisfies | Replacement evidence | Current status |
 |---|---|---|---|---|
@@ -33,7 +34,7 @@ one to zero; the four topology adapters below remain active.
 | Injected internal publics | The 6,571-byte runtime dispatch block contains multiple callable entries but compiles as one aggregate function | Exposed 27 exact internal entries to the relocatable experiment | Emit the publics naturally from canonical source | **Removed**. Inline assembly now produces all 27 OMF PUBDEFs and the structural path performs zero object transforms |
 | Candidate DATA/code object interleaving | Historical object boundaries and response-file order remain partly unknown | Reproduces the four observed cross-segment relocation-order constraints | Recover containing modules and their natural object order | **Active**; exact TLINK output, but nonrelocating boundaries remain ambiguous |
 | Arithmetic FIXUPP subrecord ordering | The inline-ASM capsule emits ascending explicit fixups unlike ordinary Turbo C output | Reproduces the historical descending ten-entry run before TLINK | Recover source/assembly that naturally emits the observed OMF record topology | **Active and narrowly checked**; changes no bytes, publics, targets, addends or sites |
-| Turbo C-compatible empty DGROUP metadata | Some standalone TASM owners do not emit Turbo C's empty `_DATA`/`_BSS` declarations and `DGROUP` membership | Keeps each freshly assembled code contribution in the same linker group topology as the surrounding Turbo C objects | Make the recovered source/module itself emit the historical group declarations | **Reduced from 24 to 16 active rewrites.** Eight TASM objects already emit the required topology and now pass to TLINK untouched; the remaining adapter adds only zero-length SEGDEFs/group membership and rejects changes to TEXT bytes, publics, externals or fixups |
+| Turbo C-compatible empty DGROUP metadata | Some standalone TASM owners originally omitted Turbo C's empty `_DATA`/`_BSS` declarations and `DGROUP` membership | Kept their linker group topology compatible during recovery | Add those declarations to each reconstructed TASM source | **Removed.** All 24 standalone TASM modules now emit the required topology naturally; the structural path applies zero DGROUP metadata rewrites |
 
 The no-demand result is narrower than a recovered build: it proves that the
 demand object is unnecessary under the remaining adapters. The older aggregate

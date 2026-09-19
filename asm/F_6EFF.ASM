@@ -1,7 +1,12 @@
 ; Original entry F_6EFF -- normalize eight packed words, then expand a nibble stream.
 
 _TEXT segment byte public 'CODE'
-assume cs:_TEXT
+_DATA segment word public 'DATA'
+_DATA ends
+_BSS segment word public 'BSS'
+_BSS ends
+DGROUP group _DATA,_BSS
+assume cs:_TEXT, ds:DGROUP
 
 public _f6eff
 

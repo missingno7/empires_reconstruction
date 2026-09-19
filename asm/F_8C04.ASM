@@ -2,7 +2,12 @@
 ; The preceding owner establishes the BP frame and preserves SI/DI.
 
 _TEXT segment byte public 'CODE'
-assume cs:_TEXT
+_DATA segment word public 'DATA'
+_DATA ends
+_BSS segment word public 'BSS'
+_BSS ends
+DGROUP group _DATA,_BSS
+assume cs:_TEXT, ds:DGROUP
 
 public _f_8c04
 extrn _f8453:near

@@ -1,7 +1,12 @@
 ; Original entry F_CA35 -- select the word state at DS:1E94h from live AL.
 
 _TEXT segment byte public 'CODE'
-assume cs:_TEXT
+_DATA segment word public 'DATA'
+_DATA ends
+_BSS segment word public 'BSS'
+_BSS ends
+DGROUP group _DATA,_BSS
+assume cs:_TEXT, ds:DGROUP
 
 public _f_ca35
 

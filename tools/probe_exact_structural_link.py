@@ -38,7 +38,6 @@ def publish(source, shared_modules, final):
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
             'unpartitioned TASM BSS reserve and historical storage ownership',
-            'Turbo C-compatible empty DGROUP metadata for standalone TASM owners',
         ],
         'whole_build_reconstruction_complete': False,
         'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA '

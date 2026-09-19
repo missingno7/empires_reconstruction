@@ -3,7 +3,9 @@
 _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
-DGROUP group _DATA
+_BSS segment word public 'BSS'
+_BSS ends
+DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
 public _f53bf

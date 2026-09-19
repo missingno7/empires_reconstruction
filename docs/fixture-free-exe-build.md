@@ -16,11 +16,10 @@ is reserved for `python tools/build_exe.py verify`, which independently checks
 the MZ fields, relocation order, load image, and complete file identity.
 
 This removes one construction adapter: EXE-fixture dependency **1 -> 0**.
-The four remaining topology adapters are unchanged: candidate DATA/code
-interleaving, arithmetic FIXUPP ordering, aggregate BSS ownership, and empty
-Turbo-C-compatible DGROUP metadata. See the machine-readable
+The three remaining topology adapters are candidate DATA/code interleaving,
+arithmetic FIXUPP ordering, and aggregate BSS ownership. See the machine-readable
 [audit](fixture-dependency-audit.json).
 
-The DGROUP adapter now applies only where TASM actually lacks the topology:
-eight source modules already emit it naturally, reducing active metadata
-rewrites from 24 to 16 while retaining exact output.
+All standalone TASM sources now emit the required empty DGROUP topology, so
+the metadata adapter has been eliminated entirely: active rewrites **24 → 0**
+while retaining exact output.

@@ -151,7 +151,6 @@ def build(root=ROOT, verify=True, dosbox=None):
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
             'unpartitioned TASM BSS reserve and historical storage ownership',
-            'Turbo C-compatible empty DGROUP metadata for standalone TASM owners',
         ],
         'fixture_dependency': {
             'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '

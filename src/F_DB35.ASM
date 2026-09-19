@@ -5,7 +5,12 @@
 ; shifted into the 40h-based display range.
 
 _TEXT segment byte public 'CODE'
-assume cs:_TEXT
+_DATA segment word public 'DATA'
+_DATA ends
+_BSS segment word public 'BSS'
+_BSS ends
+DGROUP group _DATA,_BSS
+assume cs:_TEXT, ds:DGROUP
 
 public _f_db35
 extrn _fc898:near

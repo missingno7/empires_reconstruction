@@ -5,7 +5,12 @@
 ; returns the address of the final word.
 
 _TEXT segment byte public 'CODE'
-assume cs:_TEXT
+_DATA segment word public 'DATA'
+_DATA ends
+_BSS segment word public 'BSS'
+_BSS ends
+DGROUP group _DATA,_BSS
+assume cs:_TEXT, ds:DGROUP
 
 public _fd825
 

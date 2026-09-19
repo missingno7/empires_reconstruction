@@ -5626,16 +5626,108 @@
       }
     },
     {
-      "id": "RAW_00663A",
+      "id": "F_643A",
+      "kind": "MATCHING_C",
+      "source": "src/F_643A.C",
       "start": 26170,
       "end": 26410,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00663A-00672A.bin",
-      "original_symbol": null,
-      "artifact": "raw/00663A-00672A.bin",
       "expected_sha256": "8f97e01ad3059dd42d94d61038e74b0736a016b57168bdd897699a4de5e9b5e0",
-      "matching_status": "EQUAL"
+      "classification": "code",
+      "artifact": "regions/F_643A.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f643a",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_gb40": {
+            "offset": 2880,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B40"
+          },
+          "_gb3e": {
+            "offset": 2878,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B3E"
+          },
+          "_gc0c9": {
+            "offset": 49353,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:C0C9"
+          },
+          "_gc0c8": {
+            "offset": 49352,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS byte at DS:C0C8"
+          },
+          "_gb33": {
+            "offset": 2867,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B33"
+          },
+          "_gb31": {
+            "offset": 2865,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B31"
+          },
+          "_gb2a": {
+            "offset": 2858,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B2A"
+          },
+          "_f6266": {
+            "owner": "F_6266",
+            "public": "_f6266",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "record update helper"
+          },
+          "_lseek": {
+            "owner": "LIB_LSEEK",
+            "public": "_lseek",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/LSEEK"
+          },
+          "_read": {
+            "owner": "LIB_READ",
+            "public": "_read",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/READ"
+          },
+          "_write": {
+            "owner": "LIB_WRITE",
+            "public": "_write",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/WRITE"
+          },
+          "_close": {
+            "owner": "LIB_CLOSE",
+            "public": "_close",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/CLOSE"
+          },
+          "_f652a": {
+            "owner": "F_652A",
+            "public": "_f652a",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "post-write metadata update"
+          },
+          "_f86c9": {
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "error report"
+          }
+        },
+        "module_segments": {}
+      }
     },
     {
       "id": "F_652A",
@@ -11111,16 +11203,29 @@
       }
     },
     {
-      "id": "RAW_00A0C3",
+      "id": "F_9EC3",
+      "kind": "MATCHING_C",
+      "source": "src/F_9EC3.C",
       "start": 41155,
       "end": 41280,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00A0C3-00A140.bin",
-      "original_symbol": null,
-      "artifact": "raw/00A0C3-00A140.bin",
       "expected_sha256": "0759c67db52688fad529d8aae293e3569b5f58ed87206a1f01415fd7d1accadf",
-      "matching_status": "EQUAL"
+      "classification": "code",
+      "artifact": "regions/F_9EC3.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9ec3",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_g3924": {
+            "offset": 14628,
+            "coordinate": "DGROUP_offset",
+            "evidence": "indexed far-pointer table at DS:3924"
+          }
+        },
+        "module_segments": {}
+      }
     },
     {
       "id": "F_9F40",

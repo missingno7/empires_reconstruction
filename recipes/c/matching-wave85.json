@@ -1,0 +1,30 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_9EC3",
+      "kind": "MATCHING_C",
+      "source": "src/F_9EC3.C",
+      "start": 41155,
+      "end": 41280,
+      "expected_sha256": "0759c67db52688fad529d8aae293e3569b5f58ed87206a1f01415fd7d1accadf",
+      "classification": "code",
+      "artifact": "regions/F_9EC3.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f9ec3",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_g3924": {
+            "offset": 14628,
+            "coordinate": "DGROUP_offset",
+            "evidence": "indexed far-pointer table at DS:3924"
+          }
+        },
+        "module_segments": {}
+      }
+    }
+  ]
+}

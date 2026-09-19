@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 30,501 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 30,866 bytes from raw
 fallback: 26,382 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 37,215 | 269 |
+| Freshly compiled matching C | 14,077 | 37,580 | 271 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 30,537 | 33 |
+| Exact raw fallback | 62,621 | 30,172 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 30,537 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 30,172 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -705,3 +705,16 @@ and one MZ relocation. See [the wave-eighty-three proof](matching-c-wave83.md).
 matching C. Its fresh object binds both far-table bases and the three numeric
 draw calls, preserves its DGROUP segment load, and matches one MZ relocation.
 See [the wave-eighty-four proof](matching-c-wave84.md).
+
+## Eighty-fifth and eighty-sixth matching-C waves
+
+`F_9EC3` adds 125 bytes for the complete clipped-row lookup loop. Its fresh
+object binds both indexed far-pointer table words and preserves two DGROUP
+segment loads, producing the two expected MZ relocations. `F_643A` adds the
+complete 240-byte record update and DOS seek/read/write/close path, binding
+the recovered helper routines, library publics, and DGROUP state words. Its
+26 OMF fixups require no loader relocations. See [the wave 85–86 proof](matching-c-wave85-86.md).
+
+The full rebuild remains byte-identical: 37,580 matching-C bytes across 271
+owners, 30,172 raw bytes across 33 regions, and the unchanged EXE and DAT
+SHA-256 results.

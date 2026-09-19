@@ -1,0 +1,109 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_643A",
+      "kind": "MATCHING_C",
+      "source": "src/F_643A.C",
+      "start": 26170,
+      "end": 26410,
+      "expected_sha256": "8f97e01ad3059dd42d94d61038e74b0736a016b57168bdd897699a4de5e9b5e0",
+      "classification": "code",
+      "artifact": "regions/F_643A.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f643a",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_gb40": {
+            "offset": 2880,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B40"
+          },
+          "_gb3e": {
+            "offset": 2878,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B3E"
+          },
+          "_gc0c9": {
+            "offset": 49353,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:C0C9"
+          },
+          "_gc0c8": {
+            "offset": 49352,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS byte at DS:C0C8"
+          },
+          "_gb33": {
+            "offset": 2867,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B33"
+          },
+          "_gb31": {
+            "offset": 2865,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B31"
+          },
+          "_gb2a": {
+            "offset": 2858,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word at DS:0B2A"
+          },
+          "_f6266": {
+            "owner": "F_6266",
+            "public": "_f6266",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "record update helper"
+          },
+          "_lseek": {
+            "owner": "LIB_LSEEK",
+            "public": "_lseek",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/LSEEK"
+          },
+          "_read": {
+            "owner": "LIB_READ",
+            "public": "_read",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/READ"
+          },
+          "_write": {
+            "owner": "LIB_WRITE",
+            "public": "_write",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/WRITE"
+          },
+          "_close": {
+            "owner": "LIB_CLOSE",
+            "public": "_close",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "CC.LIB/CLOSE"
+          },
+          "_f652a": {
+            "owner": "F_652A",
+            "public": "_f652a",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "post-write metadata update"
+          },
+          "_f86c9": {
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "error report"
+          }
+        },
+        "module_segments": {}
+      }
+    }
+  ]
+}

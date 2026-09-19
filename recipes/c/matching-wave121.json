@@ -1,0 +1,26 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_C834",
+      "source": "src/F_C834.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc834",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_fc6b9": {"offset": 50873, "coordinate": "code_offset", "evidence": "F_C6B9 owned code entry"},
+          "_snd_hi": {"offset": 6022, "coordinate": "DGROUP_offset", "evidence": "complete F_C834 fixup"},
+          "_snd_mode": {"offset": 6020, "coordinate": "DGROUP_offset", "evidence": "complete F_C834 fixup"},
+          "_snd_nvoices": {"offset": 6010, "coordinate": "DGROUP_offset", "evidence": "complete F_C834 fixup"},
+          "_snd_paused": {"offset": 6008, "coordinate": "DGROUP_offset", "evidence": "complete F_C834 fixup"},
+          "_v_a": {"offset": 6060, "coordinate": "DGROUP_offset", "evidence": "complete F_C834 fixup"},
+          "_v_b": {"offset": 6012, "coordinate": "DGROUP_offset", "evidence": "complete F_C834 fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit with nine fresh OMF fixups"
+    }
+  ]
+}

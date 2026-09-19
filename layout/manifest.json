@@ -14407,9 +14407,9 @@
       "id": "F_C834",
       "start": 51764,
       "end": 51831,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_C834.ASM",
+      "source": "src/F_C834.C",
       "original_symbol": "F_C834",
       "artifact": "regions/F_C834.bin",
       "expected_sha256": "08e8339f9d9bfeb33fd85e4e46d3b4dd61a4d630fae9dbc39983a6a087a89d66",
@@ -14419,6 +14419,7 @@
         "public": "_fc834",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_fc6b9": {
             "offset": 50873,
@@ -14455,16 +14456,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212AC.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C834.json",
-        "entry_sha256": "a45ae9aa05df21d84e159c9507d5681794db185e9223718eea61c13990db5d45",
-        "record_sha256": "804c8bfb39a99f1c23bf6718052abb9df6d2d692facdff820f325ef6ee893682",
-        "source_sha256": "c13b18d2871b07682f3630599484406ef04a8422ececd58a3a65d0ce982b982f",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "c13b18d2871b07682f3630599484406ef04a8422ececd58a3a65d0ce982b982f",
+        "source_sha256": "3ccd45dc98e4265b55bec9e5d25fa36870b0572d7170f302ae67ec857ee5e11d",
+        "change": "Translate the complete voice reset into a deterministic Turbo C source unit with nine existing fixups and no loader relocations."
       }
     },
     {

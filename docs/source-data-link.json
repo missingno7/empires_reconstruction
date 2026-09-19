@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 2338,
-  "unpartitioned_bss_source_bytes": 34912,
+  "partitioned_bss_source_bytes": 2608,
+  "unpartitioned_bss_source_bytes": 34642,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1023,16 +1023,28 @@
         "source_sha256": "3b6e4aceb37562b2ab5ef691968e1eec807508d4adb77dd327e3822c3dd150b3"
       },
       {
-        "id": "GAMEBSS_LATE_REMAINDER",
-        "owner_candidate": "aggregate late remainder",
+        "id": "GC360_RECORD_TABLE_BSS",
+        "owner_candidate": "shared GC360 record table",
         "logical_start": 35422,
-        "bytes": 272,
-        "publics": 3,
+        "bytes": 270,
+        "publics": 1,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
+        "object_sha256": "776e3d65e2a9415bbe9feb5d3e9064cb860b9bcff3bb39fd8f8b8cc2e1129930",
+        "source_sha256": "f3f850cf663a0991038a7ebff559f8e5d79a77abb59bdf16ab27828347025118"
+      },
+      {
+        "id": "GAMEBSS_ERR_REMAINDER",
+        "owner_candidate": "aggregate error slot",
+        "logical_start": 35692,
+        "bytes": 2,
+        "publics": 2,
         "representation": "ANCHORED_BSS",
         "confidence": "CANONICAL_LAYOUT",
         "aggregate_storage": true,
-        "object_sha256": "fb8fec2e7ae56f9b72311adf96f61dad136b091509cdadacf235cfc5f4624985",
-        "source_sha256": "31b6c8a0cea39541c31d6feee12a1aa570827de83e219c8f2a0dcc1769ebcddb"
+        "object_sha256": "bc5e0c8c2810281f63d61eff62d14e841bd052b3e6001a5d0290721a6e458e62",
+        "source_sha256": "7ad0ccde4d92ecefdc2a3627637ae4ac3fb2f8f21af631881b33f854cc2dea6c"
       },
       {
         "id": "C470_RECORD_TABLE_BSS",

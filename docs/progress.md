@@ -7,7 +7,7 @@ interleaving, a checked arithmetic FIXUPP-order adapter, and mostly aggregate
 BSS ownership remain explicitly open. The first 34 BSS bytes, the 1,952-byte
 row-pointer table initialized by `F_0281`, a 16-byte shared command/render
 state island, the ten-record C470 table, the 4x6 slot grid, and an 18-byte
-animation-state block are compatible symbolic TASM contributions; the 34,912-byte remainder retains the canonical anchor map.
+animation-state block and GC360 ten-record table are compatible symbolic TASM contributions; the 34,642-byte remainder retains the canonical anchor map.
 All 247 BSS public anchors are
 checked against linker-binding evidence. The structural path performs zero object
 symbol transforms, and the synthetic DGROUP/BSS object is now

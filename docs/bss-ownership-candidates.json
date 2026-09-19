@@ -216,6 +216,18 @@
       "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
       "contribution": {"object": "ANIMBSS.OBJ", "logical_start": 35404, "logical_end": 35422},
       "limitation": "The exact state block is bounded and typed, but its original module owner remains open."
+    },
+    {
+      "id": "GC360_RECORD_TABLE_BSS",
+      "owner_candidate": "shared GC360 record table",
+      "start": 35422,
+      "end": 35692,
+      "declarations": [{"symbol": "_gc360", "source_type": "27-byte record[10]", "size": 270}],
+      "evidence": ["F_AD25 and F_ADCF scan, shift, and write gc360[0..9]", "35422 + 10 * 27 = 35692, the _err anchor"],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {"object": "GC360BSS.OBJ", "logical_start": 35422, "logical_end": 35692},
+      "limitation": "The compatible table extent is proven; historical source-module ownership is open."
     }
   ]
 }

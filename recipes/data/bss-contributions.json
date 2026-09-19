@@ -81,12 +81,23 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LATE_REMAINDER",
-      "object": "GAMEBSS2.OBJ",
-      "assembly": "GAMEBSS2.ASM",
+      "id": "GC360_RECORD_TABLE_BSS",
+      "object": "GC360BSS.OBJ",
+      "assembly": "GC360BSS.ASM",
       "logical_start": 35422,
+      "logical_end": 35692,
+      "owner_candidate": "shared GC360 record table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_ERR_REMAINDER",
+      "object": "GAMEBSS3.OBJ",
+      "assembly": "GAMEBSS3.ASM",
+      "logical_start": 35692,
       "logical_end": 35694,
-      "owner_candidate": "aggregate late remainder",
+      "owner_candidate": "aggregate error slot",
       "representation": "ANCHORED_BSS",
       "confidence": "CANONICAL_LAYOUT",
       "aggregate_storage": true

@@ -1,8 +1,9 @@
-# Sixty-seventh matching-C wave
+# Sixty-seventh source-recovery wave
 
-`F_C8D4` is now canonical C for its complete 14-byte live-AL port-write
-wrapper. The exact Turbo C object binds the configured DGROUP port word and
-has no loader relocations.
+`F_C8D4` is canonical symbolic TASM for its complete 14-byte live-AL
+port-write wrapper. The exact object binds the configured DGROUP port word and
+has no loader relocations. Its initially recovered C inline-assembly capsule
+was replaced with named instructions while preserving the complete extent.
 
 ```powershell
 python tools/promote_c_candidates.py --recipe recipes/c/matching-wave67.json
@@ -15,6 +16,5 @@ The machine-readable [fresh proof](matching-wave67-evidence.json),
 [regression test](../tests/test_matching_c_wave67.py) retain the complete
 extent and equality result.
 
-Matching-C coverage is now 256 regions / 36,363 bytes. Raw executable fallback
-is 43 regions / 31,480 bytes. The full EXE and both DAT archives remain
-byte-identical.
+The historical figures above are retained as promotion provenance. The current
+source-quality report is the canonical view of readability progress.

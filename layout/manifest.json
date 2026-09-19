@@ -14760,8 +14760,8 @@
     },
     {
       "id": "F_C8D4",
-      "kind": "MATCHING_C",
-      "source": "src/F_C8D4.C",
+        "kind": "MATCHING_ASM",
+        "source": "src/F_C8D4.ASM",
       "start": 51924,
       "end": 51938,
       "expected_sha256": "e227e7a35b1c337907324b16ae8a3e8c8c1946f3d3684d91a94d5e94159b790f",
@@ -14783,8 +14783,8 @@
       "artifact": "regions/F_C8D4.bin",
       "matching_status": "EQUAL",
       "provenance": {
-        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the complete 14-byte live-AL port-write wrapper"
+          "method": "symbolic TASM reconstruction from complete disassembly and fresh full-extent OMF binding",
+          "change": "Replace the mechanical inline-assembly capsule with symbolic port-write assembly"
       }
     },
     {

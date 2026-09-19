@@ -1,4 +1,4 @@
-"""Fresh complete-extent proof for the recovered F_C8D4 port wrapper."""
+"""Fresh complete-extent proof for the symbolic F_C8D4 port wrapper."""
 from pathlib import Path
 import sys
 import tempfile

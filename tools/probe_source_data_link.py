@@ -16,6 +16,7 @@ from exe_data import encode_data
 from omf import OmfReader
 from omf_scaffold import add_publics, externalize_data_segment, rename_external_addend
 from pointer_records import FORMAT, compile_records
+from sound_data import FORMAT as SOUND_FORMAT, compile_sound_data
 from probe_tlink_layout import compare_linked_executable, link_errors, parse_map
 from reconstruct import ROOT, read_json, sha, write_json
 
@@ -70,6 +71,8 @@ def run():
                 refs.append({'offset': fixup['offset'], 'target': binding['owner']})
         elif spec['format'] == FORMAT:
             data, refs = compile_records(read_json(ROOT / spec['source']))
+        elif spec['format'] == SOUND_FORMAT:
+            data, refs, sound_publics = compile_sound_data(read_json(ROOT / spec['source']))
         else:
             data = encode_data(read_json(ROOT / spec['source']), spec['format'])
         skip = spec.get('skip', 0)
@@ -77,7 +80,8 @@ def run():
             raise ValueError('Cannot slice pointer contribution')
         data = data[skip:]
         parts.append({'spec': spec, 'data': data, 'refs': refs,
-                      'publics': {} if skip else {spec['id']: 0}})
+                      'publics': ({} if skip else
+                                  sound_publics if spec['format'] == SOUND_FORMAT else {spec['id']: 0})})
 
     # Existing fixed binding evidence routes aliases to source components. It
     # supplies no placement directive or padding; TLINK concatenates sources.

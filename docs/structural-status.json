@@ -2,8 +2,8 @@
   "format": "empires-structural-status-v1",
   "ownership": {
     "EXACT_DATA": {
-      "bytes": 10188,
-      "owners": 120
+      "bytes": 12020,
+      "owners": 121
     },
     "KNOWN_TOOLCHAIN_LIBRARY": {
       "bytes": 5463,
@@ -18,8 +18,8 @@
       "owners": 1
     },
     "RAW": {
-      "bytes": 4012,
-      "owners": 10
+      "bytes": 2180,
+      "owners": 9
     }
   },
   "largest_raw_owners": [
@@ -28,8 +28,8 @@
       "bytes": 1923
     },
     {
-      "owner": "RAW_01139E",
-      "bytes": 1832
+      "owner": "RAW_010924",
+      "bytes": 139
     }
   ],
   "linker_sha256": "997fcac6089fa88f3d868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7",
@@ -245,7 +245,7 @@
     "missing_relocations": 0,
     "extra_relocations": 0,
     "oracle_copied_initialized_data_bytes": 0,
-    "local_raw_source_bytes": 4006,
+    "local_raw_source_bytes": 2174,
     "synthetic_bss_bytes": 0
   },
   "exact_structural_experiment": {

@@ -15,7 +15,12 @@ def palette_document(data):
 
 
 def encode_data(document, encoder, resolve_pointer=None):
+    from sound_data import FORMAT as SOUND_FORMAT, bind_sound_data
     from pointer_records import FORMAT, bind_records
+    if encoder == SOUND_FORMAT:
+        if resolve_pointer is None:
+            raise ValueError('Sound DATA requires a target resolver')
+        return bind_sound_data(document, resolve_pointer)
     if encoder == FORMAT:
         if resolve_pointer is None:
             raise ValueError('Symbolic pointer records require a target resolver')

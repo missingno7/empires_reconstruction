@@ -28,9 +28,13 @@ def emit_data(data, publics, refs=(), module_name='DATA'):
         records.append(_record(OmfReader.EXTDEF, name(target) + b'\x00'))
     occupied = set()
     for ref in refs:
-        if not 0 <= ref['offset'] <= len(data) - 4:
+        loc = ref.get('loc', 'pointer32')
+        width = 4 if loc == 'pointer32' else 2 if loc == 'offset16' else 0
+        if not width:
+            raise ValueError('Unsupported DATA fixup location type')
+        if not 0 <= ref['offset'] <= len(data) - width:
             raise ValueError('Pointer fixup outside DATA')
-        positions = set(range(ref['offset'], ref['offset'] + 4))
+        positions = set(range(ref['offset'], ref['offset'] + width))
         if positions & occupied:
             raise ValueError('Overlapping DATA pointer fixups')
         occupied |= positions
@@ -38,14 +42,16 @@ def emit_data(data, publics, refs=(), module_name='DATA'):
     while start < len(data):
         end = min(start + 1000, len(data))
         for ref in refs:
-            if ref['offset'] < end < ref['offset'] + 4:
+            width = 4 if ref.get('loc', 'pointer32') == 'pointer32' else 2
+            if ref['offset'] < end < ref['offset'] + width:
                 end = ref['offset']
         records.append(_record(OmfReader.LEDATA16, b'\x01' + struct.pack('<H', start) + data[start:end]))
         fixups = bytearray()
         # Fresh Turbo C emits DATA fixups in descending source-offset order.
         for ref in sorted(refs, key=lambda r: -r['offset']):
             if start <= ref['offset'] < end:
-                fixups.extend(struct.pack('>H', 0xCC00 | (ref['offset'] - start)))
+                locat = 0xCC00 if ref.get('loc', 'pointer32') == 'pointer32' else 0xC400
+                fixups.extend(struct.pack('>H', locat | (ref['offset'] - start)))
                 fixups.extend(bytes([0x16, 1, targets.index(ref['target']) + 1]))
         if fixups:
             records.append(_record(OmfReader.FIXUPP16, bytes(fixups)))

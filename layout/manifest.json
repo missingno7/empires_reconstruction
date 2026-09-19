@@ -21432,16 +21432,19 @@
       }
     },
     {
-      "id": "RAW_01139E",
+      "id": "DATA_01139E_SOUND",
       "start": 70558,
       "end": 72390,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/01139E-011AC6.bin",
+      "kind": "EXACT_DATA",
+      "classification": "sound_state_and_lookup_tables",
+      "source": "src/data/DATA_01139E_SOUND.json",
       "original_symbol": null,
-      "artifact": "raw/01139E-011AC6.bin",
+      "artifact": "regions/DATA_01139E_SOUND.bin",
       "expected_sha256": "547ee0aa7c87013ca2644150987bd6b147008ff030eef9ea4e1e54ac861600e8",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "empires-sound-data-v1"
+      }
     },
     {
       "id": "DATA_011AC6_NEW_USER_PROMPT",

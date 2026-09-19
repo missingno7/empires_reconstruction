@@ -91,14 +91,16 @@ No unknown payload became understood merely
 because its offset is now computed. This step does not recover the historical
 compressor's remaining match-selection behavior.
 
-The fixed EXE remains the byte-identical oracle with declared bindings, 4,012
+The fixed EXE remains the byte-identical oracle with declared bindings, 2,180
 raw bytes, and no proven reconstruction of its original source modules. The
 relocatable experiment now uses the locally verified Turbo Link 2.0 candidate:
 the no-demand run places `_TEXT` through `0xFA23` with zero code-placement
 divergence, and the demand and no-demand runs select the same library sequence.
 The full scaffold run under the comparison linker also derives DGROUP, BSS and
-STACK placement, but the final structural path still has synthetic DATA/BSS,
-symbol aliases, case normalization and injected internal labels. These are
+STACK placement. The exact path builds BSS from TASM source and all initialized
+DATA from component sources, including 38 relocatable near pointers in the
+sound tables. It still has raw-local DATA, symbol aliases, case normalization
+and injected internal labels. These are
 tracked in [the adapter ledger](linker-adapter-ledger.md). The 347 source proof
 units do not count as recovered original modules. The combined report
 explicitly sets `whole_build_reconstruction_complete` to false.

@@ -12,13 +12,19 @@ Fresh Turbo C compilation independently reproduces both typed record tables,
 280 DATA bytes and 26 fixups. Its [receipt](record-compiler-evidence.json) proves
 the layout and descending fixup order, not historical translation units.
 
-The remaining 27 pointer fields are described in the ordered DATA recipe as
+The sound component adds 38 near-pointer fields: two note-bank pointers and
+36 lookup dispatch entries. They are emitted as genuine OMF `offset16` fixups,
+so TLINK derives their DGROUP-relative values. The source describes the state
+words, note divisors, OPL port, dispatch targets, lookup sequences and tail
+words without storing final addresses.
+
+The remaining 27 far-pointer fields are described in the ordered DATA recipe as
 component-relative offsets, symbolic target owners and addends. The emitter
 replaces their raw words with unbound pointers and emits genuine OMF FIXUPPs.
 One target is within the source-declared game BSS reserve. Surrounding payloads
 remain explicitly `raw-local`: annotating their pointers does not make their
 unknown record or command structure understood. Canonical raw ownership is
-4,012 bytes across 10 owners; the source DATA path uses 4,006 of those bytes.
+2,180 bytes across 9 owners; the source DATA path uses 2,174 of those bytes.
 
 DATA fixups are emitted in the descending order independently observed in
 fresh Turbo C objects. Remaining relocation order differences cross source

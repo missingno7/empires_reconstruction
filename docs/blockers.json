@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "closed for the currently inventoried held candidates",
-      "matches": "Current build proves 345 C and 0 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
+      "matches": "Current build proves 347 C and 0 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
       "first_unresolved_fact": "No unresolved symbols remain in the current held-candidate inventory. Further work moves to raw-data classification, module topology and format recovery.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -31,9 +31,9 @@
     },
     {
       "target": "Original modules and historical linker",
-      "state": "Turbo Link 2.0 reproduces complete load image; relocation table and structural adapters remain",
-      "matches": "Source DATA link reproduces all 78642 load bytes, TEXT/DATA and BSS/STACK layout. No initialized bytes are copied from AEPROG.EXE. Runtime public offsets and BSS boundary are independently verified.",
-      "first_unresolved_fact": "File 0x3A: relocation ordering differs. All 106 segment:offset pairs and every byte outside the relocation table match. Raw source components, recovered aliases and unpartitioned game BSS remain.",
+      "state": "Turbo Link 2.0 reproduces the complete byte-identical EXE; structural adapters remain",
+      "matches": "The exact structural link reproduces all 78642 load bytes, all 106 relocation entries in order, TEXT/DATA and BSS/STACK layout, and the whole EXE SHA-256. No initialized bytes are copied from AEPROG.EXE. Runtime public offsets and BSS boundary are independently verified.",
+      "first_unresolved_fact": "The result still depends on candidate DATA/code object interleaving, a checked arithmetic FIXUPP-order adapter, recovered aliases, case normalization, injected publics, raw-local DATA and unpartitioned game BSS.",
       "evidence": [
         "layout/manifest.json",
         "layout/mz-header.json",
@@ -46,13 +46,13 @@
         "docs/bss-boundary.json",
         "docs/complete-relocation-sites.md"
       ],
-      "unblock": "Use original relocation interleaving and fresh shared compiler objects to recover module composition; retain explicit raw and BSS ownership work.",
-      "leverage": "Recover historical module/relocation order and eliminate adapters; reconstruct 4055 canonical raw bytes."
+      "unblock": "Replace candidate object ordering and symbol adapters with evidenced historical modules and declarations; partition BSS and finish raw DATA ownership while preserving exact output.",
+      "leverage": "Eliminate structural adapters and reconstruct 2180 canonical raw bytes."
     },
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "The current manifest retains 4,135 raw EXE bytes across 12 explicit fallback owners after executable-data partitioning; no remaining raw owner has been promoted as code without a complete extent proof.",
+      "matches": "The current manifest retains 2,180 raw EXE bytes across 9 explicit fallback owners. The 1,832-byte sound block is now structured source with 38 relocatable near-pointer fixups; no remaining raw owner has been promoted as code without a complete extent proof.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",
@@ -60,7 +60,7 @@
         "docs/vision.md"
       ],
       "unblock": "Prove individual palettes, tables, strings, alignment and data ranges from existing format evidence and xrefs, then add strict structural encoders.",
-      "leverage": "4,135 raw EXE bytes retain exact fallback; additional initialized records and runtime storage bases remain to be recovered."
+      "leverage": "2,180 raw EXE bytes retain exact fallback; RAW_012C03 alone accounts for 1,923 bytes."
     },
     {
       "target": "Nested resources, fonts, level record blocks and actor bytecode",

@@ -7,6 +7,11 @@ interleaving, a checked arithmetic FIXUPP-order adapter, unpartitioned BSS and
 symbol adapters remain explicitly open. The synthetic DGROUP/BSS object is now
 replaced by a real pinned-TASM source contribution.
 
+The 1,832-byte initialized sound region is now lossless structured source.
+Its two note-bank pointers and 36 dispatch pointers are real OMF `offset16`
+fixups, and the exact TLINK build remains byte-identical. Canonical raw EXE
+ownership is reduced to 2,180 bytes across nine owners.
+
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table
 prefix to all 106 entries and produces the byte-identical EXE. These
@@ -66,8 +71,8 @@ linker adapters are now the primary work.
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
 | Known toolchain library | 0 | 5,463 | 49 |
 | Structured MZ header | 0 | 512 | 1 |
-| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 10,188 | 120 |
-| Exact raw fallback | 62,621 | 4,012 | 10 |
+| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 12,020 | 121 |
+| Exact raw fallback | 62,621 | 2,180 | 9 |
 | Total | 79,154 | 79,154 | 527 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and

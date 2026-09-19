@@ -20314,16 +20314,18 @@
       }
     },
     {
-      "id": "RAW_010354",
+      "id": "DATA_010354_CONTROL_TABLE",
       "start": 66388,
       "end": 66426,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010354-01037A.bin",
-      "original_symbol": null,
-      "artifact": "raw/010354-01037A.bin",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010354_CONTROL_TABLE.json",
+      "artifact": "regions/DATA_010354_CONTROL_TABLE.bin",
       "expected_sha256": "57eca0f1c6dcb9fc6c1e4bfabf8ba5c2d792a79fd1a7ebe3154800602763ab89",
-      "matching_status": "EQUAL"
+      "classification": "control_u16_table",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
     },
     {
       "id": "DATA_01037A_POINTER_TABLE",
@@ -20424,16 +20426,18 @@
       }
     },
     {
-      "id": "RAW_010532",
+      "id": "DATA_010532_CONTROL_TABLE",
       "start": 66866,
       "end": 67154,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010532-010652.bin",
-      "original_symbol": null,
-      "artifact": "raw/010532-010652.bin",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010532_CONTROL_TABLE.json",
+      "artifact": "regions/DATA_010532_CONTROL_TABLE.bin",
       "expected_sha256": "5b8d053a64d7d50c97e72cb07bedce4cb3c7d6d73c8a0c33803befcec3677ea9",
-      "matching_status": "EQUAL"
+      "classification": "control_u16_table",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
     },
     {
       "id": "DATA_010652_AE000_PATH",

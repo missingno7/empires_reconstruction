@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 2,728 | 61 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 4,937 | 15 |
+| Exact raw fallback | 62,621 | 4,611 | 13 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -171,7 +171,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 4,937 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 4,611 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -1183,3 +1183,10 @@ Wave 143 partitions the 99-byte terminated write-protection dialog from its
 `ascii-nul-v1` source; the tail remains a separately bounded raw owner until
 its record format is established. The raw frontier is now 4,937 bytes across
 15 owners.
+
+## One-hundred-forty-fourth executable-data wave
+
+Wave 144 decodes two aligned relocation-free control tables with the strict
+`u16le-table-v1` encoder. Their 326 bytes are exact; mixed-format and
+relocation-backed regions remain raw. The raw frontier is now 4,611 bytes
+across 13 owners.

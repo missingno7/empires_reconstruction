@@ -8,7 +8,8 @@ does not introduce padding or move contributions.
 
 Fresh full-scaffold links with and without the historical demand object have
 identical segment maps, detailed code contribution rows and whole EXE hashes.
-Both have zero linker diagnostics and zero unresolved symbols. Thus the demand
+After the caller-scoping correction below, both have zero diagnostics in the
+console log **and detailed map**, and zero unresolved symbols. Thus the demand
 object is unnecessary for this full scaffold, not only for its partial link.
 
 Reproduce the current experiment:
@@ -28,8 +29,8 @@ allocation values. It is **not byte-identical**. The first file mismatch is
 original sites and one extra site at load `0xFAFD`.
 
 The first load-image difference is at `0xC8`, inside C0C's offset16 fixup to
-`_BSSEND`. The linked value is `0xCACC`; the original is `0xCAC8`. Paragraph
-rounding hides this four-byte boundary difference in the identical stack base.
+`_BSSEND`. The linked value is now `0xCACA`; the original is `0xCAC8`. Paragraph
+rounding hides this two-byte boundary difference in the identical stack base.
 Recovering BSS sizes must therefore compare the boundary publics as well as
 the segment map. Do not compensate by adding or deleting arbitrary bytes.
 
@@ -38,8 +39,20 @@ still comes from the oracle and lacks its original pointer fixups. It also
 follows library DATA rather than reconstructing historical module DATA order.
 Real module contributions and pointer relocations remain the next frontier.
 
-Symbol aliases remain provisional: the current adapter can expose the same
-`_getkey` name in two code owners and can confuse the data `_mode` with the
-code `_mode`. The existing duplicate-public suppression is not historical
-symbol evidence. Source-specific binding recovery must replace these aliases;
-zero unresolved names alone does not prove correct bindings.
+The previous checkpoint missed two `Fixup overflow` messages emitted only in
+the detailed map. Its claim of zero diagnostics was incorrect. The probe now
+checks both diagnostic surfaces and treats an overflow as a failed link.
+
+Code-binding aliases are now scoped to the caller's manifest evidence instead
+of applying one owner's binding to all objects using the same spelling.
+Conflicting names use target-owner-relative labels: F_56C6's `_getkey` targets
+F_5593, while F_A658's targets F_AF45. Code callers of `_mode` target F_01CE;
+F_01CE's own `_mode` remains a DATA reference. This removes the observed
+cross-owner alias collision, but these aliases still depend on the temporary
+binding adapter and do not prove historical symbol names or DATA addresses.
+
+The map extent calculation also now uses `start + length`: zero-length
+_CVTSEG/_SCNSEG rows print equal start and stop addresses and must not add a
+byte. The baseline initialized span is 662 bytes, not 663. Synthetic DATA is
+13,932 bytes and synthetic BSS is 37,252 bytes. This arithmetic correction
+preserves the major segment bases; no boundary was forced to its oracle value.

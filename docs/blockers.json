@@ -33,7 +33,7 @@
       "target": "Original modules and historical linker",
       "state": "exact historical linker runs; byte-level DATA/BSS and binding divergence",
       "matches": "Turbo Link 2.0 full scaffold: zero errors/unresolved symbols; complete code placement and DGROUP/BSS/STACK bases match. With/without demand object produces identical EXE hashes. C0C extent and invariant bytes strongly evidenced.",
-      "first_unresolved_fact": "File 0x06: relocation count 56 versus 106. Load 0xC8: C0C _BSSEND fixup CACC versus CAC8. DATA starts differing at load FAC4.",
+      "first_unresolved_fact": "File 0x06: relocation count 56 versus 106. Load 0xC8: C0C _BSSEND fixup CACA versus CAC8. DATA starts differing at load FAC4.",
       "evidence": [
         "layout/manifest.json",
         "layout/mz-header.json",
@@ -44,7 +44,7 @@
         "docs/structural-status.json"
       ],
       "unblock": "Recover source-specific aliases, actual DATA contributions and BSS boundaries; encode data pointer fixups. Preserve natural layout without adjusting arbitrary padding.",
-      "leverage": "Remove 13931 oracle-copied DATA bytes and 37253 synthetic BSS bytes; restore 51 missing relocation sites and explain one extra site."
+      "leverage": "Remove 13932 oracle-copied DATA bytes and 37252 synthetic BSS bytes; restore 51 missing relocation sites and explain one extra site."
     },
     {
       "target": "EXE raw-data classification and embedded assets",

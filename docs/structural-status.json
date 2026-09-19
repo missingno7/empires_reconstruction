@@ -34,6 +34,7 @@
   ],
   "linker_sha256": "997fcac6089fa88f3d868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7",
   "link_status": "MAP_AVAILABLE",
+  "link_errors": [],
   "segments": [
     {
       "start": 0,
@@ -79,14 +80,14 @@
     },
     {
       "start": 78642,
-      "stop": 115963,
-      "length": 37322,
+      "stop": 115961,
+      "length": 37320,
       "name": "_BSS",
       "class": "BSS"
     },
     {
-      "start": 115964,
-      "stop": 115964,
+      "start": 115962,
+      "stop": 115962,
       "length": 0,
       "name": "_BSSEND",
       "class": "STACK"
@@ -102,12 +103,12 @@
   "unresolved_count": 0,
   "first_code_placement_divergence": null,
   "demand_object_present": false,
-  "synthetic_data_bytes": 13931,
-  "synthetic_bss_bytes": 37253,
-  "symbol_transform_owners": 100,
+  "synthetic_data_bytes": 13932,
+  "synthetic_bss_bytes": 37252,
+  "symbol_transform_owners": 104,
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "3a5c29d208c2dc0be08fafb70b95cd6436c8afedc6629dbb1a8c9b82fe511b76",
+    "candidate_sha256": "46367ddaabd7fcc74f8436c3b2c138e38ee5adedf9e4c14a2348935715446300",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,

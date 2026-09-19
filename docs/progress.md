@@ -1,5 +1,11 @@
 # Incremental reconstruction — 2026-09-18
 
+The latest structural check scopes conflicting code aliases to their actual callers
+and detects map-only fixup overflows. The two observed overflows are eliminated;
+full links with and without demand still have identical output. Empty-segment
+extent accounting is corrected; BSSEND remains two bytes above its oracle value.
+See [the detailed checkpoint](tlink20-full-scaffold.md).
+
 Current full-scaffold checkpoint: Turbo Link 2.0 links without the historical
 demand object, with zero errors/unresolved symbols and exact segment bases.
 The linked bytes still differ (56/106 relocations; first load difference 0xC8).

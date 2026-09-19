@@ -21,6 +21,7 @@ def status(root, report):
         'largest_raw_owners': raw[:2],
         'linker_sha256': report['linker']['sha256'],
         'link_status': report['status'],
+        'link_errors': report['link'].get('errors', []),
         'segments': report['segments'],
         'unresolved_count': report['link']['unresolved_count'],
         'first_code_placement_divergence': report['code_comparison']['first_divergence'],

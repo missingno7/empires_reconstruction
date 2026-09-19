@@ -69,6 +69,19 @@ def linker_files(linker):
     return result
 
 
+def link_errors(log, map_text=''):
+    """TLINK can write fixup failures only to its detailed map."""
+    return list(dict.fromkeys(line.strip() for line in (log + '\n' + map_text).splitlines()
+                             if re.search(r'error:|undefined symbol|bad object file|fatal|fixup overflow',
+                                          line, re.I)))
+
+
+def initialized_data_end(segments):
+    # TLINK prints start == stop for empty segments; stop + 1 is not an extent.
+    return max(s['start'] + s['length'] for s in segments
+               if s['name'] in {'_DATA', '_EMUSEG', '_CRTSEG', '_CVTSEG', '_SCNSEG'})
+
+
 def compare_linked_executable(candidate, oracle):
     """Compare a TLINK output at header, relocation, load-image and file levels."""
     result = {'candidate': str(candidate), 'oracle': str(oracle), 'available': False}
@@ -257,6 +270,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
 
     internal_labels = {}
     library_internal_aliases = {}
+    scoped_aliases = {}
+    binding_targets = {}
+    for region in manifest['regions']:
+        for symbol, binding in region.get('build', {}).get('bindings', {}).items():
+            binding_targets.setdefault(symbol, set()).add((binding.get('coordinate'),
+                binding.get('offset'), binding.get('owner'), binding.get('addend', 0)))
     if expose_internal_labels:
         module_externals = {}
         for owner_id, receipt in receipts.items():
@@ -289,10 +308,14 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                 target_region = next((item for item in load_regions
                                       if item['start'] - 512 <= target < item['end'] - 512), None)
                 if target_region and target_region['id'] in owner_by_id:
-                    for owner_id, externals in module_externals.items():
-                        if symbol in externals:
-                            internal_labels.setdefault(target_region['id'], {})[symbol] = (
-                                target - (target_region['start'] - 512))
+                    owner_id = source_region['id']
+                    if symbol in module_externals.get(owner_id, set()):
+                        delta = target - (target_region['start'] - 512)
+                        label = symbol
+                        if len(binding_targets[symbol]) > 1:
+                            label = f"__RC_{target_region['id']}_{delta:X}"
+                            scoped_aliases.setdefault(owner_id, {})[symbol] = label
+                        internal_labels.setdefault(target_region['id'], {})[label] = delta
                 if target_region and target_region.get('build', {}).get('segment') == '_TEXT':
                     target_build = target_region.get('build', {})
                     module_name = (target_build.get('library_module') or
@@ -301,9 +324,9 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                         target_offset = target - (target_region['start'] - 512)
                         selected = library_symbol_at(module_name, target_offset)
                         if selected:
-                            for owner_id, externals in module_externals.items():
-                                if symbol in externals:
-                                    library_internal_aliases.setdefault(owner_id, {})[symbol] = selected
+                            owner_id = source_region['id']
+                            if symbol in module_externals.get(owner_id, set()):
+                                library_internal_aliases.setdefault(owner_id, {})[symbol] = selected
         for owner_id, externals in module_externals.items():
             for external in externals:
                 match = re.fullmatch(r'_F([0-9A-Fa-f]+)', external, re.IGNORECASE)
@@ -382,6 +405,10 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             original_bytes = source.read_bytes()
             source_bytes = original_bytes
             transforms = []
+            if expose_internal_labels:
+                for old, new in scoped_aliases.get(owner['id'], {}).items():
+                    source_bytes = rename_external(source_bytes, old, new)
+                    transforms.append(f'caller-scoped EXTDEF {old} -> {new}')
             if normalize_case_symbols:
                 normalized = normalize_external_case(source_bytes, explicit_publics)
                 if normalized != source_bytes:
@@ -489,8 +516,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         stack_segment = next((s for s in base_segments if s['name'] == '_STACK'), None)
         if not data_segment or not stack_segment:
             raise ValueError('baseline TLINK map lacks DATA or STACK for DGROUP scaffold sizing')
-        data_end = max(s['stop'] + 1 for s in base_segments
-                       if s['name'] in {'_DATA', '_EMUSEG', '_CRTSEG', '_CVTSEG', '_SCNSEG'})
+        data_end = initialized_data_end(base_segments)
         text_end = max(r['end'] - 512 for r in manifest['regions']
                        if r.get('build', {}).get('segment') == '_TEXT')
         dgroup_load = (text_end + 15) & ~15
@@ -569,8 +595,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     result, command, log, map_path, exe_path, response = link_once('FINAL', object_names)
     unresolved = [line.strip() for line in log.splitlines()
                   if 'Undefined symbol' in line]
-    errors = [line.strip() for line in log.splitlines()
-              if re.search(r'error:|undefined symbol|bad object file|fatal', line, re.I)]
+    errors = link_errors(log, map_path.read_text(errors='replace') if map_path.exists() else '')
     segments, rows = parse_map(map_path) if map_path.exists() else ([], [])
     code_rows = [row for row in rows if row['module'].startswith('R')]
     divergences = []

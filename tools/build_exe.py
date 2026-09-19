@@ -18,6 +18,7 @@ from probe_source_data_link import run as link_source_data
 from probe_tlink_layout import run as build_baseline
 from mz import MZ
 from reconstruct import ROOT, read_json, write_json
+from dos_runner import resolve_runner
 
 
 ORIGINAL_SHA256 = '1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10'
@@ -79,18 +80,18 @@ def clear_stale_state(root):
     return removed
 
 
-def build(root=ROOT, verify=True, dosbox=None):
+def build(root=ROOT, verify=True, runner=None, dosbox=None):
     """Run a fresh source -> OMF -> TLINK build and publish ``build/AEPROG.EXE``."""
     (root / 'build').mkdir(exist_ok=True)
     lock, toolchain_files = validate_toolchain(root)
     removed_state = clear_stale_state(root)
-    dosbox = Path(dosbox or os.environ.get('DOSBOX', lock['dosbox_default']))
+    runner = runner or resolve_runner(lock, backend='dosbox' if dosbox else None, executable=dosbox)
 
     # This baseline is construction, not a cached input.  Replacing F_F9BE
     # with the identical selected CC.LIB module prevents a duplicate TOUPPER
     # contribution while preserving historical library extraction.
     baseline = build_baseline(root=root, linker=root / 'toolchain/TLINK.EXE',
-                              dosbox=dosbox,
+                              runner=runner,
                               promote_toupper=True, scaffold_dgroup=True, verify=verify)
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link']['unresolved_count']:
         raise ValueError('Fresh baseline link failed')
@@ -136,6 +137,7 @@ def build(root=ROOT, verify=True, dosbox=None):
     report = {
         'format': 'empires-exe-build-v1', 'status': 'BUILT',
         'output': str(published), 'sha256': sha256(published), 'size': published.stat().st_size,
+        'runner': runner.receipt(),
         'compiler': 'Turbo C 2.0', 'assembler': 'TASM 1.0',
         'linker': lock['linkers'][0], 'toolchain_files': toolchain_files,
         'compiled_source_modules': baseline['compile']['owner_count'],
@@ -171,11 +173,13 @@ def main():
                         help='verify the published EXE against assets/AEPROG.EXE (the default)')
     parser.add_argument('--no-verify', action='store_true',
                         help='skip the final published-EXE byte comparison (component proof still needs the fixture)')
-    parser.add_argument('--dosbox', type=Path,
-                        help='override the DOSBox executable used for the historical toolchain')
+    parser.add_argument('--dosbox', type=Path, help='force the DOSBox reference backend')
+    parser.add_argument('--msdos-player', type=Path, help='force an MS-DOS Player executable')
+    parser.add_argument('--runner', choices=('msdos-player', 'dosbox'), help='select the DOS execution host')
     args = parser.parse_args()
     try:
-        report = build(verify=not args.no_verify, dosbox=args.dosbox)
+        runner = resolve_runner(read_json(ROOT / 'layout/toolchain.json'), backend=args.runner, executable=args.msdos_player or args.dosbox)
+        report = build(verify=not args.no_verify, runner=runner)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}')
         return 1

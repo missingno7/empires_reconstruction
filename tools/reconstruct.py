@@ -16,6 +16,7 @@ from mz import MZ, encode_header
 from omf import OmfReader
 from exe_data import encode_data
 from storage_evidence import verify_bindings
+from dos_runner import DosRunner, resolve_runner
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -74,73 +75,63 @@ def mismatch(expected, actual, owner, base=None):
                          f'first missing/extra byte file 0x{base+min(len(expected),len(actual)):06X}')
 
 
-def compile_sources(root, owners, work, toolchain, dosbox, lock):
-    """One isolated DOS session. No cached OBJ can satisfy a fresh build."""
-    tc = work / 'TC/BIN'
-    units = work / 'WORK'
-    tc.mkdir(parents=True)
-    units.mkdir()
-    # Recovered headers are staged beside every generated source unit so the
-    # historical compiler sees the same source-level interfaces in isolated
-    # fresh sessions as it will in a normal project build.
+def compile_sources(root, owners, work, toolchain, runner, lock):
+    """Compile fresh sources through MS-DOS Player or the DOSBox reference host."""
+    if not isinstance(runner, DosRunner):
+        runner = resolve_runner(lock, backend='dosbox' if runner else None, executable=runner)
+    tc, units = work / 'TC/BIN', work / 'WORK'
+    tc.mkdir(parents=True); units.mkdir()
     include_dir = root / 'include'
     if include_dir.exists():
         for header in include_dir.glob('*.H'):
-            source = header.read_bytes()
-            staged = (source.decode('latin1').replace('\r\n', '\n').replace('\r', '\n')
-                      .replace('\n', '\r\n').encode('latin1'))
+            staged = header.read_bytes().decode('latin1').replace('\r\n','\n').replace('\r','\n').replace('\n','\r\n').encode('latin1')
             (units / header.name).write_bytes(staged)
     for item in lock['files']:
         src = toolchain / item['path']
         if sha(src.read_bytes()) != item['sha256']:
             raise ValueError(f'Toolchain identity mismatch: {src}')
         shutil.copyfile(src, tc / src.name)
-    commands = ['@echo off', 'c:', 'cd \\work', 'set PATH=C:\\TC\\BIN']
-    receipts = {}
+    receipts, commands = {}, ['@echo off', 'c:', 'cd \\work', 'set PATH=C:\\TC\\BIN']
+    staged_units = []
     for i, owner in enumerate(owners):
-        stem = f'R{i:04d}'
-        suffix = '.C' if owner['kind'] == 'MATCHING_C' else '.ASM'
+        stem = f'R{i:04d}'; suffix = '.C' if owner['kind'] == 'MATCHING_C' else '.ASM'
         source = project_path(root, owner['source']).read_bytes()
-        # Reproduce the upstream staging convention, without changing the canonical source.
-        staged = source.decode('latin1').replace('\r\n', '\n').replace('\r', '\n').replace('\n', '\r\n').encode('latin1')
+        staged = source.decode('latin1').replace('\r\n','\n').replace('\r','\n').replace('\n','\r\n').encode('latin1')
         (units / (stem + suffix)).write_bytes(staged)
-        flags = lock['flags'] + ' ' + owner['build'].get('flags_append', '')
-        if owner['kind'] == 'MATCHING_C':
-            command = f'tcc {flags.strip()} {stem}.C'
-        else:
-            command = f'tasm /mx {stem}.ASM'
-        commands += [f'echo {owner["id"]}>>BUILD.LOG', command + ' >> BUILD.LOG',
-                     'if errorlevel 1 goto failed']
-        receipts[owner['id']] = {'command': command, 'object': f'WORK/{stem}.OBJ',
-                                 'source_sha256': sha(source), 'staged_sha256': sha(staged)}
+        flags = lock['flags'].split() + owner['build'].get('flags_append','').split()
+        args = flags + [stem + suffix] if owner['kind'] == 'MATCHING_C' else ['/mx', stem + suffix]
+        printable = ('tcc ' + ' '.join(args)) if owner['kind'] == 'MATCHING_C' else ('tasm ' + ' '.join(args))
+        commands += [f'echo {owner["id"]}>>BUILD.LOG', printable + ' >> BUILD.LOG', 'if errorlevel 1 goto failed']
+        receipts[owner['id']] = {'command': printable, 'object': f'WORK/{stem}.OBJ', 'source_sha256': sha(source), 'staged_sha256': sha(staged)}
+        staged_units.append((owner, stem, args))
+    if runner.backend == 'msdos-player':
+        print(f'Compiling {len(owners)} source regions with Turbo C / TASM through MS-DOS Player...', flush=True)
+        host_log = bytearray()
+        for owner, stem, args in staged_units:
+            program = tc / ('TCC.EXE' if owner['kind'] == 'MATCHING_C' else 'TASM.EXE')
+            result, command, output = runner.run(program, args, units, timeout=600)
+            host_log.extend((owner['id'] + '\r\n').encode('ascii', 'replace') + output)
+            if result.returncode:
+                (work / 'host.log').write_bytes(host_log)
+                raise ValueError(f'Compiler command failed for {owner["id"]}; inspect {work / "host.log"}')
+        (work / 'host.log').write_bytes(host_log)
+        for receipt in receipts.values():
+            path = work / receipt['object']
+            if not path.exists(): raise ValueError(f'MS-DOS Player did not produce {path}')
+            receipt['object_sha256'] = sha(path.read_bytes())
+        return receipts, {'runner': runner.receipt(), 'command_count': len(owners), 'toolchain': lock}
     commands += ['echo OK>SUCCESS.TXT', 'goto done', ':failed', 'echo FAILED>FAILED.TXT', ':done']
-    (work / 'GO.BAT').write_bytes(('\r\n'.join(commands) + '\r\n').encode('ascii'))
-    conf = '\n'.join([
-        '[sdl]', 'output=texture', 'window_position=2550,1430', 'window_size=320x200',
-        '[mixer]', 'nosound=true', '[dosbox]', 'machine=svga_s3', 'memsize=16',
-        '[cpu]', 'core=auto', 'cputype=auto', 'cycles=max', '[autoexec]',
-        f'mount c "{work}"', 'c:', 'call c:\\go.bat', 'exit', ''])
-    config = work / 'dosbox.conf'
-    config.write_text(conf, encoding='utf-8')
-    command = [str(dosbox), '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit']
-    options = {}
-    if os.name == 'nt':
-        startup = subprocess.STARTUPINFO()
-        startup.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-        startup.wShowWindow = 0
-        options['startupinfo'] = startup
-        options['creationflags'] = subprocess.CREATE_NO_WINDOW
-    print(f'Compiling {len(owners)} source regions with Turbo C / TASM...', flush=True)
-    with (work / 'host.log').open('wb') as log:
-        result = subprocess.run(command, cwd=work, stdout=log, stderr=subprocess.STDOUT,
-                                timeout=600, **options)
-    if result.returncode or not (units / 'SUCCESS.TXT').exists():
+    (work / 'GO.BAT').write_bytes(('\r\n'.join(commands)+'\r\n').encode('ascii'))
+    conf = '\n'.join(['[sdl]','output=texture','[mixer]','nosound=true','[dosbox]','machine=svga_s3','memsize=16','[cpu]','core=auto','cputype=auto','cycles=max','[autoexec]',f'mount c "{work}"','c:','call c:\\go.bat','exit',''])
+    config=work/'dosbox.conf'; config.write_text(conf,encoding='utf-8')
+    command=[str(runner.executable),'-conf',str(config),'--noprimaryconfig','-noconsole','-exit']
+    print(f'Compiling {len(owners)} source regions with Turbo C / TASM through DOSBox...', flush=True)
+    with (work/'host.log').open('wb') as log:
+        result=subprocess.run(command,cwd=work,stdout=log,stderr=subprocess.STDOUT,timeout=600)
+    if result.returncode or not (units/'SUCCESS.TXT').exists():
         raise ValueError(f'Compiler session failed; inspect {units / "BUILD.LOG"} and {work / "host.log"}')
-    for receipt in receipts.values():
-        path = work / receipt['object']
-        receipt['object_sha256'] = sha(path.read_bytes())
-    return receipts, {'command': command, 'dosbox_sha256': sha(dosbox.read_bytes()),
-                      'config_sha256': sha(config.read_bytes()), 'toolchain': lock}
+    for receipt in receipts.values(): receipt['object_sha256']=sha((work/receipt['object']).read_bytes())
+    return receipts, {'runner': runner.receipt(), 'command': command, 'config_sha256': sha(config.read_bytes()), 'toolchain': lock}
 
 
 def read_object(data):

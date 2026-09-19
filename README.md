@@ -25,6 +25,8 @@ canonical manifest, structured MZ header and source metadata. The fixture is
 an optional verification oracle, as recorded in the
 [fixture audit](docs/fixture-dependency-audit.json).
 
+The execution host is independent of the historical toolchain: MS-DOS Player is preferred for direct DOS executable calls, and DOSBox remains the reference/fallback batch-session backend. `layout/toolchain.json` keeps runner identity separate from the pinned Borland inputs.
+
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Canonical and source-link raw DATA
@@ -120,8 +122,7 @@ python tools/setup_toolchain.py --from "X:/your/TC/BIN" --lib-from "X:/your/TC/L
 
 The setup and build both verify the hashes in `layout/toolchain.json`.
 The entire toolchain directory is ignored by Git and is not redistributed.
-Override the emulator location with `--dosbox PATH` or the `DOSBOX` environment
-variable; override the Borland directory with `--toolchain PATH`.
+Override the execution host with `--runner msdos-player --msdos-player PATH` or `--runner dosbox --dosbox PATH`; override the Borland directory with `--toolchain PATH`.
 
 Once local component sources are prepared, the independent DAT packer can run
 without original files or fixed-layout manifests:

@@ -42,5 +42,12 @@
       "redistribution": "Do not commit or redistribute the binary"
     }
   ],
-  "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+  "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d",
+  "runner": {
+    "default": "msdos-player",
+    "fallback": "dosbox",
+    "msdos_player_default": null,
+    "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+    "note": "Execution host only; Turbo C, TASM, TLINK, CC.LIB and C0C.OBJ remain separately pinned historical inputs."
+  }
 }

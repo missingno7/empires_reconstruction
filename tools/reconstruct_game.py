@@ -117,14 +117,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=ROOT / 'build')
     parser.add_argument('--toolchain', type=Path, default=ROOT / 'toolchain')
-    parser.add_argument('--dosbox', type=Path, default=Path(os.environ.get('DOSBOX', 'C:/Program Files/DOSBox Staging/dosbox.exe')))
+    parser.add_argument('--dosbox', type=Path, help='force DOSBox for the fixed-placement oracle path')
     parser.add_argument('--fixed-exe-oracle', action='store_true',
                         help='use the older fixed-placement EXE builder for diagnostics')
     args = parser.parse_args()
     if not args.output.resolve().is_relative_to((ROOT / 'build').resolve()):
         parser.error('--output must be within the project build directory')
     try:
-        reconstruct_game(ROOT, args.output.resolve(), args.toolchain.resolve(), args.dosbox.resolve(),
+        reconstruct_game(ROOT, args.output.resolve(), args.toolchain.resolve(), args.dosbox.resolve() if args.dosbox else None,
                          'fixed-oracle' if args.fixed_exe_oracle else 'structural')
     except (ValueError, OSError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}', file=sys.stderr)

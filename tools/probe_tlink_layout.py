@@ -23,6 +23,7 @@ from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
 from omf import OmfReader
 from mz import MZ
 from reconstruct import ROOT, compile_sources, read_json, sha, write_json
+from dos_runner import DosRunner, resolve_runner
 
 
 DEFAULT_LINKER = ROOT / 'toolchain/TLINK.EXE'
@@ -221,16 +222,18 @@ def replace_library_module_segments(library, module_name, replacement_object):
     raise ValueError(f'{module_name}: module not found in library')
 
 
-def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
+def run(root=ROOT, linker=DEFAULT_LINKER, runner=None, dosbox=None, promote_toupper=False,
         demand_historical_library=False, normalize_recovered_symbols=False,
         scaffold_dgroup=False, normalize_case_symbols=False,
         expose_internal_labels=False, verify=True):
     linker = Path(linker).resolve()
     if not linker.exists():
         raise ValueError(f'linker candidate is unavailable: {linker}')
-    dosbox = Path(dosbox or os.environ.get(
-        'DOSBOX', 'C:/Program Files/DOSBox Staging/dosbox.exe')).resolve()
     lock = read_json(root / 'layout/toolchain.json')
+    if runner is None:
+        runner = resolve_runner(lock, backend='dosbox' if dosbox else None, executable=dosbox)
+    if not isinstance(runner, DosRunner):
+        raise ValueError('runner must be a DosRunner')
     manifest = read_json(root / 'layout/manifest.json')
     c0c = root / 'toolchain/C0C.OBJ'
     cc_lib = root / 'toolchain/CC.LIB'
@@ -256,7 +259,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     work = Path(tempfile.mkdtemp(prefix='tlink-structural-', dir=root_build)).resolve()
     compile_work = work / 'compile'
     receipts, compile_session = compile_sources(root, compile_owners, compile_work,
-                                                root / 'toolchain', dosbox, lock)
+                                                root / 'toolchain', runner, lock)
     explicit_publics = set()
     for receipt in receipts.values():
         explicit_publics.update(public['name'] for public in
@@ -522,9 +525,11 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         log_name = 'LINK.LOG' if final else f'{tag}.LOG'
         output_name = 'OUT.EXE' if final else f'{tag}.EXE'
         map_name = 'OUT.MAP' if final else f'{tag}.MAP'
-        response = '/s C:\\TC\\LIB\\C0C.OBJ+' + '+'.join(
-            f'C:\\WORK\\{name}' for name in names)
-        response += f',{output_name},{map_name},C:\\TC\\LIB\\CC.LIB'
+        prefix = 'C:\\TC\\LIB\\C0C.OBJ+' if runner.backend == 'dosbox' else '..\\TC\\LIB\\C0C.OBJ+'
+        object_prefix = 'C:\\WORK\\' if runner.backend == 'dosbox' else ''
+        library = 'C:\\TC\\LIB\\CC.LIB' if runner.backend == 'dosbox' else '..\\TC\\LIB\\CC.LIB'
+        response = '/s ' + prefix + '+'.join(f'{object_prefix}{name}' for name in names)
+        response += f',{output_name},{map_name},{library}'
         (work / response_name).write_text(response, encoding='ascii')
         batch = ('@echo off\r\n'
                  'c:\r\n'
@@ -539,10 +544,14 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                   f'mount c "{work}"\nc:\ncall c:\\go.bat\nexit\n')
         config_path = work / f'{tag}.conf'
         config_path.write_text(config, encoding='utf-8')
-        command = [str(dosbox), '-conf', str(config_path), '--noprimaryconfig',
-                   '-noconsole', '-exit']
-        result = subprocess.run(command, cwd=work, stdout=subprocess.PIPE,
-                                stderr=subprocess.STDOUT, timeout=600)
+        if runner.backend == 'msdos-player':
+            result, command, output = runner.run(bc_bin / 'TLINK.EXE', ['@..\\' + response_name],
+                                                 dos_work, timeout=600, log_path=dos_work / log_name)
+        else:
+            command = [str(runner.executable), '-conf', str(config_path), '--noprimaryconfig',
+                       '-noconsole', '-exit']
+            result = subprocess.run(command, cwd=work, stdout=subprocess.PIPE,
+                                    stderr=subprocess.STDOUT, timeout=600)
         log_path = dos_work / log_name
         map_path = dos_work / map_name
         exe_path = dos_work / output_name
@@ -681,6 +690,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                     'normalize_recovered_symbols': normalize_recovered_symbols,
                     'normalize_case_symbols': normalize_case_symbols,
                     'expose_internal_labels': expose_internal_labels},
+        'runner': runner.receipt(),
         'linker': {'path': str(linker), 'sha256': sha(linker.read_bytes()),
                    'files': [{'name': p.name, 'sha256': sha(p.read_bytes())}
                              for p in linker_files(linker)]},

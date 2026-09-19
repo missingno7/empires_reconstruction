@@ -224,10 +224,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
+      "id": "GAMEBSS_GB07A_STATE",
       "object": "GAMEBSSF.OBJ",
       "assembly": "GAMEBSSF.ASM",
       "logical_start": 30584,
+      "logical_end": 30586,
+      "owner_candidate": "aggregate resource-loader state",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "GB07C_RESOURCE_POINTER_TABLE_BSS",
+      "object": "GB07CB.OBJ",
+      "assembly": "GB07CB.ASM",
+      "logical_start": 30586,
+      "logical_end": 30922,
+      "owner_candidate": "F_1D47 84-entry resource pointer table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSG.OBJ",
+      "assembly": "GAMEBSSG.ASM",
+      "logical_start": 30922,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

@@ -30,5 +30,17 @@
       "source": "C0C.OBJ"
     }
   ],
+  "linkers": [
+    {
+      "path": "TLINK.EXE",
+      "version_banner": "Turbo Link  Version 2.0  Copyright (c) 1987, 1988 Borland International",
+      "sha256": "997fcac6089fa88f3d868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7",
+      "role": "historical_linker_candidate",
+      "source_archive": "D:/Games/DOS/dos_recosystem/empires_forged/toolchain/download/turboc20.zip",
+      "archive_member": "disk2/TLINK.EXE",
+      "local_extracted_path": "build/turbo20-toolchain/TLINK.EXE",
+      "redistribution": "Do not commit or redistribute the binary"
+    }
+  ],
   "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
 }

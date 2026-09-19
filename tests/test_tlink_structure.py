@@ -16,8 +16,7 @@ class TlinkStructureTests(unittest.TestCase):
         self.assertEqual(report['status'], 'MAP_AVAILABLE')
         comparison = report['code_comparison']
         self.assertGreaterEqual(comparison['actual_code_row_count'], 339)
-        if report.get('mode', '').startswith(
-                'library_toupper_with_historical_demand_and_symbol_normalization'):
+        if report.get('mode', '').startswith('library_toupper'):
             self.assertIsNone(comparison['first_divergence'])
             replacements = report.get('library_replacements', [])
             for owner_id in ('LIB_STRLEN', 'LIB_RAND'):
@@ -47,6 +46,12 @@ class TlinkStructureTests(unittest.TestCase):
                 self.assertNotEqual(divergence['expected_start'], divergence['actual_start'])
         self.assertTrue(any(item['kind'] == 'alignment_padding'
                             for item in report['relocatable_scaffold']))
+        byte_comparison = report.get('byte_comparison', {})
+        if byte_comparison.get('available'):
+            self.assertIn('mz', byte_comparison)
+            self.assertIn('load_image', byte_comparison)
+            self.assertIn('full_file', byte_comparison)
+            self.assertIn('first_difference', byte_comparison['full_file'])
 
 
 if __name__ == '__main__':

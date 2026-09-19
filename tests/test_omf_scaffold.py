@@ -5,7 +5,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from omf import OmfReader
-from omf_scaffold import make_text_padding, trim_text_contribution
+from omf_scaffold import make_text_padding, remove_public, trim_text_contribution
 
 
 class OmfScaffoldTests(unittest.TestCase):
@@ -23,6 +23,19 @@ class OmfScaffoldTests(unittest.TestCase):
         module = OmfReader().read(trimmed, 'RUNTIME_BLOCK.OBJ')
         self.assertEqual(module.segment_length('_TEXT'), 6571)
         self.assertEqual(module.segment_bytes('_TEXT'), OmfReader().read(source).segment_bytes('_TEXT')[:6571])
+
+    def test_remove_public_preserves_object_bytes(self):
+        candidates = sorted((ROOT / 'build').glob('tlink-structural-*/WORK/R0209.OBJ'))
+        candidates = [path for path in candidates
+                      if '_getkey' in {public['name'] for public in OmfReader().read(path.read_bytes()).publics}]
+        if not candidates:
+            self.skipTest('structural TLINK probe has not produced the duplicate-public object')
+        source = candidates[-1].read_bytes()
+        original = OmfReader().read(source)
+        trimmed = OmfReader().read(remove_public(source, '_getkey'))
+        self.assertEqual(trimmed.segment_bytes('_TEXT'), original.segment_bytes('_TEXT'))
+        self.assertEqual(trimmed.fixups, original.fixups)
+        self.assertNotIn('_getkey', {public['name'] for public in trimmed.publics})
 
 
 if __name__ == '__main__':

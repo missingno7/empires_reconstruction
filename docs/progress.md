@@ -6,6 +6,12 @@ compiled data, independently encoded text and static data.
 Archive/resource structure now has a separate exact build. Broad gameplay
 semantic cleanup remains outside this mechanical phase.
 
+The structural linker frontier has changed: the local Turbo Link 2.0 candidate
+is now hash-pinned, and a no-demand run places the complete `_TEXT` segment at
+the oracle offsets with no code divergence. The demand and no-demand runs have
+the same library module order. DATA/BSS ownership and the remaining temporary
+linker adapters are now the primary work.
+
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
 | Freshly compiled matching C | 14,077 | 58,979 | 347 |
@@ -1214,3 +1220,15 @@ semantic Turbo C translation unit. The source reproduces `_srand` and `_rand`,
 the four-byte initialized state, the `LXMUL@` external, and all eight OMF
 fixups. Matching-C coverage is now 58,979 bytes across 347 owners, and
 known-library ownership is 5,300 bytes across 40 owners.
+
+## Structural linker milestone
+
+The local Turbo C 2.0 archive also supplies Turbo Link 2.0. Its pinned hash is
+`997fcac6089fa88d3f868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7`.
+With the current recovered objects and temporary symbol adapters, a no-demand
+Turbo Link 2.0 run produces `_TEXT` `0x00000..0x0FA22`, 342 map rows, and no
+code-placement divergence. Removing the historical-library demand object does
+not change the 391-row module sequence or its library order. The partial link
+still has 424 unresolved DATA/BSS symbols; those are the next structural
+frontier. The full comparison report now records MZ fields, relocation order,
+load-image slices, first differing byte and whole-file hashes.

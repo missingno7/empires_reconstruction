@@ -1,8 +1,20 @@
 {
-  "role": "experimental_linker_candidate",
-  "version_banner": "Borland TLINK 5.1",
-  "sha256": "ab8b8b96c1bde5ff6f56c8be2c3b928d21ead7430e72b01e3b22f1fa179ad006",
-  "local_path": "D:/Games/DOS/dos_recosystem/aladdin_forged/toolchain/dos/BC/BIN/TLINK.EXE",
-  "provenance": "Local Borland C++ DOS toolchain; not asserted to be the historical Turbo C 2.0 linker",
-  "redistribution": "Do not commit or redistribute the binary"
+  "candidates": [
+    {
+      "role": "historical_linker_candidate",
+      "version_banner": "Turbo Link  Version 2.0  Copyright (c) 1987, 1988 Borland International",
+      "sha256": "997fcac6089fa88f3d868bdaf8bd65bd44c5aa83885a1d61e73f77808bd4f8f7",
+      "local_path": "build/turbo20-toolchain/TLINK.EXE",
+      "provenance": "Extracted locally from turboc20.zip disk2/TLINK.EXE; same distribution family as the pinned Turbo C 2.0 compiler inputs",
+      "redistribution": "Do not commit or redistribute the binary"
+    },
+    {
+      "role": "comparison_linker_candidate",
+      "version_banner": "Borland TLINK 5.1",
+      "sha256": "ab8b8b96c1bde5ff6f56c8be2c3b928d21ead7430e72b01e3b22f1fa179ad006",
+      "local_path": "D:/Games/DOS/dos_recosystem/aladdin_forged/toolchain/dos/BC/BIN/TLINK.EXE",
+      "provenance": "Local Borland C++ DOS toolchain; retained only as a comparison implementation",
+      "redistribution": "Do not commit or redistribute the binary"
+    }
+  ]
 }

@@ -11,9 +11,9 @@ No load address is written into these objects.
 The local `C0C.OBJ` startup object is pinned in `layout/toolchain.json`. The
 startup audit establishes that its complete 444-byte `_TEXT` contribution
 matches the first 444 load-image bytes outside its own fixup locations. The
-linker candidate is recorded separately in `docs/tlink-candidate.json` because
-the available binary is Borland C++ TLINK 5.1 from a different local toolchain;
-it is evidence for linker behavior, not yet a verified Turbo C 2.0 input.
+the historical Turbo Link 2.0 candidate is recorded separately in
+`docs/tlink-candidate.json`; the older Borland C++ TLINK 5.1 remains listed only
+as a comparison implementation.
 
 The ordinary-owner run produced a detailed map and placed the startup plus the
 first 339 reconstructed code owners at the expected load offsets without
@@ -95,3 +95,11 @@ both initialized LEDATA records, and TLINK still selects the module at its
 oracle position `0xF8FE` (load offset `63742`). This cross-check demonstrates
 that source ownership can preserve a library module's code and DGROUP
 contribution together while placement remains linker-derived.
+
+The pinned Turbo C 2.0 distribution also contains Turbo Link 2.0. A no-demand
+run with that linker places the same 342 code rows and reports no first code
+divergence; the historical demand object can be removed without changing the
+391-row module sequence or library order. The partial executable comparison is
+explicit: the report records MZ-field equality, relocation count/order, load
+image slices, first differing byte and whole-file hashes. Its 424 unresolved
+symbols are DATA/BSS ownership, not code placement.

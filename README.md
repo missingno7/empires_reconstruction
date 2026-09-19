@@ -3,11 +3,10 @@
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.
-The build compiles 345 C regions and no ASM regions, and extracts 42 pinned
-Borland library modules (41 code contributions
-and one 257-byte data contribution). The MZ header is
+The fixed build compiles 347 C regions and no ASM regions, and retains 40 pinned
+Borland library contributions as independent historical inputs. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); sixteen raw regions cover the remaining 5,087 EXE bytes.
+RGB tables (1,536 bytes); thirteen raw regions cover the remaining 4,460 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 488 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 75 resolve through [publics read from pinned library modules](docs/library-bindings.md).
@@ -27,8 +26,11 @@ coverage are reported separately.
 This is a matching bootstrap, not yet reconstruction of the complete original
 build. The [architectural target](docs/build-reconstruction.md) requires layout
 to emerge from independent components and recovered build rules. DAT packing
-now derives offsets from component order and emitted sizes; the EXE still uses
-fixed placement, and both paths retain explicitly counted opaque fallbacks.
+derives offsets from component order and emitted sizes. The relocatable TLINK
+experiment now places the complete `_TEXT` prefix, DGROUP alignment, BSS and
+stack under linker control; its remaining synthetic DATA/BSS and symbol
+adapters are tracked in the [adapter ledger](docs/linker-adapter-ledger.md).
+The fixed EXE path remains the byte-identical oracle.
 A separate [compression-source experiment](docs/compression-sources.md) rebuilds
 both DATs from decoded payloads and explicit compression instructions. It
 preserves unresolved parse choices without claiming the historical encoder policy.
@@ -60,6 +62,8 @@ the existing local upstream installation once:
 python tools/extract_raw.py
 python tools/reconstruct_archives.py prepare
 python tools/setup_toolchain.py
+# Optional historical linker, after extracting the locally pinned TLINK.EXE:
+# python tools/setup_toolchain.py --linker-from build/turbo20-toolchain/TLINK.EXE
 # Alternatively: python tools/setup_toolchain.py --from "X:/your/TC/BIN"
 # If libraries are elsewhere, add --lib-from "X:/your/TC/LIB".
 ```

@@ -165,6 +165,52 @@ def add_publics(data: bytes, publics, segment_name: str = '_TEXT') -> bytes:
     return result
 
 
+def remove_public(data: bytes, name: str) -> bytes:
+    """Remove one PUBDEF entry without changing initialized bytes or fixups."""
+    records = list(_records(data))
+    removed = 0
+    rebuilt = []
+    for kind, body in records:
+        if kind not in (OmfReader.PUBDEF16, OmfReader.PUBDEF32):
+            rebuilt.append((kind, body))
+            continue
+        at = 0
+        group, at = _index(body, at)
+        segment, at = _index(body, at)
+        entries = []
+        while at < len(body):
+            size = body[at]
+            end = at + 1 + size
+            if end + 2 > len(body):
+                raise MatchError('truncated PUBDEF name')
+            public_name = body[at + 1:end].decode('latin1')
+            offset_end = end + (4 if kind == OmfReader.PUBDEF32 else 2)
+            _, type_at = _index(body, offset_end)
+            entry = body[at:type_at]
+            if public_name == name:
+                removed += 1
+            else:
+                entries.append(entry)
+            at = type_at
+        if entries:
+            # PUBDEF headers are the two variable-length indices at the front.
+            header_end = 0
+            _, header_end = _index(body, header_end)
+            _, header_end = _index(body, header_end)
+            rebuilt.append((kind, body[:header_end] + b''.join(entries)))
+        elif removed:
+            continue
+        else:
+            rebuilt.append((kind, body))
+    if removed != 1:
+        raise MatchError(f'expected one PUBDEF {name!r}, found {removed}')
+    result = b''.join(_record(kind, record_body) for kind, record_body in rebuilt)
+    checked = OmfReader().read(result)
+    if name in {public['name'] for public in checked.publics}:
+        raise MatchError(f'PUBDEF removal did not round-trip for {name!r}')
+    return result
+
+
 def rename_external_addend(data: bytes, old: str, new: str, delta: int) -> bytes:
     """Rename an external and add a segment-relative offset to its FIXUPPs."""
     renamed = rename_external(data, old, new) if old != new else data

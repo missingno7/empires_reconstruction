@@ -17,7 +17,7 @@ import tempfile
 
 from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
                           add_publics, make_text_padding,
-                          normalize_external_case, rename_external,
+                          normalize_external_case, rename_external, remove_public,
                           rename_external_addend,
                           trim_text_contribution)
 from omf import OmfReader
@@ -25,7 +25,11 @@ from mz import MZ
 from reconstruct import ROOT, compile_sources, read_json, sha, write_json
 
 
-DEFAULT_LINKER = Path(r'D:/Games/DOS/dos_recosystem/aladdin_forged/toolchain/dos/BC/BIN/TLINK.EXE')
+DEFAULT_LINKER = ROOT / 'toolchain/TLINK.EXE'
+if not DEFAULT_LINKER.exists():
+    # Keep the older comparison candidate as a fallback for checkouts that
+    # have not installed the optional historical linker yet.
+    DEFAULT_LINKER = Path(r'D:/Games/DOS/dos_recosystem/aladdin_forged/toolchain/dos/BC/BIN/TLINK.EXE')
 RECOVERED_SYMBOL_ALIASES = {
     'F_233E': [('_delay', '_f6c57')],
     'F_56C6': [('_delay', '_f6c57')],
@@ -66,6 +70,65 @@ def linker_files(linker):
         path = linker.parent / name
         if path.exists():
             result.append(path)
+    return result
+
+
+def compare_linked_executable(candidate, oracle):
+    """Compare a TLINK output at header, relocation, load-image and file levels."""
+    result = {'candidate': str(candidate), 'oracle': str(oracle), 'available': False}
+    if not candidate.exists() or not oracle.exists():
+        return result
+    candidate_bytes = candidate.read_bytes()
+    oracle_bytes = oracle.read_bytes()
+    result.update({'available': True, 'candidate_sha256': sha(candidate_bytes),
+                   'oracle_sha256': sha(oracle_bytes),
+                   'candidate_size': len(candidate_bytes), 'oracle_size': len(oracle_bytes)})
+    try:
+        candidate_mz = MZ.parse(candidate_bytes)
+        oracle_mz = MZ.parse(oracle_bytes)
+    except ValueError as error:
+        result['parse_error'] = str(error)
+        return result
+    candidate_fields = struct.unpack_from('<14H', candidate_bytes)
+    oracle_fields = struct.unpack_from('<14H', oracle_bytes)
+    field_names = ('e_magic', 'e_cblp', 'e_cp', 'e_crlc', 'e_cparhdr', 'e_minalloc',
+                   'e_maxalloc', 'e_ss', 'e_sp', 'e_csum', 'e_ip', 'e_cs',
+                   'e_lfarlc', 'e_ovno')
+    result['mz'] = {
+        'candidate_fields': dict(zip(field_names, candidate_fields)),
+        'oracle_fields': dict(zip(field_names, oracle_fields)),
+        'fields_equal': candidate_fields == oracle_fields,
+        'relocation_count_equal': len(candidate_mz.relocations) == len(oracle_mz.relocations),
+        'relocation_order_equal': candidate_mz.relocations == oracle_mz.relocations,
+    }
+    candidate_load = candidate_mz.load_image(candidate_bytes)
+    oracle_load = oracle_mz.load_image(oracle_bytes)
+
+    def slice_comparison(name, start, end):
+        left = candidate_load[start:end]
+        right = oracle_load[start:end]
+        first = next((start + i for i, (a, b) in enumerate(zip(left, right)) if a != b), None)
+        if first is None and len(left) != len(right):
+            first = start + min(len(left), len(right))
+        return {'equal': left == right, 'start': start, 'end': end,
+                'candidate_length': len(left), 'oracle_length': len(right),
+                'first_difference': first}
+
+    result['load_image'] = {
+        'equal': candidate_load == oracle_load,
+        'first_difference': next((i for i, (a, b) in enumerate(zip(candidate_load, oracle_load))
+                                  if a != b), min(len(candidate_load), len(oracle_load))
+                                 if len(candidate_load) != len(oracle_load) else None),
+        'candidate_length': len(candidate_load), 'oracle_length': len(oracle_load),
+    }
+    result['text'] = slice_comparison('_TEXT', 0, 0xFA23)
+    result['initialized_data'] = slice_comparison('_DATA', 0xFA30, 0x13332)
+    result['full_file'] = {
+        'equal': candidate_bytes == oracle_bytes,
+        'first_difference': next((i for i, (a, b) in enumerate(zip(candidate_bytes, oracle_bytes))
+                                  if a != b), min(len(candidate_bytes), len(oracle_bytes))
+                                 if len(candidate_bytes) != len(oracle_bytes) else None),
+    }
     return result
 
 
@@ -278,6 +341,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         shutil.copyfile(path, bc_bin / path.name.upper())
     scaffold = []
     object_names = []
+    staged_publics = set()
     if demand_historical_library:
         library_modules = []
         for region in manifest['regions']:
@@ -342,10 +406,18 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                     source_bytes = rename_external_addend(source_bytes, old, new, delta)
                     transforms.append(f'EXTDEF {old} -> {new} + {delta}')
             owned_length = owner['end'] - owner['start']
+            replacement_module = library_replacements.get(owner['id'])
+            if replacement_module is None:
+                current_module = OmfReader().read(source_bytes)
+                duplicate_publics = [public['name'] for public in current_module.publics
+                                     if public['name'] in staged_publics]
+                for public_name in duplicate_publics:
+                    source_bytes = remove_public(source_bytes, public_name)
+                    transforms.append(f'removed duplicate PUBDEF {public_name}')
+                staged_publics.update(public['name'] for public in OmfReader().read(source_bytes).publics)
             trimmed = trim_text_contribution(source_bytes, owned_length)
             staged = dos_work / Path(receipt['object']).name
             staged.write_bytes(trimmed)
-            replacement_module = library_replacements.get(owner['id'])
             if replacement_module is None:
                 object_names.append(staged.name)
             scaffold.append({
@@ -436,10 +508,18 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         cc_publics = set()
         for _, blob in OmfReader().split_library(cc_lib.read_bytes()):
             cc_publics.update(public['name'] for public in OmfReader().read(blob).publics)
+        injected_publics = {name for labels in internal_labels.values() for name in labels}
+        explicit_publics_casefold = {name.lower() for name in explicit_publics | injected_publics}
         dgroup_publics = {}
         for region in manifest['regions']:
             for symbol, binding in region.get('build', {}).get('bindings', {}).items():
-                if binding.get('coordinate') != 'DGROUP_offset' or symbol in cc_publics:
+                # Turbo Link 2.0 rejects duplicate PUBDEFs even when the
+                # duplicate is the same startup/global symbol. The synthetic
+                # scaffold should define only unresolved data names; C0C and
+                # reconstructed objects already provide the rest.
+                if (binding.get('coordinate') != 'DGROUP_offset' or
+                        symbol in cc_publics or symbol in explicit_publics or
+                        symbol.lower() in explicit_publics_casefold):
                     continue
                 if 'offset' in binding:
                     offset = binding['offset']
@@ -563,7 +643,8 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             'exe_sha256': sha(exe_path.read_bytes()) if exe_path.exists() else None,
             'map_sha256': sha(map_path.read_bytes()) if map_path.exists() else None,
         },
-        'interpretation': 'TLINK placement is experimental; the fixed manifest remains the oracle and unresolved data symbols are expected until the synthetic DGROUP scaffold exists.'
+        'byte_comparison': compare_linked_executable(exe_path, root / 'assets/AEPROG.EXE'),
+        'interpretation': 'TLINK placement is experimental; the fixed manifest remains the oracle. A no-demand run can prove the complete _TEXT prefix while unresolved DGROUP symbols remain until reconstructed DATA/BSS sources replace the synthetic scaffold.'
     }
     write_json(root_build / 'tlink-structural-report.json', report)
     print(f"TLINK map: {report['status']}; code rows {len(code_rows)}/{len(compile_owners)}; unresolved {len(unresolved)}")

@@ -1,0 +1,30 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_C914",
+      "source": "src/F_C914.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc914",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_fc988": {"coordinate": "code_offset", "evidence": "F_C988 owned code entry"},
+          "_fc9a4": {"offset": 51620, "coordinate": "code_offset", "evidence": "complete F_C914 fixup"},
+          "_fca03": {"offset": 51715, "coordinate": "code_offset", "evidence": "complete F_C914 fixup"},
+          "_fca9b": {"offset": 51867, "coordinate": "code_offset", "evidence": "complete F_C914 fixup"},
+          "_fcadb": {"coordinate": "code_offset", "evidence": "F_CADB owned code entry"},
+          "_fcaf1": {"coordinate": "code_offset", "evidence": "F_CAF1 owned code entry"},
+          "_fcb48": {"coordinate": "code_offset", "evidence": "F_CB48 owned code entry"},
+          "_mus_arg": {"offset": 7818, "coordinate": "DGROUP_offset", "evidence": "complete F_C914 fixup"},
+          "_mus_flag": {"offset": 6004, "coordinate": "DGROUP_offset", "evidence": "complete F_C914 fixup"},
+          "_mus_ptr": {"offset": 7816, "coordinate": "DGROUP_offset", "evidence": "complete F_C914 fixup"},
+          "_snd_delay": {"offset": 7824, "coordinate": "DGROUP_offset", "evidence": "complete F_C914 fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit with sixteen fresh OMF fixups"
+    }
+  ]
+}

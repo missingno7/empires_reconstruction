@@ -14633,9 +14633,9 @@
       "id": "F_C914",
       "start": 51988,
       "end": 52104,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_C914.ASM",
+      "source": "src/F_C914.C",
       "original_symbol": "F_C914",
       "artifact": "regions/F_C914.bin",
       "expected_sha256": "4129f3d34103640c9372b812447f1f5a83025220eb64ff862896a3690e3fce41",
@@ -14645,6 +14645,7 @@
         "public": "_fc914",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_fc988": {
             "coordinate": "code_offset",
@@ -14709,16 +14710,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219C0.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C914.json",
-        "entry_sha256": "d52aa35ee0e852938358fd9d646b0a91884608823a01bbd34a59b69101db4849",
-        "record_sha256": "3edb7efe14cdd7a62b00964b921e34aaf2e5832ce5293e28f6741dc6416f1267",
-        "source_sha256": "457c4b90f5baf315a2fe142b60a854918a0714821d516305d8d0ca72b5c02bca",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "457c4b90f5baf315a2fe142b60a854918a0714821d516305d8d0ca72b5c02bca",
+        "source_sha256": "91f2cb6b100f15d29b70ea979a74faff567d495299fe5fdf8eca975fe57d055c",
+        "change": "Translate the complete music-stream command decoder into a deterministic Turbo C source unit with sixteen existing fixups and no loader relocations."
       }
     },
     {

@@ -12,18 +12,40 @@
       "owner_candidate": "F_01CE",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_remainder": false
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSS0.OBJ",
+      "assembly": "GAMEBSS0.ASM",
+      "logical_start": 34,
+      "logical_end": 1986,
+      "owner_candidate": "aggregate leading remainder",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "RENDER_STATE_BSS",
+      "object": "RSTATEB.OBJ",
+      "assembly": "RSTATEB.ASM",
+      "logical_start": 1986,
+      "logical_end": 2002,
+      "owner_candidate": "shared command/render state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "GAMEBSS_REMAINDER",
       "object": "GAMEBSS.OBJ",
       "assembly": "GAMEBSS.ASM",
-      "logical_start": 34,
+      "logical_start": 2002,
       "logical_end": 37250,
       "owner_candidate": "aggregate remainder",
       "representation": "ANCHORED_BSS",
       "confidence": "CANONICAL_LAYOUT",
-      "aggregate_remainder": true
+      "aggregate_storage": true
     }
   ]
 }

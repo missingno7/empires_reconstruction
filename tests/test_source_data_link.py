@@ -85,8 +85,8 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertTrue(report['byte_comparison']['text']['equal'])
         self.assertEqual(report['synthetic_bss_bytes'], 0)
-        self.assertEqual(report['partitioned_bss_source_bytes'], 34)
-        self.assertEqual(report['unpartitioned_bss_source_bytes'], 37216)
+        self.assertEqual(report['partitioned_bss_source_bytes'], 50)
+        self.assertEqual(report['unpartitioned_bss_source_bytes'], 37200)
         self.assertFalse(report['dgroup_scaffold_present'])
         self.assertEqual(report['bss_source']['kind'], 'TASM_SOURCE_CONTRIBUTIONS')
         self.assertTrue(report['bss_source']['binding_evidence_equal'])
@@ -95,7 +95,8 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertEqual(report['bss_source']['group'], 'DGROUP')
         self.assertTrue(report['bss_source']['contribution_plan_equal'])
         self.assertEqual([(item['id'], item['bytes']) for item in report['bss_source']['contributions']],
-                         [('F_01CE_BSS_PREFIX', 34), ('GAMEBSS_REMAINDER', 37216)])
+                         [('F_01CE_BSS_PREFIX', 34), ('GAMEBSS_LEADING_REMAINDER', 1952),
+                          ('RENDER_STATE_BSS', 16), ('GAMEBSS_REMAINDER', 35248)])
         self.assertEqual(report['oracle_copied_initialized_data_bytes'], 0)
         reloc = report['byte_comparison']['mz']
         self.assertEqual(reloc['candidate_fields']['e_crlc'], 106)

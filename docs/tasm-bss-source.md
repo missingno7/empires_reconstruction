@@ -9,16 +9,18 @@ derives the unchanged BSS base, runtime BSS placement, stack base and MZ fields.
 
 `recipes/data/bss-contributions.json` is the deterministic contribution plan.
 Its first contribution is `F01CEBSS.OBJ`, a 34-byte symbolic owner containing
-`GAME_BSS`, `_cur_idx`, `_g3902`, and `_g3904`. `GAMEBSS.OBJ` is the rebased
-37,216-byte anchored remainder with the other 243 labels. The plan must cover
-the full logical reserve, and its rebased labels must equal the canonical map
-before the link begins. Neither object contributes load-image payload. The
+`GAME_BSS`, `_cur_idx`, `_g3902`, and `_g3904`. `RSTATEB.OBJ` owns the
+16-byte shared command/render-state island at bytes 1,986–2,001. Two anchored
+`GAMEBSS` fragments cover the remaining 37,200 bytes with the other labels.
+The plan must cover the full logical reserve, and its rebased labels must equal
+the canonical map before the link begins. None of the objects contributes
+load-image payload. The
 staged source timestamp is fixed because TASM records it in an OMF comment; the
 full historical-linker output remains byte-identical.
 
 This removes the synthetic DGROUP/BSS object from the exact path. It does not
 prove the historical translation-unit boundary of either object. The canonical
 anchor map and ordered contributions are checked against linker-binding
-evidence on every structural link, but 37,216 bytes remain aggregate storage.
+evidence on every structural link, but 37,200 bytes remain aggregate storage.
 Those are the next ownership constraints rather than reasons to retain a
 synthetic object.

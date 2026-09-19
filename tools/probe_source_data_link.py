@@ -120,15 +120,21 @@ def run(verify=True):
             raise ValueError('BSS contributions must be contiguous and ordered')
         sliced = bss_slice(bss_source, start, end)
         if (not all(isinstance(contribution.get(key), str) for key in ('id', 'object', 'assembly'))
-                or type(contribution.get('aggregate_remainder')) is not bool):
+                or type(contribution.get('aggregate_storage')) is not bool):
             raise ValueError('Invalid BSS contribution identity')
+        # The pinned TASM runs inside DOS, where generated source/object names
+        # need an 8.3 spelling even though the host filesystem permits longer.
+        object_name, assembly_name = contribution['object'], contribution['assembly']
+        if (Path(object_name).suffix.upper() != '.OBJ' or Path(assembly_name).suffix.upper() != '.ASM'
+                or len(Path(object_name).stem) > 8 or len(Path(assembly_name).stem) > 8):
+            raise ValueError('BSS contribution source/object must use DOS 8.3 names')
         bss_contributions.append({**contribution, 'length': sliced['length'],
                                   'publics': sliced['publics']})
         expected_start = end
     if expected_start != bss_source['length']:
         raise ValueError('BSS contribution plan does not cover the canonical reserve')
-    if sum(item['aggregate_remainder'] for item in bss_contributions) != 1:
-        raise ValueError('BSS contribution plan needs exactly one aggregate remainder')
+    if not any(item['aggregate_storage'] for item in bss_contributions):
+        raise ValueError('BSS contribution plan needs aggregate storage')
     if (len({item['object'] for item in bss_contributions}) != len(bss_contributions)
             or len({item['assembly'] for item in bss_contributions}) != len(bss_contributions)):
         raise ValueError('BSS contribution objects and sources must be unique')
@@ -253,7 +259,13 @@ def run(verify=True):
     subprocess.run([baseline['link']['command'][0], '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
                    cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
     map_path = work / 'WORK/OUT.MAP'
-    errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), map_path.read_text(errors='replace'))
+    link_log_path = work / 'WORK/LINK.LOG'
+    if not link_log_path.exists() or not map_path.exists():
+        errors = ['TLINK did not run after generated source preparation']
+        map_text = ''
+    else:
+        map_text = map_path.read_text(errors='replace')
+        errors = link_errors(link_log_path.read_text(errors='replace'), map_text)
     if ((work / 'WORK/BSS_FAILED.TXT').exists()
             or any(not (work / 'WORK' / contribution['object']).exists()
                    for contribution in bss_contributions)):
@@ -275,10 +287,10 @@ def run(verify=True):
                             'logical_start': contribution['logical_start'], 'bytes': contribution['length'],
                             'publics': len(contribution['publics']), 'representation': contribution['representation'],
                             'confidence': contribution['confidence'],
-                            'aggregate_remainder': contribution['aggregate_remainder'], 'object_sha256':
+                            'aggregate_storage': contribution['aggregate_storage'], 'object_sha256':
                             (sha(object_path.read_bytes()) if object_path.exists() else None),
                             'source_sha256': contribution['asm_sha256']})
-    segments, rows = parse_map(map_path)
+    segments, rows = parse_map(map_path) if map_text else ([], [])
     report = {'status': 'LINKED' if not errors else 'LINK_FAILED', 'errors': errors,
               'segments': segments, 'code_contributions_equal': rows == baseline['code_rows'],
               'source_contributions': sources, 'separated_data': separated,
@@ -286,9 +298,9 @@ def run(verify=True):
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
               'synthetic_bss_bytes': 0,
               'partitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects
-                                                  if not item['aggregate_remainder']),
-              'unpartitioned_bss_source_bytes': next(item['bytes'] for item in bss_objects
-                                                      if item['aggregate_remainder']),
+                                                  if not item['aggregate_storage']),
+              'unpartitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects
+                                                    if item['aggregate_storage']),
               'dgroup_scaffold_present': False,
               'bss_source': {'kind': 'TASM_SOURCE_CONTRIBUTIONS',
                              'publics': len(source_bss_publics), 'initialized_bytes': 0,

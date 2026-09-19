@@ -50,6 +50,67 @@
         ]
       },
       "limitation": "The ordered TASM contribution proves a compatible symbolic storage owner and preserves the exact link. It does not prove that F_01CE was the historical object which allocated this storage."
+    },
+    {
+      "id": "RENDER_STATE_BSS",
+      "owner_candidate": "shared command/render state",
+      "start": 1986,
+      "end": 2002,
+      "alignment": "word",
+      "declarations": [
+        {
+          "symbol": "_g40c4",
+          "aliases": ["_dst", "_edge", "_g40c6"],
+          "type": "far pointer",
+          "offset": 1986,
+          "size": 4
+        },
+        {
+          "symbol": "_g40c8",
+          "aliases": ["_result"],
+          "type": "int",
+          "offset": 1990,
+          "size": 2
+        },
+        {
+          "symbol": "_g40ca",
+          "type": "far pointer",
+          "offset": 1992,
+          "size": 4
+        },
+        {
+          "symbol": "_g40ce",
+          "type": "int",
+          "offset": 1996,
+          "size": 2
+        },
+        {
+          "symbol": "_g40d0",
+          "aliases": ["_objtab"],
+          "type": "far pointer",
+          "offset": 1998,
+          "size": 4
+        }
+      ],
+      "references": [
+        "F_1ECD, F_31C4, F_3A75, F_5AC3, and F_5E98 use the cursor/result fields",
+        "F_2AE2, F_5AC3, F_6036, and F_6181 use the object-table pointer",
+        "The next public anchor _g40d4 is at 2002"
+      ],
+      "evidence": [
+        "Every byte of the 16-byte interval is covered by a typed public or an alias",
+        "F_1ECD proves that _g40c6 aliases the segment word of the _g40c4 far pointer",
+        "The adjacent public anchors bound the complete interval without padding"
+      ],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {
+        "recipe": "recipes/data/bss-contributions.json",
+        "object": "RSTATEB.OBJ",
+        "logical_start": 1986,
+        "logical_end": 2002
+      },
+      "limitation": "The shared fields form a well-bounded state block, but current evidence does not identify one historical source object which allocated it."
     }
   ]
 }

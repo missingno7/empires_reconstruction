@@ -2,9 +2,9 @@
 
 `F_6CA6` is now canonical C for its complete 68-byte far-resource-table span
 setup. A parameter-forced Turbo C frame preserves the original calling shape;
-raw opcode directives hide only the compiler's SI save detection while all
-eight DGROUP references remain explicit OMF fixups. No loader relocations are
-present.
+the recovered `unsigned char far *` table declaration and symbolic inline
+assembly now let Turbo C emit the SI save/restore and all eight DGROUP fixups
+directly. No loader relocations are present.
 
 ```powershell
 python tools/promote_c_candidates.py --recipe recipes/c/matching-wave68.json

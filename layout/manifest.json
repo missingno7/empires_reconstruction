@@ -3885,9 +3885,9 @@
       "id": "F_4AA8",
       "start": 19624,
       "end": 19724,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_4AA8.ASM",
+      "source": "src/F_4AA8.C",
       "original_symbol": "F_4AA8",
       "artifact": "regions/F_4AA8.bin",
       "expected_sha256": "aac72c41a68adbb48085a14845c49b89b9c885079f8b397802baf73b2e820ff9",
@@ -3897,22 +3897,20 @@
         "public": "_f4aa8",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_f03b4": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_4AA8.json",
-        "entry_sha256": "ca21fc6364cb319aed6362c76dbbaf9cc38bb813c4baeb82fb6cefa6de917f79",
-        "record_sha256": "83ecdc93d12bcec3149001704b8a4eb2d3430e0e1ba20a63da34b564d0409689",
-        "source_sha256": "62c708e0c7151f07d16fa0742d658d3470af311a10821bc3790a623f0650fabc",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "62c708e0c7151f07d16fa0742d658d3470af311a10821bc3790a623f0650fabc",
+        "source_sha256": "b8b37dffd2b3a38a22cea8b2675b4ccb81eff11ffb17840947e8acf23312ad64",
+        "change": "Translate the complete four-register rectangle clipping routine into Turbo C inline assembly with its existing near-call binding."
       }
     },
     {

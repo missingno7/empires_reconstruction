@@ -4,6 +4,7 @@ DAC_FORMAT = 'dac6-rgb256-v1'
 TEXT_FORMAT = 'ascii-nul-v1'
 RECORDS_FORMAT = 'fixed-records-v1'
 U16_TABLE_FORMAT = 'u16le-table-v1'
+ZERO_PAD_FORMAT = 'zero-pad-v1'
 
 
 def palette_document(data):
@@ -47,6 +48,11 @@ def encode_data(document, encoder):
                 raise ValueError('u16 table value is out of range')
             data.extend(value.to_bytes(2, 'little'))
         return bytes(data)
+    if encoder == ZERO_PAD_FORMAT:
+        if (set(document) != {'format', 'length'} or document.get('format') != encoder or
+                type(document['length']) is not int or document['length'] < 0):
+            raise ValueError('Zero-padding source requires format and nonnegative length only')
+        return bytes(document['length'])
     if encoder != DAC_FORMAT or document.get('format') != encoder:
         raise ValueError('Unknown or inconsistent executable data encoder')
     if set(document) != {'format', 'entries'} or not isinstance(document['entries'], list) or len(document['entries']) != 256:
@@ -74,6 +80,10 @@ def decode_data(data, encoder):
             raise ValueError('u16 table has an odd byte length')
         return {'format': encoder, 'values': [int.from_bytes(data[i:i + 2], 'little')
                                                for i in range(0, len(data), 2)]}
+    if encoder == ZERO_PAD_FORMAT:
+        if any(data):
+            raise ValueError('Zero-padding data contains a nonzero byte')
+        return {'format': encoder, 'length': len(data)}
     if encoder != DAC_FORMAT:
         raise ValueError('Unknown executable data encoder')
     return palette_document(data)

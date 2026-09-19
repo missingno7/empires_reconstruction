@@ -15,8 +15,8 @@ semantic cleanup remains outside this mechanical phase.
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Structured static data | 0 | 1,010 | 3 |
-| Exact raw fallback | 62,621 | 31,263 | 38 |
+| Structured static data | 0 | 1,019 | 6 |
+| Exact raw fallback | 62,621 | 31,254 | 35 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,263 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,254 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -630,3 +630,12 @@ setup through `CS:01BA`; the source is therefore a deterministic
 reproduces the original `00 00` bytes exactly, and the complete EXE and DAT
 rebuild remains byte-identical. Five data-heavy raw extents remain for further
 mechanical classification. See [the wave-seventy-four proof](matching-c-wave74.md).
+
+## Seventy-fifth structured-data wave
+
+Three zero-filled gaps between complete code owners are now explicit
+`zero-pad-v1` alignment sources: one byte before `F_4AA8`, one byte before
+`F_6D86`, and seven bytes before `F_6DCC`. Each gap is a proven boundary and
+has no relocation or reference obligation. The deterministic encoder reproduces
+all nine original bytes and reduces the raw fallback to 31,254 bytes across 35
+remaining regions. See [the wave-seventy-five proof](matching-c-wave75.md).

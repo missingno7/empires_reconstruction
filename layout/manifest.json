@@ -3826,16 +3826,18 @@
       }
     },
     {
-      "id": "RAW_004CA7",
+      "id": "PAD_004CA7",
+      "kind": "EXACT_DATA",
+      "source": "src/data/PAD_004CA7.json",
       "start": 19623,
       "end": 19624,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/004CA7-004CA8.bin",
-      "original_symbol": null,
-      "artifact": "raw/004CA7-004CA8.bin",
       "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/PAD_004CA7.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "F_4AA8",
@@ -6840,16 +6842,18 @@
       }
     },
     {
-      "id": "RAW_006F85",
+      "id": "PAD_006F85",
+      "kind": "EXACT_DATA",
+      "source": "src/data/PAD_006F85.json",
       "start": 28549,
       "end": 28550,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/006F85-006F86.bin",
-      "original_symbol": null,
-      "artifact": "raw/006F85-006F86.bin",
       "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/PAD_006F85.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "F_6D86",
@@ -6880,16 +6884,18 @@
       }
     },
     {
-      "id": "RAW_006FC5",
+      "id": "PAD_006FC5",
+      "kind": "EXACT_DATA",
+      "source": "src/data/PAD_006FC5.json",
       "start": 28613,
       "end": 28620,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/006FC5-006FCC.bin",
-      "original_symbol": null,
-      "artifact": "raw/006FC5-006FCC.bin",
       "expected_sha256": "837885c8f8091aeaeb9ec3c3f85a6ff470a415e610b8ba3e49f9b33c9cf9d619",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/PAD_006FC5.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "F_6DCC",

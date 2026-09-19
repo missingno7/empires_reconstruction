@@ -113,11 +113,8 @@
   "remaining_adapters": [
     "candidate DATA/code object interleaving",
     "arithmetic-module FIXUPP subrecord ordering",
-    "unpartitioned TASM BSS source and recovered public map",
-    "recovered symbol aliases",
-    "EXTDEF case normalization",
-    "injected internal publics"
+    "unpartitioned TASM BSS source and recovered public map"
   ],
   "whole_build_reconstruction_complete": false,
-  "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA; temporary symbol/order adapters, BSS ownership and historical module proof remain."
+  "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA and zero object symbol transforms; object order, BSS ownership and historical module proof remain."
 }

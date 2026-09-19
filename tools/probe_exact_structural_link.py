@@ -43,13 +43,11 @@ def run():
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
             'unpartitioned TASM BSS source and recovered public map',
-            'recovered symbol aliases',
-            'EXTDEF case normalization',
-            'injected internal publics',
         ],
         'whole_build_reconstruction_complete': False,
-        'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA; '
-                       'temporary symbol/order adapters, BSS ownership and historical module proof remain.'),
+        'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA '
+                       'and zero object symbol transforms; object order, BSS ownership and '
+                       'historical module proof remain.'),
     }
     write_json(ROOT / 'build/exact-structural-link-report.json', report)
     write_json(ROOT / 'docs/exact-structural-link.json', report)

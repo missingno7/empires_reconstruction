@@ -35,5 +35,5 @@ raw owner are now one six-record typed table plus a four-byte u16 trailer.
 The arithmetic interval F_DDD9 through F_DF98 now compiles as one exact object.
 A checked OMF adapter orders its explicit FIXUPP subrecords like historical
 Turbo C output; TLINK then produces the byte-identical file. Raw DATA, the
-unpartitioned BSS reserve, object-order evidence and symbol adapters still
+unpartitioned BSS reserve and object-order evidence still
 prevent claiming a recovered build.

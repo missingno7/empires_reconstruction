@@ -71,8 +71,13 @@ class TlinkStructureTests(unittest.TestCase):
             self.assertEqual(transformed, [])
             runtime = next(item for item in report['relocatable_scaffold']
                            if item.get('owner') == 'RUNTIME_BLOCK')
-            self.assertEqual(runtime['internal_labels']['_f039c'], 0)
-            self.assertEqual(len(runtime['internal_labels']), 27)
+            work = Path(report['byte_comparison']['candidate']).parent
+            module = OmfReader().read((work / runtime['object']).read_bytes())
+            publics = {public['name']: public['offset']
+                       for public in module.publics_in('_TEXT')}
+            self.assertEqual(publics['_f039c'], 0)
+            self.assertEqual(publics['_f03d5'], 57)
+            self.assertEqual(publics['_runtime_block_end'], 6571)
         else:
             divergence = comparison['first_divergence']
             if report.get('mode') == 'library_toupper_promotion':

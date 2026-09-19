@@ -3987,9 +3987,9 @@
       "id": "F_4EEB",
       "start": 20715,
       "end": 20835,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_4EEB.ASM",
+      "source": "src/F_4EEB.C",
       "original_symbol": "F_4EEB",
       "artifact": "regions/F_4EEB.bin",
       "expected_sha256": "e93b30a16ab59958fada995c3626e1cce7a75216e810b7136f2967d65dba4477",
@@ -3999,6 +3999,7 @@
         "public": "_f4eeb",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_f01ce": {
             "coordinate": "code_offset",
@@ -4032,16 +4033,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEA.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_4EEB.json",
-        "entry_sha256": "afa3c358c1b95e939e894de0edf25adbe92f1a9fd429e190f5c402ec0c7f25f4",
-        "record_sha256": "c977db0991e4c510db206b0897a3e51edfc0aafba26871de3ea9d047d37b520b",
-        "source_sha256": "dedd54adb576eb4f8538fff34c9f9434763e7472aa64cf1a142b6c0e25e80c2e",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "dedd54adb576eb4f8538fff34c9f9434763e7472aa64cf1a142b6c0e25e80c2e",
+        "source_sha256": "7f258c270d1a5b5722b0f1ca94cb15fa65a39c5be83da8947e7f79001b2f2a2f",
+        "change": "Translate the complete sprite-table walk into Turbo C inline assembly with byte-coded DI addressing, six existing fixups and no loader relocations."
       }
     },
     {

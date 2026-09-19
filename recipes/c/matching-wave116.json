@@ -1,0 +1,25 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_4EEB",
+      "source": "src/F_4EEB.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f4eeb",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_f01ce": {"coordinate": "code_offset", "evidence": "F_01CE owned code entry"},
+          "_f03a5": {"offset": 933, "coordinate": "code_offset", "evidence": "complete F_4EEB fixup"},
+          "_f03cc": {"offset": 972, "coordinate": "code_offset", "evidence": "complete F_4EEB fixup"},
+          "_gb07c": {"offset": 45180, "coordinate": "DGROUP_offset", "evidence": "complete F_4EEB fixup"},
+          "_gb3ae": {"offset": 45998, "coordinate": "DGROUP_offset", "evidence": "complete F_4EEB fixup"},
+          "_gbfba": {"offset": 49082, "coordinate": "DGROUP_offset", "evidence": "complete F_4EEB fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to Turbo C inline assembly with byte-coded DI addressing and six fresh OMF fixups"
+    }
+  ]
+}

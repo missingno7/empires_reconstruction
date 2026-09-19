@@ -105,15 +105,30 @@ def compile_sources(root, owners, work, toolchain, runner, lock):
         receipts[owner['id']] = {'command': printable, 'object': f'WORK/{stem}.OBJ', 'source_sha256': sha(source), 'staged_sha256': sha(staged)}
         staged_units.append((owner, stem, args))
     if runner.backend == 'msdos-player':
+        # MS-DOS Player executes Turbo C's normal TASM handoff faithfully for
+        # ordinary units.  RUNTIME_BLOCK is the one unusually large unit for
+        # which that child-process handoff does not return on this host.  Keep
+        # its compiler output identical by asking TCC for assembly and then
+        # invoking the pinned TASM explicitly; do not apply this workaround to
+        # the rest of the source tree because it changes a few terminal bytes.
+        external_tasm_owners = {'RUNTIME_BLOCK'}
         print(f'Compiling {len(owners)} source regions with Turbo C / TASM through MS-DOS Player...', flush=True)
         host_log = bytearray()
         for owner, stem, args in staged_units:
             program = tc / ('TCC.EXE' if owner['kind'] == 'MATCHING_C' else 'TASM.EXE')
-            result, command, output = runner.run(program, args, units, timeout=600)
+            needs_external_tasm = owner['kind'] == 'MATCHING_C' and owner['id'] in external_tasm_owners
+            direct_args = args[:-1] + ['-S', args[-1]] if needs_external_tasm else args
+            result, command, output = runner.run(program, direct_args, units, timeout=600)
             host_log.extend((owner['id'] + '\r\n').encode('ascii', 'replace') + output)
             if result.returncode:
                 (work / 'host.log').write_bytes(host_log)
                 raise ValueError(f'Compiler command failed for {owner["id"]}; inspect {work / "host.log"}')
+            if needs_external_tasm:
+                result, command, output = runner.run(tc / 'TASM.EXE', ['/mx', stem + '.ASM'], units, timeout=600)
+                host_log.extend(output)
+                if result.returncode:
+                    (work / 'host.log').write_bytes(host_log)
+                    raise ValueError(f'Compiler assembly failed for {owner["id"]}; inspect {work / "host.log"}')
         (work / 'host.log').write_bytes(host_log)
         for receipt in receipts.values():
             path = work / receipt['object']

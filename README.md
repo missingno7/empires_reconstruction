@@ -25,7 +25,7 @@ canonical manifest, structured MZ header and source metadata. The fixture is
 an optional verification oracle, as recorded in the
 [fixture audit](docs/fixture-dependency-audit.json).
 
-The execution host is independent of the historical toolchain: MS-DOS Player is preferred for direct DOS executable calls, and DOSBox remains the reference/fallback batch-session backend. `layout/toolchain.json` keeps runner identity separate from the pinned Borland inputs.
+The execution host is independent of the historical toolchain: MS-DOS Player is preferred for direct DOS executable calls, and DOSBox remains the reference/fallback batch-session backend. Set `MSDOS_PLAYER` to the local `msdos.exe` path (or put it on `PATH`) to select it automatically. See [the runner guide](docs/dos-runner.md). `layout/toolchain.json` keeps runner identity separate from the pinned Borland inputs.
 
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
@@ -102,10 +102,10 @@ a failure. Every invocation builds fresh objects. For only the EXE, use
 `python tools/reconstruct_archives.py`.
 The whole-game command also checks independently packed DATs against both
 the fixed-layout archive output and the original fixtures.
-It needs DOSBox Staging (installed here at
-`C:/Program Files/DOSBox Staging/dosbox.exe`) and the three pinned Borland
-executables plus `CC.LIB`, installed locally in `toolchain/`. There are no Python
-package dependencies and no PortForge dependency at build or game runtime.
+It needs MS-DOS Player for the normal direct execution path, or DOSBox Staging
+as the fallback/reference backend, plus the three pinned Borland executables
+and `CC.LIB`, installed locally in `toolchain/`. There are no Python package
+dependencies and no PortForge dependency at build or game runtime.
 
 Game files, raw byte extracts, compiler binaries, and build output are not
 distributed in Git. On a fresh checkout, place your own original `AEPROG.EXE`,

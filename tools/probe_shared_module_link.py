@@ -13,14 +13,19 @@ from probe_module_group import probe
 from probe_tlink_layout import (parse_map, link_errors, compare_linked_executable,
                                 comparison_not_requested)
 from reconstruct import ROOT, read_json, sha, write_json
+from dos_runner import DosRunner
 
 
-def run(recipe_path, source_data=False, input_report_path=None, verify=True):
+def run(recipe_path, source_data=False, input_report_path=None, verify=True, runner=None):
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link'].get('errors'):
         raise ValueError('Shared replacement requires a successful baseline link')
     recipe = read_json(recipe_path)
-    proof = probe(recipe_path, verify=verify)
+    if runner is None:
+        runner_info = baseline.get('runner') or baseline.get('compile', {}).get('session', {}).get('runner')
+        runner = (DosRunner('msdos-player', Path(runner_info['path']))
+                  if runner_info and runner_info.get('backend') == 'msdos-player' else None)
+    proof = probe(recipe_path, runner=runner, verify=verify)
     input_report = (read_json(input_report_path) if input_report_path else
                     read_json(ROOT / 'build/source-data-link-report.json') if source_data else baseline)
     original_work = Path(input_report['byte_comparison']['candidate']).parent.parent
@@ -64,22 +69,33 @@ def run(recipe_path, source_data=False, input_report_path=None, verify=True):
                     for kind, body in _records(data))
     (work / 'WORK' / (group_name + '.OBJ')).write_bytes(data)
     response = (original_work / 'LINK.RSP').read_text()
+    dos_paths = 'C:\\WORK\\' in response
     for index, entry in enumerate(selected):
-        token = 'C:\\WORK\\' + entry['object']
+        token = ('C:\\WORK\\' if dos_paths else '') + entry['object']
         if response.count(token) != 1:
             raise ValueError('Expected exactly one staged object in baseline response')
-        response = response.replace(token, 'C:\\WORK\\' + group_name + '.OBJ' if index == 0 else '')
+        response = response.replace(token, (('C:\\WORK\\' if dos_paths else '') + group_name + '.OBJ') if index == 0 else '')
     while '++' in response:
         response = response.replace('++', '+')
     response = response.replace('+,', ',')
     (work / 'LINK.RSP').write_text(response)
-    shutil.copyfile(original_work / 'GO.BAT', work / 'GO.BAT')
-    config = work / 'run.conf'
-    config.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
-                      f'mount c "{work}"\nc:\ncall c:\\GO.BAT\nexit\n')
-    dosbox = baseline['link']['command'][0]
-    subprocess.run([dosbox, '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
-                   cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
+    runner_info = baseline.get('runner') or baseline.get('compile', {}).get('session', {}).get('runner')
+    if runner_info and runner_info.get('backend') == 'msdos-player':
+        runner = DosRunner('msdos-player', Path(runner_info['path']))
+        direct_response = response.replace('C:\\TC\\LIB\\', '..\\TC\\LIB\\').replace('C:\\WORK\\', '')
+        (work / 'LINK.RSP').write_text(direct_response)
+        result, _, _ = runner.run(work / 'BC/BIN/TLINK.EXE', ['@..\\LINK.RSP'], work / 'WORK', timeout=120,
+                                  log_path=work / 'WORK/LINK.LOG')
+        if result.returncode:
+            raise ValueError('MS-DOS Player TLINK shared-module link failed')
+    else:
+        shutil.copyfile(original_work / 'GO.BAT', work / 'GO.BAT')
+        config = work / 'run.conf'
+        config.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
+                          f'mount c "{work}"\nc:\ncall c:\\GO.BAT\nexit\n')
+        dosbox = baseline['link']['command'][0]
+        subprocess.run([dosbox, '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
+                       cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
     map_path = work / 'WORK/OUT.MAP'
     text = map_path.read_text(errors='replace')
     errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), text)
@@ -103,7 +119,7 @@ def run(recipe_path, source_data=False, input_report_path=None, verify=True):
                             if shared['offset'] <= MZ.linear(item['segment'], item['offset']) < shared['offset'] + shared['length']]
     actual_relocations = group_relocations(linked_bytes)
     report = {'status': 'CODE_PLACEMENT_EQUAL' if code_equal and not errors else 'DIVERGED',
-              'candidate': recipe['id'], 'historical_module_proven': False,
+              'candidate': recipe['id'], 'historical_module_proven': False, 'runner': runner_info,
               'source_data_mode': source_data,
               'group_relocation_order': {'actual': actual_relocations, 'expected': expected_relocations,
                                          'equal': actual_relocations == expected_relocations},

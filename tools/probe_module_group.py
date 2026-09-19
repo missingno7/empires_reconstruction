@@ -10,9 +10,10 @@ import tempfile
 from mz import MZ, encode_header
 from reconstruct import ROOT, bind_region, compile_sources, mismatch, project_path, read_json, read_object, sha, write_json
 from reconstruct import owned_library_modules
+from dos_runner import resolve_runner
 
 
-def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None, verify=True):
+def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None, runner=None, verify=True):
     (root / 'build').mkdir(exist_ok=True)
     (root / 'build/module-group-report.json').unlink(missing_ok=True)
     recipe = read_json(recipe_path)
@@ -30,10 +31,10 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None, verify=True):
     candidate = {'id': recipe['id'], 'kind': 'MATCHING_C', 'source': source.relative_to(root).as_posix(),
                  'build': {'flags_append': recipe['flags_append']}}
     # The compiler sees only the ordered source pieces and compiler settings.
+    lock = read_json(root / 'layout/toolchain.json')
+    runner = runner or resolve_runner(lock, backend='dosbox' if dosbox else None, executable=dosbox)
     receipts, session = compile_sources(root, [candidate], work,
-                                       toolchain or root / 'toolchain',
-                                       dosbox or Path(os.environ.get('DOSBOX', 'C:/Program Files/DOSBox Staging/dosbox.exe')),
-                                       read_json(root / 'layout/toolchain.json'))
+                                       toolchain or root / 'toolchain', runner, lock)
     module = read_object((work / receipts[recipe['id']]['object']).read_bytes())
     manifest = read_json(root / 'layout/manifest.json')
     owners = {o['id']: o for o in manifest['regions']}

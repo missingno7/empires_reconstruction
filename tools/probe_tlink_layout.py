@@ -174,48 +174,40 @@ def _omf_records(data):
 
 
 def replace_library_module_segments(library, module_name, replacement_object):
-    """Replace one library module's LEDATA records with source-object bytes.
+    """Preserve library OMF record topology while replacing verified segment bytes.
 
-    Every initialized segment contribution must have the same OMF record size
-    in both modules. The library's page layout, dictionary and module metadata
-    remain unchanged, so this is a structural linker experiment rather than a
-    new library format claim.
+    Hosts may choose different LEDATA chunk boundaries. The pinned library's
+    record layout is retained; only its initialized payload is replaced.
     """
-    page = struct.unpack_from('<H', library, 1)[0] + 3
-    module_start = page
+    page = struct.unpack_from('<H', library, 1)[0] + 3; module_start = page
     while module_start < len(library) and library[module_start] == OmfReader.THEADR:
-        at = module_start
-        name = ''
+        at, name = module_start, ''
         while at < len(library):
-            kind = library[at]
-            length = struct.unpack_from('<H', library, at + 1)[0]
-            if kind == OmfReader.THEADR:
-                size = library[at + 3]
-                name = library[at + 4:at + 4 + size].decode('latin1')
+            kind, length = library[at], struct.unpack_from('<H', library, at + 1)[0]
+            if kind == OmfReader.THEADR: name = library[at + 4:at + 4 + library[at + 3]].decode('latin1')
             at += 3 + length
-            if kind in (OmfReader.MODEND16, OmfReader.MODEND32):
-                break
+            if kind in (OmfReader.MODEND16, OmfReader.MODEND32): break
         module_end = at
         if name == module_name:
-            module = library[module_start:module_end]
-            candidate_records = [replacement_object[a:b] for k, a, b in _omf_records(replacement_object)
-                                 if k == OmfReader.LEDATA16]
-            original_records = [(a, b) for k, a, b in _omf_records(module)
-                                 if k == OmfReader.LEDATA16]
-            if not candidate_records or len(candidate_records) != len(original_records):
-                raise ValueError(f'{module_name}: initialized OMF segment contributions differ')
-            replacements = []
-            for (a, b), candidate_record in zip(original_records, candidate_records):
-                if len(candidate_record) != b - a:
-                    raise ValueError(f'{module_name}: source LEDATA size differs from library module')
-                replacements.append((a, b, candidate_record))
-            patched_module = module
-            for a, b, candidate_record in reversed(replacements):
-                patched_module = patched_module[:a] + candidate_record + patched_module[b:]
-            source_module = OmfReader().read(replacement_object, module_name)
-            patched = OmfReader().read(patched_module, module_name)
+            original = library[module_start:module_end]
+            source_module, original_module = OmfReader().read(replacement_object, module_name), OmfReader().read(original, module_name)
+            if source_module.segments != original_module.segments or source_module.segment_lengths != original_module.segment_lengths:
+                raise ValueError(f'{module_name}: source segment topology differs')
+            # Existing library LEDATA payloads are patch locations; their segment
+            # indexes and offsets remain untouched, including record boundaries.
+            payloads = {segment: source_module.segment_bytes(segment) for segment in source_module.segments}
+            patched = bytearray(original)
+            for kind, begin, finish in _omf_records(original):
+                if kind != OmfReader.LEDATA16: continue
+                body = original[begin + 3:finish - 1]; seg, offset = body[0], struct.unpack_from('<H', body, 1)[0]
+                segment = original_module.segment_defs[seg - 1]['name']; length = len(body) - 3
+                replacement = payloads[segment][offset:offset + length]
+                if len(replacement) != length: raise ValueError(f'{module_name}: LEDATA lies outside source segment')
+                patched[begin + 6:finish - 1] = replacement
+                patched[finish - 1] = (-sum(patched[begin:finish - 1])) & 255
+            patched_module = bytes(patched); parsed = OmfReader().read(patched_module, module_name)
             for segment in source_module.segments:
-                if patched.segment_bytes(segment) != source_module.segment_bytes(segment):
+                if parsed.segment_bytes(segment) != source_module.segment_bytes(segment):
                     raise ValueError(f'{module_name}: source/library {segment} replacement failed')
             return library[:module_start] + patched_module + library[module_end:]
         module_start = ((module_end + page - 1) // page) * page

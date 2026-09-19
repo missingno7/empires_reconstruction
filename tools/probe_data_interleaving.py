@@ -10,6 +10,7 @@ from omf import OmfReader
 from probe_tlink_layout import (compare_linked_executable, comparison_not_requested,
                                 link_errors, parse_map)
 from reconstruct import ROOT, read_json, sha, write_json
+from dos_runner import DosRunner
 
 
 def interleave(objects, moves, data_objects, code_objects):
@@ -55,8 +56,9 @@ def run(input_path, recipe_path, verify=True):
     response = (old_work / 'LINK.RSP').read_text()
     objects_text, remaining = response.split(',', 1)
     objects = objects_text.split('+')
-    data_objects = [(part['id'], f'C:\\WORK\\D{i:04}.OBJ') for i, part in enumerate(data_recipe['components'])]
-    code_objects = {s['owner']: 'C:\\WORK\\' + s['object'] for s in baseline['relocatable_scaffold'] if s.get('owner')}
+    work_prefix = 'C:\\WORK\\' if 'C:\\WORK\\' in objects_text else ''
+    data_objects = [(part['id'], f'{work_prefix}D{i:04}.OBJ') for i, part in enumerate(data_recipe['components'])]
+    code_objects = {s['owner']: work_prefix + s['object'] for s in baseline['relocatable_scaffold'] if s.get('owner')}
     owners = {o['id']: o for o in read_json(ROOT / 'layout/manifest.json')['regions']}
     for move in recipe['moves']:
         for key in ('after_code', 'before_next_relocating_code'):
@@ -68,8 +70,14 @@ def run(input_path, recipe_path, verify=True):
             symbol = owners[owner]['build']['public']
             matches = []
             for token in objects:
-                if token.startswith('C:\\WORK\\'):
-                    module = OmfReader().read((work / 'WORK' / token.rsplit('\\', 1)[-1]).read_bytes())
+                if token.upper().endswith('.OBJ'):
+                    object_path = work / 'WORK' / token.rsplit('\\', 1)[-1]
+                    # C0C.OBJ is deliberately addressed through ..\\TC\\LIB
+                    # in the direct runner response; it is not a staged game
+                    # contribution and cannot own a reconstructed public.
+                    if not object_path.exists():
+                        continue
+                    module = OmfReader().read(object_path.read_bytes())
                     if any(p['name'] == symbol for p in module.publics_in('_TEXT')):
                         matches.append(token)
             if len(matches) != 1:
@@ -77,12 +85,22 @@ def run(input_path, recipe_path, verify=True):
             code_objects[owner] = matches[0]
     ordered = interleave(objects, recipe['moves'], data_objects, code_objects)
     (work / 'LINK.RSP').write_text('+'.join(ordered) + ',' + remaining)
-    shutil.copyfile(old_work / 'GO.BAT', work / 'GO.BAT')
-    config = work / 'run.conf'
-    config.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
-                      f'mount c "{work}"\nc:\ncall c:\\GO.BAT\nexit\n')
-    subprocess.run([baseline['link']['command'][0], '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
-                   cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
+    runner_info = baseline.get('runner') or baseline.get('compile', {}).get('session', {}).get('runner')
+    if runner_info and runner_info.get('backend') == 'msdos-player':
+        runner = DosRunner('msdos-player', Path(runner_info['path']))
+        direct_response = ('+'.join(ordered) + ',' + remaining).replace('C:\\TC\\LIB\\', '..\\TC\\LIB\\').replace('C:\\WORK\\', '')
+        (work / 'LINK.RSP').write_text(direct_response)
+        result, _, _ = runner.run(work / 'BC/BIN/TLINK.EXE', ['@..\\LINK.RSP'], work / 'WORK', timeout=120,
+                                  log_path=work / 'WORK/LINK.LOG')
+        if result.returncode:
+            raise ValueError('MS-DOS Player TLINK DATA interleaving link failed')
+    else:
+        shutil.copyfile(old_work / 'GO.BAT', work / 'GO.BAT')
+        config = work / 'run.conf'
+        config.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
+                          f'mount c "{work}"\nc:\ncall c:\\GO.BAT\nexit\n')
+        subprocess.run([baseline['link']['command'][0], '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
+                       cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
     map_path = work / 'WORK/OUT.MAP'
     errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), map_path.read_text(errors='replace'))
     segments, rows = parse_map(map_path)
@@ -95,13 +113,16 @@ def run(input_path, recipe_path, verify=True):
     actual = MZ.parse((work / 'WORK/OUT.EXE').read_bytes()).relocations
     prefix = next((i for i, (a, b) in enumerate(zip(actual, oracle)) if a != b), min(len(actual), len(oracle)))
     report = {'status': 'LAYOUT_PRESERVED' if not errors and segments == old_segments and rows == old_rows else 'DIVERGED',
-              'moves': recipe['moves'], 'errors': errors, 'segment_map_equal': segments == old_segments,
+              'moves': recipe['moves'], 'errors': errors, 'runner': runner_info, 'segment_map_equal': segments == old_segments,
               'code_contributions_equal': rows == old_rows, 'matching_relocation_prefix_entries': prefix,
               'byte_comparison': comparison,
               'historical_module_proven': False,
               'limitation': 'Candidate source-object order; nonrelocating owners do not identify exact historical boundaries'}
     write_json(output_path, report)
     receipt = dict(report)
+    # Keep the checked-in evidence host-neutral; the build report retains the
+    # concrete runner identity and hash for each actual invocation.
+    receipt.pop('runner', None)
     receipt['byte_comparison'] = {key: value for key, value in comparison.items()
                                   if key not in ('candidate', 'oracle')}
     write_json(ROOT / 'docs/data-interleaving.json', receipt)

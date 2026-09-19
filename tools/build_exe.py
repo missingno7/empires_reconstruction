@@ -102,7 +102,7 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
     stages, shared_reports = [], []
     for recipe_name in MODULE_RECIPES:
         recipe_path = root / 'recipes/modules' / recipe_name
-        shared = link_shared_module(recipe_path, True, previous, verify=verify)
+        shared = link_shared_module(recipe_path, True, previous, verify=verify, runner=runner)
         stages.append({'recipe': recipe_name, 'candidate': shared['candidate'],
                        'fixupp_order_adapter': shared['fixupp_order_adapter']})
         shared_reports.append(shared)

@@ -42,9 +42,14 @@ class DosRunner:
             env.update({key: str(value) for key, value in environment.items()})
         if self.backend == 'msdos-player':
             tool_dir = str(program.parent)
-            env['MSDOS_PATH'] = tool_dir
-            env['PATH'] = tool_dir + os.pathsep + env.get('PATH', '')
-            command = [str(self.executable), '-e', str(program), *map(str, arguments)]
+            # MS-DOS Player has a small DOS environment block. Do not inherit
+            # the host's developer environment; Turbo C needs only its tool
+            # path and a short writable temporary directory.
+            env = {'MSDOS_PATH': tool_dir, 'PATH': tool_dir,
+                   'MSDOS_TEMP': str(cwd), 'TEMP': str(cwd), 'TMP': str(cwd)}
+            if environment:
+                env.update({key: str(value) for key, value in environment.items()})
+            command = [str(self.executable), '-e', '-v5.00', str(program), *map(str, arguments)]
         elif self.backend == 'dosbox':
             script = cwd / '__RUNNER.BAT'
             command_line = '"' + str(program) + '" ' + ' '.join(map(str, arguments))

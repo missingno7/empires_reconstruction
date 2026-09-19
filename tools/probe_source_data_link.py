@@ -21,6 +21,7 @@ from typed_data import FORMAT as TYPED_FORMAT, compile_typed_data
 from probe_tlink_layout import (compare_linked_executable, comparison_not_requested,
                                 link_errors, parse_map)
 from reconstruct import ROOT, read_json, sha, write_json
+from dos_runner import DosRunner
 
 
 def run(verify=True):
@@ -242,7 +243,7 @@ def run(verify=True):
                         'object_sha256': sha(blob)})
     bss_names = ['C:\\WORK\\' + contribution['object'] for contribution in bss_contributions]
     response = (old_work / 'LINK.RSP').read_text()
-    response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + bss_names))
+    response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + bss_names)).replace('DGSCF.OBJ', '+'.join(names + bss_names))
     (work / 'LINK.RSP').write_text(response)
     go = (old_work / 'GO.BAT').read_text()
     bss_commands = ''.join(
@@ -256,8 +257,22 @@ def run(verify=True):
     config = work / 'run.conf'
     config.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
                       f'mount c "{work}"\nc:\ncall c:\\GO.BAT\nexit\n')
-    subprocess.run([baseline['link']['command'][0], '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
-                   cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
+    runner_info = baseline.get('runner') or baseline.get('compile', {}).get('session', {}).get('runner')
+    if runner_info and runner_info.get('backend') == 'msdos-player':
+        runner = DosRunner('msdos-player', Path(runner_info['path']))
+        for contribution in bss_contributions:
+            result, _, _ = runner.run(work / 'TC/BIN/TASM.EXE', ['/mx', contribution['assembly']], work / 'WORK', timeout=120)
+            if result.returncode:
+                raise ValueError(f'TASM BSS build failed for {contribution["id"]}')
+        direct_response = response.replace('C:\\TC\\LIB\\', '..\\TC\\LIB\\').replace('C:\\WORK\\', '')
+        (work / 'LINK.RSP').write_text(direct_response)
+        result, _, output = runner.run(work / 'BC/BIN/TLINK.EXE', ['@..\\LINK.RSP'], work / 'WORK', timeout=120,
+                                        log_path=work / 'WORK/LINK.LOG')
+        if result.returncode:
+            raise ValueError('MS-DOS Player TLINK source-DATA link failed')
+    else:
+        subprocess.run([baseline['link']['command'][0], '-conf', str(config), '--noprimaryconfig', '-noconsole', '-exit'],
+                       cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
     map_path = work / 'WORK/OUT.MAP'
     link_log_path = work / 'WORK/LINK.LOG'
     if not link_log_path.exists() or not map_path.exists():
@@ -292,6 +307,7 @@ def run(verify=True):
                             'source_sha256': contribution['asm_sha256']})
     segments, rows = parse_map(map_path) if map_text else ([], [])
     report = {'status': 'LINKED' if not errors else 'LINK_FAILED', 'errors': errors,
+              'runner': runner_info,
               'segments': segments, 'code_contributions_equal': rows == baseline['code_rows'],
               'source_contributions': sources, 'separated_data': separated,
               'oracle_copied_initialized_data_bytes': 0,
@@ -318,6 +334,9 @@ def run(verify=True):
                              'and historical module grouping remain unpartitioned.')}
     write_json(ROOT / 'build/source-data-link-report.json', report)
     receipt = dict(report)
+    # The checked-in reconstruction receipt records reproducible linker facts,
+    # not the developer-local execution host used for one probe invocation.
+    receipt.pop('runner', None)
     receipt['byte_comparison'] = {key: value for key, value in report['byte_comparison'].items()
                                   if key not in ('candidate', 'oracle')}
     write_json(ROOT / 'docs/source-data-link.json', receipt)

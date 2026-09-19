@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 36,005 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 37,517 bytes from raw
 fallback: 26,382 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 42,719 | 278 |
+| Freshly compiled matching C | 14,077 | 44,231 | 298 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 25,033 | 33 |
+| Exact raw fallback | 62,621 | 23,521 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 25,033 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 23,521 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -753,4 +753,15 @@ bytes remaining.
 relocations. See [the wave 92–93 proof](matching-c-wave92-93.md).
 
 Coverage is now 42,719 matching-C bytes across 278 owners, with 25,033 raw
+bytes remaining.
+
+## Ninety-fourth matching-C wave
+
+Twenty complete routines add 1,512 matching-C bytes in the `0xC4EA`–`0xCB3B`
+span. Each fresh object has no external fixups or loader relocations. One
+adjacent upstream extent, `F_C567`, crosses an existing owned boundary and is
+kept unresolved until it can be split or its module boundary is recovered.
+See [the wave 94 proof](matching-c-wave94.md).
+
+Coverage is now 44,231 matching-C bytes across 298 owners, with 23,521 raw
 bytes remaining.

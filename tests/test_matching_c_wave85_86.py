@@ -25,7 +25,27 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                     ('F_B7F9', 'matching-wave90.json', 366, 0, []),
                     ('F_B122', 'matching-wave91.json', 693, 0, []),
                     ('F_8BAB', 'matching-wave92.json', 1275, 0, []),
-                    ('F_B99F', 'matching-wave93.json', 1857, 0, [])]:
+                    ('F_B99F', 'matching-wave93.json', 1857, 0, []),
+                    ('F_C2EA', 'matching-wave94.json', 111, 0, []),
+                    ('F_C359', 'matching-wave94.json', 130, 0, []),
+                    ('F_C3DB', 'matching-wave94.json', 101, 0, []),
+                    ('F_C440', 'matching-wave94.json', 193, 0, []),
+                    ('F_C501', 'matching-wave94.json', 72, 0, []),
+                    ('F_C549', 'matching-wave94.json', 30, 0, []),
+                    ('F_C5A8', 'matching-wave94.json', 11, 0, []),
+                    ('F_C5B3', 'matching-wave94.json', 19, 0, []),
+                    ('F_C5C6', 'matching-wave94.json', 11, 0, []),
+                    ('F_C5D1', 'matching-wave94.json', 167, 0, []),
+                    ('F_C678', 'matching-wave94.json', 65, 0, []),
+                    ('F_C6B9', 'matching-wave94.json', 77, 0, []),
+                    ('F_C706', 'matching-wave94.json', 79, 0, []),
+                    ('F_C755', 'matching-wave94.json', 37, 0, []),
+                    ('F_C77A', 'matching-wave94.json', 81, 0, []),
+                    ('F_C7CB', 'matching-wave94.json', 105, 0, []),
+                    ('F_C9A4', 'matching-wave94.json', 95, 0, []),
+                    ('F_CA03', 'matching-wave94.json', 50, 0, []),
+                    ('F_CA35', 'matching-wave94.json', 28, 0, []),
+                    ('F_CA51', 'matching-wave94.json', 50, 0, [])]:
                 owner = next(r for r in manifest['regions'] if r['id'] == ident)
                 recipe = read_json(ROOT / 'recipes/c' / recipe_name)
                 self.assertEqual(next(r for r in recipe['owners'] if r['id'] == ident), owner)

@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 56,369 | 324 |
-| Freshly assembled matching ASM | 2,456 | 2,526 | 21 |
+| Freshly compiled matching C | 14,077 | 56,391 | 325 |
+| Freshly assembled matching ASM | 2,456 | 2,504 | 20 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -904,3 +904,12 @@ or loader relocations. See [the wave 110 proof](matching-c-wave110.md).
 
 Current matching-C coverage is 56,369 bytes across 324 owners, with 2,526
 matching-ASM bytes across 21 owners. The raw frontier remains 10,173 bytes.
+
+## One-hundred-eleventh matching-C conversion
+
+F_01A4 converts from its verified ASM owner to matching C. Its complete
+22-byte DOS setup preserves two near-call fixups and no loader relocations.
+See [the wave 111 proof](matching-c-wave111.md).
+
+Current matching-C coverage is 56,391 bytes across 325 owners, with 2,504
+matching-ASM bytes across 20 owners. The raw frontier remains 10,173 bytes.

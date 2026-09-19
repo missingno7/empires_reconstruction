@@ -135,8 +135,8 @@
     },
     {
       "id": "F_01A4",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_01A4.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_01A4.C",
       "start": 932,
       "end": 954,
       "expected_sha256": "d15bed7a2d4d68678c376851a95fe1c41df8fe22a7628c7a1fabc0ea6e9730c1",
@@ -164,8 +164,10 @@
         }
       },
       "provenance": {
-        "method": "local hand-written ASM reconstruction from complete disassembly subextent and fresh full-extent OMF binding",
-        "change": "Recover the 22-byte DOS write setup before the trailing self-referential data word"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "d9fec6385822c1255cb0f168e19138d309582a4311335d2e403f839f6985c760",
+        "source_sha256": "b3944f9e75d3e8f11540f712cee54830dd178673713ee6fb6614c237148cfbea",
+        "change": "Translate the complete DOS setup and handoff sequence into Turbo C inline assembly with the established near-call bindings."
       }
     },
     {

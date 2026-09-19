@@ -1,0 +1,84 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_01A4",
+  "bytes": 22,
+  "source_sha256": "b3944f9e75d3e8f11540f712cee54830dd178673713ee6fb6614c237148cfbea",
+  "matched_sha256": "d15bed7a2d4d68678c376851a95fe1c41df8fe22a7628c7a1fabc0ea6e9730c1",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 13,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_f019c",
+      "displacement": 0,
+      "extent_offset": 13,
+      "addend": 0,
+      "resolved_value": 65513
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 20,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_f0104",
+      "displacement": 0,
+      "extent_offset": 20,
+      "addend": 0,
+      "resolved_value": 65354
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "b3944f9e75d3e8f11540f712cee54830dd178673713ee6fb6614c237148cfbea",
+    "staged_sha256": "e8d04cf875cc09485acef9a7ccfdb9b99d23711f3e3dfe8ac12116032bc4a1b3",
+    "object_sha256": "4442ab773b5f875aba442fed2a5b9ac2f6fc753735aef8b907a81529fe7f255e"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-f01a4-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "ea62133ba6ddff995a9c018be55803d3271842499354e5e89d5e5a7687233844",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

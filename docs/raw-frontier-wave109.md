@@ -7,4 +7,4 @@ control tables, gameplay message tables, and terminal initialized data.
 
 No complete upstream machine extent lies wholly in these ranges. The next
 mechanical frontier is structure recovery for the control/pointer tables and
-relocation-aware numeric records; matching-C coverage remains 56,330 bytes.
+relocation-aware numeric records; matching-C coverage is now 56,358 bytes.

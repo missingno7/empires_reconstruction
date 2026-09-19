@@ -6522,9 +6522,9 @@
       "id": "F_6B4A",
       "start": 27978,
       "end": 28006,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_6B4A.ASM",
+      "source": "src/F_6B4A.C",
       "original_symbol": "F_6B4A",
       "artifact": "regions/F_6B4A.bin",
       "expected_sha256": "09b1fa6e7194fd9dccfb7eee36d5a8ea094febcd539a3f5706f3684f1655c375",
@@ -6538,12 +6538,10 @@
         "module_segments": {}
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6B4A.json",
-        "entry_sha256": "7015218403e446af0719eca0a5d83e94e5e8d0bed250d390e9c3e42b52a8104a",
-        "record_sha256": "4e319548bd5c10f9219ae1efe0fda16402505b19007bca3ab2e1dd9eeaa45580",
-        "source_sha256": "2b17cb1c4d999d8eb057d250d60948fa9c1e8ceadb61dea514c85798832a9511",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "2b17cb1c4d999d8eb057d250d60948fa9c1e8ceadb61dea514c85798832a9511",
+        "source_sha256": "691e92f35de112fa60dc4b6820efae2b469b4450482eeaf5de81cc324f211231",
+        "change": "Translate the complete INT 16h poll into Turbo C inline assembly statements while preserving the exact branch layout."
       }
     },
     {

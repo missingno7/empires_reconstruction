@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 56,330 | 322 |
-| Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
+| Freshly compiled matching C | 14,077 | 56,358 | 323 |
+| Freshly assembled matching ASM | 2,456 | 2,537 | 22 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -885,3 +885,13 @@ The intervening control tables remain raw pending a lossless table schema. See
 
 Matching-C coverage remains 56,330 bytes across 322 owners. Raw ownership is
 now 10,173 bytes across fourteen owners; see [the current raw frontier](raw-frontier-wave109.md).
+
+## One-hundred-ninth matching-C conversion
+
+F_6B4A converts from its verified ASM owner to a fresh matching-C owner. The
+28-byte BIOS keyboard poll compiles with one public and no fixups or loader
+relocations, matching the complete prior extent exactly. See [the wave 109
+proof](matching-c-wave109.md).
+
+Current matching-C coverage is 56,358 bytes across 323 owners, with 2,537
+matching-ASM bytes across 22 owners. The raw frontier remains 10,173 bytes.

@@ -1,0 +1,57 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_6B4A",
+  "bytes": 28,
+  "source_sha256": "691e92f35de112fa60dc4b6820efae2b469b4450482eeaf5de81cc324f211231",
+  "matched_sha256": "09b1fa6e7194fd9dccfb7eee36d5a8ea094febcd539a3f5706f3684f1655c375",
+  "fixups": [],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "691e92f35de112fa60dc4b6820efae2b469b4450482eeaf5de81cc324f211231",
+    "staged_sha256": "435860163f7ab2b663cc55459a9a072681a2c7f8bc3e5deb5a9fa8a0a2a14df1",
+    "object_sha256": "6b165e5b2a985524cc7fe2044fd446154a26901ced5f551dcf292a1f0299ba61"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-f6b4a-c4\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "bc578e6c9eb90533bff03b2d9bf589465aaaeac8d7c40d54c0c3ce567eab46ff",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

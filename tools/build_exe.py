@@ -155,7 +155,6 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
         'remaining_structural_adapters': [
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
-            'aggregate TASM BSS remainder and historical storage ownership',
         ],
         'fixture_dependency': {
             'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '

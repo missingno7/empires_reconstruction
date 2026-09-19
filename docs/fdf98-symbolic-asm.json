@@ -1,0 +1,34 @@
+{
+  "format": "empires-symbolic-asm-candidate-v1",
+  "owner": "F_DF98",
+  "source": "asm/F_DF98.ASM",
+  "source_quality": "SYMBOLIC_ASM_CANDIDATE",
+  "status": "OBJECT_EQUAL_NOT_YET_IN_CANONICAL_LINK",
+  "toolchain": {
+    "assembler": "TASM.EXE 1.0",
+    "runner": "DOSBox reference backend"
+  },
+  "source_sha256": "d99d9e4f8653d5449c1a8e9c5a30f97542b32b6a86be1d76971f38b31064feb1",
+  "object": {
+    "text_bytes": 253,
+    "text_sha256": "17e174407c46b7e80d3c7fc19fef2b30ec7c1ff3fc25fbde8e8e502c0d48e78b",
+    "text_equal_to_current_arithmetic_module_slice": true,
+    "publics": [{"name": "_fdf98", "offset": 0}],
+    "fixups": [
+      {"offset": 102, "target": "LDIV@", "addend": 0},
+      {"offset": 24, "target": "LXMUL@", "addend": 0}
+    ],
+    "fixupp16_records": ["cc01060102", "cc18060101"],
+    "fixupp_order": "descending by source contribution"
+  },
+  "mechanism": {
+    "description": "The high-address LDIV@ call is emitted first with ORG 65h; the entry contribution containing LXMUL@ follows with ORG 0. Final _TEXT remains contiguous and byte-exact.",
+    "historical_status": "compatible reconstruction, not proof of the historical translation-unit source order"
+  },
+  "integration_constraint": {
+    "current_shared_module": "RELOC_F_DDD9_F_DF98",
+    "current_text_bytes": 700,
+    "reason_not_active": "Replacing only F_DF98 with a separate object would move its relocation records after the preceding 447-byte C contribution, changing the proven cross-function relocation sequence. A coherent source module must preserve the complete arithmetic interval's record topology.",
+    "next_step": "Recover the remaining arithmetic interval as a compatible module whose untouched OMF output preserves the full historical FIXUPP sequence."
+  }
+}

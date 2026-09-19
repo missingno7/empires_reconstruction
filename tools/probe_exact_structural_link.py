@@ -37,11 +37,10 @@ def publish(source, shared_modules, final):
         'remaining_adapters': [
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
-            'aggregate TASM BSS remainder and historical storage ownership',
         ],
         'whole_build_reconstruction_complete': False,
-        'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA '
-                       'and zero object symbol transforms; object order, aggregate BSS ownership, '
+        'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA, '
+                       'zero aggregate BSS reserve, and zero object symbol transforms; object order '
                        'and historical module proof remain.'),
     }
     write_json(ROOT / 'build/exact-structural-link-report.json', report)

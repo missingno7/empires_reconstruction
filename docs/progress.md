@@ -3,11 +3,12 @@
 [The exact structural-link experiment](exact-structural-link.md) now makes
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
 inputs. All 106 relocation entries match in order. Candidate DATA/code
-interleaving, a checked arithmetic FIXUPP-order adapter, and mostly aggregate
-BSS ownership remain explicitly open. The first 34 BSS bytes, the 1,952-byte
+interleaving and a checked arithmetic FIXUPP-order adapter remain explicitly
+open. BSS is fully partitioned into source contributions, while its historical
+translation-unit ownership remains open. The first 34 BSS bytes, the 1,952-byte
 row-pointer table initialized by `F_0281`, a 16-byte shared command/render
 state island, the ten-record C470 table, the 4x6 slot grid, and an 18-byte
-animation-state block, GC360 ten-record table, four-flag state array, paired 96-byte note tables, the 44-byte eleven-voice pointer table initialized by `F_DEFA`, the 672-byte resource-25 workspace filled by `F_1D47`, the G43B4/G6F2A/A74A2/G893C record tables, the A72B2 pointer table, the `s8c12`, `g96e4`/`g96ee`, and `g99d2` resource-state blocks are compatible symbolic TASM contributions. They now own 20,714 BSS bytes; the 16,536-byte remainder retains the canonical anchor map.
+animation-state block, GC360 ten-record table, four-flag state array, paired 96-byte note tables, the 44-byte eleven-voice pointer table initialized by `F_DEFA`, the 672-byte resource-25 workspace filled by `F_1D47`, the G43B4/G6F2A/A74A2/G893C record tables, the A72B2 pointer table, the `s8c12`, `g96e4`/`g96ee`, and `g99d2` resource-state blocks are compatible symbolic TASM contributions. They now own all 37,250 BSS bytes; aggregate BSS remainder is zero while historical module boundaries remain open.
 All 247 BSS public anchors are
 checked against linker-binding evidence. The structural path performs zero object
 symbol transforms, and the synthetic DGROUP/BSS object is now

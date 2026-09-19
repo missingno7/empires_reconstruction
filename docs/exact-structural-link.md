@@ -20,13 +20,13 @@ the byte-level comparison.
 This is the first byte-identical historical-linker output, not completion of
 the reconstruction. It still uses a candidate object-interleaving recipe, one
 checked FIXUPP-order adapter for the inline-ASM arithmetic module, the
-mostly aggregate BSS ownership with 247 canonical public anchors, and four evidenced DATA/code ordering
+fully partitioned BSS ownership with 247 canonical public anchors, and four evidenced DATA/code ordering
 constraints. Canonical EXE and source-link raw DATA are both zero, and the
 structural path performs zero object symbol transforms. All standalone TASM
 owners now declare their Turbo C-compatible empty `_DATA`/`_BSS` and `DGROUP`
-topology in source. Ordered symbolic contributions now own 20,714 BSS bytes,
+topology in source. Ordered symbolic contributions now own all 37,250 BSS bytes,
 including the row-pointer, record, note, animation, and eleven-voice pointer
-tables, the 672-byte resource-25 workspace, a 64-byte indexed control-state block, the 2,770-byte `s8c12` resource buffer, the 684-byte `g96e4`/`g96ee` resource-render state block, and the 800-byte `g99d2` resource-state block; anchored `GAMEBSS` fragments retain the 16,536-byte remainder. The arithmetic adapter changes only the order of explicit OMF fixup
+tables, the 672-byte resource-25 workspace, a 64-byte indexed control-state block, the 2,770-byte `s8c12` resource buffer, the 684-byte `g96e4`/`g96ee` resource-render state block, and the 800-byte `g99d2` resource-state block. The aggregate BSS remainder is zero. The arithmetic adapter changes only the order of explicit OMF fixup
 subrecords; it rejects threads and verifies that segment bytes, publics,
 externals, targets, addends, and sites remain identical before TLINK runs.
 The former synthetic DGROUP/BSS object has been replaced by a real

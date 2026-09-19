@@ -16,8 +16,8 @@ is reserved for `python tools/build_exe.py verify`, which independently checks
 the MZ fields, relocation order, load image, and complete file identity.
 
 This removes one construction adapter: EXE-fixture dependency **1 -> 0**.
-The three remaining topology adapters are candidate DATA/code interleaving,
-arithmetic FIXUPP ordering, and aggregate BSS ownership. See the machine-readable
+The two remaining topology adapters are candidate DATA/code interleaving and
+arithmetic FIXUPP ordering. Historical translation-unit ownership remains a separate recovery frontier. See the machine-readable
 [audit](fixture-dependency-audit.json).
 
 All standalone TASM sources now emit the required empty DGROUP topology, so

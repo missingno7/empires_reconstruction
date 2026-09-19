@@ -6,6 +6,7 @@ and creates every receipt in the current invocation.
 """
 import argparse
 import hashlib
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -78,17 +79,18 @@ def clear_stale_state(root):
     return removed
 
 
-def build(root=ROOT, verify=True):
+def build(root=ROOT, verify=True, dosbox=None):
     """Run a fresh source -> OMF -> TLINK build and publish ``build/AEPROG.EXE``."""
     (root / 'build').mkdir(exist_ok=True)
     lock, toolchain_files = validate_toolchain(root)
     removed_state = clear_stale_state(root)
+    dosbox = Path(dosbox or os.environ.get('DOSBOX', lock['dosbox_default']))
 
     # This baseline is construction, not a cached input.  Replacing F_F9BE
     # with the identical selected CC.LIB module prevents a duplicate TOUPPER
     # contribution while preserving historical library extraction.
     baseline = build_baseline(root=root, linker=root / 'toolchain/TLINK.EXE',
-                              dosbox=Path(lock['dosbox_default']),
+                              dosbox=dosbox,
                               promote_toupper=True, scaffold_dgroup=True)
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link']['unresolved_count']:
         raise ValueError('Fresh baseline link failed')
@@ -168,9 +170,11 @@ def main():
                         help='verify the published EXE against assets/AEPROG.EXE (the default)')
     parser.add_argument('--no-verify', action='store_true',
                         help='skip the final published-EXE byte comparison (component proof still needs the fixture)')
+    parser.add_argument('--dosbox', type=Path,
+                        help='override the DOSBox executable used for the historical toolchain')
     args = parser.parse_args()
     try:
-        report = build(verify=not args.no_verify)
+        report = build(verify=not args.no_verify, dosbox=args.dosbox)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}')
         return 1

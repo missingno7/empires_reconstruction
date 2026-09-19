@@ -86,7 +86,7 @@ def reconstruct_game(root, output, toolchain, dosbox, exe_mode='structural'):
     if exe_mode == 'structural':
         if output != root / 'build':
             raise ValueError('the structural EXE build currently publishes only to the canonical build directory')
-        structural_build = build_structural_exe(root, verify=True)
+        structural_build = build_structural_exe(root, verify=True, dosbox=dosbox)
         exe = structural_exe_receipt(root, structural_build)
     elif exe_mode == 'fixed-oracle':
         structural_build = None

@@ -16,8 +16,8 @@ extern struct unit gc470[];
 extern int g13ed;
 extern int gc34e, gc350, gc352, gc354, gc359, gc35b, gc35d;
 extern char far *gc5ca;
-extern int f9d79(), f9d8e(), f656c(), f7747(), f7343(), f734e(), f99e2();
-extern int f03b4(), f039f();
+extern void f9d79(), f9d8e(), f039f();
+extern int f656c(), f7747(), f7343(), f734e(), f99e2(), f03b4();
 
 int f9dcc(int n)
 {

@@ -10,9 +10,11 @@ The contiguous 19-owner compact-model run was compiled in source order on
 2026-09-19. Turbo C 2.0 rejected the combined input with 18 declaration
 errors. The first mechanically relevant conflicts are:
 
-- `F_9DCC` declares `f9d79` and `f9d8e` as returning `int`; their recovered
-  definitions return `void` and their return values are not consumed.
-- the fragments disagree on the prototype of `f039f`.
+- `F_9DCC` formerly declared `f9d79`, `f9d8e`, and `f039f` as returning
+  `int`; their recovered definitions return `void` and their return values are
+  not consumed. On 2026-09-19 these three declarations were normalized and a
+  fresh F_9DCC object still matched all 247 bytes and 30 fixups; the complete
+  structural link remained byte-identical.
 - `F_A004` returns a far character pointer while `F_A036` declares `fa004`
   with a near pointer type.
 - several fragments describe the DS:C470 table with incompatible temporary

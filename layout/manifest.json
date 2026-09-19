@@ -879,9 +879,9 @@
       "id": "F_1F91",
       "start": 8593,
       "end": 8719,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_1F91.ASM",
+      "source": "src/F_1F91.C",
       "original_symbol": "F_1F91",
       "artifact": "regions/F_1F91.bin",
       "expected_sha256": "0690197464c6e7dfe992edda9044725730284f6a7b84067d36fa4e9cbddd47a0",
@@ -891,22 +891,20 @@
         "public": "_f1f91",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_gbfbc": {
             "offset": 49084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEC.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_1F91.json",
-        "entry_sha256": "f2d0626fb0786f0b347b9027e932829edf7cdd5d1615595f4ddc8ac7c29ebbd8",
-        "record_sha256": "190db9bbf04c75ae27d9871009dc716f0e2ac270d60a1508dd96c01bf3de0898",
-        "source_sha256": "643796e42e1a9052cb238ea12173d0c633648bee17b78f589f8456f5112e5818",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "643796e42e1a9052cb238ea12173d0c633648bee17b78f589f8456f5112e5818",
+        "source_sha256": "0d9799f8d15b345ba2e333f8809298ada69db23183a71d2ba23370e994ff36f5",
+        "change": "Translate the complete span clamp and row accumulator into Turbo C inline assembly with the compiler-generated SI/DI frame and one data fixup."
       }
     },
     {

@@ -1,0 +1,20 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_1F91",
+      "source": "src/F_1F91.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f1f91",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_gbfbc": {"offset": 49084, "coordinate": "DGROUP_offset", "evidence": "complete F_1F91 dword fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to Turbo C inline assembly with compiler-generated SI/DI saves and one fresh OMF fixup"
+    }
+  ]
+}

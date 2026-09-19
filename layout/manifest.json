@@ -448,16 +448,28 @@
       }
     },
     {
-      "id": "RAW_00054F",
+      "id": "F_034F",
+      "kind": "MATCHING_C",
+      "source": "src/F_034F.C",
       "start": 1359,
       "end": 1365,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00054F-000555.bin",
-      "original_symbol": null,
-      "artifact": "raw/00054F-000555.bin",
       "expected_sha256": "b4fc82c2dcf7a9153043d8376a2619b6db31783e18bbf83a75862f1c41029f5c",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f034f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {}
+      },
+      "classification": "code",
+      "original_symbol": "F_034F",
+      "artifact": "regions/F_034F.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 6-byte BIOS mode-switch routine"
+      }
     },
     {
       "id": "F_0355",
@@ -4008,16 +4020,43 @@
       }
     },
     {
-      "id": "RAW_0053BF",
+      "id": "F_53BF",
+      "kind": "MATCHING_C",
+      "source": "src/F_53BF.C",
       "start": 21439,
       "end": 21514,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/0053BF-00540A.bin",
-      "original_symbol": null,
-      "artifact": "raw/0053BF-00540A.bin",
       "expected_sha256": "6fed9f60d1cae2bfe28a56cc73a51b4ce804d7a0936c225a55dfc838d3b025aa",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f53bf",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g1778": {
+            "offset": 6008,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gbfcd": {
+            "offset": 49101,
+            "coordinate": "DGROUP_offset"
+          },
+          "_fe54d": {
+            "coordinate": "code_offset",
+            "owner": "F_E54D",
+            "public": "_fe54d",
+            "addend": 0
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_53BF",
+      "artifact": "regions/F_53BF.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete display-mode selection and VGA probe with an owned call target"
+      }
     },
     {
       "id": "F_520A",

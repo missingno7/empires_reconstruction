@@ -1,0 +1,29 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_034F",
+      "kind": "MATCHING_C",
+      "source": "src/F_034F.C",
+      "start": 1359,
+      "end": 1365,
+      "expected_sha256": "b4fc82c2dcf7a9153043d8376a2619b6db31783e18bbf83a75862f1c41029f5c",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f034f",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {}
+      },
+      "classification": "code",
+      "original_symbol": "F_034F",
+      "artifact": "regions/F_034F.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 6-byte BIOS mode-switch routine"
+      }
+    }
+  ]
+}

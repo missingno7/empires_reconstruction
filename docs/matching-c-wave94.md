@@ -10,9 +10,9 @@ The promoted owners are `F_C2EA`, `F_C359`, `F_C3DB`, `F_C440`, `F_C501`,
 `F_C706`, `F_C755`, `F_C77A`, `F_C7CB`, `F_C9A4`, `F_CA03`, `F_CA35`, and
 `F_CA51`. Together they add 1,512 matching-C bytes.
 
-`F_CA35` is now retained as symbolic TASM because that expresses both branch
-paths directly; the remaining historical promotion figures are preserved as
-provenance. `F_C567` was deliberately left out because its upstream extent crosses the
+`F_CA35` and `F_C549` are now retained as symbolic TASM because that exposes
+their branch paths directly; the remaining historical promotion figures are
+preserved as provenance. `F_C567` was deliberately left out because its upstream extent crosses the
 already owned `F_C59A` boundary; the promotion tool rejects that overlap
 instead of claiming an incomplete source. The full EXE and both DAT archives
 remain exact, with 23,521 executable bytes still raw.

@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 2,728 | 61 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 5,087 | 16 |
+| Exact raw fallback | 62,621 | 5,036 | 15 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -171,7 +171,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 5,087 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 5,036 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -1168,3 +1168,10 @@ Wave 141 partitions six alignment bytes between the embedded palette pair and
 the recovered pointer table. The full EXE still rebuilds byte for byte, and the
 strict zero-pad encoder proves the new owner independently. The raw frontier is
 now 5,087 bytes across 16 owners.
+
+## One-hundred-forty-second executable-data wave
+
+Wave 142 decodes the complete 51-byte player-name instruction at `RAW_011037`
+as one terminated `ascii-nul-v1` record, including its historical control-key
+bytes. The fixed EXE remains byte-identical; the raw frontier is now 5,036
+bytes across 15 owners.

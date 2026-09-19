@@ -21219,16 +21219,18 @@
       }
     },
     {
-      "id": "RAW_011037",
+      "id": "DATA_011037_PLAYER_NAME_INSTRUCTION",
       "start": 69687,
       "end": 69738,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/011037-01106A.bin",
-      "original_symbol": null,
-      "artifact": "raw/011037-01106A.bin",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011037_PLAYER_NAME_INSTRUCTION.json",
+      "artifact": "regions/DATA_011037_PLAYER_NAME_INSTRUCTION.bin",
       "expected_sha256": "2e3e33a84a2405d54c59d8ede403492ef726c018f001cd9f3b9d61f3a914b4fa",
-      "matching_status": "EQUAL"
+      "classification": "dialog_text",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
     },
     {
       "id": "DATA_010106A_PLAYER_LIST_FULL",

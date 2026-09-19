@@ -1,9 +1,9 @@
 /* F_C914 -- decode one music-stream command.  The DI/ES state and the
    historical short-jump backfills are preserved as inline bytes/calls. */
 extern void fc988();
-extern void fc9a4();
+extern void f_c9a4();
 extern void fcadb();
-extern void fca03();
+extern void f_ca03();
 extern void fca9b();
 extern void fcaf1();
 extern void fcb48();
@@ -15,12 +15,12 @@ void fc914()
     asm dw offset DGROUP:mus_ptr
     asm db 026h,08Ah,005h,08Ah,0E0h,0D0h,0ECh,0D0h,0ECh,0D0h,0ECh,0D0h,0ECh,024h,00Fh,03Ch,000h,074h,015h,03Ch,00Dh,074h,01Ah,03Ch,00Eh,074h,021h,03Ch,00Fh,074h,023h
     asm call near ptr fc988
-    asm call near ptr fc9a4
+    asm call near ptr f_c9a4
     asm db 0EBh,038h,090h
     asm call near ptr fcadb
-    asm call near ptr fc9a4
+    asm call near ptr f_c9a4
     asm db 0EBh,02Fh,090h
-    asm call near ptr fca03
+    asm call near ptr f_ca03
     asm db 083h,03Eh
     asm dw offset DGROUP:snd_delay
     asm db 000h

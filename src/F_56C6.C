@@ -44,24 +44,24 @@ extern void box(int a,int b,int c,int d);     /* 039F */
 /*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern void fd5ba(int n);                /* D5BA */
 extern void f555b(void);                 /* 555B */
-extern void load(int n, char far * far *p);   /* 684A */
-/*@SYM _load=0x684A kind=f key=functions/F_684A.entry*/
+extern void f684a(int n, char far * far *p);   /* 684A */
+/*@SYM _f684a=0x684A kind=f key=functions/F_684A.entry*/
 extern void f55c7(void);                 /* 55C7 */
 extern void copy(int a,int b,char far *s,int n);   /* 03CC */
 /*@SYM _copy=0x03CC kind=f key=functions/F_03CC.entry*/
 extern void f5673(void);                 /* 5673 */
 extern void fd5f9(int n);                /* D5F9 */
-extern void show(char far *s,int a,int b,char far *d);  /* 5321 */
-/*@SYM _show=0x5321 kind=f key=functions/F_5321.entry*/
+extern void f5321(char far *s,int a,int b,char far *d);  /* 5321 */
+/*@SYM _f5321=0x5321 kind=f key=functions/F_5321.entry*/
 extern void f75f3(void);                 /* 75F3 */
 extern void f6c57(int n);                /* 6C57 */
 /*@SYM _f6c57=0x6C57 kind=f key=functions/F_6C57.entry*/
 extern int  f5593(void);                /* 5593 */
 /*@SYM _f5593=0x5593 kind=f key=functions/F_5593.entry*/
-extern int  msg(char far *s);            /* 86C9 */
-/*@SYM _msg=0x86C9 kind=f key=functions/F_86C9.entry*/
-extern void pane(int a,int b,int c,int d,int e,int f); /* 9F40 */
-/*@SYM _pane=0x9F40 kind=f key=functions/F_9F40.entry*/
+extern int  f86c9(char far *s);            /* 86C9 */
+/*@SYM _f86c9=0x86C9 kind=f key=functions/F_86C9.entry*/
+extern void f9f40(int a,int b,int c,int d,int e,int f); /* 9F40 */
+/*@SYM _f9f40=0x9F40 kind=f key=functions/F_9F40.entry*/
 extern void f6d3c(int a,int b,char far *s);   /* 6D3C */
 extern void f568c(void);                 /* 568C */
 extern void fcaf1(int n);                /* CAF1 */
@@ -94,22 +94,22 @@ int f56c6(void)
         clear(0, 0, 0x140, 0xc8);
         fd5ba(0x35);
         f555b();
-        load(0x38, &t1);
-        load(0x37, &t2);
+        f684a(0x38, &t1);
+        f684a(0x37, &t2);
         f55c7();
         copy(0xec, 0x89, t4, 0);
         f5673();
         box(0, 0, 0x140, 0xc8);
         g1776 = 1;
         fd5f9(0x35);
-        show(t1 + 2, 0x34, 0x1e, buf);
+        f5321(t1 + 2, 0x34, 0x1e, buf);
         f75f3();
 top:
         while (again) {
                 f6c57(0x1bc6);
                 key = f5593();
                 switch (key) {
-                case 0x1b: if (msg(q139d) == 1) return -1; break;
+                case 0x1b: if (f86c9(q139d) == 1) return -1; break;
                 case -1:
                 case 0x0d: again = 0;
                 default:   break;
@@ -117,7 +117,7 @@ top:
             }
             again = 1;
             for (k = 0; k < 2; k++) {
-                pane(0, 0xe8, 0xc8, 0x8a, 0, 0x20);
+                f9f40(0, 0xe8, 0xc8, 0x8a, 0, 0x20);
                 if (vmode == 2) f01ce(5); else f01ce(0xf);
                 f6d3c(8, 0x1e, t2 + ((int far *)t2)[k] + 2);
                 f75f3();
@@ -126,7 +126,7 @@ top:
                     f6c57(0x1bc6);
                     key = f5593();
                     switch (key) {
-                    case 0x1b: if (msg(q139d) == 1) return -1; break;
+                    case 0x1b: if (f86c9(q139d) == 1) return -1; break;
                     case -1:
                     case 0x0d: again = 0;
                 default:   break;
@@ -135,24 +135,24 @@ top:
                 again = 1;
             }
         if (k == 2 && key == -1) { f568c(); goto top; }
-        pane(0, 0x17e, 0xbc, 0x10, 0, 0xb6);
+        f9f40(0, 0x17e, 0xbc, 0x10, 0, 0xb6);
         g94 = 0; g9a = 0x9f; g1774 = 1;
         fcaf1(0x18);
-        show(t1 + 0x344, 0xa, 0x2d, buf);
+        f5321(t1 + 0x344, 0xa, 0x2d, buf);
         g1770 = 1;
         fcb48();
         g1774 = 0;
         f6c26(0xed);
-        show(t1 + 0x498, 0x16, 0x1e, buf);
-        show(t1 + 0x3e6, 0xb, 0x28, buf);
+        f5321(t1 + 0x498, 0x16, 0x1e, buf);
+        f5321(t1 + 0x3e6, 0xb, 0x28, buf);
         f6c26(0xed);
         g1774 = 1;
         fcaf1(0x18);
-        show(t1 + 0x66c, 0xb, 0x28, buf);
+        f5321(t1 + 0x66c, 0xb, 0x28, buf);
         g1774 = 0;
         g1770 = 1;
         fcb48();
-        show(t1 + 0x5fa, 7, 0x1e, buf);
+        f5321(t1 + 0x5fa, 7, 0x1e, buf);
         g94 = 0x10; g96 = 0x9f; g98 = 4; g9a = 0x9b;
         farfree(t1); farfree(t2); farfree(t3);
     } else {

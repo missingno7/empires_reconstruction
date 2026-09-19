@@ -1,5 +1,5 @@
 /* RUNTIME_BLOCK -- exact startup/runtime dispatch block. */
-void runtime_block()
+void f039c()
 {
     asm db 0e9h,091h,001h,0e9h,094h,002h,0e9h,036h,00fh,0e9h,07ch,00fh,0e9h,0b2h,00fh,0e9h,026h,010h,0e9h,092h,010h,0e9h,0d6h,010h
     asm db 0e9h,008h,011h,0e9h,07eh,011h,0e9h,0d4h,011h,0e9h,02ch,012h,0e9h,093h,012h,0e9h,031h,013h,0e9h,0dbh,013h,0e9h,064h,015h

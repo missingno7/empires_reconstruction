@@ -126,13 +126,6 @@
             "public": "_fb3d7",
             "addend": 0
           },
-          "_fb40f": {
-            "coordinate": "code_offset",
-            "owner": "F_B40F",
-            "public": "_fbb40f",
-            "addend": 0,
-            "evidence": "functions/F_B40F.entry"
-          },
           "_f4eeb": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
@@ -199,6 +192,13 @@
             "offset": 6020,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212B4.phys"
+          },
+          "_fbb40f": {
+            "coordinate": "code_offset",
+            "owner": "F_B40F",
+            "public": "_fbb40f",
+            "addend": 0,
+            "evidence": "functions/F_B40F.entry"
           }
         }
       },

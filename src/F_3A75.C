@@ -6,7 +6,7 @@ struct C470 { char pad[0x15]; char b15; char rest[5]; };
 extern int f6997(), f6c57(), f6b4a(), f6b1a(), f727d(), fce2a(), fd89a();
 extern int fd85f(), f8aa2(), f03b4(), fcaf1(), f2269(), f1ecd(), f31c4();
 extern int f734e(), f338a(), f36f0(), f60a9(), f6021(), f233e(), f9dcc();
-extern int f22b1(), f4e9f(), f5e98(), f25b3(), fd79c(), fd386(), f1f91();
+extern int f22b1(), f4e9f(), f5e98(), f_25b3(), f_d79c(), fd386(), f1f91();
 extern int f1f17(), f7277(), f7313(), f5a3b(), f4b0c(), f329f(), f5ac3();
 extern int f03cc(), f3986(), f6c6f(), f9ac7();
 extern char far *f2a2d();
@@ -127,8 +127,8 @@ scanned:
         f22b1();
         f4e9f();
         if (g8fe != 0) f5e98();
-        f25b3();
-        if (*gbfc0 != 0) fd79c();
+        f_25b3();
+        if (*gbfc0 != 0) f_d79c();
         if (*gbfc4 != 0) fd386();
         if (gb6e != 0) {
             if (x == 0 || gb68 == 0) {

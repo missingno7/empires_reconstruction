@@ -3,7 +3,7 @@
    is on the TASM path (runD: the 5039..52AB region), which is what shortens
    the two forward jmps at 529E and 52AB and pads them with NOP. */
 /*@PUB _f520a*/
-extern int f4f63(), f4f96(), f50c1(), f50d2(), f51bf();
+extern int f4f63(), f4f96(), f50c1(), f50d2(), f53bf();
 extern char getdisk();
 extern long farcoreleft();
 extern unsigned char _osmajor;
@@ -30,7 +30,7 @@ int f520a()
         f4f63(s859);
         return 0;
     }
-    f51bf();
+    f53bf();
     f4f96();
     if ((n = farcoreleft()) < 0x3ada0L) {
         f4f63(s8a8);

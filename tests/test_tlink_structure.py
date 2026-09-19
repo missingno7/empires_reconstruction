@@ -66,6 +66,11 @@ class TlinkStructureTests(unittest.TestCase):
                 self.assertEqual(stack['start'], 0x1C500)
                 self.assertEqual(report['link']['unresolved_count'], 0)
                 self.assertEqual(report['link'].get('errors', []), [])
+            transformed = [item for item in report['relocatable_scaffold']
+                           if item.get('transforms')]
+            self.assertEqual([item['owner'] for item in transformed], ['RUNTIME_BLOCK'])
+            self.assertEqual(transformed[0]['internal_labels']['_f039c'], 0)
+            self.assertEqual(len(transformed[0]['internal_labels']), 27)
         else:
             divergence = comparison['first_divergence']
             if report.get('mode') == 'library_toupper_promotion':

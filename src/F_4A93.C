@@ -24,7 +24,7 @@ extern void f49f0();
 extern void f49e3();
 extern void f034f();
 
-f4a93()
+main()
 {
     if (f520a()) {
         f490d();

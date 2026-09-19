@@ -5,7 +5,7 @@
    image opens `mov ax,[C5E0]`. */
 extern char far *farmalloc();
 extern void f684a();
-extern void fc77a();
+extern void f_c77a();
 extern char far *gc5da;                 /* DS:C5DA offset, DS:C5DC segment */
 extern unsigned gc5dc;                  /* DS:C5DC */
 extern unsigned gc5de;                  /* DS:C5DE */
@@ -20,5 +20,5 @@ void fd555()
     g175e = gc5de;
     g1764 = gc5dc;
     g1762 = (unsigned) gc5da;
-    fc77a();
+    f_c77a();
 }

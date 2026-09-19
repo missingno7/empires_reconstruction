@@ -15,9 +15,10 @@ remain, so this is not yet the recovered historical build. See
 
 The ordinary symbol-alias layer is now removed: recovered sources call actual
 historical library publics and reconstructed owner publics, and exact entry
-bindings remain relocatable. The only active code-symbol adapter is internal
-entry PUBDEF injection in 43 objects pending translation-unit recovery. See
-[the historical-public checkpoint](docs/historical-code-publics.md).
+bindings remain relocatable. The only active code-symbol adapter is 27 internal
+PUBDEFs inside `RUNTIME_BLOCK`; every other reconstructed object links without
+symbol transformation. See
+[the entry-public checkpoint](docs/reconstructed-entry-publics.md).
 
 
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file

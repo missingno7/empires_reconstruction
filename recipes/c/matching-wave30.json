@@ -17,66 +17,10 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_init_a": {
-            "coordinate": "code_offset",
-            "owner": "F_6B74",
-            "public": "_f6b74",
-            "addend": 0,
-            "evidence": "functions/INIT_A.entry"
-          },
-          "_init_b": {
-            "coordinate": "code_offset",
-            "owner": "F_6990",
-            "public": "_f6990",
-            "addend": 0,
-            "evidence": "functions/INIT_B.entry"
-          },
-          "_init_c": {
-            "coordinate": "code_offset",
-            "owner": "F_6B66",
-            "public": "_f6b66",
-            "addend": 0,
-            "evidence": "functions/INIT_C.entry"
-          },
-          "_init_d": {
-            "coordinate": "code_offset",
-            "owner": "F_703E",
-            "public": "_f703e",
-            "addend": 0,
-            "evidence": "functions/INIT_D.entry"
-          },
-          "_init_e": {
-            "coordinate": "code_offset",
-            "owner": "F_D593",
-            "public": "_fd593",
-            "addend": 0,
-            "evidence": "functions/INIT_E.entry"
-          },
-          "_init_f": {
-            "coordinate": "code_offset",
-            "owner": "F_792C",
-            "public": "_f792c",
-            "addend": 0,
-            "evidence": "functions/INIT_F.entry"
-          },
-          "_init_g": {
-            "coordinate": "code_offset",
-            "owner": "F_7925",
-            "public": "_f7925",
-            "addend": 0,
-            "evidence": "functions/INIT_G.entry"
-          },
           "_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/BOX.entry"
-          },
-          "_text": {
-            "coordinate": "code_offset",
-            "owner": "F_8480",
-            "public": "_f8480",
-            "addend": 0,
-            "evidence": "functions/TEXT.entry"
           },
           "_bar": {
             "offset": 930,
@@ -87,55 +31,6 @@
             "offset": 939,
             "coordinate": "code_offset",
             "evidence": "functions/FILL.entry"
-          },
-          "_act": {
-            "coordinate": "code_offset",
-            "owner": "F_A19D",
-            "public": "_fa19d",
-            "addend": 0,
-            "evidence": "functions/ACT.entry"
-          },
-          "_done_a": {
-            "coordinate": "code_offset",
-            "owner": "F_8453",
-            "public": "_f8453",
-            "addend": 0,
-            "evidence": "functions/DONE_A.entry"
-          },
-          "_done_b": {
-            "coordinate": "code_offset",
-            "owner": "F_791E",
-            "public": "_f791e",
-            "addend": 0,
-            "evidence": "functions/DONE_B.entry"
-          },
-          "_done_c": {
-            "coordinate": "code_offset",
-            "owner": "F_D5A6",
-            "public": "_fd5a6",
-            "addend": 0,
-            "evidence": "functions/DONE_C.entry"
-          },
-          "_done_d": {
-            "coordinate": "code_offset",
-            "owner": "F_7162",
-            "public": "_f7162",
-            "addend": 0,
-            "evidence": "functions/DONE_D.entry"
-          },
-          "_done_e": {
-            "coordinate": "code_offset",
-            "owner": "F_6997",
-            "public": "_f6997",
-            "addend": 0,
-            "evidence": "functions/DONE_E.entry"
-          },
-          "_done_f": {
-            "coordinate": "code_offset",
-            "owner": "F_6B66",
-            "public": "_f6b66",
-            "addend": 0,
-            "evidence": "functions/DONE_F.entry"
           },
           "_f01ce": {
             "coordinate": "code_offset",
@@ -150,6 +45,104 @@
             "public": "_faf45",
             "addend": 0,
             "evidence": "functions/GETKEY.entry"
+          },
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
+            "evidence": "functions/INIT_A.entry"
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
+            "evidence": "functions/INIT_B.entry"
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
+            "evidence": "functions/INIT_C.entry"
+          },
+          "_f703e": {
+            "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
+            "evidence": "functions/INIT_D.entry"
+          },
+          "_fd593": {
+            "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
+            "evidence": "functions/INIT_E.entry"
+          },
+          "_f792c": {
+            "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
+            "evidence": "functions/INIT_F.entry"
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
+            "evidence": "functions/INIT_G.entry"
+          },
+          "_f8480": {
+            "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
+            "evidence": "functions/TEXT.entry"
+          },
+          "_fa19d": {
+            "coordinate": "code_offset",
+            "owner": "F_A19D",
+            "public": "_fa19d",
+            "addend": 0,
+            "evidence": "functions/ACT.entry"
+          },
+          "_f8453": {
+            "coordinate": "code_offset",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0,
+            "evidence": "functions/DONE_A.entry"
+          },
+          "_f791e": {
+            "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
+            "evidence": "functions/DONE_B.entry"
+          },
+          "_fd5a6": {
+            "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0,
+            "evidence": "functions/DONE_C.entry"
+          },
+          "_f7162": {
+            "coordinate": "code_offset",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0,
+            "evidence": "functions/DONE_D.entry"
+          },
+          "_f6997": {
+            "coordinate": "code_offset",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0,
+            "evidence": "functions/DONE_E.entry"
           }
         },
         "module_segments": {

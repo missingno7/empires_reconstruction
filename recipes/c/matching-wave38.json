@@ -17,35 +17,14 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_a": {
-            "coordinate": "code_offset",
-            "owner": "F_CB48",
-            "public": "_fcb48",
-            "addend": 0,
-            "evidence": "complete fixup target with object addend subtraction"
-          },
           "_g72c": {
             "offset": 1836,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_b": {
-            "coordinate": "code_offset",
-            "owner": "F_CAF1",
-            "public": "_fcaf1",
-            "addend": 0,
-            "evidence": "complete fixup target with object addend subtraction"
-          },
           "_g96": {
             "offset": 150,
             "coordinate": "DGROUP_offset",
-            "evidence": "complete fixup target with object addend subtraction"
-          },
-          "_c": {
-            "coordinate": "code_offset",
-            "owner": "F_22B1",
-            "public": "_f22b1",
-            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_gbc": {
@@ -118,20 +97,6 @@
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_d": {
-            "coordinate": "code_offset",
-            "owner": "F_1ECD",
-            "public": "_f1ecd",
-            "addend": 0,
-            "evidence": "complete fixup target with object addend subtraction"
-          },
-          "_e": {
-            "coordinate": "code_offset",
-            "owner": "F_6C6F",
-            "public": "_f6c6f",
-            "addend": 0,
-            "evidence": "complete fixup target with object addend subtraction"
-          },
           "_box": {
             "offset": 927,
             "coordinate": "code_offset",
@@ -141,6 +106,41 @@
             "coordinate": "code_offset",
             "owner": "F_6C57",
             "public": "_f6c57",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fcb48": {
+            "coordinate": "code_offset",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fcaf1": {
+            "coordinate": "code_offset",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f22b1": {
+            "coordinate": "code_offset",
+            "owner": "F_22B1",
+            "public": "_f22b1",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f1ecd": {
+            "coordinate": "code_offset",
+            "owner": "F_1ECD",
+            "public": "_f1ecd",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6c6f": {
+            "coordinate": "code_offset",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           }

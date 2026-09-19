@@ -1,6 +1,6 @@
 /* F_C834 -- reset the sound voices.  Register saves and SI addressing are
    byte-coded to preserve the hand-written module's order exactly. */
-extern void fc6b9();
+extern void f_c6b9();
 extern unsigned int snd_mode,snd_hi,snd_nvoices,snd_paused,v_a[],v_b[];
 
 void fc834()
@@ -21,7 +21,7 @@ void fc834()
     asm db 000h,000h,0C7h,084h
     asm dw offset DGROUP:v_b
     asm db 000h,000h
-    asm call near ptr fc6b9
+    asm call near ptr f_c6b9
     asm db 083h,0C6h,002h,0E2h,0ECh,08Fh,006h
     asm dw offset DGROUP:snd_nvoices
     asm db 05Eh,059h,058h,05Dh

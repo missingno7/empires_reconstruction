@@ -4,7 +4,7 @@
    TASM picks and TCC's own writer does not. */
 /*@PUB _f2ae2*/
 extern int f03c9(), f03cc(), f03b4(), f1ec0(), f656c(), f2986();
-extern int f28ac(), f6036(), fd61c(), fd818();
+extern int f_28ac(), f6036(), f_d61c(), fd818();
 extern void fd825(char, int, int, int, int);
 extern unsigned char near *f2a70();
 
@@ -92,10 +92,10 @@ void f2ae2()
     for (i = 0; i < g722; i++)
         f03c9(w8bea[i], w8bf4[i] + 0xb8, s79bf);
     if (*gbfc0 != 0)
-        fd61c();
+        f_d61c();
     f03b4(0, 0xc8, 0x140, 0x90, 0, 0x158);
     g96 = 0x190;
-    f28ac();
+    f_28ac();
     fd818();
     for (i = 0; i < 6; i++)
         if (gbfba + 1 == b437a[i]) {

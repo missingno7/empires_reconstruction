@@ -33,9 +33,11 @@ All ordinary code/library EXTDEF adapters are now gone as well. Twenty-three
 owners name the historical `CC.LIB` publics directly, recovered cross-owner
 calls name their real source publics, and 254 exact function-entry bindings are
 canonical relocatable owner/public references. The structural link has zero
-case, library, caller-scoped, or runtime-DATA symbol rewrites. Only internal
-entry PUBDEF injection in 43 objects remains on the code-symbol frontier. See
-[the historical-public checkpoint](historical-code-publics.md).
+case, library, caller-scoped, or runtime-DATA symbol rewrites. A following
+entry-public pass reduced internal PUBDEF injection from 43 objects to the 27
+genuine entries inside `RUNTIME_BLOCK`. `main`, `f039c`, and 64 reconstructed
+cross-owner references now export or consume their selected publics directly.
+See [the entry-public checkpoint](reconstructed-entry-publics.md).
 
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table

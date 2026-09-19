@@ -31,7 +31,8 @@ class MatchingCWave30Tests(unittest.TestCase):
                              'DATA_010FA5_RECORDS')
 
             mutant_path = work / 'F_A658_MUTANT.C'
-            mutant_path.write_bytes((ROOT / code['source']).read_bytes().replace(b'text("", 1)', b'text("x", 1)'))
+            mutant_path.write_bytes((ROOT / code['source']).read_bytes().replace(
+                b'f8480("", 1)', b'f8480("x", 1)'))
             mutant = copy.deepcopy(code)
             mutant.update(id='F_A658_MUTANT', source=mutant_path.relative_to(ROOT).as_posix())
             mutant_receipts, _ = compile_sources(ROOT, [mutant], work / 'mutant', ROOT / 'toolchain',

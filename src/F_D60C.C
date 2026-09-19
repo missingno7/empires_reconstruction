@@ -1,6 +1,6 @@
 extern int g237e;
-extern void fc7cb();
+extern void f_c7cb();
 void fd60c(void)
 {
-    if (g237e >= 0) fc7cb(0);
+    if (g237e >= 0) f_c7cb(0);
 }

@@ -2,7 +2,8 @@
 
 `python tools/report_source_quality.py` classifies game-owned matching-C
 sources independently from byte ownership. It distinguishes syntactic
-`ASM_DB_CAPSULE`, `C_WITH_SYMBOLIC_INLINE_ASM`, and `MECHANICAL_C` forms, while
+`ASM_DB_CAPSULE`, `C_WITH_SYMBOLIC_INLINE_ASM`, `SYMBOLIC_ASM`, and
+`MECHANICAL_C` forms, while
 retaining pinned Borland components as legitimate `HISTORICAL_LIBRARY` inputs.
 
 The generated [receipt](source-quality.json) is an inventory, not a semantic

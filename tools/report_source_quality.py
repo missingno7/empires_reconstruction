@@ -33,6 +33,8 @@ def report(manifest):
             if level == 'ASM_DB_CAPSULE':
                 capsules.append({'owner': owner['id'], 'source': owner['source'],
                                  'bytes': owner['end'] - owner['start']})
+        elif kind == 'MATCHING_ASM':
+            level = 'SYMBOLIC_ASM'
         else:
             continue
         entry = classes[level]
@@ -41,7 +43,7 @@ def report(manifest):
         entry['sources'].add(owner.get('source', kind))
     levels = []
     for level in ('ASM_DB_CAPSULE', 'C_WITH_SYMBOLIC_INLINE_ASM',
-                  'MECHANICAL_C', 'HISTORICAL_LIBRARY'):
+                  'SYMBOLIC_ASM', 'MECHANICAL_C', 'HISTORICAL_LIBRARY'):
         entry = classes[level]
         levels.append({'level': level, 'bytes': entry['bytes'], 'owners': entry['owners'],
                        'sources': len(entry['sources'])})

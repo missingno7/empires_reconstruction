@@ -169,12 +169,34 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_REMAINDER",
+      "id": "GAMEBSS_VOICE_PREFIX",
       "object": "GAMEBSS5.OBJ",
       "assembly": "GAMEBSS5.ASM",
       "logical_start": 36264,
+      "logical_end": 37154,
+      "owner_candidate": "aggregate pre-voice remainder",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "VOICE_POINTER_TABLE_BSS",
+      "object": "VOICEPTR.OBJ",
+      "assembly": "VOICEPTR.ASM",
+      "logical_start": 37154,
+      "logical_end": 37198,
+      "owner_candidate": "F_DEFA sound reset state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_REMAINDER",
+      "object": "GAMEBSS6.OBJ",
+      "assembly": "GAMEBSS6.ASM",
+      "logical_start": 37198,
       "logical_end": 37250,
-      "owner_candidate": "aggregate remainder",
+      "owner_candidate": "aggregate final remainder",
       "representation": "ANCHORED_BSS",
       "confidence": "CANONICAL_LAYOUT",
       "aggregate_storage": true

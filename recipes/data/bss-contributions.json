@@ -48,10 +48,21 @@
       "aggregate_storage": false
     },
     {
+      "id": "B4374_CONTROL_STATE_BSS",
+      "object": "B4374B.OBJ",
+      "assembly": "B4374B.ASM",
+      "logical_start": 2674,
+      "logical_end": 2738,
+      "owner_candidate": "shared B4374 indexed control state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
       "id": "GAMEBSS_LEADING_REMAINDER",
       "object": "GAMEBSS0.OBJ",
       "assembly": "GAMEBSS0.ASM",
-      "logical_start": 2674,
+      "logical_start": 2738,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

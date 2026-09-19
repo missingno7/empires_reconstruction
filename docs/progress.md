@@ -9,14 +9,14 @@ semantic cleanup remains outside this mechanical phase.
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
 | Freshly compiled matching C | 14,077 | 36,545 | 260 |
-| Freshly assembled matching ASM | 2,456 | 2,543 | 22 |
+| Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,298 | 41 |
-| Total | 79,154 | 79,154 | 376 |
+| Exact raw fallback | 62,621 | 31,265 | 41 |
+| Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
 the full file remain EQUAL. Original and rebuilt SHA-256:
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,287 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,265 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -615,3 +615,7 @@ F_D386 adds 73 matching C bytes for the far-record decoder main routine. Its fre
 ## Seventy-second matching-ASM wave
 
 F_D3CF adds 11 matching ASM bytes for the branch continuation targeted by the recovered F_D386 C main routine. Its hand-written TASM object has no fixups or loader relocations. See [the wave-seventy-two proof](matching-c-wave72.md).
+
+## Seventy-third matching-ASM wave
+
+F_01A4 adds 22 matching ASM bytes for the complete DOS write setup after F_019C. Its fresh TASM object binds F_019C and the numeric F_0104 target, with no loader relocations; the final two-byte self-referential data word remains raw. See [the wave-seventy-three proof](matching-c-wave73.md).

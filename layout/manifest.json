@@ -127,15 +127,50 @@
       }
     },
     {
-      "id": "RAW_0003A4",
+      "id": "F_01A4",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_01A4.ASM",
       "start": 932,
+      "end": 954,
+      "expected_sha256": "d15bed7a2d4d68678c376851a95fe1c41df8fe22a7628c7a1fabc0ea6e9730c1",
+      "classification": "code",
+      "original_symbol": "F_01A4",
+      "artifact": "regions/F_01A4.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f01a4",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_f019c": {
+            "coordinate": "code_offset",
+            "owner": "F_019C",
+            "public": "_f019c",
+            "addend": 0
+          },
+          "_f0104": {
+            "offset": 260,
+            "coordinate": "code_offset"
+          }
+        }
+      },
+      "provenance": {
+        "method": "local hand-written ASM reconstruction from complete disassembly subextent and fresh full-extent OMF binding",
+        "change": "Recover the 22-byte DOS write setup before the trailing self-referential data word"
+      }
+    },
+    {
+      "id": "RAW_0003BA",
+      "start": 954,
       "end": 956,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0003A4-0003BC.bin",
+      "source": "raw/0003BA-0003BC.bin",
       "original_symbol": null,
-      "artifact": "raw/0003A4-0003BC.bin",
-      "expected_sha256": "6fef080693b69d6005c6e9e0408f97d543b427dc8b82e7225736f3cf983bdfdd",
+      "artifact": "raw/0003BA-0003BC.bin",
+      "expected_sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
       "matching_status": "EQUAL"
     },
     {

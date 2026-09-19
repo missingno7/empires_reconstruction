@@ -1,5 +1,10 @@
 # Incremental reconstruction — 2026-09-18
 
+The [shared DATA module experiment](shared-data-module.md) replaces five staged
+objects with one fresh Turbo C object: 611 code bytes, 53 checked fixups and
+43 DATA bytes. Full TEXT placement remains exact. The old DATA scaffold is now
+two bytes short after inter-object alignment disappears; it was not padded.
+
 The [symbolic pointer-record component](pointer-records.md) now independently
 links 160 bytes and 16 relocations from source through Turbo Link 2.0. Its full
 structural-link integration remains open; fixed whole-game verification passes.

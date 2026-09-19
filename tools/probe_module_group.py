@@ -1,5 +1,6 @@
 """Compile an ordered C source group into one OBJ and check every owned extent."""
 import argparse
+import copy
 import os
 from pathlib import Path
 import subprocess
@@ -45,6 +46,23 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
     if module.segment_length(recipe['segment']) != selected[-1]['end'] - selected[0]['start']:
         raise ValueError('Combined module emitted extent size differs')
     mz, results, bases, all_fixups = MZ.parse(original), [], set(), []
+    data_evidence = None
+    data_owners = [o for o in manifest['regions']
+                   if o.get('build', {}).get('encoder') == 'omf-segment-v1'
+                   and o['build']['code_owner'] in {s['id'] for s in selected}]
+    data_owners.sort(key=lambda o: o['start'])
+    if module.segment_length('_DATA'):
+        if (not data_owners or
+                any(a['end'] != b['start'] for a, b in zip(data_owners, data_owners[1:]))):
+            raise ValueError('Shared DATA requires complete contiguous canonical ownership')
+        if module.fixups_in('_DATA'):
+            raise ValueError('Shared DATA pointer fixups require a separate binding proof')
+        expected_data = original[data_owners[0]['start']:data_owners[-1]['end']]
+        if module.segment_bytes('_DATA') != expected_data:
+            raise ValueError('Shared DATA bytes/order/length differ from canonical ownership')
+        data_evidence = {'bytes': len(expected_data), 'sha256': sha(expected_data),
+                         'owners': [o['id'] for o in data_owners],
+                         'fixups': 0, 'status': 'EQUAL'}
     component_modules = owned_library_modules(manifest['regions'], toolchain or root / 'toolchain', read_json(root / 'layout/toolchain.json'))
     for spec, owner, public in zip(recipe['sources'], selected, publics):
         if owner['source'] != spec['path'] or owner['build']['flags_append'] != recipe['flags_append']:
@@ -52,6 +70,12 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
         expected_offset = owner['start'] - selected[0]['start']
         if public['offset'] != expected_offset:
             raise ValueError(f"{owner['id']}: emitted module-relative public offset differs")
+        if data_evidence and '_DATA' in owner['build'].get('module_segments', {}):
+            # Fresh shared compilation supplies the initializer addends. Only
+            # the comparison scaffold uses the verified common DATA base.
+            owner = copy.deepcopy(owner)
+            owner['build']['module_segments']['_DATA'] = {
+                'owner': data_owners[0]['id'], 'coordinate': 'DGROUP_offset', 'addend': 0}
         data, proof = bind_region(owner, module, mz, manifest['frames'], manifest['regions'], component_modules)
         mismatch(original[owner['start']:owner['end']], data, owner)
         bases.add(proof['module_load_base'])
@@ -61,11 +85,14 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
     if len(bases) != 1:
         raise ValueError('Individual extents imply inconsistent module placement')
     report = {'status': 'EQUAL', 'candidate': recipe['id'], 'historical_module_proven': False,
+              'object_path': str(work / receipts[recipe['id']]['object']),
               'compile': receipts[recipe['id']], 'source_recipe_sha256': sha(recipe_path.read_bytes()),
               'text_bytes': module.segment_length(recipe['segment']), 'source_units_combined': len(selected),
               'fixups_checked': len(all_fixups), 'module_load_base_in_comparison_scaffold': bases.pop(),
               'publics': publics, 'owners': results, 'session': session,
-              'limitation': 'Proves compatible shared compilation and emitted relative layout, not historical module boundaries, data ownership or linker reconstruction.'}
+              'data_evidence': data_evidence,
+              'bss_bytes': module.segment_length('_BSS') or 0,
+              'limitation': 'Proves compatible shared compilation, checked DATA and emitted relative layout, not historical module boundaries or linker reconstruction.'}
     write_json(work / 'report.json', report)
     write_json(root / 'build/module-group-report.json', report)
     print(f"{recipe['id']}: one fresh OBJ; {len(selected)} functions, {report['text_bytes']} bytes and {len(all_fixups)} fixups EQUAL")

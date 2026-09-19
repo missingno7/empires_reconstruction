@@ -1,0 +1,42 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_C877",
+      "kind": "MATCHING_C",
+      "source": "src/F_C877.C",
+      "start": 51831,
+      "end": 51864,
+      "expected_sha256": "31295153914e2ff4fd9701e59b71a1da5377918d9cddfaf9315667d83777899d",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc877",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g1778": {
+            "offset": 6008,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g177a": {
+            "offset": 6010,
+            "coordinate": "DGROUP_offset"
+          },
+          "_fc6b9": {
+            "offset": 50873,
+            "coordinate": "code_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_C877",
+      "artifact": "regions/F_C877.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 33-byte timer-slice pump with explicit register bytes and numeric raw call target"
+      }
+    }
+  ]
+}

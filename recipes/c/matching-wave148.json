@@ -1,0 +1,29 @@
+{
+  "format": "empires-symbolic-asm-promotion-v1",
+  "conversions": [
+    {
+      "id": "F_CA51",
+      "source": "asm/F_CA51.ASM",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_ca51",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_g1e84": {
+            "offset": 7812,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          },
+          "_g1e86": {
+            "offset": 7814,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          }
+        },
+        "module_segments": {}
+      },
+      "method": "complete signed scale-and-store routine expressed as symbolic TASM with real DGROUP external fixups"
+    }
+  ]
+}

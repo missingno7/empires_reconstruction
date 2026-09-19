@@ -15058,8 +15058,8 @@
     },
     {
       "id": "F_CA51",
-      "kind": "MATCHING_C",
-      "source": "src/F_CA51.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_CA51.ASM",
       "start": 52305,
       "end": 52355,
       "expected_sha256": "3e73414cedc8678c72ef233e17bf388a36704faf09b9b54e629c552d074c2865",
@@ -15071,7 +15071,18 @@
         "public": "_f_ca51",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_g1e84": {
+            "offset": 7812,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          },
+          "_g1e86": {
+            "offset": 7814,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          }
+        },
         "module_segments": {}
       }
     },

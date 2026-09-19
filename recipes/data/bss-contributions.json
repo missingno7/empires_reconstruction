@@ -213,10 +213,21 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSSE.OBJ",
-      "assembly": "GAMEBSSE.ASM",
+      "id": "GA6B6_RESOURCE_BUFFER_BSS",
+      "object": "GA6B6B.OBJ",
+      "assembly": "GA6B6B.ASM",
       "logical_start": 28084,
+      "logical_end": 30584,
+      "owner_candidate": "F_21A9 resource-1 buffer",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSF.OBJ",
+      "assembly": "GAMEBSSF.ASM",
+      "logical_start": 30584,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

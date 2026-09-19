@@ -1,10 +1,16 @@
-# Matching-C wave 114
+# Symbolic-assembly wave 114
 
-F_4E9F is now a matching-C owner. Its complete 76-byte record-table walk
-compiles with Turbo C and binds all four data references plus the F_4AA8
-near-call exactly. DI-addressing instructions are emitted as deterministic
-inline bytes so the compiler does not add a register-save pair; the fresh
-object has no DOS loader relocations.
+F_4E9F is now a symbolic-assembly owner. Its complete 76-byte record-table
+walk assembles with TASM and binds all four data references plus the F_4AA8
+near-call exactly. This replaces the earlier Turbo C proof wrapper, whose
+byte-coded DI instructions obscured the actual control flow. The fresh object
+has no DOS loader relocations.
 
-Matching-C coverage is now 56,615 bytes across 328 owners. Matching-ASM
-coverage is 2,280 bytes across 17 owners.
+The earlier Turbo C source remains useful evidence that the routine can be
+expressed in C, but it was not readable final source: its DI-sensitive body was
+an `asm db` capsule. The symbolic TASM implementation names every branch,
+record offset, table reference and call while preserving the same object-level
+contract.
+
+Evidence: [original matching-C proof](matching-wave114-evidence.json) and
+[fresh symbolic-assembly proof](matching-wave40-asm-evidence.json).

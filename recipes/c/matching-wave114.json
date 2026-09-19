@@ -1,9 +1,9 @@
 {
-  "format": "empires-asm-to-c-v1",
+  "format": "empires-symbolic-asm-promotion-v1",
   "conversions": [
     {
       "id": "F_4E9F",
-      "source": "src/F_4E9F.C",
+      "source": "asm/F_4E9F.ASM",
       "build": {
         "segment": "_TEXT",
         "public": "_f4e9f",
@@ -18,7 +18,7 @@
         },
         "module_segments": {}
       },
-      "method": "complete ASM extent translated to Turbo C with byte-coded DI instructions and five fresh OMF fixups"
+      "method": "complete symbolic TASM extent with five fresh OMF fixups; replaces the earlier byte-coded inline-assembly proof source"
     }
   ]
 }

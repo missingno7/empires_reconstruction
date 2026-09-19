@@ -57,7 +57,7 @@ def report(manifest):
                        'sources': len(entry['sources'])})
     capsules.sort(key=lambda item: (-item['bytes'], item['owner']))
     return {'format': 'empires-source-quality-v1',
-            'scope': 'Game-owned matching C plus legitimate historical library inputs',
+            'scope': 'Game-owned matching C/ASM plus legitimate historical library inputs',
             'levels': levels,
             'asm_db_capsules': capsules,
             'asm_db_source_files': len({item['source'] for item in capsules}),

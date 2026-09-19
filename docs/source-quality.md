@@ -1,6 +1,7 @@
 # Executable source-quality inventory
 
-`python tools/report_source_quality.py` classifies game-owned matching-C
+`python tools/report_source_quality.py` classifies game-owned matching-C and
+matching-ASM
 sources independently from byte ownership. It distinguishes syntactic
 `ASM_DB_CAPSULE`, `C_WITH_SYMBOLIC_INLINE_ASM`, `SYMBOLIC_ASM`, and
 `MECHANICAL_C` forms, while

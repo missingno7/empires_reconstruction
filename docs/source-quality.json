@@ -1,12 +1,12 @@
 {
   "format": "empires-source-quality-v1",
-  "scope": "Game-owned matching C plus legitimate historical library inputs",
+  "scope": "Game-owned matching C/ASM plus legitimate historical library inputs",
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 21720,
-      "owners": 70,
-      "sources": 70
+      "bytes": 21644,
+      "owners": 69,
+      "sources": 69
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 383,
-      "owners": 12,
-      "sources": 12
+      "bytes": 459,
+      "owners": 13,
+      "sources": 13
     },
     {
       "level": "MECHANICAL_C",
@@ -275,11 +275,6 @@
       "bytes": 77
     },
     {
-      "owner": "F_4E9F",
-      "source": "src/F_4E9F.C",
-      "bytes": 76
-    },
-    {
       "owner": "F_6EFF",
       "source": "src/F_6EFF.C",
       "bytes": 76
@@ -385,6 +380,6 @@
       "bytes": 11
     }
   ],
-  "asm_db_source_files": 70,
+  "asm_db_source_files": 69,
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
 }

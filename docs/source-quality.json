@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 19972,
-      "owners": 50,
-      "sources": 50
+      "bytes": 19861,
+      "owners": 49,
+      "sources": 49
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 2063,
-      "owners": 31,
-      "sources": 31
+      "bytes": 2174,
+      "owners": 32,
+      "sources": 32
     },
     {
       "level": "MECHANICAL_C",
@@ -175,11 +175,6 @@
       "bytes": 115
     },
     {
-      "owner": "F_C2EA",
-      "source": "src/F_C2EA.C",
-      "bytes": 111
-    },
-    {
       "owner": "F_C27D",
       "source": "src/F_C27D.C",
       "bytes": 109
@@ -285,6 +280,6 @@
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 50,
+  "asm_db_source_files": 49,
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
 }

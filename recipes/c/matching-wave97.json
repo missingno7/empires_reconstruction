@@ -1,0 +1,81 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_25B3",
+      "kind": "MATCHING_C",
+      "source": "src/F_25B3.C",
+      "start": 10163,
+      "end": 10924,
+      "expected_sha256": "87390ed499a15aca502bae5cac44d20edfefc16677c7f84b8fd0b2567c4742ee",
+      "classification": "code",
+      "artifact": "regions/F_25B3.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_25b3",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_28AC",
+      "kind": "MATCHING_C",
+      "source": "src/F_28AC.C",
+      "start": 10924,
+      "end": 11142,
+      "expected_sha256": "b40ab86ba45e1c3834205e466d8480c643376503a9c6876a60e3e1b89f4708cb",
+      "classification": "code",
+      "artifact": "regions/F_28AC.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_28ac",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_D61C",
+      "kind": "MATCHING_C",
+      "source": "src/F_D61C.C",
+      "start": 55324,
+      "end": 55708,
+      "expected_sha256": "304be6697bd43dd9465985edccef0cba4a865a7d3f9832af60ccc864ac88d8a6",
+      "classification": "code",
+      "artifact": "regions/F_D61C.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_d61c",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "F_D79C",
+      "kind": "MATCHING_C",
+      "source": "src/F_D79C.C",
+      "start": 55708,
+      "end": 55831,
+      "expected_sha256": "2b4464ca1a8ba7720a16177f17ba643855e60650e281559987a468609158e2b8",
+      "classification": "code",
+      "artifact": "regions/F_D79C.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_d79c",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

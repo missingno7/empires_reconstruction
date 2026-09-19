@@ -3,8 +3,8 @@
   "owners": [
     {
       "id": "F_C567",
-      "kind": "MATCHING_C",
-      "source": "src/F_C567.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_C567.ASM",
       "start": 51047,
       "end": 51098,
       "expected_sha256": "a2c9268be7f423139d66a62f562812206bac6a372350eb1328101e6deb9e35c7",
@@ -16,7 +16,10 @@
         "public": "_fc567",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_g1788": {"offset": 6024, "coordinate": "DGROUP_offset", "evidence": "complete F_C567 data access"},
+          "_g178a": {"offset": 6026, "coordinate": "DGROUP_offset", "evidence": "complete F_C567 data access"}
+        },
         "module_segments": {}
       }
     }

@@ -99,8 +99,8 @@ linker adapters are now the primary work.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 58,062 | 325 |
-| Freshly assembled matching ASM | 2,456 | 917 | 22 |
+| Freshly compiled matching C | 14,077 | 58,011 | 324 |
+| Freshly assembled matching ASM | 2,456 | 968 | 23 |
 | Known toolchain library | 0 | 5,463 | 49 |
 | Structured MZ header | 0 | 512 | 1 |
 | Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 14,200 | 130 |

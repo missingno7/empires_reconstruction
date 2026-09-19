@@ -8,6 +8,8 @@ Two exact raw code spans are now independent matching-C sources:
 | `F_4F96` | 20886–21185 | 299 |
 
 Both are complete return-terminated routines with zero external fixups and no
-loader relocations. The `F_C567` boundary is now correctly aligned immediately
-before the owned `F_C59A` routine. Full EXE and DAT equality remains intact;
-23,171 executable bytes remain raw.
+loader relocations at this checkpoint. `F_C567` is now symbolic TASM and has
+three direct OMF references to the recovered sound-data state words `_g1788`
+and `_g178a`. Its boundary remains correctly aligned immediately before the
+owned `F_C59A` routine. Full EXE and DAT equality remains intact; 23,171
+executable bytes remain raw at this historical checkpoint.

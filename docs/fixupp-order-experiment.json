@@ -1,0 +1,22 @@
+{
+  "format": "empires-fixupp-order-experiment-v1",
+  "tool": {
+    "name": "TASM.EXE",
+    "version": "1.0",
+    "source": "pinned historical toolchain"
+  },
+  "contiguous_source": {
+    "description": "Two symbolic far calls at offsets 0 and 6 in one contiguous TASM source block.",
+    "fixupp_records": ["cc01060101cc07060102"],
+    "emission_order": [1, 7],
+    "result": "ascending"
+  },
+  "ordered_org_source": {
+    "description": "The far call at offset 6 is emitted first with ORG 6; the far call at offset 0 follows with ORG 0.",
+    "fixupp_records": ["cc01060102", "cc01060101"],
+    "emission_order": [7, 1],
+    "segment_bytes": "9a00000000909a00000000",
+    "result": "descending FIXUPP record order with correct final segment bytes"
+  },
+  "implication": "TASM 1.0 can naturally emit descending explicit FIXUPP records when source contributions are ordered by descending address. The arithmetic adapter can therefore be replaced by a symbolic assembly source that preserves F_DF98 byte layout while emitting its relocatable contribution sections in historical order. Whether that source arrangement is historical remains to be evidenced."
+}

@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "ac68a58c1fdd9e02e21632a4feb46e6a23212dd9e0fac9babed50585a5ddfe7b",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "DATA_01037A_POINTER_TABLE",
+      "kind": "EXACT_DATA",
+      "bytes": 56,
+      "sha256": "ecf24e1702fc680ff7f3b78edf019a2b380d9a8e77d8948dfb625e56a0675309",
+      "source_sha256": "f39e340f2d94254527348c58f8f3c2ca6c15ef26da916f6c0d09e7a6138a25c5",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "u16le-table-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

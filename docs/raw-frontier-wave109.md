@@ -1,8 +1,9 @@
 # Raw executable frontier after wave 108
 
-Wave 135 removes a 3,155-byte all-zero region after wave 134's 99 bytes of zero
-runs and terminated ASCII records. The remaining raw fallback is 5,397 bytes
-across sixteen owners. It consists of alignment gaps, the
+Wave 136 removes 56 bytes of pointer-table data after wave 135's 3,155-byte
+all-zero region and wave 134's 99 bytes of zero
+runs and terminated ASCII records. The remaining raw fallback is 5,341 bytes
+across seventeen owners. It consists of alignment gaps, the
 relocation-backed numeric/pointer area, help control tables, player-dialog
 control tables, gameplay message tables, and terminal initialized data.
 

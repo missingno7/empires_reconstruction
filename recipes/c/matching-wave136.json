@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_01037A_POINTER_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01037A_POINTER_TABLE.json",
+      "start": 66426,
+      "end": 66482,
+      "expected_sha256": "ecf24e1702fc680ff7f3b78edf019a2b380d9a8e77d8948dfb625e56a0675309",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_01037A_POINTER_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    }
+  ]
+}

@@ -20302,13 +20302,39 @@
     {
       "id": "RAW_01034E",
       "start": 66382,
+      "end": 66426,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/01034E-01037A.bin",
+      "original_symbol": null,
+      "artifact": "raw/01034E-01037A.bin",
+      "expected_sha256": "1225d5a4e8b36f54afca4f6427d78d00c5b1d621f3675dd3ee7dd89a4de93343",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_01037A_POINTER_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01037A_POINTER_TABLE.json",
+      "start": 66426,
+      "end": 66482,
+      "expected_sha256": "ecf24e1702fc680ff7f3b78edf019a2b380d9a8e77d8948dfb625e56a0675309",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_01037A_POINTER_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "RAW_0103B2",
+      "start": 66482,
       "end": 66697,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/01034E-010489.bin",
+      "source": "raw/0103B2-010489.bin",
       "original_symbol": null,
-      "artifact": "raw/01034E-010489.bin",
-      "expected_sha256": "081bb1056ceaa703c05970e335ef4225567ff8ca2ad82f0cc284776749659052",
+      "artifact": "raw/0103B2-010489.bin",
+      "expected_sha256": "01bd83842e4a69ee4a0d8e6ae6385a948390351d07fd96bdeed3b838c924eb6a",
       "matching_status": "EQUAL"
     },
     {

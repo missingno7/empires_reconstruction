@@ -180,10 +180,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
+      "id": "GAMEBSS_G9990_REMAINDER",
       "object": "GAMEBSSC.OBJ",
       "assembly": "GAMEBSSC.ASM",
       "logical_start": 24718,
+      "logical_end": 24784,
+      "owner_candidate": "aggregate resource-18 block",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "RESOURCE_STATE_99D2_BSS",
+      "object": "G99BSS.OBJ",
+      "assembly": "G99BSS.ASM",
+      "logical_start": 24784,
+      "logical_end": 25584,
+      "owner_candidate": "F_200F/F_1D47 resource source blocks and pool pointers",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSD.OBJ",
+      "assembly": "GAMEBSSD.ASM",
+      "logical_start": 25584,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

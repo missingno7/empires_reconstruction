@@ -6581,16 +6581,61 @@
       }
     },
     {
-      "id": "RAW_006EA6",
+      "id": "F_6CA6",
+      "kind": "MATCHING_C",
+      "source": "src/F_6CA6.C",
       "start": 28326,
       "end": 28394,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/006EA6-006EEA.bin",
-      "original_symbol": null,
-      "artifact": "raw/006EA6-006EEA.bin",
       "expected_sha256": "9bf45c55111c84489a5148494f101c07b1200892e77a8dbb92692efb9ee183e7",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6ca6",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gc0d6": {
+            "offset": 49366,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0de": {
+            "offset": 49374,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0e0": {
+            "offset": 49376,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0e2": {
+            "offset": 49378,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0e4": {
+            "offset": 49380,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0e6": {
+            "offset": 49382,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0e8": {
+            "offset": 49384,
+            "coordinate": "DGROUP_offset"
+          },
+          "_gc0ea": {
+            "offset": 49386,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_6CA6",
+      "artifact": "regions/F_6CA6.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete far-resource-table span setup with a parameter-forced Turbo C frame"
+      }
     },
     {
       "id": "F_6CEA",

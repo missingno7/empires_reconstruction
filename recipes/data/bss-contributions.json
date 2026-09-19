@@ -70,10 +70,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
+      "id": "GAMEBSS_LEADING_PREFIX",
       "object": "GAMEBSS0.OBJ",
       "assembly": "GAMEBSS0.ASM",
       "logical_start": 12738,
+      "logical_end": 13864,
+      "owner_candidate": "aggregate leading remainder",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "G6F2A_RECORD_TABLE_BSS",
+      "object": "G6F2AB.OBJ",
+      "assembly": "G6F2AB.ASM",
+      "logical_start": 13864,
+      "logical_end": 14768,
+      "owner_candidate": "F_200F resource record table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSS7.OBJ",
+      "assembly": "GAMEBSS7.ASM",
+      "logical_start": 14768,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

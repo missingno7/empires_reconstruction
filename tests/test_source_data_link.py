@@ -56,9 +56,12 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertEqual(report['synthetic_bss_bytes'], 37250)
         self.assertEqual(report['oracle_copied_initialized_data_bytes'], 0)
         reloc = report['byte_comparison']['mz']
-        self.assertEqual(reloc['candidate_fields']['e_crlc'], 72)
+        self.assertEqual(reloc['candidate_fields']['e_crlc'], 106)
         self.assertEqual(reloc['extra_sites'], [])
-        self.assertEqual(len(reloc['missing_sites']), 34)
+        self.assertEqual(len(reloc['missing_sites']), 0)
+        self.assertTrue(reloc['fields_equal'])
+        self.assertTrue(reloc['relocation_pairs_equal'])
+        self.assertEqual(report['byte_comparison']['full_file']['differing_bytes_outside_relocation_table'], 0)
 
 
 if __name__ == '__main__':

@@ -4,7 +4,9 @@
 with the ordered source components in `recipes/data/game-initialized.json`.
 The full linked initialized image (14,594 bytes including runtime/startup DATA)
 is now byte-identical. The entire 78,642-byte load image, including TEXT, now
-matches. TLINK emits 72 of the original 106 relocation sites, with no extra sites.
+matches. TLINK emits all 106 original relocation pairs, with no extra sites.
+Only their order differs; [relocation evidence](complete-relocation-sites.md)
+describes the remaining historical-module constraints.
 The [receipt](source-data-link.json) records the actual bytes and map results.
 
 The source sequence emits 14,018 game DATA bytes. Structured encoders, six
@@ -30,8 +32,8 @@ The copied DATA adapter is eliminated in this experiment. The remaining
 37,250-byte unpartitioned BSS reserve is declared in source and verified against
 independent runtime fixups; [boundary evidence](bss-boundary.md) explains why
 the previous stack-rounded estimate was two bytes high. Local
-raw game DATA sources account for 4,129 bytes, including the 34 missing pointer
-relocations. Those source files are not read from the EXE during generation,
+raw game DATA sources account for 4,049 bytes, with 27 pointer fields now
+symbolically annotated in the DATA recipe. Those files are not read from the EXE during generation,
 but remain opaque fallbacks requiring reconstruction. Six additional canonical
 raw bytes are supplied by C0C's real EMUSEG/CRTSEG contributions in this path.
 

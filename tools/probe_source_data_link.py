@@ -5,6 +5,7 @@ opens the original executable; data bytes come from source encoders or OMF.
 """
 from pathlib import Path
 import shutil
+import struct
 import subprocess
 import tempfile
 
@@ -18,6 +19,7 @@ from reconstruct import ROOT, read_json, sha, write_json
 
 
 def run():
+    (ROOT / 'build/source-data-link-report.json').unlink(missing_ok=True)
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link'].get('errors'):
         raise ValueError('Successful baseline required')
@@ -37,7 +39,13 @@ def run():
     for spec in recipe['components']:
         refs = []
         if spec['format'] == 'raw-local':
-            data = (ROOT / spec['source']).read_bytes()
+            data = bytearray((ROOT / spec['source']).read_bytes())
+            for pointer in spec.get('symbolic_pointer_fields', []):
+                if not 0 <= pointer['offset'] <= len(data) - 4:
+                    raise ValueError('Raw source pointer lies outside its contribution')
+                struct.pack_into('<HH', data, pointer['offset'], pointer['addend'], 0)
+                refs.append({'offset': pointer['offset'], 'target': pointer['target']})
+            data = bytes(data)
         elif spec['format'] == 'compiled-data':
             code = owners[spec['code_owner']]
             module = OmfReader().read((work / 'WORK' / staged[code['id']]['object']).read_bytes())
@@ -122,6 +130,7 @@ def run():
         path.write_bytes(externalize_data_segment(path.read_bytes(), symbol))
         separated.append({'owner': owner_id, 'bytes': module.segment_length('_DATA')})
     bss_publics = {p['name']: ('_BSS', p['offset']) for p in dg.publics_in('_BSS')}
+    bss_publics['GAME_BSS'] = ('_BSS', 0)
     startup_path.write_bytes(add_publics(startup_path.read_bytes(), startup_aliases, '_DATA'))
     bss_source = read_json(ROOT / 'src/data/GAME_BSS.json')
     if bss_source['format'] != 'unpartitioned-bss-reserve-v1' or bss_source['alignment'] != 'word':

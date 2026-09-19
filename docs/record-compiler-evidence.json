@@ -1,0 +1,50 @@
+{
+  "status": "EQUAL",
+  "records": [
+    {
+      "owner": "DATA_010FA5_RECORDS",
+      "bytes": 80,
+      "pointer_fixups": 7,
+      "fixup_offsets_in_object_order": [
+        67,
+        62,
+        47,
+        42,
+        27,
+        7,
+        2
+      ],
+      "source_sha256": "c176898665d12baace7bb5d9e2caf58c70787a3697708de74dcf4fd8303d546e",
+      "object_sha256": "96cdbd244bcfe4a3f8667059c1b58f88466d2be44205815157564252bc700bd6",
+      "status": "EQUAL"
+    },
+    {
+      "owner": "DATA_011D90_RECORDS",
+      "bytes": 160,
+      "pointer_fixups": 16,
+      "fixup_offsets_in_object_order": [
+        147,
+        142,
+        127,
+        122,
+        107,
+        102,
+        87,
+        82,
+        67,
+        62,
+        47,
+        42,
+        27,
+        22,
+        7,
+        2
+      ],
+      "source_sha256": "9b40841fd16a2f0b7f361f2430d3f49b4bca1cecc74c7a8ae9581dc46f5fed96",
+      "object_sha256": "a0535751ccb4b4d980a28e09fe39aa0b6fd5997a42db9735a4d0def5ad8cb200",
+      "status": "EQUAL"
+    }
+  ],
+  "historical_translation_unit_proven": false,
+  "evidence": "Fresh Turbo C struct layout and descending DATA fixup order; no oracle bytes used"
+}

@@ -20,6 +20,10 @@ def compile_records(document):
         data.extend(struct.pack('<H', integer(row['word'], 65535)))
         for suffix in ('a', 'b'):
             pointer = row['pointer_' + suffix]
+            if pointer is None:
+                data.extend(b'\x00' * 4)
+                data.append(integer(row['byte_' + suffix], 255))
+                continue
             if (set(pointer) != {'target', 'addend'} or not isinstance(pointer['target'], str)
                     or not pointer['target'] or not pointer['target'].isascii()):
                 raise ValueError('Invalid symbolic pointer')
@@ -39,6 +43,27 @@ def bind_records(document, resolve):
         offset, segment = resolve(ref['target'])
         struct.pack_into('<HH', data, ref['offset'], offset + ref['addend'], segment)
     return bytes(data)
+
+
+def records_c_source(document):
+    """Generate compact-model C initializers from the same typed source."""
+    _, refs = compile_records(document)
+    targets = list(dict.fromkeys(r['target'] for r in refs))
+    names = {target: f'p{i:04d}' for i, target in enumerate(targets)}
+    source = '\n'.join(f'extern char {name}[];' for name in names.values())
+    source += ('\nstruct R { unsigned w; char *a; unsigned char fa; '
+               'char *b; unsigned char fb; unsigned char tail[8]; };\n'
+               'struct R records[] = {\n')
+    for row in document['records']:
+        def pointer(key):
+            p = row[key]
+            return '0' if p is None else names[p['target']] + '+' + str(p['addend'])
+        fields = [str(row['word']), pointer('pointer_a'), str(row['byte_a']),
+                  pointer('pointer_b'), str(row['byte_b']),
+                  '{' + ','.join(map(str, row['tail'])) + '}']
+        source += '{' + ','.join(fields) + '},\n'
+    source += '};\n'
+    return source, {'_' + name: target for target, name in names.items()}
 
 
 def records_object(document, public):

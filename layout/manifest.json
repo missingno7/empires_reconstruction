@@ -21193,16 +21193,19 @@
       }
     },
     {
-      "id": "RAW_010FA5",
+      "id": "DATA_010FA5_RECORDS",
       "start": 69541,
       "end": 69621,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/010FA5-010FF5.bin",
+      "kind": "EXACT_DATA",
+      "classification": "static_pointer_records",
+      "source": "src/data/DATA_010FA5_RECORDS.json",
       "original_symbol": null,
-      "artifact": "raw/010FA5-010FF5.bin",
+      "artifact": "regions/DATA_010FA5_RECORDS.bin",
       "expected_sha256": "6bf6b2a370c2bd7f571255a21d63695fca20efb2f81d41b9548835c8eb3400a4",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16-farptr-u8-farptr-u8-tail8-v1"
+      }
     },
     {
       "id": "C_DATA_A658",

@@ -1,7 +1,7 @@
 # Empires reconstruction
 
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
-without copying them from AEPROG.EXE. It emits 72 correct relocations with no
+without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module
 adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
@@ -17,7 +17,7 @@ originals exactly**, including executable relocations and archive offsets.
 The fixed build compiles 347 C regions and no ASM regions, and retains 40 pinned
 Borland library contributions as independent historical inputs. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); twelve raw regions cover the remaining 4,135 EXE bytes.
+RGB tables (1,536 bytes); eleven raw regions cover the remaining 4,055 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 488 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 75 resolve through [publics read from pinned library modules](docs/library-bindings.md).

@@ -109,6 +109,8 @@ def compare_linked_executable(candidate, oracle):
         'fields_equal': candidate_fields == oracle_fields,
         'relocation_count_equal': len(candidate_mz.relocations) == len(oracle_mz.relocations),
         'relocation_order_equal': candidate_mz.relocations == oracle_mz.relocations,
+        'relocation_pairs_equal': sorted((r['segment'], r['offset']) for r in candidate_mz.relocations) ==
+                                  sorted((r['segment'], r['offset']) for r in oracle_mz.relocations),
         'missing_sites': sorted({r['load_offset'] for r in oracle_mz.relocations} -
                                 {r['load_offset'] for r in candidate_mz.relocations}),
         'extra_sites': sorted({r['load_offset'] for r in candidate_mz.relocations} -
@@ -139,6 +141,10 @@ def compare_linked_executable(candidate, oracle):
     result['initialized_data'] = slice_comparison('_DATA', 0xFA30, 0x13332)
     result['full_file'] = {
         'equal': candidate_bytes == oracle_bytes,
+        'differing_bytes_outside_relocation_table': sum(
+            a != b and not result['mz']['oracle_fields']['e_lfarlc'] <= i <
+            result['mz']['oracle_fields']['e_lfarlc'] + 4 * result['mz']['oracle_fields']['e_crlc']
+            for i, (a, b) in enumerate(zip(candidate_bytes, oracle_bytes))) + abs(len(candidate_bytes) - len(oracle_bytes)),
         'first_difference': next((i for i, (a, b) in enumerate(zip(candidate_bytes, oracle_bytes))
                                   if a != b), min(len(candidate_bytes), len(oracle_bytes))
                                  if len(candidate_bytes) != len(oracle_bytes) else None),

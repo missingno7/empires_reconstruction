@@ -247,8 +247,8 @@
       "owner": "RAW_01075A",
       "bytes": 20,
       "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "5f44315832ee02d54d5e6677a9338684f2011cada0a9d71f3e6ec860198e8569"
+      "pointer_fixups": 1,
+      "object_sha256": "16da175dd353a66e9c92496ebf448c8b95f54e6a1ef7a7395eef04022d6ee137"
     },
     {
       "owner": "DATA_01076E_ZERO_SUFFIX",
@@ -387,8 +387,8 @@
       "owner": "RAW_010924",
       "bytes": 139,
       "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "c1fc75852579a8716fbcbb0742910eaa11f76b197f92743f5636fbfaebe69a62"
+      "pointer_fixups": 20,
+      "object_sha256": "52cb732c0cc2c19e9f8089bf4f0867a7019e44c834ad93316f18bb50634159f2"
     },
     {
       "owner": "DATA_0109AF_GO_BACK",
@@ -531,11 +531,11 @@
       "object_sha256": "741bb5bc72a6f98a608eda450832681245caadfb3998528614bb890cf81e973a"
     },
     {
-      "owner": "RAW_010FA5",
+      "owner": "DATA_010FA5_RECORDS",
       "bytes": 80,
-      "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "377dcf84cf8570ee5d9d7bb6f16aad6a0a887c666d5b69e4d6c29d19fe3c36a6"
+      "format": "u16-farptr-u8-farptr-u8-tail8-v1",
+      "pointer_fixups": 7,
+      "object_sha256": "5b2ca26b58f86f335d26f360fef96852bd66cd0d3a40f3b63200bc3137b5eeb8"
     },
     {
       "owner": "C_DATA_A658",
@@ -548,8 +548,8 @@
       "owner": "RAW_010FF6",
       "bytes": 43,
       "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "b5810cde7b4681677024eba99d3f2f6adc25a82b727cbde57faef09efc3edfb9"
+      "pointer_fixups": 3,
+      "object_sha256": "87b60c0147004d44ac48fcc693b8567dbaf290ae4c8b9f34e04a82c780e6da98"
     },
     {
       "owner": "DATA_0101021_PLAYER_NAME_TITLE",
@@ -632,8 +632,8 @@
       "owner": "RAW_01129F_CONTROL_PREFIX",
       "bytes": 55,
       "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "d46ab1b27a54e0db439e1750733de853ef8cdaf83367433ddbcabe5bd54ca46c"
+      "pointer_fixups": 1,
+      "object_sha256": "9c7a74f4b5100b61b9419902b8171e3dd5fa079093492532e3e189caaf247343"
     },
     {
       "owner": "DATA_0112D6_LEVEL_COMPLETE",
@@ -710,7 +710,7 @@
       "bytes": 160,
       "format": "u16-farptr-u8-farptr-u8-tail8-v1",
       "pointer_fixups": 16,
-      "object_sha256": "0b0e82c40b247dc3f46f0738761572dc1f901f26b2ead006d00f0b5157ad5b10"
+      "object_sha256": "6553f6f666ee70d4494cde3c11185412bdabbbc314205c98c32d704ee7963bba"
     },
     {
       "owner": "DATA_011E30_MUSIC",
@@ -821,8 +821,8 @@
       "owner": "RAW_011F25",
       "bytes": 13,
       "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "97fb71be672ed6281b5520f026e96bcfc90dfec6d1eaf125983e55966d37e7ca"
+      "pointer_fixups": 1,
+      "object_sha256": "517f6abd4ccec066feea4f35c09a7aa17d72d59d34c1f36add3a6fc7fcf15fab"
     },
     {
       "owner": "DATA_011F32_KEYBOARD_LABEL",
@@ -856,8 +856,8 @@
       "owner": "RAW_011F86",
       "bytes": 20,
       "format": "raw-local",
-      "pointer_fixups": 0,
-      "object_sha256": "0760cd809c4f3b04fc5be10c71ce5f56fc23a3e3a494a3d1297bf0189b8fc5bc"
+      "pointer_fixups": 1,
+      "object_sha256": "3b3d44e6402596ee85b8475a9744f780fedcb3af66019ccff319186388cb9167"
     },
     {
       "owner": "DATA_011F9A_NEW_USER_MESSAGE",
@@ -926,7 +926,7 @@
     }
   ],
   "oracle_copied_initialized_data_bytes": 0,
-  "local_raw_source_bytes": 4129,
+  "local_raw_source_bytes": 4049,
   "synthetic_bss_bytes": 37250,
   "temporary_startup_data_aliases": {
     "_g6d": 109,
@@ -941,7 +941,7 @@
   },
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "e50eb1e586515d757707ecb767ef79ab8108e0178de41212b363587341551189",
+    "candidate_sha256": "fac4f162901f17c5c9c7927e8c1c55135408ca9e2bd5ca9d53f76d5ae6ee4c8c",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -950,7 +950,7 @@
         "e_magic": 23117,
         "e_cblp": 306,
         "e_cp": 155,
-        "e_crlc": 72,
+        "e_crlc": 106,
         "e_cparhdr": 32,
         "e_minalloc": 2348,
         "e_maxalloc": 65535,
@@ -978,45 +978,11 @@
         "e_lfarlc": 34,
         "e_ovno": 0
       },
-      "fields_equal": false,
-      "relocation_count_equal": false,
+      "fields_equal": true,
+      "relocation_count_equal": true,
       "relocation_order_equal": false,
-      "missing_sites": [
-        66915,
-        67372,
-        67380,
-        67384,
-        67392,
-        67400,
-        67404,
-        67412,
-        67420,
-        67424,
-        67434,
-        67438,
-        67446,
-        67450,
-        67458,
-        67466,
-        67470,
-        67478,
-        67486,
-        67490,
-        67500,
-        69033,
-        69038,
-        69058,
-        69073,
-        69078,
-        69093,
-        69098,
-        69113,
-        69118,
-        69138,
-        69801,
-        72999,
-        73098
-      ],
+      "relocation_pairs_equal": true,
+      "missing_sites": [],
       "extra_sites": []
     },
     "load_image": {
@@ -1045,7 +1011,8 @@
     },
     "full_file": {
       "equal": false,
-      "first_difference": 6
+      "differing_bytes_outside_relocation_table": 0,
+      "first_difference": 58
     }
   },
   "limitation": "Ordered source DATA; raw sources, recovered aliases, synthetic BSS and module grouping remain."

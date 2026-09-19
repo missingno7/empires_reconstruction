@@ -42,7 +42,8 @@ def emit_data(data, publics, refs=(), module_name='DATA'):
                 end = ref['offset']
         records.append(_record(OmfReader.LEDATA16, b'\x01' + struct.pack('<H', start) + data[start:end]))
         fixups = bytearray()
-        for ref in refs:
+        # Fresh Turbo C emits DATA fixups in descending source-offset order.
+        for ref in sorted(refs, key=lambda r: -r['offset']):
             if start <= ref['offset'] < end:
                 fixups.extend(struct.pack('>H', 0xCC00 | (ref['offset'] - start)))
                 fixups.extend(bytes([0x16, 1, targets.index(ref['target']) + 1]))

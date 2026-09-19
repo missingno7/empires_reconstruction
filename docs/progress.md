@@ -1,7 +1,7 @@
 # Incremental reconstruction — 2026-09-18
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
-without copying them from AEPROG.EXE. It emits 72 correct relocations with no
+without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module
 adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
@@ -31,7 +31,7 @@ The linked bytes still differ (56/106 relocations; first load difference 0xC8).
 See [the checkpoint](tlink20-full-scaffold.md) and [generated metrics](structural-status.json).
 
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 58,486 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 58,566 bytes from raw
 fallback through matching C, toolchain libraries, structured headers, palettes,
 compiled data, independently encoded text and static data.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -49,8 +49,8 @@ linker adapters are now the primary work.
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
 | Known toolchain library | 0 | 5,463 | 49 |
 | Structured MZ header | 0 | 512 | 1 |
-| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 10,065 | 119 |
-| Exact raw fallback | 62,621 | 4,135 | 12 |
+| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 10,145 | 120 |
+| Exact raw fallback | 62,621 | 4,055 | 11 |
 | Total | 79,154 | 79,154 | 528 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -205,7 +205,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 4,135 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 4,055 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -1230,7 +1230,7 @@ across 12 owners.
 Wave 145 separates the relocation-free 151-byte level-completion message from
 the preceding 55-byte relocation-backed control prefix. The new unterminated
 `ascii-v1` source preserves every CR separator and the exact owner boundary.
-The raw frontier is now 4,135 bytes across 12 owners.
+The raw frontier is now 4,055 bytes across 12 owners.
 
 ## One-hundred-forty-sixth matching-C wave
 

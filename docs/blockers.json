@@ -33,7 +33,7 @@
       "target": "Original modules and historical linker",
       "state": "Turbo Link 2.0 reproduces complete load image; relocation table and structural adapters remain",
       "matches": "Source DATA link reproduces all 78642 load bytes, TEXT/DATA and BSS/STACK layout. No initialized bytes are copied from AEPROG.EXE. Runtime public offsets and BSS boundary are independently verified.",
-      "first_unresolved_fact": "File 0x06: relocation count 72 versus 106. All emitted sites are correct; 34 remain missing. Raw source components, recovered aliases and unpartitioned game BSS remain.",
+      "first_unresolved_fact": "File 0x3A: relocation ordering differs. All 106 segment:offset pairs and every byte outside the relocation table match. Raw source components, recovered aliases and unpartitioned game BSS remain.",
       "evidence": [
         "layout/manifest.json",
         "layout/mz-header.json",
@@ -43,10 +43,11 @@
         "docs/tlink20-full-scaffold.md",
         "docs/structural-status.json",
         "docs/source-data-link.json",
-        "docs/bss-boundary.json"
+        "docs/bss-boundary.json",
+        "docs/complete-relocation-sites.md"
       ],
-      "unblock": "Reconstruct the remaining raw pointer sites, verify historical relocation ordering, and replace the remaining source/module/storage adapters.",
-      "leverage": "Close 34 missing relocation sites; reconstruct 4135 canonical raw bytes and historical source/storage ownership."
+      "unblock": "Use original relocation interleaving and fresh shared compiler objects to recover module composition; retain explicit raw and BSS ownership work.",
+      "leverage": "Recover historical module/relocation order and eliminate adapters; reconstruct 4055 canonical raw bytes."
     },
     {
       "target": "EXE raw-data classification and embedded assets",

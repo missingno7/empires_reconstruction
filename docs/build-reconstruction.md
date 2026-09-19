@@ -1,7 +1,7 @@
 # Reconstruct the build, not only its output
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
-without copying them from AEPROG.EXE. It emits 72 correct relocations with no
+without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Raw sources and symbol/module
 adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
@@ -91,7 +91,7 @@ No unknown payload became understood merely
 because its offset is now computed. This step does not recover the historical
 compressor's remaining match-selection behavior.
 
-The fixed EXE remains the byte-identical oracle with declared bindings, 4,135
+The fixed EXE remains the byte-identical oracle with declared bindings, 4,055
 raw bytes, and no proven reconstruction of its original source modules. The
 relocatable experiment now uses the locally verified Turbo Link 2.0 candidate:
 the no-demand run places `_TEXT` through `0xFA23` with zero code-placement

@@ -1,0 +1,94 @@
+{
+  "format": "u16-farptr-u8-farptr-u8-tail8-v1",
+  "records": [
+    {
+      "word": 0,
+      "pointer_a": {
+        "target": "DATA_0101021_PLAYER_NAME_TITLE",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_011037_PLAYER_NAME_INSTRUCTION",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 1,
+      "pointer_a": null,
+      "byte_a": 2,
+      "pointer_b": {
+        "target": "DATA_010106A_PLAYER_LIST_FULL",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "word": 7,
+      "pointer_a": {
+        "target": "DATA_010110E_REMOVE_PLAYER_TITLE",
+        "addend": 0
+      },
+      "byte_a": 1,
+      "pointer_b": {
+        "target": "DATA_010F15_DIALOG_REMOVE_INTRO",
+        "addend": 0
+      },
+      "byte_b": 0,
+      "tail": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ]
+    }
+  ]
+}

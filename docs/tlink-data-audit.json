@@ -1,6 +1,6 @@
 {
   "format": "empires-tlink-data-audit-v1",
-  "linked_exe_sha256": "46367ddaabd7fcc74f8436c3b2c138e38ee5adedf9e4c14a2348935715446300",
+  "linked_exe_sha256": "8344601f45de5ade046b4a57de91da0978aeb0f8348a8940e5e272cd6aad3603",
   "data_contributions": [
     {
       "load_start": 64048,
@@ -348,9 +348,9 @@
       ]
     },
     {
-      "owner": "RAW_010FA5",
-      "kind": "RAW",
-      "encoder": null,
+      "owner": "DATA_010FA5_RECORDS",
+      "kind": "EXACT_DATA",
+      "encoder": "u16-farptr-u8-farptr-u8-tail8-v1",
       "missing_sites": [
         69033,
         69038,

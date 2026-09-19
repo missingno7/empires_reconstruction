@@ -29,6 +29,14 @@ publics `__8087`, `__argv`, and `__osmajor`, plus the CC.LIB CTYPE public
 DATA publics or external-addend rewriting; both temporary DATA-alias maps are
 empty.
 
+All ordinary code/library EXTDEF adapters are now gone as well. Twenty-three
+owners name the historical `CC.LIB` publics directly, recovered cross-owner
+calls name their real source publics, and 254 exact function-entry bindings are
+canonical relocatable owner/public references. The structural link has zero
+case, library, caller-scoped, or runtime-DATA symbol rewrites. Only internal
+entry PUBDEF injection in 43 objects remains on the code-symbol frontier. See
+[the historical-public checkpoint](historical-code-publics.md).
+
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table
 prefix to all 106 entries and produces the byte-identical EXE. These
@@ -58,8 +66,7 @@ The [symbolic pointer-record component](pointer-records.md) now independently
 links 160 bytes and 16 relocations from source through Turbo Link 2.0. Its full
 structural-link integration remains open; fixed whole-game verification passes.
 
-The latest structural check scopes conflicting code aliases to their actual callers
-and detects map-only fixup overflows. The two observed overflows are eliminated;
+The latest structural check detects map-only fixup overflows. The two observed overflows are eliminated;
 full links with and without demand still have identical output. Empty-segment
 extent accounting is corrected; BSSEND remains two bytes above its oracle value.
 See [the detailed checkpoint](tlink20-full-scaffold.md).

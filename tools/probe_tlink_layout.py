@@ -429,8 +429,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                     source_bytes = normalized
                     transforms.append('EXTDEF case normalization to explicit public')
             if promote_toupper and owner['id'] == 'F_A525':
-                source_bytes = rename_external(source_bytes, '_ff9be', '_toupper')
-                transforms.append('EXTDEF _ff9be -> _toupper')
+                externals = OmfReader().read(source_bytes).externals
+                if '_ff9be' in externals:
+                    source_bytes = rename_external(source_bytes, '_ff9be', '_toupper')
+                    transforms.append('EXTDEF _ff9be -> _toupper')
+                elif '_toupper' not in externals:
+                    raise ValueError('F_A525 references neither recovered nor historical toupper public')
             if normalize_recovered_symbols:
                 for old, new in RECOVERED_SYMBOL_ALIASES.get(owner['id'], []):
                     if old in OmfReader().read(source_bytes).externals:

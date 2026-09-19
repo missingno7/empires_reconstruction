@@ -33,15 +33,19 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20670.phys"
           },
-          "_fF7CD": {
-            "offset": 63437,
+          "_hardretn": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F7CD.entry"
+            "evidence": "functions/F_F7CD.entry",
+            "owner": "LIB_HARDERR",
+            "public": "_hardretn",
+            "addend": 0
           },
-          "_fF7B2": {
-            "offset": 63410,
+          "_hardresume": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F7B2.entry"
+            "evidence": "functions/F_F7B2.entry",
+            "owner": "LIB_HARDERR",
+            "public": "_hardresume",
+            "addend": 0
           }
         },
         "module_segments": {}

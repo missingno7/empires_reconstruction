@@ -50,7 +50,7 @@
                                follows it. */
 
 extern int  f6dcc(), f6d86(), f6771(), f67dc(), f6f4b(), f6eff();
-extern int  ff183(), feefe(), feead(), ff39c(), f86c9(), f6266();
+extern int  lseek(), read(), close(), memmove(), f86c9(), f6266();
 
 extern int  gb3e, gb40;                 /* DS:0B3E, DS:0B40 */
 extern char far *gb31;                  /* DS:0B31, segment at DS:0B33 */
@@ -80,13 +80,13 @@ unsigned p;
     do {
         gb3e = 0;
         f6266(d);
-        ff183(gc0c9, (long)(p * 4), 0);
-        feefe(gc0c9, &o1, 4);
-        feefe(gc0c9, &o2, 4);
+        lseek(gc0c9, (long)(p * 4), 0);
+        read(gc0c9, &o1, 4);
+        read(gc0c9, &o2, 4);
         s = (int)o2 - (int)o1;
-        ff183(gc0c9, o1, 0);
-        feefe(gc0c9, gc5ca, s);
-        feead(gc0c9);
+        lseek(gc0c9, o1, 0);
+        read(gc0c9, gc5ca, s);
+        close(gc0c9);
         if (gb3e != 0) {
             gb31 = (char far *)&ga5e[d];
             f86c9(gb2a);
@@ -101,10 +101,10 @@ unsigned p;
         s = f6d86(gc5be, gc5c6, s);
     } else if (fl & 2) {
         s = f6dcc(gc5c6, gc5be, s);
-        ff39c(gc5c6, gc5be, s);
+        memmove(gc5c6, gc5be, s);
     } else if (fl & 1) {
         s = f6d86(gc5c6, gc5be, s);
-        ff39c(gc5c6, gc5be, s);
+        memmove(gc5c6, gc5be, s);
     }
     if (gbfcd != 5) {
         switch (gc0cb) {

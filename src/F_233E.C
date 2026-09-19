@@ -15,8 +15,8 @@ extern void b(int n);                   /* CAF1 */
 /*@SYM _b=0xCAF1 kind=f key=functions/F_CAF1.entry*/
 extern void c(void);                    /* 22B1 */
 /*@SYM _c=0x22B1 kind=f key=functions/F_22B1.entry*/
-extern void delay(int n);               /* 6C57 */
-/*@SYM _delay=0x6C57 kind=f key=functions/F_6C57.entry*/
+extern void f6c57(int n);               /* 6C57 */
+/*@SYM _f6c57=0x6C57 kind=f key=functions/F_6C57.entry*/
 extern void blit(int x, int y, char far *s);                    /* 03C9 */
 /*@SYM _blit=0x03C9 kind=f key=functions/F_03C9.entry*/
 extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4 */
@@ -41,7 +41,7 @@ void f233e(register int i)
     c();
     gbc = 1;
     for (k = 1; k < 5; k++) {
-        delay(0x18);
+        f6c57(0x18);
         dst = src;
         blit(xa[i], ya[i] + 0xb8, (char far *)&cel[k]);
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x21, xa[i], ya[i]);
@@ -51,7 +51,7 @@ void f233e(register int i)
     }
     c();
     for (k = 12; k < 16; k++) {
-        delay(0x18);
+        f6c57(0x18);
         dst = src;
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x28, xa[i], ya[i]);
         c();
@@ -62,7 +62,7 @@ void f233e(register int i)
     gbc = 0;
     b(0x0d);
     for (k = 3; k >= 0; k--) {
-        delay(0x18);
+        f6c57(0x18);
         blit(xa[i], ya[i], (char far *)&cel[k]);
         box(xa[i], ya[i], 0x2e, 0x21);
         e();

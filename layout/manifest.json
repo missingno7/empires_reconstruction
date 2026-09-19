@@ -467,8 +467,10 @@
             "addend": 0
           },
           "_f039c": {
-            "offset": 924,
             "coordinate": "code_offset",
+            "owner": "RUNTIME_BLOCK",
+            "public": "_runtime_block",
+            "addend": 0,
             "evidence": "functions/F_039C.entry"
           },
           "_farmalloc": {
@@ -673,11 +675,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2972C.phys"
           },
-          "_ff39c": {
-            "offset": 62364,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F39C.entry"
-          },
           "_gbf66": {
             "offset": 48998,
             "coordinate": "DGROUP_offset",
@@ -687,6 +684,13 @@
             "offset": 16596,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
+          },
+          "_memmove": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F39C.entry",
+            "owner": "LIB_MOVMEM",
+            "public": "_memmove",
+            "addend": 0
           }
         }
       },
@@ -1344,8 +1348,10 @@
         "module_segments": {},
         "bindings": {
           "_a": {
-            "offset": 52040,
             "coordinate": "code_offset",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_g72c": {
@@ -1354,8 +1360,10 @@
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_b": {
-            "offset": 51953,
             "coordinate": "code_offset",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_g96": {
@@ -1364,18 +1372,15 @@
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_c": {
-            "offset": 8881,
             "coordinate": "code_offset",
+            "owner": "F_22B1",
+            "public": "_f22b1",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_gbc": {
             "offset": 188,
             "coordinate": "DGROUP_offset",
-            "evidence": "complete fixup target with object addend subtraction"
-          },
-          "_delay": {
-            "offset": 27735,
-            "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_src": {
@@ -1444,18 +1449,29 @@
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_d": {
-            "offset": 7885,
             "coordinate": "code_offset",
+            "owner": "F_1ECD",
+            "public": "_f1ecd",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_e": {
-            "offset": 27759,
             "coordinate": "code_offset",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_box": {
             "offset": 927,
             "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           }
         }
@@ -1904,8 +1920,10 @@
             "addend": 0
           },
           "_fd61c": {
-            "offset": 54812,
             "coordinate": "code_offset",
+            "owner": "F_D61C",
+            "public": "_f_d61c",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_f03b4": {
@@ -1914,19 +1932,25 @@
             "evidence": "near-call target from complete function fixup"
           },
           "_f28ac": {
-            "offset": 10412,
             "coordinate": "code_offset",
+            "owner": "F_28AC",
+            "public": "_f_28ac",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_fd818": {
-            "offset": 55320,
             "coordinate": "code_offset",
+            "owner": "F_D818",
+            "public": "_fd818",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_fd825": {
-            "offset": 55333,
+            "owner": "F_D825",
+            "public": "_fd825",
             "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
+            "addend": 0,
+            "evidence": "owned F_D825 public"
           },
           "_f2986": {
             "coordinate": "code_offset",
@@ -1936,8 +1960,10 @@
             "addend": 0
           },
           "_f6036": {
-            "offset": 24630,
             "coordinate": "code_offset",
+            "owner": "F_6036",
+            "public": "_f6036",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           }
         }
@@ -2035,8 +2061,10 @@
             "addend": 0
           },
           "_f8bab": {
-            "offset": 35755,
             "coordinate": "code_offset",
+            "owner": "F_8BAB",
+            "public": "_f8bab",
+            "addend": 0,
             "evidence": "functions/F_8BAB.entry"
           },
           "_fcb48": {
@@ -2245,8 +2273,10 @@
             "addend": 0
           },
           "_f6181": {
-            "offset": 24961,
             "coordinate": "code_offset",
+            "owner": "F_6181",
+            "public": "_f6181",
+            "addend": 0,
             "evidence": "functions/F_6181.entry"
           },
           "_g96": {
@@ -2396,11 +2426,6 @@
             "public": "_fa768",
             "addend": 0
           },
-          "_ff98b": {
-            "offset": 63883,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F98B.entry"
-          },
           "_g13ed": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
@@ -2440,6 +2465,13 @@
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
+          },
+          "_longjmp": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F98B.entry",
+            "owner": "LIB_SETJMP",
+            "public": "_longjmp",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -2759,8 +2791,10 @@
             "addend": 0
           },
           "_f25b3": {
-            "offset": 9651,
             "coordinate": "code_offset",
+            "owner": "F_25B3",
+            "public": "_f_25b3",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_gbfc0": {
@@ -2769,8 +2803,10 @@
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_fd79c": {
-            "offset": 55196,
             "coordinate": "code_offset",
+            "owner": "F_D79C",
+            "public": "_f_d79c",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_gbfc4": {
@@ -2779,8 +2815,10 @@
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_fd386": {
-            "offset": 54150,
             "coordinate": "code_offset",
+            "owner": "F_D386",
+            "public": "_fd386",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_gb6e": {
@@ -2859,8 +2897,10 @@
             "addend": 0
           },
           "_f4b0c": {
-            "offset": 19212,
             "coordinate": "code_offset",
+            "owner": "F_4B0C",
+            "public": "_f4b0c",
+            "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
           "_gbfba": {
@@ -3084,16 +3124,6 @@
             "public": "_face7",
             "addend": 0
           },
-          "_ff304": {
-            "offset": 62212,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F304.entry"
-          },
-          "_ff348": {
-            "offset": 62280,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F348.entry"
-          },
           "_g0b3ae": {
             "offset": 45998,
             "coordinate": "DGROUP_offset",
@@ -3128,6 +3158,20 @@
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_setmem": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F304.entry",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
+            "addend": 0
+          },
+          "_movmem": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F348.entry",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3424,8 +3468,10 @@
         "flags_append": "",
         "bindings": {
           "_f039c": {
-            "offset": 924,
             "coordinate": "code_offset",
+            "owner": "RUNTIME_BLOCK",
+            "public": "_runtime_block",
+            "addend": 0,
             "evidence": "functions/F_039C.entry"
           },
           "_f656c": {
@@ -3524,13 +3570,17 @@
             "addend": 0
           },
           "_f6b7a": {
-            "offset": 27514,
             "coordinate": "code_offset",
+            "owner": "F_6B7A",
+            "public": "_f6b7a",
+            "addend": 0,
             "evidence": "functions/F_6B7A.entry"
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_fd344": {
@@ -3547,15 +3597,19 @@
             "public": "_fd555",
             "addend": 0
           },
-          "_ff8fe": {
-            "offset": 63742,
+          "_srand": {
             "coordinate": "code_offset",
+            "owner": "LIB_RAND",
+            "public": "_srand",
+            "addend": 0,
             "evidence": "functions/F_F8FE.entry"
           },
-          "_ffa0f": {
-            "offset": 64015,
+          "_biostime": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_FA0F.entry"
+            "evidence": "functions/F_FA0F.entry",
+            "owner": "LIB_BIOSEQU",
+            "public": "_biostime",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3668,8 +3722,10 @@
             "addend": 0
           },
           "_f6bac": {
-            "offset": 27564,
             "coordinate": "code_offset",
+            "owner": "F_6BAC",
+            "public": "_f6bac",
+            "addend": 0,
             "evidence": "functions/F_6BAC.entry"
           }
         }
@@ -3744,8 +3800,10 @@
             "addend": 0
           },
           "_fab66": {
-            "offset": 43878,
             "coordinate": "code_offset",
+            "owner": "F_AB66",
+            "public": "_fab66",
+            "addend": 0,
             "evidence": "functions/F_AB66.entry"
           },
           "_fad25": {
@@ -3769,11 +3827,6 @@
             "public": "_fd5b3",
             "addend": 0
           },
-          "_ff953": {
-            "offset": 63827,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F953.entry"
-          },
           "_g13ed": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
@@ -3788,6 +3841,13 @@
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
+          },
+          "_setjmp": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F953.entry",
+            "owner": "LIB_SETJMP",
+            "public": "_setjmp",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -3819,8 +3879,10 @@
         "flags_append": "",
         "bindings": {
           "_f034f": {
-            "offset": 847,
             "coordinate": "code_offset",
+            "owner": "F_034F",
+            "public": "_f034f",
+            "addend": 0,
             "evidence": "functions/F_034F.entry"
           },
           "_f490d": {
@@ -4219,13 +4281,17 @@
             "evidence": "storage_objects/G_P20552.phys"
           },
           "_f4f63": {
-            "offset": 20323,
             "coordinate": "code_offset",
+            "owner": "F_4F63",
+            "public": "_f4f63",
+            "addend": 0,
             "evidence": "functions/F_4F63.entry"
           },
           "_f4f96": {
-            "offset": 20374,
             "coordinate": "code_offset",
+            "owner": "F_4F96",
+            "public": "_f4f96",
+            "addend": 0,
             "evidence": "functions/F_4F96.entry"
           },
           "_f50c1": {
@@ -4243,19 +4309,11 @@
             "addend": 0
           },
           "_f51bf": {
-            "offset": 20927,
             "coordinate": "code_offset",
+            "owner": "F_53BF",
+            "public": "_f53bf",
+            "addend": 0,
             "evidence": "functions/F_51BF.entry"
-          },
-          "_ff3da": {
-            "offset": 62426,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F3DA.entry"
-          },
-          "_ff725": {
-            "offset": 63269,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F725.entry"
           },
           "__argv": {
             "offset": 109,
@@ -4281,6 +4339,20 @@
             "offset": 2216,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/ARRAY_FAEB.phys + 0x7ED"
+          },
+          "_farcoreleft": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F3DA.entry",
+            "owner": "LIB_FCORELFT",
+            "public": "_farcoreleft",
+            "addend": 0
+          },
+          "_getdisk": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F725.entry",
+            "owner": "LIB_CHDIR",
+            "public": "_getdisk",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -4684,11 +4756,6 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
           },
-          "_delay": {
-            "offset": 27735,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6C57.entry"
-          },
           "_f555b": {
             "coordinate": "code_offset",
             "evidence": "functions/F_555B.entry",
@@ -4806,39 +4873,32 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FACA.phys"
           },
-          "_getkey": {
-            "offset": 21907,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_5593.entry"
-          },
           "_load": {
-            "offset": 26698,
             "coordinate": "code_offset",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0,
             "evidence": "functions/F_684A.entry"
           },
-          "_mode": {
-            "offset": 462,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry"
-          },
           "_msg": {
-            "offset": 34505,
             "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0,
             "evidence": "functions/F_86C9.entry"
           },
           "_pane": {
-            "offset": 40768,
             "coordinate": "code_offset",
+            "owner": "F_9F40",
+            "public": "_f9f40",
+            "addend": 0,
             "evidence": "functions/F_9F40.entry"
           },
-          "_rel": {
-            "offset": 63171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F6C3.entry"
-          },
           "_show": {
-            "offset": 21281,
             "coordinate": "code_offset",
+            "owner": "F_5321",
+            "public": "_f5321",
+            "addend": 0,
             "evidence": "functions/F_5321.entry"
           },
           "_t1": {
@@ -4865,6 +4925,34 @@
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
+          },
+          "_farfree": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F6C3.entry",
+            "owner": "LIB_FFREE",
+            "public": "_farfree",
+            "addend": 0
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0,
+            "evidence": "functions/F_6C57.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
+            "evidence": "functions/F_01CE.entry"
+          },
+          "_f5593": {
+            "coordinate": "code_offset",
+            "owner": "F_5593",
+            "public": "_f5593",
+            "addend": 0,
+            "evidence": "functions/F_5593.entry"
           }
         },
         "module_segments": {
@@ -5527,15 +5615,19 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20670.phys"
           },
-          "_fF7CD": {
-            "offset": 63437,
+          "_hardretn": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F7CD.entry"
+            "evidence": "functions/F_F7CD.entry",
+            "owner": "LIB_HARDERR",
+            "public": "_hardretn",
+            "addend": 0
           },
-          "_fF7B2": {
-            "offset": 63410,
+          "_hardresume": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F7B2.entry"
+            "evidence": "functions/F_F7B2.entry",
+            "owner": "LIB_HARDERR",
+            "public": "_hardresume",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -5599,21 +5691,6 @@
             "public": "_f86c9",
             "addend": 0
           },
-          "_fecda": {
-            "offset": 60634,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_ECDA.entry"
-          },
-          "_feead": {
-            "offset": 61101,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_EEAD.entry"
-          },
-          "_feefe": {
-            "offset": 61182,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_EEFE.entry"
-          },
           "_ga22": {
             "offset": 2594,
             "coordinate": "DGROUP_offset",
@@ -5658,6 +5735,27 @@
             "offset": 49353,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BBF9.phys"
+          },
+          "_open": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_ECDA.entry",
+            "owner": "LIB_OPEN",
+            "public": "_open",
+            "addend": 0
+          },
+          "_close": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_EEAD.entry",
+            "owner": "LIB_CLOSE",
+            "public": "_close",
+            "addend": 0
+          },
+          "_read": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_EEFE.entry",
+            "owner": "LIB_READ",
+            "public": "_read",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -5853,13 +5951,17 @@
             "addend": 0
           },
           "_f6eff": {
-            "offset": 28415,
             "coordinate": "code_offset",
+            "owner": "F_6EFF",
+            "public": "_f6eff",
+            "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           },
           "_f6f4b": {
-            "offset": 28491,
             "coordinate": "code_offset",
+            "owner": "F_6F4B",
+            "public": "_f6f4b",
+            "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
           "_f86c9": {
@@ -5868,26 +5970,6 @@
             "owner": "F_86C9",
             "public": "_f86c9",
             "addend": 0
-          },
-          "_feead": {
-            "offset": 61101,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_EEAD.entry"
-          },
-          "_feefe": {
-            "offset": 61182,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_EEFE.entry"
-          },
-          "_ff183": {
-            "offset": 61827,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F183.entry"
-          },
-          "_ff39c": {
-            "offset": 62364,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F39C.entry"
           },
           "_ga5e": {
             "offset": 2654,
@@ -5943,6 +6025,34 @@
             "offset": 50634,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FA.phys"
+          },
+          "_close": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_EEAD.entry",
+            "owner": "LIB_CLOSE",
+            "public": "_close",
+            "addend": 0
+          },
+          "_read": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_EEFE.entry",
+            "owner": "LIB_READ",
+            "public": "_read",
+            "addend": 0
+          },
+          "_lseek": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F183.entry",
+            "owner": "LIB_LSEEK",
+            "public": "_lseek",
+            "addend": 0
+          },
+          "_memmove": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F39C.entry",
+            "owner": "LIB_MOVMEM",
+            "public": "_memmove",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -5975,13 +6085,17 @@
             "evidence": "storage_objects/M_2BAFD.phys"
           },
           "_f6f4b": {
-            "offset": 28491,
             "coordinate": "code_offset",
+            "owner": "F_6F4B",
+            "public": "_f6f4b",
+            "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
           "_f6eff": {
-            "offset": 28415,
             "coordinate": "code_offset",
+            "owner": "F_6EFF",
+            "public": "_f6eff",
+            "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           }
         }
@@ -6016,13 +6130,17 @@
             "evidence": "storage_objects/M_2BAFD.phys"
           },
           "_f6f4b": {
-            "offset": 28491,
             "coordinate": "code_offset",
+            "owner": "F_6F4B",
+            "public": "_f6f4b",
+            "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
           "_f6eff": {
-            "offset": 28415,
             "coordinate": "code_offset",
+            "owner": "F_6EFF",
+            "public": "_f6eff",
+            "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           }
         }
@@ -6063,8 +6181,10 @@
             "addend": 0
           },
           "_f034f": {
-            "offset": 847,
             "coordinate": "code_offset",
+            "owner": "F_034F",
+            "public": "_f034f",
+            "addend": 0,
             "evidence": "functions/F_034F.entry"
           },
           "_f49e3": {
@@ -6075,8 +6195,10 @@
             "addend": 0
           },
           "_f4f63": {
-            "offset": 20323,
             "coordinate": "code_offset",
+            "owner": "F_4F63",
+            "public": "_f4f63",
+            "addend": 0,
             "evidence": "functions/F_4F63.entry"
           },
           "_f656c": {
@@ -6493,8 +6615,10 @@
             "addend": 0
           },
           "_f7964": {
-            "offset": 31076,
             "coordinate": "code_offset",
+            "owner": "F_7964",
+            "public": "_f7964",
+            "addend": 0,
             "evidence": "functions/F_7964.entry"
           }
         }
@@ -8182,8 +8306,10 @@
             "addend": 0
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_f6d3c": {
@@ -8313,8 +8439,10 @@
             "evidence": "functions/F_03A8.entry"
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_f6d3c": {
@@ -8480,8 +8608,10 @@
             "evidence": "functions/F_03A8.entry"
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_f6d3c": {
@@ -8837,8 +8967,10 @@
             "addend": 0
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_f01ce": {
@@ -9507,8 +9639,10 @@
             "addend": 0
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_f7e07": {
@@ -9917,11 +10051,6 @@
             "public": "_face7",
             "addend": 0
           },
-          "_ff90f": {
-            "offset": 63759,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F90F.entry"
-          },
           "_gc130": {
             "offset": 49456,
             "coordinate": "DGROUP_offset",
@@ -9931,6 +10060,11 @@
             "offset": 49942,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BE46.phys"
+          },
+          "_rand": {
+            "offset": 63759,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F90F.entry"
           }
         },
         "module_segments": {}
@@ -10072,11 +10206,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BC66.phys"
           },
-          "_ff2db": {
-            "offset": 62171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F2DB.entry"
-          },
           "_gdc8": {
             "offset": 3528,
             "coordinate": "DGROUP_offset",
@@ -10129,6 +10258,13 @@
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
+          },
+          "_strcpy": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F2DB.entry",
+            "owner": "LIB_STRCPY",
+            "public": "_strcpy",
+            "addend": 0
           }
         }
       },
@@ -10159,11 +10295,6 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_ff3f7": {
-            "offset": 62455,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F3F7.entry"
-          },
           "_gdc4": {
             "offset": 3524,
             "coordinate": "DGROUP_offset",
@@ -10173,6 +10304,13 @@
             "offset": 3528,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208F8.phys"
+          },
+          "_free": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F3F7.entry",
+            "owner": "LIB_FFREE",
+            "public": "_free",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -11010,11 +11148,6 @@
             "addend": 0,
             "evidence": "40 records of 24 bytes at DS:0DCC"
           },
-          "_ff90f": {
-            "offset": 63759,
-            "coordinate": "code_offset",
-            "evidence": "function entry from complete function fixup"
-          },
           "_gc359": {
             "offset": 50009,
             "coordinate": "DGROUP_offset",
@@ -11068,6 +11201,11 @@
             "offset": 50002,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset from complete function fixup"
+          },
+          "_rand": {
+            "offset": 63759,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
           }
         }
       }
@@ -11383,8 +11521,10 @@
             "addend": 0
           },
           "_f9ec3": {
-            "offset": 40643,
             "coordinate": "code_offset",
+            "owner": "F_9EC3",
+            "public": "_f9ec3",
+            "addend": 0,
             "evidence": "functions/F_9EC3.entry"
           },
           "_gbfcd": {
@@ -11540,8 +11680,10 @@
             "evidence": "storage_objects/M_2BFA0.phys"
           },
           "_f643a": {
-            "offset": 25658,
             "coordinate": "code_offset",
+            "owner": "F_643A",
+            "public": "_f643a",
+            "addend": 0,
             "evidence": "functions/F_643A.entry"
           },
           "_gc360": {
@@ -11774,13 +11916,6 @@
             "public": "_f6d3c",
             "addend": 0
           },
-          "_ff25e": {
-            "owner": "LIB_LTOA",
-            "public": "_ultoa",
-            "addend": 0,
-            "coordinate": "code_offset",
-            "evidence": "LTOA OMF public _ultoa at module offset 176"
-          },
           "_f6cf6": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CF6.entry",
@@ -11794,6 +11929,13 @@
             "owner": "F_78C3",
             "public": "_f78c3",
             "addend": 0
+          },
+          "_ultoa": {
+            "owner": "LIB_LTOA",
+            "public": "_ultoa",
+            "addend": 0,
+            "coordinate": "code_offset",
+            "evidence": "LTOA OMF public _ultoa at module offset 176"
           }
         }
       },
@@ -12046,11 +12188,6 @@
             "addend": 0,
             "evidence": "Complete independently encoded initialized string"
           },
-          "_ff304": {
-            "offset": 62212,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F304.entry"
-          },
           "_f01ce": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
@@ -12096,11 +12233,18 @@
             "addend": 0,
             "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
           },
-          "_ff9be": {
+          "_toupper": {
             "coordinate": "code_offset",
             "evidence": "functions/F_F9BE.entry",
             "owner": "F_F9BE",
             "public": "_ff9be",
+            "addend": 0
+          },
+          "_setmem": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F304.entry",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
             "addend": 0
           }
         }
@@ -12132,38 +12276,52 @@
         "flags_append": "",
         "bindings": {
           "_init_a": {
-            "offset": 27508,
             "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
             "evidence": "functions/INIT_A.entry"
           },
           "_init_b": {
-            "offset": 27024,
             "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
             "evidence": "functions/INIT_B.entry"
           },
           "_init_c": {
-            "offset": 27494,
             "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "functions/INIT_C.entry"
           },
           "_init_d": {
-            "offset": 28734,
             "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
             "evidence": "functions/INIT_D.entry"
           },
           "_init_e": {
-            "offset": 54675,
             "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
             "evidence": "functions/INIT_E.entry"
           },
           "_init_f": {
-            "offset": 31020,
             "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
             "evidence": "functions/INIT_F.entry"
           },
           "_init_g": {
-            "offset": 31013,
             "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
             "evidence": "functions/INIT_G.entry"
           },
           "_box": {
@@ -12172,14 +12330,11 @@
             "evidence": "functions/BOX.entry"
           },
           "_text": {
-            "offset": 33920,
             "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
             "evidence": "functions/TEXT.entry"
-          },
-          "_mode": {
-            "offset": 462,
-            "coordinate": "code_offset",
-            "evidence": "functions/MODE.entry"
           },
           "_bar": {
             "offset": 930,
@@ -12191,45 +12346,68 @@
             "coordinate": "code_offset",
             "evidence": "functions/FILL.entry"
           },
-          "_getkey": {
-            "offset": 44869,
-            "coordinate": "code_offset",
-            "evidence": "functions/GETKEY.entry"
-          },
           "_act": {
-            "offset": 41373,
             "coordinate": "code_offset",
+            "owner": "F_A19D",
+            "public": "_fa19d",
+            "addend": 0,
             "evidence": "functions/ACT.entry"
           },
           "_done_a": {
-            "offset": 33875,
             "coordinate": "code_offset",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0,
             "evidence": "functions/DONE_A.entry"
           },
           "_done_b": {
-            "offset": 31006,
             "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
             "evidence": "functions/DONE_B.entry"
           },
           "_done_c": {
-            "offset": 54694,
             "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0,
             "evidence": "functions/DONE_C.entry"
           },
           "_done_d": {
-            "offset": 29026,
             "coordinate": "code_offset",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0,
             "evidence": "functions/DONE_D.entry"
           },
           "_done_e": {
-            "offset": 27031,
             "coordinate": "code_offset",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0,
             "evidence": "functions/DONE_E.entry"
           },
           "_done_f": {
-            "offset": 27494,
             "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "functions/DONE_F.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
+            "evidence": "functions/MODE.entry"
+          },
+          "_faf45": {
+            "coordinate": "code_offset",
+            "owner": "F_AF45",
+            "public": "_faf45",
+            "addend": 0,
+            "evidence": "functions/GETKEY.entry"
           }
         },
         "module_segments": {
@@ -12449,58 +12627,73 @@
             "evidence": "pooled string or direct DS offset from complete fixup"
           },
           "_msg": {
-            "offset": 34505,
             "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_a": {
-            "offset": 27508,
             "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_b": {
-            "offset": 27024,
             "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_c": {
-            "offset": 27494,
             "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_d": {
-            "offset": 28734,
             "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_e": {
-            "offset": 54675,
             "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_f": {
-            "offset": 31020,
             "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_g": {
-            "offset": 31013,
             "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_text": {
-            "offset": 33920,
             "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_mode": {
-            "offset": 462,
-            "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_frame": {
-            "offset": 853,
             "coordinate": "code_offset",
+            "owner": "F_0355",
+            "public": "_f0355",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_box": {
@@ -12509,43 +12702,52 @@
             "evidence": "near-call target from complete function fixup"
           },
           "_pick": {
-            "offset": 42277,
             "coordinate": "code_offset",
+            "owner": "F_A525",
+            "public": "_fa525",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_a": {
-            "offset": 33875,
             "coordinate": "code_offset",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_b": {
-            "offset": 31006,
             "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_c": {
-            "offset": 54694,
             "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_d": {
-            "offset": 29026,
             "coordinate": "code_offset",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_e": {
-            "offset": 27031,
             "coordinate": "code_offset",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_f": {
-            "offset": 27494,
             "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_clr": {
-            "offset": 62212,
-            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_fa658": {
@@ -12555,9 +12757,25 @@
             "public": "_fa658",
             "addend": 0
           },
-          "_put": {
-            "offset": 62171,
+          "_setmem": {
             "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
+            "addend": 0
+          },
+          "_strcpy": {
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup",
+            "owner": "LIB_STRCPY",
+            "public": "_strcpy",
+            "addend": 0
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           }
         }
@@ -13025,10 +13243,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
           },
-          "_ff304": {
-            "offset": 62212,
+          "_setmem": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F304.entry"
+            "evidence": "functions/F_F304.entry",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
+            "addend": 0
           }
         }
       },
@@ -13060,11 +13280,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_26E82.phys"
           },
-          "_free": {
-            "offset": 63171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F6C3.entry"
-          },
           "_g7356": {
             "offset": 29526,
             "coordinate": "DGROUP_offset",
@@ -13079,6 +13294,13 @@
             "offset": 49096,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
+          },
+          "_farfree": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F6C3.entry",
+            "owner": "LIB_FFREE",
+            "public": "_farfree",
+            "addend": 0
           }
         }
       },
@@ -13109,11 +13331,6 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_free": {
-            "offset": 63171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_B122.entry; F_B593 free call target"
-          },
           "_gc5a8": {
             "offset": 50600,
             "coordinate": "DGROUP_offset",
@@ -13163,6 +13380,13 @@
             "offset": 1824,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS word in complete F_B593 fixups"
+          },
+          "_farfree": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_B122.entry; F_B593 free call target",
+            "owner": "LIB_FFREE",
+            "public": "_farfree",
+            "addend": 0
           }
         }
       },
@@ -13298,8 +13522,10 @@
             "addend": 0
           },
           "_fb40f": {
-            "offset": 46095,
             "coordinate": "code_offset",
+            "owner": "F_B40F",
+            "public": "_fbb40f",
+            "addend": 0,
             "evidence": "functions/F_B40F.entry"
           },
           "_f4eeb": {
@@ -13339,8 +13565,10 @@
             "addend": 0
           },
           "_f4b0c": {
-            "offset": 19212,
             "coordinate": "code_offset",
+            "owner": "F_4B0C",
+            "public": "_f4b0c",
+            "addend": 0,
             "evidence": "functions/F_4B0C.entry"
           },
           "_f1ecd": {
@@ -13469,8 +13697,10 @@
             "evidence": "storage_objects/M_2C0F6.phys"
           },
           "_f4b0c": {
-            "offset": 19212,
             "coordinate": "code_offset",
+            "owner": "F_4B0C",
+            "public": "_f4b0c",
+            "addend": 0,
             "evidence": "functions/F_4B0C.entry"
           },
           "_f1ecd": {
@@ -13601,8 +13831,10 @@
             "addend": 0
           },
           "_fb122": {
-            "offset": 45346,
             "coordinate": "code_offset",
+            "owner": "F_B122",
+            "public": "_fb122",
+            "addend": 0,
             "evidence": "functions/F_B122.entry"
           },
           "_fb4fb": {
@@ -13654,8 +13886,10 @@
             "addend": 0
           },
           "_fb99f": {
-            "offset": 47519,
             "coordinate": "code_offset",
+            "owner": "F_B99F",
+            "public": "_fb99f",
+            "addend": 0,
             "evidence": "functions/F_B99F.entry"
           },
           "_fb593": {
@@ -13851,8 +14085,10 @@
             "evidence": "storage_objects/G_P212BC.phys"
           },
           "_fc232": {
-            "offset": 49714,
             "coordinate": "code_offset",
+            "owner": "F_C232",
+            "public": "_fc232",
+            "addend": 0,
             "evidence": "functions/F_C232.entry"
           },
           "_fc27d": {
@@ -13974,23 +14210,31 @@
         "module_segments": {},
         "bindings": {
           "_fc2ea": {
-            "offset": 49898,
             "coordinate": "code_offset",
+            "owner": "F_C2EA",
+            "public": "_f_c2ea",
+            "addend": 0,
             "evidence": "functions/F_C2EA.entry"
           },
           "_fc440": {
-            "offset": 50240,
             "coordinate": "code_offset",
+            "owner": "F_C440",
+            "public": "_f_c440",
+            "addend": 0,
             "evidence": "functions/F_C440.entry"
           },
           "_fc6b9": {
-            "offset": 50873,
             "coordinate": "code_offset",
+            "owner": "F_C6B9",
+            "public": "_f_c6b9",
+            "addend": 0,
             "evidence": "functions/F_C6B9.entry"
           },
           "_fc755": {
-            "offset": 51029,
             "coordinate": "code_offset",
+            "owner": "F_C755",
+            "public": "_f_c755",
+            "addend": 0,
             "evidence": "functions/F_C755.entry"
           },
           "_snd_nvoices": {
@@ -14408,8 +14652,10 @@
         "module_segments": {},
         "bindings": {
           "_fc6b9": {
-            "offset": 50873,
             "coordinate": "code_offset",
+            "owner": "F_C6B9",
+            "public": "_f_c6b9",
+            "addend": 0,
             "evidence": "functions/F_C6B9.entry"
           },
           "_snd_hi": {
@@ -14474,8 +14720,11 @@
             "coordinate": "DGROUP_offset"
           },
           "_fc6b9": {
-            "offset": 50873,
-            "coordinate": "code_offset"
+            "coordinate": "code_offset",
+            "owner": "F_C6B9",
+            "public": "_f_c6b9",
+            "addend": 0,
+            "evidence": "exact reconstructed function entry"
           }
         }
       },
@@ -14645,18 +14894,24 @@
             "addend": 0
           },
           "_fc9a4": {
-            "offset": 51620,
             "coordinate": "code_offset",
+            "owner": "F_C9A4",
+            "public": "_f_c9a4",
+            "addend": 0,
             "evidence": "functions/F_C9A4.entry"
           },
           "_fca03": {
-            "offset": 51715,
             "coordinate": "code_offset",
+            "owner": "F_CA03",
+            "public": "_f_ca03",
+            "addend": 0,
             "evidence": "functions/F_CA03.entry"
           },
           "_fca9b": {
-            "offset": 51867,
             "coordinate": "code_offset",
+            "owner": "F_CA9B",
+            "public": "_fca9b",
+            "addend": 0,
             "evidence": "functions/F_CA9B.entry"
           },
           "_fcadb": {
@@ -16223,14 +16478,18 @@
             "evidence": "storage_objects/G_P21E20.phys"
           },
           "_f880a": {
-            "offset": 34826,
             "coordinate": "code_offset",
+            "owner": "F_880A",
+            "public": "_f880a",
+            "addend": 0,
             "evidence": "functions/F_880A.entry"
           },
-          "_ff3f7": {
-            "offset": 62455,
+          "_free": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F3F7.entry"
+            "evidence": "functions/F_F3F7.entry",
+            "owner": "LIB_FFREE",
+            "public": "_free",
+            "addend": 0
           }
         }
       },
@@ -16421,11 +16680,6 @@
             "public": "_f86c9",
             "addend": 0
           },
-          "_ff6c3": {
-            "offset": 63171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F6C3.entry"
-          },
           "_g13ed": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
@@ -16445,6 +16699,13 @@
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
+          },
+          "_farfree": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F6C3.entry",
+            "owner": "LIB_FFREE",
+            "public": "_farfree",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -16490,8 +16751,10 @@
             "addend": 0
           },
           "_fc77a": {
-            "offset": 51066,
             "coordinate": "code_offset",
+            "owner": "F_C77A",
+            "public": "_f_c77a",
+            "addend": 0,
             "evidence": "functions/F_C77A.entry"
           },
           "_g175e": {
@@ -16571,8 +16834,10 @@
             "addend": 0
           },
           "_fc877": {
-            "offset": 51319,
             "coordinate": "code_offset",
+            "owner": "F_C877",
+            "public": "_fc877",
+            "addend": 0,
             "evidence": "functions/F_C877.entry"
           },
           "_fcb48": {
@@ -16736,8 +17001,10 @@
         "flags_append": "",
         "bindings": {
           "_fc7cb": {
-            "offset": 51147,
             "coordinate": "code_offset",
+            "owner": "F_C7CB",
+            "public": "_f_c7cb",
+            "addend": 0,
             "evidence": "functions/F_C7CB.entry"
           },
           "_fd5ba": {
@@ -16777,8 +17044,10 @@
             "evidence": "storage_objects/G_P21EAE.phys"
           },
           "_fc7cb": {
-            "offset": 51147,
             "coordinate": "code_offset",
+            "owner": "F_C7CB",
+            "public": "_f_c7cb",
+            "addend": 0,
             "evidence": "functions/F_C7CB.entry"
           }
         }
@@ -16987,16 +17256,6 @@
             "public": "_fda66",
             "addend": 0
           },
-          "_ff32a": {
-            "offset": 62250,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F32A.entry"
-          },
-          "_ff348": {
-            "offset": 62280,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F348.entry"
-          },
           "_g301a": {
             "offset": 12314,
             "coordinate": "DGROUP_offset",
@@ -17021,6 +17280,20 @@
             "offset": 51810,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C592.phys"
+          },
+          "_memset": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F32A.entry",
+            "owner": "LIB_MEMSET",
+            "public": "_memset",
+            "addend": 0
+          },
+          "_movmem": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F348.entry",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0
           }
         },
         "module_segments": {}
@@ -18683,8 +18956,10 @@
             "evidence": "complete library fixup target with object addend subtraction"
           },
           "_abort": {
-            "offset": 420,
             "coordinate": "code_offset",
+            "owner": "F_01A4",
+            "public": "_f01a4",
+            "addend": 0,
             "evidence": "complete library fixup target with object addend subtraction"
           },
           "__argc": {
@@ -18741,8 +19016,10 @@
             "evidence": "complete library fixup target with object addend subtraction"
           },
           "_abort": {
-            "offset": 420,
             "coordinate": "code_offset",
+            "owner": "F_01A4",
+            "public": "_f01a4",
+            "addend": 0,
             "evidence": "complete library fixup target with object addend subtraction"
           }
         },
@@ -20627,7 +20904,9 @@
       "artifact": "regions/DATA_01075A_FILE_ERROR_CONTROL.bin",
       "expected_sha256": "df1594aa876c7049d632cb359e83a88b1b62f16b9e92cfb9f396b483f8c60d39",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_01076E_ZERO_SUFFIX",
@@ -20912,7 +21191,9 @@
       "artifact": "regions/DATA_010924_MENU_DESCRIPTORS.bin",
       "expected_sha256": "15bb4775398874b1c975a93cadf5fe362f5ee940b960c17de09d30ae0d061c27",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_0109AF_GO_BACK",
@@ -20939,7 +21220,9 @@
       "artifact": "regions/DATA_0109BB_CONTROL_CODES.bin",
       "expected_sha256": "c292bfe6d12ec9a0ff84564959d0085353a00836d39f2bc541473cea1390f64b",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_0109BD_CONTINUE",
@@ -21391,7 +21674,9 @@
       "artifact": "regions/DATA_01129F_LEVEL_CONTROL.bin",
       "expected_sha256": "60afdb477b7cb24373212b31e327fa1e0b1a340f43298b0796db2cd567dcd266",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_0112D6_LEVEL_COMPLETE",
@@ -21770,7 +22055,9 @@
       "artifact": "regions/DATA_011F25_KEYBOARD_CONTROL.bin",
       "expected_sha256": "f37b41bab4b4142f34c972ea028c93116918d20169c753d184704cb3120856eb",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_011F32_KEYBOARD_LABEL",
@@ -21839,7 +22126,9 @@
       "artifact": "regions/DATA_011F86_USER_CONTROL.bin",
       "expected_sha256": "d9a0231b68e2cb0fe0834222f1c48f6f9587dd55ff17cea9a3becfb2345e5592",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_011F9A_NEW_USER_MESSAGE",
@@ -21880,7 +22169,9 @@
       "artifact": "regions/DATA_011FAE_CACHED_INDEX.bin",
       "expected_sha256": "ca2fd00fa001190744c15c317643ab092e7048ce086a243e2be9437c898de1bb",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     },
     {
       "id": "DATA_011FB0_ZERO_REGION",
@@ -22151,7 +22442,9 @@
       "artifact": "regions/DATA_01352C_RUNTIME_LIMITS.bin",
       "expected_sha256": "2f8c3166a20150ffc910e906ba2260543939ede1aaff6d39a7b5147b173ec4e3",
       "matching_status": "EQUAL",
-      "build": { "encoder": "typed-data-v1" }
+      "build": {
+        "encoder": "typed-data-v1"
+      }
     }
   ]
 }

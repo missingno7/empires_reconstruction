@@ -180,13 +180,6 @@
             "public": "_f6d3c",
             "addend": 0
           },
-          "_ff25e": {
-            "owner": "LIB_LTOA",
-            "public": "_ultoa",
-            "addend": 0,
-            "coordinate": "code_offset",
-            "evidence": "LTOA OMF public _ultoa at module offset 176"
-          },
           "_f6cf6": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CF6.entry",
@@ -200,6 +193,13 @@
             "owner": "F_78C3",
             "public": "_f78c3",
             "addend": 0
+          },
+          "_ultoa": {
+            "owner": "LIB_LTOA",
+            "public": "_ultoa",
+            "addend": 0,
+            "coordinate": "code_offset",
+            "evidence": "LTOA OMF public _ultoa at module offset 176"
           }
         }
       },

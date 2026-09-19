@@ -9,9 +9,9 @@
        75 03 / E9 8A00        jnz +3 / jmp 4A8D  -- "if (...) return;"
        E8 46D8                call f224c        (0 args, result unused)
        1E B8FE8B 50           push ds; mov ax,0x8BFE; push ax  -- (char far *)g8bfe
-       E8 45AF                call ff953
+       E8 45AF                call setjmp
        59 59                  pop cx; pop cx    (cdecl cleanup, 4 bytes = 2 pops)
-       8BF8                   mov di,ax         -- d = ff953(g8bfe)
+       8BF8                   mov di,ax         -- d = setjmp(g8bfe)
        BEFFFF                 mov si,0xFFFF     -- s = -1
        E8 E327 / E8 988B / E8 3B48   f71fb(); fd5b3(); f9259();
        83FF03 7502 EB68       cmp di,3; jnz +2; jmp 4A8D   -- if (d == 3) return;
@@ -49,7 +49,7 @@
    matched F_5AC3 carries at 5B35 (`mov dx,0x18; mul dx; mov bx,ax;
    add bx,0x900; push ds; pop es`). */
 
-extern int  f56c6(), ff953(), fab66(), fd26c();
+extern int  f56c6(), setjmp(), fab66(), fd26c();
 extern void f224c(), f71fb(), fd5b3(), f9259(), f7343(), f4943(), fad25();
 
 struct L {                              /* the per-level record, 0x1B bytes */
@@ -71,7 +71,7 @@ f49f0()
 
     if (f56c6() == -1) return;
     f224c();
-    d = ff953(g8bfe);
+    d = setjmp(g8bfe);
     s = -1;
     f71fb();
     fd5b3();

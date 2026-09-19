@@ -36,8 +36,8 @@ extern char far *t1, far *t2, far *t3, far *t4;   /* BFE2, BFE6, BFDE, BFF2 */
 /*@SYM _t4=0xBFF2 kind=g key=storage_objects/M_2BB22.phys*/
 extern char buf[];                       /* DS:BFEE */
 /*@SYM _buf=0xBFEE kind=g key=storage_objects/REGION_2BB1E.phys*/
-extern void mode(int n);                 /* 01CE */
-/*@SYM _mode=0x01CE kind=f key=functions/F_01CE.entry*/
+extern void f01ce(int n);                 /* 01CE */
+/*@SYM _f01ce=0x01CE kind=f key=functions/F_01CE.entry*/
 extern void clear(int a,int b,int c,int d);   /* 03A8 */
 /*@SYM _clear=0x03A8 kind=f key=functions/F_03A8.entry*/
 extern void box(int a,int b,int c,int d);     /* 039F */
@@ -54,10 +54,10 @@ extern void fd5f9(int n);                /* D5F9 */
 extern void show(char far *s,int a,int b,char far *d);  /* 5321 */
 /*@SYM _show=0x5321 kind=f key=functions/F_5321.entry*/
 extern void f75f3(void);                 /* 75F3 */
-extern void delay(int n);                /* 6C57 */
-/*@SYM _delay=0x6C57 kind=f key=functions/F_6C57.entry*/
-extern int  getkey(void);                /* 5593 */
-/*@SYM _getkey=0x5593 kind=f key=functions/F_5593.entry*/
+extern void f6c57(int n);                /* 6C57 */
+/*@SYM _f6c57=0x6C57 kind=f key=functions/F_6C57.entry*/
+extern int  f5593(void);                /* 5593 */
+/*@SYM _f5593=0x5593 kind=f key=functions/F_5593.entry*/
 extern int  msg(char far *s);            /* 86C9 */
 /*@SYM _msg=0x86C9 kind=f key=functions/F_86C9.entry*/
 extern void pane(int a,int b,int c,int d,int e,int f); /* 9F40 */
@@ -67,8 +67,8 @@ extern void f568c(void);                 /* 568C */
 extern void fcaf1(int n);                /* CAF1 */
 extern void fcb48(void);                 /* CB48 */
 extern void f6c26(int n);                /* 6C26 */
-extern void rel(char far *p);            /* F6C3 */
-/*@SYM _rel=0xF6C3 kind=f key=functions/F_F6C3.entry*/
+extern void farfree(char far *p);            /* F6C3 */
+/*@SYM _farfree=0xF6C3 kind=f key=functions/F_F6C3.entry*/
 
 /* DS:0x139D -- see the head comment; both `msg` sites push this one address.
    The `g<hex>`/`f<hex>` convention does not cover this name, so the address
@@ -90,7 +90,7 @@ int f56c6(void)
     again = 1;
     if (g857 == 0) {
         g96 = 0x18f; g98 = 0; g9a = 0xa0;
-        mode(0);
+        f01ce(0);
         clear(0, 0, 0x140, 0xc8);
         fd5ba(0x35);
         f555b();
@@ -106,8 +106,8 @@ int f56c6(void)
         f75f3();
 top:
         while (again) {
-                delay(0x1bc6);
-                key = getkey();
+                f6c57(0x1bc6);
+                key = f5593();
                 switch (key) {
                 case 0x1b: if (msg(q139d) == 1) return -1; break;
                 case -1:
@@ -118,13 +118,13 @@ top:
             again = 1;
             for (k = 0; k < 2; k++) {
                 pane(0, 0xe8, 0xc8, 0x8a, 0, 0x20);
-                if (vmode == 2) mode(5); else mode(0xf);
+                if (vmode == 2) f01ce(5); else f01ce(0xf);
                 f6d3c(8, 0x1e, t2 + ((int far *)t2)[k] + 2);
                 f75f3();
                 box(0, 0, 0x140, 0xc8);
                 while (again) {
-                    delay(0x1bc6);
-                    key = getkey();
+                    f6c57(0x1bc6);
+                    key = f5593();
                     switch (key) {
                     case 0x1b: if (msg(q139d) == 1) return -1; break;
                     case -1:
@@ -154,9 +154,9 @@ top:
         fcb48();
         show(t1 + 0x5fa, 7, 0x1e, buf);
         g94 = 0x10; g96 = 0x9f; g98 = 4; g9a = 0x9b;
-        rel(t1); rel(t2); rel(t3);
+        farfree(t1); farfree(t2); farfree(t3);
     } else {
-        mode(0);
+        f01ce(0);
         clear(0, 0, 0x140, 0xc8);
         box(0, 0, 0x140, 0xc8);
     }

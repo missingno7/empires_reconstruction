@@ -18,38 +18,52 @@
         "flags_append": "",
         "bindings": {
           "_init_a": {
-            "offset": 27508,
             "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
             "evidence": "functions/INIT_A.entry"
           },
           "_init_b": {
-            "offset": 27024,
             "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
             "evidence": "functions/INIT_B.entry"
           },
           "_init_c": {
-            "offset": 27494,
             "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "functions/INIT_C.entry"
           },
           "_init_d": {
-            "offset": 28734,
             "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
             "evidence": "functions/INIT_D.entry"
           },
           "_init_e": {
-            "offset": 54675,
             "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
             "evidence": "functions/INIT_E.entry"
           },
           "_init_f": {
-            "offset": 31020,
             "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
             "evidence": "functions/INIT_F.entry"
           },
           "_init_g": {
-            "offset": 31013,
             "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
             "evidence": "functions/INIT_G.entry"
           },
           "_box": {
@@ -58,14 +72,11 @@
             "evidence": "functions/BOX.entry"
           },
           "_text": {
-            "offset": 33920,
             "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
             "evidence": "functions/TEXT.entry"
-          },
-          "_mode": {
-            "offset": 462,
-            "coordinate": "code_offset",
-            "evidence": "functions/MODE.entry"
           },
           "_bar": {
             "offset": 930,
@@ -77,45 +88,68 @@
             "coordinate": "code_offset",
             "evidence": "functions/FILL.entry"
           },
-          "_getkey": {
-            "offset": 44869,
-            "coordinate": "code_offset",
-            "evidence": "functions/GETKEY.entry"
-          },
           "_act": {
-            "offset": 41373,
             "coordinate": "code_offset",
+            "owner": "F_A19D",
+            "public": "_fa19d",
+            "addend": 0,
             "evidence": "functions/ACT.entry"
           },
           "_done_a": {
-            "offset": 33875,
             "coordinate": "code_offset",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0,
             "evidence": "functions/DONE_A.entry"
           },
           "_done_b": {
-            "offset": 31006,
             "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
             "evidence": "functions/DONE_B.entry"
           },
           "_done_c": {
-            "offset": 54694,
             "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0,
             "evidence": "functions/DONE_C.entry"
           },
           "_done_d": {
-            "offset": 29026,
             "coordinate": "code_offset",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0,
             "evidence": "functions/DONE_D.entry"
           },
           "_done_e": {
-            "offset": 27031,
             "coordinate": "code_offset",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0,
             "evidence": "functions/DONE_E.entry"
           },
           "_done_f": {
-            "offset": 27494,
             "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "functions/DONE_F.entry"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
+            "evidence": "functions/MODE.entry"
+          },
+          "_faf45": {
+            "coordinate": "code_offset",
+            "owner": "F_AF45",
+            "public": "_faf45",
+            "addend": 0,
+            "evidence": "functions/GETKEY.entry"
           }
         },
         "module_segments": {

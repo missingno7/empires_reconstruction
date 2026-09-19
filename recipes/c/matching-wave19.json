@@ -20,11 +20,6 @@
             "addend": 0,
             "evidence": "Complete independently encoded initialized string"
           },
-          "_ff304": {
-            "offset": 62212,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F304.entry"
-          },
           "_f01ce": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
@@ -70,10 +65,19 @@
             "addend": 0,
             "evidence": "Complete pinned CTYPE data module; index zero is EOF sentinel"
           },
-          "_ff9be": {
-            "offset": 63934,
+          "_toupper": {
             "coordinate": "code_offset",
+            "owner": "F_F9BE",
+            "public": "_ff9be",
+            "addend": 0,
             "evidence": "functions/F_F9BE.entry"
+          },
+          "_setmem": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F304.entry",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
+            "addend": 0
           }
         }
       },

@@ -6,7 +6,7 @@ struct evt {
     char tail[1];
 };
 
-extern int f03b4(), face7(), ff90f(), f656c(), f01ce(), f0355(), f03a8(), f9a0e();
+extern int f03b4(), face7(), rand(), f656c(), f01ce(), f0355(), f03a8(), f9a0e();
 extern struct evt g0dcc[];
 extern int gc35b, gc354, gc35d, gc359, gc352;
 extern char gc356[];
@@ -24,7 +24,7 @@ void f9b68(int n)
         f03b4(0xf4, i * 0x30 + 0xc8, 0x30, 0x23, 0xf4, i * 0x30 + 0x10);
     gc35b = gc354 = gc35b = 0;
     gc35d = face7() * 0x14 + x;
-    while ((g0dcc[gc35d].f16 & (1 << (x = ff90f() % 8))) == 0)
+    while ((g0dcc[gc35d].f16 & (1 << (x = rand() % 8))) == 0)
         ;
     gc359 = x + 1;
     f656c(0x1022);
@@ -43,11 +43,11 @@ void f9b68(int n)
     gc356[0] = 9;
     gc356[1] = 0xa;
     gc356[2] = 0xb;
-    x = ff90f() % 3;
+    x = rand() % 3;
     gc352 = x + 9;
     f9a0e(gc352, gc359);
     gc356[x] = gc356[2];
-    x = ff90f() % 2;
+    x = rand() % 2;
     f9a0e(gc356[x], 9);
     f9a0e(gc356[x ^ 1], 0xa);
     for (x = 0; x < 3; x++) {

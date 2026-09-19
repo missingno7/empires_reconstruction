@@ -1,3 +1,3 @@
-extern void free();
+extern void farfree();
 extern char far *g7352, far *g7356, far *g735a, far *gbfc8;
-void fb55e(void) { free(g7352); free(g7356); free(g735a); free(gbfc8); }
+void fb55e(void) { farfree(g7352); farfree(g7356); farfree(g735a); farfree(gbfc8); }

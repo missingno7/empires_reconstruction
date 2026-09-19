@@ -13,7 +13,7 @@ extern int g13ed;
 extern void f7343(int n);
 extern int fa768(void);
 extern char g8bfe;
-extern void ff98b(char far *s, int n);
+extern void longjmp(char far *s, int n);
 
 void f3986(void)
 {
@@ -51,5 +51,5 @@ void f3986(void)
     gc470[g13ed].f9++;
     f7343(gc470[g13ed].f15 = 4);
     if (fa768())
-        ff98b((char far *) &g8bfe, 2);
+        longjmp((char far *) &g8bfe, 2);
 }

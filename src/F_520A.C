@@ -4,8 +4,8 @@
    the two forward jmps at 529E and 52AB and pads them with NOP. */
 /*@PUB _f520a*/
 extern int f4f63(), f4f96(), f50c1(), f50d2(), f51bf();
-extern char ff725();
-extern long ff3da();
+extern char getdisk();
+extern long farcoreleft();
 extern unsigned char _osmajor;
 extern char **_argv;
 extern char gbfcd;
@@ -21,7 +21,7 @@ int f520a()
     if (_osmajor >= 3 && _argv[0][1] == ':')
         c = _argv[0][0];
     else
-        c = ff725() + 0x41;
+        c = getdisk() + 0x41;
     for (i = 0; i < 3; i++)
         ba22[i][0] = c;
     f50c1();
@@ -32,7 +32,7 @@ int f520a()
     }
     f51bf();
     f4f96();
-    if ((n = ff3da()) < 0x3ada0L) {
+    if ((n = farcoreleft()) < 0x3ada0L) {
         f4f63(s8a8);
         return 0;
     }

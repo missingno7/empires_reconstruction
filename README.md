@@ -13,6 +13,12 @@ remain, so this is not yet the recovered historical build. See
 [the exact-link checkpoint](docs/exact-structural-link.md) and
 [generated metrics](docs/structural-status.json).
 
+The ordinary symbol-alias layer is now removed: recovered sources call actual
+historical library publics and reconstructed owner publics, and exact entry
+bindings remain relocatable. The only active code-symbol adapter is internal
+entry PUBDEF injection in 43 objects pending translation-unit recovery. See
+[the historical-public checkpoint](docs/historical-code-publics.md).
+
 
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the

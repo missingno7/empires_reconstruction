@@ -20,8 +20,10 @@
             "evidence": "storage_objects/G_P20250.phys"
           },
           "_fb593": {
-            "offset": 46483,
             "coordinate": "code_offset",
+            "owner": "F_B593",
+            "public": "_fb593",
+            "addend": 0,
             "evidence": "functions/F_B593.entry"
           },
           "_g7352": {
@@ -73,11 +75,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2972C.phys"
           },
-          "_ff39c": {
-            "offset": 62364,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F39C.entry"
-          },
           "_gbf66": {
             "offset": 48998,
             "coordinate": "DGROUP_offset",
@@ -87,6 +84,13 @@
             "offset": 16596,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
+          },
+          "_memmove": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F39C.entry",
+            "owner": "LIB_MOVMEM",
+            "public": "_memmove",
+            "addend": 0
           }
         }
       },
@@ -118,10 +122,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
           },
-          "_ff304": {
-            "offset": 62212,
+          "_setmem": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F304.entry"
+            "evidence": "functions/F_F304.entry",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
+            "addend": 0
           }
         }
       },

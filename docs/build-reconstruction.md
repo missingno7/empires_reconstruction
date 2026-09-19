@@ -99,8 +99,9 @@ divergence, and the demand and no-demand runs select the same library sequence.
 The full scaffold run under the comparison linker also derives DGROUP, BSS and
 STACK placement. The exact path builds BSS from TASM source and all initialized
 DATA from component sources, including 38 relocatable near pointers in the
-sound tables. It still has candidate object interleaving, symbol aliases, case normalization
-and injected internal labels. These are
+sound tables. Recovered sources now use historical library and owner publics
+directly, so ordinary aliases and case normalization are gone. It still has
+candidate object interleaving and injected internal labels. These are
 tracked in [the adapter ledger](linker-adapter-ledger.md). The 347 source proof
 units do not count as recovered original modules. The combined report
 explicitly sets `whole_build_reconstruction_complete` to false.

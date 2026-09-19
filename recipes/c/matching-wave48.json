@@ -17,14 +17,44 @@
         "span": 1,
         "flags_append": "",
         "module_segments": {
-          "_DATA": {"owner": "DATA_125D", "coordinate": "DGROUP_offset", "addend": 0, "evidence": "20-byte initialized C data segment"}
+          "_DATA": {
+            "owner": "DATA_125D",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "20-byte initialized C data segment"
+          }
         },
         "bindings": {
-          "_f01ce": {"offset": 462, "coordinate": "code_offset", "evidence": "function entry from complete F_9D8E fixups"},
-          "_f03a8": {"offset": 936, "coordinate": "code_offset", "evidence": "function entry from complete F_9D8E fixups"},
-          "_f039f": {"offset": 927, "coordinate": "code_offset", "evidence": "direct call target from complete F_9D8E fixups"},
-          "_f86c9": {"coordinate": "code_offset", "owner": "F_86C9", "public": "_f86c9", "addend": 0, "evidence": "functions/F_86C9.entry"},
-          "_text118c": {"owner": "TEXT_118C", "coordinate": "DGROUP_offset", "addend": 0, "evidence": "initialized far pointer to the complete DS:118C text component"}
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
+            "evidence": "function entry from complete F_9D8E fixups"
+          },
+          "_f03a8": {
+            "offset": 936,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete F_9D8E fixups"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "direct call target from complete F_9D8E fixups"
+          },
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0,
+            "evidence": "functions/F_86C9.entry"
+          },
+          "_text118c": {
+            "owner": "TEXT_118C",
+            "coordinate": "DGROUP_offset",
+            "addend": 0,
+            "evidence": "initialized far pointer to the complete DS:118C text component"
+          }
         }
       },
       "provenance": {
@@ -43,7 +73,9 @@
       "artifact": "regions/TEXT_118C.bin",
       "expected_sha256": "15906bc790213fbc39e32c7b51c0166ac5a404b5b2ab1401315d2bc82f859795",
       "matching_status": "EQUAL",
-      "build": {"encoder": "ascii-nul-v1"}
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
     },
     {
       "id": "DATA_125D",

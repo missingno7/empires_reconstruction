@@ -18,14 +18,14 @@ extern void box(int a, int b, int c, int d);        /* 039F */
 /*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern void text(char far *s, int a);               /* 8480 */
 /*@SYM _text=0x8480 kind=f key=functions/F_8480.entry*/
-extern void mode(int a);                            /* 01CE */
-/*@SYM _mode=0x01CE kind=f key=functions/F_01CE.entry*/
+extern void f01ce(int a);                            /* 01CE */
+/*@SYM _f01ce=0x01CE kind=f key=functions/F_01CE.entry*/
 extern void bar(int a, int b, int c);               /* 03A2 */
 /*@SYM _bar=0x03A2 kind=f key=functions/F_03A2.entry*/
 extern void fill(int a, int b, int c, int d);       /* 03AB */
 /*@SYM _fill=0x03AB kind=f key=functions/F_03AB.entry*/
-extern int  getkey(void);                           /* AF45 */
-/*@SYM _getkey=0xAF45 kind=f key=functions/F_AF45.entry*/
+extern int  faf45(void);                           /* AF45 */
+/*@SYM _faf45=0xAF45 kind=f key=functions/F_AF45.entry*/
 extern void act(void);                              /* A19D */
 /*@SYM _act=0xA19D kind=f key=functions/F_A19D.entry*/
 extern void done_a(void);          /* 8453 */
@@ -54,13 +54,13 @@ int fa658(void)
     init_g();
     box(0, 0, 0x140, 0xc8);
     text("", 1);
-    mode(0);
+    f01ce(0);
     bar(0x26, 0x73, 0xf4);
     box(0x24, 0x73, 0xf6, 1);
     fill(0x28, 0x7e, 0xee, 0xa);
     box(0x28, 0x7e, 0xee, 0x14);
     while (!quit) {
-        switch (getkey()) {
+        switch (faf45()) {
         case 0x1b:  quit = 1; sel = 0;     break;
         case 0x148:
         case 0x150: sel ^= 0x30; act();    break;

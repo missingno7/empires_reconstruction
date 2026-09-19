@@ -176,8 +176,10 @@
         "module_segments": {},
         "bindings": {
           "_f8480": {
-            "offset": 33920,
             "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
             "evidence": "functions/F_8480.entry"
           }
         }
@@ -284,8 +286,10 @@
             "evidence": "storage_objects/REGION_2BC66.phys"
           },
           "_f778b": {
-            "offset": 30603,
             "coordinate": "code_offset",
+            "owner": "F_778B",
+            "public": "_f778b",
+            "addend": 0,
             "evidence": "functions/F_778B.entry"
           }
         }

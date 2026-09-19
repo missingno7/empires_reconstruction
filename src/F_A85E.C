@@ -25,8 +25,8 @@ extern void init_g(void);                           /* 7925 */
 /*@SYM _init_g=0x7925 kind=f key=functions/F_7925.entry*/
 extern void text(char far *s, int a);               /* 8480 */
 /*@SYM _text=0x8480 kind=f key=functions/F_8480.entry*/
-extern void mode(int a);                            /* 01CE */
-/*@SYM _mode=0x01CE kind=f key=functions/F_01CE.entry*/
+extern void f01ce(int a);                            /* 01CE */
+/*@SYM _f01ce=0x01CE kind=f key=functions/F_01CE.entry*/
 extern void frame(int a, int b, int c, int d);      /* 0355 */
 /*@SYM _frame=0x0355 kind=f key=functions/F_0355.entry*/
 extern void box(int a, int b, int c, int d);        /* 039F */
@@ -35,11 +35,11 @@ extern int  pick(void);                             /* A525 */
 /*@SYM _pick=0xA525 kind=f key=functions/F_A525.entry*/
 extern void done_a(void), done_b(void), done_c(void), done_d(void);
 extern void done_e(void), done_f(void);
-extern void clr(struct S far *p, unsigned n, int v); /* F304 */
-/*@SYM _clr=0xF304 kind=f key=functions/F_F304.entry*/
+extern void setmem(struct S far *p, unsigned n, int v); /* F304 */
+/*@SYM _setmem=0xF304 kind=f key=functions/F_F304.entry*/
 extern int  fa658(void);                            /* A658 */
-extern void put(struct S far *p, char far *s);      /* F2DB */
-/*@SYM _put=0xF2DB kind=f key=functions/F_F2DB.entry*/
+extern void strcpy(struct S far *p, char far *s);      /* F2DB */
+/*@SYM _strcpy=0xF2DB kind=f key=functions/F_F2DB.entry*/
 
 int fa85e(void)
 {
@@ -52,7 +52,7 @@ int fa85e(void)
     sv = init_f();
     init_g();
     text(g1375, 1);
-    mode(0);
+    f01ce(0);
     frame(0x58, 0x5f, 0x78, 0x13);
     box(0x58, 0x5f, 0x78, 0x13);
     rc = pick();
@@ -63,7 +63,7 @@ int fa85e(void)
     done_f();
     if (rc > -1) {
         rc = cur;
-        clr((struct S far *)tbl + rc, 0x1b, 0);
+        setmem((struct S far *)tbl + rc, 0x1b, 0);
         if ((tbl[rc].b11 = fa658()) != 0) {
             tbl[rc].l21 = 4;
             tbl[rc].a9  = 1;
@@ -71,7 +71,7 @@ int fa85e(void)
             tbl[rc].f15 = g1772;
             if (tbl[rc].b11 == 0x10) tbl[rc].h17 = 1;
             tbl[rc].j19 = -1;
-            put(&tbl[rc], g12d0);
+            strcpy(&tbl[rc], g12d0);
         } else {
             err = 1; rc = -2;
         }

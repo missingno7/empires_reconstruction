@@ -109,11 +109,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BC66.phys"
           },
-          "_ff2db": {
-            "offset": 62171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F2DB.entry"
-          },
           "_gdc8": {
             "offset": 3528,
             "coordinate": "DGROUP_offset",
@@ -166,6 +161,13 @@
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
+          },
+          "_strcpy": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F2DB.entry",
+            "owner": "LIB_STRCPY",
+            "public": "_strcpy",
+            "addend": 0
           }
         }
       },

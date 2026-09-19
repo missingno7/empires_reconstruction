@@ -4,18 +4,18 @@
    spelled BY THE CONVENTION: the image calls IP 0F3F7h, which is the FFREE
    module's base and NOT `_farfree` -- the declared binding puts farfree at
    0F6C3h, +0x2CC into the same module. */
-extern void ff3f7();
+extern void free();
 extern char far *gdc8;                  /* DS:0DC8 offset, DS:0DCA segment */
 extern char far *gdc4;                  /* DS:0DC4 offset, DS:0DC6 segment */
 
 void f9259()
 {
     if (gdc8) {
-        ff3f7(gdc8);
+        free(gdc8);
         gdc8 = 0;
     }
     if (gdc4) {
-        ff3f7(gdc4);
+        free(gdc4);
         gdc4 = 0;
     }
 }

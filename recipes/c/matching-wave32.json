@@ -34,8 +34,10 @@
             "evidence": "direct DS offset from complete function fixup"
           },
           "_face7": {
-            "offset": 44263,
             "coordinate": "code_offset",
+            "owner": "F_ACE7",
+            "public": "_face7",
+            "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
           "_gc35d": {
@@ -49,19 +51,16 @@
             "addend": 0,
             "evidence": "40 records of 24 bytes at DS:0DCC"
           },
-          "_ff90f": {
-            "offset": 63759,
-            "coordinate": "code_offset",
-            "evidence": "function entry from complete function fixup"
-          },
           "_gc359": {
             "offset": 50009,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset from complete function fixup"
           },
           "_f656c": {
-            "offset": 25964,
             "coordinate": "code_offset",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
           "_a1271": {
@@ -71,13 +70,17 @@
             "evidence": "24-word table at DS:1271"
           },
           "_f01ce": {
-            "offset": 462,
             "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
           "_f0355": {
-            "offset": 853,
             "coordinate": "code_offset",
+            "owner": "F_0355",
+            "public": "_f0355",
+            "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
           "_f03a8": {
@@ -86,8 +89,10 @@
             "evidence": "function entry from complete function fixup"
           },
           "_f9a0e": {
-            "offset": 39438,
             "coordinate": "code_offset",
+            "owner": "F_9A0E",
+            "public": "_f9a0e",
+            "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
           "_gc356": {
@@ -99,6 +104,11 @@
             "offset": 50002,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset from complete function fixup"
+          },
+          "_rand": {
+            "offset": 63759,
+            "coordinate": "code_offset",
+            "evidence": "function entry from complete function fixup"
           }
         }
       }

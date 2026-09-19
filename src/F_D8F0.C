@@ -34,7 +34,7 @@ struct U {                              /* 56 bytes, `mov dx,0x38; mul dx` */
     char rest[0x36];
 };
 
-extern int ff32a(), ff348(), fda66();
+extern int memset(), movmem(), fda66();
 
 extern char far *gc5da;                 /* DS:C5DA, segment at DS:C5DC */
 extern char gc6ab[];                    /* DS:C6AB */
@@ -48,8 +48,8 @@ fd8f0()
     register int i;                     /* si */
 
     p = gc5da + 8;
-    ff32a(gc6ab, 0, 9);
-    ff348(gc5da + 0x11, gca62, 9);
+    memset(gc6ab, 0, 9);
+    movmem(gc5da + 0x11, gca62, 9);
     for (i = 0; i < 9; i++, p++) {
         if (*p != -1) {
             g3044[*p].a = 0x3f - gc5da[i + 0x1a] * 9;

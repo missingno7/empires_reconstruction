@@ -6,7 +6,7 @@ extern char far *gbfbc;
 extern char far *gc5c6;
 extern unsigned char g4374[];
 extern char g0b3ae[];
-extern int f1d47(), f1ec0(), f656c(), face7(), ff348(), ff304(), f4517();
+extern int f1d47(), f1ec0(), f656c(), face7(), movmem(), setmem(), f4517();
 
 struct big { char pad[0x3e8]; };
 extern struct big g43b4[];
@@ -25,15 +25,15 @@ void f462e(void)
     else
         f656c(m + 0x1000);
     if (m == 0x14) {
-        ff348(gc5c6, g4374, 0x2750);
-        ff304(g0b3ae, 0xbb8, 0);
+        movmem(gc5c6, g4374, 0x2750);
+        setmem(g0b3ae, 0xbb8, 0);
     } else {
         if (face7() == 0 || m > 0x14)
             d = 0;
         else
             d = 0x330c;
-        ff348(gc5c6 + d + 2, g4374, 0x2750);
-        ff348(gc5c6 + d + 0x2754, g0b3ae, 0xbb8);
+        movmem(gc5c6 + d + 2, g4374, 0x2750);
+        movmem(gc5c6 + d + 0x2754, g0b3ae, 0xbb8);
     }
     if (m < 0x14)
         f4517(g4374[0] & 0x7f);

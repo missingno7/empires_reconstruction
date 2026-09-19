@@ -21,20 +21,21 @@ class TlinkStructureTests(unittest.TestCase):
                     {'name': '_SCNSEG', 'start': 110, 'stop': 110, 'length': 0}]
         self.assertEqual(initialized_data_end(segments), 110)
 
-    def test_latest_scoped_callers_keep_distinct_getkey_targets(self):
+    def test_latest_callers_use_distinct_owned_getkey_publics(self):
         report_path = ROOT / 'build/tlink-structural-report.json'
         if not report_path.exists():
             self.skipTest('local structural probe has not run')
         report = read_json(report_path)
         work = Path(report['byte_comparison']['candidate']).parent
-        expected = {'F_56C6': '__RC_F_5593_0', 'F_A658': '__RC_F_AF45_0'}
+        expected = {'F_56C6': '_f5593', 'F_A658': '_faf45'}
         for owner, target in expected.items():
             entry = next(s for s in report['relocatable_scaffold'] if s.get('owner') == owner)
             module = OmfReader().read((work / entry['object']).read_bytes())
             self.assertIn(target, module.externals)
-            self.assertIn('__RC_F_01CE_0', module.externals)
+            self.assertIn('_f01ce', module.externals)
             self.assertNotIn('_getkey', module.externals)
             self.assertNotIn('_mode', module.externals)
+            self.assertFalse(any(name.startswith('__RC_') for name in module.externals))
 
     def test_latest_probe_records_natural_prefix_and_first_divergence(self):
         path = ROOT / 'build/tlink-structural-report.json'

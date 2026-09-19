@@ -34,8 +34,10 @@
             "evidence": "storage_objects/G_P206B3.phys"
           },
           "_f020f": {
-            "offset": 527,
             "coordinate": "code_offset",
+            "owner": "F_020F",
+            "public": "_f020f",
+            "addend": 0,
             "evidence": "functions/F_020F.entry"
           },
           "_f6cea": {
@@ -58,8 +60,10 @@
             "addend": 0
           },
           "_f6ca6": {
-            "offset": 27814,
             "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
           "_f6d3c": {
@@ -116,8 +120,10 @@
             "addend": 0
           },
           "_f778b": {
-            "offset": 30603,
             "coordinate": "code_offset",
+            "owner": "F_778B",
+            "public": "_f778b",
+            "addend": 0,
             "evidence": "functions/F_778B.entry"
           },
           "_f6b1a": {
@@ -128,8 +134,10 @@
             "addend": 0
           },
           "_f791e": {
-            "offset": 31006,
             "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
             "evidence": "functions/F_791E.entry"
           },
           "_f6fda": {
@@ -370,11 +378,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_26E82.phys"
           },
-          "_free": {
-            "offset": 63171,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F6C3.entry"
-          },
           "_g7356": {
             "offset": 29526,
             "coordinate": "DGROUP_offset",
@@ -389,6 +392,13 @@
             "offset": 49096,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
+          },
+          "_farfree": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F6C3.entry",
+            "owner": "LIB_FFREE",
+            "public": "_farfree",
+            "addend": 0
           }
         }
       },

@@ -32,14 +32,18 @@
             "evidence": "storage_objects/G_P21E20.phys"
           },
           "_f880a": {
-            "offset": 34826,
             "coordinate": "code_offset",
+            "owner": "F_880A",
+            "public": "_f880a",
+            "addend": 0,
             "evidence": "functions/F_880A.entry"
           },
-          "_ff3f7": {
-            "offset": 62455,
+          "_free": {
             "coordinate": "code_offset",
-            "evidence": "functions/F_F3F7.entry"
+            "evidence": "functions/F_F3F7.entry",
+            "owner": "LIB_FFREE",
+            "public": "_free",
+            "addend": 0
           }
         }
       },
@@ -201,13 +205,17 @@
             "addend": 0
           },
           "_fb122": {
-            "offset": 45346,
             "coordinate": "code_offset",
+            "owner": "F_B122",
+            "public": "_fb122",
+            "addend": 0,
             "evidence": "functions/F_B122.entry"
           },
           "_fb4fb": {
-            "offset": 46331,
             "coordinate": "code_offset",
+            "owner": "F_B4FB",
+            "public": "_fb4fb",
+            "addend": 0,
             "evidence": "functions/F_B4FB.entry"
           },
           "_f4eeb": {
@@ -233,8 +241,10 @@
             "evidence": "storage_objects/G_P2026A.phys"
           },
           "_f2269": {
-            "offset": 8809,
             "coordinate": "code_offset",
+            "owner": "F_2269",
+            "public": "_f2269",
+            "addend": 0,
             "evidence": "functions/F_2269.entry"
           },
           "_f039f": {
@@ -250,13 +260,17 @@
             "addend": 0
           },
           "_fb99f": {
-            "offset": 47519,
             "coordinate": "code_offset",
+            "owner": "F_B99F",
+            "public": "_fb99f",
+            "addend": 0,
             "evidence": "functions/F_B99F.entry"
           },
           "_fb593": {
-            "offset": 46483,
             "coordinate": "code_offset",
+            "owner": "F_B593",
+            "public": "_fb593",
+            "addend": 0,
             "evidence": "functions/F_B593.entry"
           }
         }

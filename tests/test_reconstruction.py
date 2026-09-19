@@ -143,11 +143,11 @@ class ReconstructionTests(unittest.TestCase):
                 else:
                     mismatch(expected, result, owner)
             owner = owners[0]
-            owner['build']['bindings']['_mode']['offset'] += 1
+            owner['build']['bindings']['_f01ce']['addend'] += 1
             module = read_object((work / receipts[owner['id']]['object']).read_bytes())
-            result, _ = bind_region(owner, module, self.mz, self.manifest['frames'], self.manifest['regions'], self.component_modules)
-            with self.assertRaisesRegex(ValueError, 'First mismatch.*F_56C6'):
-                mismatch(self.original[owner['start']:owner['end']], result, owner)
+            with self.assertRaisesRegex(ValueError, 'selected entry public with zero addend'):
+                bind_region(owner, module, self.mz, self.manifest['frames'],
+                            self.manifest['regions'], self.component_modules)
 
     def test_library_identity_selection_and_full_segment(self):
         lock = json.loads((ROOT / 'layout/toolchain.json').read_text())

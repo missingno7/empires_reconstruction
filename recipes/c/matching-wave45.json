@@ -18,17 +18,63 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_free": {"offset": 63171, "coordinate": "code_offset", "evidence": "functions/F_B122.entry; F_B593 free call target"},
-          "_gc5a8": {"offset": 50600, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc580": {"offset": 50560, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc5ac": {"offset": 50604, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc59a": {"offset": 50586, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc5a4": {"offset": 50596, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc58a": {"offset": 50570, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc58e": {"offset": 50574, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc584": {"offset": 50564, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_gc59e": {"offset": 50590, "coordinate": "DGROUP_offset", "evidence": "direct far-pointer storage read in F_B122"},
-          "_g720": {"offset": 1824, "coordinate": "DGROUP_offset", "evidence": "direct DS word in complete F_B593 fixups"}
+          "_gc5a8": {
+            "offset": 50600,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc580": {
+            "offset": 50560,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc5ac": {
+            "offset": 50604,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc59a": {
+            "offset": 50586,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc5a4": {
+            "offset": 50596,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc58a": {
+            "offset": 50570,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc58e": {
+            "offset": 50574,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc584": {
+            "offset": 50564,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_gc59e": {
+            "offset": 50590,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct far-pointer storage read in F_B122"
+          },
+          "_g720": {
+            "offset": 1824,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word in complete F_B593 fixups"
+          },
+          "_farfree": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_B122.entry; F_B593 free call target",
+            "owner": "LIB_FFREE",
+            "public": "_farfree",
+            "addend": 0
+          }
         }
       },
       "provenance": {

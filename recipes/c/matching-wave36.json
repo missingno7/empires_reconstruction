@@ -58,58 +58,73 @@
             "evidence": "pooled string or direct DS offset from complete fixup"
           },
           "_msg": {
-            "offset": 34505,
             "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_a": {
-            "offset": 27508,
             "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_b": {
-            "offset": 27024,
             "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_c": {
-            "offset": 27494,
             "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_d": {
-            "offset": 28734,
             "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_e": {
-            "offset": 54675,
             "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_f": {
-            "offset": 31020,
             "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_init_g": {
-            "offset": 31013,
             "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_text": {
-            "offset": 33920,
             "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_mode": {
-            "offset": 462,
-            "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_frame": {
-            "offset": 853,
             "coordinate": "code_offset",
+            "owner": "F_0355",
+            "public": "_f0355",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_box": {
@@ -118,53 +133,80 @@
             "evidence": "near-call target from complete function fixup"
           },
           "_pick": {
-            "offset": 42277,
             "coordinate": "code_offset",
+            "owner": "F_A525",
+            "public": "_fa525",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_a": {
-            "offset": 33875,
             "coordinate": "code_offset",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_b": {
-            "offset": 31006,
             "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_c": {
-            "offset": 54694,
             "coordinate": "code_offset",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_d": {
-            "offset": 29026,
             "coordinate": "code_offset",
+            "owner": "F_7162",
+            "public": "_f7162",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_e": {
-            "offset": 27031,
             "coordinate": "code_offset",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_done_f": {
-            "offset": 27494,
             "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_clr": {
-            "offset": 62212,
-            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
           "_fa658": {
-            "offset": 42584,
             "coordinate": "code_offset",
+            "owner": "F_A658",
+            "public": "_fa658",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_put": {
-            "offset": 62171,
+          "_setmem": {
             "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup",
+            "owner": "LIB_MEMSET",
+            "public": "_setmem",
+            "addend": 0
+          },
+          "_strcpy": {
+            "coordinate": "code_offset",
+            "evidence": "near-call target from complete function fixup",
+            "owner": "LIB_STRCPY",
+            "public": "_strcpy",
+            "addend": 0
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
             "evidence": "near-call target from complete function fixup"
           }
         }

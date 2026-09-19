@@ -32,7 +32,7 @@
 
 struct R { char b[0x23]; };             /* 35 bytes, `mov dx,0x23; mul dx` */
 
-extern int fecda(), feefe(), feead(), f86c9();
+extern int open(), read(), close(), f86c9();
 
 extern int  gb3e, gb40, gc0c9;          /* DS:0B3E, DS:0B40, DS:C0C9 */
 extern char far *gb31;                  /* DS:0B31, segment at DS:0B33 */
@@ -56,21 +56,21 @@ register int i;
     do {
         ok = 0;
         gb3e = ok;
-        gc0c9 = fecda(ga22[i] + (ga22[i][0] > 0x42) * 3, 0x8004);
-        n = feefe(gc0c9, &stamp, 4);
+        gc0c9 = open(ga22[i] + (ga22[i][0] > 0x42) * 3, 0x8004);
+        n = read(gc0c9, &stamp, 4);
         if (!(gc0c9 >= 0 && gb3e == 0 && n >= 4 && ga52[i] == stamp)) {
             if (gc0c9 >= 0)
-                feead(gc0c9);
+                close(gc0c9);
             if (gbfcc > 1 && (c = ga22[i][0]) <= 0x42) {
                 c = 0x42 - c + 0x41;
                 ga22[i][0] = c;
                 gb3e = 0;
-                gc0c9 = fecda(ga22[i], 0x8004);
-                n = feefe(gc0c9, &stamp, 4);
+                gc0c9 = open(ga22[i], 0x8004);
+                n = read(gc0c9, &stamp, 4);
                 if (!(gc0c9 >= 0 && gb3e == 0 && n >= 4
                       && ga52[i] == stamp)) {
                     if (gc0c9 >= 0)
-                        feead(gc0c9);
+                        close(gc0c9);
                     ga22[i][0] = 0x42 - c + 0x41;
                     gb31 = (char far *)&ga5e[i];
                     f86c9(gb2a);

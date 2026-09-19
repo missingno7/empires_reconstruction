@@ -7,7 +7,7 @@ struct P { unsigned char a, b; };
 struct ROW { struct P e[6]; };
 extern struct ROW gc316[];
 extern int gc130;
-extern int ff90f(void);
+extern int rand(void);
 extern int face7(void);
 extern void f7202(void);
 
@@ -24,7 +24,7 @@ int f8aa2(void)
     for (i = 0; i < 2; i++) {
         if ((slot = gc130++) >= 0xc)
             return -1;
-        r = ff90f() % (0xc - slot);
+        r = rand() % (0xc - slot);
         for (k = 0; k <= r; k++)
             do {
                 if (++col == 3) {
@@ -35,7 +35,7 @@ int f8aa2(void)
             } while (gc316[row].e[col].a != 0xff);
         gc316[row].e[col].a = slot;
         if (face7())
-            gc316[row].e[col].b = ff90f() % 4;
+            gc316[row].e[col].b = rand() % 4;
         else
             gc316[row].e[col].b = 0;
     }

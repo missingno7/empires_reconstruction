@@ -21,8 +21,8 @@ each can be removed against a measurable linker invariant.
 | `DGSCF.OBJ` synthetic DGROUP | Previously supplied initialized DATA, BSS and selected publics | Temporary DGROUP sizing and bindings | Real source DATA plus TASM BSS contributions | **Removed from the exact experiment**; retained only by the aggregate diagnostic baseline |
 | Unpartitioned TASM BSS/public map | Historical BSS translation units remain unknown | Supplies the verified 37,250-byte reserve and 247 recovered publics through real TASM OMF | Partition storage and publics among evidenced historical modules | **Active source component**; no custom/synthetic OMF object remains in the exact path |
 | Oracle-copied initialized DATA tail | Originally supplied initialized bytes to the aggregate scaffold | Holds the unresolved initialized-data extent | Ordered source encoders and compiler DATA contributions | **Removed in the source DATA experiment**; canonical and source-link raw DATA are both zero |
-| Recovered symbol aliases (`_delay` → `_f6c57`, `_main`) | Recovered objects use numeric/source-local names while startup and callers use historical publics | Resolves verified call targets without changing code bytes | Recover the containing translation unit and its actual public names | **Temporary for code symbols**. All C0C/CTYPE DATA aliases are removed: sources now reference `__8087`, `__argv`, `__osmajor`, and `__ctype` directly |
-| EXTDEF case normalization | Turbo C emits case variants that differ from explicit recovered publics | Resolves case-sensitive OMF externals under the linker candidate | Reconstruct the historical declaration/public spelling in the source module | **Temporary** |
+| Recovered symbol aliases | Recovered objects previously used numeric/source-local names while startup and callers used historical publics | Resolved verified call targets without changing code bytes | Name the actual library or reconstructed-owner public in source | **Removed**. Source now names historical CC.LIB publics and reconstructed entry publics directly; numeric entry bindings are canonical owner/public references |
+| EXTDEF case normalization | Turbo C previously emitted case variants that differed from explicit recovered publics | Resolved case-sensitive OMF externals under the linker candidate | Reconstruct the declaration/public spelling in source | **Removed from the current structural link** |
 | Injected internal numeric publics (`_Fxxxx`) | Separate recovered objects refer to internal addresses before their owning module is known | Exposes exact code-offset targets to the relocatable experiment | Group contiguous owners into shared historical modules or expose proven real publics | **Temporary** |
 | Candidate DATA/code object interleaving | Historical object boundaries and response-file order remain partly unknown | Reproduces the four observed cross-segment relocation-order constraints | Recover containing modules and their natural object order | **Active**; exact TLINK output, but nonrelocating boundaries remain ambiguous |
 | Arithmetic FIXUPP subrecord ordering | The inline-ASM capsule emits ascending explicit fixups unlike ordinary Turbo C output | Reproduces the historical descending ten-entry run before TLINK | Recover source/assembly that naturally emits the observed OMF record topology | **Active and narrowly checked**; changes no bytes, publics, targets, addends or sites |
@@ -30,7 +30,8 @@ each can be removed against a measurable linker invariant.
 The no-demand result is narrower than a recovered build: it proves that the
 demand object is unnecessary under the remaining adapters. The older aggregate
 scaffold still differs; the source-DATA/interleaving path is the exact result.
-The `_getkey` and `_mode` collisions are now resolved using each caller's
-binding evidence and owner-relative labels. These remain temporary aliases,
-not historical symbol recovery. The earlier zero-diagnostic claim missed two
+The former `_getkey`, `_mode`, `_delay`, and runtime-library aliases are now
+direct source references. Exact entry bindings use their owner/public identity,
+leaving internal-entry PUBDEF injection as the sole active code-symbol adapter.
+See [the historical-public checkpoint](historical-code-publics.md). The earlier zero-diagnostic claim missed two
 map-only fixup overflows; both are eliminated and now covered by detection.

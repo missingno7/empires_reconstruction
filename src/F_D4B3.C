@@ -9,7 +9,7 @@ struct rec {
 
 extern struct rec gc470[];
 extern unsigned g13ed;
-extern int f684a(), f86c9(), ff6c3();
+extern int f684a(), f86c9(), farfree();
 extern char far *g235d;
 extern int g2356;
 
@@ -24,6 +24,6 @@ void fd4b3(int n)
         f684a(0x101d, &p);
         g235d = p + ((int far *) p)[n] + 2;
         f86c9(&g2356);
-        ff6c3(p);
+        farfree(p);
     }
 }

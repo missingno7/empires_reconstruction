@@ -18,15 +18,61 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfbc": {"offset": 49084, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_2C0F6.phys"},
-          "_f4b0c": {"offset": 19212, "coordinate": "code_offset", "evidence": "functions/F_4B0C.entry"},
-          "_f1ecd": {"coordinate": "code_offset", "owner": "F_1ECD", "public": "_f1ecd", "addend": 0, "evidence": "functions/F_1ECD.entry"},
-          "_f6c57": {"coordinate": "code_offset", "owner": "F_6C57", "public": "_f6c57", "addend": 0, "evidence": "functions/F_6C57.entry"},
-          "_gc5ca": {"offset": 50634, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_2C0FA.phys"},
-          "_g40c4": {"offset": 16580, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_23BF4.phys"},
-          "_f4e9f": {"coordinate": "code_offset", "owner": "F_4E9F", "public": "_f4e9f", "addend": 0, "evidence": "functions/F_4E9F.entry"},
-          "_f6c6f": {"coordinate": "code_offset", "owner": "F_6C6F", "public": "_f6c6f", "addend": 0, "evidence": "functions/F_6C6F.entry"},
-          "_gb6cf": {"offset": 46799, "coordinate": "DGROUP_offset", "evidence": "independent write in F_B7F9 and read in complete F_B967"}
+          "_gbfbc": {
+            "offset": 49084,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_f4b0c": {
+            "coordinate": "code_offset",
+            "owner": "F_4B0C",
+            "public": "_f4b0c",
+            "addend": 0,
+            "evidence": "functions/F_4B0C.entry"
+          },
+          "_f1ecd": {
+            "coordinate": "code_offset",
+            "owner": "F_1ECD",
+            "public": "_f1ecd",
+            "addend": 0,
+            "evidence": "functions/F_1ECD.entry"
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0,
+            "evidence": "functions/F_6C57.entry"
+          },
+          "_gc5ca": {
+            "offset": 50634,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0FA.phys"
+          },
+          "_g40c4": {
+            "offset": 16580,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_23BF4.phys"
+          },
+          "_f4e9f": {
+            "coordinate": "code_offset",
+            "owner": "F_4E9F",
+            "public": "_f4e9f",
+            "addend": 0,
+            "evidence": "functions/F_4E9F.entry"
+          },
+          "_f6c6f": {
+            "coordinate": "code_offset",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
+            "addend": 0,
+            "evidence": "functions/F_6C6F.entry"
+          },
+          "_gb6cf": {
+            "offset": 46799,
+            "coordinate": "DGROUP_offset",
+            "evidence": "independent write in F_B7F9 and read in complete F_B967"
+          }
         }
       },
       "provenance": {

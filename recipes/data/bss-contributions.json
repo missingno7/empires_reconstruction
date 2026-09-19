@@ -103,15 +103,26 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_RESOURCE_PREFIX",
+      "id": "F1D47_RESOURCE_POINTERS_BSS",
       "object": "GAMEBSS7.OBJ",
       "assembly": "GAMEBSS7.ASM",
       "logical_start": 14928,
+      "logical_end": 14940,
+      "owner_candidate": "F_1D47 resource 20/21/22 pointers",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "F200F_RESOURCE_44_45_BSS",
+      "object": "F200FC.OBJ",
+      "assembly": "F200FC.ASM",
+      "logical_start": 14940,
       "logical_end": 15264,
-      "owner_candidate": "aggregate resource prefix",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "F_200F resources 44 and 45",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
     },
     {
       "id": "A74A2_RECORD_TABLE_BSS",

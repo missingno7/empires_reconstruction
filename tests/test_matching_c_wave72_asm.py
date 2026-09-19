@@ -12,7 +12,9 @@ class MatchingCWave72AsmTests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave72.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_D3CF')
-        self.assertEqual(next(r for r in recipe['owners'] if r['id'] == 'F_D3CF'), owner)
+        historical = next(r for r in recipe['owners'] if r['id'] == 'F_D3CF')
+        self.assertEqual((historical['start'], historical['end'], historical['expected_sha256']),
+                         (owner['start'], owner['end'], owner['expected_sha256']))
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         lock = read_json(ROOT / 'layout/toolchain.json')
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)

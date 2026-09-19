@@ -8,14 +8,14 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 36,472 | 259 |
+| Freshly compiled matching C | 14,077 | 36,545 | 260 |
 | Freshly assembled matching ASM | 2,456 | 2,532 | 21 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Exact raw fallback | 62,621 | 31,371 | 41 |
+| Exact raw fallback | 62,621 | 31,298 | 41 |
 | Total | 79,154 | 79,154 | 376 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -165,7 +165,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,371 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,298 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -607,3 +607,7 @@ F_019C adds 8 matching C bytes for the complete DOS handle-2 write helper. Its f
 ## Seventieth matching-C wave
 
 F_C877 adds 33 matching C bytes for the complete timer-slice pump. Its fresh Turbo C object preserves the original register allocation, binds two DGROUP words and the numeric raw call target, and has no loader relocations. See [the wave-seventy proof](matching-c-wave70.md).
+
+## Seventy-first matching-C wave
+
+F_D386 adds 73 matching C bytes for the far-record decoder main routine. Its fresh Turbo C object binds the far input table, 72b2, and the numeric F_03C9 call target; the immediately following 11-byte branch tail remains raw under a proven split. See [the wave-seventy-one proof](matching-c-wave71.md).

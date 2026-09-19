@@ -1,0 +1,42 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_D386",
+      "kind": "MATCHING_C",
+      "source": "src/F_D386.C",
+      "start": 54662,
+      "end": 54735,
+      "expected_sha256": "c52727ae50a891de4e8708e21193512cdb27cddf0b6de9bb60a142ba905af485",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd386",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_gbfc4": {
+            "offset": 49092,
+            "coordinate": "DGROUP_offset"
+          },
+          "_a72b2": {
+            "offset": 29362,
+            "coordinate": "DGROUP_offset"
+          },
+          "_f03c9": {
+            "offset": 969,
+            "coordinate": "code_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_D386",
+      "artifact": "regions/F_D386.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly subextent and fresh full-extent OMF binding",
+        "change": "Recover the 73-byte far-record decoder main routine; retain its 11-byte JS target tail as raw pending a second source proof"
+      }
+    }
+  ]
+}

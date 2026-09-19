@@ -1,0 +1,131 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_0107EA_HELP_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107EA_HELP_TITLE.json",
+      "start": 67562,
+      "end": 67572,
+      "expected_sha256": "d0b5cdd45c7e9654104fe89be8a200665dc3ccef8ba4fecf8a062c4d434d5875",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0107EA_HELP_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0107F4_HELP_TOPICS",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107F4_HELP_TOPICS.json",
+      "start": 67572,
+      "end": 67656,
+      "expected_sha256": "e1807ddeb277f63afd30f48520ced1e5690bfa8b811d63429d95c674927f9538",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0107F4_HELP_TOPICS.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01085A_MENU_TOPICS",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01085A_MENU_TOPICS.json",
+      "start": 67674,
+      "end": 67751,
+      "expected_sha256": "71dfb12dc30197fc7864ebf497f26496aec06a4117d2ad7ecc52fd6f623da662",
+      "classification": "help_text",
+      "artifact": "regions/DATA_01085A_MENU_TOPICS.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0108FE_OPTION_TOPICS",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0108FE_OPTION_TOPICS.json",
+      "start": 67838,
+      "end": 67876,
+      "expected_sha256": "1cf245a1a1f7f0754a11e40cd20a01cccf3ba2adaa9a5425681f49b0b3e9859f",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0108FE_OPTION_TOPICS.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0109CA_BACK_PAGE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109CA_BACK_PAGE.json",
+      "start": 68042,
+      "end": 68057,
+      "expected_sha256": "9af6cd05db38ae6589d3eddae9b59d868d5c0aff2693567ec7cb656ed4687cf3",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0109CA_BACK_PAGE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0109D9_NEXT_PAGE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109D9_NEXT_PAGE.json",
+      "start": 68057,
+      "end": 68071,
+      "expected_sha256": "058c26f7afe1039789c6ce59df1b913d103f42fcd13ffc0c9ae2e7c0baa31e39",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0109D9_NEXT_PAGE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0109E7_DONE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109E7_DONE.json",
+      "start": 68071,
+      "end": 68076,
+      "expected_sha256": "8882688380a5a2bcee52823e0e456a3038c19e518272a9b4fb61b7a323f9127d",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0109E7_DONE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0109EC_YES",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109EC_YES.json",
+      "start": 68076,
+      "end": 68080,
+      "expected_sha256": "03cb5fb3dd8f56aa60ba08fe532d55484ffaca42439a4ce03fd1db3bfe54a8aa",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0109EC_YES.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0109F0_NO",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109F0_NO.json",
+      "start": 68080,
+      "end": 68083,
+      "expected_sha256": "511a5d61e579e32d7a0329f681e54c26440084a69a7ce1c3c3f837a96e06aa29",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0109F0_NO.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

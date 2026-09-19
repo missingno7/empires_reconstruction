@@ -158,15 +158,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_PRE_S8C12",
+      "id": "BOARD_CONTROL_STATE_BSS",
       "object": "GAMEBSSA.OBJ",
       "assembly": "GAMEBSSA.ASM",
       "logical_start": 21224,
       "logical_end": 21264,
-      "owner_candidate": "aggregate pre-resource state",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "F_4713 board-control and setjmp state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "S8C12_RESOURCE_BUFFER_BSS",
@@ -235,15 +235,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_GB07A_STATE",
+      "id": "RESOURCE_SELECTION_STATE_BSS",
       "object": "GAMEBSSF.OBJ",
       "assembly": "GAMEBSSF.ASM",
       "logical_start": 30584,
       "logical_end": 30586,
-      "owner_candidate": "aggregate resource-loader state",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "F_4713 resource-selection state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "GB07C_RESOURCE_POINTER_TABLE_BSS",
@@ -312,15 +312,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_MID_REMAINDER",
+      "id": "ANIMATION_CONTROL_STATE_BSS",
       "object": "GAMEBSS1.OBJ",
       "assembly": "GAMEBSS1.ASM",
       "logical_start": 35396,
       "logical_end": 35404,
-      "owner_candidate": "aggregate middle remainder",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared animation control state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "ANIMATION_STATE_BSS",
@@ -345,15 +345,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_ERR_REMAINDER",
+      "id": "ERROR_STATE_BSS",
       "object": "GAMEBSS3.OBJ",
       "assembly": "GAMEBSS3.ASM",
       "logical_start": 35692,
       "logical_end": 35694,
-      "owner_candidate": "aggregate error slot",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared error status",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "C470_RECORD_TABLE_BSS",
@@ -367,15 +367,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_REMAINDER_PREFIX",
+      "id": "GAMEPLAY_STATE_BSS",
       "object": "GAMEBSS.OBJ",
       "assembly": "GAMEBSS.ASM",
       "logical_start": 35964,
       "logical_end": 36016,
-      "owner_candidate": "aggregate remainder prefix",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared gameplay and render state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "GC5B2_FLAGS_BSS",
@@ -389,15 +389,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_SOUND_PREFIX",
+      "id": "SOUND_RESOURCE_STATE_BSS",
       "object": "GAMEBSS4.OBJ",
       "assembly": "GAMEBSS4.ASM",
       "logical_start": 36024,
       "logical_end": 36072,
-      "owner_candidate": "aggregate sound-state prefix",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared sound resource and playback state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "NOTE_OCTAVE_TABLE_BSS",
@@ -444,15 +444,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_REMAINDER",
+      "id": "SOUND_TABLE_STATE_BSS",
       "object": "GAMEBSS6.OBJ",
       "assembly": "GAMEBSS6.ASM",
       "logical_start": 37198,
       "logical_end": 37250,
-      "owner_candidate": "aggregate final remainder",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared sound tables and modulation state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     }
   ]
 }

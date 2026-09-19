@@ -134,8 +134,6 @@ def run(verify=True):
         expected_start = end
     if expected_start != bss_source['length']:
         raise ValueError('BSS contribution plan does not cover the canonical reserve')
-    if not any(item['aggregate_storage'] for item in bss_contributions):
-        raise ValueError('BSS contribution plan needs aggregate storage')
     if (len({item['object'] for item in bss_contributions}) != len(bss_contributions)
             or len({item['assembly'] for item in bss_contributions}) != len(bss_contributions)):
         raise ValueError('BSS contribution objects and sources must be unique')

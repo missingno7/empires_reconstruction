@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 37046,
-  "unpartitioned_bss_source_bytes": 204,
+  "partitioned_bss_source_bytes": 37250,
+  "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1107,14 +1107,14 @@
         "source_sha256": "f9c66516eb9c5bd654442827842182dbf1c08cd073d5f2f6dca01f0cc9c7b84a"
       },
       {
-        "id": "GAMEBSS_PRE_S8C12",
-        "owner_candidate": "aggregate pre-resource state",
+        "id": "BOARD_CONTROL_STATE_BSS",
+        "owner_candidate": "F_4713 board-control and setjmp state",
         "logical_start": 21224,
         "bytes": 40,
         "publics": 11,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "fb82351316ca1c1d93792034896ef87bea65484ed805ce7babc4a31213492237",
         "source_sha256": "e18c8b689910b3b8deef1115ee2798c186f08beb4617bb5a490be50e26c60020"
       },
@@ -1191,14 +1191,14 @@
         "source_sha256": "900bef38f2a90db2ffed9a576f42585afee1efeebce6169c194840f8317a5697"
       },
       {
-        "id": "GAMEBSS_GB07A_STATE",
-        "owner_candidate": "aggregate resource-loader state",
+        "id": "RESOURCE_SELECTION_STATE_BSS",
+        "owner_candidate": "F_4713 resource-selection state",
         "logical_start": 30584,
         "bytes": 2,
         "publics": 1,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "b20282755b104894da0efa1fad91e294f1a674e6d71ad0712e3fa18ba32018c5",
         "source_sha256": "18c73f1932f6333c338d8551e1e705d7985cdcc9774e26ebfd56440220de46a1"
       },
@@ -1275,14 +1275,14 @@
         "source_sha256": "3b79969aab269c478be6dcb77d1c574e9d8f5c7759bb8f7aa6f5c031afba6f64"
       },
       {
-        "id": "GAMEBSS_MID_REMAINDER",
-        "owner_candidate": "aggregate middle remainder",
+        "id": "ANIMATION_CONTROL_STATE_BSS",
+        "owner_candidate": "shared animation control state",
         "logical_start": 35396,
         "bytes": 8,
         "publics": 1,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "6f67af4059ac6e4e9e7f0ef1e845ed513c1563376607d4f1d8c1b3775fc69d71",
         "source_sha256": "e5abee9c1960c5562ffb8788423e26c53c079e5ac254c099eba857806a2c69ac"
       },
@@ -1311,14 +1311,14 @@
         "source_sha256": "f3f850cf663a0991038a7ebff559f8e5d79a77abb59bdf16ab27828347025118"
       },
       {
-        "id": "GAMEBSS_ERR_REMAINDER",
-        "owner_candidate": "aggregate error slot",
+        "id": "ERROR_STATE_BSS",
+        "owner_candidate": "shared error status",
         "logical_start": 35692,
         "bytes": 2,
         "publics": 2,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "bc5e0c8c2810281f63d61eff62d14e841bd052b3e6001a5d0290721a6e458e62",
         "source_sha256": "7ad0ccde4d92ecefdc2a3627637ae4ac3fb2f8f21af631881b33f854cc2dea6c"
       },
@@ -1335,14 +1335,14 @@
         "source_sha256": "aaa344f5f150f1adc669d52cd9485822235da03dd6edc5f46aba2334c80128c4"
       },
       {
-        "id": "GAMEBSS_REMAINDER_PREFIX",
-        "owner_candidate": "aggregate remainder prefix",
+        "id": "GAMEPLAY_STATE_BSS",
+        "owner_candidate": "shared gameplay and render state",
         "logical_start": 35964,
         "bytes": 52,
         "publics": 14,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "6cc03dfd1cff395315f2ef37ac7eb67d5f8b2242cdab4de4976c9e1a9c002883",
         "source_sha256": "1bb2ab280c5f8382a93877ba1bc258e0be3abc6c27e7be38939626e75efc1176"
       },
@@ -1359,14 +1359,14 @@
         "source_sha256": "0a13e0b3747d93fcfeb1831ee1e52c5f774fd2f32deae843323ef3b964f5ad23"
       },
       {
-        "id": "GAMEBSS_SOUND_PREFIX",
-        "owner_candidate": "aggregate sound-state prefix",
+        "id": "SOUND_RESOURCE_STATE_BSS",
+        "owner_candidate": "shared sound resource and playback state",
         "logical_start": 36024,
         "bytes": 48,
         "publics": 11,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "daa9b39b4fe55b26e011742266e217c02da73a0fb69115d55c7aad55d2459396",
         "source_sha256": "8770e9ba7834911d8194bbea125998bbe41c5b2db056ed305c448decda41c4b7"
       },
@@ -1419,14 +1419,14 @@
         "source_sha256": "364600f09c9ae3324ff7bb4414225949ff75cb277eae6b518df08ab49bbbae95"
       },
       {
-        "id": "GAMEBSS_REMAINDER",
-        "owner_candidate": "aggregate final remainder",
+        "id": "SOUND_TABLE_STATE_BSS",
+        "owner_candidate": "shared sound tables and modulation state",
         "logical_start": 37198,
         "bytes": 52,
         "publics": 6,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
         "object_sha256": "e8d5e21a49a590a624622755d20db1bc7c7621e10fd58f2d96a8c4402e36dd08",
         "source_sha256": "d861f4d6ba8455fc570ee64dd14c277ddbaadc33e2f10f2d201003d78a6a8528"
       }

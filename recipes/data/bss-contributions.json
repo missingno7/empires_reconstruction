@@ -422,15 +422,15 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_VOICE_PREFIX",
-      "object": "GAMEBSS5.OBJ",
-      "assembly": "GAMEBSS5.ASM",
+      "id": "SOUND_ENGINE_STATE_BSS",
+      "object": "SNDSTATE.OBJ",
+      "assembly": "SNDSTATE.ASM",
       "logical_start": 36264,
       "logical_end": 37154,
-      "owner_candidate": "aggregate pre-voice remainder",
-      "representation": "ANCHORED_BSS",
-      "confidence": "CANONICAL_LAYOUT",
-      "aggregate_storage": true
+      "owner_candidate": "shared sound-engine flags, voice records, and workspaces",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
     },
     {
       "id": "VOICE_POINTER_TABLE_BSS",

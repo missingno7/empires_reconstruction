@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 31938,
-  "unpartitioned_bss_source_bytes": 5312,
+  "partitioned_bss_source_bytes": 32828,
+  "unpartitioned_bss_source_bytes": 4422,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1395,15 +1395,15 @@
         "source_sha256": "2f68d6554c77ba91b28e0e5a3ac81ce56abdec062ac251e8ec5b12724ab8e933"
       },
       {
-        "id": "GAMEBSS_VOICE_PREFIX",
-        "owner_candidate": "aggregate pre-voice remainder",
+        "id": "SOUND_ENGINE_STATE_BSS",
+        "owner_candidate": "shared sound-engine flags, voice records, and workspaces",
         "logical_start": 36264,
         "bytes": 890,
         "publics": 11,
-        "representation": "ANCHORED_BSS",
-        "confidence": "CANONICAL_LAYOUT",
-        "aggregate_storage": true,
-        "object_sha256": "c37a766cfeca624a1fb1b6b2c5213c70347ec110371548d7a2468ace3d99bad0",
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
+        "object_sha256": "c0e18b06ce98166a70543c19fa9e1e3293d6317a8086e92231c1a0d0906d6c90",
         "source_sha256": "6aa235706d3a8212bb024c4f064a1931d2a0398e9148797bef347f0ebcdc792e"
       },
       {

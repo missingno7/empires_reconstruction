@@ -20,9 +20,10 @@ originals exactly**, including executable relocations and archive offsets.
 The fixed build compiles 347 C regions and no ASM regions, and retains 40 pinned
 Borland library contributions as independent historical inputs. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); nine raw regions cover the remaining 2,180 EXE bytes.
+RGB tables (1,536 bytes); eight raw regions cover the remaining 257 EXE bytes.
 The 1,832-byte sound DATA block is structured source with 38 linker-resolved
-near pointers.
+near pointers. Its adjacent 1,923-byte voice/instrument block is also structured
+as verified arrays and 33 fixed-size records.
 See [palette ownership and proof](docs/embedded-palettes.md).
 488 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 75 resolve through [publics read from pinned library modules](docs/library-bindings.md).

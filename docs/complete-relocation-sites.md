@@ -24,7 +24,7 @@ replaces their raw words with unbound pointers and emits genuine OMF FIXUPPs.
 One target is within the source-declared game BSS reserve. Surrounding payloads
 remain explicitly `raw-local`: annotating their pointers does not make their
 unknown record or command structure understood. Canonical raw ownership is
-2,180 bytes across 9 owners; the source DATA path uses 2,174 of those bytes.
+257 bytes across 8 owners; the source DATA path uses 251 of those bytes.
 
 DATA fixups are emitted in the descending order independently observed in
 fresh Turbo C objects. Remaining relocation order differences cross source

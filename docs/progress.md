@@ -12,6 +12,12 @@ Its two note-bank pointers and 36 dispatch pointers are real OMF `offset16`
 fixups, and the exact TLINK build remains byte-identical. Canonical raw EXE
 ownership is reduced to 2,180 bytes across nine owners.
 
+The adjacent 1,923-byte voice/instrument region is now structured as the
+verified tail of a slot-glyph table, three 18-byte voice arrays, 33 records of
+56 bytes, and a two-word terminator. Its record stride and field offsets are
+independently exercised by matching C. Canonical raw EXE ownership is now 257
+bytes across eight owners.
+
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table
 prefix to all 106 entries and produces the byte-identical EXE. These
@@ -71,8 +77,8 @@ linker adapters are now the primary work.
 | Freshly assembled matching ASM | 2,456 | 0 | 0 |
 | Known toolchain library | 0 | 5,463 | 49 |
 | Structured MZ header | 0 | 512 | 1 |
-| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 12,020 | 121 |
-| Exact raw fallback | 62,621 | 2,180 | 9 |
+| Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 13,943 | 122 |
+| Exact raw fallback | 62,621 | 257 | 8 |
 | Total | 79,154 | 79,154 | 527 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and

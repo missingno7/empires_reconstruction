@@ -21890,16 +21890,19 @@
       }
     },
     {
-      "id": "RAW_012C03",
+      "id": "DATA_012C03_SOUND_INSTRUMENTS",
       "start": 76803,
       "end": 78726,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/012C03-013386.bin",
+      "kind": "EXACT_DATA",
+      "classification": "sound_voice_state_and_instrument_records",
+      "source": "src/data/DATA_012C03_SOUND_INSTRUMENTS.json",
       "original_symbol": null,
-      "artifact": "raw/012C03-013386.bin",
+      "artifact": "regions/DATA_012C03_SOUND_INSTRUMENTS.bin",
       "expected_sha256": "1e3c99340362bcc453e49cb766ff258ae01e55ffaa9b3d777146580036be332d",
-      "matching_status": "EQUAL"
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "empires-sound-instruments-v1"
+      }
     },
     {
       "id": "LIB_IOERROR_DATA",

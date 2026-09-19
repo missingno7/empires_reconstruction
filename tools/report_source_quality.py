@@ -8,6 +8,7 @@ from reconstruct import ROOT, read_json, write_json
 
 ASM_DB = re.compile(r'^\s*asm\s+db\b', re.IGNORECASE | re.MULTILINE)
 ASM = re.compile(r'^\s*asm\b', re.IGNORECASE | re.MULTILINE)
+RAW_ASM_DB = re.compile(r'^\s*db\b', re.IGNORECASE | re.MULTILINE)
 
 
 def classify_source(path):
@@ -18,6 +19,10 @@ def classify_source(path):
     if ASM.search(text):
         return 'C_WITH_SYMBOLIC_INLINE_ASM'
     return 'MECHANICAL_C'
+
+
+def classify_asm_source(path):
+    return 'ASM_DB_CAPSULE' if RAW_ASM_DB.search(path.read_text(errors='strict')) else 'SYMBOLIC_ASM'
 
 
 def report(manifest):
@@ -34,7 +39,10 @@ def report(manifest):
                 capsules.append({'owner': owner['id'], 'source': owner['source'],
                                  'bytes': owner['end'] - owner['start']})
         elif kind == 'MATCHING_ASM':
-            level = 'SYMBOLIC_ASM'
+            level = classify_asm_source(ROOT / owner['source'])
+            if level == 'ASM_DB_CAPSULE':
+                capsules.append({'owner': owner['id'], 'source': owner['source'],
+                                 'bytes': owner['end'] - owner['start']})
         else:
             continue
         entry = classes[level]

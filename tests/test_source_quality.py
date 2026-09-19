@@ -4,7 +4,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
-from report_source_quality import classify_source, report
+from report_source_quality import classify_source, classify_asm_source, report
 from reconstruct import read_json
 
 
@@ -18,6 +18,10 @@ class SourceQualityTests(unittest.TestCase):
             self.assertEqual(classify_source(path), 'C_WITH_SYMBOLIC_INLINE_ASM')
             path.write_text('void f() {}\n')
             self.assertEqual(classify_source(path), 'MECHANICAL_C')
+            path.write_text('db 90h\n')
+            self.assertEqual(classify_asm_source(path), 'ASM_DB_CAPSULE')
+            path.write_text('nop\n')
+            self.assertEqual(classify_asm_source(path), 'SYMBOLIC_ASM')
         finally:
             path.unlink(missing_ok=True)
 

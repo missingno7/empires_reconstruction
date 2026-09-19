@@ -169,10 +169,21 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
-      "object": "GAMEBSSB.OBJ",
-      "assembly": "GAMEBSSB.ASM",
+      "id": "G96_RESOURCE_STATE_BSS",
+      "object": "G96BSS.OBJ",
+      "assembly": "G96BSS.ASM",
       "logical_start": 24034,
+      "logical_end": 24718,
+      "owner_candidate": "F_21DB/F_2AE2 resource block and render pointers",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSC.OBJ",
+      "assembly": "GAMEBSSC.ASM",
+      "logical_start": 24718,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

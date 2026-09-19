@@ -19,7 +19,7 @@ from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
                           add_publics, make_text_padding,
                           normalize_external_case, rename_external, remove_public,
                           rename_external_addend,
-                          trim_text_contribution)
+                          trim_text_contribution, ensure_turbo_c_dgroup)
 from omf import OmfReader
 from mz import MZ
 from reconstruct import ROOT, compile_sources, read_json, sha, write_json
@@ -231,8 +231,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     if not c0c.exists() or not cc_lib.exists():
         raise ValueError('run tools/setup_toolchain.py first to install C0C.OBJ and CC.LIB')
     startup_length = 0x1BC
+    # The source frontier contains both Turbo C and TASM owners.  Keeping the
+    # two forms in the same freshly compiled scaffold is essential: otherwise
+    # a prior C object can accidentally hide a later symbolic-assembly change.
     owners = [o for o in manifest['regions']
-              if o['kind'] == 'MATCHING_C' and o['start'] >= 512 + startup_length]
+              if o['kind'] in ('MATCHING_C', 'MATCHING_ASM')
+              and o['start'] >= 512 + startup_length]
     compile_owners = [o for o in owners
                       if not (promote_toupper and o['id'] == 'F_F9BE')]
     library_replacements = {
@@ -422,6 +426,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             original_bytes = source.read_bytes()
             source_bytes = original_bytes
             transforms = []
+            if owner['kind'] == 'MATCHING_ASM':
+                try:
+                    source_bytes = ensure_turbo_c_dgroup(source_bytes)
+                except ValueError as error:
+                    raise ValueError(f"{owner['id']}: DGROUP normalization failed: {error}") from error
+                transforms.append('Turbo C-compatible empty DGROUP metadata')
             if expose_internal_labels:
                 for old, new in scoped_aliases.get(owner['id'], {}).items():
                     source_bytes = rename_external(source_bytes, old, new)

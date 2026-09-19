@@ -10,13 +10,13 @@ _f_c549 proc near
     mov bp,sp
     cmp al,0
     je short set_one+1
-    mov word ptr [si+17b4h],0
+    mov word ptr ds:[si+17b4h],0
     xor ah,ah
-    mov [si+17bch],ax
+    mov ds:[si+17bch],ax
     jmp short done
 set_one:
     nop
-    mov word ptr [si+17b4h],1
+    mov word ptr ds:[si+17b4h],1
 done:
     pop bp
     ret

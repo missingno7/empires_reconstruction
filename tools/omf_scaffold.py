@@ -57,6 +57,127 @@ def make_text_padding(length: int, name: str = 'PAD') -> bytes:
     return data
 
 
+def ensure_turbo_c_dgroup(data: bytes) -> bytes:
+    """Give a standalone TASM text object Turbo C's empty DGROUP shape.
+
+    Turbo C 2.0 emits zero-length public ``_DATA`` and ``_BSS`` SEGDEFs and
+    a ``DGROUP`` GRPDEF even for a translation unit containing only code.
+    TASM does not.  Those declarations have no bytes, publics, externals, or
+    fixups of their own, but TLINK uses them while combining DGROUP.  The
+    structural build therefore normalizes symbolic-assembly units to the
+    compiler's linker-facing empty-segment topology.
+    """
+    before = OmfReader().read(data)
+    records = list(_records(data))
+
+    names = []
+    for kind, body in records:
+        if kind != OmfReader.LNAMES:
+            continue
+        at = 0
+        while at < len(body):
+            size = body[at]
+            if at + 1 + size > len(body):
+                raise MatchError('truncated LNAMES entry')
+            names.append(body[at + 1:at + 1 + size].decode('latin1'))
+            at += 1 + size
+    if not names:
+        raise MatchError('TASM object has no LNAMES record')
+    name_indices = {name: index + 1 for index, name in enumerate(names)}
+    dgroup_record_indexes = []
+    group_ordinal = 0
+    for record_index, (kind, body) in enumerate(records):
+        if kind != OmfReader.GRPDEF:
+            continue
+        if group_ordinal >= len(before.groups):
+            raise MatchError('reader/group-record count differs')
+        if before.groups[group_ordinal]['name'] == 'DGROUP':
+            dgroup_record_indexes.append(record_index)
+            name_indices['DGROUP'], _ = _index(body, 0)
+        group_ordinal += 1
+    if len(dgroup_record_indexes) > 1:
+        raise MatchError('TASM object has multiple DGROUP declarations')
+    additions = [name for name in ('_DATA', 'DATA', '_BSS', 'BSS', 'DGROUP')
+                 if name not in name_indices and not (name == 'DGROUP' and dgroup_record_indexes)]
+    for name in additions:
+        name_indices[name] = len(names) + 1
+        names.append(name)
+
+    definitions = {item['name']: item['index'] for item in before.segment_defs}
+    next_segment = len(before.segment_defs) + 1
+    missing = []
+    for name, cls in (('_DATA', 'DATA'), ('_BSS', 'BSS')):
+        if name not in definitions:
+            definitions[name] = next_segment
+            next_segment += 1
+            # word-aligned public 16-bit segment, exactly as Turbo C emits.
+            body = bytes((0x48,)) + struct.pack('<H', 0) + bytes((
+                name_indices[name], name_indices[cls], 1))
+            missing.append((OmfReader.SEGDEF16, body))
+
+    dgroup_body = bytes((name_indices['DGROUP'], 0xFF, definitions['_BSS'],
+                         0xFF, definitions['_DATA']))
+    last_segdef = max((i for i, (kind, _) in enumerate(records)
+                       if kind == OmfReader.SEGDEF16), default=None)
+    if last_segdef is None:
+        raise MatchError('TASM object has no SEGDEF record')
+    # TASM may emit LNAMES after individual SEGDEFs.  Append supplemental
+    # names immediately before the GRPDEF (or next non-SEGDEF record), so no
+    # existing OMF name index is renumbered.
+    insertion = next((i for i, (kind, _) in enumerate(records)
+                      if i > last_segdef and kind == OmfReader.GRPDEF), None)
+    if insertion is None:
+        insertion = next((i for i, (kind, _) in enumerate(records)
+                          if i > last_segdef and kind != OmfReader.LNAMES), len(records))
+    rebuilt, inserted, inserted_group = [], False, False
+    group_ordinal = 0
+    for index, (kind, body) in enumerate(records):
+        if index == insertion:
+            encoded = b''.join(bytes((len(name.encode('ascii')),)) + name.encode('ascii')
+                               for name in additions)
+            if additions:
+                rebuilt.append((OmfReader.LNAMES, encoded))
+            rebuilt.extend(missing)
+            if not dgroup_record_indexes:
+                rebuilt.append((OmfReader.GRPDEF, dgroup_body))
+                inserted_group = True
+            inserted = True
+        if kind == OmfReader.GRPDEF:
+            group_name = before.groups[group_ordinal]['name']
+            group_ordinal += 1
+            if group_name == 'DGROUP':
+                rebuilt.append((OmfReader.GRPDEF, dgroup_body))
+                inserted_group = True
+                continue
+        rebuilt.append((kind, body))
+    if not inserted:
+        encoded = b''.join(bytes((len(name.encode('ascii')),)) + name.encode('ascii')
+                           for name in additions)
+        if additions:
+            rebuilt.append((OmfReader.LNAMES, encoded))
+        rebuilt.extend(missing)
+    if not dgroup_record_indexes and not inserted_group:
+        rebuilt.append((OmfReader.GRPDEF, dgroup_body))
+        inserted_group = True
+    if dgroup_record_indexes and not inserted_group:
+        raise MatchError('failed to replace existing DGROUP')
+    if not inserted_group:
+        raise MatchError('failed to insert DGROUP')
+    result = b''.join(_record(kind, body) for kind, body in rebuilt)
+    after = OmfReader().read(result)
+    if (before.segment_bytes('_TEXT') != after.segment_bytes('_TEXT')
+            or before.publics_in('_TEXT') != after.publics_in('_TEXT')
+            or before.externals != after.externals
+            or before.fixups_in('_TEXT') != after.fixups_in('_TEXT')):
+        raise MatchError('DGROUP normalization changed text-object semantics')
+    group = next((entry for entry in after.groups if entry['name'] == 'DGROUP'), None)
+    if (after.segment_length('_DATA') != 0 or after.segment_length('_BSS') != 0
+            or not group or group['segments'] != ['_BSS', '_DATA']):
+        raise MatchError(f'DGROUP normalization did not produce Turbo C topology: '
+                         f'segments={after.segment_defs!r} groups={after.groups!r}')
+    return result
+
+
 def rename_external(data: bytes, old: str, new: str) -> bytes:
     """Rename an EXTDEF symbol while preserving all OMF reference indices."""
     if not old or not new or len(new.encode('ascii')) > 255:

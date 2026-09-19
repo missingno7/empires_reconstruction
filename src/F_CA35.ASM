@@ -10,13 +10,13 @@ _f_ca35 proc near
     mov bp,sp
     cmp al,0
     je short set_one
-    mov word ptr [1e94h],0
+    mov word ptr ds:[1e94h],0
     xor ah,ah
-    mov [1e8eh],ax
+    mov ds:[1e8eh],ax
     pop bp
     ret
 set_one:
-    mov word ptr [1e94h],1
+    mov word ptr ds:[1e94h],1
     pop bp
     ret
 _f_ca35 endp

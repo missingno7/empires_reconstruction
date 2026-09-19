@@ -1,0 +1,89 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "ab88bea0fdf7456a618545c46eab0bdd6dd459ef0fed07618acfd63a4489c940",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 61,
+  "owners": [
+    {
+      "id": "DATA_00D81B_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "source_sha256": "33b1cab5cf9450a41405ffcd1a33db7e5f35351dded7cb6c6a233e25234a341b",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_00DA17_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 1,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "source_sha256": "33b1cab5cf9450a41405ffcd1a33db7e5f35351dded7cb6c6a233e25234a341b",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0106D3_ZERO_RUN",
+      "kind": "EXACT_DATA",
+      "bytes": 36,
+      "sha256": "6db65fd59fd356f6729140571b5bcd6bb3b83492a16e1bf0a3884442fc3c8a0e",
+      "source_sha256": "bf44c3ca1dc24abb127c6fc1491885dcd45822cd4ea5f0f498c4be16cb1f9f9a",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0109AF_GO_BACK",
+      "kind": "EXACT_DATA",
+      "bytes": 12,
+      "sha256": "03e1b2f3eaf2485ba613adb050247c04d6c24ff0ca6f4690ff6458bd55852026",
+      "source_sha256": "07f0afe9d7d1738d59465a8c30b9425e17532ed9880091be5c188305c4bb6a49",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0109BD_CONTINUE",
+      "kind": "EXACT_DATA",
+      "bytes": 13,
+      "sha256": "05d3f5d4180ce62105142be6532c7341ac8d29548fa995a0f3577111da6ddaab",
+      "source_sha256": "c1c7c3ce1a60c1a6d457aa6634f58b61a275bc0721702c9bcce5d53909c0f8c5",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01136D_ARTIFACTS_REMAIN",
+      "kind": "EXACT_DATA",
+      "bytes": 30,
+      "sha256": "05fc872f219aa51fa29de4d2eb6362e79516072e75f17f7c366e49f9fde87b1c",
+      "source_sha256": "466414d4bbefb32cb9f2f1f5779eeac0009e27f5acc70c27a89979c6cd3b4424",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_011E30_MUSIC",
+      "kind": "EXACT_DATA",
+      "bytes": 6,
+      "sha256": "c2978157ebe969d7fa3515dee72d05ec5bd4e2291389c5f1394cda383160135c",
+      "source_sha256": "a682fc6316ed9bd3d5c703f53f705b7d4675c7f4c4403b10419a71ffa600481d",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

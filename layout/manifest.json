@@ -16796,16 +16796,18 @@
       }
     },
     {
-      "id": "RAW_00D81B",
+      "id": "DATA_00D81B_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00D81B_PAD.json",
       "start": 55323,
       "end": 55324,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00D81B-00D81C.bin",
-      "original_symbol": null,
-      "artifact": "raw/00D81B-00D81C.bin",
       "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00D81B_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "F_D61C",
@@ -16846,16 +16848,18 @@
       }
     },
     {
-      "id": "RAW_00DA17",
+      "id": "DATA_00DA17_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00DA17_PAD.json",
       "start": 55831,
       "end": 55832,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00DA17-00DA18.bin",
-      "original_symbol": null,
-      "artifact": "raw/00DA17-00DA18.bin",
       "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
-      "matching_status": "EQUAL"
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00DA17_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
     },
     {
       "id": "F_D818",
@@ -20488,15 +20492,29 @@
       }
     },
     {
-      "id": "RAW_0106D3",
+      "id": "DATA_0106D3_ZERO_RUN",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106D3_ZERO_RUN.json",
       "start": 67283,
+      "end": 67319,
+      "expected_sha256": "6db65fd59fd356f6729140571b5bcd6bb3b83492a16e1bf0a3884442fc3c8a0e",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_0106D3_ZERO_RUN.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "RAW_0106F7",
+      "start": 67319,
       "end": 67442,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0106D3-010772.bin",
+      "source": "raw/0106F7-010772.bin",
       "original_symbol": null,
-      "artifact": "raw/0106D3-010772.bin",
-      "expected_sha256": "b1490d77a916bca96d17f7fac3690da03508e54706816b07449ddc6b72f796a5",
+      "artifact": "raw/0106F7-010772.bin",
+      "expected_sha256": "4f1754618c1893f4ddc44264cc55126ae3a6ddba993f1a00ea33084da5031b1c",
       "matching_status": "EQUAL"
     },
     {
@@ -20760,14 +20778,54 @@
     {
       "id": "RAW_010924",
       "start": 67876,
-      "end": 68042,
+      "end": 68015,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/010924-0109CA.bin",
+      "source": "raw/010924-0109AF.bin",
       "original_symbol": null,
-      "artifact": "raw/010924-0109CA.bin",
-      "expected_sha256": "428154efa19cc3756585ab5d377138ebb789e27a62effe48ac80bde29ed80b7a",
+      "artifact": "raw/010924-0109AF.bin",
+      "expected_sha256": "15bb4775398874b1c975a93cadf5fe362f5ee940b960c17de09d30ae0d061c27",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_0109AF_GO_BACK",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109AF_GO_BACK.json",
+      "start": 68015,
+      "end": 68027,
+      "expected_sha256": "03e1b2f3eaf2485ba613adb050247c04d6c24ff0ca6f4690ff6458bd55852026",
+      "classification": "static_text",
+      "artifact": "regions/DATA_0109AF_GO_BACK.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_0109BB",
+      "start": 68027,
+      "end": 68029,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/0109BB-0109BD.bin",
+      "original_symbol": null,
+      "artifact": "raw/0109BB-0109BD.bin",
+      "expected_sha256": "c292bfe6d12ec9a0ff84564959d0085353a00836d39f2bc541473cea1390f64b",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_0109BD_CONTINUE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109BD_CONTINUE.json",
+      "start": 68029,
+      "end": 68042,
+      "expected_sha256": "05d3f5d4180ce62105142be6532c7341ac8d29548fa995a0f3577111da6ddaab",
+      "classification": "static_text",
+      "artifact": "regions/DATA_0109BD_CONTINUE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
     },
     {
       "id": "DATA_0109CA_BACK_PAGE",
@@ -21205,13 +21263,39 @@
     {
       "id": "RAW_01129F",
       "start": 70303,
+      "end": 70509,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/01129F-01136D.bin",
+      "original_symbol": null,
+      "artifact": "raw/01129F-01136D.bin",
+      "expected_sha256": "b3a51b8db1e8dbfa42f84d26390a1ef426d6cbe4a7db9f831823ab47eedc985f",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_01136D_ARTIFACTS_REMAIN",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01136D_ARTIFACTS_REMAIN.json",
+      "start": 70509,
+      "end": 70539,
+      "expected_sha256": "05fc872f219aa51fa29de4d2eb6362e79516072e75f17f7c366e49f9fde87b1c",
+      "classification": "static_text",
+      "artifact": "regions/DATA_01136D_ARTIFACTS_REMAIN.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_01138B",
+      "start": 70539,
       "end": 72390,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/01129F-011AC6.bin",
+      "source": "raw/01138B-011AC6.bin",
       "original_symbol": null,
-      "artifact": "raw/01129F-011AC6.bin",
-      "expected_sha256": "ef257df9f9d8a958c5c9b323dba6924f713ccf77a2a788ea4a585878f8a14e57",
+      "artifact": "raw/01138B-011AC6.bin",
+      "expected_sha256": "04f46472f8a4a9a500cc50897a2596ad21a21d260485adaa85d14beee3f6c619",
       "matching_status": "EQUAL"
     },
     {
@@ -21301,14 +21385,28 @@
     {
       "id": "RAW_011D90",
       "start": 73104,
-      "end": 73270,
+      "end": 73264,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/011D90-011E36.bin",
+      "source": "raw/011D90-011E30.bin",
       "original_symbol": null,
-      "artifact": "raw/011D90-011E36.bin",
-      "expected_sha256": "0b3bbc025823f801dc58012c6a0276c775bb7124aff330e3bcb16686b9880d78",
+      "artifact": "raw/011D90-011E30.bin",
+      "expected_sha256": "0c5c140bbef4e38e3b7c318bfedfe8044624e5583ca3cdc4a2de91fbafa47e7d",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_011E30_MUSIC",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E30_MUSIC.json",
+      "start": 73264,
+      "end": 73270,
+      "expected_sha256": "c2978157ebe969d7fa3515dee72d05ec5bd4e2291389c5f1394cda383160135c",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E30_MUSIC.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
     },
     {
       "id": "DATA_011E36_MUSIC_PROMPT",

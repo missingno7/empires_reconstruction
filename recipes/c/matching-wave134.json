@@ -1,0 +1,103 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_00D81B_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00D81B_PAD.json",
+      "start": 55323,
+      "end": 55324,
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00D81B_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_00DA17_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00DA17_PAD.json",
+      "start": 55831,
+      "end": 55832,
+      "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00DA17_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_0106D3_ZERO_RUN",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106D3_ZERO_RUN.json",
+      "start": 67283,
+      "end": 67319,
+      "expected_sha256": "6db65fd59fd356f6729140571b5bcd6bb3b83492a16e1bf0a3884442fc3c8a0e",
+      "classification": "zero_initialized_data",
+      "artifact": "regions/DATA_0106D3_ZERO_RUN.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_0109AF_GO_BACK",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109AF_GO_BACK.json",
+      "start": 68015,
+      "end": 68027,
+      "expected_sha256": "03e1b2f3eaf2485ba613adb050247c04d6c24ff0ca6f4690ff6458bd55852026",
+      "classification": "static_text",
+      "artifact": "regions/DATA_0109AF_GO_BACK.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0109BD_CONTINUE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109BD_CONTINUE.json",
+      "start": 68029,
+      "end": 68042,
+      "expected_sha256": "05d3f5d4180ce62105142be6532c7341ac8d29548fa995a0f3577111da6ddaab",
+      "classification": "static_text",
+      "artifact": "regions/DATA_0109BD_CONTINUE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01136D_ARTIFACTS_REMAIN",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01136D_ARTIFACTS_REMAIN.json",
+      "start": 70509,
+      "end": 70539,
+      "expected_sha256": "05fc872f219aa51fa29de4d2eb6362e79516072e75f17f7c366e49f9fde87b1c",
+      "classification": "static_text",
+      "artifact": "regions/DATA_01136D_ARTIFACTS_REMAIN.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011E30_MUSIC",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E30_MUSIC.json",
+      "start": 73264,
+      "end": 73270,
+      "expected_sha256": "c2978157ebe969d7fa3515dee72d05ec5bd4e2291389c5f1394cda383160135c",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E30_MUSIC.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

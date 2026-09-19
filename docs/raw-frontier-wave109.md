@@ -1,8 +1,8 @@
 # Raw executable frontier after wave 108
 
-Wave 133 removes 126 bytes of zero padding, relocation-free word tables and one
-terminated ASCII record after wave 132's 1,274 bytes of text. The remaining raw
-fallback is 8,651 bytes across twenty-one owners. It consists of alignment gaps, the
+Wave 134 removes 99 bytes of zero runs and terminated ASCII records after wave
+133's 126 bytes of zero padding, word tables and text. The remaining raw
+fallback is 8,552 bytes across twenty owners. It consists of alignment gaps, the
 relocation-backed numeric/pointer area, help control tables, player-dialog
 control tables, gameplay message tables, and terminal initialized data.
 

@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DOS_STUB",
+      "kind": "MATCHING_C",
+      "source": "src/DOS_STUB.C",
+      "start": 512,
+      "end": 916,
+      "expected_sha256": "79cf249420c5a3f2293266ed1ededcebbacd9ffa8785a463802392612a28b439",
+      "classification": "startup-stub",
+      "artifact": "regions/DOS_STUB.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_dosstub",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

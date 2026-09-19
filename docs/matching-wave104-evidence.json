@@ -1,0 +1,25 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "9cf6fdfeafb5b85de3bd491caa903cc79726f5a5597e803cc8ab185c275b3259",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 404,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "DOS_STUB",
+      "kind": "MATCHING_C",
+      "bytes": 404,
+      "sha256": "79cf249420c5a3f2293266ed1ededcebbacd9ffa8785a463802392612a28b439",
+      "source_sha256": "3c79b3ff90ffa4dd634267b214567b730e83d78a88e17e57782896b4c6ce8217",
+      "fixups": 1,
+      "load_relocations": [
+        1
+      ],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

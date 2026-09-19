@@ -29,16 +29,23 @@
       }
     },
     {
-      "id": "RAW_000200",
+      "id": "DOS_STUB",
+      "kind": "MATCHING_C",
+      "source": "src/DOS_STUB.C",
       "start": 512,
       "end": 916,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/000200-000394.bin",
-      "original_symbol": null,
-      "artifact": "raw/000200-000394.bin",
       "expected_sha256": "79cf249420c5a3f2293266ed1ededcebbacd9ffa8785a463802392612a28b439",
-      "matching_status": "EQUAL"
+      "classification": "startup-stub",
+      "artifact": "regions/DOS_STUB.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_dosstub",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_0194",

@@ -24,9 +24,9 @@ mostly aggregate BSS ownership with 247 canonical public anchors, and four evide
 constraints. Canonical EXE and source-link raw DATA are both zero, and the
 structural path performs zero object symbol transforms. All standalone TASM
 owners now declare their Turbo C-compatible empty `_DATA`/`_BSS` and `DGROUP`
-topology in source. Ordered symbolic contributions now own 2,852 BSS bytes,
+topology in source. Ordered symbolic contributions now own 3,524 BSS bytes,
 including the row-pointer, record, note, animation, and eleven-voice pointer
-tables; seven anchored `GAMEBSS` fragments retain the 34,398-byte remainder. The arithmetic adapter changes only the order of explicit OMF fixup
+tables and the 672-byte resource-25 workspace; seven anchored `GAMEBSS` fragments retain the 33,726-byte remainder. The arithmetic adapter changes only the order of explicit OMF fixup
 subrecords; it rejects threads and verifies that segment bytes, publics,
 externals, targets, addends, and sites remain identical before TLINK runs.
 The former synthetic DGROUP/BSS object has been replaced by a real

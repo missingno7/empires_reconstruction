@@ -37,10 +37,21 @@
       "aggregate_storage": false
     },
     {
+      "id": "RESOURCE25_WORKSPACE_BSS",
+      "object": "G40D4B.OBJ",
+      "assembly": "G40D4B.ASM",
+      "logical_start": 2002,
+      "logical_end": 2674,
+      "owner_candidate": "F_1D47 resource-25 workspace",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
       "id": "GAMEBSS_LEADING_REMAINDER",
       "object": "GAMEBSS0.OBJ",
       "assembly": "GAMEBSS0.ASM",
-      "logical_start": 2002,
+      "logical_start": 2674,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

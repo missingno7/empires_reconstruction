@@ -260,6 +260,20 @@
       "contribution": {"object": "NOTEIDX.OBJ", "logical_start": 36168, "logical_end": 36264}
     },
     {
+      "id": "RESOURCE25_WORKSPACE_BSS",
+      "owner_candidate": "F_1D47 resource-25 workspace",
+      "start": 2002,
+      "end": 2674,
+      "alignment": "word",
+      "declarations": [{"symbol": "_g40d4", "source_name": "g40d4", "type": "unsigned char[672]", "offset": 2002, "size": 672}],
+      "references": ["F_1D47 declares g40d4 as a byte array and fills it from resource slot 25", "F_1D47 copies exactly 672 bytes from the resource buffer", "the next independent BSS anchor _g4374 begins at 2674"],
+      "evidence": ["F_1D47 calls f656c(25), then memmove(g40d4, gc5c6, 672)", "the canonical map places _g40d4 at 2002 and _g4374 at 2674", "2674 - 2002 = 672, so the workspace extent has no inferred padding"],
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {"recipe": "recipes/data/bss-contributions.json", "object": "G40D4B.OBJ", "logical_start": 2002, "logical_end": 2674},
+      "limitation": "F_1D47 strongly establishes the workspace type, source data flow and exact extent. Its historical object boundary remains unproven."
+    },
+    {
       "id": "VOICE_POINTER_TABLE_BSS",
       "owner_candidate": "F_DEFA sound reset state",
       "start": 37154,

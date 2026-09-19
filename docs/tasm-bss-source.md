@@ -11,11 +11,12 @@ derives the unchanged BSS base, runtime BSS placement, stack base and MZ fields.
 Its first contribution is `F01CEBSS.OBJ`, a 34-byte symbolic owner containing
 `GAME_BSS`, `_cur_idx`, `_g3902`, and `_g3904`. `ROWPTRS.OBJ` owns the 1,952-byte
 row-pointer table initialized by `F_0281`; `RSTATEB.OBJ` owns the 16-byte shared
-command/render-state island at bytes 1,986–2,001; and `C470BSS.OBJ` owns the
+command/render-state island at bytes 1,986–2,001; `G40D4B.OBJ` owns the 672-byte
+resource-25 workspace filled by `F_1D47`; and `C470BSS.OBJ` owns the
 ten recovered 27-byte records. `SLOTBSS.OBJ`, `ANIMBSS.OBJ`, `GC360BSS.OBJ`,
 `FLAGSBS.OBJ`, `OCTAVES.OBJ`, `NOTEIDX.OBJ`, and `VOICEPTR.OBJ` add other
 bounded state, including the 44-byte eleven-entry far-pointer table initialized
-by `F_DEFA`. Seven `GAMEBSS` fragments hold the remaining 34,398-byte anchored
+by `F_DEFA`. Seven `GAMEBSS` fragments hold the remaining 33,726-byte anchored
 reserve. The plan must cover the full logical reserve, and
 its rebased labels must equal the canonical map before the link begins. None of the objects contributes
 load-image payload. The
@@ -25,6 +26,6 @@ full historical-linker output remains byte-identical.
 This removes the synthetic DGROUP/BSS object from the exact path. It does not
 prove the historical translation-unit boundary of either object. The canonical
 anchor map and ordered contributions are checked against linker-binding
-evidence on every structural link, but 34,398 bytes remain aggregate storage.
+evidence on every structural link, but 33,726 bytes remain aggregate storage.
 Those are the next ownership constraints rather than reasons to retain a
 synthetic object.

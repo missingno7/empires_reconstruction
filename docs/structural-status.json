@@ -10,12 +10,12 @@
       "owners": 49
     },
     "MATCHING_ASM": {
-      "bytes": 1043,
-      "owners": 24
+      "bytes": 1200,
+      "owners": 26
     },
     "MATCHING_C": {
-      "bytes": 57936,
-      "owners": 323
+      "bytes": 57779,
+      "owners": 321
     },
     "MZ_HEADER": {
       "bytes": 512,
@@ -100,7 +100,7 @@
   "omf_metadata_adapter_owners": 0,
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "9b5455de484c595b75e114277126db638a20d086fa4bcdf6455cfe5299eec70c",
+    "candidate_sha256": "cf94e4c3d0fa16cb593a89410d6f4b8fee4076c215ce924999ed5a8bce8c002e",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -210,7 +210,7 @@
       "end": 64035,
       "candidate_length": 64035,
       "oracle_length": 64035,
-      "differing_byte_count": 1474,
+      "differing_byte_count": 1482,
       "first_difference": 200
     },
     "initialized_data": {
@@ -224,7 +224,7 @@
     },
     "full_file": {
       "equal": false,
-      "differing_bytes_outside_relocation_table": 9583,
+      "differing_bytes_outside_relocation_table": 9591,
       "first_difference": 6
     }
   },
@@ -241,8 +241,8 @@
     "oracle_copied_initialized_data_bytes": 0,
     "local_raw_source_bytes": 0,
     "synthetic_bss_bytes": 0,
-    "partitioned_bss_source_bytes": 2852,
-    "unpartitioned_bss_source_bytes": 34398
+    "partitioned_bss_source_bytes": 3524,
+    "unpartitioned_bss_source_bytes": 33726
   },
   "exact_structural_experiment": {
     "status": "BYTE_IDENTICAL_STRUCTURAL_EXPERIMENT",

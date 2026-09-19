@@ -32,7 +32,8 @@ experiment. A generated, canonical [Turbo Assembler BSS module](tasm-bss-source.
 declares ordered symbolic storage for the 34-byte prefix, the 1,952-byte
 `F_0281` row-pointer table, bounded render/record/animation state, paired
 96-byte note tables, and the 44-byte eleven-entry far-pointer table initialized
-by `F_DEFA`; 34,398 bytes remain anchored aggregate storage covering the
+by `F_DEFA`; the 672-byte resource-25 workspace filled by `F_1D47` is also
+source-owned; 33,726 bytes remain anchored aggregate storage covering the
 verified reserve and its currently recovered public map. Independent runtime fixups verify its boundary;
 [boundary evidence](bss-boundary.md)
 explains why the previous stack-rounded estimate was two bytes high. Local

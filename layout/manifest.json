@@ -20232,16 +20232,74 @@
       }
     },
     {
-      "id": "RAW_00FC23",
+      "id": "DATA_00FC23_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC23_PAD.json",
       "start": 64547,
+      "end": 64564,
+      "expected_sha256": "0a88111852095cae045340ea1f0b279944b2a756a213d9b50107d7489771e159",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00FC23_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_00FC34",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC34.json",
+      "start": 64564,
+      "end": 64607,
+      "expected_sha256": "05056226aa623e78a1feab2b38c9804496cdd11e33fcf21f18bdbc6eeb66b09b",
+      "classification": "runtime_banner",
+      "artifact": "regions/DATA_00FC34.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_00FC5F",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC5F.json",
+      "start": 64607,
+      "end": 64652,
+      "expected_sha256": "bf2aea82996056f6604772de3c0bcfb0689e170358c216c9dbc5ec5604936fe5",
+      "classification": "runtime_error_text",
+      "artifact": "regions/DATA_00FC5F.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_00FC8C_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC8C_PAD.json",
+      "start": 64652,
+      "end": 64706,
+      "expected_sha256": "ea659cdc838619b3767c057fdf8e6d99fde2680c5d8517eb06761c0878d40c40",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00FC8C_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_00FCC2",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FCC2.json",
+      "start": 64706,
       "end": 64846,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00FC23-00FD4E.bin",
-      "original_symbol": null,
-      "artifact": "raw/00FC23-00FD4E.bin",
-      "expected_sha256": "f85426142c7ca87c8838e1d9493dd14b9ef0daf5753aa090ea478e22f2bac823",
-      "matching_status": "EQUAL"
+      "expected_sha256": "e53403f07a4ece9034f9c28e07e069dc3faaefdc6ccc8d94b0ac9a0dbe983851",
+      "classification": "runtime_word_table",
+      "artifact": "regions/DATA_00FCC2.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
     },
     {
       "id": "PALETTE_DAC6_011E",
@@ -20472,15 +20530,43 @@
       }
     },
     {
-      "id": "RAW_010F15",
+      "id": "DATA_010F15_DIALOG_REMOVE_INTRO",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010F15_dialog_remove_intro.json",
       "start": 69397,
+      "end": 69510,
+      "expected_sha256": "ab4c08d9c9c2ed97ee9f6338984f6aa60561d06e3c1469141ea04f2b7acc0e1f",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010F15_DIALOG_REMOVE_INTRO.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010F86_DIALOG_REMOVE_SUFFIX",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010F86_dialog_remove_suffix.json",
+      "start": 69510,
+      "end": 69541,
+      "expected_sha256": "8cf94801c704f88d33312ef4fafcec02770eb916775e0e361dcab6bdb36ac6ca",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010F86_DIALOG_REMOVE_SUFFIX.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_010FA5",
+      "start": 69541,
       "end": 69621,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/010F15-010FF5.bin",
+      "source": "raw/010FA5-010FF5.bin",
       "original_symbol": null,
-      "artifact": "raw/010F15-010FF5.bin",
-      "expected_sha256": "dff2a7b8ec7c3a80bedcabfc36fb731a2716045c0af771e184b9a70f45af1f20",
+      "artifact": "raw/010FA5-010FF5.bin",
+      "expected_sha256": "6bf6b2a370c2bd7f571255a21d63695fca20efb2f81d41b9548835c8eb3400a4",
       "matching_status": "EQUAL"
     },
     {
@@ -20501,14 +20587,138 @@
     {
       "id": "RAW_010FF6",
       "start": 69622,
-      "end": 70272,
+      "end": 69665,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/010FF6-011280.bin",
+      "source": "raw/010FF6-011021.bin",
       "original_symbol": null,
-      "artifact": "raw/010FF6-011280.bin",
-      "expected_sha256": "1c939c8333f95f8d21c02a20ced14b8d15f83eeb8c9a292dd0890945fdf0125e",
+      "artifact": "raw/010FF6-011021.bin",
+      "expected_sha256": "65777d81e56aeceb96f42390a8556acbc5cc08962794d0abc6e874df41aa955d",
       "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_0101021_PLAYER_NAME_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101021_player_name_title.json",
+      "start": 69665,
+      "end": 69687,
+      "expected_sha256": "671d0a59ab32beb913e91cd8b284d00ada5341edf00b0ccd3ce778a3e24fd9a8",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101021_PLAYER_NAME_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "RAW_011037",
+      "start": 69687,
+      "end": 69738,
+      "kind": "RAW",
+      "classification": "unknown",
+      "source": "raw/011037-01106A.bin",
+      "original_symbol": null,
+      "artifact": "raw/011037-01106A.bin",
+      "expected_sha256": "2e3e33a84a2405d54c59d8ede403492ef726c018f001cd9f3b9d61f3a914b4fa",
+      "matching_status": "EQUAL"
+    },
+    {
+      "id": "DATA_010106A_PLAYER_LIST_FULL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010106A_player_list_full.json",
+      "start": 69738,
+      "end": 69810,
+      "expected_sha256": "d7eca564645df20c94e9c9ddea0c3fcfcada91ceaa06959f653ada1b34c51c5d",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010106A_PLAYER_LIST_FULL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01010B2_exit_program_title.json",
+      "start": 69810,
+      "end": 69823,
+      "expected_sha256": "97d4eb5274aa5c878591ba1f3e2834d3a4059b3f1938ba4b14f30d835409023a",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_01010B2_EXIT_PROGRAM_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01010BF_exit_program_prompt.json",
+      "start": 69823,
+      "end": 69902,
+      "expected_sha256": "6fd4ef9b1cf43a4e608fad44968b1b929f1e4a739c47b5e981abde53cdf22e09",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_01010BF_EXIT_PROGRAM_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010110E_REMOVE_PLAYER_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010110E_remove_player_title.json",
+      "start": 69902,
+      "end": 69925,
+      "expected_sha256": "22a4c7db23753c1e35142ed635a29b9c269b8888562ac703fa91f3c588d89a2b",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010110E_REMOVE_PLAYER_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101125_DIFFICULTY_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101125_difficulty_title.json",
+      "start": 69925,
+      "end": 69952,
+      "expected_sha256": "81ef763a804516f440a53925b2df28ec36f2e28e2307f76d7afefd3b7dc05e1d",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101125_DIFFICULTY_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101140_DIFFICULTY_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101140_difficulty_prompt.json",
+      "start": 69952,
+      "end": 70176,
+      "expected_sha256": "cefe04ac9db590851d3b2ae5e534f9d6b4114597522a76d07fa67997a5239701",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101140_DIFFICULTY_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101220_ENERGY_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101220_energy_prompt.json",
+      "start": 70176,
+      "end": 70272,
+      "expected_sha256": "38ddaceb52f395c8a3068376d1fdc3cc82d9309b801bf162a1e4728ef17be83c",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101220_ENERGY_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
     },
     {
       "id": "C_DATA_A28D",

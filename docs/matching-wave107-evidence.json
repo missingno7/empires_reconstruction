@@ -1,0 +1,122 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "1243214df30d13ba22c8f2464cdee19d9d4e33ce5eb9b6a0f41b228431f9688a",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 700,
+  "owners": [
+    {
+      "id": "DATA_010F15_DIALOG_REMOVE_INTRO",
+      "kind": "EXACT_DATA",
+      "bytes": 113,
+      "sha256": "ab4c08d9c9c2ed97ee9f6338984f6aa60561d06e3c1469141ea04f2b7acc0e1f",
+      "source_sha256": "be5737399f9e0d863c1c852c45a8ea12b4d2047e97ee82102499c143cd11254d",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_010F86_DIALOG_REMOVE_SUFFIX",
+      "kind": "EXACT_DATA",
+      "bytes": 31,
+      "sha256": "8cf94801c704f88d33312ef4fafcec02770eb916775e0e361dcab6bdb36ac6ca",
+      "source_sha256": "a94c74c5e693b847bbe047657a45813b6efc2b882f9e02b9fb0ee08608e33573",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0101021_PLAYER_NAME_TITLE",
+      "kind": "EXACT_DATA",
+      "bytes": 22,
+      "sha256": "671d0a59ab32beb913e91cd8b284d00ada5341edf00b0ccd3ce778a3e24fd9a8",
+      "source_sha256": "d9b8f0962c621e7ca216ffd544cb5e11ce983f749150f9ec0eebcd77793612d8",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_010106A_PLAYER_LIST_FULL",
+      "kind": "EXACT_DATA",
+      "bytes": 72,
+      "sha256": "d7eca564645df20c94e9c9ddea0c3fcfcada91ceaa06959f653ada1b34c51c5d",
+      "source_sha256": "69ce34e656ff1bb9064991dcea5b0896945367d4b80c35385fa406e33037d7e7",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+      "kind": "EXACT_DATA",
+      "bytes": 13,
+      "sha256": "97d4eb5274aa5c878591ba1f3e2834d3a4059b3f1938ba4b14f30d835409023a",
+      "source_sha256": "90912e16d6abcb1e1e5133ca5c1ba226c300e1fcc703bac859d0595a98ceb29d",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+      "kind": "EXACT_DATA",
+      "bytes": 79,
+      "sha256": "6fd4ef9b1cf43a4e608fad44968b1b929f1e4a739c47b5e981abde53cdf22e09",
+      "source_sha256": "6377ed7ffdaa6d1f5b1c7ee205668b77a7deb7825050464d081e204d0ad1b0d7",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_010110E_REMOVE_PLAYER_TITLE",
+      "kind": "EXACT_DATA",
+      "bytes": 23,
+      "sha256": "22a4c7db23753c1e35142ed635a29b9c269b8888562ac703fa91f3c588d89a2b",
+      "source_sha256": "24c1823b8b1a6e0e09f75f3f2a830709b1cf5d404f1488ffce21fd2dc4afce78",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0101125_DIFFICULTY_TITLE",
+      "kind": "EXACT_DATA",
+      "bytes": 27,
+      "sha256": "81ef763a804516f440a53925b2df28ec36f2e28e2307f76d7afefd3b7dc05e1d",
+      "source_sha256": "4c826b32d05d26abf155f450acdd86466d4685fe8c230e95b02cb480f64a150a",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0101140_DIFFICULTY_PROMPT",
+      "kind": "EXACT_DATA",
+      "bytes": 224,
+      "sha256": "cefe04ac9db590851d3b2ae5e534f9d6b4114597522a76d07fa67997a5239701",
+      "source_sha256": "d0a8acad1a31f1d14a48282f1bb78c35943b7dad38d57e691efe70fa06469a4d",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_0101220_ENERGY_PROMPT",
+      "kind": "EXACT_DATA",
+      "bytes": 96,
+      "sha256": "38ddaceb52f395c8a3068376d1fdc3cc82d9309b801bf162a1e4728ef17be83c",
+      "source_sha256": "a4b690b0a60caca1cb451a997fdb19a2b89c377a2bc50320d344ca1e18c311c7",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_010F15_DIALOG_REMOVE_INTRO",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010F15_dialog_remove_intro.json",
+      "start": 69397,
+      "end": 69510,
+      "expected_sha256": "ab4c08d9c9c2ed97ee9f6338984f6aa60561d06e3c1469141ea04f2b7acc0e1f",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010F15_DIALOG_REMOVE_INTRO.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010F86_DIALOG_REMOVE_SUFFIX",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010F86_dialog_remove_suffix.json",
+      "start": 69510,
+      "end": 69541,
+      "expected_sha256": "8cf94801c704f88d33312ef4fafcec02770eb916775e0e361dcab6bdb36ac6ca",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010F86_DIALOG_REMOVE_SUFFIX.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101021_PLAYER_NAME_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101021_player_name_title.json",
+      "start": 69665,
+      "end": 69687,
+      "expected_sha256": "671d0a59ab32beb913e91cd8b284d00ada5341edf00b0ccd3ce778a3e24fd9a8",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101021_PLAYER_NAME_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010106A_PLAYER_LIST_FULL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010106A_player_list_full.json",
+      "start": 69738,
+      "end": 69810,
+      "expected_sha256": "d7eca564645df20c94e9c9ddea0c3fcfcada91ceaa06959f653ada1b34c51c5d",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010106A_PLAYER_LIST_FULL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01010B2_exit_program_title.json",
+      "start": 69810,
+      "end": 69823,
+      "expected_sha256": "97d4eb5274aa5c878591ba1f3e2834d3a4059b3f1938ba4b14f30d835409023a",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_01010B2_EXIT_PROGRAM_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01010BF_exit_program_prompt.json",
+      "start": 69823,
+      "end": 69902,
+      "expected_sha256": "6fd4ef9b1cf43a4e608fad44968b1b929f1e4a739c47b5e981abde53cdf22e09",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_01010BF_EXIT_PROGRAM_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010110E_REMOVE_PLAYER_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010110E_remove_player_title.json",
+      "start": 69902,
+      "end": 69925,
+      "expected_sha256": "22a4c7db23753c1e35142ed635a29b9c269b8888562ac703fa91f3c588d89a2b",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_010110E_REMOVE_PLAYER_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101125_DIFFICULTY_TITLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101125_difficulty_title.json",
+      "start": 69925,
+      "end": 69952,
+      "expected_sha256": "81ef763a804516f440a53925b2df28ec36f2e28e2307f76d7afefd3b7dc05e1d",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101125_DIFFICULTY_TITLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101140_DIFFICULTY_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101140_difficulty_prompt.json",
+      "start": 69952,
+      "end": 70176,
+      "expected_sha256": "cefe04ac9db590851d3b2ae5e534f9d6b4114597522a76d07fa67997a5239701",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101140_DIFFICULTY_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0101220_ENERGY_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0101220_energy_prompt.json",
+      "start": 70176,
+      "end": 70272,
+      "expected_sha256": "38ddaceb52f395c8a3068376d1fdc3cc82d9309b801bf162a1e4728ef17be83c",
+      "classification": "dialog_text",
+      "artifact": "regions/DATA_0101220_ENERGY_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

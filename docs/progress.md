@@ -14,9 +14,9 @@ semantic cleanup remains outside this mechanical phase.
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
-| Independently encoded text | 0 | 259 | 5 |
+| Independently encoded text | 0 | 1,047 | 17 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 11,422 | 33 |
+| Exact raw fallback | 62,621 | 10,423 | 10 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 11,422 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 10,423 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -859,3 +859,20 @@ remaining upstream machine extent lies wholly inside these ranges as a
 complete executable routine. See [the raw frontier audit](raw-frontier-wave106.md).
 The next productive frontier is lossless data/text decoding and relocation-aware
 encoders; the exact executable and archive outputs remain unchanged.
+
+## One-hundred-sixth executable data wave
+
+The Borland runtime block is now partitioned into two terminated strings, two
+zero-padding runs, and a 70-word little-endian table. These five strict data
+sources remove 299 bytes from raw ownership without inferring executable code
+or relocation behavior. See [the wave 106 proof](matching-c-wave106.md).
+
+Matching-C coverage remains 56,330 bytes across 322 owners. Raw ownership is
+now 10,423 bytes across ten owners; the next frontier is relocation-aware
+table and text decoding. See [the updated raw frontier](raw-frontier-wave108.md).
+
+## One-hundred-seventh executable data wave
+
+Ten terminated ASCII dialog strings add 700 independently encoded bytes from
+the help/player spans. Interleaved control-byte tables and DGROUP pointer
+records remain raw. See [the wave 107 proof](matching-c-wave107.md).

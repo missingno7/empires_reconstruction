@@ -1,0 +1,67 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "5956bf3fb19aef3ddd400dffe1c7bdbac45456c101ef3e0a5a84333d00f6c875",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 88,
+  "owners": [
+    {
+      "id": "DATA_00FC23_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 17,
+      "sha256": "0a88111852095cae045340ea1f0b279944b2a756a213d9b50107d7489771e159",
+      "source_sha256": "bfd884801a8f7bc4a67b4f24683be021474614dac549b9865d336ed532d74678",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_00FC34",
+      "kind": "EXACT_DATA",
+      "bytes": 43,
+      "sha256": "05056226aa623e78a1feab2b38c9804496cdd11e33fcf21f18bdbc6eeb66b09b",
+      "source_sha256": "24e66d3e7b4808be76438747a43d12a229ce3f0aa2e1a3cfbdbe785a6d8ac4e4",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_00FC5F",
+      "kind": "EXACT_DATA",
+      "bytes": 45,
+      "sha256": "bf2aea82996056f6604772de3c0bcfb0689e170358c216c9dbc5ec5604936fe5",
+      "source_sha256": "f55719a273397ee3e8a6003fcf4dcfffef714e4aed306fa366a35f60677b85ac",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "ascii-nul-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_00FC8C_PAD",
+      "kind": "EXACT_DATA",
+      "bytes": 54,
+      "sha256": "ea659cdc838619b3767c057fdf8e6d99fde2680c5d8517eb06761c0878d40c40",
+      "source_sha256": "1c2c0f4103a1e7f4f13e794e75ac2cc24b8492122641b1e1c11350286da52609",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    },
+    {
+      "id": "DATA_00FCC2",
+      "kind": "EXACT_DATA",
+      "bytes": 140,
+      "sha256": "e53403f07a4ece9034f9c28e07e069dc3faaefdc6ccc8d94b0ac9a0dbe983851",
+      "source_sha256": "8db0956810c230b68d1ad90343be3be0104f97ce70a709d8ff9bceb5e672165f",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "u16le-table-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

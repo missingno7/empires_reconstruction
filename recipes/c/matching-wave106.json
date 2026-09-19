@@ -1,0 +1,75 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_00FC23_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC23_PAD.json",
+      "start": 64547,
+      "end": 64564,
+      "expected_sha256": "0a88111852095cae045340ea1f0b279944b2a756a213d9b50107d7489771e159",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00FC23_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_00FC34",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC34.json",
+      "start": 64564,
+      "end": 64607,
+      "expected_sha256": "05056226aa623e78a1feab2b38c9804496cdd11e33fcf21f18bdbc6eeb66b09b",
+      "classification": "runtime_banner",
+      "artifact": "regions/DATA_00FC34.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_00FC5F",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC5F.json",
+      "start": 64607,
+      "end": 64652,
+      "expected_sha256": "bf2aea82996056f6604772de3c0bcfb0689e170358c216c9dbc5ec5604936fe5",
+      "classification": "runtime_error_text",
+      "artifact": "regions/DATA_00FC5F.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_00FC8C_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FC8C_PAD.json",
+      "start": 64652,
+      "end": 64706,
+      "expected_sha256": "ea659cdc838619b3767c057fdf8e6d99fde2680c5d8517eb06761c0878d40c40",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_00FC8C_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_00FCC2",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_00FCC2.json",
+      "start": 64706,
+      "end": 64846,
+      "expected_sha256": "e53403f07a4ece9034f9c28e07e069dc3faaefdc6ccc8d94b0ac9a0dbe983851",
+      "classification": "runtime_word_table",
+      "artifact": "regions/DATA_00FCC2.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    }
+  ]
+}

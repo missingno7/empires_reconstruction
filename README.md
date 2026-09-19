@@ -7,7 +7,7 @@ The build compiles 322 C regions, assembles 23 ASM
 regions, and extracts 42 pinned Borland library modules (41 code contributions
 and one 257-byte data contribution). The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
-RGB tables (1,536 bytes); 33 raw regions cover the remaining 11,422 EXE bytes.
+RGB tables (1,536 bytes); ten raw regions cover the remaining 10,423 EXE bytes.
 See [palette ownership and proof](docs/embedded-palettes.md).
 488 code references also resolve through [owned entry publics](docs/code-bindings.md).
 Another 75 resolve through [publics read from pinned library modules](docs/library-bindings.md).

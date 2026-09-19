@@ -1,0 +1,28 @@
+{
+  "status": "COMPATIBLE_MODULE_FIXUPP_ORDER_OPEN",
+  "candidate": "RELOC_F_DDD9_F_DF98",
+  "historical_module_proven": false,
+  "source_units_combined": 4,
+  "text_bytes": 700,
+  "fixups_checked": 17,
+  "publics": [
+    {"name": "_fddd9", "offset": 0},
+    {"name": "_fde7e", "offset": 165},
+    {"name": "_fdefa", "offset": 289},
+    {"name": "_fdf98", "offset": 447}
+  ],
+  "group_relocation_order": {
+    "actual": [56837, 56859, 56872, 56891, 56913, 56938, 57020, 57044, 57266, 57344],
+    "expected": [57344, 57266, 57044, 57020, 56938, 56913, 56891, 56872, 56859, 56837],
+    "equal": false
+  },
+  "link": {
+    "code_placement_equal": true,
+    "downstream_code_divergences": 0,
+    "load_image_equal": true,
+    "relocation_pairs_equal": true,
+    "differing_bytes_outside_relocation_table": 0
+  },
+  "source_recipe_sha256": "8043f6993b19c365d3c6f45927b4136913ed41e452e4fb4f62eb0b4d49ae5276",
+  "limitation": "Exact compatible compiler object; current inline-ASM FIXUPP batching does not reproduce historical relocation order"
+}

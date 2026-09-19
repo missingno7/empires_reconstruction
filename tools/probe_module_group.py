@@ -19,7 +19,12 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None):
     if recipe['format'] != 'empires-c-module-candidate-v1':
         raise ValueError('Unknown module candidate recipe')
     work = Path(tempfile.mkdtemp(prefix='module-group-', dir=root / 'build')).resolve()
-    combined = b'\r\n'.join(project_path(root, s['path']).read_bytes() for s in recipe['sources'])
+    prelude = recipe.get('prelude', '')
+    if not isinstance(prelude, str) or not prelude.isascii():
+        raise ValueError('Module candidate prelude must be ASCII text')
+    pieces = [prelude.encode('ascii')] if prelude else []
+    pieces.extend(project_path(root, s['path']).read_bytes() for s in recipe['sources'])
+    combined = b'\r\n'.join(pieces)
     source = work / 'combined.C'
     source.write_bytes(combined)
     candidate = {'id': recipe['id'], 'kind': 'MATCHING_C', 'source': source.relative_to(root).as_posix(),

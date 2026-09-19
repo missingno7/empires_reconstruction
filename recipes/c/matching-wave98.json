@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_7964",
+      "kind": "MATCHING_C",
+      "source": "src/F_7964.C",
+      "start": 31588,
+      "end": 32211,
+      "expected_sha256": "5c8bd1e4b5ce260af4e03b94d4e045b2001f9f37d62bc6e350ea2afcca7fadae",
+      "classification": "code",
+      "artifact": "regions/F_7964.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7964",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

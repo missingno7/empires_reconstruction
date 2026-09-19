@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_880A",
+      "kind": "MATCHING_C",
+      "source": "src/F_880A.C",
+      "start": 35338,
+      "end": 35844,
+      "expected_sha256": "3364f3b1f31421a9e6ed893e61e57cb766932e9a1571974baa599c60b9acd1bc",
+      "classification": "code",
+      "artifact": "regions/F_880A.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f880a",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "afbcf2bf983527a59d6493b76b2cdfeb5526865045ded5c662b9a067940674c5",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 506,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "F_880A",
+      "kind": "MATCHING_C",
+      "bytes": 506,
+      "sha256": "3364f3b1f31421a9e6ed893e61e57cb766932e9a1571974baa599c60b9acd1bc",
+      "source_sha256": "3a5d02d2304f38b4b88e00021c04c0476f8744c97005d9016b7e8339f8742e94",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": null,
+      "status": "EQUAL"
+    }
+  ]
+}

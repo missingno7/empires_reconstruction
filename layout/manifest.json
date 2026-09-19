@@ -8771,15 +8771,34 @@
       }
     },
     {
-      "id": "RAW_007B64",
+      "id": "F_7964",
+      "kind": "MATCHING_C",
+      "source": "src/F_7964.C",
       "start": 31588,
+      "end": 32211,
+      "expected_sha256": "5c8bd1e4b5ce260af4e03b94d4e045b2001f9f37d62bc6e350ea2afcca7fadae",
+      "classification": "code",
+      "artifact": "regions/F_7964.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f7964",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "RAW_007DD3",
+      "start": 32211,
       "end": 32252,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/007B64-007DFC.bin",
+      "source": "raw/007DD3-007DFC.bin",
       "original_symbol": null,
-      "artifact": "raw/007B64-007DFC.bin",
-      "expected_sha256": "de109c5f38ffd03b933dc460d69320b4fa490fef043b54e137bdbb24eaf59c6e",
+      "artifact": "raw/007DD3-007DFC.bin",
+      "expected_sha256": "7747606212d52f8fa3d13b2d2eba1fc38c9b107a30f180cd45ae1f74945cd5de",
       "matching_status": "EQUAL"
     },
     {
@@ -9758,15 +9777,34 @@
       }
     },
     {
-      "id": "RAW_008A0A",
+      "id": "F_880A",
+      "kind": "MATCHING_C",
+      "source": "src/F_880A.C",
       "start": 35338,
+      "end": 35844,
+      "expected_sha256": "3364f3b1f31421a9e6ed893e61e57cb766932e9a1571974baa599c60b9acd1bc",
+      "classification": "code",
+      "artifact": "regions/F_880A.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f880a",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    },
+    {
+      "id": "RAW_008C04",
+      "start": 35844,
       "end": 35895,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/008A0A-008C37.bin",
+      "source": "raw/008C04-008C37.bin",
       "original_symbol": null,
-      "artifact": "raw/008A0A-008C37.bin",
-      "expected_sha256": "23d421e823ac73924d559d6d3749d997b1d6318645101860ecda5d918f7801c7",
+      "artifact": "raw/008C04-008C37.bin",
+      "expected_sha256": "b0f6648ea80e55ab9bec42832c6fb7e7896eb0aa73960519aea38fdfdcc092c5",
       "matching_status": "EQUAL"
     },
     {

@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_8BAB",
+      "kind": "MATCHING_C",
+      "source": "src/F_8BAB.C",
+      "start": 36267,
+      "end": 37542,
+      "expected_sha256": "4d28a794487dfe99ff0a07a6d5ca363346258b454c96a778c5d4d3eccbb51370",
+      "classification": "code",
+      "artifact": "regions/F_8BAB.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f8bab",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

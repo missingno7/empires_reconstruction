@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 30,866 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 31,578 bytes from raw
 fallback: 26,382 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 37,580 | 271 |
+| Freshly compiled matching C | 14,077 | 38,292 | 273 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 30,172 | 33 |
+| Exact raw fallback | 62,621 | 29,460 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 30,172 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 29,460 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -715,6 +715,16 @@ complete 240-byte record update and DOS seek/read/write/close path, binding
 the recovered helper routines, library publics, and DGROUP state words. Its
 26 OMF fixups require no loader relocations. See [the wave 85–86 proof](matching-c-wave85-86.md).
 
-The full rebuild remains byte-identical: 37,580 matching-C bytes across 271
-owners, 30,172 raw bytes across 33 regions, and the unchanged EXE and DAT
+The full rebuild remains byte-identical: 38,292 matching-C bytes across 273
+owners, 29,460 raw bytes across 33 regions, and the unchanged EXE and DAT
 SHA-256 results.
+
+## Eighty-seventh and eighty-eighth matching-C waves
+
+`F_AA1F` and `F_AB66` add complete switch and state-transition routines of 327
+and 385 bytes. Their mechanical inline-assembly sources preserve the original
+dispatch tables, direct data accesses, and compiler-generated frame/return
+sequences without external fixups. See [the wave 87–88 proof](matching-c-wave87-88.md).
+
+Coverage is now 38,292 matching-C bytes across 273 owners, with 29,460 raw
+bytes remaining. The exact EXE, relocations, and both DAT archives still pass.

@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_AA1F",
+      "kind": "MATCHING_C",
+      "source": "src/F_AA1F.C",
+      "start": 44063,
+      "end": 44390,
+      "expected_sha256": "3d8fffe530ff71af2a1973029d3422e0a5ad7885ade84c2ba2d546ff045512c1",
+      "classification": "code",
+      "artifact": "regions/F_AA1F.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_faa1f",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

@@ -18,7 +18,9 @@ class MatchingCWave85_86Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             for ident, recipe_name, length, fixups, reloc in [
                     ('F_9EC3', 'matching-wave85.json', 125, 4, [40700, 40712]),
-                    ('F_643A', 'matching-wave86.json', 240, 26, [])]:
+                    ('F_643A', 'matching-wave86.json', 240, 26, []),
+                    ('F_AA1F', 'matching-wave87.json', 327, 0, []),
+                    ('F_AB66', 'matching-wave88.json', 385, 0, [])]:
                 owner = next(r for r in manifest['regions'] if r['id'] == ident)
                 recipe = read_json(ROOT / 'recipes/c' / recipe_name)
                 self.assertEqual(next(r for r in recipe['owners'] if r['id'] == ident), owner)

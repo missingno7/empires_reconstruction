@@ -29,8 +29,14 @@ class SourceQualityTests(unittest.TestCase):
         result = report(read_json(ROOT / 'layout/manifest.json'))
         matching = [item for item in result['levels'] if item['level'] != 'HISTORICAL_LIBRARY']
         self.assertEqual(sum(item['owners'] for item in matching), 347)
-        self.assertEqual(result['asm_db_source_files'], 57)
+        self.assertEqual(result['asm_db_source_files'], 56)
         self.assertGreater(result['asm_db_capsules'][0]['bytes'], 1000)
+
+    def test_f4eeb_is_symbolic_tasm(self):
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        owner = next(item for item in manifest['regions'] if item['id'] == 'F_4EEB')
+        self.assertEqual(owner['kind'], 'MATCHING_ASM')
+        self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
 
 
 if __name__ == '__main__':

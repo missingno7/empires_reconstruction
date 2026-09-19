@@ -4048,9 +4048,9 @@
       "id": "F_4EEB",
       "start": 20715,
       "end": 20835,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/F_4EEB.C",
+      "kind": "MATCHING_ASM",
+      "classification": "symbolic_sprite_record_walk",
+      "source": "src/F_4EEB.ASM",
       "original_symbol": "F_4EEB",
       "artifact": "regions/F_4EEB.bin",
       "expected_sha256": "e93b30a16ab59958fada995c3626e1cce7a75216e810b7136f2967d65dba4477",
@@ -4097,10 +4097,9 @@
         }
       },
       "provenance": {
-        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "dedd54adb576eb4f8538fff34c9f9434763e7472aa64cf1a142b6c0e25e80c2e",
-        "source_sha256": "7f258c270d1a5b5722b0f1ca94cb15fa65a39c5be83da8947e7f79001b2f2a2f",
-        "change": "Translate the complete sprite-table walk into Turbo C inline assembly with byte-coded DI addressing, six existing fixups and no loader relocations."
+        "method": "Complete symbolic TASM reconstruction from the previously matching inline-assembly extent; fresh TASM object matches bytes and all six relocatable fixups.",
+        "prior_source": "src/F_4EEB.C",
+        "change": "Replace the remaining byte-coded instruction fragments with named 16-bit TASM instructions and labels."
       }
     },
     {

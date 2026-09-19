@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 2,728 | 61 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 5,313 | 18 |
+| Exact raw fallback | 62,621 | 5,126 | 17 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -171,7 +171,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 5,313 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 5,126 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -1140,3 +1140,11 @@ targets. The fixed-record boundary ends before the next mixed record stream;
 the full EXE and both DAT archives remain byte-identical.
 
 The raw frontier is now 5,313 bytes across 18 owners.
+
+## One-hundred-thirty-eighth executable-data wave
+
+Wave 138 partitions 46 fixed four-byte records and a terminal three-byte zero
+pad from the numeric area. Their exact boundaries preserve the next raw owner;
+the full EXE and both DAT archives remain byte-identical.
+
+The raw frontier is now 5,126 bytes across 17 owners.

@@ -20326,15 +20326,29 @@
       }
     },
     {
-      "id": "RAW_0103B2",
+      "id": "DATA_0103B2_POINTER_ATTRIBUTES",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0103B2_POINTER_ATTRIBUTES.json",
       "start": 66482,
+      "end": 66510,
+      "expected_sha256": "0ed690e4571c10db96daee864a04528056d616a844dc39f1f834d9cc97f976e7",
+      "classification": "control_pointer_attributes",
+      "artifact": "regions/DATA_0103B2_POINTER_ATTRIBUTES.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "fixed-records-v1"
+      }
+    },
+    {
+      "id": "RAW_0103CE",
+      "start": 66510,
       "end": 66697,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/0103B2-010489.bin",
+      "source": "raw/0103CE-010489.bin",
       "original_symbol": null,
-      "artifact": "raw/0103B2-010489.bin",
-      "expected_sha256": "01bd83842e4a69ee4a0d8e6ae6385a948390351d07fd96bdeed3b838c924eb6a",
+      "artifact": "raw/0103CE-010489.bin",
+      "expected_sha256": "dc40d3b14c32dc5dfc97fd336986dd4dab638d59e6c6342daba2b988f806cca0",
       "matching_status": "EQUAL"
     },
     {

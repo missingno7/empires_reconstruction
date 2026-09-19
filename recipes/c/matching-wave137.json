@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_0103B2_POINTER_ATTRIBUTES",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0103B2_POINTER_ATTRIBUTES.json",
+      "start": 66482,
+      "end": 66510,
+      "expected_sha256": "0ed690e4571c10db96daee864a04528056d616a844dc39f1f834d9cc97f976e7",
+      "classification": "control_pointer_attributes",
+      "artifact": "regions/DATA_0103B2_POINTER_ATTRIBUTES.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "fixed-records-v1"
+      }
+    }
+  ]
+}

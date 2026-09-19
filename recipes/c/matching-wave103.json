@@ -1,0 +1,37 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_DF98",
+      "kind": "MATCHING_C",
+      "source": "src/F_DF98.C",
+      "start": 57752,
+      "end": 58005,
+      "expected_sha256": "ec8ec57195a54947df62b7f02ac0c5b330a8d8eda5ddb49c286860fd40326edc",
+      "classification": "code",
+      "artifact": "regions/F_DF98.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fdf98",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "LXMUL@": {
+            "owner": "LIB_LXMUL",
+            "public": "LXMUL@",
+            "coordinate": "code_offset",
+            "addend": 0
+          },
+          "LDIV@": {
+            "owner": "LIB_LDIV",
+            "public": "LDIV@",
+            "coordinate": "code_offset",
+            "addend": 0
+          }
+        },
+        "module_segments": {}
+      }
+    }
+  ]
+}

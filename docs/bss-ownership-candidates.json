@@ -258,6 +258,17 @@
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
       "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
       "contribution": {"object": "NOTEIDX.OBJ", "logical_start": 36168, "logical_end": 36264}
+    },
+    {
+      "id": "VOICE_POINTER_TABLE_BSS",
+      "owner_candidate": "F_DEFA sound reset state",
+      "start": 37154,
+      "end": 37198,
+      "declarations": [{"symbol": "_gca24", "type": "char far *[11]", "size": 44}],
+      "evidence": ["F_DEFA initializes gca24[r] for r from 0 through 10", "far pointers are four bytes in the compact model", "37154 + 11 * 4 = 37198, the _gca50 anchor"],
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "migration_status": "NOT_MIGRATED",
+      "limitation": "The allocation extent is exact; it still needs the normal full-link contribution proof."
     }
   ]
 }

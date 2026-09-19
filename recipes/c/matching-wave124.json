@@ -1,0 +1,26 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_C1A0",
+      "source": "src/F_C1A0.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc1a0",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_fc1f7": {"coordinate": "code_offset", "evidence": "F_C1F7 owned code entry"},
+          "_fc8e2": {"coordinate": "code_offset", "evidence": "F_C8E2 owned code entry"},
+          "_snd_flag": {"offset": 6000, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
+          "_snd_mode": {"offset": 6020, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
+          "_snd_paused": {"offset": 6008, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
+          "_snd_seg2": {"offset": 5988, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
+          "_v_b": {"offset": 6012, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit with fourteen fresh OMF fixups"
+    }
+  ]
+}

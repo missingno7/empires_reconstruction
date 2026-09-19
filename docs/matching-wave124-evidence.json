@@ -1,0 +1,240 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_C1A0",
+  "bytes": 87,
+  "source_sha256": "e461d97cabfc735f89952d12c53b52469f979640dad389ae897eeaa50b0e71ef",
+  "matched_sha256": "8cb80ffdf6254084e9aa61ed263f6a6cc36321a723f154b93d916d11c190e51e",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 13,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_b",
+      "displacement": 0,
+      "extent_offset": 13,
+      "addend": 0,
+      "resolved_value": 6012
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 16,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_b",
+      "displacement": 0,
+      "extent_offset": 16,
+      "addend": 2,
+      "resolved_value": 6014
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 19,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_b",
+      "displacement": 0,
+      "extent_offset": 19,
+      "addend": 4,
+      "resolved_value": 6016
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 22,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_b",
+      "displacement": 0,
+      "extent_offset": 22,
+      "addend": 6,
+      "resolved_value": 6018
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 26,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_flag",
+      "displacement": 0,
+      "extent_offset": 26,
+      "addend": 0,
+      "resolved_value": 6000
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 32,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc8e2",
+      "displacement": 0,
+      "extent_offset": 32,
+      "addend": 0,
+      "resolved_value": 1824
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 36,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_mode",
+      "displacement": 0,
+      "extent_offset": 36,
+      "addend": 0,
+      "resolved_value": 6020
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 43,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_paused",
+      "displacement": 0,
+      "extent_offset": 43,
+      "addend": 0,
+      "resolved_value": 6008
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 50,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_b",
+      "displacement": 0,
+      "extent_offset": 50,
+      "addend": 0,
+      "resolved_value": 6012
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 56,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_seg2",
+      "displacement": 0,
+      "extent_offset": 56,
+      "addend": 0,
+      "resolved_value": 5988
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 59,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc1f7",
+      "displacement": 0,
+      "extent_offset": 59,
+      "addend": 0,
+      "resolved_value": 26
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 66,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_mode",
+      "displacement": 0,
+      "extent_offset": 66,
+      "addend": 0,
+      "resolved_value": 6020
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 73,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_seg2",
+      "displacement": 0,
+      "extent_offset": 73,
+      "addend": 0,
+      "resolved_value": 5988
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 76,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc1f7",
+      "displacement": 0,
+      "extent_offset": 76,
+      "addend": 0,
+      "resolved_value": 9
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "e461d97cabfc735f89952d12c53b52469f979640dad389ae897eeaa50b0e71ef",
+    "staged_sha256": "748abce424d8e5f023887d8d3c73408ee3fdb3136e364f8eb6b30034ef464e04",
+    "object_sha256": "7b00efd705f623fa57cada9252df41b7eaadfa6bcfb89ff390d79d5b9e6a4ee9"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-fc1a0-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "4619c8af651f6dbbc86b53bbd749079136951583c69c39e1cfc284840cd8325a",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

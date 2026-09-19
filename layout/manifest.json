@@ -13777,9 +13777,9 @@
       "id": "F_C1A0",
       "start": 50080,
       "end": 50167,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_C1A0.ASM",
+      "source": "src/F_C1A0.C",
       "original_symbol": "F_C1A0",
       "artifact": "regions/F_C1A0.bin",
       "expected_sha256": "8cb80ffdf6254084e9aa61ed263f6a6cc36321a723f154b93d916d11c190e51e",
@@ -13789,6 +13789,7 @@
         "public": "_fc1a0",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_fc1f7": {
             "coordinate": "code_offset",
@@ -13829,16 +13830,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212AC.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C1A0.json",
-        "entry_sha256": "49ef2163ed3015ce2619f6486726f4a2f096552c04aa1fb51db9d97f72786d81",
-        "record_sha256": "90f53c82979e9940523c5100339d76bf66d4b161cccb8d8baac3e12164315ca5",
-        "source_sha256": "b2c4ef44d0fe092f8183775820000ae2fabda35bc913adf412f5548bfd23458b",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "b2c4ef44d0fe092f8183775820000ae2fabda35bc913adf412f5548bfd23458b",
+        "source_sha256": "e461d97cabfc735f89952d12c53b52469f979640dad389ae897eeaa50b0e71ef",
+        "change": "Translate the complete master sound tick into a deterministic Turbo C source unit with fourteen existing fixups and no loader relocations."
       }
     },
     {

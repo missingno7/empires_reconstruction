@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 57,402 | 337 |
-| Freshly assembled matching ASM | 2,456 | 1,493 | 8 |
+| Freshly compiled matching C | 14,077 | 57,489 | 338 |
+| Freshly assembled matching ASM | 2,456 | 1,406 | 7 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -1026,3 +1026,12 @@ F_D89A converts from its verified ASM owner to matching C. The complete
 
 Current matching-C coverage is 57,402 bytes across 337 owners, with 1,493
 matching-ASM bytes across 8 owners. The raw frontier remains 10,173 bytes.
+
+## One-hundred-twenty-fourth matching-C conversion
+
+F_C1A0 converts from its verified ASM owner to matching C. The complete
+87-byte master sound tick preserves fourteen fixups and no loader relocations.
+See [the wave 124 proof](matching-c-wave124.md).
+
+Current matching-C coverage is 57,489 bytes across 338 owners, with 1,406
+matching-ASM bytes across 7 owners. The raw frontier remains 10,173 bytes.

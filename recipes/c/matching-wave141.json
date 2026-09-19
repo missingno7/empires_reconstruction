@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_01034E_ALIGNMENT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01034E_ALIGNMENT.json",
+      "start": 66382,
+      "end": 66388,
+      "expected_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01034E_ALIGNMENT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    }
+  ]
+}

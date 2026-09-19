@@ -20300,15 +20300,29 @@
       }
     },
     {
-      "id": "RAW_01034E",
+      "id": "DATA_01034E_ALIGNMENT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01034E_ALIGNMENT.json",
       "start": 66382,
+      "end": 66388,
+      "expected_sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_01034E_ALIGNMENT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "RAW_010354",
+      "start": 66388,
       "end": 66426,
       "kind": "RAW",
       "classification": "unknown",
-      "source": "raw/01034E-01037A.bin",
+      "source": "raw/010354-01037A.bin",
       "original_symbol": null,
-      "artifact": "raw/01034E-01037A.bin",
-      "expected_sha256": "1225d5a4e8b36f54afca4f6427d78d00c5b1d621f3675dd3ee7dd89a4de93343",
+      "artifact": "raw/010354-01037A.bin",
+      "expected_sha256": "57eca0f1c6dcb9fc6c1e4bfabf8ba5c2d792a79fd1a7ebe3154800602763ab89",
       "matching_status": "EQUAL"
     },
     {

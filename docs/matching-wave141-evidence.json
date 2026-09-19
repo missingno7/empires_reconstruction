@@ -1,0 +1,23 @@
+{
+  "status": "EQUAL",
+  "recipe_sha256": "1a4584da84ef9dd5739e298835b0e6b889b8cbcba191cea1ac5acf9a3bee30af",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "promoted_c_bytes": 0,
+  "promoted_asm_bytes": 0,
+  "promoted_library_bytes": 0,
+  "promoted_compiled_data_bytes": 0,
+  "promoted_text_bytes": 0,
+  "owners": [
+    {
+      "id": "DATA_01034E_ALIGNMENT",
+      "kind": "EXACT_DATA",
+      "bytes": 6,
+      "sha256": "b0f66adc83641586656866813fd9dd0b8ebb63796075661ba45d1aa8089e1d44",
+      "source_sha256": "34ff7e9a09c6f47257704e0ecdcc07b9e20973ff4be570ac4c360a20176fc837",
+      "fixups": 0,
+      "load_relocations": [],
+      "encoder": "zero-pad-v1",
+      "status": "EQUAL"
+    }
+  ]
+}

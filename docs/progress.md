@@ -1,5 +1,10 @@
 # Incremental reconstruction — 2026-09-18
 
+[DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
+and all segment/code addresses while extending the matching relocation-table
+prefix to 36 entries. The first remaining file difference is at `0xB2`; these
+ordering constraints do not prove historical translation-unit boundaries.
+
 [Relocation-order grouping](relocation-grouping.md) now puts two verified
 compiler TEXT modules in one source-DATA link, replacing seven separate objects.
 All nine relocations within those groups have the original order and the full

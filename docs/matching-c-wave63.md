@@ -1,9 +1,13 @@
 # Sixty-third matching-C wave
 
-`F_CA9B` is now canonical C for its complete 53-byte executable extent. The
+`F_CA9B` was recovered as canonical C for its complete 53-byte executable extent. The
 source preserves the live AH/AL, BX and ES:DI inputs, binds calls to the owned
 `F_CADB`, `F_CAE6` and `F_CAD0` entries, and binds the two DGROUP stores. The
 fresh Turbo C object has five fixups and no loader relocations.
+
+The canonical source is now readable symbolic TASM. The five source-level
+references remain the same, while the recovered 17FCh literal table base is
+explicitly retained pending identification of its data owner.
 
 ```powershell
 python tools/promote_c_candidates.py --recipe recipes/c/matching-wave63.json

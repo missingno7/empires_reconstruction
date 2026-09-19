@@ -145,6 +145,49 @@
         "logical_end": 1986
       },
       "limitation": "The allocation and exact typed extent are directly evidenced. The symbolic TASM contribution is compatible with F_0281 storage ownership but does not prove its original object boundary."
+    },
+    {
+      "id": "C470_RECORD_TABLE_BSS",
+      "owner_candidate": "shared C470 record table",
+      "start": 35694,
+      "end": 35964,
+      "alignment": "word",
+      "declarations": [
+        {
+          "symbols": ["_c470", "_gc470", "_tbl"],
+          "source_type": "struct c470_record[10]",
+          "record_size": 27,
+          "count": 10,
+          "offset": 35694,
+          "size": 270
+        },
+        {
+          "symbol": "_gc563",
+          "source_type": "gc470[9].text[0] alias",
+          "offset": 35937,
+          "size": 1
+        }
+      ],
+      "references": [
+        "F_A223 and F_A24E loop over exactly ten gc470 records",
+        "F_3986, F_4943, F_49F0, F_9DCC, F_AD25, F_ADCF, and F_D4B3 use the 27-byte record layout",
+        "F_68CF and F_A85E use the same table as tbl"
+      ],
+      "evidence": [
+        "include/C470.H defines the recovered 27-byte record layout",
+        "F_A223 returns 10 after scanning i < 10 for a free record",
+        "F_A24E shifts records through i < 10",
+        "35694 + 10 * 27 = 35964, the next independent BSS anchor"
+      ],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {
+        "recipe": "recipes/data/bss-contributions.json",
+        "object": "C470BSS.OBJ",
+        "logical_start": 35694,
+        "logical_end": 35964
+      },
+      "limitation": "The table layout and exact extent are proven, but its original translation-unit owner is not yet identified."
     }
   ]
 }

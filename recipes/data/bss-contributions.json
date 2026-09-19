@@ -37,10 +37,32 @@
       "aggregate_storage": false
     },
     {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSS0.OBJ",
+      "assembly": "GAMEBSS0.ASM",
+      "logical_start": 2002,
+      "logical_end": 35694,
+      "owner_candidate": "aggregate leading remainder",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "C470_RECORD_TABLE_BSS",
+      "object": "C470BSS.OBJ",
+      "assembly": "C470BSS.ASM",
+      "logical_start": 35694,
+      "logical_end": 35964,
+      "owner_candidate": "shared C470 record table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
       "id": "GAMEBSS_REMAINDER",
       "object": "GAMEBSS.OBJ",
       "assembly": "GAMEBSS.ASM",
-      "logical_start": 2002,
+      "logical_start": 35964,
       "logical_end": 37250,
       "owner_candidate": "aggregate remainder",
       "representation": "ANCHORED_BSS",

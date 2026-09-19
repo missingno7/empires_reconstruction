@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 2002,
-  "unpartitioned_bss_source_bytes": 35248,
+  "partitioned_bss_source_bytes": 2272,
+  "unpartitioned_bss_source_bytes": 34978,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -975,16 +975,40 @@
         "source_sha256": "e5afe99479b80f589aa1d49439abad485e0caf0c70a710ce12cdd9ba521a0d9f"
       },
       {
-        "id": "GAMEBSS_REMAINDER",
-        "owner_candidate": "aggregate remainder",
+        "id": "GAMEBSS_LEADING_REMAINDER",
+        "owner_candidate": "aggregate leading remainder",
         "logical_start": 2002,
-        "bytes": 35248,
-        "publics": 232,
+        "bytes": 33692,
+        "publics": 180,
         "representation": "ANCHORED_BSS",
         "confidence": "CANONICAL_LAYOUT",
         "aggregate_storage": true,
-        "object_sha256": "0ab0855a514cefc52928decd5695809628299a0d012637ae161eb8814d19bc99",
-        "source_sha256": "458b7fcf08c630b7cd4f1cae83ba700b1834ed08f0cdd6efda8b3d51723c327d"
+        "object_sha256": "474c51ba9209728faa53929c0913b788b0807d88d1ef355d7f671d483b7ed8ee",
+        "source_sha256": "81a0e000fdba34e3d49d666623fba5904798cd4110923a9a6a70432a9051e10d"
+      },
+      {
+        "id": "C470_RECORD_TABLE_BSS",
+        "owner_candidate": "shared C470 record table",
+        "logical_start": 35694,
+        "bytes": 270,
+        "publics": 4,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
+        "object_sha256": "940f616c1c582bce2a5e41a546959bffa2dc20c80d414a89cd74b6b6d6c22ade",
+        "source_sha256": "aaa344f5f150f1adc669d52cd9485822235da03dd6edc5f46aba2334c80128c4"
+      },
+      {
+        "id": "GAMEBSS_REMAINDER",
+        "owner_candidate": "aggregate remainder",
+        "logical_start": 35964,
+        "bytes": 1286,
+        "publics": 48,
+        "representation": "ANCHORED_BSS",
+        "confidence": "CANONICAL_LAYOUT",
+        "aggregate_storage": true,
+        "object_sha256": "af94e2dc1772394bac292ee8e38fee8b3bbe249809a47e07b6ae0e8366c2e945",
+        "source_sha256": "7b4d5b7310991a04fa928516ae71e6dee1a8cfda8ef516890c2cea320db0dce9"
       }
     ]
   },

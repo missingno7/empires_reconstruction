@@ -14,6 +14,9 @@ The promoted owners are `F_C2EA`, `F_C359`, `F_C3DB`, `F_C440`, `F_C501`,
 data accesses are now explicit OMF references to `_g1e84` and `_g1e86`, while
 the original 50-byte extent and control flow remain exact.
 
+`F_CA03` has also moved to symbolic TASM. Its four branch-selected calls are
+now direct OMF references to their recovered entry publics.
+
 `F_CA35` and `F_C549` are now retained as symbolic TASM because that exposes
 their branch paths directly; the remaining historical promotion figures are
 preserved as provenance. `F_C567` was deliberately left out because its upstream extent crosses the

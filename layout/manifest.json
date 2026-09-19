@@ -15070,8 +15070,8 @@
     },
     {
       "id": "F_CA03",
-      "kind": "MATCHING_C",
-      "source": "src/F_CA03.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_CA03.ASM",
       "start": 52227,
       "end": 52277,
       "expected_sha256": "fc5c469abe90af478d959bfe8eb0821faa55d8f288c5ffd40648d7843bbd2cdf",
@@ -15083,7 +15083,12 @@
         "public": "_f_ca03",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f_ca35": {"coordinate": "code_offset", "evidence": "complete F_CA03 call", "owner": "F_CA35", "public": "_f_ca35", "addend": 0},
+          "_f_ca51": {"coordinate": "code_offset", "evidence": "complete F_CA03 call", "owner": "F_CA51", "public": "_f_ca51", "addend": 0},
+          "_fca83": {"coordinate": "code_offset", "evidence": "complete F_CA03 call", "owner": "F_CA83", "public": "_fca83", "addend": 0},
+          "_fca91": {"coordinate": "code_offset", "evidence": "complete F_CA03 call", "owner": "F_CA91", "public": "_fca91", "addend": 0}
+        },
         "module_segments": {}
       }
     },

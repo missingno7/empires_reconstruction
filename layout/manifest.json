@@ -13676,16 +13676,33 @@
       }
     },
     {
-      "id": "RAW_00CAD4",
+      "id": "F_C8D4",
+      "kind": "MATCHING_C",
+      "source": "src/F_C8D4.C",
       "start": 51924,
       "end": 51938,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/00CAD4-00CAE2.bin",
-      "original_symbol": null,
-      "artifact": "raw/00CAD4-00CAE2.bin",
       "expected_sha256": "e227e7a35b1c337907324b16ae8a3e8c8c1946f3d3684d91a94d5e94159b790f",
-      "matching_status": "EQUAL"
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc8d4",
+        "span": 1,
+        "flags_append": "",
+        "module_segments": {},
+        "bindings": {
+          "_g1830": {
+            "offset": 6192,
+            "coordinate": "DGROUP_offset"
+          }
+        }
+      },
+      "classification": "code",
+      "original_symbol": "F_C8D4",
+      "artifact": "regions/F_C8D4.bin",
+      "matching_status": "EQUAL",
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "change": "Recover the complete 14-byte live-AL port-write wrapper"
+      }
     },
     {
       "id": "F_C8E2",

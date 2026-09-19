@@ -73,7 +73,7 @@
       "bytes": 138,
       "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "bce7319ea0de460cbeb1b17da5c6439dc1de49e85a0882bef721b2441b4e648a"
+      "object_sha256": "f0b21b3ae18da16d928ccc09056825233db89ab4fc5643b1e3c1b179a3e914aa"
     },
     {
       "owner": "PALETTE_DAC6_011E",
@@ -94,14 +94,14 @@
       "bytes": 6,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "575db94d53ba88bdb72e1ac07e0ac34cfa2cbcdc01029b089bf8060daedfd552"
+      "object_sha256": "94077d2e1904be60921acdb0cfb4d16a58453e2f97fde1570682dd60179a806c"
     },
     {
       "owner": "DATA_010354_CONTROL_TABLE",
       "bytes": 38,
       "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "bf1b3a4d1be859a64dedb031e08fa3dbe310d36ebb22f35dc08677cde10ec880"
+      "object_sha256": "611161fcc2159b5207e2070be3ae1c7c9c1d88365f6edf14f7c138e9cfdcf234"
     },
     {
       "owner": "DATA_01037A_POINTER_TABLE",
@@ -150,7 +150,7 @@
       "bytes": 7,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "b1e7a7c5c886026e0f161a061f20c9b54c0bf82afaf901d210941936529a281a"
+      "object_sha256": "c865fbbb33128f935fe4082d38e5fd7356caf13d22da362eafc9da342d1e001b"
     },
     {
       "owner": "DATA_010532_CONTROL_TABLE",
@@ -269,14 +269,14 @@
       "bytes": 24,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "19c594cfd5f9381e00e4ac3ef54cb9ee9f14f5e4a11dae36f73055797cbd6c43"
+      "object_sha256": "98e13dfc7d35be343b65b74d03e9d528eeb0bab80169f64f58c50ef0a46be8b0"
     },
     {
       "owner": "DATA_0107B0_TABLE",
       "bytes": 6,
       "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "076a61efaa138395c01d2a94bc65886583541e8e2bafbb0014e53c60393b86dd"
+      "object_sha256": "5661a7c39535c317dfd7a657b43b53b5a465913fd20f07253d817f33757fe3d0"
     },
     {
       "owner": "DATA_0107B6_PAD",
@@ -451,7 +451,7 @@
       "bytes": 9,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "a987d0659355749cfef70926aaf05eb110a9a4c7e16989eb92780dca7b18b012"
+      "object_sha256": "368fdbe89003824c75e4d359ce31a0d7bad402908d7120be91a80253bb6233a3"
     },
     {
       "owner": "DATA_0DCC",
@@ -479,7 +479,7 @@
       "bytes": 48,
       "format": "u16le-table-v1",
       "pointer_fixups": 0,
-      "object_sha256": "127defa775cb5459b15e5dbbfad6f5e43ff5a51cf75e4a1e5bb7eb2de490c23d"
+      "object_sha256": "8480367222f4be8f6b89676751f4049c4c63d37793437ff945d120fe94f71edc"
     },
     {
       "owner": "DATA_10ED1",
@@ -535,7 +535,7 @@
       "bytes": 120,
       "format": "u16-farptr-u8-farptr-u8-tail8-v1",
       "pointer_fixups": 10,
-      "object_sha256": "e35457ce8d4a910b01fe940d521dd75c6b5a762a34d99921f7e2b9680a1932bb"
+      "object_sha256": "991333bd59c72f41afe34e89c2a2b4de15cdd94ecdf1ef116ada2dd6e233d1da"
     },
     {
       "owner": "DATA_01101D_TRAILER",
@@ -647,14 +647,14 @@
       "bytes": 19,
       "format": "zero-pad-v1",
       "pointer_fixups": 0,
-      "object_sha256": "bc0d50c9cf7385a81970c114de473d937cb45b56bb5ef55e5b1649ec16b014cd"
+      "object_sha256": "19d8f0b20eddaa2481c43ea40ae4d8850ac8a85e65c5d29882a7894ac0d745e2"
     },
     {
       "owner": "RAW_01139E",
       "bytes": 1832,
       "format": "raw-local",
       "pointer_fixups": 0,
-      "object_sha256": "d9a31e2f8c2c117fa48aea9224a7ee6ef76c3d528e2244a080d34e956fa0af20"
+      "object_sha256": "7f7d068d5e00519849c49da047dfbf3498378a3118f71788e67bb61d5d6a814f"
     },
     {
       "owner": "DATA_011AC6_NEW_USER_PROMPT",
@@ -885,7 +885,7 @@
       "bytes": 1923,
       "format": "raw-local",
       "pointer_fixups": 0,
-      "object_sha256": "ca7bffedd3ee11998338df7e5af30789ba77581ffe7d264bed0f3a1c852ed7c8"
+      "object_sha256": "699dfc700aea974c316d51303627fb601312835d73da6c5a255e6f4ea9ae1c11"
     }
   ],
   "separated_data": [
@@ -920,11 +920,23 @@
   ],
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 4006,
-  "synthetic_bss_bytes": 37250,
+  "synthetic_bss_bytes": 0,
+  "unpartitioned_bss_source_bytes": 37250,
+  "dgroup_scaffold_present": false,
+  "bss_source": {
+    "kind": "TASM_SOURCE",
+    "source_sha256": "2ab5ba7915049465aa6baa2b7614f81bb7424df38171a61a9dd91112a0726ccd",
+    "object_sha256": "9bfbd2175de4d9a644294e7cc5cf19c9a6431e22031b975b163785d0d2942c7b",
+    "publics": 247,
+    "initialized_bytes": 0,
+    "group": "DGROUP",
+    "segment": "_BSS",
+    "source_mtime_epoch": 315532800
+  },
   "temporary_startup_data_aliases": {
+    "_g81": 129,
     "_g6d": 109,
-    "_g7d": 125,
-    "_g81": 129
+    "_g7d": 125
   },
   "temporary_runtime_data_aliases": {
     "_g37cb": [
@@ -1008,5 +1020,5 @@
       "first_difference": 58
     }
   },
-  "limitation": "Ordered source DATA; raw sources, recovered aliases, synthetic BSS and module grouping remain."
+  "limitation": "Ordered source DATA; raw sources, recovered aliases, unpartitioned BSS and module grouping remain."
 }

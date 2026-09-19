@@ -18,14 +18,15 @@ ends at the value recovered independently from C0C's BSSEND fixup. These
 constraints give 37,250 game BSS bytes plus 68 pinned runtime BSS bytes.
 
 `src/data/GAME_BSS.json` declares that game reserve as a length, without a final
-load address. The source link consumes the length; TLINK places the runtime
-contributions, BSSEND and stack. The verifier uses original bytes only to check
-the evidence. Internal game BSS allocation and historical module ownership
-remain unresolved, so the reserve is still reported as a structural scaffold.
+load address. The source link generates a real TASM `_BSS` contribution with
+the recovered public map; TLINK places it, the runtime contributions, BSSEND
+and stack. The verifier uses original bytes only to check the evidence.
+Internal game BSS allocation and historical module ownership remain unresolved,
+but the exact link no longer uses a synthetic DGROUP OMF object.
 
-The resulting 79,154-byte EXE has SHA-256
-`e50eb1e586515d757707ecb767ef79ab8108e0178de41212b363587341551189`.
-Its 78,642-byte load image is identical. All fixed MZ fields except relocation
-count match; 34 relocation entries are still missing. Header/table identity,
-raw source reconstruction and elimination of the other symbol/module adapters
-remain required before claiming the historical build recovered.
+The complete structural experiment now produces the original 79,154-byte EXE
+with SHA-256
+`1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10`.
+Raw source reconstruction, internal BSS partitioning and elimination of the
+remaining symbol/module adapters are still required before claiming the
+historical build recovered.

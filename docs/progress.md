@@ -3,8 +3,9 @@
 [The exact structural-link experiment](exact-structural-link.md) now makes
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
 inputs. All 106 relocation entries match in order. Candidate DATA/code
-interleaving, a checked arithmetic FIXUPP-order adapter, synthetic BSS and
-symbol adapters remain explicitly open.
+interleaving, a checked arithmetic FIXUPP-order adapter, unpartitioned BSS and
+symbol adapters remain explicitly open. The synthetic DGROUP/BSS object is now
+replaced by a real pinned-TASM source contribution.
 
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
 and all segment/code addresses while extending the matching relocation-table

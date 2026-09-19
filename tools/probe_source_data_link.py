@@ -1,18 +1,20 @@
 """Replace oracle-copied initialized DATA with an ordered canonical source sequence.
 
-Temporary binding aliases and BSS scaffold remain. Only the final comparison
+Temporary binding aliases and unpartitioned BSS source remain. Only the final comparison
 opens the original executable; data bytes come from source encoders or OMF.
 """
 from pathlib import Path
+import os
 import shutil
 import struct
 import subprocess
 import tempfile
 
 from data_omf import emit_data
+from bss_asm import bss_asm_source
 from exe_data import encode_data
 from omf import OmfReader
-from omf_scaffold import add_publics, externalize_data_segment, make_dgroup_scaffold, rename_external_addend
+from omf_scaffold import add_publics, externalize_data_segment, rename_external_addend
 from pointer_records import FORMAT, compile_records
 from probe_tlink_layout import compare_linked_executable, link_errors, parse_map
 from reconstruct import ROOT, read_json, sha, write_json
@@ -30,6 +32,13 @@ def run():
     work = Path(tempfile.mkdtemp(prefix='source-data-link-', dir=ROOT / 'build')).resolve()
     for name in ('TC', 'BC', 'WORK'):
         shutil.copytree(old_work / name, work / name)
+    tasm_spec = next(item for item in read_json(ROOT / 'layout/toolchain.json')['files']
+                     if item['path'] == 'TASM.EXE')
+    tasm_source = ROOT / 'toolchain/TASM.EXE'
+    if sha(tasm_source.read_bytes()) != tasm_spec['sha256']:
+        raise ValueError('Pinned TASM identity differs')
+    (work / 'TC/BIN').mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(tasm_source, work / 'TC/BIN/TASM.EXE')
     for name in ('OUT.EXE', 'OUT.MAP', 'LINK.LOG'):
         (work / 'WORK' / name).unlink(missing_ok=True)
     if sha((work / 'BC/BIN/TLINK.EXE').read_bytes()) != baseline['linker']['sha256']:
@@ -81,6 +90,9 @@ def run():
     runtime_aliases = {}
     library = {name: OmfReader().read(blob) for name, blob in
                OmfReader().split_library((work / 'TC/LIB/CC.LIB').read_bytes())}
+    bss_source = read_json(ROOT / 'src/data/GAME_BSS.json')
+    if bss_source['format'] != 'unpartitioned-bss-reserve-v1' or bss_source['alignment'] != 'word':
+        raise ValueError('Unsupported game BSS source')
     def add_alias(symbol, dgroup_offset):
         if 0 <= dgroup_offset <= startup.segment_length('_DATA'):
             startup_aliases[symbol] = dgroup_offset
@@ -106,9 +118,33 @@ def run():
                 return
         raise ValueError(f'No source component for temporary alias {symbol}')
 
-    dg = OmfReader().read((work / 'WORK/DGSCF.OBJ').read_bytes())
-    for public in dg.publics_in('_DATA'):
-        add_alias(public['name'], public['offset'])
+    explicit_publics = {public['name'] for public in startup.publics}
+    explicit_publics.update(public['name'] for module in library.values() for public in module.publics)
+    for entry in staged.values():
+        explicit_publics.update(public['name'] for public in
+                                OmfReader().read((work / 'WORK' / entry['object']).read_bytes()).publics)
+    explicit_casefold = {name.lower() for name in explicit_publics}
+    initialized_span = max(owner['end'] for owner in manifest['regions']) - 512 - frame
+    bss_public_offsets = {'GAME_BSS': 0}
+    for owner in manifest['regions']:
+        for symbol, binding in owner.get('build', {}).get('bindings', {}).items():
+            if (binding.get('coordinate') != 'DGROUP_offset' or symbol in explicit_publics
+                    or symbol.lower() in explicit_casefold):
+                continue
+            if 'offset' in binding:
+                offset = binding['offset']
+            elif binding.get('owner') in owners:
+                offset = (owners[binding['owner']]['start'] - 512 - frame
+                          + binding.get('addend', 0))
+            else:
+                continue
+            if 0 <= offset < initialized_span:
+                add_alias(symbol, offset)
+            elif initialized_span <= offset < initialized_span + bss_source['length']:
+                bss_offset = offset - initialized_span
+                if symbol in bss_public_offsets and bss_public_offsets[symbol] != bss_offset:
+                    raise ValueError('Conflicting recovered BSS public offset')
+                bss_public_offsets[symbol] = bss_offset
     separated = []
     for owner_id, entry in staged.items():
         path = work / 'WORK' / entry['object']
@@ -129,13 +165,13 @@ def run():
             add_alias(public['name'], base + public['offset'])
         path.write_bytes(externalize_data_segment(path.read_bytes(), symbol))
         separated.append({'owner': owner_id, 'bytes': module.segment_length('_DATA')})
-    bss_publics = {p['name']: ('_BSS', p['offset']) for p in dg.publics_in('_BSS')}
-    bss_publics['GAME_BSS'] = ('_BSS', 0)
     startup_path.write_bytes(add_publics(startup_path.read_bytes(), startup_aliases, '_DATA'))
-    bss_source = read_json(ROOT / 'src/data/GAME_BSS.json')
-    if bss_source['format'] != 'unpartitioned-bss-reserve-v1' or bss_source['alignment'] != 'word':
-        raise ValueError('Unsupported game BSS source')
-    (work / 'WORK/DGSCF.OBJ').write_bytes(make_dgroup_scaffold(b'', bss_source['length'], bss_publics))
+    bss_asm = bss_asm_source(bss_source['length'], bss_public_offsets)
+    bss_asm_path = work / 'WORK/GAMEBSS.ASM'
+    bss_asm_path.write_bytes(bss_asm.encode('ascii'))
+    # TASM records the source mtime in a COMENT record. Pin it so identical
+    # canonical source produces an identical relocatable object on every run.
+    os.utime(bss_asm_path, (315532800, 315532800))
     names, sources = [], []
     for index, part in enumerate(parts):
         name = f'D{index:04}.OBJ'
@@ -146,9 +182,15 @@ def run():
                         'format': part['spec']['format'], 'pointer_fixups': len(part['refs']),
                         'object_sha256': sha(blob)})
     response = (old_work / 'LINK.RSP').read_text()
-    response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + ['C:\\WORK\\DGSCF.OBJ']))
+    response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + ['C:\\WORK\\GAMEBSS.OBJ']))
     (work / 'LINK.RSP').write_text(response)
-    shutil.copyfile(old_work / 'GO.BAT', work / 'GO.BAT')
+    go = (old_work / 'GO.BAT').read_text()
+    go = go.replace('tlink @C:\\LINK.RSP',
+                    'C:\\TC\\BIN\\TASM.EXE /mx GAMEBSS.ASM >> BSSBUILD.LOG\n'
+                    'if errorlevel 1 goto bss_failed\n'
+                    'tlink @C:\\LINK.RSP')
+    go += '\ngoto bss_done\n:bss_failed\necho BSS_FAILED>BSS_FAILED.TXT\n:bss_done\n'
+    (work / 'GO.BAT').write_text(go)
     config = work / 'run.conf'
     config.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
                       f'mount c "{work}"\nc:\ncall c:\\GO.BAT\nexit\n')
@@ -156,17 +198,37 @@ def run():
                    cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
     map_path = work / 'WORK/OUT.MAP'
     errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), map_path.read_text(errors='replace'))
+    if (work / 'WORK/BSS_FAILED.TXT').exists() or not (work / 'WORK/GAMEBSS.OBJ').exists():
+        errors.append('TASM BSS source compilation failed')
+    bss_object = work / 'WORK/GAMEBSS.OBJ'
+    bss_module = OmfReader().read(bss_object.read_bytes()) if bss_object.exists() else None
+    actual_bss_publics = ({} if bss_module is None else
+                          {public['name']: public['offset'] for public in bss_module.publics_in('_BSS')})
+    bss_grouped = (bss_module is not None and any(group['name'] == 'DGROUP'
+                                                   and '_BSS' in group.get('segments', [])
+                                                   for group in bss_module.groups))
+    if (bss_module is None or bss_module.segment_length('_BSS') != bss_source['length']
+            or '_BSS' in bss_module.segments or not bss_grouped
+            or actual_bss_publics != bss_public_offsets):
+        errors.append('TASM BSS object metadata differs from source')
     segments, rows = parse_map(map_path)
     report = {'status': 'LINKED' if not errors else 'LINK_FAILED', 'errors': errors,
               'segments': segments, 'code_contributions_equal': rows == baseline['code_rows'],
               'source_contributions': sources, 'separated_data': separated,
               'oracle_copied_initialized_data_bytes': 0,
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
-              'synthetic_bss_bytes': bss_source['length'],
+              'synthetic_bss_bytes': 0,
+              'unpartitioned_bss_source_bytes': bss_source['length'],
+              'dgroup_scaffold_present': False,
+              'bss_source': {'kind': 'TASM_SOURCE', 'source_sha256': sha(bss_asm.encode()),
+                             'object_sha256': sha(bss_object.read_bytes()) if bss_object.exists() else None,
+                             'publics': len(bss_public_offsets), 'initialized_bytes': 0,
+                             'group': 'DGROUP', 'segment': '_BSS',
+                             'source_mtime_epoch': 315532800},
               'temporary_startup_data_aliases': startup_aliases,
               'temporary_runtime_data_aliases': runtime_aliases,
               'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),
-              'limitation': 'Ordered source DATA; raw sources, recovered aliases, synthetic BSS and module grouping remain.'}
+              'limitation': 'Ordered source DATA; raw sources, recovered aliases, unpartitioned BSS and module grouping remain.'}
     write_json(ROOT / 'build/source-data-link-report.json', report)
     receipt = dict(report)
     receipt['byte_comparison'] = {key: value for key, value in report['byte_comparison'].items()

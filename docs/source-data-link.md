@@ -28,10 +28,11 @@ the runtime object. Existing manifest binding evidence still routes recovered
 names to component-relative exports; this is an acknowledged symbol adapter,
 not recovered historical declarations or a final architecture.
 
-The copied DATA adapter is eliminated in this experiment. The remaining
-37,250-byte unpartitioned BSS reserve is declared in source and verified against
-independent runtime fixups; [boundary evidence](bss-boundary.md) explains why
-the previous stack-rounded estimate was two bytes high. Local
+The copied DATA adapter and synthetic DGROUP object are eliminated in this
+experiment. A generated, canonical [Turbo Assembler BSS module](tasm-bss-source.md)
+declares the 37,250-byte unpartitioned reserve and its currently recovered
+public map. Independent runtime fixups verify its boundary; [boundary evidence](bss-boundary.md)
+explains why the previous stack-rounded estimate was two bytes high. Local
 raw game DATA sources account for 4,006 bytes, with 24 pointer fields now
 symbolically annotated in the DATA recipe. Those files are not read from the EXE during generation,
 but remain opaque fallbacks requiring reconstruction. Six additional canonical
@@ -39,5 +40,5 @@ raw bytes are supplied by C0C's real EMUSEG/CRTSEG contributions in this path.
 
 The baseline fixed build and baseline aggregate-scaffold link remain intact.
 This experiment is not yet integrated with the optional shared compiler-module
-experiment. Historical module boundaries, raw record formats, BSS ownership,
+experiment. Historical module boundaries, raw record formats, internal BSS ownership,
 historical symbol ownership, MZ relocation fields and relocation order are still open.

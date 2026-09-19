@@ -7,8 +7,9 @@ adapters remain, and the verified BSS reserve is not yet internally partitioned.
 
 Current structural checkpoint: the pinned Turbo Link 2.0 now emits a
 byte-identical `AEPROG.EXE` from relocatable code and source-DATA inputs, with
-all 106 relocations in order. Temporary object-order, FIXUPP, BSS and symbol
-adapters remain, so this is not yet the recovered historical build. See
+all 106 relocations in order. The synthetic DGROUP/BSS object has been replaced
+by real TASM source; object-order, FIXUPP, BSS ownership and symbol adapters
+remain, so this is not yet the recovered historical build. See
 [the exact-link checkpoint](docs/exact-structural-link.md) and
 [generated metrics](docs/structural-status.json).
 

@@ -246,7 +246,7 @@
     "extra_relocations": 0,
     "oracle_copied_initialized_data_bytes": 0,
     "local_raw_source_bytes": 4006,
-    "synthetic_bss_bytes": 37250
+    "synthetic_bss_bytes": 0
   },
   "exact_structural_experiment": {
     "status": "BYTE_IDENTICAL_STRUCTURAL_EXPERIMENT",
@@ -257,7 +257,7 @@
     "remaining_adapters": [
       "candidate DATA/code object interleaving",
       "arithmetic-module FIXUPP subrecord ordering",
-      "unpartitioned synthetic BSS reserve",
+      "unpartitioned TASM BSS source and recovered public map",
       "recovered symbol aliases",
       "EXTDEF case normalization",
       "injected internal publics",

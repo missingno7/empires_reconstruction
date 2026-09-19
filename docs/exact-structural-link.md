@@ -25,6 +25,9 @@ normalization, injected internal publics, and 4,006 bytes of local raw DATA
 sources. The arithmetic adapter changes only the order of explicit OMF fixup
 subrecords; it rejects threads and verifies that segment bytes, publics,
 externals, targets, addends, and sites remain identical before TLINK runs.
+The former synthetic DGROUP/BSS object has been replaced by a real
+[TASM BSS source module](tasm-bss-source.md); its internal historical ownership
+and recovered public-map aliases remain open.
 
 The fixed-placement build remains an independent oracle and still rebuilds all
 three game files byte-identically. The next structural work is to replace the

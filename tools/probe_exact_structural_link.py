@@ -42,7 +42,7 @@ def run():
         'remaining_adapters': [
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
-            'unpartitioned synthetic BSS reserve',
+            'unpartitioned TASM BSS source and recovered public map',
             'recovered symbol aliases',
             'EXTDEF case normalization',
             'injected internal publics',

@@ -27,7 +27,7 @@ metadata adapter; the three remaining topology adapters below remain active.
 |---|---|---|---|---|
 | `LIBDEMAND.OBJ` historical-library demand | Previously requested historical library publics explicitly | Requests the publics that select the observed `CC.LIB` modules | Actual reconstructed EXTDEFs must preserve selection and order | **Unnecessary in the full scaffold**: fresh demand and no-demand Turbo Link 2.0 outputs have identical maps and EXE hashes, with zero unresolved symbols |
 | `DGSCF.OBJ` synthetic DGROUP | Previously supplied initialized DATA, BSS and selected publics | Temporary DGROUP sizing and bindings | Real source DATA plus TASM BSS contributions | **Removed from the exact experiment**; retained only by the aggregate diagnostic baseline |
-| Anchored TASM BSS reserve | Historical BSS translation units remain unknown | Supplies the verified 37,250-byte reserve and 247 canonical public anchors through real TASM OMF | Partition storage and publics among evidenced historical modules | **Active source component**; its canonical public map is checked against linker bindings, and no custom/synthetic OMF object remains in the exact path |
+| Anchored TASM BSS reserve | Historical BSS translation units remain mostly unknown | Supplies the verified 37,250-byte reserve and 247 canonical public anchors through real TASM OMF | Partition storage and publics among evidenced historical modules | **Reduced**: `F01CEBSS.OBJ` now owns the first 34 bytes as a symbolic TASM contribution; `GAMEBSS.OBJ` is the 37,216-byte anchored remainder. The canonical map and contribution plan are both checked against linker bindings. |
 | Oracle-copied initialized DATA tail | Originally supplied initialized bytes to the aggregate scaffold | Holds the unresolved initialized-data extent | Ordered source encoders and compiler DATA contributions | **Removed in the source DATA experiment**; canonical and source-link raw DATA are both zero |
 | Recovered symbol aliases | Recovered objects previously used numeric/source-local names while startup and callers used historical publics | Resolved verified call targets without changing code bytes | Name the actual library or reconstructed-owner public in source | **Removed**. Source now names historical CC.LIB publics and reconstructed entry publics directly; numeric entry bindings are canonical owner/public references |
 | EXTDEF case normalization | Turbo C previously emitted case variants that differed from explicit recovered publics | Resolved case-sensitive OMF externals under the linker candidate | Reconstruct the declaration/public spelling in source | **Removed from the current structural link** |
@@ -49,5 +49,8 @@ map-only fixup overflows; both are eliminated and now covered by detection.
 
 The first source-compatible BSS island is recorded in
 [the ownership candidates](bss-ownership-candidates.json): `F_01CE` has a
-fully bounded 34-byte prefix containing `cur_idx` and `g3904[16]`. It remains
-in `GAME_BSS` until BSS contribution order is modeled rather than assumed.
+fully bounded 34-byte prefix containing `cur_idx` and `g3904[16]`.
+`recipes/data/bss-contributions.json` now models the contribution order and
+assembles that prefix as `F01CEBSS.OBJ`; the remaining reserve begins at
+logical byte 34. This is compatible symbolic ownership, not proof of the
+historical translation-unit boundary.

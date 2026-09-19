@@ -9,9 +9,10 @@ Only their order differs; [relocation evidence](complete-relocation-sites.md)
 describes the remaining historical-module constraints.
 The [receipt](source-data-link.json) records the actual bytes and map results.
 
-The source sequence emits 14,018 game DATA bytes. Structured encoders, five
-fresh compiler DATA contributions and local raw source components provide the
-bytes; AEPROG.EXE is opened only by the final comparison. The initial two-byte
+The source sequence emits 14,018 game DATA bytes. Structured encoders and
+eight fresh compiler DATA contributions provide the bytes; canonical and
+source-link raw DATA are both zero. AEPROG.EXE is opened only by the final
+comparison. The initial two-byte
 slice exclusion avoids re-emitting the last startup byte and its alignment byte
 that the older table owner includes. It is not a request for a final address.
 
@@ -22,21 +23,19 @@ Code bytes and unrelated fixups are checked unchanged. DATA pointer sources
 produce actual EXTDEF/FIXUPP references. The existing compiled DATA_125D pointer
 is now placed correctly; the 16 new symbolic record pointers are integrated.
 
-Three temporary DATA labels are added to the pinned startup object without
-changing its bytes. The recovered `_g37cb` reference becomes `__ctype + 1` in
-the runtime object. Existing manifest binding evidence still routes recovered
-names to component-relative exports; this is an acknowledged symbol adapter,
-not recovered historical declarations or a final architecture.
+The recovered source declarations now name the relevant C0C and CC.LIB publics
+directly. No startup DATA labels, external case transforms, or external-addend
+rewrites are applied by the structural link.
 
 The copied DATA adapter and synthetic DGROUP object are eliminated in this
 experiment. A generated, canonical [Turbo Assembler BSS module](tasm-bss-source.md)
-declares the 37,250-byte unpartitioned reserve and its currently recovered
-public map. Independent runtime fixups verify its boundary; [boundary evidence](bss-boundary.md)
+declares an ordered 34-byte symbolic prefix and a 37,216-byte anchored
+remainder covering the verified reserve and its currently recovered public
+map. Independent runtime fixups verify its boundary; [boundary evidence](bss-boundary.md)
 explains why the previous stack-rounded estimate was two bytes high. Local
-raw game DATA sources account for 4,006 bytes, with 24 pointer fields now
-symbolically annotated in the DATA recipe. Those files are not read from the EXE during generation,
-but remain opaque fallbacks requiring reconstruction. Six additional canonical
-raw bytes are supplied by C0C's real EMUSEG/CRTSEG contributions in this path.
+all game DATA sources are canonical structured or compiled components, with
+pointer fields represented as OMF references. No EXE bytes are read during
+generation.
 
 The baseline fixed build and baseline aggregate-scaffold link remain intact.
 This experiment is not yet integrated with the optional shared compiler-module

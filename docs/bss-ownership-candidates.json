@@ -1,7 +1,7 @@
 {
   "format": "empires-bss-ownership-candidates-v1",
   "source_layout": "src/data/GAME_BSS.json",
-  "status": "Evidence candidates only; GAME_BSS remains the canonical linker contribution",
+  "status": "Evidence candidates; GAME_BSS remains the canonical logical layout while compatible owners are emitted as ordered TASM contributions",
   "candidates": [
     {
       "id": "F_01CE_BSS_PREFIX",
@@ -36,8 +36,20 @@
         "The next independent anchor makes g3904's 32-byte extent exact"
       ],
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "migration_status": "NOT_MIGRATED",
-      "limitation": "Moving this storage out of GAME_BSS requires a BSS contribution-order model; the current canonical map assumes GAMEBSS begins the combined _BSS segment."
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {
+        "recipe": "recipes/data/bss-contributions.json",
+        "object": "F01CEBSS.OBJ",
+        "logical_start": 0,
+        "logical_end": 34,
+        "publics": [
+          "GAME_BSS",
+          "_cur_idx",
+          "_g3902",
+          "_g3904"
+        ]
+      },
+      "limitation": "The ordered TASM contribution proves a compatible symbolic storage owner and preserves the exact link. It does not prove that F_01CE was the historical object which allocated this storage."
     }
   ]
 }

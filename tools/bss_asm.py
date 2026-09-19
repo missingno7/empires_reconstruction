@@ -27,3 +27,29 @@ def bss_asm_source(length, publics):
         lines.append(f'db {length - at} dup (?)')
     lines.extend(('_BSS ends', 'end', ''))
     return '\r\n'.join(lines)
+
+
+def bss_slice(layout, start, end):
+    """Return one contribution from an anchored canonical BSS layout.
+
+    ``GAME_BSS.json`` records offsets in the combined game reserve.  A real
+    source owner needs offsets relative to its own OMF contribution, so this
+    helper makes that translation explicit without changing the canonical
+    evidence map. It preserves aliases and assigns every label to the
+    contribution containing its canonical offset.
+    """
+    if layout.get('format') != 'anchored-bss-layout-v1':
+        raise ValueError('Unsupported BSS layout format')
+    length = layout.get('length')
+    publics = layout.get('publics')
+    if type(length) is not int or not isinstance(publics, dict):
+        raise ValueError('Invalid anchored BSS layout')
+    if type(start) is not int or type(end) is not int or not 0 <= start < end <= length:
+        raise ValueError('Invalid BSS contribution extent')
+    sliced = {}
+    for name, offset in publics.items():
+        if not isinstance(name, str) or type(offset) is not int:
+            raise ValueError('Invalid anchored BSS public')
+        if start <= offset < end:
+            sliced[name] = offset - start
+    return {'length': end - start, 'publics': sliced}

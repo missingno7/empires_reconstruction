@@ -141,7 +141,10 @@ def build(root=ROOT, verify=True, dosbox=None):
         'compiled_source_modules': baseline['compile']['owner_count'],
         'generated_data_components': len(read_json(root / 'recipes/data/game-initialized.json')['components']),
         'bss': {'bytes': bss_layout['length'],
-                'publics': len(bss_layout['publics']), 'source': 'src/data/GAME_BSS.json'},
+                'publics': len(bss_layout['publics']), 'source': 'src/data/GAME_BSS.json',
+                'partitioned_source_bytes': source['partitioned_bss_source_bytes'],
+                'aggregate_remainder_bytes': source['unpartitioned_bss_source_bytes'],
+                'contributions': source['bss_source']['contributions']},
         'unresolved_symbols': baseline['link']['unresolved_count'],
         'relocations': len(linked_mz.relocations), 'shared_module_stages': stages,
         'fresh_build': {'removed_previous_state': removed_state,
@@ -150,7 +153,7 @@ def build(root=ROOT, verify=True, dosbox=None):
         'remaining_structural_adapters': [
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
-            'unpartitioned TASM BSS reserve and historical storage ownership',
+            'aggregate TASM BSS remainder and historical storage ownership',
         ],
         'fixture_dependency': {
             'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '

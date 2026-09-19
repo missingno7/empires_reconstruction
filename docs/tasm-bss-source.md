@@ -1,23 +1,24 @@
 # Turbo Assembler BSS source
 
 The exact structural link no longer supplies game BSS through `DGSCF.OBJ` or a
-custom OMF writer. `tools/bss_asm.py` generates a TASM source module from the
-canonical 37,250-byte reserve and its 247 canonical public anchors. The pinned TASM 1.0
+custom OMF writer. `tools/bss_asm.py` generates TASM source contributions from
+the canonical 37,250-byte reserve and its 247 canonical public anchors. The
+pinned TASM 1.0
 assembles a word-aligned public `_BSS` segment in `DGROUP`; Turbo Link 2.0 then
 derives the unchanged BSS base, runtime BSS placement, stack base and MZ fields.
 
-The source-DATA receipt records 247 public labels, source SHA-256
-`2ab5ba7915049465aa6baa2b7614f81bb7424df38171a61a9dd91112a0726ccd`,
-and object SHA-256
-`9bfbd2175de4d9a644294e7cc5cf19c9a6431e22031b975b163785d0d2942c7b`.
-The object declares 37,250 uninitialized bytes and contributes no load-image
-payload. The staged source timestamp is fixed because TASM records it in an OMF
-comment; two fresh assemblies produce the same object hash. The full
-historical-linker output remains byte-identical.
+`recipes/data/bss-contributions.json` is the deterministic contribution plan.
+Its first contribution is `F01CEBSS.OBJ`, a 34-byte symbolic owner containing
+`GAME_BSS`, `_cur_idx`, `_g3902`, and `_g3904`. `GAMEBSS.OBJ` is the rebased
+37,216-byte anchored remainder with the other 243 labels. The plan must cover
+the full logical reserve, and its rebased labels must equal the canonical map
+before the link begins. Neither object contributes load-image payload. The
+staged source timestamp is fixed because TASM records it in an OMF comment; the
+full historical-linker output remains byte-identical.
 
 This removes the synthetic DGROUP/BSS object from the exact path. It does not
-prove that the game historically used one BSS translation unit. The canonical
-anchor map is checked against linker-binding evidence on every structural link,
-but the reserve is not internally partitioned into historical modules. Those
-are the next ownership constraints rather than reasons to retain a synthetic
-object.
+prove the historical translation-unit boundary of either object. The canonical
+anchor map and ordered contributions are checked against linker-binding
+evidence on every structural link, but 37,216 bytes remain aggregate storage.
+Those are the next ownership constraints rather than reasons to retain a
+synthetic object.

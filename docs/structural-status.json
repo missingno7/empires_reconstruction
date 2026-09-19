@@ -71,14 +71,14 @@
     },
     {
       "start": 78642,
-      "stop": 115961,
-      "length": 37320,
+      "stop": 115963,
+      "length": 37322,
       "name": "_BSS",
       "class": "BSS"
     },
     {
-      "start": 115962,
-      "stop": 115962,
+      "start": 115964,
+      "stop": 115964,
       "length": 0,
       "name": "_BSSEND",
       "class": "STACK"
@@ -94,13 +94,13 @@
   "unresolved_count": 0,
   "first_code_placement_divergence": null,
   "demand_object_present": false,
-  "synthetic_data_bytes": 13932,
-  "synthetic_bss_bytes": 37252,
+  "synthetic_data_bytes": 13930,
+  "synthetic_bss_bytes": 37254,
   "symbol_transform_owners": 0,
-  "omf_metadata_adapter_owners": 24,
+  "omf_metadata_adapter_owners": 0,
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "c5ac32c1d78b251f83edeae42c7667982a583bd05038259f33598111b5dbf41c",
+    "candidate_sha256": "9b5455de484c595b75e114277126db638a20d086fa4bcdf6455cfe5299eec70c",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -210,7 +210,7 @@
       "end": 64035,
       "candidate_length": 64035,
       "oracle_length": 64035,
-      "differing_byte_count": 1473,
+      "differing_byte_count": 1474,
       "first_difference": 200
     },
     "initialized_data": {
@@ -219,12 +219,12 @@
       "end": 78642,
       "candidate_length": 14594,
       "oracle_length": 14594,
-      "differing_byte_count": 9569,
+      "differing_byte_count": 8108,
       "first_difference": 64196
     },
     "full_file": {
       "equal": false,
-      "differing_bytes_outside_relocation_table": 11043,
+      "differing_bytes_outside_relocation_table": 9583,
       "first_difference": 6
     }
   },
@@ -240,7 +240,9 @@
     "extra_relocations": 0,
     "oracle_copied_initialized_data_bytes": 0,
     "local_raw_source_bytes": 0,
-    "synthetic_bss_bytes": 0
+    "synthetic_bss_bytes": 0,
+    "partitioned_bss_source_bytes": 34,
+    "unpartitioned_bss_source_bytes": 37216
   },
   "exact_structural_experiment": {
     "status": "BYTE_IDENTICAL_STRUCTURAL_EXPERIMENT",
@@ -251,8 +253,7 @@
     "remaining_adapters": [
       "candidate DATA/code object interleaving",
       "arithmetic-module FIXUPP subrecord ordering",
-      "unpartitioned TASM BSS reserve and historical storage ownership",
-      "Turbo C-compatible empty DGROUP metadata for standalone TASM owners"
+      "aggregate TASM BSS remainder and historical storage ownership"
     ],
     "whole_build_reconstruction_complete": false
   }

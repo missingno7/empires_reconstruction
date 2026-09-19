@@ -5,7 +5,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from data_omf import emit_data
-from bss_asm import bss_asm_source
+from bss_asm import bss_asm_source, bss_slice
 from omf import OmfReader
 from omf_scaffold import externalize_data_segment
 from reconstruct import read_json
@@ -19,6 +19,29 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertIn('db 3 dup (?)\r\n', source)
         self.assertTrue(source.endswith('db 5 dup (?)\r\n_BSS ends\r\nend\r\n'))
 
+    def test_bss_slice_rebases_canonical_publics(self):
+        layout = {'format': 'anchored-bss-layout-v1', 'length': 12,
+                  'publics': {'START': 0, 'A': 2, 'B': 5, 'END': 11}}
+        self.assertEqual(bss_slice(layout, 2, 6),
+                         {'length': 4, 'publics': {'A': 0, 'B': 3}})
+        with self.assertRaisesRegex(ValueError, 'extent'):
+            bss_slice(layout, 4, 4)
+
+    def test_bss_contribution_plan_covers_canonical_layout(self):
+        layout = read_json(ROOT / 'src/data/GAME_BSS.json')
+        plan = read_json(ROOT / 'recipes/data/bss-contributions.json')
+        self.assertEqual(plan['canonical_layout'], 'src/data/GAME_BSS.json')
+        expected_start = 0
+        actual_publics = {}
+        for contribution in plan['contributions']:
+            self.assertEqual(contribution['logical_start'], expected_start)
+            sliced = bss_slice(layout, contribution['logical_start'], contribution['logical_end'])
+            for name, offset in sliced['publics'].items():
+                actual_publics[name] = contribution['logical_start'] + offset
+            expected_start = contribution['logical_end']
+        self.assertEqual(expected_start, layout['length'])
+        self.assertEqual(actual_publics, layout['publics'])
+
     def test_fixup_crossing_chunk_boundary(self):
         data = bytes(2100)
         obj = emit_data(data, {'source': 0}, [{'offset': 998, 'target': 'target'}])
@@ -29,7 +52,7 @@ class SourceDataLinkTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Overlapping'):
             emit_data(data, {}, [{'offset': 998, 'target': 'a'}, {'offset': 999, 'target': 'b'}])
 
-    def test_externalization_preserves_all_seven_real_code_contributions(self):
+    def test_externalization_preserves_all_real_code_contributions(self):
         path = ROOT / 'build/tlink-structural-report.json'
         if not path.exists():
             self.skipTest('local TLINK probe has not run')
@@ -48,7 +71,7 @@ class SourceDataLinkTests(unittest.TestCase):
             self.assertEqual(result.segment_length('_DATA'), 0)
             self.assertEqual(len(result.fixups_in('_TEXT')), len(module.fixups_in('_TEXT')))
             count += 1
-        self.assertEqual(count, 7)
+        self.assertEqual(count, 8)
 
     def test_full_linked_initialized_data(self):
         path = ROOT / 'build/source-data-link-report.json'
@@ -62,15 +85,17 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertTrue(report['byte_comparison']['text']['equal'])
         self.assertEqual(report['synthetic_bss_bytes'], 0)
-        self.assertEqual(report['unpartitioned_bss_source_bytes'], 37250)
+        self.assertEqual(report['partitioned_bss_source_bytes'], 34)
+        self.assertEqual(report['unpartitioned_bss_source_bytes'], 37216)
         self.assertFalse(report['dgroup_scaffold_present'])
-        self.assertEqual(report['bss_source']['kind'], 'TASM_SOURCE')
+        self.assertEqual(report['bss_source']['kind'], 'TASM_SOURCE_CONTRIBUTIONS')
         self.assertTrue(report['bss_source']['binding_evidence_equal'])
         self.assertEqual(report['bss_source']['publics'], 247)
         self.assertEqual(report['bss_source']['initialized_bytes'], 0)
         self.assertEqual(report['bss_source']['group'], 'DGROUP')
-        self.assertEqual(report['bss_source']['object_sha256'],
-                         '9bfbd2175de4d9a644294e7cc5cf19c9a6431e22031b975b163785d0d2942c7b')
+        self.assertTrue(report['bss_source']['contribution_plan_equal'])
+        self.assertEqual([(item['id'], item['bytes']) for item in report['bss_source']['contributions']],
+                         [('F_01CE_BSS_PREFIX', 34), ('GAMEBSS_REMAINDER', 37216)])
         self.assertEqual(report['oracle_copied_initialized_data_bytes'], 0)
         reloc = report['byte_comparison']['mz']
         self.assertEqual(reloc['candidate_fields']['e_crlc'], 106)

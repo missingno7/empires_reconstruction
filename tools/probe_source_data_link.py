@@ -11,7 +11,7 @@ import subprocess
 import tempfile
 
 from data_omf import emit_data
-from bss_asm import bss_asm_source
+from bss_asm import bss_asm_source, bss_slice
 from exe_data import encode_data
 from omf import OmfReader
 from omf_scaffold import add_publics, externalize_data_segment, rename_external_addend
@@ -108,6 +108,30 @@ def run(verify=True):
                    or not 0 <= offset < bss_source['length']
                    for name, offset in source_bss_publics.items())):
         raise ValueError('Invalid canonical BSS public map')
+    bss_plan = read_json(ROOT / 'recipes/data/bss-contributions.json')
+    if (bss_plan.get('format') != 'empires-bss-contributions-v1'
+            or bss_plan.get('canonical_layout') != 'src/data/GAME_BSS.json'):
+        raise ValueError('Unsupported BSS contribution plan')
+    bss_contributions = []
+    expected_start = 0
+    for contribution in bss_plan.get('contributions', []):
+        start, end = contribution.get('logical_start'), contribution.get('logical_end')
+        if start != expected_start:
+            raise ValueError('BSS contributions must be contiguous and ordered')
+        sliced = bss_slice(bss_source, start, end)
+        if (not all(isinstance(contribution.get(key), str) for key in ('id', 'object', 'assembly'))
+                or type(contribution.get('aggregate_remainder')) is not bool):
+            raise ValueError('Invalid BSS contribution identity')
+        bss_contributions.append({**contribution, 'length': sliced['length'],
+                                  'publics': sliced['publics']})
+        expected_start = end
+    if expected_start != bss_source['length']:
+        raise ValueError('BSS contribution plan does not cover the canonical reserve')
+    if sum(item['aggregate_remainder'] for item in bss_contributions) != 1:
+        raise ValueError('BSS contribution plan needs exactly one aggregate remainder')
+    if (len({item['object'] for item in bss_contributions}) != len(bss_contributions)
+            or len({item['assembly'] for item in bss_contributions}) != len(bss_contributions)):
+        raise ValueError('BSS contribution objects and sources must be unique')
     def add_alias(symbol, dgroup_offset):
         if 0 <= dgroup_offset <= startup.segment_length('_DATA'):
             startup_aliases[symbol] = dgroup_offset
@@ -162,6 +186,15 @@ def run(verify=True):
                 bss_public_offsets[symbol] = bss_offset
     if source_bss_publics != bss_public_offsets:
         raise ValueError('Canonical BSS public map differs from linker-binding evidence')
+    planned_bss_publics = {}
+    for contribution in bss_contributions:
+        for symbol, offset in contribution['publics'].items():
+            absolute = contribution['logical_start'] + offset
+            if symbol in planned_bss_publics and planned_bss_publics[symbol] != absolute:
+                raise ValueError('Conflicting BSS contribution public')
+            planned_bss_publics[symbol] = absolute
+    if planned_bss_publics != source_bss_publics:
+        raise ValueError('BSS contribution plan differs from canonical public map')
     separated = []
     for owner_id, entry in staged.items():
         path = work / 'WORK' / entry['object']
@@ -183,12 +216,15 @@ def run(verify=True):
         path.write_bytes(externalize_data_segment(path.read_bytes(), symbol))
         separated.append({'owner': owner_id, 'bytes': module.segment_length('_DATA')})
     startup_path.write_bytes(add_publics(startup_path.read_bytes(), startup_aliases, '_DATA'))
-    bss_asm = bss_asm_source(bss_source['length'], source_bss_publics)
-    bss_asm_path = work / 'WORK/GAMEBSS.ASM'
-    bss_asm_path.write_bytes(bss_asm.encode('ascii'))
-    # TASM records the source mtime in a COMENT record. Pin it so identical
-    # canonical source produces an identical relocatable object on every run.
-    os.utime(bss_asm_path, (315532800, 315532800))
+    for contribution in bss_contributions:
+        asm = bss_asm_source(contribution['length'], contribution['publics'])
+        asm_path = work / 'WORK' / contribution['assembly']
+        contribution['asm_path'] = asm_path
+        contribution['asm_sha256'] = sha(asm.encode())
+        asm_path.write_bytes(asm.encode('ascii'))
+        # TASM records the source mtime in a COMENT record. Pin it so identical
+        # canonical source produces an identical relocatable object on every run.
+        os.utime(asm_path, (315532800, 315532800))
     names, sources = [], []
     for index, part in enumerate(parts):
         name = f'D{index:04}.OBJ'
@@ -198,14 +234,17 @@ def run(verify=True):
         sources.append({'owner': part['spec']['id'], 'bytes': len(part['data']),
                         'format': part['spec']['format'], 'pointer_fixups': len(part['refs']),
                         'object_sha256': sha(blob)})
+    bss_names = ['C:\\WORK\\' + contribution['object'] for contribution in bss_contributions]
     response = (old_work / 'LINK.RSP').read_text()
-    response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + ['C:\\WORK\\GAMEBSS.OBJ']))
+    response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + bss_names))
     (work / 'LINK.RSP').write_text(response)
     go = (old_work / 'GO.BAT').read_text()
+    bss_commands = ''.join(
+        f'C:\\TC\\BIN\\TASM.EXE /mx {contribution["assembly"]} >> BSSBUILD.LOG\n'
+        'if errorlevel 1 goto bss_failed\n'
+        for contribution in bss_contributions)
     go = go.replace('tlink @C:\\LINK.RSP',
-                    'C:\\TC\\BIN\\TASM.EXE /mx GAMEBSS.ASM >> BSSBUILD.LOG\n'
-                    'if errorlevel 1 goto bss_failed\n'
-                    'tlink @C:\\LINK.RSP')
+                    bss_commands + 'tlink @C:\\LINK.RSP')
     go += '\ngoto bss_done\n:bss_failed\necho BSS_FAILED>BSS_FAILED.TXT\n:bss_done\n'
     (work / 'GO.BAT').write_text(go)
     config = work / 'run.conf'
@@ -215,19 +254,30 @@ def run(verify=True):
                    cwd=work, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120, check=True)
     map_path = work / 'WORK/OUT.MAP'
     errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), map_path.read_text(errors='replace'))
-    if (work / 'WORK/BSS_FAILED.TXT').exists() or not (work / 'WORK/GAMEBSS.OBJ').exists():
+    if ((work / 'WORK/BSS_FAILED.TXT').exists()
+            or any(not (work / 'WORK' / contribution['object']).exists()
+                   for contribution in bss_contributions)):
         errors.append('TASM BSS source compilation failed')
-    bss_object = work / 'WORK/GAMEBSS.OBJ'
-    bss_module = OmfReader().read(bss_object.read_bytes()) if bss_object.exists() else None
-    actual_bss_publics = ({} if bss_module is None else
-                          {public['name']: public['offset'] for public in bss_module.publics_in('_BSS')})
-    bss_grouped = (bss_module is not None and any(group['name'] == 'DGROUP'
-                                                   and '_BSS' in group.get('segments', [])
-                                                   for group in bss_module.groups))
-    if (bss_module is None or bss_module.segment_length('_BSS') != bss_source['length']
-            or '_BSS' in bss_module.segments or not bss_grouped
-            or actual_bss_publics != source_bss_publics):
-        errors.append('TASM BSS object metadata differs from source')
+    bss_objects = []
+    for contribution in bss_contributions:
+        object_path = work / 'WORK' / contribution['object']
+        module = OmfReader().read(object_path.read_bytes()) if object_path.exists() else None
+        actual_publics = ({} if module is None else
+                          {public['name']: public['offset'] for public in module.publics_in('_BSS')})
+        grouped = (module is not None and any(group['name'] == 'DGROUP'
+                                               and '_BSS' in group.get('segments', [])
+                                               for group in module.groups))
+        if (module is None or module.segment_length('_BSS') != contribution['length']
+                or '_BSS' in module.segments or not grouped
+                or actual_publics != contribution['publics']):
+            errors.append(f"TASM BSS object metadata differs from source: {contribution['id']}")
+        bss_objects.append({'id': contribution['id'], 'owner_candidate': contribution['owner_candidate'],
+                            'logical_start': contribution['logical_start'], 'bytes': contribution['length'],
+                            'publics': len(contribution['publics']), 'representation': contribution['representation'],
+                            'confidence': contribution['confidence'],
+                            'aggregate_remainder': contribution['aggregate_remainder'], 'object_sha256':
+                            (sha(object_path.read_bytes()) if object_path.exists() else None),
+                            'source_sha256': contribution['asm_sha256']})
     segments, rows = parse_map(map_path)
     report = {'status': 'LINKED' if not errors else 'LINK_FAILED', 'errors': errors,
               'segments': segments, 'code_contributions_equal': rows == baseline['code_rows'],
@@ -235,20 +285,25 @@ def run(verify=True):
               'oracle_copied_initialized_data_bytes': 0,
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
               'synthetic_bss_bytes': 0,
-              'unpartitioned_bss_source_bytes': bss_source['length'],
+              'partitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects
+                                                  if not item['aggregate_remainder']),
+              'unpartitioned_bss_source_bytes': next(item['bytes'] for item in bss_objects
+                                                      if item['aggregate_remainder']),
               'dgroup_scaffold_present': False,
-              'bss_source': {'kind': 'TASM_SOURCE', 'source_sha256': sha(bss_asm.encode()),
-                             'object_sha256': sha(bss_object.read_bytes()) if bss_object.exists() else None,
+              'bss_source': {'kind': 'TASM_SOURCE_CONTRIBUTIONS',
                              'publics': len(source_bss_publics), 'initialized_bytes': 0,
                              'group': 'DGROUP', 'segment': '_BSS',
                              'source_mtime_epoch': 315532800,
-                             'binding_evidence_equal': source_bss_publics == bss_public_offsets},
+                             'binding_evidence_equal': source_bss_publics == bss_public_offsets,
+                             'contribution_plan_equal': planned_bss_publics == source_bss_publics,
+                             'contributions': bss_objects},
               'temporary_startup_data_aliases': startup_aliases,
               'temporary_runtime_data_aliases': runtime_aliases,
               'byte_comparison': (compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE')
                                   if verify else comparison_not_requested(work / 'WORK/OUT.EXE')),
-              'limitation': ('Ordered source DATA and canonical BSS anchors; '
-                             'unpartitioned BSS storage and historical module grouping remain.')}
+              'limitation': ('Ordered source DATA and canonical BSS anchors; the 34-byte F_01CE '
+                             'prefix is a symbolic BSS contribution, while the remaining BSS storage '
+                             'and historical module grouping remain unpartitioned.')}
     write_json(ROOT / 'build/source-data-link-report.json', report)
     receipt = dict(report)
     receipt['byte_comparison'] = {key: value for key, value in report['byte_comparison'].items()

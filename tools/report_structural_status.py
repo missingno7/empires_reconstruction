@@ -53,6 +53,8 @@ def status(root, report):
             'oracle_copied_initialized_data_bytes': source['oracle_copied_initialized_data_bytes'],
             'local_raw_source_bytes': source['local_raw_source_bytes'],
             'synthetic_bss_bytes': source['synthetic_bss_bytes'],
+            'partitioned_bss_source_bytes': source['partitioned_bss_source_bytes'],
+            'unpartitioned_bss_source_bytes': source['unpartitioned_bss_source_bytes'],
         },
         'exact_structural_experiment': None if exact is None else {
             'status': exact['status'],

@@ -3,10 +3,11 @@
 [The exact structural-link experiment](exact-structural-link.md) now makes
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
 inputs. All 106 relocation entries match in order. Candidate DATA/code
-interleaving, a checked arithmetic FIXUPP-order adapter, Turbo C-compatible
-empty DGROUP metadata for standalone TASM owners, and unpartitioned BSS
-ownership remain explicitly open. Its 247 BSS public anchors are canonical
-source and checked against linker-binding evidence. The structural path performs zero object
+interleaving, a checked arithmetic FIXUPP-order adapter, and mostly aggregate
+BSS ownership remain explicitly open. The first 34 BSS bytes are now a
+separate compatible symbolic TASM contribution for `F_01CE`; the 37,216-byte
+remainder retains the canonical anchor map. All 247 BSS public anchors are
+checked against linker-binding evidence. The structural path performs zero object
 symbol transforms, and the synthetic DGROUP/BSS object is now
 replaced by a real pinned-TASM source contribution.
 

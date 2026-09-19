@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 57,257 | 335 |
-| Freshly assembled matching ASM | 2,456 | 1,638 | 10 |
+| Freshly compiled matching C | 14,077 | 57,316 | 336 |
+| Freshly assembled matching ASM | 2,456 | 1,579 | 9 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -1008,3 +1008,12 @@ F_C834 converts from its verified ASM owner to matching C. The complete
 
 Current matching-C coverage is 57,257 bytes across 335 owners, with 1,638
 matching-ASM bytes across 10 owners. The raw frontier remains 10,173 bytes.
+
+## One-hundred-twenty-second matching-C conversion
+
+F_D85F converts from its verified ASM owner to matching C. The complete
+59-byte record deletion preserves two fixups and no loader relocations. See
+[the wave 122 proof](matching-c-wave122.md).
+
+Current matching-C coverage is 57,316 bytes across 336 owners, with 1,579
+matching-ASM bytes across 9 owners. The raw frontier remains 10,173 bytes.

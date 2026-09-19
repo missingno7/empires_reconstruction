@@ -16915,9 +16915,9 @@
       "id": "F_D85F",
       "start": 55903,
       "end": 55962,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_D85F.ASM",
+      "source": "src/F_D85F.C",
       "original_symbol": "F_D85F",
       "artifact": "regions/F_D85F.bin",
       "expected_sha256": "12eccb27a621cc91a39a5dde21e85d3833c16613ec316b22dd2739af059b01d7",
@@ -16927,22 +16927,20 @@
         "public": "_fd85f",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_g2f30": {
             "offset": 12080,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P22A60.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_D85F.json",
-        "entry_sha256": "c7d125fadfec34c0d6cf140784a1abf18e5415573807c561193ec54a45dab6e2",
-        "record_sha256": "dfb3a1913f8dc580d65468fa7104a15f6ebf39b3067058f1f4ef4d05c09595b2",
-        "source_sha256": "67c2b76d6223051349b45c300bf8aaf02489932b0663092e9c4f838f73a9664c",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "67c2b76d6223051349b45c300bf8aaf02489932b0663092e9c4f838f73a9664c",
+        "source_sha256": "f8828406063e1ad17e04ab9d838251cf03d981474f0b53db3a8d2484caef796a",
+        "change": "Translate the complete record deletion and REP MOVSB compaction into Turbo C inline assembly with two existing fixups and no loader relocations."
       }
     },
     {

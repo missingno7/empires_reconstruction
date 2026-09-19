@@ -3900,16 +3900,23 @@
       }
     },
     {
-      "id": "RAW_004D0C",
+      "id": "F_4B0C",
+      "kind": "MATCHING_C",
+      "source": "src/F_4B0C.C",
       "start": 19724,
       "end": 20639,
-      "kind": "RAW",
-      "classification": "unknown",
-      "source": "raw/004D0C-00509F.bin",
-      "original_symbol": null,
-      "artifact": "raw/004D0C-00509F.bin",
       "expected_sha256": "aeb7a31da8434417bbbd45c5eb5aa2ba223e58faa0e3abf93772b8e9fccd2521",
-      "matching_status": "EQUAL"
+      "classification": "code",
+      "artifact": "regions/F_4B0C.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f4b0c",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
     },
     {
       "id": "F_4E9F",

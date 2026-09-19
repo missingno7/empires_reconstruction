@@ -1,6 +1,6 @@
 # Incremental reconstruction — 2026-09-18
 
-Full EXE identity is preserved. Follow-ups to MVP1 remove 40,482 bytes from raw
+Full EXE identity is preserved. Follow-ups to MVP1 remove 41,397 bytes from raw
 fallback: 26,382 bytes of matching C/library regions, the 512-byte header,
 1,536 bytes of structured DAC palettes, 59 bytes of compiled C data, and 50 bytes of independently encoded text.
 Archive/resource structure now has a separate exact build. Broad gameplay
@@ -8,7 +8,7 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 47,196 | 306 |
+| Freshly compiled matching C | 14,077 | 48,111 | 307 |
 | Freshly assembled matching ASM | 2,456 | 2,565 | 23 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 20,556 | 33 |
+| Exact raw fallback | 62,621 | 19,641 | 33 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 20,556 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 19,641 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -792,4 +792,14 @@ each exact boundary, allowing the first public span to exclude compiler tail
 bytes without inventing an epilogue. See [the wave 98–99 proof](matching-c-wave98-99.md).
 
 Coverage is now 47,196 matching-C bytes across 306 owners, with 20,556 raw
+bytes remaining.
+
+## One-hundredth matching-C wave
+
+`F_4B0C` adds the complete 915-byte non-returning interpreter loop. Its exact
+OMF boundary label excludes compiler tail bytes without inventing a return
+sequence, and the fresh object has no external fixups or loader relocations.
+See [the wave 100 proof](matching-c-wave100.md).
+
+Coverage is now 48,111 matching-C bytes across 307 owners, with 19,641 raw
 bytes remaining.

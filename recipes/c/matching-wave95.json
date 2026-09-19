@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "F_C567",
+      "kind": "MATCHING_C",
+      "source": "src/F_C567.C",
+      "start": 51047,
+      "end": 51098,
+      "expected_sha256": "a2c9268be7f423139d66a62f562812206bac6a372350eb1328101e6deb9e35c7",
+      "classification": "code",
+      "artifact": "regions/F_C567.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc567",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      }
+    }
+  ]
+}

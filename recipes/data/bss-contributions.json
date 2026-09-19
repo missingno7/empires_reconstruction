@@ -103,10 +103,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
+      "id": "GAMEBSS_RESOURCE_PREFIX",
       "object": "GAMEBSS7.OBJ",
       "assembly": "GAMEBSS7.ASM",
       "logical_start": 14928,
+      "logical_end": 15264,
+      "owner_candidate": "aggregate resource prefix",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "A74A2_RECORD_TABLE_BSS",
+      "object": "A74A2B.OBJ",
+      "assembly": "A74A2B.ASM",
+      "logical_start": 15264,
+      "logical_end": 16386,
+      "owner_candidate": "F_4517 six-record resource table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSS8.OBJ",
+      "assembly": "GAMEBSS8.ASM",
+      "logical_start": 16386,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

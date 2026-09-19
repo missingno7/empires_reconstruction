@@ -41,8 +41,30 @@
       "object": "GAMEBSS0.OBJ",
       "assembly": "GAMEBSS0.ASM",
       "logical_start": 2002,
-      "logical_end": 35694,
+      "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "SLOT_GRID_BSS",
+      "object": "SLOTBSS.OBJ",
+      "assembly": "SLOTBSS.ASM",
+      "logical_start": 35348,
+      "logical_end": 35396,
+      "owner_candidate": "shared 4x6 slot grid",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_MID_REMAINDER",
+      "object": "GAMEBSS1.OBJ",
+      "assembly": "GAMEBSS1.ASM",
+      "logical_start": 35396,
+      "logical_end": 35694,
+      "owner_candidate": "aggregate middle remainder",
       "representation": "ANCHORED_BSS",
       "confidence": "CANONICAL_LAYOUT",
       "aggregate_storage": true

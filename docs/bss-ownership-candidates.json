@@ -188,6 +188,18 @@
         "logical_end": 35964
       },
       "limitation": "The table layout and exact extent are proven, but its original translation-unit owner is not yet identified."
+    },
+    {
+      "id": "SLOT_GRID_BSS",
+      "owner_candidate": "shared 4x6 slot grid",
+      "start": 35348,
+      "end": 35396,
+      "declarations": [{"symbol": "_gc316", "source_type": "struct slot[4][6]", "record_size": 2, "size": 48}],
+      "evidence": ["F_8A37 clears gc316[4][6]", "F_8AA2, F_90A6, and F_969D use the same two-byte slots", "35348 + 4 * 6 * 2 = 35396, the _gc346 anchor"],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {"object": "SLOTBSS.OBJ", "logical_start": 35348, "logical_end": 35396},
+      "limitation": "The grid layout and extent are proven; original storage-object ownership remains open."
     }
   ]
 }

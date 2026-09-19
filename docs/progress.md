@@ -3,8 +3,9 @@
 [The exact structural-link experiment](exact-structural-link.md) now makes
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
 inputs. All 106 relocation entries match in order. Candidate DATA/code
-interleaving, a checked arithmetic FIXUPP-order adapter, unpartitioned BSS and
-symbol adapters remain explicitly open. The synthetic DGROUP/BSS object is now
+interleaving, a checked arithmetic FIXUPP-order adapter and unpartitioned BSS
+ownership remain explicitly open. The structural path performs zero object
+symbol transforms, and the synthetic DGROUP/BSS object is now
 replaced by a real pinned-TASM source contribution.
 
 The 1,832-byte initialized sound region is now lossless structured source.
@@ -53,8 +54,9 @@ FIXUPP-order adapter; TLINK then emits its ten relocations in historical order.
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
-extras; the entire load image now matches. Raw sources and symbol/module
-adapters remain, and the verified BSS reserve is not yet internally partitioned.
+extras; the entire load image now matches. Canonical and source-link raw DATA
+are zero; the verified BSS reserve is not yet internally partitioned and
+historical module ownership remains open.
 
 The [runtime DATA tail](runtime-data-tail.md) is now verified against pinned
 CC.LIB modules and the real linked output: ten contributions, 420 source bytes

@@ -2,14 +2,15 @@
 
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
-extras; the entire load image now matches. Raw sources and symbol/module
-adapters remain, and the verified BSS reserve is not yet internally partitioned.
+extras; the entire load image now matches. Canonical and source-link raw DATA
+are zero; the verified BSS reserve is not yet internally partitioned and
+historical module ownership remains open.
 
 Current structural checkpoint: the pinned Turbo Link 2.0 now emits a
 byte-identical `AEPROG.EXE` from relocatable code and source-DATA inputs, with
 all 106 relocations in order. The synthetic DGROUP/BSS object has been replaced
-by real TASM source; object-order, FIXUPP, BSS ownership and symbol adapters
-remain, so this is not yet the recovered historical build. See
+by real TASM source; candidate object ordering, a checked FIXUPP-order adapter
+and BSS ownership remain, so this is not yet the recovered historical build. See
 [the exact-link checkpoint](docs/exact-structural-link.md) and
 [generated metrics](docs/structural-status.json).
 

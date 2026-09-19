@@ -2,12 +2,14 @@
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
-extras; the entire load image now matches. Raw sources and symbol/module
-adapters remain, and the verified BSS reserve is not yet internally partitioned.
+extras; the entire load image now matches. Canonical and source-link raw DATA
+are zero; the verified BSS reserve is not yet internally partitioned and
+historical module ownership remains open.
 
 Current exact structural checkpoint: Turbo Link 2.0 emits the byte-identical
 EXE from relocatable inputs with zero unresolved symbols. The result still uses
-explicitly tracked object-order, FIXUPP, BSS and symbol adapters. See
+explicitly tracked object-order, FIXUPP and BSS adapters. The structural path
+performs zero object symbol transforms. See
 [the checkpoint](exact-structural-link.md) and [generated metrics](structural-status.json).
 
 

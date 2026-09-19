@@ -17031,7 +17031,14 @@
             "evidence": "storage_objects/M_2C10A.phys"
           }
         },
-        "module_segments": {}
+        "module_segments": {
+          "_DATA": {
+            "owner": "DATA_011FAE_CACHED_INDEX",
+            "addend": 0,
+            "coordinate": "DGROUP_offset",
+            "evidence": "F_D5BA fresh Turbo C _DATA initializer at DS:237E"
+          }
+        }
       },
       "provenance": {
         "project": "empires_forged",
@@ -22239,13 +22246,15 @@
       "end": 73648,
       "kind": "EXACT_DATA",
       "classification": "cached_index_sentinel",
-      "source": "src/data/DATA_011FAE_CACHED_INDEX.json",
+      "source": "src/F_D5BA.C",
       "original_symbol": null,
       "artifact": "regions/DATA_011FAE_CACHED_INDEX.bin",
       "expected_sha256": "ca2fd00fa001190744c15c317643ab092e7048ce086a243e2be9437c898de1bb",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "typed-data-v1"
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_D5BA",
+        "segment": "_DATA"
       }
     },
     {

@@ -2,7 +2,8 @@
    but only when the cached index at DS:237E says it is not already there. */
 extern void f68aa();
 extern char far *gc5da;                 /* DS:C5DA offset, DS:C5DC segment */
-extern int g237e;                       /* DS:237E, the cached index */
+/* The compiler emits this two-byte initializer in this module's _DATA. */
+int g237e = -1;                          /* DS:237E, the cached index */
 extern int g1778;                       /* DS:1778, the mode */
 
 void fd5ba(v)

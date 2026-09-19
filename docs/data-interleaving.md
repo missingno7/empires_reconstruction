@@ -21,6 +21,16 @@ boundary that preserves the observed alignment. Nonrelocating contributions leav
 module boundaries ambiguous, so this is an ordering constraint rather than
 proof of historical translation units.
 
+`DATA_011FAE_CACHED_INDEX` now has direct source ownership: `F_D5BA` declares
+the `g237e` sentinel as `int g237e = -1`, producing the exact two-byte Turbo C
+initializer while preserving its 63-byte `_TEXT` contribution. A trial that
+left this `_DATA` attached to the `F_D5BA` object placed it at the head of
+DGROUP and diverged at initialized-DATA load offset `0x00C4`. This proves that
+the remaining ordering rule reflects a larger historical object/module order,
+not merely the missing declaration. The canonical source-DATA build therefore
+externalizes the proven compiler contribution until that enclosing topology is
+recovered.
+
 After the three shared-module links described in
 [relocation grouping](relocation-grouping.md), run:
 

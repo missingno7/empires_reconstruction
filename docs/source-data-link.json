@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 2320,
-  "unpartitioned_bss_source_bytes": 34930,
+  "partitioned_bss_source_bytes": 2338,
+  "unpartitioned_bss_source_bytes": 34912,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1002,13 +1002,37 @@
         "id": "GAMEBSS_MID_REMAINDER",
         "owner_candidate": "aggregate middle remainder",
         "logical_start": 35396,
-        "bytes": 298,
-        "publics": 12,
+        "bytes": 8,
+        "publics": 1,
         "representation": "ANCHORED_BSS",
         "confidence": "CANONICAL_LAYOUT",
         "aggregate_storage": true,
-        "object_sha256": "1f3152c5e80e41af4e9743afba93415e15bdba73d5799a2556ec3dc087bb5df7",
-        "source_sha256": "5ef67ccdb52bf0d6f38d88b553b67848011bf5f7d57ae6120a6f27a51af2cd62"
+        "object_sha256": "6f67af4059ac6e4e9e7f0ef1e845ed513c1563376607d4f1d8c1b3775fc69d71",
+        "source_sha256": "e5abee9c1960c5562ffb8788423e26c53c079e5ac254c099eba857806a2c69ac"
+      },
+      {
+        "id": "ANIMATION_STATE_BSS",
+        "owner_candidate": "shared animation state",
+        "logical_start": 35404,
+        "bytes": 18,
+        "publics": 8,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+        "aggregate_storage": false,
+        "object_sha256": "f8fc73cda89542686e8eb86966df212c775d9af6b8045805b4138be098ee3704",
+        "source_sha256": "3b6e4aceb37562b2ab5ef691968e1eec807508d4adb77dd327e3822c3dd150b3"
+      },
+      {
+        "id": "GAMEBSS_LATE_REMAINDER",
+        "owner_candidate": "aggregate late remainder",
+        "logical_start": 35422,
+        "bytes": 272,
+        "publics": 3,
+        "representation": "ANCHORED_BSS",
+        "confidence": "CANONICAL_LAYOUT",
+        "aggregate_storage": true,
+        "object_sha256": "fb8fec2e7ae56f9b72311adf96f61dad136b091509cdadacf235cfc5f4624985",
+        "source_sha256": "31b6c8a0cea39541c31d6feee12a1aa570827de83e219c8f2a0dcc1769ebcddb"
       },
       {
         "id": "C470_RECORD_TABLE_BSS",

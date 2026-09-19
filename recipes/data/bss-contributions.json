@@ -63,8 +63,30 @@
       "object": "GAMEBSS1.OBJ",
       "assembly": "GAMEBSS1.ASM",
       "logical_start": 35396,
-      "logical_end": 35694,
+      "logical_end": 35404,
       "owner_candidate": "aggregate middle remainder",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "ANIMATION_STATE_BSS",
+      "object": "ANIMBSS.OBJ",
+      "assembly": "ANIMBSS.ASM",
+      "logical_start": 35404,
+      "logical_end": 35422,
+      "owner_candidate": "shared animation state",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LATE_REMAINDER",
+      "object": "GAMEBSS2.OBJ",
+      "assembly": "GAMEBSS2.ASM",
+      "logical_start": 35422,
+      "logical_end": 35694,
+      "owner_candidate": "aggregate late remainder",
       "representation": "ANCHORED_BSS",
       "confidence": "CANONICAL_LAYOUT",
       "aggregate_storage": true

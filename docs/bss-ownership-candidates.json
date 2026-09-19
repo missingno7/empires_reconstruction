@@ -200,6 +200,22 @@
       "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
       "contribution": {"object": "SLOTBSS.OBJ", "logical_start": 35348, "logical_end": 35396},
       "limitation": "The grid layout and extent are proven; original storage-object ownership remains open."
+    },
+    {
+      "id": "ANIMATION_STATE_BSS",
+      "owner_candidate": "shared animation state",
+      "start": 35404,
+      "end": 35422,
+      "declarations": [
+        {"symbols": ["_gc34e", "_gc350", "_gc352", "_gc354"], "type": "int", "offsets": [35404, 35406, 35408, 35410]},
+        {"symbol": "_gc356", "type": "unsigned char[3]", "offset": 35412},
+        {"symbols": ["_gc359", "_gc35b", "_gc35d"], "type": "int", "offsets": [35415, 35417, 35419]}
+      ],
+      "evidence": ["F_9B68 initializes the state and its three-byte marker array", "F_9A0E and F_9DCC use the coordinates and counters", "The next independent anchor _gc360 begins at 35422"],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "contribution": {"object": "ANIMBSS.OBJ", "logical_start": 35404, "logical_end": 35422},
+      "limitation": "The exact state block is bounded and typed, but its original module owner remains open."
     }
   ]
 }

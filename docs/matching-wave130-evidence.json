@@ -1,0 +1,368 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "conversions": [
+    {
+      "id": "F_6BCF",
+      "bytes": 87,
+      "source_sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
+      "matched_sha256": "8ebd4127d1ea934d625b2b0997221918adab41d773f85a7af9fd286c989e3d70",
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 10,
+          "width": 2,
+          "loc": "base16",
+          "self_relative": false,
+          "target_kind": "group",
+          "target": "DGROUP",
+          "displacement": 0,
+          "extent_offset": 10,
+          "addend": 0,
+          "resolved_value": 4003
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 18,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d4",
+          "displacement": 0,
+          "extent_offset": 18,
+          "addend": 0,
+          "resolved_value": 49364
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 22,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d4",
+          "displacement": 0,
+          "extent_offset": 22,
+          "addend": 0,
+          "resolved_value": 49364
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 29,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0d4",
+          "displacement": 0,
+          "extent_offset": 29,
+          "addend": 0,
+          "resolved_value": 49364
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 36,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_g0b7a",
+          "displacement": 0,
+          "extent_offset": 36,
+          "addend": 0,
+          "resolved_value": 2938
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 40,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_g0b76",
+          "displacement": 0,
+          "extent_offset": 40,
+          "addend": 0,
+          "resolved_value": 2934
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 45,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_g0b78",
+          "displacement": 0,
+          "extent_offset": 45,
+          "addend": 0,
+          "resolved_value": 2936
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 50,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_g237c",
+          "displacement": 0,
+          "extent_offset": 50,
+          "addend": 0,
+          "resolved_value": 9084
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 57,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_g176e",
+          "displacement": 0,
+          "extent_offset": 57,
+          "addend": 0,
+          "resolved_value": 5998
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 64,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_g1772",
+          "displacement": 0,
+          "extent_offset": 64,
+          "addend": 0,
+          "resolved_value": 6002
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 70,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": true,
+          "target_kind": "external",
+          "target": "_fc1a0",
+          "displacement": 0,
+          "extent_offset": 70,
+          "addend": 0,
+          "resolved_value": 21897
+        }
+      ],
+      "load_relocations": [
+        27609
+      ],
+      "compile": {
+        "command": "tcc -c -mc -1- -f- -N- R0000.C",
+        "object": "WORK/R0000.OBJ",
+        "source_sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
+        "staged_sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
+        "object_sha256": "c14ec04313cf9130e668219ac4c2543870a0201a49fba8b56a5d79c0fbd71ea3"
+      }
+    },
+    {
+      "id": "F_699E",
+      "bytes": 380,
+      "source_sha256": "1c7c76633b6ecfc90cbce7f391369c4384b238c95fe3578df7083b77a0ed0236",
+      "matched_sha256": "641531806bd04b1d59edbc711e024640fb84c889249860560b03504436ac034c",
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 10,
+          "width": 2,
+          "loc": "base16",
+          "self_relative": false,
+          "target_kind": "group",
+          "target": "DGROUP",
+          "displacement": 0,
+          "extent_offset": 10,
+          "addend": 0,
+          "resolved_value": 4003
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 182,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb6c",
+          "displacement": 0,
+          "extent_offset": 182,
+          "addend": 0,
+          "resolved_value": 2924
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 185,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb68",
+          "displacement": 0,
+          "extent_offset": 185,
+          "addend": 0,
+          "resolved_value": 2920
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 195,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb70",
+          "displacement": 0,
+          "extent_offset": 195,
+          "addend": 0,
+          "resolved_value": 2928
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 236,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb68",
+          "displacement": 0,
+          "extent_offset": 236,
+          "addend": 0,
+          "resolved_value": 2920
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 263,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb6c",
+          "displacement": 0,
+          "extent_offset": 263,
+          "addend": 0,
+          "resolved_value": 2924
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 278,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb6e",
+          "displacement": 0,
+          "extent_offset": 278,
+          "addend": 0,
+          "resolved_value": 2926
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 293,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb6a",
+          "displacement": 0,
+          "extent_offset": 293,
+          "addend": 0,
+          "resolved_value": 2922
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 311,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": true,
+          "target_kind": "external",
+          "target": "_f68cf",
+          "displacement": 0,
+          "extent_offset": 311,
+          "addend": 0,
+          "resolved_value": 65016
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 333,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gb72",
+          "displacement": 0,
+          "extent_offset": 333,
+          "addend": 0,
+          "resolved_value": 2930
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 341,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc0cc",
+          "displacement": 0,
+          "extent_offset": 341,
+          "addend": 0,
+          "resolved_value": 49356
+        }
+      ],
+      "load_relocations": [
+        27048
+      ],
+      "compile": {
+        "command": "tcc -c -mc -1- -f- -N- R0001.C",
+        "object": "WORK/R0001.OBJ",
+        "source_sha256": "1c7c76633b6ecfc90cbce7f391369c4384b238c95fe3578df7083b77a0ed0236",
+        "staged_sha256": "1c7c76633b6ecfc90cbce7f391369c4384b238c95fe3578df7083b77a0ed0236",
+        "object_sha256": "ce1402cce152223cc032c635852cc9830a67174a0412a1740216dbd986097808"
+      }
+    }
+  ],
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-wave130-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "fab2e661a319c9a368156eca7df2f53c4abf6f59d49c17816fe9e5e8d0a92cc3",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

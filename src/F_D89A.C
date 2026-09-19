@@ -3,7 +3,7 @@ extern unsigned char g2f30[];
 void fd89a(x,y,w,h)
 int x,y,w,h;
 {
-    asm cld
+    asm        cld
     asm mov ax,[bp+4]
     asm mov bl,al
     asm mov ax,[bp+6]

@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 57,905 | 341 |
-| Freshly assembled matching ASM | 2,456 | 990 | 4 |
+| Freshly compiled matching C | 14,077 | 58,895 | 345 |
+| Freshly assembled matching ASM | 2,456 | 0 | 0 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -1060,5 +1060,24 @@ F_50D2 converts from its verified ASM owner to matching C. The complete
 237-byte display-adapter probe preserves thirteen fixups and no loader
 relocations. See [the wave 127 proof](matching-c-wave127.md).
 
-Current matching-C coverage is 57,905 bytes across 341 owners, with 990
-matching-ASM bytes across 4 owners. The raw frontier remains 10,173 bytes.
+Wave 128 converts F_60A9, the complete 216-byte animated-tile ticker, from
+matching ASM to matching C. Its deterministic Turbo C unit preserves six data
+fixups, four near calls and the one DGROUP loader relocation; the fresh bound
+extent matches byte for byte.
+
+Wave 129 converts F_6DCC, the complete 307-byte CS-state LZ decoder, from
+matching ASM to matching C. Its source preserves the decoder's text-segment
+state cells, segment-register copies and BP dictionary register exactly; the
+fresh Turbo C extent has no fixups or loader relocations and matches byte for
+byte.
+
+Wave 130 converts the last two ASM owners to C. F_6BCF is the 87-byte timer
+interrupt handler and F_699E is the 380-byte keyboard interrupt handler. Turbo
+C's `interrupt` prologue/epilogue supplies the exact register-save and IRET
+scaffolding; inline assembly preserves the hardware I/O, CS jump table, far
+chain and interrupt body. Fresh full-extent proofs preserve eleven fixups and
+one loader relocation in each handler.
+
+The matching-ASM frontier is now exhausted: matching-C coverage is 58,895
+bytes across 345 owners and matching-ASM coverage is 0 bytes across 0 owners.
+The raw frontier remains 10,173 bytes.

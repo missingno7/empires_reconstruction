@@ -5402,9 +5402,9 @@
       "id": "F_60A9",
       "start": 25257,
       "end": 25473,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_60A9.ASM",
+      "source": "src/F_60A9.C",
       "original_symbol": "F_60A9",
       "artifact": "regions/F_60A9.bin",
       "expected_sha256": "be4cd64350e9a760d674a259dae5100a259339cea6d84c1e74b4a1b74eebef36",
@@ -5414,6 +5414,7 @@
         "public": "_f60a9",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_f03b4": {
             "offset": 948,
@@ -5445,16 +5446,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_60A9.json",
-        "entry_sha256": "242920cad28166e73c53fc1f4a44b2c771cdbdc8c59a767fd8cc25e4a9370d3c",
-        "record_sha256": "e24c0915e32a1bf3b7df1825a93be4a3054f1ce93456dc9bcabc32845237de0d",
-        "source_sha256": "d6034c0963d794ebddb344565ae3c750724ca5cb570450e6c9eb31ed0244efc1",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "complete ASM extent translated to deterministic Turbo C source with inline assembly and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "d6034c0963d794ebddb344565ae3c750724ca5cb570450e6c9eb31ed0244efc1",
+        "source_sha256": "ae05ce33f00bfe8bb9dada6cb8f3bc48d858f73727a827acf01b11a8aca7df6e",
+        "change": "Preserve the animated-tile ticker instruction stream, six data fixups, four near calls and the DGROUP segment relocation in a C translation unit. BP/SI/DI and LDS/LES usage require inline assembly for exact codegen."
       }
     },
     {
@@ -6404,9 +6402,9 @@
       "id": "F_699E",
       "start": 27550,
       "end": 27930,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_699E.ASM",
+      "source": "src/F_699E.C",
       "original_symbol": "F_699E",
       "artifact": "regions/F_699E.bin",
       "expected_sha256": "641531806bd04b1d59edbc711e024640fb84c889249860560b03504436ac034c",
@@ -6416,6 +6414,7 @@
         "public": "_f699e",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_f68cf": {
             "coordinate": "code_offset",
@@ -6459,16 +6458,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BBFC.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_699E.json",
-        "entry_sha256": "2f4748584ef0b6781e8fc2483aa5b2977a84b4551ed152a966838445a249d08e",
-        "record_sha256": "56f2f425855fae303e442ea86cdc468a43e631ba7c707ed98ef8c39e596ec7d9",
-        "source_sha256": "6e1037ff9b3fea445d27cd5cf6572050038b89db2516126b66dd8ea0f9961172",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "complete ASM extent translated to deterministic Turbo C interrupt source with fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "6e1037ff9b3fea445d27cd5cf6572050038b89db2516126b66dd8ea0f9961172",
+        "source_sha256": "1c7c76633b6ecfc90cbce7f391369c4384b238c95fe3578df7083b77a0ed0236",
+        "change": "Use Turbo C interrupt prologue/epilogue for the keyboard ISR; inline assembly preserves its CS jump table, port I/O and far-chain body."
       }
     },
     {
@@ -6676,9 +6672,9 @@
       "id": "F_6BCF",
       "start": 28111,
       "end": 28198,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_6BCF.ASM",
+      "source": "src/F_6BCF.C",
       "original_symbol": "F_6BCF",
       "artifact": "regions/F_6BCF.bin",
       "expected_sha256": "8ebd4127d1ea934d625b2b0997221918adab41d773f85a7af9fd286c989e3d70",
@@ -6688,6 +6684,7 @@
         "public": "_f6bcf",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_fc1a0": {
             "coordinate": "code_offset",
@@ -6731,16 +6728,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC04.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6BCF.json",
-        "entry_sha256": "6125577694e10375ba236a4498ab467fa24f211ce947c1c05f0cc6c8903ce8a6",
-        "record_sha256": "211e568a7e9d3aa081ae60b94c7df34b2be2ca5f14f9924811d549fbdd2ff4c8",
-        "source_sha256": "90dc22fdf6a897b96d6a18faadf511d5109d41ade4274f70a03bbc10895c42fb",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "complete ASM extent translated to deterministic Turbo C interrupt source with fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "90dc22fdf6a897b96d6a18faadf511d5109d41ade4274f70a03bbc10895c42fb",
+        "source_sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
+        "change": "Use Turbo C interrupt prologue/epilogue for the timer ISR; inline assembly preserves its port I/O and interrupt-control body."
       }
     },
     {
@@ -7150,9 +7144,9 @@
       "id": "F_6DCC",
       "start": 28620,
       "end": 28927,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_6DCC.ASM",
+      "source": "src/F_6DCC.C",
       "original_symbol": "F_6DCC",
       "artifact": "regions/F_6DCC.bin",
       "expected_sha256": "1357ed0e49e2aa6b7a0d3099ba2f49e4daf748eb7b266022a400f9ff318d9ce1",
@@ -7162,16 +7156,14 @@
         "public": "_f6dcc",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
+        "module_segments": {},
+        "bindings": {}
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6DCC.json",
-        "entry_sha256": "e4450899539aeed257f22bd2de78a07dd202c1e0ea98c58ada8224b5adb0451b",
-        "record_sha256": "0278be070ade34f23c529090deed8b87ef230c8115b4457cad1013708ce6dfd1",
-        "source_sha256": "5c948f5d0994720367690c9b95a95655454a8f7bb7f1b48af560317f24649cbe",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "complete ASM extent translated to deterministic Turbo C source with exact inline-assembly instruction stream",
+        "prior_asm_source_sha256": "5c948f5d0994720367690c9b95a95655454a8f7bb7f1b48af560317f24649cbe",
+        "source_sha256": "70c93badf67727f38f72c15b9d68b337ea2ae024bba24490cb8b13cff62ba230",
+        "change": "Preserve the CS-addressed decoder state, segment-register copies and BP dictionary register in a C translation unit; no external or loader relocations are required."
       }
     },
     {

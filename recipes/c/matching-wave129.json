@@ -1,0 +1,18 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_6DCC",
+      "source": "src/F_6DCC.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6dcc",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit preserving the CS-state decoder instruction stream"
+    }
+  ]
+}

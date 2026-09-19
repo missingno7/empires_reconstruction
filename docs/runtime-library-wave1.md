@@ -7,6 +7,7 @@ object addends and the original linked words, then checked by fresh
 `bind_region` proofs. Together they remove 860 bytes from raw fallback while
 preserving the exact executable.
 
-The matching-C count is unchanged; the remaining executable blocker is the
-76-byte F_4E9F matching-ASM extent, whose two DS targets still need an
-independent binding proof.
+Later matching-C waves independently converted every remaining ASM extent,
+including the interrupt and hardware bodies. The current executable census is
+345 C owners and zero ASM owners; this historical library wave remains useful
+as the provenance record for the six pinned CC.LIB modules.

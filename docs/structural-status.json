@@ -9,9 +9,13 @@
       "bytes": 5463,
       "owners": 49
     },
+    "MATCHING_ASM": {
+      "bytes": 383,
+      "owners": 12
+    },
     "MATCHING_C": {
-      "bytes": 58979,
-      "owners": 347
+      "bytes": 58596,
+      "owners": 335
     },
     "MZ_HEADER": {
       "bytes": 512,
@@ -93,6 +97,7 @@
   "synthetic_data_bytes": 13932,
   "synthetic_bss_bytes": 37252,
   "symbol_transform_owners": 0,
+  "omf_metadata_adapter_owners": 12,
   "byte_comparison": {
     "available": true,
     "candidate_sha256": "9bbd9bdf11e7f51e4f8f003dcfcef42c8884891cca66148db8cf9aa73f296b87",
@@ -246,10 +251,8 @@
     "remaining_adapters": [
       "candidate DATA/code object interleaving",
       "arithmetic-module FIXUPP subrecord ordering",
-      "unpartitioned TASM BSS source and recovered public map",
-      "recovered symbol aliases",
-      "EXTDEF case normalization",
-      "injected internal publics"
+      "unpartitioned TASM BSS reserve and historical storage ownership",
+      "Turbo C-compatible empty DGROUP metadata for standalone TASM owners"
     ],
     "whole_build_reconstruction_complete": false
   }

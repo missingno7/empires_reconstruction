@@ -6,8 +6,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from omf import OmfReader
 from omf_scaffold import (make_text_padding, remove_public, trim_text_contribution,
-                          make_dgroup_scaffold, order_explicit_fixupp_subrecords, _records)
+                          make_dgroup_scaffold, order_explicit_fixupp_subrecords,
+                          ensure_turbo_c_dgroup, _records)
 from pointer_records import records_object
+from reconstruct import read_json
 
 
 class OmfScaffoldTests(unittest.TestCase):
@@ -61,6 +63,28 @@ class OmfScaffoldTests(unittest.TestCase):
         self.assertEqual([f['offset'] for f in after.fixups], [7, 2])
         self.assertEqual(before.segment_bytes('_DATA'), after.segment_bytes('_DATA'))
         self.assertEqual(sorted(before.fixups, key=repr), sorted(after.fixups, key=repr))
+
+    def test_standalone_tasm_dgroup_normalization_preserves_text_semantics(self):
+        report_path = ROOT / 'build/tlink-structural-report.json'
+        if not report_path.exists():
+            self.skipTest('structural TLINK probe has not produced a TASM object')
+        report = read_json(report_path)
+        entry = next((entry for entry in report['relocatable_scaffold']
+                      if entry.get('transforms') == ['Turbo C-compatible empty DGROUP metadata']), None)
+        if entry is None:
+            self.skipTest('structural TLINK probe has not staged a standalone TASM object')
+        work = Path(report['byte_comparison']['candidate']).parent.parent
+        source = work / 'compile' / 'WORK' / entry['object']
+        before = OmfReader().read(source.read_bytes())
+        after = OmfReader().read(ensure_turbo_c_dgroup(source.read_bytes()))
+        self.assertEqual(after.segment_bytes('_TEXT'), before.segment_bytes('_TEXT'))
+        self.assertEqual(after.publics_in('_TEXT'), before.publics_in('_TEXT'))
+        self.assertEqual(after.externals, before.externals)
+        self.assertEqual(after.fixups_in('_TEXT'), before.fixups_in('_TEXT'))
+        self.assertEqual(after.segment_length('_DATA'), 0)
+        self.assertEqual(after.segment_length('_BSS'), 0)
+        self.assertEqual(next(group for group in after.groups if group['name'] == 'DGROUP')['segments'],
+                         ['_BSS', '_DATA'])
 
 
 if __name__ == '__main__':

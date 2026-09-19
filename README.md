@@ -1,5 +1,26 @@
 # Empires reconstruction
 
+The normal executable build is the structural Turbo Link 2.0 path:
+
+```powershell
+# Supply your locally installed, hash-pinned Borland tools first.
+python tools/setup_toolchain.py --from "C:/TC/BIN" --lib-from "C:/TC/LIB" --linker-from "C:/TC/BIN/TLINK.EXE"
+
+# Fresh reconstructed source -> OMF -> Turbo Link 2.0 -> build/AEPROG.EXE
+python tools/build_exe.py verify
+```
+
+It compiles fresh Turbo C/TASM inputs, emits initialized-DATA objects and the
+canonical `GAME_BSS` TASM module, applies the documented ordering adapters,
+and runs the pinned Turbo Link 2.0. With the original fixture available, the
+published EXE is checked byte-for-byte, including all 106 ordered relocations.
+The earlier fixed-placement EXE builder remains available as an oracle/debug
+path; the `probe_*` programs remain evidence tools rather than the primary
+developer workflow. The current adapter chain still reads `assets/AEPROG.EXE`
+to size the temporary baseline DGROUP scaffold and to prove component OMF
+extents; it never copies bytes from that fixture into the linked output, and
+the generated build report records this remaining dependency explicitly.
+
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Canonical and source-link raw DATA
@@ -25,7 +46,8 @@ object transforms. See
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.
-The fixed build compiles 347 C regions and no ASM regions, and retains 40 pinned
+The fixed build remains the independent fixed-placement oracle; the structural
+build freshly compiles all matching C and symbolic-assembly regions and retains 40 pinned
 Borland library contributions as independent historical inputs. The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured
 RGB tables (1,536 bytes). Canonical EXE ownership now contains zero raw regions.
@@ -53,9 +75,9 @@ This is a matching bootstrap, not yet reconstruction of the complete original
 build. The [architectural target](docs/build-reconstruction.md) requires layout
 to emerge from independent components and recovered build rules. DAT packing
 derives offsets from component order and emitted sizes. The relocatable TLINK
-experiment now places the complete `_TEXT` prefix, DGROUP alignment, BSS and
-stack under linker control; its remaining raw-local DATA and symbol
-adapters are tracked in the [adapter ledger](docs/linker-adapter-ledger.md).
+build now places the complete `_TEXT` prefix, DGROUP alignment, BSS and stack
+under linker control; its remaining ordering, OMF and BSS-ownership adapters
+are tracked in the [adapter ledger](docs/linker-adapter-ledger.md).
 The fixed EXE path remains the byte-identical oracle.
 A separate [compression-source experiment](docs/compression-sources.md) rebuilds
 both DATs from decoded payloads and explicit compression instructions. It
@@ -67,10 +89,10 @@ From this directory, with Python 3.10+:
 python tools/reconstruct_game.py
 ```
 
-This produces all three files, `build/report.json`, `build/archives-report.json`
+This produces all three files, `build/exe-build-report.json`, `build/report.json`, `build/archives-report.json`
 and `build/game-report.json`, prints coverage and hashes, and exits nonzero on
 a failure. Every invocation builds fresh objects. For only the EXE, use
-`python tools/reconstruct.py`; for only DATs, use
+`python tools/build_exe.py verify`; for only DATs, use
 `python tools/reconstruct_archives.py`.
 The whole-game command also checks independently packed DATs against both
 the fixed-layout archive output and the original fixtures.
@@ -87,11 +109,9 @@ the existing local upstream installation once:
 ```powershell
 python tools/extract_raw.py
 python tools/reconstruct_archives.py prepare
-python tools/setup_toolchain.py
-# Optional historical linker, after extracting the locally pinned TLINK.EXE:
-# python tools/setup_toolchain.py --linker-from build/turbo20-toolchain/TLINK.EXE
-# Alternatively: python tools/setup_toolchain.py --from "X:/your/TC/BIN"
-# If libraries are elsewhere, add --lib-from "X:/your/TC/LIB".
+python tools/setup_toolchain.py --from "X:/your/TC/BIN" --lib-from "X:/your/TC/LIB"
+# If the pinned TLINK.EXE is not in that BIN directory, add:
+# --linker-from "X:/your/TLINK.EXE"
 ```
 
 The setup and build both verify the hashes in `layout/toolchain.json`.

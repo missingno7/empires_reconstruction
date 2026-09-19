@@ -15,6 +15,10 @@ def status(root, report):
                   for o in manifest['regions'] if o['kind'] == 'RAW'),
                  key=lambda item: -item['bytes'])
     scaffolds = [s for s in report['relocatable_scaffold'] if s['kind'] != 'owner']
+    transformed = [s for s in report['relocatable_scaffold'] if s.get('transforms')]
+    dgroup_metadata = [s for s in transformed
+                        if s['transforms'] == ['Turbo C-compatible empty DGROUP metadata']]
+    symbol_transforms = [s for s in transformed if s not in dgroup_metadata]
     source_path = root / 'build/source-data-link-report.json'
     source = read_json(source_path) if source_path.exists() else None
     exact_path = root / 'build/exact-structural-link-report.json'
@@ -32,7 +36,8 @@ def status(root, report):
         'demand_object_present': any(s['kind'] == 'historical_library_demand' for s in scaffolds),
         'synthetic_data_bytes': sum(s.get('data_bytes', 0) for s in scaffolds),
         'synthetic_bss_bytes': sum(s.get('bss_bytes', 0) for s in scaffolds),
-        'symbol_transform_owners': sum(bool(s.get('transforms')) for s in report['relocatable_scaffold']),
+        'symbol_transform_owners': len(symbol_transforms),
+        'omf_metadata_adapter_owners': len(dgroup_metadata),
         'byte_comparison': {k: v for k, v in report['byte_comparison'].items()
                             if k not in ('candidate', 'oracle')},
         'historical_translation_units': 'open; C0C invariant bytes and module extent strongly evidenced',

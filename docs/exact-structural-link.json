@@ -125,8 +125,9 @@
   "remaining_adapters": [
     "candidate DATA/code object interleaving",
     "arithmetic-module FIXUPP subrecord ordering",
-    "unpartitioned TASM BSS reserve and historical storage ownership"
+    "unpartitioned TASM BSS reserve and historical storage ownership",
+    "Turbo C-compatible empty DGROUP metadata for standalone TASM owners"
   ],
   "whole_build_reconstruction_complete": false,
-  "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA and zero object symbol transforms; object order, BSS ownership and historical module proof remain."
+  "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA and zero object symbol transforms; object order, BSS ownership, standalone TASM DGROUP metadata and historical module proof remain."
 }

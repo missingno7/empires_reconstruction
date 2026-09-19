@@ -7,23 +7,12 @@ from probe_data_interleaving import run as data_interleaving
 from reconstruct import ROOT, read_json, write_json
 
 
-def run():
-    source = source_data_link()
+def publish(source, shared_modules, final):
+    """Validate and publish an exact-link receipt from freshly built stages."""
+    if len(shared_modules) != 6:
+        raise ValueError('Exact structural link requires six shared source-module stages')
     if not source['byte_comparison']['load_image']['equal']:
         raise ValueError('Source DATA link no longer has an exact load image')
-    first = shared_module_link(ROOT / 'recipes/modules/C_6C26_6C87.json', True)
-    first_path = ROOT / 'build/shared-source-data-link-report_C_6C26_6C87.json'
-    second = shared_module_link(ROOT / 'recipes/modules/C_C5D1_C898.json', True, first_path)
-    second_path = ROOT / 'build/shared-source-data-link-report_C_C5D1_C898.json'
-    third = shared_module_link(ROOT / 'recipes/modules/C_D61C_D79C.json', True, second_path)
-    third_path = ROOT / 'build/shared-source-data-link-report_C_D61C_D79C.json'
-    fourth = shared_module_link(ROOT / 'recipes/modules/C_75F3_7856.json', True, third_path)
-    fourth_path = ROOT / 'build/shared-source-data-link-report_C_75F3_7856.json'
-    fifth = shared_module_link(ROOT / 'recipes/modules/C_AD25_AF45.json', True, fourth_path)
-    fifth_path = ROOT / 'build/shared-source-data-link-report_RELOC_F_AD25_F_ADCF.json'
-    sixth = shared_module_link(ROOT / 'recipes/modules/C_DDD9_E095.json', True, fifth_path)
-    sixth_path = ROOT / 'build/shared-source-data-link-report_RELOC_F_DDD9_F_DF98.json'
-    final = data_interleaving(sixth_path, ROOT / 'recipes/data/interleaving-candidate.json')
     comparison = final['byte_comparison']
     if (final['status'] != 'LAYOUT_PRESERVED'
             or final['matching_relocation_prefix_entries'] != 106
@@ -36,13 +25,10 @@ def run():
         'linker': {key: linker[key] for key in ('path', 'version_banner', 'sha256', 'role')},
         'steps': [
             {'name': 'source_data', 'status': source['status']},
-            {'name': first['candidate'], 'status': first['status']},
-            {'name': second['candidate'], 'status': second['status']},
-            {'name': third['candidate'], 'status': third['status']},
-            {'name': fourth['candidate'], 'status': fourth['status']},
-            {'name': fifth['candidate'], 'status': fifth['status']},
-            {'name': sixth['candidate'], 'status': sixth['status'],
-             'fixupp_order_adapter': sixth['fixupp_order_adapter']},
+            *({'name': shared['candidate'], 'status': shared['status'],
+               **({'fixupp_order_adapter': shared['fixupp_order_adapter']}
+                  if shared.get('fixupp_order_adapter') else {})}
+              for shared in shared_modules),
             {'name': 'data_code_interleaving', 'status': final['status'],
              'matching_relocation_prefix_entries': final['matching_relocation_prefix_entries']},
         ],
@@ -52,10 +38,12 @@ def run():
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
             'unpartitioned TASM BSS reserve and historical storage ownership',
+            'Turbo C-compatible empty DGROUP metadata for standalone TASM owners',
         ],
         'whole_build_reconstruction_complete': False,
         'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA '
-                       'and zero object symbol transforms; object order, BSS ownership and '
+                       'and zero object symbol transforms; object order, BSS ownership, standalone '
+                       'TASM DGROUP metadata and '
                        'historical module proof remain.'),
     }
     write_json(ROOT / 'build/exact-structural-link-report.json', report)
@@ -63,6 +51,19 @@ def run():
     print('Exact structural TLINK experiment: BYTE IDENTICAL')
     print(comparison['candidate_sha256'])
     return report
+
+
+def run():
+    source = source_data_link()
+    recipes = ('C_6C26_6C87.json', 'C_C5D1_C898.json', 'C_D61C_D79C.json',
+               'C_75F3_7856.json', 'C_AD25_AF45.json', 'C_DDD9_E095.json')
+    shared_modules, previous = [], None
+    for recipe in recipes:
+        shared = shared_module_link(ROOT / 'recipes/modules' / recipe, True, previous)
+        shared_modules.append(shared)
+        previous = ROOT / 'build' / f"shared-source-data-link-report_{shared['candidate']}.json"
+    final = data_interleaving(previous, ROOT / 'recipes/data/interleaving-candidate.json')
+    return publish(source, shared_modules, final)
 
 
 if __name__ == '__main__':

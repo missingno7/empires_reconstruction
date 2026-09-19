@@ -6,15 +6,16 @@ and creates every receipt in the current invocation.
 """
 import argparse
 import hashlib
-import os
 from pathlib import Path
 import shutil
 import subprocess
 
 from probe_data_interleaving import run as interleave_data
+from probe_exact_structural_link import publish as publish_exact_receipt
 from probe_shared_module_link import run as link_shared_module
 from probe_source_data_link import run as link_source_data
 from probe_tlink_layout import run as build_baseline
+from mz import MZ
 from reconstruct import ROOT, read_json, write_json
 
 
@@ -23,7 +24,9 @@ MODULE_RECIPES = ('C_6C26_6C87.json', 'C_C5D1_C898.json', 'C_D61C_D79C.json',
                   'C_75F3_7856.json', 'C_AD25_AF45.json', 'C_DDD9_E095.json')
 TRANSIENT_REPORTS = ('tlink-structural-report.json', 'source-data-link-report.json',
                      'shared-source-data-link-report.json', 'data-interleaving-report.json',
-                     'exact-structural-link-report.json', 'exe-build-report.json')
+                     'exe-build-report.json')
+SESSION_PREFIXES = ('tlink-structural-', 'source-data-', 'shared-link-',
+                    'interleave-', 'module-group-')
 
 
 def sha256(path):
@@ -46,19 +49,40 @@ def validate_toolchain(root):
     return lock, verified
 
 
-def clear_receipts(root):
-    for name in TRANSIENT_REPORTS:
-        (root / 'build' / name).unlink(missing_ok=True)
+def clear_stale_state(root):
+    """Remove only generated structural-link state before a fresh build.
+
+    Archive outputs and unrelated diagnostics remain intact. Each staged
+    object below is then created in a new ``build/<prefix>*`` session, so an
+    object or receipt from an earlier invocation cannot be selected.
+    """
+    build = (root / 'build').resolve()
+    removed = []
+    for name in TRANSIENT_REPORTS + ('AEPROG.EXE',):
+        path = build / name
+        if path.exists():
+            path.unlink()
+            removed.append(path.name)
     for recipe in MODULE_RECIPES:
         ident = read_json(root / 'recipes/modules' / recipe)['id']
-        (root / 'build' / f'shared-source-data-link-report_{ident}.json').unlink(missing_ok=True)
+        path = build / f'shared-source-data-link-report_{ident}.json'
+        if path.exists():
+            path.unlink()
+            removed.append(path.name)
+    for path in build.iterdir():
+        if path.is_dir() and path.name.startswith(SESSION_PREFIXES):
+            if not path.resolve().is_relative_to(build):
+                raise ValueError(f'Structural session escapes build directory: {path}')
+            shutil.rmtree(path)
+            removed.append(path.name)
+    return removed
 
 
 def build(root=ROOT, verify=True):
     """Run a fresh source -> OMF -> TLINK build and publish ``build/AEPROG.EXE``."""
     (root / 'build').mkdir(exist_ok=True)
     lock, toolchain_files = validate_toolchain(root)
-    clear_receipts(root)
+    removed_state = clear_stale_state(root)
 
     # This baseline is construction, not a cached input.  Replacing F_F9BE
     # with the identical selected CC.LIB module prevents a duplicate TOUPPER
@@ -72,19 +96,24 @@ def build(root=ROOT, verify=True):
     if source['status'] != 'LINKED':
         raise ValueError('Source DATA link failed')
     previous = None
-    stages = []
+    stages, shared_reports = [], []
     for recipe_name in MODULE_RECIPES:
         recipe_path = root / 'recipes/modules' / recipe_name
         shared = link_shared_module(recipe_path, True, previous)
         stages.append({'recipe': recipe_name, 'candidate': shared['candidate'],
                        'fixupp_order_adapter': shared['fixupp_order_adapter']})
+        shared_reports.append(shared)
         previous = root / 'build' / f"shared-source-data-link-report_{shared['candidate']}.json"
     final = interleave_data(previous, root / 'recipes/data/interleaving-candidate.json')
+    exact_receipt = publish_exact_receipt(source, shared_reports, final)
     candidate = Path(final['byte_comparison']['candidate'])
     published = root / 'build/AEPROG.EXE'
     if not candidate.exists():
         raise ValueError('TLINK did not produce its final executable')
     shutil.copyfile(candidate, published)
+    linked_mz = MZ.parse(published.read_bytes())
+    if len(linked_mz.relocations) != 106:
+        raise ValueError(f'TLINK emitted {len(linked_mz.relocations)} relocations, expected 106')
 
     oracle = root / 'assets/AEPROG.EXE'
     verification = {'performed': False, 'reason': 'original fixture unavailable'}
@@ -98,6 +127,7 @@ def build(root=ROOT, verify=True):
         if not all((verification['byte_identical'], verification['sha256'] == ORIGINAL_SHA256,
                     verification['relocation_order_equal'])):
             raise ValueError('Structural build differs from the original executable')
+    bss_layout = read_json(root / 'src/data/GAME_BSS.json')
     report = {
         'format': 'empires-exe-build-v1', 'status': 'BUILT',
         'output': str(published), 'sha256': sha256(published), 'size': published.stat().st_size,
@@ -105,10 +135,13 @@ def build(root=ROOT, verify=True):
         'linker': lock['linkers'][0], 'toolchain_files': toolchain_files,
         'compiled_source_modules': baseline['compile']['owner_count'],
         'generated_data_components': len(read_json(root / 'recipes/data/game-initialized.json')['components']),
-        'bss': {'bytes': source['bss_source']['publics'] and 37250,
-                'publics': source['bss_source']['publics'], 'source': 'src/data/GAME_BSS.json'},
+        'bss': {'bytes': bss_layout['length'],
+                'publics': len(bss_layout['publics']), 'source': 'src/data/GAME_BSS.json'},
         'unresolved_symbols': baseline['link']['unresolved_count'],
-        'relocations': 106, 'shared_module_stages': stages,
+        'relocations': len(linked_mz.relocations), 'shared_module_stages': stages,
+        'fresh_build': {'removed_previous_state': removed_state,
+                        'final_link_session': str(candidate.parent.parent)},
+        'exact_structural_receipt': exact_receipt['status'],
         'remaining_structural_adapters': [
             'candidate DATA/code object interleaving',
             'arithmetic-module FIXUPP subrecord ordering',
@@ -120,8 +153,8 @@ def build(root=ROOT, verify=True):
         # binding their independently compiled OMF extents.  This is explicit
         # technical debt, not an undeclared source of emitted bytes.
         'fixture_dependency': {
-            'assets/AEPROG.EXE': 'currently required by per-component OMF proof helpers; '
-                                'never copied into the linked output',
+            'assets/AEPROG.EXE': ('currently read only by the temporary baseline-DGROUP sizing and '
+                                  'per-component OMF proof helpers; never copied into the linked output'),
         },
         'verification': verification,
     }

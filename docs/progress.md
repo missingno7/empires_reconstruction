@@ -3,7 +3,8 @@
 [The exact structural-link experiment](exact-structural-link.md) now makes
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
 inputs. All 106 relocation entries match in order. Candidate DATA/code
-interleaving, a checked arithmetic FIXUPP-order adapter and unpartitioned BSS
+interleaving, a checked arithmetic FIXUPP-order adapter, Turbo C-compatible
+empty DGROUP metadata for standalone TASM owners, and unpartitioned BSS
 ownership remain explicitly open. Its 247 BSS public anchors are canonical
 source and checked against linker-binding evidence. The structural path performs zero object
 symbol transforms, and the synthetic DGROUP/BSS object is now
@@ -40,7 +41,7 @@ entry-public pass reduced internal PUBDEF injection from 43 objects to the 27
 genuine entries inside `RUNTIME_BLOCK`. `main`, `f039c`, and 64 reconstructed
 cross-owner references now export or consume their selected publics directly.
 Canonical inline assembly now emits the final 27 OMF publics and an explicit
-end public, leaving zero object transforms in the structural link. See
+end public, leaving zero symbol transforms in the structural link. See
 [the natural-public checkpoint](natural-runtime-publics.md).
 
 [DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
@@ -98,8 +99,8 @@ linker adapters are now the primary work.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 58,979 | 347 |
-| Freshly assembled matching ASM | 2,456 | 0 | 0 |
+| Freshly compiled matching C | 14,077 | 58,596 | 335 |
+| Freshly assembled matching ASM | 2,456 | 383 | 12 |
 | Known toolchain library | 0 | 5,463 | 49 |
 | Structured MZ header | 0 | 512 | 1 |
 | Exact DATA (palettes, compiled initializers, text, records and static data) | 0 | 14,200 | 130 |

@@ -68,7 +68,11 @@ class TlinkStructureTests(unittest.TestCase):
                 self.assertEqual(report['link'].get('errors', []), [])
             transformed = [item for item in report['relocatable_scaffold']
                            if item.get('transforms')]
-            self.assertEqual(transformed, [])
+            asm_owners = {owner['id'] for owner in read_json(ROOT / 'layout/manifest.json')['regions']
+                          if owner['kind'] == 'MATCHING_ASM'}
+            self.assertEqual({item['owner'] for item in transformed}, asm_owners)
+            self.assertTrue(all(item['transforms'] == ['Turbo C-compatible empty DGROUP metadata']
+                                for item in transformed))
             runtime = next(item for item in report['relocatable_scaffold']
                            if item.get('owner') == 'RUNTIME_BLOCK')
             work = Path(report['byte_comparison']['candidate']).parent

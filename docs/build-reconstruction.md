@@ -8,7 +8,7 @@ historical module ownership remains open.
 
 Current exact structural checkpoint: Turbo Link 2.0 emits the byte-identical
 EXE from relocatable inputs with zero unresolved symbols. The result still uses
-explicitly tracked object-order, FIXUPP and BSS adapters. The structural path
+explicitly tracked object-order, FIXUPP, OMF-metadata and BSS adapters. The structural path
 performs zero object symbol transforms. See
 [the checkpoint](exact-structural-link.md) and [generated metrics](structural-status.json).
 
@@ -66,7 +66,8 @@ AE000: derived pack == fixed rebuild == original (227,560 bytes)
 AE001: derived pack == fixed rebuild == original (383,874 bytes)
 ```
 
-`python tools/reconstruct_game.py` now runs all of these paths and records
+`python tools/reconstruct_game.py` now uses the structural TLINK EXE build,
+runs all archive paths, and records
 three-way DAT equality in the combined report. `build/packed/packing-report.json`
 records generated offsets, actual sizes, source/output hashes and fallback
 counts. Construction status is `BUILT_UNVERIFIED`; equality is a separate
@@ -102,8 +103,10 @@ The full scaffold run under the comparison linker also derives DGROUP, BSS and
 STACK placement. The exact path builds BSS from TASM source and all initialized
 DATA from component sources, including 38 relocatable near pointers in the
 sound tables. Recovered sources now use historical library and owner publics
-directly, so ordinary aliases and case normalization are gone. It still has
-candidate object interleaving and injected internal labels. These are
+directly, so ordinary aliases, case normalization and injected internal labels
+are gone. It still has candidate object interleaving, a checked arithmetic
+FIXUPP ordering adapter and checked empty-DGROUP metadata for standalone TASM
+owners. These are
 tracked in [the adapter ledger](linker-adapter-ledger.md). The 347 source proof
 units do not count as recovered original modules. The combined report
 explicitly sets `whole_build_reconstruction_complete` to false.

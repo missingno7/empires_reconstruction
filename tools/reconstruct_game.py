@@ -4,7 +4,9 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+from collections import Counter
 
+from build_exe import build as build_structural_exe
 from reconstruct import ROOT, project_path, read_json, reconstruct, sha, write_json
 from reconstruct_archives import rebuild
 from pack_archives import pack, verify
@@ -67,11 +69,30 @@ def exe_metrics(root, manifest, report):
             'unresolved_machine_ranges': ordered}
 
 
-def reconstruct_game(root, output, toolchain, dosbox):
+def structural_exe_receipt(root, build):
+    """Adapt the structural build receipt to the metrics-only EXE interface."""
+    manifest = read_json(root / 'layout/manifest.json')
+    counts = Counter()
+    for owner in manifest['regions']:
+        counts[owner['kind']] += owner['end'] - owner['start']
+    return {'reconstructed_sha256': build['sha256'], 'total_bytes': build['size'],
+            'bytes_by_kind': dict(counts)}
+
+
+def reconstruct_game(root, output, toolchain, dosbox, exe_mode='structural'):
     output.mkdir(parents=True, exist_ok=True)
     # Individual builds also invalidate this report when they are invoked directly.
     (output / 'game-report.json').unlink(missing_ok=True)
-    exe = reconstruct(root, root / 'layout/manifest.json', output, toolchain, dosbox)
+    if exe_mode == 'structural':
+        if output != root / 'build':
+            raise ValueError('the structural EXE build currently publishes only to the canonical build directory')
+        structural_build = build_structural_exe(root, verify=True)
+        exe = structural_exe_receipt(root, structural_build)
+    elif exe_mode == 'fixed-oracle':
+        structural_build = None
+        exe = reconstruct(root, root / 'layout/manifest.json', output, toolchain, dosbox)
+    else:
+        raise ValueError(f'Unknown EXE build mode {exe_mode!r}')
     archives = rebuild(root, output)
     packed = pack(root, output / 'packed')
     packing_verification = verify(root, output / 'packed', output)
@@ -81,7 +102,9 @@ def reconstruct_game(root, output, toolchain, dosbox):
               'total_bytes': exe['total_bytes'] + sum(r['total_bytes'] for r in archives.values()),
               'exe': metrics, 'archives': archives,
               'build_reconstruction': {'whole_build_reconstruction_complete': False,
-                                       'exe_layout': 'fixed_placement_bootstrap',
+                                       'exe_layout': ('structural_tlink2' if exe_mode == 'structural'
+                                                      else 'fixed_placement_oracle'),
+                                       'structural_exe_build': structural_build,
                                        'dat_layout': 'derived_from_component_order_and_sizes',
                                        'dat_opaque_fallback_resources': sum(r['opaque_fallback_resources'] for r in packed['archives'].values()),
                                        'dat_verification': packing_verification}}
@@ -95,11 +118,14 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / 'build')
     parser.add_argument('--toolchain', type=Path, default=ROOT / 'toolchain')
     parser.add_argument('--dosbox', type=Path, default=Path(os.environ.get('DOSBOX', 'C:/Program Files/DOSBox Staging/dosbox.exe')))
+    parser.add_argument('--fixed-exe-oracle', action='store_true',
+                        help='use the older fixed-placement EXE builder for diagnostics')
     args = parser.parse_args()
     if not args.output.resolve().is_relative_to((ROOT / 'build').resolve()):
         parser.error('--output must be within the project build directory')
     try:
-        reconstruct_game(ROOT, args.output.resolve(), args.toolchain.resolve(), args.dosbox.resolve())
+        reconstruct_game(ROOT, args.output.resolve(), args.toolchain.resolve(), args.dosbox.resolve(),
+                         'fixed-oracle' if args.fixed_exe_oracle else 'structural')
     except (ValueError, OSError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}', file=sys.stderr)
         return 1

@@ -22,7 +22,10 @@ the reconstruction. It still uses a candidate object-interleaving recipe, one
 checked FIXUPP-order adapter for the inline-ASM arithmetic module, the
 unpartitioned 37,250-byte BSS reserve with 247 canonical public anchors, and four evidenced DATA/code ordering
 constraints. Canonical EXE and source-link raw DATA are both zero, and the
-structural path performs zero object symbol transforms. The arithmetic adapter changes only the order of explicit OMF fixup
+structural path performs zero object symbol transforms. Standalone TASM owners
+also receive checked, zero-length Turbo C-compatible `_DATA`/`_BSS` and
+`DGROUP` metadata so their OMF group topology matches the freshly compiled C
+owners; it cannot alter TEXT bytes, publics, externals or fixups. The arithmetic adapter changes only the order of explicit OMF fixup
 subrecords; it rejects threads and verifies that segment bytes, publics,
 externals, targets, addends, and sites remain identical before TLINK runs.
 The former synthetic DGROUP/BSS object has been replaced by a real

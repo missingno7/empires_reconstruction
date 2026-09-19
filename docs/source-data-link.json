@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 16460,
-  "unpartitioned_bss_source_bytes": 20790,
+  "partitioned_bss_source_bytes": 19230,
+  "unpartitioned_bss_source_bytes": 18020,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1095,16 +1095,40 @@
         "source_sha256": "f9c66516eb9c5bd654442827842182dbf1c08cd073d5f2f6dca01f0cc9c7b84a"
       },
       {
-        "id": "GAMEBSS_LEADING_REMAINDER",
-        "owner_candidate": "aggregate leading remainder",
+        "id": "GAMEBSS_PRE_S8C12",
+        "owner_candidate": "aggregate pre-resource state",
         "logical_start": 21224,
-        "bytes": 14124,
-        "publics": 133,
+        "bytes": 40,
+        "publics": 11,
         "representation": "ANCHORED_BSS",
         "confidence": "CANONICAL_LAYOUT",
         "aggregate_storage": true,
-        "object_sha256": "6578c8af6a3689c9dc9bbdbcc160e9b05a585f39f686ea849100435acd084e98",
-        "source_sha256": "0b84d414e6e69116615013bd3925b8087cec45eafd4a8096c52c51c34b704f85"
+        "object_sha256": "fb82351316ca1c1d93792034896ef87bea65484ed805ce7babc4a31213492237",
+        "source_sha256": "e18c8b689910b3b8deef1115ee2798c186f08beb4617bb5a490be50e26c60020"
+      },
+      {
+        "id": "S8C12_RESOURCE_BUFFER_BSS",
+        "owner_candidate": "F_4517 resource block copied by F_2AE2 redraw",
+        "logical_start": 21264,
+        "bytes": 2770,
+        "publics": 1,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "COMPATIBLE_SOURCE_OWNER",
+        "aggregate_storage": false,
+        "object_sha256": "78e8cccef5f8ae8c1ed0f9ee661fdaf894e5345150d37695160d10f6584b4eb8",
+        "source_sha256": "7a14eb80b963fe41efaa11eea862d0040a53f732e65baa73c153258ed4371fe2"
+      },
+      {
+        "id": "GAMEBSS_LEADING_REMAINDER",
+        "owner_candidate": "aggregate leading remainder",
+        "logical_start": 24034,
+        "bytes": 11314,
+        "publics": 121,
+        "representation": "ANCHORED_BSS",
+        "confidence": "CANONICAL_LAYOUT",
+        "aggregate_storage": true,
+        "object_sha256": "9bcdcbc2440f04696d9ef8060530a33d71e8b8227b8ba80d30379da98580a859",
+        "source_sha256": "4b7162ee4291e0f150267d915c3bcdf7bfc34b4291ab4483e21d068ad99c8e21"
       },
       {
         "id": "SLOT_GRID_BSS",

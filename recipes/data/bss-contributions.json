@@ -147,10 +147,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_LEADING_REMAINDER",
+      "id": "GAMEBSS_PRE_S8C12",
       "object": "GAMEBSSA.OBJ",
       "assembly": "GAMEBSSA.ASM",
       "logical_start": 21224,
+      "logical_end": 21264,
+      "owner_candidate": "aggregate pre-resource state",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "S8C12_RESOURCE_BUFFER_BSS",
+      "object": "S8C12B.OBJ",
+      "assembly": "S8C12B.ASM",
+      "logical_start": 21264,
+      "logical_end": 24034,
+      "owner_candidate": "F_4517 resource block copied by F_2AE2 redraw",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_LEADING_REMAINDER",
+      "object": "GAMEBSSB.OBJ",
+      "assembly": "GAMEBSSB.ASM",
+      "logical_start": 24034,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

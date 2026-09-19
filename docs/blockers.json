@@ -33,7 +33,7 @@
       "target": "Original modules and historical linker",
       "state": "Turbo Link 2.0 reproduces the complete byte-identical EXE; structural adapters remain",
       "matches": "The exact structural link reproduces all 78642 load bytes, all 106 relocation entries in order, TEXT/DATA and BSS/STACK layout, and the whole EXE SHA-256. No initialized bytes are copied from AEPROG.EXE. Runtime public offsets and BSS boundary are independently verified.",
-      "first_unresolved_fact": "The result still depends on candidate DATA/code object interleaving, a checked arithmetic FIXUPP-order adapter, and the 21,476-byte aggregate game-BSS reserve. The canonical 247-anchor BSS map is checked against linker-binding evidence; historical storage ownership remains open. Independent `g7904` and five-record `cel` BSS objects both move the first TEXT byte at 0xC8, so this area requires recovered neighboring object grouping rather than another standalone reserve split.",
+      "first_unresolved_fact": "The result still depends on candidate DATA/code object interleaving, a checked arithmetic FIXUPP-order adapter, and the 18,020-byte aggregate game-BSS reserve. The canonical 247-anchor BSS map is checked against linker-binding evidence; historical storage ownership remains open. Independent `g7904` and five-record `cel` BSS objects both move the first TEXT byte at 0xC8, so this area requires recovered neighboring object grouping rather than another standalone reserve split.",
       "evidence": [
         "layout/manifest.json",
         "layout/mz-header.json",

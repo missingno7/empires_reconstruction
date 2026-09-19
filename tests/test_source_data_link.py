@@ -85,8 +85,8 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertTrue(report['byte_comparison']['text']['equal'])
         self.assertEqual(report['synthetic_bss_bytes'], 0)
-        self.assertEqual(report['partitioned_bss_source_bytes'], 16460)
-        self.assertEqual(report['unpartitioned_bss_source_bytes'], 20790)
+        self.assertEqual(report['partitioned_bss_source_bytes'], 19230)
+        self.assertEqual(report['unpartitioned_bss_source_bytes'], 18020)
         self.assertFalse(report['dgroup_scaffold_present'])
         self.assertEqual(report['bss_source']['kind'], 'TASM_SOURCE_CONTRIBUTIONS')
         self.assertTrue(report['bss_source']['binding_evidence_equal'])
@@ -101,7 +101,9 @@ class SourceDataLinkTests(unittest.TestCase):
                           ('GAMEBSS_LEADING_PREFIX', 1126), ('G6F2A_RECORD_TABLE_BSS', 904),
                           ('A72B2_POINTER_TABLE_BSS', 160), ('GAMEBSS_RESOURCE_PREFIX', 336),
                           ('A74A2_RECORD_TABLE_BSS', 1122), ('GAMEBSS_CEL_REGION', 4152),
-                          ('G893C_RECORD_TABLE_BSS', 686), ('GAMEBSS_LEADING_REMAINDER', 14124),
+                          ('G893C_RECORD_TABLE_BSS', 686), ('GAMEBSS_PRE_S8C12', 40),
+                          ('S8C12_RESOURCE_BUFFER_BSS', 2770),
+                          ('GAMEBSS_LEADING_REMAINDER', 11314),
                           ('SLOT_GRID_BSS', 48), ('GAMEBSS_MID_REMAINDER', 8),
                           ('ANIMATION_STATE_BSS', 18), ('GC360_RECORD_TABLE_BSS', 270),
                           ('GAMEBSS_ERR_REMAINDER', 2),

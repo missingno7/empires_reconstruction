@@ -15053,9 +15053,9 @@
       "id": "F_CAF1",
       "start": 52465,
       "end": 52552,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_CAF1.ASM",
+      "source": "src/F_CAF1.C",
       "original_symbol": "F_CAF1",
       "artifact": "regions/F_CAF1.bin",
       "expected_sha256": "1ff0dac5fb715e6f96a1f55991f873017b683775e41488812afcaff85ef7533a",
@@ -15065,6 +15065,7 @@
         "public": "_fcaf1",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_g175e": {
             "offset": 5982,
@@ -15126,16 +15127,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219C4.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_CAF1.json",
-        "entry_sha256": "2d6523947fba440b7e6ed839208f381ec029b120f1969830c81c3fa949dc43b2",
-        "record_sha256": "67c1783ae5f3e4d92f15b08a6b43be785132870d3fa973836c6e332785950f0b",
-        "source_sha256": "6fd61b89d3df12bd6ea48a7b79dfdc3384aaf4533b15c551239725538d1d25e8",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "6fd61b89d3df12bd6ea48a7b79dfdc3384aaf4533b15c551239725538d1d25e8",
+        "source_sha256": "b5c5fe96edfe32e7f1f70a74490bf62da8fe005a50e3c3b974ecec28d65baf35",
+        "change": "Translate the complete sound tick service body into a deterministic Turbo C source unit with fourteen existing fixups and no loader relocations."
       }
     },
     {

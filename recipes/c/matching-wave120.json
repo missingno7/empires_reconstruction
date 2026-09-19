@@ -1,0 +1,31 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_CAF1",
+      "source": "src/F_CAF1.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fcaf1",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_g175e": {"offset": 5982, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1760": {"offset": 5984, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g176e": {"offset": 5998, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1770": {"offset": 6000, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e86": {"offset": 7814, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e88": {"offset": 7816, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e8a": {"offset": 7818, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e8c": {"offset": 7820, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e8e": {"offset": 7822, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e90": {"offset": 7824, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e92": {"offset": 7826, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"},
+          "_g1e94": {"offset": 7828, "coordinate": "DGROUP_offset", "evidence": "complete F_CAF1 fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit with fourteen fresh OMF fixups"
+    }
+  ]
+}

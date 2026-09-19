@@ -925,8 +925,8 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "partitioned_bss_source_bytes": 14492,
-  "unpartitioned_bss_source_bytes": 22758,
+  "partitioned_bss_source_bytes": 14652,
+  "unpartitioned_bss_source_bytes": 22598,
   "dgroup_scaffold_present": false,
   "bss_source": {
     "kind": "TASM_SOURCE_CONTRIBUTIONS",
@@ -1035,16 +1035,28 @@
         "source_sha256": "e958615c316b93116eaaef511cee3d07471d63a0f2bb5f672972a98f34e470eb"
       },
       {
+        "id": "A72B2_POINTER_TABLE_BSS",
+        "owner_candidate": "F_4517 resource pointer table",
+        "logical_start": 14768,
+        "bytes": 160,
+        "publics": 1,
+        "representation": "SYMBOLIC_ASM",
+        "confidence": "COMPATIBLE_SOURCE_OWNER",
+        "aggregate_storage": false,
+        "object_sha256": "ec66589c7ce072096dce2e6af461ef772e939ff314acd5216c49e4662650e427",
+        "source_sha256": "592bf5bda8f92607c73fedecae40978dfb39fb6416b530bb0435d8a91e409b98"
+      },
+      {
         "id": "GAMEBSS_LEADING_REMAINDER",
         "owner_candidate": "aggregate leading remainder",
-        "logical_start": 14768,
-        "bytes": 20580,
-        "publics": 147,
+        "logical_start": 14928,
+        "bytes": 20420,
+        "publics": 146,
         "representation": "ANCHORED_BSS",
         "confidence": "CANONICAL_LAYOUT",
         "aggregate_storage": true,
-        "object_sha256": "9ae544d1c1b590ad0c83acc13f442e462bba5dd4de7a64042c33c6ce00296cb1",
-        "source_sha256": "6dc781249bdc45a467817ff2c06da482436fa4cb2e229cf9db181e11f100b083"
+        "object_sha256": "1d45d8f348aaae7d4ea3e3c52df8f5801375e380187410d81c4f28621ba0392b",
+        "source_sha256": "d8b1adb9f3bb8daba765800a57aab3e4793b57fa7f063655f01582fb2b6c20ce"
       },
       {
         "id": "SLOT_GRID_BSS",

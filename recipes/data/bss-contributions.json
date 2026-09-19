@@ -92,10 +92,21 @@
       "aggregate_storage": false
     },
     {
+      "id": "A72B2_POINTER_TABLE_BSS",
+      "object": "A72B2B.OBJ",
+      "assembly": "A72B2B.ASM",
+      "logical_start": 14768,
+      "logical_end": 14928,
+      "owner_candidate": "F_4517 resource pointer table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "COMPATIBLE_SOURCE_OWNER",
+      "aggregate_storage": false
+    },
+    {
       "id": "GAMEBSS_LEADING_REMAINDER",
       "object": "GAMEBSS7.OBJ",
       "assembly": "GAMEBSS7.ASM",
-      "logical_start": 14768,
+      "logical_start": 14928,
       "logical_end": 35348,
       "owner_candidate": "aggregate leading remainder",
       "representation": "ANCHORED_BSS",

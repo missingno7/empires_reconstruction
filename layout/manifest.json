@@ -13973,9 +13973,9 @@
       "id": "F_C27D",
       "start": 50301,
       "end": 50410,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_C27D.ASM",
+      "source": "src/F_C27D.C",
       "original_symbol": "F_C27D",
       "artifact": "regions/F_C27D.bin",
       "expected_sha256": "60c27416749667b01b3fb3015671b323b7e8ea71b4b4b836e3d48edd1b9d777f",
@@ -13985,6 +13985,7 @@
         "public": "_fc27d",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_fc2ea": {
             "offset": 49898,
@@ -14036,16 +14037,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212EC.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C27D.json",
-        "entry_sha256": "a41fdd2022d62643d3f18d5f234ef09b64ea43b29fa845a5e4b8970cecd1c5f9",
-        "record_sha256": "a375a414df0b0a8bce4adcecb5f390f618ed9b607311b74707eee7084be99ff8",
-        "source_sha256": "5384e0d8d0dda0013bb58d0ed5343de95b38410460f42f167956b20b67217f71",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "5384e0d8d0dda0013bb58d0ed5343de95b38410460f42f167956b20b67217f71",
+        "source_sha256": "47aa84173c93193474e7223c4c494f7eb34223a0c5962e4a6c6eccfc983e3bb0",
+        "change": "Translate the complete voice service loop into a deterministic Turbo C source unit with eighteen existing fixups and no loader relocations."
       }
     },
     {

@@ -1,0 +1,29 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_C27D",
+      "source": "src/F_C27D.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc27d",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_fc2ea": {"offset": 49898, "coordinate": "code_offset", "evidence": "F_C2EA owned code entry"},
+          "_fc440": {"offset": 50240, "coordinate": "code_offset", "evidence": "complete F_C27D fixup"},
+          "_fc6b9": {"offset": 50873, "coordinate": "code_offset", "evidence": "complete F_C27D fixup"},
+          "_fc755": {"offset": 51029, "coordinate": "code_offset", "evidence": "complete F_C27D fixup"},
+          "_snd_nvoices": {"offset": 6010, "coordinate": "DGROUP_offset", "evidence": "complete F_C27D fixup"},
+          "_snd_paused": {"offset": 6008, "coordinate": "DGROUP_offset", "evidence": "complete F_C27D fixup"},
+          "_v_a": {"offset": 6060, "coordinate": "DGROUP_offset", "evidence": "complete F_C27D fixup"},
+          "_v_ctr": {"offset": 6044, "coordinate": "DGROUP_offset", "evidence": "complete F_C27D fixup"},
+          "_v_hold": {"offset": 6068, "coordinate": "DGROUP_offset", "evidence": "complete F_C27D fixup"},
+          "_v_len": {"offset": 6076, "coordinate": "DGROUP_offset", "evidence": "complete F_C27D fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit with eighteen fresh OMF fixups"
+    }
+  ]
+}

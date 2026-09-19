@@ -1,0 +1,292 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_C27D",
+  "bytes": 109,
+  "source_sha256": "47aa84173c93193474e7223c4c494f7eb34223a0c5962e4a6c6eccfc983e3bb0",
+  "matched_sha256": "60c27416749667b01b3fb3015671b323b7e8ea71b4b4b836e3d48edd1b9d777f",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 7,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_a",
+      "displacement": 0,
+      "extent_offset": 7,
+      "addend": 0,
+      "resolved_value": 6060
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 14,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_ctr",
+      "displacement": 0,
+      "extent_offset": 14,
+      "addend": 0,
+      "resolved_value": 6044
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 20,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc2ea",
+      "displacement": 0,
+      "extent_offset": 20,
+      "addend": 0,
+      "resolved_value": 87
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 24,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_a",
+      "displacement": 0,
+      "extent_offset": 24,
+      "addend": 0,
+      "resolved_value": 6060
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 31,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_ctr",
+      "displacement": 0,
+      "extent_offset": 31,
+      "addend": 0,
+      "resolved_value": 6044
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 35,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_paused",
+      "displacement": 0,
+      "extent_offset": 35,
+      "addend": 0,
+      "resolved_value": 6008
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 42,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_hold",
+      "displacement": 0,
+      "extent_offset": 42,
+      "addend": 0,
+      "resolved_value": 6068
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 49,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_len",
+      "displacement": 0,
+      "extent_offset": 49,
+      "addend": 0,
+      "resolved_value": 6076
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 54,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_ctr",
+      "displacement": 0,
+      "extent_offset": 54,
+      "addend": 0,
+      "resolved_value": 6044
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 59,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc6b9",
+      "displacement": 0,
+      "extent_offset": 59,
+      "addend": 0,
+      "resolved_value": 1023
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 70,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_nvoices",
+      "displacement": 0,
+      "extent_offset": 70,
+      "addend": 0,
+      "resolved_value": 6010
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 75,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_a",
+      "displacement": 0,
+      "extent_offset": 75,
+      "addend": 0,
+      "resolved_value": 6060
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 79,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_a",
+      "displacement": 0,
+      "extent_offset": 79,
+      "addend": 2,
+      "resolved_value": 6062
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 83,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_a",
+      "displacement": 0,
+      "extent_offset": 83,
+      "addend": 4,
+      "resolved_value": 6064
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 87,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_v_a",
+      "displacement": 0,
+      "extent_offset": 87,
+      "addend": 6,
+      "resolved_value": 6066
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 92,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc755",
+      "displacement": 0,
+      "extent_offset": 92,
+      "addend": 0,
+      "resolved_value": 1146
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 99,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_snd_paused",
+      "displacement": 0,
+      "extent_offset": 99,
+      "addend": 0,
+      "resolved_value": 6008
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 105,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": true,
+      "target_kind": "external",
+      "target": "_fc440",
+      "displacement": 0,
+      "extent_offset": 105,
+      "addend": 0,
+      "resolved_value": 344
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "47aa84173c93193474e7223c4c494f7eb34223a0c5962e4a6c6eccfc983e3bb0",
+    "staged_sha256": "c757d26426a15bc03b6445b87c62c7d949fe7729d35eb0a59d759ec38908f3ab",
+    "object_sha256": "0365e6f419d2baccdbe2e81bc0a4cb22951ef26406fbf72410f3f97d2db1c4a7"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-fc27d-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "00ecc9e6f082b1dea0516cd4dbff83e850783ca11abd455391e24508d4f8193d",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

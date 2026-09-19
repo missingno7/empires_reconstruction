@@ -19,7 +19,7 @@
     {
       "target": "Held C linkage closure",
       "state": "closed for the currently inventoried held candidates",
-      "matches": "Current build proves 327 C and 18 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
+      "matches": "Current build proves 328 C and 17 ASM extents. All held candidates have either been promoted from fresh complete OMF proofs or resolved as existing owned extents; the linkage inventory is empty.",
       "first_unresolved_fact": "No unresolved symbols remain in the current held-candidate inventory. Further work moves to raw-data classification, module topology and format recovery.",
       "evidence": [
         "docs/linkage-blockers.json",
@@ -27,7 +27,7 @@
         "layout/manifest.json"
       ],
       "unblock": "Continue source and module recovery on newly classified raw extents; preserve the same fresh complete extent, fixup and relocation proof for each promotion.",
-      "leverage": "The final 76-byte F_4E9F ASM extent closed the last two unresolved symbols."
+      "leverage": "The 76-byte F_4E9F extent is now matching C; continue testing the remaining ASM owners for compiler-reproducible extents."
     },
     {
       "target": "Original modules and historical linker",

@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 56,539 | 327 |
-| Freshly assembled matching ASM | 2,456 | 2,356 | 18 |
+| Freshly compiled matching C | 14,077 | 56,615 | 328 |
+| Freshly assembled matching ASM | 2,456 | 2,280 | 17 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -27,6 +27,11 @@ the full file remain EQUAL. Original and rebuilt SHA-256:
 ```
 
 ## Newly owned regions
+
+Wave 114 converts the complete 76-byte F_4E9F record-table walk from matching
+ASM to matching C. Its fresh Turbo C object binds four data references and the
+F_4AA8 near call, with no loader relocations; all bytes and the complete extent
+match exactly.
 
 `F_01CE` now owns its 65 bytes as matching C. Its source was copied unchanged
 from current upstream, compiled with the original flags, bound against the
@@ -931,3 +936,12 @@ relocations. See [the wave 113 proof](matching-c-wave113.md).
 
 Current matching-C coverage is 56,539 bytes across 327 owners, with 2,356
 matching-ASM bytes across 18 owners. The raw frontier remains 10,173 bytes.
+
+## One-hundred-fourteenth matching-C conversion
+
+F_4E9F converts from its verified ASM owner to matching C. The complete
+76-byte record-table walk preserves four data fixups and the F_4AA8 near call,
+with no loader relocations. See [the wave 114 proof](matching-c-wave114.md).
+
+Current matching-C coverage is 56,615 bytes across 328 owners, with 2,280
+matching-ASM bytes across 17 owners. The raw frontier remains 10,173 bytes.

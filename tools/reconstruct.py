@@ -86,7 +86,10 @@ def compile_sources(root, owners, work, toolchain, dosbox, lock):
     include_dir = root / 'include'
     if include_dir.exists():
         for header in include_dir.glob('*.H'):
-            shutil.copyfile(header, units / header.name)
+            source = header.read_bytes()
+            staged = (source.decode('latin1').replace('\r\n', '\n').replace('\r', '\n')
+                      .replace('\n', '\r\n').encode('latin1'))
+            (units / header.name).write_bytes(staged)
     for item in lock['files']:
         src = toolchain / item['path']
         if sha(src.read_bytes()) != item['sha256']:

@@ -14,8 +14,9 @@ byte at offset 15h. The resulting layout is:
 | 15h | `state` | F_9DCC stores value 4 |
 | 16h | `tail[5]` | exact 27-byte stride |
 
-The header is currently used by F_9DCC, F_A09D, F_A13F, F_A223, F_A24E, and
-F_A28D. Fresh compilation of each complete owner remains byte-identical. F_A33F
-continues to use its `char[][27]` view because Turbo C emits four extra bytes
-when its matrix decay is replaced with a typed-record address; this is a known
-compiler-expression constraint, not a conflicting storage claim.
+The header is currently used by F_9DCC, F_A09D, F_A13F, F_A223, F_A24E, F_A28D,
+and F_A33F. Fresh compilation of each complete owner remains byte-identical.
+F_A33F uses a `char (*)[27]` matrix-view macro over the typed storage because
+Turbo C emits four extra bytes when its matrix decay is replaced directly with
+a typed-record address. The macro preserves its original expression and exact
+object while keeping one declaration of the underlying storage.

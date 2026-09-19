@@ -1,6 +1,7 @@
 /* F_9F40 -- 0x10-step animation loop; the blit call is scaled by the video
    mode in gbfcd.  q is the register copy of the third parameter. */
-extern int f6c57(), f9ec3(), f039f(), f6c6f();
+extern int f6c57(), f6c6f();
+extern void f9ec3(), f039f();
 extern char gbfcd;
 
 void f9f40(int a, int b, int c, int d, int e, int f)

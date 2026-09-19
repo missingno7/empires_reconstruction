@@ -16,7 +16,8 @@ class C470RecordHeaderTests(unittest.TestCase):
     def test_header_users_preserve_code_and_fixups(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         lock = read_json(ROOT / 'layout/toolchain.json')
-        ids = ('F_9DCC', 'F_A09D', 'F_A13F', 'F_A223', 'F_A24E', 'F_A28D', 'F_A036')
+        ids = ('F_9DCC', 'F_A09D', 'F_A13F', 'F_A223', 'F_A24E', 'F_A28D', 'F_A33F',
+               'F_A036')
         owners = [next(item for item in manifest['regions'] if item['id'] == ident)
                   for ident in ids]
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

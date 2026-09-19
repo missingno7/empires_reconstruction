@@ -23,12 +23,14 @@ errors. The first mechanically relevant conflicts are:
   [record evidence](c470-record.md). F_A33F retains a byte-exact matrix view
   pending a compiler-equivalent typed expression.
 
-The compiler also reports unresolved type conflicts for `f01ce`, `f03a8`, and
-the C470 declarations. These diagnostics establish the immediate work order:
-recover a shared declaration for the C470 record family and normalize only
-call signatures whose individual-object bytes remain equal. No source was
-changed by this experiment, and the failed candidate is intentionally not a
-linker input.
+The first interface pass resolved the void-return conflicts, the far result of
+`fa004`, and the C470 declaration family. The 19-owner source now compiles,
+but a per-owner comparison finds F_9DCC one byte longer inside that combined
+translation unit even though its independently compiled object remains exact.
+The module also has noncontiguous initialized-DATA owners (`DATA_125D` and
+`C_DATA_A28D`). These are separate compiler/layout constraints: the candidate
+is intentionally not a linker input until both its individual code extents and
+DGROUP contribution can be matched.
 
 Reproduce the evidence by concatenating the listed owners with the ordinary
 `tools/probe_module_group.py` workflow after preparing an explicit candidate

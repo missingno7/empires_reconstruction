@@ -18,11 +18,12 @@ from omf_scaffold import add_publics, externalize_data_segment, rename_external_
 from pointer_records import FORMAT, compile_records
 from sound_data import FORMAT as SOUND_FORMAT, compile_sound_data
 from typed_data import FORMAT as TYPED_FORMAT, compile_typed_data
-from probe_tlink_layout import compare_linked_executable, link_errors, parse_map
+from probe_tlink_layout import (compare_linked_executable, comparison_not_requested,
+                                link_errors, parse_map)
 from reconstruct import ROOT, read_json, sha, write_json
 
 
-def run():
+def run(verify=True):
     (ROOT / 'build/source-data-link-report.json').unlink(missing_ok=True)
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link'].get('errors'):
@@ -244,7 +245,8 @@ def run():
                              'binding_evidence_equal': source_bss_publics == bss_public_offsets},
               'temporary_startup_data_aliases': startup_aliases,
               'temporary_runtime_data_aliases': runtime_aliases,
-              'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),
+              'byte_comparison': (compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE')
+                                  if verify else comparison_not_requested(work / 'WORK/OUT.EXE')),
               'limitation': ('Ordered source DATA and canonical BSS anchors; '
                              'unpartitioned BSS storage and historical module grouping remain.')}
     write_json(ROOT / 'build/source-data-link-report.json', report)
@@ -253,8 +255,8 @@ def run():
                                   if key not in ('candidate', 'oracle')}
     write_json(ROOT / 'docs/source-data-link.json', receipt)
     print(f"Source DATA link: {report['status']}; code unchanged: {report['code_contributions_equal']}")
-    print(report['byte_comparison']['load_image'])
-    print(report['byte_comparison']['initialized_data'])
+    print(report['byte_comparison'].get('load_image', {'available': False}))
+    print(report['byte_comparison'].get('initialized_data', {'available': False}))
     return report
 
 

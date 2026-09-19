@@ -7,6 +7,9 @@ The normal executable build is the structural Turbo Link 2.0 path:
 python tools/setup_toolchain.py --from "C:/TC/BIN" --lib-from "C:/TC/LIB" --linker-from "C:/TC/BIN/TLINK.EXE"
 
 # Fresh reconstructed source -> OMF -> Turbo Link 2.0 -> build/AEPROG.EXE
+python tools/build_exe.py --no-verify
+
+# Optional oracle comparison against the locally supplied original EXE
 python tools/build_exe.py verify
 ```
 
@@ -16,10 +19,11 @@ and runs the pinned Turbo Link 2.0. With the original fixture available, the
 published EXE is checked byte-for-byte, including all 106 ordered relocations.
 The earlier fixed-placement EXE builder remains available as an oracle/debug
 path; the `probe_*` programs remain evidence tools rather than the primary
-developer workflow. The current adapter chain still reads `assets/AEPROG.EXE`
-to size the temporary baseline DGROUP scaffold and to prove component OMF
-extents; it never copies bytes from that fixture into the linked output, and
-the generated build report records this remaining dependency explicitly.
+developer workflow. Construction does not open `assets/AEPROG.EXE`: temporary
+DGROUP sizing, relocation expectations and component extents come from the
+canonical manifest, structured MZ header and source metadata. The fixture is
+an optional verification oracle, as recorded in the
+[fixture audit](docs/fixture-dependency-audit.json).
 
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no

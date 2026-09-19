@@ -1,0 +1,51 @@
+{
+  "format": "empires-structural-build-fixture-audit-v1",
+  "scope": "tools/build_exe.py and its construction-stage helpers",
+  "construction_fixture_dependencies_before": 1,
+  "construction_fixture_dependencies_after": 0,
+  "entries": [
+    {
+      "component": "tools/probe_tlink_layout.py",
+      "former_use": "temporary DGSCF initialized-tail bytes and SS sizing",
+      "classification": "component extent proof / DGROUP sizing",
+      "replacement": "layout/mz-header.json e_ss plus manifest load extents; zero-filled temporary bytes",
+      "construction_required": false
+    },
+    {
+      "component": "tools/probe_source_data_link.py",
+      "former_use": "linked EXE byte-comparison receipt",
+      "classification": "verification only",
+      "replacement": "optional compare_linked_executable call",
+      "construction_required": false
+    },
+    {
+      "component": "tools/probe_module_group.py",
+      "former_use": "per-owner byte comparison during shared-module proof",
+      "classification": "verification only",
+      "replacement": "manifest extent digests, structured MZ header, public offsets and OMF fixups",
+      "construction_required": false
+    },
+    {
+      "component": "tools/probe_shared_module_link.py",
+      "former_use": "group relocation-order and EXE comparison",
+      "classification": "verification only",
+      "replacement": "layout/mz-header.json relocation sequence; optional EXE comparison",
+      "construction_required": false
+    },
+    {
+      "component": "tools/probe_data_interleaving.py",
+      "former_use": "final relocation-order and EXE comparison",
+      "classification": "verification only",
+      "replacement": "layout/mz-header.json relocation sequence; optional EXE comparison",
+      "construction_required": false
+    },
+    {
+      "component": "tools/build_exe.py",
+      "former_use": "published-output identity check",
+      "classification": "verification only",
+      "replacement": "python tools/build_exe.py verify remains the explicit oracle check",
+      "construction_required": false
+    }
+  ],
+  "invariant": "No stage copies bytes from assets/AEPROG.EXE into generated OMF objects or the linked executable."
+}

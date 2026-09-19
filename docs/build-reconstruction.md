@@ -12,6 +12,11 @@ explicitly tracked object-order, FIXUPP, OMF-metadata and BSS adapters. The stru
 performs zero object symbol transforms. See
 [the checkpoint](exact-structural-link.md) and [generated metrics](structural-status.json).
 
+`python tools/build_exe.py --no-verify` constructs this EXE without opening
+`assets/AEPROG.EXE`; the original remains the explicit `verify` oracle. The
+[fixture audit](fixture-dependency-audit.json) records the recovered metadata
+that replaced every former construction-time fixture read.
+
 
 Project-owner clarification, 2026-09-18. The final build must emerge from
 independent reconstructed components. Original game files are verification

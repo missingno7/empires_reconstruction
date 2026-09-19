@@ -7,7 +7,8 @@ import tempfile
 
 from mz import MZ
 from omf import OmfReader
-from probe_tlink_layout import compare_linked_executable, link_errors, parse_map
+from probe_tlink_layout import (compare_linked_executable, comparison_not_requested,
+                                link_errors, parse_map)
 from reconstruct import ROOT, read_json, sha, write_json
 
 
@@ -34,16 +35,17 @@ def interleave(objects, moves, data_objects, code_objects):
     return result
 
 
-def run(input_path, recipe_path):
+def run(input_path, recipe_path, verify=True):
     output_path = ROOT / 'build/data-interleaving-report.json'
     output_path.unlink(missing_ok=True)
     incoming, recipe = read_json(input_path), read_json(recipe_path)
-    if not incoming['byte_comparison']['load_image']['equal']:
+    if (verify and not incoming['byte_comparison']['load_image']['equal']):
         raise ValueError('Interleaving requires a byte-identical incoming load image')
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     data_recipe = read_json(ROOT / 'recipes/data/game-initialized.json')
     old_work = Path(incoming['byte_comparison']['candidate']).parent.parent
-    if sha((old_work / 'WORK/OUT.EXE').read_bytes()) != incoming['byte_comparison']['candidate_sha256']:
+    if (verify and sha((old_work / 'WORK/OUT.EXE').read_bytes()) !=
+            incoming['byte_comparison']['candidate_sha256']):
         raise ValueError('Incoming linked output differs from receipt')
     work = Path(tempfile.mkdtemp(prefix='interleave-', dir=ROOT / 'build')).resolve()
     for name in ('TC', 'BC', 'WORK'):
@@ -85,8 +87,11 @@ def run(input_path, recipe_path):
     errors = link_errors((work / 'WORK/LINK.LOG').read_text(errors='replace'), map_path.read_text(errors='replace'))
     segments, rows = parse_map(map_path)
     old_segments, old_rows = parse_map(old_work / 'WORK/OUT.MAP')
-    comparison = compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE')
-    oracle = MZ.parse((ROOT / 'assets/AEPROG.EXE').read_bytes()).relocations
+    comparison = (compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE')
+                  if verify else comparison_not_requested(work / 'WORK/OUT.EXE'))
+    oracle = [{'segment': item['segment'], 'offset': item['offset'],
+               'load_offset': MZ.linear(item['segment'], item['offset'])}
+              for item in read_json(ROOT / 'layout/mz-header.json')['relocations']]
     actual = MZ.parse((work / 'WORK/OUT.EXE').read_bytes()).relocations
     prefix = next((i for i, (a, b) in enumerate(zip(actual, oracle)) if a != b), min(len(actual), len(oracle)))
     report = {'status': 'LAYOUT_PRESERVED' if not errors and segments == old_segments and rows == old_rows else 'DIVERGED',
@@ -101,7 +106,7 @@ def run(input_path, recipe_path):
                                   if key not in ('candidate', 'oracle')}
     write_json(ROOT / 'docs/data-interleaving.json', receipt)
     print(f"DATA interleaving: {report['status']}; {prefix} leading relocation entries match")
-    print(comparison['full_file'])
+    print(comparison.get('full_file', {'available': False}))
     return report
 
 

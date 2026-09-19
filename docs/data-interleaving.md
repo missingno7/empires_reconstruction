@@ -37,3 +37,7 @@ A checked OMF adapter orders its explicit FIXUPP subrecords like historical
 Turbo C output; TLINK then produces the byte-identical file. Raw DATA, the
 unpartitioned BSS reserve and object-order evidence still
 prevent claiming a recovered build.
+
+Construction now reads the ordered relocation expectation from
+`layout/mz-header.json`; the original EXE is opened only when an optional
+verification receipt is requested.

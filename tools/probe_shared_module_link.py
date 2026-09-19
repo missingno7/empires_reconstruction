@@ -10,16 +10,17 @@ from omf_scaffold import (_record, _records, add_publics, normalize_external_cas
                           externalize_data_segment, order_explicit_fixupp_subrecords)
 from mz import MZ
 from probe_module_group import probe
-from probe_tlink_layout import parse_map, link_errors, compare_linked_executable
+from probe_tlink_layout import (parse_map, link_errors, compare_linked_executable,
+                                comparison_not_requested)
 from reconstruct import ROOT, read_json, sha, write_json
 
 
-def run(recipe_path, source_data=False, input_report_path=None):
+def run(recipe_path, source_data=False, input_report_path=None, verify=True):
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link'].get('errors'):
         raise ValueError('Shared replacement requires a successful baseline link')
     recipe = read_json(recipe_path)
-    proof = probe(recipe_path)
+    proof = probe(recipe_path, verify=verify)
     input_report = (read_json(input_report_path) if input_report_path else
                     read_json(ROOT / 'build/source-data-link-report.json') if source_data else baseline)
     original_work = Path(input_report['byte_comparison']['candidate']).parent.parent
@@ -94,11 +95,13 @@ def run(recipe_path, source_data=False, input_report_path=None):
                   and not downstream and shared['offset'] == first_base
                   and shared['length'] == proof['text_bytes'])
     linked_bytes = (work / 'WORK/OUT.EXE').read_bytes()
-    oracle_bytes = (ROOT / 'assets/AEPROG.EXE').read_bytes()
     def group_relocations(blob):
         return [r['load_offset'] for r in MZ.parse(blob).relocations
                 if shared['offset'] <= r['load_offset'] < shared['offset'] + shared['length']]
-    actual_relocations, expected_relocations = group_relocations(linked_bytes), group_relocations(oracle_bytes)
+    expected_relocations = [MZ.linear(item['segment'], item['offset'])
+                            for item in read_json(ROOT / 'layout/mz-header.json')['relocations']
+                            if shared['offset'] <= MZ.linear(item['segment'], item['offset']) < shared['offset'] + shared['length']]
+    actual_relocations = group_relocations(linked_bytes)
     report = {'status': 'CODE_PLACEMENT_EQUAL' if code_equal and not errors else 'DIVERGED',
               'candidate': recipe['id'], 'historical_module_proven': False,
               'source_data_mode': source_data,
@@ -108,7 +111,8 @@ def run(recipe_path, source_data=False, input_report_path=None):
               'objects_replaced': len(selected), 'objects_added': 1,
               'shared_contribution': shared, 'downstream_code_divergences': downstream,
               'errors': errors, 'segments': segments,
-              'byte_comparison': compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE'),
+              'byte_comparison': (compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE')
+                                  if verify else comparison_not_requested(work / 'WORK/OUT.EXE')),
               'source_object_sha256': sha(Path(proof['object_path']).read_bytes()),
               'staged_object_sha256': sha(data),
               'fixupp_order_adapter': fixupp_adapter,

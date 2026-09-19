@@ -15,6 +15,13 @@ The structural path now has an exact code-prefix placement under the locally
 verified Turbo Link 2.0 candidate. The remaining adapters are tracked here so
 each can be removed against a measurable linker invariant.
 
+The construction-time EXE-fixture dependency has been removed. The normal
+`--no-verify` build derives temporary baseline dimensions from structured MZ
+and manifest metadata; `assets/AEPROG.EXE` is now only an optional verification
+oracle. The [fixture audit](fixture-dependency-audit.json) records each former
+read and its replacement. This changes the construction-adapter count from
+one to zero; the four topology adapters below remain active.
+
 | Adapter | Why it exists now | Satisfies | Replacement evidence | Current status |
 |---|---|---|---|---|
 | `LIBDEMAND.OBJ` historical-library demand | Previously requested historical library publics explicitly | Requests the publics that select the observed `CC.LIB` modules | Actual reconstructed EXTDEFs must preserve selection and order | **Unnecessary in the full scaffold**: fresh demand and no-demand Turbo Link 2.0 outputs have identical maps and EXE hashes, with zero unresolved symbols |

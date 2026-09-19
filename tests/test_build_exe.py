@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
@@ -19,6 +20,26 @@ def local_linker_is_available():
 
 
 class CleanStructuralExeBuildTests(unittest.TestCase):
+    @unittest.skipUnless(local_linker_is_available(), 'local pinned Borland toolchain/DOSBox is unavailable')
+    def test_fresh_construction_does_not_open_original_fixture(self):
+        fixture = (ROOT / 'assets/AEPROG.EXE').resolve()
+        read_bytes = Path.read_bytes
+
+        def reject_fixture(path):
+            if path.resolve() == fixture:
+                raise AssertionError('fixture read during fixture-free construction')
+            return read_bytes(path)
+
+        # The original remains on disk for normal verification, but this guard
+        # proves the construction path itself neither reads nor copies it.
+        with patch.object(Path, 'read_bytes', reject_fixture):
+            report = build(ROOT, verify=False)
+        self.assertEqual(report['status'], 'BUILT')
+        self.assertEqual(report['sha256'], ORIGINAL_SHA256)
+        self.assertEqual(report['relocations'], 106)
+        self.assertFalse(report['verification']['performed'])
+        self.assertEqual(report['verification']['reason'], 'verification not requested')
+
     @unittest.skipUnless(local_linker_is_available(), 'local pinned Borland toolchain/DOSBox is unavailable')
     def test_fresh_source_to_tlink_build_is_exact(self):
         # ``build`` removes this stale receipt before it creates every new

@@ -91,23 +91,24 @@ def build(root=ROOT, verify=True, dosbox=None):
     # contribution while preserving historical library extraction.
     baseline = build_baseline(root=root, linker=root / 'toolchain/TLINK.EXE',
                               dosbox=dosbox,
-                              promote_toupper=True, scaffold_dgroup=True)
+                              promote_toupper=True, scaffold_dgroup=True, verify=verify)
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link']['unresolved_count']:
         raise ValueError('Fresh baseline link failed')
-    source = link_source_data()
+    source = link_source_data(verify=verify)
     if source['status'] != 'LINKED':
         raise ValueError('Source DATA link failed')
     previous = None
     stages, shared_reports = [], []
     for recipe_name in MODULE_RECIPES:
         recipe_path = root / 'recipes/modules' / recipe_name
-        shared = link_shared_module(recipe_path, True, previous)
+        shared = link_shared_module(recipe_path, True, previous, verify=verify)
         stages.append({'recipe': recipe_name, 'candidate': shared['candidate'],
                        'fixupp_order_adapter': shared['fixupp_order_adapter']})
         shared_reports.append(shared)
         previous = root / 'build' / f"shared-source-data-link-report_{shared['candidate']}.json"
-    final = interleave_data(previous, root / 'recipes/data/interleaving-candidate.json')
-    exact_receipt = publish_exact_receipt(source, shared_reports, final)
+    final = interleave_data(previous, root / 'recipes/data/interleaving-candidate.json', verify=verify)
+    exact_receipt = (publish_exact_receipt(source, shared_reports, final)
+                     if verify else {'status': 'NOT_VERIFIED'})
     candidate = Path(final['byte_comparison']['candidate'])
     published = root / 'build/AEPROG.EXE'
     if not candidate.exists():
@@ -118,7 +119,9 @@ def build(root=ROOT, verify=True, dosbox=None):
         raise ValueError(f'TLINK emitted {len(linked_mz.relocations)} relocations, expected 106')
 
     oracle = root / 'assets/AEPROG.EXE'
-    verification = {'performed': False, 'reason': 'original fixture unavailable'}
+    verification = {'performed': False,
+                    'reason': ('verification not requested' if not verify
+                               else 'original fixture unavailable')}
     if verify:
         if not oracle.exists():
             raise ValueError('Verification requested but assets/AEPROG.EXE is unavailable')
@@ -150,13 +153,9 @@ def build(root=ROOT, verify=True, dosbox=None):
             'unpartitioned TASM BSS reserve and historical storage ownership',
             'Turbo C-compatible empty DGROUP metadata for standalone TASM owners',
         ],
-        # Construction still delegates component proof to the existing
-        # source-DATA/shared-module helpers, which open the fixture while
-        # binding their independently compiled OMF extents.  This is explicit
-        # technical debt, not an undeclared source of emitted bytes.
         'fixture_dependency': {
-            'assets/AEPROG.EXE': ('currently read only by the temporary baseline-DGROUP sizing and '
-                                  'per-component OMF proof helpers; never copied into the linked output'),
+            'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '
+                                  'manifest, MZ header, source-DATA recipes and GAME_BSS metadata'),
         },
         'verification': verification,
     }

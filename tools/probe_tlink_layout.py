@@ -152,6 +152,12 @@ def compare_linked_executable(candidate, oracle):
     return result
 
 
+def comparison_not_requested(candidate, reason='verification not requested'):
+    """Return the stable comparison shape without opening an EXE fixture."""
+    return {'candidate': str(candidate), 'oracle': None, 'available': False,
+            'reason': reason}
+
+
 def _omf_records(data):
     """Yield ``(kind, start, end)`` for one OMF module or object."""
     at = 0
@@ -218,7 +224,7 @@ def replace_library_module_segments(library, module_name, replacement_object):
 def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         demand_historical_library=False, normalize_recovered_symbols=False,
         scaffold_dgroup=False, normalize_case_symbols=False,
-        expose_internal_labels=False):
+        expose_internal_labels=False, verify=True):
     linker = Path(linker).resolve()
     if not linker.exists():
         raise ValueError(f'linker candidate is unavailable: {linker}')
@@ -555,15 +561,17 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         dgroup_load = (text_end + 15) & ~15
         image_end = max(r['end'] - 512 for r in manifest['regions'])
         target_data_span = image_end - dgroup_load
-        target_stack = MZ.parse((root / 'assets/AEPROG.EXE').read_bytes()).ss * 16
+        # This temporary scaffold is replaced in the next source-DATA stage.
+        # Its dimensions are recovered metadata, so it must not read bytes from
+        # the original EXE merely to create an object that will be discarded.
+        target_stack = read_json(root / 'layout/mz-header.json')['fields']['e_ss'] * 16
         current_data_span = data_end - data_segment['start']
         data_tail_length = max(0, target_data_span - current_data_span)
         bss_tail_length = max(0, target_stack - stack_segment['start'] - data_tail_length)
-        image = (root / 'assets/AEPROG.EXE').read_bytes()
-        data_tail_start = 512 + dgroup_load + current_data_span
-        data_tail = image[data_tail_start:data_tail_start + data_tail_length]
-        if len(data_tail) != data_tail_length:
-            raise ValueError('oracle initialized-data tail is shorter than scaffold sizing')
+        # Bytes in this baseline contribution only make TLINK accept a complete
+        # temporary DGROUP.  Source-DATA replaces the full contribution before
+        # the build's final link, so zero fill is the honest fixture-free form.
+        data_tail = bytes(data_tail_length)
         cc_publics = set()
         for _, blob in OmfReader().split_library(cc_lib.read_bytes()):
             cc_publics.update(public['name'] for public in OmfReader().read(blob).publics)
@@ -709,7 +717,8 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             'exe_sha256': sha(exe_path.read_bytes()) if exe_path.exists() else None,
             'map_sha256': sha(map_path.read_bytes()) if map_path.exists() else None,
         },
-        'byte_comparison': compare_linked_executable(exe_path, root / 'assets/AEPROG.EXE'),
+        'byte_comparison': (compare_linked_executable(exe_path, root / 'assets/AEPROG.EXE')
+                            if verify else comparison_not_requested(exe_path)),
         'interpretation': 'TLINK placement is experimental; the fixed manifest remains the oracle. A no-demand run can prove the complete _TEXT prefix while unresolved DGROUP symbols remain until reconstructed DATA/BSS sources replace the synthetic scaffold.'
     }
     write_json(root_build / 'tlink-structural-report.json', report)
@@ -735,6 +744,8 @@ def main():
                         help='lowercase EXTDEFs only when their lowercase explicit OMF public exists')
     parser.add_argument('--expose-internal-labels', action='store_true',
                         help='add numeric labels to reconstructed C objects when their target owner is known')
+    parser.add_argument('--no-verify', action='store_true',
+                        help='do not open assets/AEPROG.EXE for a comparison receipt')
     args = parser.parse_args()
     try:
         run(linker=args.linker, dosbox=args.dosbox, promote_toupper=args.promote_toupper,
@@ -742,7 +753,7 @@ def main():
             normalize_recovered_symbols=args.normalize_recovered_symbols,
             scaffold_dgroup=args.scaffold_dgroup,
             normalize_case_symbols=args.normalize_case_symbols,
-            expose_internal_labels=args.expose_internal_labels)
+            expose_internal_labels=args.expose_internal_labels, verify=not args.no_verify)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}', file=sys.stderr)
         return 1

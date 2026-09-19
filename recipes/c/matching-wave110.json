@@ -1,9 +1,9 @@
 {
-  "format": "empires-asm-to-c-v1",
+  "format": "empires-symbolic-asm-promotion-v1",
   "conversions": [
     {
       "id": "F_D3CF",
-      "source": "src/F_D3CF.C",
+      "source": "asm/F_D3CF.ASM",
       "build": {
         "segment": "_TEXT",
         "public": "_fd3cf",
@@ -12,7 +12,7 @@
         "bindings": {},
         "module_segments": {}
       },
-      "method": "complete non-returning ASM continuation translated to C with an exact second OMF public boundary"
+      "method": "complete non-returning continuation expressed as symbolic TASM with a fixed, checked local jump target"
     }
   ]
 }

@@ -8,11 +8,11 @@ _BSS    segment word public 'BSS'
 _BSS    ends
 _TEXT   segment byte public 'CODE'
 _fd3cf  proc near
-        db      0c6h,05h,01h
+        mov     byte ptr [di],1
         mov     si,di
         add     si,3
         lodsb
-        db      0ebh,0cfh
+        jmp     short $-2fh
 _fd3cf  endp
         public  _fd3cf
 _TEXT   ends

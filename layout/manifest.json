@@ -16410,8 +16410,8 @@
     },
     {
       "id": "F_D3CF",
-      "kind": "MATCHING_C",
-      "source": "src/F_D3CF.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_D3CF.ASM",
       "start": 54735,
       "end": 54746,
       "expected_sha256": "470037ef91a639b045272f3919bb2396e9ce24c7f30453f99438f9ee5b7830e1",
@@ -16428,10 +16428,8 @@
         "module_segments": {}
       },
       "provenance": {
-        "method": "local C reconstruction from complete ASM continuation extent and fresh OMF boundary proof",
-        "prior_asm_source_sha256": "50ecda0b522193681ee7cc0a791d7d3998cfc16ad9dd91501621263f2cf819bf",
-        "source_sha256": "b086a87a3a551e5d480e4cdea2a0d69590007d3374832ed7d1fb51a41dfc8912",
-        "change": "Preserve the non-returning 11-byte continuation with a second public boundary before the compiler epilogue."
+        "method": "local symbolic TASM reconstruction from complete continuation extent and fresh OMF boundary proof",
+        "change": "Preserve the non-returning 11-byte continuation without inline byte capsules."
       }
     },
     {

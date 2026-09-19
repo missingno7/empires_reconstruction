@@ -14,9 +14,9 @@ semantic cleanup remains outside this mechanical phase.
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
-| Independently encoded text | 0 | 1,297 | 26 |
+| Independently encoded text | 0 | 2,650 | 56 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 10,173 | 14 |
+| Exact raw fallback | 62,621 | 8,777 | 20 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -171,7 +171,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 10,173 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 8,777 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -1080,4 +1080,20 @@ one loader relocation in each handler.
 
 The matching-ASM frontier is now exhausted: matching-C coverage is 58,895
 bytes across 345 owners and matching-ASM coverage is 0 bytes across 0 owners.
-The raw frontier remains 10,173 bytes.
+The raw frontier remains 8,777 bytes.
+
+## One-hundred-thirty-first executable-data wave
+
+Wave 131 partitions 122 bytes from four previously opaque data spans. Two
+zero-padding runs now use `zero-pad-v1`; the help/menu spans now have explicit
+little-endian control tables and terminated ASCII text sources. Every source
+round-trips through its strict encoder, including the control bytes adjacent to
+the menu strings. The full EXE and both DAT archives remain byte-identical.
+
+## One-hundred-thirty-second executable-data wave
+
+Wave 132 partitions 1,274 bytes of NUL-terminated ASCII records from the
+runtime, help, player-dialog and tutorial/message spans. The records preserve
+their original CR/LF/TAB controls and are independently encoded with
+`ascii-nul-v1`; no relocation-backed or mixed control-byte record is claimed.
+The raw frontier is now 8,777 bytes across 20 owners.

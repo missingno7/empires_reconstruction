@@ -1,0 +1,117 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_0107E2_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0107E2_PAD.json",
+      "start": 67554,
+      "end": 67562,
+      "expected_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_0107E2_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_0109F3_PAD",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0109F3_PAD.json",
+      "start": 68083,
+      "end": 68092,
+      "expected_sha256": "3e7077fd2f66d689e0cee6a7cf5b37bf2dca7c979af356d0a31cbc5c85605c7d",
+      "classification": "alignment_padding",
+      "artifact": "regions/DATA_0109F3_PAD.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "zero-pad-v1"
+      }
+    },
+    {
+      "id": "DATA_010848_FILE_F2_TABLE",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010848_FILE_F2_TABLE.json",
+      "start": 67656,
+      "end": 67664,
+      "expected_sha256": "4f800aee79bf3142002a37b5fa509820a3451a13e7c2c46a8e71964ef841e4b9",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_010848_FILE_F2_TABLE.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_010848_FILE_F2_TEXT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010848_FILE_F2_TEXT.json",
+      "start": 67664,
+      "end": 67674,
+      "expected_sha256": "8c0efd4b32a494498110da7ab0b731fd928c5e9b3795fedadc72e39952bff718",
+      "classification": "help_text",
+      "artifact": "regions/DATA_010848_FILE_F2_TEXT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0108A7_MENU_TABLE_A",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0108A7_MENU_TABLE_A.json",
+      "start": 67751,
+      "end": 67761,
+      "expected_sha256": "980361d953fb49575f1d7a93a44c9b083bde77858741c0e29fc6a6e64c87192a",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_0108A7_MENU_TABLE_A.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_0108A7_MENU_HALL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0108A7_MENU_HALL.json",
+      "start": 67761,
+      "end": 67819,
+      "expected_sha256": "46221f457b5859d687ad5a1decb547fe96d36701788a7401cfe8d6b41b6efc87",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0108A7_MENU_HALL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0108A7_MENU_TABLE_B",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0108A7_MENU_TABLE_B.json",
+      "start": 67819,
+      "end": 67827,
+      "expected_sha256": "81f69878429507e2fb6e1d30e8de26ad0c5f7765f0e307b00269c23627b81e79",
+      "classification": "control_pointer_table",
+      "artifact": "regions/DATA_0108A7_MENU_TABLE_B.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "u16le-table-v1"
+      }
+    },
+    {
+      "id": "DATA_0108A7_MENU_OPTIONS",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0108A7_MENU_OPTIONS.json",
+      "start": 67827,
+      "end": 67838,
+      "expected_sha256": "b1e6c021c73e55f04b20d7b94ac5f8ca3de94e4cdf95b488bd6f5d6a05854689",
+      "classification": "help_text",
+      "artifact": "regions/DATA_0108A7_MENU_OPTIONS.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "format": "empires-c-promotion-v1",
+  "owners": [
+    {
+      "id": "DATA_010489_GFX_ERROR",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010489_GFX_ERROR.json",
+      "start": 66697,
+      "end": 66776,
+      "expected_sha256": "6a77340ccb4daf36a5ec68d7af06efbca84ad06e3fdcc45383a3f56d077f451b",
+      "classification": "static_text",
+      "artifact": "regions/DATA_010489_GFX_ERROR.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0104D8_MEMORY_ERROR",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0104D8_MEMORY_ERROR.json",
+      "start": 66776,
+      "end": 66859,
+      "expected_sha256": "f24f0e52dfd9a5d9b3698ed0e1461aeba49c2d0bc0e0cd5d33991f3af03bad82",
+      "classification": "static_text",
+      "artifact": "regions/DATA_0104D8_MEMORY_ERROR.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010652_AE000_PATH",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010652_AE000_PATH.json",
+      "start": 67154,
+      "end": 67167,
+      "expected_sha256": "fd376d5751cdc170615917a0350f3a862b67bb417d15630c4b2bce135cba3487",
+      "classification": "static_text",
+      "artifact": "regions/DATA_010652_AE000_PATH.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010662_AE001_PATH",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010662_AE001_PATH.json",
+      "start": 67170,
+      "end": 67183,
+      "expected_sha256": "39c03771710d997f22e8cbece862b9f65ec533f1171760e14ebfcdb05773d2b6",
+      "classification": "static_text",
+      "artifact": "regions/DATA_010662_AE001_PATH.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010672_AE002_PATH",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010672_AE002_PATH.json",
+      "start": 67186,
+      "end": 67199,
+      "expected_sha256": "d5c439b4e1fd418664bb3af3515969e382092058db766870adf0e9cfa5e1db34",
+      "classification": "static_text",
+      "artifact": "regions/DATA_010672_AE002_PATH.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_01068E_PROGRAM_DISK",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_01068E_PROGRAM_DISK.json",
+      "start": 67214,
+      "end": 67246,
+      "expected_sha256": "69703b2e71c6ded2cc54a3220e7f03040853d17fd50f1c1593511434fc9c6d16",
+      "classification": "static_text",
+      "artifact": "regions/DATA_01068E_PROGRAM_DISK.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_0106B1_ARTIFACTS_DISK",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_0106B1_ARTIFACTS_DISK.json",
+      "start": 67249,
+      "end": 67283,
+      "expected_sha256": "9c925532dbdf146aa6cbbea9f2bf48eb4abf81937440db319e5aabf44fab27bb",
+      "classification": "static_text",
+      "artifact": "regions/DATA_0106B1_ARTIFACTS_DISK.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_010772_RESOURCE_ERROR",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_010772_RESOURCE_ERROR.json",
+      "start": 67442,
+      "end": 67480,
+      "expected_sha256": "417099f8494638c587bf4b679a35d23861732f84b57a57956c45996a537dad3c",
+      "classification": "static_text",
+      "artifact": "regions/DATA_010772_RESOURCE_ERROR.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011AC6_NEW_USER_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011AC6_NEW_USER_PROMPT.json",
+      "start": 72390,
+      "end": 72514,
+      "expected_sha256": "695a96520762c49d79e15539a42892bec8b638eea9130104c9622afd1e4b8426",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011AC6_NEW_USER_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011B42_PLAYER_HEADER",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011B42_PLAYER_HEADER.json",
+      "start": 72514,
+      "end": 72559,
+      "expected_sha256": "a0dda7d1598ec742b9b45b80526b25a1a6d1d60428ea19cabeeb1dc4caa78103",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011B42_PLAYER_HEADER.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011B6F_PLAYER_CAVERNS",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011B6F_PLAYER_CAVERNS.json",
+      "start": 72559,
+      "end": 72602,
+      "expected_sha256": "7cb6f60fb73847ce308be6cd9c0af5afdabbff7d69f3d904f427f56b7a7fc89c",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011B6F_PLAYER_CAVERNS.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011B9A_RETURN_MAP_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011B9A_RETURN_MAP_PROMPT.json",
+      "start": 72602,
+      "end": 72814,
+      "expected_sha256": "24d52cb50bcfb7fafb27d36e6caea42acf6f339537deafdbd94f7bec2ecdc025",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011B9A_RETURN_MAP_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011C6E_START_GAME_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011C6E_START_GAME_PROMPT.json",
+      "start": 72814,
+      "end": 72937,
+      "expected_sha256": "a0782db1ecec8dc10b17f8afab2b11c68efc35229a5d15e4311b27db61bcf443",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011C6E_START_GAME_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011CE9_EXIT_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011CE9_EXIT_PROMPT.json",
+      "start": 72937,
+      "end": 73104,
+      "expected_sha256": "c1e4bea73d7b087e0b4b774b66a81c137e5760add6c7670e523a886d76d362df",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011CE9_EXIT_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011E36_MUSIC_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E36_MUSIC_PROMPT.json",
+      "start": 73270,
+      "end": 73297,
+      "expected_sha256": "b631aff5894de664ea5a179c03b01ca153f53d2cb1a64b51e1af4ea31b327b34",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E36_MUSIC_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011E51_SOUND_EFFECTS",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E51_SOUND_EFFECTS.json",
+      "start": 73297,
+      "end": 73311,
+      "expected_sha256": "ae926e01e8718437538d710ddc511211d8eb5b562325a838fbf89014617c463f",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E51_SOUND_EFFECTS.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011E5F_SOUND_PROMPT",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E5F_SOUND_PROMPT.json",
+      "start": 73311,
+      "end": 73346,
+      "expected_sha256": "87f9929bc34411e567a7dff9c0dfd0b9b4e3cd14a00ff07049c69b8c2a95958d",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E5F_SOUND_PROMPT.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011E82_NEW_USER_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E82_NEW_USER_LABEL.json",
+      "start": 73346,
+      "end": 73364,
+      "expected_sha256": "cb47c903bfb8bf6b0de312ee5be021dfd26c8730b0c6b9544549a6e7fbac2bb2",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E82_NEW_USER_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011E94_RETURN_MAP_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011E94_RETURN_MAP_LABEL.json",
+      "start": 73364,
+      "end": 73383,
+      "expected_sha256": "d12e1ecbadf7c717a119d3df5f6225ba1b80bdd6f7bac4c65ebdbc254838a3a3",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011E94_RETURN_MAP_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011EA7_START_GAME_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011EA7_START_GAME_LABEL.json",
+      "start": 73383,
+      "end": 73398,
+      "expected_sha256": "6f336dd9a665fe13f7d1ec363a4c7e67237462bf38f9b85d984d957f56f45376",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011EA7_START_GAME_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011EB6_HALL_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011EB6_HALL_LABEL.json",
+      "start": 73398,
+      "end": 73411,
+      "expected_sha256": "44ad9cf9db6abfaa9d0c893b12f8bf00107344e807f414503049c9b064c786f0",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011EB6_HALL_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011EC3_PLAYERS_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011EC3_PLAYERS_LABEL.json",
+      "start": 73411,
+      "end": 73427,
+      "expected_sha256": "f562c26ac49192945e813ee57e93206076b2b5250cc229eb9e840e4b0fa46868",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011EC3_PLAYERS_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011ED3_EXIT_SAVE_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011ED3_EXIT_SAVE_LABEL.json",
+      "start": 73427,
+      "end": 73441,
+      "expected_sha256": "ef3af41846d300f40f56f29486b8f8a03aed6b4aa2a786aa08211110e27998d3",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011ED3_EXIT_SAVE_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011F32_KEYBOARD_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F32_KEYBOARD_LABEL.json",
+      "start": 73522,
+      "end": 73541,
+      "expected_sha256": "06aa776a3357684d960f587cc71ffd5b4cbca61e48c0eaf1c5d77ffdb7376f5a",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011F32_KEYBOARD_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011F45_PLAYING_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F45_PLAYING_LABEL.json",
+      "start": 73541,
+      "end": 73558,
+      "expected_sha256": "3cdf92a8ee06c6c9fc090dd41189986251b256c4141bfc9beaf72d46b724c85a",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011F45_PLAYING_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011F56_OBSTACLES_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F56_OBSTACLES_LABEL.json",
+      "start": 73558,
+      "end": 73579,
+      "expected_sha256": "a56dbd22a86ae37497564842e26347596441bacdbaf8e963d9a36ef5c5386073",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011F56_OBSTACLES_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    },
+    {
+      "id": "DATA_011F6B_PUZZLES_LABEL",
+      "kind": "EXACT_DATA",
+      "source": "src/data/DATA_011F6B_PUZZLES_LABEL.json",
+      "start": 73579,
+      "end": 73606,
+      "expected_sha256": "440e21177cf013c427acd5a8d4b658659a1298d390df2f3b419d1c23c455b39d",
+      "classification": "static_text",
+      "artifact": "regions/DATA_011F6B_PUZZLES_LABEL.bin",
+      "matching_status": "EQUAL",
+      "build": {
+        "encoder": "ascii-nul-v1"
+      }
+    }
+  ]
+}

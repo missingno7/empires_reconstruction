@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 56,391 | 325 |
-| Freshly assembled matching ASM | 2,456 | 2,504 | 20 |
+| Freshly compiled matching C | 14,077 | 56,439 | 326 |
+| Freshly assembled matching ASM | 2,456 | 2,456 | 19 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -913,3 +913,12 @@ See [the wave 111 proof](matching-c-wave111.md).
 
 Current matching-C coverage is 56,391 bytes across 325 owners, with 2,504
 matching-ASM bytes across 20 owners. The raw frontier remains 10,173 bytes.
+
+## One-hundred-twelfth matching-C conversion
+
+F_6B1A converts from its verified ASM owner to matching C. Turbo C emits the
+original SI preservation, and the complete 48-byte extent retains two near-call
+fixups with no loader relocations. See [the wave 112 proof](matching-c-wave112.md).
+
+Current matching-C coverage is 56,439 bytes across 326 owners, with 2,456
+matching-ASM bytes across 19 owners. The raw frontier remains 10,173 bytes.

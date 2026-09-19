@@ -3,7 +3,7 @@
 Rebuild `AEPROG.EXE`, `AE000.DAT` and `AE001.DAT` as independently owned file
 ranges and resources. **All 690,588 bytes across the three files match the
 originals exactly**, including executable relocations and archive offsets.
-The build compiles 325 C regions, assembles 20 ASM
+The build compiles 326 C regions, assembles 19 ASM
 regions, and extracts 42 pinned Borland library modules (41 code contributions
 and one 257-byte data contribution). The MZ header is
 encoded from explicit metadata. Two embedded DAC palettes rebuild from structured

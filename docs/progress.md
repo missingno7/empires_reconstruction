@@ -16,7 +16,7 @@ semantic cleanup remains outside this mechanical phase.
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 2,728 | 61 |
 | Structured static data | 0 | 1,066 | 9 |
-| Exact raw fallback | 62,621 | 5,115 | 18 |
+| Exact raw fallback | 62,621 | 5,115 | 16 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -1155,4 +1155,4 @@ Wave 139 partitions two isolated zero-initialized boundary components from the
 remaining numeric and disk-prompt spans. The full EXE and both DAT archives
 remain byte-identical.
 
-The raw frontier is now 5,115 bytes across 18 owners.
+The raw frontier is now 5,115 bytes across 16 owners.

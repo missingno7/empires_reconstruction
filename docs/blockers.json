@@ -47,7 +47,7 @@
     {
       "target": "EXE raw-data classification and embedded assets",
       "state": "machine extents classified; remaining structures not exhausted",
-      "matches": "The current manifest retains 5,115 raw EXE bytes across 18 explicit fallback owners after executable-data partitioning; no remaining raw owner has been promoted as code without a complete extent proof.",
+      "matches": "The current manifest retains 5,115 raw EXE bytes across 16 explicit fallback owners after executable-data partitioning; no remaining raw owner has been promoted as code without a complete extent proof.",
       "first_unresolved_fact": "A complete disjoint static-data/embedded-asset/storage map is not established. Runtime-generated arena bytes cannot be classified as original code from runtime evidence alone.",
       "evidence": [
         "docs/upstream-inventory.json",

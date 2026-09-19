@@ -136,10 +136,32 @@
       "aggregate_storage": false
     },
     {
-      "id": "GAMEBSS_REMAINDER",
+      "id": "GAMEBSS_SOUND_PREFIX",
       "object": "GAMEBSS4.OBJ",
       "assembly": "GAMEBSS4.ASM",
       "logical_start": 36024,
+      "logical_end": 36072,
+      "owner_candidate": "aggregate sound-state prefix",
+      "representation": "ANCHORED_BSS",
+      "confidence": "CANONICAL_LAYOUT",
+      "aggregate_storage": true
+    },
+    {
+      "id": "NOTE_OCTAVE_TABLE_BSS",
+      "object": "OCTAVES.OBJ",
+      "assembly": "OCTAVES.ASM",
+      "logical_start": 36072,
+      "logical_end": 36168,
+      "owner_candidate": "sound note octave table",
+      "representation": "SYMBOLIC_ASM",
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "aggregate_storage": false
+    },
+    {
+      "id": "GAMEBSS_REMAINDER",
+      "object": "GAMEBSS5.OBJ",
+      "assembly": "GAMEBSS5.ASM",
+      "logical_start": 36168,
       "logical_end": 37250,
       "owner_candidate": "aggregate remainder",
       "representation": "ANCHORED_BSS",

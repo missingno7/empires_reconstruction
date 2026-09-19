@@ -66,7 +66,7 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                     ('F_CC6B', 'matching-wave102.json', 184, 0, []),
                     ('F_CD23', 'matching-wave102.json', 185, 0, []),
                     ('F_DAD7', 'matching-wave102.json', 64, 0, []),
-                    ('F_DB17', 'matching-wave102.json', 30, 0, []),
+                    ('F_DB17', 'matching-wave102.json', 30, 1, []),
                     ('F_DB35', 'matching-wave102.json', 43, 0, []),
                     ('DOS_STUB', 'matching-wave104.json', 404, 1, [1]),
                     ('RUNTIME_BLOCK', 'matching-wave105.json', 6571, 0, [])]:

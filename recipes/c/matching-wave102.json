@@ -155,8 +155,8 @@
     },
     {
       "id": "F_DB17",
-      "kind": "MATCHING_C",
-      "source": "src/F_DB17.C",
+      "kind": "MATCHING_ASM",
+      "source": "src/F_DB17.ASM",
       "start": 56599,
       "end": 56629,
       "expected_sha256": "1b3430042a344345298a9129d1f75bfa6b47951ea2117ba1ed90e354125cf645",
@@ -168,7 +168,15 @@
         "public": "_f_db17",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_fe1f2": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_E1F2.entry",
+            "owner": "F_E1F2",
+            "public": "_fe1f2",
+            "addend": 0
+          }
+        },
         "module_segments": {}
       }
     },

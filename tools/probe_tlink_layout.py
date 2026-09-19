@@ -14,9 +14,13 @@ import subprocess
 import sys
 import tempfile
 
-from omf_scaffold import (make_external_demand, make_text_padding,
-                          rename_external, trim_text_contribution)
+from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
+                          add_publics, make_text_padding,
+                          normalize_external_case, rename_external,
+                          rename_external_addend,
+                          trim_text_contribution)
 from omf import OmfReader
+from mz import MZ
 from reconstruct import ROOT, compile_sources, read_json, sha, write_json
 
 
@@ -65,7 +69,9 @@ def linker_files(linker):
 
 
 def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
-        demand_historical_library=False, normalize_recovered_symbols=False):
+        demand_historical_library=False, normalize_recovered_symbols=False,
+        scaffold_dgroup=False, normalize_case_symbols=False,
+        expose_internal_labels=False):
     linker = Path(linker).resolve()
     if not linker.exists():
         raise ValueError(f'linker candidate is unavailable: {linker}')
@@ -88,6 +94,99 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
     compile_work = work / 'compile'
     receipts, compile_session = compile_sources(root, compile_owners, compile_work,
                                                 root / 'toolchain', dosbox, lock)
+    explicit_publics = set()
+    for receipt in receipts.values():
+        explicit_publics.update(public['name'] for public in
+                                 OmfReader().read((compile_work / receipt['object']).read_bytes()).publics)
+    explicit_publics.update(public['name'] for public in
+                             OmfReader().read(c0c.read_bytes()).publics)
+    owner_by_id = {owner['id']: owner for owner in compile_owners}
+    load_regions = sorted(manifest['regions'], key=lambda item: item['start'])
+    library_available = {name: blob for name, blob in
+                         OmfReader().split_library(cc_lib.read_bytes())}
+
+    def library_symbol_at(module_name, offset):
+        """Return the public that best names an internal library offset."""
+        module = OmfReader().read(library_available[module_name], module_name)
+        publics = [public for public in module.publics if public['segment'] == '_TEXT']
+        exact = next((public for public in publics if public['offset'] == offset), None)
+        if exact:
+            return exact['name'], 0
+        primary = next((public for public in publics if public['offset'] == 0), None)
+        if primary:
+            return primary['name'], offset
+        return None
+
+    internal_labels = {}
+    library_internal_aliases = {}
+    if expose_internal_labels:
+        module_externals = {}
+        for owner_id, receipt in receipts.items():
+            module = OmfReader().read((compile_work / receipt['object']).read_bytes())
+            module_externals[owner_id] = set(module.externals)
+            for external in module.externals:
+                match = re.fullmatch(r'_F([0-9A-Fa-f]+)', external, re.IGNORECASE)
+                if not match:
+                    continue
+                target = int(match.group(1), 16)
+                region = next((item for item in load_regions
+                               if item['start'] - 512 <= target < item['end'] - 512), None)
+                if region and region['id'] in owner_by_id:
+                    internal_labels.setdefault(region['id'], {})[external] = (
+                        target - (region['start'] - 512))
+        for source_region in manifest['regions']:
+            for symbol, binding in source_region.get('build', {}).get('bindings', {}).items():
+                if binding.get('coordinate') != 'code_offset':
+                    continue
+                if 'offset' in binding:
+                    target = binding['offset']
+                elif binding.get('owner'):
+                    target_owner = next((item for item in load_regions
+                                         if item['id'] == binding['owner']), None)
+                    if not target_owner:
+                        continue
+                    target = target_owner['start'] - 512 + binding.get('addend', 0)
+                else:
+                    continue
+                target_region = next((item for item in load_regions
+                                      if item['start'] - 512 <= target < item['end'] - 512), None)
+                if target_region and target_region['id'] in owner_by_id:
+                    for owner_id, externals in module_externals.items():
+                        if symbol in externals:
+                            internal_labels.setdefault(target_region['id'], {})[symbol] = (
+                                target - (target_region['start'] - 512))
+                if target_region and target_region.get('build', {}).get('segment') == '_TEXT':
+                    module_name = target_region.get('build', {}).get('library_module')
+                    if module_name in library_available:
+                        target_offset = target - (target_region['start'] - 512)
+                        selected = library_symbol_at(module_name, target_offset)
+                        if selected:
+                            for owner_id, externals in module_externals.items():
+                                if symbol in externals:
+                                    library_internal_aliases.setdefault(owner_id, {})[symbol] = selected
+        for owner_id, externals in module_externals.items():
+            for external in externals:
+                match = re.fullmatch(r'_F([0-9A-Fa-f]+)', external, re.IGNORECASE)
+                if not match:
+                    continue
+                target = int(match.group(1), 16)
+                target_region = next((item for item in load_regions
+                                      if item['start'] - 512 <= target < item['end'] - 512), None)
+                if not target_region or target_region['id'] in owner_by_id:
+                    continue
+                module_name = target_region.get('build', {}).get('library_module')
+                if module_name not in library_available:
+                    continue
+                selected = library_symbol_at(module_name, target - (target_region['start'] - 512))
+                if selected:
+                    library_internal_aliases.setdefault(owner_id, {})[external] = (
+                        selected[0], selected[1])
+        # C0C.OBJ enters through the conventional Turbo C ``_main`` public.
+        # The recovered owner is named by its original numeric entry label;
+        # expose the startup spelling as a symbol alias in that object rather
+        # than changing its generated bytes or forcing an address.
+        if 'F_4A93' in owner_by_id:
+            internal_labels.setdefault('F_4A93', {})['_main'] = 0
     tc_lib = work / 'TC/LIB'
     bc_bin = work / 'BC/BIN'
     dos_work = work / 'WORK'
@@ -107,12 +206,11 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                 module = region.get('build', {}).get('library_module')
                 if module and module not in library_modules:
                     library_modules.append(module)
-        available = {name: blob for name, blob in OmfReader().split_library(cc_lib.read_bytes())}
         demands = []
         for module in library_modules:
-            if module not in available:
+            if module not in library_available:
                 raise ValueError(f'expected CC.LIB module is unavailable: {module}')
-            parsed = OmfReader().read(available[module], module)
+            parsed = OmfReader().read(library_available[module], module)
             demands.extend(public['name'] for public in parsed.publics)
         demand = make_external_demand(demands)
         demand_name = 'LBDMD.OBJ'
@@ -138,6 +236,11 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             original_bytes = source.read_bytes()
             source_bytes = original_bytes
             transforms = []
+            if normalize_case_symbols:
+                normalized = normalize_external_case(source_bytes, explicit_publics)
+                if normalized != source_bytes:
+                    source_bytes = normalized
+                    transforms.append('EXTDEF case normalization to explicit public')
             if promote_toupper and owner['id'] == 'F_A525':
                 source_bytes = rename_external(source_bytes, '_ff9be', '_toupper')
                 transforms.append('EXTDEF _ff9be -> _toupper')
@@ -146,6 +249,16 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                     if old in OmfReader().read(source_bytes).externals:
                         source_bytes = rename_external(source_bytes, old, new)
                         transforms.append(f'EXTDEF {old} -> {new}')
+            if expose_internal_labels and owner['id'] in internal_labels:
+                labels = internal_labels[owner['id']]
+                updated = add_publics(source_bytes, labels)
+                if updated != source_bytes:
+                    source_bytes = updated
+                    transforms.append(f'PUBDEF internal labels ({len(labels)})')
+            if expose_internal_labels and owner['id'] in library_internal_aliases:
+                for old, (new, delta) in library_internal_aliases[owner['id']].items():
+                    source_bytes = rename_external_addend(source_bytes, old, new, delta)
+                    transforms.append(f'EXTDEF {old} -> {new} + {delta}')
             owned_length = owner['end'] - owner['start']
             trimmed = trim_text_contribution(source_bytes, owned_length)
             staged = dos_work / Path(receipt['object']).name
@@ -178,30 +291,117 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
                 'staged_size': len(padding),
                 'owned_text_length': length,
             })
-    response = '/s C:\\TC\\LIB\\C0C.OBJ+' + '+'.join(
-        f'C:\\WORK\\{name}' for name in object_names)
-    response += ',OUT.EXE,OUT.MAP,C:\\TC\\LIB\\CC.LIB'
-    (work / 'LINK.RSP').write_text(response, encoding='ascii')
-    batch = ('@echo off\r\n'
-             'c:\r\n'
-             'cd \\work\r\n'
-             'set PATH=C:\\BC\\BIN\r\n'
-             'tlink @C:\\LINK.RSP > LINK.LOG\r\n'
-             'echo DONE>DONE.TXT\r\n')
-    (work / 'GO.BAT').write_bytes(batch.encode('ascii'))
-    config = ('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[dosbox]\n'
-              'machine=svga_s3\nmemsize=16\n[cpu]\ncore=auto\n'
-              'cputype=auto\n[autoexec]\n'
-              f'mount c "{work}"\nc:\ncall c:\\go.bat\nexit\n')
-    config_path = work / 'dosbox.conf'
-    config_path.write_text(config, encoding='utf-8')
-    command = [str(dosbox), '-conf', str(config_path), '--noprimaryconfig',
-               '-noconsole', '-exit']
-    result = subprocess.run(command, cwd=work, stdout=subprocess.PIPE,
-                            stderr=subprocess.STDOUT, timeout=600)
-    log_path = dos_work / 'LINK.LOG'
-    map_path = dos_work / 'OUT.MAP'
-    log = log_path.read_text(errors='replace') if log_path.exists() else ''
+    def link_once(tag, names):
+        final = tag == 'FINAL'
+        response_name = 'LINK.RSP' if final else f'{tag}.RSP'
+        log_name = 'LINK.LOG' if final else f'{tag}.LOG'
+        output_name = 'OUT.EXE' if final else f'{tag}.EXE'
+        map_name = 'OUT.MAP' if final else f'{tag}.MAP'
+        response = '/s C:\\TC\\LIB\\C0C.OBJ+' + '+'.join(
+            f'C:\\WORK\\{name}' for name in names)
+        response += f',{output_name},{map_name},C:\\TC\\LIB\\CC.LIB'
+        (work / response_name).write_text(response, encoding='ascii')
+        batch = ('@echo off\r\n'
+                 'c:\r\n'
+                 'cd \\work\r\n'
+                 'set PATH=C:\\BC\\BIN\r\n'
+                 f'tlink @C:\\{response_name} > {log_name}\r\n'
+                 'echo DONE>DONE.TXT\r\n')
+        (work / 'GO.BAT').write_bytes(batch.encode('ascii'))
+        config = ('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[dosbox]\n'
+                  'machine=svga_s3\nmemsize=16\n[cpu]\ncore=auto\n'
+                  'cputype=auto\n[autoexec]\n'
+                  f'mount c "{work}"\nc:\ncall c:\\go.bat\nexit\n')
+        config_path = work / f'{tag}.conf'
+        config_path.write_text(config, encoding='utf-8')
+        command = [str(dosbox), '-conf', str(config_path), '--noprimaryconfig',
+                   '-noconsole', '-exit']
+        result = subprocess.run(command, cwd=work, stdout=subprocess.PIPE,
+                                stderr=subprocess.STDOUT, timeout=600)
+        log_path = dos_work / log_name
+        map_path = dos_work / map_name
+        exe_path = dos_work / output_name
+        log = log_path.read_text(errors='replace') if log_path.exists() else ''
+        return result, command, log, map_path, exe_path, response
+
+    sizing = None
+    if scaffold_dgroup:
+        base_result, _, base_log, base_map, _, _ = link_once('BASE', object_names)
+        base_segments, _ = parse_map(base_map) if base_map.exists() else ([], [])
+        data_segment = next((s for s in base_segments if s['name'] == '_DATA'), None)
+        stack_segment = next((s for s in base_segments if s['name'] == '_STACK'), None)
+        if not data_segment or not stack_segment:
+            raise ValueError('baseline TLINK map lacks DATA or STACK for DGROUP scaffold sizing')
+        data_end = max(s['stop'] + 1 for s in base_segments
+                       if s['name'] in {'_DATA', '_EMUSEG', '_CRTSEG', '_CVTSEG', '_SCNSEG'})
+        text_end = max(r['end'] - 512 for r in manifest['regions']
+                       if r.get('build', {}).get('segment') == '_TEXT')
+        dgroup_load = (text_end + 15) & ~15
+        image_end = max(r['end'] - 512 for r in manifest['regions'])
+        target_data_span = image_end - dgroup_load
+        target_stack = MZ.parse((root / 'assets/AEPROG.EXE').read_bytes()).ss * 16
+        current_data_span = data_end - data_segment['start']
+        data_tail_length = max(0, target_data_span - current_data_span)
+        bss_tail_length = max(0, target_stack - stack_segment['start'] - data_tail_length)
+        image = (root / 'assets/AEPROG.EXE').read_bytes()
+        data_tail_start = 512 + dgroup_load + current_data_span
+        data_tail = image[data_tail_start:data_tail_start + data_tail_length]
+        if len(data_tail) != data_tail_length:
+            raise ValueError('oracle initialized-data tail is shorter than scaffold sizing')
+        cc_publics = set()
+        for _, blob in OmfReader().split_library(cc_lib.read_bytes()):
+            cc_publics.update(public['name'] for public in OmfReader().read(blob).publics)
+        dgroup_publics = {}
+        for region in manifest['regions']:
+            for symbol, binding in region.get('build', {}).get('bindings', {}).items():
+                if binding.get('coordinate') != 'DGROUP_offset' or symbol in cc_publics:
+                    continue
+                if 'offset' in binding:
+                    offset = binding['offset']
+                elif binding.get('owner') in {item['id'] for item in manifest['regions']}:
+                    target = next(item for item in manifest['regions']
+                                   if item['id'] == binding['owner'])
+                    offset = target['start'] - 512 - dgroup_load + binding.get('addend', 0)
+                else:
+                    continue
+                if offset < 0:
+                    continue
+                if offset < target_data_span:
+                    location = ('_DATA', offset)
+                elif offset - target_data_span < 0x10000:
+                    location = ('_BSS', offset - target_data_span)
+                else:
+                    continue
+                dgroup_publics.setdefault(symbol, location)
+        scaffold_blob = make_dgroup_scaffold(data_tail, bss_tail_length, dgroup_publics)
+        scaffold_name = 'DGSCF.OBJ'
+        (dos_work / scaffold_name).write_bytes(scaffold_blob)
+        object_names.append(scaffold_name)
+        sizing = {
+            'baseline_returncode': base_result.returncode,
+            'baseline_unresolved_count': sum('Undefined symbol' in line
+                                             for line in base_log.splitlines()),
+            'baseline_segments': base_segments,
+            'target_dgroup_load': dgroup_load,
+            'target_initialized_span': target_data_span,
+            'target_stack_load': target_stack,
+            'baseline_data_span': current_data_span,
+            'baseline_stack_load': stack_segment['start'],
+            'synthetic_data_bytes': data_tail_length,
+            'synthetic_bss_bytes': bss_tail_length,
+        }
+        scaffold.append({
+            'kind': 'synthetic_dgroup_data_bss',
+            'object': scaffold_name,
+            'staged_sha256': sha(scaffold_blob),
+            'staged_size': len(scaffold_blob),
+            'data_sha256': sha(data_tail),
+            'data_bytes': data_tail_length,
+            'bss_bytes': bss_tail_length,
+            'public_count': len(dgroup_publics),
+            'sizing': sizing,
+        })
+    result, command, log, map_path, exe_path, response = link_once('FINAL', object_names)
     unresolved = [line.strip() for line in log.splitlines()
                   if 'Undefined symbol' in line]
     segments, rows = parse_map(map_path) if map_path.exists() else ([], [])
@@ -225,7 +425,17 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             break
     report = {
         'format': 'empires-tlink-structural-experiment-v1',
-        'mode': ('library_toupper_with_historical_demand_and_symbol_normalization'
+        'mode': ('library_toupper_with_historical_demand_and_symbol_normalization_and_case_and_internal_labels_and_dgroup_scaffold'
+                 if demand_historical_library and normalize_recovered_symbols and normalize_case_symbols and expose_internal_labels and scaffold_dgroup
+                 else 'library_toupper_with_historical_demand_and_symbol_normalization_and_case_and_internal_labels'
+                 if demand_historical_library and normalize_recovered_symbols and normalize_case_symbols and expose_internal_labels
+                 else 'library_toupper_with_historical_demand_and_symbol_normalization_and_case_and_dgroup_scaffold'
+                 if demand_historical_library and normalize_recovered_symbols and normalize_case_symbols and scaffold_dgroup
+                 else 'library_toupper_with_historical_demand_and_symbol_normalization_and_case'
+                 if demand_historical_library and normalize_recovered_symbols and normalize_case_symbols
+                 else 'library_toupper_with_historical_demand_and_symbol_normalization_and_dgroup_scaffold'
+                 if demand_historical_library and normalize_recovered_symbols and scaffold_dgroup
+                 else 'library_toupper_with_historical_demand_and_symbol_normalization'
                  if demand_historical_library and normalize_recovered_symbols
                  else 'library_toupper_with_historical_demand' if demand_historical_library
                  else 'library_toupper_promotion' if promote_toupper
@@ -242,7 +452,8 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
         'relocatable_scaffold': scaffold,
         'link': {'returncode': result.returncode, 'command': command,
                  'unresolved_symbols': unresolved[:200],
-                 'unresolved_count': len(unresolved)},
+                 'unresolved_count': len(unresolved),
+                 'dgroup_sizing': sizing},
         'segments': segments,
         'code_rows': rows,
         'code_comparison': {'expected_owner_count': len(compile_owners),
@@ -255,8 +466,7 @@ def run(root=ROOT, linker=DEFAULT_LINKER, dosbox=None, promote_toupper=False,
             'actual_toupper': next((row for row in rows if row['module'].upper() == 'TOUPPER'), None),
         },
         'outputs': {
-            'exe_sha256': sha((dos_work / 'OUT.EXE').read_bytes())
-            if (dos_work / 'OUT.EXE').exists() else None,
+            'exe_sha256': sha(exe_path.read_bytes()) if exe_path.exists() else None,
             'map_sha256': sha(map_path.read_bytes()) if map_path.exists() else None,
         },
         'interpretation': 'TLINK placement is experimental; the fixed manifest remains the oracle and unresolved data symbols are expected until the synthetic DGROUP scaffold exists.'
@@ -278,11 +488,20 @@ def main():
                         help='add a temporary unresolved-public demand object for manifest library modules')
     parser.add_argument('--normalize-recovered-symbols', action='store_true',
                         help='apply verified temporary aliases for recovered function publics')
+    parser.add_argument('--scaffold-dgroup', action='store_true',
+                        help='size a temporary DATA/BSS OMF contribution from the baseline TLINK map')
+    parser.add_argument('--normalize-case-symbols', action='store_true',
+                        help='lowercase EXTDEFs only when their lowercase explicit OMF public exists')
+    parser.add_argument('--expose-internal-labels', action='store_true',
+                        help='add numeric labels to reconstructed C objects when their target owner is known')
     args = parser.parse_args()
     try:
         run(linker=args.linker, dosbox=args.dosbox, promote_toupper=args.promote_toupper,
             demand_historical_library=args.demand_historical_library,
-            normalize_recovered_symbols=args.normalize_recovered_symbols)
+            normalize_recovered_symbols=args.normalize_recovered_symbols,
+            scaffold_dgroup=args.scaffold_dgroup,
+            normalize_case_symbols=args.normalize_case_symbols,
+            expose_internal_labels=args.expose_internal_labels)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
         print(f'FAIL: {error}', file=sys.stderr)
         return 1

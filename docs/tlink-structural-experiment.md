@@ -1,7 +1,7 @@
 # First relocatable TLINK experiment
 
 The fixed-placement reconstruction remains the executable oracle. The new
-`tools/probe_tlink_layout.py` path compiles the 340 proven post-startup C
+`tools/probe_tlink_layout.py` path compiles the 339 proven post-startup C
 owners with the pinned Turbo C toolchain, trims each OMF contribution to its
 owned `_TEXT` extent, inserts classified code-gap padding as temporary
 relocatable OMF contributions, and invokes a local Borland TLINK candidate.
@@ -54,8 +54,27 @@ evidenced by the fixed library manifest so linker placement can be tested
 before the historical data/startup translation units are recovered. It does
 not claim those publics are the final reconstructed source bindings.
 
-The map still has unresolved symbols because DGROUP, BSS and the historical
-startup bindings have not yet been represented by synthetic relocatable data
-objects. That is expected at this milestone. The machine-readable report is
-generated at `build/tlink-structural-report.json` (ignored by Git), and the
-fixed reconstruction path is unchanged.
+The `--scaffold-dgroup` experiment now adds a temporary grouped OMF DATA/BSS
+contribution. Its initialized tail is copied from the fixed oracle only to
+hold the space not yet decoded into source; the linker still computes the
+segment bases and stack placement. With the historical demand, recovered
+symbol aliases, case normalization, and internal-label exposure enabled,
+TLINK produces:
+
+```text
+_TEXT   0x00000 .. 0x0FA22   (0xFA23 bytes)
+_DATA   0x0FA30 .. 0x1332B   (0x38FC bytes)
+_BSS    0x13332 .. 0x1C4FB   (0x91CA bytes)
+_STACK  0x1C500 .. 0x1C5E5   (0x00E6 bytes)
+unresolved symbols: 0
+first code divergence: none
+```
+
+The three numeric calls into library interiors are resolved to the exact
+`HARDERR` and `OPEN` publics at those offsets, and C0C's `_main` entry is
+exposed as an alias on the recovered `F_4A93` object. These are verified
+linker adapters, not claims about historical translation-unit boundaries.
+The initialized DATA tail and BSS tail remain explicitly temporary and are
+the next ownership frontier. The machine-readable report is generated at
+`build/tlink-structural-report.json` (ignored by Git), and the fixed
+reconstruction path is unchanged.

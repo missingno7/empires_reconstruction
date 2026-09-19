@@ -1,0 +1,227 @@
+{
+  "status": "EQUAL",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "prior_kind": "MATCHING_ASM",
+  "new_kind": "MATCHING_C",
+  "id": "F_50D2",
+  "bytes": 237,
+  "source_sha256": "ae8ab6f6e0bc4dd88525ce81f1d4942591357de4bb1f091f125f0b0d34f08029",
+  "matched_sha256": "b8ab9ee623ecd3d137c029b3e290649c28b6afd904471981fd311c16e4248eee",
+  "fixups": [
+    {
+      "segment": "_TEXT",
+      "offset": 3,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 3,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 43,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 43,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 49,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_b856",
+      "displacement": 0,
+      "extent_offset": 49,
+      "addend": 0,
+      "resolved_value": 2134
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 71,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 71,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 90,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 90,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 109,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 109,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 123,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 123,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 152,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 152,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 188,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 188,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 194,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 194,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 211,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 211,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 220,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 220,
+      "addend": 0,
+      "resolved_value": 49101
+    },
+    {
+      "segment": "_TEXT",
+      "offset": 230,
+      "width": 2,
+      "loc": "offset16",
+      "self_relative": false,
+      "target_kind": "external",
+      "target": "_bbfcd",
+      "displacement": 0,
+      "extent_offset": 230,
+      "addend": 0,
+      "resolved_value": 49101
+    }
+  ],
+  "load_relocations": [],
+  "compile": {
+    "command": "tcc -c -mc -1- -f- -N- R0000.C",
+    "object": "WORK/R0000.OBJ",
+    "source_sha256": "ae8ab6f6e0bc4dd88525ce81f1d4942591357de4bb1f091f125f0b0d34f08029",
+    "staged_sha256": "a10d16f490b4b87d62d3ed6bf3d8695732eda1e1ed9c8a513806c0e51a2255b0",
+    "object_sha256": "b451abbdb9de7f7c85883e670bb0ef0e0d9075004ee9069dc942abfa08d80c10"
+  },
+  "session": {
+    "command": [
+      "C:\\Program Files\\DOSBox Staging\\dosbox.exe",
+      "-conf",
+      "D:\\Prog\\empires_reconstruction\\build\\promote-f50d2-c\\dosbox.conf",
+      "--noprimaryconfig",
+      "-noconsole",
+      "-exit"
+    ],
+    "dosbox_sha256": "b9991c8636e166a939163d1e158b71922b1508a2ff66cd6ee54a7e7d12beed27",
+    "config_sha256": "9e9236dfc1244e91a178225608984a8d12eb6bc73abc6238a06a144ebd05d0ab",
+    "toolchain": {
+      "description": "Turbo C 2.0 and TASM 1.0; local binaries are not redistributed",
+      "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
+      "flags": "-c -mc -1- -f- -N-",
+      "files": [
+        {
+          "path": "TCC.EXE",
+          "sha256": "24535a9a628b70f1daf3e2382c6911046f671baad02e890be5e7e62dbaad6c1e"
+        },
+        {
+          "path": "CPP.EXE",
+          "sha256": "c0422b51e4fe521f7082caec84f4edb9e27b0c8089bef3c53e9f988157ad2d01"
+        },
+        {
+          "path": "TASM.EXE",
+          "sha256": "754b70821e4bac4997f398e3bdcee0f046a42cc3dad89cfbe0138f67d5b6142b"
+        }
+      ],
+      "libraries": [
+        {
+          "path": "CC.LIB",
+          "sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179"
+        }
+      ],
+      "reader_upstream_sha256": "19107ce197169349aeb6758cb85facb577e26423db0ebe7e62cc6eb0e889a96d"
+    }
+  }
+}

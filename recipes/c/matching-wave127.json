@@ -1,0 +1,21 @@
+{
+  "format": "empires-asm-to-c-v1",
+  "conversions": [
+    {
+      "id": "F_50D2",
+      "source": "src/F_50D2.C",
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f50d2",
+        "span": 1,
+        "flags_append": "",
+        "bindings": {
+          "_b856": {"offset": 2134, "coordinate": "DGROUP_offset", "evidence": "complete F_50D2 fixup"},
+          "_bbfcd": {"offset": 49101, "coordinate": "DGROUP_offset", "evidence": "complete F_50D2 fixup"}
+        },
+        "module_segments": {}
+      },
+      "method": "complete ASM extent translated to a deterministic Turbo C source unit with thirteen fresh OMF fixups"
+    }
+  ]
+}

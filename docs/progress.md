@@ -8,8 +8,8 @@ semantic cleanup remains outside this mechanical phase.
 
 | Representation | MVP1 bytes | Current bytes | Current owners |
 |---|---:|---:|---:|
-| Freshly compiled matching C | 14,077 | 57,668 | 340 |
-| Freshly assembled matching ASM | 2,456 | 1,227 | 5 |
+| Freshly compiled matching C | 14,077 | 57,905 | 341 |
+| Freshly assembled matching ASM | 2,456 | 990 | 4 |
 | Known toolchain library | 0 | 5,384 | 42 |
 | Structured MZ header | 0 | 512 | 1 |
 | Structured DAC palettes | 0 | 1,536 | 2 |
@@ -1053,3 +1053,12 @@ relocations. See [the wave 126 proof](matching-c-wave126.md).
 
 Current matching-C coverage is 57,668 bytes across 340 owners, with 1,227
 matching-ASM bytes across 5 owners. The raw frontier remains 10,173 bytes.
+
+## One-hundred-twenty-seventh matching-C conversion
+
+F_50D2 converts from its verified ASM owner to matching C. The complete
+237-byte display-adapter probe preserves thirteen fixups and no loader
+relocations. See [the wave 127 proof](matching-c-wave127.md).
+
+Current matching-C coverage is 57,905 bytes across 341 owners, with 990
+matching-ASM bytes across 4 owners. The raw frontier remains 10,173 bytes.

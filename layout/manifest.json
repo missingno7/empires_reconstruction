@@ -4124,9 +4124,9 @@
       "id": "F_50D2",
       "start": 21202,
       "end": 21439,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_50D2.ASM",
+      "source": "src/F_50D2.C",
       "original_symbol": "F_50D2",
       "artifact": "regions/F_50D2.bin",
       "expected_sha256": "b8ab9ee623ecd3d137c029b3e290649c28b6afd904471981fd311c16e4248eee",
@@ -4136,6 +4136,7 @@
         "public": "_f50d2",
         "span": 1,
         "flags_append": "",
+        "module_segments": {},
         "bindings": {
           "_b856": {
             "offset": 2134,
@@ -4147,16 +4148,13 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           }
-        },
-        "module_segments": {}
+        }
       },
       "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_50D2.json",
-        "entry_sha256": "9e1b8347c02899e8ecbb47124ae2532ee8e76c075c00da366bdca868e5177ba6",
-        "record_sha256": "6e998d877b6ec58a26b1e261a75cb406416ec1781bb02e8988fa50f764f8887a",
-        "source_sha256": "4f115adc3994871b2b41e9191791b508baad94390f67396b27c6c6df92d57814",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
+        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
+        "prior_asm_source_sha256": "4f115adc3994871b2b41e9191791b508baad94390f67396b27c6c6df92d57814",
+        "source_sha256": "ae8ab6f6e0bc4dd88525ce81f1d4942591357de4bb1f091f125f0b0d34f08029",
+        "change": "Translate the complete display-adapter probe into a deterministic Turbo C source unit with thirteen data fixups and no loader relocations."
       }
     },
     {

@@ -15,8 +15,8 @@ semantic cleanup remains outside this mechanical phase.
 | Structured DAC palettes | 0 | 1,536 | 2 |
 | Compiled C initializer | 0 | 80 | 6 |
 | Independently encoded text | 0 | 259 | 5 |
-| Structured static data | 0 | 1,019 | 6 |
-| Exact raw fallback | 62,621 | 31,254 | 35 |
+| Structured static data | 0 | 1,066 | 9 |
+| Exact raw fallback | 62,621 | 31,207 | 34 |
 | Total | 79,154 | 79,154 | 381 |
 
 The 78,642-byte DOS load image, all 106 ordered MZ relocation entries, and
@@ -166,7 +166,7 @@ promotions update both source descriptions and invalidate older packed outputs.
 
 The combined report distinguishes derived DAT packing from fixed EXE placement
 and explicitly reports whole-build reconstruction incomplete. The 193 opaque
-DAT payloads and 31,254 raw EXE bytes remain temporary fallbacks. See
+DAT payloads and 31,207 raw EXE bytes remain temporary fallbacks. See
 [build-reconstruction.md](build-reconstruction.md) for the four reconstruction
 levels and the requirement to recover a buildable software system.
 
@@ -639,3 +639,14 @@ Three zero-filled gaps between complete code owners are now explicit
 has no relocation or reference obligation. The deterministic encoder reproduces
 all nine original bytes and reduces the raw fallback to 31,254 bytes across 35
 remaining regions. See [the wave-seventy-five proof](matching-c-wave75.md).
+
+## Seventy-sixth structured-data wave
+
+`RAW_010ED1` is split at its exact alignment boundary. Its first 12 bytes are
+six little-endian code offsets, all matching addresses in the recovered machine
+inventory. Three zero bytes then align the final 32 bytes to `0x10EE0`; those
+bytes are two complete 16-entry permutations, each containing every value from
+`0` through `15` once. The pointer table, alignment gap, and permutation table
+now use `u16le-table-v1`, `zero-pad-v1`, and `fixed-records-v1` sources. The
+47-byte extent matches exactly, leaving only the final 55-byte data tail as an
+unclassified EXE range. See [the wave-seventy-six proof](matching-c-wave76.md).

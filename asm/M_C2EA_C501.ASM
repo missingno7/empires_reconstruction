@@ -5,10 +5,11 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
+    extrn _g1788:word, _g178a:word
 _BSS ends
 DGROUP group _DATA, _BSS
 assume cs:_TEXT, ds:DGROUP
-public _f_c2ea, _f_c359, _f_c3db, _f_c440, _f_c501
+public _f_c2ea, _f_c359, _f_c3db, _f_c440, _f_c501, _f_c549, _fc567
 
 ; F_C2EA -- dispatch the low nibble of the current ES:DI command byte.
 ; AL, AH, SI, ES and DI are caller-owned state.  The original compiler emitted
@@ -352,6 +353,56 @@ C501_test_six:
 C501_done:
  pop bp
  ret
+
+; F_C549 -- update the paired command-control flags from AL.
+_f_c549 proc near
+    push bp
+    mov bp, sp
+    cmp al, 0
+    je short C549_set_one_plus_one
+    mov word ptr ds:[si+17b4h], 0
+    xor ah, ah
+    mov ds:[si+17bch], ax
+    jmp short C549_done
+C549_set_one:
+    nop
+C549_set_one_plus_one:
+    mov word ptr ds:[si+17b4h], 1
+C549_done:
+    pop bp
+    ret
+_f_c549 endp
+
+; F_C567 -- signed scale-and-store for the sound-data state pair.
+_fc567 proc near
+    push bp
+    mov bp, sp
+    mov bl, ah
+    mov cl, al
+    xor ch, ch
+    cmp cx, 0
+    je short C567_store_zero
+    mov ax, ds:_g1788
+    mul cx
+    mov cx, 100
+    div cx
+    cmp dx, 31h
+    jle short C567_no_round_up
+    inc ax
+C567_no_round_up:
+    cmp bl, 1
+    je short C567_store_result
+    neg ax
+C567_store_result:
+    mov ds:_g178a, ax
+    jmp short C567_done
+    nop
+C567_store_zero:
+    mov word ptr ds:_g178a, 0
+C567_done:
+    pop bp
+    ret
+_fc567 endp
 
 _TEXT ends
 end

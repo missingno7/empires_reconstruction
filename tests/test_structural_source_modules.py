@@ -46,9 +46,9 @@ class StructuralSourceModuleTests(unittest.TestCase):
         modules = structural_source_modules(ROOT, manifest)
         module = next(item for item in modules if item['id'] == 'M_C2EA_C501')
         self.assertEqual(module['members'], [
-            'F_C2EA', 'F_C359', 'F_C3DB', 'F_C440', 'F_C501',
+            'F_C2EA', 'F_C359', 'F_C3DB', 'F_C440', 'F_C501', 'F_C549', 'F_C567',
         ])
-        self.assertEqual(module['end'] - module['start'], 607)
+        self.assertEqual(module['end'] - module['start'], 688)
 
     def test_menu_control_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
@@ -83,7 +83,7 @@ class StructuralSourceModuleTests(unittest.TestCase):
             'M_6B1A_6B4A': 76,
             'M_C1A0_C232': 221,
             'M_C9A4_CA91': 247,
-            'M_C2EA_C501': 607,
+            'M_C2EA_C501': 688,
             'M_CB5C_CD23': 641,
             'M_DAD7_DB35': 137,
             'M_D818_D825': 71,

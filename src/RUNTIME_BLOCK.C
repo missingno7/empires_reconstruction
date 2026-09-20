@@ -746,9 +746,33 @@ void f039c()
     asm db 05fh
     asm pop bp
     asm ret
-    asm db 055h,08bh,0ech,057h,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h,08bh,05eh
-    asm db 004h,0d1h,0ebh,072h,012h,003h,0fbh,026h,08ah,005h,025h,0f0h,000h,0d1h,0e8h,0d1h,0e8h,0d1h,0e8h,0d1h,0e8h,0ebh,008h,003h
-    asm db 0fbh,026h,08ah,005h,025h,00fh,000h,05fh,05dh,0c3h,0c3h,045h,047h,041h,02eh,044h,052h,056h,000h
+    /* F_03D5: fetch either half of a planar pixel as a normalized nibble. */
+    asm runtime_f03d5:
+    asm push bp
+    asm mov bp,sp
+    asm db 057h
+    asm mov bx,[bp+6]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c4h,0bfh,024h,039h
+    asm mov bx,[bp+4]
+    asm shr bx,1
+    asm db 072h,012h
+    asm db 003h,0fbh,026h,08ah,005h
+    asm and ax,0f0h
+    asm shr ax,1
+    asm shr ax,1
+    asm shr ax,1
+    asm shr ax,1
+    asm db 0ebh,008h
+    asm db 003h,0fbh,026h,08ah,005h
+    asm and ax,0fh
+    asm db 05fh
+    asm pop bp
+    asm ret
+
+    /* Unreferenced stub and driver name following the final code root. */
+    asm db 0c3h,045h,047h,041h,02eh,044h,052h,056h,000h
     asm _runtime_block_end label byte
     asm public _runtime_block_end
 }

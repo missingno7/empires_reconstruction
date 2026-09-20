@@ -94,11 +94,52 @@ void f039c()
     asm db 08ah,01eh,0cdh,0bfh
     asm shl bx,1
     asm jmp word ptr cs:[bx+3d8h]
-    asm db 055h,08bh,0ech,056h,057h,01eh,0fch,0b8h,00eh,000h,0cdh,010h,0b4h,005h,0b0h
-    asm db 001h,0cdh,010h,0b8h,000h,010h,0bbh,001h,000h,0cdh,010h,0b8h,000h,010h,0bbh,000h,001h,0cdh,010h,0b8h,000h,010h,0bbh,00eh
-    asm db 017h,0cdh,010h,0b8h,000h,010h,0bbh,00fh,016h,0cdh,010h,0bah,0ceh,003h,0b0h,005h,0eeh,042h,0b0h,002h,0eeh,0bah,0c4h,003h
-    asm db 0b0h,002h,0eeh,042h,0b0h,00fh,0eeh,0b8h,000h,0a0h,08eh,0c0h,033h,0dbh,08bh,0cbh,08bh,0f3h,0bdh,000h,010h,0bah,0ceh,003h
-    asm db 0b0h,008h,0eeh,042h,0b0h,00ch,0eeh,026h,08ah,024h,026h,088h,01ch,0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,003h,0eeh,026h
+    /* EGA/VGA planar-mode initializer reached from the dispatch table. */
+    asm push bp
+    asm mov bp,sp
+    asm db 056h,057h
+    asm push ds
+    asm cld
+    asm mov ax,0eh
+    asm int 10h
+    asm mov ah,5
+    asm mov al,1
+    asm int 10h
+    asm mov ax,1000h
+    asm mov bx,1
+    asm int 10h
+    asm mov ax,1000h
+    asm mov bx,100h
+    asm int 10h
+    asm mov ax,1000h
+    asm mov bx,170eh
+    asm int 10h
+    asm mov ax,1000h
+    asm mov bx,160fh
+    asm int 10h
+    asm mov dx,3ceh
+    asm mov al,5
+    asm out dx,al
+    asm inc dx
+    asm mov al,2
+    asm out dx,al
+    asm mov dx,3c4h
+    asm mov al,2
+    asm out dx,al
+    asm inc dx
+    asm mov al,0fh
+    asm out dx,al
+    asm mov ax,0a000h
+    asm mov es,ax
+    asm xor bx,bx
+    asm mov cx,bx
+    /* Preserve the historical SI assignment without asking TC to manage SI. */
+    asm db 08bh,0f3h
+    asm mov bp,1000h
+    /* The planar clear loop follows.  Its ES:[SI]/DI operations need a
+       separate TC-safe conversion, because exposing them makes TC insert
+       its own SI/DI preservation ahead of the raw dispatch veneer. */
+    asm db 0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,00ch,0eeh,026h,08ah,024h,026h,088h,01ch,0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,003h,0eeh,026h
     asm db 08ah,024h,026h,088h,00ch,0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,0c0h,0eeh,026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h
     asm db 080h,0ffh,010h,07ch,0c8h,032h,0ffh,0feh,0c1h,080h,0f9h,010h,07ch,0bfh,032h,0c9h,0feh,0c3h,080h,0fbh,010h,07ch,0b6h,0bah
     asm db 0ceh,003h,0b0h,008h,0eeh,042h,0b0h,030h,0eeh,0bah,0ceh,003h,0b0h,003h,0eeh,042h,0b0h,000h,0eeh,01fh,05fh,05eh,05dh,0c3h

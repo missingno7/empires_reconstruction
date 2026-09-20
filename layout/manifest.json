@@ -3982,8 +3982,8 @@
     },
     {
       "id": "F_4B0C",
-      "kind": "MATCHING_C",
-      "source": "src/F_4B0C.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_4B0C.ASM",
       "start": 19724,
       "end": 20639,
       "expected_sha256": "aeb7a31da8434417bbbd45c5eb5aa2ba223e58faa0e3abf93772b8e9fccd2521",
@@ -3997,6 +3997,11 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "method": "recursive control-flow reconstruction of the complete non-returning command interpreter; fresh TASM object equality",
+        "source_quality": "SYMBOLIC_ASM",
+        "change": "Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations. Direct relative calls preserve their original no-FIXUPP encoding through CALL_REL."
       }
     },
     {

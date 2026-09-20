@@ -32,8 +32,19 @@ class SourceQualityTests(unittest.TestCase):
         result = report(read_json(ROOT / 'layout/manifest.json'))
         matching = [item for item in result['levels'] if item['level'] != 'HISTORICAL_LIBRARY']
         self.assertEqual(sum(item['owners'] for item in matching), 347)
-        self.assertEqual(result['asm_db_source_files'], 4)
-        self.assertGreater(result['asm_db_capsules'][0]['bytes'], 1000)
+        self.assertEqual(result['asm_db_source_files'], 2)
+        capsule_level = next(item for item in result['levels']
+                             if item['level'] == 'ASM_DB_CAPSULE')
+        self.assertEqual((capsule_level['bytes'], capsule_level['owners']), (6824, 2))
+        self.assertEqual([item['owner'] for item in result['asm_db_capsules']],
+                         ['RUNTIME_BLOCK', 'F_DF98'])
+
+    def test_f4b0c_is_symbolic_tasm(self):
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        owner = next(item for item in manifest['regions'] if item['id'] == 'F_4B0C')
+        self.assertEqual((owner['kind'], owner['source']),
+                         ('MATCHING_ASM', 'asm/F_4B0C.ASM'))
+        self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
 
     def test_f4eeb_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')

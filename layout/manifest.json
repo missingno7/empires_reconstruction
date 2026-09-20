@@ -13301,8 +13301,8 @@
     },
     {
       "id": "F_B40F",
-      "kind": "MATCHING_C",
-      "source": "src/F_B40F.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_B40F.ASM",
       "start": 46607,
       "end": 46843,
       "expected_sha256": "b55281c89a91716131425c8dbd43a3ad990c8e19a1099779519e8104d9be4fa3",
@@ -13316,7 +13316,8 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
-      }
+      },
+      "change": "Recover the complete compact-descriptor expansion routine as symbolic TASM; exact source has no OMF fixups."
     },
     {
       "id": "F_B4FB",

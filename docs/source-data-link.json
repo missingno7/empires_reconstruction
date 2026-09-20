@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 32920,
+  "typed_bss_source_bytes": 34922,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -948,8 +948,24 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "cur_idx_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 2,
+            "name": "g3904_values",
+            "count": 16,
+            "element_bytes": 2,
+            "source_type": "int[16]"
+          }
+        ],
         "object_sha256": "17ad3751906495a9f616cc0c8c647a5f42fe03c861b67731421fc41ef2f5c40d",
-        "source_sha256": "908d3040afef57a21e16000f050ab42376dc6bc63e8c4f47ff09eda431c94b48"
+        "source_sha256": "58a8fdce3149fd2e37153c99cf8d658f32a1d48fcf872b25b6822a08db15542a"
       },
       {
         "id": "ROW_POINTER_TABLE_BSS",
@@ -960,8 +976,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g3924_rows",
+            "count": 488,
+            "element_bytes": 4,
+            "source_type": "char far *[488]"
+          }
+        ],
         "object_sha256": "c4733a70c9498adf6586f9bab40dce0abf19c48209cb4f17affb2517cefa0462",
-        "source_sha256": "5ca81d6ad77706f9e9cb1469b680c6681191337575bd16512aeb2e3c9d90b750"
+        "source_sha256": "042fec5dabdc417dbddab1dc55b32ebd24b8503547e94bafdf3f40d3babb1c72"
       },
       {
         "id": "RENDER_STATE_BSS",
@@ -972,8 +997,52 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g40c4_offset",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "far pointer offset word"
+          },
+          {
+            "offset": 2,
+            "name": "g40c4_segment",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "far pointer segment word"
+          },
+          {
+            "offset": 4,
+            "name": "g40c8_result",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 6,
+            "name": "g40ca_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 10,
+            "name": "g40ce_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 12,
+            "name": "g40d0_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          }
+        ],
         "object_sha256": "ce93eb7bbdfa5876c9cd92eb82fe8a98e932d3cfddd90d8f9dc121f8a8b9702e",
-        "source_sha256": "e5afe99479b80f589aa1d49439abad485e0caf0c70a710ce12cdd9ba521a0d9f"
+        "source_sha256": "5c545a5a3d26984c9018d01ed7fd644470d88ddd3db97b7b7518486d002eaf31"
       },
       {
         "id": "RESOURCE25_WORKSPACE_BSS",

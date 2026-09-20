@@ -12,7 +12,23 @@
       "owner_candidate": "F_01CE",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "cur_idx_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 2,
+          "name": "g3904_values",
+          "count": 16,
+          "element_bytes": 2,
+          "source_type": "int[16]"
+        }
+      ]
     },
     {
       "id": "ROW_POINTER_TABLE_BSS",
@@ -23,7 +39,16 @@
       "owner_candidate": "F_0281",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g3924_rows",
+          "count": 488,
+          "element_bytes": 4,
+          "source_type": "char far *[488]"
+        }
+      ]
     },
     {
       "id": "RENDER_STATE_BSS",
@@ -34,7 +59,51 @@
       "owner_candidate": "shared command/render state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g40c4_offset",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "far pointer offset word"
+        },
+        {
+          "offset": 2,
+          "name": "g40c4_segment",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "far pointer segment word"
+        },
+        {
+          "offset": 4,
+          "name": "g40c8_result",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 6,
+          "name": "g40ca_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 10,
+          "name": "g40ce_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 12,
+          "name": "g40d0_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        }
+      ]
     },
     {
       "id": "RESOURCE25_WORKSPACE_BSS",

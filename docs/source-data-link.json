@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 13252,
+  "typed_bss_source_bytes": 18924,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -984,8 +984,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g40d4_workspace",
+            "count": 1,
+            "element_bytes": 672,
+            "source_type": "unsigned char[672]"
+          }
+        ],
         "object_sha256": "c010a605363891e2f85645c8cea33709ce881c0f64dd4ce3574e33e0443d8e10",
-        "source_sha256": "9a491c26d8d40c33d29a687584619e0fa43ed8ff1d243911a0acc510ddf88432"
+        "source_sha256": "7dc8f14b6b1574e0575e0b96eeb11c962c6db2a548d426002328dec19db720e8"
       },
       {
         "id": "B4374_CONTROL_STATE_BSS",
@@ -1212,8 +1221,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g9cf2_buffer",
+            "count": 1,
+            "element_bytes": 2500,
+            "source_type": "unsigned char[2500]"
+          }
+        ],
         "object_sha256": "3d858f28e5c1a91eb9b1f7e5f4b2cfd0765bff54cb151a1b3db3e46ce34d2b14",
-        "source_sha256": "76313fde9baa1309e4e824c0bfd7a26bdbd6349802b49ddbef2bce7833e48356"
+        "source_sha256": "aa72931924e368bf7b1253a10cd32578de85e0d260fad9386b2c28f16f1a8031"
       },
       {
         "id": "GA6B6_RESOURCE_BUFFER_BSS",
@@ -1224,8 +1242,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "ga6b6_buffer",
+            "count": 1,
+            "element_bytes": 2500,
+            "source_type": "unsigned char[2500]"
+          }
+        ],
         "object_sha256": "e057779c4ed8c4203844e150572d31ab1865cfdc0b4cd3e99332bb888530dbf0",
-        "source_sha256": "900bef38f2a90db2ffed9a576f42585afee1efeebce6169c194840f8317a5697"
+        "source_sha256": "17f9eee58ec44413142b1d7a5f848d8ee2a63626de5c5edbe4048328186621da"
       },
       {
         "id": "RESOURCE_SELECTION_STATE_BSS",

@@ -139,8 +139,27 @@ void f039c()
     /* The planar clear loop follows.  Its ES:[SI]/DI operations need a
        separate TC-safe conversion, because exposing them makes TC insert
        its own SI/DI preservation ahead of the raw dispatch veneer. */
-    asm db 0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,00ch,0eeh,026h,08ah,024h,026h,088h,01ch,0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,003h,0eeh,026h
-    asm db 08ah,024h,026h,088h,00ch,0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,0c0h,0eeh,026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h
+    asm mov dx,3ceh
+    asm mov al,8
+    asm out dx,al
+    asm inc dx
+    asm mov al,0ch
+    asm out dx,al
+    asm db 026h,08ah,024h,026h,088h,01ch
+    asm mov dx,3ceh
+    asm mov al,8
+    asm out dx,al
+    asm inc dx
+    asm mov al,3
+    asm out dx,al
+    asm db 026h,08ah,024h,026h,088h,00ch
+    asm mov dx,3ceh
+    asm mov al,8
+    asm out dx,al
+    asm inc dx
+    asm mov al,0c0h
+    asm out dx,al
+    asm db 026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h
     asm db 080h,0ffh,010h,07ch,0c8h,032h,0ffh,0feh,0c1h,080h,0f9h,010h,07ch,0bfh,032h,0c9h,0feh,0c3h,080h,0fbh,010h,07ch,0b6h,0bah
     asm db 0ceh,003h,0b0h,008h,0eeh,042h,0b0h,030h,0eeh,0bah,0ceh,003h,0b0h,003h,0eeh,042h,0b0h,000h,0eeh,01fh,05fh,05eh,05dh,0c3h
     /* Restore the EGA palette register set, then provide the mode-13h entry. */

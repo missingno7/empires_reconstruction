@@ -97,7 +97,7 @@
   "synthetic_data_bytes": 13930,
   "synthetic_bss_bytes": 37254,
   "symbol_transform_owners": 0,
-  "omf_metadata_adapter_owners": 1,
+  "omf_metadata_adapter_owners": 0,
   "byte_comparison": {
     "available": true,
     "candidate_sha256": "347531014cfbcd853f72a463bfa7abe2229aab92cbdcf2be7bff459cd0a96b32",
@@ -234,16 +234,16 @@
     "raw_exe_fallback_bytes": 0,
     "source_quality": {
       "ASM_DB_CAPSULE": {
-        "bytes": 17986,
-        "owners": 34
+        "bytes": 17679,
+        "owners": 33
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
         "bytes": 2253,
         "owners": 26
       },
       "SYMBOLIC_ASM": {
-        "bytes": 4519,
-        "owners": 53
+        "bytes": 4826,
+        "owners": 54
       },
       "MECHANICAL_C": {
         "bytes": 34221,
@@ -257,8 +257,21 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 347,
-    "reconstructed_shared_modules": 7,
+    "isolated_function_proof_units": 346,
+    "reconstructed_shared_modules": 8,
+    "structural_source_modules": [
+      {
+        "id": "M_6D86_6DCC",
+        "source": "asm/M_6D86_6DCC.ASM",
+        "members": [
+          "F_6D86",
+          "PAD_006FC5",
+          "F_6DCC"
+        ],
+        "start": 28550,
+        "end": 28927
+      }
+    ],
     "active_structural_adapters": [
       "candidate DATA/code object interleaving",
       "arithmetic-module FIXUPP subrecord ordering"

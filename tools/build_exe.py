@@ -142,6 +142,7 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
         'compiler': 'Turbo C 2.0', 'assembler': 'TASM 1.0',
         'linker': lock['linkers'][0], 'toolchain_files': toolchain_files,
         'compiled_source_modules': baseline['compile']['owner_count'],
+        'structural_source_modules': baseline.get('structural_source_modules', []),
         'generated_data_components': len(read_json(root / 'recipes/data/game-initialized.json')['components']),
         'bss': {'bytes': bss_layout['length'],
                 'publics': len(bss_layout['publics']), 'source': 'src/data/GAME_BSS.json',

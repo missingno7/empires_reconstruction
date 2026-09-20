@@ -159,6 +159,46 @@ def comparison_not_requested(candidate, reason='verification not requested'):
             'reason': reason}
 
 
+def structural_source_modules(root, manifest):
+    """Load verified multi-owner source contributions for the TLINK path.
+
+    The fixed per-region reconstruction remains an independent oracle.  These
+    modules are only used where one real source object owns contiguous
+    manifest regions more honestly than individually trimmed proof objects.
+    """
+    path = root / 'layout/structural-source-modules.json'
+    if not path.exists():
+        return []
+    document = read_json(path)
+    if document.get('format') != 'empires-structural-source-modules-v1':
+        raise ValueError('Unknown structural source-module format')
+    regions = {region['id']: region for region in manifest['regions']}
+    modules, claimed = [], set()
+    for module in document.get('modules', []):
+        members = module.get('members', [])
+        if len(members) < 2 or len(set(members)) != len(members):
+            raise ValueError(f"{module.get('id')}: source module needs unique contiguous members")
+        try:
+            owned = [regions[member] for member in members]
+        except KeyError as error:
+            raise ValueError(f"{module.get('id')}: unknown source-module member {error.args[0]}") from error
+        if claimed.intersection(members):
+            raise ValueError(f"{module.get('id')}: source-module members overlap")
+        if any(left['end'] != right['start'] for left, right in zip(owned, owned[1:])):
+            raise ValueError(f"{module.get('id')}: source-module members are not contiguous")
+        if module.get('start') != owned[0]['start'] or module.get('end') != owned[-1]['end']:
+            raise ValueError(f"{module.get('id')}: source-module extent differs from member extent")
+        if module.get('kind') not in ('MATCHING_C', 'MATCHING_ASM'):
+            raise ValueError(f"{module.get('id')}: unsupported source-module kind")
+        if not module.get('source') or not isinstance(module.get('build'), dict):
+            raise ValueError(f"{module.get('id')}: source module lacks source/build metadata")
+        if not (root / module['source']).is_file():
+            raise ValueError(f"{module['id']}: source module is unavailable")
+        modules.append(module)
+        claimed.update(members)
+    return modules
+
+
 def _omf_records(data):
     """Yield ``(kind, start, end)`` for one OMF module or object."""
     at = 0
@@ -238,8 +278,13 @@ def run(root=ROOT, linker=DEFAULT_LINKER, runner=None, dosbox=None, promote_toup
     owners = [o for o in manifest['regions']
               if o['kind'] in ('MATCHING_C', 'MATCHING_ASM')
               and o['start'] >= 512 + startup_length]
+    source_modules = structural_source_modules(root, manifest)
+    source_module_members = {member for module in source_modules for member in module['members']}
     compile_owners = [o for o in owners
-                      if not (promote_toupper and o['id'] == 'F_F9BE')]
+                      if o['id'] not in source_module_members
+                      and not (promote_toupper and o['id'] == 'F_F9BE')]
+    compile_owners.extend(source_modules)
+    compile_owners.sort(key=lambda owner: owner['start'])
     library_replacements = {
         o['id']: o['build']['linker_library_module']
         for o in compile_owners
@@ -418,10 +463,20 @@ def run(root=ROOT, linker=DEFAULT_LINKER, runner=None, dosbox=None, promote_toup
         })
     owner_by_id = {owner['id']: owner for owner in compile_owners}
     code_end = max(owner['end'] for owner in owners)
+    source_module_at_start = {module['start']: module for module in source_modules}
     pad_index = 0
     for region in sorted(manifest['regions'], key=lambda item: item['start']):
-        if region['id'] in owner_by_id:
+        module = source_module_at_start.get(region['start'])
+        if module is not None:
+            owner = owner_by_id[module['id']]
+        elif region['id'] in source_module_members:
+            # Staged by its enclosing source module at the first member.
+            continue
+        elif region['id'] in owner_by_id:
             owner = owner_by_id[region['id']]
+        else:
+            owner = None
+        if owner is not None:
             receipt = receipts[owner['id']]
             source = compile_work / receipt['object']
             original_bytes = source.read_bytes()
@@ -691,6 +746,12 @@ def run(root=ROOT, linker=DEFAULT_LINKER, runner=None, dosbox=None, promote_toup
         'compile': {'owner_count': len(compile_owners),
                     'all_matching_c_owner_count': len(owners),
                     'session': compile_session},
+        'structural_source_modules': [
+            {'id': module['id'], 'source': module['source'],
+             'members': module['members'],
+             'start': module['start'], 'end': module['end']}
+            for module in source_modules
+        ],
         'relocatable_scaffold': scaffold,
         'link': {'returncode': result.returncode, 'command': command,
                  'errors': errors, 'log': log,

@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 17986,
-      "owners": 34,
-      "sources": 34
+      "bytes": 17679,
+      "owners": 33,
+      "sources": 33
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 4519,
-      "owners": 53,
-      "sources": 53
+      "bytes": 4826,
+      "owners": 54,
+      "sources": 54
     },
     {
       "level": "MECHANICAL_C",
@@ -98,11 +98,6 @@
       "owner": "F_AA1F",
       "source": "src/F_AA1F.C",
       "bytes": 327
-    },
-    {
-      "owner": "F_6DCC",
-      "source": "src/F_6DCC.C",
-      "bytes": 307
     },
     {
       "owner": "F_4F96",
@@ -205,6 +200,18 @@
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 34,
+  "asm_db_source_files": 33,
+  "structural_source_modules": [
+    {
+      "id": "M_6D86_6DCC",
+      "source": "asm/M_6D86_6DCC.ASM",
+      "members": [
+        "F_6D86",
+        "PAD_006FC5",
+        "F_6DCC"
+      ],
+      "bytes": 377
+    }
+  ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
 }

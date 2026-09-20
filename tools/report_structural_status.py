@@ -34,14 +34,20 @@ def status(root, report, exe_build=None):
     closure = None
     if exe_build is not None:
         verification = exe_build['verification']
+        structural_modules = exe_build.get('structural_source_modules', [])
+        collapsed_proof_units = sum(
+            max(0, sum(member in {owner['id'] for owner in matching_owners}
+                       for member in module['members']) - 1)
+            for module in structural_modules)
         closure = {
             'raw_exe_fallback_bytes': sizes['RAW'],
             'source_quality': quality_levels,
             'total_bss_bytes': exe_build['bss']['bytes'],
             'partitioned_bss_bytes': exe_build['bss']['partitioned_source_bytes'],
             'aggregate_bss_remainder_bytes': exe_build['bss']['aggregate_remainder_bytes'],
-            'isolated_function_proof_units': len(matching_owners),
-            'reconstructed_shared_modules': len(exe_build['shared_module_stages']),
+            'isolated_function_proof_units': len(matching_owners) - collapsed_proof_units,
+            'reconstructed_shared_modules': len(exe_build['shared_module_stages']) + len(structural_modules),
+            'structural_source_modules': structural_modules,
             'active_structural_adapters': exe_build['remaining_structural_adapters'],
             'active_omf_transforms': [stage['fixupp_order_adapter'] for stage in exe_build['shared_module_stages']
                                       if stage['fixupp_order_adapter'] is not None],

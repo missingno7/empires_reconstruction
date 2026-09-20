@@ -25,23 +25,43 @@ def classify_asm_source(path):
     return 'ASM_DB_CAPSULE' if RAW_ASM_DB.search(path.read_text(errors='strict')) else 'SYMBOLIC_ASM'
 
 
+def structural_module_members():
+    path = ROOT / 'layout/structural-source-modules.json'
+    if not path.exists():
+        return {}, []
+    document = read_json(path)
+    if document.get('format') != 'empires-structural-source-modules-v1':
+        raise ValueError('Unknown structural source-module format')
+    members, modules = {}, []
+    for module in document.get('modules', []):
+        source = module['source']
+        for member in module['members']:
+            if member in members:
+                raise ValueError(f'Structural source-module member overlap: {member}')
+            members[member] = source
+        modules.append({'id': module['id'], 'source': source,
+                        'members': module['members'],
+                        'bytes': module['end'] - module['start']})
+    return members, modules
+
+
 def report(manifest):
     classes = defaultdict(lambda: {'bytes': 0, 'owners': 0, 'sources': set()})
     capsules = []
+    module_members, modules = structural_module_members()
     for owner in manifest['regions']:
         kind = owner['kind']
         if kind == 'KNOWN_TOOLCHAIN_LIBRARY':
             level = 'HISTORICAL_LIBRARY'
-        elif kind == 'MATCHING_C':
-            path = ROOT / owner['source']
-            level = classify_source(path)
+        elif kind in ('MATCHING_C', 'MATCHING_ASM'):
+            source = module_members.get(owner['id'], owner['source'])
+            path = ROOT / source
+            if source.lower().endswith('.asm'):
+                level = classify_asm_source(path)
+            else:
+                level = classify_source(path)
             if level == 'ASM_DB_CAPSULE':
-                capsules.append({'owner': owner['id'], 'source': owner['source'],
-                                 'bytes': owner['end'] - owner['start']})
-        elif kind == 'MATCHING_ASM':
-            level = classify_asm_source(ROOT / owner['source'])
-            if level == 'ASM_DB_CAPSULE':
-                capsules.append({'owner': owner['id'], 'source': owner['source'],
+                capsules.append({'owner': owner['id'], 'source': source,
                                  'bytes': owner['end'] - owner['start']})
         else:
             continue
@@ -61,6 +81,7 @@ def report(manifest):
             'levels': levels,
             'asm_db_capsules': capsules,
             'asm_db_source_files': len({item['source'] for item in capsules}),
+            'structural_source_modules': modules,
             'limitations': ('Classification is syntactic. MECHANICAL_C does not claim semantic '
                             'recovery; historical module ownership is tracked separately.')}
 

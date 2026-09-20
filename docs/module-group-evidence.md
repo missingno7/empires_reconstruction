@@ -64,3 +64,21 @@ public order, thirteen fixups, and downstream byte-identical TLINK result.
 uses it in place of both proof objects and retains byte-identical output. This
 is structural module evidence only: both source owners are still classified as
 mechanical inline-assembly capsules and need symbolic recovery separately.
+
+## M_6D86_6DCC
+
+`layout/structural-source-modules.json` now records one compatible symbolic
+TASM contribution for the contiguous `F_6D86`, `PAD_006FC5`, and `F_6DCC`
+interval. The apparent seven-byte pad is not padding: the LZ decoder addresses
+it through `CS` as `bitlen`, `inleft`, `bitcnt`, and `bitbuf`. Its original
+initialized value is seven zero bytes; `bitlen` is set to 9 by the decoder
+before its first use.
+
+`asm/M_6D86_6DCC.ASM` emits the complete 377-byte contribution with `_f6d86`
+at offset 0 and `_f6dcc` at offset 70. TASM's ordinary self-segment fixups
+bind the state references at link time. The canonical structural link uses the
+single untouched object in place of two function proof objects plus a synthetic
+padding object, while preserving every downstream address and the complete
+byte-identical executable. This is strong compatible-module evidence from code
+adjacency and direct CS-state references; it does not claim the historical
+source filename.

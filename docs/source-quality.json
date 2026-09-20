@@ -4,27 +4,33 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 13818,
-      "owners": 12,
-      "sources": 12
+      "bytes": 13414,
+      "owners": 11,
+      "sources": 11
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-      "bytes": 2141,
-      "owners": 22,
-      "sources": 22
+      "bytes": 2111,
+      "owners": 20,
+      "sources": 20
     },
     {
       "level": "SYMBOLIC_ASM",
       "bytes": 8799,
       "owners": 79,
-      "sources": 79
+      "sources": 43
     },
     {
       "level": "MECHANICAL_C",
-      "bytes": 34221,
-      "owners": 234,
-      "sources": 234
+      "bytes": 34213,
+      "owners": 232,
+      "sources": 232
+    },
+    {
+      "level": "HISTORICAL_STARTUP_OBJECT",
+      "bytes": 444,
+      "owners": 6,
+      "sources": 1
     },
     {
       "level": "HISTORICAL_LIBRARY",
@@ -70,11 +76,6 @@
       "bytes": 506
     },
     {
-      "owner": "DOS_STUB",
-      "source": "src/DOS_STUB.C",
-      "bytes": 404
-    },
-    {
       "owner": "F_AA1F",
       "source": "src/F_AA1F.C",
       "bytes": 327
@@ -95,7 +96,7 @@
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 12,
+  "asm_db_source_files": 11,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",

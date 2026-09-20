@@ -49,10 +49,20 @@ def report(manifest):
     classes = defaultdict(lambda: {'bytes': 0, 'owners': 0, 'sources': set()})
     capsules = []
     module_members, modules = structural_module_members()
+    # The complete first 0x1BC load bytes are the pinned compact-model
+    # C0C.OBJ contribution.  The fixed oracle still partitions that prefix
+    # into small matching owners, but the normal TLINK build consumes C0C.OBJ
+    # directly.  Treat it as the legitimate historical startup input rather
+    # than misclassifying mechanically preserved oracle fragments as game code.
+    startup_begin, startup_end = 512, 512 + 0x1BC
     for owner in manifest['regions']:
         kind = owner['kind']
-        if kind == 'KNOWN_TOOLCHAIN_LIBRARY':
+        if startup_begin <= owner['start'] and owner['end'] <= startup_end:
+            level = 'HISTORICAL_STARTUP_OBJECT'
+            source = 'toolchain/C0C.OBJ'
+        elif kind == 'KNOWN_TOOLCHAIN_LIBRARY':
             level = 'HISTORICAL_LIBRARY'
+            source = owner.get('source', kind)
         elif kind in ('MATCHING_C', 'MATCHING_ASM'):
             source = module_members.get(owner['id'], owner['source'])
             path = ROOT / source
@@ -68,10 +78,11 @@ def report(manifest):
         entry = classes[level]
         entry['bytes'] += owner['end'] - owner['start']
         entry['owners'] += 1
-        entry['sources'].add(owner.get('source', kind))
+        entry['sources'].add(source)
     levels = []
     for level in ('ASM_DB_CAPSULE', 'C_WITH_SYMBOLIC_INLINE_ASM',
-                  'SYMBOLIC_ASM', 'MECHANICAL_C', 'HISTORICAL_LIBRARY'):
+                  'SYMBOLIC_ASM', 'MECHANICAL_C', 'HISTORICAL_STARTUP_OBJECT',
+                  'HISTORICAL_LIBRARY'):
         entry = classes[level]
         levels.append({'level': level, 'bytes': entry['bytes'], 'owners': entry['owners'],
                        'sources': len(entry['sources'])})

@@ -15,3 +15,8 @@ ownership still divides that extent into smaller source proofs.
 
 The comparison does not resolve `_main`, `_exit`, DGROUP or other linker
 targets. Those remain inputs to the relocatable TLINK experiment.
+
+The source-quality report therefore classifies the six fixed-oracle fragments
+covering this complete 444-byte prefix as one `HISTORICAL_STARTUP_OBJECT` input,
+`toolchain/C0C.OBJ`. They remain available as fixed-layout diagnostic evidence,
+but they are not game-owned asm-db capsules in the normal linked build.

@@ -614,8 +614,20 @@ void f039c()
     asm db 026h,080h,025h,00fh,026h,008h,025h,081h,0efh,0a0h,000h,026h,080h,025h,00fh,026h,008h,005h,081h,0efh,0a0h,000h,0e2h,0dah
     asm db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0ech,0d0h,0ech,0d0h,0ech,0d0h,0ech
     asm db 026h,080h,025h,0f0h,026h,008h,025h,081h,0efh,0a0h,000h,026h,080h,025h,0f0h,026h,008h,005h,081h,0efh,0a0h,000h,0e2h,0dah
-    asm db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,047h,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h,055h,08bh,0ech,083h,0ech,004h,057h,056h
-    asm db 01eh,0fch,0a1h,0e0h,0c0h,08eh,0c0h,08bh,05eh,008h,08bh,03eh,0e4h,0c0h,026h,08ah,009h,02ah,0edh,08bh,03eh,0e6h,0c0h,026h
+    asm db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,047h,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h
+    /* F_03C6: state-driven planar compositing primitive. */
+    asm runtime_f03c6:
+    asm push bp
+    asm mov bp,sp
+    asm sub sp,4
+    asm db 057h,056h
+    asm push ds
+    asm cld
+    /* Far state base at C0E0h, with the historical no-fixup encoding. */
+    asm db 0a1h,0e0h,0c0h
+    asm mov es,ax
+    asm mov bx,[bp+8]
+    asm db 08bh,03eh,0e4h,0c0h,026h,08ah,009h,02ah,0edh,08bh,03eh,0e6h,0c0h,026h
     asm db 08ah,001h,08bh,03eh,0e2h,0c0h,026h,08ah,021h,08bh,036h,0deh,0c0h,003h,0f0h,08bh,016h,0e8h,0c0h,0a1h,0c8h,040h,08ah,0e0h
     asm db 08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c5h,0bfh,024h,039h,0c7h,046h,0feh,000h,000h,08bh,05eh,004h,0d1h,0ebh,073h,005h,0c7h
     asm db 046h,0feh,001h,000h,003h,0fbh,08bh,0d9h,0d1h,0e3h,041h,0d1h,0e9h,0c7h,046h,0fch,0a0h,000h,029h,04eh,0fch,08ah,0cah,08ah

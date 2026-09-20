@@ -2,7 +2,7 @@
   "format": "empires-symbolic-asm-blocker-v1",
   "owner": "F_AA1F",
   "text_bytes": 327,
-  "status": "DISPATCH_PARTITIONED_PENDING_SYMBOLIC_SOURCE",
+  "status": "SYMBOLIC_CANDIDATE_ONE_BYTE_SHORT",
   "evidence": {
     "dispatch": {
       "jump_site": "0xAA64",
@@ -14,11 +14,12 @@
     "direct_call_targets": [
       "0xA15E", "0x6B66", "0xAF45", "0xA036", "0x86C9", "0xA24E"
     ],
-    "extent": "0xAA1F..0xAB66"
+    "extent": "0xAA1F..0xAB66",
+    "candidate": "build/F_AA1F_symbolic.ASM",
+    "candidate_result": "assembled with six near EXTDEF call relations; 326-byte _TEXT versus required 327 bytes"
   },
   "next_required_evidence": [
-    "assemble the control flow and both tables with named local labels",
-    "bind each direct call to its recovered near public",
+    "identify the one omitted or short-selected control-flow byte after the table-aware source layout",
     "recover the DGROUP references as symbolic globals where owners are known",
     "preserve the exact terminal return sequence and 327-byte extent"
   ],

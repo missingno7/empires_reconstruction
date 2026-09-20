@@ -80,14 +80,11 @@ the next ownership frontier. The machine-readable report is generated at
 `build/tlink-structural-report.json` (ignored by Git), and the fixed
 reconstruction path is unchanged.
 
-Wave 146 also proves that a source-owned library contribution can retain its
-historical extraction position. The probe compiles `src/LIB_STRLEN.C`, replaces
-only the matching `_TEXT` LEDATA record in a temporary CC.LIB view, and lets
-TLINK select the `STRLEN` module from unresolved `_strlen` demand. The map
-places it at `0xF2C0` (load offset `62144`), exactly matching the fixed owner;
-the ordinary source rows, `_TEXT`, DGROUP, BSS and stack remain exact with no
-unresolved symbols. This is a linker adapter for the experiment, not a claim
-that the historical translation-unit boundary has been recovered.
+Wave 146 proved that `src/LIB_STRLEN.C` independently reproduces the selected
+27-byte `CC.LIB` `STRLEN` module. The production structural build now leaves
+that legitimate historical library module untouched: normal unresolved `_strlen`
+demand selects it at `0xF2C0` (load offset `62144`). The source remains a
+regression proof rather than a source-generated library replacement.
 
 Wave 147 extends the same experiment to `RAND`, including its initialized
 `_DATA` contribution and eight fixups. The temporary `CC.LIB` view replaces

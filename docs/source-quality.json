@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 13414,
-      "owners": 11,
-      "sources": 11
+      "bytes": 13387,
+      "owners": 10,
+      "sources": 10
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -34,8 +34,8 @@
     },
     {
       "level": "HISTORICAL_LIBRARY",
-      "bytes": 5463,
-      "owners": 49,
+      "bytes": 5490,
+      "owners": 50,
       "sources": 1
     }
   ],
@@ -89,14 +89,9 @@
       "owner": "F_DF98",
       "source": "src/F_DF98.C",
       "bytes": 253
-    },
-    {
-      "owner": "LIB_STRLEN",
-      "source": "src/LIB_STRLEN.C",
-      "bytes": 27
     }
   ],
-  "asm_db_source_files": 11,
+  "asm_db_source_files": 10,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",

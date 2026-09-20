@@ -20000,30 +20000,28 @@
       "id": "LIB_STRLEN",
       "start": 62656,
       "end": 62683,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/LIB_STRLEN.C",
+      "kind": "KNOWN_TOOLCHAIN_LIBRARY",
+      "classification": "runtime_library",
+      "source": "toolchain/CC.LIB",
       "original_symbol": "LIB_STRLEN",
       "artifact": "regions/LIB_STRLEN.bin",
       "expected_sha256": "4baa21e23c45a710acb0ce3a209f3cbf06c12006754fa42552c7131fe4062d0e",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_strlen",
-        "span": 1,
-        "flags_append": "",
-        "linker_library_module": "STRLEN",
+        "bindings": {},
         "module_segments": {},
-        "bindings": {}
+        "library": "CC.LIB",
+        "library_module": "STRLEN",
+        "module_sha256": "1d7eea610c2ec8e95322277394fee72c44a323df8941cb8ddc9ce6f45f3dfe00"
       },
       "provenance": {
-        "method": "Fresh matching C translation unit with inline historical instruction bytes",
-        "source_sha256": "ce04c75c787e7ae13f43dbbc9b68c082bceba224fa69c61869b342c1aefedbda",
-        "omf_public": "_strlen",
-        "omf_segment_length": 27,
-        "omf_fixups": 0,
-        "extent_evidence": "docs/matching-c-wave146.md",
-        "library_crosscheck": "CC.LIB STRLEN module sha256 1d7eea610c2ec8e95322277394fee72c44a323df8941cb8ddc9ce6f45f3dfe00"
+        "project": "empires_forged",
+        "entry": "controls/correspondence/LIB_STRLEN.json",
+        "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179",
+        "matching_c_evidence": "docs/matching-wave146-evidence.json",
+        "matching_c_source": "src/LIB_STRLEN.C",
+        "module_sha256": "1d7eea610c2ec8e95322277394fee72c44a323df8941cb8ddc9ce6f45f3dfe00"
       }
     },
     {

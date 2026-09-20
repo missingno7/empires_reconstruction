@@ -16,8 +16,11 @@ class MatchingCWave146Tests(unittest.TestCase):
         evidence = read_json(ROOT / 'docs/matching-wave146-evidence.json')
         owner = recipe['owners'][0]
         current = next(item for item in manifest['regions'] if item['id'] == owner['id'])
-        self.assertEqual(current['kind'], 'MATCHING_C')
-        self.assertEqual(current['source'], 'src/LIB_STRLEN.C')
+        self.assertEqual(current['kind'], 'KNOWN_TOOLCHAIN_LIBRARY')
+        self.assertEqual(current['source'], 'toolchain/CC.LIB')
+        self.assertEqual(current['build']['library_module'], 'STRLEN')
+        self.assertEqual(current['build']['module_sha256'],
+                         '1d7eea610c2ec8e95322277394fee72c44a323df8941cb8ddc9ce6f45f3dfe00')
         self.assertEqual(evidence['owners'][0]['fixups'], 0)
         library = dict(OmfReader().split_library((ROOT / 'toolchain/CC.LIB').read_bytes()))['STRLEN']
         library_module = OmfReader().read(library, 'STRLEN')
@@ -30,7 +33,7 @@ class MatchingCWave146Tests(unittest.TestCase):
         self.assertEqual(library_module.fixups, [])
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             lock = read_json(ROOT / 'layout/toolchain.json')
-            receipts, _ = compile_sources(ROOT, [current], Path(temporary), ROOT / 'toolchain',
+            receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain',
                                            Path(lock['dosbox_default']), lock)
             candidate = read_object((Path(temporary) / receipts['LIB_STRLEN']['object']).read_bytes())
             self.assertEqual(candidate.segment_bytes('_TEXT'), library_text)

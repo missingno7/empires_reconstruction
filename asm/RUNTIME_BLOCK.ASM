@@ -670,9 +670,38 @@ _f039c label near
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
-    db 08bh,0c2h,048h,086h,0e0h,0d1h,0e8h,003h,0f8h,0d1h,0e8h,0d1h,0e8h
-    db 003h,0f8h,003h,0fbh,04fh,08bh,0cbh,0ach,0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,026h,088h,005h,04fh,0e2h,0f1h,081h,0c6h
-    db 0a0h,000h,02bh,0f3h,081h,0efh,0a0h,000h,003h,0fbh,04ah,075h,0e0h,01fh,05eh,05fh,05dh,0c3h
+    mov ax,dx
+    dec ax
+    xchg ah,al
+    shr ax,1
+    add di,ax
+    shr ax,1
+    shr ax,1
+    add di,ax
+    add di,bx
+    dec di
+    runtime_f03bd_outer_loop:
+    mov cx,bx
+    runtime_f03bd_inner_loop:
+    lodsb
+    rol al,1
+    rol al,1
+    rol al,1
+    rol al,1
+    mov byte ptr es:[di],al
+    dec di
+    loop runtime_f03bd_inner_loop
+    add si,0a0h
+    sub si,bx
+    sub di,0a0h
+    add di,bx
+    dec dx
+    jne runtime_f03bd_outer_loop
+    pop ds
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03C0: dual-planar reflected pixel transform.
     runtime_f03c0:
     push bp

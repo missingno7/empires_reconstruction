@@ -1,0 +1,47 @@
+{
+  "format": "empires-factory-status-v1",
+  "input_fingerprint": "d8dac5dc44647cb541e612b6e7caecc59bbaed752c395457a50622e6aad9e30b",
+  "acceptance_current": true,
+  "acceptance": {
+    "status": "BUILT",
+    "mode": "ACCEPTANCE",
+    "sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+    "relocations": 106,
+    "link_invocations": 1,
+    "bss": {
+      "bytes": 37250,
+      "partitioned_source_bytes": 37250,
+      "aggregate_remainder_bytes": 0
+    }
+  },
+  "structural": {
+    "raw_exe_fallback_bytes": 0,
+    "unresolved_symbols": 0,
+    "remaining_structural_adapters": []
+  },
+  "interfaces": {
+    "function_symbols": 442,
+    "global_symbols": 454,
+    "conflicts_for_review": 221,
+    "proven_field_layout_equivalence_groups": 6,
+    "unsupported_declarations": 5
+  },
+  "runtime": {
+    "total_bytes": 6571,
+    "symbolic_instruction_bytes": 950,
+    "typed_table_data_bytes": 0,
+    "intentional_exact_encoding_bytes": 0,
+    "raw_unresolved_bytes": 5621,
+    "symbolically_recovered_bytes": 950,
+    "cfg_covered_bytes": 2435,
+    "closed_entry_roots": 0,
+    "total_entry_roots": 20
+  },
+  "queue_counts": {
+    "CHEAP": 84,
+    "SUPERVISOR": 25,
+    "MEDIUM": 4
+  },
+  "next_task": "RUNTIME_BLOCK:12ED-135B",
+  "authority": "Only docs/current is current status. Other checkpoints are historical evidence."
+}

@@ -638,8 +638,29 @@ _f039c label near
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
-    db 08bh,0c2h,048h,086h,0e0h,0d1h,0e8h,003h,0f8h,0d1h,0e8h,0d1h,0e8h,003h,0f8h,0b8h,0a0h,000h,08bh,0cbh,0f3h,0a4h,003h,0f0h,02bh
-    db 0f3h,02bh,0f8h,02bh,0fbh,04ah,075h,0f1h,01fh,05eh,05fh,05dh,0c3h
+    mov ax,dx
+    dec ax
+    xchg ah,al
+    shr ax,1
+    add di,ax
+    shr ax,1
+    shr ax,1
+    add di,ax
+    mov ax,0a0h
+    runtime_f03b7_copy_loop:
+    mov cx,bx
+    rep movsb
+    add si,ax
+    sub si,bx
+    sub di,ax
+    sub di,bx
+    dec dx
+    jne runtime_f03b7_copy_loop
+    pop ds
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03BA: reverse-direction planar nibble transform.
     runtime_f03ba:
     push bp

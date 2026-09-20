@@ -13239,14 +13239,15 @@
     },
     {
       "id": "F_B122",
-      "kind": "MATCHING_C",
-      "source": "src/F_B122.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_B122.ASM",
       "start": 45858,
       "end": 46551,
       "expected_sha256": "52ab97c346ff6a20986e1ad2a7897186e40ea419eab174cb171de93e943c4849",
       "classification": "code",
       "artifact": "regions/F_B122.bin",
       "matching_status": "EQUAL",
+      "change": "symbolic assembly recovery; exact descriptor-expansion _TEXT and no-FIXUPP topology verified",
       "build": {
         "segment": "_TEXT",
         "public": "_fb122",

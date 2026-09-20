@@ -143,9 +143,41 @@ void f039c()
     asm db 08ah,024h,026h,088h,00ch,0bah,0ceh,003h,0b0h,008h,0eeh,042h,0b0h,0c0h,0eeh,026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h
     asm db 080h,0ffh,010h,07ch,0c8h,032h,0ffh,0feh,0c1h,080h,0f9h,010h,07ch,0bfh,032h,0c9h,0feh,0c3h,080h,0fbh,010h,07ch,0b6h,0bah
     asm db 0ceh,003h,0b0h,008h,0eeh,042h,0b0h,030h,0eeh,0bah,0ceh,003h,0b0h,003h,0eeh,042h,0b0h,000h,0eeh,01fh,05fh,05eh,05dh,0c3h
-    asm db 0b8h,009h,000h,0cdh,010h,0b0h,010h,0bah,0dah,003h,0eeh,0b0h,001h,0bah,0deh,003h,0eeh,0b0h,011h,0bah,0dah,003h,0eeh,0b0h
-    asm db 000h,0bah,0deh,003h,0eeh,0b0h,01eh,0bah,0dah,003h,0eeh,0b0h,00fh,0bah,0deh,003h,0eeh,0b0h,01fh,0bah,0dah,003h,0eeh,0b0h
-    asm db 00eh,0bah,0deh,003h,0eeh,0bah,0dah,003h,0b0h,00fh,0eeh,0c3h,0b8h,013h,000h,0cdh,010h,0c3h,032h,0ffh,08ah,01eh,0cdh,0bfh
+    /* Restore the EGA palette register set, then provide the mode-13h entry. */
+    asm mov ax,9
+    asm int 10h
+    asm mov al,10h
+    asm mov dx,3dah
+    asm out dx,al
+    asm mov al,1
+    asm mov dx,3deh
+    asm out dx,al
+    asm mov al,11h
+    asm mov dx,3dah
+    asm out dx,al
+    asm mov al,0
+    asm mov dx,3deh
+    asm out dx,al
+    asm mov al,1eh
+    asm mov dx,3dah
+    asm out dx,al
+    asm mov al,0fh
+    asm mov dx,3deh
+    asm out dx,al
+    asm mov al,1fh
+    asm mov dx,3dah
+    asm out dx,al
+    asm mov al,0eh
+    asm mov dx,3deh
+    asm out dx,al
+    asm mov dx,3dah
+    asm mov al,0fh
+    asm out dx,al
+    asm ret
+    asm mov ax,13h
+    asm int 10h
+    asm ret
+    asm db 032h,0ffh,08ah,01eh,0cdh,0bfh
     asm db 0d1h,0e3h,02eh,0ffh,0a7h,0e2h,003h,055h,08bh,0ech,056h,057h,01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h
     asm db 039h,0d1h,0e3h,0d1h,0e3h,08bh,0fbh,0d1h,0e7h,0d1h,0e7h,003h,0fbh,08bh,046h,004h,08bh,05eh,008h,08bh,04eh,00ah,003h,0d8h
     asm db 04bh,0d1h,0e8h,0d1h,0e8h,0d1h,0ebh,0d1h,0ebh,02bh,0d8h,043h,003h,0f0h,003h,0f0h,003h,0f8h,006h,0b8h,000h,0a0h,08eh,0c0h

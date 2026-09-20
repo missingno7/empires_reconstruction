@@ -1017,7 +1017,79 @@
       "owner_candidate": "shared sound-engine flags, voice records, and workspaces",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc6aa_control",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 1,
+          "name": "gc6ab_voice_enabled",
+          "count": 9,
+          "element_bytes": 1,
+          "source_type": "unsigned char[9]"
+        },
+        {
+          "offset": 10,
+          "name": "gc6b4_program_flag",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 11,
+          "name": "gc6b5_program_flag",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 12,
+          "name": "gc6b6_voice_note",
+          "count": 11,
+          "element_bytes": 1,
+          "source_type": "unsigned char[11]"
+        },
+        {
+          "offset": 23,
+          "name": "gc6c1_voice_count",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 25,
+          "name": "gc6c3_voice_workspace",
+          "count": 25,
+          "element_bytes": 24,
+          "source_type": "unsigned char[25][24]"
+        },
+        {
+          "offset": 625,
+          "name": "gc91b_voice_state",
+          "count": 18,
+          "element_bytes": 14,
+          "source_type": "struct sound_voice[18]"
+        },
+        {
+          "offset": 877,
+          "name": "tab_flag_voice_flags",
+          "count": 11,
+          "element_bytes": 1,
+          "source_type": "unsigned char[11]"
+        },
+        {
+          "offset": 888,
+          "name": "gca22_audio_mode",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        }
+      ]
     },
     {
       "id": "VOICE_POINTER_TABLE_BSS",

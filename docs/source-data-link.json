@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 35296,
+  "typed_bss_source_bytes": 36186,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1991,8 +1991,80 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc6aa_control",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 1,
+            "name": "gc6ab_voice_enabled",
+            "count": 9,
+            "element_bytes": 1,
+            "source_type": "unsigned char[9]"
+          },
+          {
+            "offset": 10,
+            "name": "gc6b4_program_flag",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 11,
+            "name": "gc6b5_program_flag",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 12,
+            "name": "gc6b6_voice_note",
+            "count": 11,
+            "element_bytes": 1,
+            "source_type": "unsigned char[11]"
+          },
+          {
+            "offset": 23,
+            "name": "gc6c1_voice_count",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 25,
+            "name": "gc6c3_voice_workspace",
+            "count": 25,
+            "element_bytes": 24,
+            "source_type": "unsigned char[25][24]"
+          },
+          {
+            "offset": 625,
+            "name": "gc91b_voice_state",
+            "count": 18,
+            "element_bytes": 14,
+            "source_type": "struct sound_voice[18]"
+          },
+          {
+            "offset": 877,
+            "name": "tab_flag_voice_flags",
+            "count": 11,
+            "element_bytes": 1,
+            "source_type": "unsigned char[11]"
+          },
+          {
+            "offset": 888,
+            "name": "gca22_audio_mode",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          }
+        ],
         "object_sha256": "c0e18b06ce98166a70543c19fa9e1e3293d6317a8086e92231c1a0d0906d6c90",
-        "source_sha256": "6aa235706d3a8212bb024c4f064a1931d2a0398e9148797bef347f0ebcdc792e"
+        "source_sha256": "69b228102607b0f555c837dc776e1d5f9a48d4fc981195dc1a7ac63c5f93e8d3"
       },
       {
         "id": "VOICE_POINTER_TABLE_BSS",

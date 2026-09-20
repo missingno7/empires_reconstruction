@@ -1569,8 +1569,8 @@
     },
     {
       "id": "F_28AC",
-      "kind": "MATCHING_C",
-      "source": "src/F_28AC.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_28AC.ASM",
       "start": 10924,
       "end": 11142,
       "expected_sha256": "b40ab86ba45e1c3834205e466d8480c643376503a9c6876a60e3e1b89f4708cb",
@@ -1584,7 +1584,8 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
-      }
+      },
+      "change": "Recover the complete ten-record board drawing loop as symbolic TASM; exact source has no OMF fixups."
     },
     {
       "id": "F_2986",

@@ -492,7 +492,19 @@ _f039c label near
     db 08bh,05eh,004h,0d1h,0ebh,073h,01ch,08bh,04eh,00ah,057h,003h,0fbh,0b6h,0f0h,08ah,0d0h,080h,0e2h,00fh,026h,020h,035h,026h
     db 008h,015h,003h,0feh,0e2h,0f6h,05fh,047h,0ffh,04eh,008h,003h,0fbh,02ah,0e4h,08bh,05eh,008h,0d1h,0ebh,073h,002h,0b4h,001h
     db 08bh,056h,00ah,02bh,0f3h,08bh,0cbh,0f3h,0aah,003h,0feh,04ah,075h,0f7h,080h,0fch,000h,074h,019h,08bh,04eh,00ah,02bh,0feh
-    db 0b6h,00fh,08ah,0d0h,080h,0e2h,0f0h,0beh,0a0h,000h,026h,020h,035h,026h,008h,015h,02bh,0feh,0e2h,0f6h,05eh,05fh,05dh,0c3h
+    mov dh,0fh
+    mov dl,al
+    and dl,0f0h
+    mov si,0a0h
+    runtime_f03a8_clear_loop:
+    and byte ptr es:[di],dh
+    or byte ptr es:[di],dl
+    sub di,si
+    loop runtime_f03a8_clear_loop
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03AB / fill: planar XOR-fill primitive.
     runtime_f03ab:
     push bp

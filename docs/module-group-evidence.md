@@ -129,3 +129,13 @@ OMF fixups, and its full bound extent matches. The normal structural build now
 uses it unchanged in place of five proof objects and remains byte-identical.
 This is strong compatible-module evidence from direct local control flow,
 adjacency, and shared state, without asserting the original source filename.
+
+## M_CB5C_CD23
+
+`M_CB5C_CD23` combines the five contiguous row-editing and menu-control
+entries into one 641-byte symbolic TASM object. The three leading routines
+operate on fields of the selected record; the final two render and accept
+ten-row menus from the same table/state area. Its eight public entry/end
+labels retain their original offsets, the contribution has no OMF fixups, and
+the complete structural link remains byte-identical. This is compatible module
+evidence from shared selected-row state, record-table access, and adjacency.

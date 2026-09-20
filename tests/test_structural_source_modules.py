@@ -50,6 +50,15 @@ class StructuralSourceModuleTests(unittest.TestCase):
         ])
         self.assertEqual(module['end'] - module['start'], 607)
 
+    def test_menu_control_module_has_contiguous_manifest_ownership(self):
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        modules = structural_source_modules(ROOT, manifest)
+        module = next(item for item in modules if item['id'] == 'M_CB5C_CD23')
+        self.assertEqual(module['members'], [
+            'F_CB5C', 'F_CBBB', 'F_CC17', 'F_CC6B', 'F_CD23',
+        ])
+        self.assertEqual(module['end'] - module['start'], 641)
+
     def test_latest_structural_link_stages_one_untouched_decoder_object(self):
         path = ROOT / 'build/tlink-structural-report.json'
         if not path.exists():
@@ -61,6 +70,7 @@ class StructuralSourceModuleTests(unittest.TestCase):
             'M_C1A0_C232': 221,
             'M_C9A4_CA91': 247,
             'M_C2EA_C501': 607,
+            'M_CB5C_CD23': 641,
         }
         staged = {item['owner']: item for item in report['relocatable_scaffold']
                   if item.get('owner') in expected}

@@ -452,9 +452,25 @@ void f039c()
     asm mov ax,[bp+4]
     asm shr ax,1
     asm db 08bh,07eh,006h,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h,0f8h,0c5h,076h,008h,0adh,08bh,0d8h,0adh,08bh,0d0h
-    asm db 0b8h,0a0h,000h,02bh,0c3h,08bh,0cbh,0f3h,0a4h,003h,0f8h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h,055h,08bh,0ech,057h,056h
-    asm db 01eh,0fch,08bh,05eh,00eh,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h,08bh,046h,00ch,0d1h,0e8h,003h,0f8h,08bh,05eh,006h,0d1h
-    asm db 0e3h,0d1h,0e3h,0c5h,0b7h,024h,039h,08bh,046h,004h,0d1h,0e8h,003h,0f0h,08bh,05eh,008h,0d1h,0ebh,08bh,056h,00ah,0b8h,0a0h
+    asm db 0b8h,0a0h,000h,02bh,0c3h,08bh,0cbh,0f3h,0a4h,003h,0f8h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h
+    /* F_03B4 / wipe: planar rectangle copy with word-aligned interior. */
+    asm runtime_f03b4:
+    asm push bp
+    asm mov bp,sp
+    asm db 057h,056h
+    asm push ds
+    asm cld
+    asm mov bx,[bp+0eh]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c4h,0bfh,024h,039h
+    asm mov ax,[bp+0ch]
+    asm shr ax,1
+    asm db 003h,0f8h
+    asm mov bx,[bp+6]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c5h,0b7h,024h,039h,08bh,046h,004h,0d1h,0e8h,003h,0f0h,08bh,05eh,008h,0d1h,0ebh,08bh,056h,00ah,0b8h,0a0h
     asm db 000h,02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f0h,003h,0f8h,04ah,075h,0efh,01fh,083h,03eh,0bch
     asm db 000h,001h,075h,024h,08bh,05eh,00eh,081h,0fbh,0c8h,000h,073h,01bh,0c4h,03eh,0c4h,040h,08bh,046h,00ch,0d1h,0e8h,08ah,0e3h
     asm db 0abh,08bh,046h,008h,0d1h,0e8h,08bh,05eh,00ah,08ah,0e3h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h,055h,08bh,0ech,057h

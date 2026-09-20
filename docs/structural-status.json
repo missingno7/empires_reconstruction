@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 338,
-    "reconstructed_shared_modules": 11,
+    "isolated_function_proof_units": 334,
+    "reconstructed_shared_modules": 12,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -305,6 +305,19 @@
         ],
         "start": 52132,
         "end": 52379
+      },
+      {
+        "id": "M_C2EA_C501",
+        "source": "asm/M_C2EA_C501.ASM",
+        "members": [
+          "F_C2EA",
+          "F_C359",
+          "F_C3DB",
+          "F_C440",
+          "F_C501"
+        ],
+        "start": 50410,
+        "end": 51017
       }
     ],
     "active_structural_adapters": [

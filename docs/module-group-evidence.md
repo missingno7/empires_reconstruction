@@ -117,3 +117,15 @@ ordinary object binds to the exact full extent and preserves the
 byte-identical structural link. This is compatible-module evidence based on
 contiguity, direct control flow, and shared state; it does not assert an
 original filename.
+
+## M_C2EA_C501
+
+`M_C2EA_C501` is a 607-byte compatible symbolic TASM module covering the
+contiguous `F_C2EA`, `F_C359`, `F_C3DB`, `F_C440`, and `F_C501` run. Its lead
+entry directly dispatches to the second, third, and fifth entries; all five
+use the same command and sound-control area at `0x1770..0x1814`. The single
+object emits the historical entry offsets 0, 111, 241, 342, and 535, has no
+OMF fixups, and its full bound extent matches. The normal structural build now
+uses it unchanged in place of five proof objects and remains byte-identical.
+This is strong compatible-module evidence from direct local control flow,
+adjacency, and shared state, without asserting the original source filename.

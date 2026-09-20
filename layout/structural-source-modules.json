@@ -101,6 +101,29 @@
         "module_segments": {}
       },
       "evidence": "Contiguous table-command decoder, dispatcher, and all four dispatcher targets use the 0x1E84..0x1E94 control block. Fresh symbolic TASM has the original public offsets and bound 247-byte extent."
+    },
+    {
+      "id": "M_C2EA_C501",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_C2EA_C501.ASM",
+      "start": 50410,
+      "end": 51017,
+      "members": [
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_c2ea",
+        "span": 5,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Contiguous command-stream and sound-control run. F_C2EA directly dispatches to F_C359, F_C3DB, and F_C501; all five entries use the 0x1770..0x1814 control-state area. Fresh symbolic TASM emits historical public offsets 0, 111, 241, 342, and 535 with an exact 607-byte no-fixup extent."
     }
   ]
 }

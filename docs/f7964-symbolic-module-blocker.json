@@ -1,0 +1,38 @@
+{
+  "format": "empires-symbolic-module-blocker-v1",
+  "owner": "F_7964",
+  "text_bytes": 623,
+  "status": "REQUIRES_SHARED_SELECTION_MODULE",
+  "evidence": {
+    "dispatch_table": {
+      "owner_offset": "0xE4",
+      "keys": [
+        "0x000D", "0x001B", "0x013B", "0x013C",
+        "0x013D", "0x013E", "0x013F", "0x0140",
+        "0x0141", "0x0142", "0x0143", "0x0144",
+        "0x0148", "0x014B", "0x014D", "0x0150"
+      ],
+      "handler_offsets": [
+        "0x1A1", "0x197", "0x170", "0x170",
+        "0x170", "0x170", "0x170", "0x170",
+        "0x170", "0x170", "0x170", "0x170",
+        "0x124", "0x145", "0x158", "0x132"
+      ]
+    },
+    "selection_calls": {
+      "public_entry": "F_7BFC / _f7bfc",
+      "interior_helper": "F_7BFC + 0x195",
+      "reason": "F_7964 calls both entry points while retaining its BP frame; a standalone symbolic object would require an artificial public alias for the interior helper."
+    },
+    "continuation": {
+      "owner": "F_7DD3",
+      "reason": "F_7DD3 is the established cleanup/return continuation and consumes the F_7964 stack frame."
+    }
+  },
+  "next_required_evidence": [
+    "recover the F_7BFC interior helper as a named local routine from its matching C source or a compatible shared TASM module",
+    "assemble F_7964, the helper, and the F_7DD3 cleanup path with their natural local call relation",
+    "verify exact text, 16-key table fixups, callers, and the whole linked EXE without an injected public alias"
+  ],
+  "policy": "Do not promote a standalone F_7964 symbolic owner by exporting F_7BFC + 0x195 solely to satisfy this call."
+}

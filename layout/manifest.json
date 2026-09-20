@@ -10284,8 +10284,8 @@
     },
     {
       "id": "F_8BAB",
-      "kind": "MATCHING_C",
-      "source": "src/F_8BAB.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_8BAB.ASM",
       "start": 36267,
       "end": 37542,
       "expected_sha256": "4d28a794487dfe99ff0a07a6d5ca363346258b454c96a778c5d4d3eccbb51370",
@@ -10297,7 +10297,239 @@
         "public": "_f8bab",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f020f": {
+            "coordinate": "code_offset",
+            "owner": "F_020F",
+            "public": "_f020f",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6cea": {
+            "coordinate": "code_offset",
+            "owner": "F_6CEA",
+            "public": "_f6cea",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f792c": {
+            "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f1ea5": {
+            "coordinate": "code_offset",
+            "owner": "F_1EA5",
+            "public": "_f1ea5",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f90a6": {
+            "coordinate": "code_offset",
+            "owner": "F_90A6",
+            "public": "_f90a6",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_face7": {
+            "coordinate": "code_offset",
+            "owner": "F_ACE7",
+            "public": "_face7",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_fd4b3": {
+            "coordinate": "code_offset",
+            "owner": "F_D4B3",
+            "public": "_fd4b3",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6c26": {
+            "coordinate": "code_offset",
+            "owner": "F_6C26",
+            "public": "_f6c26",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f9440": {
+            "coordinate": "code_offset",
+            "owner": "F_9440",
+            "public": "_f9440",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f791e": {
+            "coordinate": "code_offset",
+            "owner": "F_791E",
+            "public": "_f791e",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f9466": {
+            "coordinate": "code_offset",
+            "owner": "F_9466",
+            "public": "_f9466",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f950c": {
+            "coordinate": "code_offset",
+            "owner": "F_950C",
+            "public": "_f950c",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f963e": {
+            "coordinate": "code_offset",
+            "owner": "F_963E",
+            "public": "_f963e",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_fcaf1": {
+            "coordinate": "code_offset",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f9402": {
+            "coordinate": "code_offset",
+            "owner": "F_9402",
+            "public": "_f9402",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_fce2a": {
+            "coordinate": "code_offset",
+            "owner": "F_CE2A",
+            "public": "_fce2a",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f929e": {
+            "coordinate": "code_offset",
+            "owner": "F_929E",
+            "public": "_f929e",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6c87": {
+            "coordinate": "code_offset",
+            "owner": "F_6C87",
+            "public": "_f6c87",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6b4a": {
+            "coordinate": "code_offset",
+            "owner": "F_6B4A",
+            "public": "_f6b4a",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f969d": {
+            "coordinate": "code_offset",
+            "owner": "F_969D",
+            "public": "_f969d",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f93aa": {
+            "coordinate": "code_offset",
+            "owner": "F_93AA",
+            "public": "_f93aa",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_fcb48": {
+            "coordinate": "code_offset",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f9259": {
+            "coordinate": "code_offset",
+            "owner": "F_9259",
+            "public": "_f9259",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6ca6": {
+            "coordinate": "code_offset",
+            "owner": "F_6CA6",
+            "public": "_f6ca6",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_f6997": {
+            "coordinate": "code_offset",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          },
+          "_fd5f9": {
+            "coordinate": "code_offset",
+            "owner": "F_D5F9",
+            "public": "_fd5f9",
+            "addend": 0,
+            "evidence": "F_8BAB symbolic direct near call"
+          }
+        },
         "module_segments": {}
       }
     },

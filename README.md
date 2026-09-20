@@ -31,7 +31,7 @@ The [source DATA link](docs/source-data-link.md) now reproduces all initialized 
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Canonical and source-link raw DATA
 are zero; the BSS reserve is emitted as verified compatible source contributions,
-including typed C470 record storage, while historical module ownership remains open.
+including typed C470 and GC360 record storage, while historical module ownership remains open.
 
 Current structural checkpoint: the pinned Turbo Link 2.0 now emits a
 byte-identical `AEPROG.EXE` from relocatable code and source-DATA inputs, with

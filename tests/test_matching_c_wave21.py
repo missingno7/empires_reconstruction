@@ -25,7 +25,7 @@ class MatchingCWave21Tests(unittest.TestCase):
             work = Path(temporary)
             mutants = []
             for name, before, after in (
-                ('F_AD25', b'a[9]', b'a[8]'),
+                ('F_AD25', b'gc360[i].a[0]', b'gc360[i].a[1]'),
                 ('F_A09D', b'f68aa(62,', b'f68aa(63,'),
                 ('F_A13F', b'0x3e', b'0x3f')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))

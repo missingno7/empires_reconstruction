@@ -17,9 +17,10 @@ ten recovered 27-byte records. Its canonical source recipe now emits named
 uninitialized reservations for `struct c470_record[9]` and one final
 `struct c470_record`, split at the `_gc563` alias anchor. This preserves the
 record evidence without using TASM nested `DUP(?)`, which would incorrectly
-create initialized OMF data. `SLOTBSS.OBJ`, `ANIMBSS.OBJ`, `GC360BSS.OBJ`,
-`FLAGSBS.OBJ`, `OCTAVES.OBJ`, `NOTEIDX.OBJ`, and `VOICEPTR.OBJ` add other
-bounded state, including the 44-byte eleven-entry far-pointer table initialized
+create initialized OMF data. `GC360BSS.OBJ` similarly emits its ten
+`struct record27` entries through a named uninitialized reservation. `SLOTBSS.OBJ`,
+`ANIMBSS.OBJ`, `FLAGSBS.OBJ`, `OCTAVES.OBJ`, `NOTEIDX.OBJ`, and `VOICEPTR.OBJ`
+add other bounded state, including the 44-byte eleven-entry far-pointer table initialized
 by `F_DEFA`. Additional named source contributions cover every remaining
 interval of the reserve. The plan must cover the full logical reserve, and
 its rebased labels must equal the canonical map before the link begins. None of the objects contributes

@@ -226,7 +226,8 @@
       "declarations": [{"symbol": "_gc360", "source_type": "27-byte record[10]", "size": 270}],
       "evidence": ["F_AD25 and F_ADCF scan, shift, and write gc360[0..9]", "35422 + 10 * 27 = 35692, the _err anchor"],
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "migration_status": "MIGRATED_AS_TYPED_SYMBOLIC_BSS_CONTRIBUTION",
+      "typed_emission": "One named uninitialized TASM reservation encodes struct record27[10] at _gc360 without initialized LEDATA.",
       "contribution": {"object": "GC360BSS.OBJ", "logical_start": 35422, "logical_end": 35692},
       "limitation": "The compatible table extent is proven; historical source-module ownership is open."
     },

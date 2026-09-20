@@ -342,7 +342,16 @@
       "owner_candidate": "shared GC360 record table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc360_records",
+          "count": 10,
+          "element_bytes": 27,
+          "source_type": "struct record27[10]"
+        }
+      ]
     },
     {
       "id": "ERROR_STATE_BSS",

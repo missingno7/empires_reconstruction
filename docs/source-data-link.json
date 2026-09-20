@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 270,
+  "typed_bss_source_bytes": 540,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1308,8 +1308,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc360_records",
+            "count": 10,
+            "element_bytes": 27,
+            "source_type": "struct record27[10]"
+          }
+        ],
         "object_sha256": "776e3d65e2a9415bbe9feb5d3e9064cb860b9bcff3bb39fd8f8b8cc2e1129930",
-        "source_sha256": "f3f850cf663a0991038a7ebff559f8e5d79a77abb59bdf16ab27828347025118"
+        "source_sha256": "3eb2c671208b959acadd246afc098c9b7b4ea9b65683ea26fc885cae9c656653"
       },
       {
         "id": "ERROR_STATE_BSS",

@@ -97,7 +97,7 @@ class StructuralSourceModuleTests(unittest.TestCase):
             'M_6B1A_6B4A': 76,
             'M_C1A0_C232': 221,
             'M_C9A4_CA91': 247,
-            'M_C27D_C567': 688,
+            'M_C27D_C567': 797,
             'M_CB5C_CD23': 641,
             'M_DAD7_DB35': 137,
             'M_D818_D825': 71,

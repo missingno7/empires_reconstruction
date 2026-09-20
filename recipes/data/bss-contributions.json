@@ -1056,7 +1056,114 @@
       "owner_candidate": "shared gameplay and render state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc57e_record_count",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 2,
+          "name": "gc580_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 6,
+          "name": "gc584_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 10,
+          "name": "gc588_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 12,
+          "name": "gc58a_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 16,
+          "name": "gc58e_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 20,
+          "name": "gc590_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 24,
+          "name": "gc594_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 28,
+          "name": "gc59a_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 32,
+          "name": "gc59e_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 36,
+          "name": "gc5a2_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 38,
+          "name": "gc5a4_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 42,
+          "name": "gc5a8_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 46,
+          "name": "gc5ac_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 50,
+          "name": "gc5b0_selected_count",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        }
+      ]
     },
     {
       "id": "GC5B2_FLAGS_BSS",

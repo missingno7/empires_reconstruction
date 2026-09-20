@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 36931,
+  "typed_bss_source_bytes": 36983,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -2025,8 +2025,115 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc57e_record_count",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 2,
+            "name": "gc580_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 6,
+            "name": "gc584_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 10,
+            "name": "gc588_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 12,
+            "name": "gc58a_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 16,
+            "name": "gc58e_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 20,
+            "name": "gc590_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 24,
+            "name": "gc594_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 28,
+            "name": "gc59a_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 32,
+            "name": "gc59e_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 36,
+            "name": "gc5a2_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 38,
+            "name": "gc5a4_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 42,
+            "name": "gc5a8_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 46,
+            "name": "gc5ac_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 50,
+            "name": "gc5b0_selected_count",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          }
+        ],
         "object_sha256": "6cc03dfd1cff395315f2ef37ac7eb67d5f8b2242cdab4de4976c9e1a9c002883",
-        "source_sha256": "1bb2ab280c5f8382a93877ba1bc258e0be3abc6c27e7be38939626e75efc1176"
+        "source_sha256": "63fd448b41da58c6fb2136f4a0716ede81952caf5554fdd3e9f5248d188ae79b"
       },
       {
         "id": "GC5B2_FLAGS_BSS",

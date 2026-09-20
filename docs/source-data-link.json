@@ -925,6 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
+  "typed_bss_source_bytes": 270,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1331,8 +1332,24 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc470_records_0_8",
+            "count": 9,
+            "element_bytes": 27,
+            "source_type": "struct c470_record[9]"
+          },
+          {
+            "offset": 243,
+            "name": "gc470_record_9",
+            "count": 1,
+            "element_bytes": 27,
+            "source_type": "struct c470_record"
+          }
+        ],
         "object_sha256": "940f616c1c582bce2a5e41a546959bffa2dc20c80d414a89cd74b6b6d6c22ade",
-        "source_sha256": "aaa344f5f150f1adc669d52cd9485822235da03dd6edc5f46aba2334c80128c4"
+        "source_sha256": "87b4557c57329eb96a8aee4dfc276ce3e94d0ca645186d3001748ccd3b011dff"
       },
       {
         "id": "GAMEPLAY_STATE_BSS",

@@ -19,6 +19,18 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertIn('db 3 dup (?)\r\n', source)
         self.assertTrue(source.endswith('db 5 dup (?)\r\n_BSS ends\r\nend\r\n'))
 
+    def test_bss_asm_source_emits_typed_reserves_around_public_anchors(self):
+        source = bss_asm_source(270, {'TABLE': 0, 'LAST': 243}, [
+            {'offset': 0, 'name': 'records_0_8', 'count': 9, 'element_bytes': 27},
+            {'offset': 243, 'name': 'record_9', 'count': 1, 'element_bytes': 27},
+        ])
+        self.assertIn('records_0_8 label byte\r\ndb 243 dup (?)\r\n', source)
+        self.assertIn('LAST label byte\r\nrecord_9 label byte\r\ndb 27 dup (?)', source)
+        self.assertNotIn('db 270 dup (?)', source)
+        with self.assertRaisesRegex(ValueError, 'Overlapping'):
+            bss_asm_source(8, {}, [{'offset': 0, 'name': 'a', 'count': 2, 'element_bytes': 4},
+                                   {'offset': 3, 'name': 'b', 'count': 1, 'element_bytes': 2}])
+
     def test_bss_slice_rebases_canonical_publics(self):
         layout = {'format': 'anchored-bss-layout-v1', 'length': 12,
                   'publics': {'START': 0, 'A': 2, 'B': 5, 'END': 11}}

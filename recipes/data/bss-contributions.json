@@ -364,7 +364,23 @@
       "owner_candidate": "shared C470 record table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc470_records_0_8",
+          "count": 9,
+          "element_bytes": 27,
+          "source_type": "struct c470_record[9]"
+        },
+        {
+          "offset": 243,
+          "name": "gc470_record_9",
+          "count": 1,
+          "element_bytes": 27,
+          "source_type": "struct c470_record"
+        }
+      ]
     },
     {
       "id": "GAMEPLAY_STATE_BSS",

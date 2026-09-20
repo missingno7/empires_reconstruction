@@ -30,8 +30,8 @@ The execution host is independent of the historical toolchain: MS-DOS Player is 
 The [source DATA link](docs/source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Canonical and source-link raw DATA
-are zero; the verified BSS reserve is not yet internally partitioned and
-historical module ownership remains open.
+are zero; the BSS reserve is emitted as verified compatible source contributions,
+including typed C470 record storage, while historical module ownership remains open.
 
 Current structural checkpoint: the pinned Turbo Link 2.0 now emits a
 byte-identical `AEPROG.EXE` from relocatable code and source-DATA inputs, with

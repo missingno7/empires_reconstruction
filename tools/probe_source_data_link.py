@@ -222,7 +222,8 @@ def run(verify=True):
         separated.append({'owner': owner_id, 'bytes': module.segment_length('_DATA')})
     startup_path.write_bytes(add_publics(startup_path.read_bytes(), startup_aliases, '_DATA'))
     for contribution in bss_contributions:
-        asm = bss_asm_source(contribution['length'], contribution['publics'])
+        asm = bss_asm_source(contribution['length'], contribution['publics'],
+                             contribution.get('typed_reserves', ()))
         asm_path = work / 'WORK' / contribution['assembly']
         contribution['asm_path'] = asm_path
         contribution['asm_sha256'] = sha(asm.encode())
@@ -300,8 +301,10 @@ def run(verify=True):
                             'logical_start': contribution['logical_start'], 'bytes': contribution['length'],
                             'publics': len(contribution['publics']), 'representation': contribution['representation'],
                             'confidence': contribution['confidence'],
-                            'aggregate_storage': contribution['aggregate_storage'], 'object_sha256':
-                            (sha(object_path.read_bytes()) if object_path.exists() else None),
+                            'aggregate_storage': contribution['aggregate_storage'],
+                            **({'typed_reserves': contribution['typed_reserves']}
+                               if contribution.get('typed_reserves') else {}),
+                            'object_sha256': (sha(object_path.read_bytes()) if object_path.exists() else None),
                             'source_sha256': contribution['asm_sha256']})
     segments, rows = parse_map(map_path) if map_text else ([], [])
     report = {'status': 'LINKED' if not errors else 'LINK_FAILED', 'errors': errors,
@@ -311,6 +314,8 @@ def run(verify=True):
               'oracle_copied_initialized_data_bytes': 0,
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
               'synthetic_bss_bytes': 0,
+              'typed_bss_source_bytes': sum(item['bytes'] for item in bss_objects
+                                            if item.get('typed_reserves')),
               'partitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects
                                                   if not item['aggregate_storage']),
               'unpartitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects

@@ -13,7 +13,11 @@ Its first contribution is `F01CEBSS.OBJ`, a 34-byte symbolic owner containing
 row-pointer table initialized by `F_0281`; `RSTATEB.OBJ` owns the 16-byte shared
 command/render-state island at bytes 1,986–2,001; `G40D4B.OBJ` owns the 672-byte
 resource-25 workspace filled by `F_1D47`; and `C470BSS.OBJ` owns the
-ten recovered 27-byte records. `SLOTBSS.OBJ`, `ANIMBSS.OBJ`, `GC360BSS.OBJ`,
+ten recovered 27-byte records. Its canonical source recipe now emits named
+uninitialized reservations for `struct c470_record[9]` and one final
+`struct c470_record`, split at the `_gc563` alias anchor. This preserves the
+record evidence without using TASM nested `DUP(?)`, which would incorrectly
+create initialized OMF data. `SLOTBSS.OBJ`, `ANIMBSS.OBJ`, `GC360BSS.OBJ`,
 `FLAGSBS.OBJ`, `OCTAVES.OBJ`, `NOTEIDX.OBJ`, and `VOICEPTR.OBJ` add other
 bounded state, including the 44-byte eleven-entry far-pointer table initialized
 by `F_DEFA`. Additional named source contributions cover every remaining

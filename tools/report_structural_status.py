@@ -44,6 +44,7 @@ def status(root, report, exe_build=None):
             'source_quality': quality_levels,
             'total_bss_bytes': exe_build['bss']['bytes'],
             'partitioned_bss_bytes': exe_build['bss']['partitioned_source_bytes'],
+            'typed_bss_source_bytes': exe_build['bss'].get('typed_source_bytes', 0),
             'aggregate_bss_remainder_bytes': exe_build['bss']['aggregate_remainder_bytes'],
             'isolated_function_proof_units': len(matching_owners) - collapsed_proof_units,
             'reconstructed_shared_modules': len(exe_build['shared_module_stages']) + len(structural_modules),

@@ -147,6 +147,7 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
         'bss': {'bytes': bss_layout['length'],
                 'publics': len(bss_layout['publics']), 'source': 'src/data/GAME_BSS.json',
                 'partitioned_source_bytes': source['partitioned_bss_source_bytes'],
+                'typed_source_bytes': source['typed_bss_source_bytes'],
                 'aggregate_remainder_bytes': source['unpartitioned_bss_source_bytes'],
                 'contributions': source['bss_source']['contributions']},
         'unresolved_symbols': baseline['link']['unresolved_count'],

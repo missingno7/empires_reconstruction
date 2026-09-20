@@ -180,7 +180,8 @@
         "35694 + 10 * 27 = 35964, the next independent BSS anchor"
       ],
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "migration_status": "MIGRATED_AS_SYMBOLIC_BSS_CONTRIBUTION",
+      "migration_status": "MIGRATED_AS_TYPED_SYMBOLIC_BSS_CONTRIBUTION",
+      "typed_emission": "Two named uninitialized TASM reservations encode c470_record[9] and c470_record, split at the _gc563 alias anchor; TASM nested DUP(?) is deliberately avoided because it emits initialized LEDATA.",
       "contribution": {
         "recipe": "recipes/data/bss-contributions.json",
         "object": "C470BSS.OBJ",

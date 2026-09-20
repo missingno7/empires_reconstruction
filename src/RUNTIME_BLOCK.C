@@ -374,8 +374,20 @@ void f039c()
     asm db 0c4h,0bfh,024h,039h
     asm db 08bh,05eh,004h,0d1h,0ebh,073h,00eh,08ah,0d0h,080h,0e2h
     asm db 00fh,026h,080h,021h,0f0h,026h,008h,011h,047h,049h,003h,0fbh,02bh,0dbh,0d1h,0e9h,073h,003h,0bbh,001h,000h,0f3h,0aah,083h
-    asm db 0fbh,000h,074h,009h,024h,0f0h,026h,080h,025h,00fh,026h,008h,005h,05fh,05dh,0c3h,055h,08bh,0ech,057h,0fch,0a1h,0c8h,040h
-    asm db 08bh,04eh,008h,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h,08bh,05eh,004h,0d1h,0ebh,072h,006h,024h,0f0h,0b2h
+    asm db 0fbh,000h,074h,009h,024h,0f0h,026h,080h,025h,00fh,026h,008h,005h,05fh,05dh,0c3h
+    /* F_03A5: adjacent planar-bar variant with mirrored nibble handling. */
+    asm runtime_f03a5:
+    asm push bp
+    asm mov bp,sp
+    asm db 057h
+    asm cld
+    asm db 0a1h,0c8h,040h
+    asm mov cx,[bp+8]
+    asm mov bx,[bp+6]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c4h,0bfh,024h,039h
+    asm db 08bh,05eh,004h,0d1h,0ebh,072h,006h,024h,0f0h,0b2h
     asm db 00fh,0ebh,004h,024h,00fh,0b2h,0f0h,003h,0fbh,0bbh,0a0h,000h,026h,020h,015h,026h,008h,005h,003h,0fbh,0e2h,0f6h,05fh,05dh
     asm db 0c3h,055h,08bh,0ech,057h,056h,0fch,0a1h,0c8h,040h,0beh,0a0h,000h,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h
     asm db 08bh,05eh,004h,0d1h,0ebh,073h,01ch,08bh,04eh,00ah,057h,003h,0fbh,0b6h,0f0h,08ah,0d0h,080h,0e2h,00fh,026h,020h,035h,026h

@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 17606,
-      "owners": 32,
-      "sources": 32
+      "bytes": 17497,
+      "owners": 31,
+      "sources": 31
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 4951,
-      "owners": 58,
-      "sources": 58
+      "bytes": 5060,
+      "owners": 59,
+      "sources": 59
     },
     {
       "level": "MECHANICAL_C",
@@ -150,11 +150,6 @@
       "bytes": 115
     },
     {
-      "owner": "F_C27D",
-      "source": "src/F_C27D.C",
-      "bytes": 109
-    },
-    {
       "owner": "F_C7CB",
       "source": "src/F_C7CB.C",
       "bytes": 105
@@ -195,7 +190,7 @@
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 32,
+  "asm_db_source_files": 31,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",
@@ -240,9 +235,10 @@
       "bytes": 247
     },
     {
-      "id": "M_C2EA_C501",
-      "source": "asm/M_C2EA_C501.ASM",
+      "id": "M_C27D_C567",
+      "source": "asm/M_C27D_C567.ASM",
       "members": [
+        "F_C27D",
         "F_C2EA",
         "F_C359",
         "F_C3DB",
@@ -251,7 +247,7 @@
         "F_C549",
         "F_C567"
       ],
-      "bytes": 688
+      "bytes": 797
     },
     {
       "id": "M_CB5C_CD23",

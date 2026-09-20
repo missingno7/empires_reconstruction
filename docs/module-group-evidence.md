@@ -118,11 +118,11 @@ byte-identical structural link. This is compatible-module evidence based on
 contiguity, direct control flow, and shared state; it does not assert an
 original filename.
 
-## M_C2EA_C501
+## M_C27D_C567
 
-`M_C2EA_C501` is a 688-byte compatible symbolic TASM module covering the
-contiguous `F_C2EA`, `F_C359`, `F_C3DB`, `F_C440`, `F_C501`, `F_C549`, and
-`F_C567` run. Its lead entry directly dispatches to the second, third, and
+`M_C27D_C567` is a 797-byte compatible symbolic TASM module covering the
+contiguous `F_C27D`, `F_C2EA`, `F_C359`, `F_C3DB`, `F_C440`, `F_C501`, `F_C549`, and
+`F_C567` run. `F_C27D` directly drives the dispatcher and renderer in the same contribution. Its lead entry directly dispatches to the second, third, and
 fifth entries. `F_C3DB` reads the `1788h/178Ah` scale state that `F_C567`
 writes, and `F_C549` updates paired command-control flags. The single object
 emits the historical entry offsets 0, 111, 241, 342, 535, 607, and 637, has no

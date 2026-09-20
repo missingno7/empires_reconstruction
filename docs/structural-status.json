@@ -234,16 +234,16 @@
     "raw_exe_fallback_bytes": 0,
     "source_quality": {
       "ASM_DB_CAPSULE": {
-        "bytes": 17606,
-        "owners": 32
+        "bytes": 17497,
+        "owners": 31
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
         "bytes": 2201,
         "owners": 23
       },
       "SYMBOLIC_ASM": {
-        "bytes": 4951,
-        "owners": 58
+        "bytes": 5060,
+        "owners": 59
       },
       "MECHANICAL_C": {
         "bytes": 34221,
@@ -257,7 +257,7 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 322,
+    "isolated_function_proof_units": 321,
     "reconstructed_shared_modules": 17,
     "structural_source_modules": [
       {
@@ -307,9 +307,10 @@
         "end": 52379
       },
       {
-        "id": "M_C2EA_C501",
-        "source": "asm/M_C2EA_C501.ASM",
+        "id": "M_C27D_C567",
+        "source": "asm/M_C27D_C567.ASM",
         "members": [
+          "F_C27D",
           "F_C2EA",
           "F_C359",
           "F_C3DB",
@@ -318,7 +319,7 @@
           "F_C549",
           "F_C567"
         ],
-        "start": 50410,
+        "start": 50301,
         "end": 51098
       },
       {

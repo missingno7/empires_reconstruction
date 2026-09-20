@@ -1286,7 +1286,100 @@
       "owner_candidate": "shared sound resource and playback state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc5ba_selected_index",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 2,
+          "name": "gc5bc_control",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 4,
+          "name": "gc5be_decode_workspace",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 8,
+          "name": "gc5c2_control",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "unsigned char[4]"
+        },
+        {
+          "offset": 12,
+          "name": "gc5c6_resource_buffer",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 16,
+          "name": "gc5ca_queue_offset",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 18,
+          "name": "gc5cc_queue_segment",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 20,
+          "name": "gc5ce_pointer_table",
+          "count": 3,
+          "element_bytes": 4,
+          "source_type": "char far *[3]"
+        },
+        {
+          "offset": 32,
+          "name": "gc5da_sound_workspace_offset",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 34,
+          "name": "gc5dc_sound_workspace_segment",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 36,
+          "name": "gc5de_sound_control",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 38,
+          "name": "gc5e0_sound_control",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 40,
+          "name": "gc5e2_tail_state",
+          "count": 1,
+          "element_bytes": 8,
+          "source_type": "unsigned char[8]"
+        }
+      ]
     },
     {
       "id": "NOTE_OCTAVE_TABLE_BSS",

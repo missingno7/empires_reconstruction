@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 37035,
+  "typed_bss_source_bytes": 37083,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -2257,8 +2257,101 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc5ba_selected_index",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 2,
+            "name": "gc5bc_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 4,
+            "name": "gc5be_decode_workspace",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 8,
+            "name": "gc5c2_control",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char[4]"
+          },
+          {
+            "offset": 12,
+            "name": "gc5c6_resource_buffer",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 16,
+            "name": "gc5ca_queue_offset",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 18,
+            "name": "gc5cc_queue_segment",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 20,
+            "name": "gc5ce_pointer_table",
+            "count": 3,
+            "element_bytes": 4,
+            "source_type": "char far *[3]"
+          },
+          {
+            "offset": 32,
+            "name": "gc5da_sound_workspace_offset",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 34,
+            "name": "gc5dc_sound_workspace_segment",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 36,
+            "name": "gc5de_sound_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 38,
+            "name": "gc5e0_sound_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 40,
+            "name": "gc5e2_tail_state",
+            "count": 1,
+            "element_bytes": 8,
+            "source_type": "unsigned char[8]"
+          }
+        ],
         "object_sha256": "daa9b39b4fe55b26e011742266e217c02da73a0fb69115d55c7aad55d2459396",
-        "source_sha256": "8770e9ba7834911d8194bbea125998bbe41c5b2db056ed305c448decda41c4b7"
+        "source_sha256": "b652d9767864384f85290187b91bf0b06be6e1862bc2574c95352703f5db70a1"
       },
       {
         "id": "NOTE_OCTAVE_TABLE_BSS",

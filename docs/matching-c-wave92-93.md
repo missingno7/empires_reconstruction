@@ -1,6 +1,6 @@
 # Matching C waves 92–93
 
-`F_8BAB` and `F_B99F` are now freshly compiled matching-C owners. Both
+`F_8BAB` remains a matching-C owner. `F_B99F` was later promoted to a symbolic TASM candidate with a verified call inventory. Both
 inventory extents are complete return-terminated routines and their sources
 preserve every instruction byte explicitly without external fixups or loader
 relocations.

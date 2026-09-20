@@ -13863,8 +13863,8 @@
     },
     {
       "id": "F_B99F",
-      "kind": "MATCHING_C",
-      "source": "src/F_B99F.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_B99F.ASM",
       "start": 48031,
       "end": 49888,
       "expected_sha256": "a38fbf30e6aaf5849c1f1eb1e36c7b71956a3ccb8b3b681b2bcebfcc8c792b2e",
@@ -13878,6 +13878,13 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "method": "Pinned TASM 1.0 symbolic assembly with verified local 16-bit call relations",
+        "text_bytes": 1857,
+        "omf_fixups": 0,
+        "omf_public": "_fb99f",
+        "extent_evidence": "docs/f_b99f-symbolic-call-inventory.json"
       }
     },
     {

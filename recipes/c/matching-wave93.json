@@ -1,24 +1,7 @@
 {
   "format": "empires-c-promotion-v1",
-  "owners": [
-    {
-      "id": "F_B99F",
-      "kind": "MATCHING_C",
-      "source": "src/F_B99F.C",
-      "start": 48031,
-      "end": 49888,
-      "expected_sha256": "a38fbf30e6aaf5849c1f1eb1e36c7b71956a3ccb8b3b681b2bcebfcc8c792b2e",
-      "classification": "code",
-      "artifact": "regions/F_B99F.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fb99f",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      }
-    }
+  "owners": [],
+  "superseded_owners": [
+    "F_B99F: docs/f_b99f-symbolic-call-inventory.json"
   ]
 }

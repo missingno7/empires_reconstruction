@@ -77,6 +77,30 @@
         "module_segments": {}
       },
       "evidence": "Contiguous master sound tick, voice pump, and ES:DI voice-table scan. The first calls the second, the second calls the third, and all use the same 0x1764..0x17F4 sound-state BSS cluster. Fresh TASM emits publics at offsets 0, 87, and 146 and its complete bound extent matches."
+    },
+    {
+      "id": "M_C9A4_CA91",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_C9A4_CA91.ASM",
+      "start": 52132,
+      "end": 52379,
+      "members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_c9a4",
+        "span": 6,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Contiguous table-command decoder, dispatcher, and all four dispatcher targets use the 0x1E84..0x1E94 control block. Fresh symbolic TASM has the original public offsets and bound 247-byte extent."
     }
   ]
 }

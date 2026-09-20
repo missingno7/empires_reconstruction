@@ -10,15 +10,15 @@
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-      "bytes": 2225,
-      "owners": 25,
-      "sources": 25
+      "bytes": 2201,
+      "owners": 23,
+      "sources": 23
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 4854,
-      "owners": 55,
-      "sources": 55
+      "bytes": 4878,
+      "owners": 57,
+      "sources": 57
     },
     {
       "level": "MECHANICAL_C",
@@ -230,6 +230,19 @@
         "F_C232"
       ],
       "bytes": 221
+    },
+    {
+      "id": "M_C9A4_CA91",
+      "source": "asm/M_C9A4_CA91.ASM",
+      "members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ],
+      "bytes": 247
     }
   ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."

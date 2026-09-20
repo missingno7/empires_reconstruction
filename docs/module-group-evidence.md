@@ -104,3 +104,16 @@ linking. This is compatible source-module evidence from a direct call chain,
 contiguous layout, and common storage. The normal structural build consumes
 one untouched object in place of three proof fragments and remains
 byte-identical.
+
+## M_C9A4_CA91
+
+`M_C9A4_CA91` replaces six contiguous proof fragments with a 247-byte
+symbolic TASM module. It contains the table-command decoder, its four-way
+dispatcher, and every dispatcher target. The entries share the DGROUP command
+control block at `0x1E84..0x1E94`, and the dispatcher calls the targets within
+the same contribution. Fresh TASM emits the historical public offsets 0, 95,
+145, 173, 223, and 237, with the five original data fixups. The untouched
+ordinary object binds to the exact full extent and preserves the
+byte-identical structural link. This is compatible-module evidence based on
+contiguity, direct control flow, and shared state; it does not assert an
+original filename.

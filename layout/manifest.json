@@ -5772,14 +5772,15 @@
     },
     {
       "id": "F_643A",
-      "kind": "MATCHING_C",
-      "source": "src/F_643A.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_643A.ASM",
       "start": 26170,
       "end": 26410,
       "expected_sha256": "8f97e01ad3059dd42d94d61038e74b0736a016b57168bdd897699a4de5e9b5e0",
       "classification": "code",
       "artifact": "regions/F_643A.bin",
       "matching_status": "EQUAL",
+      "change": "symbolic assembly recovery; exact _TEXT and all 26 _TEXT FIXUPP semantics verified",
       "build": {
         "segment": "_TEXT",
         "public": "_f643a",

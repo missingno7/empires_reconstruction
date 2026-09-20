@@ -2,22 +2,28 @@
   "format": "empires-symbolic-asm-blocker-v1",
   "owner": "F_8BAB",
   "text_bytes": 1275,
-  "status": "BLOCKED_PENDING_EMBEDDED_TABLE_PARTITION",
+  "status": "PARTITIONED_PENDING_NATURAL_EXTERNAL_CALL_EMISSION",
   "evidence": {
-    "linear_disassembly_failure_offsets": [
-      "0x8Cxx",
-      "0x8F10"
+    "dispatch_tables": [
+      {
+        "offset": "0x8CCF",
+        "keys": ["0x000D", "0x001B", "0x0148", "0x014B", "0x014D", "0x0150"],
+        "handlers": ["0x8D29", "0x8DB2", "0x8CE7", "0x8D08", "0x8D16", "0x8CF5"]
+      },
+      {
+        "offset": "0x8F14",
+        "keys": ["0x000D", "0x001B", "0x0046", "0x0066", "0x0148", "0x014B", "0x014D", "0x0150"],
+        "handlers": ["0x8F8F", "0x8FEF", "0x8F76", "0x8F76", "0x8F34", "0x8F55", "0x8F63", "0x8F42"]
+      }
     ],
-    "symptoms": [
-      "undefined symbolic segment token at decoded data",
-      "invalid 16-bit instruction forms after an indirect jump table"
-    ],
-    "candidate_object": "build/F_8BAB_symbolic.ASM"
+    "table_candidate": "build/F_8BAB_tables.ASM",
+    "table_candidate_result": "exact 1,275-byte bound extent with 14 local _TEXT FIXUPP entries",
+    "external_call_trial": "63 direct calls, 33 recovered target publics; naive EXTDEF conversion produced a 1,309-byte object"
   },
   "next_required_evidence": [
-    "partition code from embedded control/data records",
-    "recover each table encoding and branch entry target",
-    "assemble code and table sections symbolically with exact offsets"
+    "determine why TASM changes the object extent when same-segment direct calls become EXTDEF references",
+    "recover a natural module arrangement that emits the 63 calls with their original three-byte encodings",
+    "promote the exact table candidate only when every call is a real symbolic relation"
   ],
-  "policy": "Do not promote a linear disassembly that interprets table bytes as instructions."
+  "policy": "Do not promote a linear disassembly that interprets table bytes as instructions, or retain relative-byte call placeholders as the final representation."
 }

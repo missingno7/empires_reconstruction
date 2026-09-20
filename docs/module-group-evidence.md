@@ -139,3 +139,12 @@ ten-row menus from the same table/state area. Its eight public entry/end
 labels retain their original offsets, the contribution has no OMF fixups, and
 the complete structural link remains byte-identical. This is compatible module
 evidence from shared selected-row state, record-table access, and adjacency.
+
+## M_DAD7_DB35
+
+`M_DAD7_DB35` combines three contiguous state-table helpers into a 137-byte
+symbolic TASM contribution. Each obtains a signed selector from the high byte
+of a two-byte `DS:2FD2h` table entry; the latter two retain their ordinary
+external calls to the reconstructed handler entries. The complete structural
+link is byte-identical, including the two natural TASM fixups. This is a
+compatible source-module result based on shared table access and adjacency.

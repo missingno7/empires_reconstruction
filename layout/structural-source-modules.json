@@ -147,6 +147,27 @@
         "module_segments": {}
       },
       "evidence": "Contiguous selected-row editing and ten-row menu controls. All five entries use the same record-table and menu state; fresh symbolic TASM emits the historical entry/end public offsets and exact 641-byte no-fixup extent."
+    },
+    {
+      "id": "M_DAD7_DB35",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_DAD7_DB35.ASM",
+      "start": 56535,
+      "end": 56672,
+      "members": [
+        "F_DAD7",
+        "F_DB17",
+        "F_DB35"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_dad7",
+        "span": 3,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Three contiguous helpers read signed high bytes from the DS:2FD2h state table. Fresh symbolic TASM preserves entry/end public offsets and the two canonical external call fixups."
     }
   ]
 }

@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 34922,
+  "typed_bss_source_bytes": 35214,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1661,8 +1661,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc316_slots",
+            "count": 24,
+            "element_bytes": 2,
+            "source_type": "int[4][6]"
+          }
+        ],
         "object_sha256": "1f1870ce31df35d7997571ea1069ff3566be1ff151f6b31b5fa58ad9fe8c94bd",
-        "source_sha256": "3b79969aab269c478be6dcb77d1c574e9d8f5c7759bb8f7aa6f5c031afba6f64"
+        "source_sha256": "97c57c800cb3fb11b46ebcfa1b12e7683c6a10be9c4199baf1d15ecaea381364"
       },
       {
         "id": "ANIMATION_CONTROL_STATE_BSS",
@@ -1770,8 +1779,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc5b2_flags",
+            "count": 4,
+            "element_bytes": 2,
+            "source_type": "int[4]"
+          }
+        ],
         "object_sha256": "3ac1d8efb85d2036d0d6d146d4bca37fb52f1a3e87328b94b7b87e5f8899b613",
-        "source_sha256": "0a13e0b3747d93fcfeb1831ee1e52c5f774fd2f32deae843323ef3b964f5ad23"
+        "source_sha256": "b1da5fb5d710254317de5a868239d55c903ff31ef1f5dfef5c22e550a58f75a0"
       },
       {
         "id": "SOUND_RESOURCE_STATE_BSS",
@@ -1794,8 +1812,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc5ea_octaves",
+            "count": 96,
+            "element_bytes": 1,
+            "source_type": "unsigned char[96]"
+          }
+        ],
         "object_sha256": "04d5506a719ea95af8aa5193dbade3b72edfc10369590941495dcd0ccbc08ce7",
-        "source_sha256": "4e39953aeeacd0b6ba5c9832690d2d903e146f054f0b73e6d8145b735aa10909"
+        "source_sha256": "8d9e36a12bdee98bfba16daf2ad4b97aa08757b22aa6fcb7e51b36b6fff213b9"
       },
       {
         "id": "NOTE_INDEX_TABLE_BSS",
@@ -1806,8 +1833,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc64a_indices",
+            "count": 96,
+            "element_bytes": 1,
+            "source_type": "unsigned char[96]"
+          }
+        ],
         "object_sha256": "1ac816db28ff56c16c9c92a67881353cdfd867220d45725ec0a850e6040bfb6e",
-        "source_sha256": "2f68d6554c77ba91b28e0e5a3ac81ce56abdec062ac251e8ec5b12724ab8e933"
+        "source_sha256": "e2f1d66e7d70ebd2da5141fdbe2aa391620c7eab23e1b160896c0a033964d204"
       },
       {
         "id": "SOUND_ENGINE_STATE_BSS",
@@ -1830,8 +1866,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gca24_voices",
+            "count": 11,
+            "element_bytes": 4,
+            "source_type": "char far *[11]"
+          }
+        ],
         "object_sha256": "25fc38648dd9c25595d2ec45d6b40821c5da1a2e0db06cf57a0a6b86b70c92da",
-        "source_sha256": "364600f09c9ae3324ff7bb4414225949ff75cb277eae6b518df08ab49bbbae95"
+        "source_sha256": "586cf6a7550eb3a3d03a5c0e0f07cb72f6eabcf3a0f0b77b31b3e193ca4f33e9"
       },
       {
         "id": "SOUND_TABLE_STATE_BSS",

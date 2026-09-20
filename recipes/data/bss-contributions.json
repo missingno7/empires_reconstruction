@@ -698,7 +698,16 @@
       "owner_candidate": "shared 4x6 slot grid",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc316_slots",
+          "count": 24,
+          "element_bytes": 2,
+          "source_type": "int[4][6]"
+        }
+      ]
     },
     {
       "id": "ANIMATION_CONTROL_STATE_BSS",
@@ -800,7 +809,16 @@
       "owner_candidate": "shared four-flag state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc5b2_flags",
+          "count": 4,
+          "element_bytes": 2,
+          "source_type": "int[4]"
+        }
+      ]
     },
     {
       "id": "SOUND_RESOURCE_STATE_BSS",
@@ -822,7 +840,16 @@
       "owner_candidate": "sound note octave table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc5ea_octaves",
+          "count": 96,
+          "element_bytes": 1,
+          "source_type": "unsigned char[96]"
+        }
+      ]
     },
     {
       "id": "NOTE_INDEX_TABLE_BSS",
@@ -833,7 +860,16 @@
       "owner_candidate": "sound note index table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc64a_indices",
+          "count": 96,
+          "element_bytes": 1,
+          "source_type": "unsigned char[96]"
+        }
+      ]
     },
     {
       "id": "SOUND_ENGINE_STATE_BSS",
@@ -855,7 +891,16 @@
       "owner_candidate": "F_DEFA sound reset state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gca24_voices",
+          "count": 11,
+          "element_bytes": 4,
+          "source_type": "char far *[11]"
+        }
+      ]
     },
     {
       "id": "SOUND_TABLE_STATE_BSS",

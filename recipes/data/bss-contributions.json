@@ -1241,7 +1241,44 @@
       "owner_candidate": "shared sound tables and modulation state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gca50_voice_levels",
+          "count": 18,
+          "element_bytes": 1,
+          "source_type": "unsigned char[18]"
+        },
+        {
+          "offset": 18,
+          "name": "gca62_resource_bytes",
+          "count": 9,
+          "element_bytes": 1,
+          "source_type": "unsigned char[9]"
+        },
+        {
+          "offset": 27,
+          "name": "gca6b_voice_stride",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 29,
+          "name": "gca6d_note_bias",
+          "count": 11,
+          "element_bytes": 2,
+          "source_type": "int[11]"
+        },
+        {
+          "offset": 51,
+          "name": "gca83_tail",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        }
+      ]
     }
   ]
 }

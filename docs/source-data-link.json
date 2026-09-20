@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 36879,
+  "typed_bss_source_bytes": 36931,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -2217,8 +2217,45 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gca50_voice_levels",
+            "count": 18,
+            "element_bytes": 1,
+            "source_type": "unsigned char[18]"
+          },
+          {
+            "offset": 18,
+            "name": "gca62_resource_bytes",
+            "count": 9,
+            "element_bytes": 1,
+            "source_type": "unsigned char[9]"
+          },
+          {
+            "offset": 27,
+            "name": "gca6b_voice_stride",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 29,
+            "name": "gca6d_note_bias",
+            "count": 11,
+            "element_bytes": 2,
+            "source_type": "int[11]"
+          },
+          {
+            "offset": 51,
+            "name": "gca83_tail",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          }
+        ],
         "object_sha256": "e8d5e21a49a590a624622755d20db1bc7c7621e10fd58f2d96a8c4402e36dd08",
-        "source_sha256": "d861f4d6ba8455fc570ee64dd14c277ddbaadc33e2f10f2d201003d78a6a8528"
+        "source_sha256": "daa19336be308b1b2754d2f27c779507557e0ca5e8d91573ec605183edac0983"
       }
     ]
   },

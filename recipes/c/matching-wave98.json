@@ -3,8 +3,8 @@
   "owners": [
     {
       "id": "F_7964",
-      "kind": "MATCHING_C",
-      "source": "src/F_7964.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_7964.ASM",
       "start": 31588,
       "end": 32211,
       "expected_sha256": "5c8bd1e4b5ce260af4e03b94d4e045b2001f9f37d62bc6e350ea2afcca7fadae",
@@ -16,7 +16,100 @@
         "public": "_f7964",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f792c": {
+            "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f703e": {
+            "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_fd593": {
+            "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f7bfc": {
+            "coordinate": "code_offset",
+            "owner": "F_7BFC",
+            "public": "_f7bfc",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f7d91": {
+            "coordinate": "code_offset",
+            "owner": "F_7D91",
+            "public": "_f7d91",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f8453": {
+            "coordinate": "code_offset",
+            "owner": "F_8453",
+            "public": "_f8453",
+            "addend": 0,
+            "evidence": "F_7964 symbolic relation"
+          },
+          "_f_7dd3": {
+            "coordinate": "code_offset",
+            "offset": 31699,
+            "evidence": "F_7DD3 public; TASM relocation supplies +0x23"
+          },
+          "_f03ab": {
+            "coordinate": "code_offset",
+            "offset": 939,
+            "evidence": "F_03AB entry"
+          },
+          "_f039f": {
+            "coordinate": "code_offset",
+            "offset": 927,
+            "evidence": "F_039F entry"
+          }
+        },
         "module_segments": {}
       }
     }

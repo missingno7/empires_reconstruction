@@ -408,7 +408,7 @@ L_0174:
  mov bx,[bp-8h]
 org 16eh
 L_016E:
- mov word ptr [bx+offset DGROUP:_gca24],0
+ mov word ptr [bx+offset DGROUP:_gca24],offset DGROUP:_gc6c3
 org 16ah
 L_016A:
  mov word ptr [bx+offset DGROUP:_gca24+2],ds

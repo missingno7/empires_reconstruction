@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 6824,
-      "owners": 2,
-      "sources": 2
+      "bytes": 6571,
+      "owners": 1,
+      "sources": 1
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,15 +16,15 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 15362,
-      "owners": 87,
-      "sources": 51
+      "bytes": 16062,
+      "owners": 91,
+      "sources": 52
     },
     {
       "level": "MECHANICAL_C",
-      "bytes": 34213,
-      "owners": 232,
-      "sources": 232
+      "bytes": 33766,
+      "owners": 229,
+      "sources": 229
     },
     {
       "level": "HISTORICAL_STARTUP_OBJECT",
@@ -44,14 +44,9 @@
       "owner": "RUNTIME_BLOCK",
       "source": "src/RUNTIME_BLOCK.C",
       "bytes": 6571
-    },
-    {
-      "owner": "F_DF98",
-      "source": "src/F_DF98.C",
-      "bytes": 253
     }
   ],
-  "asm_db_source_files": 2,
+  "asm_db_source_files": 1,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",
@@ -209,6 +204,17 @@
         "F_D79C"
       ],
       "bytes": 507
+    },
+    {
+      "id": "M_DDD9_DF98",
+      "source": "asm/M_DDD9_DF98.ASM",
+      "members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ],
+      "bytes": 700
     }
   ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."

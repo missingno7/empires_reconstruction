@@ -25,14 +25,6 @@
       "status": "CODE_PLACEMENT_EQUAL"
     },
     {
-      "name": "RELOC_F_DDD9_F_DF98",
-      "status": "CODE_PLACEMENT_EQUAL",
-      "fixupp_order_adapter": {
-        "segment": "_TEXT",
-        "order": "descending"
-      }
-    },
-    {
       "name": "data_code_interleaving",
       "status": "LAYOUT_PRESERVED",
       "matching_relocation_prefix_entries": 106
@@ -115,8 +107,7 @@
     }
   },
   "remaining_adapters": [
-    "candidate DATA/code object interleaving",
-    "arithmetic-module FIXUPP subrecord ordering"
+    "candidate DATA/code object interleaving"
   ],
   "whole_build_reconstruction_complete": false,
   "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA, zero aggregate BSS reserve, and zero object symbol transforms; object order and historical module proof remain."

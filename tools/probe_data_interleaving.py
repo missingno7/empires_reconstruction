@@ -63,7 +63,7 @@ def run(input_path, recipe_path, verify=True):
     for move in recipe['moves']:
         for key in ('after_code', 'before_next_relocating_code'):
             owner = move[key]
-            if code_objects[owner] in objects:
+            if code_objects.get(owner) in objects:
                 continue
             # A previous experiment may have combined this owner into a real
             # compiler module. Resolve its public within actual link inputs.

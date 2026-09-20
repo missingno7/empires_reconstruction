@@ -190,7 +190,7 @@
     "omf_metadata_adapter_owners": 0,
     "byte_comparison": {
       "available": true,
-      "candidate_sha256": "347531014cfbcd853f72a463bfa7abe2229aab92cbdcf2be7bff459cd0a96b32",
+      "candidate_sha256": "1602849d64f09c149372599469d5aeeb236dc3e754235ad4103005a4fdf9328d",
       "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
       "candidate_size": 79154,
       "oracle_size": 79154,
@@ -325,20 +325,20 @@
     "raw_exe_fallback_bytes": 0,
     "source_quality": {
       "ASM_DB_CAPSULE": {
-        "bytes": 6824,
-        "owners": 2
+        "bytes": 6571,
+        "owners": 1
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
         "bytes": 2111,
         "owners": 20
       },
       "SYMBOLIC_ASM": {
-        "bytes": 15362,
-        "owners": 87
+        "bytes": 16062,
+        "owners": 91
       },
       "MECHANICAL_C": {
-        "bytes": 34213,
-        "owners": 232
+        "bytes": 33766,
+        "owners": 229
       },
       "HISTORICAL_STARTUP_OBJECT": {
         "bytes": 444,
@@ -353,7 +353,7 @@
     "partitioned_bss_bytes": 37250,
     "typed_bss_source_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 310,
+    "isolated_function_proof_units": 307,
     "reconstructed_shared_modules": 19,
     "structural_source_modules": [
       {
@@ -527,18 +527,24 @@
         ],
         "start": 55324,
         "end": 55831
+      },
+      {
+        "id": "M_DDD9_DF98",
+        "source": "asm/M_DDD9_DF98.ASM",
+        "members": [
+          "F_DDD9",
+          "F_DE7E",
+          "F_DEFA",
+          "F_DF98"
+        ],
+        "start": 57305,
+        "end": 58005
       }
     ],
     "active_structural_adapters": [
-      "candidate DATA/code object interleaving",
-      "arithmetic-module FIXUPP subrecord ordering"
+      "candidate DATA/code object interleaving"
     ],
-    "active_omf_transforms": [
-      {
-        "segment": "_TEXT",
-        "order": "descending"
-      }
-    ],
+    "active_omf_transforms": [],
     "fixture_dependency": {
       "assets/AEPROG.EXE": "optional verification fixture only; construction uses the canonical manifest, MZ header, source-DATA recipes and GAME_BSS metadata"
     },
@@ -573,8 +579,7 @@
     "relocation_order_equal": true,
     "load_image_equal": true,
     "remaining_adapters": [
-      "candidate DATA/code object interleaving",
-      "arithmetic-module FIXUPP subrecord ordering"
+      "candidate DATA/code object interleaving"
     ],
     "whole_build_reconstruction_complete": false
   }

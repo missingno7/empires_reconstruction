@@ -9,8 +9,8 @@ from reconstruct import ROOT, read_json, write_json
 
 def publish(source, shared_modules, final):
     """Validate and publish an exact-link receipt from freshly built stages."""
-    if len(shared_modules) != 4:
-        raise ValueError('Exact structural link requires four shared source-module stages')
+    if len(shared_modules) != 3:
+        raise ValueError('Exact structural link requires three shared replacement stages plus the direct M_DDD9_DF98 structural source module')
     if not source['byte_comparison']['load_image']['equal']:
         raise ValueError('Source DATA link no longer has an exact load image')
     comparison = final['byte_comparison']
@@ -36,7 +36,6 @@ def publish(source, shared_modules, final):
                             if key not in ('candidate', 'oracle')},
         'remaining_adapters': [
             'candidate DATA/code object interleaving',
-            'arithmetic-module FIXUPP subrecord ordering',
         ],
         'whole_build_reconstruction_complete': False,
         'limitation': ('Byte-identical TLINK output from relocatable inputs with zero raw DATA, '

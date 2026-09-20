@@ -337,6 +337,30 @@
         "module_segments": {}
       },
       "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups."
+    },
+    {
+      "id": "M_DDD9_DF98",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_DDD9_DF98.ASM",
+      "start": 57305,
+      "end": 58005,
+      "members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fddd9",
+        "span": 4,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "status": "COMPATIBLE_RECONSTRUCTED_MODULE",
+      "historical_translation_unit_proven": false,
+      "evidence": "Complete 700-byte symbolic TASM module with four exact public offsets and 17 exact fixups. Descending ORG contributions emit historical FIXUPP ordering; F_DEFA DGROUP operands reproduce group frames."
     }
   ]
 }

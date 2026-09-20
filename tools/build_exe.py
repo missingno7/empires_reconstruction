@@ -24,7 +24,7 @@ from dos_runner import resolve_runner
 
 
 ORIGINAL_SHA256 = '1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10'
-MODULE_RECIPES = ('C_6C26_6C87.json', 'C_75F3_7856.json', 'C_AD25_AF45.json', 'C_DDD9_E095.json')
+MODULE_RECIPES = ('C_6C26_6C87.json', 'C_75F3_7856.json', 'C_AD25_AF45.json')
 TRANSIENT_REPORTS = ('tlink-structural-report.json', 'source-data-link-report.json',
                      'shared-source-data-link-report.json', 'data-interleaving-report.json',
                      'exe-build-report.json')
@@ -157,7 +157,6 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
         'exact_structural_receipt': exact_receipt['status'],
         'remaining_structural_adapters': [
             'candidate DATA/code object interleaving',
-            'arithmetic-module FIXUPP subrecord ordering',
         ],
         'fixture_dependency': {
             'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '

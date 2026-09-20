@@ -134,7 +134,86 @@
       "owner_candidate": "shared B4374 indexed control state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "b4374_flags",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 1,
+          "name": "b4375_column",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 2,
+          "name": "b4376_row",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 3,
+          "name": "b4377_selection",
+          "count": 3,
+          "element_bytes": 1,
+          "source_type": "unsigned char[3]"
+        },
+        {
+          "offset": 6,
+          "name": "b437a_slot_ids",
+          "count": 6,
+          "element_bytes": 1,
+          "source_type": "unsigned char[6]"
+        },
+        {
+          "offset": 12,
+          "name": "b4380_slot_columns",
+          "count": 6,
+          "element_bytes": 1,
+          "source_type": "unsigned char[6]"
+        },
+        {
+          "offset": 18,
+          "name": "b4386_slot_rows",
+          "count": 6,
+          "element_bytes": 1,
+          "source_type": "unsigned char[6]"
+        },
+        {
+          "offset": 24,
+          "name": "b438c_neighbor_up",
+          "count": 10,
+          "element_bytes": 1,
+          "source_type": "unsigned char[10]"
+        },
+        {
+          "offset": 34,
+          "name": "b4396_neighbor_down",
+          "count": 10,
+          "element_bytes": 1,
+          "source_type": "unsigned char[10]"
+        },
+        {
+          "offset": 44,
+          "name": "b43a0_neighbor_left",
+          "count": 10,
+          "element_bytes": 1,
+          "source_type": "unsigned char[10]"
+        },
+        {
+          "offset": 54,
+          "name": "b43aa_neighbor_right",
+          "count": 10,
+          "element_bytes": 1,
+          "source_type": "unsigned char[10]"
+        }
+      ]
     },
     {
       "id": "G43B4_RECORD_TABLE_BSS",

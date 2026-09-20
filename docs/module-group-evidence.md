@@ -178,3 +178,7 @@ readable control flow.
 ## M_988F_98CB
 
 `M_988F_98CB` combines two contiguous fixed-rectangle display helpers into one 121-byte symbolic TASM contribution. They share the recovered `C34E/C350` coordinates and paired display call pattern; the combined object retains the original entry/end offsets and full byte-identical link.
+
+## M_50D2_53BF
+
+`M_50D2_53BF` combines the contiguous display-adapter detector and VGA mode selector (312 bytes). It preserves the detector's forward external declaration placement, whose TASM pass behavior is part of its exact emitted layout, then appends the ordinary mode-selection contribution. The complete link remains byte-identical.

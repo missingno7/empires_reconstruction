@@ -252,6 +252,26 @@
         "module_segments": {}
       },
       "evidence": "Adjacent fixed-rectangle display helpers share the recovered C34E/C350 coordinates and display call pattern. Fresh symbolic TASM is tested as one ordinary 121-byte contribution."
+    },
+    {
+      "id": "M_50D2_53BF",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_50D2_53BF.ASM",
+      "start": 21202,
+      "end": 21514,
+      "members": [
+        "F_50D2",
+        "F_53BF"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f50d2",
+        "span": 2,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Adjacent display-adapter detection and VGA mode selection. The combined source preserves F_50D2 forward EXTRN placement and appends F_53BF as a second ordinary _TEXT contribution."
     }
   ]
 }

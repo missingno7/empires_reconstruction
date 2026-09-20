@@ -87,6 +87,13 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_D386', 'F_D3CF'])
         self.assertEqual(module['end'] - module['start'], 84)
 
+    def test_display_adapter_module_has_contiguous_manifest_ownership(self):
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        modules = structural_source_modules(ROOT, manifest)
+        module = next(item for item in modules if item['id'] == 'M_50D2_53BF')
+        self.assertEqual(module['members'], ['F_50D2', 'F_53BF'])
+        self.assertEqual(module['end'] - module['start'], 312)
+
     def test_paired_display_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         modules = structural_source_modules(ROOT, manifest)
@@ -111,6 +118,7 @@ class StructuralSourceModuleTests(unittest.TestCase):
             'M_C5A8_C5C6': 41,
             'M_D386_D3CF': 84,
             'M_988F_98CB': 121,
+            'M_50D2_53BF': 312,
         }
         staged = {item['owner']: item for item in report['relocatable_scaffold']
                   if item.get('owner') in expected}

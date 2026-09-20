@@ -715,10 +715,38 @@ void f039c()
     asm db 005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h
     asm db 015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h
     asm db 015h,083h,0ebh,010h,07fh,097h,05bh,003h,07eh,0feh,0e2h,08eh,01fh,05fh,05eh,083h,0c4h,002h,05dh,0c3h,0a5h,01ch,08dh,01ch
-    asm db 08dh,01ch,07ah,01ch,07ah,01ch,067h,01ch,067h,01ch,054h,01ch,054h,01ch,055h,08bh,0ech,057h,08bh,05eh,006h,0d1h,0e3h,0d1h
-    asm db 0e3h,0c4h,0bfh,024h,039h,08bh,05eh,004h,0d1h,0ebh,072h,015h,003h,0fbh,026h,08ah,005h,024h,00fh,08bh,01eh,0c8h,040h,0d0h
-    asm db 0e3h,0d0h,0e3h,0d0h,0e3h,0d0h,0e3h,0ebh,00eh,003h,0fbh,026h,08ah,005h,024h,0f0h,08bh,01eh,0c8h,040h,080h,0e3h,00fh,00ah
-    asm db 0c3h,026h,088h,005h,05fh,05dh,0c3h,055h,08bh,0ech,057h,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h,08bh,05eh
+    asm db 08dh,01ch,07ah,01ch,07ah,01ch,067h,01ch,067h,01ch,054h,01ch,054h,01ch
+
+    /* F_03D2: merge a nibble from a planar pixel with the current state. */
+    asm runtime_f03d2:
+    asm push bp
+    asm mov bp,sp
+    asm db 057h
+    asm mov bx,[bp+6]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c4h,0bfh,024h,039h
+    asm mov bx,[bp+4]
+    asm shr bx,1
+    asm db 072h,015h
+    asm db 003h,0fbh,026h,08ah,005h
+    asm and al,0fh
+    asm db 08bh,01eh,0c8h,040h
+    asm shl bl,1
+    asm shl bl,1
+    asm shl bl,1
+    asm shl bl,1
+    asm db 0ebh,00eh
+    asm db 003h,0fbh,026h,08ah,005h
+    asm and al,0f0h
+    asm db 08bh,01eh,0c8h,040h
+    asm and bl,0fh
+    asm or al,bl
+    asm db 026h,088h,005h
+    asm db 05fh
+    asm pop bp
+    asm ret
+    asm db 055h,08bh,0ech,057h,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h,08bh,05eh
     asm db 004h,0d1h,0ebh,072h,012h,003h,0fbh,026h,08ah,005h,025h,0f0h,000h,0d1h,0e8h,0d1h,0e8h,0d1h,0e8h,0d1h,0e8h,0ebh,008h,003h
     asm db 0fbh,026h,08ah,005h,025h,00fh,000h,05fh,05dh,0c3h,0c3h,045h,047h,041h,02eh,044h,052h,056h,000h
     asm _runtime_block_end label byte

@@ -329,7 +329,37 @@
       "owner_candidate": "F_21DB/F_2AE2 resource block and render pointers",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g96e4_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 2,
+          "name": "g96e6_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "unsigned char far *"
+        },
+        {
+          "offset": 6,
+          "name": "g96ea_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "unsigned char far *"
+        },
+        {
+          "offset": 10,
+          "name": "g96ee_buffer",
+          "count": 1,
+          "element_bytes": 674,
+          "source_type": "unsigned char[674]"
+        }
+      ]
     },
     {
       "id": "G9990_RESOURCE_BUFFER_BSS",
@@ -360,7 +390,72 @@
       "owner_candidate": "F_200F/F_1D47 resource source blocks and pool pointers",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g99d2_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 4,
+          "name": "g99d6_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 8,
+          "name": "g99da_buffer",
+          "count": 1,
+          "element_bytes": 130,
+          "source_type": "unsigned char[130]"
+        },
+        {
+          "offset": 138,
+          "name": "g9a5c_buffer",
+          "count": 1,
+          "element_bytes": 130,
+          "source_type": "unsigned char[130]"
+        },
+        {
+          "offset": 268,
+          "name": "g9ade_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 270,
+          "name": "g9ae0_buffer",
+          "count": 1,
+          "element_bytes": 142,
+          "source_type": "unsigned char[142]"
+        },
+        {
+          "offset": 412,
+          "name": "g9b6e_buffer",
+          "count": 1,
+          "element_bytes": 142,
+          "source_type": "unsigned char[142]"
+        },
+        {
+          "offset": 554,
+          "name": "g9bfc_buffer",
+          "count": 1,
+          "element_bytes": 84,
+          "source_type": "unsigned char[84]"
+        },
+        {
+          "offset": 638,
+          "name": "g9c50_buffer",
+          "count": 1,
+          "element_bytes": 162,
+          "source_type": "unsigned char[162]"
+        }
+      ]
     },
     {
       "id": "G9CF2_RESOURCE_BUFFER_BSS",

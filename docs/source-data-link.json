@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 31436,
+  "typed_bss_source_bytes": 32920,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1281,8 +1281,38 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g96e4_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 2,
+            "name": "g96e6_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 6,
+            "name": "g96ea_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 10,
+            "name": "g96ee_buffer",
+            "count": 1,
+            "element_bytes": 674,
+            "source_type": "unsigned char[674]"
+          }
+        ],
         "object_sha256": "ce3c6e32c509afc4fef0dea9d0067feb6499002a82049b5334c4106509459962",
-        "source_sha256": "7fae6b5e1834a9788e1f98389d8d990f7080b178e1ce4d6efcc3dfac561a3c8c"
+        "source_sha256": "8400ac1886e2da7abe3e7995fc9b93e30b4ea8b6ec8e06a97a0d18efee6796e0"
       },
       {
         "id": "G9990_RESOURCE_BUFFER_BSS",
@@ -1314,8 +1344,73 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g99d2_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 4,
+            "name": "g99d6_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 8,
+            "name": "g99da_buffer",
+            "count": 1,
+            "element_bytes": 130,
+            "source_type": "unsigned char[130]"
+          },
+          {
+            "offset": 138,
+            "name": "g9a5c_buffer",
+            "count": 1,
+            "element_bytes": 130,
+            "source_type": "unsigned char[130]"
+          },
+          {
+            "offset": 268,
+            "name": "g9ade_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 270,
+            "name": "g9ae0_buffer",
+            "count": 1,
+            "element_bytes": 142,
+            "source_type": "unsigned char[142]"
+          },
+          {
+            "offset": 412,
+            "name": "g9b6e_buffer",
+            "count": 1,
+            "element_bytes": 142,
+            "source_type": "unsigned char[142]"
+          },
+          {
+            "offset": 554,
+            "name": "g9bfc_buffer",
+            "count": 1,
+            "element_bytes": 84,
+            "source_type": "unsigned char[84]"
+          },
+          {
+            "offset": 638,
+            "name": "g9c50_buffer",
+            "count": 1,
+            "element_bytes": 162,
+            "source_type": "unsigned char[162]"
+          }
+        ],
         "object_sha256": "904e3eda9b9aeb58c7e3624b397e92768cf6c4ed9f36cbd67e2cc10bf4861795",
-        "source_sha256": "95c52653518f08e5d2cde5dba3b243bf6307ad451f271a6a936f303bbf843881"
+        "source_sha256": "e7775a37613e539a05b5e3b7239583f761558c354f1e93ec74cc220a2c15f3ce"
       },
       {
         "id": "G9CF2_RESOURCE_BUFFER_BSS",

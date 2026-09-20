@@ -894,6 +894,8 @@ no external fixups or loader relocations. See [the wave 97 proof](matching-c-wav
 Coverage is now 46,067 matching-C bytes across 304 owners, with 21,685 raw
 bytes remaining.
 
+`F_25B3` has since been promoted from that matching-C proof to [symbolic TASM](f25b3-symbolic-asm.md), eliminating its 761-byte `asm db` capsule while preserving its zero-fixup object.
+
 ## Ninety-eighth and ninety-ninth matching-C waves
 
 `F_7964` and `F_880A` add the two complete non-returning state loops that had

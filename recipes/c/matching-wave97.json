@@ -2,25 +2,6 @@
   "format": "empires-c-promotion-v1",
   "owners": [
     {
-      "id": "F_25B3",
-      "kind": "MATCHING_C",
-      "source": "src/F_25B3.C",
-      "start": 10163,
-      "end": 10924,
-      "expected_sha256": "87390ed499a15aca502bae5cac44d20edfefc16677c7f84b8fd0b2567c4742ee",
-      "classification": "code",
-      "artifact": "regions/F_25B3.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_25b3",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      }
-    },
-    {
       "id": "F_28AC",
       "kind": "MATCHING_C",
       "source": "src/F_28AC.C",
@@ -77,5 +58,8 @@
         "module_segments": {}
       }
     }
+  ],
+  "superseded_owners": [
+    "F_25B3: docs/f25b3-symbolic-asm.md"
   ]
 }

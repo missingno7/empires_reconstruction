@@ -1550,8 +1550,8 @@
     },
     {
       "id": "F_25B3",
-      "kind": "MATCHING_C",
-      "source": "src/F_25B3.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_25B3.ASM",
       "start": 10163,
       "end": 10924,
       "expected_sha256": "87390ed499a15aca502bae5cac44d20edfefc16677c7f84b8fd0b2567c4742ee",
@@ -1565,6 +1565,13 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "method": "Pinned TASM 1.0 symbolic assembly with local same-contribution call relations",
+        "text_bytes": 761,
+        "omf_fixups": 0,
+        "omf_public": "_f_25b3",
+        "extent_evidence": "docs/f25b3-symbolic-asm.md"
       }
     },
     {

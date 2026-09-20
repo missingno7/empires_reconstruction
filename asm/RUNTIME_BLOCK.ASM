@@ -111,7 +111,7 @@ _f039c label near
     runtime_dispatch:
     xor bh,bh
     ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).
-    db 08ah,01eh,0cdh,0bfh
+    mov bl,byte ptr ds:[0bfcdh]
     shl bx,1
     jmp word ptr cs:[bx+3d8h]
     ; EGA/VGA planar-mode initializer reached from the dispatch table.
@@ -242,9 +242,9 @@ _f039c label near
     ret
     runtime_dispatch_3e2:
     ; DI is intentionally cleared with its original encoding.
-    db 032h,0ffh
+    xor bh,bh
     ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).
-    db 08ah,01eh,0cdh,0bfh
+    mov bl,byte ptr ds:[0bfcdh]
     shl bx,1
     jmp word ptr cs:[bx+3e2h]
     runtime_3e2_handler:
@@ -497,9 +497,9 @@ _f039c label near
     mov bp,sp
     db 057h,056h
     cld
-    db 0a1h,0c8h,040h
+    mov ax,word ptr ds:[40c8h]
     ; SI supplies the 160-byte planar stride; raw bytes remain tracked.
-    db 0beh,0a0h,000h
+    mov si,0a0h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
@@ -616,7 +616,7 @@ _f039c label near
     mov bx,[bp+0eh]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
     db 003h,0f8h
@@ -961,7 +961,17 @@ _f039c label near
     or byte ptr es:[di],al
     sub di,0a0h
     loop runtime_f03c3_high_loop
-    db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,047h,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h
+    add si,0a0h
+    sub si,bx
+    pop di
+    inc di
+    dec dx
+    jne $-62h
+    pop ds
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03C6: state-driven planar compositing primitive.
     runtime_f03c6:
     push bp
@@ -1166,7 +1176,9 @@ rb_145c:
     sub [bp-2],bx
     shl bx,1
     shl bx,1
-    db 026h,08ah,00ch,046h,04fh
+    mov cl,byte ptr es:[si]
+    inc si
+    dec di
     push bx
     sub ah,ah
     db 026h,08ah,004h

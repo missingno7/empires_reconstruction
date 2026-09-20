@@ -65,11 +65,12 @@ public order, thirteen fixups, and downstream byte-identical TLINK result.
 
 ## C_D61C_D79C
 
-`recipes/modules/C_D61C_D79C.json` combines F_D61C and F_D79C into one fresh
-507-byte `_TEXT` contribution with no fixups. The canonical exact-link chain
-uses it in place of both proof objects and retains byte-identical output. This
-is structural module evidence only: both source owners are still classified as
-mechanical inline-assembly capsules and need symbolic recovery separately.
+`C_D61C_D79C` remains independent compatible-C evidence, but the canonical
+path now uses `M_D61C_D79C`: a 507-byte symbolic TASM module. Its two entries
+share an ES:DI record-stream renderer and the `0x2380` 24-cell attribute
+lattice; the first entry temporarily highlights the lattice while rendering.
+The module retains public offsets 0 and 384, no OMF fixups, and the complete
+byte-identical structural link.
 
 ## M_6D86_6DCC
 

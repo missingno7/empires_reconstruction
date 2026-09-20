@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 16588,
-      "owners": 21,
-      "sources": 21
+      "bytes": 16081,
+      "owners": 19,
+      "sources": 19
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 6029,
-      "owners": 70,
-      "sources": 70
+      "bytes": 6536,
+      "owners": 72,
+      "sources": 72
     },
     {
       "level": "MECHANICAL_C",
@@ -85,11 +85,6 @@
       "bytes": 385
     },
     {
-      "owner": "F_D61C",
-      "source": "src/F_D61C.C",
-      "bytes": 384
-    },
-    {
       "owner": "F_B7F9",
       "source": "src/F_B7F9.C",
       "bytes": 366
@@ -130,17 +125,12 @@
       "bytes": 125
     },
     {
-      "owner": "F_D79C",
-      "source": "src/F_D79C.C",
-      "bytes": 123
-    },
-    {
       "owner": "LIB_STRLEN",
       "source": "src/LIB_STRLEN.C",
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 21,
+  "asm_db_source_files": 19,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",
@@ -289,6 +279,15 @@
         "F_C898"
       ],
       "bytes": 346
+    },
+    {
+      "id": "M_D61C_D79C",
+      "source": "asm/M_D61C_D79C.ASM",
+      "members": [
+        "F_D61C",
+        "F_D79C"
+      ],
+      "bytes": 507
     }
   ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."

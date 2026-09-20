@@ -234,16 +234,16 @@
     "raw_exe_fallback_bytes": 0,
     "source_quality": {
       "ASM_DB_CAPSULE": {
-        "bytes": 16588,
-        "owners": 21
+        "bytes": 16081,
+        "owners": 19
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
         "bytes": 2141,
         "owners": 22
       },
       "SYMBOLIC_ASM": {
-        "bytes": 6029,
-        "owners": 70
+        "bytes": 6536,
+        "owners": 72
       },
       "MECHANICAL_C": {
         "bytes": 34221,
@@ -257,7 +257,7 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 312,
+    "isolated_function_proof_units": 311,
     "reconstructed_shared_modules": 19,
     "structural_source_modules": [
       {
@@ -421,6 +421,16 @@
         ],
         "start": 51578,
         "end": 51924
+      },
+      {
+        "id": "M_D61C_D79C",
+        "source": "asm/M_D61C_D79C.ASM",
+        "members": [
+          "F_D61C",
+          "F_D79C"
+        ],
+        "start": 55324,
+        "end": 55831
       }
     ],
     "active_structural_adapters": [

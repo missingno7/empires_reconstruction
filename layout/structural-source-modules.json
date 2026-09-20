@@ -317,6 +317,26 @@
         "module_segments": {}
       },
       "evidence": "The contiguous sound-backend selection, voice-table reload, voice reset, timer-pump, and OPL register-output entries share the 0x1762..0x1830 sound-state block. One fresh symbolic TASM object has public offsets 0, 81, 186, 253, and 286, exactly 346 bound _TEXT bytes, and the original thirteen data/call fixups."
+    },
+    {
+      "id": "M_D61C_D79C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_D61C_D79C.ASM",
+      "start": 55324,
+      "end": 55831,
+      "members": [
+        "F_D61C",
+        "F_D79C"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_d61c",
+        "span": 2,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups."
     }
   ]
 }

@@ -1,31 +1,8 @@
 {
   "format": "empires-grinder-queue-v1",
-  "input_fingerprint": "0daafdff11d5c28dcfa9422da0ca3c43350963a3cb012f0aaceab33fcbe23811",
+  "input_fingerprint": "dfaf89b795c88d29dac8174337cec6dea0c9dbf078089b3cade3d67e1f9d238b",
   "selection": "Highest priority CHEAP task only; skip SUPERVISOR",
   "tasks": [
-    {
-      "id": "RUNTIME_BLOCK:1143-119C",
-      "priority": 10059,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "CHEAP",
-      "risk": "LOW",
-      "range": [
-        4419,
-        4508
-      ],
-      "bytes": 89,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [
-        "_f03b4",
-        "_wipe"
-      ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1143-119C",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1143-119C --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_1143-119C.json",
-      "promotion_blocker": null
-    },
     {
       "id": "RUNTIME_BLOCK:10C1-10EE",
       "priority": 10035,

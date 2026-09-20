@@ -533,10 +533,47 @@ _f039c label near
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0b7h,024h,039h,08bh,046h,004h,0d1h,0e8h,003h,0f0h,08bh,05eh,008h,0d1h,0ebh,08bh,056h,00ah,0b8h,0a0h
-    db 000h,02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f0h,003h,0f8h,04ah,075h,0efh,01fh,083h,03eh,0bch
-    db 000h,001h,075h,024h,08bh,05eh,00eh,081h,0fbh,0c8h,000h,073h,01bh,0c4h,03eh,0c4h,040h,08bh,046h,00ch,0d1h,0e8h,08ah,0e3h
-    db 0abh,08bh,046h,008h,0d1h,0e8h,08bh,05eh,00ah,08ah,0e3h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h
+    lds si,dword ptr [bx+3924h]
+    mov ax,[bp+4]
+    shr ax,1
+    add si,ax
+    mov bx,[bp+8]
+    shr bx,1
+    mov dx,[bp+0ah]
+    mov ax,0a0h
+    sub ax,bx
+    runtime_f03b4_copy_loop:
+    mov cx,bx
+    shr cx,1
+    rep movsw
+    rcl cx,1
+    rep movsb
+    add si,ax
+    add di,ax
+    dec dx
+    jne runtime_f03b4_copy_loop
+    pop ds
+    cmp word ptr ds:[0bch],1
+    jne runtime_f03b4_done
+    mov bx,[bp+0eh]
+    cmp bx,0c8h
+    jae runtime_f03b4_done
+    les di,dword ptr ds:[40c4h]
+    mov ax,[bp+0ch]
+    shr ax,1
+    mov ah,bl
+    stosw
+    mov ax,[bp+8]
+    shr ax,1
+    mov bx,[bp+0ah]
+    mov ah,bl
+    stosw
+    mov word ptr ds:[40c4h],di
+    runtime_f03b4_done:
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03B7: reverse-direction planar rectangle copy.
     runtime_f03b7:
     push bp

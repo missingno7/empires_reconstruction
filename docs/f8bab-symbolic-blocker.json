@@ -1,0 +1,23 @@
+{
+  "format": "empires-symbolic-asm-blocker-v1",
+  "owner": "F_8BAB",
+  "text_bytes": 1275,
+  "status": "BLOCKED_PENDING_EMBEDDED_TABLE_PARTITION",
+  "evidence": {
+    "linear_disassembly_failure_offsets": [
+      "0x8Cxx",
+      "0x8F10"
+    ],
+    "symptoms": [
+      "undefined symbolic segment token at decoded data",
+      "invalid 16-bit instruction forms after an indirect jump table"
+    ],
+    "candidate_object": "build/F_8BAB_symbolic.ASM"
+  },
+  "next_required_evidence": [
+    "partition code from embedded control/data records",
+    "recover each table encoding and branch entry target",
+    "assemble code and table sections symbolically with exact offsets"
+  ],
+  "policy": "Do not promote a linear disassembly that interprets table bytes as instructions."
+}

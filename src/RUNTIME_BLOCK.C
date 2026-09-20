@@ -751,8 +751,18 @@ void f039c()
     asm db 08bh,016h,0c8h,040h
     asm mov dh,dl
     asm and dx,0f00fh
-    asm db 0c4h,076h,008h,08bh
-    asm db 05eh,006h,0d1h,0e3h,0d1h,0e3h,0c5h,0bfh,024h,039h,08bh,05eh,004h,0d1h,0ebh,003h,0fbh,033h,0dbh,08bh,0cbh,026h,08ah,01ch
+    /* Source and destination descriptors are both indexed by plane. */
+    asm db 0c4h,076h,008h
+    asm mov bx,[bp+6]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c5h,0bfh,024h,039h
+    asm mov bx,[bp+4]
+    asm shr bx,1
+    asm db 003h,0fbh
+    asm xor bx,bx
+    asm mov cx,bx
+    asm db 026h,08ah,01ch
     asm db 046h,0c7h,046h,0feh,0a0h,000h,029h,05eh,0feh,0d1h,0e3h,0d1h,0e3h,026h,08ah,00ch,046h,04fh,053h,02ah,0e4h,026h,08ah,004h
     asm db 046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh
     asm db 008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h

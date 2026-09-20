@@ -533,8 +533,29 @@ _f039c label near
     cld
     mov ax,[bp+4]
     shr ax,1
-    db 08bh,07eh,006h,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h,0f8h,0c5h,076h,008h,0adh,08bh,0d8h,0adh,08bh,0d0h
-    db 0b8h,0a0h,000h,02bh,0c3h,08bh,0cbh,0f3h,0a4h,003h,0f8h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h
+    mov di,[bp+6]
+    shl di,1
+    shl di,1
+    les di,dword ptr [di+3924h]
+    add di,ax
+    lds si,dword ptr [bp+8]
+    lodsw
+    mov bx,ax
+    lodsw
+    mov dx,ax
+    mov ax,0a0h
+    sub ax,bx
+    runtime_f03b1_copy_loop:
+    mov cx,bx
+    rep movsb
+    add di,ax
+    dec dx
+    jne runtime_f03b1_copy_loop
+    pop ds
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03B4 / wipe: planar rectangle copy with word-aligned interior.
     runtime_f03b4:
     push bp

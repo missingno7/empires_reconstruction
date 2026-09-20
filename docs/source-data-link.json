@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 25834,
+  "typed_bss_source_bytes": 31436,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1038,8 +1038,31 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g6ac4_buffer",
+            "count": 1,
+            "element_bytes": 482,
+            "source_type": "unsigned char[482]"
+          },
+          {
+            "offset": 482,
+            "name": "g6ca6_buffer",
+            "count": 1,
+            "element_bytes": 482,
+            "source_type": "unsigned char[482]"
+          },
+          {
+            "offset": 964,
+            "name": "g6e88_buffer",
+            "count": 1,
+            "element_bytes": 162,
+            "source_type": "unsigned char[162]"
+          }
+        ],
         "object_sha256": "a12d0fd482883e9f4a984b36c97889a2c187d108ac6c2dcd80c9f23f370ba825",
-        "source_sha256": "c86a0044dd993f416d6f284740f3022d1f402e187f162a290a55f4d26fb138ed"
+        "source_sha256": "f81d98f186de868e7ccc77fa80b23e0d9decce3e316cdf104c1a5c523322dcff"
       },
       {
         "id": "G6F2A_RECORD_TABLE_BSS",
@@ -1127,8 +1150,24 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g735e_buffer",
+            "count": 1,
+            "element_bytes": 162,
+            "source_type": "unsigned char[162]"
+          },
+          {
+            "offset": 162,
+            "name": "g7400_buffer",
+            "count": 1,
+            "element_bytes": 162,
+            "source_type": "unsigned char[162]"
+          }
+        ],
         "object_sha256": "65a4cf7c6e54dc579547b02fba031d81f25c7f50c63f6a257bcbe24fd5e3953c",
-        "source_sha256": "f9fbafe52860d1e5b874d3ed8ed99a55805bb091ea34975baa5b87df1b2affa2"
+        "source_sha256": "015f322a0a4d907bb22ee18bcdd75c6c91af8042ebc93b0c01a6b156dbf41b90"
       },
       {
         "id": "A74A2_RECORD_TABLE_BSS",
@@ -1160,8 +1199,24 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g7904_buffer",
+            "count": 1,
+            "element_bytes": 187,
+            "source_type": "unsigned char[187]"
+          },
+          {
+            "offset": 187,
+            "name": "cel_records",
+            "count": 5,
+            "element_bytes": 793,
+            "source_type": "struct CEL[5]"
+          }
+        ],
         "object_sha256": "23e4d9912c55922722cb34d80f7d798f2f4327aa83adb9625ebe94704e3c9c0a",
-        "source_sha256": "6c24a2be03a1084c47f2986ed3d33f7e8f155e9e3f082b0915d644a3efb82b5d"
+        "source_sha256": "c2daed7faef5f1a8568875ce631f980c26c78324e9a19e2347881cdeb72868ce"
       },
       {
         "id": "G893C_RECORD_TABLE_BSS",

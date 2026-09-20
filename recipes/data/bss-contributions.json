@@ -96,7 +96,30 @@
       "owner_candidate": "F_200F resources 47, 48, and 9",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g6ac4_buffer",
+          "count": 1,
+          "element_bytes": 482,
+          "source_type": "unsigned char[482]"
+        },
+        {
+          "offset": 482,
+          "name": "g6ca6_buffer",
+          "count": 1,
+          "element_bytes": 482,
+          "source_type": "unsigned char[482]"
+        },
+        {
+          "offset": 964,
+          "name": "g6e88_buffer",
+          "count": 1,
+          "element_bytes": 162,
+          "source_type": "unsigned char[162]"
+        }
+      ]
     },
     {
       "id": "G6F2A_RECORD_TABLE_BSS",
@@ -181,7 +204,23 @@
       "owner_candidate": "F_200F resources 44 and 45",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g735e_buffer",
+          "count": 1,
+          "element_bytes": 162,
+          "source_type": "unsigned char[162]"
+        },
+        {
+          "offset": 162,
+          "name": "g7400_buffer",
+          "count": 1,
+          "element_bytes": 162,
+          "source_type": "unsigned char[162]"
+        }
+      ]
     },
     {
       "id": "A74A2_RECORD_TABLE_BSS",
@@ -212,7 +251,23 @@
       "owner_candidate": "F_200F resource-46 buffer plus F_233E/F_4517 five-record CEL workspace",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g7904_buffer",
+          "count": 1,
+          "element_bytes": 187,
+          "source_type": "unsigned char[187]"
+        },
+        {
+          "offset": 187,
+          "name": "cel_records",
+          "count": 5,
+          "element_bytes": 793,
+          "source_type": "struct CEL[5]"
+        }
+      ]
     },
     {
       "id": "G893C_RECORD_TABLE_BSS",

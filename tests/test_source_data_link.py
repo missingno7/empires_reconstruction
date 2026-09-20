@@ -113,6 +113,7 @@ class SourceDataLinkTests(unittest.TestCase):
         self.assertTrue(report['byte_comparison']['load_image']['equal'])
         self.assertTrue(report['byte_comparison']['text']['equal'])
         self.assertEqual(report['synthetic_bss_bytes'], 0)
+        self.assertEqual(report['typed_bss_source_bytes'], 37250)
         self.assertEqual(report['partitioned_bss_source_bytes'], 37250)
         self.assertEqual(report['unpartitioned_bss_source_bytes'], 0)
         self.assertFalse(report['dgroup_scaffold_present'])

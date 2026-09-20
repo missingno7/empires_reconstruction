@@ -335,9 +335,9 @@ def run(verify=True):
               'temporary_runtime_data_aliases': runtime_aliases,
               'byte_comparison': (compare_linked_executable(work / 'WORK/OUT.EXE', ROOT / 'assets/AEPROG.EXE')
                                   if verify else comparison_not_requested(work / 'WORK/OUT.EXE')),
-              'limitation': ('Ordered source DATA and canonical BSS anchors; the 34-byte F_01CE '
-                             'prefix is a symbolic BSS contribution, while the remaining BSS storage '
-                             'and historical module grouping remain unpartitioned.')}
+              'limitation': ('Ordered source DATA and canonical BSS anchors are complete; BSS '
+                             'storage is represented by source-derived typed reserves, while historical '
+                             'translation-unit ownership remains to be recovered.')}
     write_json(ROOT / 'build/source-data-link-report.json', report)
     receipt = dict(report)
     # The checked-in reconstruction receipt records reproducible linker facts,

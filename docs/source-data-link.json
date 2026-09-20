@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 37083,
+  "typed_bss_source_bytes": 37250,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1853,6 +1853,41 @@
             "source_type": "unsigned char"
           },
           {
+            "offset": 20,
+            "name": "gbfce_video_control",
+            "count": 16,
+            "element_bytes": 1,
+            "source_type": "unsigned char[16]"
+          },
+          {
+            "offset": 36,
+            "name": "gbfde_resource_offsets",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned far *"
+          },
+          {
+            "offset": 40,
+            "name": "gbfe2_control_0",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char[4]"
+          },
+          {
+            "offset": 44,
+            "name": "gbfe6_control_1",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char[4]"
+          },
+          {
+            "offset": 48,
+            "name": "gbfea_control_2",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char[4]"
+          },
+          {
             "offset": 52,
             "name": "gbfee_resource_view_0",
             "count": 1,
@@ -1916,6 +1951,433 @@
             "source_type": "int[24]"
           },
           {
+            "offset": 246,
+            "name": "gc0b0_motion_cursor",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 248,
+            "name": "gc0b2_view_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 250,
+            "name": "gc0b4_view_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 252,
+            "name": "gc0b6_motion_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 254,
+            "name": "gc0b8_motion_direction",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 256,
+            "name": "gc0ba_motion_table_offset",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 258,
+            "name": "gc0bc_motion_table_segment",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 260,
+            "name": "gc0be_motion_limit",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 262,
+            "name": "gc0c0_motion_flags",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 264,
+            "name": "gc0c2_motion_value",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 266,
+            "name": "gc0c4_motion_value",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 268,
+            "name": "gc0c6_motion_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 270,
+            "name": "gc0c8_video_status",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 271,
+            "name": "gc0c9_file_handle",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 273,
+            "name": "gc0cb_record_type",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 274,
+            "name": "gc0cc_buffer",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 278,
+            "name": "gc0d0_tick_deadline",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned long"
+          },
+          {
+            "offset": 282,
+            "name": "gc0d4_timer_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 284,
+            "name": "gc0d6_pointer_words",
+            "count": 2,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *[2]"
+          },
+          {
+            "offset": 292,
+            "name": "gc0de_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 294,
+            "name": "gc0e0_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 296,
+            "name": "gc0e2_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 298,
+            "name": "gc0e4_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 300,
+            "name": "gc0e6_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 302,
+            "name": "gc0e8_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 304,
+            "name": "gc0ea_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 306,
+            "name": "gc0ec_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 308,
+            "name": "gc0ee_ui_resource",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 312,
+            "name": "gc0f2_ui_resource",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 316,
+            "name": "gc0f6_ui_resource",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 320,
+            "name": "gc0fa_ui_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 322,
+            "name": "gc0fc_ui_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 324,
+            "name": "gc0fe_ui_descriptor",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 328,
+            "name": "gc102_ui_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 330,
+            "name": "gc104_ui_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 332,
+            "name": "gc106_ui_width",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 334,
+            "name": "gc108_ui_height",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 336,
+            "name": "gc10a_ui_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 338,
+            "name": "gc10c_ui_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 340,
+            "name": "gc10e_ui_width",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 342,
+            "name": "gc110_ui_height",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 344,
+            "name": "gc112_ui_label",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "char near *"
+          },
+          {
+            "offset": 346,
+            "name": "gc114_ui_label",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "char near *"
+          },
+          {
+            "offset": 348,
+            "name": "gc116_ui_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 350,
+            "name": "gc118_ui_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 352,
+            "name": "gc11a_ui_width",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 354,
+            "name": "gc11c_ui_height",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 356,
+            "name": "gc11e_ui_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 358,
+            "name": "gc120_ui_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 360,
+            "name": "gc122_ui_width",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 362,
+            "name": "gc124_ui_height",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 364,
+            "name": "gc126_ui_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 366,
+            "name": "gc128_ui_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 368,
+            "name": "gc12a_ui_width",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 370,
+            "name": "gc12c_ui_height",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 372,
+            "name": "gc12e_ui_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 374,
+            "name": "gc130_ui_control",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 376,
+            "name": "gc132_ui_flags",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 377,
+            "name": "gc133_ui_flags",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 378,
+            "name": "gc134_ui_flags",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 379,
+            "name": "gc135_ui_flags",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
             "offset": 380,
             "name": "gc136_ui_text",
             "count": 2,
@@ -1924,7 +2386,7 @@
           }
         ],
         "object_sha256": "c25e15c1771d92f2906ef25dbcc8b625d08f07cb08b5257bc7540af90010681e",
-        "source_sha256": "5faefc43a1fb86952b47c231fbd0b6125a537c30b3bf4a843d2f46d5f05d3c03"
+        "source_sha256": "ce0c9fb1b4379d1a663d031b7bef621ddd4e923e7cb8bf9da7db61f80bb95e6c"
       },
       {
         "id": "SLOT_GRID_BSS",
@@ -2033,10 +2495,17 @@
             "count": 1,
             "element_bytes": 2,
             "source_type": "int"
+          },
+          {
+            "offset": 17,
+            "name": "gc35f_animation_tail",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
           }
         ],
         "object_sha256": "f8fc73cda89542686e8eb86966df212c775d9af6b8045805b4138be098ee3704",
-        "source_sha256": "ce018760d8192c63bddfb6568a59868447665c4b1b6f0a93e6038023f2025922"
+        "source_sha256": "2c14b36312812c7f0d021b1ee2b24f173fdb00fd2efd63e39f6bc82b7854303c"
       },
       {
         "id": "GC360_RECORD_TABLE_BSS",
@@ -2629,5 +3098,5 @@
       "first_difference": 58
     }
   },
-  "limitation": "Ordered source DATA and canonical BSS anchors; the 34-byte F_01CE prefix is a symbolic BSS contribution, while the remaining BSS storage and historical module grouping remain unpartitioned."
+  "limitation": "Ordered source DATA and canonical BSS anchors are complete; BSS storage is represented by source-derived typed reserves, while historical translation-unit ownership remains to be recovered."
 }

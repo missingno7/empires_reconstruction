@@ -1,9 +1,10 @@
+; Word alignment lets TLINK supply the preceding inter-module pad.
 ; M_6D86_6DCC -- contiguous two-stage decoder module.
 ;
 ; The PackBits stage ends at 6DC5h.  The seven following bytes are the
 ; bit-reader state addressed through CS by the LZ stage at 6DCCh, so they are
 ; module-local initialized code-segment storage, not alignment padding.
-_TEXT	SEGMENT BYTE PUBLIC 'CODE'
+_TEXT	SEGMENT word PUBLIC 'CODE'
 DGROUP	GROUP	_DATA,_BSS
 	ASSUME	CS:_TEXT,DS:DGROUP
 _TEXT	ENDS
@@ -13,7 +14,7 @@ _DATA	ENDS
 _BSS	SEGMENT WORD PUBLIC 'BSS'
 b@	LABEL	BYTE
 _BSS	ENDS
-_TEXT	SEGMENT BYTE PUBLIC 'CODE'
+_TEXT	SEGMENT word PUBLIC 'CODE'
 	PUBLIC	_f6d86, _f6dcc
 
 _f6d86	PROC	NEAR

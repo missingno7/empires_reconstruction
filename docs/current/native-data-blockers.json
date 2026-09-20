@@ -1,0 +1,126 @@
+{
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "experiments": [
+    {
+      "module": "F_9D8E",
+      "status": "REJECTED_NOT_PROMOTED",
+      "candidate_sha256": "874a31a45311eb90d5b05e45c542a4e86c91776831d956bf5ee6a3ec61b67059",
+      "expected_data_dgroup_offset": 4701,
+      "native_data_segment_definition": {
+        "index": 2,
+        "name": "_DATA",
+        "class": "DATA",
+        "length": 20,
+        "alignment_code": 2,
+        "alignment": "word",
+        "combine_code": 2,
+        "combine": "public",
+        "big": false,
+        "use_32bit_offset": false,
+        "frame": null,
+        "offset": null,
+        "overlay_index": 1,
+        "acbp": 72
+      },
+      "load_image_equal": false,
+      "relocation_count": 106,
+      "relocation_multiset_equal": false,
+      "first_changed_relocations": [
+        {
+          "index": 33,
+          "expected": 68758,
+          "actual": 68759
+        },
+        {
+          "index": 36,
+          "expected": 69138,
+          "actual": 69140
+        },
+        {
+          "index": 37,
+          "expected": 69118,
+          "actual": 69120
+        },
+        {
+          "index": 38,
+          "expected": 69113,
+          "actual": 69115
+        },
+        {
+          "index": 39,
+          "expected": 69098,
+          "actual": 69100
+        },
+        {
+          "index": 40,
+          "expected": 69093,
+          "actual": 69095
+        }
+      ],
+      "interpretation": "Native WORD alignment conflicts with the odd canonical DATA start; resolving original translation-unit DATA grouping is required. No relocation reordering or object correction accepted."
+    },
+    {
+      "module": "C_75F3_7856",
+      "status": "REJECTED_NOT_PROMOTED",
+      "candidate_sha256": "e06c0e139f56a22837c4a1f0ae6f979a467da6848f23404e55479b2055abcbdd",
+      "expected_data_dgroup_offset": 2951,
+      "native_data_segment_definition": {
+        "index": 2,
+        "name": "_DATA",
+        "class": "DATA",
+        "length": 43,
+        "alignment_code": 2,
+        "alignment": "word",
+        "combine_code": 2,
+        "combine": "public",
+        "big": false,
+        "use_32bit_offset": false,
+        "frame": null,
+        "offset": null,
+        "overlay_index": 1,
+        "acbp": 72
+      },
+      "load_image_equal": false,
+      "relocation_count": 106,
+      "relocation_multiset_equal": false,
+      "first_changed_relocations": [
+        {
+          "index": 13,
+          "expected": 67500,
+          "actual": 67502
+        },
+        {
+          "index": 14,
+          "expected": 67490,
+          "actual": 67492
+        },
+        {
+          "index": 15,
+          "expected": 67486,
+          "actual": 67488
+        },
+        {
+          "index": 16,
+          "expected": 67478,
+          "actual": 67480
+        },
+        {
+          "index": 17,
+          "expected": 67470,
+          "actual": 67472
+        },
+        {
+          "index": 18,
+          "expected": 67466,
+          "actual": 67468
+        }
+      ],
+      "interpretation": "Native WORD alignment conflicts with the odd canonical DATA start; resolving original translation-unit DATA grouping is required. No relocation reordering or object correction accepted."
+    }
+  ],
+  "current_status": "RESOLVED_BY_NATIVE_SOURCE_OWNERSHIP",
+  "resolution": {
+    "F_9D8E": "209-byte dialog text precedes descriptor in native DATA; module starts at even 118C.",
+    "C_75F3_7856": "Seven-byte typed shared UI state precedes captions; module starts at even 0B80."
+  }
+}

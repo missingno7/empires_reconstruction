@@ -41,6 +41,9 @@ extern void f6997(void);          /* 6997 */
 extern void f6b66(void);          /* 6B66 */
 /*@SYM _f6b66=0x6B66 kind=f key=functions/F_6B66.entry*/
 
+/* The historical argument aliases record 5's zero word, not local storage. */
+extern char near menu_empty_record[];
+
 int fa658(void)
 {
     register int sel, quit;
@@ -53,7 +56,7 @@ int fa658(void)
     sv1 = f792c();
     f7925();
     box(0, 0, 0x140, 0xc8);
-    f8480("", 1);
+    f8480(menu_empty_record, 1);
     f01ce(0);
     bar(0x26, 0x73, 0xf4);
     box(0x24, 0x73, 0xf6, 1);

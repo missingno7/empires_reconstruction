@@ -1,0 +1,557 @@
+{
+  "id": "RUNTIME_BLOCK:07C5-0825",
+  "priority": 10096,
+  "kind": "SYMBOLIC_ASM_RECOVERY",
+  "difficulty": "CHEAP",
+  "risk": "LOW",
+  "range": [
+    1989,
+    2085
+  ],
+  "range_hex": [
+    "0x07C5",
+    "0x0825"
+  ],
+  "coordinate": "runtime-owner-relative, half-open",
+  "bytes": 96,
+  "raw_bytes_remaining": 96,
+  "source": "asm/RUNTIME_BLOCK.ASM",
+  "source_lines": [
+    1086,
+    1131
+  ],
+  "known_roots": [
+    "_box",
+    "_f039f"
+  ],
+  "dependencies": [
+    "runtime_blit_dispatch"
+  ],
+  "unresolved_targets": [],
+  "known_calls": [],
+  "branches": [],
+  "indirect_control_flow": [],
+  "probable_tables": [],
+  "classification": "CODE",
+  "neighbors": [
+    {
+      "start": 1986,
+      "end": 1989,
+      "category": "intentional_exact_encoding"
+    },
+    {
+      "start": 2085,
+      "end": 2087,
+      "category": "raw_unresolved"
+    }
+  ],
+  "instructions": [
+    {
+      "offset": 1989,
+      "size": 1,
+      "bytes": "55",
+      "mnemonic": "push",
+      "operands": "bp",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 1990,
+      "size": 2,
+      "bytes": "8bec",
+      "mnemonic": "mov",
+      "operands": "bp, sp",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 1992,
+      "size": 1,
+      "bytes": "56",
+      "mnemonic": "push",
+      "operands": "si",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 1993,
+      "size": 1,
+      "bytes": "57",
+      "mnemonic": "push",
+      "operands": "di",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 1994,
+      "size": 1,
+      "bytes": "1e",
+      "mnemonic": "push",
+      "operands": "ds",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 1995,
+      "size": 1,
+      "bytes": "fc",
+      "mnemonic": "cld",
+      "operands": "",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 1996,
+      "size": 3,
+      "bytes": "8b5e06",
+      "mnemonic": "mov",
+      "operands": "bx, word ptr [bp + 6]",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ss",
+          "base": "bp",
+          "index": null,
+          "displacement": 6,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "offset": 1999,
+      "size": 2,
+      "bytes": "d1e3",
+      "mnemonic": "shl",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2001,
+      "size": 2,
+      "bytes": "d1e3",
+      "mnemonic": "shl",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2003,
+      "size": 4,
+      "bytes": "c4b72439",
+      "mnemonic": "les",
+      "operands": "si, ptr [bx + 0x3924]",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "bx",
+          "index": null,
+          "displacement": 14628,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "offset": 2007,
+      "size": 3,
+      "bytes": "8b4604",
+      "mnemonic": "mov",
+      "operands": "ax, word ptr [bp + 4]",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ss",
+          "base": "bp",
+          "index": null,
+          "displacement": 4,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "offset": 2010,
+      "size": 2,
+      "bytes": "8bd0",
+      "mnemonic": "mov",
+      "operands": "dx, ax",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2012,
+      "size": 2,
+      "bytes": "d1ea",
+      "mnemonic": "shr",
+      "operands": "dx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2014,
+      "size": 2,
+      "bytes": "03f2",
+      "mnemonic": "add",
+      "operands": "si, dx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2016,
+      "size": 2,
+      "bytes": "d1eb",
+      "mnemonic": "shr",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2018,
+      "size": 2,
+      "bytes": "d1eb",
+      "mnemonic": "shr",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2020,
+      "size": 2,
+      "bytes": "86fb",
+      "mnemonic": "xchg",
+      "operands": "bl, bh",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2022,
+      "size": 2,
+      "bytes": "d1eb",
+      "mnemonic": "shr",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2024,
+      "size": 2,
+      "bytes": "d1eb",
+      "mnemonic": "shr",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2026,
+      "size": 2,
+      "bytes": "02e3",
+      "mnemonic": "add",
+      "operands": "ah, bl",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2028,
+      "size": 2,
+      "bytes": "32db",
+      "mnemonic": "xor",
+      "operands": "bl, bl",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2030,
+      "size": 2,
+      "bytes": "03c3",
+      "mnemonic": "add",
+      "operands": "ax, bx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2032,
+      "size": 2,
+      "bytes": "d1eb",
+      "mnemonic": "shr",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2034,
+      "size": 2,
+      "bytes": "d1eb",
+      "mnemonic": "shr",
+      "operands": "bx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2036,
+      "size": 2,
+      "bytes": "03c3",
+      "mnemonic": "add",
+      "operands": "ax, bx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2038,
+      "size": 3,
+      "bytes": "8b5608",
+      "mnemonic": "mov",
+      "operands": "dx, word ptr [bp + 8]",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ss",
+          "base": "bp",
+          "index": null,
+          "displacement": 8,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "offset": 2041,
+      "size": 2,
+      "bytes": "d1e8",
+      "mnemonic": "shr",
+      "operands": "ax, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2043,
+      "size": 3,
+      "bytes": "83d200",
+      "mnemonic": "adc",
+      "operands": "dx, 0",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2046,
+      "size": 2,
+      "bytes": "8bf8",
+      "mnemonic": "mov",
+      "operands": "di, ax",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2048,
+      "size": 1,
+      "bytes": "06",
+      "mnemonic": "push",
+      "operands": "es",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2049,
+      "size": 3,
+      "bytes": "b800b8",
+      "mnemonic": "mov",
+      "operands": "ax, 0xb800",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2052,
+      "size": 2,
+      "bytes": "8ec0",
+      "mnemonic": "mov",
+      "operands": "es, ax",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2054,
+      "size": 1,
+      "bytes": "1f",
+      "mnemonic": "pop",
+      "operands": "ds",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2055,
+      "size": 2,
+      "bytes": "d1ea",
+      "mnemonic": "shr",
+      "operands": "dx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2057,
+      "size": 3,
+      "bytes": "83d200",
+      "mnemonic": "adc",
+      "operands": "dx, 0",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2060,
+      "size": 3,
+      "bytes": "8b4e0a",
+      "mnemonic": "mov",
+      "operands": "cx, word ptr [bp + 0xa]",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ss",
+          "base": "bp",
+          "index": null,
+          "displacement": 10,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "offset": 2063,
+      "size": 3,
+      "bytes": "b8a000",
+      "mnemonic": "mov",
+      "operands": "ax, 0xa0",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2066,
+      "size": 2,
+      "bytes": "2bc2",
+      "mnemonic": "sub",
+      "operands": "ax, dx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2068,
+      "size": 3,
+      "bytes": "bb0020",
+      "mnemonic": "mov",
+      "operands": "bx, 0x2000",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2071,
+      "size": 2,
+      "bytes": "2bda",
+      "mnemonic": "sub",
+      "operands": "bx, dx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2073,
+      "size": 3,
+      "bytes": "bda080",
+      "mnemonic": "mov",
+      "operands": "bp, 0x80a0",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2076,
+      "size": 1,
+      "bytes": "51",
+      "mnemonic": "push",
+      "operands": "cx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2077,
+      "size": 2,
+      "bytes": "8bca",
+      "mnemonic": "mov",
+      "operands": "cx, dx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2079,
+      "size": 2,
+      "bytes": "d1e9",
+      "mnemonic": "shr",
+      "operands": "cx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 2081,
+      "size": 2,
+      "bytes": "f3a5",
+      "mnemonic": "rep movsw",
+      "operands": "word ptr es:[di], word ptr [si]",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "es",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 2
+        },
+        {
+          "segment": "ds",
+          "base": "si",
+          "index": null,
+          "displacement": 0,
+          "width": 2
+        }
+      ]
+    },
+    {
+      "offset": 2083,
+      "size": 2,
+      "bytes": "d1d1",
+      "mnemonic": "rcl",
+      "operands": "cx, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    }
+  ],
+  "known_labels": [
+    {
+      "name": "rt_07c5",
+      "offset": 1989,
+      "line": 1085
+    }
+  ],
+  "applicable_rules": [
+    "ABSOLUTE_MEMORY",
+    "BRANCH_WIDTH",
+    "BOUNDARY",
+    "QUALITY",
+    "PUBLICS",
+    "FRESHNESS"
+  ],
+  "expected_fixups": [],
+  "blocked_attempts": [],
+  "expected_publics": [],
+  "known_globals": [
+    {
+      "instruction": 2003,
+      "offset": 14628,
+      "symbols": [
+        "_g3924"
+      ],
+      "addressing": "indexed"
+    }
+  ],
+  "global_resolution": "Exact DGROUP displacement bindings; indexed references identify a base, not a proven effective address.",
+  "rules": "docs/current/tasm-reconstruction-rules.md",
+  "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:07C5-0825",
+  "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:07C5-0825 --promote",
+  "acceptance_required": true,
+  "promotion_blocker": null,
+  "source_sha256": "b6829acd25b4842be0ca3711159448e6ab59e31dac402f0ad245a8f3f68020d4",
+  "recommended_task": "Symbolic TASM transcription",
+  "card": "docs/current/candidates/RUNTIME_BLOCK_07C5-0825.json",
+  "input_fingerprint": "502f26111042cc9d06209e13f761c37ca5e1537fa87cbd971cacbb504ad62e37"
+}

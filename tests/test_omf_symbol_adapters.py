@@ -5,6 +5,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from omf import OmfReader
+from data_omf import emit_data
 from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
                           normalize_external_case, rename_external,
                           rename_external_addend)
@@ -12,15 +13,12 @@ from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
 
 class OmfSymbolAdapterTests(unittest.TestCase):
     def test_rename_external_preserves_reference_indices(self):
-        candidates = sorted((ROOT / 'build').glob('tlink-structural-*/compile/WORK/R0199.OBJ'))
-        if not candidates:
-            self.skipTest('structural TLINK probe has not produced the caller object')
-        source = candidates[-1].read_bytes()
+        source = emit_data(bytes(4), {'pointer': 0}, [{'offset': 0, 'target': '_ff9be'}], 'ADAPTER_TEST')
         renamed = rename_external(source, '_ff9be', '_toupper')
         module = OmfReader().read(renamed, 'F_A525.OBJ')
         self.assertNotIn('_ff9be', module.externals)
         self.assertIn('_toupper', module.externals)
-        self.assertEqual(len(module.fixups_in('_TEXT')), len(OmfReader().read(source).fixups_in('_TEXT')))
+        self.assertEqual(len(module.fixups_in('_DATA')), len(OmfReader().read(source).fixups_in('_DATA')))
 
     def test_external_demand_round_trips(self):
         module = OmfReader().read(make_external_demand(['_toupper', '_f6c57']))
@@ -42,16 +40,14 @@ class OmfSymbolAdapterTests(unittest.TestCase):
         self.assertIn('_OTHER', module.externals)
 
     def test_rename_external_addend_preserves_fixup_and_updates_displacement(self):
-        candidates = sorted((ROOT / 'build').glob('tlink-structural-*/compile/WORK/R0199.OBJ'))
-        if not candidates:
-            self.skipTest('structural TLINK probe has not produced the caller object')
-        source = candidates[-1].read_bytes()
+        source = emit_data(bytes(4), {'pointer': 0}, [{'offset': 0, 'target': '_ff9be'}], 'ADAPTER_TEST')
         renamed = rename_external_addend(source, '_ff9be', '_toupper', 3)
         before = OmfReader().read(source)
         after = OmfReader().read(renamed)
         self.assertNotIn('_ff9be', after.externals)
         self.assertIn('_toupper', after.externals)
-        self.assertEqual(len(before.fixups_in('_TEXT')), len(after.fixups_in('_TEXT')))
+        self.assertEqual(len(before.fixups_in('_DATA')), len(after.fixups_in('_DATA')))
+        self.assertEqual(after.segment_bytes('_DATA'), bytes([3, 0, 0, 0]))
 
 
 if __name__ == '__main__':

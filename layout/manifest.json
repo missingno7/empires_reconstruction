@@ -584,8 +584,8 @@
     },
     {
       "id": "RUNTIME_BLOCK",
-      "kind": "MATCHING_C",
-      "source": "src/RUNTIME_BLOCK.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/RUNTIME_BLOCK.ASM",
       "start": 1436,
       "end": 8007,
       "expected_sha256": "1a3f517688ed204f52e8d9991ea7098ce138d53880cb2692003af0fb70561783",
@@ -3945,7 +3945,8 @@
       "artifact": "regions/PAD_004CA7.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "zero-pad-v1"
+        "encoder": "zero-pad-v1",
+        "linker_alignment_before": "F_4AA8"
       }
     },
     {
@@ -4966,15 +4967,15 @@
             "public": "_f5321",
             "addend": 0,
             "evidence": "functions/F_5321.entry"
+          },
+          "_q139d": {
+            "owner": "DATA_010FA5_RECORDS",
+            "addend": 40,
+            "coordinate": "DGROUP_offset",
+            "evidence": "Shared record storage referenced by source; no duplicate local initializer"
           }
         },
-        "module_segments": {
-          "_DATA": {
-            "offset": 5021,
-            "coordinate": "DGROUP_offset",
-            "evidence": "module_data_base_votes/_DATA"
-          }
-        }
+        "module_segments": {}
       },
       "provenance": {
         "project": "empires_forged",
@@ -7235,7 +7236,8 @@
       "artifact": "regions/PAD_006F85.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "zero-pad-v1"
+        "encoder": "zero-pad-v1",
+        "linker_alignment_before": "M_6D86_6DCC"
       }
     },
     {
@@ -7483,11 +7485,6 @@
             "public": "_f747b",
             "addend": 0
           },
-          "_g0b83": {
-            "offset": 2947,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206B3.phys"
-          },
           "_gc0ee": {
             "offset": 49390,
             "coordinate": "DGROUP_offset",
@@ -7502,6 +7499,11 @@
             "offset": 49404,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2C.phys"
+          },
+          "_gb83": {
+            "offset": 2947,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P206B3.phys"
           }
         },
         "module_segments": {}
@@ -7787,7 +7789,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206AE.phys"
           },
-          "_g0b80": {
+          "_gb80": {
             "offset": 2944,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B0.phys"
@@ -7989,7 +7991,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g0b82": {
+          "_gb82": {
             "offset": 2946,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B2.phys"
@@ -8917,11 +8919,11 @@
     },
     {
       "id": "F_7964",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_7964.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_7964.C",
       "start": 31588,
-      "end": 32211,
-      "expected_sha256": "5c8bd1e4b5ce260af4e03b94d4e045b2001f9f37d62bc6e350ea2afcca7fadae",
+      "end": 32252,
+      "expected_sha256": "de109c5f38ffd03b933dc460d69320b4fa490fef043b54e137bdbb24eaf59c6e",
       "classification": "code",
       "artifact": "regions/F_7964.bin",
       "matching_status": "EQUAL",
@@ -8961,10 +8963,10 @@
           },
           "_f6b66": {
             "coordinate": "code_offset",
+            "evidence": "functions/F_6B66.entry",
             "owner": "F_6B66",
             "public": "_f6b66",
-            "addend": 0,
-            "evidence": "F_7964 symbolic relation"
+            "addend": 0
           },
           "_f703e": {
             "coordinate": "code_offset",
@@ -8982,10 +8984,10 @@
           },
           "_f7bfc": {
             "coordinate": "code_offset",
+            "evidence": "functions/F_7BFC.entry",
             "owner": "F_7BFC",
             "public": "_f7bfc",
-            "addend": 0,
-            "evidence": "F_7964 symbolic relation"
+            "addend": 0
           },
           "_f7d91": {
             "coordinate": "code_offset",
@@ -9008,11 +9010,6 @@
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f_7dd3": {
-            "coordinate": "code_offset",
-            "offset": 31699,
-            "evidence": "F_7DD3 public; TASM relocation supplies +0x23"
-          },
           "_f03ab": {
             "coordinate": "code_offset",
             "offset": 939,
@@ -9022,33 +9019,6 @@
             "coordinate": "code_offset",
             "offset": 927,
             "evidence": "F_039F entry"
-          }
-        },
-        "module_segments": {}
-      }
-    },
-    {
-      "id": "F_7DD3",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_7DD3.ASM",
-      "start": 32211,
-      "end": 32252,
-      "expected_sha256": "7747606212d52f8fa3d13b2d2eba1fc38c9b107a30f180cd45ae1f74945cd5de",
-      "classification": "code-continuation",
-      "artifact": "regions/F_7DD3.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_7dd3",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_f7bfc": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_7BFC.entry",
-            "owner": "F_7BFC",
-            "public": "_f7bfc",
-            "addend": 0
           },
           "_f791e": {
             "coordinate": "code_offset",
@@ -9078,15 +9048,31 @@
             "public": "_f6997",
             "addend": 0
           },
-          "_f6b66": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6B66.entry",
-            "owner": "F_6B66",
-            "public": "_f6b66",
-            "addend": 0
+          "_gc0fe": {
+            "offset": 49406,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BC2E.phys"
           }
         },
         "module_segments": {}
+      },
+      "provenance": {
+        "c_recovery": "Ordinary C matched against all 664 original bytes with pinned Turbo C, including callback switch and former F_7DD3 shared-frame cleanup; no inline ASM, DB, or object corrections.",
+        "former_regions": [
+          {
+            "id": "F_7964",
+            "start": 31588,
+            "end": 32211,
+            "expected_sha256": "5c8bd1e4b5ce260af4e03b94d4e045b2001f9f37d62bc6e350ea2afcca7fadae"
+          },
+          {
+            "id": "F_7DD3",
+            "start": 32211,
+            "end": 32252,
+            "expected_sha256": "7747606212d52f8fa3d13b2d2eba1fc38c9b107a30f180cd45ae1f74945cd5de"
+          }
+        ],
+        "boundary_evidence": "F_7DD3 consumes the parent frame. Its sole active symbolic reference is the parent early return to cleanup+0x23; no independent caller."
       }
     },
     {
@@ -10070,11 +10056,11 @@
     },
     {
       "id": "F_880A",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_880A.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_880A.C",
       "start": 35338,
-      "end": 35844,
-      "expected_sha256": "3364f3b1f31421a9e6ed893e61e57cb766932e9a1571974baa599c60b9acd1bc",
+      "end": 35895,
+      "expected_sha256": "23d421e823ac73924d559d6d3749d997b1d6318645101860ecda5d918f7801c7",
       "classification": "code",
       "artifact": "regions/F_880A.bin",
       "matching_status": "EQUAL",
@@ -10100,10 +10086,10 @@
           },
           "_f6b66": {
             "coordinate": "code_offset",
+            "evidence": "functions/F_6B66.entry",
             "owner": "F_6B66",
             "public": "_f6b66",
-            "addend": 0,
-            "evidence": "F_880A symbolic direct near call"
+            "addend": 0
           },
           "_f703e": {
             "coordinate": "code_offset",
@@ -10160,27 +10146,7 @@
             "public": "_f8414",
             "addend": 0,
             "evidence": "F_880A symbolic direct near call"
-          }
-        },
-        "module_segments": {}
-      }
-    },
-    {
-      "id": "F_8C04",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_8C04.ASM",
-      "start": 35844,
-      "end": 35895,
-      "expected_sha256": "b0f6648ea80e55ab9bec42832c6fb7e7896eb0aa73960519aea38fdfdcc092c5",
-      "classification": "code-continuation",
-      "artifact": "regions/F_8C04.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_8c04",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
+          },
           "_f8453": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8453.entry",
@@ -10215,16 +10181,27 @@
             "owner": "F_6997",
             "public": "_f6997",
             "addend": 0
-          },
-          "_f6b66": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6B66.entry",
-            "owner": "F_6B66",
-            "public": "_f6b66",
-            "addend": 0
           }
         },
         "module_segments": {}
+      },
+      "provenance": {
+        "c_recovery": "Ordinary C matched against all 557 original bytes with pinned Turbo C; one shared frame including former F_8C04 cleanup. No inline ASM, DB, or object corrections.",
+        "former_regions": [
+          {
+            "id": "F_880A",
+            "start": 35338,
+            "end": 35844,
+            "expected_sha256": "3364f3b1f31421a9e6ed893e61e57cb766932e9a1571974baa599c60b9acd1bc"
+          },
+          {
+            "id": "F_8C04",
+            "start": 35844,
+            "end": 35895,
+            "expected_sha256": "b0f6648ea80e55ab9bec42832c6fb7e7896eb0aa73960519aea38fdfdcc092c5"
+          }
+        ],
+        "boundary_evidence": "F_8C04 has no independent frame or external symbolic references; reached by F_880A fallthrough and loop-exit branches."
       }
     },
     {
@@ -12926,16 +12903,15 @@
             "public": "_f6997",
             "addend": 0,
             "evidence": "functions/DONE_E.entry"
+          },
+          "_menu_empty_record": {
+            "owner": "DATA_010FA5_RECORDS",
+            "addend": 80,
+            "coordinate": "DGROUP_offset",
+            "evidence": "Shared record storage referenced by source; no duplicate local initializer"
           }
         },
-        "module_segments": {
-          "_DATA": {
-            "owner": "DATA_010FA5_RECORDS",
-            "coordinate": "DGROUP_offset",
-            "addend": 80,
-            "evidence": "compiled empty string aliases the zero word beginning record 5"
-          }
-        }
+        "module_segments": {}
       }
     },
     {
@@ -13357,8 +13333,8 @@
     },
     {
       "id": "F_AB66",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_AB66.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_AB66.C",
       "start": 44390,
       "end": 44775,
       "expected_sha256": "3a00a8123efd3909e805f148b9d8c8a459760f24bc10027cacea6931b6f86c0f",
@@ -13371,8 +13347,215 @@
         "public": "_fab66",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f039f": {
+            "coordinate": "code_offset",
+            "offset": 927,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_fa13f": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_A13F",
+            "public": "_fa13f",
+            "addend": 0
+          },
+          "_faa1f": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_AA1F",
+            "public": "_faa1f",
+            "addend": 0
+          },
+          "_fa33f": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_A33F",
+            "public": "_fa33f",
+            "addend": 0
+          },
+          "_g176e": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5998,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_gc46e": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50286,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_gc57e": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50558,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_g237e": {
+            "coordinate": "DGROUP_offset",
+            "offset": 9086,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_fa85e": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_A85E",
+            "public": "_fa85e",
+            "addend": 0
+          },
+          "_f01ce": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_01CE",
+            "public": "_f01ce",
+            "addend": 0
+          },
+          "_g139d": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5021,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_g13ed": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5101,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_fa28d": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_A28D",
+            "public": "_fa28d",
+            "addend": 0
+          },
+          "_fa09d": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_A09D",
+            "public": "_fa09d",
+            "addend": 0
+          },
+          "_g9a": {
+            "coordinate": "DGROUP_offset",
+            "offset": 154,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0
+          },
+          "_f03c9": {
+            "coordinate": "code_offset",
+            "offset": 969,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_f03a8": {
+            "coordinate": "code_offset",
+            "offset": 936,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_fcb48": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0
+          },
+          "_f6997": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_6997",
+            "public": "_f6997",
+            "addend": 0
+          },
+          "_gc5c6": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50630,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_fd5a6": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_D5A6",
+            "public": "_fd5a6",
+            "addend": 0
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0
+          },
+          "_fc834": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_C834",
+            "public": "_fc834",
+            "addend": 0
+          },
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0
+          },
+          "_fa223": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_A223",
+            "public": "_fa223",
+            "addend": 0
+          },
+          "_fd593": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0
+          },
+          "_g1772": {
+            "coordinate": "DGROUP_offset",
+            "offset": 6002,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_gc470": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50288,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0
+          },
+          "_f9f40": {
+            "coordinate": "code_offset",
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
+            "owner": "F_9F40",
+            "public": "_f9f40",
+            "addend": 0
+          },
+          "_g98": {
+            "coordinate": "DGROUP_offset",
+            "offset": 152,
+            "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
+          }
+        },
         "module_segments": {}
+      },
+      "provenance": {
+        "c_recovery": "Ordinary C matched against all 385 original bytes with pinned Turbo C; no inline ASM or DB."
       }
     },
     {
@@ -17729,7 +17912,8 @@
       "artifact": "regions/DATA_00D81B_PAD.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "zero-pad-v1"
+        "encoder": "zero-pad-v1",
+        "linker_alignment_before": "M_D61C_D79C"
       }
     },
     {
@@ -17781,7 +17965,8 @@
       "artifact": "regions/DATA_00DA17_PAD.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "zero-pad-v1"
+        "encoder": "zero-pad-v1",
+        "linker_alignment_before": "M_D818_D825"
       }
     },
     {
@@ -21621,29 +21806,33 @@
     {
       "id": "DATA_0107B0_TABLE",
       "kind": "EXACT_DATA",
-      "source": "src/data/DATA_0107B0_TABLE.json",
+      "source": "src/F_75F3.C",
       "start": 67504,
       "end": 67510,
       "expected_sha256": "bfefee9c96d0d9fd8ef4e230abeb23ef63e97872b53cbedb07867265ff0e29b8",
-      "classification": "control_pointer_table",
+      "classification": "initialized_shared_ui_state",
       "artifact": "regions/DATA_0107B0_TABLE.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "u16le-table-v1"
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_75F3",
+        "segment": "_DATA"
       }
     },
     {
       "id": "DATA_0107B6_PAD",
       "kind": "EXACT_DATA",
-      "source": "src/data/DATA_0107B6_PAD.json",
+      "source": "src/F_75F3.C",
       "start": 67510,
       "end": 67511,
       "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
-      "classification": "alignment_padding",
+      "classification": "initialized_shared_ui_state",
       "artifact": "regions/DATA_0107B6_PAD.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "zero-pad-v1"
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_75F3",
+        "segment": "_DATA"
       }
     },
     {
@@ -22010,12 +22199,14 @@
       "end": 69261,
       "kind": "EXACT_DATA",
       "classification": "static_text",
-      "source": "src/data/TEXT_118C.json",
+      "source": "src/F_9D8E.C",
       "artifact": "regions/TEXT_118C.bin",
       "expected_sha256": "15906bc790213fbc39e32c7b51c0166ac5a404b5b2ab1401315d2bc82f859795",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "ascii-nul-v1"
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_9D8E",
+        "segment": "_DATA"
       }
     },
     {

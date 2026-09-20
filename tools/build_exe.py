@@ -1,35 +1,18 @@
 """Build AEPROG.EXE from reconstructed sources through Turbo Link 2.0.
 
-This is the canonical structural executable build.  Probe scripts remain the
-small, independently useful evidence tools; this entry point owns their order
-and creates every receipt in the current invocation.
+This is the canonical one-link production build. Historical probes remain
+independent evidence tools and never provide cached success to this path.
 """
 import argparse
 import hashlib
-import os
 from pathlib import Path
-import shutil
 import subprocess
 
-from probe_exact_structural_link import publish as publish_exact_receipt
-from probe_shared_module_link import run as link_shared_module
-from probe_source_data_link import run as link_source_data
-from probe_tlink_layout import run as build_baseline
-from mz import MZ
-from reconstruct import ROOT, read_json, write_json
-from report_source_quality import run as report_source_quality
-from report_structural_status import status as structural_status
+from reconstruct import ROOT, read_json
 from dos_runner import resolve_runner
 
 
 ORIGINAL_SHA256 = '1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10'
-MODULE_RECIPES = ('C_6C26_6C87.json', 'C_75F3_7856.json', 'C_AD25_AF45.json')
-TRANSIENT_REPORTS = ('tlink-structural-report.json', 'source-data-link-report.json',
-                     'shared-source-data-link-report.json', 'data-interleaving-report.json',
-                     'exe-build-report.json')
-SESSION_PREFIXES = ('tlink-structural-', 'source-data-', 'shared-link-',
-                    'interleave-', 'module-group-')
-
 
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -51,142 +34,29 @@ def validate_toolchain(root):
     return lock, verified
 
 
-def clear_stale_state(root):
-    """Remove only generated structural-link state before a fresh build.
 
-    Archive outputs and unrelated diagnostics remain intact. Each staged
-    object below is then created in a new ``build/<prefix>*`` session, so an
-    object or receipt from an earlier invocation cannot be selected.
-    """
-    build = (root / 'build').resolve()
-    removed = []
-    for name in TRANSIENT_REPORTS + ('AEPROG.EXE',):
-        path = build / name
-        if path.exists():
-            path.unlink()
-            removed.append(path.name)
-    for recipe in MODULE_RECIPES:
-        ident = read_json(root / 'recipes/modules' / recipe)['id']
-        path = build / f'shared-source-data-link-report_{ident}.json'
-        if path.exists():
-            path.unlink()
-            removed.append(path.name)
-    for path in build.iterdir():
-        if path.is_dir() and path.name.startswith(SESSION_PREFIXES):
-            if not path.resolve().is_relative_to(build):
-                raise ValueError(f'Structural session escapes build directory: {path}')
-            shutil.rmtree(path)
-            removed.append(path.name)
-    return removed
-
-
-def build(root=ROOT, verify=True, runner=None, dosbox=None):
-    """Run a fresh source -> OMF -> TLINK build and publish ``build/AEPROG.EXE``."""
-    (root / 'build').mkdir(exist_ok=True)
-    lock, toolchain_files = validate_toolchain(root)
-    removed_state = clear_stale_state(root)
-    runner = runner or resolve_runner(lock, backend='dosbox' if dosbox else None, executable=dosbox)
-
-    # This baseline is construction, not a cached input.  Replacing F_F9BE
-    # with the identical selected CC.LIB module prevents a duplicate TOUPPER
-    # contribution while preserving historical library extraction.
-    baseline = build_baseline(root=root, linker=root / 'toolchain/TLINK.EXE',
-                              runner=runner,
-                              promote_toupper=True, scaffold_dgroup=True, verify=verify)
-    if baseline['status'] != 'MAP_AVAILABLE' or baseline['link']['unresolved_count']:
-        raise ValueError('Fresh baseline link failed')
-    source = link_source_data(verify=verify)
-    if source['status'] != 'LINKED':
-        raise ValueError('Source DATA link failed')
-    previous = None
-    stages, shared_reports = [], []
-    for recipe_name in MODULE_RECIPES:
-        recipe_path = root / 'recipes/modules' / recipe_name
-        shared = link_shared_module(recipe_path, True, previous, verify=verify, runner=runner)
-        stages.append({'recipe': recipe_name, 'candidate': shared['candidate'],
-                       'fixupp_order_adapter': shared['fixupp_order_adapter']})
-        shared_reports.append(shared)
-        previous = root / 'build' / f"shared-source-data-link-report_{shared['candidate']}.json"
-    # The source-DATA stage writes the canonical, source-module response order
-    # before TLINK.  Shared source replacements preserve those object slots;
-    # no post-hoc interleaving or OMF transformation follows.
-    final = shared_reports[-1]
-    exact_receipt = (publish_exact_receipt(source, shared_reports, final)
-                     if verify else {'status': 'NOT_VERIFIED'})
-    candidate = Path(final['byte_comparison']['candidate'])
-    published = root / 'build/AEPROG.EXE'
-    if not candidate.exists():
-        raise ValueError('TLINK did not produce its final executable')
-    shutil.copyfile(candidate, published)
-    linked_mz = MZ.parse(published.read_bytes())
-    if len(linked_mz.relocations) != 106:
-        raise ValueError(f'TLINK emitted {len(linked_mz.relocations)} relocations, expected 106')
-
-    oracle = root / 'assets/AEPROG.EXE'
-    verification = {'performed': False,
-                    'reason': ('verification not requested' if not verify
-                               else 'original fixture unavailable')}
-    if verify:
-        if not oracle.exists():
-            raise ValueError('Verification requested but assets/AEPROG.EXE is unavailable')
-        verification = {'performed': True,
-                        'byte_identical': published.read_bytes() == oracle.read_bytes(),
-                        'sha256': sha256(published), 'expected_sha256': ORIGINAL_SHA256,
-                        'relocation_order_equal': final['matching_relocation_prefix_entries'] == 106}
-        if not all((verification['byte_identical'], verification['sha256'] == ORIGINAL_SHA256,
-                    verification['relocation_order_equal'])):
-            raise ValueError('Structural build differs from the original executable')
-    bss_layout = read_json(root / 'src/data/GAME_BSS.json')
-    report = {
-        'format': 'empires-exe-build-v1', 'status': 'BUILT',
-        'output': str(published), 'sha256': sha256(published), 'size': published.stat().st_size,
-        'runner': runner.receipt(),
-        'compiler': 'Turbo C 2.0', 'assembler': 'TASM 1.0',
-        'linker': lock['linkers'][0], 'toolchain_files': toolchain_files,
-        'compiled_source_modules': baseline['compile']['owner_count'],
-        'structural_source_modules': baseline.get('structural_source_modules', []),
-        'generated_data_components': len(read_json(root / 'recipes/data/game-initialized.json')['components']),
-        'bss': {'bytes': bss_layout['length'],
-                'publics': len(bss_layout['publics']), 'source': 'src/data/GAME_BSS.json',
-                'partitioned_source_bytes': source['partitioned_bss_source_bytes'],
-                'typed_source_bytes': source['typed_bss_source_bytes'],
-                'aggregate_remainder_bytes': source['unpartitioned_bss_source_bytes'],
-                'contributions': source['bss_source']['contributions']},
-        'unresolved_symbols': baseline['link']['unresolved_count'],
-        'relocations': len(linked_mz.relocations), 'shared_module_stages': stages,
-        'fresh_build': {'removed_previous_state': removed_state,
-                        'final_link_session': str(candidate.parent.parent)},
-        'exact_structural_receipt': exact_receipt['status'],
-        'remaining_structural_adapters': [],
-        'fixture_dependency': {
-            'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '
-                                  'manifest, MZ header, source-DATA recipes and GAME_BSS metadata'),
-        },
-        'verification': verification,
-    }
-    write_json(root / 'build/exe-build-report.json', report)
-    report_source_quality()
-    # The status file is a derived view of this canonical build receipt.  Keep
-    # the fixed-layout baseline visible for diagnosis, but publish the exact
-    # linked result and source-quality/BSS closure metrics as the current state.
-    write_json(root / 'docs/structural-status.json', structural_status(root, baseline, report))
-    return report
+def build(root=ROOT, verify=True, runner=None, dosbox=None, research=False):
+    from build_production import build as production_build
+    return production_build(root, verify, runner, dosbox, research)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', nargs='?', choices=('verify',),
                         help='verify the published EXE against assets/AEPROG.EXE (the default)')
+    parser.add_argument('--research', action='store_true', help='use content-addressed object cache; never acceptance')
     parser.add_argument('--no-verify', action='store_true',
-                        help='skip the final published-EXE byte comparison (component proof still needs the fixture)')
+                        help='skip the optional fixture comparison; exact SHA and relocation proof still apply')
     parser.add_argument('--dosbox', type=Path, help='force the DOSBox reference backend')
     parser.add_argument('--msdos-player', type=Path, help='force an MS-DOS Player executable')
     parser.add_argument('--runner', choices=('msdos-player', 'dosbox'), help='select the DOS execution host')
     args = parser.parse_args()
     try:
         runner = resolve_runner(read_json(ROOT / 'layout/toolchain.json'), backend=args.runner, executable=args.msdos_player or args.dosbox)
-        report = build(verify=not args.no_verify, runner=runner)
+        report = build(verify=not args.no_verify, runner=runner, research=args.research)
     except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
+        for name in ('AEPROG.EXE', 'exe-build-report.json'):
+            (ROOT / 'build' / name).unlink(missing_ok=True)
         print(f'FAIL: {error}')
         return 1
     print(f"AEPROG.EXE: {report['status']} {report['sha256']}")

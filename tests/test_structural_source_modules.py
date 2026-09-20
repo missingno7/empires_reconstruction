@@ -122,35 +122,24 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_D61C', 'F_D79C'])
         self.assertEqual(module['end'] - module['start'], 507)
 
-    def test_latest_structural_link_stages_one_untouched_decoder_object(self):
-        path = ROOT / 'build/tlink-structural-report.json'
+    def test_production_plan_stages_untouched_structural_modules(self):
+        from omf import OmfReader
+        path = ROOT / 'build/exe-build-report.json'
         if not path.exists():
-            self.skipTest('structural TLINK experiment has not run')
+            self.skipTest('canonical production build has not run')
         report = read_json(path)
-        expected = {
-            'M_6D86_6DCC': 377,
-            'M_6B1A_6B4A': 76,
-            'M_C1A0_C232': 221,
-            'M_C9A4_CA91': 247,
-            'M_C27D_C567': 797,
-            'M_CB5C_CD23': 641,
-            'M_DAD7_DB35': 137,
-            'M_D818_D825': 71,
-            'M_C5A8_C5C6': 41,
-            'M_D386_D3CF': 84,
-            'M_988F_98CB': 121,
-            'M_50D2_53BF': 312,
-            'M_C5D1_C706': 388,
-            'M_C77A_C898': 346,
-            'M_D61C_D79C': 507,
-        }
-        staged = {item['owner']: item for item in report['relocatable_scaffold']
-                  if item.get('owner') in expected}
-        self.assertEqual(set(staged), set(expected))
-        for owner, length in expected.items():
-            self.assertEqual(staged[owner]['owned_text_length'], length)
-            self.assertNotIn('transforms', staged[owner])
-        self.assertEqual({item['id'] for item in report['structural_source_modules']}, set(expected))
+        self.assertEqual(report['link_invocations'], 1)
+        plan = read_json(ROOT / 'layout/production-plan.json')
+        structural = read_json(ROOT / 'layout/structural-source-modules.json')['modules']
+        staged = {m['id']:m for m in plan['modules']}
+        work = Path(report['session'])
+        for module in structural:
+            item = staged[module['id']]
+            original_path = report.get('compiled_objects', {}).get(module['id'], 'WORK/' + item['object'])
+            original = (work / 'compile' / original_path).read_bytes()
+            linked = (work / 'WORK' / item['object']).read_bytes()
+            self.assertEqual(original, linked, module['id'])
+            self.assertEqual(OmfReader().read(linked).segment_length('_TEXT'), module['end'] - module['start'])
 
 
 if __name__ == '__main__':

@@ -23,6 +23,7 @@ from omf_scaffold import (make_dgroup_scaffold, make_external_demand,
 from omf import OmfReader
 from mz import MZ
 from reconstruct import ROOT, compile_sources, read_json, sha, write_json
+from link_support import link_errors, replace_library_module_segments, _omf_records
 from dos_runner import DosRunner, resolve_runner
 
 
@@ -69,12 +70,6 @@ def linker_files(linker):
             result.append(path)
     return result
 
-
-def link_errors(log, map_text=''):
-    """TLINK can write fixup failures only to its detailed map."""
-    return list(dict.fromkeys(line.strip() for line in (log + '\n' + map_text).splitlines()
-                             if re.search(r'error:|undefined symbol|bad object file|fatal|fixup overflow',
-                                          line, re.I)))
 
 
 def initialized_data_end(segments):
@@ -198,60 +193,6 @@ def structural_source_modules(root, manifest):
         claimed.update(members)
     return modules
 
-
-def _omf_records(data):
-    """Yield ``(kind, start, end)`` for one OMF module or object."""
-    at = 0
-    while at < len(data):
-        if at + 3 > len(data):
-            raise ValueError('truncated OMF record')
-        length = struct.unpack_from('<H', data, at + 1)[0]
-        end = at + 3 + length
-        if end > len(data) or length < 1:
-            raise ValueError('invalid OMF record length')
-        yield data[at], at, end
-        at = end
-
-
-def replace_library_module_segments(library, module_name, replacement_object):
-    """Preserve library OMF record topology while replacing verified segment bytes.
-
-    Hosts may choose different LEDATA chunk boundaries. The pinned library's
-    record layout is retained; only its initialized payload is replaced.
-    """
-    page = struct.unpack_from('<H', library, 1)[0] + 3; module_start = page
-    while module_start < len(library) and library[module_start] == OmfReader.THEADR:
-        at, name = module_start, ''
-        while at < len(library):
-            kind, length = library[at], struct.unpack_from('<H', library, at + 1)[0]
-            if kind == OmfReader.THEADR: name = library[at + 4:at + 4 + library[at + 3]].decode('latin1')
-            at += 3 + length
-            if kind in (OmfReader.MODEND16, OmfReader.MODEND32): break
-        module_end = at
-        if name == module_name:
-            original = library[module_start:module_end]
-            source_module, original_module = OmfReader().read(replacement_object, module_name), OmfReader().read(original, module_name)
-            if source_module.segments != original_module.segments or source_module.segment_lengths != original_module.segment_lengths:
-                raise ValueError(f'{module_name}: source segment topology differs')
-            # Existing library LEDATA payloads are patch locations; their segment
-            # indexes and offsets remain untouched, including record boundaries.
-            payloads = {segment: source_module.segment_bytes(segment) for segment in source_module.segments}
-            patched = bytearray(original)
-            for kind, begin, finish in _omf_records(original):
-                if kind != OmfReader.LEDATA16: continue
-                body = original[begin + 3:finish - 1]; seg, offset = body[0], struct.unpack_from('<H', body, 1)[0]
-                segment = original_module.segment_defs[seg - 1]['name']; length = len(body) - 3
-                replacement = payloads[segment][offset:offset + length]
-                if len(replacement) != length: raise ValueError(f'{module_name}: LEDATA lies outside source segment')
-                patched[begin + 6:finish - 1] = replacement
-                patched[finish - 1] = (-sum(patched[begin:finish - 1])) & 255
-            patched_module = bytes(patched); parsed = OmfReader().read(patched_module, module_name)
-            for segment in source_module.segments:
-                if parsed.segment_bytes(segment) != source_module.segment_bytes(segment):
-                    raise ValueError(f'{module_name}: source/library {segment} replacement failed')
-            return library[:module_start] + patched_module + library[module_end:]
-        module_start = ((module_end + page - 1) // page) * page
-    raise ValueError(f'{module_name}: module not found in library')
 
 
 def run(root=ROOT, linker=DEFAULT_LINKER, runner=None, dosbox=None, promote_toupper=False,

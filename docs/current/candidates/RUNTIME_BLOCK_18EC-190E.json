@@ -1,0 +1,303 @@
+{
+  "id": "RUNTIME_BLOCK:18EC-190E",
+  "priority": 9994,
+  "kind": "SYMBOLIC_ASM_RECOVERY",
+  "difficulty": "CHEAP",
+  "risk": "LOW",
+  "range": [
+    6380,
+    6414
+  ],
+  "range_hex": [
+    "0x18EC",
+    "0x190E"
+  ],
+  "coordinate": "runtime-owner-relative, half-open",
+  "bytes": 34,
+  "raw_bytes_remaining": 34,
+  "source": "asm/RUNTIME_BLOCK.ASM",
+  "source_lines": [
+    3399,
+    3415
+  ],
+  "known_roots": [
+    "_f03cf"
+  ],
+  "dependencies": [
+    "runtime_unreferenced_pixel_dispatch"
+  ],
+  "unresolved_targets": [],
+  "known_calls": [],
+  "branches": [
+    {
+      "source": 6388,
+      "target": 6395,
+      "kind": "BRANCH",
+      "resolution": {
+        "address": 7319,
+        "classification": "LOCAL_BASIC_BLOCK"
+      }
+    },
+    {
+      "source": 6398,
+      "target": 6414,
+      "kind": "BRANCH",
+      "resolution": {
+        "address": 7338,
+        "classification": "LOCAL_BASIC_BLOCK"
+      }
+    },
+    {
+      "source": 6402,
+      "target": 6409,
+      "kind": "BRANCH",
+      "resolution": {
+        "address": 7333,
+        "classification": "LOCAL_BASIC_BLOCK"
+      }
+    },
+    {
+      "source": 6412,
+      "target": 6309,
+      "kind": "BRANCH",
+      "resolution": {
+        "address": 7233,
+        "classification": "LOCAL_BASIC_BLOCK"
+      }
+    }
+  ],
+  "indirect_control_flow": [],
+  "probable_tables": [],
+  "classification": "CODE",
+  "neighbors": [
+    {
+      "start": 6378,
+      "end": 6380,
+      "category": "raw_unresolved"
+    },
+    {
+      "start": 6414,
+      "end": 6415,
+      "category": "raw_unresolved"
+    }
+  ],
+  "instructions": [
+    {
+      "offset": 6380,
+      "size": 3,
+      "bytes": "8025f0",
+      "mnemonic": "and",
+      "operands": "byte ptr [di], 0xf0",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 1
+        }
+      ]
+    },
+    {
+      "offset": 6383,
+      "size": 2,
+      "bytes": "0815",
+      "mnemonic": "or",
+      "operands": "byte ptr [di], dl",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 1
+        }
+      ]
+    },
+    {
+      "offset": 6385,
+      "size": 1,
+      "bytes": "47",
+      "mnemonic": "inc",
+      "operands": "di",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 6386,
+      "size": 2,
+      "bytes": "d0e0",
+      "mnemonic": "shl",
+      "operands": "al, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 6388,
+      "size": 2,
+      "bytes": "7305",
+      "mnemonic": "jae",
+      "operands": "0x1c97",
+      "flow": "BRANCH",
+      "memory_references": []
+    },
+    {
+      "offset": 6390,
+      "size": 3,
+      "bytes": "80250f",
+      "mnemonic": "and",
+      "operands": "byte ptr [di], 0xf",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 1
+        }
+      ]
+    },
+    {
+      "offset": 6393,
+      "size": 2,
+      "bytes": "0835",
+      "mnemonic": "or",
+      "operands": "byte ptr [di], dh",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 1
+        }
+      ]
+    },
+    {
+      "offset": 6395,
+      "size": 3,
+      "bytes": "80fc00",
+      "mnemonic": "cmp",
+      "operands": "ah, 0",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 6398,
+      "size": 2,
+      "bytes": "750e",
+      "mnemonic": "jne",
+      "operands": "0x1caa",
+      "flow": "BRANCH",
+      "memory_references": []
+    },
+    {
+      "offset": 6400,
+      "size": 2,
+      "bytes": "d0e0",
+      "mnemonic": "shl",
+      "operands": "al, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 6402,
+      "size": 2,
+      "bytes": "7305",
+      "mnemonic": "jae",
+      "operands": "0x1ca5",
+      "flow": "BRANCH",
+      "memory_references": []
+    },
+    {
+      "offset": 6404,
+      "size": 3,
+      "bytes": "8025f0",
+      "mnemonic": "and",
+      "operands": "byte ptr [di], 0xf0",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 1
+        }
+      ]
+    },
+    {
+      "offset": 6407,
+      "size": 2,
+      "bytes": "0815",
+      "mnemonic": "or",
+      "operands": "byte ptr [di], dl",
+      "flow": "FALLTHROUGH",
+      "memory_references": [
+        {
+          "segment": "ds",
+          "base": "di",
+          "index": null,
+          "displacement": 0,
+          "width": 1
+        }
+      ]
+    },
+    {
+      "offset": 6409,
+      "size": 3,
+      "bytes": "83eb10",
+      "mnemonic": "sub",
+      "operands": "bx, 0x10",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 6412,
+      "size": 2,
+      "bytes": "7f97",
+      "mnemonic": "jg",
+      "operands": "0x1c41",
+      "flow": "BRANCH",
+      "memory_references": []
+    }
+  ],
+  "known_labels": [
+    {
+      "name": "rt_18f1",
+      "offset": 6385,
+      "line": 3401
+    },
+    {
+      "name": "rt_1909",
+      "offset": 6409,
+      "line": 3413
+    }
+  ],
+  "applicable_rules": [
+    "ABSOLUTE_MEMORY",
+    "BRANCH_WIDTH",
+    "BOUNDARY",
+    "QUALITY",
+    "PUBLICS",
+    "FRESHNESS"
+  ],
+  "expected_fixups": [],
+  "blocked_attempts": [],
+  "expected_publics": [],
+  "known_globals": [],
+  "global_resolution": "Exact DGROUP displacement bindings; indexed references identify a base, not a proven effective address.",
+  "rules": "docs/current/tasm-reconstruction-rules.md",
+  "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:18EC-190E",
+  "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:18EC-190E --promote",
+  "acceptance_required": true,
+  "promotion_blocker": null,
+  "source_sha256": "b6829acd25b4842be0ca3711159448e6ab59e31dac402f0ad245a8f3f68020d4",
+  "recommended_task": "Symbolic TASM transcription",
+  "card": "docs/current/candidates/RUNTIME_BLOCK_18EC-190E.json",
+  "input_fingerprint": "502f26111042cc9d06209e13f761c37ca5e1537fa87cbd971cacbb504ad62e37"
+}

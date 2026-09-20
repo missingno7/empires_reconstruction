@@ -1,0 +1,89 @@
+{
+  "id": "RUNTIME_BLOCK:023D-023F",
+  "priority": 9992,
+  "kind": "SYMBOLIC_ASM_RECOVERY",
+  "difficulty": "CHEAP",
+  "risk": "LOW",
+  "range": [
+    573,
+    575
+  ],
+  "range_hex": [
+    "0x023D",
+    "0x023F"
+  ],
+  "coordinate": "runtime-owner-relative, half-open",
+  "bytes": 2,
+  "raw_bytes_remaining": 2,
+  "source": "asm/RUNTIME_BLOCK.ASM",
+  "source_lines": [
+    240,
+    240
+  ],
+  "known_roots": [
+    "_f039c"
+  ],
+  "dependencies": [],
+  "unresolved_targets": [],
+  "known_calls": [],
+  "branches": [
+    {
+      "source": 573,
+      "target": 501,
+      "kind": "BRANCH",
+      "resolution": {
+        "address": 1425,
+        "classification": "LOCAL_BASIC_BLOCK"
+      }
+    }
+  ],
+  "indirect_control_flow": [],
+  "probable_tables": [],
+  "classification": "CODE",
+  "neighbors": [
+    {
+      "start": 570,
+      "end": 573,
+      "category": "symbolic_instruction"
+    },
+    {
+      "start": 575,
+      "end": 578,
+      "category": "symbolic_instruction"
+    }
+  ],
+  "instructions": [
+    {
+      "offset": 573,
+      "size": 2,
+      "bytes": "7cb6",
+      "mnemonic": "jl",
+      "operands": "0x591",
+      "flow": "BRANCH",
+      "memory_references": []
+    }
+  ],
+  "known_labels": [],
+  "applicable_rules": [
+    "ABSOLUTE_MEMORY",
+    "BRANCH_WIDTH",
+    "BOUNDARY",
+    "QUALITY",
+    "PUBLICS",
+    "FRESHNESS"
+  ],
+  "expected_fixups": [],
+  "blocked_attempts": [],
+  "expected_publics": [],
+  "known_globals": [],
+  "global_resolution": "Exact DGROUP displacement bindings; indexed references identify a base, not a proven effective address.",
+  "rules": "docs/current/tasm-reconstruction-rules.md",
+  "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:023D-023F",
+  "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:023D-023F --promote",
+  "acceptance_required": true,
+  "promotion_blocker": null,
+  "source_sha256": "b6829acd25b4842be0ca3711159448e6ab59e31dac402f0ad245a8f3f68020d4",
+  "recommended_task": "Symbolic TASM transcription",
+  "card": "docs/current/candidates/RUNTIME_BLOCK_023D-023F.json",
+  "input_fingerprint": "502f26111042cc9d06209e13f761c37ca5e1537fa87cbd971cacbb504ad62e37"
+}

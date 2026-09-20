@@ -1,0 +1,4173 @@
+{
+  "format": "empires-public-index-v1",
+  "coordinate": "load-image byte address",
+  "evidence": "Final production source objects and pinned CC.LIB/C0C.OBJ; checked against fresh objects at acceptance.",
+  "publics": [
+    {
+      "symbol": "__exit",
+      "address": 260,
+      "classification": "EXACT_PUBLIC",
+      "owner": "C0C",
+      "module_members": [
+        "C0C"
+      ]
+    },
+    {
+      "symbol": "__restorezero",
+      "address": 359,
+      "classification": "EXACT_PUBLIC",
+      "owner": "C0C",
+      "module_members": [
+        "C0C"
+      ]
+    },
+    {
+      "symbol": "_abort",
+      "address": 420,
+      "classification": "EXACT_PUBLIC",
+      "owner": "C0C",
+      "module_members": [
+        "C0C"
+      ]
+    },
+    {
+      "symbol": "DGROUP@",
+      "address": 442,
+      "classification": "EXACT_PUBLIC",
+      "owner": "C0C",
+      "module_members": [
+        "C0C"
+      ]
+    },
+    {
+      "symbol": "_f01bc",
+      "address": 444,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_01BC",
+      "module_members": [
+        "F_01BC"
+      ]
+    },
+    {
+      "symbol": "_f01ce",
+      "address": 462,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_01CE",
+      "module_members": [
+        "F_01CE"
+      ]
+    },
+    {
+      "symbol": "_f020f",
+      "address": 527,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_020F",
+      "module_members": [
+        "F_020F"
+      ]
+    },
+    {
+      "symbol": "_f_0215",
+      "address": 533,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_0215",
+      "module_members": [
+        "F_0215"
+      ]
+    },
+    {
+      "symbol": "_f0232",
+      "address": 562,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_0232",
+      "module_members": [
+        "F_0232"
+      ]
+    },
+    {
+      "symbol": "_f025b",
+      "address": 603,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_025B",
+      "module_members": [
+        "F_025B"
+      ]
+    },
+    {
+      "symbol": "_f0281",
+      "address": 641,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_0281",
+      "module_members": [
+        "F_0281"
+      ]
+    },
+    {
+      "symbol": "_f034f",
+      "address": 847,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_034F",
+      "module_members": [
+        "F_034F"
+      ]
+    },
+    {
+      "symbol": "_f0355",
+      "address": 853,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_0355",
+      "module_members": [
+        "F_0355"
+      ]
+    },
+    {
+      "symbol": "_f039c",
+      "address": 924,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_box",
+      "address": 927,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f039f",
+      "address": 927,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_bar",
+      "address": 930,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03a2",
+      "address": 930,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03a5",
+      "address": 933,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_clear",
+      "address": 936,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03a8",
+      "address": 936,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03ab",
+      "address": 939,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_fill",
+      "address": 939,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03ae",
+      "address": 942,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03b1",
+      "address": 945,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03b4",
+      "address": 948,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_wipe",
+      "address": 948,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03b7",
+      "address": 951,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03ba",
+      "address": 954,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03bd",
+      "address": 957,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03c0",
+      "address": 960,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03c3",
+      "address": 963,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03c6",
+      "address": 966,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_blit",
+      "address": 969,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03c9",
+      "address": 969,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_copy",
+      "address": 972,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03cc",
+      "address": 972,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03cf",
+      "address": 975,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03d2",
+      "address": 978,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f03d5",
+      "address": 981,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f1d47",
+      "address": 7495,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1D47",
+      "module_members": [
+        "F_1D47"
+      ]
+    },
+    {
+      "symbol": "_runtime_block_end",
+      "address": 7495,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_f1ea5",
+      "address": 7845,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1EA5",
+      "module_members": [
+        "F_1EA5"
+      ]
+    },
+    {
+      "symbol": "_f1eb4",
+      "address": 7860,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1EB4",
+      "module_members": [
+        "F_1EB4"
+      ]
+    },
+    {
+      "symbol": "_f1ec0",
+      "address": 7872,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1EC0",
+      "module_members": [
+        "F_1EC0"
+      ]
+    },
+    {
+      "symbol": "_f1ecd",
+      "address": 7885,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1ECD",
+      "module_members": [
+        "F_1ECD"
+      ]
+    },
+    {
+      "symbol": "_f1f17",
+      "address": 7959,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1F17",
+      "module_members": [
+        "F_1F17"
+      ]
+    },
+    {
+      "symbol": "_f1f91",
+      "address": 8081,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_1F91",
+      "module_members": [
+        "F_1F91"
+      ]
+    },
+    {
+      "symbol": "_f200f",
+      "address": 8207,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_200F",
+      "module_members": [
+        "F_200F"
+      ]
+    },
+    {
+      "symbol": "_f2119",
+      "address": 8473,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_2119",
+      "module_members": [
+        "F_2119"
+      ]
+    },
+    {
+      "symbol": "_f21a9",
+      "address": 8617,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_21A9",
+      "module_members": [
+        "F_21A9"
+      ]
+    },
+    {
+      "symbol": "_f21db",
+      "address": 8667,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_21DB",
+      "module_members": [
+        "F_21DB"
+      ]
+    },
+    {
+      "symbol": "_f224c",
+      "address": 8780,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_224C",
+      "module_members": [
+        "F_224C"
+      ]
+    },
+    {
+      "symbol": "_f2269",
+      "address": 8809,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_2269",
+      "module_members": [
+        "F_2269"
+      ]
+    },
+    {
+      "symbol": "_f22b1",
+      "address": 8881,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_22B1",
+      "module_members": [
+        "F_22B1"
+      ]
+    },
+    {
+      "symbol": "_f233e",
+      "address": 9022,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_233E",
+      "module_members": [
+        "F_233E"
+      ]
+    },
+    {
+      "symbol": "_f250c",
+      "address": 9484,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_250C",
+      "module_members": [
+        "F_250C"
+      ]
+    },
+    {
+      "symbol": "_f257d",
+      "address": 9597,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_257D",
+      "module_members": [
+        "F_257D"
+      ]
+    },
+    {
+      "symbol": "_f_25b3",
+      "address": 9651,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_25B3",
+      "module_members": [
+        "F_25B3"
+      ]
+    },
+    {
+      "symbol": "_f_28ac",
+      "address": 10412,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_28AC",
+      "module_members": [
+        "F_28AC"
+      ]
+    },
+    {
+      "symbol": "_f2986",
+      "address": 10630,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_2986",
+      "module_members": [
+        "F_2986"
+      ]
+    },
+    {
+      "symbol": "_f2a2d",
+      "address": 10797,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_2A2D",
+      "module_members": [
+        "F_2A2D"
+      ]
+    },
+    {
+      "symbol": "_f2a70",
+      "address": 10864,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_2A70",
+      "module_members": [
+        "F_2A70"
+      ]
+    },
+    {
+      "symbol": "_f2ae2",
+      "address": 10978,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_2AE2",
+      "module_members": [
+        "F_2AE2"
+      ]
+    },
+    {
+      "symbol": "_f31c4",
+      "address": 12740,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_31C4",
+      "module_members": [
+        "F_31C4"
+      ]
+    },
+    {
+      "symbol": "_f329f",
+      "address": 12959,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_329F",
+      "module_members": [
+        "F_329F"
+      ]
+    },
+    {
+      "symbol": "_f32fa",
+      "address": 13050,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_32FA",
+      "module_members": [
+        "F_32FA"
+      ]
+    },
+    {
+      "symbol": "_f338a",
+      "address": 13194,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_338A",
+      "module_members": [
+        "F_338A"
+      ]
+    },
+    {
+      "symbol": "_f36f0",
+      "address": 14064,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_36F0",
+      "module_members": [
+        "F_36F0"
+      ]
+    },
+    {
+      "symbol": "_f3986",
+      "address": 14726,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_3986",
+      "module_members": [
+        "F_3986"
+      ]
+    },
+    {
+      "symbol": "_f3a75",
+      "address": 14965,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_3A75",
+      "module_members": [
+        "F_3A75"
+      ]
+    },
+    {
+      "symbol": "_f4517",
+      "address": 17687,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4517",
+      "module_members": [
+        "F_4517"
+      ]
+    },
+    {
+      "symbol": "_f462e",
+      "address": 17966,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_462E",
+      "module_members": [
+        "F_462E"
+      ]
+    },
+    {
+      "symbol": "_f4713",
+      "address": 18195,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4713",
+      "module_members": [
+        "F_4713"
+      ]
+    },
+    {
+      "symbol": "_f48be",
+      "address": 18622,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_48BE",
+      "module_members": [
+        "F_48BE"
+      ]
+    },
+    {
+      "symbol": "_f490d",
+      "address": 18701,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_490D",
+      "module_members": [
+        "F_490D"
+      ]
+    },
+    {
+      "symbol": "_f4943",
+      "address": 18755,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4943",
+      "module_members": [
+        "F_4943"
+      ]
+    },
+    {
+      "symbol": "_f49e3",
+      "address": 18915,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_49E3",
+      "module_members": [
+        "F_49E3"
+      ]
+    },
+    {
+      "symbol": "_f49f0",
+      "address": 18928,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_49F0",
+      "module_members": [
+        "F_49F0"
+      ]
+    },
+    {
+      "symbol": "_main",
+      "address": 19091,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4A93",
+      "module_members": [
+        "F_4A93"
+      ]
+    },
+    {
+      "symbol": "_f4aa8",
+      "address": 19112,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4AA8",
+      "module_members": [
+        "F_4AA8"
+      ]
+    },
+    {
+      "symbol": "_f4b0c",
+      "address": 19212,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4B0C",
+      "module_members": [
+        "F_4B0C"
+      ]
+    },
+    {
+      "symbol": "_f4e9f",
+      "address": 20127,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4E9F",
+      "module_members": [
+        "F_4E9F"
+      ]
+    },
+    {
+      "symbol": "_f4eeb",
+      "address": 20203,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4EEB",
+      "module_members": [
+        "F_4EEB"
+      ]
+    },
+    {
+      "symbol": "_f4f63",
+      "address": 20323,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4F63",
+      "module_members": [
+        "F_4F63"
+      ]
+    },
+    {
+      "symbol": "_f4f96",
+      "address": 20374,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_4F96",
+      "module_members": [
+        "F_4F96"
+      ]
+    },
+    {
+      "symbol": "_f50c1",
+      "address": 20673,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_50C1",
+      "module_members": [
+        "F_50C1"
+      ]
+    },
+    {
+      "symbol": "_f50d2",
+      "address": 20690,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_50D2_53BF",
+      "module_members": [
+        "F_50D2",
+        "F_53BF"
+      ]
+    },
+    {
+      "symbol": "_f53bf",
+      "address": 20927,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_50D2_53BF",
+      "module_members": [
+        "F_50D2",
+        "F_53BF"
+      ]
+    },
+    {
+      "symbol": "_f520a",
+      "address": 21002,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_520A",
+      "module_members": [
+        "F_520A"
+      ]
+    },
+    {
+      "symbol": "_f5321",
+      "address": 21281,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5321",
+      "module_members": [
+        "F_5321"
+      ]
+    },
+    {
+      "symbol": "_f5382",
+      "address": 21378,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5382",
+      "module_members": [
+        "F_5382"
+      ]
+    },
+    {
+      "symbol": "_f555b",
+      "address": 21851,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_555B",
+      "module_members": [
+        "F_555B"
+      ]
+    },
+    {
+      "symbol": "_f5593",
+      "address": 21907,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5593",
+      "module_members": [
+        "F_5593"
+      ]
+    },
+    {
+      "symbol": "_f55c7",
+      "address": 21959,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_55C7",
+      "module_members": [
+        "F_55C7"
+      ]
+    },
+    {
+      "symbol": "_f5673",
+      "address": 22131,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5673",
+      "module_members": [
+        "F_5673"
+      ]
+    },
+    {
+      "symbol": "_f568c",
+      "address": 22156,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_568C",
+      "module_members": [
+        "F_568C"
+      ]
+    },
+    {
+      "symbol": "_f56c6",
+      "address": 22214,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_56C6",
+      "module_members": [
+        "F_56C6"
+      ]
+    },
+    {
+      "symbol": "_f5a3b",
+      "address": 23099,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5A3B",
+      "module_members": [
+        "F_5A3B"
+      ]
+    },
+    {
+      "symbol": "_f5ac3",
+      "address": 23235,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5AC3",
+      "module_members": [
+        "F_5AC3"
+      ]
+    },
+    {
+      "symbol": "_f5e98",
+      "address": 24216,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5E98",
+      "module_members": [
+        "F_5E98"
+      ]
+    },
+    {
+      "symbol": "_f5f3c",
+      "address": 24380,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_5F3C",
+      "module_members": [
+        "F_5F3C"
+      ]
+    },
+    {
+      "symbol": "_f6021",
+      "address": 24609,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6021",
+      "module_members": [
+        "F_6021"
+      ]
+    },
+    {
+      "symbol": "_f6036",
+      "address": 24630,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6036",
+      "module_members": [
+        "F_6036"
+      ]
+    },
+    {
+      "symbol": "_f60a9",
+      "address": 24745,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_60A9",
+      "module_members": [
+        "F_60A9"
+      ]
+    },
+    {
+      "symbol": "_f6181",
+      "address": 24961,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6181",
+      "module_members": [
+        "F_6181"
+      ]
+    },
+    {
+      "symbol": "_f622c",
+      "address": 25132,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_622C",
+      "module_members": [
+        "F_622C"
+      ]
+    },
+    {
+      "symbol": "_f625d",
+      "address": 25181,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_625D",
+      "module_members": [
+        "F_625D"
+      ]
+    },
+    {
+      "symbol": "_f6266",
+      "address": 25190,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6266",
+      "module_members": [
+        "F_6266"
+      ]
+    },
+    {
+      "symbol": "_f643a",
+      "address": 25658,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_643A",
+      "module_members": [
+        "F_643A"
+      ]
+    },
+    {
+      "symbol": "_f652a",
+      "address": 25898,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_652A",
+      "module_members": [
+        "F_652A"
+      ]
+    },
+    {
+      "symbol": "_f656c",
+      "address": 25964,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_656C",
+      "module_members": [
+        "F_656C"
+      ]
+    },
+    {
+      "symbol": "_f6771",
+      "address": 26481,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6771",
+      "module_members": [
+        "F_6771"
+      ]
+    },
+    {
+      "symbol": "_f67dc",
+      "address": 26588,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_67DC",
+      "module_members": [
+        "F_67DC"
+      ]
+    },
+    {
+      "symbol": "_f684a",
+      "address": 26698,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_684A",
+      "module_members": [
+        "F_684A"
+      ]
+    },
+    {
+      "symbol": "_f68aa",
+      "address": 26794,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_68AA",
+      "module_members": [
+        "F_68AA"
+      ]
+    },
+    {
+      "symbol": "_f68cf",
+      "address": 26831,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_68CF",
+      "module_members": [
+        "F_68CF"
+      ]
+    },
+    {
+      "symbol": "_f695e",
+      "address": 26974,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_695E",
+      "module_members": [
+        "F_695E"
+      ]
+    },
+    {
+      "symbol": "_f697d",
+      "address": 27005,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_697D",
+      "module_members": [
+        "F_697D"
+      ]
+    },
+    {
+      "symbol": "_f6990",
+      "address": 27024,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6990",
+      "module_members": [
+        "F_6990"
+      ]
+    },
+    {
+      "symbol": "_f6997",
+      "address": 27031,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6997",
+      "module_members": [
+        "F_6997"
+      ]
+    },
+    {
+      "symbol": "_f699e",
+      "address": 27038,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_699E",
+      "module_members": [
+        "F_699E"
+      ]
+    },
+    {
+      "symbol": "_f6b1a",
+      "address": 27418,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_6B1A_6B4A",
+      "module_members": [
+        "F_6B1A",
+        "F_6B4A"
+      ]
+    },
+    {
+      "symbol": "_f6b4a",
+      "address": 27466,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_6B1A_6B4A",
+      "module_members": [
+        "F_6B1A",
+        "F_6B4A"
+      ]
+    },
+    {
+      "symbol": "_f6b66",
+      "address": 27494,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6B66",
+      "module_members": [
+        "F_6B66"
+      ]
+    },
+    {
+      "symbol": "_f6b74",
+      "address": 27508,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6B74",
+      "module_members": [
+        "F_6B74"
+      ]
+    },
+    {
+      "symbol": "_f6b7a",
+      "address": 27514,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6B7A",
+      "module_members": [
+        "F_6B7A"
+      ]
+    },
+    {
+      "symbol": "_f6bac",
+      "address": 27564,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6BAC",
+      "module_members": [
+        "F_6BAC"
+      ]
+    },
+    {
+      "symbol": "_f6bcf",
+      "address": 27599,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6BCF",
+      "module_members": [
+        "F_6BCF"
+      ]
+    },
+    {
+      "symbol": "_f6c26",
+      "address": 27686,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6C26_6C87",
+      "module_members": [
+        "F_6C26",
+        "F_6C57",
+        "F_6C6F",
+        "F_6C87"
+      ]
+    },
+    {
+      "symbol": "_f6c57",
+      "address": 27735,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6C26_6C87",
+      "module_members": [
+        "F_6C26",
+        "F_6C57",
+        "F_6C6F",
+        "F_6C87"
+      ]
+    },
+    {
+      "symbol": "_f6c6f",
+      "address": 27759,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6C26_6C87",
+      "module_members": [
+        "F_6C26",
+        "F_6C57",
+        "F_6C6F",
+        "F_6C87"
+      ]
+    },
+    {
+      "symbol": "_f6c87",
+      "address": 27783,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6C26_6C87",
+      "module_members": [
+        "F_6C26",
+        "F_6C57",
+        "F_6C6F",
+        "F_6C87"
+      ]
+    },
+    {
+      "symbol": "_f6ca6",
+      "address": 27814,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6CA6",
+      "module_members": [
+        "F_6CA6"
+      ]
+    },
+    {
+      "symbol": "_f6cea",
+      "address": 27882,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6CEA",
+      "module_members": [
+        "F_6CEA"
+      ]
+    },
+    {
+      "symbol": "_f6cf0",
+      "address": 27888,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6CF0",
+      "module_members": [
+        "F_6CF0"
+      ]
+    },
+    {
+      "symbol": "_f6cf6",
+      "address": 27894,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6CF6",
+      "module_members": [
+        "F_6CF6"
+      ]
+    },
+    {
+      "symbol": "_f6d3c",
+      "address": 27964,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6D3C",
+      "module_members": [
+        "F_6D3C"
+      ]
+    },
+    {
+      "symbol": "_f6d86",
+      "address": 28038,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_6D86_6DCC",
+      "module_members": [
+        "F_6D86",
+        "PAD_006FC5",
+        "F_6DCC"
+      ]
+    },
+    {
+      "symbol": "_f6dcc",
+      "address": 28108,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_6D86_6DCC",
+      "module_members": [
+        "F_6D86",
+        "PAD_006FC5",
+        "F_6DCC"
+      ]
+    },
+    {
+      "symbol": "_f6eff",
+      "address": 28415,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6EFF",
+      "module_members": [
+        "F_6EFF"
+      ]
+    },
+    {
+      "symbol": "_f6f4b",
+      "address": 28491,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6F4B",
+      "module_members": [
+        "F_6F4B"
+      ]
+    },
+    {
+      "symbol": "_f6fc3",
+      "address": 28611,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6FC3",
+      "module_members": [
+        "F_6FC3"
+      ]
+    },
+    {
+      "symbol": "_f6fca",
+      "address": 28618,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6FCA",
+      "module_members": [
+        "F_6FCA"
+      ]
+    },
+    {
+      "symbol": "_f6fda",
+      "address": 28634,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_6FDA",
+      "module_members": [
+        "F_6FDA"
+      ]
+    },
+    {
+      "symbol": "_f703e",
+      "address": 28734,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_703E",
+      "module_members": [
+        "F_703E"
+      ]
+    },
+    {
+      "symbol": "_f7162",
+      "address": 29026,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7162",
+      "module_members": [
+        "F_7162"
+      ]
+    },
+    {
+      "symbol": "_f71fb",
+      "address": 29179,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_71FB",
+      "module_members": [
+        "F_71FB"
+      ]
+    },
+    {
+      "symbol": "_f7202",
+      "address": 29186,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7202",
+      "module_members": [
+        "F_7202"
+      ]
+    },
+    {
+      "symbol": "_f726a",
+      "address": 29290,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_726A",
+      "module_members": [
+        "F_726A"
+      ]
+    },
+    {
+      "symbol": "_f7277",
+      "address": 29303,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7277",
+      "module_members": [
+        "F_7277"
+      ]
+    },
+    {
+      "symbol": "_f727d",
+      "address": 29309,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_727D",
+      "module_members": [
+        "F_727D"
+      ]
+    },
+    {
+      "symbol": "_f7298",
+      "address": 29336,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7298",
+      "module_members": [
+        "F_7298"
+      ]
+    },
+    {
+      "symbol": "_f7313",
+      "address": 29459,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7313",
+      "module_members": [
+        "F_7313"
+      ]
+    },
+    {
+      "symbol": "_f7343",
+      "address": 29507,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7343",
+      "module_members": [
+        "F_7343"
+      ]
+    },
+    {
+      "symbol": "_f734e",
+      "address": 29518,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_734E",
+      "module_members": [
+        "F_734E"
+      ]
+    },
+    {
+      "symbol": "_f738a",
+      "address": 29578,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_738A",
+      "module_members": [
+        "F_738A"
+      ]
+    },
+    {
+      "symbol": "_f7417",
+      "address": 29719,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7417",
+      "module_members": [
+        "F_7417"
+      ]
+    },
+    {
+      "symbol": "_f7443",
+      "address": 29763,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7443",
+      "module_members": [
+        "F_7443"
+      ]
+    },
+    {
+      "symbol": "_f747b",
+      "address": 29819,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_747B",
+      "module_members": [
+        "F_747B"
+      ]
+    },
+    {
+      "symbol": "_f75f3",
+      "address": 30195,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_75F3_7856",
+      "module_members": [
+        "F_75F3",
+        "F_7676",
+        "F_7695",
+        "F_7747",
+        "F_778B"
+      ]
+    },
+    {
+      "symbol": "_f7676",
+      "address": 30326,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_75F3_7856",
+      "module_members": [
+        "F_75F3",
+        "F_7676",
+        "F_7695",
+        "F_7747",
+        "F_778B"
+      ]
+    },
+    {
+      "symbol": "_f7695",
+      "address": 30357,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_75F3_7856",
+      "module_members": [
+        "F_75F3",
+        "F_7676",
+        "F_7695",
+        "F_7747",
+        "F_778B"
+      ]
+    },
+    {
+      "symbol": "_f7747",
+      "address": 30535,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_75F3_7856",
+      "module_members": [
+        "F_75F3",
+        "F_7676",
+        "F_7695",
+        "F_7747",
+        "F_778B"
+      ]
+    },
+    {
+      "symbol": "_f778b",
+      "address": 30603,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_75F3_7856",
+      "module_members": [
+        "F_75F3",
+        "F_7676",
+        "F_7695",
+        "F_7747",
+        "F_778B"
+      ]
+    },
+    {
+      "symbol": "_f7856",
+      "address": 30806,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7856",
+      "module_members": [
+        "F_7856"
+      ]
+    },
+    {
+      "symbol": "_f78c3",
+      "address": 30915,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_78C3",
+      "module_members": [
+        "F_78C3"
+      ]
+    },
+    {
+      "symbol": "_f791e",
+      "address": 31006,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_791E",
+      "module_members": [
+        "F_791E"
+      ]
+    },
+    {
+      "symbol": "_f7925",
+      "address": 31013,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7925",
+      "module_members": [
+        "F_7925"
+      ]
+    },
+    {
+      "symbol": "_f792c",
+      "address": 31020,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_792C",
+      "module_members": [
+        "F_792C"
+      ]
+    },
+    {
+      "symbol": "_f7932",
+      "address": 31026,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7932",
+      "module_members": [
+        "F_7932"
+      ]
+    },
+    {
+      "symbol": "_f7964",
+      "address": 31076,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7964",
+      "module_members": [
+        "F_7964"
+      ]
+    },
+    {
+      "symbol": "_f7bfc",
+      "address": 31740,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7BFC",
+      "module_members": [
+        "F_7BFC"
+      ]
+    },
+    {
+      "symbol": "_f7d91",
+      "address": 32145,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7D91",
+      "module_members": [
+        "F_7D91"
+      ]
+    },
+    {
+      "symbol": "_f7df1",
+      "address": 32241,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7DF1",
+      "module_members": [
+        "F_7DF1"
+      ]
+    },
+    {
+      "symbol": "_f7dfc",
+      "address": 32252,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7DFC",
+      "module_members": [
+        "F_7DFC"
+      ]
+    },
+    {
+      "symbol": "_f7e07",
+      "address": 32263,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_7E07",
+      "module_members": [
+        "F_7E07"
+      ]
+    },
+    {
+      "symbol": "_f8267",
+      "address": 33383,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8267",
+      "module_members": [
+        "F_8267"
+      ]
+    },
+    {
+      "symbol": "_f8378",
+      "address": 33656,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8378",
+      "module_members": [
+        "F_8378"
+      ]
+    },
+    {
+      "symbol": "_f8414",
+      "address": 33812,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8414",
+      "module_members": [
+        "F_8414"
+      ]
+    },
+    {
+      "symbol": "_f8434",
+      "address": 33844,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8434",
+      "module_members": [
+        "F_8434"
+      ]
+    },
+    {
+      "symbol": "_f8453",
+      "address": 33875,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8453",
+      "module_members": [
+        "F_8453"
+      ]
+    },
+    {
+      "symbol": "_f8480",
+      "address": 33920,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8480",
+      "module_members": [
+        "F_8480"
+      ]
+    },
+    {
+      "symbol": "_f86c9",
+      "address": 34505,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_86C9",
+      "module_members": [
+        "F_86C9"
+      ]
+    },
+    {
+      "symbol": "_f880a",
+      "address": 34826,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_880A",
+      "module_members": [
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_f8a37",
+      "address": 35383,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8A37",
+      "module_members": [
+        "F_8A37"
+      ]
+    },
+    {
+      "symbol": "_f8aa2",
+      "address": 35490,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8AA2",
+      "module_members": [
+        "F_8AA2"
+      ]
+    },
+    {
+      "symbol": "_f8ba5",
+      "address": 35749,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8BA5",
+      "module_members": [
+        "F_8BA5"
+      ]
+    },
+    {
+      "symbol": "_f8bab",
+      "address": 35755,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_8BAB",
+      "module_members": [
+        "F_8BAB"
+      ]
+    },
+    {
+      "symbol": "_f90a6",
+      "address": 37030,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_90A6",
+      "module_members": [
+        "F_90A6"
+      ]
+    },
+    {
+      "symbol": "_f9259",
+      "address": 37465,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9259",
+      "module_members": [
+        "F_9259"
+      ]
+    },
+    {
+      "symbol": "_f929e",
+      "address": 37534,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_929E",
+      "module_members": [
+        "F_929E"
+      ]
+    },
+    {
+      "symbol": "_f93aa",
+      "address": 37802,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_93AA",
+      "module_members": [
+        "F_93AA"
+      ]
+    },
+    {
+      "symbol": "_f9402",
+      "address": 37890,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9402",
+      "module_members": [
+        "F_9402"
+      ]
+    },
+    {
+      "symbol": "_f9440",
+      "address": 37952,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9440",
+      "module_members": [
+        "F_9440"
+      ]
+    },
+    {
+      "symbol": "_f9466",
+      "address": 37990,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9466",
+      "module_members": [
+        "F_9466"
+      ]
+    },
+    {
+      "symbol": "_f950c",
+      "address": 38156,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_950C",
+      "module_members": [
+        "F_950C"
+      ]
+    },
+    {
+      "symbol": "_f963e",
+      "address": 38462,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_963E",
+      "module_members": [
+        "F_963E"
+      ]
+    },
+    {
+      "symbol": "_f969d",
+      "address": 38557,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_969D",
+      "module_members": [
+        "F_969D"
+      ]
+    },
+    {
+      "symbol": "_f984c",
+      "address": 38988,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_984C",
+      "module_members": [
+        "F_984C"
+      ]
+    },
+    {
+      "symbol": "_f9871",
+      "address": 39025,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9871",
+      "module_members": [
+        "F_9871"
+      ]
+    },
+    {
+      "symbol": "_f_988f",
+      "address": 39055,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_988F_98CB",
+      "module_members": [
+        "F_988F",
+        "F_98CB"
+      ]
+    },
+    {
+      "symbol": "_f_98cb",
+      "address": 39115,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_988F_98CB",
+      "module_members": [
+        "F_988F",
+        "F_98CB"
+      ]
+    },
+    {
+      "symbol": "_f_98cb_end",
+      "address": 39175,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "M_988F_98CB",
+      "module_members": [
+        "F_988F",
+        "F_98CB"
+      ]
+    },
+    {
+      "symbol": "_f9908",
+      "address": 39176,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9908",
+      "module_members": [
+        "F_9908"
+      ]
+    },
+    {
+      "symbol": "_f9962",
+      "address": 39266,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9962",
+      "module_members": [
+        "F_9962"
+      ]
+    },
+    {
+      "symbol": "_f99a2",
+      "address": 39330,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_99A2",
+      "module_members": [
+        "F_99A2"
+      ]
+    },
+    {
+      "symbol": "_f99e2",
+      "address": 39394,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_99E2",
+      "module_members": [
+        "F_99E2"
+      ]
+    },
+    {
+      "symbol": "_f9a0e",
+      "address": 39438,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9A0E",
+      "module_members": [
+        "F_9A0E"
+      ]
+    },
+    {
+      "symbol": "_f9ac7",
+      "address": 39623,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9AC7",
+      "module_members": [
+        "F_9AC7"
+      ]
+    },
+    {
+      "symbol": "_f9b68",
+      "address": 39784,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9B68",
+      "module_members": [
+        "F_9B68"
+      ]
+    },
+    {
+      "symbol": "_f9d79",
+      "address": 40313,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9D79",
+      "module_members": [
+        "F_9D79"
+      ]
+    },
+    {
+      "symbol": "_f9d8e",
+      "address": 40334,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9D8E",
+      "module_members": [
+        "F_9D8E"
+      ]
+    },
+    {
+      "symbol": "_f9dcc",
+      "address": 40396,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9DCC",
+      "module_members": [
+        "F_9DCC"
+      ]
+    },
+    {
+      "symbol": "_f9ec3",
+      "address": 40643,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9EC3",
+      "module_members": [
+        "F_9EC3"
+      ]
+    },
+    {
+      "symbol": "_f9f40",
+      "address": 40768,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_9F40",
+      "module_members": [
+        "F_9F40"
+      ]
+    },
+    {
+      "symbol": "_fa004",
+      "address": 40964,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A004",
+      "module_members": [
+        "F_A004"
+      ]
+    },
+    {
+      "symbol": "_fa036",
+      "address": 41014,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A036",
+      "module_members": [
+        "F_A036"
+      ]
+    },
+    {
+      "symbol": "_fa09d",
+      "address": 41117,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A09D",
+      "module_members": [
+        "F_A09D"
+      ]
+    },
+    {
+      "symbol": "_fa13f",
+      "address": 41279,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A13F",
+      "module_members": [
+        "F_A13F"
+      ]
+    },
+    {
+      "symbol": "_fa15e",
+      "address": 41310,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A15E",
+      "module_members": [
+        "F_A15E"
+      ]
+    },
+    {
+      "symbol": "_fa19d",
+      "address": 41373,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A19D",
+      "module_members": [
+        "F_A19D"
+      ]
+    },
+    {
+      "symbol": "_fa1e0",
+      "address": 41440,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A1E0",
+      "module_members": [
+        "F_A1E0"
+      ]
+    },
+    {
+      "symbol": "_fa223",
+      "address": 41507,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A223",
+      "module_members": [
+        "F_A223"
+      ]
+    },
+    {
+      "symbol": "_fa24e",
+      "address": 41550,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A24E",
+      "module_members": [
+        "F_A24E"
+      ]
+    },
+    {
+      "symbol": "_fa28d",
+      "address": 41613,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A28D",
+      "module_members": [
+        "F_A28D"
+      ]
+    },
+    {
+      "symbol": "_fa33f",
+      "address": 41791,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A33F",
+      "module_members": [
+        "F_A33F"
+      ]
+    },
+    {
+      "symbol": "_fa40a",
+      "address": 41994,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A40A",
+      "module_members": [
+        "F_A40A"
+      ]
+    },
+    {
+      "symbol": "_fa43c",
+      "address": 42044,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A43C",
+      "module_members": [
+        "F_A43C"
+      ]
+    },
+    {
+      "symbol": "_fa525",
+      "address": 42277,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A525",
+      "module_members": [
+        "F_A525"
+      ]
+    },
+    {
+      "symbol": "_fa658",
+      "address": 42584,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A658",
+      "module_members": [
+        "F_A658"
+      ]
+    },
+    {
+      "symbol": "_fa768",
+      "address": 42856,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A768",
+      "module_members": [
+        "F_A768"
+      ]
+    },
+    {
+      "symbol": "_fa85e",
+      "address": 43102,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_A85E",
+      "module_members": [
+        "F_A85E"
+      ]
+    },
+    {
+      "symbol": "_faa1f",
+      "address": 43551,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_AA1F",
+      "module_members": [
+        "F_AA1F"
+      ]
+    },
+    {
+      "symbol": "_fab66",
+      "address": 43878,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_AB66",
+      "module_members": [
+        "F_AB66"
+      ]
+    },
+    {
+      "symbol": "_face7",
+      "address": 44263,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_ACE7",
+      "module_members": [
+        "F_ACE7"
+      ]
+    },
+    {
+      "symbol": "_fad0e",
+      "address": 44302,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_AD0E",
+      "module_members": [
+        "F_AD0E"
+      ]
+    },
+    {
+      "symbol": "_fad25",
+      "address": 44325,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "RELOC_F_AD25_F_ADCF",
+      "module_members": [
+        "F_AD25",
+        "F_ADCF"
+      ]
+    },
+    {
+      "symbol": "_fadcf",
+      "address": 44495,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "RELOC_F_AD25_F_ADCF",
+      "module_members": [
+        "F_AD25",
+        "F_ADCF"
+      ]
+    },
+    {
+      "symbol": "_faf45",
+      "address": 44869,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_AF45",
+      "module_members": [
+        "F_AF45"
+      ]
+    },
+    {
+      "symbol": "_fb09a",
+      "address": 45210,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B09A",
+      "module_members": [
+        "F_B09A"
+      ]
+    },
+    {
+      "symbol": "_fb122",
+      "address": 45346,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B122",
+      "module_members": [
+        "F_B122"
+      ]
+    },
+    {
+      "symbol": "_fb3d7",
+      "address": 46039,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B3D7",
+      "module_members": [
+        "F_B3D7"
+      ]
+    },
+    {
+      "symbol": "_fbb40f",
+      "address": 46095,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B40F",
+      "module_members": [
+        "F_B40F"
+      ]
+    },
+    {
+      "symbol": "_fb4fb",
+      "address": 46331,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B4FB",
+      "module_members": [
+        "F_B4FB"
+      ]
+    },
+    {
+      "symbol": "_fb55e",
+      "address": 46430,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B55E",
+      "module_members": [
+        "F_B55E"
+      ]
+    },
+    {
+      "symbol": "_fb593",
+      "address": 46483,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B593",
+      "module_members": [
+        "F_B593"
+      ]
+    },
+    {
+      "symbol": "_fb60f",
+      "address": 46607,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B60F",
+      "module_members": [
+        "F_B60F"
+      ]
+    },
+    {
+      "symbol": "_fb6cd",
+      "address": 46797,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B6CD",
+      "module_members": [
+        "F_B6CD"
+      ]
+    },
+    {
+      "symbol": "_fb772",
+      "address": 46962,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B772",
+      "module_members": [
+        "F_B772"
+      ]
+    },
+    {
+      "symbol": "_fb7f9",
+      "address": 47097,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B7F9",
+      "module_members": [
+        "F_B7F9"
+      ]
+    },
+    {
+      "symbol": "_fb967",
+      "address": 47463,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B967",
+      "module_members": [
+        "F_B967"
+      ]
+    },
+    {
+      "symbol": "_fb99f",
+      "address": 47519,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_B99F",
+      "module_members": [
+        "F_B99F"
+      ]
+    },
+    {
+      "symbol": "_fc0e0",
+      "address": 49376,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C0E0",
+      "module_members": [
+        "F_C0E0"
+      ]
+    },
+    {
+      "symbol": "_fc15e",
+      "address": 49502,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C15E",
+      "module_members": [
+        "F_C15E"
+      ]
+    },
+    {
+      "symbol": "_fc1a0",
+      "address": 49568,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C1A0_C232",
+      "module_members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232"
+      ]
+    },
+    {
+      "symbol": "_fc1f7",
+      "address": 49655,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C1A0_C232",
+      "module_members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232"
+      ]
+    },
+    {
+      "symbol": "_fc232",
+      "address": 49714,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C1A0_C232",
+      "module_members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232"
+      ]
+    },
+    {
+      "symbol": "_fc27d",
+      "address": 49789,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_f_c2ea",
+      "address": 49898,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_f_c359",
+      "address": 50009,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_f_c3db",
+      "address": 50139,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_f_c440",
+      "address": 50240,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_f_c501",
+      "address": 50433,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_f_c549",
+      "address": 50505,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_fc567",
+      "address": 50535,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C27D_C567",
+      "module_members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ]
+    },
+    {
+      "symbol": "_fc59a",
+      "address": 50586,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C59A",
+      "module_members": [
+        "F_C59A"
+      ]
+    },
+    {
+      "symbol": "_f_c5a8",
+      "address": 50600,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5A8_C5C6",
+      "module_members": [
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6"
+      ]
+    },
+    {
+      "symbol": "_f_c5b3",
+      "address": 50611,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5A8_C5C6",
+      "module_members": [
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6"
+      ]
+    },
+    {
+      "symbol": "_f_c5c6",
+      "address": 50630,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5A8_C5C6",
+      "module_members": [
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6"
+      ]
+    },
+    {
+      "symbol": "_f_c5d1",
+      "address": 50641,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5D1_C706",
+      "module_members": [
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706"
+      ]
+    },
+    {
+      "symbol": "_f_c678",
+      "address": 50808,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5D1_C706",
+      "module_members": [
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706"
+      ]
+    },
+    {
+      "symbol": "_f_c6b9",
+      "address": 50873,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5D1_C706",
+      "module_members": [
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706"
+      ]
+    },
+    {
+      "symbol": "_f_c706",
+      "address": 50950,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C5D1_C706",
+      "module_members": [
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706"
+      ]
+    },
+    {
+      "symbol": "_f_c755",
+      "address": 51029,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C755",
+      "module_members": [
+        "F_C755"
+      ]
+    },
+    {
+      "symbol": "_f_c77a",
+      "address": 51066,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C77A_C898",
+      "module_members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ]
+    },
+    {
+      "symbol": "_f_c7cb",
+      "address": 51147,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C77A_C898",
+      "module_members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ]
+    },
+    {
+      "symbol": "_fc834",
+      "address": 51252,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C77A_C898",
+      "module_members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ]
+    },
+    {
+      "symbol": "_fc877",
+      "address": 51319,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C77A_C898",
+      "module_members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ]
+    },
+    {
+      "symbol": "_fc898",
+      "address": 51352,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C77A_C898",
+      "module_members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ]
+    },
+    {
+      "symbol": "_fc8d4",
+      "address": 51412,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C8D4",
+      "module_members": [
+        "F_C8D4"
+      ]
+    },
+    {
+      "symbol": "_fc8e2",
+      "address": 51426,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C8E2",
+      "module_members": [
+        "F_C8E2"
+      ]
+    },
+    {
+      "symbol": "_fc914",
+      "address": 51476,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C914",
+      "module_members": [
+        "F_C914"
+      ]
+    },
+    {
+      "symbol": "_fc988",
+      "address": 51592,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_C988",
+      "module_members": [
+        "F_C988"
+      ]
+    },
+    {
+      "symbol": "_f_c9a4",
+      "address": 51620,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C9A4_CA91",
+      "module_members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ]
+    },
+    {
+      "symbol": "_f_ca03",
+      "address": 51715,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C9A4_CA91",
+      "module_members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ]
+    },
+    {
+      "symbol": "_f_ca35",
+      "address": 51765,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C9A4_CA91",
+      "module_members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ]
+    },
+    {
+      "symbol": "_f_ca51",
+      "address": 51793,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C9A4_CA91",
+      "module_members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ]
+    },
+    {
+      "symbol": "_fca83",
+      "address": 51843,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C9A4_CA91",
+      "module_members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ]
+    },
+    {
+      "symbol": "_fca91",
+      "address": 51857,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_C9A4_CA91",
+      "module_members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ]
+    },
+    {
+      "symbol": "_fca9b",
+      "address": 51867,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CA9B",
+      "module_members": [
+        "F_CA9B"
+      ]
+    },
+    {
+      "symbol": "_fcad0",
+      "address": 51920,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CAD0",
+      "module_members": [
+        "F_CAD0"
+      ]
+    },
+    {
+      "symbol": "_fcadb",
+      "address": 51931,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CADB",
+      "module_members": [
+        "F_CADB"
+      ]
+    },
+    {
+      "symbol": "_fcae6",
+      "address": 51942,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CAE6",
+      "module_members": [
+        "F_CAE6"
+      ]
+    },
+    {
+      "symbol": "_fcaf1",
+      "address": 51953,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CAF1",
+      "module_members": [
+        "F_CAF1"
+      ]
+    },
+    {
+      "symbol": "_fcb48",
+      "address": 52040,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CB48",
+      "module_members": [
+        "F_CB48"
+      ]
+    },
+    {
+      "symbol": "_f_cb5c",
+      "address": 52060,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cb5c_end",
+      "address": 52155,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cbbb",
+      "address": 52157,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cbbb_end",
+      "address": 52245,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cc17",
+      "address": 52247,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cc17_end",
+      "address": 52330,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cc6b",
+      "address": 52332,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_f_cd23",
+      "address": 52516,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_CB5C_CD23",
+      "module_members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ]
+    },
+    {
+      "symbol": "_fcddd",
+      "address": 52701,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CDDD",
+      "module_members": [
+        "F_CDDD"
+      ]
+    },
+    {
+      "symbol": "_fce00",
+      "address": 52736,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CE00",
+      "module_members": [
+        "F_CE00"
+      ]
+    },
+    {
+      "symbol": "_fce2a",
+      "address": 52778,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CE2A",
+      "module_members": [
+        "F_CE2A"
+      ]
+    },
+    {
+      "symbol": "_fce68",
+      "address": 52840,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CE68",
+      "module_members": [
+        "F_CE68"
+      ]
+    },
+    {
+      "symbol": "_fce9e",
+      "address": 52894,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CE9E",
+      "module_members": [
+        "F_CE9E"
+      ]
+    },
+    {
+      "symbol": "_fcf3c",
+      "address": 53052,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_CF3C",
+      "module_members": [
+        "F_CF3C"
+      ]
+    },
+    {
+      "symbol": "_fd089",
+      "address": 53385,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D089",
+      "module_members": [
+        "F_D089"
+      ]
+    },
+    {
+      "symbol": "_fd0d1",
+      "address": 53457,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D0D1",
+      "module_members": [
+        "F_D0D1"
+      ]
+    },
+    {
+      "symbol": "_fd117",
+      "address": 53527,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D117",
+      "module_members": [
+        "F_D117"
+      ]
+    },
+    {
+      "symbol": "_fd15d",
+      "address": 53597,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D15D",
+      "module_members": [
+        "F_D15D"
+      ]
+    },
+    {
+      "symbol": "_fd1d8",
+      "address": 53720,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D1D8",
+      "module_members": [
+        "F_D1D8"
+      ]
+    },
+    {
+      "symbol": "_fd26c",
+      "address": 53868,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D26C",
+      "module_members": [
+        "F_D26C"
+      ]
+    },
+    {
+      "symbol": "_fd344",
+      "address": 54084,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D344",
+      "module_members": [
+        "F_D344"
+      ]
+    },
+    {
+      "symbol": "_fd386",
+      "address": 54150,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_D386_D3CF",
+      "module_members": [
+        "F_D386",
+        "F_D3CF"
+      ]
+    },
+    {
+      "symbol": "_fd3cf",
+      "address": 54223,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_D386_D3CF",
+      "module_members": [
+        "F_D386",
+        "F_D3CF"
+      ]
+    },
+    {
+      "symbol": "_fd3da",
+      "address": 54234,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D3DA",
+      "module_members": [
+        "F_D3DA"
+      ]
+    },
+    {
+      "symbol": "_fd45c",
+      "address": 54364,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D45C",
+      "module_members": [
+        "F_D45C"
+      ]
+    },
+    {
+      "symbol": "_fd471",
+      "address": 54385,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D471",
+      "module_members": [
+        "F_D471"
+      ]
+    },
+    {
+      "symbol": "_fd487",
+      "address": 54407,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D487",
+      "module_members": [
+        "F_D487"
+      ]
+    },
+    {
+      "symbol": "_fd49d",
+      "address": 54429,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D49D",
+      "module_members": [
+        "F_D49D"
+      ]
+    },
+    {
+      "symbol": "_fd4b3",
+      "address": 54451,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D4B3",
+      "module_members": [
+        "F_D4B3"
+      ]
+    },
+    {
+      "symbol": "_fd555",
+      "address": 54613,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D555",
+      "module_members": [
+        "F_D555"
+      ]
+    },
+    {
+      "symbol": "_fd593",
+      "address": 54675,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D593",
+      "module_members": [
+        "F_D593"
+      ]
+    },
+    {
+      "symbol": "_fd5a6",
+      "address": 54694,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D5A6",
+      "module_members": [
+        "F_D5A6"
+      ]
+    },
+    {
+      "symbol": "_fd5b3",
+      "address": 54707,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D5B3",
+      "module_members": [
+        "F_D5B3"
+      ]
+    },
+    {
+      "symbol": "_fd5ba",
+      "address": 54714,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D5BA",
+      "module_members": [
+        "F_D5BA"
+      ]
+    },
+    {
+      "symbol": "_fd5f9",
+      "address": 54777,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D5F9",
+      "module_members": [
+        "F_D5F9"
+      ]
+    },
+    {
+      "symbol": "_fd60c",
+      "address": 54796,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D60C",
+      "module_members": [
+        "F_D60C"
+      ]
+    },
+    {
+      "symbol": "_f_d61c",
+      "address": 54812,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_D61C_D79C",
+      "module_members": [
+        "F_D61C",
+        "F_D79C"
+      ]
+    },
+    {
+      "symbol": "_f_d79c",
+      "address": 55196,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_D61C_D79C",
+      "module_members": [
+        "F_D61C",
+        "F_D79C"
+      ]
+    },
+    {
+      "symbol": "_fd818",
+      "address": 55320,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_D818_D825",
+      "module_members": [
+        "F_D818",
+        "F_D825"
+      ]
+    },
+    {
+      "symbol": "_fd825",
+      "address": 55333,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_D818_D825",
+      "module_members": [
+        "F_D818",
+        "F_D825"
+      ]
+    },
+    {
+      "symbol": "_fd85f",
+      "address": 55391,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D85F",
+      "module_members": [
+        "F_D85F"
+      ]
+    },
+    {
+      "symbol": "_fd89a",
+      "address": 55450,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D89A",
+      "module_members": [
+        "F_D89A"
+      ]
+    },
+    {
+      "symbol": "_fd8f0",
+      "address": 55536,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D8F0",
+      "module_members": [
+        "F_D8F0"
+      ]
+    },
+    {
+      "symbol": "_fd99b",
+      "address": 55707,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D99B",
+      "module_members": [
+        "F_D99B"
+      ]
+    },
+    {
+      "symbol": "_fd9d9",
+      "address": 55769,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D9D9",
+      "module_members": [
+        "F_D9D9"
+      ]
+    },
+    {
+      "symbol": "_fd9e1",
+      "address": 55777,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_D9E1",
+      "module_members": [
+        "F_D9E1"
+      ]
+    },
+    {
+      "symbol": "_fda20",
+      "address": 55840,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DA20",
+      "module_members": [
+        "F_DA20"
+      ]
+    },
+    {
+      "symbol": "_fda49",
+      "address": 55881,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DA49",
+      "module_members": [
+        "F_DA49"
+      ]
+    },
+    {
+      "symbol": "_fda66",
+      "address": 55910,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DA66",
+      "module_members": [
+        "F_DA66"
+      ]
+    },
+    {
+      "symbol": "_f_dad7",
+      "address": 56023,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DAD7_DB35",
+      "module_members": [
+        "F_DAD7",
+        "F_DB17",
+        "F_DB35"
+      ]
+    },
+    {
+      "symbol": "_f_dad7_end",
+      "address": 56084,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "M_DAD7_DB35",
+      "module_members": [
+        "F_DAD7",
+        "F_DB17",
+        "F_DB35"
+      ]
+    },
+    {
+      "symbol": "_f_db17",
+      "address": 56087,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DAD7_DB35",
+      "module_members": [
+        "F_DAD7",
+        "F_DB17",
+        "F_DB35"
+      ]
+    },
+    {
+      "symbol": "_f_db35",
+      "address": 56117,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DAD7_DB35",
+      "module_members": [
+        "F_DAD7",
+        "F_DB17",
+        "F_DB35"
+      ]
+    },
+    {
+      "symbol": "_fdb60",
+      "address": 56160,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DB60",
+      "module_members": [
+        "F_DB60"
+      ]
+    },
+    {
+      "symbol": "_fdcc7",
+      "address": 56519,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DCC7",
+      "module_members": [
+        "F_DCC7"
+      ]
+    },
+    {
+      "symbol": "_fdd72",
+      "address": 56690,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DD72",
+      "module_members": [
+        "F_DD72"
+      ]
+    },
+    {
+      "symbol": "_fddc7",
+      "address": 56775,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_DDC7",
+      "module_members": [
+        "F_DDC7"
+      ]
+    },
+    {
+      "symbol": "_fddd9",
+      "address": 56793,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DDD9_DF98",
+      "module_members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ]
+    },
+    {
+      "symbol": "_fde7e",
+      "address": 56958,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DDD9_DF98",
+      "module_members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ]
+    },
+    {
+      "symbol": "_fdefa",
+      "address": 57082,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DDD9_DF98",
+      "module_members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ]
+    },
+    {
+      "symbol": "_fdf98",
+      "address": 57240,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "M_DDD9_DF98",
+      "module_members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ]
+    },
+    {
+      "symbol": "_fe095",
+      "address": 57493,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E095",
+      "module_members": [
+        "F_E095"
+      ]
+    },
+    {
+      "symbol": "_fe0c0",
+      "address": 57536,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E0C0",
+      "module_members": [
+        "F_E0C0"
+      ]
+    },
+    {
+      "symbol": "_fe114",
+      "address": 57620,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E114",
+      "module_members": [
+        "F_E114"
+      ]
+    },
+    {
+      "symbol": "_fe151",
+      "address": 57681,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E151",
+      "module_members": [
+        "F_E151"
+      ]
+    },
+    {
+      "symbol": "_fe1c4",
+      "address": 57796,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E1C4",
+      "module_members": [
+        "F_E1C4"
+      ]
+    },
+    {
+      "symbol": "_fe1f2",
+      "address": 57842,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E1F2",
+      "module_members": [
+        "F_E1F2"
+      ]
+    },
+    {
+      "symbol": "_fe262",
+      "address": 57954,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E262",
+      "module_members": [
+        "F_E262"
+      ]
+    },
+    {
+      "symbol": "_fe27b",
+      "address": 57979,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E27B",
+      "module_members": [
+        "F_E27B"
+      ]
+    },
+    {
+      "symbol": "_fe2d6",
+      "address": 58070,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E2D6",
+      "module_members": [
+        "F_E2D6"
+      ]
+    },
+    {
+      "symbol": "_fe324",
+      "address": 58148,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E324",
+      "module_members": [
+        "F_E324"
+      ]
+    },
+    {
+      "symbol": "_fe372",
+      "address": 58226,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E372",
+      "module_members": [
+        "F_E372"
+      ]
+    },
+    {
+      "symbol": "_fe420",
+      "address": 58400,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E420",
+      "module_members": [
+        "F_E420"
+      ]
+    },
+    {
+      "symbol": "_fe44b",
+      "address": 58443,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E44B",
+      "module_members": [
+        "F_E44B"
+      ]
+    },
+    {
+      "symbol": "_fe48a",
+      "address": 58506,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E48A",
+      "module_members": [
+        "F_E48A"
+      ]
+    },
+    {
+      "symbol": "_fe52a",
+      "address": 58666,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E52A",
+      "module_members": [
+        "F_E52A"
+      ]
+    },
+    {
+      "symbol": "_fe54d",
+      "address": 58701,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "F_E54D",
+      "module_members": [
+        "F_E54D"
+      ]
+    },
+    {
+      "symbol": "__IOERROR",
+      "address": 58859,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_IOERROR",
+      "module_members": [
+        "IOERROR"
+      ]
+    },
+    {
+      "symbol": "_exit",
+      "address": 58919,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_EXIT",
+      "module_members": [
+        "EXIT"
+      ]
+    },
+    {
+      "symbol": "__setargv",
+      "address": 58972,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_SETARGV",
+      "module_members": [
+        "SETARGV"
+      ]
+    },
+    {
+      "symbol": "__setenvp",
+      "address": 59219,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_SETENVP",
+      "module_members": [
+        "SETENVP"
+      ]
+    },
+    {
+      "symbol": "_atexit",
+      "address": 59283,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_ATEXIT",
+      "module_members": [
+        "ATEXIT"
+      ]
+    },
+    {
+      "symbol": "_malloc",
+      "address": 59321,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FMALLOC",
+      "module_members": [
+        "FMALLOC"
+      ]
+    },
+    {
+      "symbol": "__pull_free_block",
+      "address": 59340,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FMALLOC",
+      "module_members": [
+        "FMALLOC"
+      ]
+    },
+    {
+      "symbol": "_farmalloc",
+      "address": 59828,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FMALLOC",
+      "module_members": [
+        "FMALLOC"
+      ]
+    },
+    {
+      "symbol": "__brk",
+      "address": 60237,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FBRK",
+      "module_members": [
+        "FBRK"
+      ]
+    },
+    {
+      "symbol": "__sbrk",
+      "address": 60308,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FBRK",
+      "module_members": [
+        "FBRK"
+      ]
+    },
+    {
+      "symbol": "PADD@",
+      "address": 60431,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_PADD",
+      "module_members": [
+        "PADD"
+      ]
+    },
+    {
+      "symbol": "PSUB@",
+      "address": 60476,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_PADD",
+      "module_members": [
+        "PADD"
+      ]
+    },
+    {
+      "symbol": "PCMP@",
+      "address": 60522,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_PCMP",
+      "module_members": [
+        "PCMP"
+      ]
+    },
+    {
+      "symbol": "_setblock",
+      "address": 60555,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_SETBLOCK",
+      "module_members": [
+        "SETBLOCK"
+      ]
+    },
+    {
+      "symbol": "_open",
+      "address": 60634,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_OPEN",
+      "module_members": [
+        "OPEN"
+      ]
+    },
+    {
+      "symbol": "__open",
+      "address": 60983,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_OPENA",
+      "module_members": [
+        "OPENA"
+      ]
+    },
+    {
+      "symbol": "_ioctl",
+      "address": 61058,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_IOCTL",
+      "module_members": [
+        "IOCTL"
+      ]
+    },
+    {
+      "symbol": "_close",
+      "address": 61101,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_CLOSE",
+      "module_members": [
+        "CLOSE"
+      ]
+    },
+    {
+      "symbol": "__close",
+      "address": 61146,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_CLOSEA",
+      "module_members": [
+        "CLOSEA"
+      ]
+    },
+    {
+      "symbol": "_read",
+      "address": 61182,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_READ",
+      "module_members": [
+        "READ"
+      ]
+    },
+    {
+      "symbol": "__read",
+      "address": 61373,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_READA",
+      "module_members": [
+        "READA"
+      ]
+    },
+    {
+      "symbol": "_write",
+      "address": 61403,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_WRITE",
+      "module_members": [
+        "WRITE"
+      ]
+    },
+    {
+      "symbol": "__write",
+      "address": 61755,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_WRITEA",
+      "module_members": [
+        "WRITEA"
+      ]
+    },
+    {
+      "symbol": "_lseek",
+      "address": 61827,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LSEEK",
+      "module_members": [
+        "LSEEK"
+      ]
+    },
+    {
+      "symbol": "__LONGTOA",
+      "address": 61870,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LTOA",
+      "module_members": [
+        "LTOA"
+      ]
+    },
+    {
+      "symbol": "_itoa",
+      "address": 62002,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LTOA",
+      "module_members": [
+        "LTOA"
+      ]
+    },
+    {
+      "symbol": "_ultoa",
+      "address": 62046,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LTOA",
+      "module_members": [
+        "LTOA"
+      ]
+    },
+    {
+      "symbol": "_ltoa",
+      "address": 62077,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LTOA",
+      "module_members": [
+        "LTOA"
+      ]
+    },
+    {
+      "symbol": "LXMUL@",
+      "address": 62119,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LXMUL",
+      "module_members": [
+        "LXMUL"
+      ]
+    },
+    {
+      "symbol": "_strlen",
+      "address": 62144,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_STRLEN",
+      "module_members": [
+        "STRLEN"
+      ]
+    },
+    {
+      "symbol": "_strcpy",
+      "address": 62171,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_STRCPY",
+      "module_members": [
+        "STRCPY"
+      ]
+    },
+    {
+      "symbol": "_setmem",
+      "address": 62212,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_MEMSET",
+      "module_members": [
+        "MEMSET"
+      ]
+    },
+    {
+      "symbol": "_memset",
+      "address": 62250,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_MEMSET",
+      "module_members": [
+        "MEMSET"
+      ]
+    },
+    {
+      "symbol": "_movmem",
+      "address": 62280,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_MOVMEM",
+      "module_members": [
+        "MOVMEM"
+      ]
+    },
+    {
+      "symbol": "_memmove",
+      "address": 62364,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_MOVMEM",
+      "module_members": [
+        "MOVMEM"
+      ]
+    },
+    {
+      "symbol": "__chmod",
+      "address": 62395,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_CHMODA",
+      "module_members": [
+        "CHMODA"
+      ]
+    },
+    {
+      "symbol": "_farcoreleft",
+      "address": 62426,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FCORELFT",
+      "module_members": [
+        "FCORELFT"
+      ]
+    },
+    {
+      "symbol": "_free",
+      "address": 62455,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FFREE",
+      "module_members": [
+        "FFREE"
+      ]
+    },
+    {
+      "symbol": "_farfree",
+      "address": 63171,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_FFREE",
+      "module_members": [
+        "FFREE"
+      ]
+    },
+    {
+      "symbol": "_chdir",
+      "address": 63243,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_CHDIR",
+      "module_members": [
+        "CHDIR"
+      ]
+    },
+    {
+      "symbol": "_getdisk",
+      "address": 63269,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_CHDIR",
+      "module_members": [
+        "CHDIR"
+      ]
+    },
+    {
+      "symbol": "_setdisk",
+      "address": 63278,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_CHDIR",
+      "module_members": [
+        "CHDIR"
+      ]
+    },
+    {
+      "symbol": "_getvect",
+      "address": 63294,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_GETVECT",
+      "module_members": [
+        "GETVECT"
+      ]
+    },
+    {
+      "symbol": "_setvect",
+      "address": 63312,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_GETVECT",
+      "module_members": [
+        "GETVECT"
+      ]
+    },
+    {
+      "symbol": "_harderr",
+      "address": 63385,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_HARDERR",
+      "module_members": [
+        "HARDERR"
+      ]
+    },
+    {
+      "symbol": "_hardresume",
+      "address": 63410,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_HARDERR",
+      "module_members": [
+        "HARDERR"
+      ]
+    },
+    {
+      "symbol": "_hardretn",
+      "address": 63437,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_HARDERR",
+      "module_members": [
+        "HARDERR"
+      ]
+    },
+    {
+      "symbol": "_inport",
+      "address": 63487,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_INPORT",
+      "module_members": [
+        "INPORT"
+      ]
+    },
+    {
+      "symbol": "_inportb",
+      "address": 63498,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_INPORT",
+      "module_members": [
+        "INPORT"
+      ]
+    },
+    {
+      "symbol": "LDIV@",
+      "address": 63511,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LDIV",
+      "module_members": [
+        "LDIV"
+      ]
+    },
+    {
+      "symbol": "LUDIV@",
+      "address": 63515,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LDIV",
+      "module_members": [
+        "LDIV"
+      ]
+    },
+    {
+      "symbol": "LMOD@",
+      "address": 63520,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LDIV",
+      "module_members": [
+        "LDIV"
+      ]
+    },
+    {
+      "symbol": "LUMOD@",
+      "address": 63525,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LDIV",
+      "module_members": [
+        "LDIV"
+      ]
+    },
+    {
+      "symbol": "LXLSH@",
+      "address": 63674,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_LLSH",
+      "module_members": [
+        "LLSH"
+      ]
+    },
+    {
+      "symbol": "PSBP@",
+      "address": 63705,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_PSBP",
+      "module_members": [
+        "PSBP"
+      ]
+    },
+    {
+      "symbol": "_srand",
+      "address": 63742,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "LIB_RAND",
+      "module_members": [
+        "LIB_RAND"
+      ]
+    },
+    {
+      "symbol": "_rand",
+      "address": 63759,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "LIB_RAND",
+      "module_members": [
+        "LIB_RAND"
+      ]
+    },
+    {
+      "symbol": "SCOPY@",
+      "address": 63799,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_SCOPY",
+      "module_members": [
+        "SCOPY"
+      ]
+    },
+    {
+      "symbol": "_setjmp",
+      "address": 63827,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_SETJMP",
+      "module_members": [
+        "SETJMP"
+      ]
+    },
+    {
+      "symbol": "_longjmp",
+      "address": 63883,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_SETJMP",
+      "module_members": [
+        "SETJMP"
+      ]
+    },
+    {
+      "symbol": "_bdos",
+      "address": 63983,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_BDOS",
+      "module_members": [
+        "BDOS"
+      ]
+    },
+    {
+      "symbol": "_biosequip",
+      "address": 64005,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_BIOSEQU",
+      "module_members": [
+        "BIOSEQU"
+      ]
+    },
+    {
+      "symbol": "_biosmemory",
+      "address": 64010,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_BIOSEQU",
+      "module_members": [
+        "BIOSEQU"
+      ]
+    },
+    {
+      "symbol": "_biostime",
+      "address": 64015,
+      "classification": "EXACT_PUBLIC",
+      "owner": "LIB_BIOSEQU",
+      "module_members": [
+        "BIOSEQU"
+      ]
+    }
+  ]
+}

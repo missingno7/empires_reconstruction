@@ -1,615 +1,1768 @@
 {
   "format": "empires-grinder-queue-v1",
-  "input_fingerprint": "1372d0df1023661356b61789fa1a96ff2afca6b93ca9daedcea3fba653769f53",
+  "input_fingerprint": "502f26111042cc9d06209e13f761c37ca5e1537fa87cbd971cacbb504ad62e37",
   "selection": "Highest priority CHEAP task only; skip SUPERVISOR",
   "tasks": [
     {
-      "id": "RUNTIME_BLOCK:0307-0F3F",
-      "priority": 3128,
+      "id": "RUNTIME_BLOCK:083B-089D",
+      "priority": 10098,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        775,
-        3903
+        2107,
+        2205
       ],
-      "bytes": 3128,
+      "bytes": 98,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0307-0F3F",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0307-0F3F --promote",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_blit_dispatch",
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:083B-089D",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:083B-089D --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_0307-0F3F.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_083B-089D.json",
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:17A0-1860",
-      "priority": 1092,
+      "id": "RUNTIME_BLOCK:07C5-0825",
+      "priority": 10096,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "MEDIUM",
-      "risk": "MEDIUM",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        6048,
+        1989,
+        2085
+      ],
+      "bytes": 96,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_blit_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:07C5-0825",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:07C5-0825 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_07C5-0825.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0307-0361",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        775,
+        865
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0307-0361",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0307-0361 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0307-0361.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0361-03BB",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        865,
+        955
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0361-03BB",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0361-03BB --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0361-03BB.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:03BB-0415",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        955,
+        1045
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:03BB-0415",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:03BB-0415 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_03BB-0415.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0415-046F",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1045,
+        1135
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0415-046F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0415-046F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0415-046F.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:046F-04C9",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1135,
+        1225
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:046F-04C9",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:046F-04C9 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_046F-04C9.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:04C9-0523",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1225,
+        1315
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:04C9-0523",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:04C9-0523 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_04C9-0523.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0523-057D",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1315,
+        1405
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0523-057D",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0523-057D --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0523-057D.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:057D-05D7",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1405,
+        1495
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:057D-05D7",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:057D-05D7 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_057D-05D7.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:05D7-0631",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1495,
+        1585
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:05D7-0631",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:05D7-0631 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_05D7-0631.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0631-068B",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1585,
+        1675
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0631-068B",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0631-068B --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0631-068B.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:068B-06E5",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1675,
+        1765
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:068B-06E5",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:068B-06E5 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_068B-06E5.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:06E5-073F",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1765,
+        1855
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:06E5-073F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:06E5-073F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_06E5-073F.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:073F-0799",
+      "priority": 10090,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1855,
+        1945
+      ],
+      "bytes": 90,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:073F-0799",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:073F-0799 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_073F-0799.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:089F-08F3",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2207,
+        2291
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:089F-08F3",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:089F-08F3 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_089F-08F3.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:08F3-0947",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2291,
+        2375
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:08F3-0947",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:08F3-0947 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_08F3-0947.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0947-099B",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2375,
+        2459
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0947-099B",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0947-099B --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0947-099B.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:099B-09EF",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2459,
+        2543
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:099B-09EF",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:099B-09EF --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_099B-09EF.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:09EF-0A43",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2543,
+        2627
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:09EF-0A43",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:09EF-0A43 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_09EF-0A43.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0A43-0A97",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2627,
+        2711
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0A43-0A97",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0A43-0A97 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0A43-0A97.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0A97-0AEB",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2711,
+        2795
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0A97-0AEB",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0A97-0AEB --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0A97-0AEB.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0AEB-0B3F",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2795,
+        2879
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0AEB-0B3F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0AEB-0B3F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0AEB-0B3F.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0B3F-0B93",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2879,
+        2963
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0B3F-0B93",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0B3F-0B93 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0B3F-0B93.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0B93-0BE7",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2963,
+        3047
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0B93-0BE7",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0B93-0BE7 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0B93-0BE7.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0BE7-0C3B",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3047,
+        3131
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0BE7-0C3B",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0BE7-0C3B --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0BE7-0C3B.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0C3B-0C8F",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3131,
+        3215
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0C3B-0C8F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0C3B-0C8F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0C3B-0C8F.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0C8F-0CE3",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3215,
+        3299
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0C8F-0CE3",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0C8F-0CE3 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0C8F-0CE3.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0CE3-0D37",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3299,
+        3383
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0CE3-0D37",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0CE3-0D37 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0CE3-0D37.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0D37-0D8B",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3383,
+        3467
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0D37-0D8B",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0D37-0D8B --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0D37-0D8B.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0D8B-0DDF",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3467,
+        3551
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0D8B-0DDF",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0D8B-0DDF --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0D8B-0DDF.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0DDF-0E33",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3551,
+        3635
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0DDF-0E33",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0DDF-0E33 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0DDF-0E33.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0E33-0E87",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3635,
+        3719
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0E33-0E87",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0E33-0E87 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0E33-0E87.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0E87-0EDB",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3719,
+        3803
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0E87-0EDB",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0E87-0EDB --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0E87-0EDB.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0EDB-0F2F",
+      "priority": 10084,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3803,
+        3887
+      ],
+      "bytes": 84,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0EDB-0F2F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0EDB-0F2F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0EDB-0F2F.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:180C-1860",
+      "priority": 10064,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        6156,
         6240
       ],
-      "bytes": 192,
+      "bytes": 84,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
         "_copy",
         "_f03cc"
       ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:17A0-1860",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:17A0-1860 --promote",
+      "dependencies": [
+        "runtime_transparency_mask"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:180C-1860",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:180C-1860 --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_17A0-1860.json",
+      "card": "docs/current/candidates/RUNTIME_BLOCK_180C-1860.json",
       "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:0FD4-1020",
-      "priority": 1026,
+      "id": "RUNTIME_BLOCK:15AB-15EF",
+      "priority": 10038,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "MEDIUM",
-      "risk": "MEDIUM",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        5547,
+        5615
+      ],
+      "bytes": 68,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_blit",
+        "_f03c9"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:15AB-15EF",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:15AB-15EF --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_15AB-15EF.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0799-07B7",
+      "priority": 10030,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1945,
+        1975
+      ],
+      "bytes": 30,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0799-07B7",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0799-07B7 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0799-07B7.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0FD4-1016",
+      "priority": 10026,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         4052,
-        4128
+        4118
       ],
-      "bytes": 76,
+      "bytes": 66,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
         "_clear",
         "_f03a8"
       ],
       "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0FD4-1020",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0FD4-1020 --promote",
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0FD4-1016",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0FD4-1016 --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_0FD4-1020.json",
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0FD4-1016.json",
       "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:104B-10A7",
-      "priority": 1012,
+      "id": "RUNTIME_BLOCK:17A0-17DE",
+      "priority": 10022,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "MEDIUM",
-      "risk": "MEDIUM",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        4171,
-        4263
+        6048,
+        6110
       ],
-      "bytes": 92,
+      "bytes": 62,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
-        "_f03ab",
-        "_fill"
+        "_copy",
+        "_f03cc"
       ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:104B-10A7",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:104B-10A7 --promote",
+      "dependencies": [
+        "runtime_transparency_mask"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:17A0-17DE",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:17A0-17DE --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_104B-10A7.json",
+      "card": "docs/current/candidates/RUNTIME_BLOCK_17A0-17DE.json",
       "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:14B8-14E8",
-      "priority": 998,
+      "id": "RUNTIME_BLOCK:15EF-15FC",
+      "priority": 10013,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "MEDIUM",
-      "risk": "MEDIUM",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        5304,
-        5352
+        5615,
+        5628
       ],
-      "bytes": 48,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [
-        "_f03c6"
-      ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:14B8-14E8",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:14B8-14E8 --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_14B8-14E8.json",
-      "promotion_blocker": null
-    },
-    {
-      "id": "RUNTIME_BLOCK:003C-0194",
-      "priority": 344,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        60,
-        404
-      ],
-      "bytes": 344,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:003C-0194",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:003C-0194 --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_003C-0194.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    },
-    {
-      "id": "RUNTIME_BLOCK:15F0-16FC",
-      "priority": 268,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        5616,
-        5884
-      ],
-      "bytes": 268,
+      "bytes": 13,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
         "_blit",
         "_f03c9"
       ],
       "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:15F0-16FC",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:15F0-16FC --promote",
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:15EF-15FC",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:15EF-15FC --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_15F0-16FC.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_15EF-15FC.json",
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:1560-1594",
-      "priority": 42,
+      "id": "RUNTIME_BLOCK:1564-1570",
+      "priority": 10012,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        5472,
-        5524
+        5476,
+        5488
       ],
-      "bytes": 52,
+      "bytes": 12,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
-        "_f03c6"
-      ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1560-1594",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1560-1594 --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_1560-1594.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    },
-    {
-      "id": "RUNTIME_BLOCK:15AB-15F0",
-      "priority": 39,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        5547,
-        5616
-      ],
-      "bytes": 69,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [
-        "_blit",
-        "_f03c9"
-      ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:15AB-15F0",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:15AB-15F0 --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_15AB-15F0.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    },
-    {
-      "id": "RUNTIME_BLOCK:1908-192E",
-      "priority": 18,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        6408,
-        6446
-      ],
-      "bytes": 38,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [
+        "_f03c6",
         "_f03cf"
       ],
       "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1908-192E",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1908-192E --promote",
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1564-1570",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1564-1570 --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_1908-192E.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    },
-    {
-      "id": "RUNTIME_BLOCK:021F-022F",
-      "priority": 16,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        543,
-        559
-      ],
-      "bytes": 16,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:021F-022F",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:021F-022F --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_021F-022F.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    },
-    {
-      "id": "RUNTIME_BLOCK:19A2-19AB",
-      "priority": 9,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        6562,
-        6571
-      ],
-      "bytes": 9,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:19A2-19AB",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:19A2-19AB --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_19A2-19AB.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_1564-1570.json",
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:02BD-02C5",
-      "priority": 8,
+      "priority": 10008,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         701,
         709
       ],
       "bytes": 8,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:02BD-02C5",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:02BD-02C5 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_02BD-02C5.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:1500-1530",
-      "priority": 8,
+      "id": "RUNTIME_BLOCK:104B-107B",
+      "priority": 10008,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        5376,
-        5424
+        4171,
+        4219
       ],
       "bytes": 48,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
-        "_f03c6"
+        "_f03ab",
+        "_fill"
       ],
       "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1500-1530",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1500-1530 --promote",
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:104B-107B",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:104B-107B --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_1500-1530.json",
-      "promotion_blocker": "Indirect control flow requires evidence"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_104B-107B.json",
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:01FF-0205",
-      "priority": 6,
+      "priority": 10006,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         511,
         517
       ],
       "bytes": 6,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_f039c"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:01FF-0205",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:01FF-0205 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_01FF-0205.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:020F-0215",
-      "priority": 6,
+      "priority": 10006,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         527,
         533
       ],
       "bytes": 6,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_f039c"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:020F-0215",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:020F-0215 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_020F-0215.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:021F-022F",
+      "priority": 10006,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        543,
+        559
+      ],
+      "bytes": 16,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f039c"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:021F-022F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:021F-022F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_021F-022F.json",
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:02DC-02E2",
-      "priority": 6,
+      "priority": 10006,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         732,
         738
       ],
       "bytes": 6,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:02DC-02E2",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:02DC-02E2 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_02DC-02E2.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:0234-0238",
-      "priority": 4,
+      "id": "RUNTIME_BLOCK:17DE-180C",
+      "priority": 10006,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        564,
-        568
+        6110,
+        6156
       ],
-      "bytes": 4,
+      "bytes": 46,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_copy",
+        "_f03cc"
+      ],
       "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0234-0238",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0234-0238 --promote",
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:17DE-180C",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:17DE-180C --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_0234-0238.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_17DE-180C.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0836-083B",
+      "priority": 10005,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2102,
+        2107
+      ],
+      "bytes": 5,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_blit_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0836-083B",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0836-083B --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0836-083B.json",
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:02B5-02B9",
-      "priority": 4,
+      "priority": 10004,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         693,
         697
       ],
       "bytes": 4,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:02B5-02B9",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:02B5-02B9 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_02B5-02B9.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:02E8-02EC",
-      "priority": 4,
+      "priority": 10004,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         744,
         748
       ],
       "bytes": 4,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:02E8-02EC",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:02E8-02EC --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_02E8-02EC.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:02FD-0301",
-      "priority": 4,
+      "priority": 10004,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         765,
         769
       ],
       "bytes": 4,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:02FD-0301",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:02FD-0301 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_02FD-0301.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:10A3-10A7",
+      "priority": 10004,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        4259,
+        4263
+      ],
+      "bytes": 4,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03ab",
+        "_fill"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:10A3-10A7",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:10A3-10A7 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_10A3-10A7.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:190E-191C",
+      "priority": 10004,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        6414,
+        6428
+      ],
+      "bytes": 14,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03cf"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:190E-191C",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:190E-191C --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_190E-191C.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:0F2F-0F3C",
+      "priority": 10003,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        3887,
+        3900
+      ],
+      "bytes": 13,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_packed_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0F2F-0F3C",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0F2F-0F3C --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0F2F-0F3C.json",
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:01A4-01A6",
-      "priority": 2,
+      "priority": 10002,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         420,
         422
       ],
       "bytes": 2,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_f039c"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:01A4-01A6",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:01A4-01A6 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_01A4-01A6.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:01F0-01F2",
-      "priority": 2,
+      "priority": 10002,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         496,
         498
       ],
       "bytes": 2,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_f039c"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:01F0-01F2",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:01F0-01F2 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_01F0-01F2.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    },
-    {
-      "id": "RUNTIME_BLOCK:023D-023F",
-      "priority": 2,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        573,
-        575
-      ],
-      "bytes": 2,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:023D-023F",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:023D-023F --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_023D-023F.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:0254-0256",
-      "priority": 2,
+      "priority": 10002,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         596,
         598
       ],
       "bytes": 2,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_f039c"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0254-0256",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0254-0256 --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_0254-0256.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
       "id": "RUNTIME_BLOCK:02AA-02AC",
-      "priority": 2,
+      "priority": 10002,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
         682,
         684
       ],
       "bytes": 2,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
       "dependencies": [],
       "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:02AA-02AC",
       "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:02AA-02AC --promote",
       "acceptance_required": true,
       "card": "docs/current/candidates/RUNTIME_BLOCK_02AA-02AC.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:18A5-1908",
-      "priority": -1,
+      "id": "RUNTIME_BLOCK:14C8-14E8",
+      "priority": 10002,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        6309,
-        6408
+        5320,
+        5352
       ],
-      "bytes": 99,
+      "bytes": 32,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03c6",
+        "_f03cf"
+      ],
+      "dependencies": [
+        "runtime_even_pixel_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:14C8-14E8",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:14C8-14E8 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_14C8-14E8.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:07B7-07C2",
+      "priority": 10001,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        1975,
+        1986
+      ],
+      "bytes": 11,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_planar_entry_deltas"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:07B7-07C2",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:07B7-07C2 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_07B7-07C2.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:1016-1020",
+      "priority": 10000,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        4118,
+        4128
+      ],
+      "bytes": 10,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_clear",
+        "_f03a8"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1016-1020",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1016-1020 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_1016-1020.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:107B-10A3",
+      "priority": 10000,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        4219,
+        4259
+      ],
+      "bytes": 40,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03ab",
+        "_fill"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:107B-10A3",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:107B-10A3 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_107B-10A3.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:14A2-14C8",
+      "priority": 9998,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        5282,
+        5320
+      ],
+      "bytes": 38,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03c6",
+        "_f03cf"
+      ],
+      "dependencies": [
+        "runtime_even_pixel_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:14A2-14C8",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:14A2-14C8 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_14A2-14C8.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:151F-1545",
+      "priority": 9998,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        5407,
+        5445
+      ],
+      "bytes": 38,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03c6"
+      ],
+      "dependencies": [
+        "runtime_odd_pixel_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:151F-1545",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:151F-1545 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_151F-1545.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:18C6-18EC",
+      "priority": 9998,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        6342,
+        6380
+      ],
+      "bytes": 38,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
         "_f03cf"
       ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:18A5-1908",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:18A5-1908 --promote",
+      "dependencies": [
+        "runtime_unreferenced_pixel_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:18C6-18EC",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:18C6-18EC --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_18A5-1908.json",
-      "promotion_blocker": "Unknown code/data boundary"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_18C6-18EC.json",
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:1488-14B8",
-      "priority": -2,
+      "id": "RUNTIME_BLOCK:0234-0238",
+      "priority": 9994,
       "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
       "range": [
-        5256,
-        5304
+        564,
+        568
       ],
-      "bytes": 48,
+      "bytes": 4,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f039c"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0234-0238",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0234-0238 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0234-0238.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:18EC-190E",
+      "priority": 9994,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        6380,
+        6414
+      ],
+      "bytes": 34,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f03cf"
+      ],
+      "dependencies": [
+        "runtime_unreferenced_pixel_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:18EC-190E",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:18EC-190E --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_18EC-190E.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:023D-023F",
+      "priority": 9992,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        573,
+        575
+      ],
+      "bytes": 2,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_f039c"
+      ],
+      "dependencies": [],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:023D-023F",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:023D-023F --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_023D-023F.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:1545-1564",
+      "priority": 9991,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        5445,
+        5476
+      ],
+      "bytes": 31,
       "source": "asm/RUNTIME_BLOCK.ASM",
       "known_roots": [
         "_f03c6"
       ],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1488-14B8",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1488-14B8 --promote",
+      "dependencies": [
+        "runtime_odd_pixel_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1545-1564",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1545-1564 --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_1488-14B8.json",
-      "promotion_blocker": "Indirect control flow requires evidence"
+      "card": "docs/current/candidates/RUNTIME_BLOCK_1545-1564.json",
+      "promotion_blocker": null
     },
     {
-      "id": "RUNTIME_BLOCK:1530-1560",
-      "priority": -12,
+      "id": "RUNTIME_BLOCK:0825-0836",
+      "priority": 9977,
+      "kind": "SYMBOLIC_ASM_RECOVERY",
+      "difficulty": "CHEAP",
+      "risk": "LOW",
+      "range": [
+        2085,
+        2102
+      ],
+      "bytes": 17,
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "known_roots": [
+        "_box",
+        "_f039f"
+      ],
+      "dependencies": [
+        "runtime_blit_dispatch"
+      ],
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:0825-0836",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:0825-0836 --promote",
+      "acceptance_required": true,
+      "card": "docs/current/candidates/RUNTIME_BLOCK_0825-0836.json",
+      "promotion_blocker": null
+    },
+    {
+      "id": "RUNTIME_BLOCK:19A2-19A3",
+      "priority": 1,
       "kind": "SYMBOLIC_ASM_RECOVERY",
       "difficulty": "SUPERVISOR",
       "risk": "HIGH",
       "range": [
-        5424,
-        5472
+        6562,
+        6563
       ],
-      "bytes": 48,
+      "bytes": 1,
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [
-        "_f03c6"
-      ],
+      "known_roots": [],
       "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1530-1560",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1530-1560 --promote",
+      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:19A2-19A3",
+      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:19A2-19A3 --promote",
       "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_1530-1560.json",
+      "card": "docs/current/candidates/RUNTIME_BLOCK_19A2-19A3.json",
       "promotion_blocker": "Unknown code/data boundary"
     }
   ]

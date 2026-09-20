@@ -1,3 +1,4 @@
+; Word alignment lets TLINK supply the preceding inter-module pad.
 ; F_4AA8 -- clip a rectangle to the play window (8..137h, 10h..9Fh) and hand
 ; the clipped rect to wipe() = f03B4, with the y origin biased by 0B8h.
 ;
@@ -7,7 +8,7 @@
 ; mov dx,9Fh).  TC 2.0 keeps a variable only in SI or DI, and it saves them;
 ; this body saves nothing but BP and uses exactly the four registers the
 ; Turbo C convention lets a callee clobber.  Hand-written assembly.
-_TEXT   segment byte public 'CODE'
+_TEXT   segment word public 'CODE'
 DGROUP  group   _DATA,_BSS
         assume  cs:_TEXT,ds:DGROUP
 _TEXT   ends
@@ -17,7 +18,7 @@ _DATA   ends
 _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
-_TEXT   segment byte public 'CODE'
+_TEXT   segment word public 'CODE'
 _f4aa8  proc    near
         push    bp
         mov     bp,sp

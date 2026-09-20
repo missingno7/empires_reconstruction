@@ -1,6 +1,7 @@
+; Word alignment lets TLINK supply the preceding inter-module pad.
 ; M_D818_D825 -- reset and append operations for the DS:2F30h packed record table.
 
-_TEXT segment byte public 'CODE'
+_TEXT segment word public 'CODE'
 
 _DATA segment word public 'DATA'
 

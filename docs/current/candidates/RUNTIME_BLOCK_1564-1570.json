@@ -1,0 +1,149 @@
+{
+  "id": "RUNTIME_BLOCK:1564-1570",
+  "priority": 10012,
+  "kind": "SYMBOLIC_ASM_RECOVERY",
+  "difficulty": "CHEAP",
+  "risk": "LOW",
+  "range": [
+    5476,
+    5488
+  ],
+  "range_hex": [
+    "0x1564",
+    "0x1570"
+  ],
+  "coordinate": "runtime-owner-relative, half-open",
+  "bytes": 12,
+  "raw_bytes_remaining": 12,
+  "source": "asm/RUNTIME_BLOCK.ASM",
+  "source_lines": [
+    3048,
+    3055
+  ],
+  "known_roots": [
+    "_f03c6",
+    "_f03cf"
+  ],
+  "dependencies": [],
+  "unresolved_targets": [],
+  "known_calls": [],
+  "branches": [],
+  "indirect_control_flow": [],
+  "probable_tables": [],
+  "classification": "CODE",
+  "neighbors": [
+    {
+      "start": 5474,
+      "end": 5476,
+      "category": "raw_unresolved"
+    },
+    {
+      "start": 5488,
+      "end": 5504,
+      "category": "typed_table_data"
+    }
+  ],
+  "instructions": [
+    {
+      "offset": 5476,
+      "size": 2,
+      "bytes": "8bc3",
+      "mnemonic": "mov",
+      "operands": "ax, bx",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5478,
+      "size": 2,
+      "bytes": "d1e8",
+      "mnemonic": "shr",
+      "operands": "ax, 1",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5480,
+      "size": 1,
+      "bytes": "1f",
+      "mnemonic": "pop",
+      "operands": "ds",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5481,
+      "size": 1,
+      "bytes": "5e",
+      "mnemonic": "pop",
+      "operands": "si",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5482,
+      "size": 1,
+      "bytes": "5f",
+      "mnemonic": "pop",
+      "operands": "di",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5483,
+      "size": 3,
+      "bytes": "83c404",
+      "mnemonic": "add",
+      "operands": "sp, 4",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5486,
+      "size": 1,
+      "bytes": "5d",
+      "mnemonic": "pop",
+      "operands": "bp",
+      "flow": "FALLTHROUGH",
+      "memory_references": []
+    },
+    {
+      "offset": 5487,
+      "size": 1,
+      "bytes": "c3",
+      "mnemonic": "ret",
+      "operands": "",
+      "flow": "RETURN",
+      "memory_references": []
+    }
+  ],
+  "known_labels": [
+    {
+      "name": "runtime_even_pixel_dispatch",
+      "offset": 5488,
+      "line": 3057
+    }
+  ],
+  "applicable_rules": [
+    "ABSOLUTE_MEMORY",
+    "BRANCH_WIDTH",
+    "BOUNDARY",
+    "QUALITY",
+    "PUBLICS",
+    "FRESHNESS"
+  ],
+  "expected_fixups": [],
+  "blocked_attempts": [],
+  "expected_publics": [],
+  "known_globals": [],
+  "global_resolution": "Exact DGROUP displacement bindings; indexed references identify a base, not a proven effective address.",
+  "rules": "docs/current/tasm-reconstruction-rules.md",
+  "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:1564-1570",
+  "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:1564-1570 --promote",
+  "acceptance_required": true,
+  "promotion_blocker": null,
+  "source_sha256": "b6829acd25b4842be0ca3711159448e6ab59e31dac402f0ad245a8f3f68020d4",
+  "recommended_task": "Symbolic TASM transcription",
+  "card": "docs/current/candidates/RUNTIME_BLOCK_1564-1570.json",
+  "input_fingerprint": "502f26111042cc9d06209e13f761c37ca5e1537fa87cbd971cacbb504ad62e37"
+}

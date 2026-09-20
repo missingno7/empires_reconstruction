@@ -1,8 +1,6 @@
-"""Extract the dispatch-root map for the remaining RUNTIME_BLOCK capsule.
+"""Analyze the complete runtime recursively; retain analyze() as the legacy veneer API.
 
-The block begins with fixed three-byte near-jump veneers.  This tool records
-their exact target offsets and the public aliases attached to each veneer so
-symbolic recovery can start from actual CFG roots instead of a linear sweep.
+The CLI emits docs/current/runtime-cfg.json, with unknown gaps kept separate.
 """
 import json
 from pathlib import Path
@@ -60,10 +58,12 @@ def analyze(binary, source):
 
 
 def main():
-    binary = (ROOT / 'build/regions/RUNTIME_BLOCK.bin').read_bytes()
-    report = analyze(binary, ROOT / 'src/RUNTIME_BLOCK.C')
-    write_json(ROOT / 'docs/runtime-block-cfg-roots.json', report)
-    print(f"RUNTIME_BLOCK: {report['root_count']} veneer CFG roots")
+    from runtime_cfg import runtime_cfg
+    from runtime_source import oracle_bytes
+    report = runtime_cfg(oracle_bytes())
+    (ROOT / 'docs/current').mkdir(exist_ok=True)
+    write_json(ROOT / 'docs/current/runtime-cfg.json', report)
+    print(f"RUNTIME_BLOCK: {len(report['basic_blocks'])} blocks, {len(report['instructions'])} reachable instructions")
     return report
 
 

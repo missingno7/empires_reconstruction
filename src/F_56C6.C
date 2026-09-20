@@ -1,30 +1,7 @@
-/* F_56C6 -- the intro chapter's driver.  Entry 156C6, 885 bytes.
-
-   THE TWO `msg` SITES PUSH ONE ADDRESS, NOT TWO.  At extent offsets 243 and
-   435 the image holds the same six bytes -- `1E` push ds / `B8 9D 13` mov
-   ax,0x139D / `50` push ax -- so both calls hand `msg` the far pointer
-   DS:0x139D, one object referenced twice.  An earlier draft wrote the string
-   literal "a" at both sites; TC 2.0 does not merge identical string
-   literals, so that spelling put TWO two-byte objects in this module's
-   `_DATA` at addends 0 and 2, and the provider's module-data-base vote
-   (pf/82 section 5c) then read two bases 0x139B and 0x139D from the two
-   sites and refused REFUSE_MODULE_DATA_BASE_DISAGREES -- the draft's own two
-   sites did not corroborate each other.  ONE object referenced twice gives
-   two fixups with ONE addend, the two votes agree, and the base is decided.
-
-   WHAT IS ACTUALLY AT DS:0x139D, read off the image (DGROUP is image address
-   0xFA30): the two bytes `07 00`, inside a 20-byte record table whose
-   records start at DGROUP 0x1377 and repeat every 20 bytes (0x1377, 0x138B,
-   0x139F, 0x13B3, 0x13C7 ...), each carrying two DS-relative far pointers
-   into the sign-in strings that begin at 0x1340 and 0x13F1.  So the object
-   is NOT a caption, and this extent establishes nothing about its type or
-   its owner beyond the address and those two bytes.  The draft therefore
-   declares the smallest module-local object the bytes support -- an
-   initialised two-byte char array holding exactly `07 00` -- and passes it
-   by name, which is the array-name push shape (`push ds` then `mov
-   ax,offset`, tc20-codegen rule 5) the image carries.  It is not a claim
-   that the object is this module's; it is the one statement in C that
-   reproduces both the bytes and the single addend the two sites share. */
+/* F_56C6 -- intro chapter driver.
+   Both q139d call sites reference the same two bytes (07 00) within
+   DATA_010FA5_RECORDS. Declare the shared storage instead of manufacturing
+   a module-local initializer and rewriting its object references later. */
 
 extern int  g857, g94, g96, g98, g9a, g1770, g1774, g1776;
 extern unsigned char vmode;              /* DS:BFCD */
@@ -70,17 +47,9 @@ extern void f6c26(int n);                /* 6C26 */
 extern void farfree(char far *p);            /* F6C3 */
 /*@SYM _farfree=0xF6C3 kind=f key=functions/F_F6C3.entry*/
 
-/* DS:0x139D -- see the head comment; both `msg` sites push this one address.
-   The `g<hex>`/`f<hex>` convention does not cover this name, so the address
-   is DECLARED (ae/59 section 8) and it comes from the MODEL object the key
-   names, never from the image at 0x139D.  THE CENSUS NAMES ONE THERE:
-   G_P20ECD, a PROVEN_DYNAMIC two-byte scalar at exactly DGROUP+0x139D with
-   eleven read sites and no writer -- and one of the eleven is 18815, inside
-   F_86C9, which is `msg`, the callee both sites hand this address to.  So
-   the object the draft declares and the object the program reads are the
-   same word, corroborated from the other end. */
 /*@SYM _q139d=0x139D kind=g key=storage_objects/G_P20ECD.phys*/
-static char q139d[2] = { 7, 0 };
+/* Storage belongs to DATA_010FA5_RECORDS; this module only references it. */
+extern char near q139d[2];
 
 int f56c6(void)
 {

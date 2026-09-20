@@ -1,7 +1,8 @@
+; Word alignment lets TLINK supply the preceding inter-module pad.
 ; M_D61C_D79C -- render an ES:DI command list, optionally highlighting the
 ; 24-cell board lattice while it is processed.
 
-_TEXT segment byte public 'CODE'
+_TEXT segment word public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'

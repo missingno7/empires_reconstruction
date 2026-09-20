@@ -1,0 +1,94 @@
+{
+  "format": "empires-runtime-trailer-evidence-v1",
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "range": [
+    6562,
+    6563
+  ],
+  "historical_cs": 7486,
+  "file_offset": 7998,
+  "exact_byte": "c3",
+  "possible_instruction": "RET near (C3)",
+  "preceding_epilogue": {
+    "range": [
+      6559,
+      6562
+    ],
+    "bytes": "5f5dc3",
+    "instructions": [
+      "pop di",
+      "pop bp",
+      "ret"
+    ]
+  },
+  "following_string": "EGA.DRV\u0000",
+  "absolute_cs_word_occurrences": {
+    "0x1d3e": [],
+    "0x1d3f": []
+  },
+  "direct_reference_scan": {
+    "runtime_range": "19A2-19A3",
+    "historical_cs": "1D3E",
+    "byte": "C3",
+    "all_byte_offset_direct_branch_candidates": [],
+    "absolute_word_occurrences_file_offsets": [],
+    "scan_limit": "All text byte offsets scanned, including data and instruction interiors; candidates are not validated callers. Does not rule out computed references."
+  },
+  "replacement_driver_comparison": {
+    "AE000_002": "Final reachable pixel-read epilogue ends exactly at resource end; no driver-name trailer.",
+    "AE000_003": "Final reachable pixel-read epilogue ends exactly at resource end; no driver-name trailer."
+  },
+  "uncertainty": "Historical purpose/ownership, not byte value or possible opcode decoding. No evidence that the preceding routine falls through here. Computed references cannot be excluded.",
+  "hypotheses_not_facts": [
+    "unused return stub",
+    "assembly/compiler/linkage residue",
+    "part of a driver-specific trailer convention"
+  ],
+  "classification_policy": "Keep unproven reachability explicit. Do not infer a callable root or safe padding from C3 alone. The one-byte supervisor label is a conservative queue disposition, not evidence of high runtime risk.",
+  "compiler_probes": {
+    "toolchain": "Pinned Turbo C 2.0 compact model",
+    "source_cases": {
+      "empty": "void probe(void) {}",
+      "asmret": "void probe(void) { asm ret; }",
+      "tailstring": "void probe(void) { asm ret;\n asm db 045h,047h,041h,02eh,044h,052h,056h,0\n}"
+    },
+    "emitted_text_hex": {
+      "empty": "c3",
+      "asmret": "c3c3",
+      "tailstring": "c34547412e44525600c3"
+    },
+    "interpretation": "Compiler-generated duplicate RET is reproducible; the EGA.DRV string placement is not explained by the tested single-function wrapper. This does not prove original source provenance."
+  },
+  "archive_scan": {
+    "archives": [
+      "AE000.DAT",
+      "AE001.DAT"
+    ],
+    "decoded_drv_name_matches": [],
+    "all_resources_scanned": true
+  },
+  "file_scope_asm_probe": {
+    "source": "void probe(void) { asm ret; }\nasm db 045h,047h,041h,02eh,044h,052h,056h,0\n",
+    "status": "compiled",
+    "text_hex": "c3c3",
+    "segments": {
+      "_TEXT": "c3c3",
+      "_DATA": "4547412e44525600"
+    }
+  },
+  "investigation_result": {
+    "status": "PURPOSE_UNRESOLVED_AFTER_TARGETED_PROBES",
+    "established": [
+      "The preceding reachable routine is complete before this byte.",
+      "No direct branch encoding or absolute CS pointer to the byte was found in the EXE.",
+      "All decoded archive resources contain no matching DRV identifier trailer.",
+      "Pinned Turbo C emits an extra RET after explicit inline ASM RET."
+    ],
+    "remaining_gap": "No tested source/layout reproduces the exact placement of the filename after this extra RET at odd CS:1D3F. File-scope data is WORD-aligned by the compiler; simple TEXT/DATA concatenation is not established for the original driver.",
+    "next_discriminating_evidence": [
+      "Original EGA driver object/source or a second executable version with the same driver trailer.",
+      "A proven indirect consumer or original driver-image packaging convention."
+    ],
+    "decision": "Preserve C3 exactly, retain the one-byte unresolved queue item, and do not create an invented CFG root."
+  }
+}

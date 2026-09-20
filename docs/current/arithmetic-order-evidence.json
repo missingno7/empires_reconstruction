@@ -1,0 +1,46 @@
+{
+  "module": "M_DDD9_DF98",
+  "linear_source_probe": "build/arithmetic-linear.asm",
+  "instruction_bytes_equal": true,
+  "original_far_fixup_offsets": [
+    549,
+    471,
+    249,
+    225,
+    143,
+    118,
+    96,
+    77,
+    64,
+    42
+  ],
+  "linear_far_fixup_offsets": [
+    42,
+    64,
+    77,
+    96,
+    118,
+    143,
+    225,
+    249,
+    471,
+    549
+  ],
+  "status": "FULL_LINK_REJECTED_NOT_PROMOTED",
+  "candidate_sha256": "5299f06f9c9d5a05d9de9868d780c03314bdc257863657fa2d7a1a2468c39afc",
+  "load_image_equal": true,
+  "relocation_count": 106,
+  "relocation_multiset_equal": true,
+  "changed_indices": [
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81
+  ]
+}

@@ -3,7 +3,13 @@
 
 extern int f020f(), f01ce(), f039f(), f6ca6(), f6cea(), f6d3c();
 
-extern int  gb83;                       /* DS:0B83 */
+/* Shared UI state immediately precedes the caption initializers.
+   Consumers establish widths: F_7313 int, F_734E char, F_703E/F_7162 ints.
+   The final zero byte is part of gb85, not alignment padding. */
+int gb80 = 4;
+char gb82 = 4;
+int gb83 = 0;
+int gb85 = 0;
 extern char gbfcd;                      /* DS:BFCD */
 
 f75f3()

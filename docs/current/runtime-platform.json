@@ -1,0 +1,963 @@
+{
+  "format": "empires-runtime-platform-evidence-v1",
+  "scope": "Local byte/source evidence; no source-language conversion",
+  "graphics": {
+    "selectors": [
+      {
+        "value": 1,
+        "option": "E",
+        "driver": "built-in",
+        "evidence": "CS table slot 1 -> runtime 01A1; BIOS AX=000Eh and planar register writes"
+      },
+      {
+        "value": 2,
+        "option": "C",
+        "driver": "AE000_003",
+        "evidence": "F_48BE replaces code before first runtime call"
+      },
+      {
+        "value": 3,
+        "option": "T",
+        "driver": "built-in",
+        "evidence": "slot 3 -> runtime 0258; BIOS AX=0009h and ports 03DAh/03DEh"
+      },
+      {
+        "value": 4,
+        "option": "M",
+        "driver": "built-in",
+        "evidence": "slot 4 -> runtime 0294; BIOS AX=0013h"
+      },
+      {
+        "value": 5,
+        "option": "V",
+        "driver": "AE000_002",
+        "evidence": "F_48BE replaces code before first runtime call"
+      }
+    ],
+    "mapping_source": "asm/F_4F96.ASM keys and handlers; src/F_520A.C memory-driven fallback",
+    "built_in_dispatch_context": [
+      1,
+      3,
+      4
+    ],
+    "limitation": "Context explains zero/out-of-table slots. It is not a local bounds check for arbitrary calls; built-in CFG retains incomplete status at 019C/02A2."
+  },
+  "audio": [
+    {
+      "classification": "PC_SPEAKER_PIT_PATH",
+      "confidence": "HIGH",
+      "sources": [
+        "asm/M_C5D1_C706.ASM"
+      ],
+      "evidence": "Speaker gate accesses port 61h; F_C706 sends divisor low/high bytes to port 42h."
+    },
+    {
+      "classification": "OPL_REGISTER_AND_TIMER_PATH",
+      "confidence": "HIGH",
+      "sources": [
+        "src/F_E54D.C",
+        "asm/M_C77A_C898.ASM",
+        "src/F_E48A.C"
+      ],
+      "evidence": "Timer registers 2/4 with status mask E0h; address/data port pair with six then 35 settling reads; voice registers A0h/B0h.",
+      "limitation": "Supports an OPL-compatible path; this evidence alone does not establish OPL3 extensions."
+    },
+    {
+      "classification": "ALTERNATE_PACKED_NIBBLE_AUDIO_PATH",
+      "confidence": "HIGH",
+      "sources": [
+        "asm/M_C5D1_C706.ASM",
+        "asm/M_C77A_C898.ASM",
+        "src/F_C8D4.ASM"
+      ],
+      "evidence": "Backend 1 emits packed latch/data nibbles through port C0h; alternate configuration sets port 205h.",
+      "limitation": "Do not collapse these branches into the OPL path or infer exact hardware solely from existing comments."
+    }
+  ],
+  "overlays": [
+    {
+      "resource": "AE000_002",
+      "display_selector": 5,
+      "decoded_bytes": 1886,
+      "decoded_sha256": "763d28e6049dee36e7be92a10201e64b0bf7d1f62d73d83736e215073e2ddf87",
+      "encoded_sha256": "9e1896abddc5509deb3654ed825f42adcb4b104c23dba18658d7170b52adedfe",
+      "runtime_destination_cs": 924,
+      "resource_type": 70,
+      "flags": 3,
+      "root_slots": [
+        {
+          "offset": 0,
+          "names": [
+            "overlay_entry_00"
+          ]
+        },
+        {
+          "offset": 3,
+          "names": [
+            "overlay_entry_03"
+          ]
+        },
+        {
+          "offset": 6,
+          "names": [
+            "overlay_entry_06"
+          ]
+        },
+        {
+          "offset": 9,
+          "names": [
+            "overlay_entry_09"
+          ]
+        },
+        {
+          "offset": 12,
+          "names": [
+            "overlay_entry_0c"
+          ]
+        },
+        {
+          "offset": 15,
+          "names": [
+            "overlay_entry_0f"
+          ]
+        },
+        {
+          "offset": 18,
+          "names": [
+            "overlay_entry_12"
+          ]
+        },
+        {
+          "offset": 21,
+          "names": [
+            "overlay_entry_15"
+          ]
+        },
+        {
+          "offset": 24,
+          "names": [
+            "overlay_entry_18"
+          ]
+        },
+        {
+          "offset": 27,
+          "names": [
+            "overlay_entry_1b"
+          ]
+        },
+        {
+          "offset": 30,
+          "names": [
+            "overlay_entry_1e"
+          ]
+        },
+        {
+          "offset": 33,
+          "names": [
+            "overlay_entry_21"
+          ]
+        },
+        {
+          "offset": 36,
+          "names": [
+            "overlay_entry_24"
+          ]
+        },
+        {
+          "offset": 39,
+          "names": [
+            "overlay_entry_27"
+          ]
+        },
+        {
+          "offset": 42,
+          "names": [
+            "overlay_entry_2a"
+          ]
+        },
+        {
+          "offset": 45,
+          "names": [
+            "overlay_entry_2d"
+          ]
+        },
+        {
+          "offset": 48,
+          "names": [
+            "overlay_entry_30"
+          ]
+        },
+        {
+          "offset": 51,
+          "names": [
+            "overlay_entry_33"
+          ]
+        },
+        {
+          "offset": 54,
+          "names": [
+            "overlay_entry_36"
+          ]
+        },
+        {
+          "offset": 57,
+          "names": [
+            "overlay_entry_39"
+          ]
+        }
+      ],
+      "entry_targets": [
+        {
+          "source": 0,
+          "target": 60,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 984,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 3,
+          "target": 66,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 990,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 6,
+          "target": 137,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1061,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 9,
+          "target": 171,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1095,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 12,
+          "target": 211,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1135,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 15,
+          "target": 260,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1184,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 18,
+          "target": 312,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1236,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 21,
+          "target": 367,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1291,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 24,
+          "target": 416,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1340,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 27,
+          "target": 523,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1447,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 30,
+          "target": 601,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1525,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 33,
+          "target": 674,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1598,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 36,
+          "target": 760,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1684,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 39,
+          "target": 831,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1755,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 42,
+          "target": 912,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1836,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 45,
+          "target": 1248,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2172,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 48,
+          "target": 1366,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2290,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 51,
+          "target": 1096,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2020,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 54,
+          "target": 1833,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2757,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 57,
+          "target": 1860,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2784,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        }
+      ],
+      "cfg_covered_bytes": 1884,
+      "indirect_sites": [],
+      "classified_gaps": [
+        {
+          "start": 2,
+          "end": 3,
+          "classification": "PADDING"
+        },
+        {
+          "start": 5,
+          "end": 6,
+          "classification": "PADDING"
+        }
+      ],
+      "unknown_gaps": [],
+      "typed_regions": [
+        {
+          "start": 2,
+          "end": 3,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 5,
+          "end": 6,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        }
+      ],
+      "issues": [],
+      "current_encoder_exact": false,
+      "explicit_compression_plan_exact": true,
+      "compression_plan": "build/overlay-compression-plans/AE000_002.json",
+      "queue_status": "HELD_SUPERVISOR",
+      "blocker": "Exact explicit compression plan verified; canonical archive source ownership and bounded ASM checker/promotion are still needed before grinder cards can be issued.",
+      "evidence": [
+        "src/F_48BE.C: resource 2 for selector 5; resource 3 for selector 2; memmove to f039c",
+        "src/F_490D.C: f48be precedes f0281",
+        "src/F_0281.C: f039c called only after replacement",
+        "src/F_656C.C: flags decode payload; type 46h bypasses bitmap conversion"
+      ]
+    },
+    {
+      "resource": "AE000_003",
+      "display_selector": 2,
+      "decoded_bytes": 4032,
+      "decoded_sha256": "180107494d1c12406cffe25a00e76324c6ee480791873d375c311b6acadf776a",
+      "encoded_sha256": "e8e0e4b36bbab4fda238f217d46efc2c9b2181fb4eab2f457d0f3d5f54cbbccc",
+      "runtime_destination_cs": 924,
+      "resource_type": 70,
+      "flags": 3,
+      "root_slots": [
+        {
+          "offset": 0,
+          "names": [
+            "overlay_entry_00"
+          ]
+        },
+        {
+          "offset": 3,
+          "names": [
+            "overlay_entry_03"
+          ]
+        },
+        {
+          "offset": 6,
+          "names": [
+            "overlay_entry_06"
+          ]
+        },
+        {
+          "offset": 9,
+          "names": [
+            "overlay_entry_09"
+          ]
+        },
+        {
+          "offset": 12,
+          "names": [
+            "overlay_entry_0c"
+          ]
+        },
+        {
+          "offset": 15,
+          "names": [
+            "overlay_entry_0f"
+          ]
+        },
+        {
+          "offset": 18,
+          "names": [
+            "overlay_entry_12"
+          ]
+        },
+        {
+          "offset": 21,
+          "names": [
+            "overlay_entry_15"
+          ]
+        },
+        {
+          "offset": 24,
+          "names": [
+            "overlay_entry_18"
+          ]
+        },
+        {
+          "offset": 27,
+          "names": [
+            "overlay_entry_1b"
+          ]
+        },
+        {
+          "offset": 30,
+          "names": [
+            "overlay_entry_1e"
+          ]
+        },
+        {
+          "offset": 33,
+          "names": [
+            "overlay_entry_21"
+          ]
+        },
+        {
+          "offset": 36,
+          "names": [
+            "overlay_entry_24"
+          ]
+        },
+        {
+          "offset": 39,
+          "names": [
+            "overlay_entry_27"
+          ]
+        },
+        {
+          "offset": 42,
+          "names": [
+            "overlay_entry_2a"
+          ]
+        },
+        {
+          "offset": 45,
+          "names": [
+            "overlay_entry_2d"
+          ]
+        },
+        {
+          "offset": 48,
+          "names": [
+            "overlay_entry_30"
+          ]
+        },
+        {
+          "offset": 51,
+          "names": [
+            "overlay_entry_33"
+          ]
+        },
+        {
+          "offset": 54,
+          "names": [
+            "overlay_entry_36"
+          ]
+        },
+        {
+          "offset": 57,
+          "names": [
+            "overlay_entry_39"
+          ]
+        }
+      ],
+      "entry_targets": [
+        {
+          "source": 0,
+          "target": 60,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 984,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 3,
+          "target": 66,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 990,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 6,
+          "target": 185,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1109,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 9,
+          "target": 294,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1218,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 12,
+          "target": 355,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1279,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 15,
+          "target": 481,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1405,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 18,
+          "target": 592,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1516,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 21,
+          "target": 667,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1591,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 24,
+          "target": 738,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 1662,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 27,
+          "target": 1131,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2055,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 30,
+          "target": 1228,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2152,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 33,
+          "target": 1330,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2254,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 36,
+          "target": 1449,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2373,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 39,
+          "target": 1857,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 2781,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 42,
+          "target": 2277,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 3201,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 45,
+          "target": 2944,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 3868,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 48,
+          "target": 3138,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 4062,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 51,
+          "target": 3811,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 4735,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 54,
+          "target": 3934,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 4858,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        },
+        {
+          "source": 57,
+          "target": 3988,
+          "kind": "BRANCH",
+          "resolution": {
+            "address": 4912,
+            "classification": "LOCAL_BASIC_BLOCK"
+          }
+        }
+      ],
+      "cfg_covered_bytes": 3497,
+      "indirect_sites": [
+        {
+          "offset": 808,
+          "mnemonic": "jmp",
+          "operands": "word ptr cs:[bx + 0x66e]",
+          "targets": [
+            813,
+            837,
+            873,
+            911,
+            961,
+            1018
+          ],
+          "complete": true,
+          "evidence": {
+            "targets": [
+              813,
+              837,
+              873,
+              911,
+              961,
+              1018
+            ],
+            "complete": true,
+            "evidence": "02FB copies CX to BX; 02FD AND BX,1 bounds it to 0..1. 0307 and 0310 RCL BX,1 append carry bits from coordinate shifts. 0326 doubles 0..7 to even byte indices 0..14; 0328 reads CS:066E.",
+            "table_range": [
+              722,
+              738
+            ],
+            "byte_indices": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12,
+              14
+            ]
+          }
+        }
+      ],
+      "classified_gaps": [
+        {
+          "start": 2,
+          "end": 3,
+          "classification": "PADDING"
+        },
+        {
+          "start": 5,
+          "end": 6,
+          "classification": "PADDING"
+        },
+        {
+          "start": 722,
+          "end": 738,
+          "classification": "TABLE"
+        },
+        {
+          "start": 960,
+          "end": 961,
+          "classification": "PADDING"
+        },
+        {
+          "start": 1017,
+          "end": 1018,
+          "classification": "PADDING"
+        },
+        {
+          "start": 1081,
+          "end": 1082,
+          "classification": "PADDING"
+        },
+        {
+          "start": 2432,
+          "end": 2944,
+          "classification": "TABLE"
+        },
+        {
+          "start": 3307,
+          "end": 3308,
+          "classification": "PADDING"
+        },
+        {
+          "start": 3600,
+          "end": 3601,
+          "classification": "PADDING"
+        }
+      ],
+      "unknown_gaps": [],
+      "typed_regions": [
+        {
+          "start": 2,
+          "end": 3,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 5,
+          "end": 6,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 722,
+          "end": 738,
+          "classification": "TABLE",
+          "evidence": "02FB copies CX to BX; 02FD AND BX,1 bounds it to 0..1. 0307 and 0310 RCL BX,1 append carry bits from coordinate shifts. 0326 doubles 0..7 to even byte indices 0..14; 0328 reads CS:066E.",
+          "consumers": [
+            808
+          ],
+          "confidence": "HIGH",
+          "element_width": 2,
+          "encoding": "ABSOLUTE_CS",
+          "targets": [
+            813,
+            961,
+            1018,
+            911,
+            837,
+            961,
+            1018,
+            873
+          ],
+          "name": "cga_copy_alignment_dispatch"
+        },
+        {
+          "start": 960,
+          "end": 961,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 1017,
+          "end": 1018,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 1081,
+          "end": 1082,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 2432,
+          "end": 2688,
+          "classification": "TABLE",
+          "evidence": "BX=0D1C at 0BA1/0CEF; CS XLAT uses the full AL byte. Each nibble maps through [0,0,1,2,3,0,...], expanded to repeated two-bit pixels.",
+          "consumers": [
+            2977,
+            3311
+          ],
+          "confidence": "HIGH",
+          "element_width": 1,
+          "name": "cga_color_pair_lookup"
+        },
+        {
+          "start": 2688,
+          "end": 2944,
+          "classification": "TABLE",
+          "evidence": "0CFF INC BH selects the next 256-byte table for CS XLAT at 0D01; 0D03 DEC BH restores it. Mask=(high_nibble_nonzero?CC:0)|(low_nibble_nonzero?33:0).",
+          "consumers": [
+            3327,
+            3329,
+            3331
+          ],
+          "confidence": "HIGH",
+          "element_width": 1,
+          "name": "cga_transparency_mask"
+        },
+        {
+          "start": 3307,
+          "end": 3308,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        },
+        {
+          "start": 3600,
+          "end": 3601,
+          "classification": "PADDING",
+          "evidence": "90 byte skipped by established unconditional branch; not an entry root.",
+          "consumers": [],
+          "confidence": "HIGH"
+        }
+      ],
+      "issues": [],
+      "current_encoder_exact": false,
+      "explicit_compression_plan_exact": true,
+      "compression_plan": "build/overlay-compression-plans/AE000_003.json",
+      "queue_status": "HELD_SUPERVISOR",
+      "blocker": "Exact explicit compression plan verified; canonical archive source ownership and bounded ASM checker/promotion are still needed before grinder cards can be issued.",
+      "evidence": [
+        "src/F_48BE.C: resource 2 for selector 5; resource 3 for selector 2; memmove to f039c",
+        "src/F_490D.C: f48be precedes f0281",
+        "src/F_0281.C: f039c called only after replacement",
+        "src/F_656C.C: flags decode payload; type 46h bypasses bitmap conversion"
+      ]
+    }
+  ]
+}

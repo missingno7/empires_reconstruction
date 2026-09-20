@@ -1,0 +1,75 @@
+[
+  {
+    "pattern": "TASM_SHORTENED_BRANCH",
+    "symptom": "expected E9 near branch, got EB short branch",
+    "resolution": "Use the tested JMP_NEAR macro. TASM may shorten JMP NEAR PTR and pad with NOP.",
+    "applies_to": [
+      "TASM1"
+    ],
+    "rule": "BRANCH_WIDTH"
+  },
+  {
+    "pattern": "PUBLIC_OFFSET_CHANGED",
+    "symptom": "public offset/name set differs",
+    "resolution": "Check the first earlier extent change and remove compiler prologue or accidental alignment.",
+    "applies_to": [
+      "TASM1",
+      "TC2"
+    ],
+    "rule": "PUBLICS"
+  },
+  {
+    "pattern": "FIXUP_TOPOLOGY_CHANGED",
+    "symptom": "fixup site, target, frame, addend or ordering differs",
+    "resolution": "Keep EXTRN in the intended segment; preserve DGROUP framing and ORG emission order. Runtime's current oracle requires zero fixups.",
+    "applies_to": [
+      "TASM1"
+    ],
+    "rule": "FIXUP_ORDER"
+  },
+  {
+    "pattern": "TC_REGISTER_SAVE",
+    "symptom": "unexpected SI/DI pushes at entry",
+    "resolution": "Use the TASM-native runtime source. Turbo C inline ASM can alter compiler register preservation.",
+    "applies_to": [
+      "TC2"
+    ],
+    "rule": "TC_INLINE_REGISTERS"
+  },
+  {
+    "pattern": "STALE_INPUTS",
+    "symptom": "queue or receipt does not describe current construction inputs",
+    "resolution": "Refresh unedited source before claiming work. After an edit use FAST and promotion; never reuse old success.",
+    "applies_to": [
+      "FACTORY"
+    ],
+    "rule": "FRESHNESS"
+  },
+  {
+    "pattern": "OUT_OF_SCOPE_EDIT",
+    "symptom": "source outside the candidate range changed",
+    "resolution": "Restore unrelated changes and restrict transcription to this card's source lines.",
+    "applies_to": [
+      "FACTORY"
+    ],
+    "rule": "BOUNDARY"
+  },
+  {
+    "pattern": "NO_QUALITY_IMPROVEMENT",
+    "symptom": "exact bytes but unresolved bytes did not decrease",
+    "resolution": "Replace unresolved emissions with symbolic instructions or supervisor-evidenced typed data; do not reclassify DB by comments.",
+    "applies_to": [
+      "FACTORY"
+    ],
+    "rule": "QUALITY"
+  },
+  {
+    "pattern": "TASM_ABSOLUTE_MEMORY",
+    "symptom": "Expected 8B /r absolute memory load, got B8+register immediate load; module shrinks",
+    "resolution": "Use an explicit segment for a numeric address: mov di,word ptr ds:[0c0e4h]. Bare numeric brackets are not enough in TASM 1.0.",
+    "applies_to": [
+      "TASM1"
+    ],
+    "rule": "ABSOLUTE_MEMORY"
+  }
+]

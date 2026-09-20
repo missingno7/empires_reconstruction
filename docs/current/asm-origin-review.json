@@ -1,0 +1,645 @@
+{
+  "format": "empires-asm-origin-review-v1",
+  "modules": [
+    {
+      "id": "RUNTIME_BLOCK",
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "bytes": 6571,
+      "members": [
+        "RUNTIME_BLOCK"
+      ],
+      "classification": "ASM_ORIGIN_LIKELY",
+      "evidence": "Computed entry into repeated bodies, CS patching, explicit DS preservation and I/O. BP frames alone do not imply C.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_1ECD",
+      "source": "asm/F_1ECD.ASM",
+      "bytes": 74,
+      "members": [
+        "F_1ECD"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_1F91",
+      "source": "asm/F_1F91.ASM",
+      "bytes": 126,
+      "members": [
+        "F_1F91"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_25B3",
+      "source": "asm/F_25B3.ASM",
+      "bytes": 761,
+      "members": [
+        "F_25B3"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_28AC",
+      "source": "asm/F_28AC.ASM",
+      "bytes": 218,
+      "members": [
+        "F_28AC"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_4AA8",
+      "source": "asm/F_4AA8.ASM",
+      "bytes": 100,
+      "members": [
+        "F_4AA8"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_4B0C",
+      "source": "asm/F_4B0C.ASM",
+      "bytes": 915,
+      "members": [
+        "F_4B0C"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_4E9F",
+      "source": "asm/F_4E9F.ASM",
+      "bytes": 76,
+      "members": [
+        "F_4E9F"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_4EEB",
+      "source": "src/F_4EEB.ASM",
+      "bytes": 120,
+      "members": [
+        "F_4EEB"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_4F63",
+      "source": "src/F_4F63.ASM",
+      "bytes": 51,
+      "members": [
+        "F_4F63"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_4F96",
+      "source": "asm/F_4F96.ASM",
+      "bytes": 299,
+      "members": [
+        "F_4F96"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_50D2_53BF",
+      "source": "asm/M_50D2_53BF.ASM",
+      "bytes": 312,
+      "members": [
+        "F_50D2",
+        "F_53BF"
+      ],
+      "classification": "ORIGIN_UNPROVEN",
+      "evidence": "Historical matching-C provenance included inline/fixed branch bytes. F_53BF calls the OPL timer probe; old VGA-probe wording is not hardware evidence.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_6036",
+      "source": "asm/F_6036.ASM",
+      "bytes": 115,
+      "members": [
+        "F_6036"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_60A9",
+      "source": "asm/F_60A9.ASM",
+      "bytes": 216,
+      "members": [
+        "F_60A9"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_6181",
+      "source": "asm/F_6181.ASM",
+      "bytes": 171,
+      "members": [
+        "F_6181"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_643A",
+      "source": "asm/F_643A.ASM",
+      "bytes": 240,
+      "members": [
+        "F_643A"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_652A",
+      "source": "asm/F_652A.ASM",
+      "bytes": 66,
+      "members": [
+        "F_652A"
+      ],
+      "classification": "C_WITH_INLINE_ASM_LIKELY",
+      "evidence": "BP frame with 512-byte local buffer, SI loop counter and compiler-like duplicate SS/address setup around INT 13h; not ordinary pure C.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_699E",
+      "source": "asm/F_699E.ASM",
+      "bytes": 380,
+      "members": [
+        "F_699E"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_6B1A_6B4A",
+      "source": "asm/M_6B1A_6B4A.ASM",
+      "bytes": 76,
+      "members": [
+        "F_6B1A",
+        "F_6B4A"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_6BCF",
+      "source": "asm/F_6BCF.ASM",
+      "bytes": 87,
+      "members": [
+        "F_6BCF"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_6D86_6DCC",
+      "source": "asm/M_6D86_6DCC.ASM",
+      "bytes": 377,
+      "members": [
+        "F_6D86",
+        "PAD_006FC5",
+        "F_6DCC"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_6EFF",
+      "source": "asm/F_6EFF.ASM",
+      "bytes": 76,
+      "members": [
+        "F_6EFF"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_6F4B",
+      "source": "asm/F_6F4B.ASM",
+      "bytes": 120,
+      "members": [
+        "F_6F4B"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_8BAB",
+      "source": "asm/F_8BAB.ASM",
+      "bytes": 1275,
+      "members": [
+        "F_8BAB"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_988F_98CB",
+      "source": "asm/M_988F_98CB.ASM",
+      "bytes": 121,
+      "members": [
+        "F_988F",
+        "F_98CB"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_9EC3",
+      "source": "asm/F_9EC3.ASM",
+      "bytes": 125,
+      "members": [
+        "F_9EC3"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_AA1F",
+      "source": "asm/F_AA1F.ASM",
+      "bytes": 327,
+      "members": [
+        "F_AA1F"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_B122",
+      "source": "asm/F_B122.ASM",
+      "bytes": 693,
+      "members": [
+        "F_B122"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_B40F",
+      "source": "asm/F_B40F.ASM",
+      "bytes": 236,
+      "members": [
+        "F_B40F"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_B7F9",
+      "source": "asm/F_B7F9.ASM",
+      "bytes": 366,
+      "members": [
+        "F_B7F9"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_B99F",
+      "source": "asm/F_B99F.ASM",
+      "bytes": 1857,
+      "members": [
+        "F_B99F"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_C1A0_C232",
+      "source": "asm/M_C1A0_C232.ASM",
+      "bytes": 221,
+      "members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_C27D_C567",
+      "source": "asm/M_C27D_C567.ASM",
+      "bytes": 797,
+      "members": [
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_C5A8_C5C6",
+      "source": "asm/M_C5A8_C5C6.ASM",
+      "bytes": 41,
+      "members": [
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_C5D1_C706",
+      "source": "asm/M_C5D1_C706.ASM",
+      "bytes": 388,
+      "members": [
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_C755",
+      "source": "src/F_C755.ASM",
+      "bytes": 37,
+      "members": [
+        "F_C755"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_C77A_C898",
+      "source": "asm/M_C77A_C898.ASM",
+      "bytes": 346,
+      "members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ],
+      "classification": "ASM_OR_MIXED_LIKELY",
+      "evidence": "Live-register sound routines and fixed OPL settling reads; src/F_C898.C is explicitly C with assembly body.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_C8D4",
+      "source": "src/F_C8D4.ASM",
+      "bytes": 14,
+      "members": [
+        "F_C8D4"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_C914",
+      "source": "asm/F_C914.ASM",
+      "bytes": 116,
+      "members": [
+        "F_C914"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_C9A4_CA91",
+      "source": "asm/M_C9A4_CA91.ASM",
+      "bytes": 247,
+      "members": [
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_CA9B",
+      "source": "asm/F_CA9B.ASM",
+      "bytes": 53,
+      "members": [
+        "F_CA9B"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "F_CAF1",
+      "source": "asm/F_CAF1.ASM",
+      "bytes": 87,
+      "members": [
+        "F_CAF1"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_CB5C_CD23",
+      "source": "asm/M_CB5C_CD23.ASM",
+      "bytes": 641,
+      "members": [
+        "F_CB5C",
+        "F_CBBB",
+        "F_CC17",
+        "F_CC6B",
+        "F_CD23"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_D386_D3CF",
+      "source": "asm/M_D386_D3CF.ASM",
+      "bytes": 84,
+      "members": [
+        "F_D386",
+        "F_D3CF"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_D61C_D79C",
+      "source": "asm/M_D61C_D79C.ASM",
+      "bytes": 507,
+      "members": [
+        "F_D61C",
+        "F_D79C"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_D818_D825",
+      "source": "asm/M_D818_D825.ASM",
+      "bytes": 71,
+      "members": [
+        "F_D818",
+        "F_D825"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_DAD7_DB35",
+      "source": "asm/M_DAD7_DB35.ASM",
+      "bytes": 137,
+      "members": [
+        "F_DAD7",
+        "F_DB17",
+        "F_DB35"
+      ],
+      "classification": "UNDETERMINED",
+      "evidence": "Current TASM representation alone does not establish historical language.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    },
+    {
+      "id": "M_DDD9_DF98",
+      "source": "asm/M_DDD9_DF98.ASM",
+      "bytes": 700,
+      "members": [
+        "F_DDD9",
+        "F_DE7E",
+        "F_DEFA",
+        "F_DF98"
+      ],
+      "classification": "MIXED_RECONSTRUCTION_REVIEW_LATER",
+      "evidence": "Surviving src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.",
+      "original_language_proven": false,
+      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+    }
+  ],
+  "scope": "Representation versus origin triage. User-authorized exact C recovery is recorded separately; source provenance remains unproved.",
+  "exact_c_recoveries": [
+    {
+      "id": "F_7964",
+      "source": "src/F_7964.C",
+      "bytes": 664,
+      "evidence": "Ordinary C matched against all 664 original bytes with pinned Turbo C, including callback switch and former F_7DD3 shared-frame cleanup; no inline ASM, DB, or object corrections.",
+      "original_language_proven": false
+    },
+    {
+      "id": "F_880A",
+      "source": "src/F_880A.C",
+      "bytes": 557,
+      "evidence": "Ordinary C matched against all 557 original bytes with pinned Turbo C; one shared frame including former F_8C04 cleanup. No inline ASM, DB, or object corrections.",
+      "original_language_proven": false
+    },
+    {
+      "id": "F_AB66",
+      "source": "src/F_AB66.C",
+      "bytes": 385,
+      "evidence": "Ordinary C matched against all 385 original bytes with pinned Turbo C; no inline ASM or DB.",
+      "original_language_proven": false
+    }
+  ]
+}

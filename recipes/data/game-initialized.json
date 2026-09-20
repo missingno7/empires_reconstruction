@@ -150,31 +150,38 @@
     },
     {
       "id": "DATA_0107B0_TABLE",
-      "source": "src/data/DATA_0107B0_TABLE.json",
-      "format": "u16le-table-v1"
+      "source": "src/F_75F3.C",
+      "format": "compiled-data",
+      "code_owner": "F_75F3",
+      "retain_in_code_object": true
     },
     {
       "id": "DATA_0107B6_PAD",
-      "source": "src/data/DATA_0107B6_PAD.json",
-      "format": "zero-pad-v1"
+      "source": "src/F_75F3.C",
+      "format": "compiled-data",
+      "code_owner": "F_75F3",
+      "retain_in_code_object": true
     },
     {
       "id": "C_DATA_75F3",
       "source": "src/F_75F3.C",
       "format": "compiled-data",
-      "code_owner": "F_75F3"
+      "code_owner": "F_75F3",
+      "retain_in_code_object": true
     },
     {
       "id": "C_DATA_7695",
       "source": "src/F_7695.C",
       "format": "compiled-data",
-      "code_owner": "F_7695"
+      "code_owner": "F_7695",
+      "retain_in_code_object": true
     },
     {
       "id": "C_DATA_778B",
       "source": "src/F_778B.C",
       "format": "compiled-data",
-      "code_owner": "F_778B"
+      "code_owner": "F_778B",
+      "retain_in_code_object": true
     },
     {
       "id": "DATA_0107E2_PAD",
@@ -288,14 +295,17 @@
     },
     {
       "id": "TEXT_118C",
-      "source": "src/data/TEXT_118C.json",
-      "format": "ascii-nul-v1"
+      "source": "src/F_9D8E.C",
+      "format": "compiled-data",
+      "code_owner": "F_9D8E",
+      "retain_in_code_object": true
     },
     {
       "id": "DATA_125D",
       "source": "src/F_9D8E.C",
       "format": "compiled-data",
-      "code_owner": "F_9D8E"
+      "code_owner": "F_9D8E",
+      "retain_in_code_object": true
     },
     {
       "id": "DATA_1271",
@@ -396,7 +406,8 @@
       "id": "C_DATA_A28D",
       "source": "src/F_A28D.C",
       "format": "compiled-data",
-      "code_owner": "F_A28D"
+      "code_owner": "F_A28D",
+      "retain_in_code_object": true
     },
     {
       "id": "TEXT_1660",
@@ -582,7 +593,8 @@
       "id": "DATA_011FAE_CACHED_INDEX",
       "source": "src/F_D5BA.C",
       "format": "compiled-data",
-      "code_owner": "F_D5BA"
+      "code_owner": "F_D5BA",
+      "retain_in_code_object": true
     },
     {
       "id": "DATA_011FB0_ZERO_REGION",

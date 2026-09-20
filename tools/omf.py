@@ -26,7 +26,8 @@ class ObjectModule:
         self.name = name
         self.segments = segments
         self.publics = publics      # [{"name", "segment", "offset"}]
-        self.fixups = fixups        # see OmfReader.read for the shape
+        self.fixups = fixups        # legacy binding view
+        self.linker_fixups = []      # full ordered frame/target/addend view
         self.externals = externals  # [name]
         self.segment_lengths = dict(segment_lengths or {})
         # Full linker-facing declarations.  The older maps above remain for
@@ -331,12 +332,16 @@ class OmfReader(ObjectReader):
                         no_displacement = (fixdat >> 2) & 1
                         target_field = fixdat & 3
                         if frame_bit:
-                            frame_method, _ = frame_threads.get(
+                            frame_method, frame_index = frame_threads.get(
                                 frame_field & 3, (None, 0))
                         else:
                             frame_method = frame_field
+                            frame_index = 0
                             if frame_method in (0, 1, 2):
-                                _, at = self._index(body, at)
+                                frame_index, at = self._index(body, at)
+                            elif frame_method == 3:
+                                frame_index = struct.unpack_from("<H", body, at)[0]
+                                at += 2
                         if target_bit:
                             thread = target_threads.get(target_field & 3,
                                                         (None, 0))
@@ -363,6 +368,7 @@ class OmfReader(ObjectReader):
                             "target_index": target_index,
                             "target_displacement": displacement,
                             "frame_method": frame_method,
+                            "frame_index": frame_index,
                         })
                     else:
                         thread = body[at]
@@ -425,10 +431,29 @@ class OmfReader(ObjectReader):
             })
         for group in groups:
             group["segments"] = [segment_name(i) for i in group["segment_indices"]]
-        return ObjectModule(segments, out_publics, out_fixups, externals,
+        result = ObjectModule(segments, out_publics, out_fixups, externals,
                             module_name, segment_lengths=out_segment_lengths,
                             segment_defs=segment_defs, groups=groups,
                             comments=comments)
+        for raw, normalized in zip(fixups, out_fixups):
+            method, index = raw['frame_method'], raw['frame_index']
+            if method in (0, 1, 2, 3):
+                frame = target_of({'target_method': method, 'target_index': index})
+            elif method == 4:
+                frame = {'kind': 'location', 'name': normalized['segment']}
+            elif method == 5:
+                frame = {'kind': 'target', 'name': normalized['target']}
+            elif method == 6:
+                frame = {'kind': 'none', 'name': None}
+            else:
+                raise MatchError('Undefined FIXUPP frame thread/method')
+            payload = segments.get(normalized['segment'], b'')
+            at, width = normalized['offset'], normalized['width']
+            result.linker_fixups.append({**normalized, 'frame_method': method,
+                'frame_kind': frame['kind'], 'frame': frame['name'],
+                'encoded_addend': payload[at:at+width].hex()})
+        return result
+
 
     def split_library(self, data: bytes) -> list:
         """An OMF library (0xF0) into its modules, in page order."""

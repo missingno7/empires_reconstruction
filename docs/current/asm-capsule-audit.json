@@ -1,0 +1,266 @@
+{
+  "unknown": {
+    "runtime_range": "19A2-19A3",
+    "historical_cs": "1D3E",
+    "byte": "C3",
+    "all_byte_offset_direct_branch_candidates": [],
+    "absolute_word_occurrences_file_offsets": [],
+    "scan_limit": "All text byte offsets scanned, including data and instruction interiors; candidates are not validated callers. Does not rule out computed references."
+  },
+  "production_emissions": [
+    {
+      "module": "F_4F96",
+      "source": "asm/F_4F96.ASM",
+      "directives": [
+        {
+          "line": 55,
+          "text": "primary_keys dw 'C','E','I','M','S','T','V','c','e','i','m','s','t','v'"
+        },
+        {
+          "line": 56,
+          "text": "primary_handlers dw 5034h,502ch,5052h,5044h,505ah,503ch,504bh,5034h,502ch,5052h,5044h,505ah,503ch,504bh"
+        },
+        {
+          "line": 100,
+          "text": "secondary_keys dw 'A','I','T','a','i','t'"
+        },
+        {
+          "line": 101,
+          "text": "secondary_handlers dw 50a3h,509bh,50abh,50a3h,509bh,50abh"
+        }
+      ]
+    },
+    {
+      "module": "F_699E",
+      "source": "asm/F_699E.ASM",
+      "directives": [
+        {
+          "line": 96,
+          "text": "scantab\tdw\t01Dh,01Fh,029h,02Bh,046h,047h,048h,049h"
+        },
+        {
+          "line": 97,
+          "text": "dw\t04Ah,04Bh,04Dh,04Eh,050h,054h,058h"
+        },
+        {
+          "line": 98,
+          "text": "jmptab\tdw\tcase1D,case1F,case29,case2B,case46,case47,case48,case49"
+        },
+        {
+          "line": 99,
+          "text": "dw\tcase4A,case4B,case4D,case4E,case50,case54,case58"
+        }
+      ]
+    },
+    {
+      "module": "M_6D86_6DCC",
+      "source": "asm/M_6D86_6DCC.ASM",
+      "directives": [
+        {
+          "line": 64,
+          "text": "bitlen\tdw\t0"
+        },
+        {
+          "line": 65,
+          "text": "inleft\tdw\t0"
+        },
+        {
+          "line": 66,
+          "text": "bitcnt\tdw\t0"
+        },
+        {
+          "line": 67,
+          "text": "bitbuf\tdb\t0"
+        }
+      ]
+    },
+    {
+      "module": "F_7964",
+      "source": "asm/F_7964.ASM",
+      "directives": [
+        {
+          "line": 10,
+          "text": "db 0e9h"
+        },
+        {
+          "line": 11,
+          "text": "dw target-$-2"
+        },
+        {
+          "line": 119,
+          "text": "key_values dw 000dh,001bh,013bh,013ch,013dh,013eh,013fh,0140h"
+        },
+        {
+          "line": 120,
+          "text": "dw 0141h,0142h,0143h,0144h,0148h,014bh,014dh,0150h"
+        },
+        {
+          "line": 121,
+          "text": "key_handlers dw help_key, cancel_key, numeric_key, numeric_key"
+        },
+        {
+          "line": 122,
+          "text": "dw numeric_key, numeric_key, numeric_key, numeric_key"
+        },
+        {
+          "line": 123,
+          "text": "dw numeric_key, numeric_key, numeric_key, numeric_key"
+        },
+        {
+          "line": 124,
+          "text": "dw previous_key, next_key, prior_page_key, first_key"
+        }
+      ]
+    },
+    {
+      "module": "F_880A",
+      "source": "asm/F_880A.ASM",
+      "directives": [
+        {
+          "line": 11,
+          "text": "db 0e9h"
+        },
+        {
+          "line": 12,
+          "text": "dw target-$-2"
+        },
+        {
+          "line": 121,
+          "text": "state_keys dw 9,0dh,1bh,13bh,148h,149h,14bh,14dh,150h,151h"
+        },
+        {
+          "line": 122,
+          "text": "state_handlers dw state_move_neg,state_move_pos,state_set_count,state_set_from_record"
+        },
+        {
+          "line": 123,
+          "text": "dw state_move_neg,state_reset,state_move_neg,state_move_neg,state_move_neg,state_zero_count"
+        },
+        {
+          "line": 211,
+          "text": "mode_handlers dw mode_minus_one,mode_plus_one,mode_set_count,mode_from_record"
+        }
+      ]
+    },
+    {
+      "module": "F_8BAB",
+      "source": "asm/F_8BAB.ASM",
+      "directives": [
+        {
+          "line": 44,
+          "text": "db 0e9h"
+        },
+        {
+          "line": 45,
+          "text": "dw target-$-2"
+        },
+        {
+          "line": 180,
+          "text": "first_keys dw 0dh,1bh,148h,14bh,14dh,150h"
+        },
+        {
+          "line": 181,
+          "text": "first_handlers dw L_8D29,L_8DB2,L_8CE7,L_8D08,L_8D16,L_8CF5"
+        },
+        {
+          "line": 454,
+          "text": "second_keys dw 0dh,1bh,46h,66h,148h,14bh,14dh,150h"
+        },
+        {
+          "line": 455,
+          "text": "second_handlers dw L_8F8F,L_8FEF,L_8F76,L_8F76"
+        },
+        {
+          "line": 456,
+          "text": "dw L_8F34,L_8F55,L_8F63,L_8F42"
+        }
+      ]
+    },
+    {
+      "module": "F_AA1F",
+      "source": "asm/F_AA1F.ASM",
+      "directives": [
+        {
+          "line": 61,
+          "text": "state_keys dw 0dh,12h,1bh,148h,150h"
+        },
+        {
+          "line": 62,
+          "text": "state_handlers dw state_first,state_mode_two,state_remove,state_decrement,state_increment"
+        }
+      ]
+    }
+  ],
+  "nonproduction_files_with_db": [
+    "src/DOS_STUB.C",
+    "src/F_28AC.C",
+    "src/F_4B0C.C",
+    "src/F_4EEB.C",
+    "src/F_50D2.C",
+    "src/F_6036.C",
+    "src/F_60A9.C",
+    "src/F_6181.C",
+    "src/F_643A.C",
+    "src/F_699E.C",
+    "src/F_6BCF.C",
+    "src/F_6DCC.C",
+    "src/F_6F4B.C",
+    "src/F_7964.C",
+    "src/F_880A.C",
+    "src/F_8BAB.C",
+    "src/F_98CB.C",
+    "src/F_9EC3.C",
+    "src/F_AA1F.C",
+    "src/F_AB66.C",
+    "src/F_B122.C",
+    "src/F_B40F.C",
+    "src/F_B7F9.C",
+    "src/F_C1A0.C",
+    "src/F_C27D.C",
+    "src/F_C2EA.C",
+    "src/F_C359.C",
+    "src/F_C3DB.C",
+    "src/F_C440.C",
+    "src/F_C501.C",
+    "src/F_C5D1.C",
+    "src/F_C678.C",
+    "src/F_C6B9.C",
+    "src/F_C706.C",
+    "src/F_C77A.C",
+    "src/F_C7CB.C",
+    "src/F_C834.C",
+    "src/F_C877.C",
+    "src/F_C914.C",
+    "src/F_C9A4.C",
+    "src/F_CAF1.C",
+    "src/F_CB5C.C",
+    "src/F_CBBB.C",
+    "src/F_CC17.C",
+    "src/F_CC6B.C",
+    "src/F_CD23.C",
+    "src/F_D386.C",
+    "src/F_D61C.C",
+    "src/F_D79C.C",
+    "src/F_DAD7.C",
+    "src/F_DF98.C",
+    "src/LIB_STRLEN.C",
+    "src/RUNTIME_BLOCK.C"
+  ],
+  "classification": {
+    "RUNTIME_BLOCK": {
+      "owner_bytes": 6571,
+      "raw_unresolved_bytes": 3867,
+      "cheap_bytes": 3866,
+      "supervisor_bytes": 1,
+      "note": "Owner-level ASM_DB_CAPSULE totals are not raw-byte totals."
+    },
+    "other_production_emissions": "Named dispatch/key tables, seven bytes of CS-local decoder state, and JMP_NEAR exact-encoding macros; no additional raw instruction capsule found.",
+    "nonproduction_files": "53 files containing db are absent from the actual production module source list; preserved references are not live reconstruction fallback."
+  },
+  "original_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "method": [
+    "Audit actual sources/sources lists from layout/production-plan.json, not every repository file as if linked.",
+    "Scan DB/DW/DD/DQ/DT directives and inspect non-runtime uses.",
+    "Decode branch/call candidates at every text byte offset with Capstone 5.0.3; search whole EXE for absolute target word."
+  ]
+}

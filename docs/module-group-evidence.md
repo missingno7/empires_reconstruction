@@ -41,9 +41,13 @@ contribution remain source-level same-segment expressions because that is how
 the historical no-fixup object encoded them. The compatible C recipe remains
 as independent grouping evidence.
 
-`C_C77A_C898` remains a five-function, 346-byte Turbo C contribution with 13
-fixups. These are compatible linker inputs, not claims about historical
-source-file identity or mixed C/TASM translation-unit ownership.
+`C_C77A_C898` is likewise superseded in the canonical path by
+`M_C77A_C898`, a 346-byte symbolic TASM contribution. It contains the backend
+selector, voice-table reload, voice reset, timer pump, and OPL-register write
+entries at offsets 0/81/186/253/286. Its thirteen ordinary TASM data and call
+fixups match the former Turbo C object, and its untouched object preserves the
+byte-identical final link. The compatible C recipe remains independent module
+grouping evidence. Neither representation claims the original filename.
 
 ### Individual-owner promotion constraint
 

@@ -294,6 +294,29 @@
         "module_segments": {}
       },
       "evidence": "The contiguous command decode, speaker gate, voice-disable, and PIT-output entries use the same SI-relative 0x1766..0x17EC sound-control state. One fresh symbolic TASM object has the original public offsets 0, 167, 232, and 309, an exact 388-byte bound extent, and no OMF fixups."
+    },
+    {
+      "id": "M_C77A_C898",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_C77A_C898.ASM",
+      "start": 51578,
+      "end": 51924,
+      "members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_c77a",
+        "span": 5,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "The contiguous sound-backend selection, voice-table reload, voice reset, timer-pump, and OPL register-output entries share the 0x1762..0x1830 sound-state block. One fresh symbolic TASM object has public offsets 0, 81, 186, 253, and 286, exactly 346 bound _TEXT bytes, and the original thirteen data/call fixups."
     }
   ]
 }

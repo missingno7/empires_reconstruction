@@ -4,21 +4,21 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 16874,
-      "owners": 25,
-      "sources": 25
+      "bytes": 16588,
+      "owners": 21,
+      "sources": 21
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-      "bytes": 2201,
-      "owners": 23,
-      "sources": 23
+      "bytes": 2141,
+      "owners": 22,
+      "sources": 22
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 5683,
-      "owners": 65,
-      "sources": 65
+      "bytes": 6029,
+      "owners": 70,
+      "sources": 70
     },
     {
       "level": "MECHANICAL_C",
@@ -135,32 +135,12 @@
       "bytes": 123
     },
     {
-      "owner": "F_C7CB",
-      "source": "src/F_C7CB.C",
-      "bytes": 105
-    },
-    {
-      "owner": "F_C77A",
-      "source": "src/F_C77A.C",
-      "bytes": 81
-    },
-    {
-      "owner": "F_C834",
-      "source": "src/F_C834.C",
-      "bytes": 67
-    },
-    {
-      "owner": "F_C877",
-      "source": "src/F_C877.C",
-      "bytes": 33
-    },
-    {
       "owner": "LIB_STRLEN",
       "source": "src/LIB_STRLEN.C",
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 25,
+  "asm_db_source_files": 21,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",
@@ -297,6 +277,18 @@
         "F_C706"
       ],
       "bytes": 388
+    },
+    {
+      "id": "M_C77A_C898",
+      "source": "asm/M_C77A_C898.ASM",
+      "members": [
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898"
+      ],
+      "bytes": 346
     }
   ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."

@@ -5,7 +5,7 @@ from pathlib import Path
 from reconstruct import ROOT, read_json, write_json
 
 
-def status(root, report):
+def status(root, report, exe_build=None):
     manifest = read_json(root / 'layout/manifest.json')
     counts, sizes = Counter(), Counter()
     for owner in manifest['regions']:
@@ -23,6 +23,33 @@ def status(root, report):
     source = read_json(source_path) if source_path.exists() else None
     exact_path = root / 'build/exact-structural-link-report.json'
     exact = read_json(exact_path) if exact_path.exists() else None
+    source_quality_path = root / 'docs/source-quality.json'
+    source_quality = read_json(source_quality_path) if source_quality_path.exists() else None
+    quality_levels = {} if source_quality is None else {
+        entry['level']: {'bytes': entry['bytes'], 'owners': entry['owners']}
+        for entry in source_quality['levels']
+    }
+    matching_owners = [owner for owner in manifest['regions']
+                       if owner['kind'] in ('MATCHING_C', 'MATCHING_ASM')]
+    closure = None
+    if exe_build is not None:
+        verification = exe_build['verification']
+        closure = {
+            'raw_exe_fallback_bytes': sizes['RAW'],
+            'source_quality': quality_levels,
+            'total_bss_bytes': exe_build['bss']['bytes'],
+            'partitioned_bss_bytes': exe_build['bss']['partitioned_source_bytes'],
+            'aggregate_bss_remainder_bytes': exe_build['bss']['aggregate_remainder_bytes'],
+            'isolated_function_proof_units': len(matching_owners),
+            'reconstructed_shared_modules': len(exe_build['shared_module_stages']),
+            'active_structural_adapters': exe_build['remaining_structural_adapters'],
+            'active_omf_transforms': [stage['fixupp_order_adapter'] for stage in exe_build['shared_module_stages']
+                                      if stage['fixupp_order_adapter'] is not None],
+            'fixture_dependency': exe_build['fixture_dependency'],
+            'unresolved_symbols': exe_build['unresolved_symbols'],
+            'relocation_count': exe_build['relocations'],
+            'exact_exe_verification': verification,
+        }
     return {
         'format': 'empires-structural-status-v1',
         'ownership': {kind: {'bytes': sizes[kind], 'owners': counts[kind]} for kind in sorted(counts)},
@@ -42,6 +69,7 @@ def status(root, report):
                             if k not in ('candidate', 'oracle')},
         'historical_translation_units': 'open; C0C invariant bytes and module extent strongly evidenced',
         'whole_build_reconstruction_complete': False,
+        'exe_closure': closure,
         'source_data_experiment': None if source is None else {
             'status': source['status'],
             'initialized_data_equal': source['byte_comparison']['initialized_data']['equal'],
@@ -73,7 +101,9 @@ def main():
     parser.add_argument('--report', type=Path, default=ROOT / 'build/tlink-structural-report.json')
     parser.add_argument('--output', type=Path, default=ROOT / 'docs/structural-status.json')
     args = parser.parse_args()
-    write_json(args.output, status(ROOT, read_json(args.report)))
+    build_path = ROOT / 'build/exe-build-report.json'
+    build = read_json(build_path) if build_path.exists() else None
+    write_json(args.output, status(ROOT, read_json(args.report), build))
 
 
 if __name__ == '__main__':

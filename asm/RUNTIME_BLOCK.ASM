@@ -434,10 +434,33 @@ _f039c label near
     shl bx,1
     shl bx,1
     ; LES DI selects the row-pointer table; native TASM may expose DI directly.
-    db 0c4h,0bfh,024h,039h
-    db 08bh,05eh,004h,0d1h,0ebh,073h,00eh,08ah,0d0h,080h,0e2h
-    db 00fh,026h,080h,021h,0f0h,026h,008h,011h,047h,049h,003h,0fbh,02bh,0dbh,0d1h,0e9h,073h,003h,0bbh,001h,000h,0f3h,0aah,083h
-    db 0fbh,000h,074h,009h,024h,0f0h,026h,080h,025h,00fh,026h,008h,005h,05fh,05dh,0c3h
+    les di,dword ptr [bx+3924h]
+    mov bx,[bp+4]
+    shr bx,1
+    jae runtime_f03a2_add_row
+    mov dl,al
+    and dl,0fh
+    and byte ptr es:[bx+di],0f0h
+    or byte ptr es:[bx+di],dl
+    inc di
+    dec cx
+    runtime_f03a2_add_row:
+    add di,bx
+    sub bx,bx
+    shr cx,1
+    jae runtime_f03a2_fill
+    mov bx,1
+    runtime_f03a2_fill:
+    rep stosb
+    cmp bx,0
+    je runtime_f03a2_done
+    and al,0f0h
+    and byte ptr es:[di],0fh
+    or byte ptr es:[di],al
+    runtime_f03a2_done:
+    pop di
+    pop bp
+    ret
     ; F_03A5: adjacent planar-bar variant with mirrored nibble handling.
     runtime_f03a5:
     push bp

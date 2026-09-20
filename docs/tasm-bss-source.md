@@ -22,7 +22,9 @@ create initialized OMF data. `GC360BSS.OBJ` similarly emits its ten
 `struct record27` entries through a named uninitialized reservation. `SLOTBSS.OBJ`,
 `ANIMBSS.OBJ`, `FLAGSBS.OBJ`, `OCTAVES.OBJ`, `NOTEIDX.OBJ`, and `VOICEPTR.OBJ`
 add other bounded state, including the 44-byte eleven-entry far-pointer table initialized
-by `F_DEFA`. Additional named source contributions cover every remaining
+by `F_DEFA`. `G6F2AB.OBJ`, `A74A2B.OBJ`, and `G893CB.OBJ` now likewise name their
+four 226-byte, six 187-byte, and seven 98-byte resource records. Additional named
+source contributions cover every remaining
 interval of the reserve. The plan must cover the full logical reserve, and
 its rebased labels must equal the canonical map before the link begins. None of the objects contributes
 load-image payload. The

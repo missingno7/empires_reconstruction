@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 10540,
+  "typed_bss_source_bytes": 13252,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1041,8 +1041,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g6f2a_records",
+            "count": 4,
+            "element_bytes": 226,
+            "source_type": "unsigned char[226][4]"
+          }
+        ],
         "object_sha256": "0da924d94cfbad8be95b0edadcbfaeb7621b34ce0c574654b054a5530750ebdc",
-        "source_sha256": "e958615c316b93116eaaef511cee3d07471d63a0f2bb5f672972a98f34e470eb"
+        "source_sha256": "63186d17dae70f2512f782782dfbc968acfbaa7acef8227568836dcfb1c4bb88"
       },
       {
         "id": "A72B2_POINTER_TABLE_BSS",
@@ -1089,8 +1098,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "a74a2_records",
+            "count": 6,
+            "element_bytes": 187,
+            "source_type": "unsigned char[187][6]"
+          }
+        ],
         "object_sha256": "25cfad3d6d9c75beb9c443bacc1a7a259866b0160e37b581103eb92f74887605",
-        "source_sha256": "a1f21192d57135253390cf90f23824f8b75365d8606be7186121692f82b4ef34"
+        "source_sha256": "7dc9cff89f3328cb7a8d86497ec429145374803b4b4216e8be9ea8076f7e25c4"
       },
       {
         "id": "RESOURCE46_CEL_STATE_BSS",
@@ -1113,8 +1131,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g893c_records",
+            "count": 7,
+            "element_bytes": 98,
+            "source_type": "unsigned char[98][7]"
+          }
+        ],
         "object_sha256": "a78910311494e991c1dbfb6fb72887749407ed38028bd7c82cc2a022c08647c5",
-        "source_sha256": "f9c66516eb9c5bd654442827842182dbf1c08cd073d5f2f6dca01f0cc9c7b84a"
+        "source_sha256": "29cfe00ecdc610c91aeb9fdf1c6414acc63b2affbd3da4b649e2c5920450295e"
       },
       {
         "id": "BOARD_CONTROL_STATE_BSS",

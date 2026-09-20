@@ -98,7 +98,16 @@
       "owner_candidate": "F_200F resource record table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g6f2a_records",
+          "count": 4,
+          "element_bytes": 226,
+          "source_type": "unsigned char[226][4]"
+        }
+      ]
     },
     {
       "id": "A72B2_POINTER_TABLE_BSS",
@@ -142,7 +151,16 @@
       "owner_candidate": "F_4517 six-record resource table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "a74a2_records",
+          "count": 6,
+          "element_bytes": 187,
+          "source_type": "unsigned char[187][6]"
+        }
+      ]
     },
     {
       "id": "RESOURCE46_CEL_STATE_BSS",
@@ -164,7 +182,16 @@
       "owner_candidate": "F_200F seven-record resource table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g893c_records",
+          "count": 7,
+          "element_bytes": 98,
+          "source_type": "unsigned char[98][7]"
+        }
+      ]
     },
     {
       "id": "BOARD_CONTROL_STATE_BSS",

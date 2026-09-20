@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 321,
-    "reconstructed_shared_modules": 17,
+    "isolated_function_proof_units": 320,
+    "reconstructed_shared_modules": 18,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -376,6 +376,16 @@
         ],
         "start": 54662,
         "end": 54746
+      },
+      {
+        "id": "M_988F_98CB",
+        "source": "asm/M_988F_98CB.ASM",
+        "members": [
+          "F_988F",
+          "F_98CB"
+        ],
+        "start": 39567,
+        "end": 39688
       }
     ],
     "active_structural_adapters": [

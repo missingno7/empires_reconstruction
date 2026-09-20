@@ -232,6 +232,26 @@
         "module_segments": {}
       },
       "evidence": "F_D386 branches directly to the adjacent F_D3CF continuation on a negative selector. One symbolic TASM contribution restores that control flow, preserves entry offsets 0 and 73, and retains the canonical far-data and handler call fixups."
+    },
+    {
+      "id": "M_988F_98CB",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_988F_98CB.ASM",
+      "start": 39567,
+      "end": 39688,
+      "members": [
+        "F_988F",
+        "F_98CB"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_988f",
+        "span": 2,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Adjacent fixed-rectangle display helpers share the recovered C34E/C350 coordinates and display call pattern. Fresh symbolic TASM is tested as one ordinary 121-byte contribution."
     }
   ]
 }

@@ -174,3 +174,7 @@ decoder's table lookup. The module retains entry offsets 0 and 73 plus the
 canonical far-data and handler-call fixups. Its complete fresh link is
 byte-identical, replacing the prior 73-byte `asm db` decoder capsule with
 readable control flow.
+
+## M_988F_98CB
+
+`M_988F_98CB` combines two contiguous fixed-rectangle display helpers into one 121-byte symbolic TASM contribution. They share the recovered `C34E/C350` coordinates and paired display call pattern; the combined object retains the original entry/end offsets and full byte-identical link.

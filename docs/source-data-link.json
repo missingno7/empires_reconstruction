@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 36983,
+  "typed_bss_source_bytes": 37023,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1396,8 +1396,73 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g8bea_board_x0",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 2,
+            "name": "g8bec_board_x1",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 4,
+            "name": "g8bee_board_x2",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 6,
+            "name": "g8bf0_control",
+            "count": 2,
+            "element_bytes": 2,
+            "source_type": "int[2]"
+          },
+          {
+            "offset": 10,
+            "name": "g8bf4_board_y0",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 12,
+            "name": "g8bf6_board_y1",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 14,
+            "name": "g8bf8_board_y2",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 16,
+            "name": "g8bfa_control",
+            "count": 2,
+            "element_bytes": 2,
+            "source_type": "int[2]"
+          },
+          {
+            "offset": 20,
+            "name": "g8bfe_jump_buffer",
+            "count": 1,
+            "element_bytes": 20,
+            "source_type": "jmp_buf"
+          }
+        ],
         "object_sha256": "fb82351316ca1c1d93792034896ef87bea65484ed805ce7babc4a31213492237",
-        "source_sha256": "e18c8b689910b3b8deef1115ee2798c186f08beb4617bb5a490be50e26c60020"
+        "source_sha256": "e9222930571fdf843ede97e28b4f82119ba825d87b69eed9f043f70a2dc22bc1"
       },
       {
         "id": "S8C12_RESOURCE_BUFFER_BSS",

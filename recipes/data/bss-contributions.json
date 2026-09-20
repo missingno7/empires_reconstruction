@@ -446,7 +446,72 @@
       "owner_candidate": "F_4713 board-control and setjmp state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g8bea_board_x0",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 2,
+          "name": "g8bec_board_x1",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 4,
+          "name": "g8bee_board_x2",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 6,
+          "name": "g8bf0_control",
+          "count": 2,
+          "element_bytes": 2,
+          "source_type": "int[2]"
+        },
+        {
+          "offset": 10,
+          "name": "g8bf4_board_y0",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 12,
+          "name": "g8bf6_board_y1",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 14,
+          "name": "g8bf8_board_y2",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 16,
+          "name": "g8bfa_control",
+          "count": 2,
+          "element_bytes": 2,
+          "source_type": "int[2]"
+        },
+        {
+          "offset": 20,
+          "name": "g8bfe_jump_buffer",
+          "count": 1,
+          "element_bytes": 20,
+          "source_type": "jmp_buf"
+        }
+      ]
     },
     {
       "id": "S8C12_RESOURCE_BUFFER_BSS",

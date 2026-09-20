@@ -641,12 +641,58 @@ _f039c label near
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
-    db 0d1h,0eah,003h
-    db 0fah,04fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0ech,0d0h,0ech,0d0h,0ech,0d0h,0ech,026h,080h,025h,0f0h,026h
-    db 008h,025h,081h,0c7h,0a0h,000h,026h,080h,025h,0f0h,026h,008h,005h,081h,0c7h,0a0h,000h,0e2h,0dah,081h,0c6h,0a0h,000h,02bh
-    db 0f3h,05fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0e0h,0d0h,0e0h,0d0h,0e0h,0d0h,0e0h,026h,080h,025h,00fh,026h
-    db 008h,025h,081h,0c7h,0a0h,000h,026h,080h,025h,00fh,026h,008h,005h,081h,0c7h,0a0h,000h,0e2h,0dah,081h,0c6h,0a0h,000h,02bh
-    db 0f3h,05fh,04fh,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h
+    shr dx,1
+    add di,dx
+    dec di
+    runtime_f03c0_outer_loop:
+    push di
+    mov cx,bx
+    runtime_f03c0_low_loop:
+    lodsb
+    mov ah,al
+    and ax,0f00fh
+    shr ah,1
+    shr ah,1
+    shr ah,1
+    shr ah,1
+    and byte ptr es:[di],0f0h
+    or byte ptr es:[di],ah
+    add di,0a0h
+    and byte ptr es:[di],0f0h
+    or byte ptr es:[di],al
+    add di,0a0h
+    loop runtime_f03c0_low_loop
+    add si,0a0h
+    sub si,bx
+    pop di
+    push di
+    mov cx,bx
+    runtime_f03c0_high_loop:
+    lodsb
+    mov ah,al
+    and ax,0f00fh
+    shl al,1
+    shl al,1
+    shl al,1
+    shl al,1
+    and byte ptr es:[di],0fh
+    or byte ptr es:[di],ah
+    add di,0a0h
+    and byte ptr es:[di],0fh
+    or byte ptr es:[di],al
+    add di,0a0h
+    loop runtime_f03c0_high_loop
+    add si,0a0h
+    sub si,bx
+    pop di
+    dec di
+    dec dx
+    jne runtime_f03c0_outer_loop
+    pop ds
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03C3: mirrored dual-planar reflected pixel transform.
     runtime_f03c3:
     push bp

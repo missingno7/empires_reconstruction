@@ -206,62 +206,77 @@
       "line": 621
     },
     {
+      "name": "runtime_f03c0_outer_loop",
+      "offset": 4850,
+      "line": 647
+    },
+    {
+      "name": "runtime_f03c0_low_loop",
+      "offset": 4853,
+      "line": 650
+    },
+    {
+      "name": "runtime_f03c0_high_loop",
+      "offset": 4901,
+      "line": 670
+    },
+    {
       "name": "runtime_f03c3",
       "offset": 4955,
-      "line": 651
+      "line": 697
     },
     {
       "name": "runtime_f03c3_low_loop",
       "offset": 5026,
-      "line": 685
+      "line": 731
     },
     {
       "name": "runtime_f03c3_high_loop",
       "offset": 5074,
-      "line": 705
+      "line": 751
     },
     {
       "name": "runtime_f03c6",
       "offset": 5128,
-      "line": 722
+      "line": 768
     },
     {
       "name": "rb_145c",
       "offset": 5212,
-      "line": 754
+      "line": 800
     },
     {
       "name": "runtime_blit_primitive",
       "offset": 5524,
-      "line": 787
+      "line": 833
     },
     {
       "name": "runtime_copy_primitive",
       "offset": 5884,
-      "line": 816
+      "line": 862
     },
     {
       "name": "runtime_f03cf",
       "offset": 6240,
-      "line": 839
+      "line": 885
     },
     {
       "name": "runtime_f03d2",
       "offset": 6446,
-      "line": 878
+      "line": 924
     },
     {
       "name": "runtime_f03d5",
       "offset": 6511,
-      "line": 907
+      "line": 953
     },
     {
       "name": "_runtime_block_end",
       "offset": 6571,
-      "line": 933
+      "line": 979
     }
   ],
-  "source_sha256": "9d83b53aec20de03d4df9ed6f0cd4e2031cf734943f074dbd105b8619c1e8d07",
+  "source_sha256": "be89f3cb76e4b43108fdb88d16b50da4dcc6cf08a89d287e5321bad0dab62d84",
   "bytes": 6571,
   "sha256": "1a3f517688ed204f52e8d9991ea7098ce138d53880cb2692003af0fb70561783",
   "publics": [
@@ -4611,2144 +4626,2488 @@
     {
       "line": 644,
       "instrumented_line": 1696,
-      "text": "db 0d1h,0eah,003h",
-      "category": "raw_unresolved",
+      "text": "shr dx,1",
+      "category": "symbolic_instruction",
       "start": 4845,
-      "end": 4848
+      "end": 4847
     },
     {
       "line": 645,
       "instrumented_line": 1699,
-      "text": "db 0fah,04fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0ech,0d0h,0ech,0d0h,0ech,0d0h,0ech,026h,080h,025h,0f0h,026h",
-      "category": "raw_unresolved",
-      "start": 4848,
-      "end": 4872
+      "text": "add di,dx",
+      "category": "symbolic_instruction",
+      "start": 4847,
+      "end": 4849
     },
     {
       "line": 646,
       "instrumented_line": 1702,
-      "text": "db 008h,025h,081h,0c7h,0a0h,000h,026h,080h,025h,0f0h,026h,008h,005h,081h,0c7h,0a0h,000h,0e2h,0dah,081h,0c6h,0a0h,000h,02bh",
-      "category": "raw_unresolved",
-      "start": 4872,
-      "end": 4896
-    },
-    {
-      "line": 647,
-      "instrumented_line": 1705,
-      "text": "db 0f3h,05fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0e0h,0d0h,0e0h,0d0h,0e0h,0d0h,0e0h,026h,080h,025h,00fh,026h",
-      "category": "raw_unresolved",
-      "start": 4896,
-      "end": 4920
+      "text": "dec di",
+      "category": "symbolic_instruction",
+      "start": 4849,
+      "end": 4850
     },
     {
       "line": 648,
-      "instrumented_line": 1708,
-      "text": "db 008h,025h,081h,0c7h,0a0h,000h,026h,080h,025h,00fh,026h,008h,005h,081h,0c7h,0a0h,000h,0e2h,0dah,081h,0c6h,0a0h,000h,02bh",
-      "category": "raw_unresolved",
-      "start": 4920,
-      "end": 4944
+      "instrumented_line": 1706,
+      "text": "push di",
+      "category": "symbolic_instruction",
+      "start": 4850,
+      "end": 4851
     },
     {
       "line": 649,
-      "instrumented_line": 1711,
-      "text": "db 0f3h,05fh,04fh,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h",
-      "category": "raw_unresolved",
-      "start": 4944,
-      "end": 4955
+      "instrumented_line": 1709,
+      "text": "mov cx,bx",
+      "category": "symbolic_instruction",
+      "start": 4851,
+      "end": 4853
+    },
+    {
+      "line": 651,
+      "instrumented_line": 1713,
+      "text": "lodsb",
+      "category": "symbolic_instruction",
+      "start": 4853,
+      "end": 4854
     },
     {
       "line": 652,
       "instrumented_line": 1716,
+      "text": "mov ah,al",
+      "category": "symbolic_instruction",
+      "start": 4854,
+      "end": 4856
+    },
+    {
+      "line": 653,
+      "instrumented_line": 1719,
+      "text": "and ax,0f00fh",
+      "category": "symbolic_instruction",
+      "start": 4856,
+      "end": 4859
+    },
+    {
+      "line": 654,
+      "instrumented_line": 1722,
+      "text": "shr ah,1",
+      "category": "symbolic_instruction",
+      "start": 4859,
+      "end": 4861
+    },
+    {
+      "line": 655,
+      "instrumented_line": 1725,
+      "text": "shr ah,1",
+      "category": "symbolic_instruction",
+      "start": 4861,
+      "end": 4863
+    },
+    {
+      "line": 656,
+      "instrumented_line": 1728,
+      "text": "shr ah,1",
+      "category": "symbolic_instruction",
+      "start": 4863,
+      "end": 4865
+    },
+    {
+      "line": 657,
+      "instrumented_line": 1731,
+      "text": "shr ah,1",
+      "category": "symbolic_instruction",
+      "start": 4865,
+      "end": 4867
+    },
+    {
+      "line": 658,
+      "instrumented_line": 1734,
+      "text": "and byte ptr es:[di],0f0h",
+      "category": "symbolic_instruction",
+      "start": 4867,
+      "end": 4871
+    },
+    {
+      "line": 659,
+      "instrumented_line": 1737,
+      "text": "or byte ptr es:[di],ah",
+      "category": "symbolic_instruction",
+      "start": 4871,
+      "end": 4874
+    },
+    {
+      "line": 660,
+      "instrumented_line": 1740,
+      "text": "add di,0a0h",
+      "category": "symbolic_instruction",
+      "start": 4874,
+      "end": 4878
+    },
+    {
+      "line": 661,
+      "instrumented_line": 1743,
+      "text": "and byte ptr es:[di],0f0h",
+      "category": "symbolic_instruction",
+      "start": 4878,
+      "end": 4882
+    },
+    {
+      "line": 662,
+      "instrumented_line": 1746,
+      "text": "or byte ptr es:[di],al",
+      "category": "symbolic_instruction",
+      "start": 4882,
+      "end": 4885
+    },
+    {
+      "line": 663,
+      "instrumented_line": 1749,
+      "text": "add di,0a0h",
+      "category": "symbolic_instruction",
+      "start": 4885,
+      "end": 4889
+    },
+    {
+      "line": 664,
+      "instrumented_line": 1752,
+      "text": "loop runtime_f03c0_low_loop",
+      "category": "symbolic_instruction",
+      "start": 4889,
+      "end": 4891
+    },
+    {
+      "line": 665,
+      "instrumented_line": 1755,
+      "text": "add si,0a0h",
+      "category": "symbolic_instruction",
+      "start": 4891,
+      "end": 4895
+    },
+    {
+      "line": 666,
+      "instrumented_line": 1758,
+      "text": "sub si,bx",
+      "category": "symbolic_instruction",
+      "start": 4895,
+      "end": 4897
+    },
+    {
+      "line": 667,
+      "instrumented_line": 1761,
+      "text": "pop di",
+      "category": "symbolic_instruction",
+      "start": 4897,
+      "end": 4898
+    },
+    {
+      "line": 668,
+      "instrumented_line": 1764,
+      "text": "push di",
+      "category": "symbolic_instruction",
+      "start": 4898,
+      "end": 4899
+    },
+    {
+      "line": 669,
+      "instrumented_line": 1767,
+      "text": "mov cx,bx",
+      "category": "symbolic_instruction",
+      "start": 4899,
+      "end": 4901
+    },
+    {
+      "line": 671,
+      "instrumented_line": 1771,
+      "text": "lodsb",
+      "category": "symbolic_instruction",
+      "start": 4901,
+      "end": 4902
+    },
+    {
+      "line": 672,
+      "instrumented_line": 1774,
+      "text": "mov ah,al",
+      "category": "symbolic_instruction",
+      "start": 4902,
+      "end": 4904
+    },
+    {
+      "line": 673,
+      "instrumented_line": 1777,
+      "text": "and ax,0f00fh",
+      "category": "symbolic_instruction",
+      "start": 4904,
+      "end": 4907
+    },
+    {
+      "line": 674,
+      "instrumented_line": 1780,
+      "text": "shl al,1",
+      "category": "symbolic_instruction",
+      "start": 4907,
+      "end": 4909
+    },
+    {
+      "line": 675,
+      "instrumented_line": 1783,
+      "text": "shl al,1",
+      "category": "symbolic_instruction",
+      "start": 4909,
+      "end": 4911
+    },
+    {
+      "line": 676,
+      "instrumented_line": 1786,
+      "text": "shl al,1",
+      "category": "symbolic_instruction",
+      "start": 4911,
+      "end": 4913
+    },
+    {
+      "line": 677,
+      "instrumented_line": 1789,
+      "text": "shl al,1",
+      "category": "symbolic_instruction",
+      "start": 4913,
+      "end": 4915
+    },
+    {
+      "line": 678,
+      "instrumented_line": 1792,
+      "text": "and byte ptr es:[di],0fh",
+      "category": "symbolic_instruction",
+      "start": 4915,
+      "end": 4919
+    },
+    {
+      "line": 679,
+      "instrumented_line": 1795,
+      "text": "or byte ptr es:[di],ah",
+      "category": "symbolic_instruction",
+      "start": 4919,
+      "end": 4922
+    },
+    {
+      "line": 680,
+      "instrumented_line": 1798,
+      "text": "add di,0a0h",
+      "category": "symbolic_instruction",
+      "start": 4922,
+      "end": 4926
+    },
+    {
+      "line": 681,
+      "instrumented_line": 1801,
+      "text": "and byte ptr es:[di],0fh",
+      "category": "symbolic_instruction",
+      "start": 4926,
+      "end": 4930
+    },
+    {
+      "line": 682,
+      "instrumented_line": 1804,
+      "text": "or byte ptr es:[di],al",
+      "category": "symbolic_instruction",
+      "start": 4930,
+      "end": 4933
+    },
+    {
+      "line": 683,
+      "instrumented_line": 1807,
+      "text": "add di,0a0h",
+      "category": "symbolic_instruction",
+      "start": 4933,
+      "end": 4937
+    },
+    {
+      "line": 684,
+      "instrumented_line": 1810,
+      "text": "loop runtime_f03c0_high_loop",
+      "category": "symbolic_instruction",
+      "start": 4937,
+      "end": 4939
+    },
+    {
+      "line": 685,
+      "instrumented_line": 1813,
+      "text": "add si,0a0h",
+      "category": "symbolic_instruction",
+      "start": 4939,
+      "end": 4943
+    },
+    {
+      "line": 686,
+      "instrumented_line": 1816,
+      "text": "sub si,bx",
+      "category": "symbolic_instruction",
+      "start": 4943,
+      "end": 4945
+    },
+    {
+      "line": 687,
+      "instrumented_line": 1819,
+      "text": "pop di",
+      "category": "symbolic_instruction",
+      "start": 4945,
+      "end": 4946
+    },
+    {
+      "line": 688,
+      "instrumented_line": 1822,
+      "text": "dec di",
+      "category": "symbolic_instruction",
+      "start": 4946,
+      "end": 4947
+    },
+    {
+      "line": 689,
+      "instrumented_line": 1825,
+      "text": "dec dx",
+      "category": "symbolic_instruction",
+      "start": 4947,
+      "end": 4948
+    },
+    {
+      "line": 690,
+      "instrumented_line": 1828,
+      "text": "jne runtime_f03c0_outer_loop",
+      "category": "symbolic_instruction",
+      "start": 4948,
+      "end": 4950
+    },
+    {
+      "line": 691,
+      "instrumented_line": 1831,
+      "text": "pop ds",
+      "category": "symbolic_instruction",
+      "start": 4950,
+      "end": 4951
+    },
+    {
+      "line": 692,
+      "instrumented_line": 1834,
+      "text": "pop si",
+      "category": "symbolic_instruction",
+      "start": 4951,
+      "end": 4952
+    },
+    {
+      "line": 693,
+      "instrumented_line": 1837,
+      "text": "pop di",
+      "category": "symbolic_instruction",
+      "start": 4952,
+      "end": 4953
+    },
+    {
+      "line": 694,
+      "instrumented_line": 1840,
+      "text": "pop bp",
+      "category": "symbolic_instruction",
+      "start": 4953,
+      "end": 4954
+    },
+    {
+      "line": 695,
+      "instrumented_line": 1843,
+      "text": "ret",
+      "category": "symbolic_instruction",
+      "start": 4954,
+      "end": 4955
+    },
+    {
+      "line": 698,
+      "instrumented_line": 1848,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 4955,
       "end": 4956
     },
     {
-      "line": 653,
-      "instrumented_line": 1719,
+      "line": 699,
+      "instrumented_line": 1851,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 4956,
       "end": 4958
     },
     {
-      "line": 654,
-      "instrumented_line": 1722,
+      "line": 700,
+      "instrumented_line": 1854,
       "text": "db 057h,056h",
       "category": "raw_unresolved",
       "start": 4958,
       "end": 4960
     },
     {
-      "line": 655,
-      "instrumented_line": 1725,
+      "line": 701,
+      "instrumented_line": 1857,
       "text": "push ds",
       "category": "symbolic_instruction",
       "start": 4960,
       "end": 4961
     },
     {
-      "line": 656,
-      "instrumented_line": 1728,
+      "line": 702,
+      "instrumented_line": 1860,
       "text": "cld",
       "category": "symbolic_instruction",
       "start": 4961,
       "end": 4962
     },
     {
-      "line": 657,
-      "instrumented_line": 1731,
+      "line": 703,
+      "instrumented_line": 1863,
       "text": "mov bx,[bp+0eh]",
       "category": "symbolic_instruction",
       "start": 4962,
       "end": 4965
     },
     {
-      "line": 658,
-      "instrumented_line": 1734,
+      "line": 704,
+      "instrumented_line": 1866,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 4965,
       "end": 4967
     },
     {
-      "line": 659,
-      "instrumented_line": 1737,
+      "line": 705,
+      "instrumented_line": 1869,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 4967,
       "end": 4969
     },
     {
-      "line": 660,
-      "instrumented_line": 1740,
+      "line": 706,
+      "instrumented_line": 1872,
       "text": "db 0c4h,0bfh,024h,039h",
       "category": "raw_unresolved",
       "start": 4969,
       "end": 4973
     },
     {
-      "line": 661,
-      "instrumented_line": 1743,
+      "line": 707,
+      "instrumented_line": 1875,
       "text": "mov ax,[bp+0ch]",
       "category": "symbolic_instruction",
       "start": 4973,
       "end": 4976
     },
     {
-      "line": 662,
-      "instrumented_line": 1746,
+      "line": 708,
+      "instrumented_line": 1878,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 4976,
       "end": 4978
     },
     {
-      "line": 663,
-      "instrumented_line": 1749,
+      "line": 709,
+      "instrumented_line": 1881,
       "text": "db 003h,0f8h",
       "category": "raw_unresolved",
       "start": 4978,
       "end": 4980
     },
     {
-      "line": 664,
-      "instrumented_line": 1752,
+      "line": 710,
+      "instrumented_line": 1884,
       "text": "mov bx,[bp+6]",
       "category": "symbolic_instruction",
       "start": 4980,
       "end": 4983
     },
     {
-      "line": 665,
-      "instrumented_line": 1755,
+      "line": 711,
+      "instrumented_line": 1887,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 4983,
       "end": 4985
     },
     {
-      "line": 666,
-      "instrumented_line": 1758,
+      "line": 712,
+      "instrumented_line": 1890,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 4985,
       "end": 4987
     },
     {
-      "line": 667,
-      "instrumented_line": 1761,
+      "line": 713,
+      "instrumented_line": 1893,
       "text": "db 0c5h,0b7h,024h,039h",
       "category": "raw_unresolved",
       "start": 4987,
       "end": 4991
     },
     {
-      "line": 668,
-      "instrumented_line": 1764,
+      "line": 714,
+      "instrumented_line": 1896,
       "text": "mov ax,[bp+4]",
       "category": "symbolic_instruction",
       "start": 4991,
       "end": 4994
     },
     {
-      "line": 669,
-      "instrumented_line": 1767,
+      "line": 715,
+      "instrumented_line": 1899,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 4994,
       "end": 4996
     },
     {
-      "line": 670,
-      "instrumented_line": 1770,
+      "line": 716,
+      "instrumented_line": 1902,
       "text": "db 003h,0f0h",
       "category": "raw_unresolved",
       "start": 4996,
       "end": 4998
     },
     {
-      "line": 671,
-      "instrumented_line": 1773,
+      "line": 717,
+      "instrumented_line": 1905,
       "text": "mov bx,[bp+8]",
       "category": "symbolic_instruction",
       "start": 4998,
       "end": 5001
     },
     {
-      "line": 672,
-      "instrumented_line": 1776,
+      "line": 718,
+      "instrumented_line": 1908,
       "text": "mov ax,bx",
       "category": "symbolic_instruction",
       "start": 5001,
       "end": 5003
     },
     {
-      "line": 673,
-      "instrumented_line": 1779,
+      "line": 719,
+      "instrumented_line": 1911,
       "text": "shr bx,1",
       "category": "symbolic_instruction",
       "start": 5003,
       "end": 5005
     },
     {
-      "line": 674,
-      "instrumented_line": 1782,
+      "line": 720,
+      "instrumented_line": 1914,
       "text": "mov dx,[bp+0ah]",
       "category": "symbolic_instruction",
       "start": 5005,
       "end": 5008
     },
     {
-      "line": 675,
-      "instrumented_line": 1785,
+      "line": 721,
+      "instrumented_line": 1917,
       "text": "shr dx,1",
       "category": "symbolic_instruction",
       "start": 5008,
       "end": 5010
     },
     {
-      "line": 676,
-      "instrumented_line": 1788,
+      "line": 722,
+      "instrumented_line": 1920,
       "text": "dec ax",
       "category": "symbolic_instruction",
       "start": 5010,
       "end": 5011
     },
     {
-      "line": 677,
-      "instrumented_line": 1791,
+      "line": 723,
+      "instrumented_line": 1923,
       "text": "xchg ah,al",
       "category": "symbolic_instruction",
       "start": 5011,
       "end": 5013
     },
     {
-      "line": 678,
-      "instrumented_line": 1794,
+      "line": 724,
+      "instrumented_line": 1926,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 5013,
       "end": 5015
     },
     {
-      "line": 679,
-      "instrumented_line": 1797,
+      "line": 725,
+      "instrumented_line": 1929,
       "text": "add di,ax",
       "category": "symbolic_instruction",
       "start": 5015,
       "end": 5017
     },
     {
-      "line": 680,
-      "instrumented_line": 1800,
+      "line": 726,
+      "instrumented_line": 1932,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 5017,
       "end": 5019
     },
     {
-      "line": 681,
-      "instrumented_line": 1803,
+      "line": 727,
+      "instrumented_line": 1935,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 5019,
       "end": 5021
     },
     {
-      "line": 682,
-      "instrumented_line": 1806,
+      "line": 728,
+      "instrumented_line": 1938,
       "text": "add di,ax",
       "category": "symbolic_instruction",
       "start": 5021,
       "end": 5023
     },
     {
-      "line": 683,
-      "instrumented_line": 1809,
+      "line": 729,
+      "instrumented_line": 1941,
       "text": "push di",
       "category": "symbolic_instruction",
       "start": 5023,
       "end": 5024
     },
     {
-      "line": 684,
-      "instrumented_line": 1812,
+      "line": 730,
+      "instrumented_line": 1944,
       "text": "mov cx,bx",
       "category": "symbolic_instruction",
       "start": 5024,
       "end": 5026
     },
     {
-      "line": 686,
-      "instrumented_line": 1816,
+      "line": 732,
+      "instrumented_line": 1948,
       "text": "lodsb",
       "category": "symbolic_instruction",
       "start": 5026,
       "end": 5027
     },
     {
-      "line": 687,
-      "instrumented_line": 1819,
+      "line": 733,
+      "instrumented_line": 1951,
       "text": "mov ah,al",
       "category": "symbolic_instruction",
       "start": 5027,
       "end": 5029
     },
     {
-      "line": 688,
-      "instrumented_line": 1822,
+      "line": 734,
+      "instrumented_line": 1954,
       "text": "and ax,0f00fh",
       "category": "symbolic_instruction",
       "start": 5029,
       "end": 5032
     },
     {
-      "line": 689,
-      "instrumented_line": 1825,
+      "line": 735,
+      "instrumented_line": 1957,
       "text": "shl al,1",
       "category": "symbolic_instruction",
       "start": 5032,
       "end": 5034
     },
     {
-      "line": 690,
-      "instrumented_line": 1828,
+      "line": 736,
+      "instrumented_line": 1960,
       "text": "shl al,1",
       "category": "symbolic_instruction",
       "start": 5034,
       "end": 5036
     },
     {
-      "line": 691,
-      "instrumented_line": 1831,
+      "line": 737,
+      "instrumented_line": 1963,
       "text": "shl al,1",
       "category": "symbolic_instruction",
       "start": 5036,
       "end": 5038
     },
     {
-      "line": 692,
-      "instrumented_line": 1834,
+      "line": 738,
+      "instrumented_line": 1966,
       "text": "shl al,1",
       "category": "symbolic_instruction",
       "start": 5038,
       "end": 5040
     },
     {
-      "line": 693,
-      "instrumented_line": 1837,
+      "line": 739,
+      "instrumented_line": 1969,
       "text": "and byte ptr es:[di],0fh",
       "category": "symbolic_instruction",
       "start": 5040,
       "end": 5044
     },
     {
-      "line": 694,
-      "instrumented_line": 1840,
+      "line": 740,
+      "instrumented_line": 1972,
       "text": "or byte ptr es:[di],ah",
       "category": "symbolic_instruction",
       "start": 5044,
       "end": 5047
     },
     {
-      "line": 695,
-      "instrumented_line": 1843,
+      "line": 741,
+      "instrumented_line": 1975,
       "text": "sub di,0a0h",
       "category": "symbolic_instruction",
       "start": 5047,
       "end": 5051
     },
     {
-      "line": 696,
-      "instrumented_line": 1846,
+      "line": 742,
+      "instrumented_line": 1978,
       "text": "and byte ptr es:[di],0fh",
       "category": "symbolic_instruction",
       "start": 5051,
       "end": 5055
     },
     {
-      "line": 697,
-      "instrumented_line": 1849,
+      "line": 743,
+      "instrumented_line": 1981,
       "text": "or byte ptr es:[di],al",
       "category": "symbolic_instruction",
       "start": 5055,
       "end": 5058
     },
     {
-      "line": 698,
-      "instrumented_line": 1852,
+      "line": 744,
+      "instrumented_line": 1984,
       "text": "sub di,0a0h",
       "category": "symbolic_instruction",
       "start": 5058,
       "end": 5062
     },
     {
-      "line": 699,
-      "instrumented_line": 1855,
+      "line": 745,
+      "instrumented_line": 1987,
       "text": "loop runtime_f03c3_low_loop",
       "category": "symbolic_instruction",
       "start": 5062,
       "end": 5064
     },
     {
-      "line": 700,
-      "instrumented_line": 1858,
+      "line": 746,
+      "instrumented_line": 1990,
       "text": "add si,0a0h",
       "category": "symbolic_instruction",
       "start": 5064,
       "end": 5068
     },
     {
-      "line": 701,
-      "instrumented_line": 1861,
+      "line": 747,
+      "instrumented_line": 1993,
       "text": "sub si,bx",
       "category": "symbolic_instruction",
       "start": 5068,
       "end": 5070
     },
     {
-      "line": 702,
-      "instrumented_line": 1864,
+      "line": 748,
+      "instrumented_line": 1996,
       "text": "pop di",
       "category": "symbolic_instruction",
       "start": 5070,
       "end": 5071
     },
     {
-      "line": 703,
-      "instrumented_line": 1867,
+      "line": 749,
+      "instrumented_line": 1999,
       "text": "push di",
       "category": "symbolic_instruction",
       "start": 5071,
       "end": 5072
     },
     {
-      "line": 704,
-      "instrumented_line": 1870,
+      "line": 750,
+      "instrumented_line": 2002,
       "text": "mov cx,bx",
       "category": "symbolic_instruction",
       "start": 5072,
       "end": 5074
     },
     {
-      "line": 706,
-      "instrumented_line": 1874,
+      "line": 752,
+      "instrumented_line": 2006,
       "text": "lodsb",
       "category": "symbolic_instruction",
       "start": 5074,
       "end": 5075
     },
     {
-      "line": 707,
-      "instrumented_line": 1877,
+      "line": 753,
+      "instrumented_line": 2009,
       "text": "mov ah,al",
       "category": "symbolic_instruction",
       "start": 5075,
       "end": 5077
     },
     {
-      "line": 708,
-      "instrumented_line": 1880,
+      "line": 754,
+      "instrumented_line": 2012,
       "text": "and ax,0f00fh",
       "category": "symbolic_instruction",
       "start": 5077,
       "end": 5080
     },
     {
-      "line": 709,
-      "instrumented_line": 1883,
+      "line": 755,
+      "instrumented_line": 2015,
       "text": "shr ah,1",
       "category": "symbolic_instruction",
       "start": 5080,
       "end": 5082
     },
     {
-      "line": 710,
-      "instrumented_line": 1886,
+      "line": 756,
+      "instrumented_line": 2018,
       "text": "shr ah,1",
       "category": "symbolic_instruction",
       "start": 5082,
       "end": 5084
     },
     {
-      "line": 711,
-      "instrumented_line": 1889,
+      "line": 757,
+      "instrumented_line": 2021,
       "text": "shr ah,1",
       "category": "symbolic_instruction",
       "start": 5084,
       "end": 5086
     },
     {
-      "line": 712,
-      "instrumented_line": 1892,
+      "line": 758,
+      "instrumented_line": 2024,
       "text": "shr ah,1",
       "category": "symbolic_instruction",
       "start": 5086,
       "end": 5088
     },
     {
-      "line": 713,
-      "instrumented_line": 1895,
+      "line": 759,
+      "instrumented_line": 2027,
       "text": "and byte ptr es:[di],0f0h",
       "category": "symbolic_instruction",
       "start": 5088,
       "end": 5092
     },
     {
-      "line": 714,
-      "instrumented_line": 1898,
+      "line": 760,
+      "instrumented_line": 2030,
       "text": "or byte ptr es:[di],ah",
       "category": "symbolic_instruction",
       "start": 5092,
       "end": 5095
     },
     {
-      "line": 715,
-      "instrumented_line": 1901,
+      "line": 761,
+      "instrumented_line": 2033,
       "text": "sub di,0a0h",
       "category": "symbolic_instruction",
       "start": 5095,
       "end": 5099
     },
     {
-      "line": 716,
-      "instrumented_line": 1904,
+      "line": 762,
+      "instrumented_line": 2036,
       "text": "and byte ptr es:[di],0f0h",
       "category": "symbolic_instruction",
       "start": 5099,
       "end": 5103
     },
     {
-      "line": 717,
-      "instrumented_line": 1907,
+      "line": 763,
+      "instrumented_line": 2039,
       "text": "or byte ptr es:[di],al",
       "category": "symbolic_instruction",
       "start": 5103,
       "end": 5106
     },
     {
-      "line": 718,
-      "instrumented_line": 1910,
+      "line": 764,
+      "instrumented_line": 2042,
       "text": "sub di,0a0h",
       "category": "symbolic_instruction",
       "start": 5106,
       "end": 5110
     },
     {
-      "line": 719,
-      "instrumented_line": 1913,
+      "line": 765,
+      "instrumented_line": 2045,
       "text": "loop runtime_f03c3_high_loop",
       "category": "symbolic_instruction",
       "start": 5110,
       "end": 5112
     },
     {
-      "line": 720,
-      "instrumented_line": 1916,
+      "line": 766,
+      "instrumented_line": 2048,
       "text": "db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,047h,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h",
       "category": "raw_unresolved",
       "start": 5112,
       "end": 5128
     },
     {
-      "line": 723,
-      "instrumented_line": 1921,
+      "line": 769,
+      "instrumented_line": 2053,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 5128,
       "end": 5129
     },
     {
-      "line": 724,
-      "instrumented_line": 1924,
+      "line": 770,
+      "instrumented_line": 2056,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 5129,
       "end": 5131
     },
     {
-      "line": 725,
-      "instrumented_line": 1927,
+      "line": 771,
+      "instrumented_line": 2059,
       "text": "sub sp,4",
       "category": "symbolic_instruction",
       "start": 5131,
       "end": 5134
     },
     {
-      "line": 726,
-      "instrumented_line": 1930,
+      "line": 772,
+      "instrumented_line": 2062,
       "text": "db 057h,056h",
       "category": "raw_unresolved",
       "start": 5134,
       "end": 5136
     },
     {
-      "line": 727,
-      "instrumented_line": 1933,
+      "line": 773,
+      "instrumented_line": 2065,
       "text": "push ds",
       "category": "symbolic_instruction",
       "start": 5136,
       "end": 5137
     },
     {
-      "line": 728,
-      "instrumented_line": 1936,
+      "line": 774,
+      "instrumented_line": 2068,
       "text": "cld",
       "category": "symbolic_instruction",
       "start": 5137,
       "end": 5138
     },
     {
-      "line": 730,
-      "instrumented_line": 1940,
+      "line": 776,
+      "instrumented_line": 2072,
       "text": "db 0a1h,0e0h,0c0h",
       "category": "raw_unresolved",
       "start": 5138,
       "end": 5141
     },
     {
-      "line": 731,
-      "instrumented_line": 1943,
+      "line": 777,
+      "instrumented_line": 2075,
       "text": "mov es,ax",
       "category": "symbolic_instruction",
       "start": 5141,
       "end": 5143
     },
     {
-      "line": 732,
-      "instrumented_line": 1946,
+      "line": 778,
+      "instrumented_line": 2078,
       "text": "mov bx,[bp+8]",
       "category": "symbolic_instruction",
       "start": 5143,
       "end": 5146
     },
     {
-      "line": 733,
-      "instrumented_line": 1949,
+      "line": 779,
+      "instrumented_line": 2081,
       "text": "mov di, word ptr ds:[0c0e4h]",
       "category": "symbolic_instruction",
       "start": 5146,
       "end": 5150
     },
     {
-      "line": 734,
-      "instrumented_line": 1952,
+      "line": 780,
+      "instrumented_line": 2084,
       "text": "mov cl, byte ptr es:[bx + di]",
       "category": "symbolic_instruction",
       "start": 5150,
       "end": 5153
     },
     {
-      "line": 735,
-      "instrumented_line": 1955,
+      "line": 781,
+      "instrumented_line": 2087,
       "text": "sub ch, ch",
       "category": "symbolic_instruction",
       "start": 5153,
       "end": 5155
     },
     {
-      "line": 736,
-      "instrumented_line": 1958,
+      "line": 782,
+      "instrumented_line": 2090,
       "text": "mov di, word ptr ds:[0c0e6h]",
       "category": "symbolic_instruction",
       "start": 5155,
       "end": 5159
     },
     {
-      "line": 737,
-      "instrumented_line": 1961,
+      "line": 783,
+      "instrumented_line": 2093,
       "text": "mov al, byte ptr es:[bx + di]",
       "category": "symbolic_instruction",
       "start": 5159,
       "end": 5162
     },
     {
-      "line": 738,
-      "instrumented_line": 1964,
+      "line": 784,
+      "instrumented_line": 2096,
       "text": "mov di, word ptr ds:[0c0e2h]",
       "category": "symbolic_instruction",
       "start": 5162,
       "end": 5166
     },
     {
-      "line": 739,
-      "instrumented_line": 1967,
+      "line": 785,
+      "instrumented_line": 2099,
       "text": "mov ah, byte ptr es:[bx + di]",
       "category": "symbolic_instruction",
       "start": 5166,
       "end": 5169
     },
     {
-      "line": 740,
-      "instrumented_line": 1970,
+      "line": 786,
+      "instrumented_line": 2102,
       "text": "mov si, word ptr ds:[0c0deh]",
       "category": "symbolic_instruction",
       "start": 5169,
       "end": 5173
     },
     {
-      "line": 741,
-      "instrumented_line": 1973,
+      "line": 787,
+      "instrumented_line": 2105,
       "text": "add si, ax",
       "category": "symbolic_instruction",
       "start": 5173,
       "end": 5175
     },
     {
-      "line": 742,
-      "instrumented_line": 1976,
+      "line": 788,
+      "instrumented_line": 2108,
       "text": "mov dx, word ptr ds:[0c0e8h]",
       "category": "symbolic_instruction",
       "start": 5175,
       "end": 5179
     },
     {
-      "line": 743,
-      "instrumented_line": 1979,
+      "line": 789,
+      "instrumented_line": 2111,
       "text": "mov ax, word ptr ds:[040c8h]",
       "category": "symbolic_instruction",
       "start": 5179,
       "end": 5182
     },
     {
-      "line": 744,
-      "instrumented_line": 1982,
+      "line": 790,
+      "instrumented_line": 2114,
       "text": "mov ah, al",
       "category": "symbolic_instruction",
       "start": 5182,
       "end": 5184
     },
     {
-      "line": 745,
-      "instrumented_line": 1985,
+      "line": 791,
+      "instrumented_line": 2117,
       "text": "mov bx, word ptr [bp + 6]",
       "category": "symbolic_instruction",
       "start": 5184,
       "end": 5187
     },
     {
-      "line": 746,
-      "instrumented_line": 1988,
+      "line": 792,
+      "instrumented_line": 2120,
       "text": "shl bx, 1",
       "category": "symbolic_instruction",
       "start": 5187,
       "end": 5189
     },
     {
-      "line": 747,
-      "instrumented_line": 1991,
+      "line": 793,
+      "instrumented_line": 2123,
       "text": "shl bx, 1",
       "category": "symbolic_instruction",
       "start": 5189,
       "end": 5191
     },
     {
-      "line": 748,
-      "instrumented_line": 1994,
+      "line": 794,
+      "instrumented_line": 2126,
       "text": "lds di, dword ptr [bx + 03924h]",
       "category": "symbolic_instruction",
       "start": 5191,
       "end": 5195
     },
     {
-      "line": 749,
-      "instrumented_line": 1997,
+      "line": 795,
+      "instrumented_line": 2129,
       "text": "mov word ptr [bp - 2], 0",
       "category": "symbolic_instruction",
       "start": 5195,
       "end": 5200
     },
     {
-      "line": 750,
-      "instrumented_line": 2000,
+      "line": 796,
+      "instrumented_line": 2132,
       "text": "mov bx, word ptr [bp + 4]",
       "category": "symbolic_instruction",
       "start": 5200,
       "end": 5203
     },
     {
-      "line": 751,
-      "instrumented_line": 2003,
+      "line": 797,
+      "instrumented_line": 2135,
       "text": "shr bx, 1",
       "category": "symbolic_instruction",
       "start": 5203,
       "end": 5205
     },
     {
-      "line": 752,
-      "instrumented_line": 2006,
+      "line": 798,
+      "instrumented_line": 2138,
       "text": "jae rb_145c",
       "category": "symbolic_instruction",
       "start": 5205,
       "end": 5207
     },
     {
-      "line": 753,
-      "instrumented_line": 2009,
+      "line": 799,
+      "instrumented_line": 2141,
       "text": "mov word ptr [bp - 2], 1",
       "category": "symbolic_instruction",
       "start": 5207,
       "end": 5212
     },
     {
-      "line": 755,
-      "instrumented_line": 2013,
+      "line": 801,
+      "instrumented_line": 2145,
       "text": "add di, bx",
       "category": "symbolic_instruction",
       "start": 5212,
       "end": 5214
     },
     {
-      "line": 756,
-      "instrumented_line": 2016,
+      "line": 802,
+      "instrumented_line": 2148,
       "text": "mov bx, cx",
       "category": "symbolic_instruction",
       "start": 5214,
       "end": 5216
     },
     {
-      "line": 757,
-      "instrumented_line": 2019,
+      "line": 803,
+      "instrumented_line": 2151,
       "text": "shl bx, 1",
       "category": "symbolic_instruction",
       "start": 5216,
       "end": 5218
     },
     {
-      "line": 758,
-      "instrumented_line": 2022,
+      "line": 804,
+      "instrumented_line": 2154,
       "text": "inc cx",
       "category": "symbolic_instruction",
       "start": 5218,
       "end": 5219
     },
     {
-      "line": 759,
-      "instrumented_line": 2025,
+      "line": 805,
+      "instrumented_line": 2157,
       "text": "shr cx, 1",
       "category": "symbolic_instruction",
       "start": 5219,
       "end": 5221
     },
     {
-      "line": 760,
-      "instrumented_line": 2028,
+      "line": 806,
+      "instrumented_line": 2160,
       "text": "mov word ptr [bp - 4], 0a0h",
       "category": "symbolic_instruction",
       "start": 5221,
       "end": 5226
     },
     {
-      "line": 761,
-      "instrumented_line": 2031,
+      "line": 807,
+      "instrumented_line": 2163,
       "text": "sub word ptr [bp - 4], cx",
       "category": "symbolic_instruction",
       "start": 5226,
       "end": 5229
     },
     {
-      "line": 762,
-      "instrumented_line": 2034,
+      "line": 808,
+      "instrumented_line": 2166,
       "text": "mov cl, dl",
       "category": "symbolic_instruction",
       "start": 5229,
       "end": 5231
     },
     {
-      "line": 763,
-      "instrumented_line": 2037,
+      "line": 809,
+      "instrumented_line": 2169,
       "text": "mov dh, al",
       "category": "symbolic_instruction",
       "start": 5231,
       "end": 5233
     },
     {
-      "line": 764,
-      "instrumented_line": 2040,
+      "line": 810,
+      "instrumented_line": 2172,
       "text": "mov dl, dh",
       "category": "symbolic_instruction",
       "start": 5233,
       "end": 5235
     },
     {
-      "line": 765,
-      "instrumented_line": 2043,
+      "line": 811,
+      "instrumented_line": 2175,
       "text": "and dx, 0f00fh",
       "category": "symbolic_instruction",
       "start": 5235,
       "end": 5239
     },
     {
-      "line": 766,
-      "instrumented_line": 2046,
+      "line": 812,
+      "instrumented_line": 2178,
       "text": "cmp word ptr [bp - 2], 0",
       "category": "symbolic_instruction",
       "start": 5239,
       "end": 5243
     },
     {
-      "line": 767,
-      "instrumented_line": 2049,
+      "line": 813,
+      "instrumented_line": 2181,
       "text": "jne _f039c+014f2h",
       "category": "symbolic_instruction",
       "start": 5243,
       "end": 5245
     },
     {
-      "line": 768,
-      "instrumented_line": 2052,
+      "line": 814,
+      "instrumented_line": 2184,
       "text": "dec di",
       "category": "symbolic_instruction",
       "start": 5245,
       "end": 5246
     },
     {
-      "line": 769,
-      "instrumented_line": 2055,
+      "line": 815,
+      "instrumented_line": 2187,
       "text": "push bx",
       "category": "symbolic_instruction",
       "start": 5246,
       "end": 5247
     },
     {
-      "line": 770,
-      "instrumented_line": 2058,
+      "line": 816,
+      "instrumented_line": 2190,
       "text": "sub ah, ah",
       "category": "symbolic_instruction",
       "start": 5247,
       "end": 5249
     },
     {
-      "line": 771,
-      "instrumented_line": 2061,
+      "line": 817,
+      "instrumented_line": 2193,
       "text": "mov al, byte ptr es:[si]",
       "category": "symbolic_instruction",
       "start": 5249,
       "end": 5252
     },
     {
-      "line": 772,
-      "instrumented_line": 2064,
+      "line": 818,
+      "instrumented_line": 2196,
       "text": "inc si",
       "category": "symbolic_instruction",
       "start": 5252,
       "end": 5253
     },
     {
-      "line": 773,
-      "instrumented_line": 2067,
+      "line": 819,
+      "instrumented_line": 2199,
       "text": "cmp bx, 010h",
       "category": "symbolic_instruction",
       "start": 5253,
       "end": 5256
     },
     {
-      "line": 774,
-      "instrumented_line": 2070,
+      "line": 820,
+      "instrumented_line": 2202,
       "text": "db 07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h",
       "category": "raw_unresolved",
       "start": 5256,
       "end": 5280
     },
     {
-      "line": 775,
-      "instrumented_line": 2073,
+      "line": 821,
+      "instrumented_line": 2205,
       "text": "db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h",
       "category": "raw_unresolved",
       "start": 5280,
       "end": 5304
     },
     {
-      "line": 776,
-      "instrumented_line": 2076,
+      "line": 822,
+      "instrumented_line": 2208,
       "text": "db 008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h",
       "category": "raw_unresolved",
       "start": 5304,
       "end": 5328
     },
     {
-      "line": 777,
-      "instrumented_line": 2079,
+      "line": 823,
+      "instrumented_line": 2211,
       "text": "db 073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,083h,0ebh,010h",
       "category": "raw_unresolved",
       "start": 5328,
       "end": 5352
     },
     {
-      "line": 778,
-      "instrumented_line": 2082,
+      "line": 824,
+      "instrumented_line": 2214,
       "text": "db 07fh,097h,05bh,003h,07eh,0fch,0e2h,08eh,0ebh,072h,053h,02ah,0e4h,026h,08ah,004h,046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h",
       "category": "raw_unresolved",
       "start": 5352,
       "end": 5376
     },
     {
-      "line": 779,
-      "instrumented_line": 2085,
+      "line": 825,
+      "instrumented_line": 2217,
       "text": "db 080h,0e4h,002h,02eh,0ffh,0a7h,01eh,019h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h",
       "category": "raw_unresolved",
       "start": 5376,
       "end": 5400
     },
     {
-      "line": 780,
-      "instrumented_line": 2088,
+      "line": 826,
+      "instrumented_line": 2220,
       "text": "db 00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h",
       "category": "raw_unresolved",
       "start": 5400,
       "end": 5424
     },
     {
-      "line": 781,
-      "instrumented_line": 2091,
+      "line": 827,
+      "instrumented_line": 2223,
       "text": "db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h",
       "category": "raw_unresolved",
       "start": 5424,
       "end": 5448
     },
     {
-      "line": 782,
-      "instrumented_line": 2094,
+      "line": 828,
+      "instrumented_line": 2226,
       "text": "db 008h,015h,047h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,083h,0ebh,010h,07fh,097h,05bh,003h",
       "category": "raw_unresolved",
       "start": 5448,
       "end": 5472
     },
     {
-      "line": 783,
-      "instrumented_line": 2097,
+      "line": 829,
+      "instrumented_line": 2229,
       "text": "db 07eh,0fch,0e2h,08eh,08bh,0c3h,0d1h,0e8h,01fh,05eh,05fh,083h,0c4h,004h,05dh,0c3h,081h,018h,069h,018h,069h,018h,056h,018h",
       "category": "raw_unresolved",
       "start": 5472,
       "end": 5496
     },
     {
-      "line": 784,
-      "instrumented_line": 2100,
+      "line": 830,
+      "instrumented_line": 2232,
       "text": "db 056h,018h,043h,018h,043h,018h,030h,018h,030h,018h,0f5h,018h,0ddh,018h,0ddh,018h,0cah,018h,0cah,018h,0b7h,018h,0b7h,018h",
       "category": "raw_unresolved",
       "start": 5496,
       "end": 5520
     },
     {
-      "line": 785,
-      "instrumented_line": 2103,
+      "line": 831,
+      "instrumented_line": 2235,
       "text": "db 0a4h,018h,0a4h,018h",
       "category": "raw_unresolved",
       "start": 5520,
       "end": 5524
     },
     {
-      "line": 788,
-      "instrumented_line": 2108,
+      "line": 834,
+      "instrumented_line": 2240,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 5524,
       "end": 5525
     },
     {
-      "line": 789,
-      "instrumented_line": 2111,
+      "line": 835,
+      "instrumented_line": 2243,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 5525,
       "end": 5527
     },
     {
-      "line": 790,
-      "instrumented_line": 2114,
+      "line": 836,
+      "instrumented_line": 2246,
       "text": "db 057h,056h",
       "category": "raw_unresolved",
       "start": 5527,
       "end": 5529
     },
     {
-      "line": 791,
-      "instrumented_line": 2117,
+      "line": 837,
+      "instrumented_line": 2249,
       "text": "push ds",
       "category": "symbolic_instruction",
       "start": 5529,
       "end": 5530
     },
     {
-      "line": 792,
-      "instrumented_line": 2120,
+      "line": 838,
+      "instrumented_line": 2252,
       "text": "cld",
       "category": "symbolic_instruction",
       "start": 5530,
       "end": 5531
     },
     {
-      "line": 793,
-      "instrumented_line": 2123,
+      "line": 839,
+      "instrumented_line": 2255,
       "text": "mov bx,[bp+6]",
       "category": "symbolic_instruction",
       "start": 5531,
       "end": 5534
     },
     {
-      "line": 794,
-      "instrumented_line": 2126,
+      "line": 840,
+      "instrumented_line": 2258,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 5534,
       "end": 5536
     },
     {
-      "line": 795,
-      "instrumented_line": 2129,
+      "line": 841,
+      "instrumented_line": 2261,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 5536,
       "end": 5538
     },
     {
-      "line": 796,
-      "instrumented_line": 2132,
+      "line": 842,
+      "instrumented_line": 2264,
       "text": "db 0c4h,0bfh,024h,039h",
       "category": "raw_unresolved",
       "start": 5538,
       "end": 5542
     },
     {
-      "line": 797,
-      "instrumented_line": 2135,
+      "line": 843,
+      "instrumented_line": 2267,
       "text": "mov bx,[bp+4]",
       "category": "symbolic_instruction",
       "start": 5542,
       "end": 5545
     },
     {
-      "line": 798,
-      "instrumented_line": 2138,
+      "line": 844,
+      "instrumented_line": 2270,
       "text": "shr bx,1",
       "category": "symbolic_instruction",
       "start": 5545,
       "end": 5547
     },
     {
-      "line": 799,
-      "instrumented_line": 2141,
+      "line": 845,
+      "instrumented_line": 2273,
       "text": "db 003h,0fbh",
       "category": "raw_unresolved",
       "start": 5547,
       "end": 5549
     },
     {
-      "line": 800,
-      "instrumented_line": 2144,
+      "line": 846,
+      "instrumented_line": 2276,
       "text": "db 0c5h,076h,008h,083h,0c6h,020h,0adh,02ah,0ffh,08ah,0d8h,08ah,0f7h,08ah,0d4h,052h,0b8h,0a0h,000h",
       "category": "raw_unresolved",
       "start": 5549,
       "end": 5568
     },
     {
-      "line": 801,
-      "instrumented_line": 2147,
+      "line": 847,
+      "instrumented_line": 2279,
       "text": "db 02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f8h,04ah,075h,0f1h,05ah,01fh,083h,03eh,0bch,000h,001h",
       "category": "raw_unresolved",
       "start": 5568,
       "end": 5592
     },
     {
-      "line": 802,
-      "instrumented_line": 2150,
+      "line": 848,
+      "instrumented_line": 2282,
       "text": "db 075h,01eh,08bh,04eh,006h,081h,0f9h,0c8h,000h,073h,015h,0c4h,03eh,0c4h,040h,08bh,046h,004h,0d1h,0e8h,08ah,0e1h,0abh,08ah",
       "category": "raw_unresolved",
       "start": 5592,
       "end": 5616
     },
     {
-      "line": 803,
-      "instrumented_line": 2153,
+      "line": 849,
+      "instrumented_line": 2285,
       "text": "db 0c3h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h,0ffh,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h",
       "category": "raw_unresolved",
       "start": 5616,
       "end": 5640
     },
     {
-      "line": 804,
-      "instrumented_line": 2156,
+      "line": 850,
+      "instrumented_line": 2288,
       "text": "db 0f0h,0f0h,0f0h,0f0h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5640,
       "end": 5664
     },
     {
-      "line": 805,
-      "instrumented_line": 2159,
+      "line": 851,
+      "instrumented_line": 2291,
       "text": "db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5664,
       "end": 5688
     },
     {
-      "line": 806,
-      "instrumented_line": 2162,
+      "line": 852,
+      "instrumented_line": 2294,
       "text": "db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5688,
       "end": 5712
     },
     {
-      "line": 807,
-      "instrumented_line": 2165,
+      "line": 853,
+      "instrumented_line": 2297,
       "text": "db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5712,
       "end": 5736
     },
     {
-      "line": 808,
-      "instrumented_line": 2168,
+      "line": 854,
+      "instrumented_line": 2300,
       "text": "db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5736,
       "end": 5760
     },
     {
-      "line": 809,
-      "instrumented_line": 2171,
+      "line": 855,
+      "instrumented_line": 2303,
       "text": "db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5760,
       "end": 5784
     },
     {
-      "line": 810,
-      "instrumented_line": 2174,
+      "line": 856,
+      "instrumented_line": 2306,
       "text": "db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5784,
       "end": 5808
     },
     {
-      "line": 811,
-      "instrumented_line": 2177,
+      "line": 857,
+      "instrumented_line": 2309,
       "text": "db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5808,
       "end": 5832
     },
     {
-      "line": 812,
-      "instrumented_line": 2180,
+      "line": 858,
+      "instrumented_line": 2312,
       "text": "db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5832,
       "end": 5856
     },
     {
-      "line": 813,
-      "instrumented_line": 2183,
+      "line": 859,
+      "instrumented_line": 2315,
       "text": "db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5856,
       "end": 5880
     },
     {
-      "line": 814,
-      "instrumented_line": 2186,
+      "line": 860,
+      "instrumented_line": 2318,
       "text": "db 000h,000h,000h,000h",
       "category": "raw_unresolved",
       "start": 5880,
       "end": 5884
     },
     {
-      "line": 817,
-      "instrumented_line": 2191,
+      "line": 863,
+      "instrumented_line": 2323,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 5884,
       "end": 5885
     },
     {
-      "line": 818,
-      "instrumented_line": 2194,
+      "line": 864,
+      "instrumented_line": 2326,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 5885,
       "end": 5887
     },
     {
-      "line": 819,
-      "instrumented_line": 2197,
+      "line": 865,
+      "instrumented_line": 2329,
       "text": "db 056h,057h",
       "category": "raw_unresolved",
       "start": 5887,
       "end": 5889
     },
     {
-      "line": 820,
-      "instrumented_line": 2200,
+      "line": 866,
+      "instrumented_line": 2332,
       "text": "push ds",
       "category": "symbolic_instruction",
       "start": 5889,
       "end": 5890
     },
     {
-      "line": 821,
-      "instrumented_line": 2203,
+      "line": 867,
+      "instrumented_line": 2335,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 5890,
       "end": 5891
     },
     {
-      "line": 822,
-      "instrumented_line": 2206,
+      "line": 868,
+      "instrumented_line": 2338,
       "text": "db 0c4h,076h,008h,083h,0c6h,020h,026h,08bh,004h,083h,0c6h,002h,033h",
       "category": "raw_unresolved",
       "start": 5891,
       "end": 5904
     },
     {
-      "line": 823,
-      "instrumented_line": 2209,
+      "line": 869,
+      "instrumented_line": 2341,
       "text": "db 0d2h,08bh,0cah,08ah,0c8h,08ah,0d4h,08bh,07eh,006h,0a1h,096h,000h,02bh,0c7h,078h,046h,040h,03bh,0d0h,076h,002h,08bh,0d0h",
       "category": "raw_unresolved",
       "start": 5904,
       "end": 5928
     },
     {
-      "line": 824,
-      "instrumented_line": 2212,
+      "line": 870,
+      "instrumented_line": 2344,
       "text": "db 0a1h,094h,000h,02bh,0c7h,07eh,00ah,02bh,0d0h,076h,034h,003h,0f8h,0f6h,0e1h,003h,0f0h,08bh,05eh,004h,083h,07eh,00ch,000h",
       "category": "raw_unresolved",
       "start": 5928,
       "end": 5952
     },
     {
-      "line": 825,
-      "instrumented_line": 2215,
+      "line": 871,
+      "instrumented_line": 2347,
       "text": "db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h",
       "category": "raw_unresolved",
       "start": 5952,
       "end": 5976
     },
     {
-      "line": 826,
-      "instrumented_line": 2218,
+      "line": 872,
+      "instrumented_line": 2350,
       "text": "db 02bh,0e8h,08bh,0c8h,0a1h,098h,000h,02bh,0c3h,07eh,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,003h,0d8h",
       "category": "raw_unresolved",
       "start": 5976,
       "end": 6000
     },
     {
-      "line": 827,
-      "instrumented_line": 2221,
+      "line": 873,
+      "instrumented_line": 2353,
       "text": "db 003h,0e8h,003h,0f0h,006h,057h,083h,03eh,0bch,000h,001h,075h,01ah,081h,0ffh,0c8h,000h,073h,014h,08bh,0c7h,08ah,0e0h,08ah",
       "category": "raw_unresolved",
       "start": 6000,
       "end": 6024
     },
     {
-      "line": 828,
-      "instrumented_line": 2224,
+      "line": 874,
+      "instrumented_line": 2356,
       "text": "db 0c3h,0c4h,03eh,0c4h,040h,0abh,08ah,0c1h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h",
       "category": "raw_unresolved",
       "start": 6024,
       "end": 6048
     },
     {
-      "line": 829,
-      "instrumented_line": 2227,
+      "line": 875,
+      "instrumented_line": 2359,
       "text": "db 003h,0fbh,01fh,0bbh,098h,019h,057h,051h,0ach,08ah,0e0h,02eh,0d7h,026h,022h,005h,00ah,0c4h,0aah,0e2h,0f3h,059h,05fh,081h",
       "category": "raw_unresolved",
       "start": 6048,
       "end": 6072
     },
     {
-      "line": 830,
-      "instrumented_line": 2230,
+      "line": 876,
+      "instrumented_line": 2362,
       "text": "db 0c7h,0a0h,000h,003h,0f5h,04ah,075h,0e6h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,0fdh,033h,0edh,003h,0d9h,003h,0d9h,0d1h,0ebh",
       "category": "raw_unresolved",
       "start": 6072,
       "end": 6096
     },
     {
-      "line": 831,
-      "instrumented_line": 2233,
+      "line": 877,
+      "instrumented_line": 2365,
       "text": "db 04bh,08bh,0c3h,02bh,006h,098h,000h,078h,017h,040h,03bh,0c8h,076h,006h,08bh,0e9h,02bh,0e8h,08bh,0c8h,08bh,0c3h,02bh,006h",
       "category": "raw_unresolved",
       "start": 6096,
       "end": 6120
     },
     {
-      "line": 832,
-      "instrumented_line": 2236,
+      "line": 878,
+      "instrumented_line": 2368,
       "text": "db 09ah,000h,076h,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,02bh,0d8h,003h,0e8h,003h,0f0h,006h,057h,083h",
       "category": "raw_unresolved",
       "start": 6120,
       "end": 6144
     },
     {
-      "line": 833,
-      "instrumented_line": 2239,
+      "line": 879,
+      "instrumented_line": 2371,
       "text": "db 03eh,0bch,000h,001h,075h,020h,081h,0ffh,0c8h,000h,073h,01ah,08bh,0c7h,08ah,0e0h,08ah,0c3h,02ah,0c1h,0feh,0c0h,0c4h,03eh",
       "category": "raw_unresolved",
       "start": 6144,
       "end": 6168
     },
     {
-      "line": 834,
-      "instrumented_line": 2242,
+      "line": 880,
+      "instrumented_line": 2374,
       "text": "db 0c4h,040h,0fch,0abh,08ah,0c1h,08ah,0e2h,0abh,0fdh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h",
       "category": "raw_unresolved",
       "start": 6168,
       "end": 6192
     },
     {
-      "line": 835,
-      "instrumented_line": 2245,
+      "line": 881,
+      "instrumented_line": 2377,
       "text": "db 0fbh,01fh,0bbh,098h,019h,057h,051h,08ah,004h,046h,0d0h,0c8h,0d0h,0c8h,0d0h,0c8h,0d0h,0c8h,08ah,0e0h,02eh,0d7h,026h,022h",
       "category": "raw_unresolved",
       "start": 6192,
       "end": 6216
     },
     {
-      "line": 836,
-      "instrumented_line": 2248,
+      "line": 882,
+      "instrumented_line": 2380,
       "text": "db 005h,00ah,0c4h,0aah,0e2h,0e9h,059h,05fh,081h,0c7h,0a0h,000h,003h,0f5h,04ah,075h,0dch,05dh,01fh,05fh,05eh,0fch,05dh,0c3h",
       "category": "raw_unresolved",
       "start": 6216,
       "end": 6240
     },
     {
-      "line": 840,
-      "instrumented_line": 2254,
+      "line": 886,
+      "instrumented_line": 2386,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 6240,
       "end": 6241
     },
     {
-      "line": 841,
-      "instrumented_line": 2257,
+      "line": 887,
+      "instrumented_line": 2389,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 6241,
       "end": 6243
     },
     {
-      "line": 842,
-      "instrumented_line": 2260,
+      "line": 888,
+      "instrumented_line": 2392,
       "text": "sub sp,2",
       "category": "symbolic_instruction",
       "start": 6243,
       "end": 6246
     },
     {
-      "line": 843,
-      "instrumented_line": 2263,
+      "line": 889,
+      "instrumented_line": 2395,
       "text": "db 056h,057h",
       "category": "raw_unresolved",
       "start": 6246,
       "end": 6248
     },
     {
-      "line": 844,
-      "instrumented_line": 2266,
+      "line": 890,
+      "instrumented_line": 2398,
       "text": "push ds",
       "category": "symbolic_instruction",
       "start": 6248,
       "end": 6249
     },
     {
-      "line": 845,
-      "instrumented_line": 2269,
+      "line": 891,
+      "instrumented_line": 2401,
       "text": "cld",
       "category": "symbolic_instruction",
       "start": 6249,
       "end": 6250
     },
     {
-      "line": 846,
-      "instrumented_line": 2272,
+      "line": 892,
+      "instrumented_line": 2404,
       "text": "db 08bh,016h,0c8h,040h",
       "category": "raw_unresolved",
       "start": 6250,
       "end": 6254
     },
     {
-      "line": 847,
-      "instrumented_line": 2275,
+      "line": 893,
+      "instrumented_line": 2407,
       "text": "mov dh,dl",
       "category": "symbolic_instruction",
       "start": 6254,
       "end": 6256
     },
     {
-      "line": 848,
-      "instrumented_line": 2278,
+      "line": 894,
+      "instrumented_line": 2410,
       "text": "and dx,0f00fh",
       "category": "symbolic_instruction",
       "start": 6256,
       "end": 6260
     },
     {
-      "line": 850,
-      "instrumented_line": 2282,
+      "line": 896,
+      "instrumented_line": 2414,
       "text": "db 0c4h,076h,008h",
       "category": "raw_unresolved",
       "start": 6260,
       "end": 6263
     },
     {
-      "line": 851,
-      "instrumented_line": 2285,
+      "line": 897,
+      "instrumented_line": 2417,
       "text": "mov bx,[bp+6]",
       "category": "symbolic_instruction",
       "start": 6263,
       "end": 6266
     },
     {
-      "line": 852,
-      "instrumented_line": 2288,
+      "line": 898,
+      "instrumented_line": 2420,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6266,
       "end": 6268
     },
     {
-      "line": 853,
-      "instrumented_line": 2291,
+      "line": 899,
+      "instrumented_line": 2423,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6268,
       "end": 6270
     },
     {
-      "line": 854,
-      "instrumented_line": 2294,
+      "line": 900,
+      "instrumented_line": 2426,
       "text": "db 0c5h,0bfh,024h,039h",
       "category": "raw_unresolved",
       "start": 6270,
       "end": 6274
     },
     {
-      "line": 855,
-      "instrumented_line": 2297,
+      "line": 901,
+      "instrumented_line": 2429,
       "text": "mov bx,[bp+4]",
       "category": "symbolic_instruction",
       "start": 6274,
       "end": 6277
     },
     {
-      "line": 856,
-      "instrumented_line": 2300,
+      "line": 902,
+      "instrumented_line": 2432,
       "text": "shr bx,1",
       "category": "symbolic_instruction",
       "start": 6277,
       "end": 6279
     },
     {
-      "line": 857,
-      "instrumented_line": 2303,
+      "line": 903,
+      "instrumented_line": 2435,
       "text": "db 003h,0fbh",
       "category": "raw_unresolved",
       "start": 6279,
       "end": 6281
     },
     {
-      "line": 858,
-      "instrumented_line": 2306,
+      "line": 904,
+      "instrumented_line": 2438,
       "text": "xor bx,bx",
       "category": "symbolic_instruction",
       "start": 6281,
       "end": 6283
     },
     {
-      "line": 859,
-      "instrumented_line": 2309,
+      "line": 905,
+      "instrumented_line": 2441,
       "text": "mov cx,bx",
       "category": "symbolic_instruction",
       "start": 6283,
       "end": 6285
     },
     {
-      "line": 860,
-      "instrumented_line": 2312,
+      "line": 906,
+      "instrumented_line": 2444,
       "text": "db 026h,08ah,01ch",
       "category": "raw_unresolved",
       "start": 6285,
       "end": 6288
     },
     {
-      "line": 861,
-      "instrumented_line": 2315,
+      "line": 907,
+      "instrumented_line": 2447,
       "text": "db 046h",
       "category": "raw_unresolved",
       "start": 6288,
       "end": 6289
     },
     {
-      "line": 862,
-      "instrumented_line": 2318,
+      "line": 908,
+      "instrumented_line": 2450,
       "text": "mov word ptr [bp-2],0a0h",
       "category": "symbolic_instruction",
       "start": 6289,
       "end": 6294
     },
     {
-      "line": 863,
-      "instrumented_line": 2321,
+      "line": 909,
+      "instrumented_line": 2453,
       "text": "sub [bp-2],bx",
       "category": "symbolic_instruction",
       "start": 6294,
       "end": 6297
     },
     {
-      "line": 864,
-      "instrumented_line": 2324,
+      "line": 910,
+      "instrumented_line": 2456,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6297,
       "end": 6299
     },
     {
-      "line": 865,
-      "instrumented_line": 2327,
+      "line": 911,
+      "instrumented_line": 2459,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6299,
       "end": 6301
     },
     {
-      "line": 866,
-      "instrumented_line": 2330,
+      "line": 912,
+      "instrumented_line": 2462,
       "text": "db 026h,08ah,00ch,046h,04fh",
       "category": "raw_unresolved",
       "start": 6301,
       "end": 6306
     },
     {
-      "line": 867,
-      "instrumented_line": 2333,
+      "line": 913,
+      "instrumented_line": 2465,
       "text": "push bx",
       "category": "symbolic_instruction",
       "start": 6306,
       "end": 6307
     },
     {
-      "line": 868,
-      "instrumented_line": 2336,
+      "line": 914,
+      "instrumented_line": 2468,
       "text": "sub ah,ah",
       "category": "symbolic_instruction",
       "start": 6307,
       "end": 6309
     },
     {
-      "line": 869,
-      "instrumented_line": 2339,
+      "line": 915,
+      "instrumented_line": 2471,
       "text": "db 026h,08ah,004h",
       "category": "raw_unresolved",
       "start": 6309,
       "end": 6312
     },
     {
-      "line": 870,
-      "instrumented_line": 2342,
+      "line": 916,
+      "instrumented_line": 2474,
       "text": "db 046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh",
       "category": "raw_unresolved",
       "start": 6312,
       "end": 6336
     },
     {
-      "line": 871,
-      "instrumented_line": 2345,
+      "line": 917,
+      "instrumented_line": 2477,
       "text": "db 008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h",
       "category": "raw_unresolved",
       "start": 6336,
       "end": 6360
     },
     {
-      "line": 872,
-      "instrumented_line": 2348,
+      "line": 918,
+      "instrumented_line": 2480,
       "text": "db 005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h",
       "category": "raw_unresolved",
       "start": 6360,
       "end": 6384
     },
     {
-      "line": 873,
-      "instrumented_line": 2351,
+      "line": 919,
+      "instrumented_line": 2483,
       "text": "db 015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h",
       "category": "raw_unresolved",
       "start": 6384,
       "end": 6408
     },
     {
-      "line": 874,
-      "instrumented_line": 2354,
+      "line": 920,
+      "instrumented_line": 2486,
       "text": "db 015h,083h,0ebh,010h,07fh,097h,05bh,003h,07eh,0feh,0e2h,08eh,01fh,05fh,05eh,083h,0c4h,002h,05dh,0c3h,0a5h,01ch,08dh,01ch",
       "category": "raw_unresolved",
       "start": 6408,
       "end": 6432
     },
     {
-      "line": 875,
-      "instrumented_line": 2357,
+      "line": 921,
+      "instrumented_line": 2489,
       "text": "db 08dh,01ch,07ah,01ch,07ah,01ch,067h,01ch,067h,01ch,054h,01ch,054h,01ch",
       "category": "raw_unresolved",
       "start": 6432,
       "end": 6446
     },
     {
-      "line": 879,
-      "instrumented_line": 2363,
+      "line": 925,
+      "instrumented_line": 2495,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 6446,
       "end": 6447
     },
     {
-      "line": 880,
-      "instrumented_line": 2366,
+      "line": 926,
+      "instrumented_line": 2498,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 6447,
       "end": 6449
     },
     {
-      "line": 881,
-      "instrumented_line": 2369,
+      "line": 927,
+      "instrumented_line": 2501,
       "text": "db 057h",
       "category": "raw_unresolved",
       "start": 6449,
       "end": 6450
     },
     {
-      "line": 882,
-      "instrumented_line": 2372,
+      "line": 928,
+      "instrumented_line": 2504,
       "text": "mov bx,[bp+6]",
       "category": "symbolic_instruction",
       "start": 6450,
       "end": 6453
     },
     {
-      "line": 883,
-      "instrumented_line": 2375,
+      "line": 929,
+      "instrumented_line": 2507,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6453,
       "end": 6455
     },
     {
-      "line": 884,
-      "instrumented_line": 2378,
+      "line": 930,
+      "instrumented_line": 2510,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6455,
       "end": 6457
     },
     {
-      "line": 885,
-      "instrumented_line": 2381,
+      "line": 931,
+      "instrumented_line": 2513,
       "text": "db 0c4h,0bfh,024h,039h",
       "category": "raw_unresolved",
       "start": 6457,
       "end": 6461
     },
     {
-      "line": 886,
-      "instrumented_line": 2384,
+      "line": 932,
+      "instrumented_line": 2516,
       "text": "mov bx,[bp+4]",
       "category": "symbolic_instruction",
       "start": 6461,
       "end": 6464
     },
     {
-      "line": 887,
-      "instrumented_line": 2387,
+      "line": 933,
+      "instrumented_line": 2519,
       "text": "shr bx,1",
       "category": "symbolic_instruction",
       "start": 6464,
       "end": 6466
     },
     {
-      "line": 888,
-      "instrumented_line": 2390,
+      "line": 934,
+      "instrumented_line": 2522,
       "text": "db 072h,015h",
       "category": "raw_unresolved",
       "start": 6466,
       "end": 6468
     },
     {
-      "line": 889,
-      "instrumented_line": 2393,
+      "line": 935,
+      "instrumented_line": 2525,
       "text": "db 003h,0fbh,026h,08ah,005h",
       "category": "raw_unresolved",
       "start": 6468,
       "end": 6473
     },
     {
-      "line": 890,
-      "instrumented_line": 2396,
+      "line": 936,
+      "instrumented_line": 2528,
       "text": "and al,0fh",
       "category": "symbolic_instruction",
       "start": 6473,
       "end": 6475
     },
     {
-      "line": 891,
-      "instrumented_line": 2399,
+      "line": 937,
+      "instrumented_line": 2531,
       "text": "db 08bh,01eh,0c8h,040h",
       "category": "raw_unresolved",
       "start": 6475,
       "end": 6479
     },
     {
-      "line": 892,
-      "instrumented_line": 2402,
+      "line": 938,
+      "instrumented_line": 2534,
       "text": "shl bl,1",
       "category": "symbolic_instruction",
       "start": 6479,
       "end": 6481
     },
     {
-      "line": 893,
-      "instrumented_line": 2405,
+      "line": 939,
+      "instrumented_line": 2537,
       "text": "shl bl,1",
       "category": "symbolic_instruction",
       "start": 6481,
       "end": 6483
     },
     {
-      "line": 894,
-      "instrumented_line": 2408,
+      "line": 940,
+      "instrumented_line": 2540,
       "text": "shl bl,1",
       "category": "symbolic_instruction",
       "start": 6483,
       "end": 6485
     },
     {
-      "line": 895,
-      "instrumented_line": 2411,
+      "line": 941,
+      "instrumented_line": 2543,
       "text": "shl bl,1",
       "category": "symbolic_instruction",
       "start": 6485,
       "end": 6487
     },
     {
-      "line": 896,
-      "instrumented_line": 2414,
+      "line": 942,
+      "instrumented_line": 2546,
       "text": "db 0ebh,00eh",
       "category": "raw_unresolved",
       "start": 6487,
       "end": 6489
     },
     {
-      "line": 897,
-      "instrumented_line": 2417,
+      "line": 943,
+      "instrumented_line": 2549,
       "text": "db 003h,0fbh,026h,08ah,005h",
       "category": "raw_unresolved",
       "start": 6489,
       "end": 6494
     },
     {
-      "line": 898,
-      "instrumented_line": 2420,
+      "line": 944,
+      "instrumented_line": 2552,
       "text": "and al,0f0h",
       "category": "symbolic_instruction",
       "start": 6494,
       "end": 6496
     },
     {
-      "line": 899,
-      "instrumented_line": 2423,
+      "line": 945,
+      "instrumented_line": 2555,
       "text": "db 08bh,01eh,0c8h,040h",
       "category": "raw_unresolved",
       "start": 6496,
       "end": 6500
     },
     {
-      "line": 900,
-      "instrumented_line": 2426,
+      "line": 946,
+      "instrumented_line": 2558,
       "text": "and bl,0fh",
       "category": "symbolic_instruction",
       "start": 6500,
       "end": 6503
     },
     {
-      "line": 901,
-      "instrumented_line": 2429,
+      "line": 947,
+      "instrumented_line": 2561,
       "text": "or al,bl",
       "category": "symbolic_instruction",
       "start": 6503,
       "end": 6505
     },
     {
-      "line": 902,
-      "instrumented_line": 2432,
+      "line": 948,
+      "instrumented_line": 2564,
       "text": "db 026h,088h,005h",
       "category": "raw_unresolved",
       "start": 6505,
       "end": 6508
     },
     {
-      "line": 903,
-      "instrumented_line": 2435,
+      "line": 949,
+      "instrumented_line": 2567,
       "text": "db 05fh",
       "category": "raw_unresolved",
       "start": 6508,
       "end": 6509
     },
     {
-      "line": 904,
-      "instrumented_line": 2438,
+      "line": 950,
+      "instrumented_line": 2570,
       "text": "pop bp",
       "category": "symbolic_instruction",
       "start": 6509,
       "end": 6510
     },
     {
-      "line": 905,
-      "instrumented_line": 2441,
+      "line": 951,
+      "instrumented_line": 2573,
       "text": "ret",
       "category": "symbolic_instruction",
       "start": 6510,
       "end": 6511
     },
     {
-      "line": 908,
-      "instrumented_line": 2446,
+      "line": 954,
+      "instrumented_line": 2578,
       "text": "push bp",
       "category": "symbolic_instruction",
       "start": 6511,
       "end": 6512
     },
     {
-      "line": 909,
-      "instrumented_line": 2449,
+      "line": 955,
+      "instrumented_line": 2581,
       "text": "mov bp,sp",
       "category": "symbolic_instruction",
       "start": 6512,
       "end": 6514
     },
     {
-      "line": 910,
-      "instrumented_line": 2452,
+      "line": 956,
+      "instrumented_line": 2584,
       "text": "db 057h",
       "category": "raw_unresolved",
       "start": 6514,
       "end": 6515
     },
     {
-      "line": 911,
-      "instrumented_line": 2455,
+      "line": 957,
+      "instrumented_line": 2587,
       "text": "mov bx,[bp+6]",
       "category": "symbolic_instruction",
       "start": 6515,
       "end": 6518
     },
     {
-      "line": 912,
-      "instrumented_line": 2458,
+      "line": 958,
+      "instrumented_line": 2590,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6518,
       "end": 6520
     },
     {
-      "line": 913,
-      "instrumented_line": 2461,
+      "line": 959,
+      "instrumented_line": 2593,
       "text": "shl bx,1",
       "category": "symbolic_instruction",
       "start": 6520,
       "end": 6522
     },
     {
-      "line": 914,
-      "instrumented_line": 2464,
+      "line": 960,
+      "instrumented_line": 2596,
       "text": "db 0c4h,0bfh,024h,039h",
       "category": "raw_unresolved",
       "start": 6522,
       "end": 6526
     },
     {
-      "line": 915,
-      "instrumented_line": 2467,
+      "line": 961,
+      "instrumented_line": 2599,
       "text": "mov bx,[bp+4]",
       "category": "symbolic_instruction",
       "start": 6526,
       "end": 6529
     },
     {
-      "line": 916,
-      "instrumented_line": 2470,
+      "line": 962,
+      "instrumented_line": 2602,
       "text": "shr bx,1",
       "category": "symbolic_instruction",
       "start": 6529,
       "end": 6531
     },
     {
-      "line": 917,
-      "instrumented_line": 2473,
+      "line": 963,
+      "instrumented_line": 2605,
       "text": "db 072h,012h",
       "category": "raw_unresolved",
       "start": 6531,
       "end": 6533
     },
     {
-      "line": 918,
-      "instrumented_line": 2476,
+      "line": 964,
+      "instrumented_line": 2608,
       "text": "db 003h,0fbh,026h,08ah,005h",
       "category": "raw_unresolved",
       "start": 6533,
       "end": 6538
     },
     {
-      "line": 919,
-      "instrumented_line": 2479,
+      "line": 965,
+      "instrumented_line": 2611,
       "text": "and ax,0f0h",
       "category": "symbolic_instruction",
       "start": 6538,
       "end": 6541
     },
     {
-      "line": 920,
-      "instrumented_line": 2482,
+      "line": 966,
+      "instrumented_line": 2614,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 6541,
       "end": 6543
     },
     {
-      "line": 921,
-      "instrumented_line": 2485,
+      "line": 967,
+      "instrumented_line": 2617,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 6543,
       "end": 6545
     },
     {
-      "line": 922,
-      "instrumented_line": 2488,
+      "line": 968,
+      "instrumented_line": 2620,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 6545,
       "end": 6547
     },
     {
-      "line": 923,
-      "instrumented_line": 2491,
+      "line": 969,
+      "instrumented_line": 2623,
       "text": "shr ax,1",
       "category": "symbolic_instruction",
       "start": 6547,
       "end": 6549
     },
     {
-      "line": 924,
-      "instrumented_line": 2494,
+      "line": 970,
+      "instrumented_line": 2626,
       "text": "db 0ebh,008h",
       "category": "raw_unresolved",
       "start": 6549,
       "end": 6551
     },
     {
-      "line": 925,
-      "instrumented_line": 2497,
+      "line": 971,
+      "instrumented_line": 2629,
       "text": "db 003h,0fbh,026h,08ah,005h",
       "category": "raw_unresolved",
       "start": 6551,
       "end": 6556
     },
     {
-      "line": 926,
-      "instrumented_line": 2500,
+      "line": 972,
+      "instrumented_line": 2632,
       "text": "and ax,0fh",
       "category": "symbolic_instruction",
       "start": 6556,
       "end": 6559
     },
     {
-      "line": 927,
-      "instrumented_line": 2503,
+      "line": 973,
+      "instrumented_line": 2635,
       "text": "db 05fh",
       "category": "raw_unresolved",
       "start": 6559,
       "end": 6560
     },
     {
-      "line": 928,
-      "instrumented_line": 2506,
+      "line": 974,
+      "instrumented_line": 2638,
       "text": "pop bp",
       "category": "symbolic_instruction",
       "start": 6560,
       "end": 6561
     },
     {
-      "line": 929,
-      "instrumented_line": 2509,
+      "line": 975,
+      "instrumented_line": 2641,
       "text": "ret",
       "category": "symbolic_instruction",
       "start": 6561,
       "end": 6562
     },
     {
-      "line": 932,
-      "instrumented_line": 2514,
+      "line": 978,
+      "instrumented_line": 2646,
       "text": "db 0c3h,045h,047h,041h,02eh,044h,052h,056h,000h",
       "category": "raw_unresolved",
       "start": 6562,
       "end": 6571
     }
   ],
-  "source_snapshot": "; Production source. src/RUNTIME_BLOCK.C is the frozen migration oracle.\nJMP_NEAR macro target\n db 0e9h\n dw target-$-2\nendm\n\nCALL_NEAR macro target\n db 0e8h\n dw target-$-2\nendm\n\n_TEXT segment byte public 'CODE'\n_TEXT ends\n_DATA segment word public 'DATA'\n_DATA ends\n_BSS segment word public 'BSS'\n_BSS ends\nDGROUP group _DATA,_BSS\nassume cs:_TEXT,ds:DGROUP\n_TEXT segment byte public 'CODE'\npublic _f039c\n_f039c label near\n; RUNTIME_BLOCK -- exact startup/runtime dispatch block.\n    db 0e9h,091h,001h\n    public _f039f\n    _f039f label near\n    public _box\n    _box label near\n    db 0e9h,094h,002h\n    public _f03a2\n    _f03a2 label near\n    public _bar\n    _bar label near\n    db 0e9h,036h,00fh\n    public _f03a5\n    _f03a5 label near\n    db 0e9h,07ch,00fh\n    public _f03a8\n    _f03a8 label near\n    public _clear\n    _clear label near\n    db 0e9h,0b2h,00fh\n    public _f03ab\n    _f03ab label near\n    public _fill\n    _fill label near\n    db 0e9h,026h,010h\n    public _f03ae\n    _f03ae label near\n    db 0e9h,092h,010h\n    public _f03b1\n    _f03b1 label near\n    db 0e9h,0d6h,010h\n    public _f03b4\n    _f03b4 label near\n    public _wipe\n    _wipe label near\n    db 0e9h,008h,011h\n    public _f03b7\n    _f03b7 label near\n    db 0e9h,07eh,011h\n    public _f03ba\n    _f03ba label near\n    db 0e9h,0d4h,011h\n    public _f03bd\n    _f03bd label near\n    db 0e9h,02ch,012h\n    public _f03c0\n    _f03c0 label near\n    db 0e9h,093h,012h\n    public _f03c3\n    _f03c3 label near\n    db 0e9h,031h,013h\n    public _f03c6\n    _f03c6 label near\n    db 0e9h,0dbh,013h\n    public _f03c9\n    _f03c9 label near\n    public _blit\n    _blit label near\n    db 0e9h,064h,015h\n    public _f03cc\n    _f03cc label near\n    public _copy\n    _copy label near\n    db 0e9h,0c9h,016h\n    public _f03cf\n    _f03cf label near\n    db 0e9h,02ah,018h\n    public _f03d2\n    _f03d2 label near\n    db 0e9h,0f5h,018h\n    public _f03d5\n    _f03d5 label near\n    db 0e9h,033h,019h\n    db 000h,000h,03dh,005h,000h,000h,0f4h,005h,030h,006h,000h,000h\n    db 043h,006h,000h,000h,061h,00bh,0d7h,00bh,0e3h,0ffh,0e3h,0ffh,0d4h,0ffh,0c5h,0ffh,0b6h,0ffh,0a7h,0ffh,098h,0ffh,089h,0ffh\n    db 07ah,0ffh,06bh,0ffh,05ch,0ffh,04dh,0ffh,03eh,0ffh,02fh,0ffh,020h,0ffh,011h,0ffh,002h,0ffh,0f3h,0feh,0e4h,0feh,0d5h,0feh\n    db 0c6h,0feh,0b7h,0feh,0a8h,0feh,099h,0feh,08ah,0feh,07bh,0feh,06ch,0feh,05dh,0feh,04eh,0feh,03fh,0feh,030h,0feh,021h,0feh\n    db 012h,0feh,003h,0feh,0f4h,0fdh,0e5h,0fdh,0d6h,0fdh,0c7h,0fdh,0b8h,0fdh,0a9h,0fdh,09ah,0fdh,08bh,0fdh,07ch,0fdh,06dh,0fdh\n    db 05eh,0fdh,04fh,0fdh,040h,0fdh,031h,0fdh,022h,0fdh,013h,0fdh,004h,0fdh,0f5h,0fch,0e6h,0fch,0d7h,0fch,0c8h,0fch,0b9h,0fch\n    db 0aah,0fch,09bh,0fch,08ch,0fch,07dh,0fch,06eh,0fch,05fh,0fch,050h,0fch,041h,0fch,032h,0fch,023h,0fch,014h,0fch,005h,0fch\n    db 0f6h,0fbh,0e7h,0fbh,0d8h,0fbh,0c9h,0fbh,0bah,0fbh,0abh,0fbh,09ch,0fbh,08dh,0fbh,07eh,0fbh,06fh,0fbh,060h,0fbh,051h,0fbh\n    db 042h,0fbh,0f8h,0ffh,0dbh,0ffh,0c6h,0ffh,0b1h,0ffh,09ch,0ffh,087h,0ffh,072h,0ffh,05dh,0ffh,048h,0ffh,033h,0ffh,01eh,0ffh\n    db 009h,0ffh,0f4h,0feh,0dfh,0feh,0cah,0feh,0b5h,0feh,0a0h,0feh,08bh,0feh,076h,0feh,061h,0feh,04ch,0feh,037h,0feh,022h,0feh\n    db 00dh,0feh,0f8h,0fdh,0e3h,0fdh,0ceh,0fdh,0b9h,0fdh,0a4h,0fdh,08fh,0fdh,07ah,0fdh,065h,0fdh,050h,0fdh,03bh,0fdh,026h,0fdh\n    db 011h,0fdh,0fch,0fch,0e7h,0fch,0d2h,0fch,0bdh,0fch,0a8h,0fch,093h,0fch,07eh,0fch,069h,0fch,054h,0fch,03fh,0fch,02ah,0fch\n    db 015h,0fch,000h,0fch,0ebh,0fbh,0d6h,0fbh,0c1h,0fbh,0ach,0fbh,097h,0fbh,082h,0fbh,06dh,0fbh,058h,0fbh,043h,0fbh,02eh,0fbh\n    db 019h,0fbh,004h,0fbh,0efh,0fah,0dah,0fah,0c5h,0fah,0b0h,0fah,09bh,0fah,086h,0fah,071h,0fah,05ch,0fah,047h,0fah,032h,0fah\n    db 01dh,0fah,008h,0fah,0f3h,0f9h,0deh,0f9h,0c9h,0f9h,0b4h,0f9h,09fh,0f9h,08ah,0f9h,075h,0f9h,060h,0f9h\n    runtime_dispatch:\n    xor bh,bh\n    ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).\n    db 08ah,01eh,0cdh,0bfh\n    shl bx,1\n    jmp word ptr cs:[bx+3d8h]\n    ; EGA/VGA planar-mode initializer reached from the dispatch table.\n    push bp\n    mov bp,sp\n    db 056h,057h\n    push ds\n    cld\n    mov ax,0eh\n    int 10h\n    mov ah,5\n    mov al,1\n    int 10h\n    mov ax,1000h\n    mov bx,1\n    int 10h\n    mov ax,1000h\n    mov bx,100h\n    int 10h\n    mov ax,1000h\n    mov bx,170eh\n    int 10h\n    mov ax,1000h\n    mov bx,160fh\n    int 10h\n    mov dx,3ceh\n    mov al,5\n    out dx,al\n    inc dx\n    mov al,2\n    out dx,al\n    mov dx,3c4h\n    mov al,2\n    out dx,al\n    inc dx\n    mov al,0fh\n    out dx,al\n    mov ax,0a000h\n    mov es,ax\n    xor bx,bx\n    mov cx,bx\n    ; SI assignment remains a tracked raw recovery candidate.\n    db 08bh,0f3h\n    mov bp,1000h\n    ; The planar clear loop follows. Its raw ES:[SI]/DI operations can\n; now be transcribed directly in TASM; no compiler register wrapper exists.\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,0ch\n    out dx,al\n    db 026h,08ah,024h,026h,088h,01ch\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,3\n    out dx,al\n    db 026h,08ah,024h,026h,088h,00ch\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,0c0h\n    out dx,al\n    db 026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h\n    ; SI/DI accesses and their short back-edges remain literal; the nested\n; plane/column counters can use ordinary TASM spellings.\n    db 080h,0ffh,010h,07ch,0c8h,032h,0ffh\n    inc cl\n    cmp cl,10h\n    db 07ch,0bfh\n    ; The original used the byte-register form (32 C9), not XOR CX,CX.\n    db 032h,0c9h\n    inc bl\n    cmp bl,10h\n    db 07ch,0b6h\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,30h\n    out dx,al\n    mov dx,3ceh\n    mov al,3\n    out dx,al\n    inc dx\n    mov al,0\n    out dx,al\n    pop ds\n    db 05fh,05eh\n    pop bp\n    ret\n    ; Restore the EGA palette register set, then provide the mode-13h entry.\n    mov ax,9\n    int 10h\n    mov al,10h\n    mov dx,3dah\n    out dx,al\n    mov al,1\n    mov dx,3deh\n    out dx,al\n    mov al,11h\n    mov dx,3dah\n    out dx,al\n    mov al,0\n    mov dx,3deh\n    out dx,al\n    mov al,1eh\n    mov dx,3dah\n    out dx,al\n    mov al,0fh\n    mov dx,3deh\n    out dx,al\n    mov al,1fh\n    mov dx,3dah\n    out dx,al\n    mov al,0eh\n    mov dx,3deh\n    out dx,al\n    mov dx,3dah\n    mov al,0fh\n    out dx,al\n    ret\n    mov ax,13h\n    int 10h\n    ret\n    runtime_dispatch_3e2:\n    ; DI is intentionally cleared with its original encoding.\n    db 032h,0ffh\n    ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).\n    db 08ah,01eh,0cdh,0bfh\n    shl bx,1\n    jmp word ptr cs:[bx+3e2h]\n    runtime_3e2_handler:\n    push bp\n    mov bp,sp\n    ; This handler owns its SI/DI preservation explicitly.\n    db 056h,057h\n    push ds\n    cld\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0b7h,024h,039h\n    shl bx,1\n    shl bx,1\n    ; DI-derived row addressing remains a tracked raw recovery candidate.\n    db 08bh,0fbh,0d1h,0e7h,0d1h,0e7h,003h,0fbh\n    mov ax,[bp+4]\n    mov bx,[bp+8]\n    mov cx,[bp+0ah]\n    add bx,ax\n    dec bx\n    shr ax,1\n    shr ax,1\n    shr bx,1\n    shr bx,1\n    sub bx,ax\n    inc bx\n    db 003h,0f0h,003h,0f0h,003h,0f8h\n    push es\n    mov ax,0a000h\n    mov es,ax\n    ; Address the selected planar page and enter its unrolled blit tail.\n    db 081h,0c7h,000h,040h\n    mov bp,50h\n    sub bp,bx\n    mov dx,0a0h\n    shl bx,1\n    sub dx,bx\n    mov ax,cs:[bx+3ech]\n    ; TASM 1.0 needs the historical absolute CS-store spelling preserved.\n    db 02eh,0a3h,05fh,00bh\n    add ax,0b61h\n    pop ds\n    jmp ax\n    db 0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,003h,0f2h,003h,0fdh,0e2h,005h,01fh,05fh,05eh,05dh,0c3h,0e9h,042h,0fbh,055h,08bh,0ech\n    db 056h,057h,01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h,039h,08bh,046h,004h,08bh,0d0h,0d1h,0eah,003h,0f2h\n    db 0d1h,0ebh,0d1h,0ebh,086h,0fbh,0d1h,0ebh,0d1h,0ebh,002h,0e3h,032h,0dbh,003h,0c3h,0d1h,0ebh,0d1h,0ebh,003h,0c3h,08bh,056h\n    db 008h,0d1h,0e8h,083h,0d2h,000h,08bh,0f8h,006h,0b8h,000h,0b8h,08eh,0c0h,01fh,0d1h,0eah,083h,0d2h,000h,08bh,04eh,00ah,0b8h\n    db 0a0h,000h,02bh,0c2h,0bbh,000h,020h,02bh,0dah,0bdh,0a0h,080h,051h,08bh,0cah,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,059h\n    db 003h,0f0h,003h,0fbh,078h,004h,0e2h,0ech,0ebh,004h,003h,0fdh,0e2h,0e6h,01fh,05fh,05eh,05dh,0c3h,055h,08bh,0ech,056h,057h\n    db 01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h,039h,0d1h,0e3h,0d1h,0e3h,0d1h,0e3h,0d1h,0e3h,08bh,0fbh,0d1h\n    db 0e3h,0d1h,0e3h,003h,0fbh,08bh,046h,004h,08bh,05eh,008h,003h,0d8h,04bh,0d1h,0e8h,0d1h,0e0h,003h,0f8h,0d1h,0e8h,003h,0f0h\n    db 0d1h,0e8h,0d1h,0ebh,0d1h,0ebh,02bh,0d8h,043h,0d1h,0e3h,02eh,08bh,087h,08eh,004h,02eh,0a3h,0d9h,012h,0bah,0a0h,000h,02bh\n    db 0d3h,006h,0b9h,000h,0a0h,08eh,0c1h,01fh,08bh,04eh,00ah,0d1h,0e3h,0bdh,040h,001h,02bh,0ebh,005h,0dbh,012h,0ffh,0e0h,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,003h\n    db 0f2h,003h,0fdh,032h,0edh,0e2h,005h,01fh,05fh,05eh,05dh,0c3h,0e9h,060h,0f9h\n    ; F_03A2 / bar: planar horizontal-bar primitive.\n    runtime_bar_primitive:\n    push bp\n    mov bp,sp\n    db 057h\n    cld\n    ; Numeric absolute memory requires an explicit segment in TASM; see ABSOLUTE_MEMORY.\n    db 0a1h,0c8h,040h\n    mov cx,[bp+8]\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    ; LES DI selects the row-pointer table; native TASM may expose DI directly.\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,073h,00eh,08ah,0d0h,080h,0e2h\n    db 00fh,026h,080h,021h,0f0h,026h,008h,011h,047h,049h,003h,0fbh,02bh,0dbh,0d1h,0e9h,073h,003h,0bbh,001h,000h,0f3h,0aah,083h\n    db 0fbh,000h,074h,009h,024h,0f0h,026h,080h,025h,00fh,026h,008h,005h,05fh,05dh,0c3h\n    ; F_03A5: adjacent planar-bar variant with mirrored nibble handling.\n    runtime_f03a5:\n    push bp\n    mov bp,sp\n    db 057h\n    cld\n    db 0a1h,0c8h,040h\n    mov cx,[bp+8]\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,072h,006h,024h,0f0h,0b2h\n    db 00fh,0ebh,004h,024h,00fh,0b2h,0f0h,003h,0fbh,0bbh,0a0h,000h,026h,020h,015h,026h,008h,005h,003h,0fbh,0e2h,0f6h,05fh,05dh\n    db 0c3h\n    ; F_03A8 / clear: planar clear primitive.\n    runtime_clear_primitive:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    cld\n    db 0a1h,0c8h,040h\n    ; SI supplies the 160-byte planar stride; raw bytes remain tracked.\n    db 0beh,0a0h,000h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,073h,01ch,08bh,04eh,00ah,057h,003h,0fbh,0b6h,0f0h,08ah,0d0h,080h,0e2h,00fh,026h,020h,035h,026h\n    db 008h,015h,003h,0feh,0e2h,0f6h,05fh,047h,0ffh,04eh,008h,003h,0fbh,02ah,0e4h,08bh,05eh,008h,0d1h,0ebh,073h,002h,0b4h,001h\n    db 08bh,056h,00ah,02bh,0f3h,08bh,0cbh,0f3h,0aah,003h,0feh,04ah,075h,0f7h,080h,0fch,000h,074h,019h,08bh,04eh,00ah,02bh,0feh\n    db 0b6h,00fh,08ah,0d0h,080h,0e2h,0f0h,0beh,0a0h,000h,026h,020h,035h,026h,008h,015h,02bh,0feh,0e2h,0f6h,05eh,05fh,05dh,0c3h\n    ; F_03AB / fill: planar XOR-fill primitive.\n    runtime_f03ab:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    cld\n    mov dx,[bp+0ah]\n    db 0beh,0a0h,000h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,073h,013h,08bh,0cah,057h,003h,0fbh,0b0h,00fh,026h,030h,005h,003h,0feh,0e2h,0f9h,05fh,047h,0ffh,04eh\n    db 008h,003h,0fbh,057h,02ah,0e4h,08bh,04eh,008h,0d1h,0e9h,073h,002h,0b4h,001h,08bh,0d9h,0e3h,011h,0b0h,0ffh,02bh,0f1h,026h\n    db 030h,005h,047h,0e2h,0fah,003h,0feh,08bh,0cbh,04ah,075h,0f3h,05fh,003h,0fbh,080h,0fch,000h,074h,00fh,08bh,04eh,00ah,0b0h\n    db 0f0h,0beh,0a0h,000h,026h,030h,005h,003h,0feh,0e2h,0f9h,05eh,05fh,05dh,0c3h\n    ; F_03AE: planar rectangle-copy primitive.\n    runtime_f03ae:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov ax,[bp+4]\n    mov bx,[bp+8]\n    add bx,ax\n    dec bx\n    shr ax,1\n    shr bx,1\n    sub bx,ax\n    inc bx\n    mov dx,[bp+0ah]\n    db 08bh,076h,006h,0d1h,0e6h,0d1h,0e6h\n    db 0c5h,0b4h,024h,039h,003h,0f0h,0c4h,07eh,00ch,026h,089h,01dh,026h,089h,055h,002h,083h,0c7h,004h,0b8h,0a0h,000h,02bh,0c3h\n    db 08bh,0cbh,0f3h,0a4h,003h,0f0h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03B1: copy from a source rectangle descriptor to a planar row.\n    runtime_f03b1:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov ax,[bp+4]\n    shr ax,1\n    db 08bh,07eh,006h,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h,0f8h,0c5h,076h,008h,0adh,08bh,0d8h,0adh,08bh,0d0h\n    db 0b8h,0a0h,000h,02bh,0c3h,08bh,0cbh,0f3h,0a4h,003h,0f8h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03B4 / wipe: planar rectangle copy with word-aligned interior.\n    runtime_f03b4:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h,08bh,046h,004h,0d1h,0e8h,003h,0f0h,08bh,05eh,008h,0d1h,0ebh,08bh,056h,00ah,0b8h,0a0h\n    db 000h,02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f0h,003h,0f8h,04ah,075h,0efh,01fh,083h,03eh,0bch\n    db 000h,001h,075h,024h,08bh,05eh,00eh,081h,0fbh,0c8h,000h,073h,01bh,0c4h,03eh,0c4h,040h,08bh,046h,00ch,0d1h,0e8h,08ah,0e3h\n    db 0abh,08bh,046h,008h,0d1h,0e8h,08bh,05eh,00ah,08ah,0e3h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h\n    ; F_03B7: reverse-direction planar rectangle copy.\n    runtime_f03b7:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 08bh,0c2h,048h,086h,0e0h,0d1h,0e8h,003h,0f8h,0d1h,0e8h,0d1h,0e8h,003h,0f8h,0b8h,0a0h,000h,08bh,0cbh,0f3h,0a4h,003h,0f0h,02bh\n    db 0f3h,02bh,0f8h,02bh,0fbh,04ah,075h,0f1h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03BA: reverse-direction planar nibble transform.\n    runtime_f03ba:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 003h,0fbh,04fh,08bh,0cbh,0ach,0d0h,0c0h\n    db 0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,026h,088h,005h,04fh,0e2h,0f1h,081h,0c6h,0a0h,000h,02bh,0f3h,081h,0c7h,0a0h,000h,003h,0fbh\n    db 04ah,075h,0e0h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03BD: mirrored reverse-direction planar nibble transform.\n    runtime_f03bd:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 08bh,0c2h,048h,086h,0e0h,0d1h,0e8h,003h,0f8h,0d1h,0e8h,0d1h,0e8h\n    db 003h,0f8h,003h,0fbh,04fh,08bh,0cbh,0ach,0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,026h,088h,005h,04fh,0e2h,0f1h,081h,0c6h\n    db 0a0h,000h,02bh,0f3h,081h,0efh,0a0h,000h,003h,0fbh,04ah,075h,0e0h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03C0: dual-planar reflected pixel transform.\n    runtime_f03c0:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 0d1h,0eah,003h\n    db 0fah,04fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0ech,0d0h,0ech,0d0h,0ech,0d0h,0ech,026h,080h,025h,0f0h,026h\n    db 008h,025h,081h,0c7h,0a0h,000h,026h,080h,025h,0f0h,026h,008h,005h,081h,0c7h,0a0h,000h,0e2h,0dah,081h,0c6h,0a0h,000h,02bh\n    db 0f3h,05fh,057h,08bh,0cbh,0ach,08ah,0e0h,025h,00fh,0f0h,0d0h,0e0h,0d0h,0e0h,0d0h,0e0h,0d0h,0e0h,026h,080h,025h,00fh,026h\n    db 008h,025h,081h,0c7h,0a0h,000h,026h,080h,025h,00fh,026h,008h,005h,081h,0c7h,0a0h,000h,0e2h,0dah,081h,0c6h,0a0h,000h,02bh\n    db 0f3h,05fh,04fh,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h\n    ; F_03C3: mirrored dual-planar reflected pixel transform.\n    runtime_f03c3:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    mov ax,bx\n    shr bx,1\n    mov dx,[bp+0ah]\n    shr dx,1\n    dec ax\n    xchg ah,al\n    shr ax,1\n    add di,ax\n    shr ax,1\n    shr ax,1\n    add di,ax\n    push di\n    mov cx,bx\n    runtime_f03c3_low_loop:\n    lodsb\n    mov ah,al\n    and ax,0f00fh\n    shl al,1\n    shl al,1\n    shl al,1\n    shl al,1\n    and byte ptr es:[di],0fh\n    or byte ptr es:[di],ah\n    sub di,0a0h\n    and byte ptr es:[di],0fh\n    or byte ptr es:[di],al\n    sub di,0a0h\n    loop runtime_f03c3_low_loop\n    add si,0a0h\n    sub si,bx\n    pop di\n    push di\n    mov cx,bx\n    runtime_f03c3_high_loop:\n    lodsb\n    mov ah,al\n    and ax,0f00fh\n    shr ah,1\n    shr ah,1\n    shr ah,1\n    shr ah,1\n    and byte ptr es:[di],0f0h\n    or byte ptr es:[di],ah\n    sub di,0a0h\n    and byte ptr es:[di],0f0h\n    or byte ptr es:[di],al\n    sub di,0a0h\n    loop runtime_f03c3_high_loop\n    db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,047h,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h\n    ; F_03C6: state-driven planar compositing primitive.\n    runtime_f03c6:\n    push bp\n    mov bp,sp\n    sub sp,4\n    db 057h,056h\n    push ds\n    cld\n    ; Far state base at C0E0h, with the historical no-fixup encoding.\n    db 0a1h,0e0h,0c0h\n    mov es,ax\n    mov bx,[bp+8]\n    mov di, word ptr ds:[0c0e4h]\n    mov cl, byte ptr es:[bx + di]\n    sub ch, ch\n    mov di, word ptr ds:[0c0e6h]\n    mov al, byte ptr es:[bx + di]\n    mov di, word ptr ds:[0c0e2h]\n    mov ah, byte ptr es:[bx + di]\n    mov si, word ptr ds:[0c0deh]\n    add si, ax\n    mov dx, word ptr ds:[0c0e8h]\n    mov ax, word ptr ds:[040c8h]\n    mov ah, al\n    mov bx, word ptr [bp + 6]\n    shl bx, 1\n    shl bx, 1\n    lds di, dword ptr [bx + 03924h]\n    mov word ptr [bp - 2], 0\n    mov bx, word ptr [bp + 4]\n    shr bx, 1\n    jae rb_145c\n    mov word ptr [bp - 2], 1\nrb_145c:\n    add di, bx\n    mov bx, cx\n    shl bx, 1\n    inc cx\n    shr cx, 1\n    mov word ptr [bp - 4], 0a0h\n    sub word ptr [bp - 4], cx\n    mov cl, dl\n    mov dh, al\n    mov dl, dh\n    and dx, 0f00fh\n    cmp word ptr [bp - 2], 0\n    jne _f039c+014f2h\n    dec di\n    push bx\n    sub ah, ah\n    mov al, byte ptr es:[si]\n    inc si\n    cmp bx, 010h\n    db 07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h\n    db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h\n    db 008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h\n    db 073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,083h,0ebh,010h\n    db 07fh,097h,05bh,003h,07eh,0fch,0e2h,08eh,0ebh,072h,053h,02ah,0e4h,026h,08ah,004h,046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h\n    db 080h,0e4h,002h,02eh,0ffh,0a7h,01eh,019h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h\n    db 00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h\n    db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h\n    db 008h,015h,047h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,083h,0ebh,010h,07fh,097h,05bh,003h\n    db 07eh,0fch,0e2h,08eh,08bh,0c3h,0d1h,0e8h,01fh,05eh,05fh,083h,0c4h,004h,05dh,0c3h,081h,018h,069h,018h,069h,018h,056h,018h\n    db 056h,018h,043h,018h,043h,018h,030h,018h,030h,018h,0f5h,018h,0ddh,018h,0ddh,018h,0cah,018h,0cah,018h,0b7h,018h,0b7h,018h\n    db 0a4h,018h,0a4h,018h\n    ; F_03C9 / blit: planar bitmap blit from a 32-byte source header.\n    runtime_blit_primitive:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 003h,0fbh\n    db 0c5h,076h,008h,083h,0c6h,020h,0adh,02ah,0ffh,08ah,0d8h,08ah,0f7h,08ah,0d4h,052h,0b8h,0a0h,000h\n    db 02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f8h,04ah,075h,0f1h,05ah,01fh,083h,03eh,0bch,000h,001h\n    db 075h,01eh,08bh,04eh,006h,081h,0f9h,0c8h,000h,073h,015h,0c4h,03eh,0c4h,040h,08bh,046h,004h,0d1h,0e8h,08ah,0e1h,0abh,08ah\n    db 0c3h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h,0ffh,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h\n    db 0f0h,0f0h,0f0h,0f0h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h\n    ; F_03CC / copy: clipped source-rectangle copy primitive.\n    runtime_copy_primitive:\n    push bp\n    mov bp,sp\n    db 056h,057h\n    push ds\n    push bp\n    db 0c4h,076h,008h,083h,0c6h,020h,026h,08bh,004h,083h,0c6h,002h,033h\n    db 0d2h,08bh,0cah,08ah,0c8h,08ah,0d4h,08bh,07eh,006h,0a1h,096h,000h,02bh,0c7h,078h,046h,040h,03bh,0d0h,076h,002h,08bh,0d0h\n    db 0a1h,094h,000h,02bh,0c7h,07eh,00ah,02bh,0d0h,076h,034h,003h,0f8h,0f6h,0e1h,003h,0f0h,08bh,05eh,004h,083h,07eh,00ch,000h\n    db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h\n    db 02bh,0e8h,08bh,0c8h,0a1h,098h,000h,02bh,0c3h,07eh,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,003h,0d8h\n    db 003h,0e8h,003h,0f0h,006h,057h,083h,03eh,0bch,000h,001h,075h,01ah,081h,0ffh,0c8h,000h,073h,014h,08bh,0c7h,08ah,0e0h,08ah\n    db 0c3h,0c4h,03eh,0c4h,040h,0abh,08ah,0c1h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h\n    db 003h,0fbh,01fh,0bbh,098h,019h,057h,051h,0ach,08ah,0e0h,02eh,0d7h,026h,022h,005h,00ah,0c4h,0aah,0e2h,0f3h,059h,05fh,081h\n    db 0c7h,0a0h,000h,003h,0f5h,04ah,075h,0e6h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,0fdh,033h,0edh,003h,0d9h,003h,0d9h,0d1h,0ebh\n    db 04bh,08bh,0c3h,02bh,006h,098h,000h,078h,017h,040h,03bh,0c8h,076h,006h,08bh,0e9h,02bh,0e8h,08bh,0c8h,08bh,0c3h,02bh,006h\n    db 09ah,000h,076h,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,02bh,0d8h,003h,0e8h,003h,0f0h,006h,057h,083h\n    db 03eh,0bch,000h,001h,075h,020h,081h,0ffh,0c8h,000h,073h,01ah,08bh,0c7h,08ah,0e0h,08ah,0c3h,02ah,0c1h,0feh,0c0h,0c4h,03eh\n    db 0c4h,040h,0fch,0abh,08ah,0c1h,08ah,0e2h,0abh,0fdh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h\n    db 0fbh,01fh,0bbh,098h,019h,057h,051h,08ah,004h,046h,0d0h,0c8h,0d0h,0c8h,0d0h,0c8h,0d0h,0c8h,08ah,0e0h,02eh,0d7h,026h,022h\n    db 005h,00ah,0c4h,0aah,0e2h,0e9h,059h,05fh,081h,0c7h,0a0h,000h,003h,0f5h,04ah,075h,0dch,05dh,01fh,05fh,05eh,0fch,05dh,0c3h\n    ; F_03CF: state-keyed planar pixel compositor. Remaining raw SI/DI\n; operations are ordinary native TASM recovery candidates.\n    runtime_f03cf:\n    push bp\n    mov bp,sp\n    sub sp,2\n    db 056h,057h\n    push ds\n    cld\n    db 08bh,016h,0c8h,040h\n    mov dh,dl\n    and dx,0f00fh\n    ; Source and destination descriptors are both indexed by plane.\n    db 0c4h,076h,008h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 003h,0fbh\n    xor bx,bx\n    mov cx,bx\n    db 026h,08ah,01ch\n    db 046h\n    mov word ptr [bp-2],0a0h\n    sub [bp-2],bx\n    shl bx,1\n    shl bx,1\n    db 026h,08ah,00ch,046h,04fh\n    push bx\n    sub ah,ah\n    db 026h,08ah,004h\n    db 046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh\n    db 008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h\n    db 005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h\n    db 015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h\n    db 015h,083h,0ebh,010h,07fh,097h,05bh,003h,07eh,0feh,0e2h,08eh,01fh,05fh,05eh,083h,0c4h,002h,05dh,0c3h,0a5h,01ch,08dh,01ch\n    db 08dh,01ch,07ah,01ch,07ah,01ch,067h,01ch,067h,01ch,054h,01ch,054h,01ch\n\n    ; F_03D2: merge a nibble from a planar pixel with the current state.\n    runtime_f03d2:\n    push bp\n    mov bp,sp\n    db 057h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 072h,015h\n    db 003h,0fbh,026h,08ah,005h\n    and al,0fh\n    db 08bh,01eh,0c8h,040h\n    shl bl,1\n    shl bl,1\n    shl bl,1\n    shl bl,1\n    db 0ebh,00eh\n    db 003h,0fbh,026h,08ah,005h\n    and al,0f0h\n    db 08bh,01eh,0c8h,040h\n    and bl,0fh\n    or al,bl\n    db 026h,088h,005h\n    db 05fh\n    pop bp\n    ret\n    ; F_03D5: fetch either half of a planar pixel as a normalized nibble.\n    runtime_f03d5:\n    push bp\n    mov bp,sp\n    db 057h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 072h,012h\n    db 003h,0fbh,026h,08ah,005h\n    and ax,0f0h\n    shr ax,1\n    shr ax,1\n    shr ax,1\n    shr ax,1\n    db 0ebh,008h\n    db 003h,0fbh,026h,08ah,005h\n    and ax,0fh\n    db 05fh\n    pop bp\n    ret\n\n    ; Unreferenced stub and driver name following the final code root.\n    db 0c3h,045h,047h,041h,02eh,044h,052h,056h,000h\n    _runtime_block_end label byte\n    public _runtime_block_end\n_TEXT ends\nend\n",
+  "source_snapshot": "; Production source. src/RUNTIME_BLOCK.C is the frozen migration oracle.\nJMP_NEAR macro target\n db 0e9h\n dw target-$-2\nendm\n\nCALL_NEAR macro target\n db 0e8h\n dw target-$-2\nendm\n\n_TEXT segment byte public 'CODE'\n_TEXT ends\n_DATA segment word public 'DATA'\n_DATA ends\n_BSS segment word public 'BSS'\n_BSS ends\nDGROUP group _DATA,_BSS\nassume cs:_TEXT,ds:DGROUP\n_TEXT segment byte public 'CODE'\npublic _f039c\n_f039c label near\n; RUNTIME_BLOCK -- exact startup/runtime dispatch block.\n    db 0e9h,091h,001h\n    public _f039f\n    _f039f label near\n    public _box\n    _box label near\n    db 0e9h,094h,002h\n    public _f03a2\n    _f03a2 label near\n    public _bar\n    _bar label near\n    db 0e9h,036h,00fh\n    public _f03a5\n    _f03a5 label near\n    db 0e9h,07ch,00fh\n    public _f03a8\n    _f03a8 label near\n    public _clear\n    _clear label near\n    db 0e9h,0b2h,00fh\n    public _f03ab\n    _f03ab label near\n    public _fill\n    _fill label near\n    db 0e9h,026h,010h\n    public _f03ae\n    _f03ae label near\n    db 0e9h,092h,010h\n    public _f03b1\n    _f03b1 label near\n    db 0e9h,0d6h,010h\n    public _f03b4\n    _f03b4 label near\n    public _wipe\n    _wipe label near\n    db 0e9h,008h,011h\n    public _f03b7\n    _f03b7 label near\n    db 0e9h,07eh,011h\n    public _f03ba\n    _f03ba label near\n    db 0e9h,0d4h,011h\n    public _f03bd\n    _f03bd label near\n    db 0e9h,02ch,012h\n    public _f03c0\n    _f03c0 label near\n    db 0e9h,093h,012h\n    public _f03c3\n    _f03c3 label near\n    db 0e9h,031h,013h\n    public _f03c6\n    _f03c6 label near\n    db 0e9h,0dbh,013h\n    public _f03c9\n    _f03c9 label near\n    public _blit\n    _blit label near\n    db 0e9h,064h,015h\n    public _f03cc\n    _f03cc label near\n    public _copy\n    _copy label near\n    db 0e9h,0c9h,016h\n    public _f03cf\n    _f03cf label near\n    db 0e9h,02ah,018h\n    public _f03d2\n    _f03d2 label near\n    db 0e9h,0f5h,018h\n    public _f03d5\n    _f03d5 label near\n    db 0e9h,033h,019h\n    db 000h,000h,03dh,005h,000h,000h,0f4h,005h,030h,006h,000h,000h\n    db 043h,006h,000h,000h,061h,00bh,0d7h,00bh,0e3h,0ffh,0e3h,0ffh,0d4h,0ffh,0c5h,0ffh,0b6h,0ffh,0a7h,0ffh,098h,0ffh,089h,0ffh\n    db 07ah,0ffh,06bh,0ffh,05ch,0ffh,04dh,0ffh,03eh,0ffh,02fh,0ffh,020h,0ffh,011h,0ffh,002h,0ffh,0f3h,0feh,0e4h,0feh,0d5h,0feh\n    db 0c6h,0feh,0b7h,0feh,0a8h,0feh,099h,0feh,08ah,0feh,07bh,0feh,06ch,0feh,05dh,0feh,04eh,0feh,03fh,0feh,030h,0feh,021h,0feh\n    db 012h,0feh,003h,0feh,0f4h,0fdh,0e5h,0fdh,0d6h,0fdh,0c7h,0fdh,0b8h,0fdh,0a9h,0fdh,09ah,0fdh,08bh,0fdh,07ch,0fdh,06dh,0fdh\n    db 05eh,0fdh,04fh,0fdh,040h,0fdh,031h,0fdh,022h,0fdh,013h,0fdh,004h,0fdh,0f5h,0fch,0e6h,0fch,0d7h,0fch,0c8h,0fch,0b9h,0fch\n    db 0aah,0fch,09bh,0fch,08ch,0fch,07dh,0fch,06eh,0fch,05fh,0fch,050h,0fch,041h,0fch,032h,0fch,023h,0fch,014h,0fch,005h,0fch\n    db 0f6h,0fbh,0e7h,0fbh,0d8h,0fbh,0c9h,0fbh,0bah,0fbh,0abh,0fbh,09ch,0fbh,08dh,0fbh,07eh,0fbh,06fh,0fbh,060h,0fbh,051h,0fbh\n    db 042h,0fbh,0f8h,0ffh,0dbh,0ffh,0c6h,0ffh,0b1h,0ffh,09ch,0ffh,087h,0ffh,072h,0ffh,05dh,0ffh,048h,0ffh,033h,0ffh,01eh,0ffh\n    db 009h,0ffh,0f4h,0feh,0dfh,0feh,0cah,0feh,0b5h,0feh,0a0h,0feh,08bh,0feh,076h,0feh,061h,0feh,04ch,0feh,037h,0feh,022h,0feh\n    db 00dh,0feh,0f8h,0fdh,0e3h,0fdh,0ceh,0fdh,0b9h,0fdh,0a4h,0fdh,08fh,0fdh,07ah,0fdh,065h,0fdh,050h,0fdh,03bh,0fdh,026h,0fdh\n    db 011h,0fdh,0fch,0fch,0e7h,0fch,0d2h,0fch,0bdh,0fch,0a8h,0fch,093h,0fch,07eh,0fch,069h,0fch,054h,0fch,03fh,0fch,02ah,0fch\n    db 015h,0fch,000h,0fch,0ebh,0fbh,0d6h,0fbh,0c1h,0fbh,0ach,0fbh,097h,0fbh,082h,0fbh,06dh,0fbh,058h,0fbh,043h,0fbh,02eh,0fbh\n    db 019h,0fbh,004h,0fbh,0efh,0fah,0dah,0fah,0c5h,0fah,0b0h,0fah,09bh,0fah,086h,0fah,071h,0fah,05ch,0fah,047h,0fah,032h,0fah\n    db 01dh,0fah,008h,0fah,0f3h,0f9h,0deh,0f9h,0c9h,0f9h,0b4h,0f9h,09fh,0f9h,08ah,0f9h,075h,0f9h,060h,0f9h\n    runtime_dispatch:\n    xor bh,bh\n    ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).\n    db 08ah,01eh,0cdh,0bfh\n    shl bx,1\n    jmp word ptr cs:[bx+3d8h]\n    ; EGA/VGA planar-mode initializer reached from the dispatch table.\n    push bp\n    mov bp,sp\n    db 056h,057h\n    push ds\n    cld\n    mov ax,0eh\n    int 10h\n    mov ah,5\n    mov al,1\n    int 10h\n    mov ax,1000h\n    mov bx,1\n    int 10h\n    mov ax,1000h\n    mov bx,100h\n    int 10h\n    mov ax,1000h\n    mov bx,170eh\n    int 10h\n    mov ax,1000h\n    mov bx,160fh\n    int 10h\n    mov dx,3ceh\n    mov al,5\n    out dx,al\n    inc dx\n    mov al,2\n    out dx,al\n    mov dx,3c4h\n    mov al,2\n    out dx,al\n    inc dx\n    mov al,0fh\n    out dx,al\n    mov ax,0a000h\n    mov es,ax\n    xor bx,bx\n    mov cx,bx\n    ; SI assignment remains a tracked raw recovery candidate.\n    db 08bh,0f3h\n    mov bp,1000h\n    ; The planar clear loop follows. Its raw ES:[SI]/DI operations can\n; now be transcribed directly in TASM; no compiler register wrapper exists.\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,0ch\n    out dx,al\n    db 026h,08ah,024h,026h,088h,01ch\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,3\n    out dx,al\n    db 026h,08ah,024h,026h,088h,00ch\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,0c0h\n    out dx,al\n    db 026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h\n    ; SI/DI accesses and their short back-edges remain literal; the nested\n; plane/column counters can use ordinary TASM spellings.\n    db 080h,0ffh,010h,07ch,0c8h,032h,0ffh\n    inc cl\n    cmp cl,10h\n    db 07ch,0bfh\n    ; The original used the byte-register form (32 C9), not XOR CX,CX.\n    db 032h,0c9h\n    inc bl\n    cmp bl,10h\n    db 07ch,0b6h\n    mov dx,3ceh\n    mov al,8\n    out dx,al\n    inc dx\n    mov al,30h\n    out dx,al\n    mov dx,3ceh\n    mov al,3\n    out dx,al\n    inc dx\n    mov al,0\n    out dx,al\n    pop ds\n    db 05fh,05eh\n    pop bp\n    ret\n    ; Restore the EGA palette register set, then provide the mode-13h entry.\n    mov ax,9\n    int 10h\n    mov al,10h\n    mov dx,3dah\n    out dx,al\n    mov al,1\n    mov dx,3deh\n    out dx,al\n    mov al,11h\n    mov dx,3dah\n    out dx,al\n    mov al,0\n    mov dx,3deh\n    out dx,al\n    mov al,1eh\n    mov dx,3dah\n    out dx,al\n    mov al,0fh\n    mov dx,3deh\n    out dx,al\n    mov al,1fh\n    mov dx,3dah\n    out dx,al\n    mov al,0eh\n    mov dx,3deh\n    out dx,al\n    mov dx,3dah\n    mov al,0fh\n    out dx,al\n    ret\n    mov ax,13h\n    int 10h\n    ret\n    runtime_dispatch_3e2:\n    ; DI is intentionally cleared with its original encoding.\n    db 032h,0ffh\n    ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).\n    db 08ah,01eh,0cdh,0bfh\n    shl bx,1\n    jmp word ptr cs:[bx+3e2h]\n    runtime_3e2_handler:\n    push bp\n    mov bp,sp\n    ; This handler owns its SI/DI preservation explicitly.\n    db 056h,057h\n    push ds\n    cld\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0b7h,024h,039h\n    shl bx,1\n    shl bx,1\n    ; DI-derived row addressing remains a tracked raw recovery candidate.\n    db 08bh,0fbh,0d1h,0e7h,0d1h,0e7h,003h,0fbh\n    mov ax,[bp+4]\n    mov bx,[bp+8]\n    mov cx,[bp+0ah]\n    add bx,ax\n    dec bx\n    shr ax,1\n    shr ax,1\n    shr bx,1\n    shr bx,1\n    sub bx,ax\n    inc bx\n    db 003h,0f0h,003h,0f0h,003h,0f8h\n    push es\n    mov ax,0a000h\n    mov es,ax\n    ; Address the selected planar page and enter its unrolled blit tail.\n    db 081h,0c7h,000h,040h\n    mov bp,50h\n    sub bp,bx\n    mov dx,0a0h\n    shl bx,1\n    sub dx,bx\n    mov ax,cs:[bx+3ech]\n    ; TASM 1.0 needs the historical absolute CS-store spelling preserved.\n    db 02eh,0a3h,05fh,00bh\n    add ax,0b61h\n    pop ds\n    jmp ax\n    db 0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh\n    db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh\n    db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh\n    db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h\n    db 0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h\n    db 0ebh,0d1h,0ebh,026h,08ah,027h,0aah,003h,0f2h,003h,0fdh,0e2h,005h,01fh,05fh,05eh,05dh,0c3h,0e9h,042h,0fbh,055h,08bh,0ech\n    db 056h,057h,01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h,039h,08bh,046h,004h,08bh,0d0h,0d1h,0eah,003h,0f2h\n    db 0d1h,0ebh,0d1h,0ebh,086h,0fbh,0d1h,0ebh,0d1h,0ebh,002h,0e3h,032h,0dbh,003h,0c3h,0d1h,0ebh,0d1h,0ebh,003h,0c3h,08bh,056h\n    db 008h,0d1h,0e8h,083h,0d2h,000h,08bh,0f8h,006h,0b8h,000h,0b8h,08eh,0c0h,01fh,0d1h,0eah,083h,0d2h,000h,08bh,04eh,00ah,0b8h\n    db 0a0h,000h,02bh,0c2h,0bbh,000h,020h,02bh,0dah,0bdh,0a0h,080h,051h,08bh,0cah,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,059h\n    db 003h,0f0h,003h,0fbh,078h,004h,0e2h,0ech,0ebh,004h,003h,0fdh,0e2h,0e6h,01fh,05fh,05eh,05dh,0c3h,055h,08bh,0ech,056h,057h\n    db 01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h,039h,0d1h,0e3h,0d1h,0e3h,0d1h,0e3h,0d1h,0e3h,08bh,0fbh,0d1h\n    db 0e3h,0d1h,0e3h,003h,0fbh,08bh,046h,004h,08bh,05eh,008h,003h,0d8h,04bh,0d1h,0e8h,0d1h,0e0h,003h,0f8h,0d1h,0e8h,003h,0f0h\n    db 0d1h,0e8h,0d1h,0ebh,0d1h,0ebh,02bh,0d8h,043h,0d1h,0e3h,02eh,08bh,087h,08eh,004h,02eh,0a3h,0d9h,012h,0bah,0a0h,000h,02bh\n    db 0d3h,006h,0b9h,000h,0a0h,08eh,0c1h,01fh,08bh,04eh,00ah,0d1h,0e3h,0bdh,040h,001h,02bh,0ebh,005h,0dbh,012h,0ffh,0e0h,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh\n    db 08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh\n    db 0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h\n    db 0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h\n    db 0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h\n    db 08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh\n    db 08ah,0c5h,08ah,0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah\n    db 0e7h,0abh,0adh,08ah,0ech,08bh,0d8h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,0d1h,0c3h,08ah,0e3h,0abh,08ah,0c5h,08ah,0e7h,0abh,003h\n    db 0f2h,003h,0fdh,032h,0edh,0e2h,005h,01fh,05fh,05eh,05dh,0c3h,0e9h,060h,0f9h\n    ; F_03A2 / bar: planar horizontal-bar primitive.\n    runtime_bar_primitive:\n    push bp\n    mov bp,sp\n    db 057h\n    cld\n    ; Numeric absolute memory requires an explicit segment in TASM; see ABSOLUTE_MEMORY.\n    db 0a1h,0c8h,040h\n    mov cx,[bp+8]\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    ; LES DI selects the row-pointer table; native TASM may expose DI directly.\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,073h,00eh,08ah,0d0h,080h,0e2h\n    db 00fh,026h,080h,021h,0f0h,026h,008h,011h,047h,049h,003h,0fbh,02bh,0dbh,0d1h,0e9h,073h,003h,0bbh,001h,000h,0f3h,0aah,083h\n    db 0fbh,000h,074h,009h,024h,0f0h,026h,080h,025h,00fh,026h,008h,005h,05fh,05dh,0c3h\n    ; F_03A5: adjacent planar-bar variant with mirrored nibble handling.\n    runtime_f03a5:\n    push bp\n    mov bp,sp\n    db 057h\n    cld\n    db 0a1h,0c8h,040h\n    mov cx,[bp+8]\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,072h,006h,024h,0f0h,0b2h\n    db 00fh,0ebh,004h,024h,00fh,0b2h,0f0h,003h,0fbh,0bbh,0a0h,000h,026h,020h,015h,026h,008h,005h,003h,0fbh,0e2h,0f6h,05fh,05dh\n    db 0c3h\n    ; F_03A8 / clear: planar clear primitive.\n    runtime_clear_primitive:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    cld\n    db 0a1h,0c8h,040h\n    ; SI supplies the 160-byte planar stride; raw bytes remain tracked.\n    db 0beh,0a0h,000h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,073h,01ch,08bh,04eh,00ah,057h,003h,0fbh,0b6h,0f0h,08ah,0d0h,080h,0e2h,00fh,026h,020h,035h,026h\n    db 008h,015h,003h,0feh,0e2h,0f6h,05fh,047h,0ffh,04eh,008h,003h,0fbh,02ah,0e4h,08bh,05eh,008h,0d1h,0ebh,073h,002h,0b4h,001h\n    db 08bh,056h,00ah,02bh,0f3h,08bh,0cbh,0f3h,0aah,003h,0feh,04ah,075h,0f7h,080h,0fch,000h,074h,019h,08bh,04eh,00ah,02bh,0feh\n    db 0b6h,00fh,08ah,0d0h,080h,0e2h,0f0h,0beh,0a0h,000h,026h,020h,035h,026h,008h,015h,02bh,0feh,0e2h,0f6h,05eh,05fh,05dh,0c3h\n    ; F_03AB / fill: planar XOR-fill primitive.\n    runtime_f03ab:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    cld\n    mov dx,[bp+0ah]\n    db 0beh,0a0h,000h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    db 08bh,05eh,004h,0d1h,0ebh,073h,013h,08bh,0cah,057h,003h,0fbh,0b0h,00fh,026h,030h,005h,003h,0feh,0e2h,0f9h,05fh,047h,0ffh,04eh\n    db 008h,003h,0fbh,057h,02ah,0e4h,08bh,04eh,008h,0d1h,0e9h,073h,002h,0b4h,001h,08bh,0d9h,0e3h,011h,0b0h,0ffh,02bh,0f1h,026h\n    db 030h,005h,047h,0e2h,0fah,003h,0feh,08bh,0cbh,04ah,075h,0f3h,05fh,003h,0fbh,080h,0fch,000h,074h,00fh,08bh,04eh,00ah,0b0h\n    db 0f0h,0beh,0a0h,000h,026h,030h,005h,003h,0feh,0e2h,0f9h,05eh,05fh,05dh,0c3h\n    ; F_03AE: planar rectangle-copy primitive.\n    runtime_f03ae:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov ax,[bp+4]\n    mov bx,[bp+8]\n    add bx,ax\n    dec bx\n    shr ax,1\n    shr bx,1\n    sub bx,ax\n    inc bx\n    mov dx,[bp+0ah]\n    db 08bh,076h,006h,0d1h,0e6h,0d1h,0e6h\n    db 0c5h,0b4h,024h,039h,003h,0f0h,0c4h,07eh,00ch,026h,089h,01dh,026h,089h,055h,002h,083h,0c7h,004h,0b8h,0a0h,000h,02bh,0c3h\n    db 08bh,0cbh,0f3h,0a4h,003h,0f0h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03B1: copy from a source rectangle descriptor to a planar row.\n    runtime_f03b1:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov ax,[bp+4]\n    shr ax,1\n    db 08bh,07eh,006h,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h,0f8h,0c5h,076h,008h,0adh,08bh,0d8h,0adh,08bh,0d0h\n    db 0b8h,0a0h,000h,02bh,0c3h,08bh,0cbh,0f3h,0a4h,003h,0f8h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03B4 / wipe: planar rectangle copy with word-aligned interior.\n    runtime_f03b4:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h,08bh,046h,004h,0d1h,0e8h,003h,0f0h,08bh,05eh,008h,0d1h,0ebh,08bh,056h,00ah,0b8h,0a0h\n    db 000h,02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f0h,003h,0f8h,04ah,075h,0efh,01fh,083h,03eh,0bch\n    db 000h,001h,075h,024h,08bh,05eh,00eh,081h,0fbh,0c8h,000h,073h,01bh,0c4h,03eh,0c4h,040h,08bh,046h,00ch,0d1h,0e8h,08ah,0e3h\n    db 0abh,08bh,046h,008h,0d1h,0e8h,08bh,05eh,00ah,08ah,0e3h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h\n    ; F_03B7: reverse-direction planar rectangle copy.\n    runtime_f03b7:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 08bh,0c2h,048h,086h,0e0h,0d1h,0e8h,003h,0f8h,0d1h,0e8h,0d1h,0e8h,003h,0f8h,0b8h,0a0h,000h,08bh,0cbh,0f3h,0a4h,003h,0f0h,02bh\n    db 0f3h,02bh,0f8h,02bh,0fbh,04ah,075h,0f1h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03BA: reverse-direction planar nibble transform.\n    runtime_f03ba:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 003h,0fbh,04fh,08bh,0cbh,0ach,0d0h,0c0h\n    db 0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,026h,088h,005h,04fh,0e2h,0f1h,081h,0c6h,0a0h,000h,02bh,0f3h,081h,0c7h,0a0h,000h,003h,0fbh\n    db 04ah,075h,0e0h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03BD: mirrored reverse-direction planar nibble transform.\n    runtime_f03bd:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    db 08bh,0c2h,048h,086h,0e0h,0d1h,0e8h,003h,0f8h,0d1h,0e8h,0d1h,0e8h\n    db 003h,0f8h,003h,0fbh,04fh,08bh,0cbh,0ach,0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,0d0h,0c0h,026h,088h,005h,04fh,0e2h,0f1h,081h,0c6h\n    db 0a0h,000h,02bh,0f3h,081h,0efh,0a0h,000h,003h,0fbh,04ah,075h,0e0h,01fh,05eh,05fh,05dh,0c3h\n    ; F_03C0: dual-planar reflected pixel transform.\n    runtime_f03c0:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    shr bx,1\n    mov dx,[bp+0ah]\n    shr dx,1\n    add di,dx\n    dec di\n    runtime_f03c0_outer_loop:\n    push di\n    mov cx,bx\n    runtime_f03c0_low_loop:\n    lodsb\n    mov ah,al\n    and ax,0f00fh\n    shr ah,1\n    shr ah,1\n    shr ah,1\n    shr ah,1\n    and byte ptr es:[di],0f0h\n    or byte ptr es:[di],ah\n    add di,0a0h\n    and byte ptr es:[di],0f0h\n    or byte ptr es:[di],al\n    add di,0a0h\n    loop runtime_f03c0_low_loop\n    add si,0a0h\n    sub si,bx\n    pop di\n    push di\n    mov cx,bx\n    runtime_f03c0_high_loop:\n    lodsb\n    mov ah,al\n    and ax,0f00fh\n    shl al,1\n    shl al,1\n    shl al,1\n    shl al,1\n    and byte ptr es:[di],0fh\n    or byte ptr es:[di],ah\n    add di,0a0h\n    and byte ptr es:[di],0fh\n    or byte ptr es:[di],al\n    add di,0a0h\n    loop runtime_f03c0_high_loop\n    add si,0a0h\n    sub si,bx\n    pop di\n    dec di\n    dec dx\n    jne runtime_f03c0_outer_loop\n    pop ds\n    pop si\n    pop di\n    pop bp\n    ret\n    ; F_03C3: mirrored dual-planar reflected pixel transform.\n    runtime_f03c3:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+0eh]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov ax,[bp+0ch]\n    shr ax,1\n    db 003h,0f8h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0b7h,024h,039h\n    mov ax,[bp+4]\n    shr ax,1\n    db 003h,0f0h\n    mov bx,[bp+8]\n    mov ax,bx\n    shr bx,1\n    mov dx,[bp+0ah]\n    shr dx,1\n    dec ax\n    xchg ah,al\n    shr ax,1\n    add di,ax\n    shr ax,1\n    shr ax,1\n    add di,ax\n    push di\n    mov cx,bx\n    runtime_f03c3_low_loop:\n    lodsb\n    mov ah,al\n    and ax,0f00fh\n    shl al,1\n    shl al,1\n    shl al,1\n    shl al,1\n    and byte ptr es:[di],0fh\n    or byte ptr es:[di],ah\n    sub di,0a0h\n    and byte ptr es:[di],0fh\n    or byte ptr es:[di],al\n    sub di,0a0h\n    loop runtime_f03c3_low_loop\n    add si,0a0h\n    sub si,bx\n    pop di\n    push di\n    mov cx,bx\n    runtime_f03c3_high_loop:\n    lodsb\n    mov ah,al\n    and ax,0f00fh\n    shr ah,1\n    shr ah,1\n    shr ah,1\n    shr ah,1\n    and byte ptr es:[di],0f0h\n    or byte ptr es:[di],ah\n    sub di,0a0h\n    and byte ptr es:[di],0f0h\n    or byte ptr es:[di],al\n    sub di,0a0h\n    loop runtime_f03c3_high_loop\n    db 081h,0c6h,0a0h,000h,02bh,0f3h,05fh,047h,04ah,075h,09ch,01fh,05eh,05fh,05dh,0c3h\n    ; F_03C6: state-driven planar compositing primitive.\n    runtime_f03c6:\n    push bp\n    mov bp,sp\n    sub sp,4\n    db 057h,056h\n    push ds\n    cld\n    ; Far state base at C0E0h, with the historical no-fixup encoding.\n    db 0a1h,0e0h,0c0h\n    mov es,ax\n    mov bx,[bp+8]\n    mov di, word ptr ds:[0c0e4h]\n    mov cl, byte ptr es:[bx + di]\n    sub ch, ch\n    mov di, word ptr ds:[0c0e6h]\n    mov al, byte ptr es:[bx + di]\n    mov di, word ptr ds:[0c0e2h]\n    mov ah, byte ptr es:[bx + di]\n    mov si, word ptr ds:[0c0deh]\n    add si, ax\n    mov dx, word ptr ds:[0c0e8h]\n    mov ax, word ptr ds:[040c8h]\n    mov ah, al\n    mov bx, word ptr [bp + 6]\n    shl bx, 1\n    shl bx, 1\n    lds di, dword ptr [bx + 03924h]\n    mov word ptr [bp - 2], 0\n    mov bx, word ptr [bp + 4]\n    shr bx, 1\n    jae rb_145c\n    mov word ptr [bp - 2], 1\nrb_145c:\n    add di, bx\n    mov bx, cx\n    shl bx, 1\n    inc cx\n    shr cx, 1\n    mov word ptr [bp - 4], 0a0h\n    sub word ptr [bp - 4], cx\n    mov cl, dl\n    mov dh, al\n    mov dl, dh\n    and dx, 0f00fh\n    cmp word ptr [bp - 2], 0\n    jne _f039c+014f2h\n    dec di\n    push bx\n    sub ah, ah\n    mov al, byte ptr es:[si]\n    inc si\n    cmp bx, 010h\n    db 07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h\n    db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h\n    db 008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h\n    db 073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,083h,0ebh,010h\n    db 07fh,097h,05bh,003h,07eh,0fch,0e2h,08eh,0ebh,072h,053h,02ah,0e4h,026h,08ah,004h,046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h\n    db 080h,0e4h,002h,02eh,0ffh,0a7h,01eh,019h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h\n    db 00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h\n    db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h\n    db 008h,015h,047h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,083h,0ebh,010h,07fh,097h,05bh,003h\n    db 07eh,0fch,0e2h,08eh,08bh,0c3h,0d1h,0e8h,01fh,05eh,05fh,083h,0c4h,004h,05dh,0c3h,081h,018h,069h,018h,069h,018h,056h,018h\n    db 056h,018h,043h,018h,043h,018h,030h,018h,030h,018h,0f5h,018h,0ddh,018h,0ddh,018h,0cah,018h,0cah,018h,0b7h,018h,0b7h,018h\n    db 0a4h,018h,0a4h,018h\n    ; F_03C9 / blit: planar bitmap blit from a 32-byte source header.\n    runtime_blit_primitive:\n    push bp\n    mov bp,sp\n    db 057h,056h\n    push ds\n    cld\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 003h,0fbh\n    db 0c5h,076h,008h,083h,0c6h,020h,0adh,02ah,0ffh,08ah,0d8h,08ah,0f7h,08ah,0d4h,052h,0b8h,0a0h,000h\n    db 02bh,0c3h,08bh,0cbh,0d1h,0e9h,0f3h,0a5h,0d1h,0d1h,0f3h,0a4h,003h,0f8h,04ah,075h,0f1h,05ah,01fh,083h,03eh,0bch,000h,001h\n    db 075h,01eh,08bh,04eh,006h,081h,0f9h,0c8h,000h,073h,015h,0c4h,03eh,0c4h,040h,08bh,046h,004h,0d1h,0e8h,08ah,0e1h,0abh,08ah\n    db 0c3h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05eh,05fh,05dh,0c3h,0ffh,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h\n    db 0f0h,0f0h,0f0h,0f0h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h\n    db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h\n    db 000h,000h,000h,000h\n    ; F_03CC / copy: clipped source-rectangle copy primitive.\n    runtime_copy_primitive:\n    push bp\n    mov bp,sp\n    db 056h,057h\n    push ds\n    push bp\n    db 0c4h,076h,008h,083h,0c6h,020h,026h,08bh,004h,083h,0c6h,002h,033h\n    db 0d2h,08bh,0cah,08ah,0c8h,08ah,0d4h,08bh,07eh,006h,0a1h,096h,000h,02bh,0c7h,078h,046h,040h,03bh,0d0h,076h,002h,08bh,0d0h\n    db 0a1h,094h,000h,02bh,0c7h,07eh,00ah,02bh,0d0h,076h,034h,003h,0f8h,0f6h,0e1h,003h,0f0h,08bh,05eh,004h,083h,07eh,00ch,000h\n    db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h\n    db 02bh,0e8h,08bh,0c8h,0a1h,098h,000h,02bh,0c3h,07eh,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,003h,0d8h\n    db 003h,0e8h,003h,0f0h,006h,057h,083h,03eh,0bch,000h,001h,075h,01ah,081h,0ffh,0c8h,000h,073h,014h,08bh,0c7h,08ah,0e0h,08ah\n    db 0c3h,0c4h,03eh,0c4h,040h,0abh,08ah,0c1h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h\n    db 003h,0fbh,01fh,0bbh,098h,019h,057h,051h,0ach,08ah,0e0h,02eh,0d7h,026h,022h,005h,00ah,0c4h,0aah,0e2h,0f3h,059h,05fh,081h\n    db 0c7h,0a0h,000h,003h,0f5h,04ah,075h,0e6h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,0fdh,033h,0edh,003h,0d9h,003h,0d9h,0d1h,0ebh\n    db 04bh,08bh,0c3h,02bh,006h,098h,000h,078h,017h,040h,03bh,0c8h,076h,006h,08bh,0e9h,02bh,0e8h,08bh,0c8h,08bh,0c3h,02bh,006h\n    db 09ah,000h,076h,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,02bh,0d8h,003h,0e8h,003h,0f0h,006h,057h,083h\n    db 03eh,0bch,000h,001h,075h,020h,081h,0ffh,0c8h,000h,073h,01ah,08bh,0c7h,08ah,0e0h,08ah,0c3h,02ah,0c1h,0feh,0c0h,0c4h,03eh\n    db 0c4h,040h,0fch,0abh,08ah,0c1h,08ah,0e2h,0abh,0fdh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h,003h\n    db 0fbh,01fh,0bbh,098h,019h,057h,051h,08ah,004h,046h,0d0h,0c8h,0d0h,0c8h,0d0h,0c8h,0d0h,0c8h,08ah,0e0h,02eh,0d7h,026h,022h\n    db 005h,00ah,0c4h,0aah,0e2h,0e9h,059h,05fh,081h,0c7h,0a0h,000h,003h,0f5h,04ah,075h,0dch,05dh,01fh,05fh,05eh,0fch,05dh,0c3h\n    ; F_03CF: state-keyed planar pixel compositor. Remaining raw SI/DI\n; operations are ordinary native TASM recovery candidates.\n    runtime_f03cf:\n    push bp\n    mov bp,sp\n    sub sp,2\n    db 056h,057h\n    push ds\n    cld\n    db 08bh,016h,0c8h,040h\n    mov dh,dl\n    and dx,0f00fh\n    ; Source and destination descriptors are both indexed by plane.\n    db 0c4h,076h,008h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c5h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 003h,0fbh\n    xor bx,bx\n    mov cx,bx\n    db 026h,08ah,01ch\n    db 046h\n    mov word ptr [bp-2],0a0h\n    sub [bp-2],bx\n    shl bx,1\n    shl bx,1\n    db 026h,08ah,00ch,046h,04fh\n    push bx\n    sub ah,ah\n    db 026h,08ah,004h\n    db 046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh\n    db 008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h\n    db 005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h\n    db 015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h\n    db 015h,083h,0ebh,010h,07fh,097h,05bh,003h,07eh,0feh,0e2h,08eh,01fh,05fh,05eh,083h,0c4h,002h,05dh,0c3h,0a5h,01ch,08dh,01ch\n    db 08dh,01ch,07ah,01ch,07ah,01ch,067h,01ch,067h,01ch,054h,01ch,054h,01ch\n\n    ; F_03D2: merge a nibble from a planar pixel with the current state.\n    runtime_f03d2:\n    push bp\n    mov bp,sp\n    db 057h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 072h,015h\n    db 003h,0fbh,026h,08ah,005h\n    and al,0fh\n    db 08bh,01eh,0c8h,040h\n    shl bl,1\n    shl bl,1\n    shl bl,1\n    shl bl,1\n    db 0ebh,00eh\n    db 003h,0fbh,026h,08ah,005h\n    and al,0f0h\n    db 08bh,01eh,0c8h,040h\n    and bl,0fh\n    or al,bl\n    db 026h,088h,005h\n    db 05fh\n    pop bp\n    ret\n    ; F_03D5: fetch either half of a planar pixel as a normalized nibble.\n    runtime_f03d5:\n    push bp\n    mov bp,sp\n    db 057h\n    mov bx,[bp+6]\n    shl bx,1\n    shl bx,1\n    db 0c4h,0bfh,024h,039h\n    mov bx,[bp+4]\n    shr bx,1\n    db 072h,012h\n    db 003h,0fbh,026h,08ah,005h\n    and ax,0f0h\n    shr ax,1\n    shr ax,1\n    shr ax,1\n    shr ax,1\n    db 0ebh,008h\n    db 003h,0fbh,026h,08ah,005h\n    and ax,0fh\n    db 05fh\n    pop bp\n    ret\n\n    ; Unreferenced stub and driver name following the final code root.\n    db 0c3h,045h,047h,041h,02eh,044h,052h,056h,000h\n    _runtime_block_end label byte\n    public _runtime_block_end\n_TEXT ends\nend\n",
   "metrics": {
     "total_bytes": 6571,
-    "symbolic_instruction_bytes": 950,
+    "symbolic_instruction_bytes": 1060,
     "typed_table_data_bytes": 0,
     "intentional_exact_encoding_bytes": 0,
-    "raw_unresolved_bytes": 5621,
-    "symbolically_recovered_bytes": 950,
+    "raw_unresolved_bytes": 5511,
+    "symbolically_recovered_bytes": 1060,
     "cfg_covered_bytes": 2435,
     "closed_entry_roots": 0,
     "total_entry_roots": 20
   },
-  "input_fingerprint": "d8dac5dc44647cb541e612b6e7caecc59bbaed752c395457a50622e6aad9e30b",
+  "input_fingerprint": "0daafdff11d5c28dcfa9422da0ca3c43350963a3cb012f0aaceab33fcbe23811",
   "closed_roots": []
 }

@@ -1,0 +1,177 @@
+{
+  "format": "empires-runtime-block-cfg-roots-v1",
+  "owner": "RUNTIME_BLOCK",
+  "bytes": 6571,
+  "veneer_bytes": 60,
+  "root_count": 20,
+  "roots": [
+    {
+      "veneer_offset": 0,
+      "target_offset": 404,
+      "owner_load_offset": 1840,
+      "aliases": [
+        "_f039c"
+      ]
+    },
+    {
+      "veneer_offset": 3,
+      "target_offset": 666,
+      "owner_load_offset": 2102,
+      "aliases": [
+        "_f039f",
+        "_box"
+      ]
+    },
+    {
+      "veneer_offset": 6,
+      "target_offset": 3903,
+      "owner_load_offset": 5339,
+      "aliases": [
+        "_f03a2",
+        "_bar"
+      ]
+    },
+    {
+      "veneer_offset": 9,
+      "target_offset": 3976,
+      "owner_load_offset": 5412,
+      "aliases": [
+        "_f03a5"
+      ]
+    },
+    {
+      "veneer_offset": 12,
+      "target_offset": 4033,
+      "owner_load_offset": 5469,
+      "aliases": [
+        "_f03a8",
+        "_clear"
+      ]
+    },
+    {
+      "veneer_offset": 15,
+      "target_offset": 4152,
+      "owner_load_offset": 5588,
+      "aliases": [
+        "_f03ab",
+        "_fill"
+      ]
+    },
+    {
+      "veneer_offset": 18,
+      "target_offset": 4263,
+      "owner_load_offset": 5699,
+      "aliases": [
+        "_f03ae"
+      ]
+    },
+    {
+      "veneer_offset": 21,
+      "target_offset": 4334,
+      "owner_load_offset": 5770,
+      "aliases": [
+        "_f03b1"
+      ]
+    },
+    {
+      "veneer_offset": 24,
+      "target_offset": 4387,
+      "owner_load_offset": 5823,
+      "aliases": [
+        "_f03b4",
+        "_wipe"
+      ]
+    },
+    {
+      "veneer_offset": 27,
+      "target_offset": 4508,
+      "owner_load_offset": 5944,
+      "aliases": [
+        "_f03b7"
+      ]
+    },
+    {
+      "veneer_offset": 30,
+      "target_offset": 4597,
+      "owner_load_offset": 6033,
+      "aliases": [
+        "_f03ba"
+      ]
+    },
+    {
+      "veneer_offset": 33,
+      "target_offset": 4688,
+      "owner_load_offset": 6124,
+      "aliases": [
+        "_f03bd"
+      ]
+    },
+    {
+      "veneer_offset": 36,
+      "target_offset": 4794,
+      "owner_load_offset": 6230,
+      "aliases": [
+        "_f03c0"
+      ]
+    },
+    {
+      "veneer_offset": 39,
+      "target_offset": 4955,
+      "owner_load_offset": 6391,
+      "aliases": [
+        "_f03c3"
+      ]
+    },
+    {
+      "veneer_offset": 42,
+      "target_offset": 5128,
+      "owner_load_offset": 6564,
+      "aliases": [
+        "_f03c6"
+      ]
+    },
+    {
+      "veneer_offset": 45,
+      "target_offset": 5524,
+      "owner_load_offset": 6960,
+      "aliases": [
+        "_f03c9",
+        "_blit"
+      ]
+    },
+    {
+      "veneer_offset": 48,
+      "target_offset": 5884,
+      "owner_load_offset": 7320,
+      "aliases": [
+        "_f03cc",
+        "_copy"
+      ]
+    },
+    {
+      "veneer_offset": 51,
+      "target_offset": 6240,
+      "owner_load_offset": 7676,
+      "aliases": [
+        "_f03cf"
+      ]
+    },
+    {
+      "veneer_offset": 54,
+      "target_offset": 6446,
+      "owner_load_offset": 7882,
+      "aliases": [
+        "_f03d2"
+      ]
+    },
+    {
+      "veneer_offset": 57,
+      "target_offset": 6511,
+      "owner_load_offset": 7947,
+      "aliases": [
+        "_f03d5"
+      ]
+    }
+  ],
+  "limitation": "Dispatch roots only. Recursive branch/call recovery and explicit table boundaries remain required before symbolic source replacement."
+}

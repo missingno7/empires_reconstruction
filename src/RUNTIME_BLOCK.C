@@ -177,8 +177,14 @@ void f039c()
     asm mov ax,13h
     asm int 10h
     asm ret
-    asm db 032h,0ffh,08ah,01eh,0cdh,0bfh
-    asm db 0d1h,0e3h,02eh,0ffh,0a7h,0e2h,003h,055h,08bh,0ech,056h,057h,01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h
+    asm runtime_dispatch_3e2:
+    /* DI is intentionally cleared with its original encoding. */
+    asm db 032h,0ffh
+    /* mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding). */
+    asm db 08ah,01eh,0cdh,0bfh
+    asm shl bx,1
+    asm jmp word ptr cs:[bx+3e2h]
+    asm db 055h,08bh,0ech,056h,057h,01eh,0fch,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0b7h,024h
     asm db 039h,0d1h,0e3h,0d1h,0e3h,08bh,0fbh,0d1h,0e7h,0d1h,0e7h,003h,0fbh,08bh,046h,004h,08bh,05eh,008h,08bh,04eh,00ah,003h,0d8h
     asm db 04bh,0d1h,0e8h,0d1h,0e8h,0d1h,0ebh,0d1h,0ebh,02bh,0d8h,043h,003h,0f0h,003h,0f0h,003h,0f8h,006h,0b8h,000h,0a0h,08eh,0c0h
     asm db 081h,0c7h,000h,040h,0bdh,050h,000h,02bh,0ebh,0bah,0a0h,000h,0d1h,0e3h,02bh,0d3h,02eh,08bh,087h,0ech,003h,02eh,0a3h,05fh

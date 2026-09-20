@@ -4,9 +4,9 @@
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 17679,
-      "owners": 33,
-      "sources": 33
+      "bytes": 17606,
+      "owners": 32,
+      "sources": 32
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
@@ -16,9 +16,9 @@
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 4878,
-      "owners": 57,
-      "sources": 57
+      "bytes": 4951,
+      "owners": 58,
+      "sources": 58
     },
     {
       "level": "MECHANICAL_C",
@@ -175,11 +175,6 @@
       "bytes": 77
     },
     {
-      "owner": "F_D386",
-      "source": "src/F_D386.C",
-      "bytes": 73
-    },
-    {
       "owner": "F_C834",
       "source": "src/F_C834.C",
       "bytes": 67
@@ -200,7 +195,7 @@
       "bytes": 27
     }
   ],
-  "asm_db_source_files": 33,
+  "asm_db_source_files": 32,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",
@@ -298,6 +293,15 @@
         "F_C5C6"
       ],
       "bytes": 41
+    },
+    {
+      "id": "M_D386_D3CF",
+      "source": "asm/M_D386_D3CF.ASM",
+      "members": [
+        "F_D386",
+        "F_D3CF"
+      ],
+      "bytes": 84
     }
   ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."

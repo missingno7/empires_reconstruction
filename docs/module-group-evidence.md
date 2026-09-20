@@ -164,3 +164,13 @@ evidence from direct shared table ownership and adjacency.
 contribution. The entries store or select fields in the same SI-relative
 `17A4h..17DCh` command-control block, retain public offsets 0, 11, and 30,
 and have no OMF fixups. The full structural link remains byte-identical.
+
+## M_D386_D3CF
+
+`M_D386_D3CF` is an 84-byte symbolic TASM recovery of the far-record decoder
+and its direct negative-selector continuation. The latter begins immediately
+after the decoder and is the target of its signed branch, then returns to the
+decoder's table lookup. The module retains entry offsets 0 and 73 plus the
+canonical far-data and handler-call fixups. Its complete fresh link is
+byte-identical, replacing the prior 73-byte `asm db` decoder capsule with
+readable control flow.

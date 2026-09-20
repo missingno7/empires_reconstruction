@@ -234,16 +234,16 @@
     "raw_exe_fallback_bytes": 0,
     "source_quality": {
       "ASM_DB_CAPSULE": {
-        "bytes": 17679,
-        "owners": 33
+        "bytes": 17606,
+        "owners": 32
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
         "bytes": 2201,
         "owners": 23
       },
       "SYMBOLIC_ASM": {
-        "bytes": 4878,
-        "owners": 57
+        "bytes": 4951,
+        "owners": 58
       },
       "MECHANICAL_C": {
         "bytes": 34221,
@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 323,
-    "reconstructed_shared_modules": 16,
+    "isolated_function_proof_units": 322,
+    "reconstructed_shared_modules": 17,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -365,6 +365,16 @@
         ],
         "start": 51112,
         "end": 51153
+      },
+      {
+        "id": "M_D386_D3CF",
+        "source": "asm/M_D386_D3CF.ASM",
+        "members": [
+          "F_D386",
+          "F_D3CF"
+        ],
+        "start": 54662,
+        "end": 54746
       }
     ],
     "active_structural_adapters": [

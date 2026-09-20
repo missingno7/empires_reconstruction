@@ -407,8 +407,19 @@ void f039c()
     asm db 008h,015h,003h,0feh,0e2h,0f6h,05fh,047h,0ffh,04eh,008h,003h,0fbh,02ah,0e4h,08bh,05eh,008h,0d1h,0ebh,073h,002h,0b4h,001h
     asm db 08bh,056h,00ah,02bh,0f3h,08bh,0cbh,0f3h,0aah,003h,0feh,04ah,075h,0f7h,080h,0fch,000h,074h,019h,08bh,04eh,00ah,02bh,0feh
     asm db 0b6h,00fh,08ah,0d0h,080h,0e2h,0f0h,0beh,0a0h,000h,026h,020h,035h,026h,008h,015h,02bh,0feh,0e2h,0f6h,05eh,05fh,05dh,0c3h
-    asm db 055h,08bh,0ech,057h,056h,0fch,08bh,056h,00ah,0beh,0a0h,000h,08bh,05eh,006h,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh,024h,039h,08bh
-    asm db 05eh,004h,0d1h,0ebh,073h,013h,08bh,0cah,057h,003h,0fbh,0b0h,00fh,026h,030h,005h,003h,0feh,0e2h,0f9h,05fh,047h,0ffh,04eh
+    /* F_03AB / fill: planar XOR-fill primitive. */
+    asm runtime_f03ab:
+    asm push bp
+    asm mov bp,sp
+    asm db 057h,056h
+    asm cld
+    asm mov dx,[bp+0ah]
+    asm db 0beh,0a0h,000h
+    asm mov bx,[bp+6]
+    asm shl bx,1
+    asm shl bx,1
+    asm db 0c4h,0bfh,024h,039h
+    asm db 08bh,05eh,004h,0d1h,0ebh,073h,013h,08bh,0cah,057h,003h,0fbh,0b0h,00fh,026h,030h,005h,003h,0feh,0e2h,0f9h,05fh,047h,0ffh,04eh
     asm db 008h,003h,0fbh,057h,02ah,0e4h,08bh,04eh,008h,0d1h,0e9h,073h,002h,0b4h,001h,08bh,0d9h,0e3h,011h,0b0h,0ffh,02bh,0f1h,026h
     asm db 030h,005h,047h,0e2h,0fah,003h,0feh,08bh,0cbh,04ah,075h,0f3h,05fh,003h,0fbh,080h,0fch,000h,074h,00fh,08bh,04eh,00ah,0b0h
     asm db 0f0h,0beh,0a0h,000h,026h,030h,005h,003h,0feh,0e2h,0f9h,05eh,05fh,05dh,0c3h,055h,08bh,0ech,057h,056h,01eh,0fch,08bh,046h

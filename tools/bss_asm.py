@@ -46,6 +46,8 @@ def bss_asm_source(length, publics, typed_reserves=()):
     lines = ["DGROUP group _BSS", "_BSS segment word public 'BSS'", 'assume ds:DGROUP']
     at = 0
     for offset in sorted(set(by_offset) | set(reserves)):
+        if offset < at:
+            raise ValueError('BSS typed reserve crosses a public anchor')
         if offset > at:
             lines.append(f'db {offset - at} dup (?)')
             at = offset

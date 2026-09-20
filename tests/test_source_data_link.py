@@ -31,6 +31,10 @@ class SourceDataLinkTests(unittest.TestCase):
             bss_asm_source(8, {}, [{'offset': 0, 'name': 'a', 'count': 2, 'element_bytes': 4},
                                    {'offset': 3, 'name': 'b', 'count': 1, 'element_bytes': 2}])
 
+        with self.assertRaisesRegex(ValueError, 'crosses a public'):
+            bss_asm_source(8, {'INSIDE': 3},
+                           [{'offset': 0, 'name': 'table', 'count': 1, 'element_bytes': 8}])
+
     def test_bss_slice_rebases_canonical_publics(self):
         layout = {'format': 'anchored-bss-layout-v1', 'length': 12,
                   'publics': {'START': 0, 'A': 2, 'B': 5, 'END': 11}}

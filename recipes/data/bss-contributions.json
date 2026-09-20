@@ -339,7 +339,37 @@
       "owner_candidate": "F_462E 0xBB8-byte board workspace",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gb3ae_header",
+          "count": 1,
+          "element_bytes": 1,
+          "source_type": "unsigned char"
+        },
+        {
+          "offset": 1,
+          "name": "gb3ae_slots",
+          "count": 12,
+          "element_bytes": 32,
+          "source_type": "unsigned char[32][12]"
+        },
+        {
+          "offset": 385,
+          "name": "gb3ae_state",
+          "count": 1,
+          "element_bytes": 416,
+          "source_type": "unsigned char[416]"
+        },
+        {
+          "offset": 801,
+          "name": "gb3ae_tail",
+          "count": 1,
+          "element_bytes": 2199,
+          "source_type": "unsigned char[2199]"
+        }
+      ]
     },
     {
       "id": "GBF66_RESOURCE_TABLE_BSS",

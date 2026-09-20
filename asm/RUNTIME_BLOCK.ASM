@@ -954,9 +954,45 @@ rb_145c:
     db 0d2h,08bh,0cah,08ah,0c8h,08ah,0d4h,08bh,07eh,006h,0a1h,096h,000h,02bh,0c7h,078h,046h,040h,03bh,0d0h,076h,002h,08bh,0d0h
     db 0a1h,094h,000h,02bh,0c7h,07eh,00ah,02bh,0d0h,076h,034h,003h,0f8h,0f6h,0e1h,003h,0f0h,08bh,05eh,004h,083h,07eh,00ch,000h
     db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h
-    db 02bh,0e8h,08bh,0c8h,0a1h,098h,000h,02bh,0c3h,07eh,011h,02bh,0c8h,077h,007h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,003h,0d8h
-    db 003h,0e8h,003h,0f0h,006h,057h,083h,03eh,0bch,000h,001h,075h,01ah,081h,0ffh,0c8h,000h,073h,014h,08bh,0c7h,08ah,0e0h,08ah
-    db 0c3h,0c4h,03eh,0c4h,040h,0abh,08ah,0c1h,08ah,0e2h,0abh,089h,03eh,0c4h,040h,05fh,0d1h,0e7h,0d1h,0e7h,0c4h,0bdh,024h,039h
+    sub bp,ax
+    mov cx,ax
+    mov ax,word ptr ds:[98h]
+    sub ax,bx
+    jle runtime_copy_skip_forward
+    sub cx,ax
+    ja runtime_copy_return
+    pop bp
+    pop ds
+    pop di
+    pop si
+    cld
+    pop bp
+    ret
+    runtime_copy_return:
+    add bx,ax
+    add bp,ax
+    add si,ax
+    runtime_copy_skip_forward:
+    push es
+    push di
+    cmp word ptr ds:[0bch],1
+    jne runtime_copy_done
+    cmp di,0c8h
+    jae runtime_copy_done
+    mov ax,di
+    mov ah,al
+    mov al,bl
+    les di,dword ptr ds:[40c4h]
+    stosw
+    mov al,cl
+    mov ah,dl
+    stosw
+    mov word ptr ds:[40c4h],di
+    runtime_copy_done:
+    pop di
+    shl di,1
+    shl di,1
+    les di,dword ptr [di+3924h]
     db 003h,0fbh,01fh,0bbh,098h,019h,057h,051h,0ach,08ah,0e0h,02eh,0d7h,026h,022h,005h,00ah,0c4h,0aah,0e2h,0f3h,059h,05fh,081h
     db 0c7h,0a0h,000h,003h,0f5h,04ah,075h,0e6h,05dh,01fh,05fh,05eh,0fch,05dh,0c3h,0fdh,033h,0edh,003h,0d9h,003h,0d9h,0d1h,0ebh
     db 04bh,08bh,0c3h,02bh,006h,098h,000h,078h,017h,040h,03bh,0c8h,076h,006h,08bh,0e9h,02bh,0e8h,08bh,0c8h,08bh,0c3h,02bh,006h

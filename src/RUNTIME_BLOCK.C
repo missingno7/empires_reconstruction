@@ -195,8 +195,25 @@ void f039c()
     asm shl bx,1
     asm shl bx,1
     asm db 0c4h,0b7h,024h,039h
-    asm db 0d1h,0e3h,0d1h,0e3h,08bh,0fbh,0d1h,0e7h,0d1h,0e7h,003h,0fbh,08bh,046h,004h,08bh,05eh,008h,08bh,04eh,00ah,003h,0d8h
-    asm db 04bh,0d1h,0e8h,0d1h,0e8h,0d1h,0ebh,0d1h,0ebh,02bh,0d8h,043h,003h,0f0h,003h,0f0h,003h,0f8h,006h,0b8h,000h,0a0h,08eh,0c0h
+    asm shl bx,1
+    asm shl bx,1
+    /* DI-derived row addressing stays explicit to avoid a TC save wrapper. */
+    asm db 08bh,0fbh,0d1h,0e7h,0d1h,0e7h,003h,0fbh
+    asm mov ax,[bp+4]
+    asm mov bx,[bp+8]
+    asm mov cx,[bp+0ah]
+    asm add bx,ax
+    asm dec bx
+    asm shr ax,1
+    asm shr ax,1
+    asm shr bx,1
+    asm shr bx,1
+    asm sub bx,ax
+    asm inc bx
+    asm db 003h,0f0h,003h,0f0h,003h,0f8h
+    asm push es
+    asm mov ax,0a000h
+    asm mov es,ax
     asm db 081h,0c7h,000h,040h,0bdh,050h,000h,02bh,0ebh,0bah,0a0h,000h,0d1h,0e3h,02bh,0d3h,02eh,08bh,087h,0ech,003h,02eh,0a3h,05fh
     asm db 00bh,005h,061h,00bh,01fh,0ffh,0e0h,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh
     asm db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh

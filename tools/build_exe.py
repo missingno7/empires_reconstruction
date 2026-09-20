@@ -11,7 +11,6 @@ from pathlib import Path
 import shutil
 import subprocess
 
-from probe_data_interleaving import run as interleave_data
 from probe_exact_structural_link import publish as publish_exact_receipt
 from probe_shared_module_link import run as link_shared_module
 from probe_source_data_link import run as link_source_data
@@ -108,7 +107,10 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
                        'fixupp_order_adapter': shared['fixupp_order_adapter']})
         shared_reports.append(shared)
         previous = root / 'build' / f"shared-source-data-link-report_{shared['candidate']}.json"
-    final = interleave_data(previous, root / 'recipes/data/interleaving-candidate.json', verify=verify)
+    # The source-DATA stage writes the canonical, source-module response order
+    # before TLINK.  Shared source replacements preserve those object slots;
+    # no post-hoc interleaving or OMF transformation follows.
+    final = shared_reports[-1]
     exact_receipt = (publish_exact_receipt(source, shared_reports, final)
                      if verify else {'status': 'NOT_VERIFIED'})
     candidate = Path(final['byte_comparison']['candidate'])
@@ -155,9 +157,7 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
         'fresh_build': {'removed_previous_state': removed_state,
                         'final_link_session': str(candidate.parent.parent)},
         'exact_structural_receipt': exact_receipt['status'],
-        'remaining_structural_adapters': [
-            'candidate DATA/code object interleaving',
-        ],
+        'remaining_structural_adapters': [],
         'fixture_dependency': {
             'assets/AEPROG.EXE': ('optional verification fixture only; construction uses the canonical '
                                   'manifest, MZ header, source-DATA recipes and GAME_BSS metadata'),

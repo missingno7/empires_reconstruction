@@ -118,11 +118,20 @@ def run(recipe_path, source_data=False, input_report_path=None, verify=True, run
                             for item in read_json(ROOT / 'layout/mz-header.json')['relocations']
                             if shared['offset'] <= MZ.linear(item['segment'], item['offset']) < shared['offset'] + shared['length']]
     actual_relocations = group_relocations(linked_bytes)
+    oracle_relocations = [(item['segment'], item['offset'])
+                          for item in read_json(ROOT / 'layout/mz-header.json')['relocations']]
+    linked_relocations = [(item['segment'], item['offset'])
+                          for item in MZ.parse(linked_bytes).relocations]
+    relocation_prefix = next((i for i, (actual, expected) in
+                              enumerate(zip(linked_relocations, oracle_relocations))
+                              if actual != expected),
+                             min(len(linked_relocations), len(oracle_relocations)))
     report = {'status': 'CODE_PLACEMENT_EQUAL' if code_equal and not errors else 'DIVERGED',
               'candidate': recipe['id'], 'historical_module_proven': False, 'runner': runner_info,
               'source_data_mode': source_data,
               'group_relocation_order': {'actual': actual_relocations, 'expected': expected_relocations,
                                          'equal': actual_relocations == expected_relocations},
+              'matching_relocation_prefix_entries': relocation_prefix,
               'code_bytes': proof['text_bytes'], 'data_evidence': proof['data_evidence'],
               'objects_replaced': len(selected), 'objects_added': 1,
               'shared_contribution': shared, 'downstream_code_divergences': downstream,

@@ -2,9 +2,7 @@
 
 [The exact structural-link experiment](exact-structural-link.md) now makes
 Turbo Link 2.0 emit the complete byte-identical AEPROG.EXE from relocatable
-inputs. All 106 relocation entries match in order. Candidate DATA/code
-interleaving and a checked arithmetic FIXUPP-order adapter remain explicitly
-open. BSS is fully partitioned into source contributions, while its historical
+inputs. All 106 relocation entries match in order. The canonical source-DATA response plan now supplies ordinary TLINK object order; the arithmetic module emits its FIXUPP order naturally. No linker or OMF adapter remains. BSS is fully partitioned into source contributions, while its historical
 translation-unit ownership remains open. The first 34 BSS bytes, the 1,952-byte
 row-pointer table initialized by `F_0281`, a 16-byte shared command/render
 state island, the ten-record C470 table, the 4x6 slot grid, and an 18-byte
@@ -48,15 +46,11 @@ Canonical inline assembly now emits the final 27 OMF publics and an explicit
 end public, leaving zero symbol transforms in the structural link. See
 [the natural-public checkpoint](natural-runtime-publics.md).
 
-[DATA interleaving](data-interleaving.md) preserves the exact TLINK load image
-and all segment/code addresses while extending the matching relocation-table
-prefix to all 106 entries and produces the byte-identical EXE. These
-ordering constraints do not prove historical translation-unit boundaries.
+[The canonical source-DATA link plan](data-interleaving.md) writes the four compatible DATA module positions directly into `LINK.RSP`. It preserves the exact load image and all 106 relocation entries without post-hoc object movement; historical translation-unit identity remains open.
 
 [Relocation-order grouping](relocation-grouping.md) now puts three verified
 compatible compiler TEXT modules in one source-DATA link, replacing eleven
-separate objects. The inline-ASM arithmetic group needs a checked relocatable
-FIXUPP-order adapter; TLINK then emits its ten relocations in historical order.
+separate objects. The symbolic arithmetic module now emits its historical FIXUPP sequence directly; TLINK receives the untouched object.
 
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no

@@ -8,8 +8,7 @@ contributions, while historical module ownership remains open.
 
 Current exact structural checkpoint: Turbo Link 2.0 emits the byte-identical
 EXE from relocatable inputs with zero unresolved symbols. The result still uses
-explicitly tracked object-order, FIXUPP, OMF-metadata and BSS adapters. The structural path
-performs zero object symbol transforms. See
+no active linker or OMF adapters. The structural path performs zero object symbol transforms. See
 [the checkpoint](exact-structural-link.md) and [generated metrics](structural-status.json).
 
 `python tools/build_exe.py --no-verify` constructs this EXE without opening
@@ -109,9 +108,7 @@ STACK placement. The exact path builds BSS from TASM source and all initialized
 DATA from component sources, including 38 relocatable near pointers in the
 sound tables. Recovered sources now use historical library and owner publics
 directly, so ordinary aliases, case normalization and injected internal labels
-are gone. It still has candidate object interleaving, a checked arithmetic
-FIXUPP ordering adapter. Standalone TASM owners now declare their empty-DGROUP
-topology directly in source. These are
+are gone. The former candidate interleaving and arithmetic FIXUPP adapters are removed: canonical response-file order and the symbolic arithmetic object are direct linker inputs. Standalone TASM owners declare their empty-DGROUP topology directly in source. These are
 tracked in [the adapter ledger](linker-adapter-ledger.md). The 347 source proof
 units do not count as recovered original modules. The combined report
 explicitly sets `whole_build_reconstruction_complete` to false.

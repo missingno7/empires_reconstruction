@@ -541,9 +541,7 @@
         "end": 58005
       }
     ],
-    "active_structural_adapters": [
-      "candidate DATA/code object interleaving"
-    ],
+    "active_structural_adapters": [],
     "active_omf_transforms": [],
     "fixture_dependency": {
       "assets/AEPROG.EXE": "optional verification fixture only; construction uses the canonical manifest, MZ header, source-DATA recipes and GAME_BSS metadata"
@@ -578,9 +576,7 @@
     "sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "relocation_order_equal": true,
     "load_image_equal": true,
-    "remaining_adapters": [
-      "candidate DATA/code object interleaving"
-    ],
+    "remaining_adapters": [],
     "whole_build_reconstruction_complete": false
   }
 }

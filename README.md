@@ -14,7 +14,7 @@ python tools/build_exe.py verify
 ```
 
 It compiles fresh Turbo C/TASM inputs, emits initialized-DATA objects and the
-canonical `GAME_BSS` TASM module, applies the documented ordering adapters,
+canonical `GAME_BSS` TASM module, writes the documented canonical object order,
 and runs the pinned Turbo Link 2.0. With the original fixture available, the
 published EXE is checked byte-for-byte, including all 106 ordered relocations.
 The earlier fixed-placement EXE builder remains available as an oracle/debug
@@ -36,8 +36,9 @@ including typed G43B4, C470 and GC360 record storage, while historical module ow
 Current structural checkpoint: the pinned Turbo Link 2.0 now emits a
 byte-identical `AEPROG.EXE` from relocatable code and source-DATA inputs, with
 all 106 relocations in order. The synthetic DGROUP/BSS object has been replaced
-by real TASM source; candidate object ordering, a checked FIXUPP-order adapter
-and BSS ownership remain, so this is not yet the recovered historical build. See
+by real TASM source; the canonical response plan replaces the former post-hoc
+ordering and FIXUPP adapters. Historical translation-unit ownership and the
+final symbolic runtime block remain open. See
 [the exact-link checkpoint](docs/exact-structural-link.md) and
 [generated metrics](docs/structural-status.json).
 

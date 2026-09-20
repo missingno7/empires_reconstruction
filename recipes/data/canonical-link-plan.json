@@ -1,0 +1,32 @@
+{
+  "format": "empires-canonical-data-link-plan-v1",
+  "status": "COMPATIBLE_RECONSTRUCTED_MODULES",
+  "historical_translation_units_proven": false,
+  "description": "Canonical TLINK response-file ordering for source-derived DATA modules. The data ranges retain canonical source order; their historical C-file boundaries remain open.",
+  "data_modules": [
+    {
+      "id": "FILE_ERROR_DATA",
+      "through": "DATA_01075A_FILE_ERROR_CONTROL",
+      "after_code": "F_6181",
+      "before_code": "F_699E"
+    },
+    {
+      "id": "HELP_MENU_DATA",
+      "through": "PAD_10EDD",
+      "after_code": "F_7BFC",
+      "before_code": "F_9EC3"
+    },
+    {
+      "id": "PLAYER_DIALOG_DATA",
+      "through": "DATA_0101220_ENERGY_PROMPT",
+      "after_code": "F_9EC3",
+      "before_code": "F_A09D"
+    },
+    {
+      "id": "CONTROL_MENU_DATA",
+      "through": "DATA_011FAE_CACHED_INDEX",
+      "after_code": "F_ADCF",
+      "before_code": "F_DDD9"
+    }
+  ]
+}

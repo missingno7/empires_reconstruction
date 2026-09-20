@@ -1,53 +1,14 @@
-# Source DATA and code object interleaving
+# Canonical source DATA link plan
 
-Turbo Link 2.0 now matches all 106 relocation-table entries in order,
-with the complete load image, fixed MZ fields, all 106 relocation pairs, and
-segment/code placement unchanged. The complete EXE is byte-identical.
+The normal executable build no longer performs a post-hoc DATA/code interleaving stage. `tools/probe_source_data_link.py` reads [`canonical-link-plan.json`](../recipes/data/canonical-link-plan.json) while it constructs source-derived DATA objects, then writes the final object order directly into `LINK.RSP` before Turbo Link 2.0 runs.
 
-The [candidate recipe](../recipes/data/interleaving-candidate.json) moves four
-advancing prefixes of existing DATA objects between code contributions:
-
-| DATA through | After code | Before next relocating code |
+| Compatible reconstructed DATA module | After code | Before code |
 |---|---|---|
-| DATA_01075A_FILE_ERROR_CONTROL | F_6181 | F_699E |
-| PAD_10EDD | F_7BFC | F_9EC3 |
-| DATA_0101220_ENERGY_PROMPT | F_9EC3 | F_A09D |
-| DATA_011FAE_CACHED_INDEX | F_ADCF | F_DDD9 |
+| `FILE_ERROR_DATA` | `F_6181` | `F_699E` |
+| `HELP_MENU_DATA` | `F_7BFC` | `F_9EC3` |
+| `PLAYER_DIALOG_DATA` | `F_9EC3` | `F_A09D` |
+| `CONTROL_MENU_DATA` | `F_ADCF` | `F_DDD9` |
 
-DATA contribution order is preserved. TLINK reads the reordered objects and
-generates the executable itself; the experiment adds no padding, final
-addresses, or post-link edits. Every interval ends at an existing source
-boundary that preserves the observed alignment. Nonrelocating contributions leave the exact historical
-module boundaries ambiguous, so this is an ordering constraint rather than
-proof of historical translation units.
+Each range retains canonical source-component order. The response-file positions are ordinary TLINK inputs: they provide no load address, padding, OMF rewrite, or final-EXE edit. With the three shared source-module replacements, this direct plan preserves the load image and makes all 106 relocation entries appear in historical order.
 
-`DATA_011FAE_CACHED_INDEX` now has direct source ownership: `F_D5BA` declares
-the `g237e` sentinel as `int g237e = -1`, producing the exact two-byte Turbo C
-initializer while preserving its 63-byte `_TEXT` contribution. A trial that
-left this `_DATA` attached to the `F_D5BA` object placed it at the head of
-DGROUP and diverged at initialized-DATA load offset `0x00C4`. This proves that
-the remaining ordering rule reflects a larger historical object/module order,
-not merely the missing declaration. The canonical source-DATA build therefore
-externalizes the proven compiler contribution until that enclosing topology is
-recovered.
-
-After the three shared-module links described in
-[relocation grouping](relocation-grouping.md), run:
-
-```powershell
-python tools/probe_data_interleaving.py
-python -m unittest tests.test_data_interleaving tests.test_relocation_groups
-```
-
-The [receipt](data-interleaving.json) records the linked byte comparison.
-The former four-record component, one-byte compiled initializer, and 43-byte
-raw owner are now one six-record typed table plus a four-byte u16 trailer.
-The arithmetic interval F_DDD9 through F_DF98 now compiles as one exact object.
-A checked OMF adapter orders its explicit FIXUPP subrecords like historical
-Turbo C output; TLINK then produces the byte-identical file. The remaining
-interleaving and arithmetic FIXUPP adapters, plus incomplete historical
-translation-unit evidence, still prevent claiming a recovered build.
-
-Construction now reads the ordered relocation expectation from
-`layout/mz-header.json`; the original EXE is opened only when an optional
-verification receipt is requested.
+These are `COMPATIBLE_RECONSTRUCTED_MODULES`, not claims about original C-file names or exact translation-unit boundaries. The older [`interleaving-candidate.json`](../recipes/data/interleaving-candidate.json) and `probe_data_interleaving.py` remain diagnostic evidence outside the canonical build path.

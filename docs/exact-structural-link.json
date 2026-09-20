@@ -25,8 +25,46 @@
       "status": "CODE_PLACEMENT_EQUAL"
     },
     {
-      "name": "data_code_interleaving",
-      "status": "LAYOUT_PRESERVED",
+      "name": "canonical_data_link_plan",
+      "status": "COMPATIBLE_RECONSTRUCTED_MODULES",
+      "placements": [
+        {
+          "module": "FILE_ERROR_DATA",
+          "after_code": "F_6181",
+          "before_code": "F_699E",
+          "first_component": "DATA_00FCC2",
+          "last_component": "DATA_01075A_FILE_ERROR_CONTROL",
+          "components": 26
+        },
+        {
+          "module": "HELP_MENU_DATA",
+          "after_code": "F_7BFC",
+          "before_code": "F_9EC3",
+          "first_component": "DATA_01076E_ZERO_SUFFIX",
+          "last_component": "PAD_10EDD",
+          "components": 35
+        },
+        {
+          "module": "PLAYER_DIALOG_DATA",
+          "after_code": "F_9EC3",
+          "before_code": "F_A09D",
+          "first_component": "DATA_10EE0",
+          "last_component": "DATA_0101220_ENERGY_PROMPT",
+          "components": 16
+        },
+        {
+          "module": "CONTROL_MENU_DATA",
+          "after_code": "F_ADCF",
+          "before_code": "F_DDD9",
+          "first_component": "C_DATA_A28D",
+          "last_component": "DATA_011FAE_CACHED_INDEX",
+          "components": 38
+        }
+      ]
+    },
+    {
+      "name": "final_shared_module",
+      "status": "CODE_PLACEMENT_EQUAL",
       "matching_relocation_prefix_entries": 106
     }
   ],
@@ -106,9 +144,7 @@
       "first_difference": null
     }
   },
-  "remaining_adapters": [
-    "candidate DATA/code object interleaving"
-  ],
+  "remaining_adapters": [],
   "whole_build_reconstruction_complete": false,
-  "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA, zero aggregate BSS reserve, and zero object symbol transforms; object order and historical module proof remain."
+  "limitation": "Byte-identical TLINK output from relocatable inputs with zero raw DATA, zero aggregate BSS reserve, and zero object symbol transforms. The canonical response order uses compatible reconstructed DATA modules; historical module proof remains open."
 }

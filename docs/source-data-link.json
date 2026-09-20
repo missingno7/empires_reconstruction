@@ -922,6 +922,45 @@
       "bytes": 2
     }
   ],
+  "canonical_link_plan": {
+    "path": "recipes\\data\\canonical-link-plan.json",
+    "status": "COMPATIBLE_RECONSTRUCTED_MODULES",
+    "historical_translation_units_proven": false,
+    "placements": [
+      {
+        "module": "FILE_ERROR_DATA",
+        "after_code": "F_6181",
+        "before_code": "F_699E",
+        "first_component": "DATA_00FCC2",
+        "last_component": "DATA_01075A_FILE_ERROR_CONTROL",
+        "components": 26
+      },
+      {
+        "module": "HELP_MENU_DATA",
+        "after_code": "F_7BFC",
+        "before_code": "F_9EC3",
+        "first_component": "DATA_01076E_ZERO_SUFFIX",
+        "last_component": "PAD_10EDD",
+        "components": 35
+      },
+      {
+        "module": "PLAYER_DIALOG_DATA",
+        "after_code": "F_9EC3",
+        "before_code": "F_A09D",
+        "first_component": "DATA_10EE0",
+        "last_component": "DATA_0101220_ENERGY_PROMPT",
+        "components": 16
+      },
+      {
+        "module": "CONTROL_MENU_DATA",
+        "after_code": "F_ADCF",
+        "before_code": "F_DDD9",
+        "first_component": "C_DATA_A28D",
+        "last_component": "DATA_011FAE_CACHED_INDEX",
+        "components": 38
+      }
+    ]
+  },
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
@@ -3024,7 +3063,7 @@
   "temporary_runtime_data_aliases": {},
   "byte_comparison": {
     "available": true,
-    "candidate_sha256": "bbbbe4fde29ff9e831eff17cb3dfbb62428ed3ec3b2ba0622376c70f15232ee4",
+    "candidate_sha256": "fba9cc1ceb79225b2ff7085423fde983665572c2fb5f20ece40b01d08ef8b18e",
     "oracle_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
     "candidate_size": 79154,
     "oracle_size": 79154,
@@ -3095,7 +3134,7 @@
     "full_file": {
       "equal": false,
       "differing_bytes_outside_relocation_table": 0,
-      "first_difference": 58
+      "first_difference": 70
     }
   },
   "limitation": "Ordered source DATA and canonical BSS anchors are complete; BSS storage is represented by source-derived typed reserves, while historical translation-unit ownership remains to be recovered."

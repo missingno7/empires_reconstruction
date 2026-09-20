@@ -8,9 +8,8 @@ The source emits its `ORG` contributions from high to low offset. TASM 1.0
 therefore emits the complete historical descending FIXUPP sequence directly;
 the arithmetic FIXUPP record reorder is not fundamentally necessary.
 
-It is not yet canonical: the six reconstructed DGROUP data references in the
-`F_DEFA` part currently use TASM external-frame fixups which overflow in the
-whole link. Turbo C's corresponding object uses a group-relative frame. The
-remaining bounded task is to express those six data operands with TASM's
-matching group-relative OMF frame while preserving the already exact 700-byte
-object and descending FIXUPP sequence. No final EXE or OMF object is patched.
+The six reconstructed `F_DEFA` DATA references use explicit `DGROUP` operands
+and the same group-relative frame as Turbo C. The module is canonical in the
+exact build: it links without an OMF transform and preserves the byte-identical
+executable. It remains a compatible reconstructed module rather than a proven
+historical translation unit.

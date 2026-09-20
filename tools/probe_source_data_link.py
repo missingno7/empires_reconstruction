@@ -18,13 +18,14 @@ from omf_scaffold import add_publics, externalize_data_segment, rename_external_
 from pointer_records import FORMAT, compile_records
 from sound_data import FORMAT as SOUND_FORMAT, compile_sound_data
 from typed_data import FORMAT as TYPED_FORMAT, compile_typed_data
+from canonical_link_plan import order_data_modules
 from probe_tlink_layout import (compare_linked_executable, comparison_not_requested,
                                 link_errors, parse_map)
 from reconstruct import ROOT, read_json, sha, write_json
 from dos_runner import DosRunner
 
 
-def run(verify=True):
+def run(verify=True, link_plan_path=ROOT / 'recipes/data/canonical-link-plan.json'):
     (ROOT / 'build/source-data-link-report.json').unlink(missing_ok=True)
     baseline = read_json(ROOT / 'build/tlink-structural-report.json')
     if baseline['status'] != 'MAP_AVAILABLE' or baseline['link'].get('errors'):
@@ -243,6 +244,41 @@ def run(verify=True):
     bss_names = ['C:\\WORK\\' + contribution['object'] for contribution in bss_contributions]
     response = (old_work / 'LINK.RSP').read_text()
     response = response.replace('C:\\WORK\\DGSCF.OBJ', '+'.join(names + bss_names)).replace('DGSCF.OBJ', '+'.join(names + bss_names))
+    objects_text, remaining = response.split(',', 1)
+    objects = objects_text.split('+')
+    work_prefix = 'C:\\WORK\\' if 'C:\\WORK\\' in objects_text else ''
+    data_objects = [(part['spec']['id'], work_prefix + f'D{index:04}.OBJ')
+                    for index, part in enumerate(parts)]
+    plan = read_json(link_plan_path)
+    object_tokens = {token.rsplit('\\', 1)[-1]: token for token in objects}
+    code_objects = {}
+    for owner, entry in staged.items():
+        token = object_tokens.get(entry['object'])
+        if token:
+            code_objects[owner] = token
+    # Structural source modules can replace several scaffold owners before the
+    # source-DATA stage. Resolve an anchor through its real public rather than
+    # assuming it still has an individual staged object.
+    for module in plan.get('data_modules', ()):
+        for key in ('after_code', 'before_code'):
+            owner_id = module.get(key)
+            if owner_id in code_objects:
+                continue
+            public = owners[owner_id]['build']['public']
+            matches = []
+            for token in objects:
+                filename = token.rsplit('\\', 1)[-1]
+                path = work / 'WORK' / filename
+                if not path.exists() or path.suffix.upper() != '.OBJ':
+                    continue
+                module_omf = OmfReader().read(path.read_bytes())
+                if any(item['name'] == public for item in module_omf.publics_in('_TEXT')):
+                    matches.append(token)
+            if len(matches) != 1:
+                raise ValueError(f'Canonical DATA anchor {owner_id} is not uniquely linked')
+            code_objects[owner_id] = matches[0]
+    ordered_objects, canonical_placements = order_data_modules(objects, data_objects, code_objects, plan)
+    response = '+'.join(ordered_objects) + ',' + remaining
     (work / 'LINK.RSP').write_text(response)
     go = (old_work / 'GO.BAT').read_text()
     bss_commands = ''.join(
@@ -311,6 +347,10 @@ def run(verify=True):
               'runner': runner_info,
               'segments': segments, 'code_contributions_equal': rows == baseline['code_rows'],
               'source_contributions': sources, 'separated_data': separated,
+              'canonical_link_plan': {'path': str(link_plan_path.relative_to(ROOT)),
+                                      'status': plan['status'],
+                                      'historical_translation_units_proven': plan['historical_translation_units_proven'],
+                                      'placements': canonical_placements},
               'oracle_copied_initialized_data_bytes': 0,
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
               'synthetic_bss_bytes': 0,

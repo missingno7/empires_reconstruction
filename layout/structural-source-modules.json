@@ -56,6 +56,27 @@
         "module_segments": {}
       },
       "evidence": "Adjacent BIOS INT 16h block/poll helpers have compatible TASM topology. One fresh object emits their two entries at offsets 0 and 48 with both call fixups bound to canonical reconstructed publics."
+    },
+    {
+      "id": "M_C1A0_C232",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_C1A0_C232.ASM",
+      "start": 50080,
+      "end": 50301,
+      "members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc1a0",
+        "span": 3,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Contiguous master sound tick, voice pump, and ES:DI voice-table scan. The first calls the second, the second calls the third, and all use the same 0x1764..0x17F4 sound-state BSS cluster. Fresh TASM emits publics at offsets 0, 87, and 146 and its complete bound extent matches."
     }
   ]
 }

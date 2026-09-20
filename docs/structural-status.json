@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 345,
-    "reconstructed_shared_modules": 9,
+    "isolated_function_proof_units": 343,
+    "reconstructed_shared_modules": 10,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -280,6 +280,17 @@
         ],
         "start": 27930,
         "end": 28006
+      },
+      {
+        "id": "M_C1A0_C232",
+        "source": "asm/M_C1A0_C232.ASM",
+        "members": [
+          "F_C1A0",
+          "F_C1F7",
+          "F_C232"
+        ],
+        "start": 50080,
+        "end": 50301
       }
     ],
     "active_structural_adapters": [

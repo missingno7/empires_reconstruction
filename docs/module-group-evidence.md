@@ -92,3 +92,15 @@ key without consuming it. `asm/M_6B1A_6B4A.ASM` emits their entry publics at
 offsets 0 and 48 and retains both canonical call fixups. The structural link
 uses this untouched ordinary object, reducing another pair of fragment-level
 proof objects without asserting an original filename or source boundary.
+
+## M_C1A0_C232
+
+The contiguous 221-byte sound-control run now builds as one symbolic TASM
+module. `_fc1a0` is the master tick, directly calls `_fc1f7`, and `_fc1f7`
+directly calls `_fc232`; the three entries also share the compact sound-state
+cluster at DGROUP offsets `0x1764..0x17F4`. The module emits their publics at
+offsets 0, 87, and 146 and preserves all 36 code/data fixups after ordinary
+linking. This is compatible source-module evidence from a direct call chain,
+contiguous layout, and common storage. The normal structural build consumes
+one untouched object in place of three proof fragments and remains
+byte-identical.

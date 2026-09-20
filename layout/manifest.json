@@ -12897,14 +12897,15 @@
     },
     {
       "id": "F_AB66",
-      "kind": "MATCHING_C",
-      "source": "src/F_AB66.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_AB66.ASM",
       "start": 44390,
       "end": 44775,
       "expected_sha256": "3a00a8123efd3909e805f148b9d8c8a459760f24bc10027cacea6931b6f86c0f",
       "classification": "code",
       "artifact": "regions/F_AB66.bin",
       "matching_status": "EQUAL",
+      "change": "symbolic assembly recovery; exact _TEXT, public, and no-FIXUPP topology verified",
       "build": {
         "segment": "_TEXT",
         "public": "_fab66",

@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 35214,
+  "typed_bss_source_bytes": 35232,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1694,8 +1694,66 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc34e_x",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 2,
+            "name": "gc350_y",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 4,
+            "name": "gc352_step",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 6,
+            "name": "gc354_active",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 8,
+            "name": "gc356_markers",
+            "count": 3,
+            "element_bytes": 1,
+            "source_type": "unsigned char[3]"
+          },
+          {
+            "offset": 11,
+            "name": "gc359_index",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 13,
+            "name": "gc35b_state",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 15,
+            "name": "gc35d_event",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          }
+        ],
         "object_sha256": "f8fc73cda89542686e8eb86966df212c775d9af6b8045805b4138be098ee3704",
-        "source_sha256": "3b6e4aceb37562b2ab5ef691968e1eec807508d4adb77dd327e3822c3dd150b3"
+        "source_sha256": "ce018760d8192c63bddfb6568a59868447665c4b1b6f0a93e6038023f2025922"
       },
       {
         "id": "GC360_RECORD_TABLE_BSS",

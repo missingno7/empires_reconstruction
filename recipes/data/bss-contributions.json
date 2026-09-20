@@ -729,7 +729,65 @@
       "owner_candidate": "shared animation state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc34e_x",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 2,
+          "name": "gc350_y",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 4,
+          "name": "gc352_step",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 6,
+          "name": "gc354_active",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 8,
+          "name": "gc356_markers",
+          "count": 3,
+          "element_bytes": 1,
+          "source_type": "unsigned char[3]"
+        },
+        {
+          "offset": 11,
+          "name": "gc359_index",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 13,
+          "name": "gc35b_state",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 15,
+          "name": "gc35d_event",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        }
+      ]
     },
     {
       "id": "GC360_RECORD_TABLE_BSS",

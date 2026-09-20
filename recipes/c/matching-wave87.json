@@ -3,8 +3,8 @@
   "owners": [
     {
       "id": "F_AA1F",
-      "kind": "MATCHING_C",
-      "source": "src/F_AA1F.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_AA1F.ASM",
       "start": 44063,
       "end": 44390,
       "expected_sha256": "3d8fffe530ff71af2a1973029d3422e0a5ad7885ade84c2ba2d546ff045512c1",
@@ -16,7 +16,50 @@
         "public": "_faa1f",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_fa15e": {
+            "coordinate": "code_offset",
+            "owner": "F_A15E",
+            "public": "_fa15e",
+            "addend": 0,
+            "evidence": "F_AA1F symbolic direct near call"
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
+            "evidence": "F_AA1F symbolic direct near call"
+          },
+          "_faf45": {
+            "coordinate": "code_offset",
+            "owner": "F_AF45",
+            "public": "_faf45",
+            "addend": 0,
+            "evidence": "F_AA1F symbolic direct near call"
+          },
+          "_fa036": {
+            "coordinate": "code_offset",
+            "owner": "F_A036",
+            "public": "_fa036",
+            "addend": 0,
+            "evidence": "F_AA1F symbolic direct near call"
+          },
+          "_f86c9": {
+            "coordinate": "code_offset",
+            "owner": "F_86C9",
+            "public": "_f86c9",
+            "addend": 0,
+            "evidence": "F_AA1F symbolic direct near call"
+          },
+          "_fa24e": {
+            "coordinate": "code_offset",
+            "owner": "F_A24E",
+            "public": "_fa24e",
+            "addend": 0,
+            "evidence": "F_AA1F symbolic direct near call"
+          }
+        },
         "module_segments": {}
       }
     }

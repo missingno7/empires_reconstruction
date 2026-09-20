@@ -502,9 +502,28 @@ _f039c label near
     sub bx,ax
     inc bx
     mov dx,[bp+0ah]
-    db 08bh,076h,006h,0d1h,0e6h,0d1h,0e6h
-    db 0c5h,0b4h,024h,039h,003h,0f0h,0c4h,07eh,00ch,026h,089h,01dh,026h,089h,055h,002h,083h,0c7h,004h,0b8h,0a0h,000h,02bh,0c3h
-    db 08bh,0cbh,0f3h,0a4h,003h,0f0h,04ah,075h,0f7h,01fh,05eh,05fh,05dh,0c3h
+    mov si,[bp+6]
+    shl si,1
+    shl si,1
+    lds si,dword ptr [si+3924h]
+    add si,ax
+    les di,dword ptr [bp+0ch]
+    mov word ptr es:[di],bx
+    mov word ptr es:[di+2],dx
+    add di,4
+    mov ax,0a0h
+    sub ax,bx
+    runtime_f03ae_copy_loop:
+    mov cx,bx
+    rep movsb
+    add si,ax
+    dec dx
+    jne runtime_f03ae_copy_loop
+    pop ds
+    pop si
+    pop di
+    pop bp
+    ret
     ; F_03B1: copy from a source rectangle descriptor to a planar row.
     runtime_f03b1:
     push bp

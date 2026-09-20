@@ -57,10 +57,11 @@ def status(root, report, exe_build=None):
             'relocation_count': exe_build['relocations'],
             'exact_exe_verification': verification,
         }
-    return {
-        'format': 'empires-structural-status-v1',
-        'ownership': {kind: {'bytes': sizes[kind], 'owners': counts[kind]} for kind in sorted(counts)},
-        'largest_raw_owners': raw[:2],
+    # The fixed-placement scaffold remains a useful diagnostic oracle, but it
+    # must not be reported as the current executable build once a fresh exact
+    # linked receipt exists.  Prefer source-DATA's full-link observations for
+    # segment detail and the canonical build receipt for final verification.
+    baseline_diagnostic = {
         'linker_sha256': report['linker']['sha256'],
         'link_status': report['status'],
         'link_errors': report['link'].get('errors', []),
@@ -74,6 +75,38 @@ def status(root, report, exe_build=None):
         'omf_metadata_adapter_owners': len(dgroup_metadata),
         'byte_comparison': {k: v for k, v in report['byte_comparison'].items()
                             if k not in ('candidate', 'oracle')},
+    }
+    if exe_build is None:
+        current = baseline_diagnostic
+    else:
+        verification = exe_build['verification']
+        current = {
+            'linker_sha256': exe_build['linker']['sha256'],
+            'link_status': exe_build['status'],
+            'link_errors': [],
+            'segments': source['segments'] if source is not None else report['segments'],
+            'unresolved_count': exe_build['unresolved_symbols'],
+            'first_code_placement_divergence': None,
+            'demand_object_present': False,
+            'synthetic_data_bytes': 0,
+            'synthetic_bss_bytes': 0,
+            'symbol_transform_owners': 0,
+            'omf_metadata_adapter_owners': 0,
+            'byte_comparison': {
+                'available': verification['performed'],
+                'candidate_sha256': verification['sha256'],
+                'oracle_sha256': verification['expected_sha256'],
+                'mz': {'candidate_fields': {'e_crlc': exe_build['relocations']},
+                       'relocation_order_equal': verification['relocation_order_equal']},
+                'full_file': {'equal': verification['byte_identical']},
+            },
+        }
+    return {
+        'format': 'empires-structural-status-v1',
+        'ownership': {kind: {'bytes': sizes[kind], 'owners': counts[kind]} for kind in sorted(counts)},
+        'largest_raw_owners': raw[:2],
+        **current,
+        'baseline_diagnostic': baseline_diagnostic if exe_build is not None else None,
         'historical_translation_units': 'open; C0C invariant bytes and module extent strongly evidenced',
         'whole_build_reconstruction_complete': False,
         'exe_closure': closure,

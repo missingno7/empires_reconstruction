@@ -127,7 +127,16 @@
       "owner_candidate": "F_4517 resource pointer table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "a72b2_ptrs",
+          "count": 40,
+          "element_bytes": 4,
+          "source_type": "char far *[40]"
+        }
+      ]
     },
     {
       "id": "F1D47_RESOURCE_POINTERS_BSS",
@@ -138,7 +147,30 @@
       "owner_candidate": "F_1D47 resource 20/21/22 pointers",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g7352_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 4,
+          "name": "g7356_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        },
+        {
+          "offset": 8,
+          "name": "g735a_ptr",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
+        }
+      ]
     },
     {
       "id": "F200F_RESOURCE_44_45_BSS",
@@ -222,7 +254,16 @@
       "owner_candidate": "F_4517 resource block copied by F_2AE2 redraw",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "s8c12_buffer",
+          "count": 1,
+          "element_bytes": 2770,
+          "source_type": "unsigned char[2770]"
+        }
+      ]
     },
     {
       "id": "G96_RESOURCE_STATE_BSS",
@@ -244,7 +285,16 @@
       "owner_candidate": "F_200F resource-18 buffer",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "g9990_buffer",
+          "count": 1,
+          "element_bytes": 66,
+          "source_type": "unsigned char[66]"
+        }
+      ]
     },
     {
       "id": "RESOURCE_STATE_99D2_BSS",
@@ -317,7 +367,16 @@
       "owner_candidate": "F_1D47 84-entry resource pointer table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gb07c_ptrs",
+          "count": 84,
+          "element_bytes": 4,
+          "source_type": "char far *[84]"
+        }
+      ]
     },
     {
       "id": "GB1CC_RESOURCE_BUFFER_BSS",
@@ -328,7 +387,16 @@
       "owner_candidate": "F_200F resource-17 buffer",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gb1cc_buffer",
+          "count": 1,
+          "element_bytes": 482,
+          "source_type": "unsigned char[482]"
+        }
+      ]
     },
     {
       "id": "GB3AE_WORKSPACE_BSS",
@@ -380,7 +448,16 @@
       "owner_candidate": "F_1D47 84-byte resource-24 table",
       "representation": "SYMBOLIC_ASM",
       "confidence": "COMPATIBLE_SOURCE_OWNER",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gbf66_table",
+          "count": 1,
+          "element_bytes": 84,
+          "source_type": "unsigned char[84]"
+        }
+      ]
     },
     {
       "id": "VIDEO_BOARD_STATE_BSS",

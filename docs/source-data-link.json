@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 21924,
+  "typed_bss_source_bytes": 25834,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1071,8 +1071,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "a72b2_ptrs",
+            "count": 40,
+            "element_bytes": 4,
+            "source_type": "char far *[40]"
+          }
+        ],
         "object_sha256": "ec66589c7ce072096dce2e6af461ef772e939ff314acd5216c49e4662650e427",
-        "source_sha256": "592bf5bda8f92607c73fedecae40978dfb39fb6416b530bb0435d8a91e409b98"
+        "source_sha256": "acd731c9f81d131749bbc3e7573f771c3cdb5b1cf4a0eb6e5ffe235bfc437a7d"
       },
       {
         "id": "F1D47_RESOURCE_POINTERS_BSS",
@@ -1083,8 +1092,31 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g7352_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 4,
+            "name": "g7356_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 8,
+            "name": "g735a_ptr",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          }
+        ],
         "object_sha256": "945679156701ccd1f38aae2d919f01c294e876372083fefb1a95fbcc07aa5d49",
-        "source_sha256": "1ec3f7002497c370b4ef598566e63221122034232f3da8e864c9c127ac42db51"
+        "source_sha256": "3c24fdf4993d86f2a3983261730020e3e8fdbb8a25d9c3524336cc978c83ce26"
       },
       {
         "id": "F200F_RESOURCE_44_45_BSS",
@@ -1173,8 +1205,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "s8c12_buffer",
+            "count": 1,
+            "element_bytes": 2770,
+            "source_type": "unsigned char[2770]"
+          }
+        ],
         "object_sha256": "78e8cccef5f8ae8c1ed0f9ee661fdaf894e5345150d37695160d10f6584b4eb8",
-        "source_sha256": "7a14eb80b963fe41efaa11eea862d0040a53f732e65baa73c153258ed4371fe2"
+        "source_sha256": "8091e2cd989f3b5301f4ad915007b2661d190030ea6a3631d9e09f7b072ced04"
       },
       {
         "id": "G96_RESOURCE_STATE_BSS",
@@ -1197,8 +1238,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g9990_buffer",
+            "count": 1,
+            "element_bytes": 66,
+            "source_type": "unsigned char[66]"
+          }
+        ],
         "object_sha256": "d82ae4321d528eecd98efc2306370574bbc1acbb9f051b3631d51a88fad956da",
-        "source_sha256": "6f794d048476f69b2becb96442229218741dca304441ed4acd0053b8d518d42d"
+        "source_sha256": "aa5e1eed7c9f356d7ef49496b37ca8e926b6f68765b33fc7f11142595bd1a1d0"
       },
       {
         "id": "RESOURCE_STATE_99D2_BSS",
@@ -1275,8 +1325,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gb07c_ptrs",
+            "count": 84,
+            "element_bytes": 4,
+            "source_type": "char far *[84]"
+          }
+        ],
         "object_sha256": "f73180a0b1312df3767f7da03d3566202f4fccbcbf2a4e6079238a1ed142d274",
-        "source_sha256": "ae90b13f62f3ee8a39d9e2f246279299c41e2fc290ae9fe19434db3949bb230a"
+        "source_sha256": "d9509f12cfba32131917eb4918b3c0a8eb63ef68f87025fd189064bac1049398"
       },
       {
         "id": "GB1CC_RESOURCE_BUFFER_BSS",
@@ -1287,8 +1346,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gb1cc_buffer",
+            "count": 1,
+            "element_bytes": 482,
+            "source_type": "unsigned char[482]"
+          }
+        ],
         "object_sha256": "901821acbd22399c08b1c7c0e1abe683b5f946b854efac886f37439894c8ea3d",
-        "source_sha256": "03bf26948740ae998cf15e567cda106f8743e21a0a82cd24e200819f8db557aa"
+        "source_sha256": "aea988b7da1e23c8e14696162c662b25588afccf247d5bc5c78154fb216a69e5"
       },
       {
         "id": "GB3AE_WORKSPACE_BSS",
@@ -1341,8 +1409,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "COMPATIBLE_SOURCE_OWNER",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gbf66_table",
+            "count": 1,
+            "element_bytes": 84,
+            "source_type": "unsigned char[84]"
+          }
+        ],
         "object_sha256": "af2f9519c7ff4c8176f7e61c8edf9aef61bda74d0353ce2c7ca603bafb12bace",
-        "source_sha256": "5728143119d22c4a486d8382331b20f8ba8528b2fe98dd9da71cf004e622ec10"
+        "source_sha256": "045d65398b100565359916657cabdd8980537c3bda667f9aafcd40d7d78f6081"
       },
       {
         "id": "VIDEO_BOARD_STATE_BSS",

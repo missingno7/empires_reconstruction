@@ -148,3 +148,11 @@ of a two-byte `DS:2FD2h` table entry; the latter two retain their ordinary
 external calls to the reconstructed handler entries. The complete structural
 link is byte-identical, including the two natural TASM fixups. This is a
 compatible source-module result based on shared table access and adjacency.
+
+## M_D818_D825
+
+`M_D818_D825` groups the adjacent 13-byte reset and 58-byte append operations
+for the initialized `DS:2F30h` packed record table. One symbolic TASM object
+preserves both entry offsets and the exact 71-byte no-fixup contribution; the
+full linked executable remains byte-identical. This is compatible module
+evidence from direct shared table ownership and adjacency.

@@ -168,6 +168,26 @@
         "module_segments": {}
       },
       "evidence": "Three contiguous helpers read signed high bytes from the DS:2FD2h state table. Fresh symbolic TASM preserves entry/end public offsets and the two canonical external call fixups."
+    },
+    {
+      "id": "M_D818_D825",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_D818_D825.ASM",
+      "start": 55832,
+      "end": 55903,
+      "members": [
+        "F_D818",
+        "F_D825"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fd818",
+        "span": 2,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Adjacent reset and five-byte packed-record append routines operate on the same DS:2F30h initialized record table. Fresh symbolic TASM emits both historical entry offsets in one exact 71-byte no-fixup contribution."
     }
   ]
 }

@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 328,
-    "reconstructed_shared_modules": 14,
+    "isolated_function_proof_units": 327,
+    "reconstructed_shared_modules": 15,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -342,6 +342,16 @@
         ],
         "start": 56535,
         "end": 56672
+      },
+      {
+        "id": "M_D818_D825",
+        "source": "asm/M_D818_D825.ASM",
+        "members": [
+          "F_D818",
+          "F_D825"
+        ],
+        "start": 55832,
+        "end": 55903
       }
     ],
     "active_structural_adapters": [

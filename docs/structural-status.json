@@ -234,16 +234,16 @@
     "raw_exe_fallback_bytes": 0,
     "source_quality": {
       "ASM_DB_CAPSULE": {
-        "bytes": 17262,
-        "owners": 29
+        "bytes": 16874,
+        "owners": 25
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
         "bytes": 2201,
         "owners": 23
       },
       "SYMBOLIC_ASM": {
-        "bytes": 5295,
-        "owners": 61
+        "bytes": 5683,
+        "owners": 65
       },
       "MECHANICAL_C": {
         "bytes": 34221,
@@ -257,7 +257,7 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 319,
+    "isolated_function_proof_units": 316,
     "reconstructed_shared_modules": 19,
     "structural_source_modules": [
       {
@@ -396,6 +396,18 @@
         ],
         "start": 21202,
         "end": 21514
+      },
+      {
+        "id": "M_C5D1_C706",
+        "source": "asm/M_C5D1_C706.ASM",
+        "members": [
+          "F_C5D1",
+          "F_C678",
+          "F_C6B9",
+          "F_C706"
+        ],
+        "start": 51153,
+        "end": 51541
       }
     ],
     "active_structural_adapters": [

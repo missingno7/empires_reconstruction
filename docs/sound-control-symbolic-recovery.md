@@ -1,20 +1,25 @@
-# Shared sound-control symbolic recovery constraint
+# M_C5D1_C706 symbolic sound-control module
 
-`C_C5D1_C706` is a 388-byte compatible shared Turbo C contribution containing
-`F_C5D1` (167 bytes), `F_C678` (65), `F_C6B9` (77), and `F_C706` (79). A
-promotion of one member invalidates the current compatible shared-C proof, so
-any symbolic replacement must reproduce the whole ordered contribution.
+`M_C5D1_C706` replaces the compatible shared-C proof candidate
+`C_C5D1_C706` in the canonical structural link. It is a 388-byte ordinary TASM
+contribution containing `F_C5D1` (167 bytes), `F_C678` (65), `F_C6B9` (77), and
+`F_C706` (79).
 
-The disassembly establishes a compact sound-control cluster:
+The recovered code forms a compact sound-control cluster:
 
-- `F_C5D1` dispatches a command byte, updates the SI-relative `17A4h..17ECh`
-  state, and calls the later three helpers.
-- `F_C678` controls the speaker gate or queues a per-voice value.
-- `F_C6B9` clears the speaker gate or dispatches a voice update.
-- `F_C706` writes the PIT channel or queues the frequency value.
+- `F_C5D1` decodes a command byte and updates the SI-relative
+  `17A4h..17ECh` state.
+- `F_C678` enables a voice through the speaker gate or alternate backend.
+- `F_C6B9` disables a voice or submits a reset.
+- `F_C706` writes, queues, or encodes a PIT frequency value.
 
-The canonical object has a 388-byte `_TEXT` extent and its public entry offsets
-are 0, 167, 232, and 309. The future symbolic source must retain this order,
-those offsets, all explicit DGROUP and call fixups, and exact whole-EXE output.
-It must be tested as a replacement for `C_C5D1_C706`, never as separate owner
-promotions.
+Fresh TASM emits the original `_TEXT` extent and public offsets 0, 167, 232,
+and 309. The source has no OMF FIXUPP records, matching the historical shared-C
+object: calls outside the contribution are deliberate same-segment relative
+expressions, while calls among the four recovered entries are ordinary symbolic
+local calls. The canonical `python tools/build_exe.py verify` link remains
+byte-identical, including all 106 relocations in historical order.
+
+This is compatible reconstructed-module evidence from contiguity, shared
+sound-control state, and direct local control flow. It does not assert the
+historical source filename.

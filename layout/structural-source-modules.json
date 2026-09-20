@@ -272,6 +272,28 @@
         "module_segments": {}
       },
       "evidence": "Adjacent display-adapter detection and VGA mode selection. The combined source preserves F_50D2 forward EXTRN placement and appends F_53BF as a second ordinary _TEXT contribution."
+    },
+    {
+      "id": "M_C5D1_C706",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_C5D1_C706.ASM",
+      "start": 51153,
+      "end": 51541,
+      "members": [
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_c5d1",
+        "span": 4,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "The contiguous command decode, speaker gate, voice-disable, and PIT-output entries use the same SI-relative 0x1766..0x17EC sound-control state. One fresh symbolic TASM object has the original public offsets 0, 167, 232, and 309, an exact 388-byte bound extent, and no OMF fixups."
     }
   ]
 }

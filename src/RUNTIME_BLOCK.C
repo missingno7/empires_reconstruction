@@ -672,7 +672,15 @@ void f039c()
     asm db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h
     asm db 000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h
     asm db 000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,00fh,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h,000h
-    asm db 000h,000h,000h,000h,055h,08bh,0ech,056h,057h,01eh,055h,0c4h,076h,008h,083h,0c6h,020h,026h,08bh,004h,083h,0c6h,002h,033h
+    asm db 000h,000h,000h,000h
+    /* F_03CC / copy: clipped source-rectangle copy primitive. */
+    asm runtime_copy_primitive:
+    asm push bp
+    asm mov bp,sp
+    asm db 056h,057h
+    asm push ds
+    asm push bp
+    asm db 0c4h,076h,008h,083h,0c6h,020h,026h,08bh,004h,083h,0c6h,002h,033h
     asm db 0d2h,08bh,0cah,08ah,0c8h,08ah,0d4h,08bh,07eh,006h,0a1h,096h,000h,02bh,0c7h,078h,046h,040h,03bh,0d0h,076h,002h,08bh,0d0h
     asm db 0a1h,094h,000h,02bh,0c7h,07eh,00ah,02bh,0d0h,076h,034h,003h,0f8h,0f6h,0e1h,003h,0f0h,08bh,05eh,004h,083h,07eh,00ch,000h
     asm db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h

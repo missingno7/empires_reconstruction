@@ -314,8 +314,11 @@ def run(verify=True):
               'oracle_copied_initialized_data_bytes': 0,
               'local_raw_source_bytes': sum(s['bytes'] for s in sources if s['format'] == 'raw-local'),
               'synthetic_bss_bytes': 0,
-              'typed_bss_source_bytes': sum(item['bytes'] for item in bss_objects
-                                            if item.get('typed_reserves')),
+              # Contributions can contain both named reserves and intentionally
+              # unclaimed bytes. Report the actual named reserve extent.
+              'typed_bss_source_bytes': sum(
+                  reserve['count'] * reserve['element_bytes']
+                  for item in bss_objects for reserve in item.get('typed_reserves', ())),
               'partitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects
                                                   if not item['aggregate_storage']),
               'unpartitioned_bss_source_bytes': sum(item['bytes'] for item in bss_objects

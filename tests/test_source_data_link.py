@@ -35,6 +35,18 @@ class SourceDataLinkTests(unittest.TestCase):
             bss_asm_source(8, {'INSIDE': 3},
                            [{'offset': 0, 'name': 'table', 'count': 1, 'element_bytes': 8}])
 
+    def test_typed_bss_extent_counts_reserves_not_contributions(self):
+        contributions = [
+            {'bytes': 10, 'typed_reserves': [
+                {'count': 2, 'element_bytes': 2},
+                {'count': 3, 'element_bytes': 1},
+            ]},
+            {'bytes': 20},
+        ]
+        typed = sum(reserve['count'] * reserve['element_bytes']
+                    for item in contributions for reserve in item.get('typed_reserves', ()))
+        self.assertEqual(typed, 7)
+
     def test_bss_slice_rebases_canonical_publics(self):
         layout = {'format': 'anchored-bss-layout-v1', 'length': 12,
                   'publics': {'START': 0, 'A': 2, 'B': 5, 'END': 11}}

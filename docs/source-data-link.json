@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 36186,
+  "typed_bss_source_bytes": 36879,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1728,8 +1728,129 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gbfba_current_board",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "unsigned int"
+          },
+          {
+            "offset": 2,
+            "name": "gbfbc_vram",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 6,
+            "name": "gbfc0_object_list",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 10,
+            "name": "gbfc4_object_cursor",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 14,
+            "name": "gbfc8_sprite_bank",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "unsigned char far *"
+          },
+          {
+            "offset": 18,
+            "name": "gbfcc_video_adapter",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 19,
+            "name": "gbfcd_display_mode",
+            "count": 1,
+            "element_bytes": 1,
+            "source_type": "unsigned char"
+          },
+          {
+            "offset": 52,
+            "name": "gbfee_resource_view_0",
+            "count": 1,
+            "element_bytes": 4,
+            "source_type": "char far *"
+          },
+          {
+            "offset": 56,
+            "name": "gbfee_resource_views_1_21",
+            "count": 21,
+            "element_bytes": 4,
+            "source_type": "char far *[21]"
+          },
+          {
+            "offset": 140,
+            "name": "gc046_dirty_x_min",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 142,
+            "name": "gc048_dirty_x_max",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 144,
+            "name": "gc04a_dirty_y_min",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 146,
+            "name": "gc04c_dirty_y_max",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 148,
+            "name": "gc04e_motion_index",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          },
+          {
+            "offset": 150,
+            "name": "gc050_motion_x",
+            "count": 24,
+            "element_bytes": 2,
+            "source_type": "int[24]"
+          },
+          {
+            "offset": 198,
+            "name": "gc080_motion_y",
+            "count": 24,
+            "element_bytes": 2,
+            "source_type": "int[24]"
+          },
+          {
+            "offset": 380,
+            "name": "gc136_ui_text",
+            "count": 2,
+            "element_bytes": 240,
+            "source_type": "char[2][240]"
+          }
+        ],
         "object_sha256": "c25e15c1771d92f2906ef25dbcc8b625d08f07cb08b5257bc7540af90010681e",
-        "source_sha256": "da39e80e7fea2323d80cef4a94d460611db086adc9b67ce8aab2f253c017f4d6"
+        "source_sha256": "5faefc43a1fb86952b47c231fbd0b6125a537c30b3bf4a843d2f46d5f05d3c03"
       },
       {
         "id": "SLOT_GRID_BSS",

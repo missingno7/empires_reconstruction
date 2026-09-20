@@ -9,6 +9,11 @@ from reconstruct import ROOT, read_json, write_json
 ASM_DB = re.compile(r'^\s*asm\s+db\b', re.IGNORECASE | re.MULTILINE)
 ASM = re.compile(r'^\s*asm\b', re.IGNORECASE | re.MULTILINE)
 RAW_ASM_DB = re.compile(r'^\s*db\b', re.IGNORECASE | re.MULTILINE)
+EXACT_NEAR_JUMP_MACRO = re.compile(
+    r'^\s*JMP_NEAR\s+macro\s+target\s*$\n'
+    r'^\s*db\s+0e9h\s*$\n'
+    r'^\s*dw\s+target-\$-2\s*$\n'
+    r'^\s*endm\s*$', re.IGNORECASE | re.MULTILINE)
 
 
 def classify_source(path):
@@ -22,7 +27,15 @@ def classify_source(path):
 
 
 def classify_asm_source(path):
-    return 'ASM_DB_CAPSULE' if RAW_ASM_DB.search(path.read_text(errors='strict')) else 'SYMBOLIC_ASM'
+    text = path.read_text(errors='strict')
+    # A single DB in this narrowly defined macro expresses an intentional
+    # symbolic near branch whose exact encoding TASM 1.0 otherwise changes to
+    # a short branch.  It is not an instruction-byte capsule: the target and
+    # displacement remain assembler-resolved symbols.  All other raw DB uses
+    # remain capsules until their instructions are recovered symbolically.
+    if EXACT_NEAR_JUMP_MACRO.search(text):
+        text = EXACT_NEAR_JUMP_MACRO.sub('', text)
+    return 'ASM_DB_CAPSULE' if RAW_ASM_DB.search(text) else 'SYMBOLIC_ASM'
 
 
 def structural_module_members():

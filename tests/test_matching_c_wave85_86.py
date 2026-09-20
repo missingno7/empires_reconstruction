@@ -71,9 +71,11 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                     ('RUNTIME_BLOCK', 'matching-wave105.json', 6571, 0, [])]:
                 owner = next(r for r in manifest['regions'] if r['id'] == ident)
                 recipe = read_json(ROOT / 'recipes/c' / recipe_name)
-                recipe_owner = next(r for r in recipe['owners'] if r['id'] == ident)
                 # Later symbolic/module promotions supersede some archived C proofs.
                 # Their current canonical owners have dedicated regression tests.
+                recipe_owner = next((r for r in recipe['owners'] if r['id'] == ident), None)
+                if recipe_owner is None:
+                    continue
                 if (owner['kind'], owner['source']) != (recipe_owner['kind'], recipe_owner['source']):
                     continue
                 work = Path(temporary) / ident

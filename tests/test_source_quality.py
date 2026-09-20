@@ -20,6 +20,9 @@ class SourceQualityTests(unittest.TestCase):
             self.assertEqual(classify_source(path), 'MECHANICAL_C')
             path.write_text('db 90h\n')
             self.assertEqual(classify_asm_source(path), 'ASM_DB_CAPSULE')
+            path.write_text('JMP_NEAR macro target\n    db 0e9h\n'
+                            '    dw target-$-2\nendm\n')
+            self.assertEqual(classify_asm_source(path), 'SYMBOLIC_ASM')
             path.write_text('nop\n')
             self.assertEqual(classify_asm_source(path), 'SYMBOLIC_ASM')
         finally:
@@ -29,7 +32,7 @@ class SourceQualityTests(unittest.TestCase):
         result = report(read_json(ROOT / 'layout/manifest.json'))
         matching = [item for item in result['levels'] if item['level'] != 'HISTORICAL_LIBRARY']
         self.assertEqual(sum(item['owners'] for item in matching), 347)
-        self.assertEqual(result['asm_db_source_files'], 7)
+        self.assertEqual(result['asm_db_source_files'], 6)
         self.assertGreater(result['asm_db_capsules'][0]['bytes'], 1000)
 
     def test_f4eeb_is_symbolic_tasm(self):
@@ -45,6 +48,13 @@ class SourceQualityTests(unittest.TestCase):
         self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
         self.assertEqual(set(owner['build']['bindings']),
                          {'_g1784', '_g1786', '_g177a', '_g17ac', '_f_c6b9'})
+
+    def test_f880a_is_symbolic_tasm(self):
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        owner = next(item for item in manifest['regions'] if item['id'] == 'F_880A')
+        self.assertEqual((owner['kind'], owner['source']),
+                         ('MATCHING_ASM', 'asm/F_880A.ASM'))
+        self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
 
 
 if __name__ == '__main__':

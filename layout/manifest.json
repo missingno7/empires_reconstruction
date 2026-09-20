@@ -9972,8 +9972,8 @@
     },
     {
       "id": "F_880A",
-      "kind": "MATCHING_C",
-      "source": "src/F_880A.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_880A.ASM",
       "start": 35338,
       "end": 35844,
       "expected_sha256": "3364f3b1f31421a9e6ed893e61e57cb766932e9a1571974baa599c60b9acd1bc",
@@ -9985,7 +9985,85 @@
         "public": "_f880a",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f6b74": {
+            "coordinate": "code_offset",
+            "owner": "F_6B74",
+            "public": "_f6b74",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f6990": {
+            "coordinate": "code_offset",
+            "owner": "F_6990",
+            "public": "_f6990",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f6b66": {
+            "coordinate": "code_offset",
+            "owner": "F_6B66",
+            "public": "_f6b66",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f703e": {
+            "coordinate": "code_offset",
+            "owner": "F_703E",
+            "public": "_f703e",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_fd593": {
+            "coordinate": "code_offset",
+            "owner": "F_D593",
+            "public": "_fd593",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f792c": {
+            "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f7925": {
+            "coordinate": "code_offset",
+            "owner": "F_7925",
+            "public": "_f7925",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f8480": {
+            "coordinate": "code_offset",
+            "owner": "F_8480",
+            "public": "_f8480",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "owner": "F_6B1A",
+            "public": "_f6b1a",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f8378": {
+            "coordinate": "code_offset",
+            "owner": "F_8378",
+            "public": "_f8378",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          },
+          "_f8414": {
+            "coordinate": "code_offset",
+            "owner": "F_8414",
+            "public": "_f8414",
+            "addend": 0,
+            "evidence": "F_880A symbolic direct near call"
+          }
+        },
         "module_segments": {}
       }
     },

@@ -1,10 +1,10 @@
 # Matching C waves 98–99
 
 The two non-returning state loops that previously lacked a compiler epilogue
-are now recovered as matching C. Their sources emit the exact loop bytes and
-publish a second OMF label at the verified extent boundary; the recipe binds
-the first public with `span: 1`, so compiler output after the label is outside
-the claimed component.
+are recovered with exact terminal boundaries. `F_7964` remains matching C;
+`F_880A` is now intentional symbolic TASM, with its calls and branch tables
+expressed as normal assembler relationships. Both publish a boundary label so
+the component ends without inventing a `RET`.
 
 | Owner | File extent | Bytes | Fixups | Loader relocations |
 |---|---:|---:|---:|---:|
@@ -12,5 +12,6 @@ the claimed component.
 | `F_880A` | 35338–35844 | 506 | 0 | none |
 
 This resolves the exact terminal-boundary uncertainty without adding an
-invented `RET`. Full EXE and DAT equality still pass; raw executable ownership
-is now 20,556 bytes.
+invented `RET`. The current structural EXE build remains byte-identical; the
+historical raw-ownership count in this wave receipt is retained only as
+chronology.

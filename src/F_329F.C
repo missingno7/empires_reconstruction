@@ -1,5 +1,5 @@
-struct REC3E8 { char b[0x3e8]; };
-extern struct REC3E8 g43b4[];
+#include "R3E8.H"
+extern struct record3e8 g43b4[];
 extern int gbfba;
 extern char far *gbfbc;
 extern char far *src, far *dst;               /* DS:C5CA -> DS:40C4 */

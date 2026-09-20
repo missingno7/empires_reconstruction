@@ -8,8 +8,8 @@ extern unsigned char g4374[];
 extern char g0b3ae[];
 extern int f1d47(), f1ec0(), f656c(), face7(), movmem(), setmem(), f4517();
 
-struct big { char pad[0x3e8]; };
-extern struct big g43b4[];
+#include "R3E8.H"
+extern struct record3e8 g43b4[];
 
 void f462e(void)
 {

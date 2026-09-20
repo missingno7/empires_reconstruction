@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 540,
+  "typed_bss_source_bytes": 10540,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1008,8 +1008,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "g43b4_records",
+            "count": 10,
+            "element_bytes": 1000,
+            "source_type": "struct record3e8[10]"
+          }
+        ],
         "object_sha256": "7d6f85179e0e56b1503694043096e49734ad7fd1d12d872877e12b17feb354c4",
-        "source_sha256": "e024c93176d305ff40870df1d421ae5dee5b6ae644319f50aaf289c72267087f"
+        "source_sha256": "0ae7bfd8d210e60673ca21b5f28ff7d021ab979e5ebbed755ee7f9f9b71fd50a"
       },
       {
         "id": "F200F_RESOURCE_BUFFER_BSS",

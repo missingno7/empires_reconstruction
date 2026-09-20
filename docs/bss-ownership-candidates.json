@@ -292,6 +292,21 @@
         "publics": ["_gca24"]
       },
       "limitation": "The exact allocation extent and a source-compatible owner are proven; the historical object boundary remains open."
+    },
+    {
+      "id": "G43B4_RECORD_TABLE_BSS",
+      "owner_candidate": "shared G43B4 ten-record table",
+      "start": 2738,
+      "end": 12738,
+      "alignment": "word",
+      "declarations": [{"symbol": "_g43b4", "source_type": "struct record3e8[10]", "record_size": 1000, "count": 10, "offset": 2738, "size": 10000}],
+      "references": ["F_329F and F_462E select g43b4[gbfba] as the current record", "F_338A indexes g43b4 entries with a 0x3e8 stride", "F_C0E0 selects record 1 during initialization"],
+      "evidence": ["src/F_329F.C and src/F_462E.C share include/R3E8.H", "all observed indexed accesses use a 0x3e8 (1000-byte) stride", "2738 + 10 * 1000 = 12738, the next independent BSS anchor"],
+      "confidence": "STRUCTURED_STORAGE_CANDIDATE",
+      "migration_status": "MIGRATED_AS_TYPED_SYMBOLIC_BSS_CONTRIBUTION",
+      "typed_emission": "One named uninitialized TASM reservation encodes struct record3e8[10] at _g43b4 without initialized LEDATA.",
+      "contribution": {"recipe": "recipes/data/bss-contributions.json", "object": "G43B4B.OBJ", "logical_start": 2738, "logical_end": 12738},
+      "limitation": "The table extent and compatible record stride are proven; its original translation-unit owner is open."
     }
   ]
 }

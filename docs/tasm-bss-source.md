@@ -12,8 +12,9 @@ Its first contribution is `F01CEBSS.OBJ`, a 34-byte symbolic owner containing
 `GAME_BSS`, `_cur_idx`, `_g3902`, and `_g3904`. `ROWPTRS.OBJ` owns the 1,952-byte
 row-pointer table initialized by `F_0281`; `RSTATEB.OBJ` owns the 16-byte shared
 command/render-state island at bytes 1,986–2,001; `G40D4B.OBJ` owns the 672-byte
-resource-25 workspace filled by `F_1D47`; and `C470BSS.OBJ` owns the
-ten recovered 27-byte records. Its canonical source recipe now emits named
+resource-25 workspace filled by `F_1D47`; `G43B4B.OBJ` owns ten recovered
+1,000-byte `struct record3e8` entries; and `C470BSS.OBJ` owns the ten recovered
+27-byte records. Its canonical source recipe now emits named
 uninitialized reservations for `struct c470_record[9]` and one final
 `struct c470_record`, split at the `_gc563` alias anchor. This preserves the
 record evidence without using TASM nested `DUP(?)`, which would incorrectly

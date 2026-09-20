@@ -7,16 +7,55 @@
   },
   "contiguous_source": {
     "description": "Two symbolic far calls at offsets 0 and 6 in one contiguous TASM source block.",
-    "fixupp_records": ["cc01060101cc07060102"],
-    "emission_order": [1, 7],
+    "fixupp_records": [
+      "cc01060101cc07060102"
+    ],
+    "emission_order": [
+      1,
+      7
+    ],
     "result": "ascending"
   },
   "ordered_org_source": {
     "description": "The far call at offset 6 is emitted first with ORG 6; the far call at offset 0 follows with ORG 0.",
-    "fixupp_records": ["cc01060102", "cc01060101"],
-    "emission_order": [7, 1],
+    "fixupp_records": [
+      "cc01060102",
+      "cc01060101"
+    ],
+    "emission_order": [
+      7,
+      1
+    ],
     "segment_bytes": "9a00000000909a00000000",
     "result": "descending FIXUPP record order with correct final segment bytes"
   },
-  "implication": "TASM 1.0 can naturally emit descending explicit FIXUPP records when source contributions are ordered by descending address. The arithmetic adapter can therefore be replaced by a symbolic assembly source that preserves F_DF98 byte layout while emitting its relocatable contribution sections in historical order. Whether that source arrangement is historical remains to be evidenced."
+  "implication": "TASM 1.0 can naturally emit descending explicit FIXUPP records when source contributions are ordered by descending address. The arithmetic adapter can therefore be replaced by a symbolic assembly source that preserves F_DF98 byte layout while emitting its relocatable contribution sections in historical order. Whether that source arrangement is historical remains to be evidenced.",
+  "turbo_c_inline_org": {
+    "description": "Turbo C 2.0 inline assembly first emits a far call at ORG 6, then resets to ORG 0 and emits a second far call.",
+    "externals": [
+      "FOO",
+      "BAR"
+    ],
+    "fixupp_records": [
+      "cc01060101",
+      "cc01060102"
+    ],
+    "emission_order": [
+      {
+        "target": "FOO",
+        "offset": 7
+      },
+      {
+        "target": "BAR",
+        "offset": 1
+      }
+    ],
+    "result": "Turbo C preserves inline-ASM contribution order in raw FIXUPP records; the high-offset call is recorded first."
+  },
+  "shared_arithmetic_constraint": {
+    "experiment": "The complete F_DDD9..F_DF98 C candidate placed F_DF98 high (+65h) and entry (+00h) contributions with inline ORG.",
+    "result": "The F_DDD9/F_DE7E/F_DEFA compiler FIXUPP record was emitted before both F_DF98 records, so the complete ten-site historical descending sequence still did not emerge.",
+    "required_property": "A replacement must emit both F_DF98 contributions before the preceding arithmetic C contributions while retaining public offsets 0000h, 00A5h, 0121h and 01BFh and a contiguous 700-byte _TEXT extent.",
+    "next_step": "Recover the complete arithmetic interval as a coherent symbolic/mixed module, or identify a historical source emission mechanism with this record topology. Do not retain the object rewrite as final architecture."
+  }
 }

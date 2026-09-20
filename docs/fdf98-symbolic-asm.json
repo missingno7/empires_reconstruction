@@ -13,12 +13,28 @@
     "text_bytes": 253,
     "text_sha256": "17e174407c46b7e80d3c7fc19fef2b30ec7c1ff3fc25fbde8e8e502c0d48e78b",
     "text_equal_to_current_arithmetic_module_slice": true,
-    "publics": [{"name": "_fdf98", "offset": 0}],
-    "fixups": [
-      {"offset": 102, "target": "LDIV@", "addend": 0},
-      {"offset": 24, "target": "LXMUL@", "addend": 0}
+    "publics": [
+      {
+        "name": "_fdf98",
+        "offset": 0
+      }
     ],
-    "fixupp16_records": ["cc01060102", "cc18060101"],
+    "fixups": [
+      {
+        "offset": 102,
+        "target": "LDIV@",
+        "addend": 0
+      },
+      {
+        "offset": 24,
+        "target": "LXMUL@",
+        "addend": 0
+      }
+    ],
+    "fixupp16_records": [
+      "cc01060102",
+      "cc18060101"
+    ],
     "fixupp_order": "descending by source contribution"
   },
   "mechanism": {
@@ -29,6 +45,6 @@
     "current_shared_module": "RELOC_F_DDD9_F_DF98",
     "current_text_bytes": 700,
     "reason_not_active": "Replacing only F_DF98 with a separate object would move its relocation records after the preceding 447-byte C contribution, changing the proven cross-function relocation sequence. A coherent source module must preserve the complete arithmetic interval's record topology.",
-    "next_step": "Recover the remaining arithmetic interval as a compatible module whose untouched OMF output preserves the full historical FIXUPP sequence."
+    "next_step": "A complete arithmetic interval must emit both F_DF98 contributions before the F_DDD9/F_DE7E/F_DEFA compiler FIXUPP record while retaining the four public offsets and a contiguous 700-byte _TEXT extent. Turbo C inline ORG preserves contribution order inside F_DF98 but cannot move that record ahead of the preceding C-function record."
   }
 }

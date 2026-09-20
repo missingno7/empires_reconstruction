@@ -61,8 +61,8 @@ FIXUPP-order adapter; TLINK then emits its ten relocations in historical order.
 The [source DATA link](source-data-link.md) now reproduces all initialized DATA bytes
 without copying them from AEPROG.EXE. It emits 106 correct relocations with no
 extras; the entire load image now matches. Canonical and source-link raw DATA
-are zero; the verified BSS reserve is not yet internally partitioned and
-historical module ownership remains open.
+are zero; the verified BSS reserve is fully partitioned into source
+contributions, while historical module ownership remains open.
 
 The [runtime DATA tail](runtime-data-tail.md) is now verified against pinned
 CC.LIB modules and the real linked output: ten contributions, 420 source bytes

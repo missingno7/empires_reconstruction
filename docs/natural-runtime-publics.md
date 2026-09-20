@@ -27,6 +27,5 @@ the fresh compiler/TASM output. The prior PUBDEF injection path is therefore
 inactive for every object.
 
 This closes the forced symbol-adapter frontier. Remaining structural shortcuts
-are object/module grouping, the unpartitioned BSS/public source, candidate
+are object/module grouping, historical BSS/public source ownership, candidate
 DATA/code interleaving, and the narrow arithmetic FIXUPP ordering adapter.
-

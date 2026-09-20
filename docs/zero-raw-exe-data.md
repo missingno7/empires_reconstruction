@@ -20,4 +20,4 @@ DATA report records zero `raw-local` bytes.
 This closes opaque EXE byte ownership. It does not establish historical C
 declarations or translation-unit boundaries. Recovered aliases, case mapping,
 injected publics, candidate object interleaving, the arithmetic FIXUPP-order
-adapter, and unpartitioned BSS remain separate structural work.
+adapter, and historical BSS module ownership remain separate structural work.

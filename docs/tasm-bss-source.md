@@ -16,8 +16,8 @@ resource-25 workspace filled by `F_1D47`; and `C470BSS.OBJ` owns the
 ten recovered 27-byte records. `SLOTBSS.OBJ`, `ANIMBSS.OBJ`, `GC360BSS.OBJ`,
 `FLAGSBS.OBJ`, `OCTAVES.OBJ`, `NOTEIDX.OBJ`, and `VOICEPTR.OBJ` add other
 bounded state, including the 44-byte eleven-entry far-pointer table initialized
-by `F_DEFA`. Seven `GAMEBSS` fragments hold the remaining 33,726-byte anchored
-reserve. The plan must cover the full logical reserve, and
+by `F_DEFA`. Additional named source contributions cover every remaining
+interval of the reserve. The plan must cover the full logical reserve, and
 its rebased labels must equal the canonical map before the link begins. None of the objects contributes
 load-image payload. The
 staged source timestamp is fixed because TASM records it in an OMF comment; the
@@ -26,6 +26,6 @@ full historical-linker output remains byte-identical.
 This removes the synthetic DGROUP/BSS object from the exact path. It does not
 prove the historical translation-unit boundary of either object. The canonical
 anchor map and ordered contributions are checked against linker-binding
-evidence on every structural link, but 33,726 bytes remain aggregate storage.
-Those are the next ownership constraints rather than reasons to retain a
-synthetic object.
+evidence on every structural link. There is no aggregate storage remainder;
+the remaining question is whether these compatible source contributions match
+the historical translation units that originally allocated them.

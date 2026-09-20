@@ -29,12 +29,13 @@ rewrites are applied by the structural link.
 
 The copied DATA adapter and synthetic DGROUP object are eliminated in this
 experiment. A generated, canonical [Turbo Assembler BSS module](tasm-bss-source.md)
-declares ordered symbolic storage for the 34-byte prefix, the 1,952-byte
-`F_0281` row-pointer table, bounded render/record/animation state, paired
-96-byte note tables, and the 44-byte eleven-entry far-pointer table initialized
-by `F_DEFA`; the 672-byte resource-25 workspace filled by `F_1D47` is also
-source-owned; 33,726 bytes remain anchored aggregate storage covering the
-verified reserve and its currently recovered public map. Independent runtime fixups verify its boundary;
+declares ordered symbolic storage for all 37,250 game BSS bytes, including the
+34-byte prefix, the 1,952-byte `F_0281` row-pointer table, bounded
+render/record/animation state, paired 96-byte note tables, the 44-byte
+eleven-entry far-pointer table initialized by `F_DEFA`, and the 672-byte
+resource-25 workspace filled by `F_1D47`. The contribution plan has no
+aggregate reserve, while the historical translation-unit owner of many
+contributions remains unproven. Independent runtime fixups verify its boundary;
 [boundary evidence](bss-boundary.md)
 explains why the previous stack-rounded estimate was two bytes high. Local
 all game DATA sources are canonical structured or compiled components, with
@@ -43,5 +44,6 @@ generation.
 
 The baseline fixed build and baseline aggregate-scaffold link remain intact.
 This experiment is not yet integrated with the optional shared compiler-module
-experiment. Historical module boundaries, raw record formats, internal BSS ownership,
-historical symbol ownership, MZ relocation fields and relocation order are still open.
+experiment. Historical module boundaries, historical BSS translation-unit
+ownership, raw record formats, MZ relocation fields and relocation order are
+still open.

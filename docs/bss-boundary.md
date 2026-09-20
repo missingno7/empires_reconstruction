@@ -21,12 +21,14 @@ constraints give 37,250 game BSS bytes plus 68 pinned runtime BSS bytes.
 load address. The source link generates a real TASM `_BSS` contribution with
 the recovered public map; TLINK places it, the runtime contributions, BSSEND
 and stack. The verifier uses original bytes only to check the evidence.
-Internal game BSS allocation and historical module ownership remain unresolved,
-but the exact link no longer uses a synthetic DGROUP OMF object.
+The complete game BSS range is now partitioned into ordered source
+contributions with no aggregate reserve. Historical module ownership of those
+contributions remains unresolved, but the exact link no longer uses a synthetic
+DGROUP OMF object.
 
 The complete structural experiment now produces the original 79,154-byte EXE
 with SHA-256
 `1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10`.
-Raw source reconstruction, internal BSS partitioning and elimination of the
-remaining symbol/module adapters are still required before claiming the
-historical build recovered.
+Historical translation-unit recovery and elimination of the remaining
+ordering/module adapters are still required before claiming the historical
+build recovered.

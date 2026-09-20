@@ -21,6 +21,41 @@
         "module_segments": {}
       },
       "evidence": "F_6D86 ends at 0x6DC5; the seven following zero bytes are CS-addressed decoder state, and F_6DCC begins at 0x6DCC. One fresh TASM object has exact bound bytes and both entry publics."
+    },
+    {
+      "id": "M_6B1A_6B4A",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_6B1A_6B4A.ASM",
+      "start": 27930,
+      "end": 28006,
+      "members": [
+        "F_6B1A",
+        "F_6B4A"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f6b1a",
+        "span": 2,
+        "flags_append": "",
+        "bindings": {
+          "_f792c": {
+            "coordinate": "code_offset",
+            "owner": "F_792C",
+            "public": "_f792c",
+            "addend": 0,
+            "evidence": "functions/F_792C.entry"
+          },
+          "_f7964": {
+            "coordinate": "code_offset",
+            "owner": "F_7964",
+            "public": "_f7964",
+            "addend": 0,
+            "evidence": "functions/F_7964.entry"
+          }
+        },
+        "module_segments": {}
+      },
+      "evidence": "Adjacent BIOS INT 16h block/poll helpers have compatible TASM topology. One fresh object emits their two entries at offsets 0 and 48 with both call fixups bound to canonical reconstructed publics."
     }
   ]
 }

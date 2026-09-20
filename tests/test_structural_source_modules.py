@@ -18,17 +18,26 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_6D86', 'PAD_006FC5', 'F_6DCC'])
         self.assertEqual(module['end'] - module['start'], 377)
 
+    def test_keyboard_module_has_contiguous_manifest_ownership(self):
+        manifest = read_json(ROOT / 'layout/manifest.json')
+        modules = structural_source_modules(ROOT, manifest)
+        module = next(item for item in modules if item['id'] == 'M_6B1A_6B4A')
+        self.assertEqual(module['members'], ['F_6B1A', 'F_6B4A'])
+        self.assertEqual(module['end'] - module['start'], 76)
+
     def test_latest_structural_link_stages_one_untouched_decoder_object(self):
         path = ROOT / 'build/tlink-structural-report.json'
         if not path.exists():
             self.skipTest('structural TLINK experiment has not run')
         report = read_json(path)
-        entry = next(item for item in report['relocatable_scaffold']
-                     if item.get('owner') == 'M_6D86_6DCC')
-        self.assertEqual(entry['owned_text_length'], 377)
-        self.assertNotIn('transforms', entry)
-        self.assertIn('M_6D86_6DCC',
-                      [item['id'] for item in report['structural_source_modules']])
+        expected = {'M_6D86_6DCC': 377, 'M_6B1A_6B4A': 76}
+        staged = {item['owner']: item for item in report['relocatable_scaffold']
+                  if item.get('owner') in expected}
+        self.assertEqual(set(staged), set(expected))
+        for owner, length in expected.items():
+            self.assertEqual(staged[owner]['owned_text_length'], length)
+            self.assertNotIn('transforms', staged[owner])
+        self.assertEqual({item['id'] for item in report['structural_source_modules']}, set(expected))
 
 
 if __name__ == '__main__':

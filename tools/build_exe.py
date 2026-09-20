@@ -18,6 +18,7 @@ from probe_source_data_link import run as link_source_data
 from probe_tlink_layout import run as build_baseline
 from mz import MZ
 from reconstruct import ROOT, read_json, write_json
+from report_source_quality import run as report_source_quality
 from report_structural_status import status as structural_status
 from dos_runner import resolve_runner
 
@@ -165,6 +166,7 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None):
         'verification': verification,
     }
     write_json(root / 'build/exe-build-report.json', report)
+    report_source_quality()
     # The status file is a derived view of this canonical build receipt.  Keep
     # the fixed-layout baseline visible for diagnosis, but publish the exact
     # linked result and source-quality/BSS closure metrics as the current state.

@@ -238,12 +238,12 @@
         "owners": 33
       },
       "C_WITH_SYMBOLIC_INLINE_ASM": {
-        "bytes": 2253,
-        "owners": 26
+        "bytes": 2225,
+        "owners": 25
       },
       "SYMBOLIC_ASM": {
-        "bytes": 4826,
-        "owners": 54
+        "bytes": 4854,
+        "owners": 55
       },
       "MECHANICAL_C": {
         "bytes": 34221,
@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 346,
-    "reconstructed_shared_modules": 8,
+    "isolated_function_proof_units": 345,
+    "reconstructed_shared_modules": 9,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -270,6 +270,16 @@
         ],
         "start": 28550,
         "end": 28927
+      },
+      {
+        "id": "M_6B1A_6B4A",
+        "source": "asm/M_6B1A_6B4A.ASM",
+        "members": [
+          "F_6B1A",
+          "F_6B4A"
+        ],
+        "start": 27930,
+        "end": 28006
       }
     ],
     "active_structural_adapters": [

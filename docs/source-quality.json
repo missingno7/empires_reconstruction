@@ -10,15 +10,15 @@
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-      "bytes": 2253,
-      "owners": 26,
-      "sources": 26
+      "bytes": 2225,
+      "owners": 25,
+      "sources": 25
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 4826,
-      "owners": 54,
-      "sources": 54
+      "bytes": 4854,
+      "owners": 55,
+      "sources": 55
     },
     {
       "level": "MECHANICAL_C",
@@ -211,6 +211,15 @@
         "F_6DCC"
       ],
       "bytes": 377
+    },
+    {
+      "id": "M_6B1A_6B4A",
+      "source": "asm/M_6B1A_6B4A.ASM",
+      "members": [
+        "F_6B1A",
+        "F_6B4A"
+      ],
+      "bytes": 76
     }
   ],
   "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."

@@ -82,3 +82,13 @@ padding object, while preserving every downstream address and the complete
 byte-identical executable. This is strong compatible-module evidence from code
 adjacency and direct CS-state references; it does not claim the historical
 source filename.
+
+## M_6B1A_6B4A
+
+The adjacent `F_6B1A` and `F_6B4A` BIOS INT 16h helpers are now one compatible
+76-byte symbolic TASM source module. The first routine blocks and dispatches
+F1–F10 through the recovered helper calls; the second tests for an available
+key without consuming it. `asm/M_6B1A_6B4A.ASM` emits their entry publics at
+offsets 0 and 48 and retains both canonical call fixups. The structural link
+uses this untouched ordinary object, reducing another pair of fragment-level
+proof objects without asserting an original filename or source boundary.

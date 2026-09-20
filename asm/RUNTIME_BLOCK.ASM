@@ -1015,9 +1015,32 @@ rb_145c:
     db 056h,057h
     push ds
     push bp
-    db 0c4h,076h,008h,083h,0c6h,020h,026h,08bh,004h,083h,0c6h,002h,033h
-    db 0d2h,08bh,0cah,08ah,0c8h,08ah,0d4h,08bh,07eh,006h,0a1h,096h,000h,02bh,0c7h,078h,046h,040h,03bh,0d0h,076h,002h,08bh,0d0h
-    db 0a1h,094h,000h,02bh,0c7h,07eh,00ah,02bh,0d0h,076h,034h,003h,0f8h,0f6h,0e1h,003h,0f0h,08bh,05eh,004h,083h,07eh,00ch,000h
+    les si,dword ptr [bp+8]
+    add si,20h
+    mov ax,word ptr es:[si]
+    add si,2
+    xor dx,dx
+    mov cx,dx
+    mov cl,al
+    mov dl,ah
+    mov di,[bp+6]
+    mov ax,word ptr ds:[96h]
+    sub ax,di
+    js $+48h
+    inc ax
+    cmp dx,ax
+    jbe $+4
+    mov dx,ax
+    mov ax,word ptr ds:[94h]
+    sub ax,di
+    jle $+0ch
+    sub dx,ax
+    jbe $+36h
+    add di,ax
+    mul cl
+    add si,ax
+    mov bx,[bp+4]
+    cmp word ptr [bp+0ch],0
     db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h
     sub bp,ax
     mov cx,ax

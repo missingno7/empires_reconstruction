@@ -13752,8 +13752,8 @@
     },
     {
       "id": "F_B7F9",
-      "kind": "MATCHING_C",
-      "source": "src/F_B7F9.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/F_B7F9.ASM",
       "start": 47609,
       "end": 47975,
       "expected_sha256": "3e25a2af8d02916a744e1f7af69a658260b4ef49a9a8e0971156edf9d2a186b2",
@@ -13767,7 +13767,8 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
-      }
+      },
+      "change": "Recover the complete board/control state setup and workspace fill sequence as symbolic TASM; exact source has no OMF fixups."
     },
     {
       "id": "F_B967",

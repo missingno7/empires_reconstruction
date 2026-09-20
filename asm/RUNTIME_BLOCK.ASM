@@ -428,7 +428,7 @@ _f039c label near
     db 057h
     cld
     ; Numeric absolute memory requires an explicit segment in TASM; see ABSOLUTE_MEMORY.
-    db 0a1h,0c8h,040h
+    mov ax,word ptr ds:[40c8h]
     mov cx,[bp+8]
     mov bx,[bp+6]
     shl bx,1
@@ -467,7 +467,7 @@ _f039c label near
     mov bp,sp
     db 057h
     cld
-    db 0a1h,0c8h,040h
+    mov ax,word ptr ds:[40c8h]
     mov cx,[bp+8]
     mov bx,[bp+6]
     shl bx,1
@@ -495,7 +495,8 @@ _f039c label near
     runtime_clear_primitive:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     cld
     mov ax,word ptr ds:[40c8h]
     ; SI supplies the 160-byte planar stride; raw bytes remain tracked.
@@ -524,10 +525,11 @@ _f039c label near
     runtime_f03ab:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     cld
     mov dx,[bp+0ah]
-    db 0beh,0a0h,000h
+    mov si,0a0h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
@@ -540,7 +542,8 @@ _f039c label near
     runtime_f03ae:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov ax,[bp+4]
@@ -578,7 +581,8 @@ _f039c label near
     runtime_f03b1:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov ax,[bp+4]
@@ -981,7 +985,7 @@ _f039c label near
     push ds
     cld
     ; Far state base at C0E0h, with the historical no-fixup encoding.
-    db 0a1h,0e0h,0c0h
+    mov ax,word ptr ds:[0c0e0h]
     mov es,ax
     mov bx,[bp+8]
     mov di, word ptr ds:[0c0e4h]
@@ -1160,7 +1164,7 @@ rb_145c:
     mov dh,dl
     and dx,0f00fh
     ; Source and destination descriptors are both indexed by plane.
-    db 0c4h,076h,008h
+    les si,dword ptr [bp+8]
     mov bx,[bp+6]
     shl bx,1
     shl bx,1

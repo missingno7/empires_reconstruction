@@ -1,0 +1,374 @@
+{
+  "format": "empires-symbolic-asm-call-inventory-v1",
+  "owner": "F_B99F",
+  "source_candidate": "asm/F_B99F.ASM",
+  "status": "CALL_TOPOLOGY_RECOVERED",
+  "text_bytes": 1857,
+  "omf_fixups": 0,
+  "calls": [
+    {
+      "offset": 90,
+      "target_load_offset": 62280,
+      "target_owner": "LIB_MOVMEM",
+      "target_public": null
+    },
+    {
+      "offset": 137,
+      "target_load_offset": 27735,
+      "target_owner": "F_6C57",
+      "target_public": "_f6c57"
+    },
+    {
+      "offset": 258,
+      "target_load_offset": 44263,
+      "target_owner": "F_ACE7",
+      "target_public": "_face7"
+    },
+    {
+      "offset": 265,
+      "target_load_offset": 47097,
+      "target_owner": "F_B7F9",
+      "target_public": "_fb7f9"
+    },
+    {
+      "offset": 276,
+      "target_load_offset": 44495,
+      "target_owner": "F_ADCF",
+      "target_public": "_fadcf"
+    },
+    {
+      "offset": 305,
+      "target_load_offset": 34505,
+      "target_owner": "F_86C9",
+      "target_public": "_f86c9"
+    },
+    {
+      "offset": 319,
+      "target_load_offset": 63883,
+      "target_owner": "LIB_SETJMP",
+      "target_public": null
+    },
+    {
+      "offset": 325,
+      "target_load_offset": 27466,
+      "target_owner": "F_6B4A",
+      "target_public": "_f6b4a"
+    },
+    {
+      "offset": 338,
+      "target_load_offset": 27418,
+      "target_owner": "F_6B1A",
+      "target_public": "_f6b1a"
+    },
+    {
+      "offset": 350,
+      "target_load_offset": 29309,
+      "target_owner": "F_727D",
+      "target_public": "_f727d"
+    },
+    {
+      "offset": 361,
+      "target_load_offset": 52778,
+      "target_owner": "F_CE2A",
+      "target_public": "_fce2a"
+    },
+    {
+      "offset": 382,
+      "target_load_offset": 8881,
+      "target_owner": "F_22B1",
+      "target_public": "_f22b1"
+    },
+    {
+      "offset": 385,
+      "target_load_offset": 20127,
+      "target_owner": "F_4E9F",
+      "target_public": "_f4e9f"
+    },
+    {
+      "offset": 395,
+      "target_load_offset": 24216,
+      "target_owner": "F_5E98",
+      "target_public": "_f5e98"
+    },
+    {
+      "offset": 430,
+      "target_load_offset": 8081,
+      "target_owner": "F_1F91",
+      "target_public": "_f1f91"
+    },
+    {
+      "offset": 527,
+      "target_load_offset": 62280,
+      "target_owner": "LIB_MOVMEM",
+      "target_public": null
+    },
+    {
+      "offset": 539,
+      "target_load_offset": 46962,
+      "target_owner": "F_B772",
+      "target_public": "_fb772"
+    },
+    {
+      "offset": 574,
+      "target_load_offset": 8081,
+      "target_owner": "F_1F91",
+      "target_public": "_f1f91"
+    },
+    {
+      "offset": 671,
+      "target_load_offset": 62280,
+      "target_owner": "LIB_MOVMEM",
+      "target_public": null
+    },
+    {
+      "offset": 683,
+      "target_load_offset": 46962,
+      "target_owner": "F_B772",
+      "target_public": "_fb772"
+    },
+    {
+      "offset": 709,
+      "target_load_offset": 7959,
+      "target_owner": "F_1F17",
+      "target_public": "_f1f17"
+    },
+    {
+      "offset": 795,
+      "target_load_offset": 7959,
+      "target_owner": "F_1F17",
+      "target_public": "_f1f17"
+    },
+    {
+      "offset": 863,
+      "target_load_offset": 7959,
+      "target_owner": "F_1F17",
+      "target_public": "_f1f17"
+    },
+    {
+      "offset": 926,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 939,
+      "target_load_offset": 29303,
+      "target_owner": "F_7277",
+      "target_public": "_f7277"
+    },
+    {
+      "offset": 963,
+      "target_load_offset": 7959,
+      "target_owner": "F_1F17",
+      "target_public": "_f1f17"
+    },
+    {
+      "offset": 978,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1050,
+      "target_load_offset": 7959,
+      "target_owner": "F_1F17",
+      "target_public": "_f1f17"
+    },
+    {
+      "offset": 1098,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1157,
+      "target_load_offset": 47463,
+      "target_owner": "F_B967",
+      "target_public": "_fb967"
+    },
+    {
+      "offset": 1178,
+      "target_load_offset": 29303,
+      "target_owner": "F_7277",
+      "target_public": "_f7277"
+    },
+    {
+      "offset": 1201,
+      "target_load_offset": 29459,
+      "target_owner": "F_7313",
+      "target_public": "_f7313"
+    },
+    {
+      "offset": 1224,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1234,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1251,
+      "target_load_offset": 23099,
+      "target_owner": "F_5A3B",
+      "target_public": "_f5a3b"
+    },
+    {
+      "offset": 1258,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1268,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1285,
+      "target_load_offset": 19212,
+      "target_owner": "F_4B0C",
+      "target_public": "_f4b0c"
+    },
+    {
+      "offset": 1343,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1432,
+      "target_load_offset": 23235,
+      "target_owner": "F_5AC3",
+      "target_public": "_f5ac3"
+    },
+    {
+      "offset": 1474,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1521,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1553,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1595,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1640,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1655,
+      "target_load_offset": 51953,
+      "target_owner": "F_CAF1",
+      "target_public": "_fcaf1"
+    },
+    {
+      "offset": 1659,
+      "target_load_offset": 7885,
+      "target_owner": "F_1ECD",
+      "target_public": "_f1ecd"
+    },
+    {
+      "offset": 1672,
+      "target_load_offset": 29518,
+      "target_owner": "F_734E",
+      "target_public": "_f734e"
+    },
+    {
+      "offset": 1680,
+      "target_load_offset": 14726,
+      "target_owner": "F_3986",
+      "target_public": "_f3986"
+    },
+    {
+      "offset": 1731,
+      "target_load_offset": 972,
+      "target_owner": "RUNTIME_BLOCK",
+      "target_public": "_f039c"
+    },
+    {
+      "offset": 1790,
+      "target_load_offset": 44263,
+      "target_owner": "F_ACE7",
+      "target_public": "_face7"
+    },
+    {
+      "offset": 1797,
+      "target_load_offset": 7885,
+      "target_owner": "F_1ECD",
+      "target_public": "_f1ecd"
+    },
+    {
+      "offset": 1804,
+      "target_load_offset": 54777,
+      "target_owner": "F_D5F9",
+      "target_public": "_fd5f9"
+    },
+    {
+      "offset": 1831,
+      "target_load_offset": 7885,
+      "target_owner": "F_1ECD",
+      "target_public": "_f1ecd"
+    },
+    {
+      "offset": 1834,
+      "target_load_offset": 27759,
+      "target_owner": "F_6C6F",
+      "target_public": "_f6c6f"
+    }
+  ],
+  "target_counts": {
+    "F_1ECD": 3,
+    "F_1F17": 5,
+    "F_1F91": 2,
+    "F_22B1": 1,
+    "F_3986": 1,
+    "F_4B0C": 1,
+    "F_4E9F": 1,
+    "F_5A3B": 1,
+    "F_5AC3": 1,
+    "F_5E98": 1,
+    "F_6B1A": 1,
+    "F_6B4A": 1,
+    "F_6C57": 1,
+    "F_6C6F": 1,
+    "F_7277": 2,
+    "F_727D": 1,
+    "F_7313": 1,
+    "F_734E": 1,
+    "F_86C9": 1,
+    "F_ACE7": 2,
+    "F_ADCF": 1,
+    "F_B772": 2,
+    "F_B7F9": 1,
+    "F_B967": 1,
+    "F_CAF1": 8,
+    "F_CE2A": 1,
+    "F_D5F9": 1,
+    "LIB_MOVMEM": 3,
+    "LIB_SETJMP": 1,
+    "RUNTIME_BLOCK": 7
+  },
+  "conclusion": "All 55 direct calls have recovered destination owners. The eventual symbolic TASM source must retain them as same-segment local relations, because the current exact contribution has no EXTDEF/FIXUPP records.",
+  "limitation": "Control-flow labels and data-reference declarations remain to be recovered before canonical promotion."
+}

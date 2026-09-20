@@ -763,7 +763,15 @@ void f039c()
     asm xor bx,bx
     asm mov cx,bx
     asm db 026h,08ah,01ch
-    asm db 046h,0c7h,046h,0feh,0a0h,000h,029h,05eh,0feh,0d1h,0e3h,0d1h,0e3h,026h,08ah,00ch,046h,04fh,053h,02ah,0e4h,026h,08ah,004h
+    asm db 046h
+    asm mov word ptr [bp-2],0a0h
+    asm sub [bp-2],bx
+    asm shl bx,1
+    asm shl bx,1
+    asm db 026h,08ah,00ch,046h,04fh
+    asm push bx
+    asm sub ah,ah
+    asm db 026h,08ah,004h
     asm db 046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h,080h,0e4h,002h,02eh,0ffh,0a7h,00ch,019h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh
     asm db 008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h
     asm db 005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h

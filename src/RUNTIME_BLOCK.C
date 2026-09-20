@@ -87,8 +87,14 @@ void f039c()
     asm db 011h,0fdh,0fch,0fch,0e7h,0fch,0d2h,0fch,0bdh,0fch,0a8h,0fch,093h,0fch,07eh,0fch,069h,0fch,054h,0fch,03fh,0fch,02ah,0fch
     asm db 015h,0fch,000h,0fch,0ebh,0fbh,0d6h,0fbh,0c1h,0fbh,0ach,0fbh,097h,0fbh,082h,0fbh,06dh,0fbh,058h,0fbh,043h,0fbh,02eh,0fbh
     asm db 019h,0fbh,004h,0fbh,0efh,0fah,0dah,0fah,0c5h,0fah,0b0h,0fah,09bh,0fah,086h,0fah,071h,0fah,05ch,0fah,047h,0fah,032h,0fah
-    asm db 01dh,0fah,008h,0fah,0f3h,0f9h,0deh,0f9h,0c9h,0f9h,0b4h,0f9h,09fh,0f9h,08ah,0f9h,075h,0f9h,060h,0f9h,032h,0ffh,08ah,01eh
-    asm db 0cdh,0bfh,0d1h,0e3h,02eh,0ffh,0a7h,0d8h,003h,055h,08bh,0ech,056h,057h,01eh,0fch,0b8h,00eh,000h,0cdh,010h,0b4h,005h,0b0h
+    asm db 01dh,0fah,008h,0fah,0f3h,0f9h,0deh,0f9h,0c9h,0f9h,0b4h,0f9h,09fh,0f9h,08ah,0f9h,075h,0f9h,060h,0f9h
+    asm runtime_dispatch:
+    asm xor bh,bh
+    /* mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding). */
+    asm db 08ah,01eh,0cdh,0bfh
+    asm shl bx,1
+    asm jmp word ptr cs:[bx+3d8h]
+    asm db 055h,08bh,0ech,056h,057h,01eh,0fch,0b8h,00eh,000h,0cdh,010h,0b4h,005h,0b0h
     asm db 001h,0cdh,010h,0b8h,000h,010h,0bbh,001h,000h,0cdh,010h,0b8h,000h,010h,0bbh,000h,001h,0cdh,010h,0b8h,000h,010h,0bbh,00eh
     asm db 017h,0cdh,010h,0b8h,000h,010h,0bbh,00fh,016h,0cdh,010h,0bah,0ceh,003h,0b0h,005h,0eeh,042h,0b0h,002h,0eeh,0bah,0c4h,003h
     asm db 0b0h,002h,0eeh,042h,0b0h,00fh,0eeh,0b8h,000h,0a0h,08eh,0c0h,033h,0dbh,08bh,0cbh,08bh,0f3h,0bdh,000h,010h,0bah,0ceh,003h

@@ -214,8 +214,20 @@ void f039c()
     asm push es
     asm mov ax,0a000h
     asm mov es,ax
-    asm db 081h,0c7h,000h,040h,0bdh,050h,000h,02bh,0ebh,0bah,0a0h,000h,0d1h,0e3h,02bh,0d3h,02eh,08bh,087h,0ech,003h,02eh,0a3h,05fh
-    asm db 00bh,005h,061h,00bh,01fh,0ffh,0e0h,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh
+    /* Address the selected planar page and enter its unrolled blit tail. */
+    asm db 081h,0c7h,000h,040h
+    asm mov bp,50h
+    asm sub bp,bx
+    asm mov dx,0a0h
+    asm shl bx,1
+    asm sub dx,bx
+    asm mov ax,cs:[bx+3ech]
+    /* TASM 1.0 needs the historical absolute CS-store spelling preserved. */
+    asm db 02eh,0a3h,05fh,00bh
+    asm add ax,0b61h
+    asm pop ds
+    asm jmp ax
+    asm db 0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh
     asm db 0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh
     asm db 026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh
     asm db 0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h,0aah,0adh,08bh,0d8h,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,0d1h,0ebh,026h,08ah,027h

@@ -472,10 +472,25 @@ _f039c label near
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
-    db 08bh,05eh,004h,0d1h,0ebh,072h,006h,024h,0f0h,0b2h
-    db 00fh,0ebh,004h,024h,00fh,0b2h,0f0h,003h,0fbh,0bbh,0a0h,000h,026h,020h,015h,026h,008h,005h,003h,0fbh,0e2h,0f6h,05fh,05dh
-    db 0c3h
+    les di,dword ptr [bx+3924h]
+    mov bx,[bp+4]
+    shr bx,1
+    jb $+8
+    and al,0f0h
+    mov dl,0fh
+    jmp $+6
+    and al,0fh
+    mov dl,0f0h
+    add di,bx
+    mov bx,0a0h
+    runtime_f03a5_loop:
+    and byte ptr es:[di],dl
+    or byte ptr es:[di],al
+    add di,bx
+    loop runtime_f03a5_loop
+    pop di
+    pop bp
+    ret
     ; F_03A8 / clear: planar clear primitive.
     runtime_clear_primitive:
     push bp

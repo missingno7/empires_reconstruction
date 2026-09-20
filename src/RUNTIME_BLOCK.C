@@ -160,7 +160,17 @@ void f039c()
     asm mov al,0c0h
     asm out dx,al
     asm db 026h,08ah,024h,026h,088h,03ch,046h,0feh,0c7h
-    asm db 080h,0ffh,010h,07ch,0c8h,032h,0ffh,0feh,0c1h,080h,0f9h,010h,07ch,0bfh,032h,0c9h,0feh,0c3h,080h,0fbh,010h,07ch,0b6h
+    /* SI/DI accesses and their short back-edges remain literal; the nested
+       plane/column counters can use ordinary TASM spellings. */
+    asm db 080h,0ffh,010h,07ch,0c8h,032h,0ffh
+    asm inc cl
+    asm cmp cl,10h
+    asm db 07ch,0bfh
+    /* The original used the byte-register form (32 C9), not XOR CX,CX. */
+    asm db 032h,0c9h
+    asm inc bl
+    asm cmp bl,10h
+    asm db 07ch,0b6h
     asm mov dx,3ceh
     asm mov al,8
     asm out dx,al

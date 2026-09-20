@@ -925,7 +925,7 @@
   "oracle_copied_initialized_data_bytes": 0,
   "local_raw_source_bytes": 0,
   "synthetic_bss_bytes": 0,
-  "typed_bss_source_bytes": 37023,
+  "typed_bss_source_bytes": 37035,
   "partitioned_bss_source_bytes": 37250,
   "unpartitioned_bss_source_bytes": 0,
   "dgroup_scaffold_present": false,
@@ -1676,8 +1676,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gb07a_resource_selection",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          }
+        ],
         "object_sha256": "b20282755b104894da0efa1fad91e294f1a674e6d71ad0712e3fa18ba32018c5",
-        "source_sha256": "18c73f1932f6333c338d8551e1e705d7985cdcc9774e26ebfd56440220de46a1"
+        "source_sha256": "72ec4ba893439939416015a21c3d8c180ef4eafba023568e5cd5a4ddb4d250a1"
       },
       {
         "id": "GB07C_RESOURCE_POINTER_TABLE_BSS",
@@ -1947,8 +1956,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc346_animation_control",
+            "count": 8,
+            "element_bytes": 1,
+            "source_type": "unsigned char[8]"
+          }
+        ],
         "object_sha256": "6f67af4059ac6e4e9e7f0ef1e845ed513c1563376607d4f1d8c1b3775fc69d71",
-        "source_sha256": "e5abee9c1960c5562ffb8788423e26c53c079e5ac254c099eba857806a2c69ac"
+        "source_sha256": "1280e9efcdbceca62441922ef48573aa150c986166ba27abc803b644dcb7549b"
       },
       {
         "id": "ANIMATION_STATE_BSS",
@@ -2050,8 +2068,17 @@
         "representation": "SYMBOLIC_ASM",
         "confidence": "STRUCTURED_STORAGE_CANDIDATE",
         "aggregate_storage": false,
+        "typed_reserves": [
+          {
+            "offset": 0,
+            "name": "gc46e_error_code",
+            "count": 1,
+            "element_bytes": 2,
+            "source_type": "int"
+          }
+        ],
         "object_sha256": "bc5e0c8c2810281f63d61eff62d14e841bd052b3e6001a5d0290721a6e458e62",
-        "source_sha256": "7ad0ccde4d92ecefdc2a3627637ae4ac3fb2f8f21af631881b33f854cc2dea6c"
+        "source_sha256": "540a40eb957a1f14f1e9000d2be63a7791e0c9c9d1eb00367e8484a07ef4d173"
       },
       {
         "id": "C470_RECORD_TABLE_BSS",

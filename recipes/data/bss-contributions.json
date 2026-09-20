@@ -719,7 +719,16 @@
       "owner_candidate": "F_4713 resource-selection state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gb07a_resource_selection",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        }
+      ]
     },
     {
       "id": "GB07C_RESOURCE_POINTER_TABLE_BSS",
@@ -983,7 +992,16 @@
       "owner_candidate": "shared animation control state",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc346_animation_control",
+          "count": 8,
+          "element_bytes": 1,
+          "source_type": "unsigned char[8]"
+        }
+      ]
     },
     {
       "id": "ANIMATION_STATE_BSS",
@@ -1083,7 +1101,16 @@
       "owner_candidate": "shared error status",
       "representation": "SYMBOLIC_ASM",
       "confidence": "STRUCTURED_STORAGE_CANDIDATE",
-      "aggregate_storage": false
+      "aggregate_storage": false,
+      "typed_reserves": [
+        {
+          "offset": 0,
+          "name": "gc46e_error_code",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        }
+      ]
     },
     {
       "id": "C470_RECORD_TABLE_BSS",

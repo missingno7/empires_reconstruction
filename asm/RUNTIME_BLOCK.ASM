@@ -21,78 +21,78 @@ _TEXT segment byte public 'CODE'
 public _f039c
 _f039c label near
 ; RUNTIME_BLOCK -- exact startup/runtime dispatch block.
-    db 0e9h,091h,001h
+    JMP_NEAR $+193h
     public _f039f
     _f039f label near
     public _box
     _box label near
-    db 0e9h,094h,002h
+    JMP_NEAR $+296h
     public _f03a2
     _f03a2 label near
     public _bar
     _bar label near
-    db 0e9h,036h,00fh
+    JMP_NEAR $+0f38h
     public _f03a5
     _f03a5 label near
-    db 0e9h,07ch,00fh
+    JMP_NEAR $+0f7eh
     public _f03a8
     _f03a8 label near
     public _clear
     _clear label near
-    db 0e9h,0b2h,00fh
+    JMP_NEAR $+0fb4h
     public _f03ab
     _f03ab label near
     public _fill
     _fill label near
-    db 0e9h,026h,010h
+    JMP_NEAR $+1028h
     public _f03ae
     _f03ae label near
-    db 0e9h,092h,010h
+    JMP_NEAR $+1094h
     public _f03b1
     _f03b1 label near
-    db 0e9h,0d6h,010h
+    JMP_NEAR $+10d8h
     public _f03b4
     _f03b4 label near
     public _wipe
     _wipe label near
-    db 0e9h,008h,011h
+    JMP_NEAR $+110ah
     public _f03b7
     _f03b7 label near
-    db 0e9h,07eh,011h
+    JMP_NEAR $+1180h
     public _f03ba
     _f03ba label near
-    db 0e9h,0d4h,011h
+    JMP_NEAR $+11d6h
     public _f03bd
     _f03bd label near
-    db 0e9h,02ch,012h
+    JMP_NEAR $+122eh
     public _f03c0
     _f03c0 label near
-    db 0e9h,093h,012h
+    JMP_NEAR $+1295h
     public _f03c3
     _f03c3 label near
-    db 0e9h,031h,013h
+    JMP_NEAR $+1333h
     public _f03c6
     _f03c6 label near
-    db 0e9h,0dbh,013h
+    JMP_NEAR $+13ddh
     public _f03c9
     _f03c9 label near
     public _blit
     _blit label near
-    db 0e9h,064h,015h
+    JMP_NEAR $+1566h
     public _f03cc
     _f03cc label near
     public _copy
     _copy label near
-    db 0e9h,0c9h,016h
+    JMP_NEAR $+16cbh
     public _f03cf
     _f03cf label near
-    db 0e9h,02ah,018h
+    JMP_NEAR $+182ch
     public _f03d2
     _f03d2 label near
-    db 0e9h,0f5h,018h
+    JMP_NEAR $+18f7h
     public _f03d5
     _f03d5 label near
-    db 0e9h,033h,019h
+    JMP_NEAR $+1935h
     db 000h,000h,03dh,005h,000h,000h,0f4h,005h,030h,006h,000h,000h
     db 043h,006h,000h,000h,061h,00bh,0d7h,00bh,0e3h,0ffh,0e3h,0ffh,0d4h,0ffh,0c5h,0ffh,0b6h,0ffh,0a7h,0ffh,098h,0ffh,089h,0ffh
     db 07ah,0ffh,06bh,0ffh,05ch,0ffh,04dh,0ffh,03eh,0ffh,02fh,0ffh,020h,0ffh,011h,0ffh,002h,0ffh,0f3h,0feh,0e4h,0feh,0d5h,0feh
@@ -425,7 +425,7 @@ _f039c label near
     runtime_bar_primitive:
     push bp
     mov bp,sp
-    db 057h
+    push di
     cld
     ; Numeric absolute memory requires an explicit segment in TASM; see ABSOLUTE_MEMORY.
     mov ax,word ptr ds:[40c8h]
@@ -465,7 +465,7 @@ _f039c label near
     runtime_f03a5:
     push bp
     mov bp,sp
-    db 057h
+    push di
     cld
     mov ax,word ptr ds:[40c8h]
     mov cx,[bp+8]
@@ -614,7 +614,8 @@ _f039c label near
     runtime_f03b4:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+0eh]
@@ -623,7 +624,7 @@ _f039c label near
     les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
-    db 003h,0f8h
+    add di,ax
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
@@ -672,7 +673,8 @@ _f039c label near
     runtime_f03b7:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+0eh]
@@ -681,14 +683,14 @@ _f039c label near
     les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
-    db 003h,0f8h
+    add di,ax
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
-    db 003h,0f0h
+    add si,ax
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
@@ -719,7 +721,8 @@ _f039c label near
     runtime_f03ba:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+0eh]
@@ -728,14 +731,14 @@ _f039c label near
     les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
-    db 003h,0f8h
+    add di,ax
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
-    db 003h,0f0h
+    add si,ax
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
@@ -767,7 +770,8 @@ _f039c label near
     runtime_f03bd:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+0eh]
@@ -776,14 +780,14 @@ _f039c label near
     les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
-    db 003h,0f8h
+    add di,ax
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
-    db 003h,0f0h
+    add si,ax
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
@@ -823,7 +827,8 @@ _f039c label near
     runtime_f03c0:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+0eh]
@@ -832,14 +837,14 @@ _f039c label near
     les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
-    db 003h,0f8h
+    add di,ax
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
-    db 003h,0f0h
+    add si,ax
     mov bx,[bp+8]
     shr bx,1
     mov dx,[bp+0ah]
@@ -899,7 +904,8 @@ _f039c label near
     runtime_f03c3:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+0eh]
@@ -908,14 +914,14 @@ _f039c label near
     les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
-    db 003h,0f8h
+    add di,ax
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
-    db 003h,0f0h
+    add si,ax
     mov bx,[bp+8]
     mov ax,bx
     shr bx,1
@@ -981,7 +987,8 @@ _f039c label near
     push bp
     mov bp,sp
     sub sp,4
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     ; Far state base at C0E0h, with the historical no-fixup encoding.
@@ -1033,7 +1040,18 @@ rb_145c:
     db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h
     db 008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h
     db 073h,005h,080h,025h,00fh,008h,035h,080h,0fch,000h,075h,00eh,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,083h,0ebh,010h
-    db 07fh,097h,05bh,003h,07eh,0fch,0e2h,08eh,0ebh,072h,053h,02ah,0e4h,026h,08ah,004h,046h,083h,0fbh,010h,07dh,00ah,08ah,0e3h
+    jg $-67h
+    pop bx
+    add di,word ptr [bp-4]
+    loop $-70h
+    jmp $+74h
+    push bx
+    sub ah,ah
+    mov al,byte ptr es:[si]
+    inc si
+    cmp bx,10h
+    jge $+0ch
+    mov ah,bl
     db 080h,0e4h,002h,02eh,0ffh,0a7h,01eh,019h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h
     db 00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h
     db 073h,005h,080h,025h,0f0h,008h,015h,047h,0d0h,0e0h,073h,005h,080h,025h,00fh,008h,035h,0d0h,0e0h,073h,005h,080h,025h,0f0h
@@ -1045,7 +1063,8 @@ rb_145c:
     runtime_blit_primitive:
     push bp
     mov bp,sp
-    db 057h,056h
+    push di
+    push si
     push ds
     cld
     mov bx,[bp+6]
@@ -1074,7 +1093,8 @@ rb_145c:
     runtime_copy_primitive:
     push bp
     mov bp,sp
-    db 056h,057h
+    push si
+    push di
     push ds
     push bp
     les si,dword ptr [bp+8]
@@ -1103,7 +1123,18 @@ rb_145c:
     add si,ax
     mov bx,[bp+4]
     cmp word ptr [bp+0ch],0
-    db 074h,003h,0e9h,082h,000h,0d1h,0fbh,0fch,033h,0edh,0a1h,09ah,000h,02bh,0c3h,078h,016h,040h,03bh,0c8h,076h,006h,08bh,0e9h
+    je $+5h
+    JMP_NEAR $+84h
+    sar bx,1
+    cld
+    xor bp,bp
+    mov ax,word ptr ds:[9ah]
+    sub ax,bx
+    js $+18h
+    inc ax
+    cmp cx,ax
+    jbe $+8h
+    mov bp,cx
     sub bp,ax
     mov cx,ax
     mov ax,word ptr ds:[98h]
@@ -1157,7 +1188,8 @@ rb_145c:
     push bp
     mov bp,sp
     sub sp,2
-    db 056h,057h
+    push si
+    push di
     push ds
     cld
     mov dx,word ptr ds:[40c8h]
@@ -1171,7 +1203,7 @@ rb_145c:
     lds di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    db 003h,0fbh
+    add di,bx
     xor bx,bx
     mov cx,bx
     mov bl,byte ptr es:[si]
@@ -1197,53 +1229,57 @@ rb_145c:
     runtime_f03d2:
     push bp
     mov bp,sp
-    db 057h
+    push di
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    db 072h,015h
-    db 003h,0fbh,026h,08ah,005h
+    jb $+17h
+    add di,bx
+    mov al,byte ptr es:[di]
     and al,0fh
     mov bx,word ptr ds:[40c8h]
     shl bl,1
     shl bl,1
     shl bl,1
     shl bl,1
-    db 0ebh,00eh
-    db 003h,0fbh,026h,08ah,005h
+    jmp $+10h
+    add di,bx
+    mov al,byte ptr es:[di]
     and al,0f0h
     mov bx,word ptr ds:[40c8h]
     and bl,0fh
     or al,bl
     mov byte ptr es:[di],al
-    db 05fh
+    pop di
     pop bp
     ret
     ; F_03D5: fetch either half of a planar pixel as a normalized nibble.
     runtime_f03d5:
     push bp
     mov bp,sp
-    db 057h
+    push di
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
     les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    db 072h,012h
-    db 003h,0fbh,026h,08ah,005h
+    jb $+14h
+    add di,bx
+    mov al,byte ptr es:[di]
     and ax,0f0h
     shr ax,1
     shr ax,1
     shr ax,1
     shr ax,1
-    db 0ebh,008h
-    db 003h,0fbh,026h,08ah,005h
+    jmp $+0ah
+    add di,bx
+    mov al,byte ptr es:[di]
     and ax,0fh
-    db 05fh
+    pop di
     pop bp
     ret
 

@@ -43,6 +43,20 @@ object at their established offsets, then remains byte-identical. These are
 compatible linker inputs, not claims about historical source-file identity or
 mixed C/TASM translation-unit ownership.
 
+### Individual-owner promotion constraint
+
+`F_C77A`, `F_C7CB`, `F_C834`, `F_C877`, and `F_C898` are the five source
+pieces consumed by `C_C77A_C898`.  The module probe deliberately requires each
+canonical manifest owner to name the exact recipe source and compiler flags.
+Consequently, replacing just one of those canonical C proof pieces with a
+symbolic TASM owner invalidates the shared-C proof before later link stages.
+
+This is evidence about the current compatible-module topology, not a linker
+failure.  A future promotion of one of these functions must either retain a
+separate C proof source for this candidate or replace `C_C77A_C898` as a whole
+with an evidenced mixed/assembly module that preserves its 346-byte text,
+public order, thirteen fixups, and downstream byte-identical TLINK result.
+
 ## C_D61C_D79C
 
 `recipes/modules/C_D61C_D79C.json` combines F_D61C and F_D79C into one fresh

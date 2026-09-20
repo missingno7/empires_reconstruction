@@ -190,6 +190,27 @@
         "module_segments": {}
       },
       "evidence": "Adjacent reset and five-byte packed-record append routines operate on the same DS:2F30h initialized record table. Fresh symbolic TASM emits both historical entry offsets in one exact 71-byte no-fixup contribution."
+    },
+    {
+      "id": "M_C5A8_C5C6",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_C5A8_C5C6.ASM",
+      "start": 51112,
+      "end": 51153,
+      "members": [
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_f_c5a8",
+        "span": 3,
+        "flags_append": "",
+        "bindings": {},
+        "module_segments": {}
+      },
+      "evidence": "Three contiguous setters use the same SI-relative 0x17A4..0x17DCh command-control state block. Fresh symbolic TASM emits entry offsets 0, 11, and 30 in one exact 41-byte no-fixup contribution."
     }
   ]
 }

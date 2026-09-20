@@ -257,8 +257,8 @@
     "total_bss_bytes": 37250,
     "partitioned_bss_bytes": 37250,
     "aggregate_bss_remainder_bytes": 0,
-    "isolated_function_proof_units": 325,
-    "reconstructed_shared_modules": 15,
+    "isolated_function_proof_units": 323,
+    "reconstructed_shared_modules": 16,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -354,6 +354,17 @@
         ],
         "start": 55832,
         "end": 55903
+      },
+      {
+        "id": "M_C5A8_C5C6",
+        "source": "asm/M_C5A8_C5C6.ASM",
+        "members": [
+          "F_C5A8",
+          "F_C5B3",
+          "F_C5C6"
+        ],
+        "start": 51112,
+        "end": 51153
       }
     ],
     "active_structural_adapters": [

@@ -157,3 +157,10 @@ for the initialized `DS:2F30h` packed record table. One symbolic TASM object
 preserves both entry offsets and the exact 71-byte no-fixup contribution; the
 full linked executable remains byte-identical. This is compatible module
 evidence from direct shared table ownership and adjacency.
+
+## M_C5A8_C5C6
+
+`M_C5A8_C5C6` replaces three adjacent setters with one 41-byte symbolic TASM
+contribution. The entries store or select fields in the same SI-relative
+`17A4h..17DCh` command-control block, retain public offsets 0, 11, and 30,
+and have no OMF fixups. The full structural link remains byte-identical.

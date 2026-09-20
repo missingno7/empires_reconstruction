@@ -1047,7 +1047,7 @@ rb_145c:
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
     db 003h,0fbh
@@ -1156,7 +1156,7 @@ rb_145c:
     db 056h,057h
     push ds
     cld
-    db 08bh,016h,0c8h,040h
+    mov dx,word ptr ds:[40c8h]
     mov dh,dl
     and dx,0f00fh
     ; Source and destination descriptors are both indexed by plane.
@@ -1164,14 +1164,14 @@ rb_145c:
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0bfh,024h,039h
+    lds di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
     db 003h,0fbh
     xor bx,bx
     mov cx,bx
-    db 026h,08ah,01ch
-    db 046h
+    mov bl,byte ptr es:[si]
+    inc si
     mov word ptr [bp-2],0a0h
     sub [bp-2],bx
     shl bx,1
@@ -1197,13 +1197,13 @@ rb_145c:
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
     db 072h,015h
     db 003h,0fbh,026h,08ah,005h
     and al,0fh
-    db 08bh,01eh,0c8h,040h
+    mov bx,word ptr ds:[40c8h]
     shl bl,1
     shl bl,1
     shl bl,1
@@ -1211,10 +1211,10 @@ rb_145c:
     db 0ebh,00eh
     db 003h,0fbh,026h,08ah,005h
     and al,0f0h
-    db 08bh,01eh,0c8h,040h
+    mov bx,word ptr ds:[40c8h]
     and bl,0fh
     or al,bl
-    db 026h,088h,005h
+    mov byte ptr es:[di],al
     db 05fh
     pop bp
     ret
@@ -1226,7 +1226,7 @@ rb_145c:
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
     db 072h,012h

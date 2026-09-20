@@ -674,14 +674,14 @@ _f039c label near
     mov bx,[bp+0eh]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
     db 003h,0f8h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0b7h,024h,039h
+    lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
     db 003h,0f0h
@@ -721,14 +721,14 @@ _f039c label near
     mov bx,[bp+0eh]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
     db 003h,0f8h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0b7h,024h,039h
+    lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
     db 003h,0f0h
@@ -769,14 +769,14 @@ _f039c label near
     mov bx,[bp+0eh]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
     db 003h,0f8h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0b7h,024h,039h
+    lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
     db 003h,0f0h
@@ -825,14 +825,14 @@ _f039c label near
     mov bx,[bp+0eh]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
     db 003h,0f8h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0b7h,024h,039h
+    lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
     db 003h,0f0h
@@ -901,14 +901,14 @@ _f039c label near
     mov bx,[bp+0eh]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
+    les di,dword ptr [bx+3924h]
     mov ax,[bp+0ch]
     shr ax,1
     db 003h,0f8h
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c5h,0b7h,024h,039h
+    lds si,dword ptr [bx+3924h]
     mov ax,[bp+4]
     shr ax,1
     db 003h,0f0h

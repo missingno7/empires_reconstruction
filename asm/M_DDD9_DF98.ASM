@@ -1,6 +1,15 @@
 ; Candidate complete arithmetic module.
-_TEXT segment word public 'CODE'
-assume cs:_TEXT, ds:_TEXT
+_TEXT segment byte public 'CODE'
+DGROUP group _DATA,_BSS
+assume cs:_TEXT, ds:DGROUP
+_TEXT ends
+_DATA segment word public 'DATA'
+d@ label byte
+_DATA ends
+_BSS segment word public 'BSS'
+b@ label byte
+_BSS ends
+_TEXT segment byte public 'CODE'
 
 extrn LXMUL@:far, LDIV@:far, LXLSH@:far
 extrn _gc6c3:word, _gca24:word, _gca6d:word, _gc5ea:word, _gc64a:word
@@ -354,13 +363,13 @@ L_01A6:
  inc word ptr [bp-6h]
 org 1a2h
 L_01A2:
- mov [si+offset _gc64a],al
+ mov [si+offset DGROUP:_gc64a],al
 org 19fh
 L_019F:
  mov al,[bp-6h]
 org 19bh
 L_019B:
- mov [si+offset _gc5ea],al
+ mov [si+offset DGROUP:_gc5ea],al
 org 198h
 L_0198:
  mov al,[bp-8h]
@@ -390,7 +399,7 @@ L_017F:
  inc word ptr [bp-8h]
 org 179h
 L_0179:
- mov word ptr [bx+offset _gca6d],0
+ mov word ptr [bx+offset DGROUP:_gca6d],0
 org 177h
 L_0177:
  shl bx,1
@@ -399,10 +408,10 @@ L_0174:
  mov bx,[bp-8h]
 org 16eh
 L_016E:
- mov word ptr [bx+offset _gca24],0
+ mov word ptr [bx+offset DGROUP:_gca24],0
 org 16ah
 L_016A:
- mov word ptr [bx+offset _gca24+2],ds
+ mov word ptr [bx+offset DGROUP:_gca24+2],ds
 org 168h
 L_0168:
  shl bx,1
@@ -444,7 +453,7 @@ L_0149:
  push ax
 org 146h
 L_0146:
- add ax,offset _gc6c3
+ add ax,offset DGROUP:_gc6c3
 org 144h
 L_0144:
  mul dx

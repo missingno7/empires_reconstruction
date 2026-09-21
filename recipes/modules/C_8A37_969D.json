@@ -1,0 +1,79 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_8A37_969D",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_8A37",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_clear_grid"
+    },
+    {
+      "owner": "F_8AA2",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_deal_pieces"
+    },
+    {
+      "owner": "F_8BA5",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_piece_count"
+    },
+    {
+      "owner": "F_8BAB",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_run"
+    },
+    {
+      "owner": "F_90A6",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_display_init"
+    },
+    {
+      "owner": "F_9259",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_free_resources"
+    },
+    {
+      "owner": "F_929E",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_draw_piece"
+    },
+    {
+      "owner": "F_93AA",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_draw_tray_piece"
+    },
+    {
+      "owner": "F_9402",
+      "path": "src/PUZZLE.C",
+      "public": "_f9402"
+    },
+    {
+      "owner": "F_9440",
+      "path": "src/PUZZLE.C",
+      "public": "_f9440"
+    },
+    {
+      "owner": "F_9466",
+      "path": "src/PUZZLE.C",
+      "public": "_f9466"
+    },
+    {
+      "owner": "F_950C",
+      "path": "src/PUZZLE.C",
+      "public": "_f950c"
+    },
+    {
+      "owner": "F_963E",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_clear_cell"
+    },
+    {
+      "owner": "F_969D",
+      "path": "src/PUZZLE.C",
+      "public": "_puzzle_check_solved"
+    }
+  ],
+  "evidence": "14 contiguous flag-identical TCC modules (start of run 13 tail, after F_880A), no data_owners. Grid-puzzle minigame (GC316.H 4x6 tile grid): clear/deal grid, tile draw/erase/highlight at grid coordinates, far-block release, and win-state check. Members merged into src/PUZZLE.C."
+}

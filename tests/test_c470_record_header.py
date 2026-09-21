@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (bind_region, compile_sources, mismatch, owned_library_modules,
                          read_json, read_object)
 
@@ -24,7 +25,7 @@ class C470RecordHeaderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             work = Path(temporary)
             receipts, _ = compile_sources(ROOT, owners, work, ROOT / 'toolchain',
-                                            Path(lock['dosbox_default']), lock)
+                                            resolve_runner(lock), lock)
             modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
             for owner in owners:
                 module = read_object((work / receipts[owner['id']]['object']).read_bytes())

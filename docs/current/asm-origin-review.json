@@ -38,30 +38,6 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "F_25B3",
-      "source": "asm/F_25B3.ASM",
-      "bytes": 761,
-      "members": [
-        "F_25B3"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_28AC",
-      "source": "asm/F_28AC.ASM",
-      "bytes": 218,
-      "members": [
-        "F_28AC"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "F_4AA8",
       "source": "asm/F_4AA8.ASM",
       "bytes": 100,
@@ -103,18 +79,6 @@
       "bytes": 120,
       "members": [
         "F_4EEB"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_4F63",
-      "source": "src/F_4F63.ASM",
-      "bytes": 51,
-      "members": [
-        "F_4F63"
       ],
       "classification": "UNDETERMINED",
       "evidence": "Current TASM representation alone does not establish historical language.",
@@ -164,42 +128,6 @@
       "bytes": 171,
       "members": [
         "F_6181"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_643A",
-      "source": "asm/F_643A.ASM",
-      "bytes": 240,
-      "members": [
-        "F_643A"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_652A",
-      "source": "asm/F_652A.ASM",
-      "bytes": 66,
-      "members": [
-        "F_652A"
-      ],
-      "classification": "C_WITH_INLINE_ASM_LIKELY",
-      "evidence": "BP frame with 512-byte local buffer, SI loop counter and compiler-like duplicate SS/address setup around INT 13h; not ordinary pure C.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_699E",
-      "source": "asm/F_699E.ASM",
-      "bytes": 380,
-      "members": [
-        "F_699E"
       ],
       "classification": "UNDETERMINED",
       "evidence": "Current TASM representation alone does not establish historical language.",
@@ -270,60 +198,11 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "F_8BAB",
-      "source": "asm/F_8BAB.ASM",
-      "bytes": 1275,
-      "members": [
-        "F_8BAB"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_988F_98CB",
-      "source": "asm/M_988F_98CB.ASM",
-      "bytes": 121,
-      "members": [
-        "F_988F",
-        "F_98CB"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "F_9EC3",
       "source": "asm/F_9EC3.ASM",
       "bytes": 125,
       "members": [
         "F_9EC3"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_B122",
-      "source": "asm/F_B122.ASM",
-      "bytes": 693,
-      "members": [
-        "F_B122"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_B99F",
-      "source": "asm/F_B99F.ASM",
-      "bytes": 1857,
-      "members": [
-        "F_B99F"
       ],
       "classification": "UNDETERMINED",
       "evidence": "Current TASM representation alone does not establish historical language.",
@@ -486,22 +365,6 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "M_CB5C_CD23",
-      "source": "asm/M_CB5C_CD23.ASM",
-      "bytes": 641,
-      "members": [
-        "F_CB5C",
-        "F_CBBB",
-        "F_CC17",
-        "F_CC6B",
-        "F_CD23"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "M_D386_D3CF",
       "source": "asm/M_D386_D3CF.ASM",
       "bytes": 84,
@@ -541,22 +404,8 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "M_DAD7_DB35",
-      "source": "asm/M_DAD7_DB35.ASM",
-      "bytes": 137,
-      "members": [
-        "F_DAD7",
-        "F_DB17",
-        "F_DB35"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "M_DDD9_DF98",
-      "source": "asm/M_DDD9_DF98.ASM",
+      "source": "asm/MUSIC.ASM",
       "bytes": 700,
       "members": [
         "F_DDD9",
@@ -573,52 +422,52 @@
   "scope": "Representation versus origin triage. User-authorized exact C recovery is recorded separately; source provenance remains unproved.",
   "exact_c_recoveries": [
     {
+      "id": "F_4F63",
+      "source": "src/DOSWRT2.C",
+      "bytes": 51,
+      "evidence": "Exact 51-byte DOS handle-2 writer using Turbo C register pseudo-variables and __int__; no inline ASM or byte emission.",
+      "original_language_proven": false
+    },
+    {
       "id": "F_4F96",
-      "source": "src/F_4F96.C",
+      "source": "src/CMDLINE.C",
       "bytes": 299,
       "evidence": "All 299 bytes reproduced by ordinary Turbo C with -B and pinned TASM. Both switch comparisons and shortened-jump NOPs arise naturally; no inline ASM or object corrections.",
       "original_language_proven": false
     },
     {
+      "id": "F_699E",
+      "source": "src/F_699E.C",
+      "bytes": 380,
+      "evidence": "Exact 380-byte Turbo C interrupt function with native __sti__, __inportb__, __outportb__ intrinsics and interrupt-qualified vector call; no inline ASM or explicit byte emission.",
+      "original_language_proven": false
+    },
+    {
       "id": "F_7964",
-      "source": "src/F_7964.C",
+      "source": "src/MENULOOP.C",
       "bytes": 664,
       "evidence": "Ordinary C matched against all 664 original bytes with pinned Turbo C, including callback switch and former F_7DD3 shared-frame cleanup; no inline ASM, DB, or object corrections.",
       "original_language_proven": false
     },
     {
-      "id": "F_880A",
-      "source": "src/F_880A.C",
-      "bytes": 557,
-      "evidence": "Ordinary C matched against all 557 original bytes with pinned Turbo C; one shared frame including former F_8C04 cleanup. No inline ASM, DB, or object corrections.",
+      "id": "M_988F_98CB",
+      "source": "src/MRKCELL.C",
+      "bytes": 121,
+      "evidence": "All 121 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections.",
       "original_language_proven": false
     },
     {
-      "id": "F_AA1F",
-      "source": "src/F_AA1F.C",
-      "bytes": 327,
-      "evidence": "All 327 original bytes reproduced by ordinary Turbo C: state switch, signed wraparound, 200-byte local buffer and far-pointer calls; no inline ASM, DB, or object corrections.",
+      "id": "M_CB5C_CD23",
+      "source": "src/OPTIONS.C",
+      "bytes": 641,
+      "evidence": "All 641 bytes and five entry offsets reproduced by ordinary Turbo C in the unchanged shared module: row-setting callbacks and ten-row menus. Unused synthetic epilogue publics removed; no inline ASM or corrections.",
       "original_language_proven": false
     },
     {
-      "id": "F_AB66",
-      "source": "src/F_AB66.C",
-      "bytes": 385,
-      "evidence": "Ordinary C matched against all 385 original bytes with pinned Turbo C; no inline ASM or DB.",
-      "original_language_proven": false
-    },
-    {
-      "id": "F_B40F",
-      "source": "src/F_B40F.C",
-      "bytes": 236,
-      "evidence": "All 236 bytes reproduced by ordinary Turbo C: compact offset table expansion and far-pointer tail fill; no inline ASM, DB, or object corrections.",
-      "original_language_proven": false
-    },
-    {
-      "id": "F_B7F9",
-      "source": "src/F_B7F9.C",
-      "bytes": 366,
-      "evidence": "All 366 bytes reproduced by ordinary Turbo C: display update and workspace fill loops; no inline ASM, DB, or object corrections.",
+      "id": "M_DAD7_DB35",
+      "source": "src/VOXCHAN.C",
+      "bytes": 137,
+      "evidence": "All 137 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections.",
       "original_language_proven": false
     }
   ]

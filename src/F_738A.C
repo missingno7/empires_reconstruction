@@ -1,1 +1,0 @@
-extern int f020f(),f01ce(),f03a8(),f039f();extern char gb82,gbfcd;extern int gc0fa;f738a(){register int x,c;c=f020f();x=gb82<<4;if(gbfcd==2)f01ce(3);else f01ce(2);if(x>0)f03a8(0xf4,0xa4,x,10);f01ce(8);if(x<64)f03a8(x+0xf4,0xa4,64-x,10);if(gc0fa)f039f(0xf4,0xa4,64,10);f01ce(c);}

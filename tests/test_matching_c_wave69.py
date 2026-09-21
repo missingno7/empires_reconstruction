@@ -6,6 +6,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import read_json, compile_sources, read_object, bind_region, mismatch, owned_library_modules
 class MatchingCWave69Tests(unittest.TestCase):
     def test_recovered_complete_subextent(self):
@@ -17,7 +18,7 @@ class MatchingCWave69Tests(unittest.TestCase):
         lock = read_json(ROOT / 'layout/toolchain.json')
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
-            receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain', Path(lock['dosbox_default']), lock)
+            receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain', resolve_runner(lock), lock)
             module = read_object((Path(temporary) / receipts[owner['id']]['object']).read_bytes())
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)

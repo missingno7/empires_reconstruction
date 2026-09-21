@@ -1,0 +1,34 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_D99B_DA49",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_D99B",
+      "path": "src/OPLINIT.C",
+      "public": "_opl_init"
+    },
+    {
+      "owner": "F_D9D9",
+      "path": "src/OPLINIT.C",
+      "public": "_opl_set_depth_wrapper"
+    },
+    {
+      "owner": "F_D9E1",
+      "path": "src/OPLINIT.C",
+      "public": "_opl_set_enabled"
+    },
+    {
+      "owner": "F_DA20",
+      "path": "src/OPLINIT.C",
+      "public": "_music_set_tempo"
+    },
+    {
+      "owner": "F_DA49",
+      "path": "src/OPLINIT.C",
+      "public": "_opl_set_depth_and_nts"
+    }
+  ],
+  "evidence": "5 contiguous flag-identical TCC modules (middle of run 19), no data_owners. OPL/FM chip bring-up: reset/enable the chip, wrapper around fe420, bank on/off latch, tempo clamp, and voice-state latch. Members merged into src/OPLINIT.C."
+}

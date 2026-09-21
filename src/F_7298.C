@@ -1,1 +1,0 @@
-extern int f03c9(),f039f();extern char *gc0ee;extern int gb7e,gb80,gc0fa;f7298(){f03c9(0x98,0xa6,gc0ee+((unsigned *)(gc0ee+6))[gb7e]+2);if(gb7e==2)f03c9(0xa6,0xae,gc0ee+((unsigned *)(gc0ee+12))[gb80]+2);if(gc0fa)f039f(0x98,0xa6,0x2c,0x1c);}

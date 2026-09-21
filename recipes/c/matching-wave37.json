@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 15477,
       "end": 18199,
-      "source": "src/F_3A75.C",
+      "source": "src/TURNLOOP.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f3a75",
+        "public": "_turn_loop_run",
         "span": 1,
         "flags_append": "-B",
         "bindings": {
@@ -43,17 +43,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6c57": {
+          "_timer_deadline_arm": {
             "coordinate": "code_offset",
             "owner": "F_6C57",
-            "public": "_f6c57",
+            "public": "_timer_deadline_arm",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -76,26 +76,26 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f727d": {
+          "_hud_tab_next": {
             "coordinate": "code_offset",
             "owner": "F_727D",
-            "public": "_f727d",
+            "public": "_hud_tab_next",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fce2a": {
+          "_player_select_restart_confirm": {
             "coordinate": "code_offset",
             "owner": "F_CE2A",
-            "public": "_fce2a",
+            "public": "_player_select_restart_confirm",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gc5ca": {
+          "_ui_gfx_blob": {
             "offset": 50634,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g40c4": {
+          "_rect_queue_write_ptr": {
             "offset": 16580,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -110,17 +110,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fd89a": {
+          "_rect_table_hit_id": {
             "coordinate": "code_offset",
             "owner": "F_D89A",
-            "public": "_fd89a",
+            "public": "_rect_table_hit_id",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fd85f": {
+          "_record_table_delete_compact": {
             "coordinate": "code_offset",
             "owner": "F_D85F",
-            "public": "_fd85f",
+            "public": "_record_table_delete_compact",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -139,10 +139,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f8aa2": {
+          "_puzzle_deal_pieces": {
             "coordinate": "code_offset",
             "owner": "F_8AA2",
-            "public": "_f8aa2",
+            "public": "_puzzle_deal_pieces",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -163,10 +163,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f2269": {
+          "_sprite_draw_cursor": {
             "coordinate": "code_offset",
             "owner": "F_2269",
-            "public": "_f2269",
+            "public": "_sprite_draw_cursor",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -177,14 +177,14 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f31c4": {
+          "_board_scroll_transition": {
             "coordinate": "code_offset",
             "owner": "F_31C4",
-            "public": "_f31c4",
+            "public": "_board_scroll_transition",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g13ed": {
+          "_current_slot": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -194,36 +194,36 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f734e": {
+          "_energy_adjust": {
             "coordinate": "code_offset",
             "owner": "F_734E",
-            "public": "_f734e",
+            "public": "_energy_adjust",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gbfbc": {
+          "_board_records": {
             "offset": 49084,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f2a2d": {
+          "_record_field_skip_n": {
             "coordinate": "code_offset",
             "owner": "F_2A2D",
-            "public": "_f2a2d",
+            "public": "_record_field_skip_n",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f338a": {
+          "_board_run_unit_script": {
             "coordinate": "code_offset",
             "owner": "F_338A",
-            "public": "_f338a",
+            "public": "_board_run_unit_script",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f36f0": {
+          "_board_advance_unit_moves": {
             "coordinate": "code_offset",
             "owner": "F_36F0",
-            "public": "_f36f0",
+            "public": "_board_advance_unit_moves",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -239,10 +239,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6021": {
+          "_board_unit_script_trigger": {
             "coordinate": "code_offset",
             "owner": "F_6021",
-            "public": "_f6021",
+            "public": "_board_unit_script_trigger",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -271,24 +271,24 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f233e": {
+          "_board_scan_wipe_effect": {
             "coordinate": "code_offset",
             "owner": "F_233E",
-            "public": "_f233e",
+            "public": "_board_scan_wipe_effect",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f9dcc": {
+          "_anim_frame_advance": {
             "coordinate": "code_offset",
             "owner": "F_9DCC",
-            "public": "_f9dcc",
+            "public": "_anim_frame_advance",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f22b1": {
+          "_board_redraw_view": {
             "coordinate": "code_offset",
             "owner": "F_22B1",
-            "public": "_f22b1",
+            "public": "_board_redraw_view",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -299,14 +299,14 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f5e98": {
+          "_sprite_slots_redraw": {
             "coordinate": "code_offset",
             "owner": "F_5E98",
-            "public": "_f5e98",
+            "public": "_sprite_slots_redraw",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gbfc0": {
+          "_record_table_root": {
             "offset": 49088,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -355,10 +355,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f1f17": {
+          "_shadow_bitmap_hit_test": {
             "coordinate": "code_offset",
             "owner": "F_1F17",
-            "public": "_f1f17",
+            "public": "_shadow_bitmap_hit_test",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -372,10 +372,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f7277": {
+          "_hud_tab_get": {
             "coordinate": "code_offset",
             "owner": "F_7277",
-            "public": "_f7277",
+            "public": "_hud_tab_get",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -384,17 +384,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f7313": {
+          "_hud_scroll_move": {
             "coordinate": "code_offset",
             "owner": "F_7313",
-            "public": "_f7313",
+            "public": "_hud_scroll_move",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f5a3b": {
+          "_cursor_trail_arm": {
             "coordinate": "code_offset",
             "owner": "F_5A3B",
-            "public": "_f5a3b",
+            "public": "_cursor_trail_arm",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -405,7 +405,7 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gbfba": {
+          "_board_record_index": {
             "offset": 49082,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -437,14 +437,14 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f5ac3": {
+          "_board_raycast_step": {
             "coordinate": "code_offset",
             "owner": "F_5AC3",
-            "public": "_f5ac3",
+            "public": "_board_raycast_step",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g99d2": {
+          "_resource_stripe_table": {
             "offset": 39378,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -466,24 +466,24 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6c6f": {
+          "_timer_deadline_wait": {
             "coordinate": "code_offset",
             "owner": "F_6C6F",
-            "public": "_f6c6f",
+            "public": "_timer_deadline_wait",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f9ac7": {
+          "_roundend_flash_panel_icons": {
             "coordinate": "code_offset",
             "owner": "F_9AC7",
-            "public": "_f9ac7",
+            "public": "_roundend_flash_panel_icons",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f_25b3": {
+          "_board_update_moving_records": {
             "coordinate": "code_offset",
             "owner": "F_25B3",
-            "public": "_f_25b3",
+            "public": "_board_update_moving_records",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },

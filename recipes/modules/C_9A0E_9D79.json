@@ -1,0 +1,29 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_9A0E_9D79",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_9A0E",
+      "path": "src/ROUNDEND.C",
+      "public": "_roundend_marker_show"
+    },
+    {
+      "owner": "F_9AC7",
+      "path": "src/ROUNDEND.C",
+      "public": "_roundend_flash_panel_icons"
+    },
+    {
+      "owner": "F_9B68",
+      "path": "src/ROUNDEND.C",
+      "public": "_roundend_round_setup"
+    },
+    {
+      "owner": "F_9D79",
+      "path": "src/ROUNDEND.C",
+      "public": "_roundend_wait"
+    }
+  ],
+  "evidence": "4 contiguous flag-identical TCC modules (end of run 13 tail, before F_9D8E which is excluded: F_9D8E owns native DATA -- text118c/g125d -- and tests/test_build_exe.py asserts it stays independently addressable as its own compiled object). Round-end scripted sequence: G0DCC.H script-table row runner, typed wipe/box wrapper, round opener, and wait-for-flag. Members merged into src/ROUNDEND.C."
+}

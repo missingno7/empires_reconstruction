@@ -1,1 +1,0 @@
-extern int g8fe,gbc,gbfba,g40ce,g736,g738,g73a;extern char g43b4[][1000];extern char *gbfbc;extern int fb55e(),fb09a(),fb122(),fb4fb(),f4eeb(),f2269(),f039f(),fd5f9(),fb99f(),fb593();fc0e0(){register int r;gbc=g8fe=0;gbfbc=g43b4[gbfba=1];g40ce=1;fb55e();fb09a();fb122();fb4fb();f4eeb(0);g736=16;g738=112;g73a=0;f2269();f039f(8,16,304,144);fd5f9(67);r=fb99f();fb593();return r;}

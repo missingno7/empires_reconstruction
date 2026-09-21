@@ -5,7 +5,7 @@ from pathlib import Path
 import shutil
 import tempfile
 
-from reconstruct import ROOT, read_json, write_json, sha, read_object
+from reconstruct import ROOT, dos_text, read_json, write_json, sha, read_object
 from omf_scaffold import make_text_padding
 from production_plan import checked_plan
 from production_data import prepare_data
@@ -101,7 +101,7 @@ def build(root=ROOT, verify=True, runner=None, dosbox=None, research=False):
     libprefix = 'C:\\TC\\LIB\\' if dosbox_mode else '..\\TC\\LIB\\'
     names = [libprefix + 'C0C.OBJ'] + [prefix + n for n in plan['object_order'][1:]]
     response = '/s ' + '+'.join(names) + ',OUT.EXE,OUT.MAP,' + libprefix + 'CC.LIB'
-    (work / 'LINK.RSP').write_text(response, encoding='ascii')
+    (work / 'LINK.RSP').write_bytes(dos_text(response + '\n'))
     if dosbox_mode:
         import subprocess
         (work / 'BIN').mkdir()

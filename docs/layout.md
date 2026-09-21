@@ -76,8 +76,8 @@ Data/BSS bases and library-public offsets taken from established upstream
 receipts are frozen explicitly in `build.module_segments` and `build.bindings`.
 They are never inferred from the original comparison bytes during a build.
 
-In particular, `F_56C6.C` contains `static char q139d[2] = {7, 0}` as a
-matching stand-in. Its `_DATA` base is explicitly fixed at DGROUP offset
+In particular, `F_56C6.C` once contained `static char q139d[2] = {7, 0}` as a
+matching stand-in; it now references the shared `g139d` dialog descriptor. Its `_DATA` base is explicitly fixed at DGROUP offset
 `0x139D`, from the upstream proof's `module_data_base_votes/_DATA` evidence
 and the source's declaration. This MVP imports that established correspondence
 as fixed metadata; the builder never repeats the upstream voting process

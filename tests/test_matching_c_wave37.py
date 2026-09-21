@@ -6,6 +6,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region,
                          mismatch, owned_library_modules)
 from mz import MZ
@@ -20,7 +21,7 @@ class MatchingCWave37Tests(unittest.TestCase):
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             receipts, _ = compile_sources(ROOT, [owner], Path(temporary) / 'compiler',
-                                           ROOT / 'toolchain', Path(lock['dosbox_default']), lock)
+                                           ROOT / 'toolchain', resolve_runner(lock), lock)
             module = read_object((Path(temporary) / 'compiler' /
                                   receipts['F_3A75']['object']).read_bytes())
             data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'],
@@ -41,7 +42,7 @@ class MatchingCWave37Tests(unittest.TestCase):
                 candidate = dict(owner)
                 candidate['source'] = mutated
                 receipts, _ = compile_sources(ROOT, [candidate], Path(temporary) / 'compiler',
-                                               ROOT / 'toolchain', Path(lock['dosbox_default']), lock)
+                                               ROOT / 'toolchain', resolve_runner(lock), lock)
                 module = read_object((Path(temporary) / 'compiler' /
                                       receipts['F_3A75']['object']).read_bytes())
                 data, _ = bind_region(candidate, module, MZ.parse(original), manifest['frames'],

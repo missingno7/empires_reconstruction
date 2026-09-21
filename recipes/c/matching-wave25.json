@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 34432,
       "end": 35017,
-      "source": "src/F_8480.C",
+      "source": "src/DIALOG.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f8480",
+        "public": "_dialog_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -21,57 +21,57 @@
             "public": "_f020f",
             "addend": 0
           },
-          "_f6cea": {
+          "_sprite_sheet_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CEA.entry",
             "owner": "F_6CEA",
-            "public": "_f6cea",
+            "public": "_sprite_sheet_index_get",
             "addend": 0
           },
-          "_f6ca6": {
+          "_sprite_sheet_select": {
             "coordinate": "code_offset",
             "owner": "F_6CA6",
-            "public": "_f6ca6",
+            "public": "_sprite_sheet_select",
             "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
-          "_f7e07": {
+          "_dialog_layout": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7E07.entry",
             "owner": "F_7E07",
-            "public": "_f7e07",
+            "public": "_dialog_layout",
             "addend": 0
           },
-          "_f8434": {
+          "_dialog_draw_shadow": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8434.entry",
             "owner": "F_8434",
-            "public": "_f8434",
+            "public": "_dialog_draw_shadow",
             "addend": 0
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
-          "_gc11a": {
+          "_dialog_box_h": {
             "offset": 49434,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC4A.phys"
           },
-          "_gc108": {
+          "_dialog_box_w": {
             "offset": 49416,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC38.phys"
           },
-          "_gc106": {
+          "_dialog_box_y": {
             "offset": 49414,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC36.phys"
           },
-          "_gc10a": {
+          "_dialog_box_x": {
             "offset": 49418,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC3A.phys"
@@ -81,11 +81,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f0355": {
+          "_rect_border_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_0355.entry",
             "owner": "F_0355",
-            "public": "_f0355",
+            "public": "_rect_border_draw",
             "addend": 0
           },
           "_f03a5": {
@@ -98,60 +98,60 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
           },
-          "_gc122": {
+          "_dialog_title_x": {
             "offset": 49442,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC52.phys"
           },
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_gc128": {
+          "_dialog_text_inset_y": {
             "offset": 49448,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC58.phys"
           },
-          "_gc12a": {
+          "_dialog_text_inset_x2": {
             "offset": 49450,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC5A.phys"
           },
-          "_gc104": {
+          "_dialog_button_str": {
             "offset": 49412,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC34.phys"
           },
-          "_gc110": {
+          "_dialog_button_label_y": {
             "offset": 49424,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC40.phys"
           },
-          "_gc120": {
+          "_dialog_button_label_x": {
             "offset": 49440,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC50.phys"
           },
-          "_gc10c": {
+          "_dialog_divider1_y": {
             "offset": 49420,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC3C.phys"
           },
-          "_f8267": {
+          "_dialog_draw_button": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8267.entry",
             "owner": "F_8267",
-            "public": "_f8267",
+            "public": "_dialog_draw_button",
             "addend": 0
           },
-          "_f8378": {
+          "_dialog_fill_box": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8378.entry",
             "owner": "F_8378",
-            "public": "_f8378",
+            "public": "_dialog_fill_box",
             "addend": 0
           },
           "_f039f": {
@@ -176,10 +176,10 @@
       "kind": "MATCHING_C",
       "start": 32252,
       "end": 32657,
-      "source": "src/F_7BFC.C",
+      "source": "src/MENULIST.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7bfc",
+        "public": "_menu_list_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -191,25 +191,25 @@
             "public": "_f020f",
             "addend": 0
           },
-          "_f6cea": {
+          "_sprite_sheet_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CEA.entry",
             "owner": "F_6CEA",
-            "public": "_f6cea",
+            "public": "_sprite_sheet_index_get",
             "addend": 0
           },
-          "_f6ca6": {
+          "_sprite_sheet_select": {
             "coordinate": "code_offset",
             "owner": "F_6CA6",
-            "public": "_f6ca6",
+            "public": "_sprite_sheet_select",
             "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -229,11 +229,11 @@
             "public": "SCOPY@",
             "addend": 0
           },
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
           "_f03a5": {
@@ -246,11 +246,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
           },
-          "_f0355": {
+          "_rect_border_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_0355.entry",
             "owner": "F_0355",
-            "public": "_f0355",
+            "public": "_rect_border_draw",
             "addend": 0
           },
           "_f039f": {

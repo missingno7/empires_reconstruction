@@ -10,6 +10,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
 from storage_evidence import verify, verify_bindings
 import hashlib
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -25,8 +26,12 @@ class MatchingCWave21Tests(unittest.TestCase):
             work = Path(temporary)
             mutants = []
             for name, before, after in (
-                ('F_AD25', b'gc360[i].a[0]', b'gc360[i].a[1]'),
-                ('F_A09D', b'f68aa(62,', b'f68aa(63,'),
+                # F_AD25 was normalized to the shared C470.H record's 'text'
+                # field name instead of the old raw struct's 'a' field.
+                ('F_AD25',
+                 b'void fad25()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[0]',
+                 b'void fad25()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[1]'),
+                ('F_A09D', b'resource_load_record_into(62, gc360)', b'resource_load_record_into(63, gc360)'),
                 ('F_A13F', b'0x3e', b'0x3f')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
@@ -36,7 +41,7 @@ class MatchingCWave21Tests(unittest.TestCase):
                 owner.update(id=name + '_MUTANT', source=path.relative_to(ROOT).as_posix())
                 mutants.append(owner)
             receipts, _ = compile_sources(ROOT, owners + mutants, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

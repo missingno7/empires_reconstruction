@@ -6,13 +6,13 @@
       "kind": "MATCHING_C",
       "start": 43614,
       "end": 44063,
-      "source": "src/F_A85E.C",
+      "source": "src/SLOTMENU.C",
       "artifact": "regions/F_A85E.bin",
       "expected_sha256": "4e53b12220009be921152ef8ec2ff4ba70eeb8747fd49e1fdb39ddcfb8d7f6f5",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa85e",
+        "public": "_player_slot_add_run",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -32,22 +32,22 @@
             "coordinate": "DGROUP_offset",
             "evidence": "pooled string or direct DS offset from complete fixup"
           },
-          "_g176e": {
+          "_sound_enabled": {
             "offset": 5998,
             "coordinate": "DGROUP_offset",
             "evidence": "pooled string or direct DS offset from complete fixup"
           },
-          "_g1772": {
+          "_music_enabled": {
             "offset": 6002,
             "coordinate": "DGROUP_offset",
             "evidence": "pooled string or direct DS offset from complete fixup"
           },
-          "_g1389": {
+          "_dialog_player_name_full": {
             "offset": 5001,
             "coordinate": "DGROUP_offset",
             "evidence": "pooled string or direct DS offset from complete fixup"
           },
-          "_g1375": {
+          "_dialog_player_name_entry": {
             "offset": 4981,
             "coordinate": "DGROUP_offset",
             "evidence": "pooled string or direct DS offset from complete fixup"
@@ -62,10 +62,10 @@
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
           },
-          "_fa658": {
+          "_player_type_select": {
             "coordinate": "code_offset",
             "owner": "F_A658",
-            "public": "_fa658",
+            "public": "_player_type_select",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -83,52 +83,52 @@
             "public": "_strcpy",
             "addend": 0
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f86c9": {
+          "_dialog_run": {
             "coordinate": "code_offset",
             "owner": "F_86C9",
-            "public": "_f86c9",
+            "public": "_dialog_run",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f6b74": {
+          "_keyboard_chain_active": {
             "coordinate": "code_offset",
             "owner": "F_6B74",
-            "public": "_f6b74",
+            "public": "_keyboard_chain_active",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f6990": {
+          "_keyboard_chain_enable": {
             "coordinate": "code_offset",
             "owner": "F_6990",
-            "public": "_f6990",
+            "public": "_keyboard_chain_enable",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f6b66": {
+          "_keyboard_buffer_drain": {
             "coordinate": "code_offset",
             "owner": "F_6B66",
-            "public": "_f6b66",
+            "public": "_keyboard_buffer_drain",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f703e": {
+          "_ui_overlay_show": {
             "coordinate": "code_offset",
             "owner": "F_703E",
-            "public": "_f703e",
+            "public": "_ui_overlay_show",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_fd593": {
+          "_sound_start": {
             "coordinate": "code_offset",
             "owner": "F_D593",
-            "public": "_fd593",
+            "public": "_sound_start",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -146,31 +146,31 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f8480": {
+          "_dialog_draw": {
             "coordinate": "code_offset",
             "owner": "F_8480",
-            "public": "_f8480",
+            "public": "_dialog_draw",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f0355": {
+          "_rect_border_draw": {
             "coordinate": "code_offset",
             "owner": "F_0355",
-            "public": "_f0355",
+            "public": "_rect_border_draw",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_fa525": {
+          "_player_name_edit": {
             "coordinate": "code_offset",
             "owner": "F_A525",
-            "public": "_fa525",
+            "public": "_player_name_edit",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f8453": {
+          "_dialog_restore_screen": {
             "coordinate": "code_offset",
             "owner": "F_8453",
-            "public": "_f8453",
+            "public": "_dialog_restore_screen",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -181,24 +181,24 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f7162": {
+          "_ui_overlay_hide": {
             "coordinate": "code_offset",
             "owner": "F_7162",
-            "public": "_f7162",
+            "public": "_ui_overlay_hide",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           }

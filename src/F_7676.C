@@ -1,2 +1,0 @@
-extern void f9f40();
-void f7676(void) { f9f40(0x18, 0x184, 0x94, 10, 0x18, 0xbc); }

@@ -6,14 +6,14 @@
       "kind": "MATCHING_C",
       "start": 9321,
       "end": 9393,
-      "source": "src/F_2269.C",
+      "source": "src/BOARDDRW.C",
       "original_symbol": "F_2269",
       "artifact": "regions/F_2269.bin",
       "expected_sha256": "101c6462f00de9efc3053502a5dfae71461b77b34ae51cfdc85e8590029bbcf5",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f2269",
+        "public": "_sprite_draw_cursor",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -48,7 +48,7 @@
             "storage_evidence": "DS_96EE",
             "evidence": "docs/storage-binding-evidence.json#DS_96EE"
           },
-          "_g99d2": {
+          "_resource_stripe_table": {
             "offset": 39378,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_29502.phys"

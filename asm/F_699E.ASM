@@ -13,12 +13,9 @@
 ; the master-tick ISR fC1A0's own caller (f6bcf) and 88 from the BIOS chain;
 ; no callees inside its own 380-byte extent.
 ;
-; NOT a Turbo C translation unit by construction: it ends in IRET, saves all
-; nine registers by hand, uses STI with no compiler-emitted frame markers,
-; reads ports 60h/61h and writes ports 61h/20h directly, and dispatches
-; through a hand-built cs-relative word/word jump table embedded mid-routine
-; (with a duplicated port-61h-ack/EOI sequence for the E0h/E1h prefix path),
-; not a switch.
+; Historical reference only. src/F_699E.C now matches the full extent using
+; Turbo C interrupt support, native I/O intrinsics, and an ordinary switch.
+; Register saves, CS-relative dispatch, and IRET are compiler-generated.
 DGROUP	GROUP	_DATA,_BSS
 _DATA	SEGMENT WORD PUBLIC 'DATA'
 _DATA	ENDS

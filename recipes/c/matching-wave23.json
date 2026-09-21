@@ -6,40 +6,40 @@
       "kind": "MATCHING_C",
       "start": 35017,
       "end": 35338,
-      "source": "src/F_86C9.C",
+      "source": "src/DIALOG.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f86c9",
+        "public": "_dialog_run",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f6b74": {
+          "_keyboard_chain_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B74.entry",
             "owner": "F_6B74",
-            "public": "_f6b74",
+            "public": "_keyboard_chain_active",
             "addend": 0
           },
-          "_f6990": {
+          "_keyboard_chain_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6990.entry",
             "owner": "F_6990",
-            "public": "_f6990",
+            "public": "_keyboard_chain_enable",
             "addend": 0
           },
-          "_f703e": {
+          "_ui_overlay_show": {
             "coordinate": "code_offset",
             "evidence": "functions/F_703E.entry",
             "owner": "F_703E",
-            "public": "_f703e",
+            "public": "_ui_overlay_show",
             "addend": 0
           },
-          "_fd593": {
+          "_sound_start": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D593.entry",
             "owner": "F_D593",
-            "public": "_fd593",
+            "public": "_sound_start",
             "addend": 0
           },
           "_f792c": {
@@ -56,17 +56,17 @@
             "public": "_f7925",
             "addend": 0
           },
-          "_f6b66": {
+          "_keyboard_buffer_drain": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B66.entry",
             "owner": "F_6B66",
-            "public": "_f6b66",
+            "public": "_keyboard_buffer_drain",
             "addend": 0
           },
-          "_f8480": {
+          "_dialog_draw": {
             "coordinate": "code_offset",
             "owner": "F_8480",
-            "public": "_f8480",
+            "public": "_dialog_draw",
             "addend": 0,
             "evidence": "functions/F_8480.entry"
           },
@@ -77,25 +77,25 @@
             "public": "_f6b1a",
             "addend": 0
           },
-          "_f8378": {
+          "_dialog_fill_box": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8378.entry",
             "owner": "F_8378",
-            "public": "_f8378",
+            "public": "_dialog_fill_box",
             "addend": 0
           },
-          "_f8414": {
+          "_dialog_blink_box": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8414.entry",
             "owner": "F_8414",
-            "public": "_f8414",
+            "public": "_dialog_blink_box",
             "addend": 0
           },
-          "_f8453": {
+          "_dialog_restore_screen": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8453.entry",
             "owner": "F_8453",
-            "public": "_f8453",
+            "public": "_dialog_restore_screen",
             "addend": 0
           },
           "_f791e": {
@@ -105,25 +105,25 @@
             "public": "_f791e",
             "addend": 0
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D5A6.entry",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0
           },
-          "_f7162": {
+          "_ui_overlay_hide": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7162.entry",
             "owner": "F_7162",
-            "public": "_f7162",
+            "public": "_ui_overlay_hide",
             "addend": 0
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6997.entry",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0
           }
         }

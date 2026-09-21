@@ -45,10 +45,10 @@
             "addend": 0,
             "evidence": "functions/F_792C.entry"
           },
-          "_f7964": {
+          "_menu_loop_run": {
             "coordinate": "code_offset",
             "owner": "F_7964",
-            "public": "_f7964",
+            "public": "_menu_loop_run",
             "addend": 0,
             "evidence": "functions/F_7964.entry"
           }
@@ -130,8 +130,8 @@
     },
     {
       "id": "M_CB5C_CD23",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_CB5C_CD23.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/OPTIONS.C",
       "start": 52572,
       "end": 53213,
       "members": [
@@ -143,18 +143,132 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f_cb5c",
+        "public": "_options_toggle_option",
         "span": 5,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_current_slot": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5101,
+            "evidence": "F_CC17 historical instruction operands"
+          },
+          "_dialog_run": {
+            "coordinate": "code_offset",
+            "offset": 34505,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_dialog_toggle_option": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8584,
+            "evidence": "F_CB5C historical instruction operands"
+          },
+          "_slot_table": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50288,
+            "evidence": "F_CD23 historical instruction operands"
+          },
+          "_music_resume_if_valid": {
+            "coordinate": "code_offset",
+            "offset": 54796,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_fc834": {
+            "coordinate": "code_offset",
+            "offset": 51252,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_music_enabled": {
+            "coordinate": "DGROUP_offset",
+            "offset": 6002,
+            "evidence": "F_CBBB historical instruction operands"
+          },
+          "_dialog_toggle_music": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8544,
+            "evidence": "F_CBBB historical instruction operands"
+          },
+          "_sound_enabled": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5998,
+            "evidence": "F_CC17 historical instruction operands"
+          },
+          "_sound_stop_reset": {
+            "coordinate": "code_offset",
+            "offset": 52040,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_dialog_toggle_sound": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8564,
+            "evidence": "F_CC17 historical instruction operands"
+          },
+          "_f039f": {
+            "coordinate": "code_offset",
+            "offset": 927,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_gfx_color_select": {
+            "coordinate": "code_offset",
+            "offset": 462,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_fa28d": {
+            "coordinate": "code_offset",
+            "offset": 41613,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_f6b1a": {
+            "coordinate": "code_offset",
+            "offset": 27418,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_dialog_slot_backup_list": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8644,
+            "evidence": "F_CC6B historical instruction operands"
+          },
+          "_dialog_restore_screen": {
+            "coordinate": "code_offset",
+            "offset": 33875,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_f03a2": {
+            "coordinate": "code_offset",
+            "offset": 930,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_gc360": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50016,
+            "evidence": "F_CC6B historical instruction operands"
+          },
+          "_dialog_draw": {
+            "coordinate": "code_offset",
+            "offset": 33920,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_f6cf0": {
+            "coordinate": "code_offset",
+            "offset": 27888,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_dialog_slot_list": {
+            "coordinate": "DGROUP_offset",
+            "offset": 8664,
+            "evidence": "F_CD23 historical instruction operands"
+          }
+        },
         "module_segments": {}
       },
-      "evidence": "Contiguous selected-row editing and ten-row menu controls. All five entries use the same record-table and menu state; fresh symbolic TASM emits the historical entry/end public offsets and exact 641-byte no-fixup extent."
+      "evidence": "Exact ordinary C verified separately for all five routines and for the complete combined module.",
+      "provenance": {
+        "c_recovery": "All 641 bytes and five entry offsets reproduced by ordinary Turbo C in the unchanged shared module: row-setting callbacks and ten-row menus. Unused synthetic epilogue publics removed; no inline ASM or corrections."
+      }
     },
     {
       "id": "M_DAD7_DB35",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_DAD7_DB35.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/VOXCHAN.C",
       "start": 56535,
       "end": 56672,
       "members": [
@@ -164,13 +278,42 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f_dad7",
+        "public": "_voice_channel_set_gate",
         "span": 3,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_ui_panel_glyph_records": {
+            "coordinate": "DGROUP_offset",
+            "offset": 12242,
+            "evidence": "F_DB35 historical instruction operands"
+          },
+          "_voice_write_level": {
+            "coordinate": "code_offset",
+            "offset": 57842,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_voice_level_table": {
+            "coordinate": "DGROUP_offset",
+            "offset": 51792,
+            "evidence": "F_DAD7 historical instruction operands"
+          },
+          "_fc898": {
+            "coordinate": "code_offset",
+            "offset": 51352,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_voice_byte_table": {
+            "coordinate": "DGROUP_offset",
+            "offset": 12260,
+            "evidence": "F_DB35 historical instruction operands"
+          }
+        },
         "module_segments": {}
       },
-      "evidence": "Three contiguous helpers read signed high bytes from the DS:2FD2h state table. Fresh symbolic TASM preserves entry/end public offsets and the two canonical external call fixups."
+      "evidence": "Exact ordinary C helpers verified both individually and as the complete unchanged module extent.",
+      "provenance": {
+        "c_recovery": "All 137 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
+      }
     },
     {
       "id": "M_D818_D825",
@@ -235,8 +378,8 @@
     },
     {
       "id": "M_988F_98CB",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_988F_98CB.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/MRKCELL.C",
       "start": 39567,
       "end": 39688,
       "members": [
@@ -245,13 +388,42 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f_988f",
+        "public": "_marker_cell_draw_highlight",
         "span": 2,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_f03ba": {
+            "coordinate": "code_offset",
+            "offset": 954,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_f03b4": {
+            "coordinate": "code_offset",
+            "offset": 948,
+            "evidence": "Historical call operand and exact public index"
+          },
+          "_score_panel_y": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50000,
+            "evidence": "F_98CB historical instruction operands"
+          },
+          "_score_panel_x": {
+            "coordinate": "DGROUP_offset",
+            "offset": 49998,
+            "evidence": "F_98CB historical instruction operands"
+          },
+          "_f03b7": {
+            "coordinate": "code_offset",
+            "offset": 951,
+            "evidence": "Historical call operand and exact public index"
+          }
+        },
         "module_segments": {}
       },
-      "evidence": "Adjacent fixed-rectangle display helpers share the recovered C34E/C350 coordinates and display call pattern. Fresh symbolic TASM is tested as one ordinary 121-byte contribution."
+      "evidence": "Exact ordinary C helpers verified both individually and as the complete unchanged module extent.",
+      "provenance": {
+        "c_recovery": "All 121 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
+      }
     },
     {
       "id": "M_50D2_53BF",
@@ -341,7 +513,7 @@
     {
       "id": "M_DDD9_DF98",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_DDD9_DF98.ASM",
+      "source": "asm/MUSIC.ASM",
       "start": 57305,
       "end": 58005,
       "members": [
@@ -352,7 +524,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fddd9",
+        "public": "_music_note_to_divisor",
         "span": 4,
         "flags_append": "",
         "bindings": {},

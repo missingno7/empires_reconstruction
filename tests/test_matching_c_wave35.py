@@ -6,6 +6,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region,
                          mismatch, owned_library_modules)
 from mz import MZ
@@ -16,7 +17,7 @@ class MatchingCWave35Tests(unittest.TestCase):
         candidate = dict(owner)
         candidate['source'] = source
         receipts, _ = compile_sources(ROOT, [candidate], work, ROOT / 'toolchain',
-                                      Path(lock['dosbox_default']), lock)
+                                      resolve_runner(lock), lock)
         module = read_object((work / receipts['F_5AC3']['object']).read_bytes())
         data, _ = bind_region(candidate, module, MZ.parse(original), manifest['frames'],
                               manifest['regions'], modules)
@@ -41,7 +42,11 @@ class MatchingCWave35Tests(unittest.TestCase):
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             mutated = 'build/F_5AC3_mutated.C'
-            source = (ROOT / owner['source']).read_text().replace('0x137', '0x138', 1)
+            # src/HITTEST.C now also holds F_5A3B's own "0x137" bounds check;
+            # scope the mutation to F_5AC3's copy (the one whose branch ends
+            # in a brace) so it stays unique within the merged file.
+            source = (ROOT / owner['source']).read_text().replace(
+                '0x137 || y < 0x10 || y > 0x9f) {', '0x138 || y < 0x10 || y > 0x9f) {', 1)
             (ROOT / mutated).write_text(source)
             try:
                 data = self._bound(owner, mutated, Path(temporary) / 'compiler',

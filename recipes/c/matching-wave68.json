@@ -4,13 +4,13 @@
     {
       "id": "F_6CA6",
       "kind": "MATCHING_C",
-      "source": "src/F_6CA6.C",
+      "source": "src/SPRSHSEL.C",
       "start": 28326,
       "end": 28394,
       "expected_sha256": "9bf45c55111c84489a5148494f101c07b1200892e77a8dbb92692efb9ee183e7",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6ca6",
+        "public": "_sprite_sheet_select",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -39,7 +39,7 @@
             "offset": 49382,
             "coordinate": "DGROUP_offset"
           },
-          "_gc0e8": {
+          "_dialog_line_height": {
             "offset": 49384,
             "coordinate": "DGROUP_offset"
           },

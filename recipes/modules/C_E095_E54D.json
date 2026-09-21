@@ -1,0 +1,89 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_E095_E54D",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_E095",
+      "path": "src/OPLREG.C",
+      "public": "_voice_set_field"
+    },
+    {
+      "owner": "F_E0C0",
+      "path": "src/OPLREG.C",
+      "public": "_voice_load_instrument"
+    },
+    {
+      "owner": "F_E114",
+      "path": "src/OPLREG.C",
+      "public": "_voice_load_instrument_words"
+    },
+    {
+      "owner": "F_E151",
+      "path": "src/OPLREG.C",
+      "public": "_voice_apply_field"
+    },
+    {
+      "owner": "F_E1C4",
+      "path": "src/OPLREG.C",
+      "public": "_voice_program_all"
+    },
+    {
+      "owner": "F_E1F2",
+      "path": "src/OPLREG.C",
+      "public": "_voice_write_level"
+    },
+    {
+      "owner": "F_E262",
+      "path": "src/OPLREG.C",
+      "public": "_opl_set_note_select"
+    },
+    {
+      "owner": "F_E27B",
+      "path": "src/OPLREG.C",
+      "public": "_voice_write_connection"
+    },
+    {
+      "owner": "F_E2D6",
+      "path": "src/OPLREG.C",
+      "public": "_voice_write_op1_attack_decay"
+    },
+    {
+      "owner": "F_E324",
+      "path": "src/OPLREG.C",
+      "public": "_voice_write_op2_attack_decay"
+    },
+    {
+      "owner": "F_E372",
+      "path": "src/OPLREG.C",
+      "public": "_voice_write_envelope_flags"
+    },
+    {
+      "owner": "F_E420",
+      "path": "src/OPLREG.C",
+      "public": "_opl_set_depth_flags"
+    },
+    {
+      "owner": "F_E44B",
+      "path": "src/OPLREG.C",
+      "public": "_voice_write_waveform"
+    },
+    {
+      "owner": "F_E48A",
+      "path": "src/OPLREG.C",
+      "public": "_voice_set_frequency"
+    },
+    {
+      "owner": "F_E52A",
+      "path": "src/OPLREG.C",
+      "public": "_voice_key_off"
+    },
+    {
+      "owner": "F_E54D",
+      "path": "src/OPLREG.C",
+      "public": "_opl_detect"
+    }
+  ],
+  "evidence": "16 contiguous flag-identical TCC modules (run 20), no data_owners. OPL register-write subsystem operating on the 14-byte GC91B.H voice record: per-member re-emit, unit-order dispatch, per-voice re-arm, and the individual OPL register writes through fc898, ending with the chip-presence probe. Members merged into src/OPLREG.C."
+}

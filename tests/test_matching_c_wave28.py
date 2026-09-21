@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region,
                          mismatch, owned_library_modules)
 from storage_evidence import verify
@@ -28,7 +29,7 @@ class MatchingCWave28Tests(unittest.TestCase):
             mutant = copy.deepcopy(owner)
             mutant.update(id='F_21DB_MUTANT', source=mutant_path.relative_to(ROOT).as_posix())
             receipts, _ = compile_sources(ROOT, [owner, mutant], work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())
             data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)

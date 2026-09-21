@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 45007,
       "end": 45381,
-      "source": "src/F_ADCF.C",
+      "source": "src/SLOTCOPY.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fadcf",
@@ -20,12 +20,12 @@
             "storage_evidence": "DS_C360",
             "evidence": "docs/storage-binding-evidence.json#DS_C360"
           },
-          "_g13ed": {
+          "_current_slot": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_gc470": {
+          "_slot_table": {
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
@@ -37,11 +37,11 @@
             "public": "SCOPY@",
             "addend": 0
           },
-          "_fa13f": {
+          "_slot_table_save": {
             "coordinate": "code_offset",
             "evidence": "functions/F_A13F.entry",
             "owner": "F_A13F",
-            "public": "_fa13f",
+            "public": "_slot_table_save",
             "addend": 0
           }
         }

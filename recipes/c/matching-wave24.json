@@ -6,15 +6,15 @@
       "kind": "MATCHING_C",
       "start": 39069,
       "end": 39500,
-      "source": "src/F_969D.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f969d",
+        "public": "_puzzle_check_solved",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc316": {
+          "_puzzle_grid": {
             "offset": 49942,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BE46.phys"
@@ -36,10 +36,10 @@
       "kind": "MATCHING_C",
       "start": 37542,
       "end": 37977,
-      "source": "src/F_90A6.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f90a6",
+        "public": "_puzzle_display_init",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -56,11 +56,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208F4.phys"
           },
-          "_f1eb4": {
+          "_tick_div8": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1EB4.entry",
             "owner": "F_1EB4",
-            "public": "_f1eb4",
+            "public": "_tick_div8",
             "addend": 0
           },
           "_face7": {
@@ -70,21 +70,21 @@
             "public": "_face7",
             "addend": 0
           },
-          "_f684a": {
+          "_resource_load_record_alloc": {
             "coordinate": "code_offset",
             "evidence": "functions/F_684A.entry",
             "owner": "F_684A",
-            "public": "_f684a",
+            "public": "_resource_load_record_alloc",
             "addend": 0
           },
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "evidence": "functions/F_656C.entry",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -114,7 +114,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208F8.phys"
           },
-          "_gc134": {
+          "_puzzle_solved_flag": {
             "offset": 49460,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC64.phys"
@@ -126,7 +126,7 @@
             "public": "_f9440",
             "addend": 0
           },
-          "_gc132": {
+          "_puzzle_held_piece": {
             "offset": 49458,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC62.phys"
@@ -138,23 +138,23 @@
             "public": "_f9402",
             "addend": 0
           },
-          "_gc316": {
+          "_puzzle_grid": {
             "offset": 49942,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BE46.phys"
           },
-          "_f929e": {
+          "_puzzle_draw_piece": {
             "coordinate": "code_offset",
             "evidence": "functions/F_929E.entry",
             "owner": "F_929E",
-            "public": "_f929e",
+            "public": "_puzzle_draw_piece",
             "addend": 0
           },
-          "_f93aa": {
+          "_puzzle_draw_tray_piece": {
             "coordinate": "code_offset",
             "evidence": "functions/F_93AA.entry",
             "owner": "F_93AA",
-            "public": "_f93aa",
+            "public": "_puzzle_draw_tray_piece",
             "addend": 0
           },
           "_f039f": {

@@ -1,0 +1,89 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_AF45_C15E",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_AF45",
+      "path": "src/LEVEL.C",
+      "public": "_faf45"
+    },
+    {
+      "owner": "F_B09A",
+      "path": "src/LEVEL.C",
+      "public": "_fb09a"
+    },
+    {
+      "owner": "F_B122",
+      "path": "src/LEVEL.C",
+      "public": "_board_resource_expand"
+    },
+    {
+      "owner": "F_B3D7",
+      "path": "src/LEVEL.C",
+      "public": "_fb3d7"
+    },
+    {
+      "owner": "F_B40F",
+      "path": "src/LEVEL.C",
+      "public": "_level_expand_descriptors"
+    },
+    {
+      "owner": "F_B4FB",
+      "path": "src/LEVEL.C",
+      "public": "_fb4fb"
+    },
+    {
+      "owner": "F_B55E",
+      "path": "src/LEVEL.C",
+      "public": "_fb55e"
+    },
+    {
+      "owner": "F_B593",
+      "path": "src/LEVEL.C",
+      "public": "_level_free_descriptor_table"
+    },
+    {
+      "owner": "F_B60F",
+      "path": "src/LEVEL.C",
+      "public": "_fb60f"
+    },
+    {
+      "owner": "F_B6CD",
+      "path": "src/LEVEL.C",
+      "public": "_fb6cd"
+    },
+    {
+      "owner": "F_B772",
+      "path": "src/LEVEL.C",
+      "public": "_fb772"
+    },
+    {
+      "owner": "F_B7F9",
+      "path": "src/LEVEL.C",
+      "public": "_level_display_init"
+    },
+    {
+      "owner": "F_B967",
+      "path": "src/LEVEL.C",
+      "public": "_fb967"
+    },
+    {
+      "owner": "F_B99F",
+      "path": "src/LEVEL.C",
+      "public": "_level_run_loop"
+    },
+    {
+      "owner": "F_C0E0",
+      "path": "src/LEVEL.C",
+      "public": "_level_play"
+    },
+    {
+      "owner": "F_C15E",
+      "path": "src/LEVEL.C",
+      "public": "_level_play_chapter"
+    }
+  ],
+  "evidence": "16 contiguous flag-identical TCC modules (run 15), no data_owners. Level/board play subsystem: board descriptor resource expansion (gc5c6/gc5a8/... far pointers), far-block cleanup, board movement/collision/redraw (F_B99F), and the level driver F_C15E that sequences them. Members merged into src/LEVEL.C."
+}

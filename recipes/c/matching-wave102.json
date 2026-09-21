@@ -13,14 +13,14 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_988f",
+        "public": "_marker_cell_draw_highlight",
         "span": 1,
         "flags_append": "",
         "bindings": {
           "_f03ba": {"offset": 954, "coordinate": "code_offset", "evidence": "complete F_988F call"},
           "_f03b4": {"offset": 948, "coordinate": "code_offset", "evidence": "complete F_988F call"},
-          "_gc350": {"offset": 50000, "coordinate": "DGROUP_offset", "evidence": "canonical GAME_BSS anchor"},
-          "_gc34e": {"offset": 49998, "coordinate": "DGROUP_offset", "evidence": "canonical GAME_BSS anchor"}
+          "_score_panel_y": {"offset": 50000, "coordinate": "DGROUP_offset", "evidence": "canonical GAME_BSS anchor"},
+          "_score_panel_x": {"offset": 49998, "coordinate": "DGROUP_offset", "evidence": "canonical GAME_BSS anchor"}
         },
         "module_segments": {}
       }
@@ -37,7 +37,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_98cb",
+        "public": "_marker_cell_draw_plain",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -56,7 +56,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_cb5c",
+        "public": "_options_toggle_option",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -75,7 +75,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_cbbb",
+        "public": "_options_toggle_music",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -94,7 +94,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_cc17",
+        "public": "_options_toggle_sound",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -113,7 +113,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_cc6b",
+        "public": "_slot_backup_list_show",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -132,7 +132,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_cd23",
+        "public": "_slot_list_show",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -151,7 +151,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_dad7",
+        "public": "_voice_channel_set_gate",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -170,15 +170,15 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_db17",
+        "public": "_voice_channel_level_refresh",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fe1f2": {
+          "_voice_write_level": {
             "coordinate": "code_offset",
             "evidence": "functions/F_E1F2.entry",
             "owner": "F_E1F2",
-            "public": "_fe1f2",
+            "public": "_voice_write_level",
             "addend": 0
           }
         },
@@ -197,7 +197,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_db35",
+        "public": "_voice_channel_apply_freq",
         "span": 1,
         "flags_append": "",
         "bindings": {

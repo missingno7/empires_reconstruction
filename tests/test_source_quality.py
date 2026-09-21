@@ -31,7 +31,9 @@ class SourceQualityTests(unittest.TestCase):
     def test_manifest_inventory_is_complete(self):
         result = report(read_json(ROOT / 'layout/manifest.json'))
         matching = [item for item in result['levels'] if item['level'] != 'HISTORICAL_LIBRARY']
-        self.assertEqual(sum(item['owners'] for item in matching), 347)
+        # Grouped multi-source modules reduced distinct matching owners from 347 to 345;
+        # see layout/production-plan.json.
+        self.assertEqual(sum(item['owners'] for item in matching), 345)
         self.assertEqual(result['asm_db_source_files'], 1)
         capsule_level = next(item for item in result['levels']
                              if item['level'] == 'ASM_DB_CAPSULE')
@@ -63,23 +65,26 @@ class SourceQualityTests(unittest.TestCase):
     def test_f880a_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_880A')
+        # F_880A was recovered as exact C; see docs/current/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
-                         ('MATCHING_ASM', 'asm/F_880A.ASM'))
-        self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
+                         ('MATCHING_C', 'src/DIALOG.C'))
+        self.assertEqual(classify_source(ROOT / owner['source']), 'MECHANICAL_C')
 
     def test_f8bab_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_8BAB')
+        # F_8BAB was recovered as exact C; see docs/current/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
-                         ('MATCHING_ASM', 'asm/F_8BAB.ASM'))
-        self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
+                         ('MATCHING_C', 'src/PUZZLE.C'))
+        self.assertEqual(classify_source(ROOT / owner['source']), 'MECHANICAL_C')
 
     def test_faa1f_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_AA1F')
+        # F_AA1F was recovered as exact C; see docs/current/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
-                         ('MATCHING_ASM', 'asm/F_AA1F.ASM'))
-        self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
+                         ('MATCHING_C', 'src/SLOTMENU.C'))
+        self.assertEqual(classify_source(ROOT / owner['source']), 'MECHANICAL_C')
 
 
 if __name__ == '__main__':

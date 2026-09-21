@@ -11,21 +11,21 @@
       },
       {
         "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-        "bytes": 2111,
-        "owners": 20,
-        "sources": 20
+        "bytes": 5217,
+        "owners": 40,
+        "sources": 18
       },
       {
         "level": "SYMBOLIC_ASM",
-        "bytes": 13228,
-        "owners": 82,
-        "sources": 43
+        "bytes": 6788,
+        "owners": 63,
+        "sources": 31
       },
       {
         "level": "MECHANICAL_C",
-        "bytes": 36600,
-        "owners": 236,
-        "sources": 236
+        "bytes": 39934,
+        "owners": 235,
+        "sources": 78
       },
       {
         "level": "HISTORICAL_STARTUP_OBJECT",
@@ -108,7 +108,7 @@
       },
       {
         "id": "M_CB5C_CD23",
-        "source": "asm/M_CB5C_CD23.ASM",
+        "source": "src/OPTIONS.C",
         "members": [
           "F_CB5C",
           "F_CBBB",
@@ -120,7 +120,7 @@
       },
       {
         "id": "M_DAD7_DB35",
-        "source": "asm/M_DAD7_DB35.ASM",
+        "source": "src/VOXCHAN.C",
         "members": [
           "F_DAD7",
           "F_DB17",
@@ -158,7 +158,7 @@
       },
       {
         "id": "M_988F_98CB",
-        "source": "asm/M_988F_98CB.ASM",
+        "source": "src/MRKCELL.C",
         "members": [
           "F_988F",
           "F_98CB"
@@ -208,7 +208,7 @@
       },
       {
         "id": "M_DDD9_DF98",
-        "source": "asm/M_DDD9_DF98.ASM",
+        "source": "asm/MUSIC.ASM",
         "members": [
           "F_DDD9",
           "F_DE7E",

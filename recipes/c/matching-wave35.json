@@ -6,13 +6,13 @@
       "kind": "MATCHING_C",
       "start": 23747,
       "end": 24728,
-      "source": "src/F_5AC3.C",
+      "source": "src/HITTEST.C",
       "artifact": "regions/F_5AC3.bin",
       "expected_sha256": "4c1bfabab95657023bf0277f897c308a3a5c2707598160ec9c0a3ece12982c99",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f5ac3",
+        "public": "_board_raycast_step",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -139,24 +139,24 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_fd89a": {
+          "_rect_table_hit_id": {
             "coordinate": "code_offset",
             "owner": "F_D89A",
-            "public": "_fd89a",
+            "public": "_rect_table_hit_id",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f2a2d": {
+          "_record_field_skip_n": {
             "coordinate": "code_offset",
             "owner": "F_2A2D",
-            "public": "_f2a2d",
+            "public": "_record_field_skip_n",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f5f3c": {
+          "_board_raycast_hit_test": {
             "coordinate": "code_offset",
             "owner": "F_5F3C",
-            "public": "_f5f3c",
+            "public": "_board_raycast_hit_test",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -167,10 +167,10 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },

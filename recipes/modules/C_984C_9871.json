@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_984C_9871",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_984C",
+      "path": "src/MARKERS.C",
+      "public": "_score_panel_clear"
+    },
+    {
+      "owner": "F_9871",
+      "path": "src/MARKERS.C",
+      "public": "_roundend_draw_marker"
+    }
+  ],
+  "evidence": "2 contiguous flag-identical TCC modules (run 13 tail, immediately before M_988F_98CB), no data_owners. Score-panel clear/fill pair at the fixed y=0x168 region. Members merged into src/MARKERS.C."
+}

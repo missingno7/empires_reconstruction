@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_49E3_4A93",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_49E3",
+      "path": "src/GAME.C",
+      "public": "_game_shutdown"
+    },
+    {
+      "owner": "F_49F0",
+      "path": "src/GAME.C",
+      "public": "_game_run"
+    },
+    {
+      "owner": "F_4A93",
+      "path": "src/GAME.C",
+      "public": "_main"
+    }
+  ],
+  "evidence": "3 contiguous flag-identical TCC modules (subset of run 6), no data_owners. Program lifecycle: shutdown sequence, the top-level game driver, and main() which calls both plus boot init. Members merged into src/GAME.C."
+}

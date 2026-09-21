@@ -1,0 +1,29 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_DB60_DDC7",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_DB60",
+      "path": "src/OPLVOICE.C",
+      "public": "_voice_bank_retune_on"
+    },
+    {
+      "owner": "F_DCC7",
+      "path": "src/OPLVOICE.C",
+      "public": "_voice_bank_update"
+    },
+    {
+      "owner": "F_DD72",
+      "path": "src/OPLVOICE.C",
+      "public": "_voice_update_tone"
+    },
+    {
+      "owner": "F_DDC7",
+      "path": "src/OPLVOICE.C",
+      "public": "_voice_level_table_reset"
+    }
+  ],
+  "evidence": "4 contiguous flag-identical TCC modules (last part of run 19, after M_DAD7_DB35), no data_owners. OPL voice bank retune/fire and the CA50 silence-fill helper. Members merged into src/OPLVOICE.C."
+}

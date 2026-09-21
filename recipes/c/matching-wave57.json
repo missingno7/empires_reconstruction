@@ -4,21 +4,21 @@
     {
       "id": "F_E114",
       "kind": "MATCHING_C",
-      "source": "src/F_E114.C",
+      "source": "src/OPLREG.C",
       "start": 58132,
       "end": 58193,
       "expected_sha256": "11fc272a2b30864576456162961c369681fd779581806f3636e890163937ac7d",
       "build": {
         "segment": "_TEXT",
-        "public": "_fe114",
+        "public": "_voice_load_instrument_words",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fe0c0": {
+          "_voice_load_instrument": {
             "coordinate": "code_offset",
             "owner": "F_E0C0",
-            "public": "_fe0c0",
+            "public": "_voice_load_instrument",
             "addend": 0
           }
         }

@@ -1,5 +1,6 @@
 """Opt-out-free integration coverage for the canonical structural EXE build."""
 import os
+import re
 from pathlib import Path
 import sys
 import unittest
@@ -14,9 +15,13 @@ from build_exe import ORIGINAL_SHA256, build, validate_toolchain
 def local_linker_is_available():
     try:
         validate_toolchain(ROOT)
+        sys.path.insert(0, str(ROOT / 'tools'))
+        from dos_runner import resolve_runner
+        from reconstruct import read_json
+        resolve_runner(read_json(ROOT / 'layout/toolchain.json'))
     except (OSError, ValueError, KeyError):
         return False
-    return Path(os.environ.get('DOSBOX', 'C:/Program Files/DOSBox Staging/dosbox.exe')).exists()
+    return True
 
 
 class CleanStructuralExeBuildTests(unittest.TestCase):
@@ -65,7 +70,8 @@ class CleanStructuralExeBuildTests(unittest.TestCase):
         native_rand = (Path(report['session']) / 'compile' / report['compiled_objects']['LIB_RAND']).read_bytes()
         packaged = OmfReader().split_library((Path(report['session']) / 'TC/LIB/CC.LIB').read_bytes())
         self.assertEqual(sum(blob == native_rand for _, blob in packaged), 1)
-        self.assertEqual(report['untouched_compiler_objects'], 291)
+        plan = __import__('json').loads((ROOT / 'layout/production-plan.json').read_text())
+        self.assertEqual(report['untouched_compiler_objects'], len(plan['modules']))
         self.assertEqual(report['synthetic_code_padding_objects'], 0)
         self.assertEqual(len(report['natural_code_alignment']), 4)
         transformed = report['compiler_object_transformations']
@@ -83,8 +89,11 @@ class CleanStructuralExeBuildTests(unittest.TestCase):
             staged = Path(report['session']) / 'WORK' / module['object']
             self.assertEqual(raw.read_bytes(), staged.read_bytes(), ident + ' object was rewritten')
         from omf import OmfReader
-        for ident, symbol in [('F_56C6', '_q139d'), ('F_A658', '_menu_empty_record')]:
-            obj = Path(report['session']) / 'compile' / report['compiled_objects'][ident]
+        for ident, symbol in [('F_56C6', '_g139d'), ('F_A658', '_menu_empty_record')]:
+            # Shared record storage stays external even when the member is compiled
+            # inside a grouped module.
+            owner = next(m['id'] for m in plan['modules'] if ident in m['members'])
+            obj = Path(report['session']) / 'compile' / report['compiled_objects'][owner]
             parsed = OmfReader().read(obj.read_bytes())
             self.assertEqual(parsed.segment_length('_DATA'), 0)
             self.assertIn(symbol, parsed.externals)
@@ -93,46 +102,69 @@ class CleanStructuralExeBuildTests(unittest.TestCase):
         self.assertEqual(shared.segment_bytes('_DATA')[:7], bytes([4, 0, 4, 0, 0, 0, 0]))
         self.assertEqual(shared.segment_length('_DATA'), 50)
         pubs = {p['name']: p['offset'] for p in shared.publics_in('_DATA')}
-        self.assertEqual({k:pubs[k] for k in ('_gb80','_gb82','_gb83','_gb85')},
-                         {'_gb80':0,'_gb82':2,'_gb83':3,'_gb85':5})
+        self.assertEqual({k:pubs[k] for k in ('_gb80','_energy_meter','_gb83','_gb85')},
+                         {'_gb80':0,'_energy_meter':2,'_gb83':3,'_gb85':5})
         dialog_path = Path(report['session']) / 'compile' / report['compiled_objects']['F_9D8E']
         dialog = OmfReader().read(dialog_path.read_bytes())
         self.assertEqual(dialog.segment_length('_DATA'), 229)
         pubs = {p['name']: p['offset'] for p in dialog.publics_in('_DATA')}
         self.assertEqual(pubs['_text118c'], 0)
         self.assertEqual(pubs['_g125d'], 209)
-        recovered = next(m for m in plan['modules'] if m['id'] == 'F_AB66')
+        regions = {r['id']: r for r in __import__('json').loads((ROOT / 'layout/manifest.json').read_text())['regions']}
+
+        def recovered_member(ident):
+            # A recovered function may be compiled inside a grouped module; its own
+            # extent and source come from the manifest region, the tool from the plan.
+            module = next(m for m in plan['modules'] if m['id'] == ident or ident in m['members'])
+            region = regions[ident] if module['id'] != ident else module
+            source = region.get('source') or module['source']
+            text = (ROOT / source).read_text()
+            if len(module['members']) > 1:
+                # Only this member's section of the merged module file.
+                banner = re.compile(r'/\* ---- ' + re.escape(ident) + r' \(original code at 0x[0-9A-F]+\) ---- \*/')
+                match = banner.search(text)
+                if match:
+                    following = re.search(r'/\* ---- [A-Z0-9_]+ \(original code at', text[match.end():])
+                    text = text[match.start():match.end() + following.start()] if following else text[match.start():]
+            return {**region, 'tool': module['tool'], 'flags': module['flags'], 'source': source, 'text': text}
+
+        recovered = recovered_member('F_AB66')
         self.assertEqual(recovered['tool'], 'TCC.EXE')
-        self.assertEqual(recovered['source'], 'src/F_AB66.C')
+        self.assertEqual(recovered['source'], 'src/SLOTMENU.C')  # F_AB66 is a section of the slot-menu module
         self.assertEqual(recovered['end'] - recovered['start'], 385)
-        self.assertNotRegex((ROOT / recovered['source']).read_text(), r'(?im)^\s*asm\b')
-        selection = next(m for m in plan['modules'] if m['id'] == 'F_880A')
+        self.assertNotRegex(recovered['text'], r'(?im)^\s*asm\b')
+        selection = recovered_member('F_880A')
         self.assertEqual(selection['tool'], 'TCC.EXE')
         self.assertEqual(selection['end'] - selection['start'], 557)
         self.assertNotIn('F_8C04', {m['id'] for m in plan['modules']})
-        self.assertNotRegex((ROOT / selection['source']).read_text(), r'(?im)^\s*asm\b')
-        menu = next(m for m in plan['modules'] if m['id'] == 'F_7964')
+        self.assertNotRegex(selection['text'], r'(?im)^\s*asm\b')
+        menu = recovered_member('F_7964')
         self.assertEqual(menu['tool'], 'TCC.EXE')
         self.assertEqual(menu['end'] - menu['start'], 664)
         self.assertNotIn('F_7DD3', {m['id'] for m in plan['modules']})
-        self.assertNotRegex((ROOT / menu['source']).read_text(), r'(?im)^\s*asm\b')
-        tables = next(m for m in plan['modules'] if m['id'] == 'F_B40F')
+        self.assertNotRegex(menu['text'], r'(?im)^\s*asm\b')
+        tables = recovered_member('F_B40F')
         self.assertEqual(tables['tool'], 'TCC.EXE')
         self.assertEqual(tables['end'] - tables['start'], 236)
-        self.assertNotRegex((ROOT / tables['source']).read_text(), r'(?im)^\s*asm\b')
-        state = next(m for m in plan['modules'] if m['id'] == 'F_AA1F')
+        self.assertNotRegex(tables['text'], r'(?im)^\s*asm\b')
+        state = recovered_member('F_AA1F')
         self.assertEqual(state['tool'], 'TCC.EXE')
         self.assertEqual(state['end'] - state['start'], 327)
-        self.assertNotRegex((ROOT / state['source']).read_text(), r'(?im)^\s*asm\b')
-        board = next(m for m in plan['modules'] if m['id'] == 'F_B7F9')
+        self.assertNotRegex(state['text'], r'(?im)^\s*asm\b')
+        board = recovered_member('F_B7F9')
         self.assertEqual(board['tool'], 'TCC.EXE')
         self.assertEqual(board['end'] - board['start'], 366)
-        self.assertNotRegex((ROOT / board['source']).read_text(), r'(?im)^\s*asm\b')
-        parser = next(m for m in plan['modules'] if m['id'] == 'F_4F96')
+        self.assertNotRegex(board['text'], r'(?im)^\s*asm\b')
+        parser = recovered_member('F_4F96')
         self.assertEqual(parser['tool'], 'TCC.EXE')
         self.assertIn('-B', parser['flags'])
         self.assertEqual(parser['end'] - parser['start'], 299)
-        self.assertNotRegex((ROOT / parser['source']).read_text(), r'(?im)^\s*asm\b')
+        self.assertNotRegex(parser['text'], r'(?im)^\s*asm\b')
+        for ident, size in [('F_B122', 693), ('F_28AC', 218), ('F_25B3', 761), ('F_8BAB', 1275), ('F_B99F', 1857), ('M_988F_98CB', 121), ('M_DAD7_DB35', 137), ('M_CB5C_CD23', 641), ('F_699E', 380), ('F_643A', 240), ('F_652A', 66), ('F_4F63', 51)]:
+            recovered = recovered_member(ident)
+            self.assertEqual(recovered['tool'], 'TCC.EXE')
+            self.assertEqual(recovered['end'] - recovered['start'], size)
+            self.assertNotRegex(recovered['text'], r'(?im)^\s*asm\b')
         self.assertNotIn('stale', stale.read_text())
         self.assertTrue((ROOT / 'build/AEPROG.EXE').exists())
 

@@ -1,0 +1,49 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_6266_68AA",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_6266",
+      "path": "src/RESOURCE.C",
+      "public": "_resource_file_open"
+    },
+    {
+      "owner": "F_643A",
+      "path": "src/RESOURCE.C",
+      "public": "_resource_file_write_record"
+    },
+    {
+      "owner": "F_652A",
+      "path": "src/RESOURCE.C",
+      "public": "_disk_reset_retry"
+    },
+    {
+      "owner": "F_656C",
+      "path": "src/RESOURCE.C",
+      "public": "_resource_load_record"
+    },
+    {
+      "owner": "F_6771",
+      "path": "src/RESOURCE.C",
+      "public": "_f6771"
+    },
+    {
+      "owner": "F_67DC",
+      "path": "src/RESOURCE.C",
+      "public": "_f67dc"
+    },
+    {
+      "owner": "F_684A",
+      "path": "src/RESOURCE.C",
+      "public": "_resource_load_record_alloc"
+    },
+    {
+      "owner": "F_68AA",
+      "path": "src/RESOURCE.C",
+      "public": "_resource_load_record_into"
+    }
+  ],
+  "evidence": "8 contiguous flag-identical TCC modules (subset of run 8), no data_owners. Indexed data-file record I/O: open/retry directory entry, indexed record writer/reader, BIOS retry helper, record unpacker dispatch, and far-block record load. Members merged into src/RESOURCE.C."
+}

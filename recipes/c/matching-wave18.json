@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 38046,
       "end": 38314,
-      "source": "src/F_929E.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f929e",
+        "public": "_puzzle_draw_piece",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -51,7 +51,7 @@
       "kind": "MATCHING_C",
       "start": 38668,
       "end": 38974,
-      "source": "src/F_950C.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f950c",
@@ -66,23 +66,23 @@
             "public": "_f020f",
             "addend": 0
           },
-          "_gbfcd": {
+          "_display_mode": {
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f0355": {
+          "_rect_border_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_0355.entry",
             "owner": "F_0355",
-            "public": "_f0355",
+            "public": "_rect_border_draw",
             "addend": 0
           },
           "_f03a5": {

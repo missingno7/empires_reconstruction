@@ -13,7 +13,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7964",
+        "public": "_menu_loop_run",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -31,52 +31,52 @@
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f6b74": {
+          "_keyboard_chain_active": {
             "coordinate": "code_offset",
             "owner": "F_6B74",
-            "public": "_f6b74",
+            "public": "_keyboard_chain_active",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f6990": {
+          "_keyboard_chain_enable": {
             "coordinate": "code_offset",
             "owner": "F_6990",
-            "public": "_f6990",
+            "public": "_keyboard_chain_enable",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f6b66": {
+          "_keyboard_buffer_drain": {
             "coordinate": "code_offset",
             "owner": "F_6B66",
-            "public": "_f6b66",
+            "public": "_keyboard_buffer_drain",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f703e": {
+          "_ui_overlay_show": {
             "coordinate": "code_offset",
             "owner": "F_703E",
-            "public": "_f703e",
+            "public": "_ui_overlay_show",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_fd593": {
+          "_sound_start": {
             "coordinate": "code_offset",
             "owner": "F_D593",
-            "public": "_fd593",
+            "public": "_sound_start",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f7bfc": {
+          "_menu_list_draw": {
             "coordinate": "code_offset",
             "owner": "F_7BFC",
-            "public": "_f7bfc",
+            "public": "_menu_list_draw",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f7d91": {
+          "_dialog_draw_panel": {
             "coordinate": "code_offset",
             "owner": "F_7D91",
-            "public": "_f7d91",
+            "public": "_dialog_draw_panel",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
@@ -87,10 +87,10 @@
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f8453": {
+          "_dialog_restore_screen": {
             "coordinate": "code_offset",
             "owner": "F_8453",
-            "public": "_f8453",
+            "public": "_dialog_restore_screen",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },

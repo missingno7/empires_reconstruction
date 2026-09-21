@@ -3,7 +3,11 @@ import copy
 from reconstruct import ROOT, read_json, write_json
 from canonical_link_plan import order_data_modules
 
-SHARED = ('C_6C26_6C87', 'C_75F3_7856', 'C_AD25_AF45')
+SHARED = ('C_01BC_0355', 'C_200F_2A70', 'C_31C4_3986', 'C_49E3_4A93', 'C_5321_56C6', 'C_5A3B_6021',
+          'C_622C_625D', 'C_6266_68AA', 'C_695E_697D', 'C_6990_6997', 'C_6C26_6C87', 'C_6FC3_747B',
+          'C_75F3_7856', 'C_7D91_880A', 'C_8A37_969D', 'C_9962_99E2', 'C_984C_9871', 'C_9A0E_9D79',
+          'C_A09D_A24E', 'C_A33F_AD0E', 'C_AD25_AF45', 'C_AF45_C15E', 'C_CDDD_D344', 'C_D85F_D8F0',
+          'C_D99B_DA49', 'C_DB60_DDC7', 'C_E095_E54D')
 
 
 def generate(root=ROOT):
@@ -14,7 +18,7 @@ def generate(root=ROOT):
         recipe = read_json(root / f'recipes/modules/{name}.json')
         members = [s['owner'] for s in recipe['sources']]
         module = copy.deepcopy(owners[members[0]])
-        module.update(id=recipe['id'], members=members, sources=[s['path'] for s in recipe['sources']],
+        module.update(id=recipe['id'], members=members, sources=list(dict.fromkeys(s['path'] for s in recipe['sources'])),
                       end=owners[members[-1]]['end'], recipe=f'recipes/modules/{name}.json')
         module.pop('source')
         modules.append(module)

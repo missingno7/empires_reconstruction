@@ -26,7 +26,8 @@ bytes. Recursive CFG analysis leaves ambiguous code/data and indirect edges for
 supervision. [Tested TASM rules](docs/current/tasm-reconstruction-rules.md) and
 structured failure hints prevent repeated compiler investigations.
 
-The production build consumes [one explicit module plan](layout/production-plan.json):
+The production build consumes [one explicit module plan](layout/production-plan.json)
+whose grouped modules come from `recipes/modules/*.json` listed in `tools/production_plan.py`:
 final C/ASM modules, source DATA, partitioned BSS, then **one TLINK invocation**.
 It checks the full original SHA and all 106 relocations in exact order.
 
@@ -46,6 +47,12 @@ python -m unittest discover -s tests -p test_tasm_reconstruction_rules.py
 python -m unittest discover -s tests -p test_build_exe.py
 ```
 
+Grouped modules live in named files (`tools/merge_module.py`); standalone files are
+renamed with `tools/rename_source.py`. `python tools/probe_module.py OWNER [--source OWNER=alt.C]` compiles single
+modules and compares their code and native DATA bytes with the original; use it
+before any declaration or header change. Shared interfaces live in `include/`; `python tools/rename_symbol.py old=new`
+renames symbols everywhere and records the original address name in
+`docs/current/symbol-names.json`.
 Acceptance never consumes cached source objects or old probe receipts. Failed
 builds invalidate published success. Promotion refreshes the queue; review and
 commit the bounded edit after ACCEPTED. A blocker command archives and restores
@@ -62,8 +69,9 @@ python tools/reconstruct_archives.py prepare
 ```
 
 `layout/toolchain.json` pins Turbo C 2.0, TASM 1.0, TLINK 2.0, CC.LIB and C0C.OBJ.
-The DOS runner supports MS-DOS Player or DOSBox Staging; see
-[runner setup](docs/dos-runner.md). Game binaries and toolchain files are not
+The DOS runner is MS-DOS Player (the nmlgc ReC98 fork for Turbo C and TASM,
+the upstream i86 build for TLINK); DOSBox Staging is the reference backend for
+parity checks. See [runner setup](docs/dos-runner.md). Game binaries and toolchain files are not
 redistributed. The Python decoder is only needed for the recovery factory, not
 for canonical EXE construction. Archive reconstruction remains available with
 `python tools/reconstruct_game.py` and `python tools/pack_archives.py verify`.

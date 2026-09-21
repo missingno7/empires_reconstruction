@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 9996,
       "end": 10109,
-      "source": "src/F_250C.C",
+      "source": "src/BOARDDRW.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f250c",
@@ -14,7 +14,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfbc": {
+          "_board_records": {
             "offset": 49084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEC.phys"
@@ -36,15 +36,15 @@
       "kind": "MATCHING_C",
       "start": 24892,
       "end": 25121,
-      "source": "src/F_5F3C.C",
+      "source": "src/HITTEST.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f5f3c",
+        "public": "_board_raycast_hit_test",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfcd": {
+          "_display_mode": {
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"

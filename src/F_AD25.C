@@ -1,2 +1,0 @@
-#include "RECORD27.H"
-extern struct record27 gc360[],gc470[];extern int g13ed;extern int fa24e(),fa13f();fad25(){register int i;for(i=0;i<10;i++){if(!gc360[i].a[0]){gc360[i]=gc470[g13ed];break;}}if(i==10){for(i=1;i<10;i++)gc360[i-1]=gc360[i];gc360[9]=gc470[g13ed];}fa24e(g13ed);fa13f();}

@@ -71,7 +71,7 @@ def report(root=ROOT):
     reviews={
         'RUNTIME_BLOCK':('ASM_ORIGIN_LIKELY','Computed entry into repeated bodies, CS patching, explicit DS preservation and I/O. BP frames alone do not imply C.'),
         'F_880A':('C_LIKE_REVIEW_LATER','BP frame, 1Eh locals, SI/DI saves and state-driven calls; production TASM is a reconstruction choice, not authorship proof.'),
-        'F_652A':('C_WITH_INLINE_ASM_LIKELY','BP frame with 512-byte local buffer, SI loop counter and compiler-like duplicate SS/address setup around INT 13h; not ordinary pure C.'),
+        'F_652A':('MATCHED_C_INTRINSICS','Full 66-byte extent recovered with Turbo C register pseudo-variables and __int__; no inline assembly.'),
         'F_7964':('C_LIKE_REVIEW_LATER','State loop shares its frame with continuation F_7DD3; do not independently re-C either owner.'),
         'F_7DD3':('SHARED_FRAME_CONTINUATION','Consumes BP locals and saved registers established by F_7964; not an independent C function.'),
         'M_DDD9_DF98':('MIXED_RECONSTRUCTION_REVIEW_LATER','Surviving src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.'),

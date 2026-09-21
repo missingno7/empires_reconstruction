@@ -1,1 +1,0 @@
-extern int f8480(); struct A {int a,b,c,d; char *p; int e,f,g,h;}; struct B {int a,b,c;char d;char *p;char e;int f,g,h,i;}; f7d91(p) struct A *p; {struct B q;q.a=2;q.p=p->p;q.c=0;q.b=0;q.d=1;q.e=0;q.f=p->h;q.g=13;q.h=p->g;q.i=p->d;f8480(&q,1);}

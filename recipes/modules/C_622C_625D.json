@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_622C_625D",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_622C",
+      "path": "src/CRITERR.C",
+      "public": "_dos_critical_error_handler"
+    },
+    {
+      "owner": "F_625D",
+      "path": "src/CRITERR.C",
+      "public": "_dos_critical_error_install"
+    }
+  ],
+  "evidence": "2 contiguous flag-identical TCC modules (subset of run 8), no data_owners. DOS critical-error handler: F_622C is the handler body, F_625D installs it via harderr(). Members merged into src/CRITERR.C."
+}

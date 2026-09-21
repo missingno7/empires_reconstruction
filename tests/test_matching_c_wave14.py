@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -23,8 +24,8 @@ class MatchingCWave14Tests(unittest.TestCase):
             work = Path(temporary)
             mutants = []
             for name, before, after in (
-                ('F_CF3C', b'n<<=2;n+=i;n+=3;', b'n=n*4+i+3;'),
-                ('F_CE9E', b'i<4', b'i<3')):
+                ('F_CF3C', b'n <<= 2;\n        n += i;\n        n += 3;', b'n = n * 4 + i + 3;'),
+                ('F_CE9E', b'for (i = 0; i < 4; i++) {\n        x = g22e0[i]', b'for (i = 0; i < 3; i++) {\n        x = g22e0[i]')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
                 self.assertEqual(source.count(before), 1)
@@ -33,7 +34,7 @@ class MatchingCWave14Tests(unittest.TestCase):
                 owner.update(id=name + '_MUTANT', source=path.relative_to(ROOT).as_posix())
                 mutants.append(owner)
             receipts, _ = compile_sources(ROOT, owners + mutants, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

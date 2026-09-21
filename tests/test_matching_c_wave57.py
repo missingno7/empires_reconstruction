@@ -7,6 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region,
                          mismatch, owned_library_modules)
 
@@ -22,13 +23,18 @@ class MatchingCWave57Tests(unittest.TestCase):
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             module = read_object((Path(temporary) / receipts[owner['id']]['object']).read_bytes())
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'],
                                       manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)
             self.assertEqual(len(data), 61)
-            self.assertEqual(len(proof['fixups']), 1)
+            # F_E114 and the F_E0C0 (voice_load_instrument) it calls are now
+            # both sections of the same src/OPLREG.C translation unit, so the
+            # call resolves to a direct intra-module offset instead of the
+            # external relocation it needed back when they were separate
+            # member files.
+            self.assertEqual(len(proof['fixups']), 0)
             self.assertEqual(proof['load_relocations'], [])
             self.assertEqual(data[:6], bytes.fromhex('55 8b ec 83 ec 1c'))
             self.assertEqual(data[-6:], bytes.fromhex('08 5e 8b e5 5d c3'))

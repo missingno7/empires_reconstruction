@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 42789,
       "end": 43096,
-      "source": "src/F_A525.C",
+      "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa525",
+        "public": "_player_name_edit",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -20,11 +20,11 @@
             "addend": 0,
             "evidence": "Complete independently encoded initialized string"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -32,11 +32,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
           "_f039f": {
@@ -44,18 +44,18 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f6cf6": {
+          "_text_line_width": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CF6.entry",
             "owner": "F_6CF6",
-            "public": "_f6cf6",
+            "public": "_text_line_width",
             "addend": 0
           },
-          "_fa43c": {
+          "_slot_input_wait_key": {
             "coordinate": "code_offset",
             "evidence": "functions/F_A43C.entry",
             "owner": "F_A43C",
-            "public": "_fa43c",
+            "public": "_slot_input_wait_key",
             "addend": 0
           },
           "__ctype": {

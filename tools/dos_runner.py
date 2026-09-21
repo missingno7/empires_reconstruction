@@ -15,10 +15,22 @@ import subprocess
 class DosRunner:
     backend: str
     executable: Path
+    # Optional per-program host executables, keyed by the DOS program name
+    # (e.g. {'TLINK.EXE': Path(...)}).  Same backend, different emulator build.
+    overrides: tuple = ()
+
+    def host_executable(self, program):
+        for name, path in self.overrides:
+            if name.upper() == Path(program).name.upper():
+                return Path(path)
+        return self.executable
 
     def receipt(self):
-        return {'backend': self.backend, 'path': str(self.executable),
-                'sha256': hashlib.sha256(self.executable.read_bytes()).hexdigest()}
+        digest = lambda path: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+        receipt = {'backend': self.backend, 'path': str(self.executable), 'sha256': digest(self.executable)}
+        if self.overrides:
+            receipt['overrides'] = {name: {'path': str(path), 'sha256': digest(path)} for name, path in self.overrides}
+        return receipt
 
     def _options(self):
         if os.name != 'nt':
@@ -49,15 +61,18 @@ class DosRunner:
                    'MSDOS_TEMP': str(cwd), 'TEMP': str(cwd), 'TMP': str(cwd)}
             if environment:
                 env.update({key: str(value) for key, value in environment.items()})
-            command = [str(self.executable), '-e', '-v5.00', str(program), *map(str, arguments)]
+            command = [str(self.host_executable(program)), '-e', '-v5.00', str(program), *map(str, arguments)]
         elif self.backend == 'dosbox':
+            # The program directory is mounted as D: and put on the DOS PATH so that
+            # Turbo C finds TASM the same way it does in the batch build; the
+            # working directory is C:.  Host paths never reach the DOS side.
             script = cwd / '__RUNNER.BAT'
-            command_line = '"' + str(program) + '" ' + ' '.join(map(str, arguments))
-            script.write_bytes(('@echo off\r\n' + command_line + ' > RUNNER.LOG\r\n'
+            command_line = 'D:\\' + program.name + ' ' + ' '.join(map(str, arguments))
+            script.write_bytes(('@echo off\r\nset PATH=D:\\\r\n' + command_line + ' > RUNNER.LOG\r\n'
                                 'echo %ERRORLEVEL%>RUNNER.RC\r\n').encode('ascii', 'replace'))
             conf = cwd / '__runner.conf'
             conf.write_text('[sdl]\noutput=texture\n[mixer]\nnosound=true\n[autoexec]\n'
-                            f'mount c "{cwd}"\nc:\ncall c:\\__RUNNER.BAT\nexit\n', encoding='utf-8')
+                            f'mount c "{cwd}"\nmount d "{program.parent}"\nc:\ncall c:\\__RUNNER.BAT\nexit\n', encoding='utf-8')
             command = [str(self.executable), '-conf', str(conf), '--noprimaryconfig', '-noconsole', '-exit']
         else:
             raise ValueError(f'Unsupported DOS runner backend: {self.backend}')
@@ -91,7 +106,10 @@ def resolve_runner(lock, backend=None, executable=None):
         candidates = [override, lock.get('runner', {}).get('msdos_player_default'), shutil.which('msdos.exe'), shutil.which('msdos')]
         path = next((p for value in candidates if value and (p := _candidate(value)).is_file()), None)
         if path:
-            return DosRunner('msdos-player', path.resolve())
+            overrides = tuple((name, _candidate(value).resolve()) for name, value in
+                              lock.get('runner', {}).get('msdos_player_overrides', {}).items()
+                              if _candidate(value) and _candidate(value).is_file())
+            return DosRunner('msdos-player', path.resolve(), overrides)
         fallback = lock.get('runner', {}).get('fallback', 'dosbox')
         if backend or fallback != 'dosbox':
             raise ValueError('MS-DOS Player is unavailable; set MSDOS_PLAYER or install msdos.exe')

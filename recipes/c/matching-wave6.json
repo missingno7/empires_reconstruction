@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 26993,
       "end": 27100,
-      "source": "src/F_6771.C",
+      "source": "src/RESOURCE.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f6771",
@@ -14,7 +14,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfcd": {
+          "_display_mode": {
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
@@ -51,7 +51,7 @@
       "kind": "MATCHING_C",
       "start": 27100,
       "end": 27210,
-      "source": "src/F_67DC.C",
+      "source": "src/RESOURCE.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f67dc",
@@ -59,7 +59,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfcd": {
+          "_display_mode": {
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
@@ -96,19 +96,19 @@
       "kind": "MATCHING_C",
       "start": 29698,
       "end": 29802,
-      "source": "src/F_7202.C",
+      "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7202",
+        "public": "_hud_draw_meter",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f8ba5": {
+          "_puzzle_piece_count": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8BA5.entry",
             "owner": "F_8BA5",
-            "public": "_f8ba5",
+            "public": "_puzzle_piece_count",
             "addend": 0
           },
           "_gc0ee": {
@@ -149,10 +149,10 @@
       "kind": "MATCHING_C",
       "start": 29848,
       "end": 29971,
-      "source": "src/F_7298.C",
+      "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7298",
+        "public": "_hud_tab_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -205,10 +205,10 @@
       "kind": "MATCHING_C",
       "start": 41526,
       "end": 41629,
-      "source": "src/F_A036.C",
+      "source": "src/STRCATF.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa036",
+        "public": "_str_concat_far_list",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -238,26 +238,26 @@
       "kind": "MATCHING_C",
       "start": 54109,
       "end": 54232,
-      "source": "src/F_D15D.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd15d",
+        "public": "_player_select_choose_slot",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fd117": {
+          "_player_select_draw_highlight": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D117.entry",
             "owner": "F_D117",
-            "public": "_fd117",
+            "public": "_player_select_draw_highlight",
             "addend": 0
           },
-          "_f6b66": {
+          "_keyboard_buffer_drain": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B66.entry",
             "owner": "F_6B66",
-            "public": "_f6b66",
+            "public": "_keyboard_buffer_drain",
             "addend": 0
           },
           "_f6b1a": {
@@ -267,7 +267,7 @@
             "public": "_f6b1a",
             "addend": 0
           },
-          "_gc5ba": {
+          "_player_select_index": {
             "offset": 50618,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0EA.phys"
@@ -282,17 +282,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0E2.phys"
           },
-          "_fd0d1": {
+          "_player_select_clear_highlight": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D0D1.entry",
             "owner": "F_D0D1",
-            "public": "_fd0d1",
+            "public": "_player_select_clear_highlight",
             "addend": 0
           },
-          "_fce2a": {
+          "_player_select_restart_confirm": {
             "coordinate": "code_offset",
             "owner": "F_CE2A",
-            "public": "_fce2a",
+            "public": "_player_select_restart_confirm",
             "addend": 0,
             "evidence": "functions/F_CE2A.entry"
           }

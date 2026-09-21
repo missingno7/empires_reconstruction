@@ -4,39 +4,39 @@
     {
       "id": "F_CE2A",
       "kind": "MATCHING_C",
-      "source": "src/F_CE2A.C",
+      "source": "src/PLAYERSL.C",
       "start": 53290,
       "end": 53352,
       "expected_sha256": "b67d569eb8334480969cb84767b702ab7a87d3cf1e4c2f48fb35422690269868",
       "build": {
         "segment": "_TEXT",
-        "public": "_fce2a",
+        "public": "_player_select_restart_confirm",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fd593": {
+          "_sound_start": {
             "coordinate": "code_offset",
             "owner": "F_D593",
-            "public": "_fd593",
+            "public": "_sound_start",
             "addend": 0
           },
-          "_f86c9": {
+          "_dialog_run": {
             "coordinate": "code_offset",
             "owner": "F_86C9",
-            "public": "_f86c9",
+            "public": "_dialog_run",
             "addend": 0
           },
-          "_fa13f": {
+          "_slot_table_save": {
             "coordinate": "code_offset",
             "owner": "F_A13F",
-            "public": "_fa13f",
+            "public": "_slot_table_save",
             "addend": 0
           },
-          "_fcb48": {
+          "_sound_stop_reset": {
             "coordinate": "code_offset",
             "owner": "F_CB48",
-            "public": "_fcb48",
+            "public": "_sound_stop_reset",
             "addend": 0
           },
           "_fc834": {
@@ -51,13 +51,13 @@
             "public": "_longjmp",
             "addend": 0
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0
           },
-          "_g21ec": {
+          "_dialog_select_restart_confirm": {
             "offset": 8684,
             "coordinate": "DGROUP_offset"
           },
@@ -65,11 +65,11 @@
             "offset": 35838,
             "coordinate": "DGROUP_offset"
           },
-          "_g1772": {
+          "_music_enabled": {
             "offset": 6002,
             "coordinate": "DGROUP_offset"
           },
-          "_g176e": {
+          "_sound_enabled": {
             "offset": 5998,
             "coordinate": "DGROUP_offset"
           }

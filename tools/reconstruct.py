@@ -5,6 +5,7 @@ from dataclasses import asdict
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import struct
@@ -75,6 +76,18 @@ def mismatch(expected, actual, owner, base=None):
                          f'first missing/extra byte file 0x{base+min(len(expected),len(actual)):06X}')
 
 
+def dos_text(data):
+    """Canonical DOS toolchain text: latin-1 bytes with explicit CRLF line endings.
+
+    Every text file handed to Turbo C, TASM or TLINK passes through here, so the
+    result never depends on Git, Python platform defaults or the DOS host.
+    TASM 1.0 misparses LF-only input, so CRLF is required, not cosmetic.
+    """
+    if isinstance(data, str):
+        data = data.encode('latin1')
+    return data.replace(b'\r\n', b'\n').replace(b'\r', b'\n').replace(b'\n', b'\r\n')
+
+
 def compile_sources(root, owners, work, toolchain, runner, lock):
     """Compile fresh sources through MS-DOS Player or the DOSBox reference host."""
     if not isinstance(runner, DosRunner):
@@ -84,8 +97,7 @@ def compile_sources(root, owners, work, toolchain, runner, lock):
     include_dir = root / 'include'
     if include_dir.exists():
         for header in include_dir.glob('*.H'):
-            staged = header.read_bytes().decode('latin1').replace('\r\n','\n').replace('\r','\n').replace('\n','\r\n').encode('latin1')
-            (units / header.name).write_bytes(staged)
+            (units / header.name).write_bytes(dos_text(header.read_bytes()))
     for item in lock['files']:
         src = toolchain / item['path']
         if sha(src.read_bytes()) != item['sha256']:
@@ -96,7 +108,7 @@ def compile_sources(root, owners, work, toolchain, runner, lock):
     for i, owner in enumerate(owners):
         stem = f'R{i:04d}'; suffix = '.C' if owner['kind'] == 'MATCHING_C' else '.ASM'
         source = project_path(root, owner['source']).read_bytes()
-        staged = source.decode('latin1').replace('\r\n','\n').replace('\r','\n').replace('\n','\r\n').encode('latin1')
+        staged = dos_text(source)
         (units / (stem + suffix)).write_bytes(staged)
         flags = lock['flags'].split() + owner['build'].get('flags_append','').split()
         args = flags + [stem + suffix] if owner['kind'] == 'MATCHING_C' else ['/mx', stem + suffix]
@@ -105,30 +117,18 @@ def compile_sources(root, owners, work, toolchain, runner, lock):
         receipts[owner['id']] = {'command': printable, 'object': f'WORK/{stem}.OBJ', 'source_sha256': sha(source), 'staged_sha256': sha(staged)}
         staged_units.append((owner, stem, args))
     if runner.backend == 'msdos-player':
-        # MS-DOS Player executes Turbo C's normal TASM handoff faithfully for
-        # ordinary units.  RUNTIME_BLOCK is the one unusually large unit for
-        # which that child-process handoff does not return on this host.  Keep
-        # its compiler output identical by asking TCC for assembly and then
-        # invoking the pinned TASM explicitly; do not apply this workaround to
-        # the rest of the source tree because it changes a few terminal bytes.
-        external_tasm_owners = {'RUNTIME_BLOCK'}
+        # Each unit runs exactly the historical command (Turbo C performs its own
+        # TASM handoff for -B and inline-asm units) as a native host process.
         print(f'Compiling {len(owners)} source regions with Turbo C / TASM through MS-DOS Player...', flush=True)
         host_log = bytearray()
         for owner, stem, args in staged_units:
             program = tc / ('TCC.EXE' if owner['kind'] == 'MATCHING_C' else 'TASM.EXE')
-            needs_external_tasm = owner['kind'] == 'MATCHING_C' and owner['id'] in external_tasm_owners
-            direct_args = args[:-1] + ['-S', args[-1]] if needs_external_tasm else args
-            result, command, output = runner.run(program, direct_args, units, timeout=600)
-            host_log.extend((owner['id'] + '\r\n').encode('ascii', 'replace') + output)
+            host_log.extend((owner['id'] + '\r\n' + receipts[owner['id']]['command'] + '\r\n').encode('ascii', 'replace'))
+            result, command, output = runner.run(program, args, units, timeout=600)
+            host_log.extend(output)
             if result.returncode:
                 (work / 'host.log').write_bytes(host_log)
                 raise ValueError(f'Compiler command failed for {owner["id"]}; inspect {work / "host.log"}')
-            if needs_external_tasm:
-                result, command, output = runner.run(tc / 'TASM.EXE', ['/mx', stem + '.ASM'], units, timeout=600)
-                host_log.extend(output)
-                if result.returncode:
-                    (work / 'host.log').write_bytes(host_log)
-                    raise ValueError(f'Compiler assembly failed for {owner["id"]}; inspect {work / "host.log"}')
         (work / 'host.log').write_bytes(host_log)
         for receipt in receipts.values():
             path = work / receipt['object']

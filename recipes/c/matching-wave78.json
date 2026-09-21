@@ -13,11 +13,11 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f652a",
+        "public": "_disk_reset_retry",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gc0c8": {
+          "_current_drive": {
             "offset": 49352,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS byte read at DS:C0C8"

@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 11376,
       "end": 11490,
-      "source": "src/F_2A70.C",
+      "source": "src/BOARDDRW.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f2a70",
@@ -14,16 +14,16 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfc0": {
+          "_record_table_root": {
             "offset": 49088,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF0.phys"
           },
-          "_f2a2d": {
+          "_record_field_skip_n": {
             "coordinate": "code_offset",
             "evidence": "functions/F_2A2D.entry",
             "owner": "F_2A2D",
-            "public": "_f2a2d",
+            "public": "_record_field_skip_n",
             "addend": 0
           }
         }
@@ -44,7 +44,7 @@
       "kind": "MATCHING_C",
       "start": 13562,
       "end": 13706,
-      "source": "src/F_32FA.C",
+      "source": "src/BOARDSCR.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f32fa",
@@ -52,12 +52,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfc0": {
+          "_record_table_root": {
             "offset": 49088,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF0.phys"
           },
-          "_gbfbc": {
+          "_board_records": {
             "offset": 49084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEC.phys"
@@ -80,7 +80,7 @@
       "kind": "MATCHING_C",
       "start": 38502,
       "end": 38668,
-      "source": "src/F_9466.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f9466",

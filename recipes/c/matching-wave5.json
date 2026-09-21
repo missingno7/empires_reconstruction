@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 1039,
       "end": 1045,
-      "source": "src/F_020F.C",
+      "source": "src/VIDEO.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f020f",
@@ -37,10 +37,10 @@
       "kind": "MATCHING_C",
       "start": 29123,
       "end": 29130,
-      "source": "src/F_6FC3.C",
+      "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6fc3",
+        "public": "_hud_panel_clear",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -101,11 +101,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -167,18 +167,18 @@
       "kind": "MATCHING_C",
       "start": 32657,
       "end": 32753,
-      "source": "src/F_7D91.C",
+      "source": "src/DIALOG.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7d91",
+        "public": "_dialog_draw_panel",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f8480": {
+          "_dialog_draw": {
             "coordinate": "code_offset",
             "owner": "F_8480",
-            "public": "_f8480",
+            "public": "_dialog_draw",
             "addend": 0,
             "evidence": "functions/F_8480.entry"
           }
@@ -200,15 +200,15 @@
       "kind": "MATCHING_C",
       "start": 36261,
       "end": 36267,
-      "source": "src/F_8BA5.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f8ba5",
+        "public": "_puzzle_piece_count",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc130": {
+          "_puzzle_piece_total": {
             "offset": 49456,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC60.phys"
@@ -231,10 +231,10 @@
       "kind": "MATCHING_C",
       "start": 38314,
       "end": 38402,
-      "source": "src/F_93AA.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f93aa",
+        "public": "_puzzle_draw_tray_piece",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -272,7 +272,7 @@
       "kind": "MATCHING_C",
       "start": 38464,
       "end": 38502,
-      "source": "src/F_9440.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f9440",
@@ -285,10 +285,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BC66.phys"
           },
-          "_f778b": {
+          "_hud_prompt_confirm_draw": {
             "coordinate": "code_offset",
             "owner": "F_778B",
-            "public": "_f778b",
+            "public": "_hud_prompt_confirm_draw",
             "addend": 0,
             "evidence": "functions/F_778B.entry"
           }
@@ -310,10 +310,10 @@
       "kind": "MATCHING_C",
       "start": 38974,
       "end": 39069,
-      "source": "src/F_963E.C",
+      "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f963e",
+        "public": "_puzzle_clear_cell",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -359,7 +359,7 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03B7.entry"
           },
-          "_gc34e": {
+          "_score_panel_x": {
             "offset": 49998,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BE7E.phys"

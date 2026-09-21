@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (bind_region, compile_sources, mismatch, owned_library_modules,
                          read_json, read_object)
 
@@ -21,7 +22,7 @@ class SharedInterfaceF9DccTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             work = Path(temporary)
             receipts, _ = compile_sources(ROOT, [owner], work, ROOT / 'toolchain',
-                                            Path(lock['dosbox_default']), lock)
+                                            resolve_runner(lock), lock)
             module = read_object((work / receipts[owner['id']]['object']).read_bytes())
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'],
                                       manifest['regions'],

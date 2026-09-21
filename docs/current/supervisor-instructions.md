@@ -28,7 +28,8 @@ ABI/layout suggestions are syntactic evidence, not automatic rewrite instruction
 The census records return/argument types, pointer shape, definitions/declarations,
 storage bindings, aliases, record field offsets and parser confidence. It distinguishes
 exact field-layout matches from merely equal 27-byte sizes. Test a proposed
-consolidation with byte-exact compilation before adopting a common header.
+consolidation with `python tools/probe_module.py` before adopting a common header,
+and run full acceptance afterwards.
 
 Known limitations are deliberate: indirect target inference is conservative;
 semantic names are not guessed; unsupported C declarators remain unknown; runtime

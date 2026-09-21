@@ -7,10 +7,6 @@ import re
 from reconstruct import ROOT, read_json, write_json, sha
 
 C_REVIEW = {
-    'F_25B3': '761-byte record update; recover byte-coordinate types first (related F_28AC mismatch).',
-    'F_8BAB': '1275-byte state machine with many callees; requires a complete C candidate and typed local frame.',
-    'F_B122': '693-byte table expansion; use exact F_B40F as reference, but derive each table and call binding independently.',
-    'F_B99F': '1857-byte state machine with 148-byte local frame; scope and recover nested control flow before unattended work.',
 }
 
 def prepare(root=ROOT):
@@ -40,8 +36,6 @@ def prepare(root=ROOT):
             route, reason = 'EXISTING_RUNTIME_CARDS', 'Use current bounded runtime cards; do not convert the whole block to C.'
         elif ident == 'M_DDD9_DF98':
             route, reason = 'HELD_SUPERVISOR', 'Six compiler-path probes completed: byte matches, unresolved shared-module relocation order. See c-path-probes.json.'
-        elif ident == 'F_28AC':
-            route, reason = 'HELD_SUPERVISOR', '214/218-byte C near-match; -B did not resolve the two byte-coordinate conversions.'
         elif ident in C_REVIEW:
             route, reason = 'HELD_C_RECONSTRUCTION', C_REVIEW[ident]
         else:

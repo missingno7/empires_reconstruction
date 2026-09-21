@@ -1,4 +1,0 @@
-#include "C470.H"
-extern int f03b4(),fa28d(),f7695(),f6d3c(),f6fc3();extern void f01ce(),f039f();extern int gc57e,gc46e;extern struct c470_record gc470[];extern char g12d9[],g1660[];
-#define C470_BYTES ((char (*)[27])gc470)
-fa33f(){register int i,y;f03b4(0,200,320,200,0,0);f01ce(0);y=49;for(i=0;i<gc57e;i++)fa28d(C470_BYTES[i],y+=11,1);if(gc46e){f7695(g12d9);f01ce(0);f03b4(0,0x1b8+(gc46e-1)*17,192,17,66,38);if(gc46e==1)f6d3c(43,y+11,g1660);}else if(!gc57e)f6fc3();f039f(0,0,320,200);}

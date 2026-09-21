@@ -17,7 +17,7 @@ b@	LABEL	BYTE
 _BSS	ENDS
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	PUBLIC	_fc1a0, _fc1f7, _fc232
-	EXTRN	_fc8e2:NEAR, _fc27d:NEAR
+	EXTRN	_sound_tick_step:NEAR, _fc27d:NEAR
 
 _fc1a0	PROC	NEAR
 	push	bp
@@ -36,7 +36,7 @@ _fc1a0	PROC	NEAR
 	mov	word ptr _v_b+6,ax
 	cmp	word ptr _snd_flag,0
 	je	tick_l2
-	call	near ptr _fc8e2
+	call	near ptr _sound_tick_step
 	cmp	word ptr _snd_mode,0
 	je	tick_l3
 	cmp	word ptr _snd_paused,0

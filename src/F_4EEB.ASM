@@ -10,19 +10,19 @@ DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
 public _f4eeb
-extrn _f01ce:near
+extrn _gfx_color_select:near
 extrn _f03a5:near
 extrn _f03cc:near
 extrn _gb3ae:byte
-extrn _gbfba:word
-extrn _gb07c:dword
+extrn _board_record_index:word
+extrn _resource_ptr_table:dword
 
 _f4eeb proc near
     push bp
     mov bp,sp
     mov ax,0fh
     push ax
-    call _f01ce
+    call _gfx_color_select
     pop ax
     push si
     push di
@@ -35,7 +35,7 @@ _f4eeb proc near
 loop_records:
     xor ax,ax
     mov al,[di+1]
-    cmp ax,word ptr DGROUP:_gbfba
+    cmp ax,word ptr DGROUP:_board_record_index
     jne skip_record
     cmp byte ptr [di+8],1
     je skip_record
@@ -46,7 +46,7 @@ loop_records:
     mov bl,[di+6]
     shl bx,1
     shl bx,1
-    les ax,dword ptr DGROUP:_gb07c[bx]
+    les ax,dword ptr DGROUP:_resource_ptr_table[bx]
     push es
     push ax
     mov ax,[bp+4]

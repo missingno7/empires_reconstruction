@@ -1,1 +1,1 @@
-extern int gbb2; f791e(){gbb2=1;}
+extern int gbb2; void f791e(void){gbb2=1;}

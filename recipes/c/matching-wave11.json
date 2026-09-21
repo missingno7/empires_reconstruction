@@ -14,12 +14,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g13ed": {
+          "_current_slot": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_gc470": {
+          "_slot_table": {
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
@@ -34,18 +34,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026E.phys"
           },
-          "_f1ec0": {
+          "_value_parity": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1EC0.entry",
             "owner": "F_1EC0",
-            "public": "_f1ec0",
+            "public": "_value_parity",
             "addend": 0
           },
-          "_f4713": {
+          "_level_driver_run": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4713.entry",
             "owner": "F_4713",
-            "public": "_f4713",
+            "public": "_level_driver_run",
             "addend": 0
           }
         }
@@ -70,33 +70,33 @@
       "kind": "MATCHING_C",
       "start": 42556,
       "end": 42789,
-      "source": "src/F_A43C.C",
+      "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa43c",
+        "public": "_slot_input_wait_key",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f6c57": {
+          "_timer_deadline_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6C57.entry",
             "owner": "F_6C57",
-            "public": "_f6c57",
+            "public": "_timer_deadline_arm",
             "addend": 0
           },
-          "_f6c87": {
+          "_timer_deadline_reached": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6C87.entry",
             "owner": "F_6C87",
-            "public": "_f6c87",
+            "public": "_timer_deadline_reached",
             "addend": 0
           },
-          "_fa40a": {
+          "_slot_cursor_box": {
             "coordinate": "code_offset",
             "evidence": "functions/F_A40A.entry",
             "owner": "F_A40A",
-            "public": "_fa40a",
+            "public": "_slot_cursor_box",
             "addend": 0
           },
           "_g13ef": {
@@ -150,46 +150,46 @@
       "kind": "MATCHING_C",
       "start": 54380,
       "end": 54596,
-      "source": "src/F_D26C.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd26c",
+        "public": "_player_select_run",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f6b74": {
+          "_keyboard_chain_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B74.entry",
             "owner": "F_6B74",
-            "public": "_f6b74",
+            "public": "_keyboard_chain_active",
             "addend": 0
           },
-          "_fd089": {
+          "_player_select_load_flags": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D089.entry",
             "owner": "F_D089",
-            "public": "_fd089",
+            "public": "_player_select_load_flags",
             "addend": 0
           },
-          "_fd5f9": {
+          "_resource_record_cache_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D5F9.entry",
             "owner": "F_D5F9",
-            "public": "_fd5f9",
+            "public": "_resource_record_cache_reset",
             "addend": 0
           },
-          "_fce68": {
+          "_player_select_mark": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CE68.entry",
             "owner": "F_CE68",
-            "public": "_fce68",
+            "public": "_player_select_mark",
             "addend": 0
           },
-          "_fcf3c": {
+          "_player_select_draw_screen": {
             "coordinate": "code_offset",
             "owner": "F_CF3C",
-            "public": "_fcf3c",
+            "public": "_player_select_draw_screen",
             "addend": 0,
             "evidence": "functions/F_CF3C.entry"
           },
@@ -205,11 +205,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A6.phys"
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D5A6.entry",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0
           },
           "_f03b4": {
@@ -217,11 +217,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -229,21 +229,21 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_g13ed": {
+          "_current_slot": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_gc470": {
+          "_slot_table": {
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
           },
-          "_f6990": {
+          "_keyboard_chain_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6990.entry",
             "owner": "F_6990",
-            "public": "_f6990",
+            "public": "_keyboard_chain_enable",
             "addend": 0
           },
           "_gc5b0": {
@@ -257,14 +257,14 @@
             "addend": 0,
             "evidence": "Complete null-terminated ASCII component"
           },
-          "_f7695": {
+          "_hud_prompt_select_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7695.entry",
             "owner": "F_7695",
-            "public": "_f7695",
+            "public": "_hud_prompt_select_draw",
             "addend": 0
           },
-          "_gc5ba": {
+          "_player_select_index": {
             "offset": 50618,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0EA.phys"
@@ -274,25 +274,25 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0E2.phys"
           },
-          "_fd15d": {
+          "_player_select_choose_slot": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D15D.entry",
             "owner": "F_D15D",
-            "public": "_fd15d",
+            "public": "_player_select_choose_slot",
             "addend": 0
           },
-          "_f6fc3": {
+          "_hud_panel_clear": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6FC3.entry",
             "owner": "F_6FC3",
-            "public": "_f6fc3",
+            "public": "_hud_panel_clear",
             "addend": 0
           },
-          "_fd1d8": {
+          "_player_select_close_wipe": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D1D8.entry",
             "owner": "F_D1D8",
-            "public": "_fd1d8",
+            "public": "_player_select_close_wipe",
             "addend": 0
           },
           "_f7df1": {
@@ -302,11 +302,11 @@
             "public": "_f7df1",
             "addend": 0
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6997.entry",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0
           },
           "_fc834": {

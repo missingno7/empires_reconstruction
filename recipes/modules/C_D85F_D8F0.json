@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_D85F_D8F0",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_D85F",
+      "path": "src/RECTTAB.C",
+      "public": "_record_table_delete_compact"
+    },
+    {
+      "owner": "F_D89A",
+      "path": "src/RECTTAB.C",
+      "public": "_rect_table_hit_id"
+    },
+    {
+      "owner": "F_D8F0",
+      "path": "src/RECTTAB.C",
+      "public": "_record_panel_rebuild"
+    }
+  ],
+  "evidence": "3 contiguous flag-identical TCC modules (first part of run 19), no data_owners. Rectangle-table (g2f30) subsystem: delete/compact record, overlap-query lookup, panel rebuild from the record at gc5da+8. Members merged into src/RECTTAB.C."
+}

@@ -30,7 +30,7 @@ _f4e9f  proc    near
         inc     di
 @@top:  xor     ax,ax
         mov     al,[di+1]
-        cmp     ax,_gbfba
+        cmp     ax,_board_record_index
         jne     @@next
         cmp     byte ptr [di+8],1
         je      @@next
@@ -60,7 +60,7 @@ _TEXT   ends
         public  _f4e9f
         extrn   _f4aa8:near
         extrn   _gb3ae:byte
-        extrn   _gbfba:word
+        extrn   _board_record_index:word
         extrn   _gbf66:byte
         extrn   _g9bfc:byte
         end

@@ -1,1 +1,0 @@
-extern int f726a(),face7(),f7313(),f462e(),fc0e0(),fb6cd(),fc834();extern int g9ade,g722;fc15e(){f726a();if(!face7())f7313(-3);else f7313(-4);g9ade=42;g722=0;f462e();if(!fc0e0())return 0;fb6cd();fc834();return 1;}

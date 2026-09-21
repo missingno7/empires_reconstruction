@@ -6,14 +6,14 @@
       "kind": "MATCHING_C",
       "start": 40296,
       "end": 40825,
-      "source": "src/F_9B68.C",
+      "source": "src/ROUNDEND.C",
       "original_symbol": "F_9B68",
       "artifact": "regions/F_9B68.bin",
       "expected_sha256": "53a965ebb680942a21b5a42906c101c19e5b238ae7830b846a72e242853f4021",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9b68",
+        "public": "_roundend_round_setup",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -56,10 +56,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset from complete function fixup"
           },
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
@@ -69,17 +69,17 @@
             "addend": 0,
             "evidence": "24-word table at DS:1271"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
-          "_f0355": {
+          "_rect_border_draw": {
             "coordinate": "code_offset",
             "owner": "F_0355",
-            "public": "_f0355",
+            "public": "_rect_border_draw",
             "addend": 0,
             "evidence": "function entry from complete function fixup"
           },
@@ -88,10 +88,10 @@
             "coordinate": "code_offset",
             "evidence": "function entry from complete function fixup"
           },
-          "_f9a0e": {
+          "_roundend_marker_show": {
             "coordinate": "code_offset",
             "owner": "F_9A0E",
-            "public": "_f9a0e",
+            "public": "_roundend_marker_show",
             "addend": 0,
             "evidence": "function entry from complete function fixup"
           },

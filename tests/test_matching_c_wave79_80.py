@@ -6,6 +6,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import bind_region, compile_sources, mismatch, owned_library_modules, read_json, read_object
 
 
@@ -24,7 +25,7 @@ class MatchingCWave79_80Tests(unittest.TestCase):
                 work = Path(temporary) / ident
                 work.mkdir()
                 receipts, _ = compile_sources(ROOT, [owner], work,
-                                               ROOT / 'toolchain', Path(lock['dosbox_default']), lock)
+                                               ROOT / 'toolchain', resolve_runner(lock), lock)
                 module = read_object((work / receipts[ident]['object']).read_bytes())
                 data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'],
                                           manifest['regions'], modules)

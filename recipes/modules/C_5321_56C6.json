@@ -1,0 +1,49 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_5321_56C6",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_5321",
+      "path": "src/INTRO.C",
+      "public": "_intro_play_script"
+    },
+    {
+      "owner": "F_5382",
+      "path": "src/INTRO.C",
+      "public": "_intro_animate_step"
+    },
+    {
+      "owner": "F_555B",
+      "path": "src/INTRO.C",
+      "public": "_splash_draw_and_clear"
+    },
+    {
+      "owner": "F_5593",
+      "path": "src/INTRO.C",
+      "public": "_intro_wait_key"
+    },
+    {
+      "owner": "F_55C7",
+      "path": "src/INTRO.C",
+      "public": "_resource_ptr_table_build"
+    },
+    {
+      "owner": "F_5673",
+      "path": "src/INTRO.C",
+      "public": "_bitmap_blit_topleft"
+    },
+    {
+      "owner": "F_568C",
+      "path": "src/INTRO.C",
+      "public": "_f568c"
+    },
+    {
+      "owner": "F_56C6",
+      "path": "src/INTRO.C",
+      "public": "_intro_run_chapter"
+    }
+  ],
+  "evidence": "8 contiguous flag-identical TCC modules (subset of run 7), no data_owners. Intro chapter subsystem: animation-step driver/service, key-wait, far-pointer table build at DS:BFEE, blit and the intro chapter driver itself (comment: 'intro chapter driver'). Members merged into src/INTRO.C."
+}

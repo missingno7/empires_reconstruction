@@ -4,13 +4,13 @@
     {
       "id": "F_6B7A",
       "kind": "MATCHING_C",
-      "source": "src/F_6B7A.C",
+      "source": "src/TIMERINS.C",
       "start": 28026,
       "end": 28076,
       "expected_sha256": "7ae49dbdcd0c6fe7d78ba2c8215970167403d4dd296959edb1f0880e9f24a0ee",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6b7a",
+        "public": "_timer_irq_install",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -37,13 +37,13 @@
     {
       "id": "F_6BAC",
       "kind": "MATCHING_C",
-      "source": "src/F_6BAC.C",
+      "source": "src/TIMERRST.C",
       "start": 28076,
       "end": 28111,
       "expected_sha256": "879bdc64c4d791dfaf24239eab1bbc4e941a6518f2e33a1e93901a9b2d395a3b",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6bac",
+        "public": "_timer_irq_restore",
         "span": 1,
         "flags_append": "",
         "module_segments": {},

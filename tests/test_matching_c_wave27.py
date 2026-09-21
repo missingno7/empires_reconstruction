@@ -7,6 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import read_json, compile_sources, read_object, bind_region, mismatch, owned_library_modules
 
 
@@ -22,11 +23,11 @@ class MatchingCWave27Tests(unittest.TestCase):
             source = (ROOT / owner['source']).read_bytes()
             mutant_path = work / 'F_A768_MUTANT.C'
             mutant_path.write_bytes(source.replace(
-                b'case 27:di=1;i=0;break;case 328:case 336:i^=1;fa1e0();break;case 13:di=i;break;',
-                b'case 13:di=i;break;case 27:di=1;i=0;break;case 328:case 336:i^=1;fa1e0();break;'))
+                b'case 27: di = 1; i = 0; break;\n        case 328:\n        case 336: i ^= 1; fa1e0(); break;\n        case 13: di = i; break;',
+                b'case 13: di = i; break;\n        case 27: di = 1; i = 0; break;\n        case 328:\n        case 336: i ^= 1; fa1e0(); break;'))
             mutant = copy.deepcopy(owner)
             mutant.update(id='F_A768_MUTANT', source=mutant_path.relative_to(ROOT).as_posix())
-            receipts, _ = compile_sources(ROOT, [owner, mutant], work / 'compiler', ROOT / 'toolchain', Path(lock['dosbox_default']), lock)
+            receipts, _ = compile_sources(ROOT, [owner, mutant], work / 'compiler', ROOT / 'toolchain', resolve_runner(lock), lock)
             module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())
             data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)

@@ -1,1 +1,0 @@
-extern int f6f4b(),f6eff();extern char gbfcd;f67dc(p) char *p;{register int i,n;unsigned *t;char *q;t=(unsigned *)p;n=(*t>>1)-1;for(i=0;i<n;i++){q=p+*t;t++;if(*q==0x47){if(gbfcd==2)f6f4b(q+2);else f6eff(q+2);}}}

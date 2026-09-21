@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 30869,
       "end": 31047,
-      "source": "src/F_7695.C",
+      "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7695",
+        "public": "_hud_prompt_select_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {
@@ -35,11 +35,11 @@
             "addend": 0,
             "evidence": "functions/F_020F.entry"
           },
-          "_f6cea": {
+          "_sprite_sheet_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CEA.entry",
             "owner": "F_6CEA",
-            "public": "_f6cea",
+            "public": "_sprite_sheet_index_get",
             "addend": 0
           },
           "_gb83": {
@@ -57,11 +57,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2C.phys"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -69,18 +69,18 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f6ca6": {
+          "_sprite_sheet_select": {
             "coordinate": "code_offset",
             "owner": "F_6CA6",
-            "public": "_f6ca6",
+            "public": "_sprite_sheet_select",
             "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
           "_f039f": {
@@ -122,10 +122,10 @@
       "kind": "MATCHING_C",
       "start": 31115,
       "end": 31318,
-      "source": "src/F_778B.C",
+      "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f778b",
+        "public": "_hud_prompt_confirm_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {
@@ -151,11 +151,11 @@
             "addend": 0,
             "evidence": "functions/F_020F.entry"
           },
-          "_f6cea": {
+          "_sprite_sheet_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CEA.entry",
             "owner": "F_6CEA",
-            "public": "_f6cea",
+            "public": "_sprite_sheet_index_get",
             "addend": 0
           },
           "_gb83": {
@@ -168,17 +168,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2C.phys"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f0355": {
+          "_rect_border_draw": {
             "coordinate": "code_offset",
             "owner": "F_0355",
-            "public": "_f0355",
+            "public": "_rect_border_draw",
             "addend": 0,
             "evidence": "functions/F_0355.entry"
           },
@@ -187,18 +187,18 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f6ca6": {
+          "_sprite_sheet_select": {
             "coordinate": "code_offset",
             "owner": "F_6CA6",
-            "public": "_f6ca6",
+            "public": "_sprite_sheet_select",
             "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
           "_f039f": {

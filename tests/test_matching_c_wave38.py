@@ -6,6 +6,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region,
                          mismatch, owned_library_modules)
 from mz import MZ
@@ -22,7 +23,7 @@ class MatchingCWave38Tests(unittest.TestCase):
             for owner in recipe['owners']:
                 work = Path(temporary) / owner['id']
                 receipts, _ = compile_sources(ROOT, [owner], work, ROOT / 'toolchain',
-                                               Path(lock['dosbox_default']), lock)
+                                               resolve_runner(lock), lock)
                 module = read_object((work / receipts[owner['id']]['object']).read_bytes())
                 data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'],
                                       manifest['regions'], modules)
@@ -44,7 +45,7 @@ class MatchingCWave38Tests(unittest.TestCase):
                 candidate['source'] = mutated
                 work = Path(temporary) / 'mutated'
                 receipts, _ = compile_sources(ROOT, [candidate], work, ROOT / 'toolchain',
-                                               Path(lock['dosbox_default']), lock)
+                                               resolve_runner(lock), lock)
                 module = read_object((work / receipts['F_233E']['object']).read_bytes())
                 data, _ = bind_region(candidate, module, MZ.parse(original), manifest['frames'],
                                       manifest['regions'], modules)

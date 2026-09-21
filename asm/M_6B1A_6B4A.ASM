@@ -13,7 +13,7 @@ _BSS    ends
 _TEXT   segment byte public 'CODE'
         public  _f6b1a, _f6b4a
         extrn   _f792c:near
-        extrn   _f7964:near
+        extrn   _menu_loop_run:near
 
 _f6b1a  proc    near
         push    si
@@ -34,7 +34,7 @@ _f6b1a  proc    near
         jz      @@out
         sub     ax,013bh
         push    ax
-        call    _f7964
+        call    _menu_loop_run
         pop     ax
         mov     ax,si
         jmp     short @@out

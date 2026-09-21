@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -23,7 +24,9 @@ class MatchingCWave22Tests(unittest.TestCase):
             work = Path(temporary)
             mutants = []
             for name, before, after in (
-                ('F_ADCF', b'gc470[g13ed].w9=1', b'gc470[g13ed].w9=2'),):
+                # F_ADCF was normalized to the shared C470.H record's 'value'
+                # field name instead of the old raw struct's 'w9' field.
+                ('F_ADCF', b'slot_table[current_slot].value = 1;', b'slot_table[current_slot].value = 2;'),):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
                 self.assertEqual(source.count(before), 1)
@@ -32,7 +35,7 @@ class MatchingCWave22Tests(unittest.TestCase):
                 owner.update(id=name + '_MUTANT', source=path.relative_to(ROOT).as_posix())
                 mutants.append(owner)
             receipts, _ = compile_sources(ROOT, owners + mutants, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

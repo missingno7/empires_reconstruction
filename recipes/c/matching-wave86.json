@@ -4,7 +4,7 @@
     {
       "id": "F_643A",
       "kind": "MATCHING_C",
-      "source": "src/F_643A.C",
+      "source": "src/RESOURCE.C",
       "start": 26170,
       "end": 26410,
       "expected_sha256": "8f97e01ad3059dd42d94d61038e74b0736a016b57168bdd897699a4de5e9b5e0",
@@ -13,7 +13,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f643a",
+        "public": "_resource_file_write_record",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -27,12 +27,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS word at DS:0B3E"
           },
-          "_gc0c9": {
+          "_slot_file_handle": {
             "offset": 49353,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS word at DS:C0C9"
           },
-          "_gc0c8": {
+          "_current_drive": {
             "offset": 49352,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS byte at DS:C0C8"
@@ -52,9 +52,9 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS word at DS:0B2A"
           },
-          "_f6266": {
+          "_resource_file_open": {
             "owner": "F_6266",
-            "public": "_f6266",
+            "public": "_resource_file_open",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "record update helper"
@@ -87,16 +87,16 @@
             "addend": 0,
             "evidence": "CC.LIB/CLOSE"
           },
-          "_f652a": {
+          "_disk_reset_retry": {
             "owner": "F_652A",
-            "public": "_f652a",
+            "public": "_disk_reset_retry",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "post-write metadata update"
           },
-          "_f86c9": {
+          "_dialog_run": {
             "owner": "F_86C9",
-            "public": "_f86c9",
+            "public": "_dialog_run",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "error report"

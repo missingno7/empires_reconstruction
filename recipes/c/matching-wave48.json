@@ -18,17 +18,17 @@
         "flags_append": "",
         "module_segments": {
           "_DATA": {
-            "owner": "DATA_125D",
+            "owner": "TEXT_118C",
             "coordinate": "DGROUP_offset",
             "addend": 0,
-            "evidence": "20-byte initialized C data segment"
+            "evidence": "229-byte initialized C data segment anchored at its first component (TEXT_118C); see layout/production-plan.json"
           }
         },
         "bindings": {
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0,
             "evidence": "function entry from complete F_9D8E fixups"
           },
@@ -42,10 +42,10 @@
             "coordinate": "code_offset",
             "evidence": "direct call target from complete F_9D8E fixups"
           },
-          "_f86c9": {
+          "_dialog_run": {
             "coordinate": "code_offset",
             "owner": "F_86C9",
-            "public": "_f86c9",
+            "public": "_dialog_run",
             "addend": 0,
             "evidence": "functions/F_86C9.entry"
           },

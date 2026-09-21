@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -24,8 +25,11 @@ class MatchingCWave15Tests(unittest.TestCase):
             mutants = []
             for name, before, after in (
                 ('F_D3DA', b'+2;', b'+3;'),
-                ('F_C0E0', b'[1000]', b'[999]'),
-                ('F_C15E', b'f7313(-3)', b'f7313(-2)')):
+                # F_C0E0 was normalized to use the shared R3E8.H record table
+                # declared as an unsized extern array; mutate the record index
+                # literal instead of the old fixed array-size literal.
+                ('F_C0E0', b'board_record_index=1', b'board_record_index=2'),
+                ('F_C15E', b'hud_scroll_move(-3)', b'hud_scroll_move(-2)')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
                 self.assertEqual(source.count(before), 1)
@@ -34,7 +38,7 @@ class MatchingCWave15Tests(unittest.TestCase):
                 owner.update(id=name + '_MUTANT', source=path.relative_to(ROOT).as_posix())
                 mutants.append(owner)
             receipts, _ = compile_sources(ROOT, owners + mutants, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

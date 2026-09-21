@@ -1,5 +1,5 @@
-extern int gc0e8;
+#include "LAYOUT.H"
 int f6cf0(void)
 {
-    return gc0e8;
+    return dialog_line_height;
 }

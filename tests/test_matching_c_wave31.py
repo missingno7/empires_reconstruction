@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import read_json, compile_sources, read_object, bind_region, mismatch, owned_library_modules
 from storage_evidence import verify
 
@@ -22,7 +23,7 @@ class MatchingCWave31Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             work = Path(temporary)
             receipts, _ = compile_sources(ROOT, owners, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())
                 data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)

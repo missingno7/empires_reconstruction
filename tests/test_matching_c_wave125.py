@@ -12,8 +12,11 @@ class MatchingCWave125Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave125.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_6D86')
-        self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'src/F_6D86.C')
+        # F_6D86 was reverted to symbolic ASM after the refactor grouped/reviewed
+        # asm-origin candidates; see docs/current/asm-origin-review.json. The
+        # wave125 evidence below still matches the unchanged original bytes.
+        self.assertEqual(owner['kind'], 'MATCHING_ASM')
+        self.assertEqual(owner['source'], 'asm/F_6D86.ASM')
         self.assertEqual(owner['end'] - owner['start'], 63)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_6D86')
         evidence = read_json(ROOT / 'docs/matching-wave125-evidence.json')

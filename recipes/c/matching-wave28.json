@@ -6,30 +6,30 @@
       "kind": "MATCHING_C",
       "start": 9179,
       "end": 9292,
-      "source": "src/F_21DB.C",
+      "source": "src/BOARDDRW.C",
       "original_symbol": "F_21DB",
       "artifact": "regions/F_21DB.bin",
       "expected_sha256": "36aebb04e74dec158d010483588598c6ddbf627fa47fe6e15391e4817955f9cd",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f21db",
+        "public": "_resource_stripe_table_load",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0,
             "evidence": "functions/F_656C.entry"
           },
-          "_g99d2": {
+          "_resource_stripe_table": {
             "offset": 39378,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_29502.phys"
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"

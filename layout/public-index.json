@@ -40,83 +40,155 @@
       ]
     },
     {
-      "symbol": "_f01bc",
+      "symbol": "_video_load_palette",
       "address": 444,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_01BC",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_01BC"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
-      "symbol": "_f01ce",
+      "symbol": "_gfx_color_select",
       "address": 462,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_01CE",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_01CE"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
       "symbol": "_f020f",
       "address": 527,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_020F",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_020F"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
-      "symbol": "_f_0215",
+      "symbol": "_color_table_entry_set",
       "address": 533,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_0215",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_0215"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
       "symbol": "_f0232",
       "address": 562,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_0232",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_0232"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
-      "symbol": "_f025b",
+      "symbol": "_video_normalize_far_ptr",
       "address": 603,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_025B",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_025B"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
-      "symbol": "_f0281",
+      "symbol": "_video_alloc_framebuffer",
       "address": 641,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_0281",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_0281"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
-      "symbol": "_f034f",
+      "symbol": "_video_set_text_mode",
       "address": 847,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_034F",
+      "owner": "C_01BC_0355",
       "module_members": [
-        "F_034F"
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
+        "F_0355"
       ]
     },
     {
-      "symbol": "_f0355",
+      "symbol": "_rect_border_draw",
       "address": 853,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_0355",
+      "owner": "C_01BC_0355",
       "module_members": [
+        "F_01BC",
+        "F_01CE",
+        "F_020F",
+        "F_0215",
+        "F_0232",
+        "F_025B",
+        "F_0281",
+        "F_034F",
         "F_0355"
       ]
     },
@@ -391,7 +463,7 @@
       ]
     },
     {
-      "symbol": "_f1eb4",
+      "symbol": "_tick_div8",
       "address": 7860,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_1EB4",
@@ -400,7 +472,7 @@
       ]
     },
     {
-      "symbol": "_f1ec0",
+      "symbol": "_value_parity",
       "address": 7872,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_1EC0",
@@ -418,7 +490,7 @@
       ]
     },
     {
-      "symbol": "_f1f17",
+      "symbol": "_shadow_bitmap_hit_test",
       "address": 7959,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_1F17",
@@ -436,142 +508,352 @@
       ]
     },
     {
-      "symbol": "_f200f",
+      "symbol": "_resource_icon_table_load",
       "address": 8207,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_200F",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_200F"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f2119",
+      "symbol": "_resource_scoreboard_unpack",
       "address": 8473,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_2119",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_2119"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f21a9",
+      "symbol": "_sprite_load_boot_sheets",
       "address": 8617,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_21A9",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_21A9"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f21db",
+      "symbol": "_resource_stripe_table_load",
       "address": 8667,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_21DB",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_21DB"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f224c",
+      "symbol": "_hud_arena_init",
       "address": 8780,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_224C",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_224C"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f2269",
+      "symbol": "_sprite_draw_cursor",
       "address": 8809,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_2269",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_2269"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f22b1",
+      "symbol": "_board_redraw_view",
       "address": 8881,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_22B1",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_22B1"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f233e",
+      "symbol": "_board_scan_wipe_effect",
       "address": 9022,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_233E",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_233E"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
       "symbol": "_f250c",
       "address": 9484,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_250C",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_250C"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f257d",
+      "symbol": "_point_in_hotspot_rect",
       "address": 9597,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_257D",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_257D"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f_25b3",
+      "symbol": "_board_update_moving_records",
       "address": 9651,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_25B3",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_25B3"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f_28ac",
+      "symbol": "_board_mark_record_cells",
       "address": 10412,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_28AC",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_28AC"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
       "symbol": "_f2986",
       "address": 10630,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_2986",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_2986"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
-      "symbol": "_f2a2d",
+      "symbol": "_record_field_skip_n",
       "address": 10797,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_2A2D",
+      "owner": "C_200F_2A70",
       "module_members": [
-        "F_2A2D"
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
+        "F_2A70"
       ]
     },
     {
       "symbol": "_f2a70",
       "address": 10864,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_2A70",
+      "owner": "C_200F_2A70",
       "module_members": [
+        "F_200F",
+        "F_2119",
+        "F_21A9",
+        "F_21DB",
+        "F_224C",
+        "F_2269",
+        "F_22B1",
+        "F_233E",
+        "F_250C",
+        "F_257D",
+        "F_25B3",
+        "F_28AC",
+        "F_2986",
+        "F_2A2D",
         "F_2A70"
       ]
     },
     {
-      "symbol": "_f2ae2",
+      "symbol": "_board_redraw_paint",
       "address": 10978,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_2AE2",
@@ -580,61 +862,91 @@
       ]
     },
     {
-      "symbol": "_f31c4",
+      "symbol": "_board_scroll_transition",
       "address": 12740,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_31C4",
+      "owner": "C_31C4_3986",
       "module_members": [
-        "F_31C4"
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
+        "F_3986"
       ]
     },
     {
       "symbol": "_f329f",
       "address": 12959,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_329F",
+      "owner": "C_31C4_3986",
       "module_members": [
-        "F_329F"
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
+        "F_3986"
       ]
     },
     {
       "symbol": "_f32fa",
       "address": 13050,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_32FA",
+      "owner": "C_31C4_3986",
       "module_members": [
-        "F_32FA"
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
+        "F_3986"
       ]
     },
     {
-      "symbol": "_f338a",
+      "symbol": "_board_run_unit_script",
       "address": 13194,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_338A",
+      "owner": "C_31C4_3986",
       "module_members": [
-        "F_338A"
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
+        "F_3986"
       ]
     },
     {
-      "symbol": "_f36f0",
+      "symbol": "_board_advance_unit_moves",
       "address": 14064,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_36F0",
+      "owner": "C_31C4_3986",
       "module_members": [
-        "F_36F0"
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
+        "F_3986"
       ]
     },
     {
       "symbol": "_f3986",
       "address": 14726,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_3986",
+      "owner": "C_31C4_3986",
       "module_members": [
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
         "F_3986"
       ]
     },
     {
-      "symbol": "_f3a75",
+      "symbol": "_turn_loop_run",
       "address": 14965,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_3A75",
@@ -652,7 +964,7 @@
       ]
     },
     {
-      "symbol": "_f462e",
+      "symbol": "_menu_backdrop_paint",
       "address": 17966,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_462E",
@@ -661,7 +973,7 @@
       ]
     },
     {
-      "symbol": "_f4713",
+      "symbol": "_level_driver_run",
       "address": 18195,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4713",
@@ -670,7 +982,7 @@
       ]
     },
     {
-      "symbol": "_f48be",
+      "symbol": "_blitter_patch_variant",
       "address": 18622,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_48BE",
@@ -679,7 +991,7 @@
       ]
     },
     {
-      "symbol": "_f490d",
+      "symbol": "_boot_init_seed_rand",
       "address": 18701,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_490D",
@@ -697,29 +1009,35 @@
       ]
     },
     {
-      "symbol": "_f49e3",
+      "symbol": "_game_shutdown",
       "address": 18915,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_49E3",
+      "owner": "C_49E3_4A93",
       "module_members": [
-        "F_49E3"
+        "F_49E3",
+        "F_49F0",
+        "F_4A93"
       ]
     },
     {
-      "symbol": "_f49f0",
+      "symbol": "_game_run",
       "address": 18928,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_49F0",
+      "owner": "C_49E3_4A93",
       "module_members": [
-        "F_49F0"
+        "F_49E3",
+        "F_49F0",
+        "F_4A93"
       ]
     },
     {
       "symbol": "_main",
       "address": 19091,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_4A93",
+      "owner": "C_49E3_4A93",
       "module_members": [
+        "F_49E3",
+        "F_49F0",
         "F_4A93"
       ]
     },
@@ -760,7 +1078,7 @@
       ]
     },
     {
-      "symbol": "_f4f63",
+      "symbol": "_dos_write_handle2",
       "address": 20323,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4F63",
@@ -769,7 +1087,7 @@
       ]
     },
     {
-      "symbol": "_f4f96",
+      "symbol": "_cmdline_parse_args",
       "address": 20374,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4F96",
@@ -778,7 +1096,7 @@
       ]
     },
     {
-      "symbol": "_f50c1",
+      "symbol": "_bios_equipment_probe",
       "address": 20673,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_50C1",
@@ -807,7 +1125,7 @@
       ]
     },
     {
-      "symbol": "_f520a",
+      "symbol": "_video_mode_select",
       "address": 21002,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_520A",
@@ -816,119 +1134,195 @@
       ]
     },
     {
-      "symbol": "_f5321",
+      "symbol": "_intro_play_script",
       "address": 21281,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5321",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_5321"
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
       ]
     },
     {
-      "symbol": "_f5382",
+      "symbol": "_intro_animate_step",
       "address": 21378,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5382",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_5382"
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
       ]
     },
     {
-      "symbol": "_f555b",
+      "symbol": "_splash_draw_and_clear",
       "address": 21851,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_555B",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_555B"
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
       ]
     },
     {
-      "symbol": "_f5593",
+      "symbol": "_intro_wait_key",
       "address": 21907,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5593",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_5593"
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
       ]
     },
     {
-      "symbol": "_f55c7",
+      "symbol": "_resource_ptr_table_build",
       "address": 21959,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_55C7",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_55C7"
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
       ]
     },
     {
-      "symbol": "_f5673",
+      "symbol": "_bitmap_blit_topleft",
       "address": 22131,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5673",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_5673"
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
       ]
     },
     {
       "symbol": "_f568c",
       "address": 22156,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_568C",
+      "owner": "C_5321_56C6",
       "module_members": [
-        "F_568C"
-      ]
-    },
-    {
-      "symbol": "_f56c6",
-      "address": 22214,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_56C6",
-      "module_members": [
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
         "F_56C6"
       ]
     },
     {
-      "symbol": "_f5a3b",
+      "symbol": "_intro_run_chapter",
+      "address": 22214,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_5321_56C6",
+      "module_members": [
+        "F_5321",
+        "F_5382",
+        "F_555B",
+        "F_5593",
+        "F_55C7",
+        "F_5673",
+        "F_568C",
+        "F_56C6"
+      ]
+    },
+    {
+      "symbol": "_cursor_trail_arm",
       "address": 23099,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5A3B",
+      "owner": "C_5A3B_6021",
       "module_members": [
-        "F_5A3B"
+        "F_5A3B",
+        "F_5AC3",
+        "F_5E98",
+        "F_5F3C",
+        "F_6021"
       ]
     },
     {
-      "symbol": "_f5ac3",
+      "symbol": "_board_raycast_step",
       "address": 23235,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5AC3",
+      "owner": "C_5A3B_6021",
       "module_members": [
-        "F_5AC3"
+        "F_5A3B",
+        "F_5AC3",
+        "F_5E98",
+        "F_5F3C",
+        "F_6021"
       ]
     },
     {
-      "symbol": "_f5e98",
+      "symbol": "_sprite_slots_redraw",
       "address": 24216,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5E98",
+      "owner": "C_5A3B_6021",
       "module_members": [
-        "F_5E98"
+        "F_5A3B",
+        "F_5AC3",
+        "F_5E98",
+        "F_5F3C",
+        "F_6021"
       ]
     },
     {
-      "symbol": "_f5f3c",
+      "symbol": "_board_raycast_hit_test",
       "address": 24380,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_5F3C",
+      "owner": "C_5A3B_6021",
       "module_members": [
-        "F_5F3C"
+        "F_5A3B",
+        "F_5AC3",
+        "F_5E98",
+        "F_5F3C",
+        "F_6021"
       ]
     },
     {
-      "symbol": "_f6021",
+      "symbol": "_board_unit_script_trigger",
       "address": 24609,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6021",
+      "owner": "C_5A3B_6021",
       "module_members": [
+        "F_5A3B",
+        "F_5AC3",
+        "F_5E98",
+        "F_5F3C",
         "F_6021"
       ]
     },
@@ -960,97 +1354,155 @@
       ]
     },
     {
-      "symbol": "_f622c",
+      "symbol": "_dos_critical_error_handler",
       "address": 25132,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_622C",
+      "owner": "C_622C_625D",
       "module_members": [
-        "F_622C"
-      ]
-    },
-    {
-      "symbol": "_f625d",
-      "address": 25181,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_625D",
-      "module_members": [
+        "F_622C",
         "F_625D"
       ]
     },
     {
-      "symbol": "_f6266",
+      "symbol": "_dos_critical_error_install",
+      "address": 25181,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_622C_625D",
+      "module_members": [
+        "F_622C",
+        "F_625D"
+      ]
+    },
+    {
+      "symbol": "_resource_file_open",
       "address": 25190,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6266",
+      "owner": "C_6266_68AA",
       "module_members": [
-        "F_6266"
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
       ]
     },
     {
-      "symbol": "_f643a",
+      "symbol": "_resource_file_write_record",
       "address": 25658,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_643A",
+      "owner": "C_6266_68AA",
       "module_members": [
-        "F_643A"
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
       ]
     },
     {
-      "symbol": "_f652a",
+      "symbol": "_disk_reset_retry",
       "address": 25898,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_652A",
+      "owner": "C_6266_68AA",
       "module_members": [
-        "F_652A"
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
       ]
     },
     {
-      "symbol": "_f656c",
+      "symbol": "_resource_load_record",
       "address": 25964,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_656C",
+      "owner": "C_6266_68AA",
       "module_members": [
-        "F_656C"
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
       ]
     },
     {
       "symbol": "_f6771",
       "address": 26481,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6771",
+      "owner": "C_6266_68AA",
       "module_members": [
-        "F_6771"
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
       ]
     },
     {
       "symbol": "_f67dc",
       "address": 26588,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_67DC",
+      "owner": "C_6266_68AA",
       "module_members": [
-        "F_67DC"
-      ]
-    },
-    {
-      "symbol": "_f684a",
-      "address": 26698,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_684A",
-      "module_members": [
-        "F_684A"
-      ]
-    },
-    {
-      "symbol": "_f68aa",
-      "address": 26794,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_68AA",
-      "module_members": [
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
         "F_68AA"
       ]
     },
     {
-      "symbol": "_f68cf",
+      "symbol": "_resource_load_record_alloc",
+      "address": 26698,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6266_68AA",
+      "module_members": [
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
+      ]
+    },
+    {
+      "symbol": "_resource_load_record_into",
+      "address": 26794,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6266_68AA",
+      "module_members": [
+        "F_6266",
+        "F_643A",
+        "F_652A",
+        "F_656C",
+        "F_6771",
+        "F_67DC",
+        "F_684A",
+        "F_68AA"
+      ]
+    },
+    {
+      "symbol": "_sound_effects_toggle",
       "address": 26831,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_68CF",
@@ -1059,38 +1511,42 @@
       ]
     },
     {
-      "symbol": "_f695e",
+      "symbol": "_keyboard_irq_install",
       "address": 26974,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_695E",
+      "owner": "C_695E_697D",
       "module_members": [
-        "F_695E"
+        "F_695E",
+        "F_697D"
       ]
     },
     {
       "symbol": "_f697d",
       "address": 27005,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_697D",
+      "owner": "C_695E_697D",
       "module_members": [
+        "F_695E",
         "F_697D"
       ]
     },
     {
-      "symbol": "_f6990",
+      "symbol": "_keyboard_chain_enable",
       "address": 27024,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6990",
+      "owner": "C_6990_6997",
       "module_members": [
-        "F_6990"
+        "F_6990",
+        "F_6997"
       ]
     },
     {
-      "symbol": "_f6997",
+      "symbol": "_keyboard_chain_disable",
       "address": 27031,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6997",
+      "owner": "C_6990_6997",
       "module_members": [
+        "F_6990",
         "F_6997"
       ]
     },
@@ -1124,7 +1580,7 @@
       ]
     },
     {
-      "symbol": "_f6b66",
+      "symbol": "_keyboard_buffer_drain",
       "address": 27494,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6B66",
@@ -1133,7 +1589,7 @@
       ]
     },
     {
-      "symbol": "_f6b74",
+      "symbol": "_keyboard_chain_active",
       "address": 27508,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6B74",
@@ -1142,7 +1598,7 @@
       ]
     },
     {
-      "symbol": "_f6b7a",
+      "symbol": "_timer_irq_install",
       "address": 27514,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6B7A",
@@ -1151,7 +1607,7 @@
       ]
     },
     {
-      "symbol": "_f6bac",
+      "symbol": "_timer_irq_restore",
       "address": 27564,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6BAC",
@@ -1169,7 +1625,7 @@
       ]
     },
     {
-      "symbol": "_f6c26",
+      "symbol": "_timer_wait_ticks",
       "address": 27686,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6C26_6C87",
@@ -1181,7 +1637,7 @@
       ]
     },
     {
-      "symbol": "_f6c57",
+      "symbol": "_timer_deadline_arm",
       "address": 27735,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6C26_6C87",
@@ -1193,7 +1649,7 @@
       ]
     },
     {
-      "symbol": "_f6c6f",
+      "symbol": "_timer_deadline_wait",
       "address": 27759,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6C26_6C87",
@@ -1205,7 +1661,7 @@
       ]
     },
     {
-      "symbol": "_f6c87",
+      "symbol": "_timer_deadline_reached",
       "address": 27783,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6C26_6C87",
@@ -1217,7 +1673,7 @@
       ]
     },
     {
-      "symbol": "_f6ca6",
+      "symbol": "_sprite_sheet_select",
       "address": 27814,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6CA6",
@@ -1226,7 +1682,7 @@
       ]
     },
     {
-      "symbol": "_f6cea",
+      "symbol": "_sprite_sheet_index_get",
       "address": 27882,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6CEA",
@@ -1244,7 +1700,7 @@
       ]
     },
     {
-      "symbol": "_f6cf6",
+      "symbol": "_text_line_width",
       "address": 27894,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6CF6",
@@ -1253,7 +1709,7 @@
       ]
     },
     {
-      "symbol": "_f6d3c",
+      "symbol": "_text_draw_wrapped",
       "address": 27964,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6D3C",
@@ -1302,169 +1758,475 @@
       ]
     },
     {
-      "symbol": "_f6fc3",
+      "symbol": "_hud_panel_clear",
       "address": 28611,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6FC3",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_6FC3"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f6fca",
+      "symbol": "_hud_icons_load",
       "address": 28618,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6FCA",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_6FCA"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f6fda",
+      "symbol": "_hud_panel_open",
       "address": 28634,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_6FDA",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_6FDA"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f703e",
+      "symbol": "_ui_overlay_show",
       "address": 28734,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_703E",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_703E"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f7162",
+      "symbol": "_ui_overlay_hide",
       "address": 29026,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7162",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7162"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f71fb",
+      "symbol": "_ui_overlay_reset",
       "address": 29179,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_71FB",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_71FB"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f7202",
+      "symbol": "_hud_draw_meter",
       "address": 29186,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7202",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7202"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f726a",
+      "symbol": "_hud_scroll_reset",
       "address": 29290,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_726A",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_726A"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f7277",
+      "symbol": "_hud_tab_get",
       "address": 29303,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7277",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7277"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f727d",
+      "symbol": "_hud_tab_next",
       "address": 29309,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_727D",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_727D"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f7298",
+      "symbol": "_hud_tab_draw",
       "address": 29336,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7298",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7298"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f7313",
+      "symbol": "_hud_scroll_move",
       "address": 29459,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7313",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7313"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f7343",
+      "symbol": "_energy_set",
       "address": 29507,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7343",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7343"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f734e",
+      "symbol": "_energy_adjust",
       "address": 29518,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_734E",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_734E"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
-      "symbol": "_f738a",
+      "symbol": "_energy_draw",
       "address": 29578,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_738A",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_738A"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
       "symbol": "_f7417",
       "address": 29719,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7417",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7417"
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
       ]
     },
     {
       "symbol": "_f7443",
       "address": 29763,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7443",
+      "owner": "C_6FC3_747B",
       "module_members": [
-        "F_7443"
-      ]
-    },
-    {
-      "symbol": "_f747b",
-      "address": 29819,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_747B",
-      "module_members": [
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
         "F_747B"
       ]
     },
     {
-      "symbol": "_f75f3",
+      "symbol": "_hud_frame_draw",
+      "address": 29819,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_6FC3_747B",
+      "module_members": [
+        "F_6FC3",
+        "F_6FCA",
+        "F_6FDA",
+        "F_703E",
+        "F_7162",
+        "F_71FB",
+        "F_7202",
+        "F_726A",
+        "F_7277",
+        "F_727D",
+        "F_7298",
+        "F_7313",
+        "F_7343",
+        "F_734E",
+        "F_738A",
+        "F_7417",
+        "F_7443",
+        "F_747B"
+      ]
+    },
+    {
+      "symbol": "_hud_prompt_continue_draw",
       "address": 30195,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_75F3_7856",
@@ -1490,7 +2252,7 @@
       ]
     },
     {
-      "symbol": "_f7695",
+      "symbol": "_hud_prompt_select_draw",
       "address": 30357,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_75F3_7856",
@@ -1516,7 +2278,7 @@
       ]
     },
     {
-      "symbol": "_f778b",
+      "symbol": "_hud_prompt_confirm_draw",
       "address": 30603,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_75F3_7856",
@@ -1538,7 +2300,7 @@
       ]
     },
     {
-      "symbol": "_f78c3",
+      "symbol": "_sprite_pool_draw_masked",
       "address": 30915,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_78C3",
@@ -1583,7 +2345,7 @@
       ]
     },
     {
-      "symbol": "_f7964",
+      "symbol": "_menu_loop_run",
       "address": 31076,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_7964",
@@ -1592,7 +2354,7 @@
       ]
     },
     {
-      "symbol": "_f7bfc",
+      "symbol": "_menu_list_draw",
       "address": 31740,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_7BFC",
@@ -1601,259 +2363,575 @@
       ]
     },
     {
-      "symbol": "_f7d91",
+      "symbol": "_dialog_draw_panel",
       "address": 32145,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7D91",
+      "owner": "C_7D91_880A",
       "module_members": [
-        "F_7D91"
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
       ]
     },
     {
       "symbol": "_f7df1",
       "address": 32241,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7DF1",
+      "owner": "C_7D91_880A",
       "module_members": [
-        "F_7DF1"
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
       ]
     },
     {
       "symbol": "_f7dfc",
       "address": 32252,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7DFC",
+      "owner": "C_7D91_880A",
       "module_members": [
-        "F_7DFC"
-      ]
-    },
-    {
-      "symbol": "_f7e07",
-      "address": 32263,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_7E07",
-      "module_members": [
-        "F_7E07"
-      ]
-    },
-    {
-      "symbol": "_f8267",
-      "address": 33383,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8267",
-      "module_members": [
-        "F_8267"
-      ]
-    },
-    {
-      "symbol": "_f8378",
-      "address": 33656,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8378",
-      "module_members": [
-        "F_8378"
-      ]
-    },
-    {
-      "symbol": "_f8414",
-      "address": 33812,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8414",
-      "module_members": [
-        "F_8414"
-      ]
-    },
-    {
-      "symbol": "_f8434",
-      "address": 33844,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8434",
-      "module_members": [
-        "F_8434"
-      ]
-    },
-    {
-      "symbol": "_f8453",
-      "address": 33875,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8453",
-      "module_members": [
-        "F_8453"
-      ]
-    },
-    {
-      "symbol": "_f8480",
-      "address": 33920,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8480",
-      "module_members": [
-        "F_8480"
-      ]
-    },
-    {
-      "symbol": "_f86c9",
-      "address": 34505,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_86C9",
-      "module_members": [
-        "F_86C9"
-      ]
-    },
-    {
-      "symbol": "_f880a",
-      "address": 34826,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_880A",
-      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
         "F_880A"
       ]
     },
     {
-      "symbol": "_f8a37",
+      "symbol": "_dialog_layout",
+      "address": 32263,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_draw_button",
+      "address": 33383,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_fill_box",
+      "address": 33656,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_blink_box",
+      "address": 33812,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_draw_shadow",
+      "address": 33844,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_restore_screen",
+      "address": 33875,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_draw",
+      "address": 33920,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_run",
+      "address": 34505,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_dialog_list_run",
+      "address": 34826,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_7D91_880A",
+      "module_members": [
+        "F_7D91",
+        "F_7DF1",
+        "F_7DFC",
+        "F_7E07",
+        "F_8267",
+        "F_8378",
+        "F_8414",
+        "F_8434",
+        "F_8453",
+        "F_8480",
+        "F_86C9",
+        "F_880A"
+      ]
+    },
+    {
+      "symbol": "_puzzle_clear_grid",
       "address": 35383,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8A37",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_8A37"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f8aa2",
+      "symbol": "_puzzle_deal_pieces",
       "address": 35490,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8AA2",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_8AA2"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f8ba5",
+      "symbol": "_puzzle_piece_count",
       "address": 35749,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8BA5",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_8BA5"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f8bab",
+      "symbol": "_puzzle_run",
       "address": 35755,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_8BAB",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_8BAB"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f90a6",
+      "symbol": "_puzzle_display_init",
       "address": 37030,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_90A6",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_90A6"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f9259",
+      "symbol": "_puzzle_free_resources",
       "address": 37465,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9259",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_9259"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f929e",
+      "symbol": "_puzzle_draw_piece",
       "address": 37534,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_929E",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_929E"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f93aa",
+      "symbol": "_puzzle_draw_tray_piece",
       "address": 37802,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_93AA",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_93AA"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
       "symbol": "_f9402",
       "address": 37890,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9402",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_9402"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
       "symbol": "_f9440",
       "address": 37952,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9440",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_9440"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
       "symbol": "_f9466",
       "address": 37990,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9466",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_9466"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
       "symbol": "_f950c",
       "address": 38156,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_950C",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_950C"
-      ]
-    },
-    {
-      "symbol": "_f963e",
-      "address": 38462,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_963E",
-      "module_members": [
-        "F_963E"
-      ]
-    },
-    {
-      "symbol": "_f969d",
-      "address": 38557,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_969D",
-      "module_members": [
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
         "F_969D"
       ]
     },
     {
-      "symbol": "_f984c",
-      "address": 38988,
+      "symbol": "_puzzle_clear_cell",
+      "address": 38462,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_984C",
+      "owner": "C_8A37_969D",
       "module_members": [
-        "F_984C"
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
       ]
     },
     {
-      "symbol": "_f9871",
-      "address": 39025,
+      "symbol": "_puzzle_check_solved",
+      "address": 38557,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9871",
+      "owner": "C_8A37_969D",
       "module_members": [
+        "F_8A37",
+        "F_8AA2",
+        "F_8BA5",
+        "F_8BAB",
+        "F_90A6",
+        "F_9259",
+        "F_929E",
+        "F_93AA",
+        "F_9402",
+        "F_9440",
+        "F_9466",
+        "F_950C",
+        "F_963E",
+        "F_969D"
+      ]
+    },
+    {
+      "symbol": "_score_panel_clear",
+      "address": 38988,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_984C_9871",
+      "module_members": [
+        "F_984C",
         "F_9871"
       ]
     },
     {
-      "symbol": "_f_988f",
+      "symbol": "_roundend_draw_marker",
+      "address": 39025,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_984C_9871",
+      "module_members": [
+        "F_984C",
+        "F_9871"
+      ]
+    },
+    {
+      "symbol": "_marker_cell_draw_highlight",
       "address": 39055,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_988F_98CB",
@@ -1863,19 +2941,9 @@
       ]
     },
     {
-      "symbol": "_f_98cb",
+      "symbol": "_marker_cell_draw_plain",
       "address": 39115,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "M_988F_98CB",
-      "module_members": [
-        "F_988F",
-        "F_98CB"
-      ]
-    },
-    {
-      "symbol": "_f_98cb_end",
-      "address": 39175,
-      "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "M_988F_98CB",
       "module_members": [
         "F_988F",
@@ -1895,62 +2963,80 @@
       "symbol": "_f9962",
       "address": 39266,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9962",
+      "owner": "C_9962_99E2",
       "module_members": [
-        "F_9962"
+        "F_9962",
+        "F_99A2",
+        "F_99E2"
       ]
     },
     {
       "symbol": "_f99a2",
       "address": 39330,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_99A2",
+      "owner": "C_9962_99E2",
       "module_members": [
-        "F_99A2"
-      ]
-    },
-    {
-      "symbol": "_f99e2",
-      "address": 39394,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_99E2",
-      "module_members": [
+        "F_9962",
+        "F_99A2",
         "F_99E2"
       ]
     },
     {
-      "symbol": "_f9a0e",
+      "symbol": "_score_set_position",
+      "address": 39394,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_9962_99E2",
+      "module_members": [
+        "F_9962",
+        "F_99A2",
+        "F_99E2"
+      ]
+    },
+    {
+      "symbol": "_roundend_marker_show",
       "address": 39438,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9A0E",
+      "owner": "C_9A0E_9D79",
       "module_members": [
-        "F_9A0E"
+        "F_9A0E",
+        "F_9AC7",
+        "F_9B68",
+        "F_9D79"
       ]
     },
     {
-      "symbol": "_f9ac7",
+      "symbol": "_roundend_flash_panel_icons",
       "address": 39623,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9AC7",
+      "owner": "C_9A0E_9D79",
       "module_members": [
-        "F_9AC7"
+        "F_9A0E",
+        "F_9AC7",
+        "F_9B68",
+        "F_9D79"
       ]
     },
     {
-      "symbol": "_f9b68",
+      "symbol": "_roundend_round_setup",
       "address": 39784,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9B68",
+      "owner": "C_9A0E_9D79",
       "module_members": [
-        "F_9B68"
+        "F_9A0E",
+        "F_9AC7",
+        "F_9B68",
+        "F_9D79"
       ]
     },
     {
-      "symbol": "_f9d79",
+      "symbol": "_roundend_wait",
       "address": 40313,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_9D79",
+      "owner": "C_9A0E_9D79",
       "module_members": [
+        "F_9A0E",
+        "F_9AC7",
+        "F_9B68",
         "F_9D79"
       ]
     },
@@ -1964,7 +3050,7 @@
       ]
     },
     {
-      "symbol": "_f9dcc",
+      "symbol": "_anim_frame_advance",
       "address": 40396,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_9DCC",
@@ -1982,7 +3068,7 @@
       ]
     },
     {
-      "symbol": "_f9f40",
+      "symbol": "_anim_step_loop",
       "address": 40768,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_9F40",
@@ -2000,7 +3086,7 @@
       ]
     },
     {
-      "symbol": "_fa036",
+      "symbol": "_str_concat_far_list",
       "address": 41014,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_A036",
@@ -2009,65 +3095,107 @@
       ]
     },
     {
-      "symbol": "_fa09d",
+      "symbol": "_slot_menu_draw_header",
       "address": 41117,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A09D",
+      "owner": "C_A09D_A24E",
       "module_members": [
-        "F_A09D"
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
+        "F_A24E"
       ]
     },
     {
-      "symbol": "_fa13f",
+      "symbol": "_slot_table_save",
       "address": 41279,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A13F",
+      "owner": "C_A09D_A24E",
       "module_members": [
-        "F_A13F"
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
+        "F_A24E"
       ]
     },
     {
-      "symbol": "_fa15e",
+      "symbol": "_slot_row_highlight",
       "address": 41310,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A15E",
+      "owner": "C_A09D_A24E",
       "module_members": [
-        "F_A15E"
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
+        "F_A24E"
       ]
     },
     {
       "symbol": "_fa19d",
       "address": 41373,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A19D",
+      "owner": "C_A09D_A24E",
       "module_members": [
-        "F_A19D"
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
+        "F_A24E"
       ]
     },
     {
       "symbol": "_fa1e0",
       "address": 41440,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A1E0",
+      "owner": "C_A09D_A24E",
       "module_members": [
-        "F_A1E0"
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
+        "F_A24E"
       ]
     },
     {
-      "symbol": "_fa223",
+      "symbol": "_slot_find_free",
       "address": 41507,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A223",
+      "owner": "C_A09D_A24E",
       "module_members": [
-        "F_A223"
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
+        "F_A24E"
       ]
     },
     {
-      "symbol": "_fa24e",
+      "symbol": "_slot_delete",
       "address": 41550,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A24E",
+      "owner": "C_A09D_A24E",
       "module_members": [
+        "F_A09D",
+        "F_A13F",
+        "F_A15E",
+        "F_A19D",
+        "F_A1E0",
+        "F_A223",
         "F_A24E"
       ]
     },
@@ -2081,101 +3209,211 @@
       ]
     },
     {
-      "symbol": "_fa33f",
+      "symbol": "_slot_list_draw",
       "address": 41791,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A33F",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A33F"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
-      "symbol": "_fa40a",
+      "symbol": "_slot_cursor_box",
       "address": 41994,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A40A",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A40A"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
-      "symbol": "_fa43c",
+      "symbol": "_slot_input_wait_key",
       "address": 42044,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A43C",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A43C"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
-      "symbol": "_fa525",
+      "symbol": "_player_name_edit",
       "address": 42277,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A525",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A525"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
-      "symbol": "_fa658",
+      "symbol": "_player_type_select",
       "address": 42584,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A658",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A658"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
-      "symbol": "_fa768",
+      "symbol": "_confirm_quit_dialog",
       "address": 42856,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A768",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A768"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
-      "symbol": "_fa85e",
+      "symbol": "_player_slot_add_run",
       "address": 43102,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_A85E",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_A85E"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
       "symbol": "_faa1f",
       "address": 43551,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_AA1F",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_AA1F"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
       "symbol": "_fab66",
       "address": 43878,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_AB66",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_AB66"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
       "symbol": "_face7",
       "address": 44263,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_ACE7",
+      "owner": "C_A33F_AD0E",
       "module_members": [
-        "F_ACE7"
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
+        "F_AD0E"
       ]
     },
     {
       "symbol": "_fad0e",
       "address": 44302,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_AD0E",
+      "owner": "C_A33F_AD0E",
       "module_members": [
+        "F_A33F",
+        "F_A40A",
+        "F_A43C",
+        "F_A525",
+        "F_A658",
+        "F_A768",
+        "F_A85E",
+        "F_AA1F",
+        "F_AB66",
+        "F_ACE7",
         "F_AD0E"
       ]
     },
@@ -2203,143 +3441,383 @@
       "symbol": "_faf45",
       "address": 44869,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_AF45",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_AF45"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb09a",
       "address": 45210,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B09A",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B09A"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fb122",
+      "symbol": "_board_resource_expand",
       "address": 45346,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B122",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B122"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb3d7",
       "address": 46039,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B3D7",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B3D7"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fbb40f",
+      "symbol": "_level_expand_descriptors",
       "address": 46095,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B40F",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B40F"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb4fb",
       "address": 46331,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B4FB",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B4FB"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb55e",
       "address": 46430,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B55E",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B55E"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fb593",
+      "symbol": "_level_free_descriptor_table",
       "address": 46483,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B593",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B593"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb60f",
       "address": 46607,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B60F",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B60F"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb6cd",
       "address": 46797,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B6CD",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B6CD"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb772",
       "address": 46962,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B772",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B772"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fb7f9",
+      "symbol": "_level_display_init",
       "address": 47097,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B7F9",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B7F9"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
       "symbol": "_fb967",
       "address": 47463,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B967",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B967"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fb99f",
+      "symbol": "_level_run_loop",
       "address": 47519,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_B99F",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_B99F"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fc0e0",
+      "symbol": "_level_play",
       "address": 49376,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_C0E0",
+      "owner": "C_AF45_C15E",
       "module_members": [
-        "F_C0E0"
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
+        "F_C15E"
       ]
     },
     {
-      "symbol": "_fc15e",
+      "symbol": "_level_play_chapter",
       "address": 49502,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_C15E",
+      "owner": "C_AF45_C15E",
       "module_members": [
+        "F_AF45",
+        "F_B09A",
+        "F_B122",
+        "F_B3D7",
+        "F_B40F",
+        "F_B4FB",
+        "F_B55E",
+        "F_B593",
+        "F_B60F",
+        "F_B6CD",
+        "F_B772",
+        "F_B7F9",
+        "F_B967",
+        "F_B99F",
+        "F_C0E0",
         "F_C15E"
       ]
     },
@@ -2505,7 +3983,7 @@
       ]
     },
     {
-      "symbol": "_fc59a",
+      "symbol": "_sound_param_scale4",
       "address": 50586,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_C59A",
@@ -2678,7 +4156,7 @@
       ]
     },
     {
-      "symbol": "_fc8e2",
+      "symbol": "_sound_tick_step",
       "address": 51426,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_C8E2",
@@ -2696,7 +4174,7 @@
       ]
     },
     {
-      "symbol": "_fc988",
+      "symbol": "_sound_note_dispatch",
       "address": 51592,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_C988",
@@ -2798,7 +4276,7 @@
       ]
     },
     {
-      "symbol": "_fcad0",
+      "symbol": "_speaker_gate_on",
       "address": 51920,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_CAD0",
@@ -2807,7 +4285,7 @@
       ]
     },
     {
-      "symbol": "_fcadb",
+      "symbol": "_speaker_gate_off",
       "address": 51931,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_CADB",
@@ -2816,7 +4294,7 @@
       ]
     },
     {
-      "symbol": "_fcae6",
+      "symbol": "_pit_channel2_set_divisor",
       "address": 51942,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_CAE6",
@@ -2834,7 +4312,7 @@
       ]
     },
     {
-      "symbol": "_fcb48",
+      "symbol": "_sound_stop_reset",
       "address": 52040,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_CB48",
@@ -2843,7 +4321,7 @@
       ]
     },
     {
-      "symbol": "_f_cb5c",
+      "symbol": "_options_toggle_option",
       "address": 52060,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_CB5C_CD23",
@@ -2856,20 +4334,7 @@
       ]
     },
     {
-      "symbol": "_f_cb5c_end",
-      "address": 52155,
-      "classification": "KNOWN_SECONDARY_PUBLIC",
-      "owner": "M_CB5C_CD23",
-      "module_members": [
-        "F_CB5C",
-        "F_CBBB",
-        "F_CC17",
-        "F_CC6B",
-        "F_CD23"
-      ]
-    },
-    {
-      "symbol": "_f_cbbb",
+      "symbol": "_options_toggle_music",
       "address": 52157,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_CB5C_CD23",
@@ -2882,20 +4347,7 @@
       ]
     },
     {
-      "symbol": "_f_cbbb_end",
-      "address": 52245,
-      "classification": "KNOWN_SECONDARY_PUBLIC",
-      "owner": "M_CB5C_CD23",
-      "module_members": [
-        "F_CB5C",
-        "F_CBBB",
-        "F_CC17",
-        "F_CC6B",
-        "F_CD23"
-      ]
-    },
-    {
-      "symbol": "_f_cc17",
+      "symbol": "_options_toggle_sound",
       "address": 52247,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_CB5C_CD23",
@@ -2908,20 +4360,7 @@
       ]
     },
     {
-      "symbol": "_f_cc17_end",
-      "address": 52330,
-      "classification": "KNOWN_SECONDARY_PUBLIC",
-      "owner": "M_CB5C_CD23",
-      "module_members": [
-        "F_CB5C",
-        "F_CBBB",
-        "F_CC17",
-        "F_CC6B",
-        "F_CD23"
-      ]
-    },
-    {
-      "symbol": "_f_cc6b",
+      "symbol": "_slot_backup_list_show",
       "address": 52332,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_CB5C_CD23",
@@ -2934,7 +4373,7 @@
       ]
     },
     {
-      "symbol": "_f_cd23",
+      "symbol": "_slot_list_show",
       "address": 52516,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_CB5C_CD23",
@@ -2947,119 +4386,275 @@
       ]
     },
     {
-      "symbol": "_fcddd",
+      "symbol": "_player_select_quit_confirm",
       "address": 52701,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_CDDD",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_CDDD"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fce00",
+      "symbol": "_player_select_menu_confirm",
       "address": 52736,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_CE00",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_CE00"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fce2a",
+      "symbol": "_player_select_restart_confirm",
       "address": 52778,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_CE2A",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_CE2A"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fce68",
+      "symbol": "_player_select_mark",
       "address": 52840,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_CE68",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_CE68"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fce9e",
+      "symbol": "_player_select_draw_portraits",
       "address": 52894,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_CE9E",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_CE9E"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fcf3c",
+      "symbol": "_player_select_draw_screen",
       "address": 53052,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_CF3C",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_CF3C"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd089",
+      "symbol": "_player_select_load_flags",
       "address": 53385,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D089",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_D089"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd0d1",
+      "symbol": "_player_select_clear_highlight",
       "address": 53457,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D0D1",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_D0D1"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd117",
+      "symbol": "_player_select_draw_highlight",
       "address": 53527,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D117",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_D117"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd15d",
+      "symbol": "_player_select_choose_slot",
       "address": 53597,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D15D",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_D15D"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd1d8",
+      "symbol": "_player_select_close_wipe",
       "address": 53720,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D1D8",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_D1D8"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd26c",
+      "symbol": "_player_select_run",
       "address": 53868,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D26C",
+      "owner": "C_CDDD_D344",
       "module_members": [
-        "F_D26C"
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
+        "F_D344"
       ]
     },
     {
-      "symbol": "_fd344",
+      "symbol": "_ui_gfx_alloc",
       "address": 54084,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D344",
+      "owner": "C_CDDD_D344",
       "module_members": [
+        "F_CDDD",
+        "F_CE00",
+        "F_CE2A",
+        "F_CE68",
+        "F_CE9E",
+        "F_CF3C",
+        "F_D089",
+        "F_D0D1",
+        "F_D117",
+        "F_D15D",
+        "F_D1D8",
+        "F_D26C",
         "F_D344"
       ]
     },
@@ -3138,7 +4733,7 @@
       ]
     },
     {
-      "symbol": "_fd555",
+      "symbol": "_player_record_load_publish",
       "address": 54613,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D555",
@@ -3147,7 +4742,7 @@
       ]
     },
     {
-      "symbol": "_fd593",
+      "symbol": "_sound_start",
       "address": 54675,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D593",
@@ -3156,7 +4751,7 @@
       ]
     },
     {
-      "symbol": "_fd5a6",
+      "symbol": "_sound_request_count_dec",
       "address": 54694,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D5A6",
@@ -3165,7 +4760,7 @@
       ]
     },
     {
-      "symbol": "_fd5b3",
+      "symbol": "_sound_request_count_clear",
       "address": 54707,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D5B3",
@@ -3174,7 +4769,7 @@
       ]
     },
     {
-      "symbol": "_fd5ba",
+      "symbol": "_resource_record_cache_load",
       "address": 54714,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D5BA",
@@ -3183,7 +4778,7 @@
       ]
     },
     {
-      "symbol": "_fd5f9",
+      "symbol": "_resource_record_cache_reset",
       "address": 54777,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D5F9",
@@ -3192,7 +4787,7 @@
       ]
     },
     {
-      "symbol": "_fd60c",
+      "symbol": "_music_resume_if_valid",
       "address": 54796,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D60C",
@@ -3241,79 +4836,105 @@
       ]
     },
     {
-      "symbol": "_fd85f",
+      "symbol": "_record_table_delete_compact",
       "address": 55391,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D85F",
+      "owner": "C_D85F_D8F0",
       "module_members": [
-        "F_D85F"
-      ]
-    },
-    {
-      "symbol": "_fd89a",
-      "address": 55450,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D89A",
-      "module_members": [
-        "F_D89A"
-      ]
-    },
-    {
-      "symbol": "_fd8f0",
-      "address": 55536,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D8F0",
-      "module_members": [
+        "F_D85F",
+        "F_D89A",
         "F_D8F0"
       ]
     },
     {
-      "symbol": "_fd99b",
+      "symbol": "_rect_table_hit_id",
+      "address": 55450,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_D85F_D8F0",
+      "module_members": [
+        "F_D85F",
+        "F_D89A",
+        "F_D8F0"
+      ]
+    },
+    {
+      "symbol": "_record_panel_rebuild",
+      "address": 55536,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_D85F_D8F0",
+      "module_members": [
+        "F_D85F",
+        "F_D89A",
+        "F_D8F0"
+      ]
+    },
+    {
+      "symbol": "_opl_init",
       "address": 55707,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D99B",
+      "owner": "C_D99B_DA49",
       "module_members": [
-        "F_D99B"
-      ]
-    },
-    {
-      "symbol": "_fd9d9",
-      "address": 55769,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D9D9",
-      "module_members": [
-        "F_D9D9"
-      ]
-    },
-    {
-      "symbol": "_fd9e1",
-      "address": 55777,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D9E1",
-      "module_members": [
-        "F_D9E1"
-      ]
-    },
-    {
-      "symbol": "_fda20",
-      "address": 55840,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_DA20",
-      "module_members": [
-        "F_DA20"
-      ]
-    },
-    {
-      "symbol": "_fda49",
-      "address": 55881,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_DA49",
-      "module_members": [
+        "F_D99B",
+        "F_D9D9",
+        "F_D9E1",
+        "F_DA20",
         "F_DA49"
       ]
     },
     {
-      "symbol": "_fda66",
+      "symbol": "_opl_set_depth_wrapper",
+      "address": 55769,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_D99B_DA49",
+      "module_members": [
+        "F_D99B",
+        "F_D9D9",
+        "F_D9E1",
+        "F_DA20",
+        "F_DA49"
+      ]
+    },
+    {
+      "symbol": "_opl_set_enabled",
+      "address": 55777,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_D99B_DA49",
+      "module_members": [
+        "F_D99B",
+        "F_D9D9",
+        "F_D9E1",
+        "F_DA20",
+        "F_DA49"
+      ]
+    },
+    {
+      "symbol": "_music_set_tempo",
+      "address": 55840,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_D99B_DA49",
+      "module_members": [
+        "F_D99B",
+        "F_D9D9",
+        "F_D9E1",
+        "F_DA20",
+        "F_DA49"
+      ]
+    },
+    {
+      "symbol": "_opl_set_depth_and_nts",
+      "address": 55881,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_D99B_DA49",
+      "module_members": [
+        "F_D99B",
+        "F_D9D9",
+        "F_D9E1",
+        "F_DA20",
+        "F_DA49"
+      ]
+    },
+    {
+      "symbol": "_voice_slot_load_pair",
       "address": 55910,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_DA66",
@@ -3322,7 +4943,7 @@
       ]
     },
     {
-      "symbol": "_f_dad7",
+      "symbol": "_voice_channel_set_gate",
       "address": 56023,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DAD7_DB35",
@@ -3333,18 +4954,7 @@
       ]
     },
     {
-      "symbol": "_f_dad7_end",
-      "address": 56084,
-      "classification": "KNOWN_SECONDARY_PUBLIC",
-      "owner": "M_DAD7_DB35",
-      "module_members": [
-        "F_DAD7",
-        "F_DB17",
-        "F_DB35"
-      ]
-    },
-    {
-      "symbol": "_f_db17",
+      "symbol": "_voice_channel_level_refresh",
       "address": 56087,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DAD7_DB35",
@@ -3355,7 +4965,7 @@
       ]
     },
     {
-      "symbol": "_f_db35",
+      "symbol": "_voice_channel_apply_freq",
       "address": 56117,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DAD7_DB35",
@@ -3366,43 +4976,55 @@
       ]
     },
     {
-      "symbol": "_fdb60",
+      "symbol": "_voice_bank_retune_on",
       "address": 56160,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_DB60",
+      "owner": "C_DB60_DDC7",
       "module_members": [
-        "F_DB60"
-      ]
-    },
-    {
-      "symbol": "_fdcc7",
-      "address": 56519,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_DCC7",
-      "module_members": [
-        "F_DCC7"
-      ]
-    },
-    {
-      "symbol": "_fdd72",
-      "address": 56690,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_DD72",
-      "module_members": [
-        "F_DD72"
-      ]
-    },
-    {
-      "symbol": "_fddc7",
-      "address": 56775,
-      "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_DDC7",
-      "module_members": [
+        "F_DB60",
+        "F_DCC7",
+        "F_DD72",
         "F_DDC7"
       ]
     },
     {
-      "symbol": "_fddd9",
+      "symbol": "_voice_bank_update",
+      "address": 56519,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_DB60_DDC7",
+      "module_members": [
+        "F_DB60",
+        "F_DCC7",
+        "F_DD72",
+        "F_DDC7"
+      ]
+    },
+    {
+      "symbol": "_voice_update_tone",
+      "address": 56690,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_DB60_DDC7",
+      "module_members": [
+        "F_DB60",
+        "F_DCC7",
+        "F_DD72",
+        "F_DDC7"
+      ]
+    },
+    {
+      "symbol": "_voice_level_table_reset",
+      "address": 56775,
+      "classification": "KNOWN_FUNCTION_ENTRY",
+      "owner": "C_DB60_DDC7",
+      "module_members": [
+        "F_DB60",
+        "F_DCC7",
+        "F_DD72",
+        "F_DDC7"
+      ]
+    },
+    {
+      "symbol": "_music_note_to_divisor",
       "address": 56793,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DDD9_DF98",
@@ -3414,7 +5036,7 @@
       ]
     },
     {
-      "symbol": "_fde7e",
+      "symbol": "_music_build_octave_table",
       "address": 56958,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DDD9_DF98",
@@ -3426,7 +5048,7 @@
       ]
     },
     {
-      "symbol": "_fdefa",
+      "symbol": "_music_reset_tuning_tables",
       "address": 57082,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DDD9_DF98",
@@ -3450,146 +5072,386 @@
       ]
     },
     {
-      "symbol": "_fe095",
+      "symbol": "_voice_set_field",
       "address": 57493,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E095",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E095"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe0c0",
+      "symbol": "_voice_load_instrument",
       "address": 57536,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E0C0",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E0C0"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe114",
+      "symbol": "_voice_load_instrument_words",
       "address": 57620,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E114",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E114"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe151",
+      "symbol": "_voice_apply_field",
       "address": 57681,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E151",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E151"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe1c4",
+      "symbol": "_voice_program_all",
       "address": 57796,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E1C4",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E1C4"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe1f2",
+      "symbol": "_voice_write_level",
       "address": 57842,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E1F2",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E1F2"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe262",
+      "symbol": "_opl_set_note_select",
       "address": 57954,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E262",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E262"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe27b",
+      "symbol": "_voice_write_connection",
       "address": 57979,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E27B",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E27B"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe2d6",
+      "symbol": "_voice_write_op1_attack_decay",
       "address": 58070,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E2D6",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E2D6"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe324",
+      "symbol": "_voice_write_op2_attack_decay",
       "address": 58148,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E324",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E324"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe372",
+      "symbol": "_voice_write_envelope_flags",
       "address": 58226,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E372",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E372"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe420",
+      "symbol": "_opl_set_depth_flags",
       "address": 58400,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E420",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E420"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe44b",
+      "symbol": "_voice_write_waveform",
       "address": 58443,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E44B",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E44B"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe48a",
+      "symbol": "_voice_set_frequency",
       "address": 58506,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E48A",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E48A"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe52a",
+      "symbol": "_voice_key_off",
       "address": 58666,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E52A",
+      "owner": "C_E095_E54D",
       "module_members": [
-        "F_E52A"
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
+        "F_E54D"
       ]
     },
     {
-      "symbol": "_fe54d",
+      "symbol": "_opl_detect",
       "address": 58701,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_E54D",
+      "owner": "C_E095_E54D",
       "module_members": [
+        "F_E095",
+        "F_E0C0",
+        "F_E114",
+        "F_E151",
+        "F_E1C4",
+        "F_E1F2",
+        "F_E262",
+        "F_E27B",
+        "F_E2D6",
+        "F_E324",
+        "F_E372",
+        "F_E420",
+        "F_E44B",
+        "F_E48A",
+        "F_E52A",
         "F_E54D"
       ]
     },

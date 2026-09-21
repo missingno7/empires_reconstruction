@@ -10,9 +10,9 @@ DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
 public _fca9b
-extrn _fcadb:near
-extrn _fcae6:near
-extrn _fcad0:near
+extrn _speaker_gate_off:near
+extrn _pit_channel2_set_divisor:near
+extrn _speaker_gate_on:near
 extrn _g1e92:word
 extrn _g1e90:word
 
@@ -23,7 +23,7 @@ _fca9b proc near
     xor dh,dh
     cmp dx,0
     jne shift_note
-    call _fcadb
+    call _speaker_gate_off
     jmp short store_current_value
     nop
 shift_note:
@@ -36,8 +36,8 @@ shift_note:
     mov ax,[bx]
     add ax,dx
     shr ax,cl
-    call _fcae6
-    call _fcad0
+    call _pit_channel2_set_divisor
+    call _speaker_gate_on
 store_current_value:
     mov ax,ds:_g1e92
     mov ds:_g1e90,ax

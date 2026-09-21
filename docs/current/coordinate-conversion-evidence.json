@@ -1,0 +1,187 @@
+{
+  "format": "empires-coordinate-conversion-evidence-v1",
+  "fixture_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+  "compiler": "Pinned Turbo C 2.0; default compact-model flags from layout/toolchain.json, with direct and -B variants",
+  "source_template": "extern unsigned char far *gbfbc;\nextern char near g6ca6[],g6ac4[];\nextern int f03cc(unsigned,unsigned,void far *,int);\nvoid f_28ac(void)\n{\n int i,index,stride,j;\n unsigned char flag;\n unsigned char far *p;\n register unsigned x,y;\n p=gbfbc+684;\n for(i=0;i<10;i++,p+=3) {\n  if(flag=*p) {\n   x=(unsigned long)p[1];x<<=1;\n   y=(unsigned long)p[2];\n   index=(x>>3)+((y>>3)-2)*38-1;\n   y+=180;x-=4;\n   if(flag&128) {f03cc(x,y,g6ca6,0);stride=38;}\n   else {f03cc(x,y,g6ac4,0);stride=1;}\n   for(j=0;j<6;j++,index+=stride) gbfbc[index]=7;\n  }\n }\n}\n",
+  "substitution": "Replace both (unsigned long)p[n] coordinate expressions with the listed expression, N = 1 or 2. All other source text is identical.",
+  "results": [
+    {
+      "id": "P00D",
+      "expression": "p[N]",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P00B",
+      "expression": "p[N]",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P01D",
+      "expression": "(unsigned long)p[N]",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P01B",
+      "expression": "(unsigned long)p[N]",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P02D",
+      "expression": "(long)p[N]",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P02B",
+      "expression": "(long)p[N]",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P03D",
+      "expression": "(unsigned)(char far *)p[N]",
+      "flags": "",
+      "size": 218,
+      "conversion_bytes": "c07503e99600c45efc268a470132e433d28bf0d1e6c45efc268a470232e433d28bf88bc6d1e8d1e8",
+      "equal": true
+    },
+    {
+      "id": "P03B",
+      "expression": "(unsigned)(char far *)p[N]",
+      "flags": "-B",
+      "size": 218,
+      "conversion_bytes": "c07503e99600c45efc268a470132e433d28bf0d1e6c45efc268a470232e433d28bf88bc6d1e8d1e8",
+      "equal": true
+    },
+    {
+      "id": "P04D",
+      "expression": "(unsigned)(void far *)(unsigned long)p[N]",
+      "flags": "",
+      "size": 218,
+      "conversion_bytes": "c07503e99600c45efc268a470132e433d28bf0d1e6c45efc268a470232e433d28bf88bc6d1e8d1e8",
+      "equal": true
+    },
+    {
+      "id": "P04B",
+      "expression": "(unsigned)(void far *)(unsigned long)p[N]",
+      "flags": "-B",
+      "size": 218,
+      "conversion_bytes": "c07503e99600c45efc268a470132e433d28bf0d1e6c45efc268a470232e433d28bf88bc6d1e8d1e8",
+      "equal": true
+    },
+    {
+      "id": "P05D",
+      "expression": "(unsigned long)(unsigned)p[N]",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P05B",
+      "expression": "(unsigned long)(unsigned)p[N]",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P06D",
+      "expression": "(long)(int)p[N]",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P06B",
+      "expression": "(long)(int)p[N]",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P07D",
+      "expression": "(unsigned long)p[N]+0L",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P07B",
+      "expression": "(unsigned long)p[N]+0L",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P08D",
+      "expression": "(unsigned long)p[N]&255L",
+      "flags": "",
+      "size": 222,
+      "conversion_bytes": "c07503e99a00c45efc268a4701b4008bf081e6ff00d1e6c45efc268a4702b4008bf881e7ff008bc6",
+      "equal": false
+    },
+    {
+      "id": "P08B",
+      "expression": "(unsigned long)p[N]&255L",
+      "flags": "-B",
+      "size": 222,
+      "conversion_bytes": "c07503e99a00c45efc268a4701b4008bf081e6ff00d1e6c45efc268a4702b4008bf881e7ff008bc6",
+      "equal": false
+    },
+    {
+      "id": "P09D",
+      "expression": "(unsigned long)p[N]*1L",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P09B",
+      "expression": "(unsigned long)p[N]*1L",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P10D",
+      "expression": "(unsigned long)p[N]/1L",
+      "flags": "",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    },
+    {
+      "id": "P10B",
+      "expression": "(unsigned long)p[N]/1L",
+      "flags": "-B",
+      "size": 214,
+      "conversion_bytes": "c07503e99200c45efc268a4701b4008bf0d1e6c45efc268a4702b4008bf88bc6d1e8d1e8d1e8508b",
+      "equal": false
+    }
+  ],
+  "production_expression": "(unsigned)(char far *)p[n]",
+  "limitation": "Exact emission and numerical low-word behavior on pinned Turbo C; no claim of historical source provenance or portable pointer-to-integer semantics."
+}

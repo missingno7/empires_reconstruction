@@ -7,8 +7,8 @@ _BSS segment word public 'BSS'
 extrn _mus_ptr:word, _mus_arg:word, _mus_flag:word, _snd_delay:word
 _BSS ends
 DGROUP group _DATA, _BSS
-extrn _fc988:near, _f_c9a4:near, _fcadb:near, _f_ca03:near
-extrn _fca9b:near, _fcaf1:near, _fcb48:near
+extrn _sound_note_dispatch:near, _f_c9a4:near, _speaker_gate_off:near, _f_ca03:near
+extrn _fca9b:near, _fcaf1:near, _sound_stop_reset:near
 public _fc914
 _fc914:
  push bp
@@ -29,11 +29,11 @@ L0: mov di,_mus_ptr
  jz short L3
  cmp al,0fh
  jz short L4
- call _fc988
+ call _sound_note_dispatch
  call _f_c9a4
  jmp short L5
  nop
-L1: call _fcadb
+L1: call _speaker_gate_off
  call _f_c9a4
  jmp short L5
  nop
@@ -44,7 +44,7 @@ L2: call _f_ca03
 L3: call _fca9b
  jmp short L5
  nop
-L4: call _fcadb
+L4: call _speaker_gate_off
  cmp _mus_flag,0
  jz short L6
  mov ax,_mus_arg
@@ -54,7 +54,7 @@ L4: call _fcadb
  inc _snd_delay
  pop bp
  ret
-L6: call _fcb48
+L6: call _sound_stop_reset
  pop bp
  ret
 L5: add _mus_ptr,2

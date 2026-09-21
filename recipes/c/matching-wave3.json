@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 30707,
       "end": 30838,
-      "source": "src/F_75F3.C",
+      "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f75f3",
+        "public": "_hud_prompt_continue_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {
@@ -40,37 +40,37 @@
             "addend": 0,
             "evidence": "functions/F_020F.entry"
           },
-          "_f6cea": {
+          "_sprite_sheet_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CEA.entry",
             "owner": "F_6CEA",
-            "public": "_f6cea",
+            "public": "_sprite_sheet_index_get",
             "addend": 0
           },
-          "_gbfcd": {
+          "_display_mode": {
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f6ca6": {
+          "_sprite_sheet_select": {
             "coordinate": "code_offset",
             "owner": "F_6CA6",
-            "public": "_f6ca6",
+            "public": "_sprite_sheet_select",
             "addend": 0,
             "evidence": "functions/F_6CA6.entry"
           },
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
           "_f039f": {
@@ -97,7 +97,7 @@
       "kind": "MATCHING_C",
       "start": 31047,
       "end": 31115,
-      "source": "src/F_7747.C",
+      "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f7747",
@@ -119,10 +119,10 @@
             "public": "_f7925",
             "addend": 0
           },
-          "_f778b": {
+          "_hud_prompt_confirm_draw": {
             "coordinate": "code_offset",
             "owner": "F_778B",
-            "public": "_f778b",
+            "public": "_hud_prompt_confirm_draw",
             "addend": 0,
             "evidence": "functions/F_778B.entry"
           },
@@ -140,11 +140,11 @@
             "addend": 0,
             "evidence": "functions/F_791E.entry"
           },
-          "_f6fda": {
+          "_hud_panel_open": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6FDA.entry",
             "owner": "F_6FDA",
-            "public": "_f6fda",
+            "public": "_hud_panel_open",
             "addend": 0
           }
         }
@@ -164,7 +164,7 @@
       "kind": "MATCHING_C",
       "start": 41885,
       "end": 41952,
-      "source": "src/F_A19D.C",
+      "source": "src/SLOTS.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fa19d",
@@ -199,7 +199,7 @@
       "kind": "MATCHING_C",
       "start": 41952,
       "end": 42019,
-      "source": "src/F_A1E0.C",
+      "source": "src/SLOTS.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fa1e0",
@@ -234,15 +234,15 @@
       "kind": "MATCHING_C",
       "start": 42062,
       "end": 42125,
-      "source": "src/F_A24E.C",
+      "source": "src/SLOTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa24e",
+        "public": "_slot_delete",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc470": {
+          "_slot_table": {
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
@@ -276,19 +276,19 @@
       "kind": "MATCHING_C",
       "start": 42506,
       "end": 42556,
-      "source": "src/F_A40A.C",
+      "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa40a",
+        "public": "_slot_cursor_box",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -318,7 +318,7 @@
       "kind": "MATCHING_C",
       "start": 46551,
       "end": 46607,
-      "source": "src/F_B3D7.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fb3d7",
@@ -326,14 +326,14 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "evidence": "functions/F_656C.entry",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -365,7 +365,7 @@
       "kind": "MATCHING_C",
       "start": 46942,
       "end": 46995,
-      "source": "src/F_B55E.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fb55e",
@@ -417,10 +417,10 @@
       "kind": "MATCHING_C",
       "start": 53352,
       "end": 53406,
-      "source": "src/F_CE68.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fce68",
+        "public": "_player_select_mark",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -435,12 +435,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0E2.phys"
           },
-          "_g13ed": {
+          "_current_slot": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_gc470": {
+          "_slot_table": {
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
@@ -462,10 +462,10 @@
       "kind": "MATCHING_C",
       "start": 53897,
       "end": 53969,
-      "source": "src/F_D089.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd089",
+        "public": "_player_select_load_flags",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -504,15 +504,15 @@
       "kind": "MATCHING_C",
       "start": 53969,
       "end": 54039,
-      "source": "src/F_D0D1.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd0d1",
+        "public": "_player_select_clear_highlight",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc5ba": {
+          "_player_select_index": {
             "offset": 50618,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0EA.phys"
@@ -554,15 +554,15 @@
       "kind": "MATCHING_C",
       "start": 54039,
       "end": 54109,
-      "source": "src/F_D117.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd117",
+        "public": "_player_select_draw_highlight",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc5ba": {
+          "_player_select_index": {
             "offset": 50618,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0EA.phys"

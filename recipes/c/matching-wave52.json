@@ -4,33 +4,33 @@
     {
       "id": "F_CE00",
       "kind": "MATCHING_C",
-      "source": "src/F_CE00.C",
+      "source": "src/PLAYERSL.C",
       "start": 53248,
       "end": 53290,
       "expected_sha256": "f255549323c3b2684907bd4c591a5f65f4631d02d42eea442f568b323eda692c",
       "build": {
         "segment": "_TEXT",
-        "public": "_fce00",
+        "public": "_player_select_menu_confirm",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f86c9": {
+          "_dialog_run": {
             "coordinate": "code_offset",
             "owner": "F_86C9",
-            "public": "_f86c9"
+            "public": "_dialog_run"
           },
-          "_fa13f": {
+          "_slot_table_save": {
             "coordinate": "code_offset",
             "owner": "F_A13F",
-            "public": "_fa13f"
+            "public": "_slot_table_save"
           },
           "_longjmp": {
             "coordinate": "code_offset",
             "owner": "LIB_SETJMP",
             "public": "_longjmp"
           },
-          "_g21b0": {
+          "_dialog_select_menu_confirm": {
             "coordinate": "DGROUP_offset",
             "offset": 8624
           },

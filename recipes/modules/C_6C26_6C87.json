@@ -4,10 +4,26 @@
   "flags_append": "",
   "segment": "_TEXT",
   "sources": [
-    {"owner": "F_6C26", "path": "src/F_6C26.C", "public": "_f6c26"},
-    {"owner": "F_6C57", "path": "src/F_6C57.C", "public": "_f6c57"},
-    {"owner": "F_6C6F", "path": "src/F_6C6F.C", "public": "_f6c6f"},
-    {"owner": "F_6C87", "path": "src/F_6C87.C", "public": "_f6c87"}
+    {
+      "owner": "F_6C26",
+      "path": "src/TIMER.C",
+      "public": "_timer_wait_ticks"
+    },
+    {
+      "owner": "F_6C57",
+      "path": "src/TIMER.C",
+      "public": "_timer_deadline_arm"
+    },
+    {
+      "owner": "F_6C6F",
+      "path": "src/TIMER.C",
+      "public": "_timer_deadline_wait"
+    },
+    {
+      "owner": "F_6C87",
+      "path": "src/TIMER.C",
+      "public": "_timer_deadline_reached"
+    }
   ],
-  "evidence": "Four contiguous matching C extents, identical compiler flags, compatible repeated extern declarations, and shared _gb76/_gc0d0 bindings. Historical module identity is not established."
+  "evidence": "Four contiguous matching C extents, identical compiler flags, compatible repeated extern declarations, and shared _gb76/_gc0d0 bindings. Historical module identity is not established. Members merged into src/TIMER.C."
 }

@@ -1,0 +1,28 @@
+{
+  "format": "empires-timer-c-probes-v1",
+  "owner": "F_6BCF",
+  "expected_bytes": 87,
+  "production_changed": false,
+  "compiler_flags": "-B",
+  "probes": [
+    {
+      "name": "interrupt_body",
+      "source": "extern int near gc0d4,g237c,g176e,g1772;\nextern unsigned long near g0b76;\nextern void interrupt (* near g0b7a)(void);\nextern void fc1a0(void);\nvoid __sti__(void);\nvoid __outportb__(int,unsigned char);\nvoid interrupt f6bcf(void)\n{\n __sti__();\n ++gc0d4; if(gc0d4>=13) {gc0d4=0;g0b7a();}\n ++g0b76;\n if(!g237c && (g176e || g1772)) fc1a0();\n __outportb__(0x20,0x20);\n}\n\n\n",
+      "source_sha256": "d1583d9567e00e8268f7bb07788c11612dfaf9ab3b76d5c5aa0497980ccd5611",
+      "emitted_bytes": 85,
+      "equal": false,
+      "actual_hex": "50535152061e565755bda30f8eddfbff06d4c0833ed4c00d7c0bc706d4c000009cff1e7a0b8306760b018316780b00833e7c23007511833e6e17007507833e7217007403e88a55b020e6205d5f5e1f075a595b58cf",
+      "expected_hex": "50535152061e565755bda30f8edd9cfbff06d4c0833ed4c00d7c0bc706d4c000009cff1e7a0b8306760b018316780b00833e7c23007511833e6e17007507833e7217007403e88955b020e6209d5d5f5e1f075a595b58cf"
+    },
+    {
+      "name": "flags_local",
+      "source": "extern int near gc0d4,g237c,g176e,g1772;\nextern unsigned long near g0b76;\nextern void interrupt (* near g0b7a)(void);\nextern void fc1a0(void);\nvoid __sti__(void);\nvoid __outportb__(int,unsigned char);\nvoid interrupt f6bcf(void)\n{\n unsigned saved_flags; saved_flags=_FLAGS; __sti__();\n ++gc0d4; if(gc0d4>=13) {gc0d4=0;g0b7a();}\n ++g0b76;\n if(!g237c && (g176e || g1772)) fc1a0();\n __outportb__(0x20,0x20); _FLAGS=saved_flags;\n}\n\n\n\n",
+      "source_sha256": "32515ccc49f5095c9b791c404a8d6938fa8ecadd01b759657b7c2e20bc98418d",
+      "emitted_bytes": 89,
+      "equal": false,
+      "actual_hex": "50535152061e565755bda30f8edd9c5efbff06d4c0833ed4c00d7c0bc706d4c000009cff1e7a0b8306760b018316780b00833e7c23007511833e6e17007507833e7217007403e88855b020e620569d5d5f5e1f075a595b58cf",
+      "expected_hex": "50535152061e565755bda30f8edd9cfbff06d4c0833ed4c00d7c0bc706d4c000009cff1e7a0b8306760b018316780b00833e7c23007511833e6e17007507833e7217007403e88955b020e6209d5d5f5e1f075a595b58cf"
+    }
+  ],
+  "finding": "Native interrupt C emits 85 bytes without the outer PUSHF/POPF. Saving _FLAGS in a local emits 89 bytes: PUSHF/POP SI at entry and PUSH SI/POPF at exit, versus historical PUSHF and POPF alone. No exact replacement promoted."
+}

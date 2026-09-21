@@ -1,0 +1,107 @@
+/* src/PROMPTS.C: Prompt boxes: continue, select and confirm.
+   One translation unit; the sections below were the separate member
+   sources of grouped module C_75F3_7856 and keep their original ids. */
+
+extern int f020f(), sprite_sheet_index_get();
+extern void f03a8();
+extern void f039f();
+extern void sprite_sheet_select();
+extern void gfx_color_select(int n);
+extern void text_draw_wrapped(int, int, char far *);
+extern void rect_border_draw();
+extern void anim_step_loop();
+extern int f792c(), f6b1a(), hud_prompt_confirm_draw();
+extern void f7925(void), f791e(), hud_panel_open();
+extern int gb83, gc0fc;
+extern char *gc0f6;
+extern char display_mode;                      /* DS:BFCD */
+
+/* ---- F_75F3 (original code at 0x75F3) ---- */
+/* The local array initializer emits the original SCOPY argument order and
+   the module-owned 15-byte _DATA contribution. */
+
+/* Shared UI state immediately precedes the caption initializers.
+   Consumers establish widths: F_7313 int, F_734E char, F_703E/F_7162 ints.
+   The final zero byte is part of gb85, not alignment padding. */
+int gb80 = 4;
+char energy_meter = 4;
+int gb83 = 0;
+int gb85 = 0;
+
+void hud_prompt_continue_draw()
+{
+    char cap[15] = "\027\030 to Continue";                     /* bp-10 */
+    register int s, d;                  /* si, di */
+
+    gb83 = 2;
+    s = f020f();
+    d = sprite_sheet_index_get();
+    if (display_mode == 2)
+        gfx_color_select(5);
+    else
+        gfx_color_select(0xf);
+    sprite_sheet_select(0);
+    text_draw_wrapped(0x18, 0xbc, &cap);
+    f039f(0x18, 0xbc, 0x94, 0xa);
+    gfx_color_select(s);
+    sprite_sheet_select(d);
+}
+
+
+/* ---- F_7676 (original code at 0x7676) ---- */
+void f7676(void) { anim_step_loop(0x18, 0x184, 0x94, 10, 0x18, 0xbc); }
+
+
+/* ---- F_7695 (original code at 0x7695) ---- */
+hud_prompt_select_draw(p)
+char *p;
+{
+    char cap[13] = "\027\030 to Select";
+    register int s, d;
+
+    s = f020f();
+    d = sprite_sheet_index_get();
+    gb83 = 3;
+    gc0f6 = p;
+    gc0fc = 0;
+    gfx_color_select(0);
+    f03a8(0, 0xbc, 0x140, 12);
+    gfx_color_select(15);
+    sprite_sheet_select(0);
+    text_draw_wrapped(10, 0xbd, p);
+    text_draw_wrapped(0xaa, 0xbd, &cap);
+    f039f(0, 0xbc, 0x140, 12);
+    gfx_color_select(s);
+    sprite_sheet_select(d);
+}
+
+
+/* ---- F_7747 (original code at 0x7747) ---- */
+void f7747(char far *p) { register int key, saved; saved=f792c(); f7925(); hud_prompt_confirm_draw(p,0,15,1,0); do { key=f6b1a(); } while (key!=13 && key!=27); if(saved) f791e(); hud_panel_open(); }
+
+
+/* ---- F_778B (original code at 0x778B) ---- */
+hud_prompt_confirm_draw(p,a,b,c,e)
+char *p;
+int a,b,c,e;
+{
+    char cap[15] = "\027\030 to Continue";
+    register int s, d;
+
+    s = f020f();
+    d = sprite_sheet_index_get();
+    gb83 = 4;
+    gc0fc = b;
+    gfx_color_select(0);
+    rect_border_draw(6, 0xa2, 0x134, 0x24);
+    gfx_color_select(b);
+    f03a8(8, 0xa3, 0x130, 0x22);
+    gfx_color_select(a);
+    sprite_sheet_select(c);
+    text_draw_wrapped(12, 0xa5, p);
+    if (e)
+        text_draw_wrapped(0xaa, 0xb9, &cap);
+    f039f(6, 0xa2, 0x134, 0x24);
+    gfx_color_select(s);
+    sprite_sheet_select(d);
+}

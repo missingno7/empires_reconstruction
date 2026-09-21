@@ -17,11 +17,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f7bfc": {
+          "_menu_list_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7BFC.entry",
             "owner": "F_7BFC",
-            "public": "_f7bfc",
+            "public": "_menu_list_draw",
             "addend": 0
           },
           "_f791e": {
@@ -31,32 +31,32 @@
             "public": "_f791e",
             "addend": 0
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D5A6.entry",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0
           },
-          "_f7162": {
+          "_ui_overlay_hide": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7162.entry",
             "owner": "F_7162",
-            "public": "_f7162",
+            "public": "_ui_overlay_hide",
             "addend": 0
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6997.entry",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0
           },
-          "_f6b66": {
+          "_keyboard_buffer_drain": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B66.entry",
             "owner": "F_6B66",
-            "public": "_f6b66",
+            "public": "_keyboard_buffer_drain",
             "addend": 0
           }
         },
@@ -79,12 +79,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f8453": {"coordinate": "code_offset", "evidence": "functions/F_8453.entry", "owner": "F_8453", "public": "_f8453", "addend": 0},
+          "_dialog_restore_screen": {"coordinate": "code_offset", "evidence": "functions/F_8453.entry", "owner": "F_8453", "public": "_dialog_restore_screen", "addend": 0},
           "_f791e": {"coordinate": "code_offset", "evidence": "functions/F_791E.entry", "owner": "F_791E", "public": "_f791e", "addend": 0},
-          "_fd5a6": {"coordinate": "code_offset", "evidence": "functions/F_D5A6.entry", "owner": "F_D5A6", "public": "_fd5a6", "addend": 0},
-          "_f7162": {"coordinate": "code_offset", "evidence": "functions/F_7162.entry", "owner": "F_7162", "public": "_f7162", "addend": 0},
-          "_f6997": {"coordinate": "code_offset", "evidence": "functions/F_6997.entry", "owner": "F_6997", "public": "_f6997", "addend": 0},
-          "_f6b66": {"coordinate": "code_offset", "evidence": "functions/F_6B66.entry", "owner": "F_6B66", "public": "_f6b66", "addend": 0}
+          "_sound_request_count_dec": {"coordinate": "code_offset", "evidence": "functions/F_D5A6.entry", "owner": "F_D5A6", "public": "_sound_request_count_dec", "addend": 0},
+          "_ui_overlay_hide": {"coordinate": "code_offset", "evidence": "functions/F_7162.entry", "owner": "F_7162", "public": "_ui_overlay_hide", "addend": 0},
+          "_keyboard_chain_disable": {"coordinate": "code_offset", "evidence": "functions/F_6997.entry", "owner": "F_6997", "public": "_keyboard_chain_disable", "addend": 0},
+          "_keyboard_buffer_drain": {"coordinate": "code_offset", "evidence": "functions/F_6B66.entry", "owner": "F_6B66", "public": "_keyboard_buffer_drain", "addend": 0}
         },
         "module_segments": {}
       }

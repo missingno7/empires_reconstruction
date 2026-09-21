@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 53406,
       "end": 53564,
-      "source": "src/F_CE9E.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fce9e",
+        "public": "_player_select_draw_portraits",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -29,7 +29,7 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -56,10 +56,10 @@
       "kind": "MATCHING_C",
       "start": 53564,
       "end": 53897,
-      "source": "src/F_CF3C.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fcf3c",
+        "public": "_player_select_draw_screen",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -69,14 +69,14 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAC6.phys"
           },
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "evidence": "functions/F_656C.entry",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -126,11 +126,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21E10.phys"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -138,11 +138,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_fce9e": {
+          "_player_select_draw_portraits": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CE9E.entry",
             "owner": "F_CE9E",
-            "public": "_fce9e",
+            "public": "_player_select_draw_portraits",
             "addend": 0
           },
           "_f039f": {

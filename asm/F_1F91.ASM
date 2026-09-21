@@ -23,7 +23,7 @@ _f1f91  proc    near
         push    si
         push    di
         push    ds
-        lds     si,_gbfbc
+        lds     si,_board_records
         mov     ax,[bp+4]
         cmp     ax,137h
         jg      @@xhi
@@ -81,5 +81,5 @@ _f1f91  proc    near
 _f1f91  endp
 _TEXT   ends
         public  _f1f91
-        extrn   _gbfbc:dword
+        extrn   _board_records:dword
         end

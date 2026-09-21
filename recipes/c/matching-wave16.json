@@ -19,10 +19,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20250.phys"
           },
-          "_fb593": {
+          "_level_free_descriptor_table": {
             "coordinate": "code_offset",
             "owner": "F_B593",
-            "public": "_fb593",
+            "public": "_level_free_descriptor_table",
             "addend": 0,
             "evidence": "functions/F_B593.entry"
           },
@@ -31,14 +31,14 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_26E82.phys"
           },
-          "_f684a": {
+          "_resource_load_record_alloc": {
             "coordinate": "code_offset",
             "evidence": "functions/F_684A.entry",
             "owner": "F_684A",
-            "public": "_f684a",
+            "public": "_resource_load_record_alloc",
             "addend": 0
           },
-          "_gb07c": {
+          "_resource_ptr_table": {
             "offset": 45180,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2ABAC.phys"
@@ -58,14 +58,14 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
           },
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "evidence": "functions/F_656C.entry",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -109,7 +109,7 @@
       "kind": "MATCHING_C",
       "start": 46843,
       "end": 46942,
-      "source": "src/F_B4FB.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fb4fb",

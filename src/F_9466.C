@@ -1,1 +1,0 @@
-extern int f03b4();f9466(a,b,c,d) int a,b,c,d;{register int x,y;int u,v;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}switch(c){case 0:u=96;v=0x158;break;case 1:u=140;v=0x158;break;}if(!d)f03b4(x,y,42,30,u,v);else f03b4(u,v,42,30,x,y);}

@@ -6,13 +6,13 @@
       "kind": "MATCHING_C",
       "start": 9534,
       "end": 9996,
-      "source": "src/F_233E.C",
+      "source": "src/BOARDDRW.C",
       "artifact": "regions/F_233E.bin",
       "expected_sha256": "ac19c0d41e4e41f346e7a06dc7e70fda9e6a7a54cbb8f0cdac3d0354eb21414a",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f233e",
+        "public": "_board_scan_wipe_effect",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -102,17 +102,17 @@
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6c57": {
+          "_timer_deadline_arm": {
             "coordinate": "code_offset",
             "owner": "F_6C57",
-            "public": "_f6c57",
+            "public": "_timer_deadline_arm",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fcb48": {
+          "_sound_stop_reset": {
             "coordinate": "code_offset",
             "owner": "F_CB48",
-            "public": "_fcb48",
+            "public": "_sound_stop_reset",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -123,10 +123,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f22b1": {
+          "_board_redraw_view": {
             "coordinate": "code_offset",
             "owner": "F_22B1",
-            "public": "_f22b1",
+            "public": "_board_redraw_view",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -137,10 +137,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6c6f": {
+          "_timer_deadline_wait": {
             "coordinate": "code_offset",
             "owner": "F_6C6F",
-            "public": "_f6c6f",
+            "public": "_timer_deadline_wait",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           }
@@ -153,13 +153,13 @@
       "kind": "MATCHING_C",
       "start": 9129,
       "end": 9179,
-      "source": "src/F_21A9.C",
+      "source": "src/BOARDDRW.C",
       "artifact": "regions/F_21A9.bin",
       "expected_sha256": "9851b0d5cedddee4581add4f89c343c050c59ddd957a571b233f876d27a580ac",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f21a9",
+        "public": "_sprite_load_boot_sheets",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -169,10 +169,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f68aa": {
+          "_resource_load_record_into": {
             "coordinate": "code_offset",
             "owner": "F_68AA",
-            "public": "_f68aa",
+            "public": "_resource_load_record_into",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },

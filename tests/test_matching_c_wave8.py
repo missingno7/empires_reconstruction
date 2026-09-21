@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -24,7 +25,11 @@ class MatchingCWave8Tests(unittest.TestCase):
             mutants = []
             for name, before, after in (
                 ('F_32FA', b'register int i;int j;', b'register int i,j;'),
-                ('F_2A70', b'return (int)(p+*p*3+1);', b'return (int)(p+*p*3+2);')):
+                # F_2A70 was normalized to return an unsigned char near
+                # pointer instead of an int cast; the +1 displacement it
+                # mutates is unchanged.
+                ('F_2A70', b'return (unsigned char near *)(p+*p*3+1);',
+                 b'return (unsigned char near *)(p+*p*3+2);')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
                 self.assertEqual(source.count(before), 1)
@@ -33,7 +38,7 @@ class MatchingCWave8Tests(unittest.TestCase):
                 owner.update(id=name + '_MUTANT', source=path.relative_to(ROOT).as_posix())
                 mutants.append(owner)
             receipts, _ = compile_sources(ROOT, owners + mutants, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

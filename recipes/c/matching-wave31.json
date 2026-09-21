@@ -6,14 +6,14 @@
       "kind": "MATCHING_C",
       "start": 25644,
       "end": 25693,
-      "source": "src/F_622C.C",
+      "source": "src/CRITERR.C",
       "original_symbol": "F_622C",
       "artifact": "regions/F_622C.bin",
       "expected_sha256": "47947fdf28e29bf213e58fac3b5841677473d6db37fad28521286add02069467",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f622c",
+        "public": "_dos_critical_error_handler",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -22,7 +22,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2066E.phys"
           },
-          "_gc0c8": {
+          "_current_drive": {
             "offset": 49352,
             "coordinate": "DGROUP_offset",
             "storage_evidence": "DS_C0C8",
@@ -56,21 +56,21 @@
       "kind": "MATCHING_C",
       "start": 25693,
       "end": 25702,
-      "source": "src/F_625D.C",
+      "source": "src/CRITERR.C",
       "original_symbol": "F_625D",
       "artifact": "regions/F_625D.bin",
       "expected_sha256": "b078d586124cd9e6033f45295ed2228e3454c6439ee5197a160c04b084d4a10f",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f625d",
+        "public": "_dos_critical_error_install",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f622c": {
+          "_dos_critical_error_handler": {
             "coordinate": "code_offset",
             "owner": "F_622C",
-            "public": "_f622c",
+            "public": "_dos_critical_error_handler",
             "addend": 0,
             "evidence": "functions/F_622C.entry"
           },

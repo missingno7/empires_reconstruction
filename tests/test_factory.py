@@ -113,11 +113,11 @@ class FactoryTests(unittest.TestCase):
         self.assertTrue(f[0]['definition'])
         self.assertEqual(f[0]['argument_types'],['char *','unsigned'])
 
-    def test_complex_pointer_declarators_remain_explicit_unknowns(self):
+    def test_complex_pointer_declarators_are_classified_without_signatures(self):
         f,g,_,u=declarations('extern void (*table[])(void); extern void interrupt (*getvect())();','ptr.c')
-        self.assertEqual(len(u),2)
-        self.assertEqual(g[0]['symbol'],'table')
-        self.assertEqual(f[0]['confidence'],'UNKNOWN')
+        self.assertEqual(u,[])
+        self.assertEqual((g[0]['symbol'],g[0]['pointer_shape'],g[0]['array']),('table','function','[]'))
+        self.assertEqual((f[0]['symbol'],f[0]['confidence'],f[0]['argument_types']),('getvect','UNKNOWN',None))
 
     def test_comma_record_fields_are_all_counted(self):
         _,_,records,_=declarations('struct R { char pad[13]; int a,b; char tail[10]; };','r.c')
@@ -136,7 +136,7 @@ class FactoryTests(unittest.TestCase):
     def test_census_records_real_conflicts_and_shared_layouts(self):
         result=census()
         self.assertTrue(result['conflicts']); self.assertTrue(result['consolidation_candidates'])
-        self.assertTrue(any(r['name']=='record27' and r['bytes']==27 for r in result['records']))
+        self.assertTrue(any(r['name']=='c470_record' and r['bytes']==27 and r['file']=='include/C470.H' for r in result['records']))
 
     def test_checked_plan_is_complete_and_single_order(self):
         plan=checked_plan(); self.assertEqual(plan,generate())

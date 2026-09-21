@@ -36,19 +36,19 @@
       "kind": "MATCHING_C",
       "start": 19427,
       "end": 19440,
-      "source": "src/F_49E3.C",
+      "source": "src/GAME.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f49e3",
+        "public": "_game_shutdown",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fcb48": {
+          "_sound_stop_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CB48.entry",
             "owner": "F_CB48",
-            "public": "_fcb48",
+            "public": "_sound_stop_reset",
             "addend": 0
           },
           "_fc834": {
@@ -65,10 +65,10 @@
             "public": "_f697d",
             "addend": 0
           },
-          "_f6bac": {
+          "_timer_irq_restore": {
             "coordinate": "code_offset",
             "owner": "F_6BAC",
-            "public": "_f6bac",
+            "public": "_timer_irq_restore",
             "addend": 0,
             "evidence": "functions/F_6BAC.entry"
           }
@@ -89,10 +89,10 @@
       "kind": "MATCHING_C",
       "start": 27343,
       "end": 27486,
-      "source": "src/F_68CF.C",
+      "source": "src/SNDFXTGL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f68cf",
+        "public": "_sound_effects_toggle",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -117,11 +117,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
           },
-          "_fcb48": {
+          "_sound_stop_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CB48.entry",
             "owner": "F_CB48",
-            "public": "_fcb48",
+            "public": "_sound_stop_reset",
             "addend": 0
           },
           "_fc834": {
@@ -131,11 +131,11 @@
             "public": "_fc834",
             "addend": 0
           },
-          "_fd60c": {
+          "_music_resume_if_valid": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D60C.entry",
             "owner": "F_D60C",
-            "public": "_fd60c",
+            "public": "_music_resume_if_valid",
             "addend": 0
           }
         }
@@ -157,7 +157,7 @@
       "kind": "MATCHING_C",
       "start": 27517,
       "end": 27536,
-      "source": "src/F_697D.C",
+      "source": "src/KEYIRQ.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f697d",
@@ -165,7 +165,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc0cc": {
+          "_int9_saved_vector": {
             "offset": 49356,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BBFC.phys"
@@ -194,15 +194,15 @@
       "kind": "MATCHING_C",
       "start": 30019,
       "end": 30030,
-      "source": "src/F_7343.C",
+      "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7343",
+        "public": "_energy_set",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g0b82": {
+          "_energy_meter": {
             "offset": 2946,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B2.phys"
@@ -224,7 +224,7 @@
       "kind": "MATCHING_C",
       "start": 32764,
       "end": 32775,
-      "source": "src/F_7DFC.C",
+      "source": "src/DIALOG.C",
       "build": {
         "segment": "_TEXT",
         "public": "_f7dfc",
@@ -261,19 +261,19 @@
       "kind": "MATCHING_C",
       "start": 40825,
       "end": 40846,
-      "source": "src/F_9D79.C",
+      "source": "src/ROUNDEND.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9d79",
+        "public": "_roundend_wait",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fcb48": {
+          "_sound_stop_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CB48.entry",
             "owner": "F_CB48",
-            "public": "_fcb48",
+            "public": "_sound_stop_reset",
             "addend": 0
           },
           "_fcaf1": {
@@ -305,7 +305,7 @@
       "kind": "MATCHING_C",
       "start": 44814,
       "end": 44837,
-      "source": "src/F_AD0E.C",
+      "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fad0e",
@@ -313,12 +313,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g13ed": {
+          "_current_slot": {
             "offset": 5101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_gc470": {
+          "_slot_table": {
             "offset": 50288,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
@@ -340,10 +340,10 @@
       "kind": "MATCHING_C",
       "start": 52552,
       "end": 52572,
-      "source": "src/F_CB48.C",
+      "source": "src/SNDSTOP.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fcb48",
+        "public": "_sound_stop_reset",
         "span": 1,
         "flags_append": "-k",
         "module_segments": {},
@@ -358,11 +358,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219BA.phys"
           },
-          "_fcadb": {
+          "_speaker_gate_off": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CADB.entry",
             "owner": "F_CADB",
-            "public": "_fcadb",
+            "public": "_speaker_gate_off",
             "addend": 0
           }
         }
@@ -384,12 +384,12 @@
       "end": 55323,
       "build": {
         "segment": "_TEXT",
-        "public": "_fd60c",
+        "public": "_music_resume_if_valid",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g237e": {
+          "_music_track_handle": {
             "offset": 9086,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAE.phys"
@@ -403,7 +403,7 @@
           }
         }
       },
-      "source": "src/F_D60C.C",
+      "source": "src/MUSRESUM.C",
       "artifact": "regions/F_D60C.bin",
       "classification": "code",
       "matching_status": "EQUAL",

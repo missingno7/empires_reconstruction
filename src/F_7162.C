@@ -1,1 +1,0 @@
-extern int f03c9(),f039f(),f75f3(),f7695(),f7856();extern int gb85,gb83,gc0ec;extern char *gc0ee,*gc0f6,*gc0f2;f7162(){if(--gb85<0)gb85=0;else if(gb85)return;switch(gb83){case 1:f03c9(14,0xb8,gc0ee+((unsigned *)gc0ee)[2]+2);f039f(14,0xb8,0x66,12);break;case 2:f75f3();break;case 3:f7695(gc0f6);break;case 5:f7856(gc0f2,gc0ec);break;}}

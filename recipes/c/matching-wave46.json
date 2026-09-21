@@ -7,7 +7,7 @@
       "end": 48031,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_B967.C",
+      "source": "src/LEVEL.C",
       "artifact": "regions/F_B967.bin",
       "expected_sha256": "c701924d7bf50b4c4de3f7bda6e5b9a1e8623c5ca2f48ae0fb851b36576af3e7",
       "matching_status": "EQUAL",
@@ -18,7 +18,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfbc": {
+          "_board_records": {
             "offset": 49084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -37,19 +37,19 @@
             "addend": 0,
             "evidence": "functions/F_1ECD.entry"
           },
-          "_f6c57": {
+          "_timer_deadline_arm": {
             "coordinate": "code_offset",
             "owner": "F_6C57",
-            "public": "_f6c57",
+            "public": "_timer_deadline_arm",
             "addend": 0,
             "evidence": "functions/F_6C57.entry"
           },
-          "_gc5ca": {
+          "_ui_gfx_blob": {
             "offset": 50634,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FA.phys"
           },
-          "_g40c4": {
+          "_rect_queue_write_ptr": {
             "offset": 16580,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23BF4.phys"
@@ -61,10 +61,10 @@
             "addend": 0,
             "evidence": "functions/F_4E9F.entry"
           },
-          "_f6c6f": {
+          "_timer_deadline_wait": {
             "coordinate": "code_offset",
             "owner": "F_6C6F",
-            "public": "_f6c6f",
+            "public": "_timer_deadline_wait",
             "addend": 0,
             "evidence": "functions/F_6C6F.entry"
           },

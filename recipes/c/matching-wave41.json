@@ -7,20 +7,20 @@
       "end": 8985,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_200F.C",
+      "source": "src/BOARDDRW.C",
       "artifact": "regions/F_200F.bin",
       "expected_sha256": "60c7bd69c9439105440010bce7e71c32e85cd3677d09c50643586ebc7220b8f3",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f200f",
+        "public": "_resource_icon_table_load",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f68aa": {
+          "_resource_load_record_into": {
             "owner": "F_68AA",
-            "public": "_f68aa",
+            "public": "_resource_load_record_into",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "owned F_68AA entry"

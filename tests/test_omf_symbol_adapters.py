@@ -21,8 +21,8 @@ class OmfSymbolAdapterTests(unittest.TestCase):
         self.assertEqual(len(module.fixups_in('_DATA')), len(OmfReader().read(source).fixups_in('_DATA')))
 
     def test_external_demand_round_trips(self):
-        module = OmfReader().read(make_external_demand(['_toupper', '_f6c57']))
-        self.assertEqual(set(module.externals), {'_toupper', '_f6c57'})
+        module = OmfReader().read(make_external_demand(['_toupper', '_timer_deadline_arm']))
+        self.assertEqual(set(module.externals), {'_toupper', '_timer_deadline_arm'})
 
     def test_dgroup_scaffold_exposes_grouped_publics(self):
         module = OmfReader().read(make_dgroup_scaffold(

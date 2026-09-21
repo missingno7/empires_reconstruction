@@ -1,0 +1,74 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_CDDD_D344",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_CDDD",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_quit_confirm"
+    },
+    {
+      "owner": "F_CE00",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_menu_confirm"
+    },
+    {
+      "owner": "F_CE2A",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_restart_confirm"
+    },
+    {
+      "owner": "F_CE68",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_mark"
+    },
+    {
+      "owner": "F_CE9E",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_draw_portraits"
+    },
+    {
+      "owner": "F_CF3C",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_draw_screen"
+    },
+    {
+      "owner": "F_D089",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_load_flags"
+    },
+    {
+      "owner": "F_D0D1",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_clear_highlight"
+    },
+    {
+      "owner": "F_D117",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_draw_highlight"
+    },
+    {
+      "owner": "F_D15D",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_choose_slot"
+    },
+    {
+      "owner": "F_D1D8",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_close_wipe"
+    },
+    {
+      "owner": "F_D26C",
+      "path": "src/PLAYERSL.C",
+      "public": "_player_select_run"
+    },
+    {
+      "owner": "F_D344",
+      "path": "src/PLAYERSL.C",
+      "public": "_ui_gfx_alloc"
+    }
+  ],
+  "evidence": "13 contiguous flag-identical TCC modules (run 17 remainder, after M_CB5C_CD23), no data_owners. Player-select screen: DIALOG.H confirm prompts, the gc5b2 per-player flags table, slot glyph markers (g22e0/g22e8), and the far-block carve F_D344 the screen allocates from. Members merged into src/PLAYERSL.C."
+}

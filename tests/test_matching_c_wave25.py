@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -23,7 +24,13 @@ class MatchingCWave25Tests(unittest.TestCase):
             work = Path(temporary)
             mutants = []
             for name, before, after in (
-                ('F_8480', b'(char *)(char near *)gc104', b'(char near *)gc104'),
+                # The double-cast mutation this test used to exercise now
+                # compiles identically to its target expression (the
+                # refactor's normalized near/far cast chain optimizes the
+                # same way either form is written), so it no longer produces
+                # a mismatch; mutate the neighbouring width adjustment
+                # instead, which still changes emitted layout bytes.
+                ('F_8480', b'w-=4;', b'w-=3;'),
                 ('F_7BFC', b'char pad[12]', b'char pad[10]')):
                 owner = copy.deepcopy(next(o for o in owners if o['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
@@ -33,7 +40,7 @@ class MatchingCWave25Tests(unittest.TestCase):
                 owner.update(id=name + '_MUTANT', source=path.relative_to(ROOT).as_posix())
                 mutants.append(owner)
             receipts, _ = compile_sources(ROOT, owners + mutants, work / 'compiler', ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

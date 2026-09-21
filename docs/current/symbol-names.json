@@ -1,0 +1,1087 @@
+{
+  "format": "empires-symbol-names-v1",
+  "names": {
+    "anim_frame_advance": {
+      "original": "f9dcc",
+      "address": "9DCC"
+    },
+    "anim_step_loop": {
+      "original": "f9f40",
+      "address": "9F40"
+    },
+    "bios_equipment_probe": {
+      "original": "f50c1",
+      "address": "50C1"
+    },
+    "bitmap_blit_topleft": {
+      "original": "f5673",
+      "address": "5673"
+    },
+    "blitter_patch_variant": {
+      "original": "f48be",
+      "address": "48BE"
+    },
+    "board_advance_unit_moves": {
+      "original": "f36f0",
+      "address": "36F0"
+    },
+    "board_mark_record_cells": {
+      "original": "f_28ac",
+      "address": "28AC"
+    },
+    "board_raycast_hit_test": {
+      "original": "f5f3c",
+      "address": "5F3C"
+    },
+    "board_raycast_step": {
+      "original": "f5ac3",
+      "address": "5AC3"
+    },
+    "board_record_index": {
+      "original": "gbfba"
+    },
+    "board_records": {
+      "original": "gbfbc"
+    },
+    "board_redraw_paint": {
+      "original": "f2ae2",
+      "address": "2AE2"
+    },
+    "board_redraw_view": {
+      "original": "f22b1",
+      "address": "22B1"
+    },
+    "board_resource_expand": {
+      "original": "fb122",
+      "address": "B122"
+    },
+    "board_run_unit_script": {
+      "original": "f338a",
+      "address": "338A"
+    },
+    "board_scan_wipe_effect": {
+      "original": "f233e",
+      "address": "233E"
+    },
+    "board_scroll_transition": {
+      "original": "f31c4",
+      "address": "31C4"
+    },
+    "board_unit_script_trigger": {
+      "original": "f6021",
+      "address": "6021"
+    },
+    "board_update_moving_records": {
+      "original": "f_25b3",
+      "address": "25B3"
+    },
+    "boot_init_seed_rand": {
+      "original": "f490d",
+      "address": "490D"
+    },
+    "cmdline_parse_args": {
+      "original": "f4f96",
+      "address": "4F96"
+    },
+    "color_table_entry_set": {
+      "original": "f_0215",
+      "address": "0215"
+    },
+    "confirm_quit_dialog": {
+      "original": "fa768",
+      "address": "A768"
+    },
+    "current_drive": {
+      "original": "gc0c8"
+    },
+    "current_slot": {
+      "original": "g13ed"
+    },
+    "cursor_trail_arm": {
+      "original": "f5a3b",
+      "address": "5A3B"
+    },
+    "dialog_blink_box": {
+      "original": "f8414",
+      "address": "8414"
+    },
+    "dialog_box_h": {
+      "original": "gc11a"
+    },
+    "dialog_box_w": {
+      "original": "gc108"
+    },
+    "dialog_box_x": {
+      "original": "gc10a"
+    },
+    "dialog_box_y": {
+      "original": "gc106"
+    },
+    "dialog_button1_label_cx": {
+      "original": "gc12c"
+    },
+    "dialog_button1_label_off": {
+      "original": "gc112"
+    },
+    "dialog_button1_label_rows": {
+      "original": "gc124"
+    },
+    "dialog_button1_label_w": {
+      "original": "gc116"
+    },
+    "dialog_button1_label_x": {
+      "original": "gc11c"
+    },
+    "dialog_button2_label_cx": {
+      "original": "gc12e"
+    },
+    "dialog_button2_label_off": {
+      "original": "gc114"
+    },
+    "dialog_button2_label_rows": {
+      "original": "gc126"
+    },
+    "dialog_button2_label_w": {
+      "original": "gc118"
+    },
+    "dialog_button2_label_x": {
+      "original": "gc11e"
+    },
+    "dialog_button_label_x": {
+      "original": "gc120"
+    },
+    "dialog_button_label_y": {
+      "original": "gc110"
+    },
+    "dialog_button_str": {
+      "original": "gc104"
+    },
+    "dialog_divider1_y": {
+      "original": "gc10c"
+    },
+    "dialog_divider2_y": {
+      "original": "gc10e"
+    },
+    "dialog_draw": {
+      "original": "f8480",
+      "address": "8480"
+    },
+    "dialog_draw_button": {
+      "original": "f8267",
+      "address": "8267"
+    },
+    "dialog_draw_panel": {
+      "original": "f7d91",
+      "address": "7D91"
+    },
+    "dialog_draw_shadow": {
+      "original": "f8434",
+      "address": "8434"
+    },
+    "dialog_fill_box": {
+      "original": "f8378",
+      "address": "8378"
+    },
+    "dialog_layout": {
+      "original": "f7e07",
+      "address": "7E07"
+    },
+    "dialog_line_height": {
+      "original": "gc0e8"
+    },
+    "dialog_list_run": {
+      "original": "f880a",
+      "address": "880A"
+    },
+    "dialog_player_name_entry": {
+      "original": "g1375"
+    },
+    "dialog_player_name_full": {
+      "original": "g1389"
+    },
+    "dialog_quit_confirm": {
+      "original": "g13d9"
+    },
+    "dialog_restore_screen": {
+      "original": "f8453",
+      "address": "8453"
+    },
+    "dialog_run": {
+      "original": "f86c9",
+      "address": "86C9"
+    },
+    "dialog_select_menu_confirm": {
+      "original": "g21b0"
+    },
+    "dialog_select_quit_confirm": {
+      "original": "g219c"
+    },
+    "dialog_select_restart_confirm": {
+      "original": "g21ec"
+    },
+    "dialog_slot_backup_list": {
+      "original": "g21c4"
+    },
+    "dialog_slot_delete_confirm": {
+      "original": "g13b1"
+    },
+    "dialog_slot_list": {
+      "original": "g21d8"
+    },
+    "dialog_text_inset_x": {
+      "original": "gc102"
+    },
+    "dialog_text_inset_x2": {
+      "original": "gc12a"
+    },
+    "dialog_text_inset_y": {
+      "original": "gc128"
+    },
+    "dialog_title_x": {
+      "original": "gc122"
+    },
+    "dialog_toggle_music": {
+      "original": "g2160"
+    },
+    "dialog_toggle_option": {
+      "original": "g2188"
+    },
+    "dialog_toggle_sound": {
+      "original": "g2174"
+    },
+    "disk_reset_retry": {
+      "original": "f652a",
+      "address": "652A"
+    },
+    "display_mode": {
+      "original": "gbfcd"
+    },
+    "dos_critical_error_handler": {
+      "original": "f622c",
+      "address": "622C"
+    },
+    "dos_critical_error_install": {
+      "original": "f625d",
+      "address": "625D"
+    },
+    "dos_write_handle2": {
+      "original": "f4f63",
+      "address": "4F63"
+    },
+    "energy_adjust": {
+      "original": "f734e",
+      "address": "734E"
+    },
+    "energy_draw": {
+      "original": "f738a",
+      "address": "738A"
+    },
+    "energy_meter": {
+      "original": "gb82"
+    },
+    "energy_set": {
+      "original": "f7343",
+      "address": "7343"
+    },
+    "game_run": {
+      "original": "f49f0",
+      "address": "49F0"
+    },
+    "game_shutdown": {
+      "original": "f49e3",
+      "address": "49E3"
+    },
+    "gfx_color_select": {
+      "original": "f01ce",
+      "address": "01CE"
+    },
+    "hud_arena_init": {
+      "original": "f224c",
+      "address": "224C"
+    },
+    "hud_draw_meter": {
+      "original": "f7202",
+      "address": "7202"
+    },
+    "hud_frame_draw": {
+      "original": "f747b",
+      "address": "747B"
+    },
+    "hud_icons_load": {
+      "original": "f6fca",
+      "address": "6FCA"
+    },
+    "hud_panel_clear": {
+      "original": "f6fc3",
+      "address": "6FC3"
+    },
+    "hud_panel_open": {
+      "original": "f6fda",
+      "address": "6FDA"
+    },
+    "hud_prompt_confirm_draw": {
+      "original": "f778b",
+      "address": "778B"
+    },
+    "hud_prompt_continue_draw": {
+      "original": "f75f3",
+      "address": "75F3"
+    },
+    "hud_prompt_select_draw": {
+      "original": "f7695",
+      "address": "7695"
+    },
+    "hud_scroll_move": {
+      "original": "f7313",
+      "address": "7313"
+    },
+    "hud_scroll_reset": {
+      "original": "f726a",
+      "address": "726A"
+    },
+    "hud_tab_draw": {
+      "original": "f7298",
+      "address": "7298"
+    },
+    "hud_tab_get": {
+      "original": "f7277",
+      "address": "7277"
+    },
+    "hud_tab_next": {
+      "original": "f727d",
+      "address": "727D"
+    },
+    "int9_saved_vector": {
+      "original": "gc0cc"
+    },
+    "intro_animate_step": {
+      "original": "f5382",
+      "address": "5382"
+    },
+    "intro_play_script": {
+      "original": "f5321",
+      "address": "5321"
+    },
+    "intro_run_chapter": {
+      "original": "f56c6",
+      "address": "56C6"
+    },
+    "intro_wait_key": {
+      "original": "f5593",
+      "address": "5593"
+    },
+    "keyboard_buffer_drain": {
+      "original": "f6b66",
+      "address": "6B66"
+    },
+    "keyboard_chain_active": {
+      "original": "f6b74",
+      "address": "6B74"
+    },
+    "keyboard_chain_disable": {
+      "original": "f6997",
+      "address": "6997"
+    },
+    "keyboard_chain_enable": {
+      "original": "f6990",
+      "address": "6990"
+    },
+    "keyboard_irq_install": {
+      "original": "f695e",
+      "address": "695E"
+    },
+    "keyboard_state": {
+      "original": "gb72"
+    },
+    "level_display_init": {
+      "original": "fb7f9",
+      "address": "B7F9"
+    },
+    "level_driver_run": {
+      "original": "f4713",
+      "address": "4713"
+    },
+    "level_expand_descriptors": {
+      "original": "fbb40f"
+    },
+    "level_free_descriptor_table": {
+      "original": "fb593",
+      "address": "B593"
+    },
+    "level_play": {
+      "original": "fc0e0",
+      "address": "C0E0"
+    },
+    "level_play_chapter": {
+      "original": "fc15e",
+      "address": "C15E"
+    },
+    "level_run_loop": {
+      "original": "fb99f",
+      "address": "B99F"
+    },
+    "marker_cell_draw_highlight": {
+      "original": "f_988f",
+      "address": "988F"
+    },
+    "marker_cell_draw_plain": {
+      "original": "f_98cb",
+      "address": "98CB"
+    },
+    "menu_backdrop_paint": {
+      "original": "f462e",
+      "address": "462E"
+    },
+    "menu_list_draw": {
+      "original": "f7bfc",
+      "address": "7BFC"
+    },
+    "menu_loop_run": {
+      "original": "f7964",
+      "address": "7964"
+    },
+    "music_build_octave_table": {
+      "original": "fde7e",
+      "address": "DE7E"
+    },
+    "music_enabled": {
+      "original": "g1772"
+    },
+    "music_note_to_divisor": {
+      "original": "fddd9",
+      "address": "DDD9"
+    },
+    "music_reset_tuning_tables": {
+      "original": "fdefa",
+      "address": "DEFA"
+    },
+    "music_resume_if_valid": {
+      "original": "fd60c",
+      "address": "D60C"
+    },
+    "music_set_tempo": {
+      "original": "fda20",
+      "address": "DA20"
+    },
+    "music_tempo": {
+      "original": "gc6c1"
+    },
+    "music_tempo_scaled": {
+      "original": "gca6b"
+    },
+    "music_track_handle": {
+      "original": "g237e"
+    },
+    "opl_am_depth": {
+      "original": "gc6aa"
+    },
+    "opl_detect": {
+      "original": "fe54d",
+      "address": "E54D"
+    },
+    "opl_enabled": {
+      "original": "gca22"
+    },
+    "opl_init": {
+      "original": "fd99b",
+      "address": "D99B"
+    },
+    "opl_note_select": {
+      "original": "gc6b4"
+    },
+    "opl_set_depth_and_nts": {
+      "original": "fda49",
+      "address": "DA49"
+    },
+    "opl_set_depth_flags": {
+      "original": "fe420",
+      "address": "E420"
+    },
+    "opl_set_depth_wrapper": {
+      "original": "fd9d9",
+      "address": "D9D9"
+    },
+    "opl_set_enabled": {
+      "original": "fd9e1",
+      "address": "D9E1"
+    },
+    "opl_set_note_select": {
+      "original": "fe262",
+      "address": "E262"
+    },
+    "opl_vib_depth": {
+      "original": "gc6b5"
+    },
+    "options_toggle_music": {
+      "original": "f_cbbb",
+      "address": "CBBD"
+    },
+    "options_toggle_option": {
+      "original": "f_cb5c",
+      "address": "CB5C"
+    },
+    "options_toggle_sound": {
+      "original": "f_cc17",
+      "address": "CC17"
+    },
+    "pit_channel2_set_divisor": {
+      "original": "fcae6",
+      "address": "CAE6"
+    },
+    "player_name_edit": {
+      "original": "fa525",
+      "address": "A525"
+    },
+    "player_record_load_publish": {
+      "original": "fd555",
+      "address": "D555"
+    },
+    "player_select_choose_slot": {
+      "original": "fd15d",
+      "address": "D15D"
+    },
+    "player_select_clear_highlight": {
+      "original": "fd0d1",
+      "address": "D0D1"
+    },
+    "player_select_close_wipe": {
+      "original": "fd1d8",
+      "address": "D1D8"
+    },
+    "player_select_draw_highlight": {
+      "original": "fd117",
+      "address": "D117"
+    },
+    "player_select_draw_portraits": {
+      "original": "fce9e",
+      "address": "CE9E"
+    },
+    "player_select_draw_screen": {
+      "original": "fcf3c",
+      "address": "CF3C"
+    },
+    "player_select_index": {
+      "original": "gc5ba"
+    },
+    "player_select_load_flags": {
+      "original": "fd089",
+      "address": "D089"
+    },
+    "player_select_mark": {
+      "original": "fce68",
+      "address": "CE68"
+    },
+    "player_select_menu_confirm": {
+      "original": "fce00",
+      "address": "CE00"
+    },
+    "player_select_quit_confirm": {
+      "original": "fcddd",
+      "address": "CDDD"
+    },
+    "player_select_restart_confirm": {
+      "original": "fce2a",
+      "address": "CE2A"
+    },
+    "player_select_run": {
+      "original": "fd26c",
+      "address": "D26C"
+    },
+    "player_slot_add_run": {
+      "original": "fa85e",
+      "address": "A85E"
+    },
+    "player_type_select": {
+      "original": "fa658",
+      "address": "A658"
+    },
+    "point_in_hotspot_rect": {
+      "original": "f257d",
+      "address": "257D"
+    },
+    "puzzle_check_solved": {
+      "original": "f969d",
+      "address": "969D"
+    },
+    "puzzle_clear_cell": {
+      "original": "f963e",
+      "address": "963E"
+    },
+    "puzzle_clear_grid": {
+      "original": "f8a37",
+      "address": "8A37"
+    },
+    "puzzle_cursor_col": {
+      "original": "gc135"
+    },
+    "puzzle_cursor_row": {
+      "original": "gc346"
+    },
+    "puzzle_deal_pieces": {
+      "original": "f8aa2",
+      "address": "8AA2"
+    },
+    "puzzle_display_init": {
+      "original": "f90a6",
+      "address": "90A6"
+    },
+    "puzzle_draw_piece": {
+      "original": "f929e",
+      "address": "929E"
+    },
+    "puzzle_draw_tray_piece": {
+      "original": "f93aa",
+      "address": "93AA"
+    },
+    "puzzle_free_resources": {
+      "original": "f9259",
+      "address": "9259"
+    },
+    "puzzle_grid": {
+      "original": "gc316"
+    },
+    "puzzle_held_piece": {
+      "original": "gc132"
+    },
+    "puzzle_piece_count": {
+      "original": "f8ba5",
+      "address": "8BA5"
+    },
+    "puzzle_piece_total": {
+      "original": "gc130"
+    },
+    "puzzle_run": {
+      "original": "f8bab",
+      "address": "8BAB"
+    },
+    "puzzle_solved_flag": {
+      "original": "gc134"
+    },
+    "record_field_skip_n": {
+      "original": "f2a2d",
+      "address": "2A2D"
+    },
+    "record_panel_rebuild": {
+      "original": "fd8f0",
+      "address": "D8F0"
+    },
+    "record_table_delete_compact": {
+      "original": "fd85f",
+      "address": "D85F"
+    },
+    "record_table_root": {
+      "original": "gbfc0"
+    },
+    "rect_border_draw": {
+      "original": "f0355",
+      "address": "0355"
+    },
+    "rect_queue_write_ptr": {
+      "original": "g40c4"
+    },
+    "rect_table_hit_id": {
+      "original": "fd89a",
+      "address": "D89A"
+    },
+    "resource_file_open": {
+      "original": "f6266",
+      "address": "6266"
+    },
+    "resource_file_write_record": {
+      "original": "f643a",
+      "address": "643A"
+    },
+    "resource_icon_table_load": {
+      "original": "f200f",
+      "address": "200F"
+    },
+    "resource_load_record": {
+      "original": "f656c",
+      "address": "656C"
+    },
+    "resource_load_record_alloc": {
+      "original": "f684a",
+      "address": "684A"
+    },
+    "resource_load_record_into": {
+      "original": "f68aa",
+      "address": "68AA"
+    },
+    "resource_ptr_table": {
+      "original": "gb07c"
+    },
+    "resource_ptr_table_build": {
+      "original": "f55c7",
+      "address": "55C7"
+    },
+    "resource_record_cache_load": {
+      "original": "fd5ba",
+      "address": "D5BA"
+    },
+    "resource_record_cache_reset": {
+      "original": "fd5f9",
+      "address": "D5F9"
+    },
+    "resource_scoreboard_unpack": {
+      "original": "f2119",
+      "address": "2119"
+    },
+    "resource_stripe_table": {
+      "original": "g99d2"
+    },
+    "resource_stripe_table_load": {
+      "original": "f21db",
+      "address": "21DB"
+    },
+    "roundend_draw_marker": {
+      "original": "f9871",
+      "address": "9871"
+    },
+    "roundend_flash_panel_icons": {
+      "original": "f9ac7",
+      "address": "9AC7"
+    },
+    "roundend_marker_show": {
+      "original": "f9a0e",
+      "address": "9A0E"
+    },
+    "roundend_round_setup": {
+      "original": "f9b68",
+      "address": "9B68"
+    },
+    "roundend_wait": {
+      "original": "f9d79",
+      "address": "9D79"
+    },
+    "score_panel_clear": {
+      "original": "f984c",
+      "address": "984C"
+    },
+    "score_panel_x": {
+      "original": "gc34e"
+    },
+    "score_panel_y": {
+      "original": "gc350"
+    },
+    "score_set_position": {
+      "original": "f99e2",
+      "address": "99E2"
+    },
+    "shadow_bitmap_hit_test": {
+      "original": "f1f17",
+      "address": "1F17"
+    },
+    "slot_backup_list_show": {
+      "original": "f_cc6b",
+      "address": "CC6C"
+    },
+    "slot_cursor_box": {
+      "original": "fa40a",
+      "address": "A40A"
+    },
+    "slot_delete": {
+      "original": "fa24e",
+      "address": "A24E"
+    },
+    "slot_file_handle": {
+      "original": "gc0c9"
+    },
+    "slot_find_free": {
+      "original": "fa223",
+      "address": "A223"
+    },
+    "slot_input_wait_key": {
+      "original": "fa43c",
+      "address": "A43C"
+    },
+    "slot_list_draw": {
+      "original": "fa33f",
+      "address": "A33F"
+    },
+    "slot_list_show": {
+      "original": "f_cd23",
+      "address": "CD24"
+    },
+    "slot_menu_draw_header": {
+      "original": "fa09d",
+      "address": "A09D"
+    },
+    "slot_row_highlight": {
+      "original": "fa15e",
+      "address": "A15E"
+    },
+    "slot_select_error": {
+      "original": "gc46e"
+    },
+    "slot_table": {
+      "original": "gc470"
+    },
+    "slot_table_save": {
+      "original": "fa13f",
+      "address": "A13F"
+    },
+    "slot_used_count": {
+      "original": "gc57e"
+    },
+    "sound_effects_toggle": {
+      "original": "f68cf",
+      "address": "68CF"
+    },
+    "sound_enabled": {
+      "original": "g176e"
+    },
+    "sound_note_dispatch": {
+      "original": "fc988",
+      "address": "C988"
+    },
+    "sound_param_scale4": {
+      "original": "fc59a",
+      "address": "C59A"
+    },
+    "sound_request_count_clear": {
+      "original": "fd5b3",
+      "address": "D5B3"
+    },
+    "sound_request_count_dec": {
+      "original": "fd5a6",
+      "address": "D5A6"
+    },
+    "sound_start": {
+      "original": "fd593",
+      "address": "D593"
+    },
+    "sound_stop_reset": {
+      "original": "fcb48",
+      "address": "CB48"
+    },
+    "sound_tick_step": {
+      "original": "fc8e2",
+      "address": "C8E2"
+    },
+    "speaker_gate_off": {
+      "original": "fcadb",
+      "address": "CADB"
+    },
+    "speaker_gate_on": {
+      "original": "fcad0",
+      "address": "CAD0"
+    },
+    "splash_draw_and_clear": {
+      "original": "f555b",
+      "address": "555B"
+    },
+    "sprite_draw_cursor": {
+      "original": "f2269",
+      "address": "2269"
+    },
+    "sprite_load_boot_sheets": {
+      "original": "f21a9",
+      "address": "21A9"
+    },
+    "sprite_pool_draw_masked": {
+      "original": "f78c3",
+      "address": "78C3"
+    },
+    "sprite_sheet_index_get": {
+      "original": "f6cea",
+      "address": "6CEA"
+    },
+    "sprite_sheet_select": {
+      "original": "f6ca6",
+      "address": "6CA6"
+    },
+    "sprite_slots_redraw": {
+      "original": "f5e98",
+      "address": "5E98"
+    },
+    "str_concat_far_list": {
+      "original": "fa036",
+      "address": "A036"
+    },
+    "text_draw_wrapped": {
+      "original": "f6d3c",
+      "address": "6D3C"
+    },
+    "text_line_width": {
+      "original": "f6cf6",
+      "address": "6CF6"
+    },
+    "tick_div8": {
+      "original": "f1eb4",
+      "address": "1EB4"
+    },
+    "timer_deadline_arm": {
+      "original": "f6c57",
+      "address": "6C57"
+    },
+    "timer_deadline_reached": {
+      "original": "f6c87",
+      "address": "6C87"
+    },
+    "timer_deadline_wait": {
+      "original": "f6c6f",
+      "address": "6C6F"
+    },
+    "timer_irq_install": {
+      "original": "f6b7a",
+      "address": "6B7A"
+    },
+    "timer_irq_restore": {
+      "original": "f6bac",
+      "address": "6BAC"
+    },
+    "timer_wait_ticks": {
+      "original": "f6c26",
+      "address": "6C26"
+    },
+    "turn_loop_run": {
+      "original": "f3a75",
+      "address": "3A75"
+    },
+    "ui_gfx_alloc": {
+      "original": "fd344",
+      "address": "D344"
+    },
+    "ui_gfx_blob": {
+      "original": "gc5ca"
+    },
+    "ui_gfx_shadow_a": {
+      "original": "gc5c6"
+    },
+    "ui_gfx_shadow_b": {
+      "original": "gc5be"
+    },
+    "ui_overlay_hide": {
+      "original": "f7162",
+      "address": "7162"
+    },
+    "ui_overlay_reset": {
+      "original": "f71fb",
+      "address": "71FB"
+    },
+    "ui_overlay_show": {
+      "original": "f703e",
+      "address": "703E"
+    },
+    "ui_panel_glyph_records": {
+      "original": "g2fd2"
+    },
+    "value_parity": {
+      "original": "f1ec0",
+      "address": "1EC0"
+    },
+    "video_alloc_framebuffer": {
+      "original": "f0281",
+      "address": "0281"
+    },
+    "video_load_palette": {
+      "original": "f01bc",
+      "address": "01BC"
+    },
+    "video_mode_select": {
+      "original": "f520a",
+      "address": "520A"
+    },
+    "video_normalize_far_ptr": {
+      "original": "f025b",
+      "address": "025B"
+    },
+    "video_set_text_mode": {
+      "original": "f034f",
+      "address": "034F"
+    },
+    "voice_apply_field": {
+      "original": "fe151",
+      "address": "E151"
+    },
+    "voice_bank_retune_on": {
+      "original": "fdb60",
+      "address": "DB60"
+    },
+    "voice_bank_update": {
+      "original": "fdcc7",
+      "address": "DCC7"
+    },
+    "voice_byte_table": {
+      "original": "g2fe4"
+    },
+    "voice_channel_apply_freq": {
+      "original": "f_db35",
+      "address": "DB35"
+    },
+    "voice_channel_level_refresh": {
+      "original": "f_db17",
+      "address": "DB17"
+    },
+    "voice_channel_set_gate": {
+      "original": "f_dad7",
+      "address": "DAD7"
+    },
+    "voice_key_off": {
+      "original": "fe52a",
+      "address": "E52A"
+    },
+    "voice_level_table": {
+      "original": "gca50"
+    },
+    "voice_level_table_reset": {
+      "original": "fddc7",
+      "address": "DDC7"
+    },
+    "voice_load_instrument": {
+      "original": "fe0c0",
+      "address": "E0C0"
+    },
+    "voice_load_instrument_words": {
+      "original": "fe114",
+      "address": "E114"
+    },
+    "voice_param_record": {
+      "original": "gc91b"
+    },
+    "voice_program_all": {
+      "original": "fe1c4",
+      "address": "E1C4"
+    },
+    "voice_set_field": {
+      "original": "fe095",
+      "address": "E095"
+    },
+    "voice_set_frequency": {
+      "original": "fe48a",
+      "address": "E48A"
+    },
+    "voice_slot_load_pair": {
+      "original": "fda66",
+      "address": "DA66"
+    },
+    "voice_update_tone": {
+      "original": "fdd72",
+      "address": "DD72"
+    },
+    "voice_write_connection": {
+      "original": "fe27b",
+      "address": "E27B"
+    },
+    "voice_write_envelope_flags": {
+      "original": "fe372",
+      "address": "E372"
+    },
+    "voice_write_level": {
+      "original": "fe1f2",
+      "address": "E1F2"
+    },
+    "voice_write_op1_attack_decay": {
+      "original": "fe2d6",
+      "address": "E2D6"
+    },
+    "voice_write_op2_attack_decay": {
+      "original": "fe324",
+      "address": "E324"
+    },
+    "voice_write_waveform": {
+      "original": "fe44b",
+      "address": "E44B"
+    }
+  }
+}

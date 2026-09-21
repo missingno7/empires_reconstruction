@@ -6,14 +6,14 @@
       "kind": "MATCHING_C",
       "start": 43096,
       "end": 43368,
-      "source": "src/F_A658.C",
+      "source": "src/SLOTMENU.C",
       "original_symbol": "F_A658",
       "artifact": "regions/F_A658.bin",
       "expected_sha256": "8e1cfdddfce2caf61ffc6e8c9506c7b56b81a437ce10589bf2698e86a17fcf36",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa658",
+        "public": "_player_type_select",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -32,10 +32,10 @@
             "coordinate": "code_offset",
             "evidence": "functions/FILL.entry"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0,
             "evidence": "functions/MODE.entry"
           },
@@ -46,38 +46,38 @@
             "addend": 0,
             "evidence": "functions/GETKEY.entry"
           },
-          "_f6b74": {
+          "_keyboard_chain_active": {
             "coordinate": "code_offset",
             "owner": "F_6B74",
-            "public": "_f6b74",
+            "public": "_keyboard_chain_active",
             "addend": 0,
             "evidence": "functions/INIT_A.entry"
           },
-          "_f6990": {
+          "_keyboard_chain_enable": {
             "coordinate": "code_offset",
             "owner": "F_6990",
-            "public": "_f6990",
+            "public": "_keyboard_chain_enable",
             "addend": 0,
             "evidence": "functions/INIT_B.entry"
           },
-          "_f6b66": {
+          "_keyboard_buffer_drain": {
             "coordinate": "code_offset",
             "owner": "F_6B66",
-            "public": "_f6b66",
+            "public": "_keyboard_buffer_drain",
             "addend": 0,
             "evidence": "functions/INIT_C.entry"
           },
-          "_f703e": {
+          "_ui_overlay_show": {
             "coordinate": "code_offset",
             "owner": "F_703E",
-            "public": "_f703e",
+            "public": "_ui_overlay_show",
             "addend": 0,
             "evidence": "functions/INIT_D.entry"
           },
-          "_fd593": {
+          "_sound_start": {
             "coordinate": "code_offset",
             "owner": "F_D593",
-            "public": "_fd593",
+            "public": "_sound_start",
             "addend": 0,
             "evidence": "functions/INIT_E.entry"
           },
@@ -95,10 +95,10 @@
             "addend": 0,
             "evidence": "functions/INIT_G.entry"
           },
-          "_f8480": {
+          "_dialog_draw": {
             "coordinate": "code_offset",
             "owner": "F_8480",
-            "public": "_f8480",
+            "public": "_dialog_draw",
             "addend": 0,
             "evidence": "functions/TEXT.entry"
           },
@@ -109,10 +109,10 @@
             "addend": 0,
             "evidence": "functions/ACT.entry"
           },
-          "_f8453": {
+          "_dialog_restore_screen": {
             "coordinate": "code_offset",
             "owner": "F_8453",
-            "public": "_f8453",
+            "public": "_dialog_restore_screen",
             "addend": 0,
             "evidence": "functions/DONE_A.entry"
           },
@@ -123,24 +123,24 @@
             "addend": 0,
             "evidence": "functions/DONE_B.entry"
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0,
             "evidence": "functions/DONE_C.entry"
           },
-          "_f7162": {
+          "_ui_overlay_hide": {
             "coordinate": "code_offset",
             "owner": "F_7162",
-            "public": "_f7162",
+            "public": "_ui_overlay_hide",
             "addend": 0,
             "evidence": "functions/DONE_D.entry"
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0,
             "evidence": "functions/DONE_E.entry"
           }

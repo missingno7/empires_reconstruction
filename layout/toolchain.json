@@ -46,8 +46,9 @@
   "runner": {
     "default": "msdos-player",
     "fallback": "dosbox",
-    "msdos_player_default": null,
+    "msdos_player_default": "C:/tools/nmlgcdos/msdos.exe",
+    "msdos_player_overrides": {"TLINK.EXE": "C:/tools/msdos/binary/i86_x64/msdos.exe"},
     "dosbox_default": "C:/Program Files/DOSBox Staging/dosbox.exe",
-    "note": "Execution host only; Turbo C, TASM, TLINK, CC.LIB and C0C.OBJ remain separately pinned historical inputs."
+    "note": "MS-DOS Player, nmlgc ReC98 P0281 fork (ia32 core, based on upstream 2024-06-24), is the normal runner; it runs each DOS executable as a native process with the exact historical commands. The stock upstream builds (all CPU variants) misread large TASM inputs and hang Turbo C's TASM handoff in a timing-dependent way and are not usable. DOSBox Staging is the reference backend for parity checks and debugging. Execution host only; Turbo C, TASM, TLINK, CC.LIB and C0C.OBJ remain separately pinned historical inputs."
   }
 }

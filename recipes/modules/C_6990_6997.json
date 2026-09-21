@@ -1,0 +1,19 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_6990_6997",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_6990",
+      "path": "src/KEYCHAIN.C",
+      "public": "_keyboard_chain_enable"
+    },
+    {
+      "owner": "F_6997",
+      "path": "src/KEYCHAIN.C",
+      "public": "_keyboard_chain_disable"
+    }
+  ],
+  "evidence": "2 contiguous flag-identical TCC modules (subset of run 8), no data_owners. Set/clear pair for the same DS:0B72 flag. Members merged into src/KEYCHAIN.C."
+}

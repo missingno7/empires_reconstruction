@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 29538,
       "end": 29691,
-      "source": "src/F_7162.C",
+      "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7162",
+        "public": "_ui_overlay_hide",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -39,11 +39,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f75f3": {
+          "_hud_prompt_continue_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_75F3.entry",
             "owner": "F_75F3",
-            "public": "_f75f3",
+            "public": "_hud_prompt_continue_draw",
             "addend": 0
           },
           "_gc0f6": {
@@ -51,11 +51,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC26.phys"
           },
-          "_f7695": {
+          "_hud_prompt_select_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7695.entry",
             "owner": "F_7695",
-            "public": "_f7695",
+            "public": "_hud_prompt_select_draw",
             "addend": 0
           },
           "_gc0ec": {
@@ -93,10 +93,10 @@
       "kind": "MATCHING_C",
       "start": 30090,
       "end": 30231,
-      "source": "src/F_738A.C",
+      "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f738a",
+        "public": "_energy_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -108,21 +108,21 @@
             "public": "_f020f",
             "addend": 0
           },
-          "_gb82": {
+          "_energy_meter": {
             "offset": 2946,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B2.phys"
           },
-          "_gbfcd": {
+          "_display_mode": {
             "offset": 49101,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a8": {
@@ -173,25 +173,25 @@
           }
         },
         "bindings": {
-          "_f6d3c": {
+          "_text_draw_wrapped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D3C.entry",
             "owner": "F_6D3C",
-            "public": "_f6d3c",
+            "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_f6cf6": {
+          "_text_line_width": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6CF6.entry",
             "owner": "F_6CF6",
-            "public": "_f6cf6",
+            "public": "_text_line_width",
             "addend": 0
           },
-          "_f78c3": {
+          "_sprite_pool_draw_masked": {
             "coordinate": "code_offset",
             "evidence": "functions/F_78C3.entry",
             "owner": "F_78C3",
-            "public": "_f78c3",
+            "public": "_sprite_pool_draw_masked",
             "addend": 0
           },
           "_ultoa": {
@@ -219,7 +219,7 @@
       "kind": "MATCHING_C",
       "start": 45722,
       "end": 45858,
-      "source": "src/F_B09A.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fb09a",
@@ -227,14 +227,14 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f656c": {
+          "_resource_load_record": {
             "coordinate": "code_offset",
             "evidence": "functions/F_656C.entry",
             "owner": "F_656C",
-            "public": "_f656c",
+            "public": "_resource_load_record",
             "addend": 0
           },
-          "_gc5c6": {
+          "_ui_gfx_shadow_a": {
             "offset": 50630,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
@@ -277,10 +277,10 @@
       "kind": "MATCHING_C",
       "start": 54232,
       "end": 54380,
-      "source": "src/F_D1D8.C",
+      "source": "src/PLAYERSL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd1d8",
+        "public": "_player_select_close_wipe",
         "span": 1,
         "flags_append": "",
         "module_segments": {},

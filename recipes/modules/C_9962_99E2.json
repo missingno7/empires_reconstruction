@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_9962_99E2",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_9962",
+      "path": "src/SCORE.C",
+      "public": "_f9962"
+    },
+    {
+      "owner": "F_99A2",
+      "path": "src/SCORE.C",
+      "public": "_f99a2"
+    },
+    {
+      "owner": "F_99E2",
+      "path": "src/SCORE.C",
+      "public": "_score_set_position"
+    }
+  ],
+  "evidence": "3 contiguous flag-identical TCC modules (run 13 tail, after F_9908 which is excluded: F_9908 declares gc34e as char*, a distinct representation that changes its own compiled bytes when unified with the int-typed uses here). Score-panel selector draw pair and the gc34e/gc350 coordinate-pair setter from table g1271. Members merged into src/SCORE.C."
+}

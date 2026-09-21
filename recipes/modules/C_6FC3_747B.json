@@ -1,0 +1,99 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_6FC3_747B",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_6FC3",
+      "path": "src/HUD.C",
+      "public": "_hud_panel_clear"
+    },
+    {
+      "owner": "F_6FCA",
+      "path": "src/HUD.C",
+      "public": "_hud_icons_load"
+    },
+    {
+      "owner": "F_6FDA",
+      "path": "src/HUD.C",
+      "public": "_hud_panel_open"
+    },
+    {
+      "owner": "F_703E",
+      "path": "src/HUD.C",
+      "public": "_ui_overlay_show"
+    },
+    {
+      "owner": "F_7162",
+      "path": "src/HUD.C",
+      "public": "_ui_overlay_hide"
+    },
+    {
+      "owner": "F_71FB",
+      "path": "src/HUD.C",
+      "public": "_ui_overlay_reset"
+    },
+    {
+      "owner": "F_7202",
+      "path": "src/HUD.C",
+      "public": "_hud_draw_meter"
+    },
+    {
+      "owner": "F_726A",
+      "path": "src/HUD.C",
+      "public": "_hud_scroll_reset"
+    },
+    {
+      "owner": "F_7277",
+      "path": "src/HUD.C",
+      "public": "_hud_tab_get"
+    },
+    {
+      "owner": "F_727D",
+      "path": "src/HUD.C",
+      "public": "_hud_tab_next"
+    },
+    {
+      "owner": "F_7298",
+      "path": "src/HUD.C",
+      "public": "_hud_tab_draw"
+    },
+    {
+      "owner": "F_7313",
+      "path": "src/HUD.C",
+      "public": "_hud_scroll_move"
+    },
+    {
+      "owner": "F_7343",
+      "path": "src/HUD.C",
+      "public": "_energy_set"
+    },
+    {
+      "owner": "F_734E",
+      "path": "src/HUD.C",
+      "public": "_energy_adjust"
+    },
+    {
+      "owner": "F_738A",
+      "path": "src/HUD.C",
+      "public": "_energy_draw"
+    },
+    {
+      "owner": "F_7417",
+      "path": "src/HUD.C",
+      "public": "_f7417"
+    },
+    {
+      "owner": "F_7443",
+      "path": "src/HUD.C",
+      "public": "_f7443"
+    },
+    {
+      "owner": "F_747B",
+      "path": "src/HUD.C",
+      "public": "_hud_frame_draw"
+    }
+  ],
+  "evidence": "18 contiguous flag-identical TCC modules (run 11), no data_owners. HUD panel subsystem: open the DS:C0EE panel record, draw/erase its widgets, the scroll counters (gb7e/gb80), and the full HUD frame repaint at the end. Members merged into src/HUD.C."
+}

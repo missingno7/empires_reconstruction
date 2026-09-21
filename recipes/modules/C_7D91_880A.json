@@ -1,0 +1,69 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_7D91_880A",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_7D91",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_draw_panel"
+    },
+    {
+      "owner": "F_7DF1",
+      "path": "src/DIALOG.C",
+      "public": "_f7df1"
+    },
+    {
+      "owner": "F_7DFC",
+      "path": "src/DIALOG.C",
+      "public": "_f7dfc"
+    },
+    {
+      "owner": "F_7E07",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_layout"
+    },
+    {
+      "owner": "F_8267",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_draw_button"
+    },
+    {
+      "owner": "F_8378",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_fill_box"
+    },
+    {
+      "owner": "F_8414",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_blink_box"
+    },
+    {
+      "owner": "F_8434",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_draw_shadow"
+    },
+    {
+      "owner": "F_8453",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_restore_screen"
+    },
+    {
+      "owner": "F_8480",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_draw"
+    },
+    {
+      "owner": "F_86C9",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_run"
+    },
+    {
+      "owner": "F_880A",
+      "path": "src/DIALOG.C",
+      "public": "_dialog_list_run"
+    }
+  ],
+  "evidence": "Twelve contiguous matching C extents (object_order indices 184-195, R0132..R0143), identical compiler flags (-c -mc -1- -f- -N-, empty flags_append), no data_owners/module_segments on any member. F_7D91/F_7E07/F_8480/F_86C9 include DIALOG.H and share dialog/box-drawing helpers; F_8267/F_8378 draw box borders through the same runtime blit thunks; F_8434/F_8453 immediately follow F_8414 in the same run with identical flags and continue the same runtime-blit-thunk theme, so they were folded into this group as the second (extended) variant. Historical module identity is not established; this is a readability grouping proven byte-exact. Members merged into src/DIALOG.C."
+}

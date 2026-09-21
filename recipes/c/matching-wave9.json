@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 47119,
       "end": 47309,
-      "source": "src/F_B60F.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fb60f",
@@ -19,7 +19,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2AEDE.phys"
           },
-          "_gbfba": {
+          "_board_record_index": {
             "offset": 49082,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEA.phys"
@@ -57,7 +57,7 @@
       "kind": "MATCHING_C",
       "start": 47309,
       "end": 47474,
-      "source": "src/F_B6CD.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
         "public": "_fb6cd",
@@ -72,11 +72,11 @@
             "public": "_f7925",
             "addend": 0
           },
-          "_f6fc3": {
+          "_hud_panel_clear": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6FC3.entry",
             "owner": "F_6FC3",
-            "public": "_f6fc3",
+            "public": "_hud_panel_clear",
             "addend": 0
           },
           "_g8fe": {
@@ -89,7 +89,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAEC.phys"
           },
-          "_gbfba": {
+          "_board_record_index": {
             "offset": 49082,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEA.phys"
@@ -138,19 +138,19 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f6c57": {
+          "_timer_deadline_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6C57.entry",
             "owner": "F_6C57",
-            "public": "_f6c57",
+            "public": "_timer_deadline_arm",
             "addend": 0
           },
-          "_gc5ca": {
+          "_ui_gfx_blob": {
             "offset": 50634,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FA.phys"
           },
-          "_g40c4": {
+          "_rect_queue_write_ptr": {
             "offset": 16580,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23BF4.phys"
@@ -176,11 +176,11 @@
             "public": "_f1ecd",
             "addend": 0
           },
-          "_f6c6f": {
+          "_timer_deadline_wait": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6C6F.entry",
             "owner": "F_6C6F",
-            "public": "_f6c6f",
+            "public": "_timer_deadline_wait",
             "addend": 0
           },
           "_g1776": {
@@ -193,10 +193,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212B4.phys"
           },
-          "_fbb40f": {
+          "_level_expand_descriptors": {
             "coordinate": "code_offset",
             "owner": "F_B40F",
-            "public": "_fbb40f",
+            "public": "_level_expand_descriptors",
             "addend": 0,
             "evidence": "functions/F_B40F.entry"
           }

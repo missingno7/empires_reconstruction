@@ -6,26 +6,26 @@
       "kind": "MATCHING_C",
       "start": 43368,
       "end": 43614,
-      "source": "src/F_A768.C",
+      "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa768",
+        "public": "_confirm_quit_dialog",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f6b74": {
+          "_keyboard_chain_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B74.entry",
             "owner": "F_6B74",
-            "public": "_f6b74",
+            "public": "_keyboard_chain_active",
             "addend": 0
           },
-          "_fd593": {
+          "_sound_start": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D593.entry",
             "owner": "F_D593",
-            "public": "_fd593",
+            "public": "_sound_start",
             "addend": 0
           },
           "_f792c": {
@@ -42,37 +42,37 @@
             "public": "_f7925",
             "addend": 0
           },
-          "_f6990": {
+          "_keyboard_chain_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6990.entry",
             "owner": "F_6990",
-            "public": "_f6990",
+            "public": "_keyboard_chain_enable",
             "addend": 0
           },
-          "_f703e": {
+          "_ui_overlay_show": {
             "coordinate": "code_offset",
             "evidence": "functions/F_703E.entry",
             "owner": "F_703E",
-            "public": "_f703e",
+            "public": "_ui_overlay_show",
             "addend": 0
           },
-          "_g13d9": {
+          "_dialog_quit_confirm": {
             "offset": 5081,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F09.phys"
           },
-          "_f8480": {
+          "_dialog_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8480.entry",
             "owner": "F_8480",
-            "public": "_f8480",
+            "public": "_dialog_draw",
             "addend": 0
           },
-          "_f01ce": {
+          "_gfx_color_select": {
             "coordinate": "code_offset",
             "evidence": "functions/F_01CE.entry",
             "owner": "F_01CE",
-            "public": "_f01ce",
+            "public": "_gfx_color_select",
             "addend": 0
           },
           "_f03a2": {
@@ -104,25 +104,25 @@
             "public": "_fa1e0",
             "addend": 0
           },
-          "_f8453": {
+          "_dialog_restore_screen": {
             "coordinate": "code_offset",
             "evidence": "functions/F_8453.entry",
             "owner": "F_8453",
-            "public": "_f8453",
+            "public": "_dialog_restore_screen",
             "addend": 0
           },
-          "_f7162": {
+          "_ui_overlay_hide": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7162.entry",
             "owner": "F_7162",
-            "public": "_f7162",
+            "public": "_ui_overlay_hide",
             "addend": 0
           },
-          "_f6997": {
+          "_keyboard_chain_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6997.entry",
             "owner": "F_6997",
-            "public": "_f6997",
+            "public": "_keyboard_chain_disable",
             "addend": 0
           },
           "_f791e": {
@@ -132,11 +132,11 @@
             "public": "_f791e",
             "addend": 0
           },
-          "_fd5a6": {
+          "_sound_request_count_dec": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D5A6.entry",
             "owner": "F_D5A6",
-            "public": "_fd5a6",
+            "public": "_sound_request_count_dec",
             "addend": 0
           }
         }

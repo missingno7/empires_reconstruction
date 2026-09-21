@@ -1,1 +1,3 @@
-extern int f1ec0(),f4713();extern int g13ed,g9ade,g73e;struct R{char a[12];char b;char c[9];char s[4];char e;};extern struct R gc470[];f4943(i) register int i;{gc470[g13ed].b=i+1;g9ade=gc470[g13ed].s[i]*2+i*8;g73e=-1;while(1){if(f1ec0(g9ade)){if(!f4713())g9ade-=2;else{gc470[g13ed].s[i]++;if((g9ade&7)==7)break;}}else{while(!f4713());}g9ade++;}}
+extern int value_parity(),level_driver_run();extern int current_slot,g9ade,g73e;
+#include "C470.H"
+void f4943(i) register int i;{slot_table[current_slot].byte12=i+1;g9ade=slot_table[current_slot].sub[i]*2+i*8;g73e=-1;while(1){if(value_parity(g9ade)){if(!level_driver_run())g9ade-=2;else{slot_table[current_slot].sub[i]++;if((g9ade&7)==7)break;}}else{while(!level_driver_run());}g9ade++;}}

@@ -6,7 +6,7 @@ _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
 extrn _gc0d4:word, _g0b7a:dword, _g0b76:word, _g0b78:word
-extrn _g176e:word, _g1772:word, _g237c:word
+extrn _sound_enabled:word, _music_enabled:word, _g237c:word
 _BSS ends
 DGROUP group _DATA, _BSS
 extrn _fc1a0:near
@@ -36,9 +36,9 @@ update_clock:
  adc _g0b78,0
  cmp _g237c,0
  jnz short acknowledge
- cmp _g176e,0
+ cmp _sound_enabled,0
  jnz short service_sound
- cmp _g1772,0
+ cmp _music_enabled,0
  jz short acknowledge
 service_sound:
  call _fc1a0

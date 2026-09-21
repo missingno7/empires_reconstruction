@@ -1,1 +1,0 @@
-extern int f656c(),f03c9(),f03b4(),f03cc();extern char *gc5c6;extern int g96;fb09a(){f656c(0x47);f03c9(6,200,gc5c6);f03b4(6,200,0x134,0x90,6,0x158);f656c(0x48);g96=400;f03cc(0x72,0xd3,gc5c6,0);g96=0x9f;f03b4(6,200,0x134,0x90,6,16);}

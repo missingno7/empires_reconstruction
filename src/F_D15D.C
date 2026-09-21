@@ -1,1 +1,0 @@
-extern int fd117(),f6b66(),f6b1a(),fd0d1(),fce2a();extern int gc5ba,gc5b2[],g22b2[];fd15d(){register int i,d;fd117();while(1){f6b66();d=0;switch(f6b1a()){case 0x14d:case 0x150:d++;case 0x148:case 0x14b:i=gc5ba;do{i=g22b2[i*4+d];}while(gc5b2[i]);if(i!=gc5ba){fd0d1();gc5ba=i;fd117();}break;case 13:fd0d1();return;case 27:fce2a();break;}}}

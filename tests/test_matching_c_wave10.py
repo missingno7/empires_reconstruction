@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from exe_data import encode_data, decode_data, TEXT_FORMAT
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region,
                          mismatch, owned_library_modules)
 
@@ -37,7 +38,7 @@ class MatchingCWave10Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             work = Path(temporary)
             receipts, _ = compile_sources(ROOT, [code], work, ROOT / 'toolchain',
-                                          Path(lock['dosbox_default']), lock)
+                                          resolve_runner(lock), lock)
             module = read_object((work / receipts[code['id']]['object']).read_bytes())
             data, _ = bind_region(code, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
             mismatch(original[code['start']:code['end']], data, code)

@@ -88,29 +88,33 @@
     {
       "id": "DATA_0107B0_TABLE",
       "kind": "EXACT_DATA",
-      "source": "src/data/DATA_0107B0_TABLE.json",
+      "source": "src/F_75F3.C",
       "start": 67504,
       "end": 67510,
       "expected_sha256": "bfefee9c96d0d9fd8ef4e230abeb23ef63e97872b53cbedb07867265ff0e29b8",
-      "classification": "control_pointer_table",
+      "classification": "initialized_shared_ui_state",
       "artifact": "regions/DATA_0107B0_TABLE.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "u16le-table-v1"
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_75F3",
+        "segment": "_DATA"
       }
     },
     {
       "id": "DATA_0107B6_PAD",
       "kind": "EXACT_DATA",
-      "source": "src/data/DATA_0107B6_PAD.json",
+      "source": "src/F_75F3.C",
       "start": 67510,
       "end": 67511,
       "expected_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
-      "classification": "alignment_padding",
+      "classification": "initialized_shared_ui_state",
       "artifact": "regions/DATA_0107B6_PAD.bin",
       "matching_status": "EQUAL",
       "build": {
-        "encoder": "zero-pad-v1"
+        "encoder": "omf-segment-v1",
+        "code_owner": "F_75F3",
+        "segment": "_DATA"
       }
     },
     {

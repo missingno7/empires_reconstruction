@@ -27,7 +27,10 @@ class TypedDataTests(unittest.TestCase):
         return owner['start'] - 512 - self.frame, self.frame // 16
 
     def test_all_typed_sources_rebuild_their_original_extents(self):
-        self.assertEqual(len(self.owners), 8)
+        # DATA_0107B0_TABLE moved from typed-data-v1 to omf-segment-v1 (it is
+        # now compiled directly from src/F_75F3.C's shared UI-state globals;
+        # see recipes/c/matching-wave133.json), leaving 7 typed-data owners.
+        self.assertEqual(len(self.owners), 7)
         for owner in self.owners:
             with self.subTest(owner=owner['id']):
                 source = read_json(ROOT / owner['source'])

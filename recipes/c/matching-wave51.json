@@ -4,21 +4,21 @@
     {
       "id": "F_CDDD",
       "kind": "MATCHING_C",
-      "source": "src/F_CDDD.C",
+      "source": "src/PLAYERSL.C",
       "start": 53213,
       "end": 53248,
       "expected_sha256": "22b042e0279cc779ee8a2c85ccc005ae704f6472d8ee506e4a79b2d69594c4bf",
       "build": {
         "segment": "_TEXT",
-        "public": "_fcddd",
+        "public": "_player_select_quit_confirm",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f86c9": {
+          "_dialog_run": {
             "coordinate": "code_offset",
             "owner": "F_86C9",
-            "public": "_f86c9",
+            "public": "_dialog_run",
             "addend": 0
           },
           "_longjmp": {
@@ -27,7 +27,7 @@
             "public": "_longjmp",
             "addend": 0
           },
-          "_g219c": {
+          "_dialog_select_quit_confirm": {
             "offset": 8604,
             "coordinate": "DGROUP_offset"
           },

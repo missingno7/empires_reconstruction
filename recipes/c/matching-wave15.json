@@ -14,11 +14,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f684a": {
+          "_resource_load_record_alloc": {
             "coordinate": "code_offset",
             "evidence": "functions/F_684A.entry",
             "owner": "F_684A",
-            "public": "_f684a",
+            "public": "_resource_load_record_alloc",
             "addend": 0
           },
           "_gc5ce": {
@@ -31,10 +31,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21E20.phys"
           },
-          "_f880a": {
+          "_dialog_list_run": {
             "coordinate": "code_offset",
             "owner": "F_880A",
-            "public": "_f880a",
+            "public": "_dialog_list_run",
             "addend": 0,
             "evidence": "functions/F_880A.entry"
           },
@@ -68,19 +68,19 @@
       "kind": "MATCHING_C",
       "start": 50014,
       "end": 50080,
-      "source": "src/F_C15E.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc15e",
+        "public": "_level_play_chapter",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f726a": {
+          "_hud_scroll_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_726A.entry",
             "owner": "F_726A",
-            "public": "_f726a",
+            "public": "_hud_scroll_reset",
             "addend": 0
           },
           "_face7": {
@@ -90,11 +90,11 @@
             "public": "_face7",
             "addend": 0
           },
-          "_f7313": {
+          "_hud_scroll_move": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7313.entry",
             "owner": "F_7313",
-            "public": "_f7313",
+            "public": "_hud_scroll_move",
             "addend": 0
           },
           "_g9ade": {
@@ -107,18 +107,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20252.phys"
           },
-          "_f462e": {
+          "_menu_backdrop_paint": {
             "coordinate": "code_offset",
             "evidence": "functions/F_462E.entry",
             "owner": "F_462E",
-            "public": "_f462e",
+            "public": "_menu_backdrop_paint",
             "addend": 0
           },
-          "_fc0e0": {
+          "_level_play": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C0E0.entry",
             "owner": "F_C0E0",
-            "public": "_fc0e0",
+            "public": "_level_play",
             "addend": 0
           },
           "_fb6cd": {
@@ -152,10 +152,10 @@
       "kind": "MATCHING_C",
       "start": 49888,
       "end": 50014,
-      "source": "src/F_C0E0.C",
+      "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc0e0",
+        "public": "_level_play",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -170,7 +170,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAEC.phys"
           },
-          "_gbfba": {
+          "_board_record_index": {
             "offset": 49082,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEA.phys"
@@ -180,7 +180,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23EE4.phys"
           },
-          "_gbfbc": {
+          "_board_records": {
             "offset": 49084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEC.phys"
@@ -204,10 +204,10 @@
             "public": "_fb09a",
             "addend": 0
           },
-          "_fb122": {
+          "_board_resource_expand": {
             "coordinate": "code_offset",
             "owner": "F_B122",
-            "public": "_fb122",
+            "public": "_board_resource_expand",
             "addend": 0,
             "evidence": "functions/F_B122.entry"
           },
@@ -240,10 +240,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026A.phys"
           },
-          "_f2269": {
+          "_sprite_draw_cursor": {
             "coordinate": "code_offset",
             "owner": "F_2269",
-            "public": "_f2269",
+            "public": "_sprite_draw_cursor",
             "addend": 0,
             "evidence": "functions/F_2269.entry"
           },
@@ -252,24 +252,24 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_fd5f9": {
+          "_resource_record_cache_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D5F9.entry",
             "owner": "F_D5F9",
-            "public": "_fd5f9",
+            "public": "_resource_record_cache_reset",
             "addend": 0
           },
-          "_fb99f": {
+          "_level_run_loop": {
             "coordinate": "code_offset",
             "owner": "F_B99F",
-            "public": "_fb99f",
+            "public": "_level_run_loop",
             "addend": 0,
             "evidence": "functions/F_B99F.entry"
           },
-          "_fb593": {
+          "_level_free_descriptor_table": {
             "coordinate": "code_offset",
             "owner": "F_B593",
-            "public": "_fb593",
+            "public": "_level_free_descriptor_table",
             "addend": 0,
             "evidence": "functions/F_B593.entry"
           }

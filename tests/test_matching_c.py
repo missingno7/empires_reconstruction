@@ -8,6 +8,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
+from dos_runner import resolve_runner
 from reconstruct import (read_json, compile_sources, read_object, bind_region, mismatch,
                          owned_library_modules)
 
@@ -32,7 +33,7 @@ class MatchingCTests(unittest.TestCase):
             wrong_frame['id'] = 'WRONG_FRAME'
             wrong_frame['build']['flags_append'] = ''
             receipts, _ = compile_sources(ROOT, owners + [wrong_order, wrong_frame], work / 'compiler',
-                                          ROOT / 'toolchain', Path(lock['dosbox_default']), lock)
+                                          ROOT / 'toolchain', resolve_runner(lock), lock)
             checked = 0
             for owner in owners:
                 module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())

@@ -4,13 +4,13 @@
     {
       "id": "F_034F",
       "kind": "MATCHING_C",
-      "source": "src/F_034F.C",
+      "source": "src/VIDEO.C",
       "start": 1359,
       "end": 1365,
       "expected_sha256": "b4fc82c2dcf7a9153043d8376a2619b6db31783e18bbf83a75862f1c41029f5c",
       "build": {
         "segment": "_TEXT",
-        "public": "_f034f",
+        "public": "_video_set_text_mode",
         "span": 1,
         "flags_append": "",
         "module_segments": {},

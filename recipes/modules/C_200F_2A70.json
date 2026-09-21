@@ -1,0 +1,84 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_200F_2A70",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_200F",
+      "path": "src/BOARDDRW.C",
+      "public": "_resource_icon_table_load"
+    },
+    {
+      "owner": "F_2119",
+      "path": "src/BOARDDRW.C",
+      "public": "_resource_scoreboard_unpack"
+    },
+    {
+      "owner": "F_21A9",
+      "path": "src/BOARDDRW.C",
+      "public": "_sprite_load_boot_sheets"
+    },
+    {
+      "owner": "F_21DB",
+      "path": "src/BOARDDRW.C",
+      "public": "_resource_stripe_table_load"
+    },
+    {
+      "owner": "F_224C",
+      "path": "src/BOARDDRW.C",
+      "public": "_hud_arena_init"
+    },
+    {
+      "owner": "F_2269",
+      "path": "src/BOARDDRW.C",
+      "public": "_sprite_draw_cursor"
+    },
+    {
+      "owner": "F_22B1",
+      "path": "src/BOARDDRW.C",
+      "public": "_board_redraw_view"
+    },
+    {
+      "owner": "F_233E",
+      "path": "src/BOARDDRW.C",
+      "public": "_board_scan_wipe_effect"
+    },
+    {
+      "owner": "F_250C",
+      "path": "src/BOARDDRW.C",
+      "public": "_f250c"
+    },
+    {
+      "owner": "F_257D",
+      "path": "src/BOARDDRW.C",
+      "public": "_point_in_hotspot_rect"
+    },
+    {
+      "owner": "F_25B3",
+      "path": "src/BOARDDRW.C",
+      "public": "_board_update_moving_records"
+    },
+    {
+      "owner": "F_28AC",
+      "path": "src/BOARDDRW.C",
+      "public": "_board_mark_record_cells"
+    },
+    {
+      "owner": "F_2986",
+      "path": "src/BOARDDRW.C",
+      "public": "_f2986"
+    },
+    {
+      "owner": "F_2A2D",
+      "path": "src/BOARDDRW.C",
+      "public": "_record_field_skip_n"
+    },
+    {
+      "owner": "F_2A70",
+      "path": "src/BOARDDRW.C",
+      "public": "_f2a70"
+    }
+  ],
+  "evidence": "15 contiguous flag-identical TCC modules (run 3), no data_owners. Board/sprite rendering subsystem: cursor sprite blit, view-window clamp, board record redraw loop (gbfbc/g6ca6/g736/g738), and the nested count-prefixed table walkers (gbfc0) the redraw loop indexes through. Members merged into src/BOARDDRW.C."
+}

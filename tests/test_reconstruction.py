@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from mz import MZ
 from omf import ObjectModule
+from dos_runner import resolve_runner
 from reconstruct import (bind_region, compile_sources, mismatch, read_object,
                          reconstruct, validate_layout, library_modules, library_candidate)
 from reconstruct import owned_library_modules
@@ -112,23 +113,52 @@ class ReconstructionTests(unittest.TestCase):
 
     def test_fresh_c_and_asm_mutants_and_binding_mutant_are_rejected(self):
         lock = json.loads((ROOT / 'layout/toolchain.json').read_text())
-        dosbox = Path(lock['dosbox_default'])
+        dosbox = resolve_runner(lock)
+        plan = json.loads((ROOT / 'layout/production-plan.json').read_text())['modules']
+        group_by_member = {m: mod for mod in plan if mod.get('sources') and len(mod['sources']) > 1
+                          for m in mod.get('members', [])}
         with tempfile.TemporaryDirectory(dir=ROOT / 'build', prefix='test-') as tmp:
             directory = Path(tmp)
+            # The grouped sources below now #include shared headers (e.g.
+            # DIALOG.H); compile_sources stages headers from <root>/include,
+            # so mirror the project's include/ directory into this isolated
+            # compile root.
+            include_dir = directory / 'include'
+            include_dir.mkdir()
+            for header in (ROOT / 'include').glob('*.H'):
+                (include_dir / header.name).write_bytes(header.read_bytes())
             owners = []
             for name, before, after in [('F_56C6', b'g96 = 0x18f;', b'g96 = 0x18e;'),
                                          ('F_D89A', b'        cld', b'        std')]:
                 owner = copy.deepcopy(next(r for r in self.manifest['regions'] if r['id'] == name))
                 source = (ROOT / owner['source']).read_bytes()
                 self.assertIn(before, source)
-                path = directory / owner['source']
-                path.parent.mkdir(exist_ok=True)
-                path.write_bytes(source)
+                # F_56C6 and F_D89A now belong to grouped multi-source modules
+                # (layout/production-plan.json) and no longer compile
+                # standalone; compile from each group's full concatenated
+                # member list instead, exactly like the production build.
+                group = group_by_member.get(name)
+                if group is not None:
+                    combined = b'\r\n'.join((ROOT / s).read_bytes() for s in group['sources'])
+                    path = directory / owner['source']
+                    path.parent.mkdir(exist_ok=True)
+                    path.write_bytes(combined)
+                else:
+                    path = directory / owner['source']
+                    path.parent.mkdir(exist_ok=True)
+                    path.write_bytes(source)
                 owners.append(owner)
                 mutant = copy.deepcopy(owner)
                 mutant['id'] += '_MUTANT'
                 mutant['source'] = 'mutant_' + Path(owner['source']).name
-                (directory / mutant['source']).write_bytes(source.replace(before, after, 1))
+                if group is not None:
+                    mutated_member = source.replace(before, after, 1)
+                    combined = b'\r\n'.join(
+                        mutated_member if s == owner['source'] else (ROOT / s).read_bytes()
+                        for s in group['sources'])
+                    (directory / mutant['source']).write_bytes(combined)
+                else:
+                    (directory / mutant['source']).write_bytes(source.replace(before, after, 1))
                 owners.append(mutant)
             work = directory / 'session'
             work.mkdir()
@@ -143,7 +173,7 @@ class ReconstructionTests(unittest.TestCase):
                 else:
                     mismatch(expected, result, owner)
             owner = owners[0]
-            owner['build']['bindings']['_f01ce']['addend'] += 1
+            owner['build']['bindings']['_gfx_color_select']['addend'] += 1
             module = read_object((work / receipts[owner['id']]['object']).read_bytes())
             with self.assertRaisesRegex(ValueError, 'selected entry public with zero addend'):
                 bind_region(owner, module, self.mz, self.manifest['frames'],

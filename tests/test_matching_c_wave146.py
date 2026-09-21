@@ -6,6 +6,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from omf import OmfReader
+from dos_runner import resolve_runner
 from reconstruct import compile_sources, read_json, read_object, sha
 
 
@@ -34,7 +35,7 @@ class MatchingCWave146Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             lock = read_json(ROOT / 'layout/toolchain.json')
             receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain',
-                                           Path(lock['dosbox_default']), lock)
+                                           resolve_runner(lock), lock)
             candidate = read_object((Path(temporary) / receipts['LIB_STRLEN']['object']).read_bytes())
             self.assertEqual(candidate.segment_bytes('_TEXT'), library_text)
             self.assertEqual(candidate.segment_length('_TEXT'), 27)

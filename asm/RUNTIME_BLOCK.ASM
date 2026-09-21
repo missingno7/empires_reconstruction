@@ -23,78 +23,78 @@ _TEXT segment byte public 'CODE'
 public _runtime_base
 _runtime_base label near
 ; RUNTIME_BLOCK -- exact startup/runtime dispatch block.
-    JMP_NEAR $+193h
+    JMP_NEAR runtime_dispatch
     public _gfx_box
     _gfx_box label near
     public _box
     _box label near
-    JMP_NEAR $+296h
+    JMP_NEAR runtime_dispatch_3e2
     public _gfx_bar
     _gfx_bar label near
     public _bar
     _bar label near
-    JMP_NEAR $+0f38h
+    JMP_NEAR runtime_bar_primitive
     public _gfx_vline
     _gfx_vline label near
-    JMP_NEAR $+0f7eh
+    JMP_NEAR runtime_f03a5
     public _gfx_clear_rect
     _gfx_clear_rect label near
     public _clear
     _clear label near
-    JMP_NEAR $+0fb4h
+    JMP_NEAR runtime_clear_primitive
     public _gfx_fill_rect
     _gfx_fill_rect label near
     public _fill
     _fill label near
-    JMP_NEAR $+1028h
+    JMP_NEAR runtime_f03ab
     public _gfx_save_rect
     _gfx_save_rect label near
-    JMP_NEAR $+1094h
+    JMP_NEAR runtime_f03ae
     public _gfx_restore_rect
     _gfx_restore_rect label near
-    JMP_NEAR $+10d8h
+    JMP_NEAR runtime_f03b1
     public _gfx_wipe_rect
     _gfx_wipe_rect label near
     public _wipe
     _wipe label near
-    JMP_NEAR $+110ah
+    JMP_NEAR runtime_f03b4
     public _gfx_copy_rect_flip_v
     _gfx_copy_rect_flip_v label near
-    JMP_NEAR $+1180h
+    JMP_NEAR runtime_f03b7
     public _gfx_copy_rect_flip_h
     _gfx_copy_rect_flip_h label near
-    JMP_NEAR $+11d6h
+    JMP_NEAR runtime_f03ba
     public _gfx_copy_rect_flip_hv
     _gfx_copy_rect_flip_hv label near
-    JMP_NEAR $+122eh
+    JMP_NEAR runtime_f03bd
     public _gfx_copy_rect_split
     _gfx_copy_rect_split label near
-    JMP_NEAR $+1295h
+    JMP_NEAR runtime_f03c0
     public _gfx_copy_rect_split_flip_v
     _gfx_copy_rect_split_flip_v label near
-    JMP_NEAR $+1333h
+    JMP_NEAR runtime_f03c3
     public _gfx_draw_char
     _gfx_draw_char label near
-    JMP_NEAR $+13ddh
+    JMP_NEAR runtime_f03c6
     public _gfx_blit_bitmap
     _gfx_blit_bitmap label near
     public _blit
     _blit label near
-    JMP_NEAR $+1566h
+    JMP_NEAR runtime_blit_primitive
     public _gfx_copy_rect
     _gfx_copy_rect label near
     public _copy
     _copy label near
-    JMP_NEAR $+16cbh
+    JMP_NEAR runtime_copy_primitive
     public _gfx_blit_image
     _gfx_blit_image label near
-    JMP_NEAR $+182ch
+    JMP_NEAR runtime_f03cf
     public _gfx_set_pixel
     _gfx_set_pixel label near
-    JMP_NEAR $+18f7h
+    JMP_NEAR runtime_f03d2
     public _gfx_get_pixel
     _gfx_get_pixel label near
-    JMP_NEAR $+1935h
+    JMP_NEAR runtime_f03d5
 ; 0194 clears BH, loads display selector, doubles BX; 019C indexes CS:03D8. Five stored slots; selector is not locally bounded.
 runtime_mode_dispatch label word
     dw 0,(rt_01a1-_runtime_base+RT_CS),0,(rt_0258-_runtime_base+RT_CS),(rt_0294-_runtime_base+RT_CS)
@@ -1072,7 +1072,7 @@ rt_07a8 label byte
 ; CODE: row strides; LOOP to mutable jump 07C2; fallthrough restores DS/DI/SI/BP and RET
      add si,dx
      add di,bp
-     loop $+7h
+     loop rt_07c2
      pop ds
      pop di
      pop si
@@ -1080,6 +1080,7 @@ rt_07a8 label byte
      ret
 ; CODE: self-modified rel16 jump, written at 02FD
 ; Mutable rel16 operand at runtime 07C3, written by 02FD.
+rt_07c2:
     JMP_NEAR rt_0307
 ; CODE: dispatch slot 3; bounded copy routine with loops and RET
 rt_07c5 label byte
@@ -1133,11 +1134,13 @@ rt_07c5 label byte
      pop cx
      add si,ax
      add di,bx
-     js $+6h
+     js rt_0832
      loop $-12h
-     jmp $+6h
+     jmp short rt_0836
+rt_0832:
      add di,bp
      loop $-18h
+rt_0836:
      pop ds
      pop di
      pop si
@@ -2237,7 +2240,7 @@ rt_0f1a label byte
      add si,dx
      add di,bp
      xor ch,ch
-     loop $+7h
+     loop rt_0f3c
  rt_0f37 label byte
      pop ds
      pop di
@@ -2246,6 +2249,7 @@ rt_0f1a label byte
      ret
 ; CODE: self-modified rel16 jump, written at 0880
 ; Mutable rel16 operand at runtime 0F3D, written by 0880.
+rt_0f3c:
     JMP_NEAR rt_089f
     ; F_03A2 / bar: planar horizontal-bar primitive.
     runtime_bar_primitive:
@@ -2302,12 +2306,14 @@ rt_0f3f label byte
     les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    jb $+8
+    jb rt_0fab
     and al,0f0h
     mov dl,0fh
-    jmp $+6
+    jmp short rt_0faf
+rt_0fab:
     and al,0fh
     mov dl,0f0h
+rt_0faf:
     add di,bx
     mov bx,0a0h
     runtime_f03a5_loop:
@@ -2366,7 +2372,7 @@ runtime_0fd4_fill_loop:
     dec dx
     jne runtime_0fd4_fill_loop
      cmp ah,0
-     je $+1bh
+     je rt_1034
      mov cx,word ptr ss:[bp+0ah]
      sub di,si
     mov dh,0fh
@@ -2378,6 +2384,7 @@ runtime_0fd4_fill_loop:
     or byte ptr es:[di],dl
     sub di,si
     loop runtime_f03a8_clear_loop
+rt_1034:
     pop si
     pop di
     pop bp
@@ -2419,7 +2426,7 @@ runtime_104b_next_row:
     mov ah,1
 runtime_104b_fill_start:
     mov bx,cx
-    jcxz $+13h
+    jcxz rt_108c
      mov al,0ffh
      sub si,cx
      xor byte ptr es:[di],al
@@ -2429,16 +2436,18 @@ runtime_104b_fill_start:
      mov cx,bx
      dec dx
      jne $-0bh
+rt_108c:
      pop di
      add di,bx
      cmp ah,0
-     je $+11h
+     je rt_10a3
      mov cx,word ptr ss:[bp+0ah]
      mov al,0f0h
      mov si,0a0h
      xor byte ptr es:[di],al
      add di,si
      loop $-5h
+rt_10a3:
      pop si
      pop di
      pop bp
@@ -2941,117 +2950,128 @@ rb_145c:
     mov al, byte ptr es:[si]
     inc si
     cmp bx, 010h
-    jge $+0ch
+    jge short rt_1494
     mov ah,bl
     and ah,2
     jmp word ptr cs:[bx+runtime_even_pixel_dispatch-_runtime_base+RT_CS]
 rt_1494 label byte
     inc di
     shl al,1
-    jae $+7
+    jae rt_149e
     and byte ptr [di],0fh
     or byte ptr [di],dh
+rt_149e:
     shl al,1
-    jae $+7
+    jae short rt_14a7
     and byte ptr ds:[di],0f0h
     or byte ptr ds:[di],dl
 rt_14a7 label byte
     inc di
     shl al,1
-    jae $+7h
+    jae rt_14b1
     and byte ptr ds:[di],0fh
     or byte ptr ds:[di],dh
+rt_14b1:
     shl al,1
-    jae $+7h
+    jae short rt_14ba
     and byte ptr ds:[di],0f0h
     or byte ptr ds:[di],dl
 rt_14ba label byte
     inc di
     shl al,1
-    jae $+7h
+    jae rt_14c4
     and byte ptr ds:[di],0fh
     or byte ptr ds:[di],dh
+rt_14c4:
     shl al,1
-    jae $+7h
+    jae short rt_14cd
      and byte ptr ds:[di],0f0h
      or byte ptr ds:[di],dl
 rt_14cd label byte
      inc di
      shl al,1
-     jae $+7h
+     jae rt_14d7
      and byte ptr ds:[di],0fh
      or byte ptr ds:[di],dh
+rt_14d7:
      cmp ah,0
-     jne $+10h
+     jne rt_14ea
      shl al,1
-     jae $+7h
+     jae short rt_14e5
      and byte ptr ds:[di],0f0h
      or byte ptr ds:[di],dl
 rt_14e5 label byte
      sub bx,10h
     jg $-67h
+rt_14ea:
     pop bx
     add di,word ptr [bp-4]
     loop $-70h
-    jmp $+74h
+    jmp short rt_1564
 rt_14f2:
     push bx
     sub ah,ah
     mov al,byte ptr es:[si]
     inc si
     cmp bx,10h
-    jge $+0ch
+    jge short rt_1508
     mov ah,bl
     and ah,2
     jmp word ptr cs:[bx+runtime_odd_pixel_dispatch-_runtime_base+RT_CS]
 rt_1508 label byte
     shl al,1
-    jae $+7
+    jae rt_1511
     and byte ptr [di],0f0h
     or byte ptr [di],dl
+rt_1511:
     inc di
     shl al,1
-    jae $+7
+    jae short rt_151b
     and byte ptr [di],0fh
     or byte ptr [di],dh
 rt_151b label byte
     shl al,1
-    jae $+7
+    jae rt_1524
      and byte ptr ds:[di],0f0h
      or byte ptr ds:[di],dl
+rt_1524:
      inc di
      shl al,1
-     jae $+7h
+     jae short rt_152e
      and byte ptr ds:[di],0fh
      or byte ptr ds:[di],dh
 rt_152e label byte
      shl al,1
-     jae $+7h
+     jae rt_1537
      and byte ptr ds:[di],0f0h
      or byte ptr ds:[di],dl
+rt_1537:
      inc di
      shl al,1
-     jae $+7h
+     jae short rt_1541
      and byte ptr ds:[di],0fh
      or byte ptr ds:[di],dh
 rt_1541 label byte
      shl al,1
-     jae $+7h
+     jae rt_154a
     and byte ptr ds:[di],0f0h
     or byte ptr ds:[di],dl
+rt_154a:
     inc di
     cmp ah,0
-    jne $+10h
+    jne rt_155e
     shl al,1
-    jae $+7h
+    jae short rt_1559
     and byte ptr ds:[di],0fh
     or byte ptr ds:[di],dh
 rt_1559 label byte
     sub bx,10h
     jg $-67h
+rt_155e:
     pop bx
     add di,word ptr ss:[bp-4]
     loop $-70h
+rt_1564:
     mov ax,bx
     shr ax,1
     pop ds
@@ -3105,10 +3125,10 @@ runtime_15ab_copy_loop:
     pop dx
     pop ds
     cmp word ptr ds:[0bch],1
-    jne $+20h
+    jne rt_15f8
     mov cx,word ptr [bp+6]
     cmp cx,0c8h
-    jae $+17h
+    jae rt_15f8
     les di,dword ptr ds:[40c4h]
     mov ax,word ptr [bp+4]
     shr ax,1
@@ -3119,6 +3139,7 @@ runtime_15ab_copy_loop:
     mov ah,dl
     stosw
     mov word ptr ds:[40c4h],di
+rt_15f8:
     pop si
     pop di
     pop bp
@@ -3160,40 +3181,45 @@ runtime_transparency_mask label byte
     mov di,[bp+6]
     mov ax,word ptr ds:[96h]
     sub ax,di
-    js $+48h
+    js rt_1767
     inc ax
     cmp dx,ax
-    jbe $+4
+    jbe rt_1728
     mov dx,ax
+rt_1728:
     mov ax,word ptr ds:[94h]
     sub ax,di
-    jle $+0ch
+    jle rt_1739
     sub dx,ax
-    jbe $+36h
+    jbe rt_1767
     add di,ax
     mul cl
     add si,ax
+rt_1739:
     mov bx,[bp+4]
     cmp word ptr [bp+0ch],0
-    je $+5h
-    JMP_NEAR $+84h
+    je rt_1745
+    JMP_NEAR rt_17c7
+rt_1745:
     sar bx,1
     cld
     xor bp,bp
     mov ax,word ptr ds:[9ah]
     sub ax,bx
-    js $+18h
+    js rt_1767
     inc ax
     cmp cx,ax
-    jbe $+8h
+    jbe rt_175c
     mov bp,cx
     sub bp,ax
     mov cx,ax
+rt_175c:
     mov ax,word ptr ds:[98h]
     sub ax,bx
     jle runtime_copy_skip_forward
     sub cx,ax
     ja runtime_copy_return
+rt_1767:
     pop bp
     pop ds
     pop di
@@ -3253,6 +3279,7 @@ runtime_17a0_pixel_loop:
     cld
     pop bp
     ret
+rt_17c7:
     std
     xor bp,bp
     add bx,cx
@@ -3261,18 +3288,20 @@ runtime_17a0_pixel_loop:
     dec bx
     mov ax,bx
     sub ax,word ptr ds:[98h]
-    js $+19h
+    js rt_17f0
     inc ax
     cmp cx,ax
-    jbe $+8h
+    jbe rt_17e4
      mov bp,cx
      sub bp,ax
      mov cx,ax
+rt_17e4:
      mov ax,bx
      sub ax,word ptr ds:[09ah]
-     jbe $+13h
+     jbe rt_17fd
      sub cx,ax
-     ja $+9h
+     ja rt_17f7
+rt_17f0:
      pop bp
      pop ds
      pop di
@@ -3280,15 +3309,17 @@ runtime_17a0_pixel_loop:
      cld
      pop bp
      ret
+rt_17f7:
      sub bx,ax
      add bp,ax
      add si,ax
+rt_17fd:
      push es
      push di
      cmp word ptr ds:[0bch],1
-     jne $+22h
+     jne rt_1826
      cmp di,0c8h
-     jae $+1ch
+     jae rt_1826
     mov ax,di
     mov ah,al
     mov al,bl
@@ -3302,6 +3333,7 @@ runtime_17a0_pixel_loop:
     stosw
     std
     mov word ptr ds:[40c4h],di
+rt_1826:
     pop di
     shl di,1
     shl di,1
@@ -3376,55 +3408,60 @@ runtime_180c_pixel_loop:
     mov al,byte ptr es:[si]
     inc si
     cmp bx,10h
-    jge $+0ch
+    jge short rt_18b8
     mov ah,bl
     and ah,2
     jmp word ptr cs:[bx+runtime_even_pixel_dispatch-_runtime_base+RT_CS]
 rt_18b8 label byte
     inc di
     shl al,1
-    jae $+7
+    jae rt_18c2
     and byte ptr [di],0fh
     or byte ptr [di],dh
+rt_18c2:
     shl al,1
-    jae $+7
+    jae short rt_18cb
     and byte ptr ds:[di],0f0h
     or byte ptr ds:[di],dl
 rt_18cb label byte
     inc di
     shl al,1
-    jae $+7h
+    jae rt_18d5
     and byte ptr ds:[di],0fh
     or byte ptr ds:[di],dh
+rt_18d5:
     shl al,1
-    jae $+7h
+    jae short rt_18de
     and byte ptr ds:[di],0f0h
     or byte ptr ds:[di],dl
 rt_18de label byte
     inc di
     shl al,1
-    jae $+7h
+    jae rt_18e8
     and byte ptr ds:[di],0fh
     or byte ptr ds:[di],dh
+rt_18e8:
     shl al,1
-    jae $+7h
+    jae short rt_18f1
      and byte ptr ds:[di],0f0h
      or byte ptr ds:[di],dl
 rt_18f1 label byte
      inc di
      shl al,1
-     jae $+7h
+     jae rt_18fb
      and byte ptr ds:[di],0fh
      or byte ptr ds:[di],dh
+rt_18fb:
      cmp ah,0
-     jne $+10h
+     jne rt_190e
      shl al,1
-     jae $+7h
+     jae short rt_1909
      and byte ptr ds:[di],0f0h
      or byte ptr ds:[di],dl
 rt_1909 label byte
      sub bx,10h
      jg $-67h
+rt_190e:
      pop bx
      add di,word ptr ss:[bp-2]
      loop runtime_f03cf+42h
@@ -3451,7 +3488,7 @@ runtime_unreferenced_pixel_dispatch label word
     les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    jb $+17h
+    jb rt_1959
     add di,bx
     mov al,byte ptr es:[di]
     and al,0fh
@@ -3460,12 +3497,14 @@ runtime_unreferenced_pixel_dispatch label word
     shl bl,1
     shl bl,1
     shl bl,1
-    jmp $+10h
+    jmp short rt_1967
+rt_1959:
     add di,bx
     mov al,byte ptr es:[di]
     and al,0f0h
     mov bx,word ptr ds:[40c8h]
     and bl,0fh
+rt_1967:
     or al,bl
     mov byte ptr es:[di],al
     pop di
@@ -3482,7 +3521,7 @@ runtime_unreferenced_pixel_dispatch label word
     les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    jb $+14h
+    jb rt_1997
     add di,bx
     mov al,byte ptr es:[di]
     and ax,0f0h
@@ -3490,10 +3529,12 @@ runtime_unreferenced_pixel_dispatch label word
     shr ax,1
     shr ax,1
     shr ax,1
-    jmp $+0ah
+    jmp short rt_199f
+rt_1997:
     add di,bx
     mov al,byte ptr es:[di]
     and ax,0fh
+rt_199f:
     pop di
     pop bp
     ret

@@ -15,7 +15,7 @@ flags (`tools/audit_tu_flags.py`): 0.
 
 | Member | Unit | Bytes | asm lines | Why it remains | Last probe | Next experiment | Leverage |
 |---|---|---|---|---|---|---|---|
-| F_338A board_run_unit_script | BOARD.C | 870 | 5 | `mov al,es:[bx+3]; neg ax; ...; mov es:[bx+3],al` -- every C spelling (16 tried: `-r[3]`, casts, `0 - x`, `*= -1`, int temp) emits `neg al` (F6 D8) instead of `neg ax` (F7 D8) | 2026-09-21 | find the TC 2.0 construct that negates a byte at word width without extension (bitfield? `char` register temp? struct member?); the surrounding code proves it is compiled C | high: last asm in the board unit |
+| F_338A board_run_unit_script | BOARD.C | 870 | 5 | `mov al,es:[bx+3]; neg ax; ...; mov es:[bx+3],al`: 28 standalone spellings + 8 in-context probes show TC 2.0 folds every byte-lvalue negation to `neg al`, and every route to a word-width `neg ax` (int temp, static, register) materialises `mov ah,0` plus a spill/reload; the missing extension relies on AH still being 0 from the compiler's own `and ax,0Fh` three statements earlier, which only a human knew | 2026-09-21 (build/probes/neg) | none: irreducible hand asm inside a C function, with concrete compiler evidence | closed |
 | F_50D2 / F_53BF video/sound-hardware probes | STARTUP.C | 312 | 35 | recovered as C with pseudo-registers this session; fragments left: `mov display_mode,N` stores (NOP-padded forward EXTRN), ES:SI ROM probes, signed `cmp bl/jl`, `xchg`, `loop`, flag tests after INT | 2026-09-21 EXACT | `cmp word ptr display_mode,N` -> `*(int *)&display_mode == N`; `_BL` sign test via `(signed char)` temp; keep the store NOPs (they are the TCC-generated-ASM signature) | medium |
 | F_6B1A / F_6B4A BIOS keyboard read/poll | KEYBOARD.C | 76 | 35 | branch on ZF straight after `int 16h`; pseudo-register `_FLAGS` reads compile to pushf/pop (probed, grows) | 2026-09-21 | none known; record as irreducible (INT flag-return protocol) | low |
 | F_6B7A / F_6BAC timer install/restore | TIMER.C | 85 | 45 | explicit `push ax/dx/ds/es` around DOS calls and `push cs / pop ds`: no C expression saves caller registers | 2026-09-21 | none; irreducible (register choreography) | low |
@@ -72,10 +72,10 @@ gbfc4, g9bfc/gbf66, gc5cc) is the next batch.
 ## 6. Source layout
 
 Done: recovery/src, recovery/asm hold the 126+19 retired references.  Left:
-`src/F_4EEB.ASM` belongs in asm/ (rename_source); recipes/modules C-candidate
+`asm/F_4EEB.ASM` belongs in asm/ (rename_source); recipes/modules C-candidate
 recipes for proven-ASM modules moved next to their sources under recovery/.
 
 ## 7. Blockers / tooling
 
-- BOARDSCR `neg ax` (row 1): codegen construct unknown; bounded (1 byte).
+- BOARDSCR `neg ax` (row 1): closed as irreducible (see row).
 - `tools/interface_census.py` still globs src/*.C only (recovery/ excluded on purpose).

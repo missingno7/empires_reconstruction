@@ -39,7 +39,6 @@ void timer_irq_install()
 
 /* ---- F_6BAC (original code at 0x6BAC) ---- */
 /* F_6BAC -- restore the timer interrupt and reset the PIT divisor. */
-extern void interrupt (*int8_saved_vector)(void);   /* saved INT 8 vector: offset at DS:0B7A, segment at DS:0B7C */
 void timer_irq_restore()
 {
     asm push ax
@@ -72,7 +71,6 @@ void timer_irq_restore()
    the historical object keeps the caller flags across the STI. */
 extern int near timer_tick_phase,sound_request_count,sound_enabled,music_enabled;
 extern unsigned long near timer_ticks;                    /* 32-bit tick counter */
-extern void interrupt (* near int8_saved_vector)(void);         /* saved INT 8 vector */
 extern void sound_tick_entry(void);                            /* sound engine tick */
 void __sti__(void);
 void __outportb__(int,unsigned char);

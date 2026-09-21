@@ -63,6 +63,11 @@ extern char far *board_records;
 extern int point_in_hotspot_rect();
 extern char far *record_table_root;
 extern char far *record_field_skip_n();
+extern int g00bc;
+extern void f2986();
+extern int board_record_index;
+extern char s9b6e[], s9ae0[], s9a5c[], s99da[];
+extern unsigned char far *g96ea;
 
 /* ---- F_200F (original code at 0x200F) ---- */
 void resource_icon_table_load()
@@ -348,8 +353,6 @@ void board_mark_record_cells(void)
 
 
 /* ---- F_2986 (original code at 0x2986) ---- */
-extern int g00bc;
-
 void f2986(p)
 unsigned char far *p;
 {
@@ -399,22 +402,23 @@ unsigned char near *record_table_level4_ptr(){unsigned char *p;p=record_table_ro
    the two  83 E3 3F  (and bx,3fh) at 2C31 and 2D78 are the short AND form
    TASM picks and TCC's own writer does not. */
 /*@PUB _board_redraw_paint*/
-extern int value_parity(), resource_load_record();extern void gfx_copy_rect();extern void gfx_blit_bitmap();extern void gfx_wipe_rect();
-extern void f2986();
+extern int value_parity();
+/* alternate view: untyped extern void gfx_copy_rect(); vs typed extern void gfx_copy_rect(int,int,void far *,int); at top */
+extern void gfx_copy_rect();
+extern void gfx_blit_bitmap();
 extern int sprite_table_queue_draws(), draw_queue_render_highlighted(), draw_queue_reset();
 extern void board_mark_record_cells(void);
 extern void draw_queue_append(char, int, int, int, int);
 extern unsigned char near *record_table_level4_ptr();
 
-extern char far *board_records;
 extern unsigned char far *icon_record_list_ptr;
-extern unsigned char far *g96e6, far *g96ea;extern char far *g40d0;
-extern char far *record_table_root, far *ui_gfx_shadow_a;
-extern int g96, g94, g722, g73c, board_record_index, campaign_round_node_cursor, gb07a;
+extern unsigned char far *g96e6;
+extern char far *g40d0;
+extern int g94, g722, g73c, campaign_round_node_cursor, gb07a;
 extern int w8bea[], w8bf4[];
 extern unsigned char b4377[], b437a[], b4380[], b4386[];
 extern char s8c12[], s79bf[], s7400[], s735e[];
-extern char s9b6e[], s9ae0[], s9a5c[], s99da[], s9c50[], s6e88[];
+extern char s9c50[], s6e88[];
 extern char far *a72b2[];
 extern char a74a2[][0xbb], a6f2a[][0xe2], a893c[][0x62];
 
@@ -563,35 +567,20 @@ void board_redraw_paint()
 
 extern struct record3e8 g43b4[];
 
-extern int g072e, g00bc;
 extern char far *ui_gfx_blob, far *rect_queue_write_ptr;
-extern void rect_queue_flush(void);
-extern void timer_deadline_wait(void);
-extern void board_redraw_view();
+/* alternate view: untyped extern void timer_deadline_arm(); vs typed extern void timer_deadline_arm(int n); at top */
 extern void timer_deadline_arm();
 extern void sprite_draw_cursor(void);
 extern void timer_wait_ticks();
 extern int puzzle_run();
 extern void board_actors_draw(int n);
 extern void hud_panel_open();
-extern void sound_stop_reset(void);
 extern void board_redraw_paint(void);
-extern int board_record_index;
-extern char far *board_records;
-extern char far *src, far *dst;               /* DS:C5CA -> DS:40C4 */
-/*@SYM _src=0xC5CA kind=g key=storage_objects/M_2C0FA.phys*/
-/*@SYM _dst=0x40C4 kind=g key=storage_objects/M_23BF4.phys*/
-extern int gbc, g40ce;
-extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4, same entry as gfx_wipe_rect under this alias */
-/*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
-extern char far *record_table_root;
+extern int g40ce;
 extern int f250c(), f32fa(), sprite_record_adjust_draw();
+/* alternate view: untyped extern void stream_control_block_arm(); vs typed extern void stream_control_block_arm(int n); at top */
 extern void stream_control_block_arm();
-extern int g96;
-extern char s9a5c[], s99da[], s9b6e[], s9ae0[];
-extern void f2986();
-extern unsigned char far *g96ea;
-extern int g73e, cursor_x, cursor_y;
+extern int g73e;
 extern void anim_step_loop(int x, int y, int w, int h, int x2, int y2);
 extern void energy_set(int n);
 extern int confirm_quit_dialog(void);

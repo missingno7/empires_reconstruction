@@ -15,15 +15,43 @@ extern unsigned char near tile_width_table[],tile_height_table[];
 extern void farfree();
 extern int g720;
 extern void timer_deadline_arm();
+extern void gfx_wipe_rect();
+extern void gfx_box();
+extern int keyboard_poll_nonblocking();
+extern int keyboard_read_blocking_hotkeys();
+extern void gfx_copy_rect();
+extern void gfx_blit_bitmap();
+extern char far *ui_gfx_shadow_a;
+extern int g96;
+extern char *gc5a8, *gc580, *gc5ac, *gc59a, *gc5a4;
+extern char far *gc58a;
+extern char *gc58e, *gc584, *gc59e;
+extern char *resource_ptr_table[];
+extern int board_record_index;
+extern unsigned char actor_record_table[];
+extern void board_actors_draw();
+extern void sprite_script_frame_driver();
+extern void rect_queue_flush(void);
+extern void timer_deadline_wait(void);
+extern int g8fe, gbc, g40ce, g1776, g1784;
+extern char far *ui_gfx_blob;
+extern char far *rect_queue_write_ptr;
+extern int near gb52f[];
+extern int gc588, gc5a2;
+extern void sprite_table_wipe_active();
+extern void stream_control_block_arm();
+extern void resource_record_cache_reset();
+extern void sprite_draw_cursor(void);
+extern unsigned char gb6cf;
+extern char far *board_records;
+extern int cursor_x, cursor_y, g73a;
+extern int face7();
+extern int hud_scroll_move();
 
 /* ---- F_AF45 (original code at 0xAF45) ---- */
 /* Preincrement must feed the comparison: separate statements emit a shorter
    memory comparison. Explicit return preserves the final epilogue jump. */
-extern void gfx_wipe_rect();
-extern void gfx_box();
 extern int timer_deadline_reached();
-extern int keyboard_poll_nonblocking();
-extern int keyboard_read_blocking_hotkeys();
 extern int g13ef[];                     /* DS:13EF, the frame index */
 
 int menu_wait_key_animated()
@@ -52,13 +80,11 @@ int menu_wait_key_animated()
 
 
 /* ---- F_B09A (original code at 0xB09A) ---- */
-extern void gfx_copy_rect();extern void gfx_blit_bitmap();extern void gfx_wipe_rect();extern char far *ui_gfx_shadow_a;extern int g96;fb09a(){resource_load_record(0x47);gfx_blit_bitmap(6,200,ui_gfx_shadow_a);gfx_wipe_rect(6,200,0x134,0x90,6,0x158);resource_load_record(0x48);g96=400;gfx_copy_rect(0x72,0xd3,ui_gfx_shadow_a,0);g96=0x9f;gfx_wipe_rect(6,200,0x134,0x90,6,16);}
+fb09a(){resource_load_record(0x47);gfx_blit_bitmap(6,200,ui_gfx_shadow_a);gfx_wipe_rect(6,200,0x134,0x90,6,0x158);resource_load_record(0x48);g96=400;gfx_copy_rect(0x72,0xd3,ui_gfx_shadow_a,0);g96=0x9f;gfx_wipe_rect(6,200,0x134,0x90,6,16);}
 
 
 /* ---- F_B122 (original code at 0xB122) ---- */
 /* Expand the board descriptor resources into byte-addressed far pointers. */
-extern char far *ui_gfx_shadow_a,*gc5a8,*gc580,*gc5ac,*gc59a,*gc5a4;
-extern char far *gc58a,*gc58e,*gc584,*gc59e,*resource_ptr_table[];
 void board_resource_expand(void)
 {
  register int i,j;
@@ -89,14 +115,12 @@ void board_resource_expand(void)
 
 
 /* ---- F_B3D7 (original code at 0xB3D7) ---- */
-extern void gfx_blit_bitmap(), gfx_wipe_rect();
-extern char far *ui_gfx_shadow_a;
 void chapter_map_backdrop_draw(void) { resource_load_record(84); gfx_blit_bitmap(0,0,ui_gfx_shadow_a); gfx_wipe_rect(0,0,320,200,0,200); }
 
 
 /* ---- F_B40F (original code at 0xB40F) ---- */
 /* Exact C recovery of compact descriptor expansion; far offsets are bytes. */
-extern char far *ui_gfx_shadow_a,*gc592,*gc596,*resource_ptr_table[];
+extern char *gc592, *gc596;
 void level_expand_descriptors(void)
 {
  register int i,j;
@@ -121,8 +145,6 @@ void menu_resources_free(void) { farfree(g7352); farfree(g7356); farfree(g735a);
 
 
 /* ---- F_B593 (original code at 0xB593) ---- */
-extern char *gc5a8, *gc580, *gc5ac, *gc59a, *gc5a4, far *gc58a, *gc584, *gc58e, *gc59e;
-
 void level_free_descriptor_table()
 {
     farfree(gc5a8);
@@ -139,39 +161,31 @@ void level_free_descriptor_table()
 
 
 /* ---- F_B60F (original code at 0xB60F) ---- */
-extern void gfx_wipe_rect();extern int board_record_index;extern unsigned char actor_record_table[],tile_width_table[],tile_height_table[];struct R{char a,b;int x,y;char c,d,e;char rest[23];};chapter_map_sprites_wipe(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(actor_record_table+1);for(i=0;i<actor_record_table[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+tile_width_table[p->c]-1;b=(y=p->y)+tile_height_table[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
+/* alternate view: extern unsigned char tile_width_table[]; (no near) vs extern unsigned char near tile_width_table[]; at top */
+extern unsigned char tile_width_table[];
+struct R{char a,b;int x,y;char c,d,e;char rest[23];};chapter_map_sprites_wipe(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(actor_record_table+1);for(i=0;i<actor_record_table[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+tile_width_table[p->c]-1;b=(y=p->y)+tile_height_table[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
 
 
 /* ---- F_B6CD (original code at 0xB6CD) ---- */
-extern int hud_panel_clear(), chapter_map_sprites_wipe();extern void board_actors_draw();extern void sprite_script_frame_driver();extern void gfx_box();
+extern int hud_panel_clear(), chapter_map_sprites_wipe();
 extern void menu_list_disable(void);
 extern void chapter_map_backdrop_draw(void);
-extern void rect_queue_flush(void);
-extern void timer_deadline_wait(void);
-extern void level_expand_descriptors(void);extern int g8fe,gbc,board_record_index,g40ce,g98,g94,g96,g9a,g1776,g1784;
-extern char far *ui_gfx_blob;
-extern char far *rect_queue_write_ptr;level_chapter_driver(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;chapter_map_backdrop_draw();level_expand_descriptors();board_actors_draw(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;chapter_map_sprites_wipe();sprite_script_frame_driver();if(rect_queue_write_ptr!=ui_gfx_blob)rect_queue_flush();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
+extern void level_expand_descriptors(void);
+extern int g98, g94, g9a;
+level_chapter_driver(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;chapter_map_backdrop_draw();level_expand_descriptors();board_actors_draw(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;chapter_map_sprites_wipe();sprite_script_frame_driver();if(rect_queue_write_ptr!=ui_gfx_blob)rect_queue_flush();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
 
 
 /* ---- F_B772 (original code at 0xB772) ---- */
-extern unsigned char actor_record_table[];extern int near gb52f[];extern int gc588,gc5a2;struct R_B772{char a,b;int x,y;char c;char rest[25];};fb772(){register int i,j;int *q;int n;gc588=*(unsigned char *)gb52f=0;gc5a2=13;n=actor_record_table[0];j=n*32+1;for(i=5;i<=11;i+=2){if(actor_record_table[i*32+1]==0&&actor_record_table[i*32+7]==9){q=(int *)(actor_record_table+14+i*32);q[0]=(i-5)/2*3+j;q[2]=0;}}}
+struct R_B772{char a,b;int x,y;char c;char rest[25];};fb772(){register int i,j;int *q;int n;gc588=*(unsigned char *)gb52f=0;gc5a2=13;n=actor_record_table[0];j=n*32+1;for(i=5;i<=11;i+=2){if(actor_record_table[i*32+1]==0&&actor_record_table[i*32+7]==9){q=(int *)(actor_record_table+14+i*32);q[0]=(i-5)/2*3+j;q[2]=0;}}}
 
 
 /* ---- F_B7F9 (original code at 0xB7F9) ---- */
 /* Exact Turbo C reconstruction. Board fields use the existing workspace
  * arrays; no new storage or interior-address globals are introduced. */
-extern void timer_deadline_wait(void);extern void sprite_table_wipe_active();extern void sprite_script_frame_driver();extern void gfx_wipe_rect();extern void gfx_box();
-extern void stream_control_block_arm();
-extern void rect_queue_flush(void);
-extern void resource_record_cache_reset();
 extern void sound_stop_reset(void);
-extern void sprite_draw_cursor(void);
+/* alternate view: typed extern void gfx_copy_rect(int,int,void far *,int); vs untyped extern void gfx_copy_rect(); at top */
 extern void gfx_copy_rect(int,int,void far *,int);
-extern int gbc,g1774,g96;
-extern int near gb52f[];
-extern unsigned char gb6cf;
-extern char far *ui_gfx_blob;
-extern char far *ui_gfx_shadow_a,far *rect_queue_write_ptr,far *board_records;
+extern int g1774;
 void level_display_init(void)
 {
  register int x,i;
@@ -192,41 +206,31 @@ void level_display_init(void)
 
 
 /* ---- F_B967 (original code at 0xB967) ---- */
-extern char far *ui_gfx_blob;
-extern char far *board_records, far *rect_queue_write_ptr;
-extern unsigned char gb6cf;
-extern void sprite_script_frame_driver(), rect_queue_flush(void), sprite_table_wipe_active(), timer_deadline_wait();
 void level_exit_transition_run(void) { *board_records=7; sprite_script_frame_driver(); rect_queue_flush(); while(!gb6cf) { timer_deadline_arm(24); rect_queue_write_ptr=ui_gfx_blob; sprite_table_wipe_active(); sprite_script_frame_driver(); rect_queue_flush(); timer_deadline_wait(); } }
 
 
 /* ---- F_B99F (original code at 0xB99F) ---- */
 /* Board movement, jumping, collision response, and redraw loop. */
-extern int g8fe,gc5a2,gbc,gc588,g40ce,g1776,g1784,g96;
-extern int key_up_right_held,key_up_left_held,key_up_held,key_up_released,g72c,g72e,g730,g732,g734,cursor_x,cursor_y,g73a;
+extern int key_up_right_held,key_up_left_held,key_up_held,key_up_released,g72c,g72e,g730,g732,g734;
 extern int near g1684[];
 extern unsigned char near g740[];
-extern unsigned char actor_record_table[];
 extern struct dialog near g1670;
 extern char game_abort_jmpbuf[];extern unsigned char g96ee[];
 extern unsigned long timer_ticks;
-extern char far *ui_gfx_blob;
-extern char far *rect_queue_write_ptr,far *resource_ptr_table[],far *resource_stripe_table;
-extern int keyboard_poll_nonblocking(),keyboard_read_blocking_hotkeys(),face7(),slot_reset_for_new_game(),hud_tab_next();
+/* alternate view: extern char far *resource_ptr_table[]; (far elements) vs extern char *resource_ptr_table[]; at top */
+extern char far *resource_ptr_table[];
+extern char far *resource_stripe_table;
+extern int slot_reset_for_new_game(), hud_tab_next();
 extern void level_display_init(void);
 extern void player_select_restart_confirm();
-extern int board_collision_span_or(), fb772(), shadow_bitmap_hit_test(), hud_tab_get();extern void sprite_table_wipe_active();
-extern void stream_control_block_arm();
+extern int board_collision_span_or(), fb772(), shadow_bitmap_hit_test(), hud_tab_get();
 extern void board_redraw_view();
 extern void sprite_slots_redraw();
-extern int hud_scroll_move(), energy_adjust();extern void sprite_script_frame_driver();
+extern int energy_adjust();
 extern void level_exit_transition_run(void);
 extern void cursor_trail_arm(void);
-extern void rect_queue_flush(void);
-extern void timer_deadline_wait(void);
 extern void board_record_complete();
-extern void resource_record_cache_reset();
 extern void board_raycast_step(void);
-extern void gfx_copy_rect(int,int,void far *,int);
 extern void movmem();
 extern void longjmp(void far *,int);
 int level_run_loop(void)
@@ -354,15 +358,15 @@ frame_end:
 
 
 /* ---- F_C0E0 (original code at 0xC0E0) ---- */
-extern int g8fe,gbc,board_record_index,g40ce,cursor_x,cursor_y,g73a;
 extern struct record3e8 g43b4[];
-extern char far *board_records;extern int fb09a(), fb4fb(), level_run_loop();extern void board_actors_draw();extern void gfx_box();extern void board_resource_expand(void);extern void resource_record_cache_reset();extern void level_free_descriptor_table();
+extern int fb09a(), fb4fb(), level_run_loop();
+extern void board_resource_expand(void);
+extern void level_free_descriptor_table();
 extern void menu_resources_free(void);
-extern void sprite_draw_cursor(void);
 level_play(){register int r;gbc=g8fe=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;menu_resources_free();fb09a();board_resource_expand();fb4fb();board_actors_draw(0);cursor_x=16;cursor_y=112;g73a=0;sprite_draw_cursor();gfx_box(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
 
 
 /* ---- F_C15E (original code at 0xC15E) ---- */
 extern void hud_scroll_reset(void);
-extern int face7(),hud_scroll_move(),level_play(),level_chapter_driver();
+extern int level_play(),level_chapter_driver();
 extern void menu_backdrop_paint(void);extern void sound_voices_reset();extern int campaign_round_node_cursor,g722;level_play_chapter(){hud_scroll_reset();if(!face7())hud_scroll_move(-3);else hud_scroll_move(-4);campaign_round_node_cursor=42;g722=0;menu_backdrop_paint();if(!level_play())return 0;level_chapter_driver();sound_voices_reset();return 1;}

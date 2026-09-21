@@ -14,11 +14,35 @@
    prototype visible at a call site can change the bytes Turbo C emits for
    the call (see e.g. F_A43C's weak `slot_cursor_box()` redeclaration and
    F_A85E's wide-prototype `setmem` versus F_A525's narrow one). Plain data
-   symbols (ints, char arrays) have no such risk and are merged below. */
+   symbols (ints, char arrays) have no such risk and are merged below, along
+   with the handful of function symbols that carry exactly one prototype
+   form everywhere in this file (deduping those cannot change what any call
+   site sees, since there is no alternate form for them to fall back to). */
 extern int current_slot;
 extern int cur, err, sound_enabled, music_enabled;
 extern char g12d0[];
 extern void text_draw_wrapped(int, int, char far *);
+extern void keyboard_chain_enable(void);          /* 6990 */
+/*@SYM _keyboard_chain_enable=0x6990 kind=f key=functions/F_6990.entry*/
+extern void keyboard_buffer_drain(void);          /* 6B66 */
+/*@SYM _keyboard_buffer_drain=0x6B66 kind=f key=functions/F_6B66.entry*/
+extern void ui_overlay_show(void);          /* 703E */
+/*@SYM _ui_overlay_show=0x703E kind=f key=functions/F_703E.entry*/
+extern void sound_start(void);          /* D593 */
+/*@SYM _sound_start=0xD593 kind=f key=functions/F_D593.entry*/
+extern void menu_list_disable(void);          /* 7925 */
+/*@SYM _menu_list_disable=0x7925 kind=f key=functions/F_7925.entry*/
+extern void box(int a, int b, int c, int d);        /* 039F */
+/*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
+extern void menu_list_enable(void);          /* 791E */
+/*@SYM _menu_list_enable=0x791E kind=f key=functions/F_791E.entry*/
+extern void sound_request_count_dec(void);          /* D5A6 */
+/*@SYM _sound_request_count_dec=0xD5A6 kind=f key=functions/F_D5A6.entry*/
+extern void ui_overlay_hide(void);          /* 7162 */
+/*@SYM _ui_overlay_hide=0x7162 kind=f key=functions/F_7162.entry*/
+extern void keyboard_chain_disable(void);          /* 6997 */
+/*@SYM _keyboard_chain_disable=0x6997 kind=f key=functions/F_6997.entry*/
+extern int keyboard_read_blocking_hotkeys();
 
 /* ---- F_A33F (original code at 0xA33F) ---- */
 extern int hud_prompt_select_draw(), hud_panel_clear();
@@ -53,7 +77,7 @@ void slot_cursor_box(int x,int y,int c) { gfx_color_select(c); gfx_clear_rect(x,
 
 
 /* ---- F_A43C (original code at 0xA43C) ---- */
-extern int timer_deadline_reached(), keyboard_poll_nonblocking(), keyboard_read_blocking_hotkeys();
+extern int timer_deadline_reached(), keyboard_poll_nonblocking();
 extern void gfx_copy_rect_flip_h();
 extern void timer_deadline_arm();
 extern void slot_cursor_box();
@@ -142,20 +166,8 @@ player_name_edit()
    dispatched through a cs: table, and teardown. */
 extern int  keyboard_chain_active(void);          /* 6B74 */
 /*@SYM _keyboard_chain_active=0x6B74 kind=f key=functions/F_6B74.entry*/
-extern void keyboard_chain_enable(void);          /* 6990 */
-/*@SYM _keyboard_chain_enable=0x6990 kind=f key=functions/F_6990.entry*/
-extern void keyboard_buffer_drain(void);          /* 6B66 */
-/*@SYM _keyboard_buffer_drain=0x6B66 kind=f key=functions/F_6B66.entry*/
-extern void ui_overlay_show(void);          /* 703E */
-/*@SYM _ui_overlay_show=0x703E kind=f key=functions/F_703E.entry*/
-extern void sound_start(void);          /* D593 */
-/*@SYM _sound_start=0xD593 kind=f key=functions/F_D593.entry*/
 extern int  menu_list_active(void);          /* 792C */
 /*@SYM _menu_list_active=0x792C kind=f key=functions/F_792C.entry*/
-extern void menu_list_disable(void);          /* 7925 */
-/*@SYM _menu_list_disable=0x7925 kind=f key=functions/F_7925.entry*/
-extern void box(int a, int b, int c, int d);        /* 039F */
-/*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern void gfx_color_select(int a);                            /* 01CE */
 /*@SYM _gfx_color_select=0x01CE kind=f key=functions/F_01CE.entry*/
 extern void bar(int a, int b, int c);               /* 03A2 */
@@ -168,14 +180,6 @@ extern void player_type_toggle_draw(void);                              /* A19D 
 /*@SYM _player_type_toggle_draw=0xA19D kind=f key=functions/F_A19D.entry*/
 extern void dialog_restore_screen(void);          /* 8453 */
 /*@SYM _dialog_restore_screen=0x8453 kind=f key=functions/F_8453.entry*/
-extern void menu_list_enable(void);          /* 791E */
-/*@SYM _menu_list_enable=0x791E kind=f key=functions/F_791E.entry*/
-extern void sound_request_count_dec(void);          /* D5A6 */
-/*@SYM _sound_request_count_dec=0xD5A6 kind=f key=functions/F_D5A6.entry*/
-extern void ui_overlay_hide(void);          /* 7162 */
-/*@SYM _ui_overlay_hide=0x7162 kind=f key=functions/F_7162.entry*/
-extern void keyboard_chain_disable(void);          /* 6997 */
-/*@SYM _keyboard_chain_disable=0x6997 kind=f key=functions/F_6997.entry*/
 
 /* The historical argument aliases record 5's zero word, not local storage. */
 extern struct dialog near menu_empty_record;
@@ -217,17 +221,9 @@ int player_type_select(void)
 
 /* ---- F_A768 (original code at 0xA768) ---- */
 extern struct dialog dialog_quit_confirm;
-extern int keyboard_chain_active(), menu_list_active(), keyboard_read_blocking_hotkeys();
-extern void sound_start(void);
-extern void menu_list_disable(void);
-extern void keyboard_chain_enable(void);
-extern void ui_overlay_hide(void);
-extern void ui_overlay_show(void);
-extern void menu_list_enable(void);
+extern int keyboard_chain_active(), menu_list_active();
 extern void dialog_restore_screen();
 extern void gfx_color_select(int n);
-extern void keyboard_chain_disable(void);
-extern void sound_request_count_dec(void);
 extern void quit_confirm_toggle_draw(void);
 
 confirm_quit_dialog()
@@ -270,21 +266,15 @@ confirm_quit_dialog()
 extern struct dialog dialog_player_name_full, dialog_player_name_entry;
 extern int  keyboard_chain_active(void);                           /* 6B74 */
 /*@SYM _keyboard_chain_active=0x6B74 kind=f key=functions/F_6B74.entry*/
-extern void keyboard_chain_enable(void), keyboard_buffer_drain(void), ui_overlay_show(void), sound_start(void);
 extern int  menu_list_active(void);                           /* 792C */
 /*@SYM _menu_list_active=0x792C kind=f key=functions/F_792C.entry*/
-extern void menu_list_disable(void);                           /* 7925 */
-/*@SYM _menu_list_disable=0x7925 kind=f key=functions/F_7925.entry*/
 extern void gfx_color_select(int a);                            /* 01CE */
 /*@SYM _gfx_color_select=0x01CE kind=f key=functions/F_01CE.entry*/
 extern void rect_border_draw(int a, int b, int c, int d);      /* 0355 */
 /*@SYM _rect_border_draw=0x0355 kind=f key=functions/F_0355.entry*/
-extern void box(int a, int b, int c, int d);        /* 039F */
-/*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern int  player_name_edit(void);                             /* A525 */
 /*@SYM _player_name_edit=0xA525 kind=f key=functions/F_A525.entry*/
-extern void dialog_restore_screen(void), menu_list_enable(void), sound_request_count_dec(void), ui_overlay_hide(void);
-extern void keyboard_chain_disable(void), keyboard_buffer_drain(void);
+extern void dialog_restore_screen(void);
 extern void setmem(struct tbl_entry far *p, unsigned n, int v); /* F304 */
 /*@SYM _setmem=0xF304 kind=f key=functions/F_F304.entry*/
 extern int  player_type_select(void);                            /* A658 */
@@ -337,7 +327,6 @@ extern char near g1356[],g12e5[];
 extern struct dialog near dialog_slot_delete_confirm;
 extern char far *g13b8;
 extern int menu_wait_key_animated();
-extern void keyboard_buffer_drain(void);
 extern void slot_row_highlight(),slot_delete(int);
 /* str_concat_far_list appends far strings until a null pointer; this call site needs the
    record argument typed as a far pointer for exact code. */
@@ -380,15 +369,9 @@ int slot_list_select_loop(void)
 /* Exact Turbo C recovery of the 385-byte selection/workspace routine.
    The far-pointer slot_row_draw prototype and local declaration order are byte-significant. */
 extern int keyboard_chain_active(), slot_menu_draw_header(), slot_find_free(), slot_list_draw(), slot_list_select_loop(), player_slot_add_run();
-extern void menu_list_disable(void);
-extern void sound_start(void);
-extern void keyboard_chain_enable(void);
-extern void keyboard_buffer_drain(void);
 extern void sound_voices_reset();
 extern void sound_stop_reset(void);
 extern void gfx_color_select(int n);
-extern void keyboard_chain_disable(void);
-extern void sound_request_count_dec(void);
 extern void anim_step_loop(int,int,int,int,int,int);
 extern void slot_table_save();
 extern int music_track_handle,g98,g9a;

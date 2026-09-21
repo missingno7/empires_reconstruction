@@ -2,11 +2,15 @@
    One translation unit; the sections below were the separate member
    sources of grouped module C_4F63_520A and keep their original ids. */
 
+void __int__(int);
+extern char far * far *_argv;
+extern int g1778;
+extern char display_mode;
+
 /* ---- F_4F63 (original code at 0x4F63) ---- */
 /* Exact 51-byte DOS handle-2 writer using Turbo C register pseudo-variables and __int__; no inline ASM or byte emission.
    Preserve the historical strlen(text)-1 length and DS load exactly. */
 extern unsigned strlen(const char far *);
-void __int__(int);
 void dos_write_handle2(char far *text)
 {
  unsigned segment;
@@ -22,9 +26,7 @@ void dos_write_handle2(char far *text)
 /* ---- F_4F96 (original code at 0x4F96) ---- */
 /* Exact command-line parser. Turbo C -B passes generated assembly to TASM;
  * this naturally reproduces the original switch and branch encodings. */
-extern char far * far *_argv;
-extern int _argc,g1778;
-extern char display_mode;
+extern int _argc;
 void cmdline_parse_args(void)
 {
  register int i;
@@ -84,11 +86,9 @@ void bios_equipment_probe()
        short jumps padded with NOP (the same two-pass artifact as the stores),
        where a C goto compiles to an unpadded short jump.
    Probed byte-exact alone and inside the STARTUP unit (tools/probe_tu.py). */
-extern char display_mode;               /* DS:BFCD, the display mode (VIDMODE.C writes it) */
+/* DS:BFCD, the display mode (VIDMODE.C writes it) -- declared at top of file */
 extern char b856;
-extern int g1778;
 extern int opl_detect();
-void __int__(int);
 unsigned char __inportb__(int);
 void __outportb__(int, unsigned char);
 
@@ -211,8 +211,6 @@ extern int video_adapter_detect(), sound_backend_probe();
 extern char getdisk();
 extern long farcoreleft();
 extern unsigned char _osmajor;
-extern char far * far *_argv;
-extern char display_mode;
 extern char ba22[3][16];
 extern char s859[], s8a8[];
 

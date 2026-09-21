@@ -140,8 +140,6 @@ void keyboard_buffer_drain()
 /* ---- F_6B74 (original code at 0x6B74) ---- */
 /* F_6B74 -- read back the flag at DS:0B72.  The trailing EB00 is the
    `return`'s jump to the epilogue at zero displacement (rule 7's shape). */
-extern int near keyboard_state[];                 /* DS:0B72 */
-
 int keyboard_chain_active()
 {
     return (keyboard_state[0]);

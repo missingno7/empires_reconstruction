@@ -30,6 +30,8 @@ extern void dialog_restore_screen();
 extern void sound_request_count_dec(void);
 extern void keyboard_chain_disable(void);
 extern void dialog_blink_box(int);
+extern unsigned ui_gfx_blob;                  /* DS:C5CA */
+extern unsigned dialog_backdrop_save_size;                  /* DS:C5CC */
 
 /* ---- F_7D91 (original code at 0x7D91) ---- */
 dialog_draw_panel(p)
@@ -328,8 +330,6 @@ int a;
    plain ints are the same six pushes, so they are spelled as the six ints
    the extent literally pushes. */
 extern void gfx_save_rect();
-extern unsigned ui_gfx_blob;                  /* DS:C5CA */
-extern unsigned dialog_backdrop_save_size;                  /* DS:C5CC */
 
 void dialog_draw_shadow()
 {
@@ -341,8 +341,6 @@ void dialog_draw_shadow()
 /* F_8453 -- the pair of blits through the runtime-generated thunks at IP
    03B1h and 039Fh. */
 extern void gfx_restore_rect();
-extern unsigned ui_gfx_blob;                  /* DS:C5CA */
-extern unsigned dialog_backdrop_save_size;                  /* DS:C5CC */
 
 void dialog_restore_screen()
 {

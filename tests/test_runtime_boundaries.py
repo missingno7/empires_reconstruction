@@ -14,7 +14,9 @@ class BoundaryTests(unittest.TestCase):
         from reconstruct import ROOT
         measurement, binary = exact_measure()
         labels=[x for x in measurement['labels'] if x['name'].startswith('rt_')]
-        self.assertEqual(len(labels),184)
+        # 184 boundary labels plus the 41 branch-target labels that replaced the
+        # label-less `jcc $+N` spellings (2026-09-21); every rt_XXXX still sits at its offset.
+        self.assertEqual(len(labels),225)
         self.assertTrue(all(x['offset']==int(x['name'][3:],16) for x in labels))
         self.assertEqual(measurement['fixups'],[])
         text=(ROOT/'asm/RUNTIME_BLOCK.ASM').read_text()

@@ -22,6 +22,10 @@ extern void resource_load_record_alloc();
 extern void tutorial_hint_dialog_show();
 extern void gfx_bar(int a, int b, int c);
 extern void gfx_vline(int a, int b, int c);
+extern char far *gc0ee;                 /* DS:C0EE offset, DS:C0F0 segment; F_6FCA/F_6FDA's far view --
+                                            F_7162/F_7202/F_7298 re-declare it near locally, and
+                                            F_7417/F_7443 then restore this far view locally again,
+                                            since the type in scope at each call site is byte-significant */
 
 /* ---- F_6FC3 (original code at 0x6FC3) ---- */
 hud_panel_clear() { hud_prompt_kind = 0; }
@@ -31,8 +35,6 @@ hud_panel_clear() { hud_prompt_kind = 0; }
 /* F_6FCA -- load record 0x3F into the far block whose pointer lives at
    DS:C0EE.  The `push ds / mov ax,0C0EEh / push ax` pair is the ADDRESS of
    that pointer, F_684A's `char far * far *` OUT parameter. */
-extern char far *gc0ee;                 /* DS:C0EE offset, DS:C0F0 segment */
-
 void hud_icons_load()
 {
     resource_load_record_alloc(0x3f, &gc0ee);
@@ -42,8 +44,6 @@ void hud_icons_load()
 /* ---- F_6FDA (original code at 0x6FDA) ---- */
 /* F_6FDA -- open the panel: blit its backdrop, draw the five widgets, frame
    it.  gc0ee is a far pointer whose first word is its own length. */
-extern char far *gc0ee;
-
 void hud_panel_open(void)
 {
     gc0fa = 0;
@@ -138,9 +138,8 @@ void ui_overlay_reset()
 
 
 /* ---- F_7202 (original code at 0x7202) ---- */
-/* gc0ee is declared as a near `char *` here for the same reason as F_7162. */
-extern char *gc0ee;
-
+/* gc0ee is still in scope as the near `char *` declared by F_7162 above
+   (no intervening redeclaration), for the same reason as F_7162. */
 void hud_draw_meter()
 {
     register int i, x;
@@ -188,9 +187,8 @@ int hud_tab_next(void)
 
 
 /* ---- F_7298 (original code at 0x7298) ---- */
-/* gc0ee is declared as a near `char *` here for the same reason as F_7162. */
-extern char *gc0ee;
-
+/* gc0ee is still in scope as the near `char *` declared by F_7162 above
+   (no intervening redeclaration), for the same reason as F_7162. */
 void hud_tab_draw()
 {
     gfx_blit_bitmap(0x98, 0xa6, gc0ee + ((unsigned *)(gc0ee + 6))[gb7e] + 2);

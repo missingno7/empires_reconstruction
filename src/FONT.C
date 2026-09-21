@@ -2,11 +2,12 @@
    One translation unit; the sections below were the separate member
    sources of grouped module C_6CA6_6D3C and keep their original ids. */
 
-/* ---- F_6CA6 (original code at 0x6CA6) ---- */
-/* F_6CA6 -- index the far resource table and publish three spans. */
 extern unsigned char far *gc0d6[];
 #include "LAYOUT.H"
 extern unsigned gc0de,gc0e0,gc0e2,gc0e4,gc0e6,gc0ea;
+
+/* ---- F_6CA6 (original code at 0x6CA6) ---- */
+/* F_6CA6 -- index the far resource table and publish three spans. */
 void sprite_sheet_select(i)
 int i;
 {
@@ -38,8 +39,6 @@ int i;
 /* F_6CEA -- read back the word at DS:C0EA (the index F_6CA6 latched there).
    The trailing EB00 is the `return`'s jump to the epilogue at zero
    displacement (tc20-codegen rule 7's shape, here for a return). */
-extern unsigned gc0ea;                  /* DS:C0EA */
-
 int sprite_sheet_index_get()
 {
     return (gc0ea);
@@ -61,9 +60,6 @@ int dialog_line_height_get(void)
    emits the SI and DI saves itself because the asm names them (rule 14),
    and only the DS save is written here.  Every forward jump is spelled
    `short` so TASM's two-pass forward-reference padding cannot widen it. */
-extern unsigned gc0e0;                  /* DS:C0E0, the font segment */
-extern unsigned gc0e4;                  /* DS:C0E4, the width table offset */
-
 int text_line_width(s)
 char far *s;
 {

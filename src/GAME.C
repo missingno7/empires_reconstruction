@@ -2,9 +2,6 @@
    One translation unit; the sections below were the separate member
    sources of grouped module C_3A75_4A93 and keep their original ids. */
 
-/* ---- F_3A75 (original code at 0x3A75) ---- */
-/* F_3A75 -- the turn loop.  Entry 13B75; the declared /24 player-query point
-   13C08 is the rect_table_hit_id() probe at offset 0x93 of this function. */
 struct C470 { char pad[0x15]; char b15; char rest[5]; };
 
 extern int keyboard_poll_nonblocking(), keyboard_read_blocking_hotkeys(), hud_tab_next(), rect_table_hit_id();
@@ -54,7 +51,16 @@ extern unsigned char b437a[];
 extern char b438c[], b4396[], b43a0[], b43aa[];
 extern int w8bea[], w8bf4[];
 extern struct C470 c470[];
+extern int resource_load_record();
+extern void movmem();
+extern char far *ui_gfx_shadow_a;                 /* DS:C5C6 offset, DS:C5C8 segment */
+extern int campaign_round_node_cursor;
+extern int value_parity();
+extern int g73e;
 
+/* ---- F_3A75 (original code at 0x3A75) ---- */
+/* F_3A75 -- the turn loop.  Entry 13B75; the declared /24 player-query point
+   13C08 is the rect_table_hit_id() probe at offset 0x93 of this function. */
 int turn_loop_run()
 {
     int key;                            /* bp-16 */
@@ -394,12 +400,9 @@ tail:
 
 
 /* ---- F_4517 (original code at 0x4517) ---- */
-extern int resource_load_record();
-extern void movmem();
 extern void resource_load_record_into();
 extern int g73c;
 extern int g724[];
-extern char far *ui_gfx_shadow_a;
 extern char s79bf[];
 extern char a74a2[];
 extern char s8c12[];
@@ -434,13 +437,10 @@ int di;
 /* ---- F_462E (original code at 0x462E) ---- */
 /* F_462E -- paint the title/menu backdrop for the current mode.  si is the
    mode, di the row offset chosen by the two-term disjunction at 4698. */
-extern int campaign_round_node_cursor;
-extern int board_record_index;
-extern char far *board_records;
-extern char far *ui_gfx_shadow_a;
 extern unsigned char g4374[];
 extern char g0b3ae[];
-extern int menu_resources_load(), value_parity(), resource_load_record(), face7();extern void setmem();extern void movmem();
+extern int menu_resources_load(), face7();
+extern void setmem();
 extern void board_terrain_resources_load();
 
 #include "R3E8.H"
@@ -480,7 +480,6 @@ void menu_backdrop_paint(void)
 /* F_4713 -- the level driver: set the map geometry, build the view, then run
    the turn loop in F_3A75 and hand back its result.  No frame at all (no
    parameters, no locals, one register variable), which is what -k- gives. */
-extern int value_parity();
 extern void menu_backdrop_paint(void);
 extern void puzzle_clear_grid(void);
 extern void board_redraw_paint(void);
@@ -489,15 +488,13 @@ extern void menu_list_source_set_default(void), hud_scroll_reset(void);
 extern void board_actors_draw();extern void gfx_clear_rect();extern void gfx_box();
 extern void hud_panel_open();
 extern void gfx_color_select(int n);
-extern void sprite_draw_cursor(void);
 extern void anim_step_loop(int, int, int, int, int, int);
 extern int tick_div8(), campaign_node_index(), turn_loop_run(), level_play_chapter();
 extern void resource_record_cache_reset(int n);
 extern void tutorial_hint_dialog_show(int);
 
 extern unsigned char b4374, b4375, b4376;
-extern int g71e, g722, g72c, g72e, cursor_x, cursor_y, g73a, g73e;
-extern int g1776, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8, campaign_round_node_cursor, gb07a;
+extern int g1776, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8;
 
 int level_driver_run()
 {
@@ -563,11 +560,9 @@ int level_driver_run()
    for the current display mode.  The destination is a far pointer to CODE,
    widened from the near function with a cast, which is why it pushes
    `cs` and not a segment fixup. */
-extern int resource_load_record();
 extern void far *memmove();
 extern void runtime_base();
 extern char display_mode;                      /* DS:BFCD, the display mode */
-extern char far *ui_gfx_shadow_a;                 /* DS:C5C6 offset, DS:C5C8 segment */
 
 void blitter_patch_variant()
 {
@@ -649,7 +644,7 @@ void boot_init_seed_rand()
 
 
 /* ---- F_4943 (original code at 0x4943) ---- */
-extern int value_parity(),level_driver_run();extern int current_slot,campaign_round_node_cursor,g73e;
+extern int level_driver_run();
 #include "C470.H"
 void campaign_chapter_advance(i) register int i;{slot_table[current_slot].resume_round=i+1;campaign_round_node_cursor=slot_table[current_slot].round_progress[i]*2+i*8;g73e=-1;while(1){if(value_parity(campaign_round_node_cursor)){if(!level_driver_run())campaign_round_node_cursor-=2;else{slot_table[current_slot].round_progress[i]++;if((campaign_round_node_cursor&7)==7)break;}}else{while(!level_driver_run());}campaign_round_node_cursor++;}}
 

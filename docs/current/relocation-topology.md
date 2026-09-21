@@ -266,7 +266,7 @@ Total EXE relocations: 106
 None.
 ## Fresh compile verification
 
-Checked against `build\production-pq37d75x\compile\WORK` (28 objects, 14 agree with prediction, 1 disagree).
+Checked against `build\production-tzq2ozwi\compile\WORK` (27 objects, 16 agree with prediction, 0 disagree).
 
 | Object | Module | Raw fixups | Raw direction | Predicted | Agrees |
 |---|---|---|---|---|---|
@@ -278,14 +278,13 @@ Checked against `build\production-pq37d75x\compile\WORK` (28 objects, 14 agree w
 | R0009.OBJ | C_200F_3986 | 407 | ascending | ascending | yes |
 | R0010.OBJ | C_3A75_4A93 | 496 | ascending | ascending | yes |
 | R0011.OBJ | F_4AA8 | 1 | single | ascending | yes |
-| R0012.OBJ | F_4B0C | 0 | none | ascending | yes |
+| R0012.OBJ | F_4B0C | 9 | ascending | ascending | yes |
 | R0013.OBJ | F_4E9F | 5 | ascending | ascending | yes |
 | R0014.OBJ | F_4EEB | 6 | ascending | ascending | yes |
 | R0015.OBJ | C_4F63_520A | 77 | ascending | ascending | yes |
 | R0018.OBJ | F_6036 | 6 | ascending | ascending | yes |
 | R0019.OBJ | F_60A9 | 11 | mixed | ascending | NO |
 | R0020.OBJ | F_6181 | 7 | mixed | ascending | NO |
-| R0022.OBJ | C_6266_68AA | 159 | ascending | descending | NO |
 | R0025.OBJ | C_6990_6B74 | 43 | mixed | ascending | NO |
 | R0026.OBJ | C_6B7A_6C87 | 32 | mixed | ascending | NO |
 | R0027.OBJ | C_6CA6_6D3C | 14 | ascending | ascending | yes |
@@ -295,7 +294,7 @@ Checked against `build\production-pq37d75x\compile\WORK` (28 objects, 14 agree w
 | R0050.OBJ | F_9EC3 | 4 | ascending | ascending | yes |
 | R0059.OBJ | M_C1A0_CB48 | 164 | ascending | ascending | yes |
 | R0062.OBJ | M_D386_D3CF | 3 | ascending | ascending | yes |
-| R0076.OBJ | M_D61C_D79C | 0 | none | ascending | yes |
+| R0076.OBJ | M_D61C_D79C | 6 | ascending | ascending | yes |
 | R0077.OBJ | M_D818_D825 | 0 | none | ascending | yes |
 | R0078.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
 

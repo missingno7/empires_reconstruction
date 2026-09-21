@@ -90,7 +90,7 @@ int main(int argc, char **argv)
 
     gfx_framebuffer_init();
     color_lookup_tables_init();
-    video_load_palette(&g41e[0][0]);         /* src/VIDEO.C: mode 4 loads g41e */
+    video_load_palette(g41e);                    /* src/VIDEO.C: mode 4 loads g41e */
     draw_demo_scene();
     if (dump_path)
         dump_vram_ppm(dump_path);

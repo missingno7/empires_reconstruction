@@ -8,6 +8,7 @@
  * The drawing primitives (asm/RUNTIME_BLOCK.ASM) live in primitives.c.
  */
 #include "gfx.h"
+#include "game_data.h"   /* g94..g9a, gbc, g9c, gbe, gde, gfe: generated DATA */
 
 #include <stdlib.h>
 #include <string.h>
@@ -21,10 +22,7 @@ extern dos_char display_mode;
 /* ---- DGROUP objects this module owns (tools/portable/state_ownership.json) */
 uint8_t *g3924[GFX_ROWS];
 dos_int  result;
-dos_int  gbc;
 uint8_t *rect_queue_write_ptr;
-dos_int  g94, g96;
-dos_int  g98, g9a;
 const uint8_t *gc0e0;
 dos_uint gc0de;
 dos_uint gc0e2;
@@ -39,14 +37,7 @@ uint32_t gfx_vram_generation;
 dos_int cur_idx;             /* DS:3902 */
 #define g3902 cur_idx        /* src/VIDEO.C's second name for the same word */
 dos_int g3904[16];           /* DS:3904 */
-dos_int gbe[16];             /* DS:00BE */
-#define g00be gbe             /* src/VIDEO.C's second name (color_table_entry_set) */
-dos_int gfe[16];              /* DS:00FE */
 
-/* DS:9C / DS:DE source tables for color_lookup_tables_init (see
- * gfx_data_stub.c for why these are temporarily defined there). */
-extern const uint8_t g9c[32];
-extern const uint8_t gde[32];
 
 /* Raw allocation backing g3924[]; historical DS:40CA/40CC (g40ca) held the
  * far pointer to this block.  Not part of the public interface: nothing
@@ -139,7 +130,7 @@ void color_lookup_tables_init_from(const uint8_t *g9c_src, const uint8_t *gde_sr
 
 void color_lookup_tables_init(void)
 {
-    color_lookup_tables_init_from(g9c, gde);
+    color_lookup_tables_init_from((const uint8_t *)g9c, (const uint8_t *)gde);
 }
 
 /* ---- src/VIDEO.C F_01BC: video_load_palette.  The historical routine

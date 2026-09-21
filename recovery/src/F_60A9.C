@@ -1,5 +1,5 @@
 extern unsigned int g8fe, ga20;
-extern unsigned char far *gbfc8, *g40d0;
+extern unsigned char far *sprite_tile_bank, *g40d0;
 extern void gfx_wipe_rect(), gfx_copy_rect();
 
 void animated_tile_tick()
@@ -19,7 +19,7 @@ void animated_tile_tick()
     asm dw offset DGROUP:ga20
     asm db 00Ah,000h
     asm db 0C4h,03Eh
-    asm dw offset DGROUP:gbfc8
+    asm dw offset DGROUP:sprite_tile_bank
     asm db 0C5h,036h
     asm dw offset DGROUP:g40d0
     asm db 0ACh,033h,0C9h,08Ah,0C8h,057h,0ADh,033h,0D2h,08Ah,0D4h,08Ah,0FEh,08Ah,0D8h,0D1h,0E3h,08Bh,0EAh,0ACh,032h,0E4h,0A8h,080h

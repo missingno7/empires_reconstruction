@@ -53,7 +53,7 @@ class MatchingCWave34Tests(unittest.TestCase):
             # src/BOARD.C holds several other '0x2a...'-prefixed literals
             # belonging to other functions. Anchor the replacement to the
             # comparison that is unique to F_2AE2's body.
-            before, after = 'g9ade == 0x2a)', 'g9ade == 0x2b)'
+            before, after = 'campaign_round_node_cursor == 0x2a)', 'campaign_round_node_cursor == 0x2b)'
             text = (ROOT / owner['source']).read_text()
             self.assertEqual(text.count(before), 1)
             source = text.replace(before, after, 1)

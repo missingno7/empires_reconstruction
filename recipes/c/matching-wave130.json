@@ -16,7 +16,7 @@
           "_int8_saved_vector": {"offset": 2938, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR far-vector fixup"},
           "_sound_enabled": {"offset": 5998, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
           "_music_enabled": {"offset": 6002, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
-          "_g237c": {"offset": 9084, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
+          "_sound_request_count": {"offset": 9084, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
           "_timer_tick_phase": {"offset": 49364, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR counter fixups"}
         },
         "module_segments": {}
@@ -33,11 +33,11 @@
         "flags_append": "",
         "bindings": {
           "_sound_effects_toggle": {"coordinate": "code_offset", "evidence": "complete keyboard ISR call", "owner": "F_68CF", "public": "_sound_effects_toggle", "addend": 0},
-          "_gb68": {"offset": 2920, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
+          "_key_up_held": {"offset": 2920, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
           "_gb6a": {"offset": 2922, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
-          "_gb6c": {"offset": 2924, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
-          "_gb6e": {"offset": 2926, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
-          "_gb70": {"offset": 2928, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
+          "_key_up_left_held": {"offset": 2924, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
+          "_key_up_right_held": {"offset": 2926, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
+          "_key_up_released": {"offset": 2928, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR data fixups"},
           "_keyboard_state": {"offset": 2930, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR gate fixup"},
           "_int9_saved_vector": {"offset": 49356, "coordinate": "DGROUP_offset", "evidence": "complete keyboard ISR far-chain fixup"}
         },

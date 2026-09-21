@@ -45,7 +45,7 @@ _animated_tile_tick  proc    near
         jmp     @@done
 @@tick:
         mov     _ga20,0Ah
-        les     di,_gbfc8
+        les     di,_sprite_tile_bank
         lds     si,_g40d0
         lodsb
         xor     cx,cx
@@ -155,6 +155,6 @@ _TEXT   ends
         extrn   _gfx_copy_rect:near
         extrn   _g8fe:word
         extrn   _ga20:word
-        extrn   _gbfc8:dword
+        extrn   _sprite_tile_bank:dword
         extrn   _g40d0:dword
         end

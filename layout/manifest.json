@@ -654,7 +654,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_26E8A.phys"
           },
-          "_gbfc8": {
+          "_sprite_tile_bank": {
             "offset": 49096,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
@@ -671,12 +671,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_g9bfc": {
+          "_tile_width_table": {
             "offset": 39932,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2972C.phys"
           },
-          "_gbf66": {
+          "_tile_height_table": {
             "offset": 48998,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BA96.phys"
@@ -718,7 +718,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2960E.phys"
@@ -752,7 +752,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2960E.phys"
@@ -1310,12 +1310,12 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20266.phys"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
@@ -1413,12 +1413,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -1526,12 +1526,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20266.phys"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
@@ -1793,7 +1793,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_2AE2 fixup"
@@ -1828,7 +1828,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_2AE2 fixup"
           },
-          "_gbfc4": {
+          "_icon_record_list_ptr": {
             "offset": 49092,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_2AE2 fixup"
@@ -2384,7 +2384,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "independent far-pointer loads in F_2AE2 and F_338A"
           },
-          "_gb3af": {
+          "_actor_state_table": {
             "offset": 45999,
             "coordinate": "DGROUP_offset",
             "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F"
@@ -2506,12 +2506,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20266.phys"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
@@ -2521,7 +2521,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026E.phys"
           },
-          "_g8bfe": {
+          "_game_abort_jmpbuf": {
             "offset": 35838,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2872E.phys"
@@ -2592,7 +2592,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gb70": {
+          "_key_up_released": {
             "offset": 2928,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2659,12 +2659,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2805,7 +2805,7 @@
             "public": "_board_unit_script_trigger",
             "addend": 0
           },
-          "_gb68": {
+          "_key_up_held": {
             "offset": 2920,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2870,7 +2870,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gbfc4": {
+          "_icon_record_list_ptr": {
             "offset": 49092,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2882,7 +2882,7 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gb6e": {
+          "_key_up_right_held": {
             "offset": 2926,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2909,7 +2909,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_gb6c": {
+          "_key_up_left_held": {
             "offset": 2924,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -3214,7 +3214,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23EE4.phys"
           },
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2960E.phys"
@@ -3453,12 +3453,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2025E.phys"
           },
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20266.phys"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
@@ -3503,7 +3503,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_28728.phys"
           },
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2960E.phys"
@@ -3721,7 +3721,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
           },
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2960E.phys"
@@ -3907,7 +3907,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1D.phys"
           },
-          "_g8bfe": {
+          "_game_abort_jmpbuf": {
             "offset": 35838,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2872E.phys"
@@ -4146,7 +4146,7 @@
             "public": "_play_window_wipe_clipped",
             "addend": 0
           },
-          "_gb3ae": {
+          "_actor_record_table": {
             "offset": 45998,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_4E9F fixup"
@@ -4156,12 +4156,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_4E9F fixup"
           },
-          "_gbf66": {
+          "_tile_height_table": {
             "offset": 48998,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_4E9F fixup"
           },
-          "_g9bfc": {
+          "_tile_width_table": {
             "offset": 39932,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_4E9F fixup"
@@ -4215,7 +4215,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2ABAC.phys"
           },
-          "_gb3ae": {
+          "_actor_record_table": {
             "offset": 45998,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2AEDE.phys"
@@ -4607,7 +4607,7 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_gb76": {
+          "_timer_ticks": {
             "offset": 2934,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A6.phys"
@@ -5148,12 +5148,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20266.phys"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
@@ -5688,7 +5688,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20550.phys"
           },
-          "_gbfc8": {
+          "_sprite_tile_bank": {
             "offset": 49096,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
@@ -6716,7 +6716,7 @@
             "public": "_sound_effects_toggle",
             "addend": 0
           },
-          "_gb68": {
+          "_key_up_held": {
             "offset": 2920,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20698.phys"
@@ -6726,17 +6726,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2069A.phys"
           },
-          "_gb6c": {
+          "_key_up_left_held": {
             "offset": 2924,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2069C.phys"
           },
-          "_gb6e": {
+          "_key_up_right_held": {
             "offset": 2926,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2069E.phys"
           },
-          "_gb70": {
+          "_key_up_released": {
             "offset": 2928,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A0.phys"
@@ -7015,7 +7015,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A2.phys"
           },
-          "_g237c": {
+          "_sound_request_count": {
             "offset": 9084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAC.phys"
@@ -7049,7 +7049,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gb76": {
+          "_timer_ticks": {
             "offset": 2934,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A6.phys"
@@ -7083,7 +7083,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gb76": {
+          "_timer_ticks": {
             "offset": 2934,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A6.phys"
@@ -7122,7 +7122,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gb76": {
+          "_timer_ticks": {
             "offset": 2934,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A6.phys"
@@ -7161,7 +7161,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gb76": {
+          "_timer_ticks": {
             "offset": 2934,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A6.phys"
@@ -7513,7 +7513,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -7656,7 +7656,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2C.phys"
           },
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -7698,7 +7698,7 @@
             "public": "_cur_color_index_get",
             "addend": 0
           },
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -7767,7 +7767,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B5.phys"
           },
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -8446,7 +8446,7 @@
             "public": "SCOPY@",
             "addend": 0
           },
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -8583,7 +8583,7 @@
             "public": "_sprite_sheet_index_get",
             "addend": 0
           },
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -8750,7 +8750,7 @@
             "public": "_sprite_sheet_index_get",
             "addend": 0
           },
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -8824,7 +8824,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gb83": {
+          "_hud_prompt_kind": {
             "offset": 2947,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
@@ -8931,7 +8931,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbb2": {
+          "_menu_list_enabled": {
             "offset": 2994,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206E2.phys"
@@ -8966,7 +8966,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gbb2": {
+          "_menu_list_enabled": {
             "offset": 2994,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206E2.phys"
@@ -9000,7 +9000,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gbb2": {
+          "_menu_list_enabled": {
             "offset": 2994,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206E2.phys"
@@ -9817,7 +9817,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FA.phys"
           },
-          "_gc5cc": {
+          "_dialog_backdrop_save_size": {
             "offset": 50636,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FC.phys"
@@ -9886,7 +9886,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FA.phys"
           },
-          "_gc5cc": {
+          "_dialog_backdrop_save_size": {
             "offset": 50636,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0FC.phys"
@@ -12347,7 +12347,7 @@
             "public": "_resource_load_record_into",
             "addend": 0
           },
-          "_gc360": {
+          "_slot_transfer_table": {
             "offset": 50016,
             "coordinate": "DGROUP_offset",
             "storage_evidence": "DS_C360",
@@ -12407,7 +12407,7 @@
             "addend": 0,
             "evidence": "functions/F_643A.entry"
           },
-          "_gc360": {
+          "_slot_transfer_table": {
             "offset": 50016,
             "coordinate": "DGROUP_offset",
             "storage_evidence": "DS_C360",
@@ -13898,7 +13898,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc360": {
+          "_slot_transfer_table": {
             "offset": 50016,
             "coordinate": "DGROUP_offset",
             "storage_evidence": "DS_C360",
@@ -13960,7 +13960,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gc360": {
+          "_slot_transfer_table": {
             "offset": 50016,
             "coordinate": "DGROUP_offset",
             "storage_evidence": "DS_C360",
@@ -14179,7 +14179,7 @@
             "offset": 50604,
             "evidence": "F_B122 historical instruction operands"
           },
-          "_g9bfc": {
+          "_tile_width_table": {
             "coordinate": "DGROUP_offset",
             "offset": 39932,
             "evidence": "Candidate instruction operands"
@@ -14218,7 +14218,7 @@
             "offset": 50630,
             "evidence": "Candidate instruction operands"
           },
-          "_gbf66": {
+          "_tile_height_table": {
             "coordinate": "DGROUP_offset",
             "offset": 48998,
             "evidence": "Candidate instruction operands"
@@ -14318,7 +14318,7 @@
             "offset": 45180,
             "evidence": "Candidate instruction operands"
           },
-          "_g9bfc": {
+          "_tile_width_table": {
             "coordinate": "DGROUP_offset",
             "offset": 39932,
             "evidence": "Candidate instruction operands"
@@ -14347,7 +14347,7 @@
             "offset": 50630,
             "evidence": "Candidate instruction operands"
           },
-          "_gbf66": {
+          "_tile_height_table": {
             "coordinate": "DGROUP_offset",
             "offset": 48998,
             "evidence": "Candidate instruction operands"
@@ -14436,7 +14436,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_26E8A.phys"
           },
-          "_gbfc8": {
+          "_sprite_tile_bank": {
             "offset": 49096,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
@@ -14555,7 +14555,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gb3ae": {
+          "_actor_record_table": {
             "offset": 45998,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2AEDE.phys"
@@ -14565,12 +14565,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEA.phys"
           },
-          "_g9bfc": {
+          "_tile_width_table": {
             "offset": 39932,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2972C.phys"
           },
-          "_gbf66": {
+          "_tile_height_table": {
             "offset": 48998,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BA96.phys"
@@ -14784,7 +14784,7 @@
             "evidence": "docs/storage-binding-evidence.json#DS_C5A2",
             "storage_evidence": "DS_C5A2"
           },
-          "_gb3ae": {
+          "_actor_record_table": {
             "offset": 45998,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2AEDE.phys"
@@ -14817,7 +14817,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_gb3af": {
+          "_actor_state_table": {
             "offset": 45999,
             "coordinate": "DGROUP_offset",
             "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F"
@@ -15069,7 +15069,7 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_gb3af": {
+          "_actor_state_table": {
             "coordinate": "DGROUP_offset",
             "offset": 45999,
             "evidence": "F_B99F historical instruction operands"
@@ -15100,12 +15100,12 @@
             "offset": 38638,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_g8bfe": {
+          "_game_abort_jmpbuf": {
             "coordinate": "DGROUP_offset",
             "offset": 35838,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_gb3ae": {
+          "_actor_record_table": {
             "coordinate": "DGROUP_offset",
             "offset": 45998,
             "evidence": "F_B99F historical instruction operands"
@@ -15186,7 +15186,7 @@
             "offset": 1838,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_gb6e": {
+          "_key_up_right_held": {
             "coordinate": "DGROUP_offset",
             "offset": 2926,
             "evidence": "F_B99F historical instruction operands"
@@ -15201,7 +15201,7 @@
             "offset": 1836,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_gb6c": {
+          "_key_up_left_held": {
             "coordinate": "DGROUP_offset",
             "offset": 2924,
             "evidence": "F_B99F historical instruction operands"
@@ -15368,22 +15368,22 @@
             "offset": 5744,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_g738": {
+          "_cursor_y": {
             "coordinate": "DGROUP_offset",
             "offset": 1848,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_gb68": {
+          "_key_up_held": {
             "coordinate": "DGROUP_offset",
             "offset": 2920,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_gb76": {
+          "_timer_ticks": {
             "coordinate": "DGROUP_offset",
             "offset": 2934,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_g736": {
+          "_cursor_x": {
             "coordinate": "DGROUP_offset",
             "offset": 1846,
             "evidence": "F_B99F historical instruction operands"
@@ -15408,7 +15408,7 @@
             "offset": 1840,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_gb70": {
+          "_key_up_released": {
             "coordinate": "DGROUP_offset",
             "offset": 2928,
             "evidence": "F_B99F historical instruction operands"
@@ -15514,12 +15514,12 @@
             "public": "_board_actors_draw",
             "addend": 0
           },
-          "_g736": {
+          "_cursor_x": {
             "offset": 1846,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20266.phys"
           },
-          "_g738": {
+          "_cursor_y": {
             "offset": 1848,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
@@ -15608,7 +15608,7 @@
             "public": "_hud_scroll_move",
             "addend": 0
           },
-          "_g9ade": {
+          "_campaign_round_node_cursor": {
             "offset": 39646,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2960E.phys"
@@ -17451,7 +17451,7 @@
             "offset": 930,
             "evidence": "Historical call operand and exact public index"
           },
-          "_gc360": {
+          "_slot_transfer_table": {
             "coordinate": "DGROUP_offset",
             "offset": 50016,
             "evidence": "F_CC6B historical instruction operands"
@@ -17578,7 +17578,7 @@
             "offset": 8604,
             "coordinate": "DGROUP_offset"
           },
-          "_g8bfe": {
+          "_game_abort_jmpbuf": {
             "offset": 35838,
             "coordinate": "DGROUP_offset"
           }
@@ -17628,7 +17628,7 @@
             "coordinate": "DGROUP_offset",
             "offset": 8624
           },
-          "_g8bfe": {
+          "_game_abort_jmpbuf": {
             "coordinate": "DGROUP_offset",
             "offset": 35838
           }
@@ -17703,7 +17703,7 @@
             "offset": 8684,
             "coordinate": "DGROUP_offset"
           },
-          "_g8bfe": {
+          "_game_abort_jmpbuf": {
             "offset": 35838,
             "coordinate": "DGROUP_offset"
           },
@@ -18436,7 +18436,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_gbfc4": {
+          "_icon_record_list_ptr": {
             "offset": 49092,
             "coordinate": "DGROUP_offset"
           },
@@ -18883,7 +18883,7 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_g237c": {
+          "_sound_request_count": {
             "offset": 9084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAC.phys"
@@ -18917,7 +18917,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_g237c": {
+          "_sound_request_count": {
             "offset": 9084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAC.phys"
@@ -18951,7 +18951,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_g237c": {
+          "_sound_request_count": {
             "offset": 9084,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAC.phys"

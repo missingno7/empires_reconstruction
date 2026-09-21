@@ -6,7 +6,7 @@
 
 struct B3 { unsigned char a, b, c; };
 
-extern int g736, g738, g73a;
+extern int cursor_x, cursor_y, g73a;
 extern int gc04e, gc0b0, gc0b6, gc0b8, gc0c0;
 extern int gc050[], gc080[];
 extern int cur_color_index_get(), rect_table_hit_id(), board_raycast_hit_test();
@@ -49,8 +49,8 @@ void cursor_trail_arm()
     int i, x, y;
 
     gc04e = 0x17;
-    x = g736 + 0x10;
-    y = g738 + 4;
+    x = cursor_x + 0x10;
+    y = cursor_y + 4;
     if (x < 8 || x > 0x137 || y < 0x10 || y > 0x9f)
         return;
     for (i = 0; i < 0x18; i++) {

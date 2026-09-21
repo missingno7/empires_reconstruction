@@ -27,7 +27,7 @@ extern void hud_icons_load();
 extern char far *g99d6;                 /* DS:99D6 offset, DS:99D8 segment */
 extern int g072c, g072e, g0736, g0738, g073a;
 extern void gfx_copy_rect(int,int,void far *,int);
-extern int g736, g738;
+extern int cursor_x, cursor_y;
 extern void gfx_wipe_rect();
 extern struct CEL cel[];
 extern int  xa[], ya[];         /* DS:8BEA, DS:8BF4 */
@@ -178,24 +178,24 @@ void board_redraw_view(void)
     int w4, w2;
     register int x, y;
 
-    if (g736 < 8) {
+    if (cursor_x < 8) {
         x = 8;
         w4 = 0x28;
-    } else if (g736 + 0x27 > 0x137) {
-        x = g736;
-        w4 = 0x138 - g736;
+    } else if (cursor_x + 0x27 > 0x137) {
+        x = cursor_x;
+        w4 = 0x138 - cursor_x;
     } else {
-        x = g736;
+        x = cursor_x;
         w4 = 0x28;
     }
-    if (g738 < 0x10) {
+    if (cursor_y < 0x10) {
         y = 0x10;
         w2 = 0x28;
-    } else if (g738 + 0x27 > 0x9f) {
-        y = g738;
-        w2 = 0xa0 - g738;
+    } else if (cursor_y + 0x27 > 0x9f) {
+        y = cursor_y;
+        w2 = 0xa0 - cursor_y;
     } else {
-        y = g738;
+        y = cursor_y;
         w2 = 0x28;
     }
     gfx_wipe_rect(x, y + 0xb8, w4, w2, x, y);
@@ -218,7 +218,7 @@ void board_scan_wipe_effect(register int i)
         dst = src;
         blit(xa[i], ya[i] + 0xb8, (char far *)&cel[k]);
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x21, xa[i], ya[i]);
-        copy(g736, g738, pool + g72e * 0x2a2, g73a);
+        copy(cursor_x, cursor_y, pool + g72e * 0x2a2, g73a);
         rect_queue_flush();
         timer_deadline_wait();
     }
@@ -251,7 +251,7 @@ f250c(i) int i;{unsigned char a;unsigned char *p;p=board_records+i*3+0x2ac;if(a=
 /* ---- F_257D (original code at 0x257D) ---- */
 int point_in_hotspot_rect(int x, int y)
 {
-    if (x >= g736 && x <= g736 + 0x1f && y >= g738 && y <= g738 + 0x27)
+    if (x >= cursor_x && x <= cursor_x + 0x1f && y >= cursor_y && y <= cursor_y + 0x27)
         return 1;
     return 0;
 }
@@ -407,10 +407,10 @@ extern void draw_queue_append(char, int, int, int, int);
 extern unsigned char near *record_table_level4_ptr();
 
 extern char far *board_records;
-extern unsigned char far *gbfc4;
+extern unsigned char far *icon_record_list_ptr;
 extern unsigned char far *g96e6, far *g96ea;extern char far *g40d0;
 extern char far *record_table_root, far *ui_gfx_shadow_a;
-extern int g96, g94, g722, g73c, board_record_index, g9ade, gb07a;
+extern int g96, g94, g722, g73c, board_record_index, campaign_round_node_cursor, gb07a;
 extern int w8bea[], w8bf4[];
 extern unsigned char b4377[], b437a[], b4380[], b4386[];
 extern char s8c12[], s79bf[], s7400[], s735e[];
@@ -429,7 +429,7 @@ void board_redraw_paint()
     int w2;
     register int i, j;
 
-    if (g9ade == 0x2a)
+    if (campaign_round_node_cursor == 0x2a)
         return;
     record_table_root = (char far *) (board_records + 0x2ca);
     gfx_blit_bitmap(8, 0xc8, s8c12);
@@ -441,7 +441,7 @@ void board_redraw_paint()
     gfx_blit_bitmap(0xa0, 0x110, s8c12);
     gfx_blit_bitmap(0xec, 0x110, s8c12);
     g96 = 0x190;
-    if (value_parity(g9ade) != 0) {
+    if (value_parity(campaign_round_node_cursor) != 0) {
         resource_load_record(g73c + 0x101e);
         gfx_copy_rect(8, 0xc8, ui_gfx_shadow_a, 0);
     }
@@ -453,7 +453,7 @@ void board_redraw_paint()
             w8 = p[1];
             gfx_copy_rect(j, w8 + 0xb8, a72b2[p[2] & 0x3f], p[2] & 0x40);
         }
-    gbfc4 = p;
+    icon_record_list_ptr = p;
     g94 = 0xc8;
     i = 0;
     w8 = i;
@@ -591,11 +591,11 @@ extern int g96;
 extern char s9a5c[], s99da[], s9b6e[], s9ae0[];
 extern void f2986();
 extern unsigned char far *g96ea;
-extern int g73e, g736, g738;
+extern int g73e, cursor_x, cursor_y;
 extern void anim_step_loop(int x, int y, int w, int h, int x2, int y2);
 extern void energy_set(int n);
 extern int confirm_quit_dialog(void);
-extern char g8bfe[];
+extern char game_abort_jmpbuf[];
 extern void longjmp(void far *s, int n);
 
 /* ---- F_31C4 (original code at 0x31C4) ---- */
@@ -751,7 +751,7 @@ void board_run_unit_script(unsigned char far *s)
             i++;
             s++;
             c = *s;
-            ((unsigned char near *) gb3af)[c << 5] = 0;
+            ((unsigned char near *) actor_state_table)[c << 5] = 0;
         }
     }
 }
@@ -826,25 +826,25 @@ void board_record_complete(void)
     board_actors_draw(0xb8);
     g96 = 0x9f;
 
-    if (g736 < 8) {
+    if (cursor_x < 8) {
         si = 8;
         w = 0x28;
-    } else if (g736 + 0x27 > 0x137) {
-        si = g736;
-        w = 0x138 - g736;
+    } else if (cursor_x + 0x27 > 0x137) {
+        si = cursor_x;
+        w = 0x138 - cursor_x;
     } else {
-        si = g736;
+        si = cursor_x;
         w = 0x28;
     }
 
-    if (g738 < 0x10) {
+    if (cursor_y < 0x10) {
         di = 0x10;
         h = 0x28;
-    } else if (g738 + 0x27 > 0x9f) {
-        di = g738;
-        h = 0xa0 - g738;
+    } else if (cursor_y + 0x27 > 0x9f) {
+        di = cursor_y;
+        h = 0xa0 - cursor_y;
     } else {
-        di = g738;
+        di = cursor_y;
         h = 0x28;
     }
 
@@ -853,5 +853,5 @@ void board_record_complete(void)
     slot_table[current_slot].value++;
     energy_set(slot_table[current_slot].state = 4);
     if (confirm_quit_dialog())
-        longjmp((char far *) g8bfe, 2);
+        longjmp((char far *) game_abort_jmpbuf, 2);
 }

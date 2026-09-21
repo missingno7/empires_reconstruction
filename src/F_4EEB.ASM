@@ -1,4 +1,4 @@
-; F_4EEB -- walk the record table at gb3ae (count in its first byte, 20h-byte
+; F_4EEB -- walk the record table at actor_record_table (count in its first byte, 20h-byte
 ; records) and, for every record whose word at +1 equals board_record_index
 ; and whose byte at +8 is not 1, blit its sprite via gfx_copy_rect (color 0Fh
 ; selected first through gfx_color_select) at (word[+2], y0+word[+4]) using
@@ -23,7 +23,7 @@ public _board_actors_draw
 extrn _gfx_color_select:near
 extrn _gfx_vline:near
 extrn _gfx_copy_rect:near
-extrn _gb3ae:byte
+extrn _actor_record_table:byte
 extrn _board_record_index:word
 extrn _resource_ptr_table:dword
 
@@ -38,7 +38,7 @@ _board_actors_draw proc near
     push si
     push di
 ; di = cursor into the record table; cx = record count (first byte)
-    mov di,offset DGROUP:_gb3ae
+    mov di,offset DGROUP:_actor_record_table
     xor cx,cx
     mov cl,[di]
     or cx,cx

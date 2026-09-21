@@ -17,7 +17,7 @@ slot_menu_draw_header()
     register int i;
 
     resource_load_record_into(61, slot_table);
-    resource_load_record_into(62, gc360);
+    resource_load_record_into(62, slot_transfer_table);
     resource_load_record(60);
     for (i = 0; i < 3; i++)
         gfx_blit_bitmap(i * 18, 400, ui_gfx_shadow_a + ((int *)ui_gfx_shadow_a)[i] + 2);
@@ -30,7 +30,7 @@ slot_menu_draw_header()
 
 
 /* ---- F_A13F (original code at 0xA13F) ---- */
-void slot_table_save() { resource_file_write_record(0x3d,slot_table); resource_file_write_record(0x3e,gc360); }
+void slot_table_save() { resource_file_write_record(0x3d,slot_table); resource_file_write_record(0x3e,slot_transfer_table); }
 
 
 /* ---- F_A15E (original code at 0xA15E) ---- */

@@ -102,8 +102,8 @@ class CleanStructuralExeBuildTests(unittest.TestCase):
         self.assertEqual(shared.segment_bytes('_DATA')[:7], bytes([4, 0, 4, 0, 0, 0, 0]))
         self.assertEqual(shared.segment_length('_DATA'), 50)
         pubs = {p['name']: p['offset'] for p in shared.publics_in('_DATA')}
-        self.assertEqual({k:pubs[k] for k in ('_gb80','_energy_meter','_gb83','_gb85')},
-                         {'_gb80':0,'_energy_meter':2,'_gb83':3,'_gb85':5})
+        self.assertEqual({k:pubs[k] for k in ('_gb80','_energy_meter','_hud_prompt_kind','_gb85')},
+                         {'_gb80':0,'_energy_meter':2,'_hud_prompt_kind':3,'_gb85':5})
         dialog_path = Path(report['session']) / 'compile' / report['compiled_objects']['F_9D8E']
         dialog = OmfReader().read(dialog_path.read_bytes())
         self.assertEqual(dialog.segment_length('_DATA'), 229)

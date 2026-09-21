@@ -15,7 +15,7 @@ extern void intro_animate_step(struct E far *ev, int step, struct P far *q, int 
 extern void gfx_wipe_rect(), gfx_box(), gfx_copy_rect();
 extern void sound_stop_reset(void);
 extern void stream_control_block_arm(int n);
-extern unsigned long gb76;              /* DS:0B76 */
+extern unsigned long timer_ticks;              /* DS:0B76 */
 extern int resource_load_record();
 extern char far *ui_gfx_shadow_a;                 /* DS:C5C6 offset, DS:C5C8 segment */
 extern int timer_deadline_reached();
@@ -108,7 +108,7 @@ void intro_play_script(struct E far *ev, int count, int step, struct P far *q)
 
    5382  55 8BEC 83EC16 5657   prologue, 0x16 = eleven int locals
    538A  C45E12 268B5702 268B07 3B16780B 720B 7706 3B06760B 7603 E9B001
-                                *when > gb76 -- the 32-bit UNSIGNED compare
+                                *when > timer_ticks -- the 32-bit UNSIGNED compare
                                 (jc / ja / jna), so both sides are unsigned
                                 long; greater means jmp to the epilogue.
    53A5  C45E0E 268B37 26FF07  s = (*idx)++   (value first, then inc memory)
@@ -128,7 +128,7 @@ void intro_play_script(struct E far *ev, int count, int step, struct P far *q)
    548B  8B46F6 F76608 99      n * step then CWD: the `mul` is a 16x16 int
                                 multiply whose high word is thrown away by
                                 the sign-extension that widens the int
-                                result to the long that is added to gb76.
+                                result to the long that is added to timer_ticks.
    54EA  ...26FF7702 26FF37    q[cmd] is pushed as TWO words from ONE address
                                 computation -- a 4-byte STRUCT passed BY
                                 VALUE, not two separate int arguments, which
@@ -157,7 +157,7 @@ int far *ph, far *pi, far *pj, far *pk;
     int oh;                             /* bp-02 */
     register int s, x;                  /* si, di */
 
-    if (*when > gb76) return;
+    if (*when > timer_ticks) return;
     s = (*idx)++;
     cmd = ev[s].f0;
     x = ev[s].f2 + dx0;
@@ -178,7 +178,7 @@ int far *ph, far *pi, far *pj, far *pk;
         break;
     default:
         if (n != 0)
-            *when = n * step + gb76;
+            *when = n * step + timer_ticks;
         ox = *ph;
         oy = *pi;
         ow = *pj;

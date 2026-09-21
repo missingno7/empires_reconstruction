@@ -4,7 +4,7 @@
 extern void gfx_color_select();
 extern void gfx_vline();
 extern void gfx_copy_rect();
-extern unsigned char gb3ae[];
+extern unsigned char actor_record_table[];
 extern unsigned int board_record_index;
 extern unsigned long resource_ptr_table[];
 
@@ -18,7 +18,7 @@ int y0;
     asm db 056h
     asm db 057h
     asm db 0BFh
-    asm dw offset DGROUP:gb3ae
+    asm dw offset DGROUP:actor_record_table
     asm xor cx,cx
     asm db 08Ah,00Dh
     asm or cx,cx

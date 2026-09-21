@@ -1,5 +1,5 @@
 ; F_4EEB -- called as board_actors_draw(y0) from F_329F/F_3986/F_31C4: walks a fixed
-; 0x20-byte-stride table at gb3ae (count byte at [0], records from [1]),
+; 0x20-byte-stride table at actor_record_table (count byte at [0], records from [1]),
 ; and for every live record whose "screen id" word matches board_record_index, does a
 ; copy() (03CC) of a jump-table sprite selected by [di+6] and, if a
 ; trailing shadow-height byte at [di+0x1a] is set, an gfx_vline() strip too.
@@ -24,7 +24,7 @@ _board_actors_draw  proc    near
         pop     ax
         push    si
         push    di
-        mov     di,offset _gb3ae
+        mov     di,offset _actor_record_table
         xor     cx,cx
         mov     cl,byte ptr [di]
         or      cx,cx
@@ -83,7 +83,7 @@ _TEXT   ends
         extrn   _gfx_color_select:near
         extrn   _gfx_copy_rect:near
         extrn   _gfx_vline:near
-        extrn   _gb3ae:byte
+        extrn   _actor_record_table:byte
         extrn   _board_record_index:word
         extrn   _resource_ptr_table:word
         end

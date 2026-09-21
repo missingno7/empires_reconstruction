@@ -3,12 +3,12 @@
 extern void sound_stop_reset();
 extern void timer_wait_ticks();
 extern void sound_voices_disable_all();
-extern int g237c;                       /* DS:237C */
+extern int sound_request_count;                       /* DS:237C */
 
 void sound_start()
 {
     sound_stop_reset();
-    g237c++;
+    sound_request_count++;
     timer_wait_ticks(1);
     sound_voices_disable_all();
 }

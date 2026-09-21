@@ -1,1 +1,1 @@
-extern int gbb2; void menu_list_enable(void){gbb2=1;}
+extern int menu_list_enabled; void menu_list_enable(void){menu_list_enabled=1;}

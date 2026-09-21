@@ -25,7 +25,7 @@ void keyboard_chain_disable(void)
 void __sti__(void);
 unsigned char __inportb__(int);
 void __outportb__(int,unsigned char);
-extern int near gb68,gb6a,gb6c,gb6e,gb70,keyboard_state[];
+extern int near key_up_held,gb6a,key_up_left_held,key_up_right_held,key_up_released,keyboard_state[];
 extern char near b856;
 #define g856 b856
 #define gb74 keyboard_state[1]
@@ -46,14 +46,14 @@ void interrupt keyboard_irq_handler(void)
  down=scan<0x80?1:0;
  switch(scan&0x7f) {
  case 0x58: if(!g856) break;
- case 0x47: gb68=gb6c=down;if(scan&0x80)gb70=1;break;
- case 0x49: gb68=gb6e=down;if(scan&0x80)gb70=1;break;
+ case 0x47: key_up_held=key_up_left_held=down;if(scan&0x80)key_up_released=1;break;
+ case 0x49: key_up_held=key_up_right_held=down;if(scan&0x80)key_up_released=1;break;
  case 0x29: if(!g856) break;
- case 0x48: gb68=down;if(scan&0x80)gb70=1;break;
+ case 0x48: key_up_held=down;if(scan&0x80)key_up_released=1;break;
  case 0x2b: if(!g856) break;
- case 0x4b: gb6c=down;break;
+ case 0x4b: key_up_left_held=down;break;
  case 0x4e: if(!g856) break;
- case 0x4d: gb6e=down;break;
+ case 0x4d: key_up_right_held=down;break;
  case 0x4a: if(!g856) break;
  case 0x50: gb6a=down;break;
  case 0x46: case 0x54: break;

@@ -35,8 +35,8 @@ extern void timer_deadline_wait(void);
 extern void board_record_complete();
 extern char far *record_field_skip_n();
 
-extern int g0bc, g72c, g72e, g730, g732, g734, g736, g738, g73a;
-extern int g8fe, gb68, gb6a, gb6c, gb6e, gb70, g71e, g722, current_slot;
+extern int g0bc, g72c, g72e, g730, g732, g734, cursor_x, cursor_y, g73a;
+extern int g8fe, key_up_held, gb6a, key_up_left_held, key_up_right_held, key_up_released, g71e, g722, current_slot;
 extern int g40ce, g96e4, gb07a, board_record_index;
 extern char far *rect_queue_write_ptr;                 /* the edge cursor */
 #include "LAYOUT.H"
@@ -44,7 +44,7 @@ extern char far *rect_queue_write_ptr;                 /* the edge cursor */
 extern char far *ui_gfx_blob;
 extern char far *board_records;                 /* vram */
 extern char far *record_table_root;
-extern unsigned char far *gbfc4;
+extern unsigned char far *icon_record_list_ptr;
 extern char far *g40d0;                 /* objtab */
 extern char far *resource_stripe_table;                 /* sprite base */
 extern char str96ee[];
@@ -73,7 +73,7 @@ int turn_loop_run()
     x = 0;
     g96e4 = x;
     blink = lastcur = g8fe = lastobj = x;
-    g0bc = gb70 = 1;
+    g0bc = key_up_released = 1;
     keyboard_chain_disable();
     for (;;) {
         timer_deadline_arm(0x18);
@@ -86,7 +86,7 @@ int turn_loop_run()
             g0bc = 1;
         }
         rect_queue_write_ptr = ui_gfx_blob;
-        if ((obj = rect_table_hit_id((g736 >> 1) + 1, g738 + 1, 14, 0x27)) != 0 && obj != lastobj) {
+        if ((obj = rect_table_hit_id((cursor_x >> 1) + 1, cursor_y + 1, 14, 0x27)) != 0 && obj != lastobj) {
             if (obj < 7) {
                 record_table_delete_compact(obj);
                 obj--;
@@ -124,10 +124,10 @@ int turn_loop_run()
         lastobj = obj;
         if (*g40d0 != 0) animated_tile_tick();
         if (g8fe != 0) board_unit_script_trigger();
-        if (gb68 != 0 && g722 != 0) {
+        if (key_up_held != 0 && g722 != 0) {
             for (obj = 0; obj < g722; obj++) {
-                if (w8bf4[obj] - 2 <= g738 && w8bf4[obj] + 2 >= g738 &&
-                    w8bea[obj] <= g736 && w8bea[obj] + 0x10 >= g736) {
+                if (w8bf4[obj] - 2 <= cursor_y && w8bf4[obj] + 2 >= cursor_y &&
+                    w8bea[obj] <= cursor_x && w8bea[obj] + 0x10 >= cursor_x) {
                     if (g71e == 0) {
                         g0bc = 0;
                         board_scan_wipe_effect(obj);
@@ -155,25 +155,25 @@ scanned:
         if (g8fe != 0) sprite_slots_redraw();
         board_update_moving_records();
         if (*record_table_root != 0) draw_queue_render();
-        if (*gbfc4 != 0) icon_list_animate_draw();
-        if (gb6e != 0) {
-            if (x == 0 || gb68 == 0) {
+        if (*icon_record_list_ptr != 0) icon_list_animate_draw();
+        if (key_up_right_held != 0) {
+            if (x == 0 || key_up_held == 0) {
                 x = 0;
                 g73a = x;
-                if ((board_collision_span_or(g736 + 0x21, g738 + 1, 0x27) & 7) == 0) {
-                    g736 += g734;
+                if ((board_collision_span_or(cursor_x + 0x21, cursor_y + 1, 0x27) & 7) == 0) {
+                    cursor_x += g734;
                     dir = 1;
                     if (g72e <= 8) {
                         if (++g72e > 8) g72e = 1;
                     }
                 }
             }
-        } else if (gb6c != 0) {
-            if (x == 0 || gb68 == 0) {
+        } else if (key_up_left_held != 0) {
+            if (x == 0 || key_up_held == 0) {
                 g73a = 1;
                 x = 0;
-                if ((board_collision_span_or(g736, g738 + 1, 0x27) & 7) == 0) {
-                    g736 -= g734;
+                if ((board_collision_span_or(cursor_x, cursor_y + 1, 0x27) & 7) == 0) {
+                    cursor_x -= g734;
                     dir = -1;
                     if (g72e <= 8) {
                         if (++g72e > 8) g72e = 1;
@@ -181,28 +181,28 @@ scanned:
                 }
             }
         }
-        if (gb68 != 0 && (board_collision_span_or(g736 + 0x10 - (g73a << 2), g738 + 1, 0x27) & 0x80) != 0) {
+        if (key_up_held != 0 && (board_collision_span_or(cursor_x + 0x10 - (g73a << 2), cursor_y + 1, 0x27) & 0x80) != 0) {
                 if (x == 0) {
-                    if (g736 % 8 == 0) {
-                        if ((board_collision_span_or(g736 + 0x14, g738 + 1, 0x1d) & 0x80) != 0)
-                            g736 += 4;
+                    if (cursor_x % 8 == 0) {
+                        if ((board_collision_span_or(cursor_x + 0x14, cursor_y + 1, 0x1d) & 0x80) != 0)
+                            cursor_x += 4;
                         else
-                            g736 -= 4;
+                            cursor_x -= 4;
                     }
                     x = 1;
-                } else if ((shadow_bitmap_hit_test(g736 + 0xf, g738 - 4, 2) & 0x80) != 0) {
-                    g738 -= 4;
+                } else if ((shadow_bitmap_hit_test(cursor_x + 0xf, cursor_y - 4, 2) & 0x80) != 0) {
+                    cursor_y -= 4;
                     if (++x > 2) x = 1;
-                } else if ((shadow_bitmap_hit_test(g736 + 0xf, g738 - 2, 2) & 0x80) != 0) {
-                    g738 -= 2;
+                } else if ((shadow_bitmap_hit_test(cursor_x + 0xf, cursor_y - 2, 2) & 0x80) != 0) {
+                    cursor_y -= 2;
                     if (++x > 2) x = 1;
                 }
                 g734 = 8;
                 g730 = 0;
                 g72e = x + 0x13;
         } else if (gb6a != 0 && x != 0) {
-            if ((shadow_bitmap_hit_test(g736 + 0xf, g738 + 0x26, 2) & 0x80) != 0) {
-                g738 += 4;
+            if ((shadow_bitmap_hit_test(cursor_x + 0xf, cursor_y + 0x26, 2) & 0x80) != 0) {
+                cursor_y += 4;
                 if (++x > 2) x = 1;
                 g72e = x + 0x13;
             } else {
@@ -211,8 +211,8 @@ scanned:
         }
         if (x == 0) {
             if (g730 != 0) {
-                if ((shadow_bitmap_hit_test(g736 + 8, g738 - 1, 9) & 7) == 0) {
-                    g738 -= b740[g730];
+                if ((shadow_bitmap_hit_test(cursor_x + 8, cursor_y - 1, 9) & 7) == 0) {
+                    cursor_y -= b740[g730];
                     g730--;
                     if (++g72e > 0xb) g72e = 0xb;
                     if (dir == 0) g72e = 0xa;
@@ -221,18 +221,18 @@ scanned:
                 }
                 goto moved;
             }
-            if ((shadow_bitmap_hit_test(g736 + 8, g738 + 0x2f, 9) & 7) == 0) {
+            if ((shadow_bitmap_hit_test(cursor_x + 8, cursor_y + 0x2f, 9) & 7) == 0) {
                 if (g732 != 0) {
-                    g738 += 8;
+                    cursor_y += 8;
                 } else {
                     g732 = 1;
-                    g738 += 2;
+                    cursor_y += 2;
                 }
                 g72e = (dir & 1) + 0xa;
                 goto moved;
             }
-            if (((probe = shadow_bitmap_hit_test(g736 + 8, g738 + 0x28, 9)) & 7) == 0) {
-                g738 += (((g738 + 0x30) / 8) << 3) - (g738 + 0x28);
+            if (((probe = shadow_bitmap_hit_test(cursor_x + 8, cursor_y + 0x28, 9)) & 7) == 0) {
+                cursor_y += (((cursor_y + 0x30) / 8) << 3) - (cursor_y + 0x28);
                 g732 = 0;
                 g72e = (dir & 1) + 0xa;
                 stream_control_block_arm(0xb);
@@ -240,7 +240,7 @@ scanned:
             }
             if (key == 0x20) {
                 if (hud_tab_get() == 1) {
-                    if ((shadow_bitmap_hit_test(g736 + 8, g738 - 1, 9) & 7) == 0) {
+                    if ((shadow_bitmap_hit_test(cursor_x + 8, cursor_y - 1, 9) & 7) == 0) {
                         stream_control_block_arm(0x10);
                         g730 = 8;
                         g72e = 9;
@@ -249,9 +249,9 @@ scanned:
                 } else goto fell;
                 goto moved;
             }
-            if (gb68 != 0 && gb70 != 0) {
-                if ((shadow_bitmap_hit_test(g736 + 8, g738 - 1, 9) & 7) == 0) {
-                    gb70 = 0;
+            if (key_up_held != 0 && key_up_released != 0) {
+                if ((shadow_bitmap_hit_test(cursor_x + 8, cursor_y - 1, 9) & 7) == 0) {
+                    key_up_released = 0;
                     g730 = 5;
                     g72e = 9;
                     g734 = dir ? 8 : 4;
@@ -267,14 +267,14 @@ fell:
             }
             if (probe & 8) {
                 if (probe & 0x10) {
-                    if ((board_collision_span_or(g736, g738 + 1, 0x27) & 7) == 0) {
-                        g736 -= g734;
-                        if (g736 <= -4) g736 = -0x11;
+                    if ((board_collision_span_or(cursor_x, cursor_y + 1, 0x27) & 7) == 0) {
+                        cursor_x -= g734;
+                        if (cursor_x <= -4) cursor_x = -0x11;
                     }
                 } else {
-                    if ((board_collision_span_or(g736 + 0x21, g738 + 1, 0x27) & 7) == 0) {
-                        g736 += g734;
-                        if (g736 >= 0x130) g736 = 0x131;
+                    if ((board_collision_span_or(cursor_x + 0x21, cursor_y + 1, 0x27) & 7) == 0) {
+                        cursor_x += g734;
+                        if (cursor_x >= 0x130) cursor_x = 0x131;
                     }
                 }
             }
@@ -301,67 +301,67 @@ moved:
         }
         if (g72c == 1) g72c = 0;
         sprite_script_frame_driver();
-        if (g738 < 0) {
+        if (cursor_y < 0) {
             if (b43a0[board_record_index] != 0) {
-                g738 = 0x90;
+                cursor_y = 0x90;
                 if (b43a0[board_record_index] - 1 != board_record_index) {
                     board_record_index = b43a0[board_record_index] - 1;
                     g8fe = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
-                g738 = 0;
+                cursor_y = 0;
             }
-        } else if (g738 > 0x90) {
+        } else if (cursor_y > 0x90) {
             if (b43aa[board_record_index] != 0) {
-                g738 = 0;
+                cursor_y = 0;
                 if (b43aa[board_record_index] - 1 != board_record_index) {
                     board_record_index = b43aa[board_record_index] - 1;
                     g8fe = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
-                g738 = 0x90;
+                cursor_y = 0x90;
             }
         }
-        if (g736 < -0x10) {
+        if (cursor_x < -0x10) {
             if (b438c[board_record_index] != 0) {
-                g736 = 0x120;
+                cursor_x = 0x120;
                 if (b438c[board_record_index] - 1 != board_record_index) {
                     board_record_index = b438c[board_record_index] - 1;
                     g8fe = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
-                g736 = -0x10;
+                cursor_x = -0x10;
             }
-        } else if (g736 > 0x130) {
+        } else if (cursor_x > 0x130) {
             if (b4396[board_record_index] != 0) {
-                g736 = 0;
+                cursor_x = 0;
                 if (b4396[board_record_index] - 1 != board_record_index) {
                     board_record_index = b4396[board_record_index] - 1;
                     g8fe = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
-                g736 = 0x130;
+                cursor_x = 0x130;
             }
         }
         if (g8fe != 0) board_raycast_step();
         if (blink != 0) {
             blink--;
             if (blink > 0x1a) {
-                gfx_copy_rect(g736, g738, resource_stripe_table + 0x39ec, g73a);
+                gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + 0x39ec, g73a);
             } else if (blink & 1) {
-                gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+                gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, g73a);
             }
         } else if (g72c != 0) {
-            gfx_copy_rect(g736, g738, (char far *)str96ee, 0);
+            gfx_copy_rect(cursor_x, cursor_y, (char far *)str96ee, 0);
             g72c--;
-            gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, g73a);
         } else {
             if (g40ce != 0 && lastcur != g40ce) {
-            gfx_copy_rect(g736, g738, resource_stripe_table + 0x39ec, g73a);
+            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + 0x39ec, g73a);
             blink = 0x1e;
             stream_control_block_arm(1);
             rect_queue_flush();
@@ -376,14 +376,14 @@ moved:
             lastcur = g40ce;
             goto tail;
             } else {
-            gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, g73a);
             }
             lastcur = g40ce;
         }
         rect_queue_flush();
 tail:
         timer_deadline_wait();
-        if (g71e != 0 && g96e4 == 0 && g736 > 0xbe) {
+        if (g71e != 0 && g96e4 == 0 && cursor_x > 0xbe) {
             roundend_flash_panel_icons();
             g96e4 = 1;
         }
@@ -434,7 +434,7 @@ int di;
 /* ---- F_462E (original code at 0x462E) ---- */
 /* F_462E -- paint the title/menu backdrop for the current mode.  si is the
    mode, di the row offset chosen by the two-term disjunction at 4698. */
-extern int g9ade;
+extern int campaign_round_node_cursor;
 extern int board_record_index;
 extern char far *board_records;
 extern char far *ui_gfx_shadow_a;
@@ -451,10 +451,10 @@ void menu_backdrop_paint(void)
     register int m, d;
 
     menu_resources_load();
-    if (value_parity(g9ade))
+    if (value_parity(campaign_round_node_cursor))
         m = 0x14;
     else
-        m = g9ade / 2;
+        m = campaign_round_node_cursor / 2;
     if (m == 0x15)
         resource_load_record(0x42);
     else
@@ -496,8 +496,8 @@ extern void resource_record_cache_reset(int n);
 extern void tutorial_hint_dialog_show(int);
 
 extern unsigned char b4374, b4375, b4376;
-extern int g71e, g722, g72c, g72e, g736, g738, g73a, g73e;
-extern int g1776, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8, g9ade, gb07a;
+extern int g71e, g722, g72c, g72e, cursor_x, cursor_y, g73a, g73e;
+extern int g1776, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8, campaign_round_node_cursor, gb07a;
 
 int level_driver_run()
 {
@@ -505,14 +505,14 @@ int level_driver_run()
 
     menu_backdrop_paint();
     menu_list_source_set_default();
-    g736 = b4375;
-    g736 <<= 1;
-    g736 = ((g736 + 3) >> 2) << 2;
-    g738 = b4376;
+    cursor_x = b4375;
+    cursor_x <<= 1;
+    cursor_x = ((cursor_x + 3) >> 2) << 2;
+    cursor_y = b4376;
     if (b4374 & 0x80) g73a = 1;
     else g73a = 0;
     g72c = gb07a = g72e = 0;
-    if (value_parity(g9ade)) {
+    if (value_parity(campaign_round_node_cursor)) {
         g722 = 3;
         g8bea = g8bec = g8bee = 0xf4;
         g8bf4 = 0x12;
@@ -520,7 +520,7 @@ int level_driver_run()
         g8bf8 = 0x72;
         g71e = 1;
         board_redraw_paint();
-        roundend_round_setup(g9ade >> 1);
+        roundend_round_setup(campaign_round_node_cursor >> 1);
     } else {
         g722 = g71e = 0;
         puzzle_clear_grid();
@@ -536,23 +536,23 @@ int level_driver_run()
     sprite_draw_cursor();
     hud_panel_open();
     gfx_box(0, 0, 0x140, 0xc8);
-    if (tick_div8() != 4 && (g9ade & 7) == 0) {
+    if (tick_div8() != 4 && (campaign_round_node_cursor & 7) == 0) {
         tutorial_hint_dialog_show(0);
         tutorial_hint_dialog_show(1);
         if (tick_div8() == 1) tutorial_hint_dialog_show(2);
         else if (tick_div8() == 2) tutorial_hint_dialog_show(3);
     }
     g1776 = 1;
-    if (value_parity(g9ade) == 0) {
+    if (value_parity(campaign_round_node_cursor) == 0) {
         if (tick_div8() != 4)
-            resource_record_cache_reset((tick_div8() << 2) + (g9ade & 2) + 0x1073);
+            resource_record_cache_reset((tick_div8() << 2) + (campaign_round_node_cursor & 2) + 0x1073);
         else
             resource_record_cache_reset((campaign_node_index() << 2) + 0x1073);
     }
     r = turn_loop_run();
-    if (r != 0 && g9ade == 0x27) {
+    if (r != 0 && campaign_round_node_cursor == 0x27) {
         r = level_play_chapter();
-        g9ade = 0x27;
+        campaign_round_node_cursor = 0x27;
     }
     return r;
 }
@@ -649,9 +649,9 @@ void boot_init_seed_rand()
 
 
 /* ---- F_4943 (original code at 0x4943) ---- */
-extern int value_parity(),level_driver_run();extern int current_slot,g9ade,g73e;
+extern int value_parity(),level_driver_run();extern int current_slot,campaign_round_node_cursor,g73e;
 #include "C470.H"
-void campaign_chapter_advance(i) register int i;{slot_table[current_slot].resume_round=i+1;g9ade=slot_table[current_slot].round_progress[i]*2+i*8;g73e=-1;while(1){if(value_parity(g9ade)){if(!level_driver_run())g9ade-=2;else{slot_table[current_slot].round_progress[i]++;if((g9ade&7)==7)break;}}else{while(!level_driver_run());}g9ade++;}}
+void campaign_chapter_advance(i) register int i;{slot_table[current_slot].resume_round=i+1;campaign_round_node_cursor=slot_table[current_slot].round_progress[i]*2+i*8;g73e=-1;while(1){if(value_parity(campaign_round_node_cursor)){if(!level_driver_run())campaign_round_node_cursor-=2;else{slot_table[current_slot].round_progress[i]++;if((campaign_round_node_cursor&7)==7)break;}}else{while(!level_driver_run());}campaign_round_node_cursor++;}}
 
 /* ---- F_49E3 (original code at 0x49E3) ---- */
 extern void sound_stop_reset(), sound_voices_reset(), keyboard_irq_restore(), timer_irq_restore();
@@ -669,10 +669,10 @@ void game_shutdown(void) { sound_stop_reset(); sound_voices_reset(); keyboard_ir
        3D FFFF                cmp ax,-1        (accumulator short form)
        75 03 / E9 8A00        jnz +3 / jmp 4A8D  -- "if (...) return;"
        E8 46D8                call hud_arena_init        (0 args, result unused)
-       1E B8FE8B 50           push ds; mov ax,0x8BFE; push ax  -- (char far *)g8bfe
+       1E B8FE8B 50           push ds; mov ax,0x8BFE; push ax  -- (char far *)game_abort_jmpbuf
        E8 45AF                call setjmp
        59 59                  pop cx; pop cx    (cdecl cleanup, 4 bytes = 2 pops)
-       8BF8                   mov di,ax         -- d = setjmp(g8bfe)
+       8BF8                   mov di,ax         -- d = setjmp(game_abort_jmpbuf)
        BEFFFF                 mov si,0xFFFF     -- s = -1
        E8 E327 / E8 988B / E8 3B48   ui_overlay_reset(); sound_request_count_clear(); puzzle_free_resources();
        83FF03 7502 EB68       cmp di,3; jnz +2; jmp 4A8D   -- if (d == 3) return;
@@ -717,7 +717,7 @@ extern void energy_set(int state);
 
 #include "C470.H"
 
-extern char g8bfe[];                    /* DS:8BFE */
+extern char game_abort_jmpbuf[];                    /* DS:8BFE */
 
 void game_run()
 {
@@ -726,7 +726,7 @@ void game_run()
 
     if (intro_run_chapter() == -1) return;
     hud_arena_init();
-    d = setjmp(g8bfe);
+    d = setjmp(game_abort_jmpbuf);
     s = -1;
     ui_overlay_reset();
     sound_request_count_clear();

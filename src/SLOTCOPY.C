@@ -12,15 +12,15 @@ void slot_archive_and_delete()
     register int i;
 
     for (i = 0; i < 10; i++) {
-        if (!gc360[i].text[0]) {
-            gc360[i] = slot_table[current_slot];
+        if (!slot_transfer_table[i].text[0]) {
+            slot_transfer_table[i] = slot_table[current_slot];
             break;
         }
     }
     if (i == 10) {
         for (i = 1; i < 10; i++)
-            gc360[i - 1] = gc360[i];
-        gc360[9] = slot_table[current_slot];
+            slot_transfer_table[i - 1] = slot_transfer_table[i];
+        slot_transfer_table[9] = slot_table[current_slot];
     }
     slot_delete(current_slot);
     slot_table_save();
@@ -33,15 +33,15 @@ slot_reset_for_new_game()
     register int i;
 
     for (i = 0; i < 10; i++) {
-        if (!gc360[i].text[0]) {
-            gc360[i] = slot_table[current_slot];
+        if (!slot_transfer_table[i].text[0]) {
+            slot_transfer_table[i] = slot_table[current_slot];
             break;
         }
     }
     if (i == 10) {
         for (i = 1; i < 10; i++)
-            gc360[i - 1] = gc360[i];
-        gc360[9] = slot_table[current_slot];
+            slot_transfer_table[i - 1] = slot_transfer_table[i];
+        slot_transfer_table[9] = slot_table[current_slot];
     }
     slot_table[current_slot].flags = 32;
     slot_table[current_slot].state = 4;

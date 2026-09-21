@@ -27,9 +27,9 @@ class MatchingCWave21Tests(unittest.TestCase):
             # F_AD25 was normalized to the shared C470.H record's 'text'
             # field name instead of the old raw struct's 'a' field.
             ('F_AD25',
-             b'void slot_archive_and_delete()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[0]',
-             b'void slot_archive_and_delete()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[1]'),
-            ('F_A09D', b'resource_load_record_into(62, gc360)', b'resource_load_record_into(63, gc360)'),
+             b'void slot_archive_and_delete()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!slot_transfer_table[i].text[0]',
+             b'void slot_archive_and_delete()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!slot_transfer_table[i].text[1]'),
+            ('F_A09D', b'resource_load_record_into(62, slot_transfer_table)', b'resource_load_record_into(63, slot_transfer_table)'),
             ('F_A13F', b'0x3e', b'0x3f')):
             mutant_rejected(name, before, after)
 
@@ -68,6 +68,6 @@ class MatchingCWave21Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'callee owner'):
             verify_bindings(ROOT, changed, original)
         changed = copy.deepcopy(manifest)
-        next(o for o in changed['regions'] if o['id'] == 'F_A13F')['build']['bindings']['_gc360']['offset'] += 1
+        next(o for o in changed['regions'] if o['id'] == 'F_A13F')['build']['bindings']['_slot_transfer_table']['offset'] += 1
         with self.assertRaisesRegex(ValueError, 'Binding contradicts'):
             verify_bindings(ROOT, changed, original)

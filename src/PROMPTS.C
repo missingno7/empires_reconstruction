@@ -11,7 +11,7 @@ extern void rect_border_draw();
 extern void anim_step_loop();
 extern int menu_list_active(), keyboard_read_blocking_hotkeys(), hud_prompt_confirm_draw();
 extern void menu_list_disable(void), menu_list_enable(), hud_panel_open();
-extern int gb83, gc0fc;
+extern int hud_prompt_kind, gc0fc;
 extern char *gc0f6;
 extern char display_mode;                      /* DS:BFCD */
 
@@ -24,7 +24,7 @@ extern char display_mode;                      /* DS:BFCD */
    The final zero byte is part of gb85, not alignment padding. */
 int gb80 = 4;
 char energy_meter = 4;
-int gb83 = 0;
+int hud_prompt_kind = 0;
 int gb85 = 0;
 
 void hud_prompt_continue_draw()
@@ -32,7 +32,7 @@ void hud_prompt_continue_draw()
     char cap[15] = "\027\030 to Continue";                     /* bp-10 */
     register int s, d;                  /* si, di */
 
-    gb83 = 2;
+    hud_prompt_kind = 2;
     s = cur_color_index_get();
     d = sprite_sheet_index_get();
     if (display_mode == 2)
@@ -60,7 +60,7 @@ char *p;
 
     s = cur_color_index_get();
     d = sprite_sheet_index_get();
-    gb83 = 3;
+    hud_prompt_kind = 3;
     gc0f6 = p;
     gc0fc = 0;
     gfx_color_select(0);
@@ -89,7 +89,7 @@ int a,b,c,e;
 
     s = cur_color_index_get();
     d = sprite_sheet_index_get();
-    gb83 = 4;
+    hud_prompt_kind = 4;
     gc0fc = b;
     gfx_color_select(0);
     rect_border_draw(6, 0xa2, 0x134, 0x24);

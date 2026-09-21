@@ -2,7 +2,7 @@
 #define EMPIRES_C470_H
 
 /* 27-byte save-slot record. DS:C470 holds the ten live slots (slot_table), DS:C360
-   the ten transfer copies (gc360); both are BSS tables of exactly 270 bytes with
+   the ten transfer copies (slot_transfer_table); both are BSS tables of exactly 270 bytes with
    the int slot_select_error between them. Offsets and widths are established by the code in
    the files named below; names describe observed use, not recovered text. */
 struct c470_record {
@@ -20,13 +20,13 @@ struct c470_record {
     int pending;                /* +13  bit mask: set to -1 by M_CB5C_CD23, bits cleared by F_D4B3 */
     char state;                 /* +15  4 written by F_3986, F_9DCC and F_ADCF; passed to energy_set by F_49F0 */
     char round_progress[4];     /* +16  per-round progress counters: campaign_chapter_advance (F_4943.C) computes
-                                        g9ade = round_progress[i]*2+i*8 for round i and increments
+                                        campaign_round_node_cursor = round_progress[i]*2+i*8 for round i and increments
                                         round_progress[i] as level_driver_run() reports success */
     char byte26;                /* +1A  cleared by F_ADCF; otherwise unused */
 };
 
 extern struct c470_record slot_table[10];    /* DS:C470 live slots */
-extern struct c470_record gc360[10];    /* DS:C360 transfer copies */
+extern struct c470_record slot_transfer_table[10];    /* DS:C360 transfer copies */
 extern int current_slot;                       /* current slot index 0..9 */
 extern int slot_used_count;                       /* number of used live slots */
 extern int slot_select_error;                       /* selection/error state between the two tables */

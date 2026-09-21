@@ -4,7 +4,7 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-    extrn _gbfc4:dword, _a72b2:dword
+    extrn _icon_record_list_ptr:dword, _a72b2:dword
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
@@ -17,7 +17,7 @@ _icon_list_animate_draw proc near
     push di
     push si
     cld
-    lds si, dword ptr ds:_gbfc4
+    lds si, dword ptr ds:_icon_record_list_ptr
 fd386_read_record:
     lodsb
     xor cx, cx

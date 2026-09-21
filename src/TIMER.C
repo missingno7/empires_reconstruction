@@ -70,7 +70,7 @@ void timer_irq_restore()
    32-bit tick counter and services the sound engine unless a request is
    pending.  The bare PUSHF/POPF around the body is the one inline fragment:
    the historical object keeps the caller flags across the STI. */
-extern int near timer_tick_phase,g237c,sound_enabled,music_enabled;
+extern int near timer_tick_phase,sound_request_count,sound_enabled,music_enabled;
 extern unsigned long near timer_ticks;                    /* 32-bit tick counter */
 extern void interrupt (* near int8_saved_vector)(void);         /* saved INT 8 vector */
 extern void sound_tick_entry(void);                            /* sound engine tick */
@@ -82,12 +82,12 @@ void interrupt timer_irq_handler(void)
  __sti__();
  ++timer_tick_phase; if(timer_tick_phase>=13) {timer_tick_phase=0;int8_saved_vector();}
  ++timer_ticks;
- if(!g237c && (sound_enabled || music_enabled)) sound_tick_entry();
+ if(!sound_request_count && (sound_enabled || music_enabled)) sound_tick_entry();
  __outportb__(0x20,0x20);
  asm popf;
 }
 
-extern unsigned long gb76;              /* DS:0B76, high word at DS:0B78 */
+extern unsigned long timer_ticks;              /* DS:0B76, high word at DS:0B78 */
 extern unsigned long gc0d0;             /* DS:C0D0, high word at DS:C0D2 */
 
 /* ---- F_6C26 (original code at 0x6C26) ---- */
@@ -101,17 +101,17 @@ int n;
 {
     unsigned long t;
 
-    t = n + gb76;
-    while (gb76 < t) ;
+    t = n + timer_ticks;
+    while (timer_ticks < t) ;
 }
 
 
 /* ---- F_6C57 (original code at 0x6C57) ---- */
-/* F_6C57 -- arm a tick deadline.  gb76 is the free-running tick (unsigned
+/* F_6C57 -- arm a tick deadline.  timer_ticks is the free-running tick (unsigned
    long), gc0d0 the deadline.  Plain C. */
 void timer_deadline_arm(int n)
 {
-    gc0d0 = n + gb76;
+    gc0d0 = n + timer_ticks;
 }
 
 
@@ -120,7 +120,7 @@ void timer_deadline_arm(int n)
    the entry is the while-loop's jump-to-test with an empty body. */
 void timer_deadline_wait(void)
 {
-    while (gb76 < gc0d0)
+    while (timer_ticks < gc0d0)
         ;
 }
 
@@ -135,7 +135,7 @@ void timer_deadline_wait(void)
    and loses the EB00. */
 int timer_deadline_reached()
 {
-    if (gb76 < gc0d0)
+    if (timer_ticks < gc0d0)
         return (0);
     return (1);
 }

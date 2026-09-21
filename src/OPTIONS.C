@@ -43,7 +43,7 @@ int slot_backup_list_show(void)
  dialog_draw(&dialog_slot_backup_list,1);gfx_color_select(0);
  gfx_bar(43,50,39);gfx_bar(157,50,38);gfx_bar(223,50,35);
  height=dialog_line_height_get();
- for(i=0,y=0;i<10;i++,y+=height+1) slot_row_draw(&gc360[i],y+52,0);
+ for(i=0,y=0;i<10;i++,y+=height+1) slot_row_draw(&slot_transfer_table[i],y+52,0);
  gfx_box(8,0,304,200);
  do {i=keyboard_read_blocking_hotkeys();} while(i!=27&&i!=13);
  dialog_restore_screen();return 0;

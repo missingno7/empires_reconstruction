@@ -11,7 +11,7 @@
 extern int resource_load_record();
 extern void resource_load_record_alloc(int,char far * far *);
 extern void far *memmove(void far *,void far *,unsigned);
-extern unsigned char near g9bfc[],gbf66[];
+extern unsigned char near tile_width_table[],tile_height_table[];
 extern void farfree();
 extern int g720;
 extern void timer_deadline_arm();
@@ -63,8 +63,8 @@ void board_resource_expand(void)
 {
  register int i,j;
  i=0;
- resource_load_record(0x52);memmove(g9bfc,ui_gfx_shadow_a,0x54);
- resource_load_record(0x53);memmove(gbf66,ui_gfx_shadow_a,0x54);
+ resource_load_record(0x52);memmove(tile_width_table,ui_gfx_shadow_a,0x54);
+ resource_load_record(0x53);memmove(tile_height_table,ui_gfx_shadow_a,0x54);
  resource_load_record_alloc(0x49,&gc5a8);
  for(j=0;j<12;j++) resource_ptr_table[i++]=gc5a8+((int far *)gc5a8)[j]+2;
  resource_load_record_alloc(0x4a,&gc580);
@@ -101,8 +101,8 @@ void level_expand_descriptors(void)
 {
  register int i,j;
  i=0;
- resource_load_record(0x57);memmove(g9bfc,ui_gfx_shadow_a,0x54);
- resource_load_record(0x58);memmove(gbf66,ui_gfx_shadow_a,0x54);
+ resource_load_record(0x57);memmove(tile_width_table,ui_gfx_shadow_a,0x54);
+ resource_load_record(0x58);memmove(tile_height_table,ui_gfx_shadow_a,0x54);
  resource_load_record_alloc(0x55,&gc592);
  for(j=0;j<2;j++) resource_ptr_table[i++]=gc592+((int far *)gc592)[j]+2;
  resource_load_record_alloc(0x56,&gc596);
@@ -116,8 +116,8 @@ extern void setmem();extern char g40d4[];fb4fb(){setmem(g40d4,672,0);g40d4[72]=3
 
 
 /* ---- F_B55E (original code at 0xB55E) ---- */
-extern char far *g7352, far *g7356, far *g735a, far *gbfc8;
-void menu_resources_free(void) { farfree(g7352); farfree(g7356); farfree(g735a); farfree(gbfc8); }
+extern char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank;
+void menu_resources_free(void) { farfree(g7352); farfree(g7356); farfree(g735a); farfree(sprite_tile_bank); }
 
 
 /* ---- F_B593 (original code at 0xB593) ---- */
@@ -139,7 +139,7 @@ void level_free_descriptor_table()
 
 
 /* ---- F_B60F (original code at 0xB60F) ---- */
-extern void gfx_wipe_rect();extern int board_record_index;extern unsigned char gb3ae[],g9bfc[],gbf66[];struct R{char a,b;int x,y;char c,d,e;char rest[23];};chapter_map_sprites_wipe(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(gb3ae+1);for(i=0;i<gb3ae[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+g9bfc[p->c]-1;b=(y=p->y)+gbf66[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
+extern void gfx_wipe_rect();extern int board_record_index;extern unsigned char actor_record_table[],tile_width_table[],tile_height_table[];struct R{char a,b;int x,y;char c,d,e;char rest[23];};chapter_map_sprites_wipe(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(actor_record_table+1);for(i=0;i<actor_record_table[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+tile_width_table[p->c]-1;b=(y=p->y)+tile_height_table[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
 
 
 /* ---- F_B6CD (original code at 0xB6CD) ---- */
@@ -154,7 +154,7 @@ extern char far *rect_queue_write_ptr;level_chapter_driver(){register int i;menu
 
 
 /* ---- F_B772 (original code at 0xB772) ---- */
-extern unsigned char gb3ae[];extern int near gb52f[];extern int gc588,gc5a2;struct R_B772{char a,b;int x,y;char c;char rest[25];};fb772(){register int i,j;int *q;int n;gc588=*(unsigned char *)gb52f=0;gc5a2=13;n=gb3ae[0];j=n*32+1;for(i=5;i<=11;i+=2){if(gb3ae[i*32+1]==0&&gb3ae[i*32+7]==9){q=(int *)(gb3ae+14+i*32);q[0]=(i-5)/2*3+j;q[2]=0;}}}
+extern unsigned char actor_record_table[];extern int near gb52f[];extern int gc588,gc5a2;struct R_B772{char a,b;int x,y;char c;char rest[25];};fb772(){register int i,j;int *q;int n;gc588=*(unsigned char *)gb52f=0;gc5a2=13;n=actor_record_table[0];j=n*32+1;for(i=5;i<=11;i+=2){if(actor_record_table[i*32+1]==0&&actor_record_table[i*32+7]==9){q=(int *)(actor_record_table+14+i*32);q[0]=(i-5)/2*3+j;q[2]=0;}}}
 
 
 /* ---- F_B7F9 (original code at 0xB7F9) ---- */
@@ -175,7 +175,7 @@ extern char far *ui_gfx_shadow_a,far *rect_queue_write_ptr,far *board_records;
 void level_display_init(void)
 {
  register int x,i;
- resource_load_record(0x48);gbc=0;((unsigned char near *)gb3af)[136]=1;((unsigned char near *)gb3af)[200]=1;((unsigned char near *)gb3af)[264]=1;((unsigned char near *)gb3af)[328]=1;
+ resource_load_record(0x48);gbc=0;((unsigned char near *)actor_state_table)[136]=1;((unsigned char near *)actor_state_table)[200]=1;((unsigned char near *)actor_state_table)[264]=1;((unsigned char near *)actor_state_table)[328]=1;
  sound_stop_reset();g1774=1;stream_control_block_arm(25);
  for(x=118;x<=198;x+=4) {
   timer_deadline_arm(24);gfx_wipe_rect(x-4,355,92,117,x-4,27);gfx_copy_rect(x,27,ui_gfx_shadow_a,0);
@@ -202,13 +202,13 @@ void level_exit_transition_run(void) { *board_records=7; sprite_script_frame_dri
 /* ---- F_B99F (original code at 0xB99F) ---- */
 /* Board movement, jumping, collision response, and redraw loop. */
 extern int g8fe,gc5a2,gbc,gc588,g40ce,g1776,g1784,g96;
-extern int gb6e,gb6c,gb68,gb70,g72c,g72e,g730,g732,g734,g736,g738,g73a;
+extern int key_up_right_held,key_up_left_held,key_up_held,key_up_released,g72c,g72e,g730,g732,g734,cursor_x,cursor_y,g73a;
 extern int near g1684[];
 extern unsigned char near g740[];
-extern unsigned char gb3ae[];
+extern unsigned char actor_record_table[];
 extern struct dialog near g1670;
-extern char g8bfe[];extern unsigned char g96ee[];
-extern unsigned long gb76;
+extern char game_abort_jmpbuf[];extern unsigned char g96ee[];
+extern unsigned long timer_ticks;
 extern char far *ui_gfx_blob;
 extern char far *rect_queue_write_ptr,far *resource_ptr_table[],far *resource_stripe_table;
 extern int keyboard_poll_nonblocking(),keyboard_read_blocking_hotkeys(),face7(),slot_reset_for_new_game(),hud_tab_next();
@@ -238,23 +238,23 @@ int level_run_loop(void)
  gc5a2=hurt=delay=ended=last=g8fe=0;
  once=gc588=gbc=1;
  remaining=2;
- for(i=0;i<4;i++) movmem(&gb3af[i*2+4],&saved[i],32);
- ((unsigned char near *)gb3af)[g1684[gc5a2]*32]=0;
+ for(i=0;i<4;i++) movmem(&actor_state_table[i*2+4],&saved[i],32);
+ ((unsigned char near *)actor_state_table)[g1684[gc5a2]*32]=0;
  deadline=0;
  for(;;) {
   timer_deadline_arm(24);g40ce=direction=key=0;
   if(remaining) {
-   if(((unsigned char near *)gb3af)[g1684[gc5a2]*32]) {
+   if(((unsigned char near *)actor_state_table)[g1684[gc5a2]*32]) {
     gc5a2++;if(g1684[gc5a2]<0) gc5a2=0;
-    ((unsigned char near *)gb3af)[g1684[gc5a2]*32]=0;
+    ((unsigned char near *)actor_state_table)[g1684[gc5a2]*32]=0;
    }
   } else {
-   if(!ended&&!gb3af[24].flag) {ended=1;delay=20;}
+   if(!ended&&!actor_state_table[24].flag) {ended=1;delay=20;}
    else if(delay&&!--delay) {
     if(face7()) level_display_init();
     else {
      gbc=0;slot_reset_for_new_game();g1776=0;while(g1784);g1776=1;
-     dialog_run(&g1670);longjmp(g8bfe,1);
+     dialog_run(&g1670);longjmp(game_abort_jmpbuf,1);
     }
    }
   }
@@ -264,50 +264,50 @@ int level_run_loop(void)
    gbc=1;
   }
   rect_queue_write_ptr=ui_gfx_blob;board_redraw_view();sprite_table_wipe_active();if(g8fe) sprite_slots_redraw();
-  if(gb6e) {
+  if(key_up_right_held) {
    g73a=0;
-   if(!(board_collision_span_or(g736+28,g738+1,39)&7)) {
-    g736+=g734;direction=1;
+   if(!(board_collision_span_or(cursor_x+28,cursor_y+1,39)&7)) {
+    cursor_x+=g734;direction=1;
     if(g72e<=8) {if(++g72e>8) g72e=1;}
     if(gc588) {
-     for(i=0;i<4;i++) movmem(&saved[i],&gb3af[i*2+4],32);
+     for(i=0;i<4;i++) movmem(&saved[i],&actor_state_table[i*2+4],32);
      fb772();
     }
    }
-  } else if(gb6c) {
+  } else if(key_up_left_held) {
    g73a=1;
-   if(!(board_collision_span_or(g736,g738+1,39)&7)) {
-    g736-=g734;direction=-1;
+   if(!(board_collision_span_or(cursor_x,cursor_y+1,39)&7)) {
+    cursor_x-=g734;direction=-1;
     if(g72e<=8) {if(++g72e>8) g72e=1;}
     if(gc588) {
-     for(i=0;i<4;i++) movmem(&saved[i],&gb3af[i*2+4],32);
+     for(i=0;i<4;i++) movmem(&saved[i],&actor_state_table[i*2+4],32);
      fb772();
     }
    }
   }
   if(g730) {
-   if(!(shadow_bitmap_hit_test(g736+8,g738-1,9)&7)) {
-    g738-=g740[g730];g730--;if(++g72e>11) g72e=11;
+   if(!(shadow_bitmap_hit_test(cursor_x+8,cursor_y-1,9)&7)) {
+    cursor_y-=g740[g730];g730--;if(++g72e>11) g72e=11;
     if(!direction) g72e=10;
    } else g730=0;
-  } else if(!(shadow_bitmap_hit_test(g736+8,g738+47,9)&7)) {
-   if(g732) g738+=8;else {g732=1;g738+=2;}
+  } else if(!(shadow_bitmap_hit_test(cursor_x+8,cursor_y+47,9)&7)) {
+   if(g732) cursor_y+=8;else {g732=1;cursor_y+=2;}
    g72e=(direction&1)+10;
-  } else if(!(shadow_bitmap_hit_test(g736+8,g738+40,9)&7)) {
-   g738+=((g738+48)/8)*8-(g738+40);g732=0;g72e=(direction&1)+10;stream_control_block_arm(11);
+  } else if(!(shadow_bitmap_hit_test(cursor_x+8,cursor_y+40,9)&7)) {
+   cursor_y+=((cursor_y+48)/8)*8-(cursor_y+40);g732=0;g72e=(direction&1)+10;stream_control_block_arm(11);
   } else if(key==32) {
    if(hud_tab_get()==1) {
-    if(!(shadow_bitmap_hit_test(g736+8,g738-1,9)&7)) {
+    if(!(shadow_bitmap_hit_test(cursor_x+8,cursor_y-1,9)&7)) {
      stream_control_block_arm(16);g730=8;g72e=9;g734=direction?8:4;
     } else goto walk;
    } else goto walk;
-  } else if(gb68&&gb70&&!(shadow_bitmap_hit_test(g736+8,g738-1,9)&7)) {
-   gb70=0;g730=5;g72e=9;g734=direction?8:4;stream_control_block_arm(12);
+  } else if(key_up_held&&key_up_released&&!(shadow_bitmap_hit_test(cursor_x+8,cursor_y-1,9)&7)) {
+   key_up_released=0;g730=5;g72e=9;g734=direction?8:4;stream_control_block_arm(12);
   } else {
 walk:
    if(direction) {if(g72e>8) g72e=1;}else g72e=0;
    g734=4;
-   if(g738<70&&g736>90&&g736<210) {level_exit_transition_run();gbc=0;return 1;}
+   if(cursor_y<70&&cursor_x>90&&cursor_x<210) {level_exit_transition_run();gbc=0;return 1;}
   }
   if(key==32) {
    if((i=hud_tab_get())==2&&!g72c) {
@@ -318,32 +318,32 @@ walk:
   }
   if(g72c==1) g72c=0;
   sprite_script_frame_driver();
-  if(once&&!gc588&&gb3af[12].flag) {
-   gb3af[12].rest[7]=1;once=0;g96=400;gfx_copy_rect(160,274,resource_ptr_table[29],0);g96=159;
+  if(once&&!gc588&&actor_state_table[12].flag) {
+   actor_state_table[12].rest[7]=1;once=0;g96=400;gfx_copy_rect(160,274,resource_ptr_table[29],0);g96=159;
   }
-  if(g40ce&&last!=g40ce) hit=gb3ae[0]-g40ce;else hit=-1;
+  if(g40ce&&last!=g40ce) hit=actor_record_table[0]-g40ce;else hit=-1;
   last=g40ce;
-  if(g736<8) g736=8;else if(g736>272) g736=272;
+  if(cursor_x<8) cursor_x=8;else if(cursor_x>272) cursor_x=272;
   if(g8fe) board_raycast_step();
   if(hurt) {
    hurt--;
-   if(hurt>26) gfx_copy_rect(g736,g738,resource_stripe_table+14828,g73a);
-   else if(hurt&1) gfx_copy_rect(g736,g738,resource_stripe_table+g72e*674,g73a);
+   if(hurt>26) gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+14828,g73a);
+   else if(hurt&1) gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,g73a);
   } else if(g72c) {
-   gfx_copy_rect(g736,g738,g96ee,0);g72c--;
-   gfx_copy_rect(g736,g738,resource_stripe_table+g72e*674,g73a);
+   gfx_copy_rect(cursor_x,cursor_y,g96ee,0);g72c--;
+   gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,g73a);
   } else if(hit>4&&hit<=11) {
-   gfx_copy_rect(g736,g738,resource_stripe_table+14828,g73a);hurt=30;stream_control_block_arm(1);rect_queue_flush();gbc=0;
+   gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+14828,g73a);hurt=30;stream_control_block_arm(1);rect_queue_flush();gbc=0;
    if(energy_adjust(-2)<=0) {board_record_complete();return 0;}
    gbc=1;goto frame_end;
-  } else gfx_copy_rect(g736,g738,resource_stripe_table+g72e*674,g73a);
+  } else gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,g73a);
   if(hit==13) {
-   if(gb76>deadline) {
-    g730=gb3af[13].flag=0;
+   if(timer_ticks>deadline) {
+    g730=actor_state_table[13].flag=0;
     if(--remaining<0) remaining=0;
     if(!remaining&&!face7()) {rect_queue_flush();resource_record_cache_reset(69);goto frame_end;}
    }
-   deadline=gb76+500;
+   deadline=timer_ticks+500;
   }
   rect_queue_flush();
 frame_end:
@@ -354,15 +354,15 @@ frame_end:
 
 
 /* ---- F_C0E0 (original code at 0xC0E0) ---- */
-extern int g8fe,gbc,board_record_index,g40ce,g736,g738,g73a;
+extern int g8fe,gbc,board_record_index,g40ce,cursor_x,cursor_y,g73a;
 extern struct record3e8 g43b4[];
 extern char far *board_records;extern int fb09a(), fb4fb(), level_run_loop();extern void board_actors_draw();extern void gfx_box();extern void board_resource_expand(void);extern void resource_record_cache_reset();extern void level_free_descriptor_table();
 extern void menu_resources_free(void);
 extern void sprite_draw_cursor(void);
-level_play(){register int r;gbc=g8fe=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;menu_resources_free();fb09a();board_resource_expand();fb4fb();board_actors_draw(0);g736=16;g738=112;g73a=0;sprite_draw_cursor();gfx_box(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
+level_play(){register int r;gbc=g8fe=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;menu_resources_free();fb09a();board_resource_expand();fb4fb();board_actors_draw(0);cursor_x=16;cursor_y=112;g73a=0;sprite_draw_cursor();gfx_box(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
 
 
 /* ---- F_C15E (original code at 0xC15E) ---- */
 extern void hud_scroll_reset(void);
 extern int face7(),hud_scroll_move(),level_play(),level_chapter_driver();
-extern void menu_backdrop_paint(void);extern void sound_voices_reset();extern int g9ade,g722;level_play_chapter(){hud_scroll_reset();if(!face7())hud_scroll_move(-3);else hud_scroll_move(-4);g9ade=42;g722=0;menu_backdrop_paint();if(!level_play())return 0;level_chapter_driver();sound_voices_reset();return 1;}
+extern void menu_backdrop_paint(void);extern void sound_voices_reset();extern int campaign_round_node_cursor,g722;level_play_chapter(){hud_scroll_reset();if(!face7())hud_scroll_move(-3);else hud_scroll_move(-4);campaign_round_node_cursor=42;g722=0;menu_backdrop_paint();if(!level_play())return 0;level_chapter_driver();sound_voices_reset();return 1;}

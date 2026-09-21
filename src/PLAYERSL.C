@@ -12,7 +12,7 @@
 
 extern void longjmp();
 extern struct dialog dialog_select_quit_confirm;
-extern char g8bfe[];
+extern char game_abort_jmpbuf[];
 extern void slot_table_save();
 extern struct dialog dialog_select_menu_confirm;
 extern void sound_start(void), sound_stop_reset(), sound_voices_reset(), sound_request_count_dec();
@@ -46,7 +46,7 @@ extern char far *ui_gfx_shadow_b;                 /* DS:C5BE offset, DS:C5C0 seg
 void player_select_quit_confirm(void)
 {
     if (dialog_run(&dialog_select_quit_confirm) == 1)
-        longjmp(g8bfe, 2);
+        longjmp(game_abort_jmpbuf, 2);
     return 0;
 }
 
@@ -58,7 +58,7 @@ void player_select_menu_confirm(void)
     si = dialog_run(&dialog_select_menu_confirm);
     if (si == 1) {
         slot_table_save();
-        longjmp(g8bfe, 1);
+        longjmp(game_abort_jmpbuf, 1);
     }
     return 0;
 }
@@ -75,7 +75,7 @@ void player_select_restart_confirm(void)
         sound_enabled = music_enabled = 0;
         sound_stop_reset();
         sound_voices_reset();
-        longjmp(g8bfe, 3);
+        longjmp(game_abort_jmpbuf, 3);
     }
     sound_request_count_dec();
     return 0;

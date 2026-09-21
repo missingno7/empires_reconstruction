@@ -9,7 +9,7 @@
 
    ui_gfx_blob (DS:C5CA, segment at DS:C5CC) is NOT declared here: dialog_draw_shadow/dialog_restore_screen
    push it as a bare `unsigned` word alongside a separately declared
-   gc5cc, matching the six/four explicit word pushes their thunk calls
+   dialog_backdrop_save_size, matching the six/four explicit word pushes their thunk calls
    compile to (see F_8434.C/F_8453.C); giving it a `char far *` type there
    makes the compiler push it as a 2-word far pointer on its own and adds
    an extra push, breaking byte-exactness. Every other owned reader (an

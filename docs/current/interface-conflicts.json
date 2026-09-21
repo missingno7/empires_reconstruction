@@ -29962,6 +29962,144 @@
       ]
     },
     {
+      "symbol": "actor_record_table",
+      "declarations": [
+        {
+          "symbol": "actor_record_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 142
+        },
+        {
+          "symbol": "actor_record_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 157
+        },
+        {
+          "symbol": "actor_record_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 208
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 45998,
+          "owner": null,
+          "evidence": "direct DS offset in complete F_4E9F fixup",
+          "caller": "F_4E9F"
+        },
+        {
+          "offset": 45998,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2AEDE.phys",
+          "caller": "F_4EEB"
+        },
+        {
+          "offset": 45998,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2AEDE.phys",
+          "caller": "F_B60F"
+        },
+        {
+          "offset": 45998,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2AEDE.phys",
+          "caller": "F_B772"
+        },
+        {
+          "offset": 45998,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": [
+        "g0b3ae"
+      ]
+    },
+    {
+      "symbol": "actor_state_table",
+      "declarations": [
+        {
+          "symbol": "actor_state_table",
+          "type": "struct gb3af_entry",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "include/GB3AF.H",
+          "line": 9
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 45999,
+          "owner": null,
+          "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F",
+          "caller": "F_338A"
+        },
+        {
+          "offset": 45999,
+          "owner": null,
+          "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F",
+          "caller": "F_B7F9"
+        },
+        {
+          "offset": 45999,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        }
+      ],
+      "struct_membership": [
+        {
+          "name": "gb3af_entry",
+          "bytes": 32,
+          "fields": [
+            {
+              "name": "flag",
+              "type": "unsigned char",
+              "offset": 0,
+              "bytes": 1
+            },
+            {
+              "name": "rest",
+              "type": "char",
+              "offset": 1,
+              "bytes": 31
+            }
+          ],
+          "confidence": "MEDIUM",
+          "file": "include/GB3AF.H",
+          "line": 8
+        }
+      ],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
       "symbol": "argc",
       "declarations": [],
       "definitions": [],
@@ -31004,6 +31142,141 @@
       ]
     },
     {
+      "symbol": "campaign_round_node_cursor",
+      "declarations": [
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 413
+        },
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 437
+        },
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 500
+        },
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 652
+        },
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 368
+        },
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/NODEIDX.C",
+          "line": 1
+        },
+        {
+          "symbol": "campaign_round_node_cursor",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TICKDIV.C",
+          "line": 2
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "storage_objects/M_2960E.phys",
+          "caller": "F_1EA5"
+        },
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "storage_objects/M_2960E.phys",
+          "caller": "F_1EB4"
+        },
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "direct DS offset in complete F_2AE2 fixup",
+          "caller": "F_2AE2"
+        },
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "storage_objects/M_2960E.phys",
+          "caller": "F_462E"
+        },
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "storage_objects/M_2960E.phys",
+          "caller": "F_4713"
+        },
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "storage_objects/M_2960E.phys",
+          "caller": "F_4943"
+        },
+        {
+          "offset": 39646,
+          "owner": null,
+          "evidence": "storage_objects/M_2960E.phys",
+          "caller": "F_C15E"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          39646,
+          39648
+        ]
+      ],
+      "aliases": []
+    },
+    {
       "symbol": "cel",
       "declarations": [
         {
@@ -31377,6 +31650,354 @@
       "aliases": [
         "n_sel"
       ]
+    },
+    {
+      "symbol": "cursor_x",
+      "declarations": [
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 30
+        },
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 594
+        },
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 38
+        },
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 499
+        },
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 9
+        },
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 205
+        },
+        {
+          "symbol": "cursor_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 357
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "storage_objects/G_P20266.phys",
+          "caller": "F_22B1"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_233E"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "storage_objects/G_P20266.phys",
+          "caller": "F_257D"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "storage_objects/G_P20266.phys",
+          "caller": "F_3986"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "storage_objects/G_P20266.phys",
+          "caller": "F_4713"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "storage_objects/G_P20266.phys",
+          "caller": "F_5A3B"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        },
+        {
+          "offset": 1846,
+          "owner": null,
+          "evidence": "storage_objects/G_P20266.phys",
+          "caller": "F_C0E0"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          1846,
+          1848
+        ]
+      ],
+      "aliases": [
+        "g0736"
+      ]
+    },
+    {
+      "symbol": "cursor_y",
+      "declarations": [
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 30
+        },
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 594
+        },
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 38
+        },
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 499
+        },
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 9
+        },
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 205
+        },
+        {
+          "symbol": "cursor_y",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 357
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "storage_objects/G_P20268.phys",
+          "caller": "F_22B1"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_233E"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "storage_objects/G_P20268.phys",
+          "caller": "F_257D"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "storage_objects/G_P20268.phys",
+          "caller": "F_3986"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "storage_objects/G_P20268.phys",
+          "caller": "F_4713"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "storage_objects/G_P20268.phys",
+          "caller": "F_5A3B"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        },
+        {
+          "offset": 1848,
+          "owner": null,
+          "evidence": "storage_objects/G_P20268.phys",
+          "caller": "F_C0E0"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          1848,
+          1850
+        ]
+      ],
+      "aliases": [
+        "g0738"
+      ]
+    },
+    {
+      "symbol": "dialog_backdrop_save_size",
+      "declarations": [
+        {
+          "symbol": "dialog_backdrop_save_size",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 332
+        },
+        {
+          "symbol": "dialog_backdrop_save_size",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 345
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 50636,
+          "owner": null,
+          "evidence": "storage_objects/M_2C0FC.phys",
+          "caller": "F_8434"
+        },
+        {
+          "offset": 50636,
+          "owner": null,
+          "evidence": "storage_objects/M_2C0FC.phys",
+          "caller": "F_8453"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          50636,
+          50638
+        ]
+      ],
+      "aliases": []
     },
     {
       "symbol": "dialog_box_h",
@@ -34397,7 +35018,7 @@
         ]
       ],
       "aliases": [
-        "g736"
+        "cursor_x"
       ]
     },
     {
@@ -34432,7 +35053,7 @@
         ]
       ],
       "aliases": [
-        "g738"
+        "cursor_y"
       ]
     },
     {
@@ -34516,7 +35137,7 @@
       "struct_membership": [],
       "known_storage_ranges": [],
       "aliases": [
-        "gb3ae"
+        "actor_record_table"
       ]
     },
     {
@@ -37233,90 +37854,6 @@
       "aliases": []
     },
     {
-      "symbol": "g237c",
-      "declarations": [
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDRQCLR.C",
-          "line": 3
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDRQDEC.C",
-          "line": 5
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 6
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 73
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 9084,
-          "owner": null,
-          "evidence": "storage_objects/G_P21EAC.phys",
-          "caller": "F_6BCF"
-        },
-        {
-          "offset": 9084,
-          "owner": null,
-          "evidence": "storage_objects/G_P21EAC.phys",
-          "caller": "F_D593"
-        },
-        {
-          "offset": 9084,
-          "owner": null,
-          "evidence": "storage_objects/G_P21EAC.phys",
-          "caller": "F_D5A6"
-        },
-        {
-          "offset": 9084,
-          "owner": null,
-          "evidence": "storage_objects/G_P21EAC.phys",
-          "caller": "F_D5B3"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          9084,
-          9086
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "g2380",
       "declarations": [
         {
@@ -38946,304 +39483,6 @@
       ]
     },
     {
-      "symbol": "g736",
-      "declarations": [
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 30
-        },
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 594
-        },
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 38
-        },
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 499
-        },
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/HITTEST.C",
-          "line": 9
-        },
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 205
-        },
-        {
-          "symbol": "g736",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 357
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "storage_objects/G_P20266.phys",
-          "caller": "F_22B1"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_233E"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "storage_objects/G_P20266.phys",
-          "caller": "F_257D"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "storage_objects/G_P20266.phys",
-          "caller": "F_3986"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "storage_objects/G_P20266.phys",
-          "caller": "F_4713"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "storage_objects/G_P20266.phys",
-          "caller": "F_5A3B"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        },
-        {
-          "offset": 1846,
-          "owner": null,
-          "evidence": "storage_objects/G_P20266.phys",
-          "caller": "F_C0E0"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          1846,
-          1848
-        ]
-      ],
-      "aliases": [
-        "g0736"
-      ]
-    },
-    {
-      "symbol": "g738",
-      "declarations": [
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 30
-        },
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 594
-        },
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 38
-        },
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 499
-        },
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/HITTEST.C",
-          "line": 9
-        },
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 205
-        },
-        {
-          "symbol": "g738",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 357
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "storage_objects/G_P20268.phys",
-          "caller": "F_22B1"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_233E"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "storage_objects/G_P20268.phys",
-          "caller": "F_257D"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "storage_objects/G_P20268.phys",
-          "caller": "F_3986"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "storage_objects/G_P20268.phys",
-          "caller": "F_4713"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "storage_objects/G_P20268.phys",
-          "caller": "F_5A3B"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        },
-        {
-          "offset": 1848,
-          "owner": null,
-          "evidence": "storage_objects/G_P20268.phys",
-          "caller": "F_C0E0"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          1848,
-          1850
-        ]
-      ],
-      "aliases": [
-        "g0738"
-      ]
-    },
-    {
       "symbol": "g73a",
       "declarations": [
         {
@@ -39839,97 +40078,6 @@
           35834
         ]
       ],
-      "aliases": []
-    },
-    {
-      "symbol": "g8bfe",
-      "declarations": [
-        {
-          "symbol": "g8bfe",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 598
-        },
-        {
-          "symbol": "g8bfe",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 720
-        },
-        {
-          "symbol": "g8bfe",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 210
-        },
-        {
-          "symbol": "g8bfe",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 15
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 35838,
-          "owner": null,
-          "evidence": "storage_objects/M_2872E.phys",
-          "caller": "F_3986"
-        },
-        {
-          "offset": 35838,
-          "owner": null,
-          "evidence": "storage_objects/M_2872E.phys",
-          "caller": "F_49F0"
-        },
-        {
-          "offset": 35838,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        },
-        {
-          "offset": 35838,
-          "owner": null,
-          "evidence": null,
-          "caller": "F_CDDD"
-        },
-        {
-          "offset": 35838,
-          "owner": null,
-          "evidence": null,
-          "caller": "F_CE00"
-        },
-        {
-          "offset": 35838,
-          "owner": null,
-          "evidence": null,
-          "caller": "F_CE2A"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [],
       "aliases": []
     },
     {
@@ -40825,141 +40973,6 @@
       ]
     },
     {
-      "symbol": "g9ade",
-      "declarations": [
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 413
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 437
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 500
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 652
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 368
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/NODEIDX.C",
-          "line": 1
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TICKDIV.C",
-          "line": 2
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "storage_objects/M_2960E.phys",
-          "caller": "F_1EA5"
-        },
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "storage_objects/M_2960E.phys",
-          "caller": "F_1EB4"
-        },
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "direct DS offset in complete F_2AE2 fixup",
-          "caller": "F_2AE2"
-        },
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "storage_objects/M_2960E.phys",
-          "caller": "F_462E"
-        },
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "storage_objects/M_2960E.phys",
-          "caller": "F_4713"
-        },
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "storage_objects/M_2960E.phys",
-          "caller": "F_4943"
-        },
-        {
-          "offset": 39646,
-          "owner": null,
-          "evidence": "storage_objects/M_2960E.phys",
-          "caller": "F_C15E"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          39646,
-          39648
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "g9ae0",
       "declarations": [
         {
@@ -41018,80 +41031,6 @@
       "aliases": [
         "s9b6e"
       ]
-    },
-    {
-      "symbol": "g9bfc",
-      "declarations": [
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": "near",
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 14
-        },
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 39932,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2972C.phys",
-          "caller": "F_1D47"
-        },
-        {
-          "offset": 39932,
-          "owner": null,
-          "evidence": "direct DS offset in complete F_4E9F fixup",
-          "caller": "F_4E9F"
-        },
-        {
-          "offset": 39932,
-          "owner": null,
-          "evidence": "Candidate instruction operands",
-          "caller": "F_B122"
-        },
-        {
-          "offset": 39932,
-          "owner": null,
-          "evidence": "Candidate instruction operands",
-          "caller": "F_B40F"
-        },
-        {
-          "offset": 39932,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2972C.phys",
-          "caller": "F_B60F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": []
     },
     {
       "symbol": "g9c",
@@ -41334,6 +41273,97 @@
           "owner": null,
           "evidence": "complete fixup target with object addend subtraction",
           "caller": "F_21A9"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
+      "symbol": "game_abort_jmpbuf",
+      "declarations": [
+        {
+          "symbol": "game_abort_jmpbuf",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 598
+        },
+        {
+          "symbol": "game_abort_jmpbuf",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 720
+        },
+        {
+          "symbol": "game_abort_jmpbuf",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 210
+        },
+        {
+          "symbol": "game_abort_jmpbuf",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/PLAYERSL.C",
+          "line": 15
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 35838,
+          "owner": null,
+          "evidence": "storage_objects/M_2872E.phys",
+          "caller": "F_3986"
+        },
+        {
+          "offset": 35838,
+          "owner": null,
+          "evidence": "storage_objects/M_2872E.phys",
+          "caller": "F_49F0"
+        },
+        {
+          "offset": 35838,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        },
+        {
+          "offset": 35838,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_CDDD"
+        },
+        {
+          "offset": 35838,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_CE00"
+        },
+        {
+          "offset": 35838,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_CE2A"
         }
       ],
       "struct_membership": [],
@@ -41635,144 +41665,6 @@
       "aliases": []
     },
     {
-      "symbol": "gb3ae",
-      "declarations": [
-        {
-          "symbol": "gb3ae",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "gb3ae",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 157
-        },
-        {
-          "symbol": "gb3ae",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 208
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 45998,
-          "owner": null,
-          "evidence": "direct DS offset in complete F_4E9F fixup",
-          "caller": "F_4E9F"
-        },
-        {
-          "offset": 45998,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2AEDE.phys",
-          "caller": "F_4EEB"
-        },
-        {
-          "offset": 45998,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2AEDE.phys",
-          "caller": "F_B60F"
-        },
-        {
-          "offset": 45998,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2AEDE.phys",
-          "caller": "F_B772"
-        },
-        {
-          "offset": 45998,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": [
-        "g0b3ae"
-      ]
-    },
-    {
-      "symbol": "gb3af",
-      "declarations": [
-        {
-          "symbol": "gb3af",
-          "type": "struct gb3af_entry",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": "near",
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "include/GB3AF.H",
-          "line": 9
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 45999,
-          "owner": null,
-          "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F",
-          "caller": "F_338A"
-        },
-        {
-          "offset": 45999,
-          "owner": null,
-          "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F",
-          "caller": "F_B7F9"
-        },
-        {
-          "offset": 45999,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [
-        {
-          "name": "gb3af_entry",
-          "bytes": 32,
-          "fields": [
-            {
-              "name": "flag",
-              "type": "unsigned char",
-              "offset": 0,
-              "bytes": 1
-            },
-            {
-              "name": "rest",
-              "type": "char",
-              "offset": 1,
-              "bytes": 31
-            }
-          ],
-          "confidence": "MEDIUM",
-          "file": "include/GB3AF.H",
-          "line": 8
-        }
-      ],
-      "known_storage_ranges": [],
-      "aliases": []
-    },
-    {
       "symbol": "gb3e",
       "declarations": [
         {
@@ -41992,73 +41884,6 @@
       "aliases": []
     },
     {
-      "symbol": "gb68",
-      "declarations": [
-        {
-          "symbol": "gb68",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 39
-        },
-        {
-          "symbol": "gb68",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": "near",
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/KEYBOARD.C",
-          "line": 28
-        },
-        {
-          "symbol": "gb68",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 205
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2920,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 2920,
-          "owner": null,
-          "evidence": "storage_objects/G_P20698.phys",
-          "caller": "F_699E"
-        },
-        {
-          "offset": 2920,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2920,
-          2922
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "gb6a",
       "declarations": [
         {
@@ -42104,73 +41929,6 @@
         [
           2922,
           2924
-        ]
-      ],
-      "aliases": []
-    },
-    {
-      "symbol": "gb6c",
-      "declarations": [
-        {
-          "symbol": "gb6c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 39
-        },
-        {
-          "symbol": "gb6c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/KEYBOARD.C",
-          "line": 28
-        },
-        {
-          "symbol": "gb6c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 205
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2924,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 2924,
-          "owner": null,
-          "evidence": "storage_objects/G_P2069C.phys",
-          "caller": "F_699E"
-        },
-        {
-          "offset": 2924,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2924,
-          2926
         ]
       ],
       "aliases": []
@@ -42224,227 +41982,6 @@
         ]
       ],
       "aliases": []
-    },
-    {
-      "symbol": "gb6e",
-      "declarations": [
-        {
-          "symbol": "gb6e",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 39
-        },
-        {
-          "symbol": "gb6e",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/KEYBOARD.C",
-          "line": 28
-        },
-        {
-          "symbol": "gb6e",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 205
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2926,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 2926,
-          "owner": null,
-          "evidence": "storage_objects/G_P2069E.phys",
-          "caller": "F_699E"
-        },
-        {
-          "offset": 2926,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2926,
-          2928
-        ]
-      ],
-      "aliases": []
-    },
-    {
-      "symbol": "gb70",
-      "declarations": [
-        {
-          "symbol": "gb70",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 39
-        },
-        {
-          "symbol": "gb70",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/KEYBOARD.C",
-          "line": 28
-        },
-        {
-          "symbol": "gb70",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 205
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2928,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 2928,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A0.phys",
-          "caller": "F_699E"
-        },
-        {
-          "offset": 2928,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2928,
-          2930
-        ]
-      ],
-      "aliases": []
-    },
-    {
-      "symbol": "gb76",
-      "declarations": [
-        {
-          "symbol": "gb76",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 18
-        },
-        {
-          "symbol": "gb76",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 211
-        },
-        {
-          "symbol": "gb76",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 90
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A6.phys",
-          "caller": "F_5382"
-        },
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A6.phys",
-          "caller": "F_6C26"
-        },
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A6.phys",
-          "caller": "F_6C57"
-        },
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A6.phys",
-          "caller": "F_6C6F"
-        },
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A6.phys",
-          "caller": "F_6C87"
-        },
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2934,
-          2938
-        ]
-      ],
-      "aliases": [
-        "timer_ticks"
-      ]
     },
     {
       "symbol": "gb7e",
@@ -42550,114 +42087,6 @@
       "aliases": []
     },
     {
-      "symbol": "gb83",
-      "declarations": [
-        {
-          "symbol": "gb83",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 5
-        },
-        {
-          "symbol": "gb83",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/HUDPMSG.C",
-          "line": 1
-        },
-        {
-          "symbol": "gb83",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 14
-        },
-        {
-          "symbol": "gb83",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 27
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_6FC3"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_6FDA"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_703E"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_7162"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_75F3"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_7695"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_778B"
-        },
-        {
-          "offset": 2947,
-          "owner": null,
-          "evidence": "storage_objects/G_P206B3.phys",
-          "caller": "F_7856"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2947,
-          2949
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "gb85",
       "declarations": [
         {
@@ -42709,73 +42138,6 @@
         [
           2949,
           2951
-        ]
-      ],
-      "aliases": []
-    },
-    {
-      "symbol": "gbb2",
-      "declarations": [
-        {
-          "symbol": "gbb2",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/MENULACT.C",
-          "line": 2
-        },
-        {
-          "symbol": "gbb2",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/MENULDIS.C",
-          "line": 2
-        },
-        {
-          "symbol": "gbb2",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/MENULEN.C",
-          "line": 1
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2994,
-          "owner": null,
-          "evidence": "storage_objects/G_P206E2.phys",
-          "caller": "F_791E"
-        },
-        {
-          "offset": 2994,
-          "owner": null,
-          "evidence": "storage_objects/G_P206E2.phys",
-          "caller": "F_7925"
-        },
-        {
-          "offset": 2994,
-          "owner": null,
-          "evidence": "storage_objects/G_P206E2.phys",
-          "caller": "F_792C"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2994,
-          2996
         ]
       ],
       "aliases": []
@@ -42935,194 +42297,6 @@
       "known_storage_ranges": [],
       "aliases": [
         "g00be"
-      ]
-    },
-    {
-      "symbol": "gbf66",
-      "declarations": [
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 14
-        },
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 48998,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2BA96.phys",
-          "caller": "F_1D47"
-        },
-        {
-          "offset": 48998,
-          "owner": null,
-          "evidence": "direct DS offset in complete F_4E9F fixup",
-          "caller": "F_4E9F"
-        },
-        {
-          "offset": 48998,
-          "owner": null,
-          "evidence": "Candidate instruction operands",
-          "caller": "F_B122"
-        },
-        {
-          "offset": 48998,
-          "owner": null,
-          "evidence": "Candidate instruction operands",
-          "caller": "F_B40F"
-        },
-        {
-          "offset": 48998,
-          "owner": null,
-          "evidence": "storage_objects/REGION_2BA96.phys",
-          "caller": "F_B60F"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": []
-    },
-    {
-      "symbol": "gbfc4",
-      "declarations": [
-        {
-          "symbol": "gbfc4",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARD.C",
-          "line": 410
-        },
-        {
-          "symbol": "gbfc4",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 47
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 49092,
-          "owner": null,
-          "evidence": "direct DS offset in complete F_2AE2 fixup",
-          "caller": "F_2AE2"
-        },
-        {
-          "offset": 49092,
-          "owner": null,
-          "evidence": "complete fixup target with object addend subtraction",
-          "caller": "F_3A75"
-        },
-        {
-          "offset": 49092,
-          "owner": null,
-          "evidence": null,
-          "caller": "F_D386"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          49092,
-          49096
-        ]
-      ],
-      "aliases": []
-    },
-    {
-      "symbol": "gbfc8",
-      "declarations": [
-        {
-          "symbol": "gbfc8",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 119
-        },
-        {
-          "symbol": "gbfc8",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 49096,
-          "owner": null,
-          "evidence": "storage_objects/M_2BAF8.phys",
-          "caller": "F_1D47"
-        },
-        {
-          "offset": 49096,
-          "owner": null,
-          "evidence": "storage_objects/M_2BAF8.phys",
-          "caller": "F_60A9"
-        },
-        {
-          "offset": 49096,
-          "owner": null,
-          "evidence": "storage_objects/M_2BAF8.phys",
-          "caller": "F_B55E"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          49096,
-          49100
-        ]
-      ],
-      "aliases": [
-        "sprbase"
       ]
     },
     {
@@ -45176,139 +44350,6 @@
       "aliases": []
     },
     {
-      "symbol": "gc360",
-      "declarations": [
-        {
-          "symbol": "gc360",
-          "type": "struct c470_record",
-          "array": "[10]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": 270,
-          "confidence": "MEDIUM",
-          "file": "include/C470.H",
-          "line": 29
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 50016,
-          "owner": null,
-          "evidence": "docs/storage-binding-evidence.json#DS_C360",
-          "caller": "F_A09D"
-        },
-        {
-          "offset": 50016,
-          "owner": null,
-          "evidence": "docs/storage-binding-evidence.json#DS_C360",
-          "caller": "F_A13F"
-        },
-        {
-          "offset": 50016,
-          "owner": null,
-          "evidence": "docs/storage-binding-evidence.json#DS_C360",
-          "caller": "F_AD25"
-        },
-        {
-          "offset": 50016,
-          "owner": null,
-          "evidence": "docs/storage-binding-evidence.json#DS_C360",
-          "caller": "F_ADCF"
-        },
-        {
-          "offset": 50016,
-          "owner": null,
-          "evidence": "F_CC6B historical instruction operands",
-          "caller": "F_CC6B"
-        }
-      ],
-      "struct_membership": [
-        {
-          "name": "c470_record",
-          "bytes": 27,
-          "fields": [
-            {
-              "name": "text",
-              "type": "char",
-              "offset": 0,
-              "bytes": 9
-            },
-            {
-              "name": "value",
-              "type": "int",
-              "offset": 9,
-              "bytes": 2
-            },
-            {
-              "name": "flags",
-              "type": "char",
-              "offset": 11,
-              "bytes": 1
-            },
-            {
-              "name": "resume_round",
-              "type": "char",
-              "offset": 12,
-              "bytes": 1
-            },
-            {
-              "name": "sound",
-              "type": "int",
-              "offset": 13,
-              "bytes": 2
-            },
-            {
-              "name": "music",
-              "type": "int",
-              "offset": 15,
-              "bytes": 2
-            },
-            {
-              "name": "option",
-              "type": "int",
-              "offset": 17,
-              "bytes": 2
-            },
-            {
-              "name": "pending",
-              "type": "int",
-              "offset": 19,
-              "bytes": 2
-            },
-            {
-              "name": "state",
-              "type": "char",
-              "offset": 21,
-              "bytes": 1
-            },
-            {
-              "name": "round_progress",
-              "type": "char",
-              "offset": 22,
-              "bytes": 4
-            },
-            {
-              "name": "byte26",
-              "type": "char",
-              "offset": 26,
-              "bytes": 1
-            }
-          ],
-          "confidence": "MEDIUM",
-          "file": "include/C470.H",
-          "line": 8
-        }
-      ],
-      "known_storage_ranges": [
-        [
-          50016,
-          50286
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "gc563",
       "declarations": [
         {
@@ -46055,56 +45096,6 @@
       "aliases": []
     },
     {
-      "symbol": "gc5cc",
-      "declarations": [
-        {
-          "symbol": "gc5cc",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 332
-        },
-        {
-          "symbol": "gc5cc",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 345
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 50636,
-          "owner": null,
-          "evidence": "storage_objects/M_2C0FC.phys",
-          "caller": "F_8434"
-        },
-        {
-          "offset": 50636,
-          "owner": null,
-          "evidence": "storage_objects/M_2C0FC.phys",
-          "caller": "F_8453"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          50636,
-          50638
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "gc5ce",
       "declarations": [
         {
@@ -46815,6 +45806,170 @@
       "aliases": []
     },
     {
+      "symbol": "hud_prompt_kind",
+      "declarations": [
+        {
+          "symbol": "hud_prompt_kind",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 5
+        },
+        {
+          "symbol": "hud_prompt_kind",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
+        },
+        {
+          "symbol": "hud_prompt_kind",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PROMPTS.C",
+          "line": 14
+        },
+        {
+          "symbol": "hud_prompt_kind",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PROMPTS.C",
+          "line": 27
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_6FC3"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_6FDA"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_703E"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_7162"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_75F3"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_7695"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_778B"
+        },
+        {
+          "offset": 2947,
+          "owner": null,
+          "evidence": "storage_objects/G_P206B3.phys",
+          "caller": "F_7856"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2947,
+          2949
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "icon_record_list_ptr",
+      "declarations": [
+        {
+          "symbol": "icon_record_list_ptr",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARD.C",
+          "line": 410
+        },
+        {
+          "symbol": "icon_record_list_ptr",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 47
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 49092,
+          "owner": null,
+          "evidence": "direct DS offset in complete F_2AE2 fixup",
+          "caller": "F_2AE2"
+        },
+        {
+          "offset": 49092,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 49092,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_D386"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          49092,
+          49096
+        ]
+      ],
+      "aliases": []
+    },
+    {
       "symbol": "int8_saved_vector",
       "declarations": [
         {
@@ -46943,6 +46098,274 @@
         [
           49356,
           49360
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "key_up_held",
+      "declarations": [
+        {
+          "symbol": "key_up_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 39
+        },
+        {
+          "symbol": "key_up_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": "near",
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/KEYBOARD.C",
+          "line": 28
+        },
+        {
+          "symbol": "key_up_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 205
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2920,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 2920,
+          "owner": null,
+          "evidence": "storage_objects/G_P20698.phys",
+          "caller": "F_699E"
+        },
+        {
+          "offset": 2920,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2920,
+          2922
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "key_up_left_held",
+      "declarations": [
+        {
+          "symbol": "key_up_left_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 39
+        },
+        {
+          "symbol": "key_up_left_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/KEYBOARD.C",
+          "line": 28
+        },
+        {
+          "symbol": "key_up_left_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 205
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2924,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 2924,
+          "owner": null,
+          "evidence": "storage_objects/G_P2069C.phys",
+          "caller": "F_699E"
+        },
+        {
+          "offset": 2924,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2924,
+          2926
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "key_up_released",
+      "declarations": [
+        {
+          "symbol": "key_up_released",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 39
+        },
+        {
+          "symbol": "key_up_released",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/KEYBOARD.C",
+          "line": 28
+        },
+        {
+          "symbol": "key_up_released",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 205
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2928,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 2928,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A0.phys",
+          "caller": "F_699E"
+        },
+        {
+          "offset": 2928,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2928,
+          2930
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "key_up_right_held",
+      "declarations": [
+        {
+          "symbol": "key_up_right_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 39
+        },
+        {
+          "symbol": "key_up_right_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/KEYBOARD.C",
+          "line": 28
+        },
+        {
+          "symbol": "key_up_right_held",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 205
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2926,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_3A75"
+        },
+        {
+          "offset": 2926,
+          "owner": null,
+          "evidence": "storage_objects/G_P2069E.phys",
+          "caller": "F_699E"
+        },
+        {
+          "offset": 2926,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2926,
+          2928
         ]
       ],
       "aliases": []
@@ -47125,6 +46548,73 @@
         [
           5061,
           5081
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "menu_list_enabled",
+      "declarations": [
+        {
+          "symbol": "menu_list_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MENULACT.C",
+          "line": 2
+        },
+        {
+          "symbol": "menu_list_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MENULDIS.C",
+          "line": 2
+        },
+        {
+          "symbol": "menu_list_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MENULEN.C",
+          "line": 1
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2994,
+          "owner": null,
+          "evidence": "storage_objects/G_P206E2.phys",
+          "caller": "F_791E"
+        },
+        {
+          "offset": 2994,
+          "owner": null,
+          "evidence": "storage_objects/G_P206E2.phys",
+          "caller": "F_7925"
+        },
+        {
+          "offset": 2994,
+          "owner": null,
+          "evidence": "storage_objects/G_P206E2.phys",
+          "caller": "F_792C"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2994,
+          2996
         ]
       ],
       "aliases": []
@@ -49866,6 +49356,139 @@
       ]
     },
     {
+      "symbol": "slot_transfer_table",
+      "declarations": [
+        {
+          "symbol": "slot_transfer_table",
+          "type": "struct c470_record",
+          "array": "[10]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": 270,
+          "confidence": "MEDIUM",
+          "file": "include/C470.H",
+          "line": 29
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 50016,
+          "owner": null,
+          "evidence": "docs/storage-binding-evidence.json#DS_C360",
+          "caller": "F_A09D"
+        },
+        {
+          "offset": 50016,
+          "owner": null,
+          "evidence": "docs/storage-binding-evidence.json#DS_C360",
+          "caller": "F_A13F"
+        },
+        {
+          "offset": 50016,
+          "owner": null,
+          "evidence": "docs/storage-binding-evidence.json#DS_C360",
+          "caller": "F_AD25"
+        },
+        {
+          "offset": 50016,
+          "owner": null,
+          "evidence": "docs/storage-binding-evidence.json#DS_C360",
+          "caller": "F_ADCF"
+        },
+        {
+          "offset": 50016,
+          "owner": null,
+          "evidence": "F_CC6B historical instruction operands",
+          "caller": "F_CC6B"
+        }
+      ],
+      "struct_membership": [
+        {
+          "name": "c470_record",
+          "bytes": 27,
+          "fields": [
+            {
+              "name": "text",
+              "type": "char",
+              "offset": 0,
+              "bytes": 9
+            },
+            {
+              "name": "value",
+              "type": "int",
+              "offset": 9,
+              "bytes": 2
+            },
+            {
+              "name": "flags",
+              "type": "char",
+              "offset": 11,
+              "bytes": 1
+            },
+            {
+              "name": "resume_round",
+              "type": "char",
+              "offset": 12,
+              "bytes": 1
+            },
+            {
+              "name": "sound",
+              "type": "int",
+              "offset": 13,
+              "bytes": 2
+            },
+            {
+              "name": "music",
+              "type": "int",
+              "offset": 15,
+              "bytes": 2
+            },
+            {
+              "name": "option",
+              "type": "int",
+              "offset": 17,
+              "bytes": 2
+            },
+            {
+              "name": "pending",
+              "type": "int",
+              "offset": 19,
+              "bytes": 2
+            },
+            {
+              "name": "state",
+              "type": "char",
+              "offset": 21,
+              "bytes": 1
+            },
+            {
+              "name": "round_progress",
+              "type": "char",
+              "offset": 22,
+              "bytes": 4
+            },
+            {
+              "name": "byte26",
+              "type": "char",
+              "offset": 26,
+              "bytes": 1
+            }
+          ],
+          "confidence": "MEDIUM",
+          "file": "include/C470.H",
+          "line": 8
+        }
+      ],
+      "known_storage_ranges": [
+        [
+          50016,
+          50286
+        ]
+      ],
+      "aliases": []
+    },
+    {
       "symbol": "slot_used_count",
       "declarations": [
         {
@@ -50277,6 +49900,90 @@
       ]
     },
     {
+      "symbol": "sound_request_count",
+      "declarations": [
+        {
+          "symbol": "sound_request_count",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDRQCLR.C",
+          "line": 3
+        },
+        {
+          "symbol": "sound_request_count",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDRQDEC.C",
+          "line": 5
+        },
+        {
+          "symbol": "sound_request_count",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTART.C",
+          "line": 6
+        },
+        {
+          "symbol": "sound_request_count",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMER.C",
+          "line": 73
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 9084,
+          "owner": null,
+          "evidence": "storage_objects/G_P21EAC.phys",
+          "caller": "F_6BCF"
+        },
+        {
+          "offset": 9084,
+          "owner": null,
+          "evidence": "storage_objects/G_P21EAC.phys",
+          "caller": "F_D593"
+        },
+        {
+          "offset": 9084,
+          "owner": null,
+          "evidence": "storage_objects/G_P21EAC.phys",
+          "caller": "F_D5A6"
+        },
+        {
+          "offset": 9084,
+          "owner": null,
+          "evidence": "storage_objects/G_P21EAC.phys",
+          "caller": "F_D5B3"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          9084,
+          9086
+        ]
+      ],
+      "aliases": []
+    },
+    {
       "symbol": "sprbase",
       "declarations": [
         {
@@ -50320,7 +50027,65 @@
         ]
       ],
       "aliases": [
-        "gbfc8"
+        "sprite_tile_bank"
+      ]
+    },
+    {
+      "symbol": "sprite_tile_bank",
+      "declarations": [
+        {
+          "symbol": "sprite_tile_bank",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 119
+        },
+        {
+          "symbol": "sprite_tile_bank",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 49096,
+          "owner": null,
+          "evidence": "storage_objects/M_2BAF8.phys",
+          "caller": "F_1D47"
+        },
+        {
+          "offset": 49096,
+          "owner": null,
+          "evidence": "storage_objects/M_2BAF8.phys",
+          "caller": "F_60A9"
+        },
+        {
+          "offset": 49096,
+          "owner": null,
+          "evidence": "storage_objects/M_2BAF8.phys",
+          "caller": "F_B55E"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          49096,
+          49100
+        ]
+      ],
+      "aliases": [
+        "sprbase"
       ]
     },
     {
@@ -50831,6 +50596,154 @@
       "aliases": []
     },
     {
+      "symbol": "tile_height_table",
+      "declarations": [
+        {
+          "symbol": "tile_height_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 14
+        },
+        {
+          "symbol": "tile_height_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 142
+        },
+        {
+          "symbol": "tile_height_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 48998,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2BA96.phys",
+          "caller": "F_1D47"
+        },
+        {
+          "offset": 48998,
+          "owner": null,
+          "evidence": "direct DS offset in complete F_4E9F fixup",
+          "caller": "F_4E9F"
+        },
+        {
+          "offset": 48998,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B122"
+        },
+        {
+          "offset": 48998,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
+        },
+        {
+          "offset": 48998,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2BA96.phys",
+          "caller": "F_B60F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
+      "symbol": "tile_width_table",
+      "declarations": [
+        {
+          "symbol": "tile_width_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 14
+        },
+        {
+          "symbol": "tile_width_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 142
+        },
+        {
+          "symbol": "tile_width_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 39932,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2972C.phys",
+          "caller": "F_1D47"
+        },
+        {
+          "offset": 39932,
+          "owner": null,
+          "evidence": "direct DS offset in complete F_4E9F fixup",
+          "caller": "F_4E9F"
+        },
+        {
+          "offset": 39932,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B122"
+        },
+        {
+          "offset": 39932,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
+        },
+        {
+          "offset": 39932,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2972C.phys",
+          "caller": "F_B60F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
       "symbol": "timer_tick_phase",
       "declarations": [
         {
@@ -50871,11 +50784,44 @@
           "type": "unsigned long",
           "array": null,
           "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/INTRO.C",
+          "line": 18
+        },
+        {
+          "symbol": "timer_ticks",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 211
+        },
+        {
+          "symbol": "timer_ticks",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
           "storage": "near",
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/TIMER.C",
           "line": 74
+        },
+        {
+          "symbol": "timer_ticks",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TIMER.C",
+          "line": 90
         }
       ],
       "definitions": [],
@@ -50884,7 +50830,43 @@
           "offset": 2934,
           "owner": null,
           "evidence": "storage_objects/G_P206A6.phys",
+          "caller": "F_5382"
+        },
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A6.phys",
           "caller": "F_6BCF"
+        },
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A6.phys",
+          "caller": "F_6C26"
+        },
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A6.phys",
+          "caller": "F_6C57"
+        },
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A6.phys",
+          "caller": "F_6C6F"
+        },
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A6.phys",
+          "caller": "F_6C87"
+        },
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
         }
       ],
       "struct_membership": [],
@@ -50894,9 +50876,7 @@
           2938
         ]
       ],
-      "aliases": [
-        "gb76"
-      ]
+      "aliases": []
     },
     {
       "symbol": "tx",

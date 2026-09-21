@@ -20,11 +20,11 @@ DGROUP	GROUP	_DATA,_BSS
 _DATA	SEGMENT WORD PUBLIC 'DATA'
 _DATA	ENDS
 _BSS	SEGMENT WORD PUBLIC 'BSS'
-	EXTRN	_gb68:WORD		; DS:0B68
+	EXTRN	_key_up_held:WORD		; DS:0B68
 	EXTRN	_gb6a:WORD		; DS:0B6A
-	EXTRN	_gb6c:WORD		; DS:0B6C
-	EXTRN	_gb6e:WORD		; DS:0B6E
-	EXTRN	_gb70:WORD		; DS:0B70
+	EXTRN	_key_up_left_held:WORD		; DS:0B6C
+	EXTRN	_key_up_right_held:WORD		; DS:0B6E
+	EXTRN	_key_up_released:WORD		; DS:0B70
 	EXTRN	_keyboard_state:WORD		; DS:0B72
 	EXTRN	_int9_saved_vector:DWORD		; DS:0C0CC .. 0C0CE, the old INT 09h vector chain
 _BSS	ENDS
@@ -101,21 +101,21 @@ case58:
 	jmp	near ptr tail
 case47:
 	mov	ax,si
-	mov	_gb6c,ax
-	mov	_gb68,ax
+	mov	_key_up_left_held,ax
+	mov	_key_up_held,ax
 	test	byte ptr [bp-1],80h
 	je	case47done
-	mov	word ptr _gb70,1
+	mov	word ptr _key_up_released,1
 case47done:
 	jmp	short tail
 	nop
 case49:
 	mov	ax,si
-	mov	_gb6e,ax
-	mov	_gb68,ax
+	mov	_key_up_right_held,ax
+	mov	_key_up_held,ax
 	test	byte ptr [bp-1],80h
 	je	case49done
-	mov	word ptr _gb70,1
+	mov	word ptr _key_up_released,1
 case49done:
 	jmp	short tail
 	nop
@@ -124,10 +124,10 @@ case29:
 	jne	case48
 	jmp	short tail
 case48:
-	mov	_gb68,si
+	mov	_key_up_held,si
 	test	byte ptr [bp-1],80h
 	je	case48done
-	mov	word ptr _gb70,1
+	mov	word ptr _key_up_released,1
 case48done:
 	jmp	short tail
 case2B:
@@ -135,14 +135,14 @@ case2B:
 	jne	case4B
 	jmp	short tail
 case4B:
-	mov	_gb6c,si
+	mov	_key_up_left_held,si
 	jmp	short tail
 case4E:
 	cmp	byte ptr ds:[0856h],0
 	jne	case4D
 	jmp	short tail
 case4D:
-	mov	_gb6e,si
+	mov	_key_up_right_held,si
 	jmp	short tail
 case4A:
 	cmp	byte ptr ds:[0856h],0

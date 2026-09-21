@@ -2,7 +2,7 @@
    One translation unit; the sections below were the separate member
    sources of grouped module C_6FC3_747B and keep their original ids. */
 
-extern int gb83, gb85, gb80, gb7e, g0b7e, gc0fa, gc0fc, gc0ec;
+extern int hud_prompt_kind, gb85, gb80, gb7e, g0b7e, gc0fa, gc0fc, gc0ec;
 extern char energy_meter, display_mode;
 extern void gfx_blit_bitmap();
 extern void gfx_box();
@@ -24,7 +24,7 @@ extern void gfx_bar(int a, int b, int c);
 extern void gfx_vline(int a, int b, int c);
 
 /* ---- F_6FC3 (original code at 0x6FC3) ---- */
-hud_panel_clear() { gb83 = 0; }
+hud_panel_clear() { hud_prompt_kind = 0; }
 
 
 /* ---- F_6FCA (original code at 0x6FCA) ---- */
@@ -47,7 +47,7 @@ extern char far *gc0ee;
 void hud_panel_open(void)
 {
     gc0fa = 0;
-    gb83 = 1;
+    hud_prompt_kind = 1;
     gc0fc = 1;
     gfx_blit_bitmap(6, 0xa2, gc0ee + *(int far *) gc0ee + 2);
     hud_draw_meter();
@@ -68,7 +68,7 @@ void ui_overlay_show(void)
 
     gb85++;
     c = cur_color_index_get();
-    switch (gb83) {
+    switch (hud_prompt_kind) {
     case 1:
         gfx_color_select(gc0fc);
         gfx_clear_rect(14, 184, 102, 12);
@@ -108,7 +108,7 @@ void ui_overlay_hide(void)
         gb85 = 0;
     else if (gb85)
         return;
-    switch (gb83) {
+    switch (hud_prompt_kind) {
     case 1:
         gfx_blit_bitmap(14, 0xb8, gc0ee + ((unsigned *)gc0ee)[2] + 2);
         gfx_box(14, 0xb8, 0x66, 12);

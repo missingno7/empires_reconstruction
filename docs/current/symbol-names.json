@@ -1,6 +1,12 @@
 {
   "format": "empires-symbol-names-v1",
   "names": {
+    "actor_record_table": {
+      "original": "gb3ae"
+    },
+    "actor_state_table": {
+      "original": "gb3af"
+    },
     "anim_frame_advance": {
       "original": "f9dcc",
       "address": "9DCC"
@@ -115,6 +121,9 @@
       "original": "f1ea5",
       "address": "1EA5"
     },
+    "campaign_round_node_cursor": {
+      "original": "g9ade"
+    },
     "chapter_map_backdrop_draw": {
       "original": "fb3d7",
       "address": "B3D7"
@@ -152,6 +161,15 @@
     "cursor_trail_arm": {
       "original": "f5a3b",
       "address": "5A3B"
+    },
+    "cursor_x": {
+      "original": "g736"
+    },
+    "cursor_y": {
+      "original": "g738"
+    },
+    "dialog_backdrop_save_size": {
+      "original": "gc5cc"
     },
     "dialog_blink_box": {
       "original": "f8414",
@@ -367,6 +385,9 @@
       "original": "fa004",
       "address": "A004"
     },
+    "game_abort_jmpbuf": {
+      "original": "g8bfe"
+    },
     "game_run": {
       "original": "f49f0",
       "address": "49F0"
@@ -511,6 +532,9 @@
       "original": "f75f3",
       "address": "75F3"
     },
+    "hud_prompt_kind": {
+      "original": "gb83"
+    },
     "hud_prompt_message_draw": {
       "original": "f7856",
       "address": "7856"
@@ -551,6 +575,9 @@
       "original": "fd386",
       "address": "D386"
     },
+    "icon_record_list_ptr": {
+      "original": "gbfc4"
+    },
     "int8_saved_vector": {
       "original": "g0b7a"
     },
@@ -572,6 +599,18 @@
     "intro_wait_key": {
       "original": "f5593",
       "address": "5593"
+    },
+    "key_up_held": {
+      "original": "gb68"
+    },
+    "key_up_left_held": {
+      "original": "gb6c"
+    },
+    "key_up_released": {
+      "original": "gb70"
+    },
+    "key_up_right_held": {
+      "original": "gb6e"
     },
     "keyboard_buffer_drain": {
       "original": "f6b66",
@@ -678,6 +717,9 @@
     "menu_list_enable": {
       "original": "f791e",
       "address": "791E"
+    },
+    "menu_list_enabled": {
+      "original": "gbb2"
     },
     "menu_list_source_set": {
       "original": "f7932",
@@ -1162,6 +1204,9 @@
       "original": "fa13f",
       "address": "A13F"
     },
+    "slot_transfer_table": {
+      "original": "gc360"
+    },
     "slot_used_count": {
       "original": "gc57e"
     },
@@ -1219,6 +1264,9 @@
     "sound_pit_divisor_program": {
       "original": "f_c706",
       "address": "C706"
+    },
+    "sound_request_count": {
+      "original": "g237c"
     },
     "sound_request_count_clear": {
       "original": "fd5b3",
@@ -1356,6 +1404,9 @@
       "original": "f4e9f",
       "address": "4E9F"
     },
+    "sprite_tile_bank": {
+      "original": "gbfc8"
+    },
     "str_concat_far_list": {
       "original": "fa036",
       "address": "A036"
@@ -1392,6 +1443,12 @@
       "original": "f1eb4",
       "address": "1EB4"
     },
+    "tile_height_table": {
+      "original": "gbf66"
+    },
+    "tile_width_table": {
+      "original": "g9bfc"
+    },
     "timer_deadline_arm": {
       "original": "f6c57",
       "address": "6C57"
@@ -1420,7 +1477,7 @@
       "original": "gc0d4"
     },
     "timer_ticks": {
-      "original": "g0b76"
+      "original": "gb76"
     },
     "timer_wait_ticks": {
       "original": "f6c26",

@@ -13,7 +13,7 @@
    local to that section instead -- e.g. F_7DF1's prototyped `menu_list_source_set(char
    far *)` versus F_7DFC's K&R `menu_list_source_set()`, F_8267's K&R `text_draw_wrapped()`
    versus F_8480's prototyped form, and F_8434/F_8453's `unsigned
-   ui_gfx_blob`/`gc5cc` (documented in LAYOUT.H: those two thunks push the
+   ui_gfx_blob`/`dialog_backdrop_save_size` (documented in LAYOUT.H: those two thunks push the
    far pointer's two words separately, so a `char far *` type here would add
    an extra push and break byte-exactness). */
 extern void gfx_vline();
@@ -329,11 +329,11 @@ int a;
    the extent literally pushes. */
 extern void gfx_save_rect();
 extern unsigned ui_gfx_blob;                  /* DS:C5CA */
-extern unsigned gc5cc;                  /* DS:C5CC */
+extern unsigned dialog_backdrop_save_size;                  /* DS:C5CC */
 
 void dialog_draw_shadow()
 {
-    gfx_save_rect(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h, ui_gfx_blob, gc5cc);
+    gfx_save_rect(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h, ui_gfx_blob, dialog_backdrop_save_size);
 }
 
 
@@ -342,11 +342,11 @@ void dialog_draw_shadow()
    03B1h and 039Fh. */
 extern void gfx_restore_rect();
 extern unsigned ui_gfx_blob;                  /* DS:C5CA */
-extern unsigned gc5cc;                  /* DS:C5CC */
+extern unsigned dialog_backdrop_save_size;                  /* DS:C5CC */
 
 void dialog_restore_screen()
 {
-    gfx_restore_rect(dialog_box_x, dialog_box_y, ui_gfx_blob, gc5cc);
+    gfx_restore_rect(dialog_box_x, dialog_box_y, ui_gfx_blob, dialog_backdrop_save_size);
     gfx_box(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h);
 }
 

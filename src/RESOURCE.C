@@ -191,7 +191,7 @@ void disk_reset_retry(int drive)
                                `(int)(o2 - o1)` would have emitted the 32-bit
                                sub/sbb pair first and then truncated.
    65EF  FF36CCC5 FF36CAC5    a far POINTER global pushed as segment word then
-                               offset word (gc5cc:ui_gfx_blob), against the
+                               offset word (dialog_backdrop_save_size:ui_gfx_blob), against the
                                `push ds / mov ax,offset / push ax` an array
                                name would have produced.
    6656  4E 4E                s -= 2 as two DECs on the register variable.

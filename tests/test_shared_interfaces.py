@@ -37,7 +37,7 @@ class SharedHeaderTests(unittest.TestCase):
     def test_active_sources_do_not_redeclare_shared_layouts(self):
         for source in active_sources():
             text = (ROOT / source).read_text()
-            for symbol in ('slot_table', 'gc360'):
+            for symbol in ('slot_table', 'slot_transfer_table'):
                 if re.search(r'\b%s\b' % symbol, text):
                     self.assertIn('#include "C470.H"', text, source + ' uses the record table without the shared header')
             for symbol in ('dialog_draw', 'dialog_run', 'dialog_layout'):

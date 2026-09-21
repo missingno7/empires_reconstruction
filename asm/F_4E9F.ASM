@@ -22,7 +22,7 @@ _sprite_table_wipe_active  proc    near
         mov     bp,sp
         push    si
         push    di
-        mov     di,offset DGROUP:_gb3ae
+        mov     di,offset DGROUP:_actor_record_table
         xor     cx,cx
         mov     cl,[di]
         or      cx,cx
@@ -38,9 +38,9 @@ _sprite_table_wipe_active  proc    near
         xor     ax,ax
         mov     al,[di+6]
         mov     bx,ax
-        mov     al,[bx+_gbf66]
+        mov     al,[bx+_tile_height_table]
         push    ax
-        mov     al,[bx+_g9bfc]
+        mov     al,[bx+_tile_width_table]
         push    ax
         mov     ax,[di+4]
         push    ax
@@ -59,8 +59,8 @@ _sprite_table_wipe_active  endp
 _TEXT   ends
         public  _sprite_table_wipe_active
         extrn   _play_window_wipe_clipped:near
-        extrn   _gb3ae:byte
+        extrn   _actor_record_table:byte
         extrn   _board_record_index:word
-        extrn   _gbf66:byte
-        extrn   _g9bfc:byte
+        extrn   _tile_height_table:byte
+        extrn   _tile_width_table:byte
         end

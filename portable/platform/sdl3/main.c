@@ -31,9 +31,32 @@
 #include "input_sdl.h"
 #include "video_sdl.h"
 
-#define SELFTEST_DURATION_MS 300
+static Uint64 s_selftest_ms = 300;
 
 static volatile bool s_game_finished = false;
+
+/* --script "ms:scan[:ascii],..." injects historical make/break pairs at the
+ * given times (set-1 scancode, optional BIOS ASCII value), for headless
+ * bring-up runs and replay tests. */
+typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; } script_key;
+static script_key s_script[64];
+static int s_script_n, s_script_next;
+
+static void parse_script(const char *spec)
+{
+    while (*spec && s_script_n < 64) {
+        char *end;
+        script_key k;
+        k.at_ms = (Uint64)strtoull(spec, &end, 10);
+        if (*end != ':') break;
+        k.scan = (uint8_t)strtoul(end + 1, &end, 16);
+        k.ascii = 0;
+        if (*end == ':')
+            k.ascii = (uint8_t)strtoul(end + 1, &end, 16);
+        s_script[s_script_n++] = k;
+        spec = (*end == ',') ? end + 1 : end;
+    }
+}
 
 static void game_thread_fn(void *arg)
 {
@@ -129,6 +152,10 @@ int main(int argc, char **argv)
     for (int i = 1; i < argc; ++i) {
         if (strcmp(argv[i], "--selftest") == 0)
             selftest = true;
+        else if (strcmp(argv[i], "--selftest-ms") == 0 && i + 1 < argc) {
+            selftest = true;
+            s_selftest_ms = (Uint64)strtoull(argv[++i], NULL, 10);
+        }
         else if (strcmp(argv[i], "--demo") == 0)
             demo = true;
         else if (strcmp(argv[i], "--dump-vram") == 0 && i + 1 < argc)
@@ -137,6 +164,8 @@ int main(int argc, char **argv)
             assets = argv[++i];
         else if (strcmp(argv[i], "--saves") == 0 && i + 1 < argc)
             saves = argv[++i];
+        else if (strcmp(argv[i], "--script") == 0 && i + 1 < argc)
+            parse_script(argv[++i]);
     }
 
     if (!sdl_video_init("Empires (portable)")) {
@@ -175,13 +204,19 @@ int main(int argc, char **argv)
             else if (ev.type == SDL_EVENT_KEY_DOWN || ev.type == SDL_EVENT_KEY_UP)
                 input_sdl_handle_event(&ev);
         }
+        while (s_script_next < s_script_n &&
+               SDL_GetTicks() - start_ticks >= s_script[s_script_next].at_ms) {
+            const script_key *k = &s_script[s_script_next++];
+            input_key_event(k->scan, true, k->ascii);
+            input_key_event(k->scan, false, 0);
+        }
         if (gfx_vram_generation != presented_generation || demo) {
             presented_generation = gfx_vram_generation;
             sdl_video_present(gfx_vram, gfx_dac);
         } else {
             SDL_Delay(4);
         }
-        if (selftest && (SDL_GetTicks() - start_ticks) >= SELFTEST_DURATION_MS)
+        if (selftest && (SDL_GetTicks() - start_ticks) >= s_selftest_ms)
             quit = true;
         if (!demo && s_game_finished)
             quit = true;

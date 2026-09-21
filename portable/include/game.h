@@ -38,6 +38,8 @@
 #include "sound.h"
 #include "startup.h"
 
+void game_main(void);   /* portable/game/game.c: the historical main() */
+
 #include "cclib.h"
 #include "dosio.h"
 

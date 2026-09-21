@@ -10,7 +10,7 @@ extern void voice_key_off();
 extern void music_set_tempo();
 extern void opl_set_enabled();
 extern void opl_set_depth_flags();
-extern void fc898();
+extern void opl_register_write();
 extern int opl_enabled;                       /* DS:CA22 */
 extern char voice_byte_table[];                    /* DS:2FE4, byte per voice */
 extern int music_tempo;                       /* DS:C6C1 */
@@ -58,8 +58,8 @@ int f;
     register int i;
 
     opl_enabled = f ? 0x20 : 0;
-    for (i = 0; i < 0x12; i++) fc898(voice_byte_table[i] + 0xe0, 0);
-    fc898(1, opl_enabled);
+    for (i = 0; i < 0x12; i++) opl_register_write(voice_byte_table[i] + 0xe0, 0);
+    opl_register_write(1, opl_enabled);
 }
 
 

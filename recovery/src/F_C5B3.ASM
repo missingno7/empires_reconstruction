@@ -9,9 +9,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_c5b3
+public _sound_table_word_select_store
 
-_f_c5b3 proc near
+_sound_table_word_select_store proc near
     push bp
     mov bp,sp
     mov bl,al
@@ -21,7 +21,7 @@ _f_c5b3 proc near
     mov [si+17c4h],bx
     pop bp
     ret
-_f_c5b3 endp
+_sound_table_word_select_store endp
 
 _TEXT ends
 end

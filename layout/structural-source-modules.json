@@ -14,7 +14,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f6d86",
+        "public": "_rle_packbits_decode",
         "span": 2,
         "flags_append": "",
         "bindings": {},
@@ -66,7 +66,7 @@
             "offset": 54796,
             "evidence": "Historical call operand and exact public index"
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "offset": 51252,
             "evidence": "Historical call operand and exact public index"
@@ -111,7 +111,7 @@
             "offset": 41613,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "offset": 27418,
             "evidence": "Historical call operand and exact public index"
@@ -191,7 +191,7 @@
             "offset": 51792,
             "evidence": "F_DAD7 historical instruction operands"
           },
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "offset": 51352,
             "evidence": "Historical call operand and exact public index"
@@ -221,7 +221,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fd818",
+        "public": "_draw_queue_reset",
         "span": 2,
         "flags_append": "",
         "bindings": {},
@@ -241,7 +241,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fd386",
+        "public": "_icon_list_animate_draw",
         "span": 2,
         "flags_append": "",
         "bindings": {},
@@ -310,7 +310,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f_d61c",
+        "public": "_draw_queue_render_highlighted",
         "span": 2,
         "flags_append": "",
         "bindings": {
@@ -396,15 +396,15 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fc1a0",
+        "public": "_sound_tick_entry",
         "span": 41,
         "flags_append": "",
         "bindings": {
-          "_fc1f7": {
+          "_sound_voice_pump_loop": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C1F7.entry",
             "owner": "F_C1F7",
-            "public": "_fc1f7",
+            "public": "_sound_voice_pump_loop",
             "addend": 0
           },
           "_sound_tick_step": {
@@ -444,18 +444,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212BC.phys"
           },
-          "_fc232": {
+          "_sound_voice_table_prime": {
             "coordinate": "code_offset",
             "owner": "F_C232",
-            "public": "_fc232",
+            "public": "_sound_voice_table_prime",
             "addend": 0,
             "evidence": "functions/F_C232.entry"
           },
-          "_fc27d": {
+          "_sound_voice_service_loop": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C27D.entry",
             "owner": "F_C27D",
-            "public": "_fc27d",
+            "public": "_sound_voice_service_loop",
             "addend": 0
           },
           "_snd_flag2": {
@@ -537,31 +537,31 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212EC.phys"
           },
-          "_f_c2ea": {
+          "_sound_command_stream_dispatch": {
             "coordinate": "code_offset",
             "owner": "F_C2EA",
-            "public": "_f_c2ea",
+            "public": "_sound_command_stream_dispatch",
             "addend": 0,
             "evidence": "functions/F_C2EA.entry"
           },
-          "_f_c440": {
+          "_sound_control_block_advance": {
             "coordinate": "code_offset",
             "owner": "F_C440",
-            "public": "_f_c440",
+            "public": "_sound_control_block_advance",
             "addend": 0,
             "evidence": "functions/F_C440.entry"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "functions/F_C6B9.entry"
           },
-          "_f_c755": {
+          "_sound_voices_reset_and_service": {
             "coordinate": "code_offset",
             "owner": "F_C755",
-            "public": "_f_c755",
+            "public": "_sound_voices_reset_and_service",
             "addend": 0,
             "evidence": "functions/F_C755.entry"
           },
@@ -593,11 +593,11 @@
             "offset": 6192,
             "coordinate": "DGROUP_offset"
           },
-          "_fc914": {
+          "_sound_stream_command_step": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C914.entry",
             "owner": "F_C914",
-            "public": "_fc914",
+            "public": "_sound_stream_command_step",
             "addend": 0
           },
           "_speaker_gate_off": {
@@ -639,18 +639,18 @@
             "public": "_sound_note_dispatch",
             "addend": 0
           },
-          "_fca9b": {
+          "_stream_note_program": {
             "coordinate": "code_offset",
             "owner": "F_CA9B",
-            "public": "_fca9b",
+            "public": "_stream_note_program",
             "addend": 0,
             "evidence": "functions/F_CA9B.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sound_stop_reset": {
@@ -675,17 +675,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219B8.phys"
           },
-          "_f_c9a4": {
+          "_sound_stream_delay_decode": {
             "coordinate": "code_offset",
             "owner": "F_C9A4",
-            "public": "_f_c9a4",
+            "public": "_sound_stream_delay_decode",
             "addend": 0,
             "evidence": "functions/F_C9A4.entry"
           },
-          "_f_ca03": {
+          "_sound_ctlblock_command_dispatch": {
             "coordinate": "code_offset",
             "owner": "F_CA03",
-            "public": "_f_ca03",
+            "public": "_sound_ctlblock_command_dispatch",
             "addend": 0,
             "evidence": "functions/F_CA03.entry"
           },
@@ -708,32 +708,32 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2132C.phys"
           },
-          "_f_ca35": {
+          "_sound_ctlblock_flags_latch": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA35",
-            "public": "_f_ca35",
+            "public": "_sound_ctlblock_flags_latch",
             "addend": 0
           },
-          "_f_ca51": {
+          "_stream_level_percent_scale": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA51",
-            "public": "_f_ca51",
+            "public": "_stream_level_percent_scale",
             "addend": 0
           },
-          "_fca83": {
+          "_stream_level_base_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA83",
-            "public": "_fca83",
+            "public": "_stream_level_base_set",
             "addend": 0
           },
-          "_fca91": {
+          "_stream_note_delay_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA91",
-            "public": "_fca91",
+            "public": "_stream_note_delay_set",
             "addend": 0
           },
           "_g1e84": {

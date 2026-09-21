@@ -8,41 +8,41 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_ca03
-extrn _f_ca35:near
-extrn _f_ca51:near
-extrn _fca83:near
-extrn _fca91:near
+public _sound_ctlblock_command_dispatch
+extrn _sound_ctlblock_flags_latch:near
+extrn _stream_level_percent_scale:near
+extrn _stream_level_base_set:near
+extrn _stream_note_delay_set:near
 
-_f_ca03 proc near
+_sound_ctlblock_command_dispatch proc near
     push bp
     mov bp,sp
     mov al,es:[di+1]
     cmp ah,0
     jne check_two_or_less
-    call _f_ca35
+    call _sound_ctlblock_flags_latch
     jmp short done
     nop
 check_two_or_less:
     cmp ah,2
     jg check_three
-    call _f_ca51
+    call _stream_level_percent_scale
     jmp short done
     nop
 check_three:
     cmp ah,3
     jne check_four
-    call _fca91
+    call _stream_note_delay_set
     jmp short done
     nop
 check_four:
     cmp ah,4
     jne done
-    call _fca83
+    call _stream_level_base_set
 done:
     pop bp
     ret
-_f_ca03 endp
+_sound_ctlblock_command_dispatch endp
 
 _TEXT ends
 end

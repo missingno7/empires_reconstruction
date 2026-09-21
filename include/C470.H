@@ -12,7 +12,7 @@ struct c470_record {
                                         bit 0x20 tested by F_ACE7 and set by F_ADCF; bits 0..4 or-ed by F_CE68 */
     char resume_round;          /* +0C  1-based round index to resume, 0 = none: written as i+1 by
                                         campaign_chapter_advance (F_4943.C) for the round being played, cleared by
-                                        F_D26C and fadcf; read (then decremented back to 0-based)
+                                        F_D26C and slot_reset_for_new_game; read (then decremented back to 0-based)
                                         by F_49F0/GAME.C to auto-resume that round at game start */
     int sound;                  /* +0D  copied to sound_enabled by F_AB66 and M_CB5C_CD23 */
     int music;                  /* +0F  copied to music_enabled by F_AB66 and M_CB5C_CD23 */

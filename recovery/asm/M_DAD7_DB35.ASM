@@ -12,7 +12,7 @@ _BSS segment word public 'BSS'
 
     extrn _voice_write_level:near
 
-    extrn _fc898:near
+    extrn _opl_register_write:near
 
 _BSS ends
 
@@ -113,7 +113,7 @@ _voice_channel_apply_freq proc near
     cbw
     add ax,40h
     push ax
-    call _fc898
+    call _opl_register_write
     pop cx
     pop cx
     pop si

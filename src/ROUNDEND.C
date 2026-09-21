@@ -13,7 +13,7 @@ extern void score_set_position(int n);
 extern void score_panel_clear(void);
 extern void gfx_color_select(int n);
 extern void gfx_blit_image(int x, int y, char far *p);
-extern void fcaf1(int n);
+extern void stream_control_block_arm(int n);
 extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4 */
 /*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
 extern void box(int x, int y, int w, int h);                    /* 039F */
@@ -57,7 +57,7 @@ void roundend_flash_panel_icons(void)
     int i;
 
     for (i = 0; i < 3; i++) {
-        fcaf1(0x15);
+        stream_control_block_arm(0x15);
         wipe(0xf4, i * 0x30 + 0x158, 0x30, 0x23, 0xf4, i * 0x30 + 0x10);
         box(0xf4, i * 0x30 + 0x10, 0x30, 0x23);
         wipe(0xf4, i * 0x30 + 0x158, 0x30, 0x23, 0xf4, i * 0x30 + 0xc8);
@@ -118,4 +118,4 @@ void roundend_round_setup(int n)
 
 
 /* ---- F_9D79 (original code at 0x9D79) ---- */
-void roundend_wait(void) { sound_stop_reset(); fcaf1(9); while (g1770) ; }
+void roundend_wait(void) { sound_stop_reset(); stream_control_block_arm(9); while (g1770) ; }

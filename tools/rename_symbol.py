@@ -81,7 +81,8 @@ def rename(mapping, refresh_index=False, root=ROOT):
     # they follow the rename too; inactive reference sources keep their names.
     tests = [p.relative_to(root).as_posix() for p in (root / 'tests').glob('*.py')]
     # Inactive reference sources share the manifest bindings, so they follow too.
-    references = [p.relative_to(root).as_posix() for folder in ('src', 'asm') for p in (root / folder).glob('*')
+    references = [p.relative_to(root).as_posix() for folder in ('src', 'asm', 'recovery/src', 'recovery/asm')
+                  for p in (root / folder).glob('*')
                   if p.suffix.upper() in ('.C', '.ASM') and p.relative_to(root).as_posix() not in c_files + asm_files]
     for f in c_files + [p.relative_to(root).as_posix() for p in (root / 'include').glob('*.H')] + asm_files + tests + references:
         n = rewrite_text_file(root / f, mapping)
@@ -90,7 +91,7 @@ def rename(mapping, refresh_index=False, root=ROOT):
     # Layout metadata: manifest bindings/publics, structural modules, recipes.
     omf = {'_' + k: '_' + v for k, v in mapping.items()}
     metadata = ['layout/manifest.json', 'layout/structural-source-modules.json']
-    metadata += [p.relative_to(root).as_posix() for folder in ('recipes/modules', 'recipes/data', 'recipes/c', 'recipes/runtime', 'src/data')
+    metadata += [p.relative_to(root).as_posix() for folder in ('recipes/modules', 'recipes/data', 'recipes/c', 'recipes/runtime', 'src/data', 'recovery/recipes/modules')
                  for p in (root / folder).glob('*.json')]
     for f in metadata:
         path = root / f

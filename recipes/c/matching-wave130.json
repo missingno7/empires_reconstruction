@@ -10,7 +10,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc1a0": {"coordinate": "code_offset", "evidence": "complete timer ISR call", "owner": "F_C1A0", "public": "_fc1a0", "addend": 0},
+          "_sound_tick_entry": {"coordinate": "code_offset", "evidence": "complete timer ISR call", "owner": "F_C1A0", "public": "_sound_tick_entry", "addend": 0},
           "_timer_ticks": {"offset": 2934, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR data fixups"},
           "_g0b78": {"offset": 2936, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR data fixups"},
           "_int8_saved_vector": {"offset": 2938, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR far-vector fixup"},

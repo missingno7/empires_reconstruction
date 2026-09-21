@@ -12,9 +12,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fd825
+public _draw_queue_append
 
-_fd825 proc near
+_draw_queue_append proc near
     push bp
     mov bp,sp
     push di
@@ -45,7 +45,7 @@ _fd825 proc near
     pop di
     pop bp
     ret
-_fd825 endp
+_draw_queue_append endp
 
 _TEXT ends
 end

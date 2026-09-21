@@ -8,8 +8,8 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-extrn _f_c6b9:near, _f_c755:near
-public _fc27d, _f_c2ea, _f_c359, _f_c3db, _f_c440, _f_c501, _f_c549, _fc567
+extrn _voice_disable:near, _sound_voices_reset_and_service:near
+public _sound_voice_service_loop, _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_level_percent_scale
 
 command_cursor equ 178ch
 command_value equ 179ch
@@ -18,7 +18,7 @@ command_state equ 17ach
 command_index equ 17f4h
 command_mode equ 17e4h
 
-_fc27d	PROC	NEAR
+_sound_voice_service_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	xor	si,si
@@ -26,7 +26,7 @@ L1:	cmp	word ptr [si+_v_a],0
 	je	L3
 	cmp	word ptr [si+_v_ctr],0
 	jne	L2
-	call	near ptr _f_c2ea
+	call	near ptr _sound_command_stream_dispatch
 	cmp	word ptr [si+_v_a],0
 	je	L3
 L2:	dec	word ptr [si+_v_ctr]
@@ -38,7 +38,7 @@ L2:	dec	word ptr [si+_v_ctr]
 	dec	ax
 	cmp	word ptr [si+_v_ctr],ax
 	jne	L3
-	call	near ptr _f_c6b9
+	call	near ptr _voice_disable
 L3:	add	si,2
 	mov	ax,si
 	shr	ax,1
@@ -49,17 +49,17 @@ L3:	add	si,2
 	or	ax,word ptr _v_a+4
 	or	ax,word ptr _v_a+6
 	jne	L4
-	call	near ptr _f_c755
+	call	near ptr _sound_voices_reset_and_service
 	jmp	L5
 L4:	cmp	word ptr _snd_paused,1
 	jne	L5
-	call	near ptr _f_c440
+	call	near ptr _sound_control_block_advance
 L5:	pop	bp
 	ret
-_fc27d	ENDP
+_sound_voice_service_loop	ENDP
 
 
-_f_c2ea:
+_sound_command_stream_dispatch:
     push bp
     mov bp, sp
 C2EA_dispatch:
@@ -79,21 +79,21 @@ C2EA_dispatch:
     jz short C2EA_command_e
     cmp al, 0fh
     jz short C2EA_command_f
-    call _f_c359
-    call _f_c3db
+    call _sound_control_value_select
+    call _sound_command_value_derive
     mov word ptr [si+command_guard], 0
     jmp short C2EA_advance
     nop
 
 C2EA_command_zero:
     call $+39ah             ; F_C6B9
-    call _f_c3db
+    call _sound_command_value_derive
     mov word ptr [si+command_guard], 1
     jmp short C2EA_advance
     nop
 
 C2EA_command_d:
-    call _f_c501
+    call _sound_secondary_cmd_dispatch
     cmp word ptr [si+command_value], 0
     jmp short C2EA_advance
     nop
@@ -127,7 +127,7 @@ voice_table_a equ 17fch
 voice_table_b equ 1814h
 voice_state equ 177ch
 
-_f_c359:
+_sound_control_value_select:
     push bp
     mov bp, sp
     cmp word ptr ds:[snd_paused], 1
@@ -206,7 +206,7 @@ C359_done:
 command_index equ 17f4h
 command_mode equ 17e4h
 
-_f_c3db:
+_sound_command_value_derive:
     push bp
     mov bp, sp
     mov al, es:[di+1]
@@ -268,7 +268,7 @@ state_value equ 179ch
 state_text equ 17dch
 renderer_delta equ 3e6h
 
-_f_c440:
+_sound_control_block_advance:
     push bp
     mov bp, sp
     xor si, si
@@ -351,7 +351,7 @@ C440_done:
 ; F_C501 -- dispatch one secondary stream command by the AH selector.
 ; The six helper calls are direct same-segment relationships in the original
 ; no-fixup object, retained here as symbolic relative expressions.
-_f_c501:
+_sound_secondary_cmd_dispatch:
  push bp
  mov bp,sp
  mov al,es:[di+1]
@@ -393,7 +393,7 @@ C501_done:
  ret
 
 ; F_C549 -- update the paired command-control flags from AL.
-_f_c549 proc near
+_sound_command_flags_update proc near
     push bp
     mov bp, sp
     cmp al, 0
@@ -409,10 +409,10 @@ C549_set_one_plus_one:
 C549_done:
     pop bp
     ret
-_f_c549 endp
+_sound_command_flags_update endp
 
 ; F_C567 -- signed scale-and-store for the sound-data state pair.
-_fc567 proc near
+_voice_level_percent_scale proc near
     push bp
     mov bp, sp
     mov bl, ah
@@ -440,7 +440,7 @@ C567_store_zero:
 C567_done:
     pop bp
     ret
-_fc567 endp
+_voice_level_percent_scale endp
 
 
 _TEXT ends

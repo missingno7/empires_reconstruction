@@ -17,7 +17,7 @@
    far pointer's two words separately, so a `char far *` type here would add
    an extra push and break byte-exactness). */
 extern void gfx_vline();
-extern int keyboard_chain_active(), menu_list_active(), f6b1a();
+extern int keyboard_chain_active(), menu_list_active(), keyboard_read_blocking_hotkeys();
 extern void keyboard_chain_enable(void);
 extern void sound_start(void);
 extern void menu_list_disable(void);
@@ -56,7 +56,7 @@ dialog_draw_panel(p)
 extern char g0d36[];
 extern void menu_list_source_set(char far *);
 
-void f7df1(void)
+void menu_list_source_set_default(void)
 {
     menu_list_source_set(g0d36);
 }
@@ -65,7 +65,7 @@ void f7df1(void)
 /* ---- F_7DFC (original code at 0x7DFC) ---- */
 extern void menu_list_source_set();
 extern char g0d78[];
-void f7dfc(void) { menu_list_source_set(g0d78); }
+void menu_list_source_set_players(void) { menu_list_source_set(g0d78); }
 
 
 /* ---- F_7E07 (original code at 0x7E07) ---- */
@@ -352,7 +352,7 @@ void dialog_restore_screen()
 
 
 /* ---- F_8480 (original code at 0x8480) ---- */
-extern int f020f(), sprite_sheet_index_get();
+extern int cur_color_index_get(), sprite_sheet_index_get();
 extern void sprite_sheet_select();
 extern void rect_border_draw();
 extern void dialog_draw_shadow(void);
@@ -361,7 +361,7 @@ extern void text_draw_wrapped(int, int, char far *);
 
 void dialog_draw(struct dialog far *p, int first)
 {int a,b,x,w,h;register int y,i;
-a=f020f();b=sprite_sheet_index_get();sprite_sheet_select(0);dialog_layout(p);if(first)dialog_draw_shadow();
+a=cur_color_index_get();b=sprite_sheet_index_get();sprite_sheet_select(0);dialog_layout(p);if(first)dialog_draw_shadow();
 gfx_color_select(15);gfx_clear_rect(dialog_box_x,dialog_box_y,dialog_box_w,dialog_box_h);
 x=dialog_box_x+4;y=dialog_box_y+2;if(p->kind!=2)y+=2;w=dialog_box_w-10;h=dialog_box_h-8;if(p->kind!=2)h-=2;
 gfx_color_select(0);for(i=0;i<2;i++){w+=2;h+=2;rect_border_draw(--x,--y,w,h);}
@@ -394,7 +394,7 @@ int dialog_run(struct dialog far *p)
     i = p->initial;
     dialog_draw(p, 1);
     while (!n) {
-        c = f6b1a();
+        c = keyboard_read_blocking_hotkeys();
         switch (p->kind) {
         case 1:
             switch (c) {
@@ -473,7 +473,7 @@ int dialog_list_run(struct input far *p)
   v.text=p->records[selected];
   dialog_draw(&v,first); first=0;done=0;
   while(!done) {
-   key=f6b1a();
+   key=keyboard_read_blocking_hotkeys();
    switch(key) {
     case 9: case 0x148: case 0x14b: case 0x14d: case 0x150:
      if(selected>0) { dialog_fill_box(direction);direction=!direction;dialog_fill_box(direction); } break;

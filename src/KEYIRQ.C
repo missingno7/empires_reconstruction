@@ -22,4 +22,4 @@ void keyboard_irq_install()
 
 /* ---- F_697D (original code at 0x697D) ---- */
 /* Restore the INT 9 vector saved by keyboard_irq_install. */
-void f697d(void) { setvect(9, int9_saved_vector); }
+void keyboard_irq_restore(void) { setvect(9, int9_saved_vector); }

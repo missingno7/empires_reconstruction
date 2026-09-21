@@ -24,14 +24,14 @@ assume cs:_TEXT, ds:DGROUP
 extrn _gfx_color_select:near
 extrn _gfx_copy_rect:near
 extrn _gfx_vline:near
-extrn _fcaf1:near
+extrn _stream_control_block_arm:near
 extrn _rand:near
 extrn _record_field_skip_n:near
 extrn _board_run_unit_script:near
 extrn _board_advance_unit_moves:near
 
-public _f4b0c
-_f4b0c proc near
+public _sprite_script_frame_driver
+_sprite_script_frame_driver proc near
  push bp
  mov bp,sp
  push si
@@ -297,7 +297,7 @@ opcode_call_caf1:
  xor ah,ah
  lodsb
  push ax
- call _fcaf1
+ call _stream_control_block_arm
  pop ax
  jmp near ptr dispatch_opcode
 ; call F_2A2D(byte operand) then F_338A(dx, result)
@@ -538,6 +538,6 @@ opcode_random_skip:
  cmp bl,al
  jna opcode_skip_bytes
  jmp near ptr dispatch_opcode
-_f4b0c endp
+_sprite_script_frame_driver endp
 _TEXT ends
-end _f4b0c
+end _sprite_script_frame_driver

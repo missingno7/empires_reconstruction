@@ -74,7 +74,7 @@
       ]
     },
     {
-      "symbol": "_f020f",
+      "symbol": "_cur_color_index_get",
       "address": 527,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_01BC_0355",
@@ -108,7 +108,7 @@
       ]
     },
     {
-      "symbol": "_f0232",
+      "symbol": "_color_lookup_tables_init",
       "address": 562,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_01BC_0355",
@@ -481,7 +481,7 @@
       ]
     },
     {
-      "symbol": "_f1ecd",
+      "symbol": "_rect_queue_flush",
       "address": 7885,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_1ECD",
@@ -499,7 +499,7 @@
       ]
     },
     {
-      "symbol": "_f1f91",
+      "symbol": "_board_collision_span_or",
       "address": 8081,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_1F91",
@@ -928,7 +928,7 @@
       ]
     },
     {
-      "symbol": "_f2a70",
+      "symbol": "_record_table_level4_ptr",
       "address": 10864,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_200F_3986",
@@ -1018,7 +1018,7 @@
       ]
     },
     {
-      "symbol": "_f329f",
+      "symbol": "_board_record_index_select",
       "address": 12959,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_200F_3986",
@@ -1138,7 +1138,7 @@
       ]
     },
     {
-      "symbol": "_f3986",
+      "symbol": "_board_record_complete",
       "address": 14726,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_200F_3986",
@@ -1348,7 +1348,7 @@
       ]
     },
     {
-      "symbol": "_f4aa8",
+      "symbol": "_play_window_wipe_clipped",
       "address": 19112,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4AA8",
@@ -1357,7 +1357,7 @@
       ]
     },
     {
-      "symbol": "_f4b0c",
+      "symbol": "_sprite_script_frame_driver",
       "address": 19212,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4B0C",
@@ -1366,7 +1366,7 @@
       ]
     },
     {
-      "symbol": "_f4e9f",
+      "symbol": "_sprite_table_wipe_active",
       "address": 20127,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4E9F",
@@ -1375,7 +1375,7 @@
       ]
     },
     {
-      "symbol": "_f4eeb",
+      "symbol": "_board_actors_draw",
       "address": 20203,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_4EEB",
@@ -1426,7 +1426,7 @@
       ]
     },
     {
-      "symbol": "_f50d2",
+      "symbol": "_video_adapter_detect",
       "address": 20690,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_4F63_520A",
@@ -1440,7 +1440,7 @@
       ]
     },
     {
-      "symbol": "_f53bf",
+      "symbol": "_sound_backend_probe",
       "address": 20927,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_4F63_520A",
@@ -1661,7 +1661,7 @@
       ]
     },
     {
-      "symbol": "_f6036",
+      "symbol": "_sprite_table_queue_draws",
       "address": 24630,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6036",
@@ -1670,7 +1670,7 @@
       ]
     },
     {
-      "symbol": "_f60a9",
+      "symbol": "_animated_tile_tick",
       "address": 24745,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_60A9",
@@ -1679,7 +1679,7 @@
       ]
     },
     {
-      "symbol": "_f6181",
+      "symbol": "_sprite_record_adjust_draw",
       "address": 24961,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6181",
@@ -1772,7 +1772,7 @@
       ]
     },
     {
-      "symbol": "_f6771",
+      "symbol": "_sprite_sheet_decode_sequential",
       "address": 26481,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6266_68AA",
@@ -1788,7 +1788,7 @@
       ]
     },
     {
-      "symbol": "_f67dc",
+      "symbol": "_sprite_sheet_decode_indexed",
       "address": 26588,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6266_68AA",
@@ -1855,7 +1855,7 @@
       ]
     },
     {
-      "symbol": "_f697d",
+      "symbol": "_keyboard_irq_restore",
       "address": 27005,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_695E_697D",
@@ -1910,7 +1910,7 @@
       ]
     },
     {
-      "symbol": "_f6b1a",
+      "symbol": "_keyboard_read_blocking_hotkeys",
       "address": 27418,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6990_6B74",
@@ -1925,7 +1925,7 @@
       ]
     },
     {
-      "symbol": "_f6b4a",
+      "symbol": "_keyboard_poll_nonblocking",
       "address": 27466,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6990_6B74",
@@ -2140,7 +2140,7 @@
       ]
     },
     {
-      "symbol": "_f6d86",
+      "symbol": "_rle_packbits_decode",
       "address": 28038,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_6D86_6DCC",
@@ -2151,7 +2151,7 @@
       ]
     },
     {
-      "symbol": "_f6dcc",
+      "symbol": "_lz_decompress",
       "address": 28108,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_6D86_6DCC",
@@ -2162,7 +2162,7 @@
       ]
     },
     {
-      "symbol": "_f6eff",
+      "symbol": "_sprite_decode_4bpp_planar",
       "address": 28415,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6EFF",
@@ -2171,7 +2171,7 @@
       ]
     },
     {
-      "symbol": "_f6f4b",
+      "symbol": "_sprite_decode_4bpp_mode13h",
       "address": 28491,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_6F4B",
@@ -2596,7 +2596,7 @@
       ]
     },
     {
-      "symbol": "_f7443",
+      "symbol": "_hud_panel_node_marker_draw",
       "address": 29763,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_6FC3_747B",
@@ -2661,7 +2661,7 @@
       ]
     },
     {
-      "symbol": "_f7676",
+      "symbol": "_hud_prompt_continue_clear",
       "address": 30326,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_75F3_7856",
@@ -2687,7 +2687,7 @@
       ]
     },
     {
-      "symbol": "_f7747",
+      "symbol": "_hud_prompt_message_run",
       "address": 30535,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_75F3_7856",
@@ -2805,7 +2805,7 @@
       ]
     },
     {
-      "symbol": "_f7df1",
+      "symbol": "_menu_list_source_set_default",
       "address": 32241,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_7D91_880A",
@@ -2825,7 +2825,7 @@
       ]
     },
     {
-      "symbol": "_f7dfc",
+      "symbol": "_menu_list_source_set_players",
       "address": 32252,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_7D91_880A",
@@ -3245,7 +3245,7 @@
       ]
     },
     {
-      "symbol": "_f9466",
+      "symbol": "_puzzle_cell_backing_swap",
       "address": 37990,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_8A37_969D",
@@ -3267,7 +3267,7 @@
       ]
     },
     {
-      "symbol": "_f950c",
+      "symbol": "_puzzle_cell_highlight_draw",
       "address": 38156,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_8A37_969D",
@@ -3481,7 +3481,7 @@
       ]
     },
     {
-      "symbol": "_f9ec3",
+      "symbol": "_anim_step_row_copy",
       "address": 40643,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_9EC3",
@@ -3562,7 +3562,7 @@
       ]
     },
     {
-      "symbol": "_fa19d",
+      "symbol": "_player_type_toggle_draw",
       "address": 41373,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_A09D_A24E",
@@ -3577,7 +3577,7 @@
       ]
     },
     {
-      "symbol": "_fa1e0",
+      "symbol": "_quit_confirm_toggle_draw",
       "address": 41440,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_A09D_A24E",
@@ -3764,7 +3764,7 @@
       ]
     },
     {
-      "symbol": "_faa1f",
+      "symbol": "_slot_list_select_loop",
       "address": 43551,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_A33F_AD0E",
@@ -3783,7 +3783,7 @@
       ]
     },
     {
-      "symbol": "_fab66",
+      "symbol": "_slot_menu_run",
       "address": 43878,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_A33F_AD0E",
@@ -3821,7 +3821,7 @@
       ]
     },
     {
-      "symbol": "_fad0e",
+      "symbol": "_slot_flags_get",
       "address": 44302,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_A33F_AD0E",
@@ -3840,7 +3840,7 @@
       ]
     },
     {
-      "symbol": "_fad25",
+      "symbol": "_slot_archive_and_delete",
       "address": 44325,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "RELOC_F_AD25_F_ADCF",
@@ -3850,7 +3850,7 @@
       ]
     },
     {
-      "symbol": "_fadcf",
+      "symbol": "_slot_reset_for_new_game",
       "address": 44495,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "RELOC_F_AD25_F_ADCF",
@@ -3860,7 +3860,7 @@
       ]
     },
     {
-      "symbol": "_faf45",
+      "symbol": "_menu_wait_key_animated",
       "address": 44869,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_AF45_C15E",
@@ -3932,7 +3932,7 @@
       ]
     },
     {
-      "symbol": "_fb3d7",
+      "symbol": "_chapter_map_backdrop_draw",
       "address": 46039,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_AF45_C15E",
@@ -4004,7 +4004,7 @@
       ]
     },
     {
-      "symbol": "_fb55e",
+      "symbol": "_menu_resources_free",
       "address": 46430,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_AF45_C15E",
@@ -4052,7 +4052,7 @@
       ]
     },
     {
-      "symbol": "_fb60f",
+      "symbol": "_chapter_map_sprites_wipe",
       "address": 46607,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_AF45_C15E",
@@ -4076,7 +4076,7 @@
       ]
     },
     {
-      "symbol": "_fb6cd",
+      "symbol": "_level_chapter_driver",
       "address": 46797,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_AF45_C15E",
@@ -4148,7 +4148,7 @@
       ]
     },
     {
-      "symbol": "_fb967",
+      "symbol": "_level_exit_transition_run",
       "address": 47463,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "C_AF45_C15E",
@@ -4244,7 +4244,7 @@
       ]
     },
     {
-      "symbol": "_fc1a0",
+      "symbol": "_sound_tick_entry",
       "address": 49568,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4293,7 +4293,7 @@
       ]
     },
     {
-      "symbol": "_fc1f7",
+      "symbol": "_sound_voice_pump_loop",
       "address": 49655,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4342,7 +4342,7 @@
       ]
     },
     {
-      "symbol": "_fc232",
+      "symbol": "_sound_voice_table_prime",
       "address": 49714,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4391,7 +4391,7 @@
       ]
     },
     {
-      "symbol": "_fc27d",
+      "symbol": "_sound_voice_service_loop",
       "address": 49789,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4440,7 +4440,7 @@
       ]
     },
     {
-      "symbol": "_f_c2ea",
+      "symbol": "_sound_command_stream_dispatch",
       "address": 49898,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4489,7 +4489,7 @@
       ]
     },
     {
-      "symbol": "_f_c359",
+      "symbol": "_sound_control_value_select",
       "address": 50009,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4538,7 +4538,7 @@
       ]
     },
     {
-      "symbol": "_f_c3db",
+      "symbol": "_sound_command_value_derive",
       "address": 50139,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4587,7 +4587,7 @@
       ]
     },
     {
-      "symbol": "_f_c440",
+      "symbol": "_sound_control_block_advance",
       "address": 50240,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4636,7 +4636,7 @@
       ]
     },
     {
-      "symbol": "_f_c501",
+      "symbol": "_sound_secondary_cmd_dispatch",
       "address": 50433,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4685,7 +4685,7 @@
       ]
     },
     {
-      "symbol": "_f_c549",
+      "symbol": "_sound_command_flags_update",
       "address": 50505,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4734,7 +4734,7 @@
       ]
     },
     {
-      "symbol": "_fc567",
+      "symbol": "_voice_level_percent_scale",
       "address": 50535,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4881,7 +4881,7 @@
       ]
     },
     {
-      "symbol": "_f_c5b3",
+      "symbol": "_sound_table_word_select_store",
       "address": 50611,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -4979,7 +4979,7 @@
       ]
     },
     {
-      "symbol": "_f_c5d1",
+      "symbol": "_voice_command_decode_apply",
       "address": 50641,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5028,7 +5028,7 @@
       ]
     },
     {
-      "symbol": "_f_c678",
+      "symbol": "_voice_enable",
       "address": 50808,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5077,7 +5077,7 @@
       ]
     },
     {
-      "symbol": "_f_c6b9",
+      "symbol": "_voice_disable",
       "address": 50873,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5126,7 +5126,7 @@
       ]
     },
     {
-      "symbol": "_f_c706",
+      "symbol": "_sound_pit_divisor_program",
       "address": 50950,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5175,7 +5175,7 @@
       ]
     },
     {
-      "symbol": "_f_c755",
+      "symbol": "_sound_voices_reset_and_service",
       "address": 51029,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5224,7 +5224,7 @@
       ]
     },
     {
-      "symbol": "_f_c77a",
+      "symbol": "_sound_backend_select_init",
       "address": 51066,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5273,7 +5273,7 @@
       ]
     },
     {
-      "symbol": "_f_c7cb",
+      "symbol": "_sound_voice_table_reload",
       "address": 51147,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5322,7 +5322,7 @@
       ]
     },
     {
-      "symbol": "_fc834",
+      "symbol": "_sound_voices_reset",
       "address": 51252,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5371,7 +5371,7 @@
       ]
     },
     {
-      "symbol": "_fc877",
+      "symbol": "_sound_voices_disable_all",
       "address": 51319,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5420,7 +5420,7 @@
       ]
     },
     {
-      "symbol": "_fc898",
+      "symbol": "_opl_register_write",
       "address": 51352,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5469,7 +5469,7 @@
       ]
     },
     {
-      "symbol": "_fc8d4",
+      "symbol": "_opl_port_write_byte",
       "address": 51412,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5567,7 +5567,7 @@
       ]
     },
     {
-      "symbol": "_fc914",
+      "symbol": "_sound_stream_command_step",
       "address": 51476,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5665,7 +5665,7 @@
       ]
     },
     {
-      "symbol": "_f_c9a4",
+      "symbol": "_sound_stream_delay_decode",
       "address": 51620,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5714,7 +5714,7 @@
       ]
     },
     {
-      "symbol": "_f_ca03",
+      "symbol": "_sound_ctlblock_command_dispatch",
       "address": 51715,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5763,7 +5763,7 @@
       ]
     },
     {
-      "symbol": "_f_ca35",
+      "symbol": "_sound_ctlblock_flags_latch",
       "address": 51765,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5812,7 +5812,7 @@
       ]
     },
     {
-      "symbol": "_f_ca51",
+      "symbol": "_stream_level_percent_scale",
       "address": 51793,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5861,7 +5861,7 @@
       ]
     },
     {
-      "symbol": "_fca83",
+      "symbol": "_stream_level_base_set",
       "address": 51843,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5910,7 +5910,7 @@
       ]
     },
     {
-      "symbol": "_fca91",
+      "symbol": "_stream_note_delay_set",
       "address": 51857,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -5959,7 +5959,7 @@
       ]
     },
     {
-      "symbol": "_fca9b",
+      "symbol": "_stream_note_program",
       "address": 51867,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -6155,7 +6155,7 @@
       ]
     },
     {
-      "symbol": "_fcaf1",
+      "symbol": "_stream_control_block_arm",
       "address": 51953,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_C1A0_CB48",
@@ -6591,7 +6591,7 @@
       ]
     },
     {
-      "symbol": "_fd386",
+      "symbol": "_icon_list_animate_draw",
       "address": 54150,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_D386_D3CF",
@@ -6601,7 +6601,7 @@
       ]
     },
     {
-      "symbol": "_fd3cf",
+      "symbol": "_icon_frame_reset_and_draw",
       "address": 54223,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_D386_D3CF",
@@ -6620,7 +6620,7 @@
       ]
     },
     {
-      "symbol": "_fd45c",
+      "symbol": "_help_topic_keyboard_show",
       "address": 54364,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D45C",
@@ -6629,7 +6629,7 @@
       ]
     },
     {
-      "symbol": "_fd471",
+      "symbol": "_help_topic_playing_show",
       "address": 54385,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D471",
@@ -6638,7 +6638,7 @@
       ]
     },
     {
-      "symbol": "_fd487",
+      "symbol": "_help_topic_obstacles_show",
       "address": 54407,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D487",
@@ -6647,7 +6647,7 @@
       ]
     },
     {
-      "symbol": "_fd49d",
+      "symbol": "_help_topic_puzzles_show",
       "address": 54429,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "F_D49D",
@@ -6728,7 +6728,7 @@
       ]
     },
     {
-      "symbol": "_f_d61c",
+      "symbol": "_draw_queue_render_highlighted",
       "address": 54812,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_D61C_D79C",
@@ -6738,7 +6738,7 @@
       ]
     },
     {
-      "symbol": "_f_d79c",
+      "symbol": "_draw_queue_render",
       "address": 55196,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_D61C_D79C",
@@ -6748,7 +6748,7 @@
       ]
     },
     {
-      "symbol": "_fd818",
+      "symbol": "_draw_queue_reset",
       "address": 55320,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_D818_D825",
@@ -6758,7 +6758,7 @@
       ]
     },
     {
-      "symbol": "_fd825",
+      "symbol": "_draw_queue_append",
       "address": 55333,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_D818_D825",
@@ -6992,7 +6992,7 @@
       ]
     },
     {
-      "symbol": "_fdf98",
+      "symbol": "_music_voice_frequency_lookup",
       "address": 57240,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "M_DDD9_DF98",

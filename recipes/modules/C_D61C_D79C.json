@@ -4,8 +4,8 @@
   "flags_append": "",
   "segment": "_TEXT",
   "sources": [
-    {"owner": "F_D61C", "path": "src/F_D61C.C", "public": "_f_d61c"},
-    {"owner": "F_D79C", "path": "src/F_D79C.C", "public": "_f_d79c"}
+    {"owner": "F_D61C", "path": "src/F_D61C.C", "public": "_draw_queue_render_highlighted"},
+    {"owner": "F_D79C", "path": "src/F_D79C.C", "public": "_draw_queue_render"}
   ],
   "evidence": "Two contiguous compact-model matching-C extents. Shared compilation is a compatibility test only; the sources remain mechanical capsules pending symbolic recovery."
 }

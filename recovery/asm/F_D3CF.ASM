@@ -7,13 +7,13 @@ _DATA   ends
 _BSS    segment word public 'BSS'
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_fd3cf  proc near
+_icon_frame_reset_and_draw  proc near
         mov     byte ptr [di],1
         mov     si,di
         add     si,3
         lodsb
         jmp     short $-2fh
-_fd3cf  endp
-        public  _fd3cf
+_icon_frame_reset_and_draw  endp
+        public  _icon_frame_reset_and_draw
 _TEXT   ends
         end

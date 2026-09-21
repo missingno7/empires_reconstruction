@@ -71,7 +71,7 @@ void interrupt keyboard_irq_handler(void)
 extern int menu_list_active();
 extern void menu_loop_run();
 
-int f6b1a()
+int keyboard_read_blocking_hotkeys()
 {
     asm xor ah,ah
     asm int 16h
@@ -100,7 +100,7 @@ L_out: ;
 
 /* ---- F_6B4A (original code at 0x6B4A) ---- */
 /* F_6B4A -- non-blocking INT 16h keyboard poll. */
-int f6b4a()
+int keyboard_poll_nonblocking()
 {
     asm mov ah,1
     asm int 16h
@@ -125,12 +125,12 @@ L_out: ;
    the `__int__` intrinsic (same bytes as the former asm `xor ax,ax` /
    `int 16h`).  There is no frame because there is no parameter and no local
    (rule 11).  The leading EB04 is the while's jump to its test. */
-extern int f6b4a();
+extern int keyboard_poll_nonblocking();
 void __int__(int);
 
 void keyboard_buffer_drain()
 {
-    while (f6b4a()) {
+    while (keyboard_poll_nonblocking()) {
         _AX = 0;
         __int__(0x16);
     }

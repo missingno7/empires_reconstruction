@@ -15,8 +15,8 @@ command_value equ 179ch
 command_index equ 17f4h
 command_mode equ 17e4h
 
-public _f_c3db
-_f_c3db:
+public _sound_command_value_derive
+_sound_command_value_derive:
     push bp
     mov bp, sp
     mov al, es:[di+1]

@@ -4,7 +4,7 @@
 extern unsigned int opl_port;           /* DS:1830 */
 /*@SYM _opl_port=0x1830 kind=g key=storage_objects/G_P21360.phys*/
 
-void fc898(reg, val)
+void opl_register_write(reg, val)
 int reg, val;
 {
     asm mov dx,word ptr opl_port

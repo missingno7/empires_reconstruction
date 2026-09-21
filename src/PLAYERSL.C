@@ -15,7 +15,7 @@ extern struct dialog dialog_select_quit_confirm;
 extern char g8bfe[];
 extern void slot_table_save();
 extern struct dialog dialog_select_menu_confirm;
-extern void sound_start(void), sound_stop_reset(), fc834(), sound_request_count_dec();
+extern void sound_start(void), sound_stop_reset(), sound_voices_reset(), sound_request_count_dec();
 extern struct dialog dialog_select_restart_confirm;
 extern int music_enabled, sound_enabled;
 extern int current_slot, gc5b0, gc5b2[];
@@ -24,9 +24,9 @@ extern char far *ui_gfx_shadow_a;
 extern int resource_load_record(), player_select_draw_portraits();
 extern void gfx_color_select(int n);
 extern int g96, g94, g98, g9a;
-extern char fad0e();
+extern char slot_flags_get();
 extern int player_select_index;
-extern int f6b1a();
+extern int keyboard_read_blocking_hotkeys();
 extern void keyboard_buffer_drain(void);
 extern void player_select_restart_confirm();
 extern void player_select_draw_highlight(void), player_select_clear_highlight(void);
@@ -35,7 +35,7 @@ extern int keyboard_chain_active(), player_select_draw_screen(), hud_prompt_sele
 extern void keyboard_chain_enable(void);
 extern void resource_record_cache_reset();
 extern void keyboard_chain_disable(void);
-extern void player_select_load_flags(void), player_select_mark(int), f7dfc(void), f7df1(void);
+extern void player_select_load_flags(void), player_select_mark(int), menu_list_source_set_players(void), menu_list_source_set_default(void);
 extern int g1776;
 extern char g22d2[];
 extern char far *farmalloc();
@@ -74,7 +74,7 @@ void player_select_restart_confirm(void)
         slot_table_save();
         sound_enabled = music_enabled = 0;
         sound_stop_reset();
-        fc834();
+        sound_voices_reset();
         longjmp(g8bfe, 3);
     }
     sound_request_count_dec();
@@ -143,7 +143,7 @@ player_select_draw_screen()
 
 
 /* ---- F_D089 (original code at 0xD089) ---- */
-void player_select_load_flags(void) { register int flags,i; flags=fad0e(); gc5b2[0]=flags&1; gc5b2[1]=flags&2; gc5b2[2]=flags&4; gc5b2[3]=flags&8; i=0; gc5b0=i; for(;i<4;i++) if(gc5b2[i]) gc5b0++; }
+void player_select_load_flags(void) { register int flags,i; flags=slot_flags_get(); gc5b2[0]=flags&1; gc5b2[1]=flags&2; gc5b2[2]=flags&4; gc5b2[3]=flags&8; i=0; gc5b0=i; for(;i<4;i++) if(gc5b2[i]) gc5b0++; }
 
 
 /* ---- F_D0D1 (original code at 0xD0D1) ---- */
@@ -163,7 +163,7 @@ player_select_choose_slot()
     while (1) {
         keyboard_buffer_drain();
         d = 0;
-        switch (f6b1a()) {
+        switch (keyboard_read_blocking_hotkeys()) {
         case 0x14d:
         case 0x150:
             d++;
@@ -216,7 +216,7 @@ int a;
     resource_record_cache_reset(49);
     player_select_mark(a);
     player_select_draw_screen();
-    f7dfc();
+    menu_list_source_set_players();
     g1776 = 1;
     sound_request_count_dec();
     gfx_wipe_rect(0, 0, 320, 16, 0, 200);
@@ -236,11 +236,11 @@ int a;
         player_select_close_wipe();
         player_select_index = 4;
     }
-    f7df1();
+    menu_list_source_set_default();
     if (!s)
         keyboard_chain_disable();
     g1776 = 0;
-    fc834();
+    sound_voices_reset();
     return player_select_index;
 }
 

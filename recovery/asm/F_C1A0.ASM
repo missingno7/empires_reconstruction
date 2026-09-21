@@ -19,10 +19,10 @@ _BSS	ENDS
 
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	ASSUME	CS:_TEXT, DS:DGROUP
-	EXTRN	_fc1f7:NEAR
+	EXTRN	_sound_voice_pump_loop:NEAR
 	EXTRN	_sound_tick_step:NEAR
-	PUBLIC	_fc1a0
-_fc1a0	PROC	NEAR
+	PUBLIC	_sound_tick_entry
+_sound_tick_entry	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	push	ax
@@ -46,12 +46,12 @@ _fc1a0	PROC	NEAR
 	jne	L1
 	mov	word ptr _v_b,1
 L1:	mov	es,word ptr _snd_seg2
-	call	near ptr _fc1f7
+	call	near ptr _sound_voice_pump_loop
 	jmp	L3
 L2:	cmp	word ptr _snd_mode,0
 	je	L3
 	mov	es,word ptr _snd_seg2
-	call	near ptr _fc1f7
+	call	near ptr _sound_voice_pump_loop
 L3:	pop	es
 	pop	di
 	pop	si
@@ -61,6 +61,6 @@ L3:	pop	es
 	pop	ax
 	pop	bp
 	ret
-_fc1a0	ENDP
+_sound_tick_entry	ENDP
 _TEXT	ENDS
 	END

@@ -53,7 +53,7 @@ void slot_cursor_box(int x,int y,int c) { gfx_color_select(c); gfx_clear_rect(x,
 
 
 /* ---- F_A43C (original code at 0xA43C) ---- */
-extern int timer_deadline_reached(), f6b4a(), f6b1a();
+extern int timer_deadline_reached(), keyboard_poll_nonblocking(), keyboard_read_blocking_hotkeys();
 extern void gfx_copy_rect_flip_h();
 extern void timer_deadline_arm();
 extern void slot_cursor_box();
@@ -67,7 +67,7 @@ int a, b;
     c = 15;
     t = 0;
     timer_deadline_arm(23);
-    while (!f6b4a()) {
+    while (!keyboard_poll_nonblocking()) {
         if (timer_deadline_reached()) {
             if (t = !t)
                 slot_cursor_box(a, b, c ^= 15);
@@ -81,7 +81,7 @@ int a, b;
         }
     }
     slot_cursor_box(a, b, 15);
-    return f6b1a();
+    return keyboard_read_blocking_hotkeys();
 }
 
 
@@ -162,10 +162,10 @@ extern void bar(int a, int b, int c);               /* 03A2 */
 /*@SYM _bar=0x03A2 kind=f key=functions/F_03A2.entry*/
 extern void fill(int a, int b, int c, int d);       /* 03AB */
 /*@SYM _fill=0x03AB kind=f key=functions/F_03AB.entry*/
-extern int  faf45(void);                           /* AF45 */
-/*@SYM _faf45=0xAF45 kind=f key=functions/F_AF45.entry*/
-extern void fa19d(void);                              /* A19D */
-/*@SYM _fa19d=0xA19D kind=f key=functions/F_A19D.entry*/
+extern int  menu_wait_key_animated(void);                           /* AF45 */
+/*@SYM _menu_wait_key_animated=0xAF45 kind=f key=functions/F_AF45.entry*/
+extern void player_type_toggle_draw(void);                              /* A19D */
+/*@SYM _player_type_toggle_draw=0xA19D kind=f key=functions/F_A19D.entry*/
 extern void dialog_restore_screen(void);          /* 8453 */
 /*@SYM _dialog_restore_screen=0x8453 kind=f key=functions/F_8453.entry*/
 extern void menu_list_enable(void);          /* 791E */
@@ -199,10 +199,10 @@ int player_type_select(void)
     fill(0x28, 0x7e, 0xee, 0xa);
     box(0x28, 0x7e, 0xee, 0x14);
     while (!quit) {
-        switch (faf45()) {
+        switch (menu_wait_key_animated()) {
         case 0x1b:  quit = 1; sel = 0;     break;
         case 0x148:
-        case 0x150: sel ^= 0x30; fa19d();    break;
+        case 0x150: sel ^= 0x30; player_type_toggle_draw();    break;
         case 0x0d:  quit = sel;            break;
         }
     }
@@ -217,7 +217,7 @@ int player_type_select(void)
 
 /* ---- F_A768 (original code at 0xA768) ---- */
 extern struct dialog dialog_quit_confirm;
-extern int keyboard_chain_active(), menu_list_active(), f6b1a();
+extern int keyboard_chain_active(), menu_list_active(), keyboard_read_blocking_hotkeys();
 extern void sound_start(void);
 extern void menu_list_disable(void);
 extern void keyboard_chain_enable(void);
@@ -228,7 +228,7 @@ extern void dialog_restore_screen();
 extern void gfx_color_select(int n);
 extern void keyboard_chain_disable(void);
 extern void sound_request_count_dec(void);
-extern void fa1e0(void);
+extern void quit_confirm_toggle_draw(void);
 
 confirm_quit_dialog()
 {
@@ -250,10 +250,10 @@ confirm_quit_dialog()
     gfx_fill_rect(50, 103, 218, 10);
     gfx_box(50, 103, 218, 20);
     while (di < 0) {
-        switch (f6b1a()) {
+        switch (keyboard_read_blocking_hotkeys()) {
         case 27: di = 1; i = 0; break;
         case 328:
-        case 336: i ^= 1; fa1e0(); break;
+        case 336: i ^= 1; quit_confirm_toggle_draw(); break;
         case 13: di = i; break;
         }
     }
@@ -336,14 +336,14 @@ int player_slot_add_run(void)
 extern char near g1356[],g12e5[];
 extern struct dialog near dialog_slot_delete_confirm;
 extern char far *g13b8;
-extern int faf45();
+extern int menu_wait_key_animated();
 extern void keyboard_buffer_drain(void);
 extern void slot_row_highlight(),slot_delete(int);
 /* str_concat_far_list appends far strings until a null pointer; this call site needs the
    record argument typed as a far pointer for exact code. */
 extern long str_concat_far_list(char far *dest,char far *a,struct c470_record far *b,char far *c,char far *end);
 
-int faa1f(void)
+int slot_list_select_loop(void)
 {
     int old, result;
     char buffer[200];
@@ -352,7 +352,7 @@ int faa1f(void)
     if (slot_select_error == 1) { selected = slot_used_count; count = selected + 1; } else { selected = 0; count = slot_used_count; }
     while (1) {
         slot_row_highlight(old = selected); keyboard_buffer_drain();
-        switch (faf45()) {
+        switch (menu_wait_key_animated()) {
         case 0x150: ++selected; selected %= count; break;
         case 0x148: --selected; selected = (selected + count) % count; break;
         case 27:
@@ -379,12 +379,12 @@ int faa1f(void)
 /* ---- F_AB66 (original code at 0xAB66) ---- */
 /* Exact Turbo C recovery of the 385-byte selection/workspace routine.
    The far-pointer slot_row_draw prototype and local declaration order are byte-significant. */
-extern int keyboard_chain_active(), slot_menu_draw_header(), slot_find_free(), slot_list_draw(), faa1f(), player_slot_add_run();
+extern int keyboard_chain_active(), slot_menu_draw_header(), slot_find_free(), slot_list_draw(), slot_list_select_loop(), player_slot_add_run();
 extern void menu_list_disable(void);
 extern void sound_start(void);
 extern void keyboard_chain_enable(void);
 extern void keyboard_buffer_drain(void);
-extern void fc834();
+extern void sound_voices_reset();
 extern void sound_stop_reset(void);
 extern void gfx_color_select(int n);
 extern void keyboard_chain_disable(void);
@@ -395,12 +395,12 @@ extern int music_track_handle,g98,g9a;
 extern struct dialog near g139d;
 extern char far *ui_gfx_shadow_a;
 
-int fab66(void)
+int slot_menu_run(void)
 {
     int y, saved;
     register int selected, i;
 
-    saved = keyboard_chain_active(); menu_list_disable(); sound_stop_reset(); fc834();
+    saved = keyboard_chain_active(); menu_list_disable(); sound_stop_reset(); sound_voices_reset();
     music_track_handle = -1; sound_start(); g98 = 0; g9a = 159; slot_menu_draw_header();
     gfx_blit_bitmap(0, 200, ui_gfx_shadow_a); gfx_color_select(0); slot_used_count = slot_find_free();
     y = 249;
@@ -410,7 +410,7 @@ int fab66(void)
     do {
         if (!(slot_used_count = slot_find_free())) slot_select_error = 0;
         keyboard_buffer_drain(); slot_list_draw();
-        if (slot_select_error) selected = faa1f(); else selected = player_slot_add_run();
+        if (slot_select_error) selected = slot_list_select_loop(); else selected = player_slot_add_run();
         if (selected == -1 && dialog_run(&g139d) != 1) selected = -2;
     } while (selected < -1);
     slot_table_save(); if (!saved) keyboard_chain_disable(); gfx_color_select(1);
@@ -427,4 +427,4 @@ int face7(void) { return (slot_table[current_slot].flags & 0x20) == 0x20; }
 
 
 /* ---- F_AD0E (original code at 0xAD0E) ---- */
-char fad0e(void) { return slot_table[current_slot].flags; }
+char slot_flags_get(void) { return slot_table[current_slot].flags; }

@@ -2,7 +2,7 @@
 extern void menu_list_active();
 extern void menu_loop_run();
 
-int f6b1a()
+int keyboard_read_blocking_hotkeys()
 {
     asm xor ah,ah
     asm int 16h

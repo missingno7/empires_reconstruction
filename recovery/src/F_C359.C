@@ -1,5 +1,5 @@
 /* F_C359 -- mechanically preserved complete routine. */
-void f_c359()
+void sound_control_value_select()
 {
     asm db 055h,08bh,0ech,083h,03eh,078h,017h,001h,074h,03eh,083h,03eh,078h,017h,002h,074h,01ah,08ah,0cch,0bbh,0fch,017h,0feh,0c8h
     asm db 0d0h,0e0h,032h,0e4h,003h,0d8h,08bh,007h,0d3h,0e8h,0e8h,088h,003h,0e8h,0f7h,002h,0ebh,056h,090h,0feh,0c8h,033h,0c9h,08ah

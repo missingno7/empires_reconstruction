@@ -3,7 +3,7 @@
    reading AL directly).  Under the pinned -k- default TC emits
    push bp / mov bp,sp ... pop bp / ret around the asm. */
 extern int g1e84;               /* DS:1E84; convention _g1e84 -> DGROUP+0x1E84 = phys 0x219B4, storage_objects/G_P219B4 */
-void fca83(note)
+void stream_level_base_set(note)
 unsigned char note;
 {
     asm xor ah,ah

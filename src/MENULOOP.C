@@ -3,7 +3,7 @@
  * Preserve local declaration and comparison evaluation order. */
 #include "GC0FE.H"
 #define g0fecat ((struct gc0fe_catalog far *) gc0fe)
-extern int menu_list_active(), keyboard_chain_active(), f6b1a();extern void gfx_fill_rect();extern void gfx_box();
+extern int menu_list_active(), keyboard_chain_active(), keyboard_read_blocking_hotkeys();extern void gfx_fill_rect();extern void gfx_box();
 extern void menu_list_disable(void);
 extern void keyboard_chain_enable(void);
 extern void keyboard_buffer_drain(void);
@@ -31,7 +31,7 @@ void menu_loop_run(int initial)
   while(!done) {
    oldrow=row;
    gfx_fill_rect(p->x+4,row*10+17,p->width,10);gfx_box(p->x+4,row*10+17,p->width,10);
-   key=f6b1a();
+   key=keyboard_read_blocking_hotkeys();
    switch(key) {
     case 0x148: if(--row<0) row=p->count-1;break;
     case 0x150: if(++row>=p->count) row=0;break;

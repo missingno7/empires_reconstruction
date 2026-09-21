@@ -12,8 +12,8 @@ inleft	dw	0			; 6DC7
 bitcnt	dw	0			; 6DC9
 bitbuf	db	0			; 6DCB
 
-	PUBLIC	_f6dcc
-_f6dcc	PROC	NEAR
+	PUBLIC	_lz_decompress
+_lz_decompress	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	push	si
@@ -161,6 +161,6 @@ L_exit:
 	pop	si
 	pop	bp
 	ret
-_f6dcc	ENDP
+_lz_decompress	ENDP
 _TEXT	ENDS
 	END

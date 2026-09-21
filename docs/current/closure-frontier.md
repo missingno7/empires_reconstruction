@@ -57,10 +57,17 @@ helpers F_D3DA..F_D60C (EXACT as one unit; group after naming); ANIMSTEP..SLOTRO
 
 ## 5. Naming / readability
 
-104 address-named publics remain (`_fXXXX`, `_f_XXXX`), 41 of them in SOUND.ASM,
-9 in LEVEL.C, 4 in PUZZLE.C; the four `fd45c..fd49d` dialog-pick wrappers and
-`f020f/f0232` in VIDEO.C are the cheapest.  Rename with `tools/rename_symbol.py`
-(records the original name in docs/current/symbol-names.json).
+89 publics were behaviour-named on 2026-09-21 from their own banners, callers and
+data (evidence table: the naming research in the commit message; originals in
+docs/current/symbol-names.json).  15 address names remain, all with only a
+mechanical description: f250c, f2986, f32fa (BOARD.C script opcode handlers),
+f568c (INTRO), f7417 (HUD), f9402/f9440 (PUZZLE messages), f9962/f99a2 (SCORE
+frame draws), face7/fb09a/fb4fb/fb772 (SLOTMENU/LEVEL), f_c5a8/f_c5c6 (sound
+state setters for DS:17A4/17DC).  Next: name the sound state block fields
+(DS:1760..17F4, 1E84..1E94) from SOUND.ASM's per-proc comments, which unlocks
+the last two and the remaining absolute displacements; the globals table in the
+research (g9ade, gc360, g8bfe, g736/g738/g73a, g237c, gb68..gb70, gb3ae, gbfc8,
+gbfc4, g9bfc/gbf66, gc5cc) is the next batch.
 
 ## 6. Source layout
 

@@ -15,7 +15,7 @@ extern void voice_write_op1_attack_decay();
 extern void voice_write_op2_attack_decay();
 extern void voice_write_envelope_flags();
 extern void voice_write_waveform();
-extern void fc898();
+extern void opl_register_write();
 extern char voice_level_table[];                    /* DS:CA50 */
 extern char voice_byte_table[];                    /* DS:2FE4, byte per voice */
 extern char opl_note_select;                      /* DS:C6B4 */
@@ -133,7 +133,7 @@ register int v;
 
 /* ---- F_E1F2 (original code at 0xE1F2) ---- */
 /* F_E1F2 -- scale one record's bar into the 0..0x3F range, pack the record's
-   first byte above it, and hand the pair to fc898.  Entry 1E2F2, 112 bytes.
+   first byte above it, and hand the pair to opl_register_write.  Entry 1E2F2, 112 bytes.
 
    E22B  33D2 F7F3           `xor dx,dx; div bx` is the UNSIGNED divide, so
               the running value is an unsigned int; a signed int would have
@@ -160,7 +160,7 @@ register int i;
     v += v + 0x7f;
     v = 0x3f - v / 0xfe;
     v |= voice_param_record[i].f[0] << 6;
-    fc898(voice_byte_table[i] + 0x40, v);
+    opl_register_write(voice_byte_table[i] + 0x40, v);
 }
 
 
@@ -170,12 +170,12 @@ register int i;
    the destination is the argument slot. */
 void opl_set_note_select()
 {
-    fc898(8, opl_note_select ? 0x40 : 0);
+    opl_register_write(8, opl_note_select ? 0x40 : 0);
 }
 
 
 /* ---- F_E27B (original code at 0xE27B) ---- */
-/* F_E27B -- push one voice's pitch/flag word to the OPL through fc898.
+/* F_E27B -- push one voice's pitch/flag word to the OPL through opl_register_write.
    The 14-byte record array at DS:C91B is indexed with a `mul`, which is how
    TC 2.0 reaches a non-power-of-two stride; the two member reads recompute
    the address independently (TC 2.0 does no CSE, tc20-codegen rule 6). */
@@ -188,7 +188,7 @@ register int v;
     if (g2ff6[v]) return;
     d = voice_param_record[v].f[2] * 2;
     d |= voice_param_record[v].f[12] ? 0 : 1;
-    fc898(g3008[v] + 0xc0, d);
+    opl_register_write(g3008[v] + 0xc0, d);
 }
 
 
@@ -202,7 +202,7 @@ int v;
 
     d = voice_param_record[v].f[3] << 4;
     d |= voice_param_record[v].f[6] & 0xf;
-    fc898(voice_byte_table[v] + 0x60, d);
+    opl_register_write(voice_byte_table[v] + 0x60, d);
 }
 
 
@@ -218,13 +218,13 @@ int v;
 
     d = voice_param_record[v].f[4] << 4;
     d |= voice_param_record[v].f[7] & 0xf;
-    fc898(voice_byte_table[v] + 0x80, d);
+    opl_register_write(voice_byte_table[v] + 0x80, d);
 }
 
 
 /* ---- F_E372 (original code at 0xE372) ---- */
 /* F_E372 -- fold five fields of a 14-byte record into one flag word and hand
-   it, with the record's own glyph, to fc898.  Entry 1E472, 174 bytes.
+   it, with the record's own glyph, to opl_register_write.  Entry 1E472, 174 bytes.
 
    E377  8B7E04              the parameter is copied into DI, so it is a
                               register variable; SI takes the running sum,
@@ -259,7 +259,7 @@ register int i;
     v += voice_param_record[i].f[5] ? 0x20 : 0;
     v += voice_param_record[i].f[11] ? 0x10 : 0;
     v += voice_param_record[i].f[1] & 0xf;
-    fc898(voice_byte_table[i] + 0x20, v);
+    opl_register_write(voice_byte_table[i] + 0x20, v);
 }
 
 
@@ -275,7 +275,7 @@ void opl_set_depth_flags()
 
     v = opl_am_depth ? 0x80 : 0;
     v |= opl_vib_depth ? 0x40 : 0;
-    fc898(0xbd, v);
+    opl_register_write(0xbd, v);
 }
 
 
@@ -290,7 +290,7 @@ int v;
 
     if (opl_enabled) d = voice_param_record[v].f[13] & 3;
     else d = 0;
-    fc898(voice_byte_table[v] + 0xe0, d);
+    opl_register_write(voice_byte_table[v] + 0xe0, d);
 }
 
 
@@ -313,10 +313,10 @@ int flag;
     if (note > 0x5f) note = 0x5f;
     if (note < 0) note = 0;
     t.w = *(int far *)(gca24[v] + tab_ix[note] * 2);
-    fc898(v + 0xa0, t.w);
+    opl_register_write(v + 0xa0, t.w);
     d = flag ? 0x20 : 0;
     d += tab_oct[note] * 4 + (t.b[1] & 3);
-    fc898(v + 0xb0, d);
+    opl_register_write(v + 0xb0, d);
 }
 
 
@@ -326,8 +326,8 @@ int flag;
 void voice_key_off(v)
 int v;
 {
-    fc898(v + 0xb0, 0);
-    fc898(v + 0xa0, 0);
+    opl_register_write(v + 0xb0, 0);
+    opl_register_write(v + 0xa0, 0);
 }
 
 
@@ -344,15 +344,15 @@ int opl_detect()
     register unsigned i;
     register unsigned d;
 
-    fc898(4, 0x60);
-    fc898(4, 0x80);
+    opl_register_write(4, 0x60);
+    opl_register_write(4, 0x80);
     d = inport(g1830);
-    fc898(2, 0xff);
-    fc898(4, 0x21);
+    opl_register_write(2, 0xff);
+    opl_register_write(4, 0x21);
     for (i = 0; i < 200; i++)
         inport(g1830);
     t = inport(g1830);
-    fc898(4, 0x60);
-    fc898(4, 0x80);
+    opl_register_write(4, 0x60);
+    opl_register_write(4, 0x80);
     return (!(d & 0xe0) && (t & 0xe0) == 0xc0);
 }

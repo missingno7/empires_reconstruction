@@ -1,6 +1,6 @@
 /* F_CA91 -- preserve the caller's live AL and widen it into DGROUP. */
 extern unsigned g1e92;
-void fca91()
+void stream_note_delay_set()
 {
     asm push bp
     asm mov bp,sp

@@ -27,8 +27,8 @@ class MatchingCWave21Tests(unittest.TestCase):
             # F_AD25 was normalized to the shared C470.H record's 'text'
             # field name instead of the old raw struct's 'a' field.
             ('F_AD25',
-             b'void fad25()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[0]',
-             b'void fad25()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[1]'),
+             b'void slot_archive_and_delete()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[0]',
+             b'void slot_archive_and_delete()\n{\n    register int i;\n\n    for (i = 0; i < 10; i++) {\n        if (!gc360[i].text[1]'),
             ('F_A09D', b'resource_load_record_into(62, gc360)', b'resource_load_record_into(63, gc360)'),
             ('F_A13F', b'0x3e', b'0x3f')):
             mutant_rejected(name, before, after)

@@ -9,9 +9,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 extrn _gfx_blit_bitmap:near
-public _fd386, _fd3cf
+public _icon_list_animate_draw, _icon_frame_reset_and_draw
 
-_fd386 proc near
+_icon_list_animate_draw proc near
     push bp
     mov bp, sp
     push di
@@ -33,7 +33,7 @@ fd386_next_record:
     add si, bx
     lodsb
     dec al
-    js short _fd3cf
+    js short _icon_frame_reset_and_draw
     inc byte ptr [di]
 fd386_lookup:
     mov bl, al
@@ -57,15 +57,15 @@ fd386_lookup:
     pop di
     pop bp
     ret
-_fd386 endp
+_icon_list_animate_draw endp
 
-_fd3cf proc near
+_icon_frame_reset_and_draw proc near
     mov byte ptr [di], 1
     mov si, di
     add si, 3
     lodsb
     jmp short fd386_lookup
-_fd3cf endp
+_icon_frame_reset_and_draw endp
 
 _TEXT ends
 end

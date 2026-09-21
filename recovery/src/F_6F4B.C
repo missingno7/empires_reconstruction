@@ -1,5 +1,5 @@
 /* F_6F4B -- decode the packed nibble stream following F_6EFF. */
-void f6f4b()
+void sprite_decode_4bpp_mode13h()
 {
     asm db 055h,08bh,0ech,083h,0ech,4,056h,057h,01eh,055h,0fch
     asm db 0c5h,05eh,4,08ch,0d8h,08eh,0c0h,08bh,0fbh,032h,0c0h,0aah

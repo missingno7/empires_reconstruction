@@ -13,7 +13,7 @@
 ;   - every routine here opens push bp/mov bp,sp and closes pop bp/ret,
 ;     including the seven former "C" wrappers -- their C signatures exist
 ;     for no reason but to force that exact frame;
-;   - _fc1a0 (the tick entry point) explicitly saves and restores
+;   - _sound_tick_entry (the tick entry point) explicitly saves and restores
 ;     AX/CX/DX/BX/SI/DI/ES around its body, the signature of a hand-written
 ;     routine protecting a caller's registers across an unknown-effect
 ;     call, not of a C-ABI function (which would rely on the callee-saves
@@ -29,7 +29,7 @@
 ;     file, which assembles to the same fixup-free relative call) -- only
 ;     possible when caller and callee were assembled together, in the same
 ;     module;
-;   - _fc898's OPL data-port write ends in "rept 35 / in al,dx / endm", a
+;   - _opl_register_write's OPL data-port write ends in "rept 35 / in al,dx / endm", a
 ;     macro-generated settling delay a hand assembler reaches for and a C
 ;     compiler's inline-asm expander does not produce.
 ;
@@ -66,23 +66,23 @@ _TEXT   segment byte public 'CODE'
     extrn _voice_bank_retune_on:near, _voice_bank_update:near     ; OPLVOICE.C
     extrn _opl_init:near                                          ; OPLINIT.C
     extrn _record_panel_rebuild:near                              ; RECTTAB.C
-        public _fc1a0, _fc1f7, _fc232
-        public _fc27d, _f_c2ea, _f_c359, _f_c3db, _f_c440, _f_c501, _f_c549, _fc567
+        public _sound_tick_entry, _sound_voice_pump_loop, _sound_voice_table_prime
+        public _sound_voice_service_loop, _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_level_percent_scale
         public _sound_param_scale4
-        public _f_c5a8, _f_c5b3, _f_c5c6
-        public _f_c5d1, _f_c678, _f_c6b9, _f_c706
-        public _f_c755
-        public _f_c77a, _f_c7cb, _fc834, _fc877, _fc898
-        public _fc8d4
+        public _f_c5a8, _sound_table_word_select_store, _f_c5c6
+        public _voice_command_decode_apply, _voice_enable, _voice_disable, _sound_pit_divisor_program
+        public _sound_voices_reset_and_service
+        public _sound_backend_select_init, _sound_voice_table_reload, _sound_voices_reset, _sound_voices_disable_all, _opl_register_write
+        public _opl_port_write_byte
         public _sound_tick_step
-        public _fc914
+        public _sound_stream_command_step
         public _sound_note_dispatch
-        public _f_c9a4, _f_ca03, _f_ca35, _f_ca51, _fca83, _fca91
-        public _fca9b
+        public _sound_stream_delay_decode, _sound_ctlblock_command_dispatch, _sound_ctlblock_flags_latch, _stream_level_percent_scale, _stream_level_base_set, _stream_note_delay_set
+        public _stream_note_program
         public _speaker_gate_on
         public _speaker_gate_off
         public _pit_channel2_set_divisor
-        public _fcaf1
+        public _stream_control_block_arm
         public _sound_stop_reset
 
 ; ============================================================================
@@ -94,7 +94,7 @@ _TEXT   segment byte public 'CODE'
 
 ; F_C1A0 -- sound-tick entry point: save the caller's registers, drive one
 ; sound_tick_step, then pump ES:_snd_seg2 voices unless newly paused.
-_fc1a0	PROC	NEAR
+_sound_tick_entry	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	push	ax
@@ -118,12 +118,12 @@ _fc1a0	PROC	NEAR
 	jne	tick_l1
 	mov	word ptr _v_b,1
 tick_l1:	mov	es,word ptr _snd_seg2
-	call	near ptr _fc1f7
+	call	near ptr _sound_voice_pump_loop
 	jmp	tick_l3
 tick_l2:	cmp	word ptr _snd_mode,0
 	je	tick_l3
 	mov	es,word ptr _snd_seg2
-	call	near ptr _fc1f7
+	call	near ptr _sound_voice_pump_loop
 tick_l3:	pop	es
 	pop	di
 	pop	si
@@ -133,17 +133,17 @@ tick_l3:	pop	es
 	pop	ax
 	pop	bp
 	ret
-_fc1a0	ENDP
+_sound_tick_entry	ENDP
 
 ; F_C1F7 -- pump loop: rescan the voice table in mode 2, dispatch one
 ; command batch, then optionally freeze the just-read state into _dv.
-_fc1f7	PROC	NEAR
+_sound_voice_pump_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	cmp	word ptr _snd_mode,2
 	je	pump_l2
-pump_l1:	call	near ptr _fc232
-pump_l2:	call	near ptr _fc27d
+pump_l1:	call	near ptr _sound_voice_table_prime
+pump_l2:	call	near ptr _sound_voice_service_loop
 	cmp	word ptr _snd_mode,0
 	jne	pump_l3
 	mov	ax,word ptr _snd_flag2
@@ -160,11 +160,11 @@ pump_l2:	call	near ptr _fc27d
 	jmp	pump_l1
 pump_l3:	pop	bp
 	ret
-_fc1f7	ENDP
+_sound_voice_pump_loop	ENDP
 
 ; F_C232 -- voice-table scanner: (re)prime every configured voice's
 ; SI-relative control slots from the ES:[si+_g178c] entry table.
-_fc232 proc near
+_sound_voice_table_prime proc near
     push bp
     mov bp,sp
     xor ax,ax
@@ -191,7 +191,7 @@ next_entry:
     loop scan_entry
     pop bp
     ret
-_fc232 endp
+_sound_voice_table_prime endp
 
 ; ============================================================================
 ; former asm/M_C27D_C567.ASM -- contiguous sound service, command dispatch,
@@ -208,7 +208,7 @@ command_mode equ 17e4h
 ; F_C27D -- per-voice service loop: advance each voice's counter, retrigger
 ; command dispatch and the voice-off entry as their timers expire, and
 ; drive the paused/idle renderer once every voice has been serviced.
-_fc27d	PROC	NEAR
+_sound_voice_service_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	xor	si,si
@@ -216,7 +216,7 @@ L1:	cmp	word ptr [si+_v_a],0
 	je	L3
 	cmp	word ptr [si+_v_ctr],0
 	jne	L2
-	call	near ptr _f_c2ea
+	call	near ptr _sound_command_stream_dispatch
 	cmp	word ptr [si+_v_a],0
 	je	L3
 L2:	dec	word ptr [si+_v_ctr]
@@ -228,7 +228,7 @@ L2:	dec	word ptr [si+_v_ctr]
 	dec	ax
 	cmp	word ptr [si+_v_ctr],ax
 	jne	L3
-	call	near ptr _f_c6b9
+	call	near ptr _voice_disable
 L3:	add	si,2
 	mov	ax,si
 	shr	ax,1
@@ -239,20 +239,20 @@ L3:	add	si,2
 	or	ax,word ptr _v_a+4
 	or	ax,word ptr _v_a+6
 	jne	L4
-	call	near ptr _f_c755
+	call	near ptr _sound_voices_reset_and_service
 	jmp	L5
 L4:	cmp	word ptr _snd_paused,1
 	jne	L5
-	call	near ptr _f_c440
+	call	near ptr _sound_control_block_advance
 L5:	pop	bp
 	ret
-_fc27d	ENDP
+_sound_voice_service_loop	ENDP
 
 ; F_C2EA -- command-stream dispatcher: split the byte at [si+command_cursor]
 ; into a low-nibble opcode and act on it (0/D/E/F get dedicated handlers,
 ; anything else falls through to F_C359 + F_C3DB), then loop while more
 ; command bytes remain.
-_f_c2ea:
+_sound_command_stream_dispatch:
     push bp
     mov bp, sp
 C2EA_dispatch:
@@ -272,33 +272,33 @@ C2EA_dispatch:
     jz short C2EA_command_e
     cmp al, 0fh
     jz short C2EA_command_f
-    call _f_c359
-    call _f_c3db
+    call _sound_control_value_select
+    call _sound_command_value_derive
     mov word ptr [si+command_guard], 0
     jmp short C2EA_advance
     nop
 
 C2EA_command_zero:
-    call _f_c6b9
-    call _f_c3db
+    call _voice_disable
+    call _sound_command_value_derive
     mov word ptr [si+command_guard], 1
     jmp short C2EA_advance
     nop
 
 C2EA_command_d:
-    call _f_c501
+    call _sound_secondary_cmd_dispatch
     cmp word ptr [si+command_value], 0
     jmp short C2EA_advance
     nop
 
 C2EA_command_e:
-    call _f_c5d1
+    call _voice_command_decode_apply
     jmp short C2EA_advance
     nop
 
 C2EA_command_f:
     mov word ptr [si+command_state], 0
-    call _f_c6b9
+    call _voice_disable
     jmp short C2EA_done
     nop
 
@@ -321,7 +321,7 @@ C2EA_done:
 ; DS:1814 used only for the paused-mode path below.
 voice_table_b equ 1814h            ; DS:1814, second note/frequency table
 
-_f_c359:
+_sound_control_value_select:
     push bp
     mov bp, sp
     cmp word ptr ds:_g1778, 1
@@ -337,8 +337,8 @@ _f_c359:
     add bx, ax
     mov ax, [bx]
     shr ax, cl
-    call _f_c706
-    call _f_c678
+    call _sound_pit_divisor_program
+    call _voice_enable
     jmp short C359_done
     nop
 
@@ -353,8 +353,8 @@ C359_alternate_table:
     add cx, bx
     add al, cl
     xor ah, ah
-    call _f_c706
-    call _f_c678
+    call _sound_pit_divisor_program
+    call _voice_enable
     jmp short C359_done
     nop
 
@@ -377,7 +377,7 @@ C359_select_table_b:
     jng short C359_submit_value
     shr ax, 1
 C359_submit_value:
-    call _f_c706
+    call _sound_pit_divisor_program
     jmp short C359_done
     nop
 
@@ -386,7 +386,7 @@ C359_reset_voice:
     jnz short C359_done
     dec al
     add al, 0e0h
-    call _fc8d4
+    call _opl_port_write_byte
 C359_done:
     pop bp
     ret
@@ -401,7 +401,7 @@ C359_done:
 command_index equ 17f4h
 command_mode equ 17e4h
 
-_f_c3db:
+_sound_command_value_derive:
     push bp
     mov bp, sp
     mov al, es:[di+1]
@@ -463,7 +463,7 @@ state_limit equ 17bch
 state_value equ 179ch
 state_text equ 17dch
 
-_f_c440:
+_sound_control_block_advance:
     push bp
     mov bp, sp
     xor si, si
@@ -532,7 +532,7 @@ C440_read_char:
     nop
 C440_render:
     add al, bl
-    call _fc8d4
+    call _opl_port_write_byte
 C440_slot_done:
     add bl, 20h
     add si, 2
@@ -547,19 +547,19 @@ C440_done:
 ; The six helper calls are direct same-segment relationships in the
 ; original no-fixup object, retained here as symbolic relative
 ; expressions.
-_f_c501:
+_sound_secondary_cmd_dispatch:
  push bp
  mov bp,sp
  mov al,es:[di+1]
  cmp ah,0
  jnz short C501_test_two
- call _f_c549
+ call _sound_command_flags_update
  jmp short C501_done
  nop
 C501_test_two:
  cmp ah,2
  jg short C501_test_three
- call _fc567
+ call _voice_level_percent_scale
  jmp short C501_done
  nop
 C501_test_three:
@@ -577,7 +577,7 @@ C501_test_four:
 C501_test_five:
  cmp ah,5
  jnz short C501_test_six
- call _f_c5b3
+ call _sound_table_word_select_store
  jmp short C501_done
  nop
 C501_test_six:
@@ -589,7 +589,7 @@ C501_done:
  ret
 
 ; F_C549 -- update the paired command-control flags from AL.
-_f_c549 proc near
+_sound_command_flags_update proc near
     push bp
     mov bp, sp
     cmp al, 0
@@ -605,10 +605,10 @@ C549_set_one_plus_one:
 C549_done:
     pop bp
     ret
-_f_c549 endp
+_sound_command_flags_update endp
 
 ; F_C567 -- signed scale-and-store for the sound-data state pair.
-_fc567 proc near
+_voice_level_percent_scale proc near
     push bp
     mov bp, sp
     mov bl, ah
@@ -636,7 +636,7 @@ C567_store_zero:
 C567_done:
     pop bp
     ret
-_fc567 endp
+_voice_level_percent_scale endp
 
 ; ============================================================================
 ; former src/SNDSCL4.C -- F_C59A.  TC frame with a hand-written body, the
@@ -673,7 +673,7 @@ _f_c5a8 endp
 
 ; F_C5B3 -- select a word from the DS:1832h table by AL, then store it
 ; through SI at DS:17C4h.
-_f_c5b3 proc near
+_sound_table_word_select_store proc near
     push bp
     mov bp,sp
     mov bl,al
@@ -683,7 +683,7 @@ _f_c5b3 proc near
     mov [si+17c4h],bx                      ; DS:17C4
     pop bp
     ret
-_f_c5b3 endp
+_sound_table_word_select_store endp
 
 ; F_C5C6 -- store AL (zero-extended) through SI at DS:17DCh.
 _f_c5c6 proc near
@@ -707,14 +707,14 @@ _f_c5c6 endp
 
 ; F_C5D1 -- decode one command byte and update the selected SI-relative
 ; voice-control slot.
-_f_c5d1 proc near
+_voice_command_decode_apply proc near
     push bp
     mov bp,sp
     mov dl,es:[di+1]
     xor dh,dh
     cmp dx,0
     jnz short C5D1_have_value
-    call _f_c6b9
+    call _voice_disable
     mov word ptr [si+_g17ec],1
     jmp C5D1_store_result
 C5D1_have_value:
@@ -732,8 +732,8 @@ C5D1_have_value:
     mov ax,[bx]
     add ax,dx
     shr ax,cl
-    call _f_c706
-    call _f_c678
+    call _sound_pit_divisor_program
+    call _voice_enable
     jmp short C5D1_store_result
     nop
 C5D1_mode_two:
@@ -773,7 +773,7 @@ C5D1_scaled:
     shr dx,1
 C5D1_frequency_ready:
     mov ax,dx
-    call _f_c706
+    call _sound_pit_divisor_program
     mov word ptr [si+17e4h],1              ; DS:17E4
     mov word ptr [si+_g17ec],0
 C5D1_store_result:
@@ -781,11 +781,11 @@ C5D1_store_result:
     mov [si+_g179c],ax
     pop bp
     ret
-_f_c5d1 endp
+_voice_command_decode_apply endp
 
 ; F_C678 -- enable a voice, either by opening the speaker gate or by
 ; queueing its selected value for the alternate sound backend.
-_f_c678 proc near
+_voice_enable proc near
     push bp
     mov bp,sp
     cmp word ptr [si+_v_b],0
@@ -823,10 +823,10 @@ C678_open_alt_gate:
 C678_done:
     pop bp
     ret
-_f_c678 endp
+_voice_enable endp
 
 ; F_C6B9 -- disable a voice or submit an alternate-backend voice update.
-_f_c6b9 proc near
+_voice_disable proc near
     push bp
     mov bp,sp
     cmp word ptr [si+_v_b],0
@@ -864,17 +864,17 @@ C6B9_queue_reset:
     shl al,1
     add al,90h
     or al,0fh
-    call _fc8d4
+    call _opl_port_write_byte
     xor ax,ax
-    call _f_c706
+    call _sound_pit_divisor_program
 C6B9_done:
     pop bp
     ret
-_f_c6b9 endp
+_voice_disable endp
 
 ; F_C706 -- write a PIT divisor, queue it, or emit its two packed nibbles
 ; for the alternate sound backend.
-_f_c706 proc near
+_sound_pit_divisor_program proc near
     push bp
     mov bp,sp
     cmp word ptr [si+_v_b],0
@@ -907,13 +907,13 @@ C706_emit_nibbles:
     shr bx,1
     shr bx,1
     shr bx,1
-    call _fc8d4
+    call _opl_port_write_byte
     mov al,bl
-    call _fc8d4
+    call _opl_port_write_byte
 C706_done:
     pop bp
     ret
-_f_c706 endp
+_sound_pit_divisor_program endp
 
 ; ============================================================================
 ; former src/F_C755.ASM -- reset per-voice state, then service each
@@ -923,7 +923,7 @@ _f_c706 endp
 ; independently establish the same sound-state offsets and F_C6B9 entry.
 ; ============================================================================
 
-_f_c755 proc near
+_sound_voices_reset_and_service proc near
     push bp
     mov bp,sp
     mov word ptr DGROUP:_g1784,0
@@ -932,12 +932,12 @@ _f_c755 proc near
     mov cx,DGROUP:_g177a
 reset_voice:
     mov word ptr [si+DGROUP:_g17ac],0
-    call _f_c6b9
+    call _voice_disable
     add si,2
     loop reset_voice
     pop bp
     ret
-_f_c755 endp
+_sound_voices_reset_and_service endp
 
 ; ============================================================================
 ; former asm/M_C77A_C898.ASM -- sound backend selection, voice-state
@@ -945,7 +945,7 @@ _f_c755 endp
 ; ============================================================================
 
 ; F_C77A -- select and initialise a sound backend.
-_f_c77a proc near
+_sound_backend_select_init proc near
     push bp
     mov bp,sp
     push ax
@@ -972,16 +972,16 @@ C77A_mode_three:
 C77A_mode_one:
     mov word ptr ds:_opl_port,0c0h
     mov word ptr ds:_g177a,4
-    call _f_c678
+    call _voice_enable
 C77A_done:
     pop ax
     pop bp
     ret
-_f_c77a endp
+_sound_backend_select_init endp
 
 ; F_C7CB -- reload per-voice values from the current backend table into the
 ; two SI-relative sound-control arrays.
-_f_c7cb proc near
+_sound_voice_table_reload proc near
     push bp
     mov bp,sp
     push ax
@@ -1030,11 +1030,11 @@ C7CB_done:
     pop ax
     pop bp
     ret
-_f_c7cb endp
+_sound_voice_table_reload endp
 
 ; F_C834 -- reset each configured voice and retain the voice count across
 ; the reset loop.
-_fc834 proc near
+_sound_voices_reset proc near
     push bp
     mov bp,sp
     push ax
@@ -1051,7 +1051,7 @@ _fc834 proc near
 C834_reset_voice:
     mov word ptr [si+_v_a],0
     mov word ptr [si+_v_b],0
-    call _f_c6b9
+    call _voice_disable
     add si,2
     loop C834_reset_voice
     pop _snd_nvoices
@@ -1060,10 +1060,10 @@ C834_reset_voice:
     pop ax
     pop bp
     ret
-_fc834 endp
+_sound_voices_reset endp
 
 ; F_C877 -- submit one disabled voice update for every voice.
-_fc877 proc near
+_sound_voices_disable_all proc near
     push bp
     mov bp,sp
     push cx
@@ -1074,18 +1074,18 @@ _fc877 proc near
     jnz short C877_voice_count_ready
     mov cx,4
 C877_voice_count_ready:
-    call _f_c6b9
+    call _voice_disable
     add si,2
     loop C877_voice_count_ready
     pop si
     pop cx
     pop bp
     ret
-_fc877 endp
+_sound_voices_disable_all endp
 
 ; F_C898 -- write OPL register and data bytes with the required
 ; input-port settling reads between them.
-_fc898 proc near
+_opl_register_write proc near
     push bp
     mov bp,sp
     mov dx,_opl_port
@@ -1106,7 +1106,7 @@ _fc898 proc near
     endm
     pop bp
     ret
-_fc898 endp
+_opl_register_write endp
 
 ; ============================================================================
 ; former src/F_C8D4.ASM -- write the live AL value to the I/O port
@@ -1114,7 +1114,7 @@ _fc898 endp
 ; under this contribution's original alias).
 ; ============================================================================
 
-_fc8d4 proc near
+_opl_port_write_byte proc near
     push bp
     mov bp,sp
     push dx
@@ -1124,7 +1124,7 @@ _fc8d4 proc near
     pop dx
     pop bp
     ret
-_fc8d4 endp
+_opl_port_write_byte endp
 
 ; ============================================================================
 ; former src/SNDTICK.C -- F_C8E2, sound tick step.  Loads ES from a global
@@ -1140,7 +1140,7 @@ _sound_tick_step proc near
     mov es,word ptr _snd_seg
     cmp word ptr _snd_delay,0
     jne C8E2_countdown
-    call near ptr _fc914
+    call near ptr _sound_stream_command_step
     cmp word ptr _snd_on,0
     je  C8E2_done
 C8E2_countdown:
@@ -1165,7 +1165,7 @@ _sound_tick_step endp
 ; F_C914 -- fetch the next command byte, split it into a low nibble
 ; (command code, AL) and high nibble (argument, AH), dispatch to the
 ; matching handler, and loop while _snd_delay stays zero.
-_fc914:
+_sound_stream_command_step:
  push bp
  mov bp,sp
 C914_dispatch: mov di,_mus_ptr
@@ -1186,18 +1186,18 @@ C914_dispatch: mov di,_mus_ptr
  jz short C914_command_f
 ; Default path: ordinary note command.
  call _sound_note_dispatch
- call _f_c9a4
+ call _sound_stream_delay_decode
  jmp short C914_advance
  nop
 C914_command_zero: call _speaker_gate_off
- call _f_c9a4
+ call _sound_stream_delay_decode
  jmp short C914_advance
  nop
-C914_command_d: call _f_ca03
+C914_command_d: call _sound_ctlblock_command_dispatch
  cmp _snd_delay,0
  jmp short C914_advance
  nop
-C914_command_e: call _fca9b
+C914_command_e: call _stream_note_program
  jmp short C914_advance
  nop
 C914_command_f: call _speaker_gate_off
@@ -1205,7 +1205,7 @@ C914_command_f: call _speaker_gate_off
  jz short C914_stop
  mov ax,_mus_arg
  push ax
- call _fcaf1
+ call _stream_control_block_arm
  pop ax
  inc _snd_delay
  pop bp
@@ -1253,7 +1253,7 @@ _sound_note_dispatch endp
 
 ; F_C9A4 -- decode one ES:[DI+1] command byte into a scaled delta and store
 ; it through _snd_delay.
-_f_c9a4:
+_sound_stream_delay_decode:
     push bp
     mov bp, sp
     mov al, es:[di+1]
@@ -1297,38 +1297,38 @@ store_value:
     ret
 
 ; F_CA03 -- dispatch one control-block command by the AH selector.
-_f_ca03 proc near
+_sound_ctlblock_command_dispatch proc near
     push bp
     mov bp,sp
     mov al,es:[di+1]
     cmp ah,0
     jne check_two_or_less
-    call _f_ca35
+    call _sound_ctlblock_flags_latch
     jmp short CA03_done
     nop
 check_two_or_less:
     cmp ah,2
     jg check_three
-    call _f_ca51
+    call _stream_level_percent_scale
     jmp short CA03_done
     nop
 check_three:
     cmp ah,3
     jne check_four
-    call _fca91
+    call _stream_note_delay_set
     jmp short CA03_done
     nop
 check_four:
     cmp ah,4
     jne CA03_done
-    call _fca83
+    call _stream_level_base_set
 CA03_done:
     pop bp
     ret
-_f_ca03 endp
+_sound_ctlblock_command_dispatch endp
 
 ; F_CA35 -- latch or clear the control block's one-shot/length pair from AL.
-_f_ca35 proc near
+_sound_ctlblock_flags_latch proc near
     push bp
     mov bp,sp
     cmp al,0
@@ -1342,11 +1342,11 @@ set_one:
     mov word ptr ds:_snd_one,1
     pop bp
     ret
-_f_ca35 endp
+_sound_ctlblock_flags_latch endp
 
 ; F_CA51 -- signed percentage scale-and-store, the 1E84/1E86 twin of
 ; F_C567.
-_f_ca51 proc near
+_stream_level_percent_scale proc near
     push bp
     mov bp,sp
     mov bl,ah
@@ -1373,10 +1373,10 @@ store_zero:
     mov word ptr ds:_g1e86,0
     pop bp
     ret
-_f_ca51 endp
+_stream_level_percent_scale endp
 
 ; F_CA83 -- scale a raw 0..63 value by 4 and store it through _g1e84.
-_fca83 proc near
+_stream_level_base_set proc near
     push bp
     mov bp,sp
     xor ah,ah
@@ -1385,17 +1385,17 @@ _fca83 proc near
     mov word ptr ds:_g1e84,ax
     pop bp
     ret
-_fca83 endp
+_stream_level_base_set endp
 
 ; F_CA91 -- store AL (zero-extended) through _g1e92.
-_fca91 proc near
+_stream_note_delay_set proc near
     push bp
     mov bp,sp
     xor ah,ah
     mov ds:_g1e92,ax
     pop bp
     ret
-_fca91 endp
+_stream_note_delay_set endp
 
 ; ============================================================================
 ; former asm/F_CA9B.ASM -- shift a note-derived value and update sound
@@ -1404,7 +1404,7 @@ _fca91 endp
 
 ; F_CA9B -- look up a divisor in _notetab for a shifted note delta, program
 ; the PIT and speaker gate, then copy _g1e92 into _snd_delay.
-_fca9b proc near
+_stream_note_program proc near
     push bp
     mov bp,sp
     mov dl,es:[di+1]
@@ -1431,7 +1431,7 @@ store_current_value:
     mov ds:_snd_delay,ax
     pop bp
     ret
-_fca9b endp
+_stream_note_program endp
 
 ; ============================================================================
 ; former src/SPKON.C -- F_CAD0, speaker gate on.  asm body; no parameter,
@@ -1490,7 +1490,7 @@ _pit_channel2_set_divisor endp
 ; F_CAF1 -- when enabled and the caller's index is new, latch it, look up
 ; its far-pointer entry via _g175e, and reset the 1E84..1E94 control
 ; block for that entry.
-_fcaf1:
+_stream_control_block_arm:
  push bp
  mov bp,sp
  push ax

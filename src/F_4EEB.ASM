@@ -19,7 +19,7 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f4eeb
+public _board_actors_draw
 extrn _gfx_color_select:near
 extrn _gfx_vline:near
 extrn _gfx_copy_rect:near
@@ -27,7 +27,7 @@ extrn _gb3ae:byte
 extrn _board_record_index:word
 extrn _resource_ptr_table:dword
 
-_f4eeb proc near
+_board_actors_draw proc near
     push bp
     mov bp,sp
 ; select drawing color 0Fh for the sprite blits below
@@ -97,7 +97,7 @@ done:
     pop si
     pop bp
     ret
-_f4eeb endp
+_board_actors_draw endp
 
 _TEXT ends
 end

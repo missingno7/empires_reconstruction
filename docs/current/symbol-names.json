@@ -9,6 +9,14 @@
       "original": "f9f40",
       "address": "9F40"
     },
+    "anim_step_row_copy": {
+      "original": "f9ec3",
+      "address": "9EC3"
+    },
+    "animated_tile_tick": {
+      "original": "f60a9",
+      "address": "60A9"
+    },
     "bios_equipment_probe": {
       "original": "f50c1",
       "address": "50C1"
@@ -21,9 +29,17 @@
       "original": "f48be",
       "address": "48BE"
     },
+    "board_actors_draw": {
+      "original": "f4eeb",
+      "address": "4EEB"
+    },
     "board_advance_unit_moves": {
       "original": "f36f0",
       "address": "36F0"
+    },
+    "board_collision_span_or": {
+      "original": "f1f91",
+      "address": "1F91"
     },
     "board_mark_record_cells": {
       "original": "f_28ac",
@@ -37,8 +53,16 @@
       "original": "f5ac3",
       "address": "5AC3"
     },
+    "board_record_complete": {
+      "original": "f3986",
+      "address": "3986"
+    },
     "board_record_index": {
       "original": "gbfba"
+    },
+    "board_record_index_select": {
+      "original": "f329f",
+      "address": "329F"
     },
     "board_records": {
       "original": "gbfbc"
@@ -91,9 +115,21 @@
       "original": "f1ea5",
       "address": "1EA5"
     },
+    "chapter_map_backdrop_draw": {
+      "original": "fb3d7",
+      "address": "B3D7"
+    },
+    "chapter_map_sprites_wipe": {
+      "original": "fb60f",
+      "address": "B60F"
+    },
     "cmdline_parse_args": {
       "original": "f4f96",
       "address": "4F96"
+    },
+    "color_lookup_tables_init": {
+      "original": "f0232",
+      "address": "0232"
     },
     "color_table_entry_set": {
       "original": "f_0215",
@@ -102,6 +138,10 @@
     "confirm_quit_dialog": {
       "original": "fa768",
       "address": "A768"
+    },
+    "cur_color_index_get": {
+      "original": "f020f",
+      "address": "020F"
     },
     "current_drive": {
       "original": "gc0c8"
@@ -292,6 +332,22 @@
       "original": "f4f63",
       "address": "4F63"
     },
+    "draw_queue_append": {
+      "original": "fd825",
+      "address": "D825"
+    },
+    "draw_queue_render": {
+      "original": "f_d79c",
+      "address": "D79C"
+    },
+    "draw_queue_render_highlighted": {
+      "original": "f_d61c",
+      "address": "D61C"
+    },
+    "draw_queue_reset": {
+      "original": "fd818",
+      "address": "D818"
+    },
     "energy_adjust": {
       "original": "f734e",
       "address": "734E"
@@ -399,6 +455,22 @@
       "original": "f03b4",
       "address": "03B4"
     },
+    "help_topic_keyboard_show": {
+      "original": "fd45c",
+      "address": "D45C"
+    },
+    "help_topic_obstacles_show": {
+      "original": "fd487",
+      "address": "D487"
+    },
+    "help_topic_playing_show": {
+      "original": "fd471",
+      "address": "D471"
+    },
+    "help_topic_puzzles_show": {
+      "original": "fd49d",
+      "address": "D49D"
+    },
     "hud_arena_init": {
       "original": "f224c",
       "address": "224C"
@@ -419,6 +491,10 @@
       "original": "f6fc3",
       "address": "6FC3"
     },
+    "hud_panel_node_marker_draw": {
+      "original": "f7443",
+      "address": "7443"
+    },
     "hud_panel_open": {
       "original": "f6fda",
       "address": "6FDA"
@@ -427,6 +503,10 @@
       "original": "f778b",
       "address": "778B"
     },
+    "hud_prompt_continue_clear": {
+      "original": "f7676",
+      "address": "7676"
+    },
     "hud_prompt_continue_draw": {
       "original": "f75f3",
       "address": "75F3"
@@ -434,6 +514,10 @@
     "hud_prompt_message_draw": {
       "original": "f7856",
       "address": "7856"
+    },
+    "hud_prompt_message_run": {
+      "original": "f7747",
+      "address": "7747"
     },
     "hud_prompt_select_draw": {
       "original": "f7695",
@@ -458,6 +542,14 @@
     "hud_tab_next": {
       "original": "f727d",
       "address": "727D"
+    },
+    "icon_frame_reset_and_draw": {
+      "original": "fd3cf",
+      "address": "D3CF"
+    },
+    "icon_list_animate_draw": {
+      "original": "fd386",
+      "address": "D386"
     },
     "int8_saved_vector": {
       "original": "g0b7a"
@@ -505,8 +597,24 @@
       "original": "f695e",
       "address": "695E"
     },
+    "keyboard_irq_restore": {
+      "original": "f697d",
+      "address": "697D"
+    },
+    "keyboard_poll_nonblocking": {
+      "original": "f6b4a",
+      "address": "6B4A"
+    },
+    "keyboard_read_blocking_hotkeys": {
+      "original": "f6b1a",
+      "address": "6B1A"
+    },
     "keyboard_state": {
       "original": "gb72"
+    },
+    "level_chapter_driver": {
+      "original": "fb6cd",
+      "address": "B6CD"
     },
     "level_display_init": {
       "original": "fb7f9",
@@ -515,6 +623,10 @@
     "level_driver_run": {
       "original": "f4713",
       "address": "4713"
+    },
+    "level_exit_transition_run": {
+      "original": "fb967",
+      "address": "B967"
     },
     "level_expand_descriptors": {
       "original": "fbb40f"
@@ -534,6 +646,10 @@
     "level_run_loop": {
       "original": "fb99f",
       "address": "B99F"
+    },
+    "lz_decompress": {
+      "original": "f6dcc",
+      "address": "6DCC"
     },
     "marker_cell_draw_highlight": {
       "original": "f_988f",
@@ -567,13 +683,29 @@
       "original": "f7932",
       "address": "7932"
     },
+    "menu_list_source_set_default": {
+      "original": "f7df1",
+      "address": "7DF1"
+    },
+    "menu_list_source_set_players": {
+      "original": "f7dfc",
+      "address": "7DFC"
+    },
     "menu_loop_run": {
       "original": "f7964",
       "address": "7964"
     },
+    "menu_resources_free": {
+      "original": "fb55e",
+      "address": "B55E"
+    },
     "menu_resources_load": {
       "original": "f1d47",
       "address": "1D47"
+    },
+    "menu_wait_key_animated": {
+      "original": "faf45",
+      "address": "AF45"
     },
     "music_build_octave_table": {
       "original": "fde7e",
@@ -607,6 +739,10 @@
     "music_track_handle": {
       "original": "g237e"
     },
+    "music_voice_frequency_lookup": {
+      "original": "fdf98",
+      "address": "DF98"
+    },
     "opl_am_depth": {
       "original": "gc6aa"
     },
@@ -623,6 +759,14 @@
     },
     "opl_note_select": {
       "original": "gc6b4"
+    },
+    "opl_port_write_byte": {
+      "original": "fc8d4",
+      "address": "C8D4"
+    },
+    "opl_register_write": {
+      "original": "fc898",
+      "address": "C898"
     },
     "opl_set_depth_and_nts": {
       "original": "fda49",
@@ -662,6 +806,10 @@
     "pit_channel2_set_divisor": {
       "original": "fcae6",
       "address": "CAE6"
+    },
+    "play_window_wipe_clipped": {
+      "original": "f4aa8",
+      "address": "4AA8"
     },
     "player_name_edit": {
       "original": "fa525",
@@ -730,9 +878,21 @@
       "original": "fa658",
       "address": "A658"
     },
+    "player_type_toggle_draw": {
+      "original": "fa19d",
+      "address": "A19D"
+    },
     "point_in_hotspot_rect": {
       "original": "f257d",
       "address": "257D"
+    },
+    "puzzle_cell_backing_swap": {
+      "original": "f9466",
+      "address": "9466"
+    },
+    "puzzle_cell_highlight_draw": {
+      "original": "f950c",
+      "address": "950C"
     },
     "puzzle_check_solved": {
       "original": "f969d",
@@ -792,6 +952,10 @@
     "puzzle_solved_flag": {
       "original": "gc134"
     },
+    "quit_confirm_toggle_draw": {
+      "original": "fa1e0",
+      "address": "A1E0"
+    },
     "record_field_skip_n": {
       "original": "f2a2d",
       "address": "2A2D"
@@ -804,12 +968,20 @@
       "original": "fd85f",
       "address": "D85F"
     },
+    "record_table_level4_ptr": {
+      "original": "f2a70",
+      "address": "2A70"
+    },
     "record_table_root": {
       "original": "gbfc0"
     },
     "rect_border_draw": {
       "original": "f0355",
       "address": "0355"
+    },
+    "rect_queue_flush": {
+      "original": "f1ecd",
+      "address": "1ECD"
     },
     "rect_queue_write_ptr": {
       "original": "g40c4"
@@ -868,6 +1040,10 @@
       "original": "f21db",
       "address": "21DB"
     },
+    "rle_packbits_decode": {
+      "original": "f6d86",
+      "address": "6D86"
+    },
     "roundend_draw_marker": {
       "original": "f9871",
       "address": "9871"
@@ -913,6 +1089,10 @@
       "original": "f1f17",
       "address": "1F17"
     },
+    "slot_archive_and_delete": {
+      "original": "fad25",
+      "address": "AD25"
+    },
     "slot_backup_list_show": {
       "original": "f_cc6b",
       "address": "CC6C"
@@ -932,6 +1112,10 @@
       "original": "fa223",
       "address": "A223"
     },
+    "slot_flags_get": {
+      "original": "fad0e",
+      "address": "AD0E"
+    },
     "slot_input_wait_key": {
       "original": "fa43c",
       "address": "A43C"
@@ -940,6 +1124,10 @@
       "original": "fa33f",
       "address": "A33F"
     },
+    "slot_list_select_loop": {
+      "original": "faa1f",
+      "address": "AA1F"
+    },
     "slot_list_show": {
       "original": "f_cd23",
       "address": "CD24"
@@ -947,6 +1135,14 @@
     "slot_menu_draw_header": {
       "original": "fa09d",
       "address": "A09D"
+    },
+    "slot_menu_run": {
+      "original": "fab66",
+      "address": "AB66"
+    },
+    "slot_reset_for_new_game": {
+      "original": "fadcf",
+      "address": "ADCF"
     },
     "slot_row_draw": {
       "original": "fa28d",
@@ -969,6 +1165,42 @@
     "slot_used_count": {
       "original": "gc57e"
     },
+    "sound_backend_probe": {
+      "original": "f53bf",
+      "address": "51BF"
+    },
+    "sound_backend_select_init": {
+      "original": "f_c77a",
+      "address": "C77A"
+    },
+    "sound_command_flags_update": {
+      "original": "f_c549",
+      "address": "C549"
+    },
+    "sound_command_stream_dispatch": {
+      "original": "f_c2ea",
+      "address": "C2EA"
+    },
+    "sound_command_value_derive": {
+      "original": "f_c3db",
+      "address": "C3DB"
+    },
+    "sound_control_block_advance": {
+      "original": "f_c440",
+      "address": "C440"
+    },
+    "sound_control_value_select": {
+      "original": "f_c359",
+      "address": "C359"
+    },
+    "sound_ctlblock_command_dispatch": {
+      "original": "f_ca03",
+      "address": "CA03"
+    },
+    "sound_ctlblock_flags_latch": {
+      "original": "f_ca35",
+      "address": "CA35"
+    },
     "sound_effects_toggle": {
       "original": "f68cf",
       "address": "68CF"
@@ -984,6 +1216,10 @@
       "original": "fc59a",
       "address": "C59A"
     },
+    "sound_pit_divisor_program": {
+      "original": "f_c706",
+      "address": "C706"
+    },
     "sound_request_count_clear": {
       "original": "fd5b3",
       "address": "D5B3"
@@ -991,6 +1227,10 @@
     "sound_request_count_dec": {
       "original": "fd5a6",
       "address": "D5A6"
+    },
+    "sound_secondary_cmd_dispatch": {
+      "original": "f_c501",
+      "address": "C501"
     },
     "sound_start": {
       "original": "fd593",
@@ -1000,9 +1240,53 @@
       "original": "fcb48",
       "address": "CB48"
     },
+    "sound_stream_command_step": {
+      "original": "fc914",
+      "address": "C914"
+    },
+    "sound_stream_delay_decode": {
+      "original": "f_c9a4",
+      "address": "C9A4"
+    },
+    "sound_table_word_select_store": {
+      "original": "f_c5b3",
+      "address": "C5B3"
+    },
+    "sound_tick_entry": {
+      "original": "fc1a0",
+      "address": "C1A0"
+    },
     "sound_tick_step": {
       "original": "fc8e2",
       "address": "C8E2"
+    },
+    "sound_voice_pump_loop": {
+      "original": "fc1f7",
+      "address": "C1F7"
+    },
+    "sound_voice_service_loop": {
+      "original": "fc27d",
+      "address": "C27D"
+    },
+    "sound_voice_table_prime": {
+      "original": "fc232",
+      "address": "C232"
+    },
+    "sound_voice_table_reload": {
+      "original": "f_c7cb",
+      "address": "C7CB"
+    },
+    "sound_voices_disable_all": {
+      "original": "fc877",
+      "address": "C877"
+    },
+    "sound_voices_reset": {
+      "original": "fc834",
+      "address": "C834"
+    },
+    "sound_voices_reset_and_service": {
+      "original": "f_c755",
+      "address": "C755"
     },
     "speaker_gate_off": {
       "original": "fcadb",
@@ -1016,6 +1300,14 @@
       "original": "f555b",
       "address": "555B"
     },
+    "sprite_decode_4bpp_mode13h": {
+      "original": "f6f4b",
+      "address": "6F4B"
+    },
+    "sprite_decode_4bpp_planar": {
+      "original": "f6eff",
+      "address": "6EFF"
+    },
     "sprite_draw_cursor": {
       "original": "f2269",
       "address": "2269"
@@ -1027,6 +1319,22 @@
     "sprite_pool_draw_masked": {
       "original": "f78c3",
       "address": "78C3"
+    },
+    "sprite_record_adjust_draw": {
+      "original": "f6181",
+      "address": "6181"
+    },
+    "sprite_script_frame_driver": {
+      "original": "f4b0c",
+      "address": "4B0C"
+    },
+    "sprite_sheet_decode_indexed": {
+      "original": "f67dc",
+      "address": "67DC"
+    },
+    "sprite_sheet_decode_sequential": {
+      "original": "f6771",
+      "address": "6771"
     },
     "sprite_sheet_index_get": {
       "original": "f6cea",
@@ -1040,9 +1348,37 @@
       "original": "f5e98",
       "address": "5E98"
     },
+    "sprite_table_queue_draws": {
+      "original": "f6036",
+      "address": "6036"
+    },
+    "sprite_table_wipe_active": {
+      "original": "f4e9f",
+      "address": "4E9F"
+    },
     "str_concat_far_list": {
       "original": "fa036",
       "address": "A036"
+    },
+    "stream_control_block_arm": {
+      "original": "fcaf1",
+      "address": "CAF1"
+    },
+    "stream_level_base_set": {
+      "original": "fca83",
+      "address": "CA83"
+    },
+    "stream_level_percent_scale": {
+      "original": "f_ca51",
+      "address": "CA51"
+    },
+    "stream_note_delay_set": {
+      "original": "fca91",
+      "address": "CA91"
+    },
+    "stream_note_program": {
+      "original": "fca9b",
+      "address": "CA9B"
     },
     "text_draw_wrapped": {
       "original": "f6d3c",
@@ -1130,6 +1466,10 @@
       "original": "f1ec0",
       "address": "1EC0"
     },
+    "video_adapter_detect": {
+      "original": "f50d2",
+      "address": "50D2"
+    },
     "video_alloc_framebuffer": {
       "original": "f0281",
       "address": "0281"
@@ -1177,9 +1517,25 @@
       "original": "f_dad7",
       "address": "DAD7"
     },
+    "voice_command_decode_apply": {
+      "original": "f_c5d1",
+      "address": "C5D1"
+    },
+    "voice_disable": {
+      "original": "f_c6b9",
+      "address": "C6B9"
+    },
+    "voice_enable": {
+      "original": "f_c678",
+      "address": "C678"
+    },
     "voice_key_off": {
       "original": "fe52a",
       "address": "E52A"
+    },
+    "voice_level_percent_scale": {
+      "original": "fc567",
+      "address": "C567"
     },
     "voice_level_table": {
       "original": "gca50"

@@ -16,7 +16,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f1ecd  proc    near
+_rect_queue_flush  proc    near
         push    si
         push    di
         cld
@@ -57,9 +57,9 @@ _f1ecd  proc    near
         pop     di
         pop     si
         ret
-_f1ecd  endp
+_rect_queue_flush  endp
 _TEXT   ends
-        public  _f1ecd
+        public  _rect_queue_flush
         extrn   _gfx_box:near
         extrn   _rect_queue_write_ptr:word
         extrn   _g40c6:word

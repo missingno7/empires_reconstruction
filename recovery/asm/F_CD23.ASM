@@ -14,7 +14,7 @@ record_table equ 103ceh
 menu_draw equ 105a2h
 dialog_line_height_get equ 6ef0h
 slot_row_draw equ 0a48dh
-f6b1a equ 6d1ah
+keyboard_read_blocking_hotkeys equ 6d1ah
 dialog_restore_screen equ 8653h
 
 public _slot_list_show

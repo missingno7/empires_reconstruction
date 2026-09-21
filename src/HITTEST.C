@@ -9,8 +9,8 @@ struct B3 { unsigned char a, b, c; };
 extern int g736, g738, g73a;
 extern int gc04e, gc0b0, gc0b6, gc0b8, gc0c0;
 extern int gc050[], gc080[];
-extern int f020f(), rect_table_hit_id(), board_raycast_hit_test();
-extern void fcaf1();
+extern int cur_color_index_get(), rect_table_hit_id(), board_raycast_hit_test();
+extern void stream_control_block_arm();
 extern void gfx_color_select(int n);
 extern char far *record_field_skip_n();
 
@@ -90,7 +90,7 @@ void board_raycast_step()
 
     recheck = 1;
     live = 0;
-    savemode = f020f();
+    savemode = cur_color_index_get();
     gc0be = 0;
     x = tx[gc04e];
     y = ty[gc04e];
@@ -151,15 +151,15 @@ after:
                 if ((hit = board_raycast_hit_test(x, y)) == 1) {
                     gc0b8 = gc0c2 - gc0b8;
                     gc0b6 = 1;
-                    fcaf1(15);
+                    stream_control_block_arm(15);
                 } else if (hit == 2) {
                     gc0b8 = gc0c2 - gc0b8 - 8;
                     gc0b6 = 1;
-                    fcaf1(15);
+                    stream_control_block_arm(15);
                 } else if (hit == 3) {
                     gc0b8 = gc0c2 - gc0b8 + 8;
                     gc0b6 = 1;
-                    fcaf1(15);
+                    stream_control_block_arm(15);
                 }
                 if (gc0b6 != 0) {
                     while (gc0b8 < 0) gc0b8 += 12;
@@ -210,7 +210,7 @@ void sprite_slots_redraw(void)
     int w4, saved;
     register int i, p;
 
-    saved = f020f();
+    saved = cur_color_index_get();
     for (i = 0; i < 0x18; i++) {
         if ((p = gc050[i]) != 0) {
             g40c8 = gfx_get_pixel(p, (w4 = gc080[i]) + 0xb8);

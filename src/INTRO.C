@@ -14,20 +14,20 @@ extern void intro_animate_step(struct E far *ev, int step, struct P far *q, int 
                   int far *ph, int far *pi, int far *pj, int far *pk);
 extern void gfx_wipe_rect(), gfx_box(), gfx_copy_rect();
 extern void sound_stop_reset(void);
-extern void fcaf1(int n);
+extern void stream_control_block_arm(int n);
 extern unsigned long gb76;              /* DS:0B76 */
 extern int resource_load_record();
 extern char far *ui_gfx_shadow_a;                 /* DS:C5C6 offset, DS:C5C8 segment */
 extern int timer_deadline_reached();
-extern int f6b4a();
-extern int f6b1a();
+extern int keyboard_poll_nonblocking();
+extern int keyboard_read_blocking_hotkeys();
 extern int g8fc;                        /* DS:08FC */
 extern void resource_load_record_alloc(int n, char far * far *p);   /* 684A */
 /*@SYM _resource_load_record_alloc=0x684A kind=f key=functions/F_684A.entry*/
 extern unsigned far *gbfde;             /* DS:BFDE offset, DS:BFE0 segment */
 extern char far *gbfee[];               /* DS:BFEE offset, DS:BFF0 segment */
 extern char far *resource_stripe_table;                 /* DS:99D2 offset, DS:99D4 segment */
-extern void f7676();
+extern void hud_prompt_continue_clear();
 extern void anim_step_loop(int a,int b,int c,int d,int e,int f); /* 9F40 */
 /*@SYM _anim_step_loop=0x9F40 kind=f key=functions/F_9F40.entry*/
 extern void bitmap_blit_topleft(void);                 /* 5673 */
@@ -174,7 +174,7 @@ int far *ph, far *pi, far *pj, far *pk;
         break;
     case -2:
         sound_stop_reset();
-        fcaf1(x);
+        stream_control_block_arm(x);
         break;
     default:
         if (n != 0)
@@ -221,8 +221,8 @@ void splash_draw_and_clear()
 int intro_wait_key()
 {
     while (timer_deadline_reached() == 0) {
-        if (f6b4a()) {
-            if ((g8fc = f6b1a()) == 0x0d)
+        if (keyboard_poll_nonblocking()) {
+            if ((g8fc = keyboard_read_blocking_hotkeys()) == 0x0d)
                 return (0x0d);
             else if (g8fc == 0x1b)
                 return (g8fc);
@@ -267,7 +267,7 @@ void bitmap_blit_topleft()
 
 
 /* ---- F_568C (original code at 0x568C) ---- */
-void f568c(void) { f7676(); anim_step_loop(0,232,200,152,0,32); bitmap_blit_topleft(); hud_prompt_continue_draw(); gfx_box(0,0,320,200); }
+void f568c(void) { hud_prompt_continue_clear(); anim_step_loop(0,232,200,152,0,32); bitmap_blit_topleft(); hud_prompt_continue_draw(); gfx_box(0,0,320,200); }
 
 
 /* ---- F_56C6 (original code at 0x56C6) ---- */
@@ -331,7 +331,7 @@ top:
         if (k == 2 && key == -1) { f568c(); goto top; }
         anim_step_loop(0, 0x17e, 0xbc, 0x10, 0, 0xb6);
         g94 = 0; g9a = 0x9f; g1774 = 1;
-        fcaf1(0x18);
+        stream_control_block_arm(0x18);
         intro_play_script((struct E far *)(t1 + 0x344), 0xa, 0x2d, (struct P far *)buf);
         g1770 = 1;
         sound_stop_reset();
@@ -341,7 +341,7 @@ top:
         intro_play_script((struct E far *)(t1 + 0x3e6), 0xb, 0x28, (struct P far *)buf);
         timer_wait_ticks(0xed);
         g1774 = 1;
-        fcaf1(0x18);
+        stream_control_block_arm(0x18);
         intro_play_script((struct E far *)(t1 + 0x66c), 0xb, 0x28, (struct P far *)buf);
         g1774 = 0;
         g1770 = 1;

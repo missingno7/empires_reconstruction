@@ -1,7 +1,7 @@
 /* F_9EC3 -- copy a clipped 16-pixel row through two packed lookup tables. */
 extern unsigned char far *g3924;
 
-void f9ec3()
+void anim_step_row_copy()
 {
     asm db 055h,08bh,0ech,083h,0ech,2,056h,057h,01eh,0fch
     asm db 08bh,05eh,0eh,0d1h,0e3h,0d1h,0e3h,0c4h,0bfh

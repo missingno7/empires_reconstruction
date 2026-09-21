@@ -1,7 +1,7 @@
 /* F_CAF1 -- update the sound tick state for one pending voice. */
 extern unsigned int sound_enabled,g1760,g1e8a,g175e,g1e88,g1770,g1e8e,g1e92,g1e86,g1e90,g1e94,g1e8c;
 
-void fcaf1()
+void stream_control_block_arm()
 {
     asm db 055h,08Bh,0ECh,050h,051h,056h,057h,006h
     asm db 083h,03Eh

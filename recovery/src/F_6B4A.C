@@ -1,5 +1,5 @@
 /* F_6B4A -- non-blocking INT 16h keyboard poll. */
-int f6b4a()
+int keyboard_poll_nonblocking()
 {
     asm mov ah,1
     asm int 16h

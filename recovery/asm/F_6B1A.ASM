@@ -11,7 +11,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f6b1a  proc    near
+_keyboard_read_blocking_hotkeys  proc    near
         push    si
         xor     ah,ah
         int     16h
@@ -39,9 +39,9 @@ _f6b1a  proc    near
 @@out:
         pop     si
         ret
-_f6b1a  endp
+_keyboard_read_blocking_hotkeys  endp
 _TEXT   ends
-        public  _f6b1a
+        public  _keyboard_read_blocking_hotkeys
         extrn   _menu_list_active:near
         extrn   _menu_loop_run:near
         end

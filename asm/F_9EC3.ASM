@@ -9,9 +9,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f9ec3
+public _anim_step_row_copy
 
-_f9ec3 proc near
+_anim_step_row_copy proc near
     push bp
     mov bp,sp
     sub sp,2
@@ -73,7 +73,7 @@ F9_tail:
     mov sp,bp
     pop bp
     ret
-_f9ec3 endp
+_anim_step_row_copy endp
 
 _TEXT ends
 end

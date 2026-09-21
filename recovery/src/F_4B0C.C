@@ -1,5 +1,5 @@
 /* F_4B0C -- exact non-returning interpreter loop boundary probe. */
-void f4b0c()
+void sprite_script_frame_driver()
 {
     asm db 055h,08bh,0ech,056h,057h,055h,0fch,0b8h,00fh,000h,050h,0e8h,0b4h,0b6h,058h,0bfh,0aeh,0b3h,033h,0c9h,08ah,00dh,00bh,0c9h
     asm db 074h,045h,047h,051h,033h,0c0h,08ah,045h,001h,03bh,006h,0bah,0bfh,075h,032h,08ah,005h,03ch,001h,074h,03ah,080h,07dh,00ah

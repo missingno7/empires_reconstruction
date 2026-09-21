@@ -10,9 +10,9 @@ extern void gfx_clear_rect(int a, int b, int c, int d);
 extern void gfx_wipe_rect();
 extern void rect_border_draw();
 extern void gfx_color_select(int n);
-extern int f020f(void);
+extern int cur_color_index_get(void);
 extern void hud_draw_meter(void);
-extern void hud_tab_draw(void), energy_draw(void), f7417(void), f7443(void), hud_frame_draw(void);
+extern void hud_tab_draw(void), energy_draw(void), f7417(void), hud_panel_node_marker_draw(void), hud_frame_draw(void);
 extern int hud_prompt_select_draw();
 extern void hud_prompt_continue_draw(), hud_prompt_message_draw();
 extern int puzzle_piece_count();
@@ -54,7 +54,7 @@ void hud_panel_open(void)
     hud_tab_draw();
     energy_draw();
     f7417();
-    f7443();
+    hud_panel_node_marker_draw();
     gfx_box(6, 0xa2, 0x134, 0x24);
     hud_frame_draw();
     gc0fa = 1;
@@ -67,7 +67,7 @@ void ui_overlay_show(void)
     register int c;
 
     gb85++;
-    c = f020f();
+    c = cur_color_index_get();
     switch (gb83) {
     case 1:
         gfx_color_select(gc0fc);
@@ -256,7 +256,7 @@ void energy_draw()
 {
     register int x, c;
 
-    c = f020f();
+    c = cur_color_index_get();
     x = energy_meter << 4;
     if (display_mode == 2)
         gfx_color_select(3);
@@ -284,7 +284,7 @@ void f7417(void) { gfx_blit_bitmap(244,175,(char far *)gc0ee + ((struct R7417 fa
 struct R7443 { char pad[32]; unsigned offsets[1]; };
 extern char far *gc0ee;
 
-void f7443(void) { register int i; i=campaign_node_index(); gfx_blit_bitmap(244+i*16,186,(char far *)gc0ee + ((struct R7443 far *)gc0ee)->offsets[i] + 2); }
+void hud_panel_node_marker_draw(void) { register int i; i=campaign_node_index(); gfx_blit_bitmap(244+i*16,186,(char far *)gc0ee + ((struct R7443 far *)gc0ee)->offsets[i] + 2); }
 
 
 /* ---- F_747B (original code at 0x747B) ---- */
@@ -298,7 +298,7 @@ void hud_frame_draw(void)
 {
     register int save;
 
-    save = f020f();
+    save = cur_color_index_get();
     gfx_color_select(0);
     gfx_vline(0, 0xd, 0xba);
     gfx_vline(0x13f, 0xd, 0xba);

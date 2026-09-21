@@ -9,14 +9,14 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fca9b
+public _stream_note_program
 extrn _speaker_gate_off:near
 extrn _pit_channel2_set_divisor:near
 extrn _speaker_gate_on:near
 extrn _g1e92:word
 extrn _g1e90:word
 
-_fca9b proc near
+_stream_note_program proc near
     push bp
     mov bp,sp
     mov dl,es:[di+1]
@@ -43,7 +43,7 @@ store_current_value:
     mov ds:_g1e90,ax
     pop bp
     ret
-_fca9b endp
+_stream_note_program endp
 
 _TEXT ends
 end

@@ -14,7 +14,7 @@ _TEXT segment byte public 'CODE'
 assume cs:_TEXT, ds:DGROUP
 extrn _sprbase:dword, _objtab:dword
 extrn _gfx_wipe_rect:near, _gfx_copy_rect:near
-public _f6181
+public _sprite_record_adjust_draw
 
 ; Offset 57h: emit the DGROUP FIXUPP record before the low-address externals.
 org 57h
@@ -23,7 +23,7 @@ org 57h
 
 ; Offset 0: sprite-record selection and state update.
 org 0
-_f6181:
+_sprite_record_adjust_draw:
     push bp
     mov bp, sp
     push si

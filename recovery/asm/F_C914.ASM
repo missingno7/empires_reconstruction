@@ -7,10 +7,10 @@ _BSS segment word public 'BSS'
 extrn _mus_ptr:word, _mus_arg:word, _mus_flag:word, _snd_delay:word
 _BSS ends
 DGROUP group _DATA, _BSS
-extrn _sound_note_dispatch:near, _f_c9a4:near, _speaker_gate_off:near, _f_ca03:near
-extrn _fca9b:near, _fcaf1:near, _sound_stop_reset:near
-public _fc914
-_fc914:
+extrn _sound_note_dispatch:near, _sound_stream_delay_decode:near, _speaker_gate_off:near, _sound_ctlblock_command_dispatch:near
+extrn _stream_note_program:near, _stream_control_block_arm:near, _sound_stop_reset:near
+public _sound_stream_command_step
+_sound_stream_command_step:
  push bp
  mov bp,sp
 ; Fetch the next command byte from the stream and split it into a low
@@ -33,18 +33,18 @@ C914_dispatch: mov di,_mus_ptr
  jz short C914_command_f
 ; Default path: ordinary note command.
  call _sound_note_dispatch
- call _f_c9a4
+ call _sound_stream_delay_decode
  jmp short C914_advance
  nop
 C914_command_zero: call _speaker_gate_off
- call _f_c9a4
+ call _sound_stream_delay_decode
  jmp short C914_advance
  nop
-C914_command_d: call _f_ca03
+C914_command_d: call _sound_ctlblock_command_dispatch
  cmp _snd_delay,0
  jmp short C914_advance
  nop
-C914_command_e: call _fca9b
+C914_command_e: call _stream_note_program
  jmp short C914_advance
  nop
 C914_command_f: call _speaker_gate_off
@@ -52,7 +52,7 @@ C914_command_f: call _speaker_gate_off
  jz short C914_stop
  mov ax,_mus_arg
  push ax
- call _fcaf1
+ call _stream_control_block_arm
  pop ax
  inc _snd_delay
  pop bp

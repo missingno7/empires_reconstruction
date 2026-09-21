@@ -7,7 +7,7 @@ extern int current_slot;
 extern void slot_delete(int), slot_table_save();
 
 /* ---- F_AD25 (original code at 0xAD25) ---- */
-void fad25()
+void slot_archive_and_delete()
 {
     register int i;
 
@@ -28,7 +28,7 @@ void fad25()
 
 
 /* ---- F_ADCF (original code at 0xADCF) ---- */
-fadcf()
+slot_reset_for_new_game()
 {
     register int i;
 

@@ -9,11 +9,11 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_ca51
+public _stream_level_percent_scale
 extrn _g1e84:word
 extrn _g1e86:word
 
-_f_ca51 proc near
+_stream_level_percent_scale proc near
     push bp
     mov bp,sp
     mov bl,ah
@@ -40,7 +40,7 @@ store_zero:
     mov word ptr ds:_g1e86,0
     pop bp
     ret
-_f_ca51 endp
+_stream_level_percent_scale endp
 
 _TEXT ends
 end

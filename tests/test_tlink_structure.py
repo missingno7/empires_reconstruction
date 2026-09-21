@@ -33,7 +33,7 @@ class TlinkStructureTests(unittest.TestCase):
         # pre-rename address-based names; translate through that map.
         symbol_names = read_json(ROOT / 'docs/current/symbol-names.json')['names']
         new_to_old = {'_' + new: '_' + info['original'] for new, info in symbol_names.items()}
-        expected = {'F_56C6': '_intro_wait_key', 'F_A658': '_faf45'}
+        expected = {'F_56C6': '_intro_wait_key', 'F_A658': '_menu_wait_key_animated'}
         for owner, target in expected.items():
             entry = next(s for s in report['relocatable_scaffold'] if s.get('owner') == owner)
             module = OmfReader().read((work / entry['object']).read_bytes())

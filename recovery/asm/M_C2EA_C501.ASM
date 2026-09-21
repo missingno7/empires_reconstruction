@@ -9,7 +9,7 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 assume cs:_TEXT, ds:DGROUP
-public _f_c2ea, _f_c359, _f_c3db, _f_c440, _f_c501, _f_c549, _fc567
+public _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_level_percent_scale
 
 ; F_C2EA -- dispatch the low nibble of the current ES:DI command byte.
 ; AL, AH, SI, ES and DI are caller-owned state.  The original compiler emitted
@@ -21,7 +21,7 @@ command_value equ 179ch
 command_guard equ 17ech
 command_state equ 17ach
 
-_f_c2ea:
+_sound_command_stream_dispatch:
     push bp
     mov bp, sp
 C2EA_dispatch:
@@ -41,21 +41,21 @@ C2EA_dispatch:
     jz short C2EA_command_e
     cmp al, 0fh
     jz short C2EA_command_f
-    call _f_c359
-    call _f_c3db
+    call _sound_control_value_select
+    call _sound_command_value_derive
     mov word ptr [si+command_guard], 0
     jmp short C2EA_advance
     nop
 
 C2EA_command_zero:
     call $+39ah             ; F_C6B9
-    call _f_c3db
+    call _sound_command_value_derive
     mov word ptr [si+command_guard], 1
     jmp short C2EA_advance
     nop
 
 C2EA_command_d:
-    call _f_c501
+    call _sound_secondary_cmd_dispatch
     cmp word ptr [si+command_value], 0
     jmp short C2EA_advance
     nop
@@ -89,7 +89,7 @@ voice_table_a equ 17fch
 voice_table_b equ 1814h
 voice_state equ 177ch
 
-_f_c359:
+_sound_control_value_select:
     push bp
     mov bp, sp
     cmp word ptr ds:[snd_paused], 1
@@ -168,7 +168,7 @@ C359_done:
 command_index equ 17f4h
 command_mode equ 17e4h
 
-_f_c3db:
+_sound_command_value_derive:
     push bp
     mov bp, sp
     mov al, es:[di+1]
@@ -230,7 +230,7 @@ state_value equ 179ch
 state_text equ 17dch
 renderer_delta equ 3e6h
 
-_f_c440:
+_sound_control_block_advance:
     push bp
     mov bp, sp
     xor si, si
@@ -313,7 +313,7 @@ C440_done:
 ; F_C501 -- dispatch one secondary stream command by the AH selector.
 ; The six helper calls are direct same-segment relationships in the original
 ; no-fixup object, retained here as symbolic relative expressions.
-_f_c501:
+_sound_secondary_cmd_dispatch:
  push bp
  mov bp,sp
  mov al,es:[di+1]
@@ -355,7 +355,7 @@ C501_done:
  ret
 
 ; F_C549 -- update the paired command-control flags from AL.
-_f_c549 proc near
+_sound_command_flags_update proc near
     push bp
     mov bp, sp
     cmp al, 0
@@ -371,10 +371,10 @@ C549_set_one_plus_one:
 C549_done:
     pop bp
     ret
-_f_c549 endp
+_sound_command_flags_update endp
 
 ; F_C567 -- signed scale-and-store for the sound-data state pair.
-_fc567 proc near
+_voice_level_percent_scale proc near
     push bp
     mov bp, sp
     mov bl, ah
@@ -402,7 +402,7 @@ C567_store_zero:
 C567_done:
     pop bp
     ret
-_fc567 endp
+_voice_level_percent_scale endp
 
 _TEXT ends
 end

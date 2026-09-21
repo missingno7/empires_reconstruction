@@ -1,6 +1,6 @@
 extern int music_track_handle;
-extern void f_c7cb();
+extern void sound_voice_table_reload();
 void music_resume_if_valid(void)
 {
-    if (music_track_handle >= 0) f_c7cb(0);
+    if (music_track_handle >= 0) sound_voice_table_reload(0);
 }

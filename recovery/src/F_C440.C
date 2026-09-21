@@ -1,5 +1,5 @@
 /* F_C440 -- mechanically preserved complete routine. */
-void f_c440()
+void sound_control_block_advance()
 {
     asm db 055h,08bh,0ech,033h,0f6h,0b3h,090h,083h,0bch,07ch,017h,000h,074h,003h,0e9h,0a0h,000h,083h,0bch,0ach,017h,000h,075h,003h
     asm db 0e9h,096h,000h,083h,0bch,0e4h,017h,001h,075h,02eh,0c7h,084h,0e4h,017h,000h,000h,083h,0bch,0f4h,017h,002h,07ch,010h,083h

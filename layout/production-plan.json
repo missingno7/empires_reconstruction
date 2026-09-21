@@ -64,7 +64,7 @@
         },
         {
           "owner": "F_020F",
-          "symbol": "_f020f",
+          "symbol": "_cur_color_index_get",
           "offset": 83
         },
         {
@@ -74,7 +74,7 @@
         },
         {
           "owner": "F_0232",
-          "symbol": "_f0232",
+          "symbol": "_color_lookup_tables_init",
           "offset": 118
         },
         {
@@ -436,7 +436,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1ecd",
+        "public": "_rect_queue_flush",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -480,7 +480,7 @@
       "publics": [
         {
           "owner": "F_1ECD",
-          "symbol": "_f1ecd",
+          "symbol": "_rect_queue_flush",
           "offset": 0
         }
       ],
@@ -557,7 +557,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1f91",
+        "public": "_board_collision_span_or",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -586,7 +586,7 @@
       "publics": [
         {
           "owner": "F_1F91",
-          "symbol": "_f1f91",
+          "symbol": "_board_collision_span_or",
           "offset": 0
         }
       ],
@@ -809,7 +809,7 @@
         },
         {
           "owner": "F_2A70",
-          "symbol": "_f2a70",
+          "symbol": "_record_table_level4_ptr",
           "offset": 2657
         },
         {
@@ -824,7 +824,7 @@
         },
         {
           "owner": "F_329F",
-          "symbol": "_f329f",
+          "symbol": "_board_record_index_select",
           "offset": 4752
         },
         {
@@ -844,7 +844,7 @@
         },
         {
           "owner": "F_3986",
-          "symbol": "_f3986",
+          "symbol": "_board_record_complete",
           "offset": 6519
         }
       ],
@@ -912,18 +912,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
           "_hud_tab_next": {
@@ -1006,11 +1006,11 @@
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sprite_draw_cursor": {
@@ -1020,11 +1020,11 @@
             "public": "_sprite_draw_cursor",
             "addend": 0
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0
           },
           "_board_scroll_transition": {
@@ -1082,11 +1082,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f60a9": {
+          "_animated_tile_tick": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_60A9",
-            "public": "_f60a9",
+            "public": "_animated_tile_tick",
             "addend": 0
           },
           "_board_unit_script_trigger": {
@@ -1142,11 +1142,11 @@
             "public": "_board_redraw_view",
             "addend": 0
           },
-          "_f4e9f": {
+          "_sprite_table_wipe_active": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_4E9F",
-            "public": "_f4e9f",
+            "public": "_sprite_table_wipe_active",
             "addend": 0
           },
           "_sprite_slots_redraw": {
@@ -1166,10 +1166,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fd386": {
+          "_icon_list_animate_draw": {
             "coordinate": "code_offset",
             "owner": "F_D386",
-            "public": "_fd386",
+            "public": "_icon_list_animate_draw",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -1183,11 +1183,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f1f91": {
+          "_board_collision_span_or": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_1F91",
-            "public": "_f1f91",
+            "public": "_board_collision_span_or",
             "addend": 0
           },
           "_g734": {
@@ -1248,10 +1248,10 @@
             "public": "_cursor_trail_arm",
             "addend": 0
           },
-          "_f4b0c": {
+          "_sprite_script_frame_driver": {
             "coordinate": "code_offset",
             "owner": "F_4B0C",
-            "public": "_f4b0c",
+            "public": "_sprite_script_frame_driver",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -1265,11 +1265,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f329f": {
+          "_board_record_index_select": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_329F",
-            "public": "_f329f",
+            "public": "_board_record_index_select",
             "addend": 0
           },
           "_b43aa": {
@@ -1309,11 +1309,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f3986": {
+          "_board_record_complete": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_3986",
-            "public": "_f3986",
+            "public": "_board_record_complete",
             "addend": 0
           },
           "_timer_deadline_wait": {
@@ -1337,10 +1337,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f_d79c": {
+          "_draw_queue_render": {
             "coordinate": "code_offset",
             "owner": "F_D79C",
-            "public": "_f_d79c",
+            "public": "_draw_queue_render",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           }
@@ -1445,7 +1445,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4aa8",
+        "public": "_play_window_wipe_clipped",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -1474,7 +1474,7 @@
       "publics": [
         {
           "owner": "F_4AA8",
-          "symbol": "_f4aa8",
+          "symbol": "_play_window_wipe_clipped",
           "offset": 0
         }
       ],
@@ -1494,7 +1494,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4b0c",
+        "public": "_sprite_script_frame_driver",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -1515,10 +1515,10 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "functions/F_CAF1.entry"
           },
@@ -1567,7 +1567,7 @@
       "publics": [
         {
           "owner": "F_4B0C",
-          "symbol": "_f4b0c",
+          "symbol": "_sprite_script_frame_driver",
           "offset": 0
         }
       ],
@@ -1587,16 +1587,16 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4e9f",
+        "public": "_sprite_table_wipe_active",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f4aa8": {
+          "_play_window_wipe_clipped": {
             "coordinate": "code_offset",
             "evidence": "F_4AA8 owned code entry",
             "owner": "F_4AA8",
-            "public": "_f4aa8",
+            "public": "_play_window_wipe_clipped",
             "addend": 0
           },
           "_gb3ae": {
@@ -1638,7 +1638,7 @@
       "publics": [
         {
           "owner": "F_4E9F",
-          "symbol": "_f4e9f",
+          "symbol": "_sprite_table_wipe_active",
           "offset": 0
         }
       ],
@@ -1659,7 +1659,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4eeb",
+        "public": "_board_actors_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -1714,7 +1714,7 @@
       "publics": [
         {
           "owner": "F_4EEB",
-          "symbol": "_f4eeb",
+          "symbol": "_board_actors_draw",
           "offset": 0
         }
       ],
@@ -1789,12 +1789,12 @@
         },
         {
           "owner": "F_50D2",
-          "symbol": "_f50d2",
+          "symbol": "_video_adapter_detect",
           "offset": 367
         },
         {
           "owner": "F_53BF",
-          "symbol": "_f53bf",
+          "symbol": "_sound_backend_probe",
           "offset": 604
         },
         {
@@ -2055,7 +2055,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6036",
+        "public": "_sprite_table_queue_draws",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -2069,9 +2069,9 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct LDS object table at DS:40D0"
           },
-          "_fd825": {
+          "_draw_queue_append": {
             "owner": "F_D825",
-            "public": "_fd825",
+            "public": "_draw_queue_append",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "owned F_D825 record append"
@@ -2100,7 +2100,7 @@
       "publics": [
         {
           "owner": "F_6036",
-          "symbol": "_f6036",
+          "symbol": "_sprite_table_queue_draws",
           "offset": 0
         }
       ],
@@ -2121,7 +2121,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f60a9",
+        "public": "_animated_tile_tick",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -2175,7 +2175,7 @@
       "publics": [
         {
           "owner": "F_60A9",
-          "symbol": "_f60a9",
+          "symbol": "_animated_tile_tick",
           "offset": 0
         }
       ],
@@ -2195,7 +2195,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6181",
+        "public": "_sprite_record_adjust_draw",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -2233,7 +2233,7 @@
       "publics": [
         {
           "owner": "F_6181",
-          "symbol": "_f6181",
+          "symbol": "_sprite_record_adjust_draw",
           "offset": 0
         }
       ],
@@ -2468,12 +2468,12 @@
         },
         {
           "owner": "F_6771",
-          "symbol": "_f6771",
+          "symbol": "_sprite_sheet_decode_sequential",
           "offset": 1291
         },
         {
           "owner": "F_67DC",
-          "symbol": "_f67dc",
+          "symbol": "_sprite_sheet_decode_indexed",
           "offset": 1398
         },
         {
@@ -2531,11 +2531,11 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C834.entry",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           },
           "_music_resume_if_valid": {
@@ -2659,7 +2659,7 @@
         },
         {
           "owner": "F_697D",
-          "symbol": "_f697d",
+          "symbol": "_keyboard_irq_restore",
           "offset": 31
         }
       ],
@@ -2739,12 +2739,12 @@
         },
         {
           "owner": "F_6B1A",
-          "symbol": "_f6b1a",
+          "symbol": "_keyboard_read_blocking_hotkeys",
           "offset": 394
         },
         {
           "owner": "F_6B4A",
-          "symbol": "_f6b4a",
+          "symbol": "_keyboard_poll_nonblocking",
           "offset": 442
         },
         {
@@ -2975,7 +2975,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f6d86",
+        "public": "_rle_packbits_decode",
         "span": 2,
         "flags_append": "",
         "bindings": {},
@@ -2990,7 +2990,7 @@
       "publics": [
         {
           "owner": "F_6D86",
-          "symbol": "_f6d86",
+          "symbol": "_rle_packbits_decode",
           "offset": 0
         },
         {
@@ -3000,7 +3000,7 @@
         },
         {
           "owner": "F_6DCC",
-          "symbol": "_f6dcc",
+          "symbol": "_lz_decompress",
           "offset": 70
         }
       ],
@@ -3020,7 +3020,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6eff",
+        "public": "_sprite_decode_4bpp_planar",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -3037,7 +3037,7 @@
       "publics": [
         {
           "owner": "F_6EFF",
-          "symbol": "_f6eff",
+          "symbol": "_sprite_decode_4bpp_planar",
           "offset": 0
         }
       ],
@@ -3057,7 +3057,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6f4b",
+        "public": "_sprite_decode_4bpp_mode13h",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -3074,7 +3074,7 @@
       "publics": [
         {
           "owner": "F_6F4B",
-          "symbol": "_f6f4b",
+          "symbol": "_sprite_decode_4bpp_mode13h",
           "offset": 0
         }
       ],
@@ -3227,7 +3227,7 @@
         },
         {
           "owner": "F_7443",
-          "symbol": "_f7443",
+          "symbol": "_hud_panel_node_marker_draw",
           "offset": 1152
         },
         {
@@ -3270,11 +3270,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -3356,7 +3356,7 @@
         },
         {
           "owner": "F_7676",
-          "symbol": "_f7676",
+          "symbol": "_hud_prompt_continue_clear",
           "offset": 131
         },
         {
@@ -3366,7 +3366,7 @@
         },
         {
           "owner": "F_7747",
-          "symbol": "_f7747",
+          "symbol": "_hud_prompt_message_run",
           "offset": 340
         },
         {
@@ -3868,10 +3868,10 @@
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
@@ -3982,11 +3982,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -4156,12 +4156,12 @@
         },
         {
           "owner": "F_7DF1",
-          "symbol": "_f7df1",
+          "symbol": "_menu_list_source_set_default",
           "offset": 96
         },
         {
           "owner": "F_7DFC",
-          "symbol": "_f7dfc",
+          "symbol": "_menu_list_source_set_players",
           "offset": 107
         },
         {
@@ -4358,12 +4358,12 @@
         },
         {
           "owner": "F_9466",
-          "symbol": "_f9466",
+          "symbol": "_puzzle_cell_backing_swap",
           "offset": 2607
         },
         {
           "owner": "F_950C",
-          "symbol": "_f950c",
+          "symbol": "_puzzle_cell_highlight_draw",
           "offset": 2773
         },
         {
@@ -4949,11 +4949,11 @@
             "public": "_energy_adjust",
             "addend": 0
           },
-          "_f7747": {
+          "_hud_prompt_message_run": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7747.entry",
             "owner": "F_7747",
-            "public": "_f7747",
+            "public": "_hud_prompt_message_run",
             "addend": 0
           },
           "_score_set_position": {
@@ -5079,7 +5079,7 @@
       "change": "symbolic assembly recovery; exact _TEXT and four FIXUPP relationships verified",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9ec3",
+        "public": "_anim_step_row_copy",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -5102,7 +5102,7 @@
       "publics": [
         {
           "owner": "F_9EC3",
-          "symbol": "_f9ec3",
+          "symbol": "_anim_step_row_copy",
           "offset": 0
         }
       ],
@@ -5146,10 +5146,10 @@
             "public": "_timer_deadline_wait",
             "addend": 0
           },
-          "_f9ec3": {
+          "_anim_step_row_copy": {
             "coordinate": "code_offset",
             "owner": "F_9EC3",
-            "public": "_f9ec3",
+            "public": "_anim_step_row_copy",
             "addend": 0,
             "evidence": "functions/F_9EC3.entry"
           },
@@ -5391,12 +5391,12 @@
         },
         {
           "owner": "F_A19D",
-          "symbol": "_fa19d",
+          "symbol": "_player_type_toggle_draw",
           "offset": 256
         },
         {
           "owner": "F_A1E0",
-          "symbol": "_fa1e0",
+          "symbol": "_quit_confirm_toggle_draw",
           "offset": 323
         },
         {
@@ -5661,12 +5661,12 @@
         },
         {
           "owner": "F_AA1F",
-          "symbol": "_faa1f",
+          "symbol": "_slot_list_select_loop",
           "offset": 1760
         },
         {
           "owner": "F_AB66",
-          "symbol": "_fab66",
+          "symbol": "_slot_menu_run",
           "offset": 2087
         },
         {
@@ -5676,7 +5676,7 @@
         },
         {
           "owner": "F_AD0E",
-          "symbol": "_fad0e",
+          "symbol": "_slot_flags_get",
           "offset": 2511
         }
       ],
@@ -5691,7 +5691,7 @@
       "end": 45381,
       "build": {
         "segment": "_TEXT",
-        "public": "_fad25",
+        "public": "_slot_archive_and_delete",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -5764,12 +5764,12 @@
       "publics": [
         {
           "owner": "F_AD25",
-          "symbol": "_fad25",
+          "symbol": "_slot_archive_and_delete",
           "offset": 0
         },
         {
           "owner": "F_ADCF",
-          "symbol": "_fadcf",
+          "symbol": "_slot_reset_for_new_game",
           "offset": 170
         }
       ],
@@ -5784,7 +5784,7 @@
       "end": 50080,
       "build": {
         "segment": "_TEXT",
-        "public": "_faf45",
+        "public": "_menu_wait_key_animated",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -5823,18 +5823,18 @@
             "public": "_timer_deadline_reached",
             "addend": 0
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B4A.entry",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           }
         }
@@ -5884,7 +5884,7 @@
       "publics": [
         {
           "owner": "F_AF45",
-          "symbol": "_faf45",
+          "symbol": "_menu_wait_key_animated",
           "offset": 0
         },
         {
@@ -5899,7 +5899,7 @@
         },
         {
           "owner": "F_B3D7",
-          "symbol": "_fb3d7",
+          "symbol": "_chapter_map_backdrop_draw",
           "offset": 1170
         },
         {
@@ -5914,7 +5914,7 @@
         },
         {
           "owner": "F_B55E",
-          "symbol": "_fb55e",
+          "symbol": "_menu_resources_free",
           "offset": 1561
         },
         {
@@ -5924,12 +5924,12 @@
         },
         {
           "owner": "F_B60F",
-          "symbol": "_fb60f",
+          "symbol": "_chapter_map_sprites_wipe",
           "offset": 1738
         },
         {
           "owner": "F_B6CD",
-          "symbol": "_fb6cd",
+          "symbol": "_level_chapter_driver",
           "offset": 1928
         },
         {
@@ -5944,7 +5944,7 @@
         },
         {
           "owner": "F_B967",
-          "symbol": "_fb967",
+          "symbol": "_level_exit_transition_run",
           "offset": 2594
         },
         {
@@ -6018,15 +6018,15 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fc1a0",
+        "public": "_sound_tick_entry",
         "span": 41,
         "flags_append": "",
         "bindings": {
-          "_fc1f7": {
+          "_sound_voice_pump_loop": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C1F7.entry",
             "owner": "F_C1F7",
-            "public": "_fc1f7",
+            "public": "_sound_voice_pump_loop",
             "addend": 0
           },
           "_sound_tick_step": {
@@ -6066,18 +6066,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212BC.phys"
           },
-          "_fc232": {
+          "_sound_voice_table_prime": {
             "coordinate": "code_offset",
             "owner": "F_C232",
-            "public": "_fc232",
+            "public": "_sound_voice_table_prime",
             "addend": 0,
             "evidence": "functions/F_C232.entry"
           },
-          "_fc27d": {
+          "_sound_voice_service_loop": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C27D.entry",
             "owner": "F_C27D",
-            "public": "_fc27d",
+            "public": "_sound_voice_service_loop",
             "addend": 0
           },
           "_snd_flag2": {
@@ -6159,31 +6159,31 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212EC.phys"
           },
-          "_f_c2ea": {
+          "_sound_command_stream_dispatch": {
             "coordinate": "code_offset",
             "owner": "F_C2EA",
-            "public": "_f_c2ea",
+            "public": "_sound_command_stream_dispatch",
             "addend": 0,
             "evidence": "functions/F_C2EA.entry"
           },
-          "_f_c440": {
+          "_sound_control_block_advance": {
             "coordinate": "code_offset",
             "owner": "F_C440",
-            "public": "_f_c440",
+            "public": "_sound_control_block_advance",
             "addend": 0,
             "evidence": "functions/F_C440.entry"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "functions/F_C6B9.entry"
           },
-          "_f_c755": {
+          "_sound_voices_reset_and_service": {
             "coordinate": "code_offset",
             "owner": "F_C755",
-            "public": "_f_c755",
+            "public": "_sound_voices_reset_and_service",
             "addend": 0,
             "evidence": "functions/F_C755.entry"
           },
@@ -6215,11 +6215,11 @@
             "offset": 6192,
             "coordinate": "DGROUP_offset"
           },
-          "_fc914": {
+          "_sound_stream_command_step": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C914.entry",
             "owner": "F_C914",
-            "public": "_fc914",
+            "public": "_sound_stream_command_step",
             "addend": 0
           },
           "_speaker_gate_off": {
@@ -6261,18 +6261,18 @@
             "public": "_sound_note_dispatch",
             "addend": 0
           },
-          "_fca9b": {
+          "_stream_note_program": {
             "coordinate": "code_offset",
             "owner": "F_CA9B",
-            "public": "_fca9b",
+            "public": "_stream_note_program",
             "addend": 0,
             "evidence": "functions/F_CA9B.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sound_stop_reset": {
@@ -6297,17 +6297,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219B8.phys"
           },
-          "_f_c9a4": {
+          "_sound_stream_delay_decode": {
             "coordinate": "code_offset",
             "owner": "F_C9A4",
-            "public": "_f_c9a4",
+            "public": "_sound_stream_delay_decode",
             "addend": 0,
             "evidence": "functions/F_C9A4.entry"
           },
-          "_f_ca03": {
+          "_sound_ctlblock_command_dispatch": {
             "coordinate": "code_offset",
             "owner": "F_CA03",
-            "public": "_f_ca03",
+            "public": "_sound_ctlblock_command_dispatch",
             "addend": 0,
             "evidence": "functions/F_CA03.entry"
           },
@@ -6330,32 +6330,32 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2132C.phys"
           },
-          "_f_ca35": {
+          "_sound_ctlblock_flags_latch": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA35",
-            "public": "_f_ca35",
+            "public": "_sound_ctlblock_flags_latch",
             "addend": 0
           },
-          "_f_ca51": {
+          "_stream_level_percent_scale": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA51",
-            "public": "_f_ca51",
+            "public": "_stream_level_percent_scale",
             "addend": 0
           },
-          "_fca83": {
+          "_stream_level_base_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA83",
-            "public": "_fca83",
+            "public": "_stream_level_base_set",
             "addend": 0
           },
-          "_fca91": {
+          "_stream_note_delay_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA91",
-            "public": "_fca91",
+            "public": "_stream_note_delay_set",
             "addend": 0
           },
           "_g1e84": {
@@ -6461,57 +6461,57 @@
       "publics": [
         {
           "owner": "F_C1A0",
-          "symbol": "_fc1a0",
+          "symbol": "_sound_tick_entry",
           "offset": 0
         },
         {
           "owner": "F_C1F7",
-          "symbol": "_fc1f7",
+          "symbol": "_sound_voice_pump_loop",
           "offset": 87
         },
         {
           "owner": "F_C232",
-          "symbol": "_fc232",
+          "symbol": "_sound_voice_table_prime",
           "offset": 146
         },
         {
           "owner": "F_C27D",
-          "symbol": "_fc27d",
+          "symbol": "_sound_voice_service_loop",
           "offset": 221
         },
         {
           "owner": "F_C2EA",
-          "symbol": "_f_c2ea",
+          "symbol": "_sound_command_stream_dispatch",
           "offset": 330
         },
         {
           "owner": "F_C359",
-          "symbol": "_f_c359",
+          "symbol": "_sound_control_value_select",
           "offset": 441
         },
         {
           "owner": "F_C3DB",
-          "symbol": "_f_c3db",
+          "symbol": "_sound_command_value_derive",
           "offset": 571
         },
         {
           "owner": "F_C440",
-          "symbol": "_f_c440",
+          "symbol": "_sound_control_block_advance",
           "offset": 672
         },
         {
           "owner": "F_C501",
-          "symbol": "_f_c501",
+          "symbol": "_sound_secondary_cmd_dispatch",
           "offset": 865
         },
         {
           "owner": "F_C549",
-          "symbol": "_f_c549",
+          "symbol": "_sound_command_flags_update",
           "offset": 937
         },
         {
           "owner": "F_C567",
-          "symbol": "_fc567",
+          "symbol": "_voice_level_percent_scale",
           "offset": 967
         },
         {
@@ -6526,7 +6526,7 @@
         },
         {
           "owner": "F_C5B3",
-          "symbol": "_f_c5b3",
+          "symbol": "_sound_table_word_select_store",
           "offset": 1043
         },
         {
@@ -6536,57 +6536,57 @@
         },
         {
           "owner": "F_C5D1",
-          "symbol": "_f_c5d1",
+          "symbol": "_voice_command_decode_apply",
           "offset": 1073
         },
         {
           "owner": "F_C678",
-          "symbol": "_f_c678",
+          "symbol": "_voice_enable",
           "offset": 1240
         },
         {
           "owner": "F_C6B9",
-          "symbol": "_f_c6b9",
+          "symbol": "_voice_disable",
           "offset": 1305
         },
         {
           "owner": "F_C706",
-          "symbol": "_f_c706",
+          "symbol": "_sound_pit_divisor_program",
           "offset": 1382
         },
         {
           "owner": "F_C755",
-          "symbol": "_f_c755",
+          "symbol": "_sound_voices_reset_and_service",
           "offset": 1461
         },
         {
           "owner": "F_C77A",
-          "symbol": "_f_c77a",
+          "symbol": "_sound_backend_select_init",
           "offset": 1498
         },
         {
           "owner": "F_C7CB",
-          "symbol": "_f_c7cb",
+          "symbol": "_sound_voice_table_reload",
           "offset": 1579
         },
         {
           "owner": "F_C834",
-          "symbol": "_fc834",
+          "symbol": "_sound_voices_reset",
           "offset": 1684
         },
         {
           "owner": "F_C877",
-          "symbol": "_fc877",
+          "symbol": "_sound_voices_disable_all",
           "offset": 1751
         },
         {
           "owner": "F_C898",
-          "symbol": "_fc898",
+          "symbol": "_opl_register_write",
           "offset": 1784
         },
         {
           "owner": "F_C8D4",
-          "symbol": "_fc8d4",
+          "symbol": "_opl_port_write_byte",
           "offset": 1844
         },
         {
@@ -6596,7 +6596,7 @@
         },
         {
           "owner": "F_C914",
-          "symbol": "_fc914",
+          "symbol": "_sound_stream_command_step",
           "offset": 1908
         },
         {
@@ -6606,37 +6606,37 @@
         },
         {
           "owner": "F_C9A4",
-          "symbol": "_f_c9a4",
+          "symbol": "_sound_stream_delay_decode",
           "offset": 2052
         },
         {
           "owner": "F_CA03",
-          "symbol": "_f_ca03",
+          "symbol": "_sound_ctlblock_command_dispatch",
           "offset": 2147
         },
         {
           "owner": "F_CA35",
-          "symbol": "_f_ca35",
+          "symbol": "_sound_ctlblock_flags_latch",
           "offset": 2197
         },
         {
           "owner": "F_CA51",
-          "symbol": "_f_ca51",
+          "symbol": "_stream_level_percent_scale",
           "offset": 2225
         },
         {
           "owner": "F_CA83",
-          "symbol": "_fca83",
+          "symbol": "_stream_level_base_set",
           "offset": 2275
         },
         {
           "owner": "F_CA91",
-          "symbol": "_fca91",
+          "symbol": "_stream_note_delay_set",
           "offset": 2289
         },
         {
           "owner": "F_CA9B",
-          "symbol": "_fca9b",
+          "symbol": "_stream_note_program",
           "offset": 2299
         },
         {
@@ -6656,7 +6656,7 @@
         },
         {
           "owner": "F_CAF1",
-          "symbol": "_fcaf1",
+          "symbol": "_stream_control_block_arm",
           "offset": 2385
         },
         {
@@ -6713,7 +6713,7 @@
             "offset": 54796,
             "evidence": "Historical call operand and exact public index"
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "offset": 51252,
             "evidence": "Historical call operand and exact public index"
@@ -6758,7 +6758,7 @@
             "offset": 41613,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "offset": 27418,
             "evidence": "Historical call operand and exact public index"
@@ -7001,7 +7001,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fd386",
+        "public": "_icon_list_animate_draw",
         "span": 2,
         "flags_append": "",
         "bindings": {},
@@ -7016,12 +7016,12 @@
       "publics": [
         {
           "owner": "F_D386",
-          "symbol": "_fd386",
+          "symbol": "_icon_list_animate_draw",
           "offset": 0
         },
         {
           "owner": "F_D3CF",
-          "symbol": "_fd3cf",
+          "symbol": "_icon_frame_reset_and_draw",
           "offset": 73
         }
       ],
@@ -7122,7 +7122,7 @@
       "expected_sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd45c",
+        "public": "_help_topic_keyboard_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7162,7 +7162,7 @@
       "publics": [
         {
           "owner": "F_D45C",
-          "symbol": "_fd45c",
+          "symbol": "_help_topic_keyboard_show",
           "offset": 0
         }
       ],
@@ -7179,7 +7179,7 @@
       "expected_sha256": "60ae921e6906de565ee547b8e63987a84ca3ee51b6cb9f8f59217f3254b2af36",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd471",
+        "public": "_help_topic_playing_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7219,7 +7219,7 @@
       "publics": [
         {
           "owner": "F_D471",
-          "symbol": "_fd471",
+          "symbol": "_help_topic_playing_show",
           "offset": 0
         }
       ],
@@ -7236,7 +7236,7 @@
       "expected_sha256": "2f4027c1b69a19aa411ab533ec23bd3637dd12f42c3e69e8f5f7af1f72b5e2ff",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd487",
+        "public": "_help_topic_obstacles_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7276,7 +7276,7 @@
       "publics": [
         {
           "owner": "F_D487",
-          "symbol": "_fd487",
+          "symbol": "_help_topic_obstacles_show",
           "offset": 0
         }
       ],
@@ -7293,7 +7293,7 @@
       "expected_sha256": "503fdaf7eadb6a174f92acdbb8caeff5423b817e03cf4010b4d66939b34bf5ba",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd49d",
+        "public": "_help_topic_puzzles_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7333,7 +7333,7 @@
       "publics": [
         {
           "owner": "F_D49D",
-          "symbol": "_fd49d",
+          "symbol": "_help_topic_puzzles_show",
           "offset": 0
         }
       ],
@@ -7504,10 +7504,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C110.phys"
           },
-          "_f_c77a": {
+          "_sound_backend_select_init": {
             "coordinate": "code_offset",
             "owner": "F_C77A",
-            "public": "_f_c77a",
+            "public": "_sound_backend_select_init",
             "addend": 0,
             "evidence": "functions/F_C77A.entry"
           }
@@ -7569,10 +7569,10 @@
             "public": "_timer_wait_ticks",
             "addend": 0
           },
-          "_fc877": {
+          "_sound_voices_disable_all": {
             "coordinate": "code_offset",
             "owner": "F_C877",
-            "public": "_fc877",
+            "public": "_sound_voices_disable_all",
             "addend": 0,
             "evidence": "functions/F_C877.entry"
           },
@@ -7843,10 +7843,10 @@
             "public": "_resource_record_cache_load",
             "addend": 0
           },
-          "_f_c7cb": {
+          "_sound_voice_table_reload": {
             "coordinate": "code_offset",
             "owner": "F_C7CB",
-            "public": "_f_c7cb",
+            "public": "_sound_voice_table_reload",
             "addend": 0,
             "evidence": "functions/F_C7CB.entry"
           }
@@ -7901,10 +7901,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAE.phys"
           },
-          "_f_c7cb": {
+          "_sound_voice_table_reload": {
             "coordinate": "code_offset",
             "owner": "F_C7CB",
-            "public": "_f_c7cb",
+            "public": "_sound_voice_table_reload",
             "addend": 0,
             "evidence": "functions/F_C7CB.entry"
           }
@@ -7956,7 +7956,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f_d61c",
+        "public": "_draw_queue_render_highlighted",
         "span": 2,
         "flags_append": "",
         "bindings": {
@@ -7982,12 +7982,12 @@
       "publics": [
         {
           "owner": "F_D61C",
-          "symbol": "_f_d61c",
+          "symbol": "_draw_queue_render_highlighted",
           "offset": 0
         },
         {
           "owner": "F_D79C",
-          "symbol": "_f_d79c",
+          "symbol": "_draw_queue_render",
           "offset": 384
         }
       ],
@@ -8007,7 +8007,7 @@
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_fd818",
+        "public": "_draw_queue_reset",
         "span": 2,
         "flags_append": "",
         "bindings": {},
@@ -8022,12 +8022,12 @@
       "publics": [
         {
           "owner": "F_D818",
-          "symbol": "_fd818",
+          "symbol": "_draw_queue_reset",
           "offset": 0
         },
         {
           "owner": "F_D825",
-          "symbol": "_fd825",
+          "symbol": "_draw_queue_append",
           "offset": 13
         }
       ],
@@ -8326,7 +8326,7 @@
             "offset": 51792,
             "evidence": "F_DAD7 historical instruction operands"
           },
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "offset": 51352,
             "evidence": "Historical call operand and exact public index"
@@ -8519,7 +8519,7 @@
         },
         {
           "owner": "F_DF98",
-          "symbol": "_fdf98",
+          "symbol": "_music_voice_frequency_lookup",
           "offset": 447
         }
       ],

@@ -16,8 +16,8 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _f6f4b
-_f6f4b proc near
+public _sprite_decode_4bpp_mode13h
+_sprite_decode_4bpp_mode13h proc near
  push bp
  mov bp,sp
  sub sp,4
@@ -91,6 +91,6 @@ done:
  mov sp,bp
  pop bp
  ret
-_f6f4b endp
+_sprite_decode_4bpp_mode13h endp
 _TEXT ends
 end

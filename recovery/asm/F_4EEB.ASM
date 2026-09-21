@@ -1,4 +1,4 @@
-; F_4EEB -- called as f4eeb(y0) from F_329F/F_3986/F_31C4: walks a fixed
+; F_4EEB -- called as board_actors_draw(y0) from F_329F/F_3986/F_31C4: walks a fixed
 ; 0x20-byte-stride table at gb3ae (count byte at [0], records from [1]),
 ; and for every live record whose "screen id" word matches board_record_index, does a
 ; copy() (03CC) of a jump-table sprite selected by [di+6] and, if a
@@ -15,7 +15,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f4eeb  proc    near
+_board_actors_draw  proc    near
         push    bp
         mov     bp,sp
         mov     ax,0fh
@@ -77,9 +77,9 @@ _f4eeb  proc    near
         pop     si
         pop     bp
         ret
-_f4eeb  endp
+_board_actors_draw  endp
 _TEXT   ends
-        public  _f4eeb
+        public  _board_actors_draw
         extrn   _gfx_color_select:near
         extrn   _gfx_copy_rect:near
         extrn   _gfx_vline:near

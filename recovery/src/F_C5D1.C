@@ -1,5 +1,5 @@
 /* F_C5D1 -- mechanically preserved complete routine. */
-void f_c5d1()
+void voice_command_decode_apply()
 {
     asm db 055h,08bh,0ech,026h,08ah,055h,001h,032h,0f6h,083h,0fah,000h,075h,00ch,0e8h,0d7h,000h,0c7h,084h,0ech,017h,001h,000h,0e9h
     asm db 083h,000h,083h,03eh,078h,017h,001h,074h,031h,083h,03eh,078h,017h,002h,074h,021h,0b1h,007h,0d3h,0e2h,0f7h,0dah,08ah,0cch

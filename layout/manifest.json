@@ -281,7 +281,7 @@
       "source": "src/VIDEO.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f020f",
+        "public": "_cur_color_index_get",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -350,7 +350,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f0232",
+        "public": "_color_lookup_tables_init",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -452,11 +452,11 @@
             "public": "_video_load_palette",
             "addend": 0
           },
-          "_f0232": {
+          "_color_lookup_tables_init": {
             "coordinate": "code_offset",
             "evidence": "functions/F_0232.entry",
             "owner": "F_0232",
-            "public": "_f0232",
+            "public": "_color_lookup_tables_init",
             "addend": 0
           },
           "_video_normalize_far_ptr": {
@@ -810,7 +810,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1ecd",
+        "public": "_rect_queue_flush",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -891,7 +891,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1f91",
+        "public": "_board_collision_span_or",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -1447,10 +1447,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -1461,10 +1461,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -1747,7 +1747,7 @@
       "source": "src/BOARD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f2a70",
+        "public": "_record_table_level4_ptr",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -1987,11 +1987,11 @@
             "public": "_resource_load_record",
             "addend": 0
           },
-          "_f2a70": {
+          "_record_table_level4_ptr": {
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup",
             "owner": "F_2A70",
-            "public": "_f2a70",
+            "public": "_record_table_level4_ptr",
             "addend": 0
           },
           "_gfx_wipe_rect": {
@@ -1999,16 +1999,16 @@
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
           },
-          "_fd818": {
+          "_draw_queue_reset": {
             "coordinate": "code_offset",
             "owner": "F_D818",
-            "public": "_fd818",
+            "public": "_draw_queue_reset",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_fd825": {
+          "_draw_queue_append": {
             "owner": "F_D825",
-            "public": "_fd825",
+            "public": "_draw_queue_append",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "owned F_D825 public"
@@ -2020,17 +2020,17 @@
             "public": "_f2986",
             "addend": 0
           },
-          "_f6036": {
+          "_sprite_table_queue_draws": {
             "coordinate": "code_offset",
             "owner": "F_6036",
-            "public": "_f6036",
+            "public": "_sprite_table_queue_draws",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f_d61c": {
+          "_draw_queue_render_highlighted": {
             "coordinate": "code_offset",
             "owner": "F_D61C",
-            "public": "_f_d61c",
+            "public": "_draw_queue_render_highlighted",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -2072,11 +2072,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1ECD.entry",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0
           },
           "_sprite_draw_cursor": {
@@ -2100,11 +2100,11 @@
             "public": "_board_redraw_paint",
             "addend": 0
           },
-          "_f4eeb": {
+          "_board_actors_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
             "owner": "F_4EEB",
-            "public": "_f4eeb",
+            "public": "_board_actors_draw",
             "addend": 0
           },
           "_timer_wait_ticks": {
@@ -2194,7 +2194,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f329f",
+        "public": "_board_record_index_select",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -2210,11 +2210,11 @@
             "public": "_board_redraw_paint",
             "addend": 0
           },
-          "_f4eeb": {
+          "_board_actors_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
             "owner": "F_4EEB",
-            "public": "_f4eeb",
+            "public": "_board_actors_draw",
             "addend": 0
           },
           "_g40ce": {
@@ -2326,11 +2326,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_f250c": {
@@ -2347,10 +2347,10 @@
             "public": "_f32fa",
             "addend": 0
           },
-          "_f6181": {
+          "_sprite_record_adjust_draw": {
             "coordinate": "code_offset",
             "owner": "F_6181",
-            "public": "_f6181",
+            "public": "_sprite_record_adjust_draw",
             "addend": 0,
             "evidence": "functions/F_6181.entry"
           },
@@ -2422,11 +2422,11 @@
             "public": "_f2986",
             "addend": 0
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_g96": {
@@ -2469,15 +2469,15 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f3986",
+        "public": "_board_record_complete",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f4eeb": {
+          "_board_actors_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
             "owner": "F_4EEB",
-            "public": "_f4eeb",
+            "public": "_board_actors_draw",
             "addend": 0
           },
           "_energy_set": {
@@ -2621,18 +2621,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
           "_hud_tab_next": {
@@ -2715,11 +2715,11 @@
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sprite_draw_cursor": {
@@ -2729,11 +2729,11 @@
             "public": "_sprite_draw_cursor",
             "addend": 0
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0
           },
           "_board_scroll_transition": {
@@ -2791,11 +2791,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f60a9": {
+          "_animated_tile_tick": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_60A9",
-            "public": "_f60a9",
+            "public": "_animated_tile_tick",
             "addend": 0
           },
           "_board_unit_script_trigger": {
@@ -2851,11 +2851,11 @@
             "public": "_board_redraw_view",
             "addend": 0
           },
-          "_f4e9f": {
+          "_sprite_table_wipe_active": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_4E9F",
-            "public": "_f4e9f",
+            "public": "_sprite_table_wipe_active",
             "addend": 0
           },
           "_sprite_slots_redraw": {
@@ -2875,10 +2875,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_fd386": {
+          "_icon_list_animate_draw": {
             "coordinate": "code_offset",
             "owner": "F_D386",
-            "public": "_fd386",
+            "public": "_icon_list_animate_draw",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -2892,11 +2892,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f1f91": {
+          "_board_collision_span_or": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_1F91",
-            "public": "_f1f91",
+            "public": "_board_collision_span_or",
             "addend": 0
           },
           "_g734": {
@@ -2957,10 +2957,10 @@
             "public": "_cursor_trail_arm",
             "addend": 0
           },
-          "_f4b0c": {
+          "_sprite_script_frame_driver": {
             "coordinate": "code_offset",
             "owner": "F_4B0C",
-            "public": "_f4b0c",
+            "public": "_sprite_script_frame_driver",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -2974,11 +2974,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f329f": {
+          "_board_record_index_select": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_329F",
-            "public": "_f329f",
+            "public": "_board_record_index_select",
             "addend": 0
           },
           "_b43aa": {
@@ -3018,11 +3018,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f3986": {
+          "_board_record_complete": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_3986",
-            "public": "_f3986",
+            "public": "_board_record_complete",
             "addend": 0
           },
           "_timer_deadline_wait": {
@@ -3046,10 +3046,10 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f_d79c": {
+          "_draw_queue_render": {
             "coordinate": "code_offset",
             "owner": "F_D79C",
-            "public": "_f_d79c",
+            "public": "_draw_queue_render",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           }
@@ -3358,11 +3358,11 @@
             "public": "_menu_backdrop_paint",
             "addend": 0
           },
-          "_f4eeb": {
+          "_board_actors_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
             "owner": "F_4EEB",
-            "public": "_f4eeb",
+            "public": "_board_actors_draw",
             "addend": 0
           },
           "_hud_panel_open": {
@@ -3379,11 +3379,11 @@
             "public": "_hud_scroll_reset",
             "addend": 0
           },
-          "_f7df1": {
+          "_menu_list_source_set_default": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7DF1.entry",
             "owner": "F_7DF1",
-            "public": "_f7df1",
+            "public": "_menu_list_source_set_default",
             "addend": 0
           },
           "_puzzle_clear_grid": {
@@ -3782,18 +3782,18 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C834.entry",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           },
-          "_f697d": {
+          "_keyboard_irq_restore": {
             "coordinate": "code_offset",
             "evidence": "functions/F_697D.entry",
             "owner": "F_697D",
-            "public": "_f697d",
+            "public": "_keyboard_irq_restore",
             "addend": 0
           },
           "_timer_irq_restore": {
@@ -3874,18 +3874,18 @@
             "public": "_puzzle_free_resources",
             "addend": 0
           },
-          "_fab66": {
+          "_slot_menu_run": {
             "coordinate": "code_offset",
             "owner": "F_AB66",
-            "public": "_fab66",
+            "public": "_slot_menu_run",
             "addend": 0,
             "evidence": "functions/F_AB66.entry"
           },
-          "_fad25": {
+          "_slot_archive_and_delete": {
             "coordinate": "code_offset",
             "evidence": "functions/F_AD25.entry",
             "owner": "F_AD25",
-            "public": "_fad25",
+            "public": "_slot_archive_and_delete",
             "addend": 0
           },
           "_player_select_run": {
@@ -4028,7 +4028,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4aa8",
+        "public": "_play_window_wipe_clipped",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -4059,7 +4059,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4b0c",
+        "public": "_sprite_script_frame_driver",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -4080,10 +4080,10 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "functions/F_CAF1.entry"
           },
@@ -4134,16 +4134,16 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4e9f",
+        "public": "_sprite_table_wipe_active",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f4aa8": {
+          "_play_window_wipe_clipped": {
             "coordinate": "code_offset",
             "evidence": "F_4AA8 owned code entry",
             "owner": "F_4AA8",
-            "public": "_f4aa8",
+            "public": "_play_window_wipe_clipped",
             "addend": 0
           },
           "_gb3ae": {
@@ -4188,7 +4188,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4eeb",
+        "public": "_board_actors_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -4352,7 +4352,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f50d2",
+        "public": "_video_adapter_detect",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -4386,7 +4386,7 @@
       "expected_sha256": "6fed9f60d1cae2bfe28a56cc73a51b4ce804d7a0936c225a55dfc838d3b025aa",
       "build": {
         "segment": "_TEXT",
-        "public": "_f53bf",
+        "public": "_sound_backend_probe",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -4460,11 +4460,11 @@
             "public": "_bios_equipment_probe",
             "addend": 0
           },
-          "_f50d2": {
+          "_video_adapter_detect": {
             "coordinate": "code_offset",
             "evidence": "functions/F_50D2.entry",
             "owner": "F_50D2",
-            "public": "_f50d2",
+            "public": "_video_adapter_detect",
             "addend": 0
           },
           "__argv": {
@@ -4506,10 +4506,10 @@
             "public": "_getdisk",
             "addend": 0
           },
-          "_f53bf": {
+          "_sound_backend_probe": {
             "coordinate": "code_offset",
             "owner": "F_53BF",
-            "public": "_f53bf",
+            "public": "_sound_backend_probe",
             "addend": 0,
             "evidence": "functions/F_51BF.entry"
           }
@@ -4593,11 +4593,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sound_stop_reset": {
@@ -4692,18 +4692,18 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B4A.entry",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
           "_timer_deadline_reached": {
@@ -4833,11 +4833,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f7676": {
+          "_hud_prompt_continue_clear": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7676.entry",
             "owner": "F_7676",
-            "public": "_f7676",
+            "public": "_hud_prompt_continue_clear",
             "addend": 0
           },
           "_anim_step_loop": {
@@ -4964,11 +4964,11 @@
             "public": "_hud_prompt_continue_draw",
             "addend": 0
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sound_stop_reset": {
@@ -5346,11 +5346,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_5AC3 fixup"
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_rect_table_hit_id": {
@@ -5374,11 +5374,11 @@
             "public": "_board_raycast_hit_test",
             "addend": 0
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_gfx_color_select": {
@@ -5428,11 +5428,11 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_gfx_set_pixel": {
@@ -5610,7 +5610,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6036",
+        "public": "_sprite_table_queue_draws",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -5624,9 +5624,9 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct LDS object table at DS:40D0"
           },
-          "_fd825": {
+          "_draw_queue_append": {
             "owner": "F_D825",
-            "public": "_fd825",
+            "public": "_draw_queue_append",
             "coordinate": "code_offset",
             "addend": 0,
             "evidence": "owned F_D825 record append"
@@ -5658,7 +5658,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f60a9",
+        "public": "_animated_tile_tick",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -5714,7 +5714,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6181",
+        "public": "_sprite_record_adjust_draw",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -6093,45 +6093,45 @@
             "public": "_resource_file_open",
             "addend": 0
           },
-          "_f6771": {
+          "_sprite_sheet_decode_sequential": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6771.entry",
             "owner": "F_6771",
-            "public": "_f6771",
+            "public": "_sprite_sheet_decode_sequential",
             "addend": 0
           },
-          "_f67dc": {
+          "_sprite_sheet_decode_indexed": {
             "coordinate": "code_offset",
             "evidence": "functions/F_67DC.entry",
             "owner": "F_67DC",
-            "public": "_f67dc",
+            "public": "_sprite_sheet_decode_indexed",
             "addend": 0
           },
-          "_f6d86": {
+          "_rle_packbits_decode": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6D86.entry",
             "owner": "F_6D86",
-            "public": "_f6d86",
+            "public": "_rle_packbits_decode",
             "addend": 0
           },
-          "_f6dcc": {
+          "_lz_decompress": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6DCC.entry",
             "owner": "F_6DCC",
-            "public": "_f6dcc",
+            "public": "_lz_decompress",
             "addend": 0
           },
-          "_f6eff": {
+          "_sprite_decode_4bpp_planar": {
             "coordinate": "code_offset",
             "owner": "F_6EFF",
-            "public": "_f6eff",
+            "public": "_sprite_decode_4bpp_planar",
             "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           },
-          "_f6f4b": {
+          "_sprite_decode_4bpp_mode13h": {
             "coordinate": "code_offset",
             "owner": "F_6F4B",
-            "public": "_f6f4b",
+            "public": "_sprite_decode_4bpp_mode13h",
             "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
@@ -6245,7 +6245,7 @@
       "source": "src/RESOURCE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6771",
+        "public": "_sprite_sheet_decode_sequential",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -6255,17 +6255,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f6f4b": {
+          "_sprite_decode_4bpp_mode13h": {
             "coordinate": "code_offset",
             "owner": "F_6F4B",
-            "public": "_f6f4b",
+            "public": "_sprite_decode_4bpp_mode13h",
             "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
-          "_f6eff": {
+          "_sprite_decode_4bpp_planar": {
             "coordinate": "code_offset",
             "owner": "F_6EFF",
-            "public": "_f6eff",
+            "public": "_sprite_decode_4bpp_planar",
             "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           }
@@ -6290,7 +6290,7 @@
       "source": "src/RESOURCE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f67dc",
+        "public": "_sprite_sheet_decode_indexed",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -6300,17 +6300,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f6f4b": {
+          "_sprite_decode_4bpp_mode13h": {
             "coordinate": "code_offset",
             "owner": "F_6F4B",
-            "public": "_f6f4b",
+            "public": "_sprite_decode_4bpp_mode13h",
             "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
-          "_f6eff": {
+          "_sprite_decode_4bpp_planar": {
             "coordinate": "code_offset",
             "owner": "F_6EFF",
-            "public": "_f6eff",
+            "public": "_sprite_decode_4bpp_planar",
             "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           }
@@ -6503,11 +6503,11 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C834.entry",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           },
           "_music_resume_if_valid": {
@@ -6594,7 +6594,7 @@
       "source": "src/KEYIRQ.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f697d",
+        "public": "_keyboard_irq_restore",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -6775,7 +6775,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6b1a",
+        "public": "_keyboard_read_blocking_hotkeys",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -6816,7 +6816,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6b4a",
+        "public": "_keyboard_poll_nonblocking",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -6846,11 +6846,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B4A.entry",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           }
         },
@@ -6983,11 +6983,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fc1a0": {
+          "_sound_tick_entry": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C1A0.entry",
             "owner": "F_C1A0",
-            "public": "_fc1a0",
+            "public": "_sound_tick_entry",
             "addend": 0
           },
           "_timer_ticks": {
@@ -7409,7 +7409,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6d86",
+        "public": "_rle_packbits_decode",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7449,7 +7449,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6dcc",
+        "public": "_lz_decompress",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7474,7 +7474,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6eff",
+        "public": "_sprite_decode_4bpp_planar",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -7493,7 +7493,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6f4b",
+        "public": "_sprite_decode_4bpp_mode13h",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -7627,11 +7627,11 @@
             "public": "_f7417",
             "addend": 0
           },
-          "_f7443": {
+          "_hud_panel_node_marker_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7443.entry",
             "owner": "F_7443",
-            "public": "_f7443",
+            "public": "_hud_panel_node_marker_draw",
             "addend": 0
           },
           "_hud_frame_draw": {
@@ -7691,11 +7691,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B5.phys"
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_gb83": {
@@ -8225,11 +8225,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_energy_meter": {
@@ -8327,7 +8327,7 @@
       "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7443",
+        "public": "_hud_panel_node_marker_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -8385,11 +8385,11 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_gfx_bar": {
@@ -8451,11 +8451,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206B3.phys"
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -8518,7 +8518,7 @@
       "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7676",
+        "public": "_hud_prompt_continue_clear",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -8569,11 +8569,11 @@
             "public": "SCOPY@",
             "addend": 0
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -8650,7 +8650,7 @@
       "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7747",
+        "public": "_hud_prompt_message_run",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -8676,11 +8676,11 @@
             "public": "_hud_prompt_confirm_draw",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
           "_menu_list_enable": {
@@ -8736,11 +8736,11 @@
             "public": "SCOPY@",
             "addend": 0
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -9152,10 +9152,10 @@
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
@@ -9244,11 +9244,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -9376,7 +9376,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7df1",
+        "public": "_menu_list_source_set_default",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -9412,7 +9412,7 @@
       "source": "src/DIALOG.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7dfc",
+        "public": "_menu_list_source_set_players",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -9916,11 +9916,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_sprite_sheet_index_get": {
@@ -10142,11 +10142,11 @@
             "public": "_dialog_draw",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
           "_dialog_fill_box": {
@@ -10282,10 +10282,10 @@
             "addend": 0,
             "evidence": "F_880A symbolic direct near call"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0,
             "evidence": "F_880A symbolic direct near call"
           },
@@ -10529,10 +10529,10 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10613,10 +10613,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10634,17 +10634,17 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f9466": {
+          "_puzzle_cell_backing_swap": {
             "coordinate": "code_offset",
             "owner": "F_9466",
-            "public": "_f9466",
+            "public": "_puzzle_cell_backing_swap",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f950c": {
+          "_puzzle_cell_highlight_draw": {
             "coordinate": "code_offset",
             "owner": "F_950C",
-            "public": "_f950c",
+            "public": "_puzzle_cell_highlight_draw",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10655,10 +10655,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10697,10 +10697,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -11170,7 +11170,7 @@
       "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9466",
+        "public": "_puzzle_cell_backing_swap",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -11201,16 +11201,16 @@
       "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f950c",
+        "public": "_puzzle_cell_highlight_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_display_mode": {
@@ -11780,11 +11780,11 @@
             "public": "_timer_wait_ticks",
             "addend": 0
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sound_stop_reset": {
@@ -11950,11 +11950,11 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_g1770": {
@@ -12084,11 +12084,11 @@
             "public": "_energy_adjust",
             "addend": 0
           },
-          "_f7747": {
+          "_hud_prompt_message_run": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7747.entry",
             "owner": "F_7747",
-            "public": "_f7747",
+            "public": "_hud_prompt_message_run",
             "addend": 0
           },
           "_score_set_position": {
@@ -12192,7 +12192,7 @@
       "change": "symbolic assembly recovery; exact _TEXT and four FIXUPP relationships verified",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9ec3",
+        "public": "_anim_step_row_copy",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -12241,10 +12241,10 @@
             "public": "_timer_deadline_wait",
             "addend": 0
           },
-          "_f9ec3": {
+          "_anim_step_row_copy": {
             "coordinate": "code_offset",
             "owner": "F_9EC3",
-            "public": "_f9ec3",
+            "public": "_anim_step_row_copy",
             "addend": 0,
             "evidence": "functions/F_9EC3.entry"
           },
@@ -12472,7 +12472,7 @@
       "source": "src/SLOTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa19d",
+        "public": "_player_type_toggle_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -12507,7 +12507,7 @@
       "source": "src/SLOTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa1e0",
+        "public": "_quit_confirm_toggle_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -12864,18 +12864,18 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B4A.entry",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           }
         }
@@ -13018,10 +13018,10 @@
             "addend": 0,
             "evidence": "functions/MODE.entry"
           },
-          "_faf45": {
+          "_menu_wait_key_animated": {
             "coordinate": "code_offset",
             "owner": "F_AF45",
-            "public": "_faf45",
+            "public": "_menu_wait_key_animated",
             "addend": 0,
             "evidence": "functions/GETKEY.entry"
           },
@@ -13081,10 +13081,10 @@
             "addend": 0,
             "evidence": "functions/TEXT.entry"
           },
-          "_fa19d": {
+          "_player_type_toggle_draw": {
             "coordinate": "code_offset",
             "owner": "F_A19D",
-            "public": "_fa19d",
+            "public": "_player_type_toggle_draw",
             "addend": 0,
             "evidence": "functions/ACT.entry"
           },
@@ -13222,18 +13222,18 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03AB.entry"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
-          "_fa1e0": {
+          "_quit_confirm_toggle_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_A1E0.entry",
             "owner": "F_A1E0",
-            "public": "_fa1e0",
+            "public": "_quit_confirm_toggle_draw",
             "addend": 0
           },
           "_dialog_restore_screen": {
@@ -13500,7 +13500,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_faa1f",
+        "public": "_slot_list_select_loop",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -13518,10 +13518,10 @@
             "addend": 0,
             "evidence": "Exact F_AA1F call operand"
           },
-          "_faf45": {
+          "_menu_wait_key_animated": {
             "coordinate": "code_offset",
             "owner": "F_AF45",
-            "public": "_faf45",
+            "public": "_menu_wait_key_animated",
             "addend": 0,
             "evidence": "Exact F_AA1F call operand"
           },
@@ -13601,7 +13601,7 @@
       "change": "symbolic assembly recovery; exact _TEXT, public, and no-FIXUPP topology verified",
       "build": {
         "segment": "_TEXT",
-        "public": "_fab66",
+        "public": "_slot_menu_run",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -13617,11 +13617,11 @@
             "public": "_slot_table_save",
             "addend": 0
           },
-          "_faa1f": {
+          "_slot_list_select_loop": {
             "coordinate": "code_offset",
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
             "owner": "F_AA1F",
-            "public": "_faa1f",
+            "public": "_slot_list_select_loop",
             "addend": 0
           },
           "_slot_list_draw": {
@@ -13751,11 +13751,11 @@
             "public": "_menu_list_disable",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           },
           "_keyboard_chain_active": {
@@ -13858,7 +13858,7 @@
       "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fad0e",
+        "public": "_slot_flags_get",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -13893,7 +13893,7 @@
       "source": "src/SLOTCOPY.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fad25",
+        "public": "_slot_archive_and_delete",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -13955,7 +13955,7 @@
       "source": "src/SLOTCOPY.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fadcf",
+        "public": "_slot_reset_for_new_game",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14010,7 +14010,7 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_faf45",
+        "public": "_menu_wait_key_animated",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14049,18 +14049,18 @@
             "public": "_timer_deadline_reached",
             "addend": 0
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B4A.entry",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           }
         }
@@ -14258,7 +14258,7 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb3d7",
+        "public": "_chapter_map_backdrop_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14416,7 +14416,7 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb55e",
+        "public": "_menu_resources_free",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14550,7 +14550,7 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb60f",
+        "public": "_chapter_map_sprites_wipe",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14601,7 +14601,7 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb6cd",
+        "public": "_level_chapter_driver",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14660,18 +14660,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FACA.phys"
           },
-          "_fb3d7": {
+          "_chapter_map_backdrop_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_B3D7.entry",
             "owner": "F_B3D7",
-            "public": "_fb3d7",
+            "public": "_chapter_map_backdrop_draw",
             "addend": 0
           },
-          "_f4eeb": {
+          "_board_actors_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
             "owner": "F_4EEB",
-            "public": "_f4eeb",
+            "public": "_board_actors_draw",
             "addend": 0
           },
           "_gfx_box": {
@@ -14696,25 +14696,25 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23BF4.phys"
           },
-          "_fb60f": {
+          "_chapter_map_sprites_wipe": {
             "coordinate": "code_offset",
             "evidence": "functions/F_B60F.entry",
             "owner": "F_B60F",
-            "public": "_fb60f",
+            "public": "_chapter_map_sprites_wipe",
             "addend": 0
           },
-          "_f4b0c": {
+          "_sprite_script_frame_driver": {
             "coordinate": "code_offset",
             "owner": "F_4B0C",
-            "public": "_f4b0c",
+            "public": "_sprite_script_frame_driver",
             "addend": 0,
             "evidence": "functions/F_4B0C.entry"
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1ECD.entry",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0
           },
           "_timer_deadline_wait": {
@@ -14832,11 +14832,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2B05F.phys"
           },
-          "_f4e9f": {
+          "_sprite_table_wipe_active": {
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction",
             "owner": "F_4E9F",
-            "public": "_f4e9f",
+            "public": "_sprite_table_wipe_active",
             "addend": 0
           },
           "_timer_deadline_wait": {
@@ -14851,10 +14851,10 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -14868,10 +14868,10 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
           },
-          "_f4b0c": {
+          "_sprite_script_frame_driver": {
             "coordinate": "code_offset",
             "owner": "F_4B0C",
-            "public": "_f4b0c",
+            "public": "_sprite_script_frame_driver",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -14940,10 +14940,10 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
@@ -14971,7 +14971,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb967",
+        "public": "_level_exit_transition_run",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14981,17 +14981,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f4b0c": {
+          "_sprite_script_frame_driver": {
             "coordinate": "code_offset",
             "owner": "F_4B0C",
-            "public": "_f4b0c",
+            "public": "_sprite_script_frame_driver",
             "addend": 0,
             "evidence": "functions/F_4B0C.entry"
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0,
             "evidence": "functions/F_1ECD.entry"
           },
@@ -15012,10 +15012,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23BF4.phys"
           },
-          "_f4e9f": {
+          "_sprite_table_wipe_active": {
             "coordinate": "code_offset",
             "owner": "F_4E9F",
-            "public": "_f4e9f",
+            "public": "_sprite_table_wipe_active",
             "addend": 0,
             "evidence": "functions/F_4E9F.entry"
           },
@@ -15081,17 +15081,17 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_f4e9f": {
+          "_sprite_table_wipe_active": {
             "coordinate": "code_offset",
             "owner": "F_4E9F",
-            "public": "_f4e9f",
+            "public": "_sprite_table_wipe_active",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_fadcf": {
+          "_slot_reset_for_new_game": {
             "coordinate": "code_offset",
             "owner": "F_ADCF",
-            "public": "_fadcf",
+            "public": "_slot_reset_for_new_game",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15122,10 +15122,10 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_f1ecd": {
+          "_rect_queue_flush": {
             "coordinate": "code_offset",
             "owner": "F_1ECD",
-            "public": "_f1ecd",
+            "public": "_rect_queue_flush",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15141,10 +15141,10 @@
             "offset": 972,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f4b0c": {
+          "_sprite_script_frame_driver": {
             "coordinate": "code_offset",
             "owner": "F_4B0C",
-            "public": "_f4b0c",
+            "public": "_sprite_script_frame_driver",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15167,17 +15167,17 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15249,10 +15249,10 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_fb967": {
+          "_level_exit_transition_run": {
             "coordinate": "code_offset",
             "owner": "F_B967",
-            "public": "_fb967",
+            "public": "_level_exit_transition_run",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15289,10 +15289,10 @@
             "offset": 6006,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_f3986": {
+          "_board_record_complete": {
             "coordinate": "code_offset",
             "owner": "F_3986",
-            "public": "_f3986",
+            "public": "_board_record_complete",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15342,17 +15342,17 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_f1f91": {
+          "_board_collision_span_or": {
             "coordinate": "code_offset",
             "owner": "F_1F91",
-            "public": "_f1f91",
+            "public": "_board_collision_span_or",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15479,11 +15479,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23BFE.phys"
           },
-          "_fb55e": {
+          "_menu_resources_free": {
             "coordinate": "code_offset",
             "evidence": "functions/F_B55E.entry",
             "owner": "F_B55E",
-            "public": "_fb55e",
+            "public": "_menu_resources_free",
             "addend": 0
           },
           "_fb09a": {
@@ -15507,11 +15507,11 @@
             "public": "_fb4fb",
             "addend": 0
           },
-          "_f4eeb": {
+          "_board_actors_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4EEB.entry",
             "owner": "F_4EEB",
-            "public": "_f4eeb",
+            "public": "_board_actors_draw",
             "addend": 0
           },
           "_g736": {
@@ -15632,18 +15632,18 @@
             "public": "_level_play",
             "addend": 0
           },
-          "_fb6cd": {
+          "_level_chapter_driver": {
             "coordinate": "code_offset",
             "evidence": "functions/F_B6CD.entry",
             "owner": "F_B6CD",
-            "public": "_fb6cd",
+            "public": "_level_chapter_driver",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C834.entry",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           }
         }
@@ -15671,16 +15671,16 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc1a0",
+        "public": "_sound_tick_entry",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fc1f7": {
+          "_sound_voice_pump_loop": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C1F7.entry",
             "owner": "F_C1F7",
-            "public": "_fc1f7",
+            "public": "_sound_voice_pump_loop",
             "addend": 0
           },
           "_sound_tick_step": {
@@ -15738,7 +15738,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc1f7",
+        "public": "_sound_voice_pump_loop",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -15748,18 +15748,18 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212BC.phys"
           },
-          "_fc232": {
+          "_sound_voice_table_prime": {
             "coordinate": "code_offset",
             "owner": "F_C232",
-            "public": "_fc232",
+            "public": "_sound_voice_table_prime",
             "addend": 0,
             "evidence": "functions/F_C232.entry"
           },
-          "_fc27d": {
+          "_sound_voice_service_loop": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C27D.entry",
             "owner": "F_C27D",
-            "public": "_fc27d",
+            "public": "_sound_voice_service_loop",
             "addend": 0
           },
           "_snd_flag2": {
@@ -15796,7 +15796,7 @@
       "expected_sha256": "73cb49feb03e6cbf5f43912e103ee9c071243e7178219775c525c7139bd05b65",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc232",
+        "public": "_sound_voice_table_prime",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -15870,7 +15870,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc27d",
+        "public": "_sound_voice_service_loop",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -15905,31 +15905,31 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212EC.phys"
           },
-          "_f_c2ea": {
+          "_sound_command_stream_dispatch": {
             "coordinate": "code_offset",
             "owner": "F_C2EA",
-            "public": "_f_c2ea",
+            "public": "_sound_command_stream_dispatch",
             "addend": 0,
             "evidence": "functions/F_C2EA.entry"
           },
-          "_f_c440": {
+          "_sound_control_block_advance": {
             "coordinate": "code_offset",
             "owner": "F_C440",
-            "public": "_f_c440",
+            "public": "_sound_control_block_advance",
             "addend": 0,
             "evidence": "functions/F_C440.entry"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "functions/F_C6B9.entry"
           },
-          "_f_c755": {
+          "_sound_voices_reset_and_service": {
             "coordinate": "code_offset",
             "owner": "F_C755",
-            "public": "_f_c755",
+            "public": "_sound_voices_reset_and_service",
             "addend": 0,
             "evidence": "functions/F_C755.entry"
           }
@@ -15955,7 +15955,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c2ea",
+        "public": "_sound_command_stream_dispatch",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -15977,7 +15977,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c359",
+        "public": "_sound_control_value_select",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -15999,7 +15999,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c3db",
+        "public": "_sound_command_value_derive",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16021,7 +16021,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c440",
+        "public": "_sound_control_block_advance",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16043,7 +16043,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c501",
+        "public": "_sound_secondary_cmd_dispatch",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16065,7 +16065,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c549",
+        "public": "_sound_command_flags_update",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16087,7 +16087,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc567",
+        "public": "_voice_level_percent_scale",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -16177,7 +16177,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c5b3",
+        "public": "_sound_table_word_select_store",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16221,7 +16221,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c5d1",
+        "public": "_voice_command_decode_apply",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16243,7 +16243,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c678",
+        "public": "_voice_enable",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16265,7 +16265,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c6b9",
+        "public": "_voice_disable",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16287,7 +16287,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c706",
+        "public": "_sound_pit_divisor_program",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16309,7 +16309,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c755",
+        "public": "_sound_voices_reset_and_service",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -16333,10 +16333,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212DC.phys; independently bound by F_C27D and F_C834"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "functions/F_C6B9.entry; independently bound by F_C27D, F_C834 and F_C877"
           }
@@ -16362,7 +16362,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c77a",
+        "public": "_sound_backend_select_init",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16384,7 +16384,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c7cb",
+        "public": "_sound_voice_table_reload",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16407,7 +16407,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc834",
+        "public": "_sound_voices_reset",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -16442,10 +16442,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212AC.phys"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "functions/F_C6B9.entry"
           }
@@ -16468,7 +16468,7 @@
       "expected_sha256": "31295153914e2ff4fd9701e59b71a1da5377918d9cddfaf9315667d83777899d",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc877",
+        "public": "_sound_voices_disable_all",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -16481,10 +16481,10 @@
             "offset": 6010,
             "coordinate": "DGROUP_offset"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "exact reconstructed function entry"
           }
@@ -16513,7 +16513,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc898",
+        "public": "_opl_register_write",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -16544,7 +16544,7 @@
       "expected_sha256": "e227e7a35b1c337907324b16ae8a3e8c8c1946f3d3684d91a94d5e94159b790f",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc8d4",
+        "public": "_opl_port_write_byte",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -16582,11 +16582,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc914": {
+          "_sound_stream_command_step": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C914.entry",
             "owner": "F_C914",
-            "public": "_fc914",
+            "public": "_sound_stream_command_step",
             "addend": 0
           },
           "_speaker_gate_off": {
@@ -16647,7 +16647,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc914",
+        "public": "_sound_stream_command_step",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -16659,10 +16659,10 @@
             "public": "_sound_note_dispatch",
             "addend": 0
           },
-          "_fca9b": {
+          "_stream_note_program": {
             "coordinate": "code_offset",
             "owner": "F_CA9B",
-            "public": "_fca9b",
+            "public": "_stream_note_program",
             "addend": 0,
             "evidence": "functions/F_CA9B.entry"
           },
@@ -16673,11 +16673,11 @@
             "public": "_speaker_gate_off",
             "addend": 0
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAF1.entry",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0
           },
           "_sound_stop_reset": {
@@ -16707,17 +16707,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219C0.phys"
           },
-          "_f_c9a4": {
+          "_sound_stream_delay_decode": {
             "coordinate": "code_offset",
             "owner": "F_C9A4",
-            "public": "_f_c9a4",
+            "public": "_sound_stream_delay_decode",
             "addend": 0,
             "evidence": "functions/F_C9A4.entry"
           },
-          "_f_ca03": {
+          "_sound_ctlblock_command_dispatch": {
             "coordinate": "code_offset",
             "owner": "F_CA03",
-            "public": "_f_ca03",
+            "public": "_sound_ctlblock_command_dispatch",
             "addend": 0,
             "evidence": "functions/F_CA03.entry"
           }
@@ -16792,7 +16792,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c9a4",
+        "public": "_sound_stream_delay_decode",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16814,36 +16814,36 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_ca03",
+        "public": "_sound_ctlblock_command_dispatch",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f_ca35": {
+          "_sound_ctlblock_flags_latch": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA35",
-            "public": "_f_ca35",
+            "public": "_sound_ctlblock_flags_latch",
             "addend": 0
           },
-          "_f_ca51": {
+          "_stream_level_percent_scale": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA51",
-            "public": "_f_ca51",
+            "public": "_stream_level_percent_scale",
             "addend": 0
           },
-          "_fca83": {
+          "_stream_level_base_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA83",
-            "public": "_fca83",
+            "public": "_stream_level_base_set",
             "addend": 0
           },
-          "_fca91": {
+          "_stream_note_delay_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA91",
-            "public": "_fca91",
+            "public": "_stream_note_delay_set",
             "addend": 0
           }
         },
@@ -16865,7 +16865,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_ca35",
+        "public": "_sound_ctlblock_flags_latch",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -16887,7 +16887,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_ca51",
+        "public": "_stream_level_percent_scale",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -16921,7 +16921,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fca83",
+        "public": "_stream_level_base_set",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -16952,7 +16952,7 @@
       "expected_sha256": "458c83f920938024c7995c29949061cf27e6c9760898868bdb93757e2e9ee785",
       "build": {
         "segment": "_TEXT",
-        "public": "_fca91",
+        "public": "_stream_note_delay_set",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -16982,7 +16982,7 @@
       "expected_sha256": "c4ce0ed8cffdb347ef381cde7c3b2401e0dd3a48ac2b367ce8d411294e946fc3",
       "build": {
         "segment": "_TEXT",
-        "public": "_fca9b",
+        "public": "_stream_note_program",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -17125,7 +17125,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fcaf1",
+        "public": "_stream_control_block_arm",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -17318,7 +17318,7 @@
             "offset": 34505,
             "evidence": "Historical call operand and exact public index"
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "offset": 51252,
             "evidence": "Historical call operand and exact public index"
@@ -17431,7 +17431,7 @@
             "offset": 41613,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "offset": 27418,
             "evidence": "Historical call operand and exact public index"
@@ -17505,7 +17505,7 @@
             "offset": 41613,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "offset": 27418,
             "evidence": "Historical call operand and exact public index"
@@ -17681,10 +17681,10 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           },
           "_longjmp": {
@@ -17947,11 +17947,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fad0e": {
+          "_slot_flags_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_AD0E.entry",
             "owner": "F_AD0E",
-            "public": "_fad0e",
+            "public": "_slot_flags_get",
             "addend": 0
           },
           "_gc5b2": {
@@ -18103,11 +18103,11 @@
             "public": "_keyboard_buffer_drain",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
           "_player_select_index": {
@@ -18236,11 +18236,11 @@
             "public": "_player_select_draw_screen",
             "addend": 0
           },
-          "_f7dfc": {
+          "_menu_list_source_set_players": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7DFC.entry",
             "owner": "F_7DFC",
-            "public": "_f7dfc",
+            "public": "_menu_list_source_set_players",
             "addend": 0
           },
           "_g1776": {
@@ -18338,11 +18338,11 @@
             "public": "_player_select_close_wipe",
             "addend": 0
           },
-          "_f7df1": {
+          "_menu_list_source_set_default": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7DF1.entry",
             "owner": "F_7DF1",
-            "public": "_f7df1",
+            "public": "_menu_list_source_set_default",
             "addend": 0
           },
           "_keyboard_chain_disable": {
@@ -18352,11 +18352,11 @@
             "public": "_keyboard_chain_disable",
             "addend": 0
           },
-          "_fc834": {
+          "_sound_voices_reset": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C834.entry",
             "owner": "F_C834",
-            "public": "_fc834",
+            "public": "_sound_voices_reset",
             "addend": 0
           }
         }
@@ -18431,7 +18431,7 @@
       "expected_sha256": "c52727ae50a891de4e8708e21193512cdb27cddf0b6de9bb60a142ba905af485",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd386",
+        "public": "_icon_list_animate_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -18472,7 +18472,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd3cf",
+        "public": "_icon_frame_reset_and_draw",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -18554,7 +18554,7 @@
       "expected_sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd45c",
+        "public": "_help_topic_keyboard_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -18589,7 +18589,7 @@
       "expected_sha256": "60ae921e6906de565ee547b8e63987a84ca3ee51b6cb9f8f59217f3254b2af36",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd471",
+        "public": "_help_topic_playing_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -18624,7 +18624,7 @@
       "expected_sha256": "2f4027c1b69a19aa411ab533ec23bd3637dd12f42c3e69e8f5f7af1f72b5e2ff",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd487",
+        "public": "_help_topic_obstacles_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -18659,7 +18659,7 @@
       "expected_sha256": "503fdaf7eadb6a174f92acdbb8caeff5423b817e03cf4010b4d66939b34bf5ba",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd49d",
+        "public": "_help_topic_puzzles_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -18826,10 +18826,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C110.phys"
           },
-          "_f_c77a": {
+          "_sound_backend_select_init": {
             "coordinate": "code_offset",
             "owner": "F_C77A",
-            "public": "_f_c77a",
+            "public": "_sound_backend_select_init",
             "addend": 0,
             "evidence": "functions/F_C77A.entry"
           }
@@ -18869,10 +18869,10 @@
             "public": "_timer_wait_ticks",
             "addend": 0
           },
-          "_fc877": {
+          "_sound_voices_disable_all": {
             "coordinate": "code_offset",
             "owner": "F_C877",
-            "public": "_fc877",
+            "public": "_sound_voices_disable_all",
             "addend": 0,
             "evidence": "functions/F_C877.entry"
           },
@@ -19050,10 +19050,10 @@
             "public": "_resource_record_cache_load",
             "addend": 0
           },
-          "_f_c7cb": {
+          "_sound_voice_table_reload": {
             "coordinate": "code_offset",
             "owner": "F_C7CB",
-            "public": "_f_c7cb",
+            "public": "_sound_voice_table_reload",
             "addend": 0,
             "evidence": "functions/F_C7CB.entry"
           }
@@ -19086,10 +19086,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAE.phys"
           },
-          "_f_c7cb": {
+          "_sound_voice_table_reload": {
             "coordinate": "code_offset",
             "owner": "F_C7CB",
-            "public": "_f_c7cb",
+            "public": "_sound_voice_table_reload",
             "addend": 0,
             "evidence": "functions/F_C7CB.entry"
           }
@@ -19134,7 +19134,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_d61c",
+        "public": "_draw_queue_render_highlighted",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -19153,7 +19153,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_d79c",
+        "public": "_draw_queue_render",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -19187,7 +19187,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd818",
+        "public": "_draw_queue_reset",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -19206,7 +19206,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd825",
+        "public": "_draw_queue_append",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -19483,11 +19483,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_voice_byte_table": {
@@ -19739,7 +19739,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "offset": 51352,
             "evidence": "Historical call operand and exact public index"
@@ -20116,7 +20116,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fdf98",
+        "public": "_music_voice_frequency_lookup",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -20451,11 +20451,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_voice_byte_table": {
@@ -20502,11 +20502,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_opl_note_select": {
@@ -20543,11 +20543,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_g2ff6": {
@@ -20594,11 +20594,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_voice_byte_table": {
@@ -20640,11 +20640,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_voice_byte_table": {
@@ -20686,11 +20686,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_voice_byte_table": {
@@ -20732,11 +20732,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_opl_am_depth": {
@@ -20778,11 +20778,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_voice_byte_table": {
@@ -20829,11 +20829,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_gc6b6": {
@@ -20895,11 +20895,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           }
         },
@@ -20931,11 +20931,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc898": {
+          "_opl_register_write": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C898.entry",
             "owner": "F_C898",
-            "public": "_fc898",
+            "public": "_opl_register_write",
             "addend": 0
           },
           "_g1830": {

@@ -23,7 +23,7 @@ extern char g9c[], gde[];  /* DGROUP+0x009C/0x00DE */
 extern char far *farmalloc();
 extern char far *video_normalize_far_ptr();
 extern void runtime_base();
-extern void f0232();
+extern void color_lookup_tables_init();
 extern void video_load_palette();
 extern char display_mode;                      /* DS:BFCD, the display mode -- plain char view;
                                                     see `mode` above for the unsigned-char view. */
@@ -65,7 +65,7 @@ void gfx_color_select(register int i)
 
 
 /* ---- F_020F (original code at 0x020F) ---- */
-f020f(){return g3902;}
+cur_color_index_get(){return g3902;}
 
 
 /* ---- F_0215 (original code at 0x0215) ---- */
@@ -78,7 +78,7 @@ void color_table_entry_set(int index, int value1, int value2)
 
 /* ---- F_0232 (original code at 0x0232) ---- */
 /* g3904/gbe declared int[] to agree with other members of this module. */
-void f0232(void)
+void color_lookup_tables_init(void)
 {
     movmem(g9c, (char *)g3904, 0x20);
     movmem(gde, (char *)gbe, 0x20);
@@ -131,7 +131,7 @@ void video_alloc_framebuffer()
         q = video_normalize_far_ptr(q + w);
     }
     runtime_base();
-    f0232();
+    color_lookup_tables_init();
     if (display_mode == 5)
         video_load_palette(g11e);
     else if (display_mode == 4)

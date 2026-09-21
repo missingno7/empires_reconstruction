@@ -8,12 +8,12 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f53bf
+public _sound_backend_probe
 extrn _g1778:word
 extrn _display_mode:word
 extrn _opl_detect:near
 
-_f53bf proc near
+_sound_backend_probe proc near
     mov word ptr ds:_g1778,0
     cmp word ptr ds:_display_mode,3
     jne probe_mode
@@ -48,7 +48,7 @@ wait_vga_port:
 
 selected:
     ret
-_f53bf endp
+_sound_backend_probe endp
 
 _TEXT ends
 end

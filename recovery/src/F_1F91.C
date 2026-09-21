@@ -1,7 +1,7 @@
 /* F_1F91 -- clamp a map span, then OR the bytes in its 26h-stride rows. */
 extern unsigned long board_records;
 
-void f1f91(x,y,n)
+void board_collision_span_or(x,y,n)
 int x,y,n;
 {
     asm push ds

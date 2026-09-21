@@ -9,7 +9,7 @@ extern int score_panel_x, score_panel_y, gc352, gc354, gc359, gc35b, gc35d;
 extern char far *ui_gfx_blob;
 extern void roundend_wait(), dialog_energy_lost_show(), gfx_box();
 extern int resource_load_record(), energy_adjust();extern void gfx_wipe_rect();
-extern void f7747();
+extern void hud_prompt_message_run();
 extern void score_set_position();
 extern void energy_set(int state);
 
@@ -22,7 +22,7 @@ int anim_frame_advance(int n)
         roundend_wait();
         if (gc35b == 1) {
             resource_load_record(g0dcc[gc35d].f17 + 0x1023);
-            f7747(ui_gfx_blob + 2);
+            hud_prompt_message_run(ui_gfx_blob + 2);
             return 0;
         } else {
             dialog_energy_lost_show();

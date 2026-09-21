@@ -17,7 +17,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f4e9f  proc    near
+_sprite_table_wipe_active  proc    near
         push    bp
         mov     bp,sp
         push    si
@@ -46,7 +46,7 @@ _f4e9f  proc    near
         push    ax
         mov     ax,[di+2]
         push    ax
-        call    _f4aa8
+        call    _play_window_wipe_clipped
         add     sp,8
         pop     cx
 @@next: add     di,20h
@@ -55,10 +55,10 @@ _f4e9f  proc    near
         pop     si
         pop     bp
         ret
-_f4e9f  endp
+_sprite_table_wipe_active  endp
 _TEXT   ends
-        public  _f4e9f
-        extrn   _f4aa8:near
+        public  _sprite_table_wipe_active
+        extrn   _play_window_wipe_clipped:near
         extrn   _gb3ae:byte
         extrn   _board_record_index:word
         extrn   _gbf66:byte

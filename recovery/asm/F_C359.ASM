@@ -15,8 +15,8 @@ voice_table_a equ 17fch
 voice_table_b equ 1814h
 voice_state equ 177ch
 
-public _f_c359
-_f_c359:
+public _sound_control_value_select
+_sound_control_value_select:
     push bp
     mov bp, sp
     cmp word ptr ds:[snd_paused], 1

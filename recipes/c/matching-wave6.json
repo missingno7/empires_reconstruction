@@ -9,7 +9,7 @@
       "source": "src/RESOURCE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6771",
+        "public": "_sprite_sheet_decode_sequential",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -19,17 +19,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f6f4b": {
+          "_sprite_decode_4bpp_mode13h": {
             "coordinate": "code_offset",
             "owner": "F_6F4B",
-            "public": "_f6f4b",
+            "public": "_sprite_decode_4bpp_mode13h",
             "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
-          "_f6eff": {
+          "_sprite_decode_4bpp_planar": {
             "coordinate": "code_offset",
             "owner": "F_6EFF",
-            "public": "_f6eff",
+            "public": "_sprite_decode_4bpp_planar",
             "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           }
@@ -54,7 +54,7 @@
       "source": "src/RESOURCE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f67dc",
+        "public": "_sprite_sheet_decode_indexed",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -64,17 +64,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f6f4b": {
+          "_sprite_decode_4bpp_mode13h": {
             "coordinate": "code_offset",
             "owner": "F_6F4B",
-            "public": "_f6f4b",
+            "public": "_sprite_decode_4bpp_mode13h",
             "addend": 0,
             "evidence": "functions/F_6F4B.entry"
           },
-          "_f6eff": {
+          "_sprite_decode_4bpp_planar": {
             "coordinate": "code_offset",
             "owner": "F_6EFF",
-            "public": "_f6eff",
+            "public": "_sprite_decode_4bpp_planar",
             "addend": 0,
             "evidence": "functions/F_6EFF.entry"
           }
@@ -260,11 +260,11 @@
             "public": "_keyboard_buffer_drain",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           },
           "_player_select_index": {

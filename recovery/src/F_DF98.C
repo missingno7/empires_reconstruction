@@ -1,5 +1,5 @@
 /* F_DF98 -- complete far-call and state update routine. */
-void fdf98()
+void music_voice_frequency_lookup()
 {
     asm db 055h,08bh,0ech,083h,0ech,006h,056h,057h,08bh,046h,006h,005h,000h,0e0h,099h,052h,050h,0a1h,06bh,0cah,099h,05bh,059h
 #ifndef EMPIRES_SHARED_ARITHMETIC_MODULE

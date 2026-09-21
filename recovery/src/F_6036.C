@@ -1,11 +1,11 @@
 /* F_6036 -- traverse sprite records and append their compact draw records. */
 extern unsigned char far *sprbase;
 extern unsigned char far *objtab;
-extern void fd825();
+extern void draw_queue_append();
 extern void gfx_copy_rect();
 extern unsigned g0a20;
 
-void f6036()
+void sprite_table_queue_draws()
 {
     asm db 055h,08bh,0ech,056h,057h,01eh,0fch,0bdh,02fh,0
     asm db 0c4h,03eh
@@ -19,7 +19,7 @@ void f6036()
     asm mov ax,DGROUP
     asm db 08eh,0d8h,0b8h,01eh,0
     asm db 050h,0b8h,0fh,0,050h,052h,053h,055h
-    asm call near ptr fd825
+    asm call near ptr draw_queue_append
     asm db 058h,05bh,05ah,083h,0c4h,4,07h,06h,033h,0c0h,050h
     asm db 06h,057h,081h,0c2h,0b8h,0,052h,0d1h,0e3h,053h
     asm call near ptr gfx_copy_rect

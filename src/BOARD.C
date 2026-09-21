@@ -41,8 +41,8 @@ extern char far *src, far *dst;         /* DS:C5CA -> DS:40C4 */
 /*@SYM _dst=0x40C4 kind=g key=storage_objects/M_23BF4.phys*/
 extern void sound_stop_reset(void);                    /* CB48 */
 /*@SYM _sound_stop_reset=0xCB48 kind=f key=functions/F_CB48.entry*/
-extern void fcaf1(int n);                   /* CAF1 */
-/*@SYM _fcaf1=0xCAF1 kind=f key=functions/F_CAF1.entry*/
+extern void stream_control_block_arm(int n);                   /* CAF1 */
+/*@SYM _stream_control_block_arm=0xCAF1 kind=f key=functions/F_CAF1.entry*/
 extern void board_redraw_view(void);                    /* 22B1 */
 /*@SYM _board_redraw_view=0x22B1 kind=f key=functions/F_22B1.entry*/
 extern void timer_deadline_arm(int n);               /* 6C57 */
@@ -53,8 +53,8 @@ extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4 */
 /*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
 extern void copy(int x, int y, char far *s, int n);             /* 03CC */
 /*@SYM _copy=0x03CC kind=f key=functions/F_03CC.entry*/
-extern void f1ecd(void);                    /* 1ECD */
-/*@SYM _f1ecd=0x1ECD kind=f key=functions/F_1ECD.entry*/
+extern void rect_queue_flush(void);                    /* 1ECD */
+/*@SYM _rect_queue_flush=0x1ECD kind=f key=functions/F_1ECD.entry*/
 extern void timer_deadline_wait(void);                    /* 6C6F */
 /*@SYM _timer_deadline_wait=0x6C6F kind=f key=functions/F_6C6F.entry*/
 extern void box(int x, int y, int w, int h);                    /* 039F */
@@ -209,7 +209,7 @@ void board_scan_wipe_effect(register int i)
 
     sound_stop_reset();
     g72c = 0;
-    fcaf1(0x0d);
+    stream_control_block_arm(0x0d);
     g96 = 0x190;
     board_redraw_view();
     gbc = 1;
@@ -219,7 +219,7 @@ void board_scan_wipe_effect(register int i)
         blit(xa[i], ya[i] + 0xb8, (char far *)&cel[k]);
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x21, xa[i], ya[i]);
         copy(g736, g738, pool + g72e * 0x2a2, g73a);
-        f1ecd();
+        rect_queue_flush();
         timer_deadline_wait();
     }
     board_redraw_view();
@@ -229,11 +229,11 @@ void board_scan_wipe_effect(register int i)
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x28, xa[i], ya[i]);
         board_redraw_view();
         copy(xa[i] + 4, ya[i], pool + k * 0x2a2, g73a);
-        f1ecd();
+        rect_queue_flush();
         timer_deadline_wait();
     }
     gbc = 0;
-    fcaf1(0x0d);
+    stream_control_block_arm(0x0d);
     for (k = 3; k >= 0; k--) {
         timer_deadline_arm(0x18);
         blit(xa[i], ya[i], (char far *)&cel[k]);
@@ -391,7 +391,7 @@ char far *record_field_skip_n(int n)
 
 /* ---- F_2A70 (original code at 0x2A70) ---- */
 /* Walk the nested count-prefixed tables at record_table_root and return the near address of the fourth level. */
-unsigned char near *f2a70(){unsigned char *p;p=record_table_root+*record_table_root*4+1;p=record_field_skip_n(*p);p+=*p*3+1;p+=*p*12+1;return (unsigned char near *)(p+*p*3+1);}
+unsigned char near *record_table_level4_ptr(){unsigned char *p;p=record_table_root+*record_table_root*4+1;p=record_field_skip_n(*p);p+=*p*3+1;p+=*p*12+1;return (unsigned char near *)(p+*p*3+1);}
 
 
 /* ---- F_2AE2 (original code at 0x2AE2) ---- */
@@ -401,10 +401,10 @@ unsigned char near *f2a70(){unsigned char *p;p=record_table_root+*record_table_r
 /*@PUB _board_redraw_paint*/
 extern int value_parity(), resource_load_record();extern void gfx_copy_rect();extern void gfx_blit_bitmap();extern void gfx_wipe_rect();
 extern void f2986();
-extern int f6036(), f_d61c(), fd818();
+extern int sprite_table_queue_draws(), draw_queue_render_highlighted(), draw_queue_reset();
 extern void board_mark_record_cells(void);
-extern void fd825(char, int, int, int, int);
-extern unsigned char near *f2a70();
+extern void draw_queue_append(char, int, int, int, int);
+extern unsigned char near *record_table_level4_ptr();
 
 extern char far *board_records;
 extern unsigned char far *gbfc4;
@@ -445,7 +445,7 @@ void board_redraw_paint()
         resource_load_record(g73c + 0x101e);
         gfx_copy_rect(8, 0xc8, ui_gfx_shadow_a, 0);
     }
-    n = *(q = f2a70());
+    n = *(q = record_table_level4_ptr());
     p = q + 1;
     for (i = 0; i < n; i++, p += 3)
         if (p[2] >= 0x80) {
@@ -491,19 +491,19 @@ void board_redraw_paint()
     for (i = 0; i < g722; i++)
         gfx_blit_bitmap(w8bea[i], w8bf4[i] + 0xb8, s79bf);
     if (*record_table_root != 0)
-        f_d61c();
+        draw_queue_render_highlighted();
     gfx_wipe_rect(0, 0xc8, 0x140, 0x90, 0, 0x158);
     g96 = 0x190;
     board_mark_record_cells();
-    fd818();
+    draw_queue_reset();
     for (i = 0; i < 6; i++)
         if (board_record_index + 1 == b437a[i]) {
             gfx_copy_rect((w8 = b4380[i]) * 2, (j = b4386[i]) + 0xb8, s7400, 0);
-            fd825(i + 1, w8, j, 8, 0x10);
+            draw_queue_append(i + 1, w8, j, 8, 0x10);
         }
     if (((unsigned char far *)board_records)[0x3e7] == board_record_index + 1) {
         gfx_copy_rect((w8 = ((unsigned char far *)board_records)[0x3e5]) * 2, (j = ((unsigned char far *)board_records)[0x3e6]) + 0xb8, s735e, 0);
-        fd825(7, w8, j, 8, 0x10);
+        draw_queue_append(7, w8, j, 8, 0x10);
     }
     p = (unsigned char far *) (record_table_root + *record_table_root * 4 + 1);
     n = *p;
@@ -513,22 +513,22 @@ void board_redraw_paint()
         j = p[2];
         w8 = p[3];
         if ((w4 = p[1]) > 2) {
-            fd825(i + 8, j, w8, 4, 8);
+            draw_queue_append(i + 8, j, w8, 4, 8);
         } else if (w4 == 0) {
             if (p[4] != 0)
                 gfx_copy_rect(j * 2, w8 + 0xb8, s9b6e, 0);
             else
                 gfx_copy_rect(j * 2, w8 + 0xb8, s9ae0, 0);
-            fd825(i + 8, j + 6, w8 + 3, 2, 6);
+            draw_queue_append(i + 8, j + 6, w8 + 3, 2, 6);
         } else if (w4 == 1) {
             if (p[4] != 0)
                 gfx_copy_rect(j * 2, w8 + 0xb8, s9a5c, 0);
             else
                 gfx_copy_rect(j * 2, w8 + 0xb8, s99da, 0);
-            fd825(i + 8, j + 3, w8, 7, 7);
+            draw_queue_append(i + 8, j + 3, w8, 7, 7);
         } else {
             gfx_copy_rect(j * 2, w8 + 0xb8, s9c50, 0);
-            fd825(i + 8, j, w8, 8, 0x10);
+            draw_queue_append(i + 8, j, w8, 8, 0x10);
         }
     }
     n = *(g96e6 = p);
@@ -539,7 +539,7 @@ void board_redraw_paint()
         w8 = p[1];
         gfx_copy_rect(j, w8 + 0xb8, s6e88, 0);
         gfx_copy_rect(j + 4, w8 + 0xb8, a893c[p[2]], 0);
-        fd825(p[2] + 0x20, p[0] + 1, w8 + 4, 6, 0xa);
+        draw_queue_append(p[2] + 0x20, p[0] + 1, w8 + 4, 6, 0xa);
     }
     n = *(g96ea = p);
     i = 0;
@@ -551,7 +551,7 @@ void board_redraw_paint()
             board_records[w2] = board_records[w2 + 0x26] = 7;
     }
     if (*(g40d0 = p) != 0)
-        f6036();
+        sprite_table_queue_draws();
     g96 = 0x9f;
 }
 
@@ -565,14 +565,14 @@ extern struct record3e8 g43b4[];
 
 extern int g072e, g00bc;
 extern char far *ui_gfx_blob, far *rect_queue_write_ptr;
-extern void f1ecd(void);
+extern void rect_queue_flush(void);
 extern void timer_deadline_wait(void);
 extern void board_redraw_view();
 extern void timer_deadline_arm();
 extern void sprite_draw_cursor(void);
 extern void timer_wait_ticks();
 extern int puzzle_run();
-extern void f4eeb(int n);
+extern void board_actors_draw(int n);
 extern void hud_panel_open();
 extern void sound_stop_reset(void);
 extern void board_redraw_paint(void);
@@ -585,8 +585,8 @@ extern int gbc, g40ce;
 extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4, same entry as gfx_wipe_rect under this alias */
 /*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
 extern char far *record_table_root;
-extern int f250c(), f32fa(), f6181();
-extern void fcaf1();
+extern int f250c(), f32fa(), sprite_record_adjust_draw();
+extern void stream_control_block_arm();
 extern int g96;
 extern char s9a5c[], s99da[], s9b6e[], s9ae0[];
 extern void f2986();
@@ -613,7 +613,7 @@ void board_scroll_transition(void)
             g072e = y;
             board_redraw_view();
             sprite_draw_cursor();
-            f1ecd();
+            rect_queue_flush();
             timer_deadline_wait();
         }
         timer_wait_ticks(0x30);
@@ -623,7 +623,7 @@ void board_scroll_transition(void)
     puzzle_run();
     board_redraw_paint();
     gfx_wipe_rect(8, 0xc8, 0x130, 0x90, 8, 0x10);
-    f4eeb(0);
+    board_actors_draw(0);
     sprite_draw_cursor();
     gfx_box(8, 0x10, 0x130, 0x90);
     hud_panel_open();
@@ -635,7 +635,7 @@ void board_scroll_transition(void)
             g072e = y;
             board_redraw_view();
             sprite_draw_cursor();
-            f1ecd();
+            rect_queue_flush();
             timer_deadline_wait();
         }
         g072e = 0;
@@ -645,14 +645,14 @@ void board_scroll_transition(void)
 
 
 /* ---- F_329F (original code at 0x329F) ---- */
-void f329f(void)
+void board_record_index_select(void)
 {
     board_records = (char far *) &g43b4[board_record_index];
     board_redraw_paint();
     dst = src;
     wipe(8, 0xc8, 0x130, 0x90, 8, 0x10);
     g40ce = gbc = 0;
-    f4eeb(0);
+    board_actors_draw(0);
     gbc = 1;
 }
 
@@ -701,9 +701,9 @@ void board_run_unit_script(unsigned char far *s)
             g96 = 0x9f;
             gfx_wipe_rect(x, y + 0xb8, 0x18, 9, x, y);
         }
-        fcaf1(8);
+        stream_control_block_arm(8);
     } else if (s[1] == 2)
-        fcaf1(0x16);
+        stream_control_block_arm(0x16);
     s += i = 5;
     for (; i < n; i++, s++) {
         c = *s;
@@ -711,7 +711,7 @@ void board_run_unit_script(unsigned char far *s)
             if (c & 0x10)
                 f32fa(c & 0xf);
             else if (c & 0x40)
-                f6181(c & 0xf);
+                sprite_record_adjust_draw(c & 0xf);
             else
                 f250c(c);
         } else if ((c & 0x30) == 0) {
@@ -772,7 +772,7 @@ void board_advance_unit_moves(int a)
     register int u, k;
 
     g96 = 0x190;
-    fcaf1(0xa);
+    stream_control_block_arm(0xa);
     a++;
     n = *g96ea;
     p = g96ea + 1;
@@ -817,13 +817,13 @@ void board_advance_unit_moves(int a)
 
 
 /* ---- F_3986 (original code at 0x3986) ---- */
-void f3986(void)
+void board_record_complete(void)
 {
     int si, di, w, h;
 
     g73e = board_record_index;
     g96 = 0x190;
-    f4eeb(0xb8);
+    board_actors_draw(0xb8);
     g96 = 0x9f;
 
     if (g736 < 8) {

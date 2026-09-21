@@ -77,7 +77,7 @@
     {
       "owner": "F_2A70",
       "path": "src/BOARD.C",
-      "public": "_f2a70"
+      "public": "_record_table_level4_ptr"
     },
     {
       "owner": "F_2AE2",
@@ -92,7 +92,7 @@
     {
       "owner": "F_329F",
       "path": "src/BOARD.C",
-      "public": "_f329f"
+      "public": "_board_record_index_select"
     },
     {
       "owner": "F_32FA",
@@ -112,7 +112,7 @@
     {
       "owner": "F_3986",
       "path": "src/BOARD.C",
-      "public": "_f3986"
+      "public": "_board_record_complete"
     }
   ],
   "evidence": "One translation unit proven byte-exact by tools/probe_tu.py (6758 bytes, 407 fixups, no flags): BRDPAINT (F_2AE2) is byte-exact only under -B, which Turbo C 2.0 takes only for a unit containing inline asm, and BOARDSCR (F_31C4..F_3986, asm in board_run_unit_script) is its only asm neighbour on this side; the a74a2 view conflict (2-D here, flat in BRDTERR) proves the unit ends before BRDTERR. BOARDDRW is -B-neutral and joins by contiguity and subject (board drawing). Members merged into src/BOARD.C. Members merged into src/BOARD.C."

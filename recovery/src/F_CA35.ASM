@@ -8,9 +8,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_ca35
+public _sound_ctlblock_flags_latch
 
-_f_ca35 proc near
+_sound_ctlblock_flags_latch proc near
     push bp
     mov bp,sp
     cmp al,0
@@ -24,7 +24,7 @@ set_one:
     mov word ptr ds:[1e94h],1
     pop bp
     ret
-_f_ca35 endp
+_sound_ctlblock_flags_latch endp
 
 _TEXT ends
 end

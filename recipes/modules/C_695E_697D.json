@@ -12,7 +12,7 @@
     {
       "owner": "F_697D",
       "path": "src/KEYIRQ.C",
-      "public": "_f697d"
+      "public": "_keyboard_irq_restore"
     }
   ],
   "evidence": "2 contiguous flag-identical TCC modules (subset of run 8), no data_owners. IRQ1 keyboard vector take-over (install F_699E) and its restore counterpart. Members merged into src/KEYIRQ.C."

@@ -11,14 +11,14 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_c755
-extrn _f_c6b9:near
+public _sound_voices_reset_and_service
+extrn _voice_disable:near
 extrn _g1784:word
 extrn _g1786:word
 extrn _g177a:word
 extrn _g17ac:word
 
-_f_c755 proc near
+_sound_voices_reset_and_service proc near
     push bp
     mov bp,sp
     mov word ptr DGROUP:_g1784,0
@@ -27,12 +27,12 @@ _f_c755 proc near
     mov cx,DGROUP:_g177a
 reset_voice:
     mov word ptr [si+DGROUP:_g17ac],0
-    call _f_c6b9
+    call _voice_disable
     add si,2
     loop reset_voice
     pop bp
     ret
-_f_c755 endp
+_sound_voices_reset_and_service endp
 
 _TEXT ends
 end

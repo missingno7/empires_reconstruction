@@ -42,12 +42,12 @@
     {
       "owner": "F_AA1F",
       "path": "src/SLOTMENU.C",
-      "public": "_faa1f"
+      "public": "_slot_list_select_loop"
     },
     {
       "owner": "F_AB66",
       "path": "src/SLOTMENU.C",
-      "public": "_fab66"
+      "public": "_slot_menu_run"
     },
     {
       "owner": "F_ACE7",
@@ -57,7 +57,7 @@
     {
       "owner": "F_AD0E",
       "path": "src/SLOTMENU.C",
-      "public": "_fad0e"
+      "public": "_slot_flags_get"
     }
   ],
   "evidence": "Eleven contiguous matching C extents (object_order indices 254-264, R0183..R0193), identical compiler flags (-c -mc -1- -f- -N-, empty flags_append), no data_owners/module_segments on any member. Continues the record-table/menu subsystem (C470.H, DIALOG.H) started by C_A09D_A24E, split around F_A28D (index 253, owns C_DATA_A28D) which stays standalone, and stops before RELOC_F_AD25_F_ADCF/C_AD25_AF45's existing merged module (index 265) to avoid overlap. Historical module identity is not established; this is a readability grouping proven byte-exact. Members merged into src/SLOTMENU.C."

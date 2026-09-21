@@ -11,7 +11,7 @@ extern int snd_one;                     /* DS:1E94 */
 /*@SYM _snd_one=0x1E94 kind=g key=storage_objects/G_P219C4.phys*/
 extern int snd_len;                     /* DS:1E8E */
 /*@SYM _snd_len=0x1E8E kind=g key=storage_objects/G_P219BE.phys*/
-extern void fc914();
+extern void sound_stream_command_step();
 extern void speaker_gate_off();
 
 void sound_tick_step()
@@ -19,7 +19,7 @@ void sound_tick_step()
     asm mov es,word ptr snd_seg
     asm cmp word ptr snd_delay,0
     asm jne L1
-    asm call near ptr fc914
+    asm call near ptr sound_stream_command_step
     asm cmp word ptr snd_on,0
     asm je  L2
 L1: asm dec word ptr snd_delay

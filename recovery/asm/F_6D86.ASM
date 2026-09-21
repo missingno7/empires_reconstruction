@@ -10,8 +10,8 @@
 ;      until the source is exhausted; returns the number of bytes written.
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	ASSUME	CS:_TEXT
-	PUBLIC	_f6d86
-_f6d86	PROC	NEAR
+	PUBLIC	_rle_packbits_decode
+_rle_packbits_decode	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	push	si
@@ -53,6 +53,6 @@ L_done:
 	pop	si
 	pop	bp
 	ret
-_f6d86	ENDP
+_rle_packbits_decode	ENDP
 _TEXT	ENDS
 	END

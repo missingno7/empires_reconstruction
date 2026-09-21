@@ -23,8 +23,8 @@ state_value equ 179ch
 state_text equ 17dch
 renderer_delta equ 3e6h
 
-public _f_c440
-_f_c440:
+public _sound_control_block_advance
+_sound_control_block_advance:
     push bp
     mov bp, sp
     xor si, si

@@ -10,7 +10,7 @@
       "expected_sha256": "31295153914e2ff4fd9701e59b71a1da5377918d9cddfaf9315667d83777899d",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc877",
+        "public": "_sound_voices_disable_all",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -23,10 +23,10 @@
             "offset": 6010,
             "coordinate": "DGROUP_offset"
           },
-          "_f_c6b9": {
+          "_voice_disable": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
-            "public": "_f_c6b9",
+            "public": "_voice_disable",
             "addend": 0,
             "evidence": "exact reconstructed function entry"
           }

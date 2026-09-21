@@ -54,16 +54,16 @@
       "source": "src/PUZZLE.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f950c",
+        "public": "_puzzle_cell_highlight_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "evidence": "functions/F_020F.entry",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0
           },
           "_display_mode": {

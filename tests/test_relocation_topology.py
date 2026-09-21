@@ -34,11 +34,11 @@ def test_audit_known_descending_and_ascending_units():
         assert not row["mismatch"]
 
     # F_9EC3: TASM module, ascending relocations, agrees with TASM prediction.
-    f9ec3 = by_module["F_9EC3"]
-    assert f9ec3["tool"] == "TASM.EXE"
-    assert f9ec3["observed_direction"] == "ascending"
-    assert f9ec3["predicted_direction"] == "ascending"
-    assert not f9ec3["mismatch"]
+    anim_step_row_copy = by_module["F_9EC3"]
+    assert anim_step_row_copy["tool"] == "TASM.EXE"
+    assert anim_step_row_copy["observed_direction"] == "ascending"
+    assert anim_step_row_copy["predicted_direction"] == "ascending"
+    assert not anim_step_row_copy["mismatch"]
 
     # MUSIC (M_DDD9_DF98): now produced via a plain Turbo C route, but
     # predict_direction's inline-asm regex still fires on the word "asm"

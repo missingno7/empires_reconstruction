@@ -54,7 +54,7 @@ extern char ga22[][16];                 /* DS:0A22 -- 16-byte name rows */
 extern long ga52[];                     /* DS:0A52 */
 extern char near current_drive;
 extern void resource_file_open(int), disk_reset_retry(int);
-extern int  f6dcc(), f6d86(), f6771(), f67dc(), f6f4b(), f6eff();
+extern int  lz_decompress(), rle_packbits_decode(), sprite_sheet_decode_sequential(), sprite_sheet_decode_indexed(), sprite_decode_4bpp_mode13h(), sprite_decode_4bpp_planar();
 extern char gc0cb;                      /* DS:C0CB */
 extern char display_mode;                      /* DS:BFCD */
 extern char far *ui_gfx_shadow_b;                 /* DS:C5BE, segment at DS:C5C0 */
@@ -246,28 +246,28 @@ unsigned p;
     fl = ui_gfx_blob[1];
     s -= 2;
     if ((fl & 2) && (fl & 1)) {
-        s = f6dcc(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
-        s = f6d86(ui_gfx_shadow_b, ui_gfx_shadow_a, s);
+        s = lz_decompress(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
+        s = rle_packbits_decode(ui_gfx_shadow_b, ui_gfx_shadow_a, s);
     } else if (fl & 2) {
-        s = f6dcc(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
+        s = lz_decompress(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
         memmove(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
     } else if (fl & 1) {
-        s = f6d86(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
+        s = rle_packbits_decode(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
         memmove(ui_gfx_shadow_a, ui_gfx_shadow_b, s);
     }
     if (display_mode != 5) {
         switch (gc0cb) {
         case 0x47:
             if (display_mode == 2)
-                f6f4b(ui_gfx_shadow_a);
+                sprite_decode_4bpp_mode13h(ui_gfx_shadow_a);
             else
-                f6eff(ui_gfx_shadow_a);
+                sprite_decode_4bpp_planar(ui_gfx_shadow_a);
             break;
         case 0:
-            f6771(ui_gfx_shadow_a, s);
+            sprite_sheet_decode_sequential(ui_gfx_shadow_a, s);
             break;
         case 1:
-            f67dc(ui_gfx_shadow_a);
+            sprite_sheet_decode_indexed(ui_gfx_shadow_a);
             break;
         }
     }
@@ -277,11 +277,11 @@ unsigned p;
 
 
 /* ---- F_6771 (original code at 0x6771) ---- */
-f6771(p,n) char *p;unsigned n;{register unsigned i;unsigned char *q;for(i=0;i<n;){q=p+i;if(*q!=0x47)break;if(display_mode==2)f6f4b(q+2);else f6eff(q+2);i+=q[34]*q[35]+36;}}
+sprite_sheet_decode_sequential(p,n) char *p;unsigned n;{register unsigned i;unsigned char *q;for(i=0;i<n;){q=p+i;if(*q!=0x47)break;if(display_mode==2)sprite_decode_4bpp_mode13h(q+2);else sprite_decode_4bpp_planar(q+2);i+=q[34]*q[35]+36;}}
 
 
 /* ---- F_67DC (original code at 0x67DC) ---- */
-f67dc(p) char *p;{register int i,n;unsigned *t;char *q;t=(unsigned *)p;n=(*t>>1)-1;for(i=0;i<n;i++){q=p+*t;t++;if(*q==0x47){if(display_mode==2)f6f4b(q+2);else f6eff(q+2);}}}
+sprite_sheet_decode_indexed(p) char *p;{register int i,n;unsigned *t;char *q;t=(unsigned *)p;n=(*t>>1)-1;for(i=0;i<n;i++){q=p+*t;t++;if(*q==0x47){if(display_mode==2)sprite_decode_4bpp_mode13h(q+2);else sprite_decode_4bpp_planar(q+2);}}}
 
 
 /* ---- F_684A (original code at 0x684A) ---- */

@@ -2,7 +2,7 @@ extern unsigned int g8fe, ga20;
 extern unsigned char far *gbfc8, *g40d0;
 extern void gfx_wipe_rect(), gfx_copy_rect();
 
-void f60a9()
+void animated_tile_tick()
 {
     asm db 055h,08Bh,0ECh,056h,057h,01Eh,0FCh
     asm db 083h,03Eh

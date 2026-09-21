@@ -17,7 +17,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f1f91  proc    near
+_board_collision_span_or  proc    near
         push    bp
         mov     bp,sp
         push    si
@@ -78,8 +78,8 @@ _f1f91  proc    near
         pop     si
         pop     bp
         ret
-_f1f91  endp
+_board_collision_span_or  endp
 _TEXT   ends
-        public  _f1f91
+        public  _board_collision_span_or
         extrn   _board_records:dword
         end

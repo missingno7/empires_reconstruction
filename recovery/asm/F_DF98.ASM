@@ -4,7 +4,7 @@ _TEXT segment word public 'CODE'
 assume cs:_TEXT, ds:_TEXT
 
 extrn LXMUL@:far, LDIV@:far
-public _fdf98
+public _music_voice_frequency_lookup
 
 g3752 equ 3752h
 g3754 equ 3754h
@@ -89,7 +89,7 @@ fdf98_return:
 
 ; The entry contribution starts at zero and contains the LXMUL@ fixup.
 org 0
-_fdf98:
+_music_voice_frequency_lookup:
     push bp
     mov bp, sp
     sub sp, 6

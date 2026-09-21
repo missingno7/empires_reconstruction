@@ -19,5 +19,5 @@ class MatchingCWave27Tests(unittest.TestCase):
         exact(owner['id'])
         mutant_rejected(
             owner['id'],
-            b'case 27: di = 1; i = 0; break;\n        case 328:\n        case 336: i ^= 1; fa1e0(); break;\n        case 13: di = i; break;',
-            b'case 13: di = i; break;\n        case 27: di = 1; i = 0; break;\n        case 328:\n        case 336: i ^= 1; fa1e0(); break;')
+            b'case 27: di = 1; i = 0; break;\n        case 328:\n        case 336: i ^= 1; quit_confirm_toggle_draw(); break;\n        case 13: di = i; break;',
+            b'case 13: di = i; break;\n        case 27: di = 1; i = 0; break;\n        case 328:\n        case 336: i ^= 1; quit_confirm_toggle_draw(); break;')

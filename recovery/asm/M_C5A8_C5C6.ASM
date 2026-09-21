@@ -14,7 +14,7 @@ DGROUP group _DATA,_BSS
 
 assume cs:_TEXT, ds:DGROUP
 
-public _f_c5a8, _f_c5b3, _f_c5c6
+public _f_c5a8, _sound_table_word_select_store, _f_c5c6
 
 
 
@@ -35,7 +35,7 @@ _f_c5a8 endp
 
 
 
-_f_c5b3 proc near
+_sound_table_word_select_store proc near
     push bp
     mov bp,sp
     mov bl,al
@@ -45,7 +45,7 @@ _f_c5b3 proc near
     mov [si+17c4h],bx
     pop bp
     ret
-_f_c5b3 endp
+_sound_table_word_select_store endp
 
 ; Original entry F_C5C6 -- store AL (zero-extended) through SI at DS:17DCh.
 

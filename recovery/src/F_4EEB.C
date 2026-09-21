@@ -8,7 +8,7 @@ extern unsigned char gb3ae[];
 extern unsigned int board_record_index;
 extern unsigned long resource_ptr_table[];
 
-void f4eeb(y0)
+void board_actors_draw(y0)
 int y0;
 {
     asm mov ax,0fh

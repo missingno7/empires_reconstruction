@@ -9,8 +9,8 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 
-public _f_c9a4
-_f_c9a4:
+public _sound_stream_delay_decode
+_sound_stream_delay_decode:
     push bp
     mov bp, sp
     mov al, es:[di+1]

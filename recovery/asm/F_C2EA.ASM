@@ -15,8 +15,8 @@ command_value equ 179ch
 command_guard equ 17ech
 command_state equ 17ach
 
-public _f_c2ea
-_f_c2ea:
+public _sound_command_stream_dispatch
+_sound_command_stream_dispatch:
     push bp
     mov bp, sp
 dispatch:

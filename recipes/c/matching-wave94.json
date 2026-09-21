@@ -13,7 +13,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c2ea",
+        "public": "_sound_command_stream_dispatch",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -32,7 +32,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c359",
+        "public": "_sound_control_value_select",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -51,7 +51,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c3db",
+        "public": "_sound_command_value_derive",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -70,7 +70,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c440",
+        "public": "_sound_control_block_advance",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -89,7 +89,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c501",
+        "public": "_sound_secondary_cmd_dispatch",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -108,7 +108,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c549",
+        "public": "_sound_command_flags_update",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -146,7 +146,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c5b3",
+        "public": "_sound_table_word_select_store",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -184,7 +184,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c5d1",
+        "public": "_voice_command_decode_apply",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -203,7 +203,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c678",
+        "public": "_voice_enable",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -222,7 +222,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c6b9",
+        "public": "_voice_disable",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -241,7 +241,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c706",
+        "public": "_sound_pit_divisor_program",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -260,7 +260,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c755",
+        "public": "_sound_voices_reset_and_service",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -279,7 +279,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c77a",
+        "public": "_sound_backend_select_init",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -298,7 +298,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c7cb",
+        "public": "_sound_voice_table_reload",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -317,7 +317,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c9a4",
+        "public": "_sound_stream_delay_decode",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -336,36 +336,36 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_ca03",
+        "public": "_sound_ctlblock_command_dispatch",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f_ca35": {
+          "_sound_ctlblock_flags_latch": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA35",
-            "public": "_f_ca35",
+            "public": "_sound_ctlblock_flags_latch",
             "addend": 0
           },
-          "_f_ca51": {
+          "_stream_level_percent_scale": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA51",
-            "public": "_f_ca51",
+            "public": "_stream_level_percent_scale",
             "addend": 0
           },
-          "_fca83": {
+          "_stream_level_base_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA83",
-            "public": "_fca83",
+            "public": "_stream_level_base_set",
             "addend": 0
           },
-          "_fca91": {
+          "_stream_note_delay_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA91",
-            "public": "_fca91",
+            "public": "_stream_note_delay_set",
             "addend": 0
           }
         },
@@ -384,7 +384,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_ca35",
+        "public": "_sound_ctlblock_flags_latch",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -403,7 +403,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f_ca51",
+        "public": "_stream_level_percent_scale",
         "span": 1,
         "flags_append": "",
         "bindings": {

@@ -11,15 +11,15 @@ g_c57e equ 0c57eh
 g_13ba equ 13bah
 g_13b8 equ 13b8h
 
-public _faa1f
+public _slot_list_select_loop
 extrn _slot_row_highlight:near
 extrn _keyboard_buffer_drain:near
-extrn _faf45:near
+extrn _menu_wait_key_animated:near
 extrn _str_concat_far_list:near
 extrn _dialog_run:near
 extrn _slot_delete:near
 
-_faa1f proc near
+_slot_list_select_loop proc near
  push bp
  mov bp,sp
  sub sp,0cch
@@ -44,7 +44,7 @@ dispatch:
  call _slot_row_highlight
  pop cx
  call _keyboard_buffer_drain
- call _faf45
+ call _menu_wait_key_animated
  mov cx,5
  mov bx,offset state_keys
 find_state:
@@ -169,6 +169,6 @@ finish:
  mov sp,bp
  pop bp
  ret
-_faa1f endp
+_slot_list_select_loop endp
 _TEXT ends
 end

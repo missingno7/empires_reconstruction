@@ -4,7 +4,7 @@ extern unsigned char far *objtab;
 extern void gfx_wipe_rect();
 extern void gfx_copy_rect();
 
-void f6181()
+void sprite_record_adjust_draw()
 {
     asm db 055h,08bh,0ech,056h,057h,01eh,0fch,0c4h,03eh
     asm dw sprbase

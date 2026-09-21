@@ -13,7 +13,7 @@ _TEXT segment byte public 'CODE'
 
 extrn LXMUL@:far, LDIV@:far, LXLSH@:far
 extrn _gc6c3:word, _gca24:word, _gca6d:word, _gc5ea:word, _gc64a:word
-public _music_note_to_divisor, _music_build_octave_table, _music_reset_tuning_tables, _fdf98
+public _music_note_to_divisor, _music_build_octave_table, _music_reset_tuning_tables, _music_voice_frequency_lookup
 
 ; Emit source contributions in descending address order so TASM emits the historical descending FIXUPP sequence.
 org 2bbh
@@ -323,7 +323,7 @@ org 1c0h
 L_01C0:
  mov bp,sp
 org 1bfh
-_fdf98:
+_music_voice_frequency_lookup:
  push bp
 org 1beh
 L_01BE:

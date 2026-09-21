@@ -1,5 +1,5 @@
 /* F_6D86 -- PackBits-style far RLE stage. */
-void f6d86(src,dst,srclen)
+void rle_packbits_decode(src,dst,srclen)
 int src,dst,srclen;
 {
     asm push es

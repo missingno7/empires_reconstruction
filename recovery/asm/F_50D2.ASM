@@ -15,7 +15,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f50d2  proc    near
+_video_adapter_detect  proc    near
         push    si
         mov     _bbfcd,0
         mov     ah,0fh
@@ -115,9 +115,9 @@ _f50d2  proc    near
 @@fin:
         pop     si
         ret
-_f50d2  endp
+_video_adapter_detect  endp
 _TEXT   ends
         extrn   _bbfcd:byte
         extrn   _b856:byte
-        public  _f50d2
+        public  _video_adapter_detect
         end

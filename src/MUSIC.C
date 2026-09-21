@@ -1,6 +1,6 @@
 /* src/MUSIC.C: music arithmetic module (M_DDD9_DF98), one pure Turbo C
    translation unit: note-to-divisor, octave table, tuning-table reset and the
-   cached voice-frequency lookup (fdf98). No inline asm: the native compiler
+   cached voice-frequency lookup (music_voice_frequency_lookup). No inline asm: the native compiler
    object emits its FIXUPP subrecords descending, which reproduces the
    historical relocation order (see docs/current/relocation-topology.md).
 
@@ -9,7 +9,7 @@
    src/F_DEFA.C, src/F_DF98.C) into one ordinary Turbo C unit, in the same
    top-to-bottom order the functions appear at ascending load addresses in
    asm/MUSIC.ASM: music_note_to_divisor, music_build_octave_table,
-   music_reset_tuning_tables, fdf98. Public/extern names renamed to match the
+   music_reset_tuning_tables, music_voice_frequency_lookup. Public/extern names renamed to match the
    module's actual public symbols so this is a single self-contained TU
    instead of four separately-bound objects. */
 
@@ -84,7 +84,7 @@ extern int gc5e4;               /* DS:C5E4 -- cached octave value */
 extern char far *gc5e6;         /* DS:C5E6/C5E8 -- cached far pointer (offset/segment) */
 
 /* F_DF98 -- complete far-call and state update routine. */
-void fdf98(i, val)
+void music_voice_frequency_lookup(i, val)
 int i;
 int val;
 {

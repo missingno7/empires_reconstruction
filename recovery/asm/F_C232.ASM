@@ -8,12 +8,12 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fc232
+public _sound_voice_table_prime
 extrn _g1784:word, _g178a:word, _g177a:word, _g17ac:word
 extrn _g178c:word, _g179c:word, _g17a4:word, _g17b4:word
 extrn _g17ec:word, _g17f4:word, _g17bc:word
 
-_fc232 proc near
+_sound_voice_table_prime proc near
     push bp
     mov bp,sp
     xor ax,ax
@@ -40,7 +40,7 @@ next_entry:
     loop scan_entry
     pop bp
     ret
-_fc232 endp
+_sound_voice_table_prime endp
 
 _TEXT ends
 end

@@ -15,7 +15,7 @@ public _menu_loop_run
 gc0fe equ 0c0feh
 extrn _menu_list_active:near, _menu_list_disable:near, _keyboard_chain_active:near, _keyboard_chain_enable:near
 extrn _keyboard_buffer_drain:near, _ui_overlay_show:near, _sound_start:near, _menu_list_draw:near
-extrn _dialog_draw_panel:near, _gfx_fill_rect:near, _gfx_box:near, _f6b1a:near
+extrn _dialog_draw_panel:near, _gfx_fill_rect:near, _gfx_box:near, _keyboard_read_blocking_hotkeys:near
 extrn _dialog_restore_screen:near, _f_7dd3:near
 
 _menu_loop_run proc near
@@ -100,7 +100,7 @@ key_loop:
  push ax
  call _gfx_box
  add sp,8
- call _f6b1a
+ call _keyboard_read_blocking_hotkeys
  mov [bp-6],ax
  mov ax,[bp-6]
  mov cx,10h

@@ -25,8 +25,8 @@ _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	EXTRN	_fc6b9:NEAR
 	EXTRN	_fc755:NEAR
 	EXTRN	_fc440:NEAR
-	PUBLIC	_fc27d
-_fc27d	PROC	NEAR
+	PUBLIC	_sound_voice_service_loop
+_sound_voice_service_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	xor	si,si
@@ -64,6 +64,6 @@ L4:	cmp	word ptr _snd_paused,1
 	call	near ptr _fc440
 L5:	pop	bp
 	ret
-_fc27d	ENDP
+_sound_voice_service_loop	ENDP
 _TEXT	ENDS
 	END

@@ -92,7 +92,7 @@ void __int__(int);
 unsigned char __inportb__(int);
 void __outportb__(int, unsigned char);
 
-f50d2()
+video_adapter_detect()
 {
     asm mov display_mode,0
     _AH = 0x0f;
@@ -167,7 +167,7 @@ l_fin:
 }
 
 /* ---- F_53BF (original code at 0x53BF) ---- */
-f53bf()
+sound_backend_probe()
 {
     g1778 = 0;
     asm cmp word ptr display_mode,3
@@ -207,7 +207,7 @@ l_selected:
 /*@PUB _video_mode_select*/
 extern void dos_write_handle2(char far *);
 extern void cmdline_parse_args(void), bios_equipment_probe(void);
-extern int f50d2(), f53bf();
+extern int video_adapter_detect(), sound_backend_probe();
 extern char getdisk();
 extern long farcoreleft();
 extern unsigned char _osmajor;
@@ -229,12 +229,12 @@ int video_mode_select()
     for (i = 0; i < 3; i++)
         ba22[i][0] = c;
     bios_equipment_probe();
-    f50d2();
+    video_adapter_detect();
     if (display_mode == 0) {
         dos_write_handle2(s859);
         return 0;
     }
-    f53bf();
+    sound_backend_probe();
     cmdline_parse_args();
     if ((n = farcoreleft()) < 0x3ada0L) {
         dos_write_handle2(s8a8);

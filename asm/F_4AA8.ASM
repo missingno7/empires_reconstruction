@@ -19,7 +19,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment word public 'CODE'
-_f4aa8  proc    near
+_play_window_wipe_clipped  proc    near
         push    bp
         mov     bp,sp
         mov     ax,[bp+4]               ; x1
@@ -70,8 +70,8 @@ _f4aa8  proc    near
 @@out:
         pop     bp
         ret
-_f4aa8  endp
+_play_window_wipe_clipped  endp
 _TEXT   ends
-        public  _f4aa8
+        public  _play_window_wipe_clipped
         extrn   _gfx_wipe_rect:near
         end

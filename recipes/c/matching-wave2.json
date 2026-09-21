@@ -14,11 +14,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f7676": {
+          "_hud_prompt_continue_clear": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7676.entry",
             "owner": "F_7676",
-            "public": "_f7676",
+            "public": "_hud_prompt_continue_clear",
             "addend": 0
           },
           "_anim_step_loop": {
@@ -109,7 +109,7 @@
       "source": "src/HUD.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7443",
+        "public": "_hud_panel_node_marker_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -151,7 +151,7 @@
       "source": "src/PROMPTS.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7676",
+        "public": "_hud_prompt_continue_clear",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -493,7 +493,7 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_faf45",
+        "public": "_menu_wait_key_animated",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -532,18 +532,18 @@
             "public": "_timer_deadline_reached",
             "addend": 0
           },
-          "_f6b4a": {
+          "_keyboard_poll_nonblocking": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B4A.entry",
             "owner": "F_6B4A",
-            "public": "_f6b4a",
+            "public": "_keyboard_poll_nonblocking",
             "addend": 0
           },
-          "_f6b1a": {
+          "_keyboard_read_blocking_hotkeys": {
             "coordinate": "code_offset",
             "evidence": "functions/F_6B1A.entry",
             "owner": "F_6B1A",
-            "public": "_f6b1a",
+            "public": "_keyboard_read_blocking_hotkeys",
             "addend": 0
           }
         }

@@ -1,7 +1,7 @@
 /* F_4AA8 -- clip a rectangle and hand it to the wipe routine. */
 extern void gfx_wipe_rect();
 
-void f4aa8(x1, y1, w, h)
+void play_window_wipe_clipped(x1, y1, w, h)
 int x1, y1, w, h;
 {
     asm mov ax,[bp+4]

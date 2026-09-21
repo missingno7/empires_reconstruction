@@ -5,16 +5,16 @@ _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
     extrn _snd_mode:word, _snd_hi:word, _snd_nvoices:word, _snd_paused:word
-    extrn _v_a:word, _v_b:word, _g1778:word, _g177a:word, _f_c6b9:near
+    extrn _v_a:word, _v_b:word, _g1778:word, _g177a:word, _voice_disable:near
     extrn _opl_port:word
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_c77a, _f_c7cb, _fc834, _fc877, _fc898
+public _sound_backend_select_init, _sound_voice_table_reload, _sound_voices_reset, _sound_voices_disable_all, _opl_register_write
 
 ; Original entry F_C77A -- select and initialise a sound backend.
-_f_c77a proc near
+_sound_backend_select_init proc near
     push bp
     mov bp,sp
     push ax
@@ -46,11 +46,11 @@ C77A_done:
     pop ax
     pop bp
     ret
-_f_c77a endp
+_sound_backend_select_init endp
 
 ; Original entry F_C7CB -- reload per-voice values from the current backend
 ; table into the two SI-relative sound-control arrays.
-_f_c7cb proc near
+_sound_voice_table_reload proc near
     push bp
     mov bp,sp
     push ax
@@ -98,11 +98,11 @@ C7CB_done:
     pop ax
     pop bp
     ret
-_f_c7cb endp
+_sound_voice_table_reload endp
 
 ; Original entry F_C834 -- reset each configured voice and retain the voice
 ; count across the reset loop.
-_fc834 proc near
+_sound_voices_reset proc near
     push bp
     mov bp,sp
     push ax
@@ -119,7 +119,7 @@ _fc834 proc near
 C834_reset_voice:
     mov word ptr [si+_v_a],0
     mov word ptr [si+_v_b],0
-    call _f_c6b9
+    call _voice_disable
     add si,2
     loop C834_reset_voice
     pop _snd_nvoices
@@ -128,10 +128,10 @@ C834_reset_voice:
     pop ax
     pop bp
     ret
-_fc834 endp
+_sound_voices_reset endp
 
 ; Original entry F_C877 -- submit one disabled voice update for every voice.
-_fc877 proc near
+_sound_voices_disable_all proc near
     push bp
     mov bp,sp
     push cx
@@ -142,18 +142,18 @@ _fc877 proc near
     jnz short C877_voice_count_ready
     mov cx,4
 C877_voice_count_ready:
-    call _f_c6b9
+    call _voice_disable
     add si,2
     loop C877_voice_count_ready
     pop si
     pop cx
     pop bp
     ret
-_fc877 endp
+_sound_voices_disable_all endp
 
 ; Original entry F_C898 -- write OPL register and data bytes with the required
 ; input-port settling reads between them.
-_fc898 proc near
+_opl_register_write proc near
     push bp
     mov bp,sp
     mov dx,_opl_port
@@ -174,7 +174,7 @@ _fc898 proc near
     endm
     pop bp
     ret
-_fc898 endp
+_opl_register_write endp
 
 _TEXT ends
 end

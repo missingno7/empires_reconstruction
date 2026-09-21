@@ -6,11 +6,11 @@
       "source": "recovery/src/F_C1A0.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fc1a0",
+        "public": "_sound_tick_entry",
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_fc1f7": {"coordinate": "code_offset", "evidence": "F_C1F7 owned code entry"},
+          "_sound_voice_pump_loop": {"coordinate": "code_offset", "evidence": "F_C1F7 owned code entry"},
           "_sound_tick_step": {"coordinate": "code_offset", "evidence": "F_C8E2 owned code entry"},
           "_snd_flag": {"offset": 6000, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
           "_snd_mode": {"offset": 6020, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},

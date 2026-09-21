@@ -48,11 +48,11 @@ int n;
 
 
 /* ---- F_A19D (original code at 0xA19D) ---- */
-void fa19d(void) { gfx_fill_rect(40,126,238,10); gfx_fill_rect(40,136,238,10); gfx_box(40,126,238,20); }
+void player_type_toggle_draw(void) { gfx_fill_rect(40,126,238,10); gfx_fill_rect(40,136,238,10); gfx_box(40,126,238,20); }
 
 
 /* ---- F_A1E0 (original code at 0xA1E0) ---- */
-void fa1e0(void) { gfx_fill_rect(50,103,218,10); gfx_fill_rect(50,113,218,10); gfx_box(50,103,218,20); }
+void quit_confirm_toggle_draw(void) { gfx_fill_rect(50,103,218,10); gfx_fill_rect(50,113,218,10); gfx_box(50,103,218,20); }
 
 
 /* ---- F_A223 (original code at 0xA223) ---- */

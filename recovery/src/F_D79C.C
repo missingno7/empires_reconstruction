@@ -1,5 +1,5 @@
 /* F_D79C -- mechanically preserved complete routine. */
-void f_d79c()
+void draw_queue_render()
 {
     asm db 055h,08bh,0ech,057h,056h,01eh,0fch,0c4h,03eh,0c0h,0bfh,02ah,0edh,026h,08ah,00dh,047h,051h,006h,026h,08bh,01dh,047h,047h
     asm db 026h,08bh,00dh,047h,08ah,0c5h,098h,02ah,0edh,08bh,0f1h,0a9h,003h,000h,074h,008h,07bh,006h,026h,080h,02dh,003h,0ebh,003h

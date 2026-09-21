@@ -1,5 +1,5 @@
 ; M_6B1A_6B4A -- adjacent BIOS keyboard input helpers.
-; _f6b1a blocks and dispatches F1..F10; _f6b4a polls without consuming.
+; _keyboard_read_blocking_hotkeys blocks and dispatches F1..F10; _keyboard_poll_nonblocking polls without consuming.
 _TEXT   segment byte public 'CODE'
 DGROUP  group   _DATA,_BSS
         assume  cs:_TEXT,ds:DGROUP
@@ -11,11 +11,11 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-        public  _f6b1a, _f6b4a
+        public  _keyboard_read_blocking_hotkeys, _keyboard_poll_nonblocking
         extrn   _menu_list_active:near
         extrn   _menu_loop_run:near
 
-_f6b1a  proc    near
+_keyboard_read_blocking_hotkeys  proc    near
         push    si
         xor     ah,ah
         int     16h
@@ -43,9 +43,9 @@ _f6b1a  proc    near
 @@out:
         pop     si
         ret
-_f6b1a  endp
+_keyboard_read_blocking_hotkeys  endp
 
-_f6b4a  proc    near
+_keyboard_poll_nonblocking  proc    near
         mov     ah,1
         int     16h
         jz      Kpoll_none
@@ -64,6 +64,6 @@ Kpoll_ascii:
         xor     ah,ah
 Kpoll_out:
         ret
-_f6b4a  endp
+_keyboard_poll_nonblocking  endp
 _TEXT   ends
         end

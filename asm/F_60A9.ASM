@@ -28,7 +28,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f60a9  proc    near
+_animated_tile_tick  proc    near
         push    bp
         mov     bp,sp
         push    si
@@ -148,9 +148,9 @@ _f60a9  proc    near
         pop     si
         pop     bp
         ret
-_f60a9  endp
+_animated_tile_tick  endp
 _TEXT   ends
-        public  _f60a9
+        public  _animated_tile_tick
         extrn   _gfx_wipe_rect:near
         extrn   _gfx_copy_rect:near
         extrn   _g8fe:word

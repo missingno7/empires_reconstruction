@@ -1,5 +1,5 @@
 /* F_C7CB -- mechanically preserved complete routine. */
-void f_c7cb()
+void sound_voice_table_reload()
 {
     asm db 055h,08bh,0ech,050h,051h,056h,057h,006h,08eh,006h,064h,017h,08bh,07eh,004h,089h,03eh,086h,017h,083h,03eh,072h,017h,000h
     asm db 074h,048h,083h,03eh,078h,017h,002h,075h,00dh,006h,057h,0e8h,0ffh,010h,05fh,007h,0c7h,006h,07ah,017h,004h,000h,0b1h,001h

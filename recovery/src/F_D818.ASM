@@ -8,9 +8,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fd818
+public _draw_queue_reset
 
-_fd818 proc near
+_draw_queue_reset proc near
     push bp
     mov bp,sp
     push di
@@ -19,7 +19,7 @@ _fd818 proc near
     pop di
     pop bp
     ret
-_fd818 endp
+_draw_queue_reset endp
 
 _TEXT ends
 end

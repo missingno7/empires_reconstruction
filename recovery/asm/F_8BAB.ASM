@@ -7,7 +7,7 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 public _puzzle_run
-extrn _f020f:near
+extrn _cur_color_index_get:near
 extrn _sprite_sheet_index_get:near
 extrn _menu_list_active:near
 extrn _keyboard_chain_active:near
@@ -19,19 +19,19 @@ extrn _face7:near
 extrn _tutorial_hint_dialog_show:near
 extrn _menu_list_disable:near
 extrn _timer_wait_ticks:near
-extrn _f6b1a:near
+extrn _keyboard_read_blocking_hotkeys:near
 extrn _f9440:near
 extrn _menu_list_enable:near
-extrn _f9466:near
-extrn _f950c:near
+extrn _puzzle_cell_backing_swap:near
+extrn _puzzle_cell_highlight_draw:near
 extrn _puzzle_clear_cell:near
-extrn _fcaf1:near
+extrn _stream_control_block_arm:near
 extrn _timer_deadline_arm:near
 extrn _f9402:near
 extrn _player_select_restart_confirm:near
 extrn _puzzle_draw_piece:near
 extrn _timer_deadline_reached:near
-extrn _f6b4a:near
+extrn _keyboard_poll_nonblocking:near
 extrn _puzzle_check_solved:near
 extrn _puzzle_draw_tray_piece:near
 extrn _sound_stop_reset:near
@@ -56,7 +56,7 @@ _puzzle_run proc near
  mov word ptr [bp-4h],0h
  mov ax,word ptr ds:[237eh]
  mov [bp-2h],ax
-  call _f020f
+  call _cur_color_index_get
  mov [bp-0eh],ax
   call _sprite_sheet_index_get
  mov [bp-0ch],ax
@@ -95,7 +95,7 @@ L_8C1C:
   call _timer_wait_ticks
  pop cx
   call _keyboard_buffer_drain
-  call _f6b1a
+  call _keyboard_read_blocking_hotkeys
  mov [bp-16h],ax
  cmp ax,0dh
  jnz short $+22
@@ -133,7 +133,7 @@ L_8C68:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  xor ax,ax
  push ax
@@ -145,7 +145,7 @@ L_8C68:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f950c
+  call _puzzle_cell_highlight_draw
  add sp,8h
  mov al,word ptr ds:[0c135h]
  cbw
@@ -162,7 +162,7 @@ L_8C68:
  mov al,word ptr ds:[0c135h]
  cbw
  mov di,ax
-  call _f6b1a
+  call _keyboard_read_blocking_hotkeys
  mov [bp-16h],ax
  mov ax,[bp-16h]
  mov cx,6h
@@ -224,7 +224,7 @@ L_8D29:
  jnz short $+12
  mov ax,17h
  push ax
-  call _fcaf1
+  call _stream_control_block_arm
  pop cx
  jmp short $+96
 L_8D52:
@@ -263,7 +263,7 @@ L_8D52:
  pop cx
  mov ax,0eh
  push ax
-  call _fcaf1
+  call _stream_control_block_arm
  pop cx
  mov ax,1h
  push ax
@@ -281,7 +281,7 @@ L_8DB7:
  push ax
  push di
  push si
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  cmp byte ptr ds:[0c132h],0ffh
  jnz short $+11
@@ -334,7 +334,7 @@ L_8E15:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  mov al,word ptr ds:[0c135h]
  cbw
@@ -355,7 +355,7 @@ L_8E15:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  mov ax,1h
  push ax
@@ -366,7 +366,7 @@ L_8E15:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f950c
+  call _puzzle_cell_highlight_draw
  add sp,8h
  mov al,word ptr ds:[0c135h]
  cbw
@@ -392,7 +392,7 @@ L_8E87:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  mov ax,[bp-10h]
  neg ax
@@ -409,7 +409,7 @@ L_8EBB:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f950c
+  call _puzzle_cell_highlight_draw
  add sp,8h
  mov al,word ptr ds:[0c135h]
  cbw
@@ -425,7 +425,7 @@ L_8EBB:
   call _timer_deadline_arm
  pop cx
 L_8EDF:
-  call _f6b4a
+  call _keyboard_poll_nonblocking
  or ax,ax
  jnz short $+5
  jmp near ptr $+367
@@ -436,7 +436,7 @@ L_8EE9:
  mov al,word ptr ds:[0c135h]
  cbw
  mov di,ax
-  call _f6b1a
+  call _keyboard_read_blocking_hotkeys
  mov [bp-16h],ax
  mov ax,[bp-16h]
  mov cx,8h
@@ -510,7 +510,7 @@ L_8F8F:
  jz short $+12
  mov ax,17h
  push ax
-  call _fcaf1
+  call _stream_control_block_arm
  pop cx
  jmp short $+55
 L_8FB8:
@@ -533,7 +533,7 @@ L_8FB8:
  mov byte ptr ds:[0c132h],0ffh
  mov ax,1ah
  push ax
-  call _fcaf1
+  call _stream_control_block_arm
  pop cx
  xor ax,ax
  push ax
@@ -553,7 +553,7 @@ L_8FF4:
  push ax
  push di
  push si
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  push di
  push si
@@ -568,7 +568,7 @@ L_9013:
  push ax
  push di
  push si
-  call _f9466
+  call _puzzle_cell_backing_swap
  add sp,8h
  push di
  push si
@@ -589,7 +589,7 @@ L_9013:
   call _sound_stop_reset
  mov ax,1bh
  push ax
-  call _fcaf1
+  call _stream_control_block_arm
  pop cx
 L_9050:
  mov word ptr [bp-12h],1h

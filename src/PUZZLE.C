@@ -16,20 +16,20 @@ extern int rand(void);
 extern int face7(void);
 extern void hud_draw_meter(void);
 extern int music_track_handle;
-extern int f020f(),sprite_sheet_index_get(),menu_list_active(),keyboard_chain_active(),campaign_node_index();
+extern int cur_color_index_get(),sprite_sheet_index_get(),menu_list_active(),keyboard_chain_active(),campaign_node_index();
 extern void keyboard_chain_enable(void);
 extern void keyboard_buffer_drain(void);
-extern int puzzle_display_init(),f6b1a(),f9440();
+extern int puzzle_display_init(),keyboard_read_blocking_hotkeys(),f9440();
 extern void menu_list_disable(void);
 extern void tutorial_hint_dialog_show(int);
 extern void menu_list_enable(void);
 extern void timer_wait_ticks(int n);
-extern int f9466(),f950c(),puzzle_clear_cell(),puzzle_draw_piece();
-extern void fcaf1();
+extern int puzzle_cell_backing_swap(),puzzle_cell_highlight_draw(),puzzle_clear_cell(),puzzle_draw_piece();
+extern void stream_control_block_arm();
 extern void timer_deadline_arm();
 extern void player_select_restart_confirm();
 extern void f9402(int i);
-extern int timer_deadline_reached(),f6b4a(),puzzle_check_solved(),puzzle_draw_tray_piece();
+extern int timer_deadline_reached(),keyboard_poll_nonblocking(),puzzle_check_solved(),puzzle_draw_tray_piece();
 extern void puzzle_free_resources(void);
 extern void sprite_sheet_select();
 extern void resource_record_cache_reset();
@@ -120,7 +120,7 @@ int puzzle_run(void)
  int key,quit,redraw,flash,saved_input,saved_timer,saved_mode,saved_cursor,level,stage,saved_state;
  register int row,col;
  quit=0;redraw=1;flash=1;stage=0;saved_state=music_track_handle;
- saved_input=f020f();saved_timer=sprite_sheet_index_get();saved_cursor=menu_list_active();saved_mode=keyboard_chain_active();
+ saved_input=cur_color_index_get();saved_timer=sprite_sheet_index_get();saved_cursor=menu_list_active();saved_mode=keyboard_chain_active();
  keyboard_chain_enable();keyboard_buffer_drain();level=campaign_node_index();puzzle_display_init();
  if(face7()) tutorial_hint_dialog_show(8);else tutorial_hint_dialog_show(6);
  while(!quit) {
@@ -128,44 +128,44 @@ int puzzle_run(void)
    menu_list_disable();
    while(stage<2) {
     timer_wait_ticks(118);keyboard_buffer_drain();
-    if((key=f6b1a())==13) {if(++stage<2) f9440(stage);}
+    if((key=keyboard_read_blocking_hotkeys())==13) {if(++stage<2) f9440(stage);}
     else if(key==27) stage=2;
    }
    if(saved_cursor) menu_list_enable();
    quit=1;
   }
   while(GC132.kind==-1&&!quit) {
-   f9466(puzzle_cursor_row,puzzle_cursor_col,0,0);f950c(puzzle_cursor_row,puzzle_cursor_col,1,0);puzzle_clear_cell(puzzle_cursor_row,puzzle_cursor_col);
-   row=puzzle_cursor_row;col=puzzle_cursor_col;key=f6b1a();
+   puzzle_cell_backing_swap(puzzle_cursor_row,puzzle_cursor_col,0,0);puzzle_cell_highlight_draw(puzzle_cursor_row,puzzle_cursor_col,1,0);puzzle_clear_cell(puzzle_cursor_row,puzzle_cursor_col);
+   row=puzzle_cursor_row;col=puzzle_cursor_col;key=keyboard_read_blocking_hotkeys();
    switch(key) {
    case 0x148:if(--puzzle_cursor_row<0) puzzle_cursor_row=3;break;
    case 0x150:if(++puzzle_cursor_row>=4) puzzle_cursor_row=0;break;
    case 0x14b:if(--puzzle_cursor_col<0) puzzle_cursor_col=5;break;
    case 0x14d:if(++puzzle_cursor_col>=6) puzzle_cursor_col=0;break;
    case 13:
-    if(puzzle_grid[puzzle_cursor_row][puzzle_cursor_col].kind==-1) fcaf1(23);
+    if(puzzle_grid[puzzle_cursor_row][puzzle_cursor_col].kind==-1) stream_control_block_arm(23);
     else {
      GC132=puzzle_grid[puzzle_cursor_row][puzzle_cursor_col];puzzle_grid[puzzle_cursor_row][puzzle_cursor_col].kind=-1;
-     redraw=1;flash=1;timer_deadline_arm(118);fcaf1(14);f9402(1);
+     redraw=1;flash=1;timer_deadline_arm(118);stream_control_block_arm(14);f9402(1);
     }
     break;
    case 27:player_select_restart_confirm();break;
    }
-   f9466(row,col,0,1);
+   puzzle_cell_backing_swap(row,col,0,1);
    if(GC132.kind==-1) puzzle_clear_cell(row,col);
    else puzzle_draw_piece(puzzle_grid[puzzle_cursor_row][puzzle_cursor_col],puzzle_cursor_row,puzzle_cursor_col);
   }
   while(GC132.kind!=-1&&!quit) {
    if(redraw) {
-    f9466(puzzle_cursor_row,puzzle_cursor_col,0,0);puzzle_draw_piece(GC132,puzzle_cursor_row,puzzle_cursor_col);
-    f9466(puzzle_cursor_row,puzzle_cursor_col,1,0);f950c(puzzle_cursor_row,puzzle_cursor_col,flash,1);puzzle_clear_cell(puzzle_cursor_row,puzzle_cursor_col);redraw=0;
+    puzzle_cell_backing_swap(puzzle_cursor_row,puzzle_cursor_col,0,0);puzzle_draw_piece(GC132,puzzle_cursor_row,puzzle_cursor_col);
+    puzzle_cell_backing_swap(puzzle_cursor_row,puzzle_cursor_col,1,0);puzzle_cell_highlight_draw(puzzle_cursor_row,puzzle_cursor_col,flash,1);puzzle_clear_cell(puzzle_cursor_row,puzzle_cursor_col);redraw=0;
    }
    if(timer_deadline_reached()) {
-    f9466(puzzle_cursor_row,puzzle_cursor_col,1,1);flash=!flash;
-    f950c(puzzle_cursor_row,puzzle_cursor_col,flash,1);puzzle_clear_cell(puzzle_cursor_row,puzzle_cursor_col);timer_deadline_arm(118);
+    puzzle_cell_backing_swap(puzzle_cursor_row,puzzle_cursor_col,1,1);flash=!flash;
+    puzzle_cell_highlight_draw(puzzle_cursor_row,puzzle_cursor_col,flash,1);puzzle_clear_cell(puzzle_cursor_row,puzzle_cursor_col);timer_deadline_arm(118);
    }
-   if(f6b4a()) {
-    row=puzzle_cursor_row;col=puzzle_cursor_col;key=f6b1a();
+   if(keyboard_poll_nonblocking()) {
+    row=puzzle_cursor_row;col=puzzle_cursor_col;key=keyboard_read_blocking_hotkeys();
     switch(key) {
     case 0x148:if(--puzzle_cursor_row<0) puzzle_cursor_row=3;break;
     case 0x150:if(++puzzle_cursor_row>=4) puzzle_cursor_row=0;break;
@@ -173,15 +173,15 @@ int puzzle_run(void)
     case 0x14d:if(++puzzle_cursor_col>=6) puzzle_cursor_col=0;break;
     case 'F':case 'f':if(face7()) {if(++GC132.rot>3) GC132.rot=0;}break;
     case 13:
-     if(puzzle_grid[puzzle_cursor_row][puzzle_cursor_col].kind!=-1) fcaf1(23);
-     else {puzzle_grid[puzzle_cursor_row][puzzle_cursor_col]=GC132;GC132.kind=-1;fcaf1(26);f9402(0);}
+     if(puzzle_grid[puzzle_cursor_row][puzzle_cursor_col].kind!=-1) stream_control_block_arm(23);
+     else {puzzle_grid[puzzle_cursor_row][puzzle_cursor_col]=GC132;GC132.kind=-1;stream_control_block_arm(26);f9402(0);}
      break;
     case 27:player_select_restart_confirm();break;
     }
-    if(GC132.kind!=-1) {f9466(row,col,0,1);puzzle_clear_cell(row,col);}
+    if(GC132.kind!=-1) {puzzle_cell_backing_swap(row,col,0,1);puzzle_clear_cell(row,col);}
     else {
-     f9466(row,col,1,1);puzzle_clear_cell(row,col);
-     if(puzzle_solved_flag=puzzle_check_solved()) {keyboard_buffer_drain();f9440(stage);puzzle_draw_tray_piece(level);sound_stop_reset();fcaf1(27);}
+     puzzle_cell_backing_swap(row,col,1,1);puzzle_clear_cell(row,col);
+     if(puzzle_solved_flag=puzzle_check_solved()) {keyboard_buffer_drain();f9440(stage);puzzle_draw_tray_piece(level);sound_stop_reset();stream_control_block_arm(27);}
     }
     redraw=1;
    }
@@ -234,11 +234,11 @@ f9440(i) int i; {hud_prompt_confirm_draw(gc136[i],0,11,1,1);}
 
 
 /* ---- F_9466 (original code at 0x9466) ---- */
-f9466(a,b,c,d) int a,b,c,d;{register int x,y;int u,v;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}switch(c){case 0:u=96;v=0x158;break;case 1:u=140;v=0x158;break;}if(!d)gfx_wipe_rect(x,y,42,30,u,v);else gfx_wipe_rect(u,v,42,30,x,y);}
+puzzle_cell_backing_swap(a,b,c,d) int a,b,c,d;{register int x,y;int u,v;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}switch(c){case 0:u=96;v=0x158;break;case 1:u=140;v=0x158;break;}if(!d)gfx_wipe_rect(x,y,42,30,u,v);else gfx_wipe_rect(u,v,42,30,x,y);}
 
 
 /* ---- F_950C (original code at 0x950C) ---- */
-f950c(a,b,c,d) int a,b,c,d;{int y,w,h,old,n1,n2,n3;register int i,x;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}w=32;h=24;old=f020f();n1=c?2:0;n2=d?5:0;n3=d?2:0;if(display_mode==2)gfx_color_select(3);else if(display_mode==3)gfx_color_select(0);else gfx_color_select(4);for(i=0;i<n1;i++){w+=2;h+=2;rect_border_draw(--x,--y,w,h);}gfx_color_select(8);for(i=0;i<n2;i++)gfx_vline(x+w+i,y+2,h);for(i=0;i<n3;i++)gfx_bar(x+5,y+h+i,w);gfx_color_select(old);}
+puzzle_cell_highlight_draw(a,b,c,d) int a,b,c,d;{int y,w,h,old,n1,n2,n3;register int i,x;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}w=32;h=24;old=cur_color_index_get();n1=c?2:0;n2=d?5:0;n3=d?2:0;if(display_mode==2)gfx_color_select(3);else if(display_mode==3)gfx_color_select(0);else gfx_color_select(4);for(i=0;i<n1;i++){w+=2;h+=2;rect_border_draw(--x,--y,w,h);}gfx_color_select(8);for(i=0;i<n2;i++)gfx_vline(x+w+i,y+2,h);for(i=0;i<n3;i++)gfx_bar(x+5,y+h+i,w);gfx_color_select(old);}
 
 
 /* ---- F_963E (original code at 0x963E) ---- */

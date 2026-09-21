@@ -1,19 +1,19 @@
 /* F_C1F7 -- service the sound voices and copy the pending voice state. */
-extern void fc232();
-extern void fc27d();
+extern void sound_voice_table_prime();
+extern void sound_voice_service_loop();
 extern unsigned int snd_mode;
 extern unsigned int snd_flag2;
 extern unsigned int sv[];
 extern unsigned int dv[];
 
-void fc1f7()
+void sound_voice_pump_loop()
 {
     asm push bp
     asm mov bp,sp
     asm cmp word ptr snd_mode,2
     asm je L2
-L1: asm call near ptr fc232
-L2: asm call near ptr fc27d
+L1: asm call near ptr sound_voice_table_prime
+L2: asm call near ptr sound_voice_service_loop
     asm cmp word ptr snd_mode,0
     asm jne L3
     asm mov ax,word ptr snd_flag2

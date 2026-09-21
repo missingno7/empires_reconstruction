@@ -3,7 +3,7 @@
 extern char far *gbfc4;
 extern char far *a72b2[];
 extern void gfx_blit_bitmap();
-void fd386(dummy)
+void icon_list_animate_draw(dummy)
 int dummy;
 {
     asm db 057h,056h,0fch

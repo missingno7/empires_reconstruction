@@ -15,7 +15,7 @@ endm
 public _dialog_list_run
 extrn _keyboard_chain_active:near, _keyboard_chain_enable:near, _keyboard_buffer_drain:near, _ui_overlay_show:near
 extrn _sound_start:near, _menu_list_active:near, _menu_list_disable:near, _dialog_draw:near
-extrn _f6b1a:near, _dialog_fill_box:near, _dialog_blink_box:near
+extrn _keyboard_read_blocking_hotkeys:near, _dialog_fill_box:near, _dialog_blink_box:near
 
 _dialog_list_run proc near
  push bp
@@ -102,7 +102,7 @@ load_record:
  JMP_NEAR process_state
 
 read_input:
- call _f6b1a
+ call _keyboard_read_blocking_hotkeys
  mov [bp-2],ax
  mov ax,[bp-2]
  mov cx,10

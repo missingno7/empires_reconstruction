@@ -132,10 +132,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_5AC3 fixup"
           },
-          "_f020f": {
+          "_cur_color_index_get": {
             "coordinate": "code_offset",
             "owner": "F_020F",
-            "public": "_f020f",
+            "public": "_cur_color_index_get",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -160,10 +160,10 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_fcaf1": {
+          "_stream_control_block_arm": {
             "coordinate": "code_offset",
             "owner": "F_CAF1",
-            "public": "_fcaf1",
+            "public": "_stream_control_block_arm",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },

@@ -3,7 +3,7 @@
 extern unsigned int bbfcd;
 extern unsigned int b856;
 
-void f50d2()
+void video_adapter_detect()
 {
     asm db 056h,0C6h,006h
     asm dw offset DGROUP:bbfcd

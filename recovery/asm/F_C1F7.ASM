@@ -18,16 +18,16 @@ _BSS	ENDS
 
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	ASSUME	CS:_TEXT, DS:DGROUP
-	EXTRN	_fc232:NEAR
-	EXTRN	_fc27d:NEAR
-	PUBLIC	_fc1f7
-_fc1f7	PROC	NEAR
+	EXTRN	_sound_voice_table_prime:NEAR
+	EXTRN	_sound_voice_service_loop:NEAR
+	PUBLIC	_sound_voice_pump_loop
+_sound_voice_pump_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	cmp	word ptr _snd_mode,2
 	je	L2
-L1:	call	near ptr _fc232
-L2:	call	near ptr _fc27d
+L1:	call	near ptr _sound_voice_table_prime
+L2:	call	near ptr _sound_voice_service_loop
 	cmp	word ptr _snd_mode,0
 	jne	L3
 	mov	ax,word ptr _snd_flag2
@@ -44,6 +44,6 @@ L2:	call	near ptr _fc27d
 	jmp	L1
 L3:	pop	bp
 	ret
-_fc1f7	ENDP
+_sound_voice_pump_loop	ENDP
 _TEXT	ENDS
 	END

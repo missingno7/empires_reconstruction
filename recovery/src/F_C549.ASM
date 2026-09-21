@@ -8,9 +8,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_c549
+public _sound_command_flags_update
 
-_f_c549 proc near
+_sound_command_flags_update proc near
     push bp
     mov bp,sp
     cmp al,0
@@ -25,7 +25,7 @@ set_one:
 done:
     pop bp
     ret
-_f_c549 endp
+_sound_command_flags_update endp
 
 _TEXT ends
 end

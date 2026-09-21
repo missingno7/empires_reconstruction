@@ -24,7 +24,7 @@ class MatchingCWave70Tests(unittest.TestCase):
             mismatch(original[owner['start']:owner['end']], data, owner)
             self.assertEqual(len(data), 33)
             # F_C877 now lives in the merged asm/SOUND.ASM module
-            # (M_C1A0_CB48); its call to _f_c6b9 is an intra-module near call
+            # (M_C1A0_CB48); its call to _voice_disable is an intra-module near call
             # TASM resolves at assemble time (no OMF fixup), leaving only the
             # two DGROUP word references.
             self.assertEqual(len(proof['fixups']), 2)

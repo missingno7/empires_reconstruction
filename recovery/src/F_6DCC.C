@@ -1,5 +1,5 @@
 /* F_6DCC -- exact C translation unit for the CS-state LZ decoder. */
-void f6dcc()
+void lz_decompress()
 {
     asm db 055h,08Bh,0ECh,056h,057h,006h,01Eh,0FCh,0C5h,076h,004h,0C4h,07Eh,008h,08Bh,046h,00Ch,08Bh,0EEh,08Bh,0DEh,02Dh,002h,000h
     asm db 040h,02Eh,0A3h,0C7h,06Dh,083h,0C6h,002h,02Eh,0C7h,006h,0C9h,06Dh,000h,000h,02Eh,0C7h,006h,0C5h,06Dh,009h,000h,089h,03Fh

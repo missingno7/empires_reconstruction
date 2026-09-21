@@ -1,7 +1,7 @@
 ; F_6036 -- traverse the sprite record table at objtab (count byte first,
 ; 3-byte records: word offset/id, byte flags) and, for each one, look up its
 ; frame within sprbase (byte flags & 1Fh, scaled by 1E6h, +2, added to the
-; sprbase far pointer), then call fd825(id=bp, x=bx, y=dx, color=0Fh,
+; sprbase far pointer), then call draw_queue_append(id=bp, x=bx, y=dx, color=0Fh,
 ; height=1Eh) to fetch/validate the sprite frame, and append a compact draw
 ; record via gfx_copy_rect(x=shl(bx,1), y=dx+0B8h, ptr=es:di, w=0Fh-derived, flag=0).
 ; bp is a running sprite-slot counter starting at 2Fh, incremented once per
@@ -15,9 +15,9 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-extrn _fd825:near, _gfx_copy_rect:near
-public _f6036
-_f6036 proc near
+extrn _draw_queue_append:near, _gfx_copy_rect:near
+public _sprite_table_queue_draws
+_sprite_table_queue_draws proc near
  push bp
  mov bp,sp
  push si
@@ -53,7 +53,7 @@ sprite_loop:
  push ds
  push cx
  push es
-; fetch/validate the sprite frame: fd825(id=bp, x=bx, y=dx, color=0Fh, height=1Eh)
+; fetch/validate the sprite frame: draw_queue_append(id=bp, x=bx, y=dx, color=0Fh, height=1Eh)
  mov ax,DGROUP
  mov ds,ax
  mov ax,1eh
@@ -63,7 +63,7 @@ sprite_loop:
  push dx
  push bx
  push bp
- call _fd825
+ call _draw_queue_append
  pop ax
  pop bx
  pop dx
@@ -93,6 +93,6 @@ sprite_loop:
  pop si
  pop bp
  ret
-_f6036 endp
+_sprite_table_queue_draws endp
 _TEXT ends
 end

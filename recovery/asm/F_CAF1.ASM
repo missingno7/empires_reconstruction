@@ -9,8 +9,8 @@ extrn _g1e88:word, _g1770:word, _g1e8e:word, _g1e92:word
 extrn _g1e86:word, _g1e90:word, _g1e94:word, _g1e8c:word
 _BSS ends
 DGROUP group _DATA, _BSS
-public _fcaf1
-_fcaf1:
+public _stream_control_block_arm
+_stream_control_block_arm:
  push bp
  mov bp,sp
  push ax

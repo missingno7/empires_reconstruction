@@ -4,7 +4,7 @@ extern unsigned long rect_queue_write_ptr;
 extern unsigned int g40c6;
 extern unsigned long ui_gfx_blob;
 
-void f1ecd()
+void rect_queue_flush()
 {
     asm cld
     asm mov di,ds

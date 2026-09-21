@@ -12,18 +12,18 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_c5d1, _f_c678, _f_c6b9, _f_c706
+public _voice_command_decode_apply, _voice_enable, _voice_disable, _sound_pit_divisor_program
 
 ; Original entry F_C5D1 -- decode one command byte and update the selected
 ; SI-relative voice-control slot.
-_f_c5d1 proc near
+_voice_command_decode_apply proc near
     push bp
     mov bp,sp
     mov dl,es:[di+1]
     xor dh,dh
     cmp dx,0
     jnz short C5D1_have_value
-    call _f_c6b9
+    call _voice_disable
     mov word ptr [si+17ech],1
     jmp C5D1_store_result
 C5D1_have_value:
@@ -41,8 +41,8 @@ C5D1_have_value:
     mov ax,[bx]
     add ax,dx
     shr ax,cl
-    call _f_c706
-    call _f_c678
+    call _sound_pit_divisor_program
+    call _voice_enable
     jmp short C5D1_store_result
     nop
 C5D1_mode_two:
@@ -82,7 +82,7 @@ C5D1_scaled:
     shr dx,1
 C5D1_frequency_ready:
     mov ax,dx
-    call _f_c706
+    call _sound_pit_divisor_program
     mov word ptr [si+17e4h],1
     mov word ptr [si+17ech],0
 C5D1_store_result:
@@ -90,11 +90,11 @@ C5D1_store_result:
     mov [si+179ch],ax
     pop bp
     ret
-_f_c5d1 endp
+_voice_command_decode_apply endp
 
 ; Original entry F_C678 -- enable a voice, either by opening the speaker gate
 ; or by queueing its selected value for the alternate sound backend.
-_f_c678 proc near
+_voice_enable proc near
     push bp
     mov bp,sp
     cmp word ptr [si+177ch],0
@@ -132,11 +132,11 @@ C678_open_alt_gate:
 C678_done:
     pop bp
     ret
-_f_c678 endp
+_voice_enable endp
 
 ; Original entry F_C6B9 -- disable a voice or submit an alternate-backend
 ; voice update.
-_f_c6b9 proc near
+_voice_disable proc near
     push bp
     mov bp,sp
     cmp word ptr [si+177ch],0
@@ -176,15 +176,15 @@ C6B9_queue_reset:
     or al,0fh
     call $+1d8h             ; historical target F_C8D4
     xor ax,ax
-    call _f_c706
+    call _sound_pit_divisor_program
 C6B9_done:
     pop bp
     ret
-_f_c6b9 endp
+_voice_disable endp
 
 ; Original entry F_C706 -- write a PIT divisor, queue it, or emit its two
 ; packed nibbles for the alternate sound backend.
-_f_c706 proc near
+_sound_pit_divisor_program proc near
     push bp
     mov bp,sp
     cmp word ptr [si+177ch],0
@@ -223,7 +223,7 @@ C706_emit_nibbles:
 C706_done:
     pop bp
     ret
-_f_c706 endp
+_sound_pit_divisor_program endp
 
 _TEXT ends
 end

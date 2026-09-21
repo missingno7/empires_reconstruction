@@ -3,13 +3,13 @@
    One translation unit; the sections below were the separate member
    sources of grouped module C_75F3_7856 and keep their original ids. */
 
-extern int f020f(), sprite_sheet_index_get();
+extern int cur_color_index_get(), sprite_sheet_index_get();
 extern void sprite_sheet_select();
 extern void gfx_color_select(int n);
 extern void text_draw_wrapped(int, int, char far *);
 extern void rect_border_draw();
 extern void anim_step_loop();
-extern int menu_list_active(), f6b1a(), hud_prompt_confirm_draw();
+extern int menu_list_active(), keyboard_read_blocking_hotkeys(), hud_prompt_confirm_draw();
 extern void menu_list_disable(void), menu_list_enable(), hud_panel_open();
 extern int gb83, gc0fc;
 extern char *gc0f6;
@@ -33,7 +33,7 @@ void hud_prompt_continue_draw()
     register int s, d;                  /* si, di */
 
     gb83 = 2;
-    s = f020f();
+    s = cur_color_index_get();
     d = sprite_sheet_index_get();
     if (display_mode == 2)
         gfx_color_select(5);
@@ -48,7 +48,7 @@ void hud_prompt_continue_draw()
 
 
 /* ---- F_7676 (original code at 0x7676) ---- */
-void f7676(void) { anim_step_loop(0x18, 0x184, 0x94, 10, 0x18, 0xbc); }
+void hud_prompt_continue_clear(void) { anim_step_loop(0x18, 0x184, 0x94, 10, 0x18, 0xbc); }
 
 
 /* ---- F_7695 (original code at 0x7695) ---- */
@@ -58,7 +58,7 @@ char *p;
     char cap[13] = "\027\030 to Select";
     register int s, d;
 
-    s = f020f();
+    s = cur_color_index_get();
     d = sprite_sheet_index_get();
     gb83 = 3;
     gc0f6 = p;
@@ -76,7 +76,7 @@ char *p;
 
 
 /* ---- F_7747 (original code at 0x7747) ---- */
-void f7747(char far *p) { register int key, saved; saved=menu_list_active(); menu_list_disable(); hud_prompt_confirm_draw(p,0,15,1,0); do { key=f6b1a(); } while (key!=13 && key!=27); if(saved) menu_list_enable(); hud_panel_open(); }
+void hud_prompt_message_run(char far *p) { register int key, saved; saved=menu_list_active(); menu_list_disable(); hud_prompt_confirm_draw(p,0,15,1,0); do { key=keyboard_read_blocking_hotkeys(); } while (key!=13 && key!=27); if(saved) menu_list_enable(); hud_panel_open(); }
 
 
 /* ---- F_778B (original code at 0x778B) ---- */
@@ -87,7 +87,7 @@ int a,b,c,e;
     char cap[15] = "\027\030 to Continue";
     register int s, d;
 
-    s = f020f();
+    s = cur_color_index_get();
     d = sprite_sheet_index_get();
     gb83 = 4;
     gc0fc = b;

@@ -9,10 +9,10 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fc8d4
+public _opl_port_write_byte
 extrn _g1830:word
 
-_fc8d4 proc near
+_opl_port_write_byte proc near
     push bp
     mov bp,sp
     push dx
@@ -22,7 +22,7 @@ _fc8d4 proc near
     pop dx
     pop bp
     ret
-_fc8d4 endp
+_opl_port_write_byte endp
 
 _TEXT ends
 end

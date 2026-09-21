@@ -15,7 +15,7 @@ DGROUP group _DATA,_BSS
 
 assume cs:_TEXT, ds:DGROUP
 
-public _fd818, _fd825
+public _draw_queue_reset, _draw_queue_append
 
 
 
@@ -23,7 +23,7 @@ public _fd818, _fd825
 
 
 
-_fd818 proc near
+_draw_queue_reset proc near
     push bp
     mov bp,sp
     push di
@@ -32,7 +32,7 @@ _fd818 proc near
     pop di
     pop bp
     ret
-_fd818 endp
+_draw_queue_reset endp
 
 ; Original entry F_D825 -- append one packed five-byte record at DS:2F30h.
 ;
@@ -42,7 +42,7 @@ _fd818 endp
 
 
 
-_fd825 proc near
+_draw_queue_append proc near
     push bp
     mov bp,sp
     push di
@@ -73,7 +73,7 @@ _fd825 proc near
     pop di
     pop bp
     ret
-_fd825 endp
+_draw_queue_append endp
 
 _TEXT ends
 

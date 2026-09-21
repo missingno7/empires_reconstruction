@@ -17,9 +17,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f6eff
+public _sprite_decode_4bpp_planar
 
-_f6eff proc near
+_sprite_decode_4bpp_planar proc near
     push bp
     mov bp,sp
     push si
@@ -65,7 +65,7 @@ expand_next_byte:
     pop si
     pop bp
     ret
-_f6eff endp
+_sprite_decode_4bpp_planar endp
 
 _TEXT ends
 end

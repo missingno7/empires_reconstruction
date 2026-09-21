@@ -9,9 +9,9 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _f_c9a4, _f_ca03, _f_ca35, _f_ca51, _fca83, _fca91
+public _sound_stream_delay_decode, _sound_ctlblock_command_dispatch, _sound_ctlblock_flags_latch, _stream_level_percent_scale, _stream_level_base_set, _stream_note_delay_set
 
-_f_c9a4:
+_sound_stream_delay_decode:
     push bp
     mov bp, sp
     mov al, es:[di+1]
@@ -55,39 +55,39 @@ store_value:
     ret
 
 
-_f_ca03 proc near
+_sound_ctlblock_command_dispatch proc near
     push bp
     mov bp,sp
     mov al,es:[di+1]
     cmp ah,0
     jne check_two_or_less
-    call _f_ca35
+    call _sound_ctlblock_flags_latch
     jmp short done
     nop
 check_two_or_less:
     cmp ah,2
     jg check_three
-    call _f_ca51
+    call _stream_level_percent_scale
     jmp short done
     nop
 check_three:
     cmp ah,3
     jne check_four
-    call _fca91
+    call _stream_note_delay_set
     jmp short done
     nop
 check_four:
     cmp ah,4
     jne done
-    call _fca83
+    call _stream_level_base_set
 done:
     pop bp
     ret
-_f_ca03 endp
+_sound_ctlblock_command_dispatch endp
 
 
 
-_f_ca35 proc near
+_sound_ctlblock_flags_latch proc near
     push bp
     mov bp,sp
     cmp al,0
@@ -101,11 +101,11 @@ set_one:
     mov word ptr ds:[1e94h],1
     pop bp
     ret
-_f_ca35 endp
+_sound_ctlblock_flags_latch endp
 
 
 
-_f_ca51 proc near
+_stream_level_percent_scale proc near
     push bp
     mov bp,sp
     mov bl,ah
@@ -132,11 +132,11 @@ store_zero:
     mov word ptr ds:_g1e86,0
     pop bp
     ret
-_f_ca51 endp
+_stream_level_percent_scale endp
 
 
 
-_fca83 proc near
+_stream_level_base_set proc near
     push bp
     mov bp,sp
     xor ah,ah
@@ -145,16 +145,16 @@ _fca83 proc near
     mov word ptr ds:_g1e84,ax
     pop bp
     ret
-_fca83 endp
+_stream_level_base_set endp
 
-_fca91 proc near
+_stream_note_delay_set proc near
     push bp
     mov bp,sp
     xor ah,ah
     mov ds:_g1e92,ax
     pop bp
     ret
-_fca91 endp
+_stream_note_delay_set endp
 
 _TEXT ends
 end

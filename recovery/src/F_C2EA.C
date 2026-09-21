@@ -1,5 +1,5 @@
 /* F_C2EA -- mechanically preserved complete routine. */
-void f_c2ea()
+void sound_command_stream_dispatch()
 {
     asm db 055h,08bh,0ech,08bh,0bch,08ch,017h,026h,08ah,005h,08ah,0e0h,0d0h,0ech,0d0h,0ech,0d0h,0ech,0d0h,0ech,024h,00fh,03ch,000h
     asm db 074h,01bh,03ch,00dh,074h,026h,03ch,00eh,074h,02dh,03ch,00fh,074h,02fh,0e8h,046h,000h,0e8h,0c5h,000h,0c7h,084h,0ech,017h

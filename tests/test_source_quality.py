@@ -67,7 +67,7 @@ class SourceQualityTests(unittest.TestCase):
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
         self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
         self.assertEqual(set(owner['build']['bindings']),
-                         {'_g1784', '_g1786', '_g177a', '_g17ac', '_f_c6b9'})
+                         {'_g1784', '_g1786', '_g177a', '_g17ac', '_voice_disable'})
 
     def test_f880a_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')

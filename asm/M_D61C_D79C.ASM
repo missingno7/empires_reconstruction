@@ -13,7 +13,7 @@ assume cs:_TEXT, ds:DGROUP
 extrn _gfx_copy_rect:near
 extrn _gfx_blit_bitmap:near
 
-public _f_d61c, _f_d79c
+public _draw_queue_render_highlighted, _draw_queue_render
 
 ; The original hand-written code addresses the first cell with an 8-bit
 ; displacement and the following cells with 16-bit displacements.  TASM makes
@@ -24,7 +24,7 @@ endm
 
 ; Original entry F_D61C -- apply bright attributes, render all records, then
 ; restore the normal attributes.
-_f_d61c proc near
+_draw_queue_render_highlighted proc near
     push bp
     mov bp,sp
     push di
@@ -148,10 +148,10 @@ D61_strip_loop_done:
     pop di
     pop bp
     ret
-_f_d61c endp
+_draw_queue_render_highlighted endp
 
 ; Original entry F_D79C -- the same record renderer without lattice changes.
-_f_d79c proc near
+_draw_queue_render proc near
     push bp
     mov bp,sp
     push di
@@ -219,7 +219,7 @@ D79_strip_loop_done:
     pop di
     pop bp
     ret
-_f_d79c endp
+_draw_queue_render endp
 
 _TEXT ends
 end

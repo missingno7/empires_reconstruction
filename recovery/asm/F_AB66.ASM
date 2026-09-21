@@ -9,9 +9,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fab66
+public _slot_menu_run
 
-_fab66 proc near
+_slot_menu_run proc near
     push bp
     mov bp,sp
     sub sp,4
@@ -184,7 +184,7 @@ AB66_done:
     mov sp,bp
     pop bp
     ret
-_fab66 endp
+_slot_menu_run endp
 
 _TEXT ends
 end

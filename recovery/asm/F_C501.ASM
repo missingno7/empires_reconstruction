@@ -8,8 +8,8 @@ _DATA ends
 _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
-public _f_c501
-_f_c501:
+public _sound_secondary_cmd_dispatch
+_sound_secondary_cmd_dispatch:
  push bp
  mov bp,sp
  mov al,es:[di+1]

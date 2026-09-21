@@ -11,7 +11,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_f6b4a  proc    near
+_keyboard_poll_nonblocking  proc    near
         mov     ah,1
         int     16h
         jz      @@none
@@ -30,7 +30,7 @@ _f6b4a  proc    near
         xor     ah,ah
 @@out:
         ret
-_f6b4a  endp
+_keyboard_poll_nonblocking  endp
 _TEXT   ends
-        public  _f6b4a
+        public  _keyboard_poll_nonblocking
         end

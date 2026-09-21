@@ -16,10 +16,10 @@ b@	LABEL	BYTE
 	EXTRN	_g17a4:WORD,_g17ac:WORD,_g17b4:WORD,_g17ec:WORD,_g17f4:WORD,_g17bc:WORD
 _BSS	ENDS
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
-	PUBLIC	_fc1a0, _fc1f7, _fc232
-	EXTRN	_sound_tick_step:NEAR, _fc27d:NEAR
+	PUBLIC	_sound_tick_entry, _sound_voice_pump_loop, _sound_voice_table_prime
+	EXTRN	_sound_tick_step:NEAR, _sound_voice_service_loop:NEAR
 
-_fc1a0	PROC	NEAR
+_sound_tick_entry	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	push	ax
@@ -43,12 +43,12 @@ _fc1a0	PROC	NEAR
 	jne	tick_l1
 	mov	word ptr _v_b,1
 tick_l1:	mov	es,word ptr _snd_seg2
-	call	near ptr _fc1f7
+	call	near ptr _sound_voice_pump_loop
 	jmp	tick_l3
 tick_l2:	cmp	word ptr _snd_mode,0
 	je	tick_l3
 	mov	es,word ptr _snd_seg2
-	call	near ptr _fc1f7
+	call	near ptr _sound_voice_pump_loop
 tick_l3:	pop	es
 	pop	di
 	pop	si
@@ -58,15 +58,15 @@ tick_l3:	pop	es
 	pop	ax
 	pop	bp
 	ret
-_fc1a0	ENDP
+_sound_tick_entry	ENDP
 
-_fc1f7	PROC	NEAR
+_sound_voice_pump_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	cmp	word ptr _snd_mode,2
 	je	pump_l2
-pump_l1:	call	near ptr _fc232
-pump_l2:	call	near ptr _fc27d
+pump_l1:	call	near ptr _sound_voice_table_prime
+pump_l2:	call	near ptr _sound_voice_service_loop
 	cmp	word ptr _snd_mode,0
 	jne	pump_l3
 	mov	ax,word ptr _snd_flag2
@@ -83,9 +83,9 @@ pump_l2:	call	near ptr _fc27d
 	jmp	pump_l1
 pump_l3:	pop	bp
 	ret
-_fc1f7	ENDP
+_sound_voice_pump_loop	ENDP
 
-_fc232 proc near
+_sound_voice_table_prime proc near
     push bp
     mov bp,sp
     xor ax,ax
@@ -112,6 +112,6 @@ next_entry:
     loop scan_entry
     pop bp
     ret
-_fc232 endp
+_sound_voice_table_prime endp
 _TEXT	ENDS
 	END

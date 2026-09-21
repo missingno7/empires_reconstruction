@@ -24,8 +24,8 @@ _BSS	ENDS
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	ASSUME	CS:_TEXT, DS:DGROUP
 	EXTRN	_fc6b9:NEAR
-	PUBLIC	_fc834
-_fc834	PROC	NEAR
+	PUBLIC	_sound_voices_reset
+_sound_voices_reset	PROC	NEAR
 	push	bp
 	mov	bp,sp
 	push	ax
@@ -50,6 +50,6 @@ L1:	mov	word ptr [si+_v_a],0
 	pop	ax
 	pop	bp
 	ret
-_fc834	ENDP
+_sound_voices_reset	ENDP
 _TEXT	ENDS
 	END

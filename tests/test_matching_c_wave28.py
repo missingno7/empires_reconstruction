@@ -1,42 +1,27 @@
-"""Fresh F_21DB comparison and DS:96EE buffer evidence checks."""
+"""Fresh F_21DB comparison and DS:96EE buffer evidence checks.
+
+The fresh-match/mutant part below is converted to use the canonical prover
+(tools/probe_module.py) via tests/support_probe.py; the buffer storage
+evidence test asserts a different artifact and is left unchanged.
+"""
 import copy
 from pathlib import Path
 import sys
-import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
-from mz import MZ
-from dos_runner import resolve_runner
-from reconstruct import (read_json, compile_sources, read_object, bind_region,
-                         mismatch, owned_library_modules)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from reconstruct import read_json
 from storage_evidence import verify
+from support_probe import exact, mutant_rejected
 
 
 class MatchingCWave28Tests(unittest.TestCase):
     def test_fresh_match_and_loop_bound_mutant(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
         owner = read_json(ROOT / 'recipes/c/matching-wave28.json')['owners'][0]
-        original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
-        lock = read_json(ROOT / 'layout/toolchain.json')
-        modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
-        with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
-            work = Path(temporary)
-            source = (ROOT / owner['source']).read_bytes()
-            mutant_path = work / 'F_21DB_MUTANT.C'
-            mutant_path.write_bytes(source.replace(b'i < 23', b'i < 22'))
-            mutant = copy.deepcopy(owner)
-            mutant.update(id='F_21DB_MUTANT', source=mutant_path.relative_to(ROOT).as_posix())
-            receipts, _ = compile_sources(ROOT, [owner, mutant], work / 'compiler', ROOT / 'toolchain',
-                                          resolve_runner(lock), lock)
-            module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())
-            data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
-            mismatch(original[owner['start']:owner['end']], data, owner)
-            mutant_module = read_object((work / 'compiler' / receipts[mutant['id']]['object']).read_bytes())
-            with self.assertRaises(ValueError):
-                mutant_data, _ = bind_region(mutant, mutant_module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
-                mismatch(original[mutant['start']:mutant['end']], mutant_data, mutant)
+        exact(owner['id'])
+        mutant_rejected(owner['id'], b'i < 23', b'i < 22')
 
     def test_buffer_storage_evidence_is_independent(self):
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

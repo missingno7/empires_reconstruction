@@ -1,33 +1,27 @@
-"""Fresh critical-error handler pair and byte-storage evidence checks."""
+"""Fresh critical-error handler pair and byte-storage evidence checks.
+
+The fresh-match part below is converted to use the canonical prover
+(tools/probe_module.py) via tests/support_probe.py; the byte storage
+evidence test asserts a different artifact and is left unchanged.
+"""
 import copy
 from pathlib import Path
 import sys
-import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
-from mz import MZ
-from dos_runner import resolve_runner
-from reconstruct import read_json, compile_sources, read_object, bind_region, mismatch, owned_library_modules
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from reconstruct import read_json
 from storage_evidence import verify
+from support_probe import exact
 
 
 class MatchingCWave31Tests(unittest.TestCase):
     def test_fresh_handler_pair(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
         owners = read_json(ROOT / 'recipes/c/matching-wave31.json')['owners']
-        original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
-        lock = read_json(ROOT / 'layout/toolchain.json')
-        modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
-        with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
-            work = Path(temporary)
-            receipts, _ = compile_sources(ROOT, owners, work / 'compiler', ROOT / 'toolchain',
-                                          resolve_runner(lock), lock)
-            for owner in owners:
-                module = read_object((work / 'compiler' / receipts[owner['id']]['object']).read_bytes())
-                data, _ = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
-                mismatch(original[owner['start']:owner['end']], data, owner)
+        for owner in owners:
+            exact(owner['id'])
 
     def test_byte_storage_evidence_controls(self):
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

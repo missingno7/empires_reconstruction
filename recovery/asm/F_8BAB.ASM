@@ -15,7 +15,7 @@ extrn _keyboard_chain_enable:near
 extrn _keyboard_buffer_drain:near
 extrn _campaign_node_index:near
 extrn _puzzle_display_init:near
-extrn _face7:near
+extrn _slot_is_new_game:near
 extrn _tutorial_hint_dialog_show:near
 extrn _menu_list_disable:near
 extrn _timer_wait_ticks:near
@@ -69,7 +69,7 @@ _puzzle_run proc near
   call _campaign_node_index
  mov [bp-6h],ax
   call _puzzle_display_init
-  call _face7
+  call _slot_is_new_game
  or ax,ax
  jz short $+12
  mov ax,8h
@@ -483,7 +483,7 @@ L_8F63:
 L_8F73:
  JMP_NEAR L_8FF4
 L_8F76:
-  call _face7
+  call _slot_is_new_game
  or ax,ax
  jz short $+18
  inc byte ptr ds:[0c133h]

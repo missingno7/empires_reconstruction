@@ -22,5 +22,5 @@ class MatchingCWave16Tests(unittest.TestCase):
             exact(owner['id'])
         for name, before, after in (
             ('F_1D47', b'i<23', b'i<22'),
-            ('F_B4FB', b'g40d4[72]=3', b'g40d4[73]=3')):
+            ('F_B4FB', b'actor_sprite_dims_table[72]=3', b'actor_sprite_dims_table[73]=3')):
             mutant_rejected(name, before, after)

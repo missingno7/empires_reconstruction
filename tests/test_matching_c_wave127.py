@@ -15,7 +15,7 @@ class MatchingCWave127Tests(unittest.TestCase):
         # Overturned: F_50D2 IS now C. It was recovered as exact Turbo C and
         # folded into the src/STARTUP.C translation-unit merge (module
         # C_4F63_520A in layout/production-plan.json; see
-        # docs/current/asm-provenance.json / docs/current/exact-c-recovery.md),
+        # docs/current/asm-provenance.json / docs/history/exact-c-recovery.md),
         # with thirteen data fixups and no loader relocations, matching this
         # test's name. The wave127 evidence below still matches the unchanged
         # original bytes.

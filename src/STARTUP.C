@@ -210,7 +210,6 @@ l_selected:
 /* F_520A -- video-mode selection and the memory gate.  Plain C; the module
    is on the TASM path (runD: the 5039..52AB region), which is what shortens
    the two forward jmps at 529E and 52AB and pads them with NOP. */
-/*@PUB _video_mode_select*/
 extern void dos_write_handle2(char far *);
 extern void cmdline_parse_args(void), bios_equipment_probe(void);
 extern int video_adapter_detect(), sound_backend_probe();

@@ -72,7 +72,7 @@ class SourceQualityTests(unittest.TestCase):
     def test_f880a_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_880A')
-        # F_880A was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # F_880A was recovered as exact C; see docs/history/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
                          ('MATCHING_C', 'src/DIALOG.C'))
         self.assertEqual(classify_source(ROOT / owner['source']), 'MECHANICAL_C')
@@ -80,7 +80,7 @@ class SourceQualityTests(unittest.TestCase):
     def test_f8bab_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_8BAB')
-        # F_8BAB was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # F_8BAB was recovered as exact C; see docs/history/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
                          ('MATCHING_C', 'src/PUZZLE.C'))
         self.assertEqual(classify_source(ROOT / owner['source']), 'MECHANICAL_C')
@@ -88,7 +88,7 @@ class SourceQualityTests(unittest.TestCase):
     def test_faa1f_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_AA1F')
-        # F_AA1F was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # F_AA1F was recovered as exact C; see docs/history/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
                          ('MATCHING_C', 'src/SLOTMENU.C'))
         self.assertEqual(classify_source(ROOT / owner['source']), 'MECHANICAL_C')

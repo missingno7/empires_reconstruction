@@ -80,7 +80,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BA96.phys"
           },
-          "_g40d4": {
+          "_actor_sprite_dims_table": {
             "offset": 16596,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
@@ -112,12 +112,12 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb4fb",
+        "public": "_level_actor_sprite_dims_init",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g40d4": {
+          "_actor_sprite_dims_table": {
             "offset": 16596,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"

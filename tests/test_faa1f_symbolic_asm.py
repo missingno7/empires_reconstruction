@@ -17,7 +17,7 @@ class FAA1FSymbolicAssemblyTests(unittest.TestCase):
     def test_symbolic_dispatch_loop_is_exact(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_AA1F')
-        # F_AA1F was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # F_AA1F was recovered as exact C; see docs/history/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
                          ('MATCHING_C', 'src/SLOTMENU.C'))
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
@@ -32,7 +32,7 @@ class FAA1FSymbolicAssemblyTests(unittest.TestCase):
         mismatch(original[owner['start']:owner['end']], data, owner)
         self.assertEqual(len(data), 327)
         # F_AA1F now shares its src/SLOTMENU.C translation unit with several
-        # neighbouring functions (see docs/current/exact-c-recovery.md), so
+        # neighbouring functions (see docs/history/exact-c-recovery.md), so
         # module.fixups covers the whole file; only proof['fixups'] is scoped
         # to this owner's own extent.
         self.assertEqual(len(proof['fixups']), 33)

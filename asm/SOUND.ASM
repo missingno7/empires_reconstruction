@@ -35,6 +35,94 @@
 ;
 ; See REPORT.md next to this file for the full former-source-to-proc table
 ; and the extern symbols this module still reaches outside the cluster.
+;
+; ----------------------------------------------------------------------------
+; API summary for a future portable (e.g. SDL3) replacement
+; ----------------------------------------------------------------------------
+;
+; Entry points actually reached from C (grep src/*.C), with their calling
+; convention -- everything else this file makes `public` is a leftover from
+; when each proc was a separately-assembled fragment and is only ever
+; reached by an internal `call`/`call near ptr` from another proc below:
+;
+;   sound_tick_entry(void)        -- driven once per timer tick from the IRQ
+;     handler (src/TIMER.C: `if (!sound_request_count && (sound_enabled ||
+;     music_enabled)) sound_tick_entry();`).  No stack args; unlike a normal
+;     C-ABI callee it saves/restores AX/CX/DX/BX/SI/DI/ES itself around its
+;     body.  Runs one sound_tick_step, then pumps the up-to-4-voice table
+;     via sound_voice_pump_loop -- all through registers/globals.
+;
+;   stream_control_block_arm(int n) -- "play effect/cue n" on the single
+;     music stream; one C stack word arg ([bp+4]).  Arms the stream only if
+;     `n` does not exceed the currently-armed priority (mus_arg, DS:1E8A).
+;     The module's main "trigger a sound" entry -- called from ~15 C files
+;     (BOARD.C, GAME.C, INTRO.C, LEVEL.C, PUZZLE.C, ROUNDEND.C, ...).
+;
+;   sound_stop_reset(void)        -- stop the stream and close the speaker
+;     gate.  No args.
+;
+;   sound_backend_select_init(void) -- pick and initialise the active output
+;     backend (PC speaker / Tandy gate / queued OPL bank / probe) from
+;     snd_backend_mode (DS:1778).  No args; called once by src/PLRLDPUB.C
+;     after a player record loads.
+;
+;   sound_voices_reset(void)      -- silence and re-arm all configured
+;     voices (up to snd_nvoices).  No args; called from game/menu teardown
+;     paths (GAME.C game_shutdown, OPTIONS.C, PLAYERSL.C, SLOTMENU.C,
+;     SNDFXTGL.C, LEVEL.C).
+;
+;   sound_voices_disable_all(void) -- submit one "disabled" update for every
+;     voice, without touching snd_mode/snd_hi.  No args; src/SNDREQ.C.
+;
+;   sound_voice_table_reload(int id) -- reload the per-voice command-stream
+;     cursor/base tables (DS:178C/1794) for voice-table `id`.  One C stack
+;     word arg ([bp+4]); called as `sound_voice_table_reload(0)` from
+;     src/RESCACHE.C after a resource-cache load.
+;
+;   opl_register_write(int reg, int data) -- the one OPL primitive every
+;     src/OPLREG.C / OPLINIT.C / VOXCHAN.C voice call goes through.  Two C
+;     stack word args ([bp+4]=register, [bp+6]=data): writes the register
+;     number to opl_port with six settling reads, then the data byte to
+;     opl_port+1 with 35 more (`rept 35 / in al,dx / endm`).
+;
+; Everything internal (_sound_tick_step, _voice_enable/_disable,
+; _sound_pit_divisor_program, _speaker_gate_on/_off,
+; _pit_channel2_set_divisor, _opl_port_write_byte, the whole command/stream
+; decode-and-dispatch cluster) uses an ad hoc register convention instead of
+; the C stack-ABI: SI = voice*2 index into the state block below, AL/AH =
+; a command byte's opcode/argument nibbles, ES:DI = the live command-stream
+; pointer.  A portable rewrite only needs to expose the eight entries above.
+;
+; Hardware touched, all through the internal procs:
+;   - port 61h (PC speaker gate): _speaker_gate_on/_off and the backend-
+;     mode-0 paths of _voice_enable/_voice_disable bit-bang the timer-2 gate
+;     bits directly; backend mode 1 instead sets the Tandy/PCjr-style
+;     speaker-enable bit (0x60).
+;   - PIT channel 2, port 42h: _pit_channel2_set_divisor and the backend-
+;     mode-0 path of _sound_pit_divisor_program write the divisor's low then
+;     high byte; the channel-2 mode/control word on port 43h is programmed
+;     once elsewhere, outside this file (src/TIMER.C).
+;   - the OPL/backend port pair at opl_port/opl_port+1 (0xC0/0xC1 for the
+;     direct backend, 0x205/0x206 for the transient "mode 3" probe that
+;     immediately collapses back to mode 1): _opl_register_write and
+;     _opl_port_write_byte are the only code here that touches them
+;     directly.  The queued-OPL backend (mode 2) instead hands values to
+;     src/OPLVOICE.C's voice_bank_retune_on/voice_bank_update, which reach
+;     the same port pair through their own opl_register_write calls.
+;
+; State block layout (DS:175E..1834 primary cluster, DS:1E84..1E94 the
+; single-stream twin; see docs/current/sound-state.md for the full per-word
+; evidence): DS:178C..17FB is a 14-table struct-of-arrays block, one word per
+; voice (voices 0..3, SI = voice*2), stride 8 bytes between corresponding
+; entries -- command-stream cursor, its reload baseline, hold/duration
+; counter, decode source value, armed flag, sustain flag, note length, then
+; six pause-overlay-renderer/decode-index words (17C4/17CC/17D4/17DC/17E4/
+; 17F4, documented at their equates below).  Scalars just before that block
+; (snd_mode/snd_hi/g1788/g178a, 1784..178B) and fixed constant tables just
+; after it (_notetab at 17FC, a second 12-word note table at 1814, two more
+; unnamed word tables at 182C/1832) close out the primary cluster.
+; DS:1E84..1E94 runs the byte-identical algorithm for the one "music stream"
+; that sound_tick_step/_sound_stream_command_step service.
 
 _TEXT   segment byte public 'CODE'
 _TEXT   ends
@@ -205,8 +293,23 @@ _sound_voice_table_prime endp
 ; extern name used directly below.
 ; voice_pending_table is the sole surviving name for DS:17E4 -- no data symbol
 ; was ever declared for it (state_mode/command_mode were two equates for the
-; same unbound address); kept as a plain equate, not an extern.
-voice_pending_table equ 17e4h
+; same unbound address); kept as a plain equate, not an extern.  Confirmed by
+; layout/manifest.json: no code region anywhere in the binary binds a
+; DGROUP_offset of 6116 (0x17E4) to any public name.
+voice_pending_table equ 17e4h   ; DS:17E4, no data public: per-voice "a
+                                 ; command value was just (re)decoded" flag --
+                                 ; set to 1 by _sound_command_value_derive
+                                 ; (F_C3DB, every normal command) and by
+                                 ; _voice_command_decode_apply (F_C5D1, both
+                                 ; the mode-1 divisor path and the default/
+                                 ; master-shift path, via this equate), cleared
+                                 ; back to 0 only by
+                                 ; _sound_control_block_advance (F_C440) after
+                                 ; it consumes the flag to pick the just-
+                                 ; decoded render branch.  Lifecycle: never
+                                 ; touched by sound_voice_table_prime/reload;
+                                 ; it is a pure per-tick command-to-renderer
+                                 ; handshake bit, not persisted voice state.
 
 ; F_C27D -- per-voice service loop: advance each voice's counter, retrigger
 ; command dispatch and the voice-off entry as their timers expire, and
@@ -321,8 +424,17 @@ C2EA_done:
 
 ; The two note tables addressed here are the same DS:17FC table SNDNOTE.C
 ; (F_C988) and F_CA9B index by note number, and a second, unnamed table at
-; DS:1814 used only for the paused-mode path below.
-voice_table_b equ 1814h            ; DS:1814, second note/frequency table
+; DS:1814 used only for the paused-mode path below.  No data public exists at
+; DGROUP_offset 6164 (0x1814) anywhere in layout/manifest.json's binding set,
+; so this constant table stays an ASM-internal equate like _notetab's raw
+; span.  It is exactly 12 words (0x1814..0x182B): the paused-mode select
+; below applies the identical `dec al; shl al,1; add bx,ax; mov ax,[bx];
+; shr ax,cl` note-index/octave-shift lookup as _notetab, and the very next
+; word after its 12th entry is 0x182C, the start of the next unnamed table
+; below -- the same tight, no-gap packing _notetab shows against 0x1814.
+voice_table_b equ 1814h            ; DS:1814, second note/frequency table,
+                                    ; one octave (12 words), read only by the
+                                    ; C359_paused_mode branch just below
 
 _sound_control_value_select:
     push bp
@@ -402,6 +514,19 @@ C359_done:
 ; memory type of an EQU in these contexts, so retain typed absolute
 ; operands.
 
+; _g17f4 mechanism (LOW confidence on meaning, mechanism fully traced): a
+; per-voice 0..3 progress counter driven by two bits of the command's high
+; nibble (AH, from ES:[di+1]) whenever the "direct value" bit AH&80h is
+; clear.  AH&10h set: 0->1, 1->3 (2 is skipped), 3 stays 3 (the fast/
+; skip-to-max path).  AH&10h clear: 0 stays 0, anything else increments by
+; one with no upper clamp (the slow/continuation path).  Read back only by
+; _sound_control_block_advance (F_C440, `[si+_g17f4]` compared against 1/2/3
+; to choose the pause-overlay's read/blank/reset render branch).  No
+; prime/reload writer; F_C232 (sound_voice_table_prime) only ever zeroes it.
+; The scalar twin at DS:1E8C (_g1e8c) runs the byte-identical state machine
+; for the single music stream inside _sound_stream_delay_decode (F_C9A4)
+; below, with no reader at all -- see that proc's comment.
+
 _sound_command_value_derive:
     push bp
     mov bp, sp
@@ -451,17 +576,41 @@ C3DB_store_value:
 ; same-segment relative expression to preserve that historical object
 ; topology.
 
-; state_ready, state_mode, state_index, state_guard, state_allow, state_limit
-; and state_value each duplicated an existing DGROUP extern (_v_a,
-; voice_pending_table, _g17f4, _voice_rest_table, _v_hold, _v_len and _v_ctr
-; respectively); retired in favor of the extern/equate name used directly
-; below.  state_active, state_cursor_mode, state_cursor, state_cursor_next and
-; state_text have no corresponding extern and stay as equates.
-state_active equ 177ch
-state_cursor_mode equ 17d4h
-state_cursor equ 17c4h
-state_cursor_next equ 17cch
-state_text equ 17dch
+; state_ready, state_mode, state_index, state_guard, state_allow, state_limit,
+; state_value and (newly found here) state_active each duplicated an existing
+; DGROUP extern (_v_a, voice_pending_table, _g17f4, _voice_rest_table,
+; _v_hold, _v_len, _v_ctr and _v_b respectively); retired in favor of the
+; extern/equate name used directly below.  state_active's slot-gate check at
+; DS:177C is the exact word _v_b already names (the per-voice output-
+; suppressed gate _sound_tick_entry zeroes every tick and voice_enable/
+; voice_disable/sound_pit_divisor_program test before touching hardware);
+; confirmed by cross-checking layout/manifest.json's DGROUP_offset bindings,
+; which list only `_v_b` at offset 6012 (0x177C) -- so this renderer was
+; skipping already-gated voices via a fourth, unbound name for the same
+; word.  state_cursor_mode, state_cursor, state_cursor_next and state_text
+; have no data public anywhere in layout/manifest.json's binding set and
+; stay as equates; see the per-field comments below for their mechanism.
+state_cursor_mode equ 17d4h        ; DS:17D4, no data public: per-voice
+                                    ; renderer progress state -- 0=actively
+                                    ; reading via state_cursor_next (each
+                                    ; byte rendered as read), 1=stream just
+                                    ; hit its 0FFh terminator (that tick
+                                    ; renders nothing; every later tick
+                                    ; renders state_text instead until the
+                                    ; next reset), >1=unreachable with the
+                                    ; current writers (C440_render_blank is
+                                    ; dead code in the traced call graph)
+state_cursor equ 17c4h             ; DS:17C4, no data public: per-voice base
+                                    ; pointer into the pause-overlay byte
+                                    ; stream selected by secondary command 5
+state_cursor_next equ 17cch        ; DS:17CC, no data public: live one-byte-
+                                    ; per-tick read cursor seeded from
+                                    ; state_cursor, terminates on 0FFh
+state_text equ 17dch               ; DS:17DC, no data public: per-voice
+                                    ; "steady-state" override byte, rendered
+                                    ; every tick once state_cursor_mode==1
+                                    ; (stream exhausted); set only by
+                                    ; secondary command 6 (_f_c5c6)
 
 _sound_control_block_advance:
     push bp
@@ -469,7 +618,7 @@ _sound_control_block_advance:
     xor si, si
     mov bl, 90h
 C440_slot_loop:
-    cmp word ptr [si+state_active], 0
+    cmp word ptr [si+_v_b], 0
     jz short C440_slot_ready
     jmp C440_slot_done
 C440_slot_ready:
@@ -596,7 +745,7 @@ _sound_command_flags_update proc near
     je short C549_set_one_plus_one
     mov word ptr ds:[si+_g17b4], 0
     xor ah, ah
-    mov ds:[si+17bch], ax                  ; DS:17BC
+    mov ds:[si+_v_len], ax                 ; DS:17BC
     jmp short C549_done
 C549_set_one:
     nop
@@ -673,6 +822,21 @@ _f_c5a8 endp
 
 ; F_C5B3 -- select a word from the DS:1832h table by AL, then store it
 ; through SI at DS:17C4h.
+
+; DS:1832 table mechanism (LOW confidence on meaning): no data public exists
+; at DGROUP_offset 6194 (0x1832) anywhere in layout/manifest.json's binding
+; set.  AL here is the raw argument byte of secondary command 5 (from
+; _sound_secondary_cmd_dispatch/F_C501, ES:[di+1], no masking), so the index
+; range this table must cover is whatever that command's data authors used
+; -- not otherwise bounded in this module.  The looked-up word is stored
+; straight into state_cursor (17C4), which F_C440 later reads one byte at a
+; time and writes to the OPL data port through _opl_port_write_byte with a
+; per-slot register base (90h/B0h/D0h/F0h) added in -- i.e. this table holds
+; far-pointer-free, in-segment offsets to byte streams of OPL register
+; values, not literal frequencies.  Its first word (0x1832) lands on the
+; exact same address as index 3 of the DS:182C table below (see that
+; table's comment); whether that is a real second view of the same data or
+; an accidental boundary is not established here.
 _sound_table_word_select_store proc near
     push bp
     mov bp,sp
@@ -680,7 +844,7 @@ _sound_table_word_select_store proc near
     xor bh,bh
     shl bx,1
     mov bx,[bx+1832h]                      ; DS:1832, unnamed word table
-    mov [si+17c4h],bx                      ; DS:17C4
+    mov [si+state_cursor],bx               ; DS:17C4
     pop bp
     ret
 _sound_table_word_select_store endp
@@ -690,7 +854,7 @@ _f_c5c6 proc near
     push bp
     mov bp,sp
     xor ah,ah
-    mov [si+17dch],ax                      ; DS:17DC
+    mov [si+state_text],ax                 ; DS:17DC
     pop bp
     ret
 _f_c5c6 endp
@@ -706,12 +870,44 @@ _f_c5c6 endp
 ; ============================================================================
 
 ; voice_retune_base_table -- per-voice queued PIT-divisor/tone value awaiting
-; delivery to the 9-voice OPL bank; no data symbol exists at DS:1766, so this
-; stays a plain equate rather than an extern.
-voice_retune_base_table equ 1766h
+; delivery to the 9-voice OPL bank; no data symbol exists at DS:1766 (confirmed
+; against layout/manifest.json: no code region in the binary binds
+; DGROUP_offset 5990 to any public), so this stays a plain equate rather than
+; an extern.
+voice_retune_base_table equ 1766h  ; DS:1766, no data public: written only by
+                                    ; _sound_pit_divisor_program (F_C706,
+                                    ; backend_mode==2 path, "store_queued":
+                                    ; [si+1766h]=ax, the divisor AL/AH would
+                                    ; otherwise have gone to PIT port 42h);
+                                    ; read only by _voice_enable (F_C678,
+                                    ; backend_mode==2 "queue_value" path),
+                                    ; which pushes it as the bank's `base`
+                                    ; argument to voice_bank_retune_on(bank,
+                                    ; base) in OPLVOICE.C.  Lifecycle: no
+                                    ; explicit prime/reload; it holds whatever
+                                    ; the last F_C706 call stored until the
+                                    ; matching F_C678 call drains it.
 
 ; F_C5D1 -- decode one command byte and update the selected SI-relative
 ; voice-control slot.
+
+; DS:182C table mechanism (LOW confidence on meaning): no data public exists
+; at DGROUP_offset 6188 (0x182C) anywhere in layout/manifest.json's binding
+; set.  Indexed by `_snd_backend_mode*2` in the default decode path below,
+; but backend_mode 1 and 2 both branch away before reaching that index, so
+; only backend_mode 0 (index 0, word at 0x182C) and backend_mode 3 (index 3,
+; word at 0x182C+6 = 0x1832) are ever actually read here -- and mode 3 is
+; the transient probe-only value that _sound_backend_select_init immediately
+; collapses back to mode 1, so in steady-state operation only the index-0
+; entry is live.  Index 3's address is the exact first word of the DS:1832
+; table above (see that table's comment for the same coincidence from the
+; other side); index 2's address (0x1830) is `_opl_port` itself, but
+; backend_mode 2 never reaches this indexed read, so that potential overlap
+; is never exercised.  The looked-up word is added to a negative,
+; command-derived delta and right-shifted by an octave count before being
+; passed to _sound_pit_divisor_program, the same shape as the _notetab
+; lookups elsewhere -- i.e. this is a base PIT-divisor (or OPL f-number)
+; constant per backend, not a general table.
 _voice_command_decode_apply proc near
     push bp
     mov bp,sp
@@ -742,7 +938,7 @@ C5D1_have_value:
     jmp short C5D1_store_result
     nop
 C5D1_mode_two:
-    mov word ptr [si+17e4h],1              ; DS:17E4
+    mov word ptr [si+voice_pending_table],1 ; DS:17E4
     jmp short C5D1_store_result
     nop
 C5D1_mode_one:
@@ -779,7 +975,7 @@ C5D1_scaled:
 C5D1_frequency_ready:
     mov ax,dx
     call _sound_pit_divisor_program
-    mov word ptr [si+17e4h],1              ; DS:17E4
+    mov word ptr [si+voice_pending_table],1 ; DS:17E4
     mov word ptr [si+_voice_rest_table],0
 C5D1_store_result:
     mov ax,[si+_g17a4]
@@ -1021,7 +1217,7 @@ C7CB_copy_voice:
     mov ax,es:[di]
     add ax,word ptr ds:_snd_base2
     mov [si+_voice_stream_cursor_table],ax
-    mov [si+1794h],ax                      ; DS:1794, F_C7CB's second array
+    mov [si+_voice_stream_base_table],ax   ; DS:1794
     add di,2
     add si,2
     loop C7CB_copy_voice
@@ -1257,6 +1453,16 @@ _sound_note_dispatch endp
 
 ; F_C9A4 -- decode one ES:[DI+1] command byte into a scaled delta and store
 ; it through _snd_delay.
+
+; _g1e8c mechanism (LOW confidence on meaning): the scalar, single-stream
+; twin of the per-voice _g17f4 counter above, driven by the identical AH&10h
+; fast/slow 0..3 progression.  Unlike _g17f4, no other proc in this module
+; (or anywhere in the extern list) ever reads _g1e8c back -- its only other
+; touch is _stream_control_block_arm (F_CAF1) zeroing it when a new stream
+; entry is armed.  So this word is write-only from the decoder's own point
+; of view: either a genuinely dead leftover of the 178C-block algorithm
+; being reused verbatim for the single-stream case, or consumed by code
+; outside this module's evidenced call graph.
 _sound_stream_delay_decode:
     push bp
     mov bp, sp

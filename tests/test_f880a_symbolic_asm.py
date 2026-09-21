@@ -18,7 +18,7 @@ class F880ASymbolicAssemblyTests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_880A')
         # F_880A was recovered as exact C (absorbing former F_8C04); see
-        # docs/current/exact-c-recovery.md.
+        # docs/history/exact-c-recovery.md.
         self.assertEqual((owner['kind'], owner['source']),
                          ('MATCHING_C', 'src/DIALOG.C'))
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
@@ -33,7 +33,7 @@ class F880ASymbolicAssemblyTests(unittest.TestCase):
         mismatch(original[owner['start']:owner['end']], data, owner)
         self.assertEqual(len(data), 557)
         # F_880A now shares its src/DIALOG.C translation unit with several
-        # neighbouring functions (see docs/current/exact-c-recovery.md), so
+        # neighbouring functions (see docs/history/exact-c-recovery.md), so
         # module.fixups covers the whole file; proof['fixups'] is the count
         # scoped to this owner's own extent.
         self.assertEqual(len(proof['fixups']), 29)

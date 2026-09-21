@@ -82,7 +82,7 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                 if owner is None:
                     # A handful of former standalone owners (e.g. F_7DD3, F_8C04)
                     # were absorbed into a neighbouring region's extent during
-                    # exact-C recovery (see docs/current/exact-c-recovery.md)
+                    # exact-C recovery (see docs/history/exact-c-recovery.md)
                     # and no longer exist as their own manifest region.
                     continue
                 recipe = read_json(ROOT / 'recipes/c' / recipe_name)
@@ -133,7 +133,7 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                 # (mirroring the [start, end) window bind_region itself uses).
                 # Standalone owners can also now be one section of a merged
                 # multi-function src/*.C translation unit (see
-                # docs/current/exact-c-recovery.md), so module.fixups may
+                # docs/history/exact-c-recovery.md), so module.fixups may
                 # cover neighbouring functions too. Scope the comparison to
                 # this owner's own [start, end) public range the same way
                 # the grouped-module case does, rather than assuming the

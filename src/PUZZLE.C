@@ -13,7 +13,7 @@
 extern int puzzle_piece_total;
 extern char puzzle_held_piece, gc133, puzzle_solved_flag, puzzle_cursor_col, puzzle_cursor_row;
 extern int rand(void);
-extern int face7(void);
+extern int slot_is_new_game(void);
 extern void hud_draw_meter(void);
 extern int music_track_handle;
 extern int cur_color_index_get(),sprite_sheet_index_get(),menu_list_active(),keyboard_chain_active(),campaign_node_index();
@@ -76,7 +76,6 @@ void puzzle_clear_grid(void)
    remaining free cells, walk the grid cyclically that many free cells on,
    stamp the index there and give it a random 0..3 attribute when fACE7()
    says so.  Returns whether the grid is now full. */
-/*@PUB _puzzle_deal_pieces*/
 int puzzle_deal_pieces(void)
 {
     register int row;
@@ -99,7 +98,7 @@ int puzzle_deal_pieces(void)
                 }
             } while ((unsigned char) puzzle_grid[row][col].kind != 0xff);
         puzzle_grid[row][col].kind = slot;
-        if (face7())
+        if (slot_is_new_game())
             puzzle_grid[row][col].rot = rand() % 4;
         else
             puzzle_grid[row][col].rot = 0;
@@ -122,7 +121,7 @@ int puzzle_run(void)
  quit=0;redraw=1;flash=1;stage=0;saved_state=music_track_handle;
  saved_input=cur_color_index_get();saved_timer=sprite_sheet_index_get();saved_cursor=menu_list_active();saved_mode=keyboard_chain_active();
  keyboard_chain_enable();keyboard_buffer_drain();level=campaign_node_index();puzzle_display_init();
- if(face7()) tutorial_hint_dialog_show(8);else tutorial_hint_dialog_show(6);
+ if(slot_is_new_game()) tutorial_hint_dialog_show(8);else tutorial_hint_dialog_show(6);
  while(!quit) {
   if(puzzle_solved_flag) {
    menu_list_disable();
@@ -171,7 +170,7 @@ int puzzle_run(void)
     case 0x150:if(++puzzle_cursor_row>=4) puzzle_cursor_row=0;break;
     case 0x14b:if(--puzzle_cursor_col<0) puzzle_cursor_col=5;break;
     case 0x14d:if(++puzzle_cursor_col>=6) puzzle_cursor_col=0;break;
-    case 'F':case 'f':if(face7()) {if(++GC132.rot>3) GC132.rot=0;}break;
+    case 'F':case 'f':if(slot_is_new_game()) {if(++GC132.rot>3) GC132.rot=0;}break;
     case 13:
      if(puzzle_grid[puzzle_cursor_row][puzzle_cursor_col].kind!=-1) stream_control_block_arm(23);
      else {puzzle_grid[puzzle_cursor_row][puzzle_cursor_col]=GC132;GC132.kind=-1;stream_control_block_arm(26);f9402(0);}
@@ -194,7 +193,7 @@ int puzzle_run(void)
 
 
 /* ---- F_90A6 (original code at 0x90A6) ---- */
-puzzle_display_init(){int n,k;register int i,j;n=campaign_node_index();resource_load_record_alloc(tick_div8()*2+face7()+4201,&gdc4);resource_load_record(4159);gfx_blit_bitmap(8,16,ui_gfx_shadow_a);gfx_wipe_rect(8,16,304,144,8,202);resource_load_record(tick_div8()*8+campaign_node_index()+face7()*4+4161);gfx_blit_bitmap(0,344,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[0]+2);gfx_copy_rect(140,44,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[1]+2,0);for(k=0;k<2;k++)strcpy(gc136[k],ui_gfx_shadow_a+((int *)ui_gfx_shadow_a+2)[k]+2);resource_load_record_alloc(4160,&gdc8);if(puzzle_solved_flag)f9440(1);else f9402(puzzle_held_piece!=-1);for(i=0;i<4;i++)for(j=0;j<6;j++)puzzle_draw_piece(puzzle_grid[i][j],i,j);for(i=0;i<n;i++)puzzle_draw_tray_piece(i);if(puzzle_solved_flag)puzzle_draw_tray_piece(n);gfx_box(8,16,304,144);}
+puzzle_display_init(){int n,k;register int i,j;n=campaign_node_index();resource_load_record_alloc(tick_div8()*2+slot_is_new_game()+4201,&gdc4);resource_load_record(4159);gfx_blit_bitmap(8,16,ui_gfx_shadow_a);gfx_wipe_rect(8,16,304,144,8,202);resource_load_record(tick_div8()*8+campaign_node_index()+slot_is_new_game()*4+4161);gfx_blit_bitmap(0,344,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[0]+2);gfx_copy_rect(140,44,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[1]+2,0);for(k=0;k<2;k++)strcpy(gc136[k],ui_gfx_shadow_a+((int *)ui_gfx_shadow_a+2)[k]+2);resource_load_record_alloc(4160,&gdc8);if(puzzle_solved_flag)f9440(1);else f9402(puzzle_held_piece!=-1);for(i=0;i<4;i++)for(j=0;j<6;j++)puzzle_draw_piece(puzzle_grid[i][j],i,j);for(i=0;i<n;i++)puzzle_draw_tray_piece(i);if(puzzle_solved_flag)puzzle_draw_tray_piece(n);gfx_box(8,16,304,144);}
 
 
 /* ---- F_9259 (original code at 0x9259) ---- */
@@ -226,7 +225,7 @@ puzzle_draw_tray_piece(i) register int i; {gfx_copy_rect(0x108,27+(i<<5),gdc4+((
 
 
 /* ---- F_9402 (original code at 0x9402) ---- */
-void f9402(int i) { register int flag; flag=i && !face7(); hud_prompt_message_draw((char far *)g0dc8 + g0dc8[i] + 2,flag); }
+void f9402(int i) { register int flag; flag=i && !slot_is_new_game(); hud_prompt_message_draw((char far *)g0dc8 + g0dc8[i] + 2,flag); }
 
 
 /* ---- F_9440 (original code at 0x9440) ---- */

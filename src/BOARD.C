@@ -33,7 +33,7 @@ extern struct CEL cel[];
 extern int  xa[], ya[];         /* DS:8BEA, DS:8BF4 */
 /*@SYM _xa=0x8BEA kind=g key=storage_objects/M_2871A.phys*/
 /*@SYM _ya=0x8BF4 kind=g key=storage_objects/M_28724.phys*/
-extern int  g72c, g72e, g73a, g96, gbc;
+extern int  hud_scroll_cooldown_ticks, g72e, cursor_facing_left, g96, gbc;
 extern char far *pool;                  /* DS:99D2 */
 /*@SYM _pool=0x99D2 kind=g key=storage_objects/M_29502.phys*/
 extern char far *src, far *dst;         /* DS:C5CA -> DS:40C4 */
@@ -63,7 +63,6 @@ extern char far *board_records;
 extern int point_in_hotspot_rect();
 extern char far *record_table_root;
 extern char far *record_field_skip_n();
-extern int g00bc;
 extern void f2986();
 extern int board_record_index;
 extern char s9b6e[], s9ae0[], s9a5c[], s99da[];
@@ -213,7 +212,7 @@ void board_scan_wipe_effect(register int i)
     register int k;
 
     sound_stop_reset();
-    g72c = 0;
+    hud_scroll_cooldown_ticks = 0;
     stream_control_block_arm(0x0d);
     g96 = 0x190;
     board_redraw_view();
@@ -223,7 +222,7 @@ void board_scan_wipe_effect(register int i)
         dst = src;
         blit(xa[i], ya[i] + 0xb8, (char far *)&cel[k]);
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x21, xa[i], ya[i]);
-        copy(cursor_x, cursor_y, pool + g72e * 0x2a2, g73a);
+        copy(cursor_x, cursor_y, pool + g72e * 0x2a2, cursor_facing_left);
         rect_queue_flush();
         timer_deadline_wait();
     }
@@ -233,7 +232,7 @@ void board_scan_wipe_effect(register int i)
         dst = src;
         wipe(xa[i], ya[i] + 0xb8, 0x2e, 0x28, xa[i], ya[i]);
         board_redraw_view();
-        copy(xa[i] + 4, ya[i], pool + k * 0x2a2, g73a);
+        copy(xa[i] + 4, ya[i], pool + k * 0x2a2, cursor_facing_left);
         rect_queue_flush();
         timer_deadline_wait();
     }
@@ -362,11 +361,11 @@ unsigned char far *p;
     register int di;
     register int i;
 
-    saved = g00bc;
+    saved = gbc;
     di = p[0] * 2;
     n = p[1];
     gfx_copy_rect(di, n + 0xb8, gb1cc[0], 0);
-    g00bc = 0;
+    gbc = 0;
     i = p[4] + 5;
     while (i < 10) {
         if (p[i] == 0)
@@ -375,7 +374,7 @@ unsigned char far *p;
         gfx_copy_rect(off, n + 0xb9, g893c[p[i] - 1], 0);
         ++i;
     }
-    g00bc = saved;
+    gbc = saved;
 }
 
 
@@ -401,7 +400,6 @@ unsigned char near *record_table_level4_ptr(){unsigned char *p;p=record_table_ro
 /* F_2AE2 -- the board redraw.  Plain C.  The module is on the TASM path:
    the two  83 E3 3F  (and bx,3fh) at 2C31 and 2D78 are the short AND form
    TASM picks and TCC's own writer does not. */
-/*@PUB _board_redraw_paint*/
 extern int value_parity();
 /* alternate view: untyped extern void gfx_copy_rect(); vs typed extern void gfx_copy_rect(int,int,void far *,int); at top */
 extern void gfx_copy_rect();
@@ -607,7 +605,7 @@ void board_scroll_transition(void)
         }
         timer_wait_ticks(0x30);
     }
-    g00bc = 0;
+    gbc = 0;
     sound_stop_reset();
     puzzle_run();
     board_redraw_paint();
@@ -616,7 +614,7 @@ void board_scroll_transition(void)
     sprite_draw_cursor();
     gfx_box(8, 0x10, 0x130, 0x90);
     hud_panel_open();
-    g00bc = 1;
+    gbc = 1;
     rect_queue_write_ptr = ui_gfx_blob;
     if (g072e == 0x13) {
         for (y = 0x13; y >= 0x10; y--) {

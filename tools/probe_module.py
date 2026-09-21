@@ -68,6 +68,14 @@ def probe(owner_ids, overrides=None, root=ROOT, as_c=None):
         if owner_id not in plan and owner_id not in regions:
             raise SystemExit(f'unknown owner {owner_id}')
         owner = dict(plan.get(owner_id) or regions[owner_id])
+        if owner_id in plan and not owner.get('sources') and len(owner.get('members', [])) > 1:
+            # A multi-member structural module (single file, C or assembler): the build
+            # binds it from the module entry plus its member regions' bindings; do the same.
+            bindings = dict(owner['build'].get('bindings', {}))
+            for member in owner['members']:
+                for symbol, binding in regions.get(member, {}).get('build', {}).get('bindings', {}).items():
+                    bindings.setdefault(symbol, binding)
+            owner['build'] = {**owner['build'], 'bindings': bindings}
         if as_c and owner_id in as_c:
             # Probe a C candidate for a region that production still assembles:
             # compile the override with the pinned compiler flags and bind it as C.

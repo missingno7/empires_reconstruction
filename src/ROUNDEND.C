@@ -22,7 +22,7 @@ extern void box(int x, int y, int w, int h);                    /* 039F */
 extern void timer_wait_ticks(int n);
 extern void sound_stop_reset(void);
 extern void tutorial_hint_dialog_show(int n);
-extern int face7(), rand(), resource_load_record();
+extern int slot_is_new_game(), rand(), resource_load_record();
 extern void roundend_marker_show(int, int);
 extern void rect_border_draw();
 extern char gc356[];
@@ -35,7 +35,6 @@ extern struct { int w0; int w2; } a1271[];
    current one and gC354 is clear), or draw the bitmap the entry's byte names
    and dispatch through the handler table g12A1 by its signed byte. */
 
-/*@PUB _roundend_marker_show*/
 void roundend_marker_show(int n, int j)
 {
     score_set_position(n);
@@ -84,7 +83,7 @@ void roundend_round_setup(int n)
     for (i = 0; i < 3; i++)
         gfx_wipe_rect(0xf4, i * 0x30 + 0xc8, 0x30, 0x23, 0xf4, i * 0x30 + 0x10);
     gc35b = gc354 = gc35b = 0;
-    gc35d = face7() * 0x14 + x;
+    gc35d = slot_is_new_game() * 0x14 + x;
     while ((g0dcc[gc35d].f16 & (1 << (x = rand() % 8))) == 0)
         ;
     gc359 = x + 1;

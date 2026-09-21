@@ -16,7 +16,7 @@ class SymbolicAsmWave149Tests(unittest.TestCase):
     def test_f_7dd3_has_complete_extent_and_real_call_fixups(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         # F_7DD3 was recovered as exact C and absorbed into F_7964's shared
-        # frame (see docs/current/exact-c-recovery.md, "F_7964 and former
+        # frame (see docs/history/exact-c-recovery.md, "F_7964 and former
         # F_7DD3: exact menu loop"); it no longer exists as its own manifest
         # region. F_7964's provenance.former_regions still records F_7DD3's
         # original [32211, 32252) extent (41 bytes), which this test verifies

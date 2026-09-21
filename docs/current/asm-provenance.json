@@ -1,6 +1,6 @@
 {
   "format": "empires-asm-provenance-v1",
-  "scope": "All 32 TASM.EXE production modules in layout/production-plan.json, expanded per member region for multi-function modules. Data drawn from docs/current/asm-origin-review.json, module header comments (written this session, re-checked against ASM text), docs/current/timer-c-probes.json, docs/current/c-path-probes.json, docs/current/exact-c-recovery.md.",
+  "scope": "All 32 TASM.EXE production modules in layout/production-plan.json, expanded per member region for multi-function modules. Data drawn from docs/current/asm-origin-review.json, module header comments (written this session, re-checked against ASM text), docs/current/timer-c-probes.json, docs/current/c-path-probes.json, docs/history/exact-c-recovery.md.",
   "modules": [
     {
       "module": "RUNTIME_BLOCK",
@@ -31,7 +31,7 @@
     },
     {
       "module": "F_1ECD",
-      "source": "asm/F_1ECD.ASM",
+      "source": "asm/RECTQ.ASM",
       "members": [
         {
           "id": "F_1ECD",
@@ -57,7 +57,7 @@
     },
     {
       "module": "F_1F91",
-      "source": "asm/F_1F91.ASM",
+      "source": "asm/BOARDCOL.ASM",
       "members": [
         {
           "id": "F_1F91",
@@ -339,7 +339,7 @@
     },
     {
       "module": "F_9EC3",
-      "source": "asm/F_9EC3.ASM",
+      "source": "asm/ANIMROW.ASM",
       "members": [
         {
           "id": "F_9EC3",
@@ -365,7 +365,7 @@
     },
     {
       "module": "M_D386_D3CF",
-      "source": "asm/M_D386_D3CF.ASM",
+      "source": "asm/ICONANIM.ASM",
       "members": [
         {
           "id": "F_D386",
@@ -396,7 +396,7 @@
     },
     {
       "module": "M_D61C_D79C",
-      "source": "asm/M_D61C_D79C.ASM",
+      "source": "asm/DRAWQ.ASM",
       "members": [
         {
           "id": "F_D61C",
@@ -427,7 +427,7 @@
     },
     {
       "module": "M_D818_D825",
-      "source": "asm/M_D818_D825.ASM",
+      "source": "asm/DRAWQBUF.ASM",
       "members": [
         {
           "id": "F_D818",

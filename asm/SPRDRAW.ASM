@@ -126,7 +126,7 @@ _animated_tile_tick  proc    near
         push    di
         push    ds
         cld
-        cmp     _g8fe,0
+        cmp     _raycast_trail_active,0
         je      at_armed
         jmp     at_done
 at_armed:
@@ -367,7 +367,7 @@ _TEXT ends
         extrn   _g0a20:word
         extrn   _gfx_wipe_rect:near
         extrn   _g40d0:dword
-        extrn   _g8fe:word
+        extrn   _raycast_trail_active:word
         extrn   _ga20:word
         extrn   _sprite_tile_bank:dword
         end

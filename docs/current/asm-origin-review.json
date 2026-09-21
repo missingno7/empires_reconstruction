@@ -8,213 +8,100 @@
       "members": [
         "RUNTIME_BLOCK"
       ],
-      "classification": "ASM_ORIGIN_LIKELY",
-      "evidence": "Computed entry into repeated bodies, CS patching, explicit DS preservation and I/O. BP frames alone do not imply C.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "HISTORICAL_LIBRARY_OR_RUNTIME",
+      "confidence": "HIGH",
+      "evidence": "This is the Turbo C/Borland runtime and startup dispatch block linked from the vendor runtime library, not game logic; there is no application-level C source to recover it from.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
       "id": "F_1ECD",
-      "source": "asm/F_1ECD.ASM",
+      "source": "asm/RECTQ.ASM",
       "bytes": 74,
       "members": [
         "F_1ECD"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "Negative compiler evidence: the register-driven queue-drain loop is not an idiom Turbo C 2.0 emits for this control flow.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
       "id": "F_1F91",
-      "source": "asm/F_1F91.ASM",
+      "source": "asm/BOARDCOL.ASM",
       "bytes": 126,
       "members": [
         "F_1F91"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "Documented negative compiler evidence (task-known: specific case).",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
-      "id": "F_4AA8",
-      "source": "asm/F_4AA8.ASM",
-      "bytes": 100,
+      "id": "M_4AA8_4EEB",
+      "source": "asm/SPRITES.ASM",
+      "bytes": 1211,
       "members": [
-        "F_4AA8"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_4B0C",
-      "source": "asm/F_4B0C.ASM",
-      "bytes": 915,
-      "members": [
-        "F_4B0C"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_4E9F",
-      "source": "asm/F_4E9F.ASM",
-      "bytes": 76,
-      "members": [
-        "F_4E9F"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_4EEB",
-      "source": "asm/F_4EEB.ASM",
-      "bytes": 120,
-      "members": [
+        "F_4AA8",
+        "F_4B0C",
+        "F_4E9F",
         "F_4EEB"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "Documented negative compiler evidence (task-known: specific case). The only production representation is TASM; recovery/src/F_4B0C.C is a byte-capsule stand-in, not a verified C source. Documented negative compiler evidence (task-known: specific case). Historically an inline-asm C function (asm{} block inside a C source), so the production representation stays ASM even though the calling convention is pure C.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
-      "id": "M_50D2_53BF",
-      "source": "asm/M_50D2_53BF.ASM",
-      "bytes": 312,
+      "id": "M_6036_6181",
+      "source": "asm/SPRDRAW.ASM",
+      "bytes": 502,
       "members": [
-        "F_50D2",
-        "F_53BF"
-      ],
-      "classification": "ORIGIN_UNPROVEN",
-      "evidence": "Historical matching-C provenance included inline/fixed branch bytes. F_53BF calls the OPL timer probe; old VGA-probe wording is not hardware evidence.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_6036",
-      "source": "asm/F_6036.ASM",
-      "bytes": 115,
-      "members": [
-        "F_6036"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_60A9",
-      "source": "asm/F_60A9.ASM",
-      "bytes": 216,
-      "members": [
-        "F_60A9"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_6181",
-      "source": "asm/F_6181.ASM",
-      "bytes": 171,
-      "members": [
+        "F_6036",
+        "F_60A9",
         "F_6181"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "Historically inline-asm C; production representation kept as symbolic ASM for byte-exact object match. Hard negative compiler evidence (BP as data register mid-body) plus positive object evidence that this module is an ASM caller of C helpers. The header's own ORG/FIXUPP-ordering justification only explains the DGROUP-load placement; the mid-function bp re-basing and shared/patched pushed-argument idiom across two calls is a hand-optimization not expressible in plain C, confirmed this session.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
-      "id": "F_6BCF",
-      "source": "asm/F_6BCF.ASM",
-      "bytes": 87,
-      "members": [
-        "F_6BCF"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_6D86_6DCC",
-      "source": "asm/M_6D86_6DCC.ASM",
-      "bytes": 377,
+      "id": "M_6D86_6F4B",
+      "source": "asm/DECODE.ASM",
+      "bytes": 573,
       "members": [
         "F_6D86",
         "PAD_006FC5",
-        "F_6DCC"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_6EFF",
-      "source": "asm/F_6EFF.ASM",
-      "bytes": 76,
-      "members": [
-        "F_6EFF"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_6F4B",
-      "source": "asm/F_6F4B.ASM",
-      "bytes": 120,
-      "members": [
+        "F_6DCC",
+        "F_6EFF",
         "F_6F4B"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "The CS-addressed local state used by F_6DCC cannot be expressed by an ordinary C function; the module is kept as one ASM unit to preserve that shared state's exact placement. xlatb-based nibble expansion is not expressible in portable Turbo C; kept as (presumed) inline-asm C body. xlatb-based expansion is not expressible in portable Turbo C.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
       "id": "F_9EC3",
-      "source": "asm/F_9EC3.ASM",
+      "source": "asm/ANIMROW.ASM",
       "bytes": 125,
       "members": [
         "F_9EC3"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "Confirmed this session: XLAT-twice plus a manual DS reload around a lds-clobbered DS is definitively outside Turbo C -mc's instruction selection; no C phrasing gets within 30% of the byte count.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
-      "id": "M_C1A0_C232",
-      "source": "asm/M_C1A0_C232.ASM",
-      "bytes": 221,
+      "id": "M_C1A0_CB48",
+      "source": "asm/SOUND.ASM",
+      "bytes": 2492,
       "members": [
         "F_C1A0",
         "F_C1F7",
-        "F_C232"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_C27D_C567",
-      "source": "asm/M_C27D_C567.ASM",
-      "bytes": 797,
-      "members": [
+        "F_C232",
         "F_C27D",
         "F_C2EA",
         "F_C359",
@@ -222,196 +109,90 @@
         "F_C440",
         "F_C501",
         "F_C549",
-        "F_C567"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_C5A8_C5C6",
-      "source": "asm/M_C5A8_C5C6.ASM",
-      "bytes": 41,
-      "members": [
+        "F_C567",
+        "F_C59A",
         "F_C5A8",
         "F_C5B3",
-        "F_C5C6"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_C5D1_C706",
-      "source": "asm/M_C5D1_C706.ASM",
-      "bytes": 388,
-      "members": [
+        "F_C5C6",
         "F_C5D1",
         "F_C678",
         "F_C6B9",
-        "F_C706"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_C755",
-      "source": "src/F_C755.ASM",
-      "bytes": 37,
-      "members": [
-        "F_C755"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_C77A_C898",
-      "source": "asm/M_C77A_C898.ASM",
-      "bytes": 346,
-      "members": [
+        "F_C706",
+        "F_C755",
         "F_C77A",
         "F_C7CB",
         "F_C834",
         "F_C877",
-        "F_C898"
-      ],
-      "classification": "ASM_OR_MIXED_LIKELY",
-      "evidence": "Live-register sound routines and fixed OPL settling reads; recovery/src/F_C898.C is explicitly C with assembly body.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_C8D4",
-      "source": "src/F_C8D4.ASM",
-      "bytes": 14,
-      "members": [
-        "F_C8D4"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_C914",
-      "source": "asm/F_C914.ASM",
-      "bytes": 116,
-      "members": [
-        "F_C914"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_C9A4_CA91",
-      "source": "asm/M_C9A4_CA91.ASM",
-      "bytes": 247,
-      "members": [
+        "F_C898",
+        "F_C8D4",
+        "F_C8E2",
+        "F_C914",
+        "F_C988",
         "F_C9A4",
         "F_CA03",
         "F_CA35",
         "F_CA51",
         "F_CA83",
-        "F_CA91"
+        "F_CA91",
+        "F_CA9B",
+        "F_CAD0",
+        "F_CADB",
+        "F_CAE6",
+        "F_CAF1",
+        "F_CB48"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_CA9B",
-      "source": "asm/F_CA9B.ASM",
-      "bytes": 53,
-      "members": [
-        "F_CA9B"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_CAF1",
-      "source": "asm/F_CAF1.ASM",
-      "bytes": 87,
-      "members": [
-        "F_CAF1"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "Hand-written assembler module: frame/register-save fingerprints impossible for Turbo C, private register ABI, fixup-free internal calls.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
       "id": "M_D386_D3CF",
-      "source": "asm/M_D386_D3CF.ASM",
+      "source": "asm/ICONANIM.ASM",
       "bytes": 84,
       "members": [
         "F_D386",
         "F_D3CF"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": "Fall-through-only continuation function cannot be split or independently re-expressed in C without breaking the proven contiguous layout.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
       "id": "M_D61C_D79C",
-      "source": "asm/M_D61C_D79C.ASM",
+      "source": "asm/DRAWQ.ASM",
       "bytes": 507,
       "members": [
         "F_D61C",
         "F_D79C"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": "Header explicitly attributes the code to hand-written origin based on addressing-mode evidence.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     },
     {
       "id": "M_D818_D825",
-      "source": "asm/M_D818_D825.ASM",
+      "source": "asm/DRAWQBUF.ASM",
       "bytes": 71,
       "members": [
         "F_D818",
         "F_D825"
       ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": "F_D818's structure and length are fully explained by plain C; only an unexplained (but plausibly fixed-allocator) register choice is unresolved. F_D825 was not probed. Neither member has been shown to require anything C cannot express.",
+      "grinder_action": "Keep exact ASM; portable replacement follows the historical semantics."
     }
   ],
   "scope": "Representation versus origin triage. User-authorized exact C recovery is recorded separately; source provenance remains unproved.",
   "exact_c_recoveries": [
     {
-      "id": "F_4F63",
-      "source": "src/DOSWRT2.C",
-      "bytes": 51,
+      "id": "C_4F63_520A",
+      "source": "src/STARTUP.C",
+      "bytes": 958,
       "evidence": "Exact 51-byte DOS handle-2 writer using Turbo C register pseudo-variables and __int__; no inline ASM or byte emission.",
-      "original_language_proven": false
-    },
-    {
-      "id": "F_4F96",
-      "source": "src/CMDLINE.C",
-      "bytes": 299,
-      "evidence": "All 299 bytes reproduced by ordinary Turbo C with -B and pinned TASM. Both switch comparisons and shortened-jump NOPs arise naturally; no inline ASM or object corrections.",
-      "original_language_proven": false
-    },
-    {
-      "id": "F_699E",
-      "source": "src/KEYIRQH.C",
-      "bytes": 380,
-      "evidence": "Exact 380-byte Turbo C interrupt function with native __sti__, __inportb__, __outportb__ intrinsics and interrupt-qualified vector call; no inline ASM or explicit byte emission.",
       "original_language_proven": false
     },
     {

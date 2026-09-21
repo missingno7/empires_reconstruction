@@ -6,8 +6,8 @@
 
 struct B3 { unsigned char a, b, c; };
 
-extern int cursor_x, cursor_y, g73a;
-extern int gc04e, gc0b0, gc0b6, gc0b8, gc0c0;
+extern int cursor_x, cursor_y, cursor_facing_left;
+extern int gc04e, gc0b0, gc0b6, raycast_beam_direction_index, gc0c0;
 extern int gc050[], gc080[];
 extern int cur_color_index_get(), rect_table_hit_id(), board_raycast_hit_test();
 extern void stream_control_block_arm();
@@ -19,7 +19,7 @@ extern int tx[24];                      /* DS:C050 */
 extern int ty[24];                      /* DS:C080 */
 /*@SYM _ty=0xC080 kind=g key=storage_objects/REGION_2BBB0.phys*/
 extern int wig[24][12];                 /* DS:0900 */
-extern int g8fe;                        /* DS:08FE */
+extern int raycast_trail_active;                        /* DS:08FE */
 extern int gc046, gc048, gc04a, gc04c;
 extern int gc0b2, gc0b4, gc0be, gc0c2;
 extern char far *gc0ba;                 /* DS:C0BA */
@@ -57,13 +57,13 @@ void cursor_trail_arm()
         gc050[i] = x;
         gc080[i] = y;
     }
-    if (g73a)
-        gc0b8 = 9;
+    if (cursor_facing_left)
+        raycast_beam_direction_index = 9;
     else
-        gc0b8 = 3;
+        raycast_beam_direction_index = 3;
     gc0b0 = 0;
     gc0c0 = 0x18;
-    g8fe = 1;
+    raycast_trail_active = 1;
     gc0b6 = 0;
 }
 
@@ -99,9 +99,9 @@ void board_raycast_step()
     cell = ((y >> 3) - 2) * 0x26 + (x >> 3) - 1;
     for (i = 0; i < 8; i++) {
         if (x != 0) {
-            dx = ((int far *)((char far *)wig + gc0b8 * 0x18))[gc0b0];
+            dx = ((int far *)((char far *)wig + raycast_beam_direction_index * 0x18))[gc0b0];
             gc0b0++;
-            dy = ((int far *)((char far *)wig + gc0b8 * 0x18))[gc0b0];
+            dy = ((int far *)((char far *)wig + raycast_beam_direction_index * 0x18))[gc0b0];
             gc0b0++;
             if (gc0b0 >= 12) gc0b0 = 0;
             x += dx;
@@ -149,26 +149,26 @@ void board_raycast_step()
 after:
             if (live != 0 && gc0b6 == 0) {
                 if ((hit = board_raycast_hit_test(x, y)) == 1) {
-                    gc0b8 = gc0c2 - gc0b8;
+                    raycast_beam_direction_index = gc0c2 - raycast_beam_direction_index;
                     gc0b6 = 1;
                     stream_control_block_arm(15);
                 } else if (hit == 2) {
-                    gc0b8 = gc0c2 - gc0b8 - 8;
+                    raycast_beam_direction_index = gc0c2 - raycast_beam_direction_index - 8;
                     gc0b6 = 1;
                     stream_control_block_arm(15);
                 } else if (hit == 3) {
-                    gc0b8 = gc0c2 - gc0b8 + 8;
+                    raycast_beam_direction_index = gc0c2 - raycast_beam_direction_index + 8;
                     gc0b6 = 1;
                     stream_control_block_arm(15);
                 }
                 if (gc0b6 != 0) {
-                    while (gc0b8 < 0) gc0b8 += 12;
-                    while (gc0b8 >= 12) gc0b8 -= 12;
+                    while (raycast_beam_direction_index < 0) raycast_beam_direction_index += 12;
+                    while (raycast_beam_direction_index >= 12) raycast_beam_direction_index -= 12;
                 }
             }
         } else {
             x = 0;
-            if (--gc0c0 <= 0) g8fe = 0;
+            if (--gc0c0 <= 0) raycast_trail_active = 0;
         }
         if (++gc04e >= 0x18) gc04e = 0;
         tx[gc04e] = x;

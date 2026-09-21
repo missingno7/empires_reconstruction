@@ -16,7 +16,7 @@ class F25B3SymbolicAssemblyTests(unittest.TestCase):
     def test_symbolic_module_is_exact_and_nonrelocating(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_25B3')
-        # F_25B3 was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # F_25B3 was recovered as exact C; see docs/history/exact-c-recovery.md.
         # It was later folded into the src/BOARD.C translation-unit merge
         # (module C_200F_3986 in layout/production-plan.json; see
         # docs/current/asm-provenance.json), so its old standalone
@@ -32,7 +32,7 @@ class F25B3SymbolicAssemblyTests(unittest.TestCase):
             module = read_object((Path(temporary) / receipts['F_25B3']['object']).read_bytes())
             # F_25B3 now shares its src/BOARD.C translation unit with
             # several neighbouring functions (see
-            # docs/current/exact-c-recovery.md), so the compiled module's
+            # docs/history/exact-c-recovery.md), so the compiled module's
             # publics/fixups cover the whole file, not just this owner.
             self.assertIn('_board_update_moving_records', [p['name'] for p in module.publics])
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'],

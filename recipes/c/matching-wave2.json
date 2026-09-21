@@ -9,7 +9,7 @@
       "source": "src/INTRO.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f568c",
+        "public": "_intro_title_picture_redisplay",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -188,11 +188,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_g0dc8": {
@@ -458,7 +458,7 @@
       "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_face7",
+        "public": "_slot_is_new_game",
         "span": 1,
         "flags_append": "",
         "module_segments": {},

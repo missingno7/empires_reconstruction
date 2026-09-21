@@ -32,8 +32,8 @@ extern void timer_deadline_wait(void);
 extern void board_record_complete();
 extern char far *record_field_skip_n();
 
-extern int g0bc, g72c, g72e, g730, g732, g734, cursor_x, cursor_y, g73a;
-extern int g8fe, key_up_held, gb6a, key_up_left_held, key_up_right_held, key_up_released, g71e, g722, current_slot;
+extern int gbc, hud_scroll_cooldown_ticks, g72e, g730, g732, g734, cursor_x, cursor_y, cursor_facing_left;
+extern int raycast_trail_active, key_up_held, gb6a, key_up_left_held, key_up_right_held, key_up_released, g71e, g722, current_slot;
 extern int g40ce, g96e4, gb07a, board_record_index;
 extern char far *rect_queue_write_ptr;                 /* the edge cursor */
 #include "LAYOUT.H"
@@ -78,18 +78,18 @@ int turn_loop_run()
     g730 = g732 = 0;
     x = 0;
     g96e4 = x;
-    blink = lastcur = g8fe = lastobj = x;
-    g0bc = key_up_released = 1;
+    blink = lastcur = raycast_trail_active = lastobj = x;
+    gbc = key_up_released = 1;
     keyboard_chain_disable();
     for (;;) {
         timer_deadline_arm(0x18);
         g40ce = dir = key = 0;
         if (keyboard_poll_nonblocking()) {
-            g0bc = 0;
+            gbc = 0;
             key = keyboard_read_blocking_hotkeys();
             if (key == 0xd) hud_tab_next();
             else if (key == 0x1b) player_select_restart_confirm();
-            g0bc = 1;
+            gbc = 1;
         }
         rect_queue_write_ptr = ui_gfx_blob;
         if ((obj = rect_table_hit_id((cursor_x >> 1) + 1, cursor_y + 1, 14, 0x27)) != 0 && obj != lastobj) {
@@ -129,17 +129,17 @@ int turn_loop_run()
         }
         lastobj = obj;
         if (*g40d0 != 0) animated_tile_tick();
-        if (g8fe != 0) board_unit_script_trigger();
+        if (raycast_trail_active != 0) board_unit_script_trigger();
         if (key_up_held != 0 && g722 != 0) {
             for (obj = 0; obj < g722; obj++) {
                 if (w8bf4[obj] - 2 <= cursor_y && w8bf4[obj] + 2 >= cursor_y &&
                     w8bea[obj] <= cursor_x && w8bea[obj] + 0x10 >= cursor_x) {
                     if (g71e == 0) {
-                        g0bc = 0;
+                        gbc = 0;
                         board_scan_wipe_effect(obj);
                         return 1;
                     } else {
-                        g0bc = 0;
+                        gbc = 0;
                         r = anim_frame_advance(obj);
                         if (r != 0) {
                             if (r > 0) {
@@ -149,7 +149,7 @@ int turn_loop_run()
                             return 0;
                         }
                         rect_queue_write_ptr = ui_gfx_blob;
-                        g0bc = 1;
+                        gbc = 1;
                         goto scanned;
                     }
                 }
@@ -158,14 +158,14 @@ int turn_loop_run()
 scanned:
         board_redraw_view();
         sprite_table_wipe_active();
-        if (g8fe != 0) sprite_slots_redraw();
+        if (raycast_trail_active != 0) sprite_slots_redraw();
         board_update_moving_records();
         if (*record_table_root != 0) draw_queue_render();
         if (*icon_record_list_ptr != 0) icon_list_animate_draw();
         if (key_up_right_held != 0) {
             if (x == 0 || key_up_held == 0) {
                 x = 0;
-                g73a = x;
+                cursor_facing_left = x;
                 if ((board_collision_span_or(cursor_x + 0x21, cursor_y + 1, 0x27) & 7) == 0) {
                     cursor_x += g734;
                     dir = 1;
@@ -176,7 +176,7 @@ scanned:
             }
         } else if (key_up_left_held != 0) {
             if (x == 0 || key_up_held == 0) {
-                g73a = 1;
+                cursor_facing_left = 1;
                 x = 0;
                 if ((board_collision_span_or(cursor_x, cursor_y + 1, 0x27) & 7) == 0) {
                     cursor_x -= g734;
@@ -187,7 +187,7 @@ scanned:
                 }
             }
         }
-        if (key_up_held != 0 && (board_collision_span_or(cursor_x + 0x10 - (g73a << 2), cursor_y + 1, 0x27) & 0x80) != 0) {
+        if (key_up_held != 0 && (board_collision_span_or(cursor_x + 0x10 - (cursor_facing_left << 2), cursor_y + 1, 0x27) & 0x80) != 0) {
                 if (x == 0) {
                     if (cursor_x % 8 == 0) {
                         if ((board_collision_span_or(cursor_x + 0x14, cursor_y + 1, 0x1d) & 0x80) != 0)
@@ -288,16 +288,16 @@ fell:
         }
 moved:
         if (key == 0x20) {
-            if ((obj = hud_tab_get()) == 2 && g72c == 0) {
+            if ((obj = hud_tab_get()) == 2 && hud_scroll_cooldown_ticks == 0) {
                     if (hud_scroll_move(-1) != -1) {
-                        g72c = 0x3a;
+                        hud_scroll_cooldown_ticks = 0x3a;
                         blink = 0;
                         stream_control_block_arm(0);
                     } else {
                         stream_control_block_arm(0x11);
                     }
             } else if (obj == 0 && x == 0) {
-                if (g8fe == 0) {
+                if (raycast_trail_active == 0) {
                     cursor_trail_arm();
                     stream_control_block_arm(0x14);
                 } else {
@@ -305,14 +305,14 @@ moved:
                 }
             }
         }
-        if (g72c == 1) g72c = 0;
+        if (hud_scroll_cooldown_ticks == 1) hud_scroll_cooldown_ticks = 0;
         sprite_script_frame_driver();
         if (cursor_y < 0) {
             if (b43a0[board_record_index] != 0) {
                 cursor_y = 0x90;
                 if (b43a0[board_record_index] - 1 != board_record_index) {
                     board_record_index = b43a0[board_record_index] - 1;
-                    g8fe = lastcur = lastobj = 0;
+                    raycast_trail_active = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
@@ -323,7 +323,7 @@ moved:
                 cursor_y = 0;
                 if (b43aa[board_record_index] - 1 != board_record_index) {
                     board_record_index = b43aa[board_record_index] - 1;
-                    g8fe = lastcur = lastobj = 0;
+                    raycast_trail_active = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
@@ -335,7 +335,7 @@ moved:
                 cursor_x = 0x120;
                 if (b438c[board_record_index] - 1 != board_record_index) {
                     board_record_index = b438c[board_record_index] - 1;
-                    g8fe = lastcur = lastobj = 0;
+                    raycast_trail_active = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
@@ -346,43 +346,43 @@ moved:
                 cursor_x = 0;
                 if (b4396[board_record_index] - 1 != board_record_index) {
                     board_record_index = b4396[board_record_index] - 1;
-                    g8fe = lastcur = lastobj = 0;
+                    raycast_trail_active = lastcur = lastobj = 0;
                     board_record_index_select();
                 }
             } else {
                 cursor_x = 0x130;
             }
         }
-        if (g8fe != 0) board_raycast_step();
+        if (raycast_trail_active != 0) board_raycast_step();
         if (blink != 0) {
             blink--;
             if (blink > 0x1a) {
-                gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + 0x39ec, g73a);
+                gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + 0x39ec, cursor_facing_left);
             } else if (blink & 1) {
-                gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, g73a);
+                gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, cursor_facing_left);
             }
-        } else if (g72c != 0) {
+        } else if (hud_scroll_cooldown_ticks != 0) {
             gfx_copy_rect(cursor_x, cursor_y, (char far *)str96ee, 0);
-            g72c--;
-            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, g73a);
+            hud_scroll_cooldown_ticks--;
+            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, cursor_facing_left);
         } else {
             if (g40ce != 0 && lastcur != g40ce) {
-            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + 0x39ec, g73a);
+            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + 0x39ec, cursor_facing_left);
             blink = 0x1e;
             stream_control_block_arm(1);
             rect_queue_flush();
-            g0bc = 0;
+            gbc = 0;
             if (energy_adjust(-1) == 0) {
                 board_record_complete();
                 return 0;
             }
             c470[current_slot].b15 = energy_adjust(0);
-            g0bc = 1;
+            gbc = 1;
             x = 0;
             lastcur = g40ce;
             goto tail;
             } else {
-            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, g73a);
+            gfx_copy_rect(cursor_x, cursor_y, resource_stripe_table + g72e * 0x2a2, cursor_facing_left);
             }
             lastcur = g40ce;
         }
@@ -394,7 +394,7 @@ tail:
             g96e4 = 1;
         }
     }
-    g0bc = 0;
+    gbc = 0;
     return 1;
 }
 
@@ -439,7 +439,7 @@ int di;
    mode, di the row offset chosen by the two-term disjunction at 4698. */
 extern unsigned char g4374[];
 extern char g0b3ae[];
-extern int menu_resources_load(), face7();
+extern int menu_resources_load(), slot_is_new_game();
 extern void setmem();
 extern void board_terrain_resources_load();
 
@@ -463,7 +463,7 @@ void menu_backdrop_paint(void)
         movmem(ui_gfx_shadow_a, g4374, 0x2750);
         setmem(g0b3ae, 0xbb8, 0);
     } else {
-        if (face7() == 0 || m > 0x14)
+        if (slot_is_new_game() == 0 || m > 0x14)
             d = 0;
         else
             d = 0x330c;
@@ -506,9 +506,9 @@ int level_driver_run()
     cursor_x <<= 1;
     cursor_x = ((cursor_x + 3) >> 2) << 2;
     cursor_y = b4376;
-    if (b4374 & 0x80) g73a = 1;
-    else g73a = 0;
-    g72c = gb07a = g72e = 0;
+    if (b4374 & 0x80) cursor_facing_left = 1;
+    else cursor_facing_left = 0;
+    hud_scroll_cooldown_ticks = gb07a = g72e = 0;
     if (value_parity(campaign_round_node_cursor)) {
         g722 = 3;
         g8bea = g8bec = g8bee = 0xf4;

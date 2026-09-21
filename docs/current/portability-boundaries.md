@@ -551,7 +551,7 @@ and uses them at lines 259-262 to carve three regions
 block by paragraph arithmetic (`s = FP_SEG(p)+1; p = MK_FP(s,0x0e); ... =
 MK_FP(s+1,0); ... = MK_FP(s+0x7d4,0)`). `asm/SOUND.ASM` and the sprite/blit
 ASM modules use ES:DI/ES:SI as an implicit calling convention instead of
-explicit far-pointer parameters — e.g. `asm/M_D61C_D79C.ASM`'s
+explicit far-pointer parameters — e.g. `asm/DRAWQ.ASM`'s
 `draw_queue_render[_highlighted]` render "an ES:DI command list" (file's own
 header comment), and SOUND.ASM's per-voice routines take the voice index in
 SI and read/write `[si+_offset]` throughout (documented exhaustively in
@@ -901,7 +901,7 @@ modes 2/5 never reaches them).
 | Timer IRQ + timing (§4) | ANIMSTEP.C, BOARD.C, DIALOG.C, GAME.C, INTRO.C, LEVEL.C, PUZZLE.C, ROUNDEND.C, SLOTMENU.C, SNDREQ.C, TIMER.C |
 | Sound / OPL (§5) | 18 units touch `sound_enabled`/`music_enabled`/`snd_*`/`sound_start`/`sound_stop`, incl. GAME.C, INTRO.C, LEVEL.C, OPTIONS.C, OPLINIT.C, OPLREG.C, OPLVOICE.C, PLAYERSL.C, PLRLDPUB.C, PUZZLE.C, RESCACHE.C, ROUNDEND.C, SLOTMENU.C, SNDFXTGL.C, SNDREQ.C, TIMER.C |
 | DOS filesystem / resource load (§6, §11) | ANIMFRAM.C, BOARD.C, GAME.C, HELPMENU.C, HINTDLG.C, HUD.C, INTRO.C, LEVEL.C, MENURES.C, PLAYERSL.C, PLRLDPUB.C, PUZZLE.C, RESCACHE.C, RESOURCE.C, ROUNDEND.C, SLOTS.C |
-| Far-pointer/segment (§7) | Concentrated in VIDEO.C, PLAYERSL.C (explicit `MK_FP`/`FP_SEG`); implicit ES:SI/ES:DI ABI pervasive in asm/SOUND.ASM, asm/SPRITES.ASM, asm/SPRDRAW.ASM, asm/M_D386_D3CF.ASM, asm/M_D61C_D79C.ASM, asm/M_D818_D825.ASM |
+| Far-pointer/segment (§7) | Concentrated in VIDEO.C, PLAYERSL.C (explicit `MK_FP`/`FP_SEG`); implicit ES:SI/ES:DI ABI pervasive in asm/SOUND.ASM, asm/SPRITES.ASM, asm/SPRDRAW.ASM, asm/ICONANIM.ASM, asm/DRAWQ.ASM, asm/DRAWQBUF.ASM |
 | Historical memory allocation (§10) | BOARD.C, HINTDLG.C, INTRO.C, LEVEL.C, PLAYERSL.C, PLRLDPUB.C, PUZZLE.C, RESOURCE.C, STARTUP.C, VIDEO.C |
 | setjmp/longjmp / critical error (§9) | BOARD.C, GAME.C, LEVEL.C, PLAYERSL.C (jmp_buf); CRITERR.C + GAME.C (critical-error install) |
 

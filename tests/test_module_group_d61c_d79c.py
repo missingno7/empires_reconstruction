@@ -2,7 +2,7 @@
 
 recovery/recipes/modules/C_D61C_D79C.json is the C-candidate recipe for the
 draw-queue renderers, whose production owner is the hand-written
-asm/M_D61C_D79C.ASM (push di/push si hand order, mov bp,sp argument patching;
+asm/DRAWQ.ASM (push di/push si hand order, mov bp,sp argument patching;
 docs/current/asm-provenance.json).  The retired candidate still reproduces the
 original bytes; the check bypasses probe_module_group's manifest-ownership
 guard exactly as tests/test_module_group_c5d1_c898.py does.

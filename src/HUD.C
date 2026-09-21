@@ -291,7 +291,6 @@ void hud_panel_node_marker_draw(void) { register int i; i=campaign_node_index();
    panel fills and the twelve icon blits through the thunks f03A2 / f03A5 /
    f03A8, then restore the saved word. */
 
-/*@PUB _hud_frame_draw*/
 void hud_frame_draw(void)
 {
     register int save;

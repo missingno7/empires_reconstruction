@@ -7,7 +7,7 @@ from reconstruct import read_json
 from support_probe import exact
 class B99FSymbolicAssemblyTests(unittest.TestCase):
  def test_exact_symbolic_module(self):
-  # F_B99F was recovered as exact C (see docs/current/exact-c-recovery.md) and
+  # F_B99F was recovered as exact C (see docs/history/exact-c-recovery.md) and
   # now belongs to the grouped multi-source module C_AF45_C15E declared in
   # layout/production-plan.json; the canonical prover (tools/probe_module.py,
   # via tests/support_probe.py) compiles the whole module's concatenated

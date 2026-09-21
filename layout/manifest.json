@@ -681,7 +681,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BA96.phys"
           },
-          "_g40d4": {
+          "_actor_sprite_dims_table": {
             "offset": 16596,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
@@ -803,7 +803,7 @@
       "end": 8471,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_1ECD.ASM",
+      "source": "asm/RECTQ.ASM",
       "original_symbol": "F_1ECD",
       "artifact": "regions/F_1ECD.bin",
       "expected_sha256": "4d9c3788c56e1462cfcdc2aa0fc72ada78faf3fa120ae659d2127c2d6764d8bf",
@@ -884,7 +884,7 @@
       "end": 8719,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_1F91.ASM",
+      "source": "asm/BOARDCOL.ASM",
       "original_symbol": "F_1F91",
       "artifact": "regions/F_1F91.bin",
       "expected_sha256": "0690197464c6e7dfe992edda9044725730284f6a7b84067d36fa4e9cbddd47a0",
@@ -1348,7 +1348,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g72c": {
+          "_hud_scroll_cooldown_ticks": {
             "offset": 1836,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -1398,7 +1398,7 @@
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "offset": 1850,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -1682,7 +1682,7 @@
             "coordinate": "code_offset",
             "evidence": "raw F_03CC entry used by complete call fixups"
           },
-          "_g00bc": {
+          "_gbc": {
             "offset": 188,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS word in complete F_2986 fixups"
@@ -2149,7 +2149,7 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_g00bc": {
+          "_gbc": {
             "offset": 188,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAEC.phys"
@@ -2587,7 +2587,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2597,7 +2597,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g0bc": {
+          "_gbc": {
             "offset": 188,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2887,7 +2887,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "offset": 1850,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -2938,7 +2938,7 @@
             "public": "_hud_tab_get",
             "addend": 0
           },
-          "_g72c": {
+          "_hud_scroll_cooldown_ticks": {
             "offset": 1836,
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -3192,11 +3192,11 @@
             "public": "_resource_load_record",
             "addend": 0
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_g0b3ae": {
@@ -3443,7 +3443,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20252.phys"
           },
-          "_g72c": {
+          "_hud_scroll_cooldown_ticks": {
             "offset": 1836,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2025C.phys"
@@ -3463,7 +3463,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "offset": 1850,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026A.phys"
@@ -4828,7 +4828,7 @@
       "source": "src/INTRO.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f568c",
+        "public": "_intro_title_picture_redisplay",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -4936,11 +4936,11 @@
             "public": "_bitmap_blit_topleft",
             "addend": 0
           },
-          "_f568c": {
+          "_intro_title_picture_redisplay": {
             "coordinate": "code_offset",
             "evidence": "functions/F_568C.entry",
             "owner": "F_568C",
-            "public": "_f568c",
+            "public": "_intro_title_picture_redisplay",
             "addend": 0
           },
           "_timer_wait_ticks": {
@@ -5158,12 +5158,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "offset": 1850,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026A.phys"
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2042E.phys"
@@ -5193,7 +5193,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BBE6.phys"
           },
-          "_gc0b8": {
+          "_raycast_beam_direction_index": {
             "offset": 49336,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BBE8.phys"
@@ -5251,7 +5251,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_5AC3 fixup"
           },
-          "_gc0b8": {
+          "_raycast_beam_direction_index": {
             "offset": 49336,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_5AC3 fixup"
@@ -5311,7 +5311,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_5AC3 fixup"
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_5AC3 fixup"
@@ -5678,7 +5678,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23C00.phys"
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2042E.phys"
@@ -10448,11 +10448,11 @@
             "public": "_hud_draw_meter",
             "addend": 0
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_puzzle_piece_total": {
@@ -10585,10 +10585,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10830,11 +10830,11 @@
             "public": "_tick_div8",
             "addend": 0
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_resource_load_record_alloc": {
@@ -11093,11 +11093,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_g0dc8": {
@@ -11850,11 +11850,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset from complete function fixup"
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "function entry from complete function fixup",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_gc35d": {
@@ -12182,7 +12182,7 @@
     {
       "id": "F_9EC3",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_9EC3.ASM",
+      "source": "asm/ANIMROW.ASM",
       "start": 41155,
       "end": 41280,
       "expected_sha256": "0759c67db52688fad529d8aae293e3569b5f58ed87206a1f01415fd7d1accadf",
@@ -13823,7 +13823,7 @@
       "source": "src/SLOTMENU.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_face7",
+        "public": "_slot_is_new_game",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -14379,12 +14379,12 @@
       "source": "src/LEVEL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fb4fb",
+        "public": "_level_actor_sprite_dims_init",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g40d4": {
+          "_actor_sprite_dims_table": {
             "offset": 16596,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_23C04.phys"
@@ -14620,7 +14620,7 @@
             "public": "_hud_panel_clear",
             "addend": 0
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2042E.phys"
@@ -15191,12 +15191,12 @@
             "offset": 2926,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "coordinate": "DGROUP_offset",
             "offset": 2302,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_g72c": {
+          "_hud_scroll_cooldown_ticks": {
             "coordinate": "DGROUP_offset",
             "offset": 1836,
             "evidence": "F_B99F historical instruction operands"
@@ -15206,7 +15206,7 @@
             "offset": 2924,
             "evidence": "F_B99F historical instruction operands"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "coordinate": "DGROUP_offset",
             "offset": 1850,
             "evidence": "F_B99F historical instruction operands"
@@ -15270,10 +15270,10 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
@@ -15449,7 +15449,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2042E.phys"
@@ -15500,11 +15500,11 @@
             "addend": 0,
             "evidence": "functions/F_B122.entry"
           },
-          "_fb4fb": {
+          "_level_actor_sprite_dims_init": {
             "coordinate": "code_offset",
             "evidence": "functions/F_B4FB.entry",
             "owner": "F_B4FB",
-            "public": "_fb4fb",
+            "public": "_level_actor_sprite_dims_init",
             "addend": 0
           },
           "_board_actors_draw": {
@@ -15524,7 +15524,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "offset": 1850,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026A.phys"
@@ -15594,11 +15594,11 @@
             "public": "_hud_scroll_reset",
             "addend": 0
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_hud_scroll_move": {
@@ -18436,7 +18436,7 @@
     {
       "id": "F_D386",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D386_D3CF.ASM",
+      "source": "asm/ICONANIM.ASM",
       "start": 54662,
       "end": 54735,
       "expected_sha256": "c52727ae50a891de4e8708e21193512cdb27cddf0b6de9bb60a142ba905af485",
@@ -18474,7 +18474,7 @@
     {
       "id": "F_D3CF",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D386_D3CF.ASM",
+      "source": "asm/ICONANIM.ASM",
       "start": 54735,
       "end": 54746,
       "expected_sha256": "470037ef91a639b045272f3919bb2396e9ce24c7f30453f99438f9ee5b7830e1",
@@ -19138,7 +19138,7 @@
     {
       "id": "F_D61C",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D61C_D79C.ASM",
+      "source": "asm/DRAWQ.ASM",
       "start": 55324,
       "end": 55708,
       "expected_sha256": "304be6697bd43dd9465985edccef0cba4a865a7d3f9832af60ccc864ac88d8a6",
@@ -19160,7 +19160,7 @@
     {
       "id": "F_D79C",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D61C_D79C.ASM",
+      "source": "asm/DRAWQ.ASM",
       "start": 55708,
       "end": 55831,
       "expected_sha256": "2b4464ca1a8ba7720a16177f17ba643855e60650e281559987a468609158e2b8",
@@ -19197,7 +19197,7 @@
     {
       "id": "F_D818",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D818_D825.ASM",
+      "source": "asm/DRAWQBUF.ASM",
       "start": 55832,
       "end": 55845,
       "expected_sha256": "df46e15c6875236761c89018a9df8d57bdfa106f337f8cf34f20b24153b0a805",
@@ -19219,7 +19219,7 @@
     {
       "id": "F_D825",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D818_D825.ASM",
+      "source": "asm/DRAWQBUF.ASM",
       "start": 55845,
       "end": 55903,
       "expected_sha256": "e51476579f8aaa4e624797021a93d15157f3409af018062fb5f2919d52aff183",

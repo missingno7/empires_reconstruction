@@ -4,6 +4,9 @@
     "actor_record_table": {
       "original": "gb3ae"
     },
+    "actor_sprite_dims_table": {
+      "original": "g40d4"
+    },
     "actor_state_table": {
       "original": "gb3af"
     },
@@ -157,6 +160,9 @@
     },
     "current_slot": {
       "original": "g13ed"
+    },
+    "cursor_facing_left": {
+      "original": "g73a"
     },
     "cursor_trail_arm": {
       "original": "f5a3b",
@@ -547,6 +553,9 @@
       "original": "f7695",
       "address": "7695"
     },
+    "hud_scroll_cooldown_ticks": {
+      "original": "g72c"
+    },
     "hud_scroll_move": {
       "original": "f7313",
       "address": "7313"
@@ -595,6 +604,10 @@
     "intro_run_chapter": {
       "original": "f56c6",
       "address": "56C6"
+    },
+    "intro_title_picture_redisplay": {
+      "original": "f568c",
+      "address": "568C"
     },
     "intro_wait_key": {
       "original": "f5593",
@@ -650,6 +663,10 @@
     },
     "keyboard_state": {
       "original": "gb72"
+    },
+    "level_actor_sprite_dims_init": {
+      "original": "fb4fb",
+      "address": "B4FB"
     },
     "level_chapter_driver": {
       "original": "fb6cd",
@@ -1008,6 +1025,12 @@
       "original": "fa1e0",
       "address": "A1E0"
     },
+    "raycast_beam_direction_index": {
+      "original": "gc0b8"
+    },
+    "raycast_trail_active": {
+      "original": "g8fe"
+    },
     "record_field_skip_n": {
       "original": "f2a2d",
       "address": "2A2D"
@@ -1171,6 +1194,10 @@
     "slot_input_wait_key": {
       "original": "fa43c",
       "address": "A43C"
+    },
+    "slot_is_new_game": {
+      "original": "face7",
+      "address": "ACE7"
     },
     "slot_list_draw": {
       "original": "fa33f",
@@ -1720,6 +1747,13 @@
     "voice_write_waveform": {
       "original": "fe44b",
       "address": "E44B"
+    },
+    "gbc": {
+      "original": "gbc",
+      "aliases": [
+        "g00bc",
+        "g0bc"
+      ]
     }
   }
 }

@@ -83,11 +83,11 @@
             "public": "_hud_scroll_reset",
             "addend": 0
           },
-          "_face7": {
+          "_slot_is_new_game": {
             "coordinate": "code_offset",
             "evidence": "functions/F_ACE7.entry",
             "owner": "F_ACE7",
-            "public": "_face7",
+            "public": "_slot_is_new_game",
             "addend": 0
           },
           "_hud_scroll_move": {
@@ -160,7 +160,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2042E.phys"
@@ -211,10 +211,10 @@
             "addend": 0,
             "evidence": "functions/F_B122.entry"
           },
-          "_fb4fb": {
+          "_level_actor_sprite_dims_init": {
             "coordinate": "code_offset",
             "owner": "F_B4FB",
-            "public": "_fb4fb",
+            "public": "_level_actor_sprite_dims_init",
             "addend": 0,
             "evidence": "functions/F_B4FB.entry"
           },
@@ -235,7 +235,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20268.phys"
           },
-          "_g73a": {
+          "_cursor_facing_left": {
             "offset": 1850,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2026A.phys"

@@ -1,4 +1,4 @@
-extern unsigned int g8fe, ga20;
+extern unsigned int raycast_trail_active, ga20;
 extern unsigned char far *sprite_tile_bank, *g40d0;
 extern void gfx_wipe_rect(), gfx_copy_rect();
 
@@ -6,7 +6,7 @@ void animated_tile_tick()
 {
     asm db 055h,08Bh,0ECh,056h,057h,01Eh,0FCh
     asm db 083h,03Eh
-    asm dw offset DGROUP:g8fe
+    asm dw offset DGROUP:raycast_trail_active
     asm db 0
     asm db 074h,003h,0E9h,0C2h,000h
     asm db 0FFh,00Eh

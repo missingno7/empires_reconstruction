@@ -33,7 +33,7 @@ extern void board_actors_draw();
 extern void sprite_script_frame_driver();
 extern void rect_queue_flush(void);
 extern void timer_deadline_wait(void);
-extern int g8fe, gbc, g40ce, snd_flag2, g1784;
+extern int raycast_trail_active, gbc, g40ce, snd_flag2, g1784;
 extern char far *ui_gfx_blob;
 extern char far *rect_queue_write_ptr;
 extern int near gb52f[];
@@ -44,8 +44,8 @@ extern void resource_record_cache_reset();
 extern void sprite_draw_cursor(void);
 extern unsigned char gb6cf;
 extern char far *board_records;
-extern int cursor_x, cursor_y, g73a;
-extern int face7();
+extern int cursor_x, cursor_y, cursor_facing_left;
+extern int slot_is_new_game();
 extern int hud_scroll_move();
 
 /* ---- F_AF45 (original code at 0xAF45) ---- */
@@ -136,7 +136,7 @@ void level_expand_descriptors(void)
 
 
 /* ---- F_B4FB (original code at 0xB4FB) ---- */
-extern void setmem();extern char g40d4[];fb4fb(){setmem(g40d4,672,0);g40d4[72]=3;g40d4[73]=9;g40d4[74]=13;g40d4[75]=17;g40d4[76]=6;g40d4[77]=9;g40d4[78]=16;g40d4[79]=17;g40d4[416]=15;g40d4[417]=5;g40d4[418]=47;g40d4[419]=34;g40d4[420]=12;g40d4[421]=5;g40d4[422]=44;g40d4[423]=34;}
+extern void setmem();extern char actor_sprite_dims_table[];level_actor_sprite_dims_init(){setmem(actor_sprite_dims_table,672,0);actor_sprite_dims_table[72]=3;actor_sprite_dims_table[73]=9;actor_sprite_dims_table[74]=13;actor_sprite_dims_table[75]=17;actor_sprite_dims_table[76]=6;actor_sprite_dims_table[77]=9;actor_sprite_dims_table[78]=16;actor_sprite_dims_table[79]=17;actor_sprite_dims_table[416]=15;actor_sprite_dims_table[417]=5;actor_sprite_dims_table[418]=47;actor_sprite_dims_table[419]=34;actor_sprite_dims_table[420]=12;actor_sprite_dims_table[421]=5;actor_sprite_dims_table[422]=44;actor_sprite_dims_table[423]=34;}
 
 
 /* ---- F_B55E (original code at 0xB55E) ---- */
@@ -172,7 +172,7 @@ extern void menu_list_disable(void);
 extern void chapter_map_backdrop_draw(void);
 extern void level_expand_descriptors(void);
 extern int g98, g94, g9a;
-level_chapter_driver(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;chapter_map_backdrop_draw();level_expand_descriptors();board_actors_draw(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;chapter_map_sprites_wipe();sprite_script_frame_driver();if(rect_queue_write_ptr!=ui_gfx_blob)rect_queue_flush();timer_deadline_wait();if(++i==200)snd_flag2=0;}while(i<200||g1784);}
+level_chapter_driver(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=raycast_trail_active=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;chapter_map_backdrop_draw();level_expand_descriptors();board_actors_draw(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;chapter_map_sprites_wipe();sprite_script_frame_driver();if(rect_queue_write_ptr!=ui_gfx_blob)rect_queue_flush();timer_deadline_wait();if(++i==200)snd_flag2=0;}while(i<200||g1784);}
 
 
 /* ---- F_B772 (original code at 0xB772) ---- */
@@ -211,7 +211,7 @@ void level_exit_transition_run(void) { *board_records=7; sprite_script_frame_dri
 
 /* ---- F_B99F (original code at 0xB99F) ---- */
 /* Board movement, jumping, collision response, and redraw loop. */
-extern int key_up_right_held,key_up_left_held,key_up_held,key_up_released,g72c,g72e,g730,g732,g734;
+extern int key_up_right_held,key_up_left_held,key_up_held,key_up_released,hud_scroll_cooldown_ticks,g72e,g730,g732,g734;
 extern int near g1684[];
 extern unsigned char near g740[];
 extern struct dialog near g1670;
@@ -237,7 +237,7 @@ int level_run_loop(void)
  struct gb3af_entry saved[4];
  int key,hit,last,remaining,ended,delay,hurt,once;
  register int i,direction;
- gc5a2=hurt=delay=ended=last=g8fe=0;
+ gc5a2=hurt=delay=ended=last=raycast_trail_active=0;
  once=gc588=gbc=1;
  remaining=2;
  for(i=0;i<4;i++) movmem(&actor_state_table[i*2+4],&saved[i],32);
@@ -253,7 +253,7 @@ int level_run_loop(void)
   } else {
    if(!ended&&!actor_state_table[24].flag) {ended=1;delay=20;}
    else if(delay&&!--delay) {
-    if(face7()) level_display_init();
+    if(slot_is_new_game()) level_display_init();
     else {
      gbc=0;slot_reset_for_new_game();snd_flag2=0;while(g1784);snd_flag2=1;
      dialog_run(&g1670);longjmp(game_abort_jmpbuf,1);
@@ -265,9 +265,9 @@ int level_run_loop(void)
    if(key==13) hud_tab_next();else if(key==27) player_select_restart_confirm();
    gbc=1;
   }
-  rect_queue_write_ptr=ui_gfx_blob;board_redraw_view();sprite_table_wipe_active();if(g8fe) sprite_slots_redraw();
+  rect_queue_write_ptr=ui_gfx_blob;board_redraw_view();sprite_table_wipe_active();if(raycast_trail_active) sprite_slots_redraw();
   if(key_up_right_held) {
-   g73a=0;
+   cursor_facing_left=0;
    if(!(board_collision_span_or(cursor_x+28,cursor_y+1,39)&7)) {
     cursor_x+=g734;direction=1;
     if(g72e<=8) {if(++g72e>8) g72e=1;}
@@ -277,7 +277,7 @@ int level_run_loop(void)
     }
    }
   } else if(key_up_left_held) {
-   g73a=1;
+   cursor_facing_left=1;
    if(!(board_collision_span_or(cursor_x,cursor_y+1,39)&7)) {
     cursor_x-=g734;direction=-1;
     if(g72e<=8) {if(++g72e>8) g72e=1;}
@@ -312,13 +312,13 @@ walk:
    if(cursor_y<70&&cursor_x>90&&cursor_x<210) {level_exit_transition_run();gbc=0;return 1;}
   }
   if(key==32) {
-   if((i=hud_tab_get())==2&&!g72c) {
-     if(hud_scroll_move(-1)!=-1) {g72c=58;hurt=0;stream_control_block_arm(0);}else stream_control_block_arm(17);
+   if((i=hud_tab_get())==2&&!hud_scroll_cooldown_ticks) {
+     if(hud_scroll_move(-1)!=-1) {hud_scroll_cooldown_ticks=58;hurt=0;stream_control_block_arm(0);}else stream_control_block_arm(17);
    } else if(!i) {
-    if(!g8fe) {cursor_trail_arm();stream_control_block_arm(20);}else stream_control_block_arm(23);
+    if(!raycast_trail_active) {cursor_trail_arm();stream_control_block_arm(20);}else stream_control_block_arm(23);
    }
   }
-  if(g72c==1) g72c=0;
+  if(hud_scroll_cooldown_ticks==1) hud_scroll_cooldown_ticks=0;
   sprite_script_frame_driver();
   if(once&&!gc588&&actor_state_table[12].flag) {
    actor_state_table[12].rest[7]=1;once=0;g96=400;gfx_copy_rect(160,274,resource_ptr_table[29],0);g96=159;
@@ -326,24 +326,24 @@ walk:
   if(g40ce&&last!=g40ce) hit=actor_record_table[0]-g40ce;else hit=-1;
   last=g40ce;
   if(cursor_x<8) cursor_x=8;else if(cursor_x>272) cursor_x=272;
-  if(g8fe) board_raycast_step();
+  if(raycast_trail_active) board_raycast_step();
   if(hurt) {
    hurt--;
-   if(hurt>26) gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+14828,g73a);
-   else if(hurt&1) gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,g73a);
-  } else if(g72c) {
-   gfx_copy_rect(cursor_x,cursor_y,g96ee,0);g72c--;
-   gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,g73a);
+   if(hurt>26) gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+14828,cursor_facing_left);
+   else if(hurt&1) gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,cursor_facing_left);
+  } else if(hud_scroll_cooldown_ticks) {
+   gfx_copy_rect(cursor_x,cursor_y,g96ee,0);hud_scroll_cooldown_ticks--;
+   gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,cursor_facing_left);
   } else if(hit>4&&hit<=11) {
-   gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+14828,g73a);hurt=30;stream_control_block_arm(1);rect_queue_flush();gbc=0;
+   gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+14828,cursor_facing_left);hurt=30;stream_control_block_arm(1);rect_queue_flush();gbc=0;
    if(energy_adjust(-2)<=0) {board_record_complete();return 0;}
    gbc=1;goto frame_end;
-  } else gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,g73a);
+  } else gfx_copy_rect(cursor_x,cursor_y,resource_stripe_table+g72e*674,cursor_facing_left);
   if(hit==13) {
    if(timer_ticks>deadline) {
     g730=actor_state_table[13].flag=0;
     if(--remaining<0) remaining=0;
-    if(!remaining&&!face7()) {rect_queue_flush();resource_record_cache_reset(69);goto frame_end;}
+    if(!remaining&&!slot_is_new_game()) {rect_queue_flush();resource_record_cache_reset(69);goto frame_end;}
    }
    deadline=timer_ticks+500;
   }
@@ -357,14 +357,14 @@ frame_end:
 
 /* ---- F_C0E0 (original code at 0xC0E0) ---- */
 extern struct record3e8 g43b4[];
-extern int fb09a(), fb4fb(), level_run_loop();
+extern int fb09a(), level_actor_sprite_dims_init(), level_run_loop();
 extern void board_resource_expand(void);
 extern void level_free_descriptor_table();
 extern void menu_resources_free(void);
-level_play(){register int r;gbc=g8fe=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;menu_resources_free();fb09a();board_resource_expand();fb4fb();board_actors_draw(0);cursor_x=16;cursor_y=112;g73a=0;sprite_draw_cursor();gfx_box(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
+level_play(){register int r;gbc=raycast_trail_active=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;menu_resources_free();fb09a();board_resource_expand();level_actor_sprite_dims_init();board_actors_draw(0);cursor_x=16;cursor_y=112;cursor_facing_left=0;sprite_draw_cursor();gfx_box(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
 
 
 /* ---- F_C15E (original code at 0xC15E) ---- */
 extern void hud_scroll_reset(void);
 extern int level_play(),level_chapter_driver();
-extern void menu_backdrop_paint(void);extern void sound_voices_reset();extern int campaign_round_node_cursor,g722;level_play_chapter(){hud_scroll_reset();if(!face7())hud_scroll_move(-3);else hud_scroll_move(-4);campaign_round_node_cursor=42;g722=0;menu_backdrop_paint();if(!level_play())return 0;level_chapter_driver();sound_voices_reset();return 1;}
+extern void menu_backdrop_paint(void);extern void sound_voices_reset();extern int campaign_round_node_cursor,g722;level_play_chapter(){hud_scroll_reset();if(!slot_is_new_game())hud_scroll_move(-3);else hud_scroll_move(-4);campaign_round_node_cursor=42;g722=0;menu_backdrop_paint();if(!level_play())return 0;level_chapter_driver();sound_voices_reset();return 1;}

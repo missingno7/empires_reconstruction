@@ -62,7 +62,7 @@ extern void timer_deadline_arm(int n);                /* 6C57 */
 extern int  intro_wait_key(void);                /* 5593 */
 /*@SYM _intro_wait_key=0x5593 kind=f key=functions/F_5593.entry*/
 extern void text_draw_wrapped(int a,int b,char far *s);   /* 6D3C */
-extern void f568c(void);                 /* 568C */
+extern void intro_title_picture_redisplay(void);                 /* 568C */
 extern void timer_wait_ticks(int n);                /* 6C26 */
 extern void farfree(char far *p);            /* F6C3 */
 /*@SYM _farfree=0xF6C3 kind=f key=functions/F_F6C3.entry*/
@@ -268,7 +268,7 @@ void bitmap_blit_topleft()
 
 
 /* ---- F_568C (original code at 0x568C) ---- */
-void f568c(void) { hud_prompt_continue_clear(); anim_step_loop(0,232,200,152,0,32); bitmap_blit_topleft(); hud_prompt_continue_draw(); gfx_box(0,0,320,200); }
+void intro_title_picture_redisplay(void) { hud_prompt_continue_clear(); anim_step_loop(0,232,200,152,0,32); bitmap_blit_topleft(); hud_prompt_continue_draw(); gfx_box(0,0,320,200); }
 
 
 /* ---- F_56C6 (original code at 0x56C6) ---- */
@@ -329,7 +329,7 @@ top:
                 }
                 again = 1;
             }
-        if (k == 2 && key == -1) { f568c(); goto top; }
+        if (k == 2 && key == -1) { intro_title_picture_redisplay(); goto top; }
         anim_step_loop(0, 0x17e, 0xbc, 0x10, 0, 0xb6);
         g94 = 0; g9a = 0x9f; mus_flag = 1;
         stream_control_block_arm(0x18);

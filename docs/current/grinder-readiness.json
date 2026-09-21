@@ -1,12 +1,12 @@
 {
   "format": "empires-grinder-readiness-v1",
-  "input_fingerprint": "cc92a8106afe5f4e3c01b38bccbebfe05f09cee4a1a063340954a6e687fb2f2e",
+  "input_fingerprint": "96184fc8030960ff8354874858d368d4010799417561c29739e9cbb49cefcc56",
   "run_started": false,
   "source_inventory": [
     {
       "id": "RUNTIME_BLOCK",
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "source_sha256": "45dd1c12b244950be0d209d62fa1a016b064c9ee2f83f97eaf8d4ac607eb3330",
+      "source_sha256": "09892482c17cf17d273497723a72ff042b48a2c87d1ed738565b045234392ace",
       "range_file_offsets": [
         1436,
         8007
@@ -808,1370 +808,1370 @@
         },
         {
           "line": 1075,
-          "instruction": "loop $+7h"
+          "instruction": "loop rt_07c2"
         },
         {
           "line": 1076,
           "instruction": "pop ds"
         },
         {
-          "line": 1090,
+          "line": 1091,
           "instruction": "push ds"
         },
         {
-          "line": 1115,
+          "line": 1116,
           "instruction": "push es"
         },
         {
-          "line": 1118,
+          "line": 1119,
           "instruction": "pop ds"
         },
         {
-          "line": 1127,
+          "line": 1128,
           "instruction": "push cx"
         },
         {
-          "line": 1130,
+          "line": 1131,
           "instruction": "rep movsw"
         },
         {
-          "line": 1132,
+          "line": 1133,
           "instruction": "rep movsb"
         },
         {
-          "line": 1133,
+          "line": 1134,
           "instruction": "pop cx"
         },
         {
-          "line": 1137,
+          "line": 1138,
           "instruction": "loop $-12h"
         },
         {
-          "line": 1140,
+          "line": 1142,
           "instruction": "loop $-18h"
         },
         {
-          "line": 1141,
+          "line": 1144,
           "instruction": "pop ds"
         },
         {
-          "line": 1152,
+          "line": 1155,
           "instruction": "push ds"
         },
         {
-          "line": 1185,
+          "line": 1188,
           "instruction": "push es"
         },
         {
-          "line": 1188,
+          "line": 1191,
           "instruction": "pop ds"
         },
         {
-          "line": 1197,
+          "line": 1200,
           "instruction": "lodsw"
-        },
-        {
-          "line": 1205,
-          "instruction": "stosw"
         },
         {
           "line": 1208,
           "instruction": "stosw"
         },
         {
-          "line": 1210,
-          "instruction": "lodsw"
+          "line": 1211,
+          "instruction": "stosw"
         },
         {
-          "line": 1218,
-          "instruction": "stosw"
+          "line": 1213,
+          "instruction": "lodsw"
         },
         {
           "line": 1221,
           "instruction": "stosw"
         },
         {
-          "line": 1223,
-          "instruction": "lodsw"
+          "line": 1224,
+          "instruction": "stosw"
         },
         {
-          "line": 1231,
-          "instruction": "stosw"
+          "line": 1226,
+          "instruction": "lodsw"
         },
         {
           "line": 1234,
           "instruction": "stosw"
         },
         {
-          "line": 1236,
-          "instruction": "lodsw"
+          "line": 1237,
+          "instruction": "stosw"
         },
         {
-          "line": 1244,
-          "instruction": "stosw"
+          "line": 1239,
+          "instruction": "lodsw"
         },
         {
           "line": 1247,
           "instruction": "stosw"
         },
         {
-          "line": 1249,
-          "instruction": "lodsw"
+          "line": 1250,
+          "instruction": "stosw"
         },
         {
-          "line": 1257,
-          "instruction": "stosw"
+          "line": 1252,
+          "instruction": "lodsw"
         },
         {
           "line": 1260,
           "instruction": "stosw"
         },
         {
-          "line": 1262,
-          "instruction": "lodsw"
+          "line": 1263,
+          "instruction": "stosw"
         },
         {
-          "line": 1270,
-          "instruction": "stosw"
+          "line": 1265,
+          "instruction": "lodsw"
         },
         {
           "line": 1273,
           "instruction": "stosw"
         },
         {
-          "line": 1275,
-          "instruction": "lodsw"
+          "line": 1276,
+          "instruction": "stosw"
         },
         {
-          "line": 1283,
-          "instruction": "stosw"
+          "line": 1278,
+          "instruction": "lodsw"
         },
         {
           "line": 1286,
           "instruction": "stosw"
         },
         {
-          "line": 1288,
-          "instruction": "lodsw"
+          "line": 1289,
+          "instruction": "stosw"
         },
         {
-          "line": 1296,
-          "instruction": "stosw"
+          "line": 1291,
+          "instruction": "lodsw"
         },
         {
           "line": 1299,
           "instruction": "stosw"
         },
         {
-          "line": 1301,
-          "instruction": "lodsw"
+          "line": 1302,
+          "instruction": "stosw"
         },
         {
-          "line": 1309,
-          "instruction": "stosw"
+          "line": 1304,
+          "instruction": "lodsw"
         },
         {
           "line": 1312,
           "instruction": "stosw"
         },
         {
-          "line": 1314,
-          "instruction": "lodsw"
+          "line": 1315,
+          "instruction": "stosw"
         },
         {
-          "line": 1322,
-          "instruction": "stosw"
+          "line": 1317,
+          "instruction": "lodsw"
         },
         {
           "line": 1325,
           "instruction": "stosw"
         },
         {
-          "line": 1327,
-          "instruction": "lodsw"
+          "line": 1328,
+          "instruction": "stosw"
         },
         {
-          "line": 1335,
-          "instruction": "stosw"
+          "line": 1330,
+          "instruction": "lodsw"
         },
         {
           "line": 1338,
           "instruction": "stosw"
         },
         {
-          "line": 1340,
-          "instruction": "lodsw"
+          "line": 1341,
+          "instruction": "stosw"
         },
         {
-          "line": 1348,
-          "instruction": "stosw"
+          "line": 1343,
+          "instruction": "lodsw"
         },
         {
           "line": 1351,
           "instruction": "stosw"
         },
         {
-          "line": 1353,
-          "instruction": "lodsw"
+          "line": 1354,
+          "instruction": "stosw"
         },
         {
-          "line": 1361,
-          "instruction": "stosw"
+          "line": 1356,
+          "instruction": "lodsw"
         },
         {
           "line": 1364,
           "instruction": "stosw"
         },
         {
-          "line": 1366,
-          "instruction": "lodsw"
+          "line": 1367,
+          "instruction": "stosw"
         },
         {
-          "line": 1374,
-          "instruction": "stosw"
+          "line": 1369,
+          "instruction": "lodsw"
         },
         {
           "line": 1377,
           "instruction": "stosw"
         },
         {
-          "line": 1379,
-          "instruction": "lodsw"
+          "line": 1380,
+          "instruction": "stosw"
         },
         {
-          "line": 1387,
-          "instruction": "stosw"
+          "line": 1382,
+          "instruction": "lodsw"
         },
         {
           "line": 1390,
           "instruction": "stosw"
         },
         {
-          "line": 1392,
-          "instruction": "lodsw"
+          "line": 1393,
+          "instruction": "stosw"
         },
         {
-          "line": 1400,
-          "instruction": "stosw"
+          "line": 1395,
+          "instruction": "lodsw"
         },
         {
           "line": 1403,
           "instruction": "stosw"
         },
         {
-          "line": 1405,
-          "instruction": "lodsw"
+          "line": 1406,
+          "instruction": "stosw"
         },
         {
-          "line": 1413,
-          "instruction": "stosw"
+          "line": 1408,
+          "instruction": "lodsw"
         },
         {
           "line": 1416,
           "instruction": "stosw"
         },
         {
-          "line": 1418,
-          "instruction": "lodsw"
+          "line": 1419,
+          "instruction": "stosw"
         },
         {
-          "line": 1426,
-          "instruction": "stosw"
+          "line": 1421,
+          "instruction": "lodsw"
         },
         {
           "line": 1429,
           "instruction": "stosw"
         },
         {
-          "line": 1431,
-          "instruction": "lodsw"
+          "line": 1432,
+          "instruction": "stosw"
         },
         {
-          "line": 1439,
-          "instruction": "stosw"
+          "line": 1434,
+          "instruction": "lodsw"
         },
         {
           "line": 1442,
           "instruction": "stosw"
         },
         {
-          "line": 1444,
-          "instruction": "lodsw"
+          "line": 1445,
+          "instruction": "stosw"
         },
         {
-          "line": 1452,
-          "instruction": "stosw"
+          "line": 1447,
+          "instruction": "lodsw"
         },
         {
           "line": 1455,
           "instruction": "stosw"
         },
         {
-          "line": 1457,
-          "instruction": "lodsw"
+          "line": 1458,
+          "instruction": "stosw"
         },
         {
-          "line": 1465,
-          "instruction": "stosw"
+          "line": 1460,
+          "instruction": "lodsw"
         },
         {
           "line": 1468,
           "instruction": "stosw"
         },
         {
-          "line": 1470,
-          "instruction": "lodsw"
+          "line": 1471,
+          "instruction": "stosw"
         },
         {
-          "line": 1478,
-          "instruction": "stosw"
+          "line": 1473,
+          "instruction": "lodsw"
         },
         {
           "line": 1481,
           "instruction": "stosw"
         },
         {
-          "line": 1483,
-          "instruction": "lodsw"
+          "line": 1484,
+          "instruction": "stosw"
         },
         {
-          "line": 1491,
-          "instruction": "stosw"
+          "line": 1486,
+          "instruction": "lodsw"
         },
         {
           "line": 1494,
           "instruction": "stosw"
         },
         {
-          "line": 1496,
-          "instruction": "lodsw"
+          "line": 1497,
+          "instruction": "stosw"
         },
         {
-          "line": 1504,
-          "instruction": "stosw"
+          "line": 1499,
+          "instruction": "lodsw"
         },
         {
           "line": 1507,
           "instruction": "stosw"
         },
         {
-          "line": 1509,
-          "instruction": "lodsw"
+          "line": 1510,
+          "instruction": "stosw"
         },
         {
-          "line": 1517,
-          "instruction": "stosw"
+          "line": 1512,
+          "instruction": "lodsw"
         },
         {
           "line": 1520,
           "instruction": "stosw"
         },
         {
-          "line": 1522,
-          "instruction": "lodsw"
+          "line": 1523,
+          "instruction": "stosw"
         },
         {
-          "line": 1530,
-          "instruction": "stosw"
+          "line": 1525,
+          "instruction": "lodsw"
         },
         {
           "line": 1533,
           "instruction": "stosw"
         },
         {
-          "line": 1535,
-          "instruction": "lodsw"
+          "line": 1536,
+          "instruction": "stosw"
         },
         {
-          "line": 1543,
-          "instruction": "stosw"
+          "line": 1538,
+          "instruction": "lodsw"
         },
         {
           "line": 1546,
           "instruction": "stosw"
         },
         {
-          "line": 1548,
-          "instruction": "lodsw"
+          "line": 1549,
+          "instruction": "stosw"
         },
         {
-          "line": 1556,
-          "instruction": "stosw"
+          "line": 1551,
+          "instruction": "lodsw"
         },
         {
           "line": 1559,
           "instruction": "stosw"
         },
         {
-          "line": 1561,
-          "instruction": "lodsw"
+          "line": 1562,
+          "instruction": "stosw"
         },
         {
-          "line": 1569,
-          "instruction": "stosw"
+          "line": 1564,
+          "instruction": "lodsw"
         },
         {
           "line": 1572,
           "instruction": "stosw"
         },
         {
-          "line": 1574,
-          "instruction": "lodsw"
+          "line": 1575,
+          "instruction": "stosw"
         },
         {
-          "line": 1582,
-          "instruction": "stosw"
+          "line": 1577,
+          "instruction": "lodsw"
         },
         {
           "line": 1585,
           "instruction": "stosw"
         },
         {
-          "line": 1587,
-          "instruction": "lodsw"
+          "line": 1588,
+          "instruction": "stosw"
         },
         {
-          "line": 1595,
-          "instruction": "stosw"
+          "line": 1590,
+          "instruction": "lodsw"
         },
         {
           "line": 1598,
           "instruction": "stosw"
         },
         {
-          "line": 1600,
-          "instruction": "lodsw"
+          "line": 1601,
+          "instruction": "stosw"
         },
         {
-          "line": 1608,
-          "instruction": "stosw"
+          "line": 1603,
+          "instruction": "lodsw"
         },
         {
           "line": 1611,
           "instruction": "stosw"
         },
         {
-          "line": 1613,
-          "instruction": "lodsw"
+          "line": 1614,
+          "instruction": "stosw"
         },
         {
-          "line": 1621,
-          "instruction": "stosw"
+          "line": 1616,
+          "instruction": "lodsw"
         },
         {
           "line": 1624,
           "instruction": "stosw"
         },
         {
-          "line": 1626,
-          "instruction": "lodsw"
+          "line": 1627,
+          "instruction": "stosw"
         },
         {
-          "line": 1634,
-          "instruction": "stosw"
+          "line": 1629,
+          "instruction": "lodsw"
         },
         {
           "line": 1637,
           "instruction": "stosw"
         },
         {
-          "line": 1639,
-          "instruction": "lodsw"
+          "line": 1640,
+          "instruction": "stosw"
         },
         {
-          "line": 1647,
-          "instruction": "stosw"
+          "line": 1642,
+          "instruction": "lodsw"
         },
         {
           "line": 1650,
           "instruction": "stosw"
         },
         {
-          "line": 1652,
-          "instruction": "lodsw"
+          "line": 1653,
+          "instruction": "stosw"
         },
         {
-          "line": 1660,
-          "instruction": "stosw"
+          "line": 1655,
+          "instruction": "lodsw"
         },
         {
           "line": 1663,
           "instruction": "stosw"
         },
         {
-          "line": 1665,
-          "instruction": "lodsw"
+          "line": 1666,
+          "instruction": "stosw"
         },
         {
-          "line": 1673,
-          "instruction": "stosw"
+          "line": 1668,
+          "instruction": "lodsw"
         },
         {
           "line": 1676,
           "instruction": "stosw"
         },
         {
-          "line": 1678,
-          "instruction": "lodsw"
+          "line": 1679,
+          "instruction": "stosw"
         },
         {
-          "line": 1686,
-          "instruction": "stosw"
+          "line": 1681,
+          "instruction": "lodsw"
         },
         {
           "line": 1689,
           "instruction": "stosw"
         },
         {
-          "line": 1691,
-          "instruction": "lodsw"
+          "line": 1692,
+          "instruction": "stosw"
         },
         {
-          "line": 1699,
-          "instruction": "stosw"
+          "line": 1694,
+          "instruction": "lodsw"
         },
         {
           "line": 1702,
           "instruction": "stosw"
         },
         {
-          "line": 1704,
-          "instruction": "lodsw"
+          "line": 1705,
+          "instruction": "stosw"
         },
         {
-          "line": 1712,
-          "instruction": "stosw"
+          "line": 1707,
+          "instruction": "lodsw"
         },
         {
           "line": 1715,
           "instruction": "stosw"
         },
         {
-          "line": 1717,
-          "instruction": "lodsw"
+          "line": 1718,
+          "instruction": "stosw"
         },
         {
-          "line": 1725,
-          "instruction": "stosw"
+          "line": 1720,
+          "instruction": "lodsw"
         },
         {
           "line": 1728,
           "instruction": "stosw"
         },
         {
-          "line": 1730,
-          "instruction": "lodsw"
+          "line": 1731,
+          "instruction": "stosw"
         },
         {
-          "line": 1738,
-          "instruction": "stosw"
+          "line": 1733,
+          "instruction": "lodsw"
         },
         {
           "line": 1741,
           "instruction": "stosw"
         },
         {
-          "line": 1743,
-          "instruction": "lodsw"
+          "line": 1744,
+          "instruction": "stosw"
         },
         {
-          "line": 1751,
-          "instruction": "stosw"
+          "line": 1746,
+          "instruction": "lodsw"
         },
         {
           "line": 1754,
           "instruction": "stosw"
         },
         {
-          "line": 1756,
-          "instruction": "lodsw"
+          "line": 1757,
+          "instruction": "stosw"
         },
         {
-          "line": 1764,
-          "instruction": "stosw"
+          "line": 1759,
+          "instruction": "lodsw"
         },
         {
           "line": 1767,
           "instruction": "stosw"
         },
         {
-          "line": 1769,
-          "instruction": "lodsw"
+          "line": 1770,
+          "instruction": "stosw"
         },
         {
-          "line": 1777,
-          "instruction": "stosw"
+          "line": 1772,
+          "instruction": "lodsw"
         },
         {
           "line": 1780,
           "instruction": "stosw"
         },
         {
-          "line": 1782,
-          "instruction": "lodsw"
+          "line": 1783,
+          "instruction": "stosw"
         },
         {
-          "line": 1790,
-          "instruction": "stosw"
+          "line": 1785,
+          "instruction": "lodsw"
         },
         {
           "line": 1793,
           "instruction": "stosw"
         },
         {
-          "line": 1795,
-          "instruction": "lodsw"
+          "line": 1796,
+          "instruction": "stosw"
         },
         {
-          "line": 1803,
-          "instruction": "stosw"
+          "line": 1798,
+          "instruction": "lodsw"
         },
         {
           "line": 1806,
           "instruction": "stosw"
         },
         {
-          "line": 1808,
-          "instruction": "lodsw"
+          "line": 1809,
+          "instruction": "stosw"
         },
         {
-          "line": 1816,
-          "instruction": "stosw"
+          "line": 1811,
+          "instruction": "lodsw"
         },
         {
           "line": 1819,
           "instruction": "stosw"
         },
         {
-          "line": 1821,
-          "instruction": "lodsw"
+          "line": 1822,
+          "instruction": "stosw"
         },
         {
-          "line": 1829,
-          "instruction": "stosw"
+          "line": 1824,
+          "instruction": "lodsw"
         },
         {
           "line": 1832,
           "instruction": "stosw"
         },
         {
-          "line": 1834,
-          "instruction": "lodsw"
+          "line": 1835,
+          "instruction": "stosw"
         },
         {
-          "line": 1842,
-          "instruction": "stosw"
+          "line": 1837,
+          "instruction": "lodsw"
         },
         {
           "line": 1845,
           "instruction": "stosw"
         },
         {
-          "line": 1847,
-          "instruction": "lodsw"
+          "line": 1848,
+          "instruction": "stosw"
         },
         {
-          "line": 1855,
-          "instruction": "stosw"
+          "line": 1850,
+          "instruction": "lodsw"
         },
         {
           "line": 1858,
           "instruction": "stosw"
         },
         {
-          "line": 1860,
-          "instruction": "lodsw"
+          "line": 1861,
+          "instruction": "stosw"
         },
         {
-          "line": 1868,
-          "instruction": "stosw"
+          "line": 1863,
+          "instruction": "lodsw"
         },
         {
           "line": 1871,
           "instruction": "stosw"
         },
         {
-          "line": 1873,
-          "instruction": "lodsw"
+          "line": 1874,
+          "instruction": "stosw"
         },
         {
-          "line": 1881,
-          "instruction": "stosw"
+          "line": 1876,
+          "instruction": "lodsw"
         },
         {
           "line": 1884,
           "instruction": "stosw"
         },
         {
-          "line": 1886,
-          "instruction": "lodsw"
+          "line": 1887,
+          "instruction": "stosw"
         },
         {
-          "line": 1894,
-          "instruction": "stosw"
+          "line": 1889,
+          "instruction": "lodsw"
         },
         {
           "line": 1897,
           "instruction": "stosw"
         },
         {
-          "line": 1899,
-          "instruction": "lodsw"
+          "line": 1900,
+          "instruction": "stosw"
         },
         {
-          "line": 1907,
-          "instruction": "stosw"
+          "line": 1902,
+          "instruction": "lodsw"
         },
         {
           "line": 1910,
           "instruction": "stosw"
         },
         {
-          "line": 1912,
-          "instruction": "lodsw"
+          "line": 1913,
+          "instruction": "stosw"
         },
         {
-          "line": 1920,
-          "instruction": "stosw"
+          "line": 1915,
+          "instruction": "lodsw"
         },
         {
           "line": 1923,
           "instruction": "stosw"
         },
         {
-          "line": 1925,
-          "instruction": "lodsw"
+          "line": 1926,
+          "instruction": "stosw"
         },
         {
-          "line": 1933,
-          "instruction": "stosw"
+          "line": 1928,
+          "instruction": "lodsw"
         },
         {
           "line": 1936,
           "instruction": "stosw"
         },
         {
-          "line": 1938,
-          "instruction": "lodsw"
+          "line": 1939,
+          "instruction": "stosw"
         },
         {
-          "line": 1946,
-          "instruction": "stosw"
+          "line": 1941,
+          "instruction": "lodsw"
         },
         {
           "line": 1949,
           "instruction": "stosw"
         },
         {
-          "line": 1951,
-          "instruction": "lodsw"
+          "line": 1952,
+          "instruction": "stosw"
         },
         {
-          "line": 1959,
-          "instruction": "stosw"
+          "line": 1954,
+          "instruction": "lodsw"
         },
         {
           "line": 1962,
           "instruction": "stosw"
         },
         {
-          "line": 1964,
-          "instruction": "lodsw"
+          "line": 1965,
+          "instruction": "stosw"
         },
         {
-          "line": 1972,
-          "instruction": "stosw"
+          "line": 1967,
+          "instruction": "lodsw"
         },
         {
           "line": 1975,
           "instruction": "stosw"
         },
         {
-          "line": 1977,
-          "instruction": "lodsw"
+          "line": 1978,
+          "instruction": "stosw"
         },
         {
-          "line": 1985,
-          "instruction": "stosw"
+          "line": 1980,
+          "instruction": "lodsw"
         },
         {
           "line": 1988,
           "instruction": "stosw"
         },
         {
-          "line": 1990,
-          "instruction": "lodsw"
+          "line": 1991,
+          "instruction": "stosw"
         },
         {
-          "line": 1998,
-          "instruction": "stosw"
+          "line": 1993,
+          "instruction": "lodsw"
         },
         {
           "line": 2001,
           "instruction": "stosw"
         },
         {
-          "line": 2003,
-          "instruction": "lodsw"
+          "line": 2004,
+          "instruction": "stosw"
         },
         {
-          "line": 2011,
-          "instruction": "stosw"
+          "line": 2006,
+          "instruction": "lodsw"
         },
         {
           "line": 2014,
           "instruction": "stosw"
         },
         {
-          "line": 2016,
-          "instruction": "lodsw"
+          "line": 2017,
+          "instruction": "stosw"
         },
         {
-          "line": 2024,
-          "instruction": "stosw"
+          "line": 2019,
+          "instruction": "lodsw"
         },
         {
           "line": 2027,
           "instruction": "stosw"
         },
         {
-          "line": 2029,
-          "instruction": "lodsw"
+          "line": 2030,
+          "instruction": "stosw"
         },
         {
-          "line": 2037,
-          "instruction": "stosw"
+          "line": 2032,
+          "instruction": "lodsw"
         },
         {
           "line": 2040,
           "instruction": "stosw"
         },
         {
-          "line": 2042,
-          "instruction": "lodsw"
+          "line": 2043,
+          "instruction": "stosw"
         },
         {
-          "line": 2050,
-          "instruction": "stosw"
+          "line": 2045,
+          "instruction": "lodsw"
         },
         {
           "line": 2053,
           "instruction": "stosw"
         },
         {
-          "line": 2055,
-          "instruction": "lodsw"
+          "line": 2056,
+          "instruction": "stosw"
         },
         {
-          "line": 2063,
-          "instruction": "stosw"
+          "line": 2058,
+          "instruction": "lodsw"
         },
         {
           "line": 2066,
           "instruction": "stosw"
         },
         {
-          "line": 2068,
-          "instruction": "lodsw"
+          "line": 2069,
+          "instruction": "stosw"
         },
         {
-          "line": 2076,
-          "instruction": "stosw"
+          "line": 2071,
+          "instruction": "lodsw"
         },
         {
           "line": 2079,
           "instruction": "stosw"
         },
         {
-          "line": 2081,
-          "instruction": "lodsw"
+          "line": 2082,
+          "instruction": "stosw"
         },
         {
-          "line": 2089,
-          "instruction": "stosw"
+          "line": 2084,
+          "instruction": "lodsw"
         },
         {
           "line": 2092,
           "instruction": "stosw"
         },
         {
-          "line": 2094,
-          "instruction": "lodsw"
+          "line": 2095,
+          "instruction": "stosw"
         },
         {
-          "line": 2102,
-          "instruction": "stosw"
+          "line": 2097,
+          "instruction": "lodsw"
         },
         {
           "line": 2105,
           "instruction": "stosw"
         },
         {
-          "line": 2107,
-          "instruction": "lodsw"
+          "line": 2108,
+          "instruction": "stosw"
         },
         {
-          "line": 2115,
-          "instruction": "stosw"
+          "line": 2110,
+          "instruction": "lodsw"
         },
         {
           "line": 2118,
           "instruction": "stosw"
         },
         {
-          "line": 2120,
-          "instruction": "lodsw"
+          "line": 2121,
+          "instruction": "stosw"
         },
         {
-          "line": 2128,
-          "instruction": "stosw"
+          "line": 2123,
+          "instruction": "lodsw"
         },
         {
           "line": 2131,
           "instruction": "stosw"
         },
         {
-          "line": 2133,
-          "instruction": "lodsw"
+          "line": 2134,
+          "instruction": "stosw"
         },
         {
-          "line": 2141,
-          "instruction": "stosw"
+          "line": 2136,
+          "instruction": "lodsw"
         },
         {
           "line": 2144,
           "instruction": "stosw"
         },
         {
-          "line": 2146,
-          "instruction": "lodsw"
+          "line": 2147,
+          "instruction": "stosw"
         },
         {
-          "line": 2154,
-          "instruction": "stosw"
+          "line": 2149,
+          "instruction": "lodsw"
         },
         {
           "line": 2157,
           "instruction": "stosw"
         },
         {
-          "line": 2159,
-          "instruction": "lodsw"
+          "line": 2160,
+          "instruction": "stosw"
         },
         {
-          "line": 2167,
-          "instruction": "stosw"
+          "line": 2162,
+          "instruction": "lodsw"
         },
         {
           "line": 2170,
           "instruction": "stosw"
         },
         {
-          "line": 2172,
-          "instruction": "lodsw"
+          "line": 2173,
+          "instruction": "stosw"
         },
         {
-          "line": 2180,
-          "instruction": "stosw"
+          "line": 2175,
+          "instruction": "lodsw"
         },
         {
           "line": 2183,
           "instruction": "stosw"
         },
         {
-          "line": 2185,
-          "instruction": "lodsw"
+          "line": 2186,
+          "instruction": "stosw"
         },
         {
-          "line": 2193,
-          "instruction": "stosw"
+          "line": 2188,
+          "instruction": "lodsw"
         },
         {
           "line": 2196,
           "instruction": "stosw"
         },
         {
-          "line": 2198,
-          "instruction": "lodsw"
+          "line": 2199,
+          "instruction": "stosw"
         },
         {
-          "line": 2206,
-          "instruction": "stosw"
+          "line": 2201,
+          "instruction": "lodsw"
         },
         {
           "line": 2209,
           "instruction": "stosw"
         },
         {
-          "line": 2211,
-          "instruction": "lodsw"
+          "line": 2212,
+          "instruction": "stosw"
         },
         {
-          "line": 2219,
-          "instruction": "stosw"
+          "line": 2214,
+          "instruction": "lodsw"
         },
         {
           "line": 2222,
           "instruction": "stosw"
         },
         {
-          "line": 2224,
-          "instruction": "lodsw"
+          "line": 2225,
+          "instruction": "stosw"
         },
         {
-          "line": 2232,
-          "instruction": "stosw"
+          "line": 2227,
+          "instruction": "lodsw"
         },
         {
           "line": 2235,
           "instruction": "stosw"
         },
         {
-          "line": 2240,
-          "instruction": "loop $+7h"
+          "line": 2238,
+          "instruction": "stosw"
         },
         {
-          "line": 2242,
+          "line": 2243,
+          "instruction": "loop rt_0f3c"
+        },
+        {
+          "line": 2245,
           "instruction": "pop ds"
         },
         {
-          "line": 2281,
+          "line": 2285,
           "instruction": "rep stosb"
         },
         {
-          "line": 2317,
+          "line": 2323,
           "instruction": "loop runtime_f03a5_loop"
         },
         {
-          "line": 2348,
+          "line": 2354,
           "instruction": "loop runtime_0fd4_pixel_loop"
         },
         {
-          "line": 2364,
+          "line": 2370,
           "instruction": "rep stosb"
         },
         {
-          "line": 2380,
+          "line": 2386,
           "instruction": "loop runtime_f03a8_clear_loop"
         },
         {
-          "line": 2408,
+          "line": 2415,
           "instruction": "loop runtime_104b_pixel_loop"
         },
         {
-          "line": 2427,
+          "line": 2434,
           "instruction": "loop $-4h"
         },
         {
-          "line": 2441,
+          "line": 2449,
           "instruction": "loop $-5h"
         },
         {
-          "line": 2452,
+          "line": 2461,
           "instruction": "push ds"
         },
         {
-          "line": 2476,
+          "line": 2485,
           "instruction": "rep movsb"
         },
         {
-          "line": 2480,
+          "line": 2489,
           "instruction": "pop ds"
         },
         {
-          "line": 2491,
+          "line": 2500,
           "instruction": "push ds"
         },
         {
-          "line": 2501,
+          "line": 2510,
           "instruction": "lodsw"
         },
         {
-          "line": 2503,
+          "line": 2512,
           "instruction": "lodsw"
         },
         {
-          "line": 2509,
+          "line": 2518,
           "instruction": "rep movsb"
         },
         {
-          "line": 2513,
+          "line": 2522,
           "instruction": "pop ds"
         },
         {
-          "line": 2524,
+          "line": 2533,
           "instruction": "push ds"
         },
         {
-          "line": 2548,
+          "line": 2557,
           "instruction": "rep movsw"
         },
         {
-          "line": 2550,
+          "line": 2559,
           "instruction": "rep movsb"
         },
         {
-          "line": 2555,
+          "line": 2564,
           "instruction": "pop ds"
         },
         {
-          "line": 2565,
+          "line": 2574,
           "instruction": "stosw"
         },
         {
-          "line": 2570,
+          "line": 2579,
           "instruction": "stosw"
         },
         {
-          "line": 2583,
+          "line": 2592,
           "instruction": "push ds"
         },
         {
-          "line": 2613,
+          "line": 2622,
           "instruction": "rep movsb"
         },
         {
-          "line": 2620,
+          "line": 2629,
           "instruction": "pop ds"
         },
         {
-          "line": 2631,
+          "line": 2640,
           "instruction": "push ds"
         },
         {
-          "line": 2655,
+          "line": 2664,
           "instruction": "lodsb"
         },
         {
-          "line": 2662,
+          "line": 2671,
           "instruction": "loop runtime_f03ba_inner_loop"
         },
         {
-          "line": 2669,
+          "line": 2678,
           "instruction": "pop ds"
         },
         {
-          "line": 2680,
+          "line": 2689,
           "instruction": "push ds"
         },
         {
-          "line": 2712,
+          "line": 2721,
           "instruction": "lodsb"
         },
         {
-          "line": 2719,
+          "line": 2728,
           "instruction": "loop runtime_f03bd_inner_loop"
         },
         {
-          "line": 2726,
+          "line": 2735,
           "instruction": "pop ds"
         },
         {
-          "line": 2737,
+          "line": 2746,
           "instruction": "push ds"
         },
         {
-          "line": 2763,
+          "line": 2772,
           "instruction": "lodsb"
         },
         {
-          "line": 2776,
+          "line": 2785,
           "instruction": "loop runtime_f03c0_low_loop"
         },
         {
-          "line": 2783,
+          "line": 2792,
           "instruction": "lodsb"
         },
         {
-          "line": 2796,
+          "line": 2805,
           "instruction": "loop runtime_f03c0_high_loop"
         },
         {
-          "line": 2803,
+          "line": 2812,
           "instruction": "pop ds"
         },
         {
-          "line": 2814,
+          "line": 2823,
           "instruction": "push ds"
         },
         {
-          "line": 2845,
+          "line": 2854,
           "instruction": "lodsb"
         },
         {
-          "line": 2858,
+          "line": 2867,
           "instruction": "loop runtime_f03c3_low_loop"
         },
         {
-          "line": 2865,
+          "line": 2874,
           "instruction": "lodsb"
         },
         {
-          "line": 2878,
+          "line": 2887,
           "instruction": "loop runtime_f03c3_high_loop"
         },
         {
-          "line": 2885,
+          "line": 2894,
           "instruction": "pop ds"
         },
         {
-          "line": 2897,
+          "line": 2906,
           "instruction": "push ds"
         },
         {
-          "line": 2995,
+          "line": 3009,
           "instruction": "loop $-70h"
         },
         {
-          "line": 3054,
+          "line": 3073,
           "instruction": "loop $-70h"
-        },
-        {
-          "line": 3057,
-          "instruction": "pop ds"
         },
         {
           "line": 3077,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3097,
           "instruction": "push ds"
         },
         {
-          "line": 3088,
+          "line": 3108,
           "instruction": "lodsw"
         },
         {
-          "line": 3099,
+          "line": 3119,
           "instruction": "rep movsw"
         },
         {
-          "line": 3101,
+          "line": 3121,
           "instruction": "rep movsb"
         },
         {
-          "line": 3106,
+          "line": 3126,
           "instruction": "pop ds"
         },
         {
-          "line": 3116,
+          "line": 3136,
           "instruction": "stosw"
         },
         {
-          "line": 3120,
+          "line": 3140,
           "instruction": "stosw"
         },
         {
-          "line": 3150,
+          "line": 3171,
           "instruction": "push ds"
         },
         {
-          "line": 3198,
+          "line": 3224,
           "instruction": "pop ds"
         },
         {
-          "line": 3209,
+          "line": 3235,
           "instruction": "push es"
         },
         {
-          "line": 3219,
+          "line": 3245,
           "instruction": "stosw"
         },
         {
-          "line": 3222,
+          "line": 3248,
           "instruction": "stosw"
         },
         {
-          "line": 3230,
+          "line": 3256,
           "instruction": "pop ds"
         },
         {
-          "line": 3234,
+          "line": 3260,
           "instruction": "push cx"
         },
         {
-          "line": 3236,
+          "line": 3262,
           "instruction": "lodsb"
         },
         {
-          "line": 3238,
+          "line": 3264,
           "instruction": "xlat cs:[bx]"
         },
         {
-          "line": 3241,
+          "line": 3267,
           "instruction": "stosb"
         },
         {
-          "line": 3242,
+          "line": 3268,
           "instruction": "loop runtime_17a0_pixel_loop"
         },
         {
-          "line": 3243,
+          "line": 3269,
           "instruction": "pop cx"
         },
         {
-          "line": 3250,
+          "line": 3276,
           "instruction": "pop ds"
         },
         {
-          "line": 3277,
+          "line": 3306,
           "instruction": "pop ds"
         },
         {
-          "line": 3286,
+          "line": 3317,
           "instruction": "push es"
         },
         {
-          "line": 3299,
+          "line": 3330,
           "instruction": "stosw"
         },
         {
-          "line": 3302,
+          "line": 3333,
           "instruction": "stosw"
         },
         {
-          "line": 3310,
+          "line": 3342,
           "instruction": "pop ds"
         },
         {
-          "line": 3314,
+          "line": 3346,
           "instruction": "push cx"
         },
         {
-          "line": 3323,
+          "line": 3355,
           "instruction": "xlat cs:[bx]"
         },
         {
-          "line": 3326,
+          "line": 3358,
           "instruction": "stosb"
         },
         {
-          "line": 3327,
+          "line": 3359,
           "instruction": "loop runtime_180c_pixel_loop"
         },
         {
-          "line": 3328,
+          "line": 3360,
           "instruction": "pop cx"
         },
         {
-          "line": 3335,
+          "line": 3367,
           "instruction": "pop ds"
         },
         {
-          "line": 3349,
+          "line": 3381,
           "instruction": "push ds"
         },
         {
-          "line": 3430,
+          "line": 3467,
           "instruction": "loop runtime_f03cf+42h"
         },
         {
-          "line": 3431,
+          "line": 3468,
           "instruction": "pop ds"
         }
       ]
     },
     {
       "id": "F_1ECD",
-      "source": "asm/F_1ECD.ASM",
-      "source_sha256": "29097cb44afc63a0f587d5290f031086d22f73f69b2fc1dd69c919deee36ae8a",
+      "source": "asm/RECTQ.ASM",
+      "source_sha256": "e2c5cba1502e5909bf33346927a37d6f280e22e041c10166d5d40f766c4c02e5",
       "range_file_offsets": [
         8397,
         8471
@@ -2182,7 +2182,7 @@
       "existing_c_sources": [
         {
           "path": "recovery/src/F_1ECD.C",
-          "sha256": "e971f5fb724a54af085da2c48fbb6c8f3a527a6158bb601568fbf6bf513bf579",
+          "sha256": "ed6b2d3255ce4370288031638b41eb17c29b3f0b5671b23186ae76229d8fc26d",
           "inline_asm_tokens": 34
         }
       ],
@@ -2223,8 +2223,8 @@
     },
     {
       "id": "F_1F91",
-      "source": "asm/F_1F91.ASM",
-      "source_sha256": "8f8193b91c58e6d35e79805255f18ecc00b8a6656e9c549997f399c046909283",
+      "source": "asm/BOARDCOL.ASM",
+      "source_sha256": "9d8b1f19e21e1dd336efddacad96cdcbcc83c47143566301a397f9dd64d50a1b",
       "range_file_offsets": [
         8593,
         8719
@@ -2235,7 +2235,7 @@
       "existing_c_sources": [
         {
           "path": "recovery/src/F_1F91.C",
-          "sha256": "a6a2a98a004e6a3d997c4d125177da8fc85ab25a7d22dbcdbe73e5af57a357d0",
+          "sha256": "ee014e095e136ffabb2dab8c4a9b597852564a5081a147be78d5211a7eadac2f",
           "inline_asm_tokens": 52
         }
       ],
@@ -2255,195 +2255,108 @@
       ]
     },
     {
-      "id": "F_4AA8",
-      "source": "asm/F_4AA8.ASM",
-      "source_sha256": "6d7f9696acc8b67d3fb07ca9106cf47d136df82c01c18c794109140a36209dcf",
+      "id": "M_4AA8_4EEB",
+      "source": "asm/SPRITES.ASM",
+      "source_sha256": "002d82a2c4a99054e1034a8c0590758432cca55902f51aaa3d531be6abe6d76e",
       "range_file_offsets": [
         19624,
-        19724
+        20835
       ],
-      "bytes": 100,
+      "bytes": 1211,
       "route": "HELD_ORIGIN_REVIEW",
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
           "path": "recovery/src/F_4AA8.C",
-          "sha256": "3012565d00dc2c0dadde3c780884fae0600e651d2a87e0f5d12376cd7e42e71d",
+          "sha256": "beda60821a6ab39f09b9ce0e32c6c0e536efc2105c938d437b9817faabd02b22",
           "inline_asm_tokens": 41
+        },
+        {
+          "path": "recovery/src/F_4B0C.C",
+          "sha256": "b911230bb4a0d6248a7f23372e237994e55a3a4539fe7a3a6612f8c00d8e1d2a",
+          "inline_asm_tokens": 41
+        },
+        {
+          "path": "recovery/src/F_4EEB.C",
+          "sha256": "a26d1be026aed1e6fdc2518ca99605d8e3b3e4e53bbfd7d489552bda3db5963f",
+          "inline_asm_tokens": 54
         }
       ],
       "instruction_observations": [
         {
-          "line": 27,
-          "instruction": "jg      @@out"
-        },
-        {
-          "line": 30,
-          "instruction": "jg      @@out"
-        },
-        {
-          "line": 35,
-          "instruction": "jl      @@out"
-        },
-        {
-          "line": 40,
-          "instruction": "jl      @@out"
-        },
-        {
-          "line": 62,
+          "line": 71,
           "instruction": "push    ax"
         },
         {
-          "line": 64,
+          "line": 73,
           "instruction": "push    cx"
         },
         {
-          "line": 67,
+          "line": 76,
           "instruction": "push    ax"
         },
         {
-          "line": 70,
-          "instruction": "@@out:"
-        }
-      ]
-    },
-    {
-      "id": "F_4B0C",
-      "source": "asm/F_4B0C.ASM",
-      "source_sha256": "53d0e8f656aa8c53d0b299e60e5993306c183d80aebdd00be430c2937487ecc0",
-      "range_file_offsets": [
-        19724,
-        20639
-      ],
-      "bytes": 915,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
-          "path": "recovery/src/F_4B0C.C",
-          "sha256": "27e933039585e2a55b4a7c7333717241d391b9cd50283a5b214e3ea4ecb8667a",
-          "inline_asm_tokens": 41
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 40,
+          "line": 108,
           "instruction": "push ax"
         },
         {
-          "line": 42,
+          "line": 110,
           "instruction": "pop ax"
         },
         {
-          "line": 51,
+          "line": 119,
           "instruction": "push cx"
         },
         {
-          "line": 67,
+          "line": 135,
           "instruction": "lodsb"
         },
         {
-          "line": 83,
+          "line": 151,
           "instruction": "pop cx"
         },
         {
-          "line": 85,
+          "line": 153,
           "instruction": "loop record_loop"
         },
         {
-          "line": 106,
+          "line": 174,
           "instruction": "push es"
         },
         {
-          "line": 107,
-          "instruction": "push ax"
-        },
-        {
-          "line": 128,
-          "instruction": "push ax"
-        },
-        {
-          "line": 166,
-          "instruction": "lodsw"
-        },
-        {
           "line": 175,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 235,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 257,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 262,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 281,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 283,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 295,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 296,
           "instruction": "push ax"
         },
         {
-          "line": 298,
-          "instruction": "pop ax"
+          "line": 196,
+          "instruction": "push ax"
+        },
+        {
+          "line": 234,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 243,
+          "instruction": "lodsw"
         },
         {
           "line": 303,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 304,
-          "instruction": "push ax"
-        },
-        {
-          "line": 306,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 308,
-          "instruction": "push ax"
-        },
-        {
-          "line": 310,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 311,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 316,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 317,
-          "instruction": "push ax"
-        },
-        {
-          "line": 319,
           "instruction": "pop ax"
         },
         {
-          "line": 330,
-          "instruction": "lodsb"
+          "line": 325,
+          "instruction": "lodsw"
         },
         {
-          "line": 355,
+          "line": 330,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 349,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 351,
           "instruction": "lodsw"
         },
         {
@@ -2451,704 +2364,242 @@
           "instruction": "lodsb"
         },
         {
+          "line": 364,
+          "instruction": "push ax"
+        },
+        {
+          "line": 366,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 371,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 372,
+          "instruction": "push ax"
+        },
+        {
           "line": 374,
-          "instruction": "lodsw"
+          "instruction": "pop cx"
+        },
+        {
+          "line": 376,
+          "instruction": "push ax"
+        },
+        {
+          "line": 378,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 379,
+          "instruction": "pop cx"
         },
         {
           "line": 384,
           "instruction": "lodsb"
         },
         {
-          "line": 406,
-          "instruction": "push es"
-        },
-        {
-          "line": 407,
+          "line": 385,
           "instruction": "push ax"
         },
         {
-          "line": 408,
-          "instruction": "push cx"
+          "line": 387,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 398,
+          "instruction": "lodsb"
         },
         {
           "line": 423,
           "instruction": "lodsw"
         },
         {
-          "line": 432,
+          "line": 431,
           "instruction": "lodsb"
         },
         {
-          "line": 441,
+          "line": 442,
           "instruction": "lodsw"
         },
         {
-          "line": 449,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 477,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 482,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 487,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 492,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 498,
+          "line": 452,
           "instruction": "lodsb"
         },
         {
-          "line": 504,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 510,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 515,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 523,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 533,
-          "instruction": "lodsb"
-        }
-      ]
-    },
-    {
-      "id": "F_4E9F",
-      "source": "asm/F_4E9F.ASM",
-      "source_sha256": "cb6246a68856cdec38a3376f9c0d9b24579b3bcf22c22b56cab25e9a0be2f031",
-      "range_file_offsets": [
-        20639,
-        20715
-      ],
-      "bytes": 76,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [],
-      "instruction_observations": [
-        {
-          "line": 29,
-          "instruction": "je      @@out"
-        },
-        {
-          "line": 37,
-          "instruction": "push    cx"
-        },
-        {
-          "line": 42,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 44,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 46,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 48,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 51,
-          "instruction": "pop     cx"
-        },
-        {
-          "line": 53,
-          "instruction": "loop    @@top"
-        },
-        {
-          "line": 54,
-          "instruction": "@@out:  pop     di"
-        }
-      ]
-    },
-    {
-      "id": "F_4EEB",
-      "source": "asm/F_4EEB.ASM",
-      "source_sha256": "3098942537c4a9c5f7f53a3ac80763390057da24fcc68f9c6616e1e1f830977a",
-      "range_file_offsets": [
-        20715,
-        20835
-      ],
-      "bytes": 120,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
-          "path": "recovery/src/F_4EEB.C",
-          "sha256": "0a081c5d5a2a1ddb7a55be68a964d31eb7408e23179de68366700dcc80f0f11c",
-          "inline_asm_tokens": 54
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 35,
-          "instruction": "push ax"
-        },
-        {
-          "line": 37,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 56,
-          "instruction": "push cx"
-        },
-        {
-          "line": 65,
+          "line": 474,
           "instruction": "push es"
         },
         {
-          "line": 66,
+          "line": 475,
           "instruction": "push ax"
         },
         {
-          "line": 70,
+          "line": 476,
+          "instruction": "push cx"
+        },
+        {
+          "line": 491,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 500,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 509,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 517,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 545,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 550,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 555,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 560,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 566,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 572,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 578,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 583,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 591,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 602,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 633,
+          "instruction": "push    cx"
+        },
+        {
+          "line": 638,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 640,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 642,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 644,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 647,
+          "instruction": "pop     cx"
+        },
+        {
+          "line": 649,
+          "instruction": "loop    wa_top"
+        },
+        {
+          "line": 673,
           "instruction": "push ax"
         },
         {
-          "line": 86,
+          "line": 675,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 694,
+          "instruction": "push cx"
+        },
+        {
+          "line": 703,
+          "instruction": "push es"
+        },
+        {
+          "line": 704,
           "instruction": "push ax"
         },
         {
-          "line": 90,
+          "line": 708,
+          "instruction": "push ax"
+        },
+        {
+          "line": 724,
+          "instruction": "push ax"
+        },
+        {
+          "line": 728,
           "instruction": "pop cx"
         },
         {
-          "line": 94,
+          "line": 732,
           "instruction": "loop loop_records"
         }
       ]
     },
     {
-      "id": "M_50D2_53BF",
-      "source": "asm/M_50D2_53BF.ASM",
-      "source_sha256": "1c38989eb72a142161b291dbb821cfd60d9daa7d8fd555731071d1a4ac9412b8",
-      "range_file_offsets": [
-        21202,
-        21514
-      ],
-      "bytes": 312,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
-          "path": "recovery/src/F_50D2.C",
-          "sha256": "ae8ab6f6e0bc4dd88525ce81f1d4942591357de4bb1f091f125f0b0d34f08029",
-          "inline_asm_tokens": 30
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 22,
-          "instruction": "int     10h"
-        },
-        {
-          "line": 40,
-          "instruction": "int     10h"
-        },
-        {
-          "line": 73,
-          "instruction": "int     10h"
-        },
-        {
-          "line": 83,
-          "instruction": "out     dx,al"
-        },
-        {
-          "line": 85,
-          "instruction": "in      al,dx"
-        },
-        {
-          "line": 88,
-          "instruction": "out     dx,al"
-        },
-        {
-          "line": 91,
-          "instruction": "loop    @@spin"
-        },
-        {
-          "line": 92,
-          "instruction": "in      al,dx"
-        },
-        {
-          "line": 94,
-          "instruction": "out     dx,al"
-        },
-        {
-          "line": 103,
-          "instruction": "int     10h"
-        },
-        {
-          "line": 155,
-          "instruction": "int 15h"
-        },
-        {
-          "line": 165,
-          "instruction": "out dx,al"
-        },
-        {
-          "line": 166,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 169,
-          "instruction": "loop wait_vga_port"
-        }
-      ]
-    },
-    {
-      "id": "F_6036",
-      "source": "asm/F_6036.ASM",
-      "source_sha256": "184fc3bd349f710ed69cb2ff7f08d1837966c09a80d94bb70a9ebb2f896dc217",
+      "id": "M_6036_6181",
+      "source": "asm/SPRDRAW.ASM",
+      "source_sha256": "de8bf580d0c7e645c0f0535150901e2955b334741d4f03c999e16dd9caf22127",
       "range_file_offsets": [
         25142,
-        25257
+        25644
       ],
-      "bytes": 115,
+      "bytes": 502,
       "route": "HELD_ORIGIN_REVIEW",
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
           "path": "recovery/src/F_6036.C",
-          "sha256": "3aae02503b839a61fe488a0cf10fe4b60fbc8e5fba2baf30d8b0ccba11a11ac2",
+          "sha256": "f502c90d79749fb2b38bcfafbe21a8deef74144f4b2710c414e930aedc6ab762",
           "inline_asm_tokens": 21
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 25,
-          "instruction": "push ds"
         },
-        {
-          "line": 32,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 39,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 41,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 53,
-          "instruction": "push ds"
-        },
-        {
-          "line": 54,
-          "instruction": "push cx"
-        },
-        {
-          "line": 55,
-          "instruction": "push es"
-        },
-        {
-          "line": 60,
-          "instruction": "push ax"
-        },
-        {
-          "line": 62,
-          "instruction": "push ax"
-        },
-        {
-          "line": 67,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 71,
-          "instruction": "pop es"
-        },
-        {
-          "line": 72,
-          "instruction": "push es"
-        },
-        {
-          "line": 75,
-          "instruction": "push ax"
-        },
-        {
-          "line": 76,
-          "instruction": "push es"
-        },
-        {
-          "line": 84,
-          "instruction": "pop es"
-        },
-        {
-          "line": 85,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 86,
-          "instruction": "pop ds"
-        },
-        {
-          "line": 88,
-          "instruction": "loop sprite_loop"
-        },
-        {
-          "line": 91,
-          "instruction": "pop ds"
-        }
-      ]
-    },
-    {
-      "id": "F_60A9",
-      "source": "asm/F_60A9.ASM",
-      "source_sha256": "89774e2b667ac113f4f02775941d5a1ba3c25fb5caf3a61c8d618bfd47f51c4f",
-      "range_file_offsets": [
-        25257,
-        25473
-      ],
-      "bytes": 216,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
         {
           "path": "recovery/src/F_60A9.C",
-          "sha256": "5a1e3d99ff07247c76bc41a4956b3040d9c8f96900f90ff7b7a2eca8b770260d",
+          "sha256": "b8bfb8c465145e96543d9bca5795dd3db80a09dae29a95152cb7dcb97016c276",
           "inline_asm_tokens": 32
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 36,
-          "instruction": "push    ds"
         },
-        {
-          "line": 50,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 55,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 62,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 90,
-          "instruction": "push    ds"
-        },
-        {
-          "line": 91,
-          "instruction": "push    cx"
-        },
-        {
-          "line": 92,
-          "instruction": "push    es"
-        },
-        {
-          "line": 100,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 102,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 105,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 113,
-          "instruction": "pop     es"
-        },
-        {
-          "line": 114,
-          "instruction": "push    es"
-        },
-        {
-          "line": 116,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 117,
-          "instruction": "push    es"
-        },
-        {
-          "line": 127,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 130,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 132,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 137,
-          "instruction": "pop     es"
-        },
-        {
-          "line": 138,
-          "instruction": "pop     cx"
-        },
-        {
-          "line": 139,
-          "instruction": "pop     ds"
-        },
-        {
-          "line": 146,
-          "instruction": "pop     ds"
-        }
-      ]
-    },
-    {
-      "id": "F_6181",
-      "source": "asm/F_6181.ASM",
-      "source_sha256": "583e68b82fe457652bb1cb3dd1dc5bc4763d5e18a44f8d1dca1756ac4811206d",
-      "range_file_offsets": [
-        25473,
-        25644
-      ],
-      "bytes": 171,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
         {
           "path": "recovery/src/F_6181.C",
-          "sha256": "4ad354f726b857864e55b34e03c74d2a4c9fe3368c8435035caa38cb55cfbbea",
+          "sha256": "80767976ce5840c632d3144db406167fa8f463b69b69e2ecae298ddb4f201020",
           "inline_asm_tokens": 22
         }
       ],
       "instruction_observations": [
         {
-          "line": 20,
-          "instruction": "org 57h"
-        },
-        {
-          "line": 25,
-          "instruction": "org 0"
-        },
-        {
-          "line": 31,
-          "instruction": "push ds"
-        },
-        {
-          "line": 41,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 72,
-          "instruction": "push es"
-        },
-        {
-          "line": 76,
-          "instruction": "org 5ch"
-        },
-        {
-          "line": 81,
-          "instruction": "push ax"
-        },
-        {
-          "line": 83,
-          "instruction": "push ax"
-        },
-        {
-          "line": 86,
-          "instruction": "push ax"
-        },
-        {
-          "line": 94,
-          "instruction": "pop es"
-        },
-        {
-          "line": 96,
-          "instruction": "push ax"
-        },
-        {
-          "line": 97,
-          "instruction": "push es"
-        },
-        {
-          "line": 107,
-          "instruction": "push ax"
-        },
-        {
-          "line": 110,
-          "instruction": "push ax"
-        },
-        {
-          "line": 112,
-          "instruction": "push ax"
-        },
-        {
-          "line": 117,
-          "instruction": "pop ds"
-        }
-      ]
-    },
-    {
-      "id": "M_6D86_6DCC",
-      "source": "asm/M_6D86_6DCC.ASM",
-      "source_sha256": "640dbe08e7171748df894e0c7f4ec524ad3c912e355dc28cb887b6aeb4186863",
-      "range_file_offsets": [
-        28550,
-        28927
-      ],
-      "bytes": 377,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
-          "path": "recovery/src/F_6D86.C",
-          "sha256": "2aae6c3ec56772b37d23be10470caa88d3921b97219ebed2d398849caf4f0880",
-          "inline_asm_tokens": 30
-        },
-        {
-          "path": "recovery/src/F_6DCC.C",
-          "sha256": "70c93badf67727f38f72c15b9d68b337ea2ae024bba24490cb8b13cff62ba230",
-          "inline_asm_tokens": 13
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 31,
-          "instruction": "push\tes"
-        },
-        {
-          "line": 32,
-          "instruction": "push\tds"
-        },
-        {
-          "line": 41,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 48,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 49,
-          "instruction": "rep\tstosb"
-        },
-        {
-          "line": 55,
-          "instruction": "rep\tmovsb"
-        },
-        {
-          "line": 62,
-          "instruction": "pop\tds"
-        },
-        {
-          "line": 63,
-          "instruction": "pop\tes"
-        },
-        {
-          "line": 92,
-          "instruction": "push\tes"
-        },
-        {
-          "line": 93,
-          "instruction": "push\tds"
-        },
-        {
-          "line": 122,
-          "instruction": "loop\tL_bit1"
-        },
-        {
-          "line": 155,
-          "instruction": "push\tes"
-        },
-        {
-          "line": 156,
-          "instruction": "pop\tds"
-        },
-        {
-          "line": 159,
-          "instruction": "movsb"
-        },
-        {
-          "line": 162,
-          "instruction": "rep\tmovsw"
-        },
-        {
-          "line": 167,
-          "instruction": "stosb"
-        },
-        {
-          "line": 181,
-          "instruction": "loop\tL_bit2"
-        },
-        {
-          "line": 212,
-          "instruction": "push\tes"
-        },
-        {
-          "line": 213,
-          "instruction": "pop\tds"
-        },
-        {
-          "line": 216,
-          "instruction": "movsb"
-        },
-        {
-          "line": 219,
-          "instruction": "rep\tmovsw"
-        },
-        {
-          "line": 224,
-          "instruction": "stosb"
-        },
-        {
-          "line": 229,
-          "instruction": "pop\tds"
-        },
-        {
-          "line": 230,
-          "instruction": "pop\tes"
-        }
-      ]
-    },
-    {
-      "id": "F_6EFF",
-      "source": "asm/F_6EFF.ASM",
-      "source_sha256": "ae875855caf51b0c80c217ce9868c8566965cc9e74849e80aa66e53b6cae7ed8",
-      "range_file_offsets": [
-        28927,
-        29003
-      ],
-      "bytes": 76,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [],
-      "instruction_observations": [
-        {
-          "line": 27,
+          "line": 30,
           "instruction": "push ds"
         },
         {
           "line": 37,
-          "instruction": "stosw"
+          "instruction": "lodsb"
         },
         {
-          "line": 38,
-          "instruction": "loop clear_upper_nibbles"
-        },
-        {
-          "line": 41,
+          "line": 44,
           "instruction": "lodsw"
         },
         {
@@ -3156,68 +2607,402 @@
           "instruction": "lodsb"
         },
         {
-          "line": 61,
-          "instruction": "stosb"
+          "line": 58,
+          "instruction": "push ds"
         },
         {
-          "line": 62,
-          "instruction": "loop expand_next_byte"
+          "line": 59,
+          "instruction": "push cx"
         },
         {
-          "line": 63,
+          "line": 60,
+          "instruction": "push es"
+        },
+        {
+          "line": 65,
+          "instruction": "push ax"
+        },
+        {
+          "line": 67,
+          "instruction": "push ax"
+        },
+        {
+          "line": 72,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 76,
+          "instruction": "pop es"
+        },
+        {
+          "line": 77,
+          "instruction": "push es"
+        },
+        {
+          "line": 80,
+          "instruction": "push ax"
+        },
+        {
+          "line": 81,
+          "instruction": "push es"
+        },
+        {
+          "line": 89,
+          "instruction": "pop es"
+        },
+        {
+          "line": 90,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 91,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 93,
+          "instruction": "loop sprite_loop"
+        },
+        {
+          "line": 96,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 127,
+          "instruction": "push    ds"
+        },
+        {
+          "line": 141,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 146,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 153,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 181,
+          "instruction": "push    ds"
+        },
+        {
+          "line": 182,
+          "instruction": "push    cx"
+        },
+        {
+          "line": 183,
+          "instruction": "push    es"
+        },
+        {
+          "line": 191,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 193,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 196,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 204,
+          "instruction": "pop     es"
+        },
+        {
+          "line": 205,
+          "instruction": "push    es"
+        },
+        {
+          "line": 207,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 208,
+          "instruction": "push    es"
+        },
+        {
+          "line": 218,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 221,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 223,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 228,
+          "instruction": "pop     es"
+        },
+        {
+          "line": 229,
+          "instruction": "pop     cx"
+        },
+        {
+          "line": 230,
+          "instruction": "pop     ds"
+        },
+        {
+          "line": 237,
+          "instruction": "pop     ds"
+        },
+        {
+          "line": 255,
+          "instruction": "org 1a2h"
+        },
+        {
+          "line": 260,
+          "instruction": "org 14bh"
+        },
+        {
+          "line": 266,
+          "instruction": "push ds"
+        },
+        {
+          "line": 276,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 307,
+          "instruction": "push es"
+        },
+        {
+          "line": 312,
+          "instruction": "org 1a7h"
+        },
+        {
+          "line": 317,
+          "instruction": "push ax"
+        },
+        {
+          "line": 319,
+          "instruction": "push ax"
+        },
+        {
+          "line": 322,
+          "instruction": "push ax"
+        },
+        {
+          "line": 330,
+          "instruction": "pop es"
+        },
+        {
+          "line": 332,
+          "instruction": "push ax"
+        },
+        {
+          "line": 333,
+          "instruction": "push es"
+        },
+        {
+          "line": 343,
+          "instruction": "push ax"
+        },
+        {
+          "line": 346,
+          "instruction": "push ax"
+        },
+        {
+          "line": 348,
+          "instruction": "push ax"
+        },
+        {
+          "line": 353,
           "instruction": "pop ds"
         }
       ]
     },
     {
-      "id": "F_6F4B",
-      "source": "asm/F_6F4B.ASM",
-      "source_sha256": "874bf129ad1e6cc2d61eda4caed2e086ee56bc43281388b8fe961fe9cf5f4e52",
+      "id": "M_6D86_6F4B",
+      "source": "asm/DECODE.ASM",
+      "source_sha256": "cf5072c1b332b8697df45d5b0e16d83d37d4990844fed9fef8daf653cabd4e38",
       "range_file_offsets": [
-        29003,
+        28550,
         29123
       ],
-      "bytes": 120,
+      "bytes": 573,
       "route": "HELD_ORIGIN_REVIEW",
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
+          "path": "recovery/src/F_6D86.C",
+          "sha256": "d2a76f6630fc2b36c13a409bb483913d28a4a7e78f6e4552ae161a8e37a6fe2f",
+          "inline_asm_tokens": 30
+        },
+        {
+          "path": "recovery/src/F_6DCC.C",
+          "sha256": "6c63a2ea812d5ee1ba7662e732acf912437394067de12a9d66524a6f6269ab7c",
+          "inline_asm_tokens": 13
+        },
+        {
           "path": "recovery/src/F_6F4B.C",
-          "sha256": "4c4cc0f58284c577f29d98428a6dcdd969bd14d50661d766585b8f31fae03d29",
+          "sha256": "cb050575e9908e304fa765bd9d97d8f5161916cf460f8cf39551eb4213556dd3",
           "inline_asm_tokens": 10
         }
       ],
       "instruction_observations": [
         {
-          "line": 26,
+          "line": 42,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 43,
+          "instruction": "push\tds"
+        },
+        {
+          "line": 52,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 59,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 60,
+          "instruction": "rep\tstosb"
+        },
+        {
+          "line": 66,
+          "instruction": "rep\tmovsb"
+        },
+        {
+          "line": 73,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 74,
+          "instruction": "pop\tes"
+        },
+        {
+          "line": 103,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 104,
+          "instruction": "push\tds"
+        },
+        {
+          "line": 133,
+          "instruction": "loop\tL_bit1"
+        },
+        {
+          "line": 166,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 167,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 170,
+          "instruction": "movsb"
+        },
+        {
+          "line": 173,
+          "instruction": "rep\tmovsw"
+        },
+        {
+          "line": 178,
+          "instruction": "stosb"
+        },
+        {
+          "line": 192,
+          "instruction": "loop\tL_bit2"
+        },
+        {
+          "line": 223,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 224,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 227,
+          "instruction": "movsb"
+        },
+        {
+          "line": 230,
+          "instruction": "rep\tmovsw"
+        },
+        {
+          "line": 235,
+          "instruction": "stosb"
+        },
+        {
+          "line": 240,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 241,
+          "instruction": "pop\tes"
+        },
+        {
+          "line": 263,
           "instruction": "push ds"
         },
         {
-          "line": 35,
+          "line": 273,
+          "instruction": "stosw"
+        },
+        {
+          "line": 274,
+          "instruction": "loop clear_upper_nibbles"
+        },
+        {
+          "line": 277,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 282,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 297,
           "instruction": "stosb"
         },
         {
-          "line": 48,
+          "line": 298,
+          "instruction": "loop expand_next_byte"
+        },
+        {
+          "line": 299,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 323,
+          "instruction": "push ds"
+        },
+        {
+          "line": 332,
           "instruction": "stosb"
         },
         {
-          "line": 49,
+          "line": 345,
+          "instruction": "stosb"
+        },
+        {
+          "line": 346,
           "instruction": "loop header_loop"
         },
         {
-          "line": 78,
+          "line": 375,
           "instruction": "stosb"
         },
         {
-          "line": 88,
+          "line": 385,
           "instruction": "pop ds"
         }
       ]
     },
     {
       "id": "F_9EC3",
-      "source": "asm/F_9EC3.ASM",
-      "source_sha256": "7e40b4d89c849ff6e2a6199387a01fae91876475d3321dcc4cea5ac221076f84",
+      "source": "asm/ANIMROW.ASM",
+      "source_sha256": "13595a88b0245bd6f62bad180d48743c9a9eec832108be2c7433631953ddd393",
       "range_file_offsets": [
         41155,
         41280
@@ -3228,7 +3013,7 @@
       "existing_c_sources": [
         {
           "path": "recovery/src/F_9EC3.C",
-          "sha256": "0346752147f7626294f80152212d659db643efcd4c45936973c96b7a4c321810",
+          "sha256": "85388685fcb2050cf0f5f2b9d0248fb43b9b82536c83322a5d06980cd2fa370e",
           "inline_asm_tokens": 16
         }
       ],
@@ -3276,551 +3061,423 @@
       ]
     },
     {
-      "id": "M_C1A0_C232",
-      "source": "asm/M_C1A0_C232.ASM",
-      "source_sha256": "9af7dc1b6da4cdc3625d32e27e46dd8bd88c75b445c9782ff43c8c12945b9778",
+      "id": "M_C1A0_CB48",
+      "source": "asm/SOUND.ASM",
+      "source_sha256": "adce97fe42614216a774f32a956ea665a250ba1a2ffbabb177576c20b68af9df",
       "range_file_offsets": [
         50080,
-        50301
+        52572
       ],
-      "bytes": 221,
+      "bytes": 2492,
       "route": "HELD_ORIGIN_REVIEW",
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
           "path": "recovery/src/F_C1A0.C",
-          "sha256": "90f8530fb91ed14264338e7f314c628b0f895fa65e58264952c97d53f78f606d",
+          "sha256": "d6f061fd63235269f28a650a0a7d029de7db200e4ce9c549dd3b357d9d4a30c9",
           "inline_asm_tokens": 27
         },
         {
           "path": "recovery/src/F_C1F7.C",
-          "sha256": "cd48c3a5220b0de76dbf4347b6bd973360a9b40367d9680d6c2de4573c9ecd7c",
+          "sha256": "587027c22b5a4075f72f9e6caa0262a9c1d341bfc355a36b4831a42eae6190b5",
           "inline_asm_tokens": 21
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 25,
-          "instruction": "push\tax"
         },
-        {
-          "line": 26,
-          "instruction": "push\tcx"
-        },
-        {
-          "line": 31,
-          "instruction": "push\tes"
-        },
-        {
-          "line": 52,
-          "instruction": "tick_l3:\tpop\tes"
-        },
-        {
-          "line": 57,
-          "instruction": "pop\tcx"
-        },
-        {
-          "line": 58,
-          "instruction": "pop\tax"
-        },
-        {
-          "line": 112,
-          "instruction": "loop scan_entry"
-        }
-      ]
-    },
-    {
-      "id": "M_C27D_C567",
-      "source": "asm/M_C27D_C567.ASM",
-      "source_sha256": "be88e749dcced33916da8db3ccd1c5eba873fd00d95c24df6ea2276c258e1824",
-      "range_file_offsets": [
-        50301,
-        51098
-      ],
-      "bytes": 797,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
         {
           "path": "recovery/src/F_C27D.C",
-          "sha256": "90a24b6e5c2a5565e188a42dbc25fc56d9405803375607f70cf37079e2c9922a",
+          "sha256": "b9fc7a9ed13b08cd9c2a4b4024f2d6fc0380d519cc8bd55ac3e3017492d2a024",
           "inline_asm_tokens": 42
         },
         {
           "path": "recovery/src/F_C2EA.C",
-          "sha256": "c7a6230f6433b19c157167ca3f5414a9fe3c2b9a54c97dc918f590d4b738aa09",
+          "sha256": "3d1160c4cd5f2082c9f0d0b37673be542f9ccbd9fc702f769ede880f28607686",
           "inline_asm_tokens": 5
         },
         {
           "path": "recovery/src/F_C359.C",
-          "sha256": "6da5a3940c3add2c9c75cb1168f8f516034a4dc1b4055183f0121ab0319b6531",
+          "sha256": "9917fe59e4becd63a3cfed16c36649db7ca08c47b142297617fcbe43f7bddf66",
           "inline_asm_tokens": 6
         },
         {
           "path": "recovery/src/F_C3DB.C",
-          "sha256": "2bc8dbe5d182b62de346cd8808acd3804f80a9440e2c43a49e361c06236f9dc0",
+          "sha256": "aad2b3a001a560ad9cd8e355bf1677c856d22e3db2a16d8669f441e1803be13e",
           "inline_asm_tokens": 5
         },
         {
           "path": "recovery/src/F_C440.C",
-          "sha256": "8366622580ee2f01ddf4c804ac4288742d9f8e9ccb76dd9d7ec508c228117fc2",
+          "sha256": "81e3d65401e0eb81f2466a38ef52f9177841c9d903cf61f2299faf949450dcb5",
           "inline_asm_tokens": 8
         },
         {
           "path": "recovery/src/F_C501.C",
-          "sha256": "00a6a40d390be0b00168e8f65251fe90289ddb21222cdab9654ac584e9f11e42",
+          "sha256": "49b7093f742c493dbac06d27126286ca8a33651c841c91e3fa194e90b17918f1",
           "inline_asm_tokens": 3
-        }
-      ],
-      "instruction_observations": []
-    },
-    {
-      "id": "M_C5A8_C5C6",
-      "source": "asm/M_C5A8_C5C6.ASM",
-      "source_sha256": "2a4194abf171b5c39c077fad6f3b9994358128dbd6b7d2ee8fc150020a5f0b33",
-      "range_file_offsets": [
-        51112,
-        51153
-      ],
-      "bytes": 41,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [],
-      "instruction_observations": []
-    },
-    {
-      "id": "M_C5D1_C706",
-      "source": "asm/M_C5D1_C706.ASM",
-      "source_sha256": "b7da9652e62aa3233a5cf629cee4a19d0a154d3902c3847a1363b4baa78c76bb",
-      "range_file_offsets": [
-        51153,
-        51541
-      ],
-      "bytes": 388,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
+        },
         {
           "path": "recovery/src/F_C5D1.C",
-          "sha256": "735ab79e4e9a911c4ec090a0b8479fd516c966ca3221289f32ff1141093d4b3c",
+          "sha256": "54fe97aa284f33358ff7fb7c9de1c97e0a48ceec75f0ed22d979af4ace3720ea",
           "inline_asm_tokens": 7
         },
         {
           "path": "recovery/src/F_C678.C",
-          "sha256": "3fb33c129e893e6910f1d4fbced4b5e76aa163e12f3f9725e2f9eadce998a2ad",
+          "sha256": "85a5ebd812e5690ff6f1e59d20937eddbb871b692adc3f3af9f8588bd3aa8f19",
           "inline_asm_tokens": 3
         },
         {
           "path": "recovery/src/F_C6B9.C",
-          "sha256": "32004d61b20e6690910af47aed463a80f9ba24e98335532bbb00012c855bb675",
+          "sha256": "ee37f2ddea36a7369197e0cfef9d9d7a94f5256a9bc9263d31bcae7f11ed346f",
           "inline_asm_tokens": 4
         },
         {
           "path": "recovery/src/F_C706.C",
-          "sha256": "f361b24ae501c6b8aeb6676bb3be85a96a73632a8a0f76496dc012fd9fe7d80c",
+          "sha256": "5caaa5663451b1696ddf7b6beea26f552324370cee71776f05a45bcd7ef8fbf5",
           "inline_asm_tokens": 4
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 106,
-          "instruction": "in al,61h"
         },
-        {
-          "line": 108,
-          "instruction": "out 61h,al"
-        },
-        {
-          "line": 114,
-          "instruction": "push es"
-        },
-        {
-          "line": 116,
-          "instruction": "push ax"
-        },
-        {
-          "line": 119,
-          "instruction": "push ax"
-        },
-        {
-          "line": 121,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 122,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 123,
-          "instruction": "pop es"
-        },
-        {
-          "line": 129,
-          "instruction": "in al,61h"
-        },
-        {
-          "line": 131,
-          "instruction": "out 61h,al"
-        },
-        {
-          "line": 148,
-          "instruction": "in al,61h"
-        },
-        {
-          "line": 150,
-          "instruction": "out 61h,al"
-        },
-        {
-          "line": 156,
-          "instruction": "push es"
-        },
-        {
-          "line": 157,
-          "instruction": "push cx"
-        },
-        {
-          "line": 160,
-          "instruction": "push ax"
-        },
-        {
-          "line": 162,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 163,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 164,
-          "instruction": "pop es"
-        },
-        {
-          "line": 196,
-          "instruction": "out 42h,al"
-        },
-        {
-          "line": 198,
-          "instruction": "out 42h,al"
-        }
-      ]
-    },
-    {
-      "id": "F_C755",
-      "source": "src/F_C755.ASM",
-      "source_sha256": "66e1763caf3769cad999cc265fbf4482052fe028294f586560d89abc873c5fb9",
-      "range_file_offsets": [
-        51541,
-        51578
-      ],
-      "bytes": 37,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [],
-      "instruction_observations": [
-        {
-          "line": 32,
-          "instruction": "loop reset_voice"
-        }
-      ]
-    },
-    {
-      "id": "M_C77A_C898",
-      "source": "asm/M_C77A_C898.ASM",
-      "source_sha256": "0f01f1445070da537bb8557f59df83aa10a606e0516b21b41891a44f202043fa",
-      "range_file_offsets": [
-        51578,
-        51924
-      ],
-      "bytes": 346,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
         {
           "path": "recovery/src/F_C77A.C",
-          "sha256": "34c729f54a09d3b6005c30be0020c5e0b7a6a858a7e7f15f709dbed3e9a50ae7",
+          "sha256": "faa24f3c907d18ed8385f8a8557fd036354dff6a4b90600b9d741393851e9817",
           "inline_asm_tokens": 4
         },
         {
           "path": "recovery/src/F_C7CB.C",
-          "sha256": "f187e7d026f27abc731538b37ce3b76bbc34309309e0193253a2bc3f8297cd8c",
+          "sha256": "d3a06d1a5b384106918360f1a5a2bacb0c8d97ff33637e1b6f7edcc406cc2c0f",
           "inline_asm_tokens": 5
         },
         {
           "path": "recovery/src/F_C834.C",
-          "sha256": "f16d90ae3323f51f768e265c48534383c80a61cfb61cf77c3ff90f9877ff5332",
+          "sha256": "ff5733a1e686b0783092d43461eb0d8100656bca9749f28d766d1274f748fa8f",
           "inline_asm_tokens": 20
         },
         {
           "path": "recovery/src/F_C877.C",
-          "sha256": "d00cf9fcb7a9ff8bd4af386d363acdfbb6435d81d0b85cfd84768d91778bef57",
+          "sha256": "c81940aad4437df3fa0f0d6ba7640f0c1b752720b0f86155a897fd8a1cfcab75",
           "inline_asm_tokens": 8
         },
         {
           "path": "recovery/src/F_C898.C",
-          "sha256": "86968a28a5f3134a17685ba0111a8f45383a09b4ead30b93d70b72759273bc72",
+          "sha256": "62932deb4a1bc742a722729fe4faa8136dd1cc841376734c997191f9169abc39",
           "inline_asm_tokens": 48
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 20,
-          "instruction": "push ax"
         },
-        {
-          "line": 46,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 56,
-          "instruction": "push ax"
-        },
-        {
-          "line": 57,
-          "instruction": "push cx"
-        },
-        {
-          "line": 60,
-          "instruction": "push es"
-        },
-        {
-          "line": 68,
-          "instruction": "push es"
-        },
-        {
-          "line": 72,
-          "instruction": "pop es"
-        },
-        {
-          "line": 91,
-          "instruction": "loop C7CB_copy_voice"
-        },
-        {
-          "line": 94,
-          "instruction": "pop es"
-        },
-        {
-          "line": 97,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 98,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 108,
-          "instruction": "push ax"
-        },
-        {
-          "line": 109,
-          "instruction": "push cx"
-        },
-        {
-          "line": 115,
-          "instruction": "push cx"
-        },
-        {
-          "line": 124,
-          "instruction": "loop C834_reset_voice"
-        },
-        {
-          "line": 127,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 128,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 137,
-          "instruction": "push cx"
-        },
-        {
-          "line": 147,
-          "instruction": "loop C877_voice_count_ready"
-        },
-        {
-          "line": 149,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 161,
-          "instruction": "out dx,al"
-        },
-        {
-          "line": 162,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 163,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 164,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 165,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 166,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 167,
-          "instruction": "in al,dx"
-        },
-        {
-          "line": 170,
-          "instruction": "out dx,al"
-        },
-        {
-          "line": 173,
-          "instruction": "in al,dx"
-        }
-      ]
-    },
-    {
-      "id": "F_C8D4",
-      "source": "src/F_C8D4.ASM",
-      "source_sha256": "11e41b7f21430ba302e8b4bb0f216ba7859bb8af1d027390ea7aa22b6fa76257",
-      "range_file_offsets": [
-        51924,
-        51938
-      ],
-      "bytes": 14,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [],
-      "instruction_observations": [
-        {
-          "line": 20,
-          "instruction": "out dx,al"
-        }
-      ]
-    },
-    {
-      "id": "F_C914",
-      "source": "asm/F_C914.ASM",
-      "source_sha256": "457328263ae673c179165ae165dbfd2447dbc02fda8ec0a5d71056b7ac0330ec",
-      "range_file_offsets": [
-        51988,
-        52104
-      ],
-      "bytes": 116,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
         {
           "path": "recovery/src/F_C914.C",
-          "sha256": "0da5d612846d0a54b9656e52a5112e57c5f40d469ab189de2f9bc7f6379c3bac",
+          "sha256": "6704b150db318eb7619cc18ae05925e4f5ab6e69c2a33c56465231e58e053e3f",
           "inline_asm_tokens": 32
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 54,
-          "instruction": "push ax"
         },
         {
-          "line": 56,
-          "instruction": "pop ax"
-        }
-      ]
-    },
-    {
-      "id": "M_C9A4_CA91",
-      "source": "asm/M_C9A4_CA91.ASM",
-      "source_sha256": "6bbaddbc7a5f29dc1731c9fae4aee06ed885842c45ced22cf1ecf745462f86bd",
-      "range_file_offsets": [
-        52132,
-        52379
-      ],
-      "bytes": 247,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
           "path": "recovery/src/F_C9A4.C",
-          "sha256": "7690b047a594bada09dca2d9ba47706f3ad062360ce3bddbc3f25006153fdd8c",
+          "sha256": "5c7356a8b00b80d1f4d72840c334b9205aae1893ce617b48536f124f7e40c0bb",
           "inline_asm_tokens": 4
         },
         {
           "path": "recovery/src/F_CA83.C",
-          "sha256": "0ed1ebf8ec04ab225e87158dc4fa1fdca47228fb2776404d450fefd2c0475fac",
+          "sha256": "dc444fbb6a1fa1349bd1ebb08ff463b59eb267e37e9b42d4bc6d0a4ad9cd03ab",
           "inline_asm_tokens": 4
         },
         {
           "path": "recovery/src/F_CA91.C",
-          "sha256": "3f5355d513df29e44c337415b531d6009b5e0674c3532b62f7b5f33298e814e1",
+          "sha256": "5405cfcb5ad871abb2344ae9fb19318f36c9d925b97c7362b51e63dd01562332",
           "inline_asm_tokens": 5
-        }
-      ],
-      "instruction_observations": []
-    },
-    {
-      "id": "F_CA9B",
-      "source": "asm/F_CA9B.ASM",
-      "source_sha256": "3a4a2e8cd5dba028e01b032b0d0e81e19a3a0ecaf599efcdabb4fc40342f4ed5",
-      "range_file_offsets": [
-        52379,
-        52432
-      ],
-      "bytes": 53,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [],
-      "instruction_observations": []
-    },
-    {
-      "id": "F_CAF1",
-      "source": "asm/F_CAF1.ASM",
-      "source_sha256": "67587548bd9ff1a3450eb0750882430cae05a06604257ea33034914040d7dd9a",
-      "range_file_offsets": [
-        52465,
-        52552
-      ],
-      "bytes": 87,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
+        },
         {
           "path": "recovery/src/F_CAF1.C",
-          "sha256": "341ca48dd5df77837f75ceb2a616944e4fa298a6fb8817ff0d21a3b3edda6ba7",
+          "sha256": "9098bbf563865670b3a83ba35cd9fae5977afa1852b52e9b9f4a60cdcd2543f9",
           "inline_asm_tokens": 30
         }
       ],
       "instruction_observations": [
         {
-          "line": 16,
-          "instruction": "push ax"
+          "line": 189,
+          "instruction": "push\tax"
         },
         {
-          "line": 17,
-          "instruction": "push cx"
+          "line": 190,
+          "instruction": "push\tcx"
         },
         {
-          "line": 20,
+          "line": 195,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 216,
+          "instruction": "tick_l3:\tpop\tes"
+        },
+        {
+          "line": 221,
+          "instruction": "pop\tcx"
+        },
+        {
+          "line": 222,
+          "instruction": "pop\tax"
+        },
+        {
+          "line": 280,
+          "instruction": "loop scan_entry"
+        },
+        {
+          "line": 998,
+          "instruction": "in al,61h"
+        },
+        {
+          "line": 1000,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 1006,
           "instruction": "push es"
         },
         {
-          "line": 42,
+          "line": 1008,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1011,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1013,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1014,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1015,
           "instruction": "pop es"
         },
         {
-          "line": 45,
+          "line": 1021,
+          "instruction": "in al,61h"
+        },
+        {
+          "line": 1023,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 1039,
+          "instruction": "in al,61h"
+        },
+        {
+          "line": 1041,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 1047,
+          "instruction": "push es"
+        },
+        {
+          "line": 1048,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1051,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1053,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1054,
           "instruction": "pop cx"
         },
         {
-          "line": 46,
+          "line": 1055,
+          "instruction": "pop es"
+        },
+        {
+          "line": 1087,
+          "instruction": "out 42h,al"
+        },
+        {
+          "line": 1089,
+          "instruction": "out 42h,al"
+        },
+        {
+          "line": 1138,
+          "instruction": "loop reset_voice"
+        },
+        {
+          "line": 1152,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1178,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1188,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1189,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1192,
+          "instruction": "push es"
+        },
+        {
+          "line": 1200,
+          "instruction": "push es"
+        },
+        {
+          "line": 1204,
+          "instruction": "pop es"
+        },
+        {
+          "line": 1223,
+          "instruction": "loop C7CB_copy_voice"
+        },
+        {
+          "line": 1226,
+          "instruction": "pop es"
+        },
+        {
+          "line": 1229,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 1230,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1240,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1241,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1247,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1256,
+          "instruction": "loop C834_reset_voice"
+        },
+        {
+          "line": 1259,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 1260,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1269,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1279,
+          "instruction": "loop C877_voice_count_ready"
+        },
+        {
+          "line": 1281,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 1293,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 1294,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1295,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1296,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1297,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1298,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1299,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1302,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 1305,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 1322,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 1407,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1409,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 1655,
+          "instruction": "in  al,61h"
+        },
+        {
+          "line": 1657,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 1671,
+          "instruction": "in  al,61h"
+        },
+        {
+          "line": 1673,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 1688,
+          "instruction": "out 42h,al"
+        },
+        {
+          "line": 1690,
+          "instruction": "out 42h,al"
+        },
+        {
+          "line": 1706,
+          "instruction": "push ax"
+        },
+        {
+          "line": 1707,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1710,
+          "instruction": "push es"
+        },
+        {
+          "line": 1732,
+          "instruction": "pop es"
+        },
+        {
+          "line": 1735,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 1736,
           "instruction": "pop ax"
         }
       ]
     },
     {
       "id": "M_D386_D3CF",
-      "source": "asm/M_D386_D3CF.ASM",
-      "source_sha256": "abd2c0487d02dd7cfa481ba62c468e0b8b4bd69a0ca28f8bae1c7d6114d5503f",
+      "source": "asm/ICONANIM.ASM",
+      "source_sha256": "a94dd7ff5c1d4247465b88431477aca183b9906bd599c07a8d1d0388b5ac1f3e",
       "range_file_offsets": [
         54662,
         54746
@@ -3831,7 +3488,7 @@
       "existing_c_sources": [
         {
           "path": "recovery/src/F_D386.C",
-          "sha256": "2692128713d4d1a39e455dd06f8909bd800f1d63b8195d42e173bed229bc813a",
+          "sha256": "5a87026ee9cb32cd08bfdb5bdebe2981722b0b332d6d32034e2571b95fcce862",
           "inline_asm_tokens": 11
         }
       ],
@@ -3880,8 +3537,8 @@
     },
     {
       "id": "M_D61C_D79C",
-      "source": "asm/M_D61C_D79C.ASM",
-      "source_sha256": "c48e271098c9411c1195c27b0a253f08c099935a8e8e60961169b9fee6f98d47",
+      "source": "asm/DRAWQ.ASM",
+      "source_sha256": "b2a7d02251e960f1074f0d9042023e1fac826094ca2066a7af054dcd4e9c3e23",
       "range_file_offsets": [
         55324,
         55831
@@ -3892,79 +3549,75 @@
       "existing_c_sources": [
         {
           "path": "recovery/src/F_D61C.C",
-          "sha256": "a17c6a4ada7703d54b80d5566d9bd784814b249a9c5a8ab19c84ccddad468aad",
+          "sha256": "2df0c0a5d8c2999b7b5e6dff5daf3859553d969ae4e3a87f9970c402ba136038",
           "inline_asm_tokens": 16
         },
         {
           "path": "recovery/src/F_D79C.C",
-          "sha256": "a9813958b0f5f6685c36642c6e7ddc45b7f6802d8ab6d4cbe0dbd7756a43c556",
+          "sha256": "bc7ad524f4d842252b5a84f7b3da5bb4abddba56180376e7a31cd4dc17291286",
           "inline_asm_tokens": 6
         }
       ],
       "instruction_observations": [
         {
-          "line": 29,
+          "line": 32,
           "instruction": "push ds"
         },
         {
-          "line": 63,
+          "line": 66,
           "instruction": "push cx"
         },
         {
-          "line": 64,
+          "line": 67,
           "instruction": "push es"
         },
         {
-          "line": 88,
+          "line": 91,
           "instruction": "push ds"
         },
         {
-          "line": 89,
+          "line": 92,
           "instruction": "push ax"
         },
         {
-          "line": 93,
+          "line": 96,
           "instruction": "push ax"
         },
         {
-          "line": 97,
+          "line": 100,
           "instruction": "push ax"
         },
         {
-          "line": 113,
+          "line": 116,
           "instruction": "pop es"
         },
         {
-          "line": 114,
+          "line": 117,
           "instruction": "pop cx"
         },
         {
-          "line": 115,
+          "line": 118,
           "instruction": "loop D61_record_loop"
         },
         {
-          "line": 143,
+          "line": 146,
           "instruction": "pop ds"
         },
         {
-          "line": 156,
+          "line": 159,
           "instruction": "push ds"
         },
         {
-          "line": 163,
+          "line": 166,
           "instruction": "push cx"
         },
         {
-          "line": 164,
+          "line": 167,
           "instruction": "push es"
         },
         {
-          "line": 188,
+          "line": 191,
           "instruction": "push ds"
-        },
-        {
-          "line": 189,
-          "instruction": "push ax"
         },
         {
           "line": 192,
@@ -3975,27 +3628,31 @@
           "instruction": "push ax"
         },
         {
-          "line": 211,
-          "instruction": "pop es"
-        },
-        {
-          "line": 212,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 213,
-          "instruction": "loop D79_record_loop"
+          "line": 198,
+          "instruction": "push ax"
         },
         {
           "line": 214,
+          "instruction": "pop es"
+        },
+        {
+          "line": 215,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 216,
+          "instruction": "loop D79_record_loop"
+        },
+        {
+          "line": 217,
           "instruction": "pop ds"
         }
       ]
     },
     {
       "id": "M_D818_D825",
-      "source": "asm/M_D818_D825.ASM",
-      "source_sha256": "76e18d8dd6b4a9a166724c2893baaa3bb69b36f4b10d955ff2eb28003abd0a28",
+      "source": "asm/DRAWQBUF.ASM",
+      "source_sha256": "af982d287a281d1e230840513565dd81467a0830706130754b9ec3f0b7730df3",
       "range_file_offsets": [
         55832,
         55903

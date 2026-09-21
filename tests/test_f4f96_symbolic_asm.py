@@ -17,7 +17,7 @@ class F4F96SymbolicAssemblyTests(unittest.TestCase):
     def test_symbolic_option_parser_is_exact_and_nonrelocating(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_4F96')
-        # F_4F96 was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # F_4F96 was recovered as exact C; see docs/history/exact-c-recovery.md.
         # It was later folded into the src/STARTUP.C translation-unit merge
         # (module C_4F63_520A in layout/production-plan.json; see
         # docs/current/asm-provenance.json), so its old standalone

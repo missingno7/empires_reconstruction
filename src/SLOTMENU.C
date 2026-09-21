@@ -406,7 +406,7 @@ int slot_menu_run(void)
 
 
 /* ---- F_ACE7 (original code at 0xACE7) ---- */
-int face7(void) { return (slot_table[current_slot].flags & 0x20) == 0x20; }
+int slot_is_new_game(void) { return (slot_table[current_slot].flags & 0x20) == 0x20; }
 
 
 /* ---- F_AD0E (original code at 0xAD0E) ---- */

@@ -18,7 +18,7 @@ class MatchingCWave78Tests(unittest.TestCase):
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_652A')
         recipe_owner = next(r for r in recipe['owners'] if r['id'] == 'F_652A')
         # F_652A (disk_reset_retry) was recovered as exact C; see
-        # docs/current/exact-c-recovery.md. The wave78 recipe still records
+        # docs/history/exact-c-recovery.md. The wave78 recipe still records
         # its earlier symbolic-ASM form. Only the ownership facts this test
         # exercises (kind, source, extent) need to track the current truth.
         self.assertEqual(owner['kind'], 'MATCHING_C')

@@ -83,7 +83,7 @@ planning evidence, not approved grinder cards. The existing 72-card EXE queue
 is unchanged. No increase in canonical recovered archive bytes is claimed.
 
 User-authorized exact C recovery has since replaced F_AB66 (385 bytes) with
-ordinary C. See exact-c-recovery.md; this did not consume any runtime card.
+ordinary C. See docs/history/exact-c-recovery.md; this did not consume any runtime card.
 
 F_880A and its former F_8C04 continuation are also now one exact ordinary C
 function (557 bytes). Production has 292 unchanged source objects and 441 linker

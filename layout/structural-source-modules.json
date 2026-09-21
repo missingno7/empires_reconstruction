@@ -214,7 +214,7 @@
     {
       "id": "M_D818_D825",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D818_D825.ASM",
+      "source": "asm/DRAWQBUF.ASM",
       "start": 55832,
       "end": 55903,
       "members": [
@@ -234,7 +234,7 @@
     {
       "id": "M_D386_D3CF",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D386_D3CF.ASM",
+      "source": "asm/ICONANIM.ASM",
       "start": 54662,
       "end": 54746,
       "members": [
@@ -303,7 +303,7 @@
     {
       "id": "M_D61C_D79C",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_D61C_D79C.ASM",
+      "source": "asm/DRAWQ.ASM",
       "start": 55324,
       "end": 55831,
       "members": [
@@ -994,7 +994,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23C00.phys"
           },
-          "_g8fe": {
+          "_raycast_trail_active": {
             "offset": 2302,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2042E.phys"

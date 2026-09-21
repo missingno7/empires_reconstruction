@@ -18,7 +18,7 @@ class MatchingCWave77Tests(unittest.TestCase):
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_4F63')
         recipe_owner = next(r for r in recipe['owners'] if r['id'] == 'F_4F63')
         # F_4F63 (dos_write_handle2) was recovered as exact C; see
-        # docs/current/exact-c-recovery.md. It was later folded into the
+        # docs/history/exact-c-recovery.md. It was later folded into the
         # src/STARTUP.C translation-unit merge (module C_4F63_520A in
         # layout/production-plan.json; see docs/current/asm-provenance.json),
         # so its old standalone src/DOSWRT2.C is gone. The wave77 recipe still

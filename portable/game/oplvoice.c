@@ -14,19 +14,19 @@ void voice_bank_retune_on(dos_uint bank, dos_int base)
 {
     if (bank > 2) return;
     if (bank == 0) {
-        if (en[0]) { voice_key_off(0); voice_set_frequency(0, off[0] + base, 1); }
-        if (en[1]) { voice_key_off(1); voice_set_frequency(1, off[1] + base, 1); }
-        if (en[2]) { voice_key_off(2); voice_set_frequency(2, off[2] + base, 1); }
+        if (en[0]) { voice_key_off(0); voice_set_frequency(0, gca62[0] + base, 1); }
+        if (en[1]) { voice_key_off(1); voice_set_frequency(1, gca62[1] + base, 1); }
+        if (en[2]) { voice_key_off(2); voice_set_frequency(2, gca62[2] + base, 1); }
     }
     if (bank == 1) {
-        if (en[3]) { voice_key_off(3); voice_set_frequency(3, off[3] + base, 1); }
-        if (en[4]) { voice_key_off(4); voice_set_frequency(4, off[4] + base, 1); }
-        if (en[5]) { voice_key_off(5); voice_set_frequency(5, off[5] + base, 1); }
+        if (en[3]) { voice_key_off(3); voice_set_frequency(3, gca62[3] + base, 1); }
+        if (en[4]) { voice_key_off(4); voice_set_frequency(4, gca62[4] + base, 1); }
+        if (en[5]) { voice_key_off(5); voice_set_frequency(5, gca62[5] + base, 1); }
     }
     if (bank == 2) {
-        if (en[6]) { voice_key_off(6); voice_set_frequency(6, off[6] + base, 1); }
-        if (en[7]) { voice_key_off(7); voice_set_frequency(7, off[7] + base, 1); }
-        if (en[8]) { voice_key_off(8); voice_set_frequency(8, off[8] + base, 1); }
+        if (en[6]) { voice_key_off(6); voice_set_frequency(6, gca62[6] + base, 1); }
+        if (en[7]) { voice_key_off(7); voice_set_frequency(7, gca62[7] + base, 1); }
+        if (en[8]) { voice_key_off(8); voice_set_frequency(8, gca62[8] + base, 1); }
     }
 }
 

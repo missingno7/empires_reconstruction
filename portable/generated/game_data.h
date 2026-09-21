@@ -440,7 +440,7 @@ extern dos_uint snd_seg2;
 
 /* sound_enabled  DS:176E  size 2  (flat, component DATA_01139E_SOUND) */
 extern dos_int sound_enabled;
-#define f1 sound_enabled
+/* f1 -> sound_enabled (short (<4 chars); no macro -- use sound_enabled directly. See state-map.md "Short aliases") */
 #define g176e sound_enabled
 
 /* snd_on  DS:1770  size 2  (flat, component DATA_01139E_SOUND) */
@@ -449,7 +449,7 @@ extern dos_int snd_on;
 
 /* music_enabled  DS:1772  size 2  (flat, component DATA_01139E_SOUND) */
 extern dos_int music_enabled;
-#define f2 music_enabled
+/* f2 -> music_enabled (short (<4 chars); no macro -- use music_enabled directly. See state-map.md "Short aliases") */
 #define g1772 music_enabled
 
 /* mus_flag  DS:1774  size 2  (flat, component DATA_01139E_SOUND) */

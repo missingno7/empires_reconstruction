@@ -217,7 +217,7 @@ extern dos_char gbfcc;
 
 /* gbfde  DS:BFDE  size 4 --  [extern gbfde @ src/INTRO.C:28: unsigned far *gbfde] */
 extern dos_uint *gbfde;
-#define t3 gbfde
+/* t3 -> gbfde (short (<4 chars); no macro. See state-map.md "Short aliases") */
 
 /* t1  DS:BFE2  size 4 --  [extern t1 @ src/INTRO.C:39: char far *t1, far *t2, far *t3, far *t4] */
 extern dos_char *t1;
@@ -460,18 +460,18 @@ extern struct c470_record slot_transfer_table[10];
 
 /* slot_select_error  DS:C46E  size 2 --  [extern slot_select_error @ include/C470.H:32: int slot_select_error] */
 extern dos_int slot_select_error;
-#define err slot_select_error
+/* err -> slot_select_error (short (<4 chars); no macro. See state-map.md "Short aliases") */
 #define gc46e slot_select_error
 
 /* slot_table  DS:C470  size 270 --  [extern slot_table @ include/C470.H:28: struct c470_record slot_table[10]] */
 extern struct c470_record slot_table[10];
 #define c470 slot_table
 #define gc470 slot_table
-#define tbl slot_table
+/* tbl -> slot_table (short (<4 chars); no macro. See state-map.md "Short aliases") */
 
 /* slot_used_count  DS:C57E  size 2 --  [extern slot_used_count @ include/C470.H:31: int slot_used_count] */
 extern dos_int slot_used_count;
-#define cur slot_used_count
+/* cur -> slot_used_count (short (<4 chars); no macro. See state-map.md "Short aliases") */
 #define gc57e slot_used_count
 
 /* gc580  DS:C580  size 4 --  [extern gc580 @ src/LEVEL.C:26: char *gc5a8, *gc580, *gc5ac, *gc59a, *gc5a4] */
@@ -595,7 +595,7 @@ extern dos_char voice_level_table[18];
 
 /* gca62  DS:CA62  size 9 --  [extern off @ src/OPLVOICE.C:9: char off[9]] */
 extern dos_char gca62[9];
-#define off gca62
+/* off -> gca62 (short (<4 chars); no macro. See state-map.md "Short aliases") */
 
 /* music_tempo_scaled  DS:CA6B  size 2 --  [extern music_tempo_scaled @ src/MUSIC.C:81: int music_tempo_scaled] */
 extern dos_int music_tempo_scaled;
@@ -617,7 +617,7 @@ extern dos_uint gca6d[11];
 #define g8bf8 (ya[2])
 #define actor_state_table ((struct gb3af_entry *)(actor_record_table + 1))
 #define gb3af actor_state_table
-#define t4 (buf[1])
+/* t4 -> (buf[1]) (short (<4 chars); no macro. See state-map.md "Short aliases") */
 #define puzzle_held_piece (gc132_tile.kind)
 #define gc133 (gc132_tile.rot)
 #define gc132 (gc132_tile.kind)

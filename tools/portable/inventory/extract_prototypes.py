@@ -152,6 +152,16 @@ BASE_TYPE_MAP = {
 }
 
 
+# Historical types that only existed to spell 8086 far pointers as two ints:
+# src/INTRO.C's `struct P {int a, b;}` is the (offset, segment) pair of one
+# `char far *` entry of the gbfee/buf pointer table, passed by value to
+# gfx_copy_rect.  The port passes the pointer itself.
+PORT_TYPE_OVERRIDES = {
+    "struct P": "dos_char *",
+}
+STRUCT_TAGS_NOT_EMITTED = {"P"}
+
+
 def map_c_type(type_str: str):
     """Map a historical type phrase (e.g. 'unsigned far *', 'char', '')
     to (mapped_str_or_None, note_or_None).  None mapped_str means implicit
@@ -168,6 +178,9 @@ def map_c_type(type_str: str):
             kept.append(t)
     base_phrase = " ".join(kept)
     note = None
+    if base_phrase in PORT_TYPE_OVERRIDES:
+        # Supervisor decisions (docs/portable/state-map.md "Porting notes").
+        base_phrase = PORT_TYPE_OVERRIDES[base_phrase]
     if base_phrase.startswith("struct ") or base_phrase.startswith("union ") or base_phrase.startswith("enum "):
         mapped = base_phrase  # struct/union/enum tags come from game_structs.h, kept verbatim
     elif base_phrase in BASE_TYPE_MAP:
@@ -621,7 +634,7 @@ def resolve_missing_struct_tags(all_func_defs):
     for fd in all_func_defs:
         for text in [fd.ret_type] + [t for t, _n in fd.params]:
             used.update(re.findall(r"\bstruct\s+(\w+)", text))
-    missing = sorted(used - known)
+    missing = sorted(used - known - STRUCT_TAGS_NOT_EMITTED)
 
     src_masked = {}
     for path in sorted(SRC_DIR.glob("*.C")):

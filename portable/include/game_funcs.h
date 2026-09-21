@@ -39,10 +39,6 @@ struct E {  /* src/INTRO.C: locally-defined struct, not part of game_structs.h's
     dos_int fc;
     dos_int fe;
 };
-struct P {  /* src/INTRO.C: locally-defined struct, not part of game_structs.h's curated set */
-    dos_int a;
-    dos_int b;
-};
 struct input {  /* src/DIALOG.C: locally-defined struct, not part of game_structs.h's curated set */
     dos_char * title;
     dos_char flag;
@@ -167,8 +163,8 @@ void hud_frame_draw(void);
 void hud_prompt_message_draw(dos_char * p, dos_int a);
 
 /* ==== src/INTRO.C ==== */
-void intro_play_script(struct E * ev, dos_int count, dos_int step, struct P * q);
-void intro_animate_step(struct E * ev, dos_int step, struct P * q, dos_int * idx, dos_ulong * when, dos_int dx0, dos_int dy0, dos_int * ph, dos_int * pi, dos_int * pj, dos_int * pk);
+void intro_play_script(struct E * ev, dos_int count, dos_int step, dos_char * * q);
+void intro_animate_step(struct E * ev, dos_int step, dos_char * * q, dos_int * idx, dos_ulong * when, dos_int dx0, dos_int dy0, dos_int * ph, dos_int * pi, dos_int * pj, dos_int * pk);
 void splash_draw_and_clear(void);
 dos_int intro_wait_key(void);
 void resource_ptr_table_build(void);

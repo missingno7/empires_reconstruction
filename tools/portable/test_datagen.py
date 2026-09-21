@@ -715,6 +715,41 @@ class DatagenTests(unittest.TestCase):
                       state_map)
         self.assertIn('`gb80` | 0x0b80 |', state_map)
 
+    # -- short/field-colliding alias macros are never emitted -------------
+
+    def test_short_alias_names_get_no_define_macro(self):
+        # f1/f2 (sound_enabled/music_enabled), t3/t4 (gbfde/buf[1]),
+        # err/cur (slot_select_error/slot_used_count), tbl (slot_table),
+        # off (gca62) -- all under 4 characters -- must never become
+        # object-like `#define` macros (they would rewrite any unrelated
+        # `f1`/`err`/... identifier -- a struct field, a local -- in every
+        # ported .c file that includes the header).
+        short_names = {e['name'] for e in self.aux['extra']['short_aliases']}
+        for name in ('f1', 'f2', 't3', 't4', 'err', 'cur', 'tbl', 'off'):
+            self.assertIn(name, short_names, name)
+            self.assertTrue(len(name) < 4, name)
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        state = (self.out_root / 'portable/generated/game_state.h').read_text('utf-8')
+        combined = header + state
+        for name in short_names:
+            self.assertNotIn(f'#define {name} ', combined, name)
+        state_map = (self.out_root / 'docs/portable/state-map.md').read_text('utf-8')
+        self.assertIn('## Short aliases (no macro; use the primary name)', state_map)
+        self.assertIn('| `f1` | `sound_enabled` | short (<4 chars) |', state_map)
+
+    def test_alias_colliding_with_struct_field_name_gets_no_macro(self):
+        # scan_struct_field_names() must find real field names from both
+        # headers (game_structs.h AND game_funcs.h), independent of the
+        # short-name rule.
+        fields = dg.scan_struct_field_names()
+        for f in ('kind', 'rot', 'flag', 'text', 'title', 'records', 'callbacks',
+                  'idx', 'sel', 'width'):
+            self.assertIn(f, fields, f)
+        # alias_macro_block_reason blocks a same-named alias of ANY length.
+        self.assertEqual(dg.alias_macro_block_reason('records', fields),
+                         'collides with a struct field name (game_structs.h/game_funcs.h)')
+        self.assertIsNone(dg.alias_macro_block_reason('gc5ce', fields))
+
 
 if __name__ == '__main__':
     unittest.main()

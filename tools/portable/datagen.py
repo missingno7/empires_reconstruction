@@ -362,6 +362,75 @@ def scan_ported_c_definitions():
     return out
 
 
+C_KEYWORDS_FOR_FIELD_SCAN = frozenset({
+    'void', 'struct', 'union', 'enum', 'unsigned', 'signed', 'char', 'int', 'long', 'short',
+    'const', 'far', 'near', 'huge',
+})
+STRUCT_OPEN_RE = re.compile(r'\bstruct(?:\s+[A-Za-z_]\w*)?\s*\{')
+FIELD_TOKEN_RE = re.compile(r'\b([A-Za-z_]\w*)\s*(?:\[[^\]]*\])?\s*[;,)]')
+
+_STRUCT_FIELD_NAMES_CACHE = None
+
+
+def scan_struct_field_names():
+    """Every field name declared inside any struct body (including a
+    nested anonymous one, e.g. g0dcc_entry's `struct { idx; sel; } e[11];`)
+    in portable/include/game_structs.h or game_funcs.h -- used to veto a
+    `#define` alias whose name would collide with, and silently rewrite,
+    a real struct field name (`.f2`, `.off`, ...) wherever a ported .c
+    file writes `x.f2` after including these headers.
+    """
+    global _STRUCT_FIELD_NAMES_CACHE
+    if _STRUCT_FIELD_NAMES_CACHE is None:
+        names = set()
+        for rel in ('portable/include/game_structs.h', 'portable/include/game_funcs.h'):
+            path = ROOT / rel
+            if not path.exists():
+                continue
+            text = path.read_text(encoding='utf-8')
+            text = re.sub(r'/\*.*?\*/', ' ', text, flags=re.DOTALL)
+            text = re.sub(r'//[^\n]*', ' ', text)
+            pos = 0
+            while True:
+                m = STRUCT_OPEN_RE.search(text, pos)
+                if not m:
+                    break
+                depth, j = 1, m.end()
+                while j < len(text) and depth > 0:
+                    if text[j] == '{':
+                        depth += 1
+                    elif text[j] == '}':
+                        depth -= 1
+                    j += 1
+                body = text[m.end():j - 1]
+                for fm in FIELD_TOKEN_RE.finditer(body):
+                    tok = fm.group(1)
+                    if tok not in C_KEYWORDS_FOR_FIELD_SCAN and not tok.startswith('dos_'):
+                        names.add(tok)
+                pos = j
+        _STRUCT_FIELD_NAMES_CACHE = names
+    return _STRUCT_FIELD_NAMES_CACHE
+
+
+def alias_macro_block_reason(name, blocked_field_names):
+    """None if `#define name ...` is safe to emit; otherwise why it must
+    NOT be (supervisor decision): as an OBJECT-LIKE macro, a short,
+    un-prefixed name like `f2`/`off`/`err` silently rewrites any unrelated
+    identifier spelled the same way -- a struct field, a local variable --
+    in EVERY ported .c file that includes the header, not just uses of
+    this one alias. Length alone doesn't distinguish a safe historical
+    name (most are already g-prefixed/hex, naturally >= 4 chars) from a
+    dangerous short common word, so anything under 4 characters is always
+    blocked; a name of any length that happens to equal a real struct
+    field name in game_structs.h/game_funcs.h is blocked for the same
+    reason (`x.f2` must never expand through a `#define f2 ...`)."""
+    if len(name) < 4:
+        return 'short (<4 chars)'
+    if name in blocked_field_names:
+        return 'collides with a struct field name (game_structs.h/game_funcs.h)'
+    return None
+
+
 def load_state_ownership():
     doc = read_json(STATE_OWNERSHIP_PATH)
     owned = set()
@@ -1399,7 +1468,7 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership, o
 
     symbols, warnings = [], []
     extra = {'segment_half': [], 'interior_alias': [], 'storage_alias': [], 'porting_notes': [],
-             'floor_arrays': [], 'ceil_arrays': []}
+             'floor_arrays': [], 'ceil_arrays': [], 'short_aliases': []}
     cursor = 0
     while cursor < DGROUP_LEN:
         component = comp_owner_at.get(cursor) if cursor < DATA_LEN else None
@@ -2881,6 +2950,7 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
     comp_by_id = {c['id']: c for c in components}
     data_symbols = sorted((s for s in symbols if s['section'] == 'data'), key=lambda s: s['offset'])
     referenced_component_ids = {ref['target'] for c in components for ref in c.get('refs', [])}
+    blocked_field_names = scan_struct_field_names()
 
     # Pass 1: seed the pointer-target registry (needed before Pass 2
     # resolves any &target/target expression, since a component earlier in
@@ -3083,10 +3153,22 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
         for alias in s['aliases']:
             if alias == s['component_id'] and alias not in referenced_component_ids:
                 header_lines.append(f'/* {alias} (recipe component id; nothing points at it) */')
+                continue
+            reason = alias_macro_block_reason(alias, blocked_field_names)
+            if reason:
+                extra['short_aliases'].append({'name': alias, 'target': primary, 'reason': reason})
+                header_lines.append(f'/* {alias} -> {primary} ({reason}; no macro -- use {primary} '
+                                     f'directly. See state-map.md "Short aliases") */')
             else:
                 header_lines.append(f'#define {c_ident(alias)} {primary}')
         for macro_name, macro_expr in result.get('extra_macros', []):
-            header_lines.append(f'#define {c_ident(macro_name)} {macro_expr}')
+            reason = alias_macro_block_reason(macro_name, blocked_field_names)
+            if reason:
+                extra['short_aliases'].append({'name': macro_name, 'target': macro_expr, 'reason': reason})
+                header_lines.append(f'/* {macro_name} -> {macro_expr} ({reason}; no macro. See '
+                                     f'state-map.md "Short aliases") */')
+            else:
+                header_lines.append(f'#define {c_ident(macro_name)} {macro_expr}')
         header_lines.append('')
         source_lines.append(defn)
         verify_bytes[s['primary']] = result['verify_bytes']
@@ -3133,7 +3215,13 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
         header_lines.append('/* Rule B: interior alias expressions (see docs/portable/state-map.md '
                              '"Interior aliases") */')
         for ia in data_interior:
-            header_lines.append(f"#define {c_ident(ia['name'])} {ia['expr']}")
+            reason = alias_macro_block_reason(ia['name'], blocked_field_names)
+            if reason:
+                extra['short_aliases'].append({'name': ia['name'], 'target': ia['expr'], 'reason': reason})
+                header_lines.append(f"/* {ia['name']} -> {ia['expr']} ({reason}; no macro. See "
+                                     f'state-map.md "Short aliases") */')
+            else:
+                header_lines.append(f"#define {c_ident(ia['name'])} {ia['expr']}")
         header_lines.append('')
 
     header_lines.append('#endif /* PORTABLE_GAME_DATA_H */')
@@ -3166,6 +3254,7 @@ def emit_game_state(symbols, extra, qualifiers, out_dir):
     bss_symbols = [s for s in symbols if s['section'] == 'bss']
     emitted = 0
     skipped_owned = 0
+    blocked_field_names = scan_struct_field_names()
     typed_count = 0
     untyped_count = 0
     needs_setjmp = any(s['section'] == 'bss' and s['definition_site'] == 'generated'
@@ -3200,7 +3289,13 @@ def emit_game_state(symbols, extra, qualifiers, out_dir):
                 jb_decl, jb_defn = _qualify_decl(jb_decl, qualifier), _qualify_defn(jb_defn, qualifier)
             header_lines.append(jb_decl)
             for alias in s['aliases']:
-                header_lines.append(f'#define {c_ident(alias)} {name}')
+                reason = alias_macro_block_reason(alias, blocked_field_names)
+                if reason:
+                    extra['short_aliases'].append({'name': alias, 'target': name, 'reason': reason})
+                    header_lines.append(f'/* {alias} -> {name} ({reason}; no macro. See '
+                                         f'state-map.md "Short aliases") */')
+                else:
+                    header_lines.append(f'#define {c_ident(alias)} {name}')
             header_lines.append('')
             source_lines.append(jb_defn)
             emitted += 1
@@ -3243,7 +3338,13 @@ def emit_game_state(symbols, extra, qualifiers, out_dir):
             decl, defn = _qualify_decl(decl, qualifier), _qualify_defn(defn, qualifier)
         header_lines.append(decl)
         for alias in s['aliases']:
-            header_lines.append(f'#define {c_ident(alias)} {name}')
+            reason = alias_macro_block_reason(alias, blocked_field_names)
+            if reason:
+                extra['short_aliases'].append({'name': alias, 'target': name, 'reason': reason})
+                header_lines.append(f'/* {alias} -> {name} ({reason}; no macro. See '
+                                     f'state-map.md "Short aliases") */')
+            else:
+                header_lines.append(f'#define {c_ident(alias)} {name}')
         header_lines.append('')
         source_lines.append(defn)
         emitted += 1
@@ -3253,7 +3354,13 @@ def emit_game_state(symbols, extra, qualifiers, out_dir):
         header_lines.append('/* Rule B: interior alias expressions (see docs/portable/state-map.md '
                              '"Interior aliases") */')
         for ia in bss_interior:
-            header_lines.append(f"#define {c_ident(ia['name'])} {ia['expr']}")
+            reason = alias_macro_block_reason(ia['name'], blocked_field_names)
+            if reason:
+                extra['short_aliases'].append({'name': ia['name'], 'target': ia['expr'], 'reason': reason})
+                header_lines.append(f"/* {ia['name']} -> {ia['expr']} ({reason}; no macro. See "
+                                     f'state-map.md "Short aliases") */')
+            else:
+                header_lines.append(f"#define {c_ident(ia['name'])} {ia['expr']}")
         header_lines.append('')
 
     header_lines.append('#endif /* PORTABLE_GAME_STATE_H */')
@@ -3414,6 +3521,21 @@ def write_state_map_md(components, symbols, table, notes, warnings, data_report,
         for ia in sorted(extra['interior_alias'], key=lambda ia: ia['offset']):
             lines.append(f"| `{ia['name']}` | {ia['offset']:#06x} | `{ia['array_name']}` "
                          f"(`{ia['c_type']}`) | `{ia['expr']}` |")
+        lines.append('')
+
+    if extra['short_aliases']:
+        lines += ['## Short aliases (no macro; use the primary name)', '',
+                   'A `#define` alias is an OBJECT-LIKE macro: it rewrites every occurrence of its '
+                   'name, not just uses meant as this alias, in any ported .c file that includes '
+                   'the header -- dangerous for a short, unqualified name (`f1`, `f2`, `t3`, `t4`, '
+                   '`err`, `cur`, `tbl`, `off`, ...) that easily collides with a struct field or a '
+                   'local variable spelled the same way elsewhere. Names under 4 characters, and '
+                   'any name (of any length) that equals a real struct field in '
+                   '`portable/include/game_structs.h`/`game_funcs.h`, get no macro at all -- use '
+                   'the primary name/expression directly instead.', '',
+                   '| alias | primary name / expression | reason |', '|---|---|---|']
+        for e in sorted(extra['short_aliases'], key=lambda e: e['name']):
+            lines.append(f"| `{e['name']}` | `{e['target']}` | {e['reason']} |")
         lines.append('')
 
     if extra['ceil_arrays']:

@@ -15,9 +15,8 @@
 
 #include <stdio.h>
 
-void timer_platform_start(void) {}
-void timer_platform_stop(void) {}
-void timer_platform_wait_tick(void) {}
+/* The real hooks now live in portable/compat/clock.c (linked from
+ * empires_core); manual mode never calls them. */
 
 static int s_failures = 0;
 

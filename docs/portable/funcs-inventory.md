@@ -164,6 +164,5 @@ compiles standalone.  Two flavors, both auto-detected by grepping
 | Tag | Kind | Provenance |
 |---|---|---|
 | `struct E` | defined | src/INTRO.C: locally-defined struct, not part of game_structs.h's curated set |
-| `struct P` | defined | src/INTRO.C: locally-defined struct, not part of game_structs.h's curated set |
 | `struct input` | defined | src/DIALOG.C: locally-defined struct, not part of game_structs.h's curated set |
 | `struct piece_desc` | defined | src/PUZZLE.C: locally-defined struct, not part of game_structs.h's curated set |

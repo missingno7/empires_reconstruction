@@ -1,4 +1,4 @@
-/* clock.c -- SDL3-platform tick source for timer.h (see
+/* clock.c -- real-time tick source for timer.h (portable/compat: host clock, no SDL; see
  * docs/portable/architecture.md "Timing model").
  *
  * Spawns a dedicated thread that calls timer_service_tick() at exactly

@@ -101,6 +101,21 @@ A name landing inside a fully-dimensioned declared array/struct type: the declar
 | `gc132` | 0xc132 | `gc132_tile` (`struct gc316_tile`) | `(gc132_tile.kind)` |
 | `gc563` | 0xc563 | `slot_table` (`struct c470_record`) | `(slot_table[9].text[0])` |
 
+## Short aliases (no macro; use the primary name)
+
+A `#define` alias is an OBJECT-LIKE macro: it rewrites every occurrence of its name, not just uses meant as this alias, in any ported .c file that includes the header -- dangerous for a short, unqualified name (`f1`, `f2`, `t3`, `t4`, `err`, `cur`, `tbl`, `off`, ...) that easily collides with a struct field or a local variable spelled the same way elsewhere. Names under 4 characters, and any name (of any length) that equals a real struct field in `portable/include/game_structs.h`/`game_funcs.h`, get no macro at all -- use the primary name/expression directly instead.
+
+| alias | primary name / expression | reason |
+|---|---|---|
+| `cur` | `slot_used_count` | short (<4 chars) |
+| `err` | `slot_select_error` | short (<4 chars) |
+| `f1` | `sound_enabled` | short (<4 chars) |
+| `f2` | `music_enabled` | short (<4 chars) |
+| `off` | `gca62` | short (<4 chars) |
+| `t3` | `gbfde` | short (<4 chars) |
+| `t4` | `(buf[1])` | short (<4 chars) |
+| `tbl` | `slot_table` | short (<4 chars) |
+
 ## Struct arrays rounded up (rule E)
 
 The measured span wasn't a whole number of records; the historical code only ever reads whole records, so the count was rounded UP and the tail now overlaps the next object's leading bytes (documented, not corrected -- the DATA image already supplies real bytes there).

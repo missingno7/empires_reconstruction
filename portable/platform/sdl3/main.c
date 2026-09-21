@@ -1,10 +1,20 @@
 /* main.c -- SDL3 executable entry point.
  *
- * Milestone C state: the software framebuffer (portable/gfx) is presented
- * through video_sdl.h.  Until the ported game logic exists, `--demo` (the
- * default) draws a primitive test scene with the real gfx_* calls so the
- * present path (packed 4bpp -> mode-13h VRAM -> g41e DAC -> texture) can be
- * checked by eye.  `--selftest` runs the loop for ~300 ms and exits 0.
+ * Threading model (docs/portable/architecture.md, "Timing model"):
+ *   - the GAME thread runs the historical game_main(): boot, intro, menus,
+ *     levels; it blocks in timer_wait_ticks()/keyboard reads exactly where
+ *     the DOS program busy-waited;
+ *   - the TIMER thread (platform/sdl3/clock.c) delivers 236.7 Hz ticks and
+ *     services the sound state machine, like the historical INT 8;
+ *   - this MAIN thread pumps SDL events into the keyboard service (the
+ *     historical INT 9) and uploads the presented VRAM at display rate.
+ *
+ * Options: --assets DIR (AE000.DAT/AE001.DAT location, default: the exe's
+ * directory, then "assets"), --saves DIR (save-slot overlays), --demo
+ * (primitive test scene instead of the game), --selftest (exit after
+ * ~300 ms), --dump-vram FILE (write the presented frame as PPM at exit).
+ * Historical switches (-E/-C/-T/-M/-V, -I, -S?) pass through to
+ * cmdline_parse_args().
  *
  * Only files in portable/platform/sdl3/ may include <SDL3/SDL.h>.
  */
@@ -13,23 +23,26 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-#include "gfx.h"
-#include "game_data.h"
+#include "game.h"
+#include "sync.h"
+#include "input_sdl.h"
 #include "video_sdl.h"
-
-/* portable/resource owns display_mode (DS:BFCD); it defaults to 4 there
- * (archive.c is not ours to edit -- see the task note this line carries).
- * The primary target is now display selector 5 (VGA, 8bpp/320-byte rows),
- * so main() overrides it before anything touches the framebuffer. */
-extern dos_char display_mode;
 
 #define SELFTEST_DURATION_MS 300
 
-/* Draw a scene that exercises the primitives the port has today: the 16
- * logical colours through gfx_color_select, bars, vlines, rect fills, a
- * save/restore round trip and the XOR fill, then present it. */
+static volatile bool s_game_finished = false;
+
+static void game_thread_fn(void *arg)
+{
+    (void)arg;
+    game_main();            /* video_mode_select -> boot -> game_run -> shutdown */
+    s_game_finished = true;
+}
+
+/* Draw a scene that exercises the primitives with the real gfx_* calls. */
 static void draw_demo_scene(void)
 {
     dos_int i;
@@ -44,8 +57,8 @@ static void draw_demo_scene(void)
     gfx_color_select(15);
     rect_border_draw(4, 60, 312, 100);
     gfx_color_select(4);
-    gfx_clear_rect(11, 71, 61, 31);          /* odd x / odd w: nibble clipping */
-    gfx_fill_rect(20, 80, 41, 13);           /* XOR inside the block */
+    gfx_clear_rect(11, 71, 61, 31);
+    gfx_fill_rect(20, 80, 41, 13);
     gfx_color_select(2);
     for (i = 0; i < 40; i++)
         gfx_vline((dos_int)(100 + i * 2), (dos_int)(70 + (i & 7)), 30);
@@ -57,11 +70,10 @@ static void draw_demo_scene(void)
     gfx_color_select(14);
     for (i = 0; i < 300; i += 3)
         gfx_set_pixel((dos_int)(10 + i), (dos_int)(180 + ((i / 3) & 3)));
-    gfx_box(0, 0, 320, 200);                 /* present everything */
+    gfx_box(0, 0, 320, 200);
 }
 
-/* Write the presented VRAM as a binary PPM (DAC expanded to 8-bit RGB) so
- * the pixel output can be inspected without a display. */
+/* Write the presented VRAM as a binary PPM (DAC expanded to 8-bit RGB). */
 static void dump_vram_ppm(const char *path)
 {
     FILE *f = fopen(path, "wb");
@@ -78,40 +90,118 @@ static void dump_vram_ppm(const char *path)
     fclose(f);
 }
 
+static bool file_exists(const char *path)
+{
+    FILE *f = fopen(path, "rb");
+    if (!f)
+        return false;
+    fclose(f);
+    return true;
+}
+
+/* Default asset directory: the executable's own directory if it holds
+ * AE000.DAT, else "assets" (the repository layout). */
+static void choose_asset_dir(char *out, size_t n, const char *explicit)
+{
+    if (explicit) {
+        snprintf(out, n, "%s", explicit);
+        return;
+    }
+    const char *base = SDL_GetBasePath();
+    char probe[1024];
+    if (base) {
+        snprintf(probe, sizeof probe, "%sAE000.DAT", base);
+        if (file_exists(probe)) {
+            snprintf(out, n, "%s", base);
+            return;
+        }
+    }
+    snprintf(out, n, "assets");
+}
+
 int main(int argc, char **argv)
 {
-    bool selftest = false;
-    const char *dump_path = NULL;
+    bool selftest = false, demo = false;
+    const char *dump_path = NULL, *assets = NULL, *saves = NULL;
+    char asset_dir[1024];
+    sync_thread game_thread = { NULL };
+
     for (int i = 1; i < argc; ++i) {
         if (strcmp(argv[i], "--selftest") == 0)
             selftest = true;
+        else if (strcmp(argv[i], "--demo") == 0)
+            demo = true;
         else if (strcmp(argv[i], "--dump-vram") == 0 && i + 1 < argc)
             dump_path = argv[++i];
+        else if (strcmp(argv[i], "--assets") == 0 && i + 1 < argc)
+            assets = argv[++i];
+        else if (strcmp(argv[i], "--saves") == 0 && i + 1 < argc)
+            saves = argv[++i];
     }
-
-    display_mode = 5;   /* VGA (8bpp, row stride 0x140): the primary target */
 
     if (!sdl_video_init("Empires (portable)")) {
         sdl_video_shutdown();
         return 1;
     }
 
-    gfx_framebuffer_init();
-    color_lookup_tables_init();
-    video_load_palette(display_mode == 5 ? g11e : g41e);   /* src/VIDEO.C: mode 5 loads g11e, mode 4 loads g41e */
-    draw_demo_scene();
-    if (dump_path)
-        dump_vram_ppm(dump_path);
+    startup_set_args(argc, argv);
+    choose_asset_dir(asset_dir, sizeof asset_dir, assets);
+    resource_set_asset_dir(asset_dir);
+    resource_set_save_dir(saves ? saves : asset_dir);
+
+    if (demo) {
+        display_mode = 5;
+        gfx_framebuffer_init();
+        color_lookup_tables_init();
+        video_load_palette(g11e);
+        draw_demo_scene();
+        s_game_finished = true;     /* nothing to wait for */
+    } else {
+        if (!sync_thread_start(&game_thread, game_thread_fn, NULL)) {
+            fprintf(stderr, "cannot start the game thread\n");
+            sdl_video_shutdown();
+            return 1;
+        }
+    }
 
     Uint64 start_ticks = SDL_GetTicks();
+    uint32_t presented_generation = 0;
     bool quit = false;
     while (!quit) {
-        quit = sdl_video_poll_events();
-        sdl_video_present(gfx_vram, gfx_dac);
+        SDL_Event ev;
+        while (SDL_PollEvent(&ev)) {
+            if (ev.type == SDL_EVENT_QUIT)
+                quit = true;
+            else if (ev.type == SDL_EVENT_KEY_DOWN || ev.type == SDL_EVENT_KEY_UP)
+                input_sdl_handle_event(&ev);
+        }
+        if (gfx_vram_generation != presented_generation || demo) {
+            presented_generation = gfx_vram_generation;
+            sdl_video_present(gfx_vram, gfx_dac);
+        } else {
+            SDL_Delay(4);
+        }
         if (selftest && (SDL_GetTicks() - start_ticks) >= SELFTEST_DURATION_MS)
+            quit = true;
+        if (!demo && s_game_finished)
             quit = true;
     }
 
+    if (dump_path)
+        dump_vram_ppm(dump_path);
+
+    if (!demo) {
+        if (s_game_finished) {
+            sync_thread_join(&game_thread);
+        } else {
+            /* The historical program only ends through its own menus; a
+             * closed window ends the process outright, like a DOS reboot
+             * would have.  Save slots are already on disk at that point. */
+            fflush(stdout);
+            sdl_video_shutdown();
+            _Exit(0);
+        }
+    }
     gfx_framebuffer_shutdown();
     sdl_video_shutdown();
     return 0;

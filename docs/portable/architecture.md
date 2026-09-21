@@ -96,31 +96,42 @@ object has exactly one definition.  Historical names are kept for every
 DGROUP object; new names are used only for objects that never existed
 historically (e.g. `gfx_vram`).
 
-## Video model (first target = historical display_mode 4, "M")
+## Video model (primary target = historical display selector 5, "V" = VGA)
 
-Historical selector 4 (`-M`, BIOS mode 13h, built-in runtime slot 4) is the
-first supported mode.  Its model, taken from asm/RUNTIME_BLOCK.ASM:
+The game ships five display selectors.  Selector 5 (`-V`) is the real VGA
+path and is the port's primary target; selector 4 (`-M`, mode 13h showing
+the 16 standard colours through the built-in runtime) was ported first and
+stays as the validated secondary driver.  Facts from the historical tree:
 
-- Logical framebuffer: 320 x 488 pixels, packed 4 bpp, **160 bytes per row**,
-  high nibble = even x, low nibble = odd x.  All `gfx_*` primitives address
-  it through the 488-entry row table (`g3924`), stride hard-coded 0xA0.
-- `result` (DS:40C8) is the current color word; its low byte carries the
-  color in BOTH nibbles (`gfe[]`/`gbe[]`/`g3904[]` entries), chosen by
-  `gfx_color_select()`.
-- `gfx_box(x,y,w,h)` is the *present* primitive (runtime slot 4 = mode 13h):
-  it converts the packed rect to 320x200 8-bpp VRAM bytes with the exact
-  rol-4 nibble-pair transform of rt_083b/rt_089f and the VRAM byte then
-  selects a DAC entry from the 256-entry `g41e` palette (which maps byte v to
-  the color of v>>4).
-- `gfx_wipe_rect/gfx_blit_bitmap/gfx_copy_rect` append (x/2,y,w/2,h) byte
-  records to the dirty-rect queue at DS:40C4 when DS:00BC == 1 and y < 200.
-- `gfx_copy_rect` clips against the viewport words DS:94/96 (rows) and
-  DS:98/9A (byte columns) and uses the zero-nibble transparency mask.
-- `gfx_draw_char`/`gfx_blit_image` are 1-bpp MSB-first painters of `result`.
+- Selector 5 replaces the built-in `asm/RUNTIME_BLOCK.ASM` with the decoded
+  `AE000_002` record (1886 bytes of 8086 code, annotated disassembly in
+  `docs/portable/reference/AE000_002-vga-runtime.lst`), same 20-entry jump
+  table order as `include/VIDEO.H`.
+- Logical framebuffer: 320 x 488 pixels, **8 bpp, 320-byte rows** (0x140),
+  one VGA DAC index per byte, addressed through the 488-entry row table
+  `g3924`.  Palette `g11e` (256 x RGB6, 251 distinct colours) loaded once.
+- Art records stay packed 4 bpp (`resource_load_record` skips the sprite
+  fix-ups in mode 5).  Each 34-byte bitmap header carries an EGA/CGA table
+  (+0x00) and a VGA table (+0x10); the VGA blitters (`gfx_blit_bitmap`,
+  `gfx_copy_rect`) expand each nibble through the bitmap's VGA table at draw
+  time (nibble 0 = transparent in `gfx_copy_rect`).
+- `result` (DS:40C8) low byte is the DAC index; `gfx_color_select(i)` reads
+  `g3904[i]` (seeded from `g9c` = identity 0..15, changed at runtime by
+  `color_table_entry_set`).
+- `gfx_box(x,y,w,h)` presents by plain row copies into the 320x200 VRAM.
+- The dirty-rect queue records and the `gfx_copy_rect` column clip words
+  (`g98`/`g9a`) stay in packed (x/2) units even in VGA mode.
+- `gfx_draw_char`/`gfx_blit_image` paint 1-bpp MSB-first glyphs one byte
+  per pixel.
+
+Secondary driver (selectors 1/3/4, packed 4 bpp, 160-byte rows, nibble
+semantics, mode-13h present transform through `g41e`): see
+`portable/gfx/gfx_planar.c`; both drivers sit behind the `gfx_*` API and
+are selected by `display_mode`.
 
 SDL3 sits below: VRAM (8 bpp) -> DAC palette -> RGBA texture -> window,
-nearest-neighbour, integer scaled.  Selectors 2 and 5 (AE000_003/002
-replacement runtimes) are out of scope until Milestone G.
+nearest-neighbour, integer scaled.  Selector 2 (`AE000_003`, CGA-class) is
+out of scope until Milestone G.
 
 ## Timing model
 

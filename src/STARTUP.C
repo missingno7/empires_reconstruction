@@ -84,7 +84,11 @@ void bios_equipment_probe()
      - `xchg ah,al`, `loop` and the flag tests straight after INT 15h;
      - the forward `jmp l_done`/`jmp l_fin` sites, which the original left as
        short jumps padded with NOP (the same two-pass artifact as the stores),
-       where a C goto compiles to an unpadded short jump.
+       where a C goto compiles to an unpadded short jump;
+     - the `cmp word ptr display_mode,N / jne` ladder at l_done: `if (x != N)
+       goto L` compiles to an inverted `je $+3 / jmp L` pair (+2 bytes each),
+       while the sound probe's single `== 3` test is C (`*(int *)&display_mode`
+       reads the same word compare).
    Probed byte-exact alone and inside the STARTUP unit (tools/probe_tu.py). */
 /* DS:BFCD, the display mode (VIDMODE.C writes it) -- declared at top of file */
 extern char b856;
@@ -170,11 +174,10 @@ l_fin:
 sound_backend_probe()
 {
     snd_backend_mode = 0;
-    asm cmp word ptr display_mode,3
-    asm jne l_probe_mode
-    snd_backend_mode = 1;
-    goto l_selected;
-l_probe_mode:
+    if (*(int *)&display_mode == 3) {
+        snd_backend_mode = 1;
+        goto l_selected;
+    }
     if (opl_detect() != 0) {
         snd_backend_mode = 2;
         goto l_selected;

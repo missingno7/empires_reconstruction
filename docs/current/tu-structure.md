@@ -67,8 +67,16 @@ one byte: anchor); F_CB48+OPTIONS with `-k` (OPTIONS grows 4 bytes per function)
 F_2AE2..C_49E3_4A93 (no single a74a2 declaration keeps BRDPAINT and BRDTERR
 exact); C_695E_697D+F_699E (no single keyboard_irq_handler declaration keeps
 KEYIRQ's `push cs` and the interrupt definition); HUD..ANIMFRAM (DATA not
-contiguous).  Byte-neutral runs left ungrouped: F_1D47..F_1EC0, F_D3DA..F_D60C,
-F_9F40..F_A28D, STARTUP+INTRO.
+contiguous).  Byte-neutral readability units (no flag forces them, proven
+exact): src/HELPMENU.C (C_D3DA_D49D), src/SNDREQ.C (C_D593_D5B3),
+src/RESCACHE.C (C_D5BA_D60C).  Byte-neutral runs left ungrouped:
+F_1D47..F_1EC0, F_9F40..F_A28D, STARTUP+INTRO.
+
+Assembler modules were consolidated by the alignment rule (fact 5): routines at
+odd addresses were assembled behind their predecessor, so asm/SPRITES.ASM
+(F_4AA8..F_4EEB), asm/SPRDRAW.ASM (F_6036..F_6181) and asm/DECODE.ASM
+(M_6D86_6DCC..F_6F4B) are single modules; the sound driver asm/SOUND.ASM
+(M_C1A0_CB48) is one module by the frame-fingerprint argument (fact 4).
 
 ## Tools
 

@@ -6,17 +6,19 @@ supervisor; every row names the next experiment.  Baseline is always the exact
 build (SHA 1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10,
 106 relocations, `python -m unittest discover -s tests -p test_build_exe.py`).
 
-Census (`docs/current/source-quality.json`, per member section):
-C with inline asm 2441 bytes / 17 members; symbolic ASM 5758 bytes / 61
-members; runtime block 6571; C 43740 bytes / 260 members.  Unexplained compiler
-flags (`tools/audit_tu_flags.py`): 0.
+Census (`docs/current/source-quality.json`, per member section, 2026-09-21
+end of wave 4): 71 modules (60 C units, 10 assembler modules + the runtime
+block); C with inline asm 1924 bytes / 16 members; symbolic ASM 5758 bytes / 61
+members; runtime block 6571; C 44257 bytes / 261 members.  Unexplained compiler
+flags (`tools/audit_tu_flags.py`): 0.  Reconstruction artifacts left: none
+(no capsules, no `call $+`, no label-less branches, no invented flags).
 
 ## 1. PURE_C opportunities (C with inline asm that may still shrink)
 
 | Member | Unit | Bytes | asm lines | Why it remains | Last probe | Next experiment | Leverage |
 |---|---|---|---|---|---|---|---|
 | F_338A board_run_unit_script | BOARD.C | 870 | 5 | `mov al,es:[bx+3]; neg ax; ...; mov es:[bx+3],al`: 28 standalone spellings + 8 in-context probes show TC 2.0 folds every byte-lvalue negation to `neg al`, and every route to a word-width `neg ax` (int temp, static, register) materialises `mov ah,0` plus a spill/reload; the missing extension relies on AH still being 0 from the compiler's own `and ax,0Fh` three statements earlier, which only a human knew | 2026-09-21 (docs/history/probes/neg-ax-forms.C) | none: irreducible hand asm inside a C function, with concrete compiler evidence | closed |
-| F_50D2 / F_53BF video/sound-hardware probes | STARTUP.C | 312 | 35 | recovered as C with pseudo-registers this session; fragments left: `mov display_mode,N` stores (NOP-padded forward EXTRN), ES:SI ROM probes, signed `cmp bl/jl`, `xchg`, `loop`, flag tests after INT | 2026-09-21 EXACT | `cmp word ptr display_mode,N` -> `*(int *)&display_mode == N`; `_BL` sign test via `(signed char)` temp; keep the store NOPs (they are the TCC-generated-ASM signature) | medium |
+| F_50D2 / F_53BF video/sound-hardware probes | STARTUP.C | 312 | 33 | recovered as C with pseudo-registers; fragments left: `mov display_mode,N` stores (NOP-padded forward EXTRN), ES:SI ROM probes, signed `cmp bl/jl`, `xchg`, `loop`, flag tests after INT, and the `cmp/jne` ladder at l_done (`if (x != N) goto L` inverts to `je/jmp`, +2 bytes each; probed) | 2026-09-21 EXACT | none known; the sound probe's `== 3` test is now C | closed |
 | F_6B1A / F_6B4A BIOS keyboard read/poll | KEYBOARD.C | 76 | 35 | branch on ZF straight after `int 16h`; pseudo-register `_FLAGS` reads compile to pushf/pop (probed, grows) | 2026-09-21 | none known; record as irreducible (INT flag-return protocol) | low |
 | F_6B7A / F_6BAC timer install/restore | TIMER.C | 85 | 45 | explicit `push ax/dx/ds/es` around DOS calls and `push cs / pop ds`: no C expression saves caller registers | 2026-09-21 | none; irreducible (register choreography) | low |
 | F_6BCF timer_irq_handler | TIMER.C | 87 | 2 | bare `pushf`/`popf` around the body; `__emit__` would only hide it | -- | irreducible | -- |
@@ -31,21 +33,22 @@ flags (`tools/audit_tu_flags.py`): 0.
 | Module | Bytes | Evidence class | Next useful experiment |
 |---|---|---|---|
 | M_C1A0_CB48 asm/SOUND.ASM | 2492 | frames without SI/DI saves, AX..BX saves in frames, REPT macro, fixup-free internal calls; 7 former C wrappers were artifacts | behaviour names for the 41 register-ABI routines; replace the remaining absolute DS displacements once the state block is named |
-| F_4AA8, F_4B0C, F_4E9F, F_4EEB | 1211 | word-aligned pad before F_4AA8; bytecode interpreter with LODS/jump table; BP repurposed | one module hypothesis `probe_tu F_4AA8 F_4EEB --asm` (byte-neutral; alignment says 4AA8 starts a word-aligned TASM module and 4E9F/4EEB at odd addresses are packed behind it); F_4B0C's CALL_REL macro -> symbolic externs |
-| F_6036, F_60A9, F_6181 | 502 | LOOP/LODS/XLAT bodies, mid-function `mov bp,sp` | same one-module hypothesis (60A9/6181 odd-aligned behind 6036) |
-| M_6D86_6DCC, F_6EFF, F_6F4B | 573 | word-aligned pad + internal pad (two TASM modules), blitters | merge F_6EFF/F_6F4B behind F_6DCC (odd addresses) |
+| asm/SPRITES.ASM (M_4AA8_4EEB) | 1211 | word-aligned pad before F_4AA8; odd-address members packed behind it; bytecode interpreter with LODS/jump table; BP repurposed; all calls symbolic | none |
+| asm/SPRDRAW.ASM (M_6036_6181) | 502 | LOOP/LODS/XLAT bodies, mid-function `mov bp,sp`; 60A9/6181 odd-aligned behind 6036 | none |
+| asm/DECODE.ASM (M_6D86_6F4B) | 573 | word-aligned pad + internal pad, RLE/LZ/4bpp decoders; 6EFF/6F4B odd-aligned behind 6DCC | none |
 | F_1ECD, F_1F91, F_9EC3 | 325 | odd addresses between C units, TC-order prologues, XLAT/LODS bodies | undecidable between asm-body-in-C and byte-aligned TASM: keep, documented in tu-structure.md |
-| M_D386_D3CF, M_D61C_D79C, M_D818_D825 | 662 | `push di; push si` hand order, word-aligned pads, stack-argument patching | M_D61C_D79C's six `call $+...` renderer targets -> symbolic externs (public index) |
-| RUNTIME_BLOCK | 6571 | EGA driver / library runtime | none in this phase |
+| M_D386_D3CF, M_D61C_D79C, M_D818_D825 | 662 | `push di; push si` hand order, word-aligned pads, stack-argument patching; all calls symbolic | none |
+| RUNTIME_BLOCK | 6571 | EGA driver / library runtime; all 80 relative branches labelled | none in this phase |
 
 ## 3. TU structure
 
 Proven this session (all EXACT, `tools/probe_tu.py`): BOARD.C, GAME.C, STARTUP.C,
 KEYBOARD.C, TIMER.C, FONT.C.  Ambiguous (byte-neutral) extensions left separate:
 INTRO.C behind STARTUP.C; KEYIRQ.C (cannot join KEYBOARD.C: `push cs` needs the
-non-interrupt view of the handler); RECTTAB+OPLINIT+VOXSLOAD+VOXCHAN; the 13
-helpers F_D3DA..F_D60C (EXACT as one unit; group after naming); ANIMSTEP..SLOTROW
-(EXACT as one unit).  Anchors that end units: see tu-structure.md.
+non-interrupt view of the handler); RECTTAB+OPLINIT+VOXSLOAD+VOXCHAN;
+ANIMSTEP..SLOTROW (EXACT as one unit); F_1D47..F_1EC0.  The helpers
+F_D3DA..F_D60C became HELPMENU.C, HINTDLG.C, PLRLDPUB.C, SNDREQ.C, RESCACHE.C.
+Anchors that end units: see tu-structure.md.
 
 ## 4. Interfaces and data
 
@@ -53,7 +56,11 @@ helpers F_D3DA..F_D60C (EXACT as one unit; group after naming); ANIMSTEP..SLOTRO
   now also a TU boundary proof between BOARD.C and GAME.C).
 - `display_mode` (char) vs former `bbfcd`/`mode` byte views unified in STARTUP.C;
   VIDEO.C still carries the `mode` unsigned-char view (documented).
-- SOUND.ASM: remaining absolute DS displacements listed in asm/SOUND.ASM header.
+- include/SOUND.H declares the sound state every consumer types identically;
+  docs/current/sound-state.md maps every word.  Left LOW-confidence (no name):
+  DS:17C4, 17CC, 17D4, 17DC, 17F4, 1E8C and the two internal tables at 182C/1832;
+  two per-voice equates in SOUND.ASM (voice_pending_table 17E4,
+  voice_retune_base_table 1766) have no data symbol to bind to.
 
 ## 5. Naming / readability
 

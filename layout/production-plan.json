@@ -595,9 +595,9 @@
       "data_owners": []
     },
     {
-      "id": "C_200F_2A70",
+      "id": "C_200F_3986",
       "start": 8719,
-      "end": 11490,
+      "end": 15477,
       "kind": "MATCHING_C",
       "classification": "code",
       "artifact": "regions/F_200F.bin",
@@ -714,12 +714,19 @@
         "F_28AC",
         "F_2986",
         "F_2A2D",
-        "F_2A70"
+        "F_2A70",
+        "F_2AE2",
+        "F_31C4",
+        "F_329F",
+        "F_32FA",
+        "F_338A",
+        "F_36F0",
+        "F_3986"
       ],
       "sources": [
-        "src/BOARDDRW.C"
+        "src/BOARD.C"
       ],
-      "recipe": "recipes/modules/C_200F_2A70.json",
+      "recipe": "recipes/modules/C_200F_3986.json",
       "object": "R0009.OBJ",
       "tool": "TCC.EXE",
       "flags": [
@@ -804,488 +811,41 @@
           "owner": "F_2A70",
           "symbol": "_f2a70",
           "offset": 2657
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_2AE2",
-      "kind": "MATCHING_C",
-      "start": 11490,
-      "end": 13252,
-      "source": "src/BRDPAINT.C",
-      "artifact": "regions/F_2AE2.bin",
-      "expected_sha256": "ac6790f8c94583fa0fb3509f98947d7bb8d67932cb0eb9c4a8121e4e9091f0a5",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_board_redraw_paint",
-        "span": 1,
-        "flags_append": "-B",
-        "module_segments": {},
-        "bindings": {
-          "_g9ade": {
-            "offset": 39646,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_board_records": {
-            "offset": 49084,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_record_table_root": {
-            "offset": 49088,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s8c12": {
-            "offset": 35858,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g96": {
-            "offset": 150,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g73c": {
-            "offset": 1852,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_ui_gfx_shadow_a": {
-            "offset": 50630,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_gbfc4": {
-            "offset": 49092,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g94": {
-            "offset": 148,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_a72b2": {
-            "offset": 29362,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_gb07a": {
-            "offset": 45178,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_b4377": {
-            "offset": 17271,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_b437a": {
-            "offset": 17274,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_board_record_index": {
-            "offset": 49082,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g722": {
-            "offset": 1826,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_w8bea": {
-            "offset": 35818,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_w8bf4": {
-            "offset": 35828,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s79bf": {
-            "offset": 31167,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_a74a2": {
-            "offset": 29858,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_a6f2a": {
-            "offset": 28458,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s7400": {
-            "offset": 29696,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_b4386": {
-            "offset": 17286,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_b4380": {
-            "offset": 17280,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s735e": {
-            "offset": 29534,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s9b6e": {
-            "offset": 39790,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s9ae0": {
-            "offset": 39648,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s9a5c": {
-            "offset": 39516,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s99da": {
-            "offset": 39386,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s9c50": {
-            "offset": 40016,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_s6e88": {
-            "offset": 28296,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_a893c": {
-            "offset": 35132,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g96e6": {
-            "offset": 38630,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g96ea": {
-            "offset": 38634,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_g40d0": {
-            "offset": 16592,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS offset in complete F_2AE2 fixup"
-          },
-          "_gfx_blit_bitmap": {
-            "offset": 969,
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_gfx_copy_rect": {
-            "offset": 972,
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_value_parity": {
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup",
-            "owner": "F_1EC0",
-            "public": "_value_parity",
-            "addend": 0
-          },
-          "_resource_load_record": {
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup",
-            "owner": "F_656C",
-            "public": "_resource_load_record",
-            "addend": 0
-          },
-          "_f2a70": {
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup",
-            "owner": "F_2A70",
-            "public": "_f2a70",
-            "addend": 0
-          },
-          "_gfx_wipe_rect": {
-            "offset": 948,
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_fd818": {
-            "coordinate": "code_offset",
-            "owner": "F_D818",
-            "public": "_fd818",
-            "addend": 0,
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_fd825": {
-            "owner": "F_D825",
-            "public": "_fd825",
-            "coordinate": "code_offset",
-            "addend": 0,
-            "evidence": "owned F_D825 public"
-          },
-          "_f2986": {
-            "coordinate": "code_offset",
-            "evidence": "near-call target from complete function fixup",
-            "owner": "F_2986",
-            "public": "_f2986",
-            "addend": 0
-          },
-          "_f6036": {
-            "coordinate": "code_offset",
-            "owner": "F_6036",
-            "public": "_f6036",
-            "addend": 0,
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_f_d61c": {
-            "coordinate": "code_offset",
-            "owner": "F_D61C",
-            "public": "_f_d61c",
-            "addend": 0,
-            "evidence": "near-call target from complete function fixup"
-          },
-          "_board_mark_record_cells": {
-            "coordinate": "code_offset",
-            "owner": "F_28AC",
-            "public": "_board_mark_record_cells",
-            "addend": 0,
-            "evidence": "near-call target from complete function fixup"
-          }
-        }
-      },
-      "classification": "code",
-      "object": "R0010.OBJ",
-      "members": [
-        "F_2AE2"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-B"
-      ],
-      "publics": [
+        },
         {
           "owner": "F_2AE2",
           "symbol": "_board_redraw_paint",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "C_31C4_3986",
-      "start": 13252,
-      "end": 15477,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "original_symbol": "F_31C4",
-      "artifact": "regions/F_31C4.bin",
-      "expected_sha256": "263acf4fa96a335c0f4e83dd3e9f65f5c9ebca23715a586463b5ad38ba9cd889",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_board_scroll_transition",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_gfx_box": {
-            "offset": 927,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_039F.entry"
-          },
-          "_gfx_wipe_rect": {
-            "offset": 948,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_03B4.entry"
-          },
-          "_f1ecd": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1ECD.entry",
-            "owner": "F_1ECD",
-            "public": "_f1ecd",
-            "addend": 0
-          },
-          "_sprite_draw_cursor": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_2269.entry",
-            "owner": "F_2269",
-            "public": "_sprite_draw_cursor",
-            "addend": 0
-          },
-          "_board_redraw_view": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_22B1.entry",
-            "owner": "F_22B1",
-            "public": "_board_redraw_view",
-            "addend": 0
-          },
-          "_board_redraw_paint": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_2AE2.entry",
-            "owner": "F_2AE2",
-            "public": "_board_redraw_paint",
-            "addend": 0
-          },
-          "_f4eeb": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_4EEB.entry",
-            "owner": "F_4EEB",
-            "public": "_f4eeb",
-            "addend": 0
-          },
-          "_timer_wait_ticks": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6C26.entry",
-            "owner": "F_6C26",
-            "public": "_timer_wait_ticks",
-            "addend": 0
-          },
-          "_timer_deadline_arm": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6C57.entry",
-            "owner": "F_6C57",
-            "public": "_timer_deadline_arm",
-            "addend": 0
-          },
-          "_timer_deadline_wait": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6C6F.entry",
-            "owner": "F_6C6F",
-            "public": "_timer_deadline_wait",
-            "addend": 0
-          },
-          "_hud_panel_open": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6FDA.entry",
-            "owner": "F_6FDA",
-            "public": "_hud_panel_open",
-            "addend": 0
-          },
-          "_puzzle_run": {
-            "coordinate": "code_offset",
-            "owner": "F_8BAB",
-            "public": "_puzzle_run",
-            "addend": 0,
-            "evidence": "functions/F_8BAB.entry"
-          },
-          "_sound_stop_reset": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_CB48.entry",
-            "owner": "F_CB48",
-            "public": "_sound_stop_reset",
-            "addend": 0
-          },
-          "_g00bc": {
-            "offset": 188,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_FAEC.phys"
-          },
-          "_g072e": {
-            "offset": 1838,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2025E.phys"
-          },
-          "_rect_queue_write_ptr": {
-            "offset": 16580,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_23BF4.phys"
-          },
-          "_ui_gfx_blob": {
-            "offset": 50634,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2C0FA.phys"
-          }
+          "offset": 2771
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_31C4.json",
-        "entry_sha256": "42232f140ac7fe121f4ac358dc982de5b701a9c2cc49eb57a382c3b23910cd67",
-        "record_sha256": "faf812f4877995a201b93a3b3c780b8dda4058a61b0ae4e02939e625f89ed1b9",
-        "source_sha256": "599b620e6d4198874d039630102ba78941f3fa2db0fd66b2d8bc9369e78d59e7",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "members": [
-        "F_31C4",
-        "F_329F",
-        "F_32FA",
-        "F_338A",
-        "F_36F0",
-        "F_3986"
-      ],
-      "sources": [
-        "src/BOARDSCR.C"
-      ],
-      "recipe": "recipes/modules/C_31C4_3986.json",
-      "object": "R0011.OBJ",
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_31C4",
           "symbol": "_board_scroll_transition",
-          "offset": 0
+          "offset": 4533
         },
         {
           "owner": "F_329F",
           "symbol": "_f329f",
-          "offset": 219
+          "offset": 4752
         },
         {
           "owner": "F_32FA",
           "symbol": "_f32fa",
-          "offset": 310
+          "offset": 4843
         },
         {
           "owner": "F_338A",
           "symbol": "_board_run_unit_script",
-          "offset": 454
+          "offset": 4987
         },
         {
           "owner": "F_36F0",
           "symbol": "_board_advance_unit_moves",
-          "offset": 1324
+          "offset": 5857
         },
         {
           "owner": "F_3986",
           "symbol": "_f3986",
-          "offset": 1986
+          "offset": 6519
         }
       ],
       "data_component_offsets": {},
@@ -1293,16 +853,15 @@
       "data_owners": []
     },
     {
-      "id": "F_3A75",
+      "id": "C_3A75_4A93",
       "kind": "MATCHING_C",
       "start": 15477,
-      "end": 18199,
-      "source": "src/TURNLOOP.C",
+      "end": 19623,
       "build": {
         "segment": "_TEXT",
         "public": "_turn_loop_run",
         "span": 1,
-        "flags_append": "-B",
+        "flags_append": "",
         "bindings": {
           "_g732": {
             "offset": 1842,
@@ -1792,916 +1351,14 @@
       "expected_sha256": "d199ef351c62aaecbba096c093543c2ac78252b5769f100c42441b0f7a432e1b",
       "matching_status": "EQUAL",
       "classification": "code",
-      "object": "R0012.OBJ",
       "members": [
-        "F_3A75"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-B"
-      ],
-      "publics": [
-        {
-          "owner": "F_3A75",
-          "symbol": "_turn_loop_run",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4517",
-      "start": 18199,
-      "end": 18478,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/BRDTERR.C",
-      "artifact": "regions/F_4517.bin",
-      "expected_sha256": "3bc647cc2cb5a264b5f5ec78c0ecfee2447b57ba2b665e2ba8ddeb964ba35609",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_board_terrain_resources_load",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_resource_load_record": {
-            "coordinate": "code_offset",
-            "owner": "F_656C",
-            "public": "_resource_load_record",
-            "addend": 0,
-            "evidence": "functions/F_656C.entry"
-          },
-          "_movmem": {
-            "coordinate": "code_offset",
-            "owner": "LIB_MOVMEM",
-            "public": "_movmem",
-            "addend": 0,
-            "evidence": "CC.LIB/MOVMEM"
-          },
-          "_resource_load_record_into": {
-            "coordinate": "code_offset",
-            "owner": "F_68AA",
-            "public": "_resource_load_record_into",
-            "addend": 0,
-            "evidence": "functions/F_68AA.entry"
-          },
-          "_g73c": {
-            "offset": 1852,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS word in complete F_4517 fixups"
-          },
-          "_g724": {
-            "offset": 1828,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS table in complete F_4517 fixups"
-          },
-          "_ui_gfx_shadow_a": {
-            "offset": 50630,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2C0F6.phys"
-          },
-          "_s79bf": {
-            "offset": 31167,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS source array in complete F_4517 fixups"
-          },
-          "_a74a2": {
-            "offset": 29858,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS source array in complete F_4517 fixups"
-          },
-          "_s8c12": {
-            "offset": 35858,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS source block in complete F_4517 fixups"
-          },
-          "_g99d6": {
-            "offset": 39382,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_29506.phys"
-          },
-          "_a72b2": {
-            "offset": 29362,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct DS far-pointer table in complete F_4517 fixups"
-          }
-        }
-      },
-      "provenance": {
-        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "upstream_entry": "controls/correspondence/F_4517.json",
-        "upstream_extent_sha256": "3bc647cc2cb5a264b5f5ec78c0ecfee2447b57ba2b665e2ba8ddeb964ba35609"
-      },
-      "object": "R0013.OBJ",
-      "members": [
-        "F_4517"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_4517",
-          "symbol": "_board_terrain_resources_load",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_462E",
-      "start": 18478,
-      "end": 18707,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/MENUBKDP.C",
-      "original_symbol": "F_462E",
-      "artifact": "regions/F_462E.bin",
-      "expected_sha256": "fee06e78b81426fc16f7b490f5d55ffebf2ff6e616fc9097f4144eed73e5caac",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_menu_backdrop_paint",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_menu_resources_load": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1D47.entry",
-            "owner": "F_1D47",
-            "public": "_menu_resources_load",
-            "addend": 0
-          },
-          "_value_parity": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1EC0.entry",
-            "owner": "F_1EC0",
-            "public": "_value_parity",
-            "addend": 0
-          },
-          "_board_terrain_resources_load": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_4517.entry",
-            "owner": "F_4517",
-            "public": "_board_terrain_resources_load",
-            "addend": 0
-          },
-          "_resource_load_record": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry",
-            "owner": "F_656C",
-            "public": "_resource_load_record",
-            "addend": 0
-          },
-          "_face7": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_ACE7.entry",
-            "owner": "F_ACE7",
-            "public": "_face7",
-            "addend": 0
-          },
-          "_g0b3ae": {
-            "offset": 45998,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/REGION_2AEDE.phys"
-          },
-          "_g4374": {
-            "offset": 17268,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_23EA4.phys"
-          },
-          "_g43b4": {
-            "offset": 17332,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/REGION_23EE4.phys"
-          },
-          "_g9ade": {
-            "offset": 39646,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2960E.phys"
-          },
-          "_board_record_index": {
-            "offset": 49082,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAEA.phys"
-          },
-          "_board_records": {
-            "offset": 49084,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAEC.phys"
-          },
-          "_ui_gfx_shadow_a": {
-            "offset": 50630,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2C0F6.phys"
-          },
-          "_setmem": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F304.entry",
-            "owner": "LIB_MEMSET",
-            "public": "_setmem",
-            "addend": 0
-          },
-          "_movmem": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F348.entry",
-            "owner": "LIB_MOVMEM",
-            "public": "_movmem",
-            "addend": 0
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_462E.json",
-        "entry_sha256": "3b39ada12a09523e9e42c900ae2236f78dd7199bed69b0f771fb044ababd3b7b",
-        "record_sha256": "7a44cc6cffb1848fa0c136ec928258c339535c75ddaaf7dd90bfe7e78b8840e5",
-        "source_sha256": "44c2126a78fe565940fd05224ca0e5c5c34f152dc2967c114398da36b369adf0",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0014.OBJ",
-      "members": [
-        "F_462E"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_462E",
-          "symbol": "_menu_backdrop_paint",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4713",
-      "start": 18707,
-      "end": 19134,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/LVLDRV.C",
-      "original_symbol": "F_4713",
-      "artifact": "regions/F_4713.bin",
-      "expected_sha256": "eaaf21342804084ca9685f9c7d9b259034d671695cce373ae4b800b0d0ea85a4",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_level_driver_run",
-        "span": 1,
-        "flags_append": "-B",
-        "bindings": {
-          "_b4374": {
-            "offset": 17268,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_23EA4.phys"
-          },
-          "_b4375": {
-            "offset": 17269,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_23EA5.phys"
-          },
-          "_b4376": {
-            "offset": 17270,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_23EA6.phys"
-          },
-          "_gfx_color_select": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry",
-            "owner": "F_01CE",
-            "public": "_gfx_color_select",
-            "addend": 0
-          },
-          "_gfx_box": {
-            "offset": 927,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_039F.entry"
-          },
-          "_gfx_clear_rect": {
-            "offset": 936,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_03A8.entry"
-          },
-          "_campaign_node_index": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1EA5.entry",
-            "owner": "F_1EA5",
-            "public": "_campaign_node_index",
-            "addend": 0
-          },
-          "_tick_div8": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1EB4.entry",
-            "owner": "F_1EB4",
-            "public": "_tick_div8",
-            "addend": 0
-          },
-          "_value_parity": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1EC0.entry",
-            "owner": "F_1EC0",
-            "public": "_value_parity",
-            "addend": 0
-          },
-          "_sprite_draw_cursor": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_2269.entry",
-            "owner": "F_2269",
-            "public": "_sprite_draw_cursor",
-            "addend": 0
-          },
-          "_board_redraw_paint": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_2AE2.entry",
-            "owner": "F_2AE2",
-            "public": "_board_redraw_paint",
-            "addend": 0
-          },
-          "_turn_loop_run": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_3A75.entry",
-            "owner": "F_3A75",
-            "public": "_turn_loop_run",
-            "addend": 0
-          },
-          "_menu_backdrop_paint": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_462E.entry",
-            "owner": "F_462E",
-            "public": "_menu_backdrop_paint",
-            "addend": 0
-          },
-          "_f4eeb": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_4EEB.entry",
-            "owner": "F_4EEB",
-            "public": "_f4eeb",
-            "addend": 0
-          },
-          "_hud_panel_open": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6FDA.entry",
-            "owner": "F_6FDA",
-            "public": "_hud_panel_open",
-            "addend": 0
-          },
-          "_hud_scroll_reset": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_726A.entry",
-            "owner": "F_726A",
-            "public": "_hud_scroll_reset",
-            "addend": 0
-          },
-          "_f7df1": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_7DF1.entry",
-            "owner": "F_7DF1",
-            "public": "_f7df1",
-            "addend": 0
-          },
-          "_puzzle_clear_grid": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_8A37.entry",
-            "owner": "F_8A37",
-            "public": "_puzzle_clear_grid",
-            "addend": 0
-          },
-          "_roundend_round_setup": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_9B68.entry",
-            "owner": "F_9B68",
-            "public": "_roundend_round_setup",
-            "addend": 0
-          },
-          "_anim_step_loop": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_9F40.entry",
-            "owner": "F_9F40",
-            "public": "_anim_step_loop",
-            "addend": 0
-          },
-          "_level_play_chapter": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_C15E.entry",
-            "owner": "F_C15E",
-            "public": "_level_play_chapter",
-            "addend": 0
-          },
-          "_tutorial_hint_dialog_show": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_D4B3.entry",
-            "owner": "F_D4B3",
-            "public": "_tutorial_hint_dialog_show",
-            "addend": 0
-          },
-          "_resource_record_cache_reset": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_D5F9.entry",
-            "owner": "F_D5F9",
-            "public": "_resource_record_cache_reset",
-            "addend": 0
-          },
-          "_g1776": {
-            "offset": 6006,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212A6.phys"
-          },
-          "_g71e": {
-            "offset": 1822,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2024E.phys"
-          },
-          "_g722": {
-            "offset": 1826,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P20252.phys"
-          },
-          "_g72c": {
-            "offset": 1836,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2025C.phys"
-          },
-          "_g72e": {
-            "offset": 1838,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2025E.phys"
-          },
-          "_g736": {
-            "offset": 1846,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P20266.phys"
-          },
-          "_g738": {
-            "offset": 1848,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P20268.phys"
-          },
-          "_g73a": {
-            "offset": 1850,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2026A.phys"
-          },
-          "_g73e": {
-            "offset": 1854,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2026E.phys"
-          },
-          "_g8bea": {
-            "offset": 35818,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2871A.phys"
-          },
-          "_g8bec": {
-            "offset": 35820,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2871C.phys"
-          },
-          "_g8bee": {
-            "offset": 35822,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2871E.phys"
-          },
-          "_g8bf4": {
-            "offset": 35828,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_28724.phys"
-          },
-          "_g8bf6": {
-            "offset": 35830,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_28726.phys"
-          },
-          "_g8bf8": {
-            "offset": 35832,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_28728.phys"
-          },
-          "_g9ade": {
-            "offset": 39646,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2960E.phys"
-          },
-          "_gb07a": {
-            "offset": 45178,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2ABAA.phys"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_4713.json",
-        "entry_sha256": "207f8072753c6dbd9aead53e4d63a53fb71478e6df19c96097a2812c5ceed187",
-        "record_sha256": "048735137041e8f8a79c177ab6bfa051e6fea2bce9dd2402146fbdacec684965",
-        "source_sha256": "6c296e5a8c7ab6ad64ea69d4fc0379931cb63855252d8cf096477b115f2dc349",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0015.OBJ",
-      "members": [
-        "F_4713"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-B"
-      ],
-      "publics": [
-        {
-          "owner": "F_4713",
-          "symbol": "_level_driver_run",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_48BE",
-      "start": 19134,
-      "end": 19213,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/BLITPAT.C",
-      "original_symbol": "F_48BE",
-      "artifact": "regions/F_48BE.bin",
-      "expected_sha256": "1c1aab619dad2354ecb25d8f18d42c6468c18f1dc7de2b8330b2d0da5479696a",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_blitter_patch_variant",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_resource_load_record": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_656C.entry",
-            "owner": "F_656C",
-            "public": "_resource_load_record",
-            "addend": 0
-          },
-          "_display_mode": {
-            "offset": 49101,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAFD.phys"
-          },
-          "_ui_gfx_shadow_a": {
-            "offset": 50630,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2C0F6.phys"
-          },
-          "_memmove": {
-            "coordinate": "code_offset",
-            "evidence": "substrate/LIB_MOVMEM.json extent.address + CC.LIB/MOVMEM _TEXT+0x54",
-            "owner": "LIB_MOVMEM",
-            "public": "_memmove",
-            "addend": 0
-          },
-          "_runtime_base": {
-            "coordinate": "code_offset",
-            "owner": "RUNTIME_BLOCK",
-            "public": "_runtime_base",
-            "addend": 0,
-            "evidence": "functions/F_039C.entry"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_48BE.json",
-        "entry_sha256": "5735bcc514adc264fd6b14b3c1b2fe8d8ee4ba98bb80f0789167ac81fe27b027",
-        "record_sha256": "00134343366d64d55266733788d45e5de8907766c13c1c61dffb19db7211e851",
-        "source_sha256": "691d9f6589400e4a27fa8c840b67b48aba084cac8084defaa2028db1646609f5",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0016.OBJ",
-      "members": [
-        "F_48BE"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_48BE",
-          "symbol": "_blitter_patch_variant",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_490D",
-      "start": 19213,
-      "end": 19267,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/BOOTSEED.C",
-      "original_symbol": "F_490D",
-      "artifact": "regions/F_490D.bin",
-      "expected_sha256": "77d3ab8770ac1ddef70900165b6df26b1924447dc28a63fe367085fccab4f633",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_boot_init_seed_rand",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_video_alloc_framebuffer": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_0281.entry",
-            "owner": "F_0281",
-            "public": "_video_alloc_framebuffer",
-            "addend": 0
-          },
-          "_sprite_load_boot_sheets": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_21A9.entry",
-            "owner": "F_21A9",
-            "public": "_sprite_load_boot_sheets",
-            "addend": 0
-          },
-          "_resource_stripe_table_load": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_21DB.entry",
-            "owner": "F_21DB",
-            "public": "_resource_stripe_table_load",
-            "addend": 0
-          },
-          "_blitter_patch_variant": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_48BE.entry",
-            "owner": "F_48BE",
-            "public": "_blitter_patch_variant",
-            "addend": 0
-          },
-          "_dos_critical_error_install": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_625D.entry",
-            "owner": "F_625D",
-            "public": "_dos_critical_error_install",
-            "addend": 0
-          },
-          "_keyboard_irq_install": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_695E.entry",
-            "owner": "F_695E",
-            "public": "_keyboard_irq_install",
-            "addend": 0
-          },
-          "_timer_irq_install": {
-            "coordinate": "code_offset",
-            "owner": "F_6B7A",
-            "public": "_timer_irq_install",
-            "addend": 0,
-            "evidence": "functions/F_6B7A.entry"
-          },
-          "_sprite_sheet_select": {
-            "coordinate": "code_offset",
-            "owner": "F_6CA6",
-            "public": "_sprite_sheet_select",
-            "addend": 0,
-            "evidence": "functions/F_6CA6.entry"
-          },
-          "_ui_gfx_alloc": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_D344.entry",
-            "owner": "F_D344",
-            "public": "_ui_gfx_alloc",
-            "addend": 0
-          },
-          "_player_record_load_publish": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_D555.entry",
-            "owner": "F_D555",
-            "public": "_player_record_load_publish",
-            "addend": 0
-          },
-          "_srand": {
-            "coordinate": "code_offset",
-            "owner": "LIB_RAND",
-            "public": "_srand",
-            "addend": 0,
-            "evidence": "functions/F_F8FE.entry"
-          },
-          "_biostime": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_FA0F.entry",
-            "owner": "LIB_BIOSEQU",
-            "public": "_biostime",
-            "addend": 0
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_490D.json",
-        "entry_sha256": "39815eb2a8ffcc9b4510258aa258d6fc7320a50616a00714ca84113838e98a58",
-        "record_sha256": "6aa9d5b1aec3f15ac064ca29204451f9fc135442ab913d531cbea3caee1aa7ac",
-        "source_sha256": "1edb3a9d81862c6b7dc3e4d09812a555062bf8250eedeeb8de09c6800d20cbde",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0017.OBJ",
-      "members": [
-        "F_490D"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_490D",
-          "symbol": "_boot_init_seed_rand",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4943",
-      "kind": "MATCHING_C",
-      "start": 19267,
-      "end": 19427,
-      "source": "src/CAMPADV.C",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_campaign_chapter_advance",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_current_slot": {
-            "offset": 5101,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P20F1D.phys"
-          },
-          "_slot_table": {
-            "offset": 50288,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BFA0.phys"
-          },
-          "_g9ade": {
-            "offset": 39646,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2960E.phys"
-          },
-          "_g73e": {
-            "offset": 1854,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2026E.phys"
-          },
-          "_value_parity": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_1EC0.entry",
-            "owner": "F_1EC0",
-            "public": "_value_parity",
-            "addend": 0
-          },
-          "_level_driver_run": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_4713.entry",
-            "owner": "F_4713",
-            "public": "_level_driver_run",
-            "addend": 0
-          }
-        }
-      },
-      "artifact": "regions/F_4943.bin",
-      "classification": "code",
-      "matching_status": "EQUAL",
-      "expected_sha256": "43dd3ad6f322a7b78f1deed7a42d5409ae08b30a88a19263ab65ca552cd78405",
-      "provenance": {
-        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "upstream_entry_sha256": "07fc0daea97017abd8d9cd8632e932d3c2fd14ea9c6251baf12c9f4c9bd6d6b0",
-        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
-        "boundary_recovery": {
-          "upstream_length": 157,
-          "complete_length": 160,
-          "reason": "Loop exit at CS:49E0 restores SI and BP then returns; fresh C includes all three epilogue bytes; next owner F_49E3 starts at CS:49E3"
-        }
-      },
-      "object": "R0018.OBJ",
-      "members": [
-        "F_4943"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_4943",
-          "symbol": "_campaign_chapter_advance",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "C_49E3_4A93",
-      "kind": "MATCHING_C",
-      "start": 19427,
-      "end": 19623,
-      "build": {
-        "segment": "_TEXT",
-        "public": "_game_shutdown",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_sound_stop_reset": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_CB48.entry",
-            "owner": "F_CB48",
-            "public": "_sound_stop_reset",
-            "addend": 0
-          },
-          "_fc834": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_C834.entry",
-            "owner": "F_C834",
-            "public": "_fc834",
-            "addend": 0
-          },
-          "_f697d": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_697D.entry",
-            "owner": "F_697D",
-            "public": "_f697d",
-            "addend": 0
-          },
-          "_timer_irq_restore": {
-            "coordinate": "code_offset",
-            "owner": "F_6BAC",
-            "public": "_timer_irq_restore",
-            "addend": 0,
-            "evidence": "functions/F_6BAC.entry"
-          }
-        }
-      },
-      "artifact": "regions/F_49E3.bin",
-      "classification": "code",
-      "matching_status": "EQUAL",
-      "expected_sha256": "f2d0c9b92ad3c504b71d0094925a8dbecfb3883006531e1dfad6db0576856e38",
-      "provenance": {
-        "method": "local C reconstruction and fresh full-extent OMF binding",
-        "upstream_entry_sha256": "a8f1192b3438cb3758bda9f1662f4ce786dac1dbecfbe00dbb0f7c951f7b09ca",
-        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "members": [
+        "F_3A75",
+        "F_4517",
+        "F_462E",
+        "F_4713",
+        "F_48BE",
+        "F_490D",
+        "F_4943",
         "F_49E3",
         "F_49F0",
         "F_4A93"
@@ -2709,8 +1366,8 @@
       "sources": [
         "src/GAME.C"
       ],
-      "recipe": "recipes/modules/C_49E3_4A93.json",
-      "object": "R0019.OBJ",
+      "recipe": "recipes/modules/C_3A75_4A93.json",
+      "object": "R0010.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2721,19 +1378,54 @@
       ],
       "publics": [
         {
+          "owner": "F_3A75",
+          "symbol": "_turn_loop_run",
+          "offset": 0
+        },
+        {
+          "owner": "F_4517",
+          "symbol": "_board_terrain_resources_load",
+          "offset": 2722
+        },
+        {
+          "owner": "F_462E",
+          "symbol": "_menu_backdrop_paint",
+          "offset": 3001
+        },
+        {
+          "owner": "F_4713",
+          "symbol": "_level_driver_run",
+          "offset": 3230
+        },
+        {
+          "owner": "F_48BE",
+          "symbol": "_blitter_patch_variant",
+          "offset": 3657
+        },
+        {
+          "owner": "F_490D",
+          "symbol": "_boot_init_seed_rand",
+          "offset": 3736
+        },
+        {
+          "owner": "F_4943",
+          "symbol": "_campaign_chapter_advance",
+          "offset": 3790
+        },
+        {
           "owner": "F_49E3",
           "symbol": "_game_shutdown",
-          "offset": 0
+          "offset": 3950
         },
         {
           "owner": "F_49F0",
           "symbol": "_game_run",
-          "offset": 13
+          "offset": 3963
         },
         {
           "owner": "F_4A93",
           "symbol": "_main",
-          "offset": 176
+          "offset": 4126
         }
       ],
       "data_component_offsets": {},
@@ -2771,7 +1463,7 @@
         "source_sha256": "b8b37dffd2b3a38a22cea8b2675b4ccb81eff11ffb17840947e8acf23312ad64",
         "change": "Translate the complete four-register rectangle clipping routine into Turbo C inline assembly with its existing near-call binding."
       },
-      "object": "R0020.OBJ",
+      "object": "R0011.OBJ",
       "members": [
         "F_4AA8"
       ],
@@ -2805,15 +1497,66 @@
         "public": "_f4b0c",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_gfx_color_select": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_gfx_color_select",
+            "addend": 0,
+            "evidence": "functions/F_01CE.entry"
+          },
+          "_gfx_copy_rect": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_gfx_vline": {
+            "offset": 933,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A5.entry"
+          },
+          "_fcaf1": {
+            "coordinate": "code_offset",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0,
+            "evidence": "functions/F_CAF1.entry"
+          },
+          "_record_field_skip_n": {
+            "coordinate": "code_offset",
+            "owner": "F_2A2D",
+            "public": "_record_field_skip_n",
+            "addend": 0,
+            "evidence": "functions/F_2A2D.entry"
+          },
+          "_board_run_unit_script": {
+            "coordinate": "code_offset",
+            "owner": "F_338A",
+            "public": "_board_run_unit_script",
+            "addend": 0,
+            "evidence": "functions/F_338A.entry"
+          },
+          "_board_advance_unit_moves": {
+            "coordinate": "code_offset",
+            "owner": "F_36F0",
+            "public": "_board_advance_unit_moves",
+            "addend": 0,
+            "evidence": "functions/F_36F0.entry"
+          },
+          "_rand": {
+            "offset": 63759,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F90F.entry"
+          }
+        },
         "module_segments": {}
       },
       "provenance": {
         "method": "recursive control-flow reconstruction of the complete non-returning command interpreter; fresh TASM object equality",
         "source_quality": "SYMBOLIC_ASM",
-        "change": "Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations. Direct relative calls preserve their original no-FIXUPP encoding through CALL_REL."
+        "change": "Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations. Direct relative calls are now named externs (public index and existing sibling bindings) instead of the CALL_REL raw-encoding macro; one call (code_F90F) remains relative, out of scope for this closure round."
       },
-      "object": "R0021.OBJ",
+      "object": "R0012.OBJ",
       "members": [
         "F_4B0C"
       ],
@@ -2884,7 +1627,7 @@
         "source_sha256": "6c71f23def94777074509b08594135baf633ef5aceb5b9fd6e6fce0f849a9c18",
         "change": "Translate the complete record-table walk into a Turbo C source unit with byte-coded DI instructions preserving the historical register-save contract and five existing fixups."
       },
-      "object": "R0022.OBJ",
+      "object": "R0013.OBJ",
       "members": [
         "F_4E9F"
       ],
@@ -2960,7 +1703,7 @@
         "prior_source": "src/F_4EEB.C",
         "change": "Replace the remaining byte-coded instruction fragments with named 16-bit TASM instructions and labels."
       },
-      "object": "R0023.OBJ",
+      "object": "R0014.OBJ",
       "members": [
         "F_4EEB"
       ],
@@ -2980,11 +1723,10 @@
       "data_owners": []
     },
     {
-      "id": "F_4F63",
+      "id": "C_4F63_520A",
       "kind": "MATCHING_C",
-      "source": "src/DOSWRT2.C",
       "start": 20835,
-      "end": 20886,
+      "end": 21793,
       "expected_sha256": "7641c4223e2652ec646ba11639522824006c22e23b275d3a8d5459d84f842b1b",
       "classification": "code",
       "artifact": "regions/F_4F63.bin",
@@ -3008,10 +1750,19 @@
       "provenance": {
         "c_recovery": "Exact 51-byte DOS handle-2 writer using Turbo C register pseudo-variables and __int__; no inline ASM or byte emission."
       },
-      "object": "R0024.OBJ",
       "members": [
-        "F_4F63"
+        "F_4F63",
+        "F_4F96",
+        "F_50C1",
+        "F_50D2",
+        "F_53BF",
+        "F_520A"
       ],
+      "sources": [
+        "src/STARTUP.C"
+      ],
+      "recipe": "recipes/modules/C_4F63_520A.json",
+      "object": "R0015.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -3025,298 +1776,31 @@
           "owner": "F_4F63",
           "symbol": "_dos_write_handle2",
           "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4F96",
-      "kind": "MATCHING_C",
-      "source": "src/CMDLINE.C",
-      "start": 20886,
-      "end": 21185,
-      "expected_sha256": "439951f6eb58b814bc86849bccc2df31a9b9ee4f627512678d4aeb5bb303eaf7",
-      "classification": "code",
-      "artifact": "regions/F_4F96.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_cmdline_parse_args",
-        "span": 1,
-        "flags_append": "-B",
-        "bindings": {
-          "_display_mode": {
-            "offset": 49101,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAFD.phys"
-          },
-          "_g1778": {
-            "offset": 6008,
-            "coordinate": "DGROUP_offset"
-          },
-          "__argc": {
-            "offset": 107,
-            "coordinate": "DGROUP_offset",
-            "evidence": "complete library fixup target with object addend subtraction"
-          },
-          "__argv": {
-            "offset": 109,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_FA9D.phys"
-          }
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "c_recovery": "All 299 bytes reproduced by ordinary Turbo C with -B and pinned TASM. Both switch comparisons and shortened-jump NOPs arise naturally; no inline ASM or object corrections."
-      },
-      "object": "R0025.OBJ",
-      "members": [
-        "F_4F96"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-B"
-      ],
-      "publics": [
         {
           "owner": "F_4F96",
           "symbol": "_cmdline_parse_args",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_50C1",
-      "start": 21185,
-      "end": 21202,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/BIOSEQP.C",
-      "original_symbol": "F_50C1",
-      "artifact": "regions/F_50C1.bin",
-      "expected_sha256": "7e1d7877fd26b274c9d7574671e331659f374843f89874cdaa22c3b3f75e6d01",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_bios_equipment_probe",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_gbfcc": {
-            "offset": 49100,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAFC.phys"
-          }
+          "offset": 51
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_50C1.json",
-        "entry_sha256": "9b46e36a13e1adb06162eea6802089d20609e38b998e71f8be200b0d5217d870",
-        "record_sha256": "d98c809af4688efba0cab846c13e38c8de695b31a7ee61fb0991c71744ebee13",
-        "source_sha256": "1b8d91b216e57a736a696b6f6770b4259cd4fe98f2c23b2258ffada6cb1082b9",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0026.OBJ",
-      "members": [
-        "F_50C1"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_50C1",
           "symbol": "_bios_equipment_probe",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_50D2_53BF",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_50D2_53BF.ASM",
-      "start": 21202,
-      "end": 21514,
-      "members": [
-        "F_50D2",
-        "F_53BF"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f50d2",
-        "span": 2,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Adjacent display-adapter detection and VGA mode selection. The combined source preserves F_50D2 forward EXTRN placement and appends F_53BF as a second ordinary _TEXT contribution.",
-      "object": "R0027.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
+          "offset": 350
+        },
         {
           "owner": "F_50D2",
           "symbol": "_f50d2",
-          "offset": 0
+          "offset": 367
         },
         {
           "owner": "F_53BF",
           "symbol": "_f53bf",
-          "offset": 237
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_520A",
-      "start": 21514,
-      "end": 21793,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/VIDMODE.C",
-      "original_symbol": "F_520A",
-      "artifact": "regions/F_520A.bin",
-      "expected_sha256": "893e188e03f07f6d8131021a063773813c2c0717158c9dcffaeef13f8dc0a9bc",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_video_mode_select",
-        "span": 1,
-        "flags_append": "-B",
-        "bindings": {
-          "_ba22": {
-            "offset": 2594,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P20552.phys"
-          },
-          "_dos_write_handle2": {
-            "coordinate": "code_offset",
-            "owner": "F_4F63",
-            "public": "_dos_write_handle2",
-            "addend": 0,
-            "evidence": "functions/F_4F63.entry"
-          },
-          "_cmdline_parse_args": {
-            "coordinate": "code_offset",
-            "owner": "F_4F96",
-            "public": "_cmdline_parse_args",
-            "addend": 0,
-            "evidence": "functions/F_4F96.entry"
-          },
-          "_bios_equipment_probe": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_50C1.entry",
-            "owner": "F_50C1",
-            "public": "_bios_equipment_probe",
-            "addend": 0
-          },
-          "_f50d2": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_50D2.entry",
-            "owner": "F_50D2",
-            "public": "_f50d2",
-            "addend": 0
-          },
-          "__argv": {
-            "offset": 109,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_FA9D.phys"
-          },
-          "__osmajor": {
-            "offset": 125,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_FAAD.phys"
-          },
-          "_display_mode": {
-            "offset": 49101,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAFD.phys"
-          },
-          "_s859": {
-            "offset": 2137,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/ARRAY_FAEB.phys + 0x79E"
-          },
-          "_s8a8": {
-            "offset": 2216,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/ARRAY_FAEB.phys + 0x7ED"
-          },
-          "_farcoreleft": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F3DA.entry",
-            "owner": "LIB_FCORELFT",
-            "public": "_farcoreleft",
-            "addend": 0
-          },
-          "_getdisk": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_F725.entry",
-            "owner": "LIB_CHDIR",
-            "public": "_getdisk",
-            "addend": 0
-          },
-          "_f53bf": {
-            "coordinate": "code_offset",
-            "owner": "F_53BF",
-            "public": "_f53bf",
-            "addend": 0,
-            "evidence": "functions/F_51BF.entry"
-          }
+          "offset": 604
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_520A.json",
-        "entry_sha256": "119492a3a6b8b9df1ee89a5a283c495aef24715bb78025f4e7ffbda43fa2a176",
-        "record_sha256": "d43829f792f843107fc7bba6d606f9fb83450b43a6e6a52b32b9b2a2d7a0e939",
-        "source_sha256": "4ec72c7b876c2a29923f3e4921591463a2dd86a188a61c20d11b1de892f2de97",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0028.OBJ",
-      "members": [
-        "F_520A"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-B"
-      ],
-      "publics": [
         {
           "owner": "F_520A",
           "symbol": "_video_mode_select",
-          "offset": 0
+          "offset": 679
         }
       ],
       "data_component_offsets": {},
@@ -3371,7 +1855,7 @@
         "src/INTRO.C"
       ],
       "recipe": "recipes/modules/C_5321_56C6.json",
-      "object": "R0029.OBJ",
+      "object": "R0016.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -3519,7 +2003,7 @@
         "src/HITTEST.C"
       ],
       "recipe": "recipes/modules/C_5A3B_6021.json",
-      "object": "R0030.OBJ",
+      "object": "R0017.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -3605,7 +2089,7 @@
         },
         "module_segments": {}
       },
-      "object": "R0031.OBJ",
+      "object": "R0018.OBJ",
       "members": [
         "F_6036"
       ],
@@ -3680,7 +2164,7 @@
         "source_sha256": "ae05ce33f00bfe8bb9dada6cb8f3bc48d858f73727a827acf01b11a8aca7df6e",
         "change": "Preserve the animated-tile ticker instruction stream, six data fixups, four near calls and the DGROUP segment relocation in a C translation unit. BP/SI/DI and LDS/LES usage require inline assembly for exact codegen."
       },
-      "object": "R0032.OBJ",
+      "object": "R0019.OBJ",
       "members": [
         "F_60A9"
       ],
@@ -3738,7 +2222,7 @@
         },
         "module_segments": {}
       },
-      "object": "R0033.OBJ",
+      "object": "R0020.OBJ",
       "members": [
         "F_6181"
       ],
@@ -3813,7 +2297,7 @@
         "src/CRITERR.C"
       ],
       "recipe": "recipes/modules/C_622C_625D.json",
-      "object": "R0034.OBJ",
+      "object": "R0021.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -3952,7 +2436,7 @@
         "src/RESOURCE.C"
       ],
       "recipe": "recipes/modules/C_6266_68AA.json",
-      "object": "R0035.OBJ",
+      "object": "R0022.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4074,7 +2558,7 @@
         "upstream_draft_sha256": "7920dc6dea6688f2c2ee9bf911ee896c8a38803a95d25ef8a5775aa00e7670df",
         "change": "Reverse the two chained flag assignments to reproduce store order; declare aliases explicitly"
       },
-      "object": "R0036.OBJ",
+      "object": "R0023.OBJ",
       "members": [
         "F_68CF"
       ],
@@ -4158,7 +2642,7 @@
         "src/KEYIRQ.C"
       ],
       "recipe": "recipes/modules/C_695E_697D.json",
-      "object": "R0037.OBJ",
+      "object": "R0024.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4184,9 +2668,9 @@
       "data_owners": []
     },
     {
-      "id": "C_6990_6997",
+      "id": "C_6990_6B74",
       "start": 27536,
-      "end": 27550,
+      "end": 28026,
       "kind": "MATCHING_C",
       "classification": "code",
       "original_symbol": "F_6990",
@@ -4217,13 +2701,18 @@
       },
       "members": [
         "F_6990",
-        "F_6997"
+        "F_6997",
+        "F_699E",
+        "F_6B1A",
+        "F_6B4A",
+        "F_6B66",
+        "F_6B74"
       ],
       "sources": [
-        "src/KEYCHAIN.C"
+        "src/KEYBOARD.C"
       ],
-      "recipe": "recipes/modules/C_6990_6997.json",
-      "object": "R0038.OBJ",
+      "recipe": "recipes/modules/C_6990_6B74.json",
+      "object": "R0025.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4242,274 +2731,31 @@
           "owner": "F_6997",
           "symbol": "_keyboard_chain_disable",
           "offset": 7
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_699E",
-      "start": 27550,
-      "end": 27930,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/KEYIRQH.C",
-      "original_symbol": "F_699E",
-      "artifact": "regions/F_699E.bin",
-      "expected_sha256": "641531806bd04b1d59edbc711e024640fb84c889249860560b03504436ac034c",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_keyboard_irq_handler",
-        "span": 1,
-        "flags_append": "-B",
-        "module_segments": {},
-        "bindings": {
-          "_sound_effects_toggle": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_68CF.entry",
-            "owner": "F_68CF",
-            "public": "_sound_effects_toggle",
-            "addend": 0
-          },
-          "_gb68": {
-            "offset": 2920,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P20698.phys"
-          },
-          "_gb6a": {
-            "offset": 2922,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2069A.phys"
-          },
-          "_gb6c": {
-            "offset": 2924,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2069C.phys"
-          },
-          "_gb6e": {
-            "offset": 2926,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2069E.phys"
-          },
-          "_gb70": {
-            "offset": 2928,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206A0.phys"
-          },
-          "_keyboard_state": {
-            "offset": 2930,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206A2.phys"
-          },
-          "_int9_saved_vector": {
-            "offset": 49356,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BBFC.phys"
-          },
-          "_b856": {
-            "coordinate": "DGROUP_offset",
-            "offset": 2134,
-            "evidence": "Existing _b856 storage alias; historical keyboard-mode byte operand"
-          }
-        }
-      },
-      "provenance": {
-        "c_recovery": "Exact 380-byte Turbo C interrupt function with native __sti__, __inportb__, __outportb__ intrinsics and interrupt-qualified vector call; no inline ASM or explicit byte emission."
-      },
-      "object": "R0039.OBJ",
-      "members": [
-        "F_699E"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-B"
-      ],
-      "publics": [
+        },
         {
           "owner": "F_699E",
           "symbol": "_keyboard_irq_handler",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_6B1A_6B4A",
-      "kind": "MATCHING_C",
-      "source": "src/KEYBIOS.C",
-      "start": 27930,
-      "end": 28006,
-      "members": [
-        "F_6B1A",
-        "F_6B4A"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f6b1a",
-        "span": 2,
-        "flags_append": "",
-        "bindings": {
-          "_menu_list_active": {
-            "coordinate": "code_offset",
-            "owner": "F_792C",
-            "public": "_menu_list_active",
-            "addend": 0,
-            "evidence": "functions/F_792C.entry"
-          },
-          "_menu_loop_run": {
-            "coordinate": "code_offset",
-            "owner": "F_7964",
-            "public": "_menu_loop_run",
-            "addend": 0,
-            "evidence": "functions/F_7964.entry"
-          }
+          "offset": 14
         },
-        "module_segments": {}
-      },
-      "evidence": "One Turbo C translation unit with inline asm (src/KEYBIOS.C) reproduces all 76 bytes and both public offsets; the module has no far relocations, so the assembler-route FIXUPP order is not observable. asm/M_6B1A_6B4A.ASM is retained as reference.",
-      "status": "RECOVERED_C_MODULE",
-      "object": "R0040.OBJ",
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6B1A",
           "symbol": "_f6b1a",
-          "offset": 0
+          "offset": 394
         },
         {
           "owner": "F_6B4A",
           "symbol": "_f6b4a",
-          "offset": 48
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6B66",
-      "start": 28006,
-      "end": 28020,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/KEYBUFDR.C",
-      "original_symbol": "F_6B66",
-      "artifact": "regions/F_6B66.bin",
-      "expected_sha256": "509924a6ae06be66919d3c4c28fb4894c6a88f9030580800a5daefcfe6a8382d",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_keyboard_buffer_drain",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_f6b4a": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_6B4A.entry",
-            "owner": "F_6B4A",
-            "public": "_f6b4a",
-            "addend": 0
-          }
+          "offset": 442
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6B66.json",
-        "entry_sha256": "f5ae5f7369e3b1610a24261b99aba04a8409807536246dde535ae32be428d5f9",
-        "record_sha256": "b0bf50508765e8b55e0be70ad72a0ea0929eb9452773fe24eea7b2439de78332",
-        "source_sha256": "29a2b914b62d43822028f6a78c7956238872d327c2bc0be789b34b37f6c7fdf5",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0041.OBJ",
-      "members": [
-        "F_6B66"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6B66",
           "symbol": "_keyboard_buffer_drain",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6B74",
-      "start": 28020,
-      "end": 28026,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/KEYCHACT.C",
-      "original_symbol": "F_6B74",
-      "artifact": "regions/F_6B74.bin",
-      "expected_sha256": "fd448736111426a9f56ef2640b2aa7d962477d9f1fc780a4ab94395fedd4702f",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_keyboard_chain_active",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_keyboard_state": {
-            "offset": 2930,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206A2.phys"
-          }
+          "offset": 470
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6B74.json",
-        "entry_sha256": "a970c955bd3d61a9489207787ba52b437f25d6bf6637fc0ff7805c4c2c97f83b",
-        "record_sha256": "825f5fdf9c357dd9bdf55a78decff482b689a16456fd6b0b4e6cff761902843d",
-        "source_sha256": "d372e340a32d7f8b267d2e12ca22d44004a1844c86e86a049982a2ee7cc0c19d",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0042.OBJ",
-      "members": [
-        "F_6B74"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6B74",
           "symbol": "_keyboard_chain_active",
-          "offset": 0
+          "offset": 484
         }
       ],
       "data_component_offsets": {},
@@ -4517,11 +2763,10 @@
       "data_owners": []
     },
     {
-      "id": "F_6B7A",
+      "id": "C_6B7A_6C87",
       "kind": "MATCHING_C",
-      "source": "src/TIMERINS.C",
       "start": 28026,
-      "end": 28076,
+      "end": 28326,
       "expected_sha256": "7ae49dbdcd0c6fe7d78ba2c8215970167403d4dd296959edb1f0880e9f24a0ee",
       "build": {
         "segment": "_TEXT",
@@ -4548,10 +2793,20 @@
         "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
         "change": "Recover the complete 50-byte timer-vector install and PIT programming routine"
       },
-      "object": "R0043.OBJ",
       "members": [
-        "F_6B7A"
+        "F_6B7A",
+        "F_6BAC",
+        "F_6BCF",
+        "F_6C26",
+        "F_6C57",
+        "F_6C6F",
+        "F_6C87"
       ],
+      "sources": [
+        "src/TIMER.C"
+      ],
+      "recipe": "recipes/modules/C_6B7A_6C87.json",
+      "object": "R0026.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4565,227 +2820,36 @@
           "owner": "F_6B7A",
           "symbol": "_timer_irq_install",
           "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6BAC",
-      "kind": "MATCHING_C",
-      "source": "src/TIMERRST.C",
-      "start": 28076,
-      "end": 28111,
-      "expected_sha256": "879bdc64c4d791dfaf24239eab1bbc4e941a6518f2e33a1e93901a9b2d395a3b",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_timer_irq_restore",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_int8_saved_vector": {
-            "offset": 2938,
-            "coordinate": "DGROUP_offset"
-          },
-          "_g0b7c": {
-            "offset": 2940,
-            "coordinate": "DGROUP_offset"
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_6BAC",
-      "artifact": "regions/F_6BAC.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the complete 35-byte timer-vector restore and PIT reset routine"
-      },
-      "object": "R0044.OBJ",
-      "members": [
-        "F_6BAC"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+        },
         {
           "owner": "F_6BAC",
           "symbol": "_timer_irq_restore",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6BCF",
-      "start": 28111,
-      "end": 28198,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/TIMERIRQ.C",
-      "original_symbol": "F_6BCF",
-      "artifact": "regions/F_6BCF.bin",
-      "expected_sha256": "8ebd4127d1ea934d625b2b0997221918adab41d773f85a7af9fd286c989e3d70",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_timer_irq_handler",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_fc1a0": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_C1A0.entry",
-            "owner": "F_C1A0",
-            "public": "_fc1a0",
-            "addend": 0
-          },
-          "_timer_ticks": {
-            "offset": 2934,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206A6.phys"
-          },
-          "_g0b78": {
-            "offset": 2936,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206A8.phys"
-          },
-          "_int8_saved_vector": {
-            "offset": 2938,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206AA.phys"
-          },
-          "_sound_enabled": {
-            "offset": 5998,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P2129E.phys"
-          },
-          "_music_enabled": {
-            "offset": 6002,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212A2.phys"
-          },
-          "_g237c": {
-            "offset": 9084,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P21EAC.phys"
-          },
-          "_timer_tick_phase": {
-            "offset": 49364,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BC04.phys"
-          }
-        }
-      },
-      "provenance": {
-        "method": "bounded exact-C probe (build/probes/f6bcf/notes.md)",
-        "change": "Turbo C interrupt function with a bare asm pushf/asm popf pair; EXACT 87/87 bytes, 11 fixups, CODE_AND_TOPOLOGY_MATCH; asm/F_6BCF.ASM retired."
-      },
-      "object": "R0045.OBJ",
-      "members": [
-        "F_6BCF"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+          "offset": 50
+        },
         {
           "owner": "F_6BCF",
           "symbol": "_timer_irq_handler",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "C_6C26_6C87",
-      "start": 28198,
-      "end": 28326,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "original_symbol": "F_6C26",
-      "artifact": "regions/F_6C26.bin",
-      "expected_sha256": "eab5daa2083f06ab15e2f53cd1ee0ed319308e4a9297df302844b62362e3ed51",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_timer_wait_ticks",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_gb76": {
-            "offset": 2934,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P206A6.phys"
-          }
+          "offset": 85
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6C26.json",
-        "entry_sha256": "547feb90ab04c89d380ff57ed9b6a75db40757945fda7de87527ff1f5daef21a",
-        "record_sha256": "ed622a50b26b3e788df9b53fd0a432b16bae0f71f555594d969674b2ccc8e357",
-        "source_sha256": "342830f401e0d7c6bdc5473b1315236ca507c062ca81d797392e0ad66aaea331",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "members": [
-        "F_6C26",
-        "F_6C57",
-        "F_6C6F",
-        "F_6C87"
-      ],
-      "sources": [
-        "src/TIMER.C"
-      ],
-      "recipe": "recipes/modules/C_6C26_6C87.json",
-      "object": "R0046.OBJ",
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6C26",
           "symbol": "_timer_wait_ticks",
-          "offset": 0
+          "offset": 172
         },
         {
           "owner": "F_6C57",
           "symbol": "_timer_deadline_arm",
-          "offset": 49
+          "offset": 221
         },
         {
           "owner": "F_6C6F",
           "symbol": "_timer_deadline_wait",
-          "offset": 73
+          "offset": 245
         },
         {
           "owner": "F_6C87",
           "symbol": "_timer_deadline_reached",
-          "offset": 97
+          "offset": 269
         }
       ],
       "data_component_offsets": {},
@@ -4793,11 +2857,10 @@
       "data_owners": []
     },
     {
-      "id": "F_6CA6",
+      "id": "C_6CA6_6D3C",
       "kind": "MATCHING_C",
-      "source": "src/SPRSHSEL.C",
       "start": 28326,
-      "end": 28394,
+      "end": 28549,
       "expected_sha256": "9bf45c55111c84489a5148494f101c07b1200892e77a8dbb92692efb9ee183e7",
       "build": {
         "segment": "_TEXT",
@@ -4848,10 +2911,18 @@
         "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
         "change": "Recover the complete far-resource-table span setup with a parameter-forced Turbo C frame"
       },
-      "object": "R0047.OBJ",
       "members": [
-        "F_6CA6"
+        "F_6CA6",
+        "F_6CEA",
+        "F_6CF0",
+        "F_6CF6",
+        "F_6D3C"
       ],
+      "sources": [
+        "src/FONT.C"
+      ],
+      "recipe": "recipes/modules/C_6CA6_6D3C.json",
+      "object": "R0027.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4865,235 +2936,26 @@
           "owner": "F_6CA6",
           "symbol": "_sprite_sheet_select",
           "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6CEA",
-      "start": 28394,
-      "end": 28400,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SPRSHIDX.C",
-      "original_symbol": "F_6CEA",
-      "artifact": "regions/F_6CEA.bin",
-      "expected_sha256": "1acd2006834d6c79c25d2d15dae5efe8eacb04486fdea33b1cf74cd1f55e614e",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sprite_sheet_index_get",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_gc0ea": {
-            "offset": 49386,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BC1A.phys"
-          }
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6CEA.json",
-        "entry_sha256": "08751a6407bd158ae687096bdcc68fd501c5c7c5de644f6fa16f8eb401cdf8cf",
-        "record_sha256": "eabf822d0419fea54dddb88ab62fc7892840f34f05bec126c70b1db14932a1d9",
-        "source_sha256": "e4977d94fba71dc32af83d7006a8e12c52fa4e427e3df564009677398fba7ad8",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0048.OBJ",
-      "members": [
-        "F_6CEA"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6CEA",
           "symbol": "_sprite_sheet_index_get",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6CF0",
-      "kind": "MATCHING_C",
-      "source": "src/DLGLNHT.C",
-      "start": 28400,
-      "end": 28406,
-      "expected_sha256": "bc6eafe4a4068866490e844ba5ad9b49f9344c5fd3e099379543ef5d0d68499c",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_dialog_line_height_get",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_dialog_line_height": {
-            "coordinate": "DGROUP_offset",
-            "offset": 49384
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_6CF0",
-      "artifact": "regions/F_6CF0.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from raw code extent and fresh full-extent OMF binding",
-        "change": "Decode the complete 6-byte DGROUP-return routine at load offset 6CF0"
-      },
-      "object": "R0049.OBJ",
-      "members": [
-        "F_6CF0"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+          "offset": 68
+        },
         {
           "owner": "F_6CF0",
           "symbol": "_dialog_line_height_get",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6CF6",
-      "start": 28406,
-      "end": 28476,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/TXTLNWID.C",
-      "original_symbol": "F_6CF6",
-      "artifact": "regions/F_6CF6.bin",
-      "expected_sha256": "a56f0fd70fbb0597a57cd41008cfeadc4deb946380584ac3fb209a10ec1f2503",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_text_line_width",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_gc0e0": {
-            "offset": 49376,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BC10.phys"
-          },
-          "_gc0e4": {
-            "offset": 49380,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BC14.phys"
-          }
+          "offset": 74
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6CF6.json",
-        "entry_sha256": "23d8feade37c167ecc48b596f5c1ead60f85f75178bd084aae55ce497f17ba2f",
-        "record_sha256": "002bb57f3a6c786e57113e2c61c3526523614b0629fae77b1bc100efbbc4d2bc",
-        "source_sha256": "dcf89b0c5bbf1bfea0d72cd7c2905b7d9c829fa38fedf3ef7c46b75e6ab2ad62",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0050.OBJ",
-      "members": [
-        "F_6CF6"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6CF6",
           "symbol": "_text_line_width",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6D3C",
-      "start": 28476,
-      "end": 28549,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/TXTWRAP.C",
-      "original_symbol": "F_6D3C",
-      "artifact": "regions/F_6D3C.bin",
-      "expected_sha256": "5d7eac39913c4c8ce6fb9e5acdb8bd6c1a49522b1bf9d2f5d8fa54d89078678f",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_text_draw_wrapped",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_gfx_draw_char": {
-            "offset": 966,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_03C6.entry"
-          },
-          "_dialog_line_height": {
-            "offset": 49384,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BC18.phys"
-          }
+          "offset": 80
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_6D3C.json",
-        "entry_sha256": "5a2b045930f6e4c2dfac8514b6ba04c2d0f7ecaee169e47a15b9631a5f334f98",
-        "record_sha256": "1ce8622042a7b77f6a3669457a92100602d0b0464e84e0032797b4786b4750c1",
-        "source_sha256": "ccdbb6b26cf2a5c5b9a13f6e4b35617ff394fd8314f4584d058dd4e95e616701",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0051.OBJ",
-      "members": [
-        "F_6D3C"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_6D3C",
           "symbol": "_text_draw_wrapped",
-          "offset": 0
+          "offset": 150
         }
       ],
       "data_component_offsets": {},
@@ -5120,7 +2982,7 @@
         "module_segments": {}
       },
       "evidence": "F_6D86 ends at 0x6DC5; the seven following zero bytes are CS-addressed decoder state, and F_6DCC begins at 0x6DCC. One fresh TASM object has exact bound bytes and both entry publics.",
-      "object": "R0052.OBJ",
+      "object": "R0028.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -5164,7 +3026,7 @@
         "bindings": {},
         "module_segments": {}
       },
-      "object": "R0053.OBJ",
+      "object": "R0029.OBJ",
       "members": [
         "F_6EFF"
       ],
@@ -5201,7 +3063,7 @@
         "bindings": {},
         "module_segments": {}
       },
-      "object": "R0054.OBJ",
+      "object": "R0030.OBJ",
       "members": [
         "F_6F4B"
       ],
@@ -5273,7 +3135,7 @@
         "src/HUD.C"
       ],
       "recipe": "recipes/modules/C_6FC3_747B.json",
-      "object": "R0055.OBJ",
+      "object": "R0031.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -5477,7 +3339,7 @@
         "src/PROMPTS.C"
       ],
       "recipe": "recipes/modules/C_75F3_7856.json",
-      "object": "R0056.OBJ",
+      "object": "R0032.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -5600,7 +3462,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Reconstruct complete C function from original instructions"
       },
-      "object": "R0057.OBJ",
+      "object": "R0033.OBJ",
       "members": [
         "F_7856"
       ],
@@ -5661,7 +3523,7 @@
         "source_sha256": "04fe1e7ae2bc25e4097911dac6fe0ff19aaa1326245d7d7f0b59a45c677feec3",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0058.OBJ",
+      "object": "R0034.OBJ",
       "members": [
         "F_78C3"
       ],
@@ -5714,7 +3576,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Reconstruct complete C function from original instructions"
       },
-      "object": "R0059.OBJ",
+      "object": "R0035.OBJ",
       "members": [
         "F_791E"
       ],
@@ -5770,7 +3632,7 @@
         "source_sha256": "107e57d48f80e464f083ab2634fcc39a6e8c44a9395efd918fae60050c4ec75d",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0060.OBJ",
+      "object": "R0036.OBJ",
       "members": [
         "F_7925"
       ],
@@ -5826,7 +3688,7 @@
         "source_sha256": "213ea3b5465c3c8036951980ae6ada1a0a59ef2e7ebe0a78272eaee03d77e20c",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0061.OBJ",
+      "object": "R0037.OBJ",
       "members": [
         "F_792C"
       ],
@@ -5904,7 +3766,7 @@
         "upstream_entry": "controls/correspondence/F_7932.json",
         "upstream_extent_sha256": "83441f093418db4d3034bbe618dca84380db32250a187a20e5aacacc180b0245"
       },
-      "object": "R0062.OBJ",
+      "object": "R0038.OBJ",
       "members": [
         "F_7932"
       ],
@@ -6084,7 +3946,7 @@
         ],
         "boundary_evidence": "F_7DD3 consumes the parent frame. Its sole active symbolic reference is the parent early return to cleanup+0x23; no independent caller."
       },
-      "object": "R0063.OBJ",
+      "object": "R0039.OBJ",
       "members": [
         "F_7964"
       ],
@@ -6205,7 +4067,7 @@
         "upstream_entry_sha256": "0cdd99f1c44a6c970009ec5c8c3d823db9be21c1e39c54247998bfc18e74ec9b",
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0064.OBJ",
+      "object": "R0040.OBJ",
       "members": [
         "F_7BFC"
       ],
@@ -6277,7 +4139,7 @@
         "src/DIALOG.C"
       ],
       "recipe": "recipes/modules/C_7D91_880A.json",
-      "object": "R0065.OBJ",
+      "object": "R0041.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6434,7 +4296,7 @@
         "src/PUZZLE.C"
       ],
       "recipe": "recipes/modules/C_8A37_969D.json",
-      "object": "R0066.OBJ",
+      "object": "R0042.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6562,7 +4424,7 @@
         "src/MARKERS.C"
       ],
       "recipe": "recipes/modules/C_984C_9871.json",
-      "object": "R0067.OBJ",
+      "object": "R0043.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6635,7 +4497,7 @@
       "provenance": {
         "c_recovery": "All 121 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
       },
-      "object": "R0068.OBJ",
+      "object": "R0044.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6705,7 +4567,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Reconstruct complete C function from original instructions"
       },
-      "object": "R0069.OBJ",
+      "object": "R0045.OBJ",
       "members": [
         "F_9908"
       ],
@@ -6780,7 +4642,7 @@
         "src/SCORE.C"
       ],
       "recipe": "recipes/modules/C_9962_99E2.json",
-      "object": "R0070.OBJ",
+      "object": "R0046.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6913,7 +4775,7 @@
         "src/ROUNDEND.C"
       ],
       "recipe": "recipes/modules/C_9A0E_9D79.json",
-      "object": "R0071.OBJ",
+      "object": "R0047.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7008,7 +4870,7 @@
         "upstream_entry": "docs/upstream-inventory.json:F_9D8E",
         "upstream_extent_sha256": "c49179e559c15edf0fcf4ac1fcdfd6132e1374a9ea1b02343b38d160d2843930"
       },
-      "object": "R0072.OBJ",
+      "object": "R0048.OBJ",
       "members": [
         "F_9D8E"
       ],
@@ -7181,7 +5043,7 @@
         "source_sha256": "59d73494cb9871978dfbc0fdab7e6d5b3c705535d2f9f8784eac88b02f64f670",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0073.OBJ",
+      "object": "R0049.OBJ",
       "members": [
         "F_9DCC"
       ],
@@ -7229,7 +5091,7 @@
         },
         "module_segments": {}
       },
-      "object": "R0074.OBJ",
+      "object": "R0050.OBJ",
       "members": [
         "F_9EC3"
       ],
@@ -7307,7 +5169,7 @@
         "source_sha256": "8258e8917cf7dfbba9e5533edae11b5e6a06142a00664c202ae8bd542ae0abbb",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0075.OBJ",
+      "object": "R0051.OBJ",
       "members": [
         "F_9F40"
       ],
@@ -7353,7 +5215,7 @@
         "upstream_entry_sha256": "e2dd9760fabac41af8b68fc6d9f70c4aacd4977d4bb2968477bbd0dcdf7c1743",
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0076.OBJ",
+      "object": "R0052.OBJ",
       "members": [
         "F_A004"
       ],
@@ -7408,7 +5270,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Recover full C body including compiler-generated control flow and internal tables"
       },
-      "object": "R0077.OBJ",
+      "object": "R0053.OBJ",
       "members": [
         "F_A036"
       ],
@@ -7502,7 +5364,7 @@
         "src/SLOTS.C"
       ],
       "recipe": "recipes/modules/C_A09D_A24E.json",
-      "object": "R0078.OBJ",
+      "object": "R0054.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7611,7 +5473,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Recover complete C routine and initialized static strings where present"
       },
-      "object": "R0079.OBJ",
+      "object": "R0055.OBJ",
       "members": [
         "F_A28D"
       ],
@@ -7752,7 +5614,7 @@
         "src/SLOTMENU.C"
       ],
       "recipe": "recipes/modules/C_A33F_AD0E.json",
-      "object": "R0080.OBJ",
+      "object": "R0056.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7890,7 +5752,7 @@
         "src/SLOTCOPY.C"
       ],
       "recipe": "recipes/modules/C_AD25_AF45.json",
-      "object": "R0081.OBJ",
+      "object": "R0057.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8010,7 +5872,7 @@
         "src/LEVEL.C"
       ],
       "recipe": "recipes/modules/C_AF45_C15E.json",
-      "object": "R0082.OBJ",
+      "object": "R0058.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8106,58 +5968,15 @@
       "data_owners": []
     },
     {
-      "id": "M_C1A0_C232",
+      "id": "M_C1A0_CB48",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_C1A0_C232.ASM",
+      "source": "asm/SOUND.ASM",
       "start": 50080,
-      "end": 50301,
+      "end": 52572,
       "members": [
         "F_C1A0",
         "F_C1F7",
-        "F_C232"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fc1a0",
-        "span": 3,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Contiguous master sound tick, voice pump, and ES:DI voice-table scan. The first calls the second, the second calls the third, and all use the same 0x1764..0x17F4 sound-state BSS cluster. Fresh TASM emits publics at offsets 0, 87, and 146 and its complete bound extent matches.",
-      "object": "R0083.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C1A0",
-          "symbol": "_fc1a0",
-          "offset": 0
-        },
-        {
-          "owner": "F_C1F7",
-          "symbol": "_fc1f7",
-          "offset": 87
-        },
-        {
-          "owner": "F_C232",
-          "symbol": "_fc232",
-          "offset": 146
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_C27D_C567",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C27D_C567.ASM",
-      "start": 50301,
-      "end": 51098,
-      "members": [
+        "F_C232",
         "F_C27D",
         "F_C2EA",
         "F_C359",
@@ -8165,414 +5984,237 @@
         "F_C440",
         "F_C501",
         "F_C549",
-        "F_C567"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fc27d",
-        "span": 8,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "F_C27D directly drives F_C2EA and F_C440; the contiguous sound-service, dispatcher, and control run shares the 0x1778..0x1814 state block. Fresh symbolic TASM is tested as one ordinary source contribution.",
-      "object": "R0084.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C27D",
-          "symbol": "_fc27d",
-          "offset": 0
-        },
-        {
-          "owner": "F_C2EA",
-          "symbol": "_f_c2ea",
-          "offset": 109
-        },
-        {
-          "owner": "F_C359",
-          "symbol": "_f_c359",
-          "offset": 220
-        },
-        {
-          "owner": "F_C3DB",
-          "symbol": "_f_c3db",
-          "offset": 350
-        },
-        {
-          "owner": "F_C440",
-          "symbol": "_f_c440",
-          "offset": 451
-        },
-        {
-          "owner": "F_C501",
-          "symbol": "_f_c501",
-          "offset": 644
-        },
-        {
-          "owner": "F_C549",
-          "symbol": "_f_c549",
-          "offset": 716
-        },
-        {
-          "owner": "F_C567",
-          "symbol": "_fc567",
-          "offset": 746
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_C59A",
-      "start": 51098,
-      "end": 51112,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SNDSCL4.C",
-      "original_symbol": "F_C59A",
-      "artifact": "regions/F_C59A.bin",
-      "expected_sha256": "1970b48b55571f9abe5bc92d056d38a440c8024b5d9a3aef1fd4ec4ea6b32ba1",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sound_param_scale4",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_g1788": {
-            "offset": 6024,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212B8.phys"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C59A.json",
-        "entry_sha256": "e7c6d74db5c7d7a0142d32f0853a910462d6a1957af9d635eec16f0667e6fd29",
-        "record_sha256": "4fafaa7a9725204323f672b421c201711b092f725cec0196bc458233467af1f9",
-        "source_sha256": "f7b45c033f5e0eac20d6fc9bec5f6bfee03e92da57cd1c441ffee74b524d5ccd",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0085.OBJ",
-      "members": [
-        "F_C59A"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_C59A",
-          "symbol": "_sound_param_scale4",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_C5A8_C5C6",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C5A8_C5C6.ASM",
-      "start": 51112,
-      "end": 51153,
-      "members": [
+        "F_C567",
+        "F_C59A",
         "F_C5A8",
         "F_C5B3",
-        "F_C5C6"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c5a8",
-        "span": 3,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Three contiguous setters use the same SI-relative 0x17A4..0x17DCh command-control state block. Fresh symbolic TASM emits entry offsets 0, 11, and 30 in one exact 41-byte no-fixup contribution.",
-      "object": "R0086.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C5A8",
-          "symbol": "_f_c5a8",
-          "offset": 0
-        },
-        {
-          "owner": "F_C5B3",
-          "symbol": "_f_c5b3",
-          "offset": 11
-        },
-        {
-          "owner": "F_C5C6",
-          "symbol": "_f_c5c6",
-          "offset": 30
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_C5D1_C706",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C5D1_C706.ASM",
-      "start": 51153,
-      "end": 51541,
-      "members": [
+        "F_C5C6",
         "F_C5D1",
         "F_C678",
         "F_C6B9",
-        "F_C706"
+        "F_C706",
+        "F_C755",
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898",
+        "F_C8D4",
+        "F_C8E2",
+        "F_C914",
+        "F_C988",
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91",
+        "F_CA9B",
+        "F_CAD0",
+        "F_CADB",
+        "F_CAE6",
+        "F_CAF1",
+        "F_CB48"
       ],
       "build": {
         "segment": "_TEXT",
-        "public": "_f_c5d1",
-        "span": 4,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "The contiguous command decode, speaker gate, voice-disable, and PIT-output entries use the same SI-relative 0x1766..0x17EC sound-control state. One fresh symbolic TASM object has the original public offsets 0, 167, 232, and 309, an exact 388-byte bound extent, and no OMF fixups.",
-      "object": "R0087.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C5D1",
-          "symbol": "_f_c5d1",
-          "offset": 0
-        },
-        {
-          "owner": "F_C678",
-          "symbol": "_f_c678",
-          "offset": 167
-        },
-        {
-          "owner": "F_C6B9",
-          "symbol": "_f_c6b9",
-          "offset": 232
-        },
-        {
-          "owner": "F_C706",
-          "symbol": "_f_c706",
-          "offset": 309
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_C755",
-      "kind": "MATCHING_ASM",
-      "source": "src/F_C755.ASM",
-      "start": 51541,
-      "end": 51578,
-      "expected_sha256": "20694ec851ec75e255354f434ed2a8e9239bf771f5c188dba7527688d17b76a3",
-      "classification": "code",
-      "artifact": "regions/F_C755.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c755",
-        "span": 1,
+        "public": "_fc1a0",
+        "span": 41,
         "flags_append": "",
         "bindings": {
-          "_g1784": {
+          "_fc1f7": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C1F7.entry",
+            "owner": "F_C1F7",
+            "public": "_fc1f7",
+            "addend": 0
+          },
+          "_sound_tick_step": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C8E2.entry",
+            "owner": "F_C8E2",
+            "public": "_sound_tick_step",
+            "addend": 0
+          },
+          "_snd_flag": {
+            "offset": 6000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A0.phys"
+          },
+          "_snd_mode": {
             "offset": 6020,
             "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212B4.phys; independently bound by F_C834"
+            "evidence": "storage_objects/G_P212B4.phys"
           },
-          "_g1786": {
-            "offset": 6022,
+          "_snd_paused": {
+            "offset": 6008,
             "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212B6.phys; independently bound by F_C834"
+            "evidence": "storage_objects/G_P212A8.phys"
+          },
+          "_snd_seg2": {
+            "offset": 5988,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P21294.phys"
+          },
+          "_v_b": {
+            "offset": 6012,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212AC.phys"
+          },
+          "_dv": {
+            "offset": 6028,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212BC.phys"
+          },
+          "_fc232": {
+            "coordinate": "code_offset",
+            "owner": "F_C232",
+            "public": "_fc232",
+            "addend": 0,
+            "evidence": "functions/F_C232.entry"
+          },
+          "_fc27d": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C27D.entry",
+            "owner": "F_C27D",
+            "public": "_fc27d",
+            "addend": 0
+          },
+          "_snd_flag2": {
+            "offset": 6006,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A6.phys"
+          },
+          "_sv": {
+            "offset": 6036,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212C4.phys"
+          },
+          "_g1784": {
+            "offset": 6020,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g178a": {
+            "offset": 6026,
+            "coordinate": "DGROUP_offset"
           },
           "_g177a": {
             "offset": 6010,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212AA.phys; independently bound by F_C27D and F_C834"
+            "coordinate": "DGROUP_offset"
+          },
+          "_g178c": {
+            "offset": 6028,
+            "coordinate": "DGROUP_offset"
           },
           "_g17ac": {
             "offset": 6060,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g179c": {
+            "offset": 6044,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17a4": {
+            "offset": 6052,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17b4": {
+            "offset": 6068,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17ec": {
+            "offset": 6124,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17f4": {
+            "offset": 6132,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17bc": {
+            "offset": 6076,
+            "coordinate": "DGROUP_offset"
+          },
+          "_snd_nvoices": {
+            "offset": 6010,
             "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212DC.phys; independently bound by F_C27D and F_C834"
+            "evidence": "storage_objects/G_P212AA.phys"
+          },
+          "_v_a": {
+            "offset": 6060,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212DC.phys"
+          },
+          "_v_ctr": {
+            "offset": 6044,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212CC.phys"
+          },
+          "_v_hold": {
+            "offset": 6068,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212E4.phys"
+          },
+          "_v_len": {
+            "offset": 6076,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212EC.phys"
+          },
+          "_f_c2ea": {
+            "coordinate": "code_offset",
+            "owner": "F_C2EA",
+            "public": "_f_c2ea",
+            "addend": 0,
+            "evidence": "functions/F_C2EA.entry"
+          },
+          "_f_c440": {
+            "coordinate": "code_offset",
+            "owner": "F_C440",
+            "public": "_f_c440",
+            "addend": 0,
+            "evidence": "functions/F_C440.entry"
           },
           "_f_c6b9": {
             "coordinate": "code_offset",
             "owner": "F_C6B9",
             "public": "_f_c6b9",
             "addend": 0,
-            "evidence": "functions/F_C6B9.entry; independently bound by F_C27D, F_C834 and F_C877"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "method": "symbolic TASM reconstruction from complete routine disassembly and fresh full-extent OMF binding",
-        "source_sha256": "66e1763caf3769cad999cc265fbf4482052fe028294f586560d89abc873c5fb9",
-        "change": "Replace the 37-byte asm-db capsule with symbolic DGROUP references and an exact five-fixup TASM contribution."
-      },
-      "object": "R0088.OBJ",
-      "members": [
-        "F_C755"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C755",
-          "symbol": "_f_c755",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_C77A_C898",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C77A_C898.ASM",
-      "start": 51578,
-      "end": 51924,
-      "members": [
-        "F_C77A",
-        "F_C7CB",
-        "F_C834",
-        "F_C877",
-        "F_C898"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c77a",
-        "span": 5,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "The contiguous sound-backend selection, voice-table reload, voice reset, timer-pump, and OPL register-output entries share the 0x1762..0x1830 sound-state block. One fresh symbolic TASM object has public offsets 0, 81, 186, 253, and 286, exactly 346 bound _TEXT bytes, and the original thirteen data/call fixups.",
-      "object": "R0089.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C77A",
-          "symbol": "_f_c77a",
-          "offset": 0
-        },
-        {
-          "owner": "F_C7CB",
-          "symbol": "_f_c7cb",
-          "offset": 81
-        },
-        {
-          "owner": "F_C834",
-          "symbol": "_fc834",
-          "offset": 186
-        },
-        {
-          "owner": "F_C877",
-          "symbol": "_fc877",
-          "offset": 253
-        },
-        {
-          "owner": "F_C898",
-          "symbol": "_fc898",
-          "offset": 286
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_C8D4",
-      "kind": "MATCHING_ASM",
-      "source": "src/F_C8D4.ASM",
-      "start": 51924,
-      "end": 51938,
-      "expected_sha256": "e227e7a35b1c337907324b16ae8a3e8c8c1946f3d3684d91a94d5e94159b790f",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fc8d4",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
+            "evidence": "functions/F_C6B9.entry"
+          },
+          "_f_c755": {
+            "coordinate": "code_offset",
+            "owner": "F_C755",
+            "public": "_f_c755",
+            "addend": 0,
+            "evidence": "functions/F_C755.entry"
+          },
+          "_g1788": {
+            "offset": 6024,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete F_C567 data access"
+          },
+          "_g1786": {
+            "offset": 6022,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B6.phys; independently bound by F_C834"
+          },
+          "_snd_hi": {
+            "offset": 6022,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B6.phys"
+          },
+          "_g1778": {
+            "offset": 6008,
+            "coordinate": "DGROUP_offset"
+          },
+          "_opl_port": {
+            "offset": 6192,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P21360.phys"
+          },
           "_g1830": {
             "offset": 6192,
             "coordinate": "DGROUP_offset"
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_C8D4",
-      "artifact": "regions/F_C8D4.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "symbolic TASM reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Replace the mechanical inline-assembly capsule with symbolic port-write assembly"
-      },
-      "object": "R0090.OBJ",
-      "members": [
-        "F_C8D4"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C8D4",
-          "symbol": "_fc8d4",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_C8E2",
-      "start": 51938,
-      "end": 51988,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SNDTICK.C",
-      "original_symbol": "F_C8E2",
-      "artifact": "regions/F_C8E2.bin",
-      "expected_sha256": "a281e41a2a6c45163ce288e40446c84ff0ca6e1f5f6909790c39a2bb3c8eeeb5",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sound_tick_step",
-        "span": 1,
-        "flags_append": "-k -B",
-        "bindings": {
+          },
           "_fc914": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C914.entry",
@@ -8611,61 +6253,7 @@
             "offset": 5984,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21290.phys"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C8E2.json",
-        "entry_sha256": "fbe5132149eda3700ad14756917f7e209802be2f7410b09e9af0cfd41211efca",
-        "record_sha256": "270cf824bc932fdeec0987399eada6358ed42b061618254b14d51e5c0310c375",
-        "source_sha256": "aafb0d3815742ebb7c6f91c554174b7e29db3e58a847292f5b1bea2e2c055aec",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0091.OBJ",
-      "members": [
-        "F_C8E2"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-k",
-        "-B"
-      ],
-      "publics": [
-        {
-          "owner": "F_C8E2",
-          "symbol": "_sound_tick_step",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_C914",
-      "start": 51988,
-      "end": 52104,
-      "kind": "MATCHING_ASM",
-      "classification": "code",
-      "source": "asm/F_C914.ASM",
-      "original_symbol": "F_C914",
-      "artifact": "regions/F_C914.bin",
-      "expected_sha256": "4129f3d34103640c9372b812447f1f5a83025220eb64ff862896a3690e3fce41",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fc914",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
+          },
           "_sound_note_dispatch": {
             "coordinate": "code_offset",
             "evidence": "functions/F_C988.entry",
@@ -8679,13 +6267,6 @@
             "public": "_fca9b",
             "addend": 0,
             "evidence": "functions/F_CA9B.entry"
-          },
-          "_speaker_gate_off": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_CADB.entry",
-            "owner": "F_CADB",
-            "public": "_speaker_gate_off",
-            "addend": 0
           },
           "_fcaf1": {
             "coordinate": "code_offset",
@@ -8716,11 +6297,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219B8.phys"
           },
-          "_snd_delay": {
-            "offset": 7824,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P219C0.phys"
-          },
           "_f_c9a4": {
             "coordinate": "code_offset",
             "owner": "F_C9A4",
@@ -8734,51 +6310,7 @@
             "public": "_f_ca03",
             "addend": 0,
             "evidence": "functions/F_CA03.entry"
-          }
-        }
-      },
-      "provenance": {
-        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "457c4b90f5baf315a2fe142b60a854918a0714821d516305d8d0ca72b5c02bca",
-        "source_sha256": "91f2cb6b100f15d29b70ea979a74faff567d495299fe5fdf8eca975fe57d055c",
-        "change": "Translate the complete music-stream command decoder into a deterministic Turbo C source unit with sixteen existing fixups and no loader relocations."
-      },
-      "object": "R0092.OBJ",
-      "members": [
-        "F_C914"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C914",
-          "symbol": "_fc914",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_C988",
-      "start": 52104,
-      "end": 52132,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SNDNOTE.C",
-      "original_symbol": "F_C988",
-      "artifact": "regions/F_C988.bin",
-      "expected_sha256": "0543ab43352a9e3869079043717af20a9c3a39a16a781571933242ffe58a808c",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sound_note_dispatch",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
+          },
           "_speaker_gate_on": {
             "coordinate": "code_offset",
             "evidence": "functions/F_CAD0.entry",
@@ -8797,119 +6329,45 @@
             "offset": 6140,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2132C.phys"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_C988.json",
-        "entry_sha256": "f6a97c907136cdf8af8133e845fd551301cdd47d986695354fbcc1d6e053011a",
-        "record_sha256": "ffc5790d3effe2e85ac53e6c544fabdda81cad36a1cdb759769c5bd6fc8b3e99",
-        "source_sha256": "af7905b6e652b5f2d8a5fdbb183ce3aa6536fbe149c808f605368f5d8836afb2",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0093.OBJ",
-      "members": [
-        "F_C988"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_C988",
-          "symbol": "_sound_note_dispatch",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "M_C9A4_CA91",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C9A4_CA91.ASM",
-      "start": 52132,
-      "end": 52379,
-      "members": [
-        "F_C9A4",
-        "F_CA03",
-        "F_CA35",
-        "F_CA51",
-        "F_CA83",
-        "F_CA91"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c9a4",
-        "span": 6,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Contiguous table-command decoder, dispatcher, and all four dispatcher targets use the 0x1E84..0x1E94 control block. Fresh symbolic TASM has the original public offsets and bound 247-byte extent.",
-      "object": "R0094.OBJ",
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_C9A4",
-          "symbol": "_f_c9a4",
-          "offset": 0
-        },
-        {
-          "owner": "F_CA03",
-          "symbol": "_f_ca03",
-          "offset": 95
-        },
-        {
-          "owner": "F_CA35",
-          "symbol": "_f_ca35",
-          "offset": 145
-        },
-        {
-          "owner": "F_CA51",
-          "symbol": "_f_ca51",
-          "offset": 173
-        },
-        {
-          "owner": "F_CA83",
-          "symbol": "_fca83",
-          "offset": 223
-        },
-        {
-          "owner": "F_CA91",
-          "symbol": "_fca91",
-          "offset": 237
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_CA9B",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_CA9B.ASM",
-      "start": 52379,
-      "end": 52432,
-      "expected_sha256": "c4ce0ed8cffdb347ef381cde7c3b2401e0dd3a48ac2b367ce8d411294e946fc3",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fca9b",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
+          },
+          "_f_ca35": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA35",
+            "public": "_f_ca35",
+            "addend": 0
+          },
+          "_f_ca51": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA51",
+            "public": "_f_ca51",
+            "addend": 0
+          },
+          "_fca83": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA83",
+            "public": "_fca83",
+            "addend": 0
+          },
+          "_fca91": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA91",
+            "public": "_fca91",
+            "addend": 0
+          },
+          "_g1e84": {
+            "offset": 7812,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          },
+          "_g1e86": {
+            "offset": 7814,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          },
           "_g1e92": {
             "offset": 7826,
             "coordinate": "DGROUP_offset"
@@ -8918,225 +6376,6 @@
             "offset": 7824,
             "coordinate": "DGROUP_offset"
           },
-          "_speaker_gate_off": {
-            "coordinate": "code_offset",
-            "owner": "F_CADB",
-            "public": "_speaker_gate_off",
-            "addend": 0
-          },
-          "_pit_channel2_set_divisor": {
-            "coordinate": "code_offset",
-            "owner": "F_CAE6",
-            "public": "_pit_channel2_set_divisor",
-            "addend": 0
-          },
-          "_speaker_gate_on": {
-            "coordinate": "code_offset",
-            "owner": "F_CAD0",
-            "public": "_speaker_gate_on",
-            "addend": 0
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_CA9B",
-      "artifact": "regions/F_CA9B.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the complete live-register note-shift path with owned call targets and explicit historical frame bytes"
-      },
-      "object": "R0095.OBJ",
-      "members": [
-        "F_CA9B"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_CA9B",
-          "symbol": "_fca9b",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_CAD0",
-      "start": 52432,
-      "end": 52443,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SPKON.C",
-      "original_symbol": "F_CAD0",
-      "artifact": "regions/F_CAD0.bin",
-      "expected_sha256": "4c77f24ae1e5be7b5de2d818a147958eb1646a7bf1e684da8db8f6da22fb1893",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_speaker_gate_on",
-        "span": 1,
-        "flags_append": "-k -B",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_CAD0.json",
-        "entry_sha256": "cfd00b212a13cada1353c7cf0449c5399b3ce4f159b714692e163aaa342bf3fb",
-        "record_sha256": "0505f0741a6dc6bdea60ce55134ffb9ef4ae9c719c20110aca2feeb808e1f7f5",
-        "source_sha256": "bd6267f712fd45f0ceb131bfbf6eb11b7e9d1122559f2a4094fd9395e08cb846",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0096.OBJ",
-      "members": [
-        "F_CAD0"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-k",
-        "-B"
-      ],
-      "publics": [
-        {
-          "owner": "F_CAD0",
-          "symbol": "_speaker_gate_on",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_CADB",
-      "start": 52443,
-      "end": 52454,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SPKOFF.C",
-      "original_symbol": "F_CADB",
-      "artifact": "regions/F_CADB.bin",
-      "expected_sha256": "00de9669682b4e6a1da61903720057072cd31423050bc4c1f1042d87dc36e2a8",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_speaker_gate_off",
-        "span": 1,
-        "flags_append": "-k -B",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_CADB.json",
-        "entry_sha256": "800f084b5c6db63a632a9d3c87550b79a2ab5dcada243892bd96dac0fa2c8e8c",
-        "record_sha256": "f9bf67d13ccad106a17c895796595d142da87bd79c08df485101ab1b9aeb8a4c",
-        "source_sha256": "8d17b631e4151379fb1aaad1a225d6e0a3d28a0f64d9421b5b9ec6c432ec31a0",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0097.OBJ",
-      "members": [
-        "F_CADB"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-k",
-        "-B"
-      ],
-      "publics": [
-        {
-          "owner": "F_CADB",
-          "symbol": "_speaker_gate_off",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_CAE6",
-      "start": 52454,
-      "end": 52465,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/PITDIV2.C",
-      "original_symbol": "F_CAE6",
-      "artifact": "regions/F_CAE6.bin",
-      "expected_sha256": "9272fde315965ec54794cf086f880da5d70f3d1f368c4fbda64bac30da5006a2",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_pit_channel2_set_divisor",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_CAE6.json",
-        "entry_sha256": "0c16138e6c32ed00972388b259fb67e71bbbfedd32b8b29fc065de6142680d5a",
-        "record_sha256": "9733012139b32849a7c17fb3bb1591daa435060657e0169536c63df659f71538",
-        "source_sha256": "3e02efe772dad75e18c6d2a008260ffa17af75a332ac2f3d04066e5ba3aca2f8",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0098.OBJ",
-      "members": [
-        "F_CAE6"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_CAE6",
-          "symbol": "_pit_channel2_set_divisor",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_CAF1",
-      "start": 52465,
-      "end": 52552,
-      "kind": "MATCHING_ASM",
-      "classification": "code",
-      "source": "asm/F_CAF1.ASM",
-      "original_symbol": "F_CAF1",
-      "artifact": "regions/F_CAF1.bin",
-      "expected_sha256": "1ff0dac5fb715e6f96a1f55991f873017b683775e41488812afcaff85ef7533a",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fcaf1",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
           "_g175e": {
             "offset": 5982,
             "coordinate": "DGROUP_offset",
@@ -9156,11 +6395,6 @@
             "offset": 6000,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A0.phys"
-          },
-          "_g1e86": {
-            "offset": 7814,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P219B6.phys"
           },
           "_g1e88": {
             "offset": 7816,
@@ -9182,107 +6416,253 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219BE.phys"
           },
-          "_g1e90": {
-            "offset": 7824,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P219C0.phys"
-          },
-          "_g1e92": {
-            "offset": 7826,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P219C2.phys"
-          },
           "_g1e94": {
             "offset": 7828,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P219C4.phys"
+          },
+          "_opl_init": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D99B.entry",
+            "owner": "F_D99B",
+            "public": "_opl_init",
+            "addend": 0
+          },
+          "_record_panel_rebuild": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D8F0.entry",
+            "owner": "F_D8F0",
+            "public": "_record_panel_rebuild",
+            "addend": 0
+          },
+          "_voice_bank_retune_on": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_DB60.entry",
+            "owner": "F_DB60",
+            "public": "_voice_bank_retune_on",
+            "addend": 0
+          },
+          "_voice_bank_update": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_DCC7.entry",
+            "owner": "F_DCC7",
+            "public": "_voice_bank_update",
+            "addend": 0
           }
-        }
+        },
+        "module_segments": {}
       },
-      "provenance": {
-        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "6fd61b89d3df12bd6ea48a7b79dfdc3384aaf4533b15c551239725538d1d25e8",
-        "source_sha256": "b5c5fe96edfe32e7f1f70a74490bf62da8fe005a50e3c3b974ecec28d65baf35",
-        "change": "Translate the complete sound tick service body into a deterministic Turbo C source unit with fourteen existing fixups and no loader relocations."
-      },
-      "object": "R0099.OBJ",
-      "members": [
-        "F_CAF1"
-      ],
+      "evidence": "One hand-written TASM module (0xC3A0..0xCD5C, 2492 bytes, byte-aligned, no pad): every framed routine uses SI/DI without saving them (Turbo C always emits push si/push di around inline asm naming them; probed: SNDSCL4+M_C5A8_C5C6 as a C unit is 6 bytes longer), register-ABI helpers save AX/CX/DX/BX inside frames, the OPL write uses a REPT 35 macro, and the seven former C wrappers (F_C59A, F_C8E2, F_C988, F_CAD0, F_CADB, F_CAE6, F_CB48) needed invented -k flags or dummy parameters only to obtain the hand-written frames; OPTIONS (M_CB5C_CD23) grows under -k, so the following C unit does not share those flags. Assembled as one unit: tools/probe_tu.py M_C1A0_C232 F_CB48 --asm asm/SOUND.ASM EXACT, 164 fixups.",
+      "object": "R0059.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
       ],
       "publics": [
         {
+          "owner": "F_C1A0",
+          "symbol": "_fc1a0",
+          "offset": 0
+        },
+        {
+          "owner": "F_C1F7",
+          "symbol": "_fc1f7",
+          "offset": 87
+        },
+        {
+          "owner": "F_C232",
+          "symbol": "_fc232",
+          "offset": 146
+        },
+        {
+          "owner": "F_C27D",
+          "symbol": "_fc27d",
+          "offset": 221
+        },
+        {
+          "owner": "F_C2EA",
+          "symbol": "_f_c2ea",
+          "offset": 330
+        },
+        {
+          "owner": "F_C359",
+          "symbol": "_f_c359",
+          "offset": 441
+        },
+        {
+          "owner": "F_C3DB",
+          "symbol": "_f_c3db",
+          "offset": 571
+        },
+        {
+          "owner": "F_C440",
+          "symbol": "_f_c440",
+          "offset": 672
+        },
+        {
+          "owner": "F_C501",
+          "symbol": "_f_c501",
+          "offset": 865
+        },
+        {
+          "owner": "F_C549",
+          "symbol": "_f_c549",
+          "offset": 937
+        },
+        {
+          "owner": "F_C567",
+          "symbol": "_fc567",
+          "offset": 967
+        },
+        {
+          "owner": "F_C59A",
+          "symbol": "_sound_param_scale4",
+          "offset": 1018
+        },
+        {
+          "owner": "F_C5A8",
+          "symbol": "_f_c5a8",
+          "offset": 1032
+        },
+        {
+          "owner": "F_C5B3",
+          "symbol": "_f_c5b3",
+          "offset": 1043
+        },
+        {
+          "owner": "F_C5C6",
+          "symbol": "_f_c5c6",
+          "offset": 1062
+        },
+        {
+          "owner": "F_C5D1",
+          "symbol": "_f_c5d1",
+          "offset": 1073
+        },
+        {
+          "owner": "F_C678",
+          "symbol": "_f_c678",
+          "offset": 1240
+        },
+        {
+          "owner": "F_C6B9",
+          "symbol": "_f_c6b9",
+          "offset": 1305
+        },
+        {
+          "owner": "F_C706",
+          "symbol": "_f_c706",
+          "offset": 1382
+        },
+        {
+          "owner": "F_C755",
+          "symbol": "_f_c755",
+          "offset": 1461
+        },
+        {
+          "owner": "F_C77A",
+          "symbol": "_f_c77a",
+          "offset": 1498
+        },
+        {
+          "owner": "F_C7CB",
+          "symbol": "_f_c7cb",
+          "offset": 1579
+        },
+        {
+          "owner": "F_C834",
+          "symbol": "_fc834",
+          "offset": 1684
+        },
+        {
+          "owner": "F_C877",
+          "symbol": "_fc877",
+          "offset": 1751
+        },
+        {
+          "owner": "F_C898",
+          "symbol": "_fc898",
+          "offset": 1784
+        },
+        {
+          "owner": "F_C8D4",
+          "symbol": "_fc8d4",
+          "offset": 1844
+        },
+        {
+          "owner": "F_C8E2",
+          "symbol": "_sound_tick_step",
+          "offset": 1858
+        },
+        {
+          "owner": "F_C914",
+          "symbol": "_fc914",
+          "offset": 1908
+        },
+        {
+          "owner": "F_C988",
+          "symbol": "_sound_note_dispatch",
+          "offset": 2024
+        },
+        {
+          "owner": "F_C9A4",
+          "symbol": "_f_c9a4",
+          "offset": 2052
+        },
+        {
+          "owner": "F_CA03",
+          "symbol": "_f_ca03",
+          "offset": 2147
+        },
+        {
+          "owner": "F_CA35",
+          "symbol": "_f_ca35",
+          "offset": 2197
+        },
+        {
+          "owner": "F_CA51",
+          "symbol": "_f_ca51",
+          "offset": 2225
+        },
+        {
+          "owner": "F_CA83",
+          "symbol": "_fca83",
+          "offset": 2275
+        },
+        {
+          "owner": "F_CA91",
+          "symbol": "_fca91",
+          "offset": 2289
+        },
+        {
+          "owner": "F_CA9B",
+          "symbol": "_fca9b",
+          "offset": 2299
+        },
+        {
+          "owner": "F_CAD0",
+          "symbol": "_speaker_gate_on",
+          "offset": 2352
+        },
+        {
+          "owner": "F_CADB",
+          "symbol": "_speaker_gate_off",
+          "offset": 2363
+        },
+        {
+          "owner": "F_CAE6",
+          "symbol": "_pit_channel2_set_divisor",
+          "offset": 2374
+        },
+        {
           "owner": "F_CAF1",
           "symbol": "_fcaf1",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_CB48",
-      "kind": "MATCHING_C",
-      "start": 52552,
-      "end": 52572,
-      "source": "src/SNDSTOP.C",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sound_stop_reset",
-        "span": 1,
-        "flags_append": "-k",
-        "module_segments": {},
-        "bindings": {
-          "_g1770": {
-            "offset": 6000,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212A0.phys"
-          },
-          "_g1e8a": {
-            "offset": 7818,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P219BA.phys"
-          },
-          "_speaker_gate_off": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_CADB.entry",
-            "owner": "F_CADB",
-            "public": "_speaker_gate_off",
-            "addend": 0
-          }
-        }
-      },
-      "artifact": "regions/F_CB48.bin",
-      "classification": "code",
-      "matching_status": "EQUAL",
-      "expected_sha256": "4797dd8432b6b85edbf844763e931429801c75dd4733c45a8a55cf0d4ea47ee6",
-      "provenance": {
-        "method": "local C reconstruction and fresh full-extent OMF binding",
-        "upstream_entry_sha256": "39543e6ccf40313c0714f6ce19e959a3764d969aef9b410c2ba923af774b5188",
-        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0100.OBJ",
-      "members": [
-        "F_CB48"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-",
-        "-k"
-      ],
-      "publics": [
+          "offset": 2385
+        },
         {
           "owner": "F_CB48",
           "symbol": "_sound_stop_reset",
-          "offset": 0
+          "offset": 2472
         }
       ],
       "data_component_offsets": {},
@@ -9425,7 +6805,7 @@
       "provenance": {
         "c_recovery": "All 641 bytes and five entry offsets reproduced by ordinary Turbo C in the unchanged shared module: row-setting callbacks and ten-row menus. Unused synthetic epilogue publics removed; no inline ASM or corrections."
       },
-      "object": "R0101.OBJ",
+      "object": "R0060.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -9529,7 +6909,7 @@
         "src/PLAYERSL.C"
       ],
       "recipe": "recipes/modules/C_CDDD_D344.json",
-      "object": "R0102.OBJ",
+      "object": "R0061.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -9628,7 +7008,7 @@
         "module_segments": {}
       },
       "evidence": "F_D386 branches directly to the adjacent F_D3CF continuation on a negative selector. One symbolic TASM contribution restores that control flow, preserves entry offsets 0 and 73, and retains the canonical far-data and handler call fixups.",
-      "object": "R0103.OBJ",
+      "object": "R0062.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -9710,7 +7090,7 @@
           "evidence": "docs/matching-c-wave15.md"
         }
       },
-      "object": "R0104.OBJ",
+      "object": "R0063.OBJ",
       "members": [
         "F_D3DA"
       ],
@@ -9767,7 +7147,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete 21-byte far-pointer wrapper and return path after the stale short boundary"
       },
-      "object": "R0105.OBJ",
+      "object": "R0064.OBJ",
       "members": [
         "F_D45C"
       ],
@@ -9824,7 +7204,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
       },
-      "object": "R0106.OBJ",
+      "object": "R0065.OBJ",
       "members": [
         "F_D471"
       ],
@@ -9881,7 +7261,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
       },
-      "object": "R0107.OBJ",
+      "object": "R0066.OBJ",
       "members": [
         "F_D487"
       ],
@@ -9938,7 +7318,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
       },
-      "object": "R0108.OBJ",
+      "object": "R0067.OBJ",
       "members": [
         "F_D49D"
       ],
@@ -10030,7 +7410,7 @@
         "source_sha256": "cdc43a73ed26779b67bcaee189672d93fac0d6e8fedc9da4a44debf0c7fa419f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0109.OBJ",
+      "object": "R0068.OBJ",
       "members": [
         "F_D4B3"
       ],
@@ -10142,7 +7522,7 @@
         "source_sha256": "3216cf62c31b578e8001cd3d34e13e4f02ed02c13fd3c1b04d496f9d1409df7f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0110.OBJ",
+      "object": "R0069.OBJ",
       "members": [
         "F_D555"
       ],
@@ -10219,7 +7599,7 @@
         "source_sha256": "84326e74881800d04bcf112a78e0e753b1c452d97a7134dc76beebc7149d3a24",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0111.OBJ",
+      "object": "R0070.OBJ",
       "members": [
         "F_D593"
       ],
@@ -10275,7 +7655,7 @@
         "source_sha256": "5d65d80beab05a40ce8e2900b445dec4b9d8f80e5ba4d928bd2aa509b240d53d",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0112.OBJ",
+      "object": "R0071.OBJ",
       "members": [
         "F_D5A6"
       ],
@@ -10331,7 +7711,7 @@
         "source_sha256": "eb8414473303f736b7de8b2ea372f9c905c45916dcfc520858e7d58723c04696",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0113.OBJ",
+      "object": "R0072.OBJ",
       "members": [
         "F_D5B3"
       ],
@@ -10410,7 +7790,7 @@
         "source_sha256": "e4a251fb4a017363f4682a2b1317656d6603bef24abe569ce4a940345bdf8155",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0114.OBJ",
+      "object": "R0073.OBJ",
       "members": [
         "F_D5BA"
       ],
@@ -10481,7 +7861,7 @@
         "source_sha256": "89ee9f01a9e4efeb178d08d3e2520d7a0513276156d5b0994804dd390594729f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0115.OBJ",
+      "object": "R0074.OBJ",
       "members": [
         "F_D5F9"
       ],
@@ -10541,7 +7921,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "extent_note": "Upstream extent is 16 bytes; C emits 15 through RET. The final zero remains RAW."
       },
-      "object": "R0116.OBJ",
+      "object": "R0075.OBJ",
       "members": [
         "F_D60C"
       ],
@@ -10579,11 +7959,22 @@
         "public": "_f_d61c",
         "span": 2,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_gfx_copy_rect": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_gfx_blit_bitmap": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          }
+        },
         "module_segments": {}
       },
-      "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups.",
-      "object": "R0117.OBJ",
+      "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups. All six historical `call $+delta` targets resolve (load address, wrapped mod 65536 since the calls cross the 64K _TEXT frame boundary) to RUNTIME_BLOCK's _gfx_copy_rect (03CCh, the four non-loop renderer calls) and _gfx_blit_bitmap (03C9h, the two per-strip calls inside D61_strip_loop/D79_strip_loop), matching the public index and the same bindings already used by dozens of sibling regions.",
+      "object": "R0076.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -10623,7 +8014,7 @@
         "module_segments": {}
       },
       "evidence": "Adjacent reset and five-byte packed-record append routines operate on the same DS:2F30h initialized record table. Fresh symbolic TASM emits both historical entry offsets in one exact 71-byte no-fixup contribution.",
-      "object": "R0118.OBJ",
+      "object": "R0077.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -10683,7 +8074,7 @@
         "src/RECTTAB.C"
       ],
       "recipe": "recipes/modules/C_D85F_D8F0.json",
-      "object": "R0119.OBJ",
+      "object": "R0078.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -10800,7 +8191,7 @@
         "src/OPLINIT.C"
       ],
       "recipe": "recipes/modules/C_D99B_DA49.json",
-      "object": "R0120.OBJ",
+      "object": "R0079.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -10880,7 +8271,7 @@
         "source_sha256": "dd7272bb5db3f7d6fc19649182ad2de3d03e5ac670a49c2227385b266cad7289",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0121.OBJ",
+      "object": "R0080.OBJ",
       "members": [
         "F_DA66"
       ],
@@ -10952,7 +8343,7 @@
       "provenance": {
         "c_recovery": "All 137 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
       },
-      "object": "R0122.OBJ",
+      "object": "R0081.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -11043,7 +8434,7 @@
         "src/OPLVOICE.C"
       ],
       "recipe": "recipes/modules/C_DB60_DDC7.json",
-      "object": "R0123.OBJ",
+      "object": "R0082.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -11101,7 +8492,7 @@
       "status": "RECOVERED_C_MODULE",
       "historical_translation_unit_proven": false,
       "evidence": "One pure Turbo C translation unit (src/MUSIC.C, no inline asm) reproduces all 700 bytes, four public offsets and, through the native object writer's descending FIXUPP order, the historical relocation order. asm/MUSIC.ASM is retained as reference.",
-      "object": "R0124.OBJ",
+      "object": "R0083.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -11197,7 +8588,7 @@
         "src/OPLREG.C"
       ],
       "recipe": "recipes/modules/C_E095_E54D.json",
-      "object": "R0125.OBJ",
+      "object": "R0084.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -11340,7 +8731,7 @@
         "extent_evidence": "docs/matching-c-wave147.md",
         "library_crosscheck": "CC.LIB RAND module sha256 9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
       },
-      "object": "R0126.OBJ",
+      "object": "R0085.OBJ",
       "members": [
         "LIB_RAND"
       ],
@@ -14187,19 +11578,6 @@
     "R0018.OBJ",
     "R0019.OBJ",
     "R0020.OBJ",
-    "R0021.OBJ",
-    "R0022.OBJ",
-    "R0023.OBJ",
-    "R0024.OBJ",
-    "R0025.OBJ",
-    "R0026.OBJ",
-    "R0027.OBJ",
-    "R0028.OBJ",
-    "R0029.OBJ",
-    "R0030.OBJ",
-    "R0031.OBJ",
-    "R0032.OBJ",
-    "R0033.OBJ",
     "D0000.OBJ",
     "D0001.OBJ",
     "D0002.OBJ",
@@ -14226,6 +11604,22 @@
     "D0023.OBJ",
     "D0024.OBJ",
     "D0025.OBJ",
+    "R0021.OBJ",
+    "R0022.OBJ",
+    "R0023.OBJ",
+    "R0024.OBJ",
+    "R0025.OBJ",
+    "R0026.OBJ",
+    "R0027.OBJ",
+    "R0028.OBJ",
+    "R0029.OBJ",
+    "R0030.OBJ",
+    "R0031.OBJ",
+    "D0026.OBJ",
+    "D0027.OBJ",
+    "D0028.OBJ",
+    "R0032.OBJ",
+    "R0033.OBJ",
     "R0034.OBJ",
     "R0035.OBJ",
     "R0036.OBJ",
@@ -14233,33 +11627,6 @@
     "R0038.OBJ",
     "R0039.OBJ",
     "R0040.OBJ",
-    "R0041.OBJ",
-    "R0042.OBJ",
-    "R0043.OBJ",
-    "R0044.OBJ",
-    "R0045.OBJ",
-    "R0046.OBJ",
-    "R0047.OBJ",
-    "R0048.OBJ",
-    "R0049.OBJ",
-    "R0050.OBJ",
-    "R0051.OBJ",
-    "R0052.OBJ",
-    "R0053.OBJ",
-    "R0054.OBJ",
-    "R0055.OBJ",
-    "D0026.OBJ",
-    "D0027.OBJ",
-    "D0028.OBJ",
-    "R0056.OBJ",
-    "R0057.OBJ",
-    "R0058.OBJ",
-    "R0059.OBJ",
-    "R0060.OBJ",
-    "R0061.OBJ",
-    "R0062.OBJ",
-    "R0063.OBJ",
-    "R0064.OBJ",
     "D0034.OBJ",
     "D0035.OBJ",
     "D0036.OBJ",
@@ -14282,19 +11649,19 @@
     "D0053.OBJ",
     "D0054.OBJ",
     "D0055.OBJ",
-    "R0065.OBJ",
-    "R0066.OBJ",
-    "R0067.OBJ",
-    "R0068.OBJ",
-    "R0069.OBJ",
-    "R0070.OBJ",
-    "R0071.OBJ",
-    "R0072.OBJ",
+    "R0041.OBJ",
+    "R0042.OBJ",
+    "R0043.OBJ",
+    "R0044.OBJ",
+    "R0045.OBJ",
+    "R0046.OBJ",
+    "R0047.OBJ",
+    "R0048.OBJ",
     "D0058.OBJ",
     "D0059.OBJ",
     "D0060.OBJ",
-    "R0073.OBJ",
-    "R0074.OBJ",
+    "R0049.OBJ",
+    "R0050.OBJ",
     "D0061.OBJ",
     "D0062.OBJ",
     "D0063.OBJ",
@@ -14311,13 +11678,13 @@
     "D0074.OBJ",
     "D0075.OBJ",
     "D0076.OBJ",
-    "R0075.OBJ",
-    "R0076.OBJ",
-    "R0077.OBJ",
-    "R0078.OBJ",
-    "R0079.OBJ",
-    "R0080.OBJ",
-    "R0081.OBJ",
+    "R0051.OBJ",
+    "R0052.OBJ",
+    "R0053.OBJ",
+    "R0054.OBJ",
+    "R0055.OBJ",
+    "R0056.OBJ",
+    "R0057.OBJ",
     "D0078.OBJ",
     "D0079.OBJ",
     "D0080.OBJ",
@@ -14354,50 +11721,33 @@
     "D0111.OBJ",
     "D0112.OBJ",
     "D0113.OBJ",
+    "R0058.OBJ",
+    "R0059.OBJ",
+    "R0060.OBJ",
+    "R0061.OBJ",
+    "R0062.OBJ",
+    "R0063.OBJ",
+    "R0064.OBJ",
+    "R0065.OBJ",
+    "R0066.OBJ",
+    "R0067.OBJ",
+    "R0068.OBJ",
+    "R0069.OBJ",
+    "R0070.OBJ",
+    "R0071.OBJ",
+    "R0072.OBJ",
+    "R0073.OBJ",
+    "R0074.OBJ",
+    "R0075.OBJ",
+    "R0076.OBJ",
+    "R0077.OBJ",
+    "R0078.OBJ",
+    "R0079.OBJ",
+    "R0080.OBJ",
+    "R0081.OBJ",
     "R0082.OBJ",
     "R0083.OBJ",
     "R0084.OBJ",
-    "R0085.OBJ",
-    "R0086.OBJ",
-    "R0087.OBJ",
-    "R0088.OBJ",
-    "R0089.OBJ",
-    "R0090.OBJ",
-    "R0091.OBJ",
-    "R0092.OBJ",
-    "R0093.OBJ",
-    "R0094.OBJ",
-    "R0095.OBJ",
-    "R0096.OBJ",
-    "R0097.OBJ",
-    "R0098.OBJ",
-    "R0099.OBJ",
-    "R0100.OBJ",
-    "R0101.OBJ",
-    "R0102.OBJ",
-    "R0103.OBJ",
-    "R0104.OBJ",
-    "R0105.OBJ",
-    "R0106.OBJ",
-    "R0107.OBJ",
-    "R0108.OBJ",
-    "R0109.OBJ",
-    "R0110.OBJ",
-    "R0111.OBJ",
-    "R0112.OBJ",
-    "R0113.OBJ",
-    "R0114.OBJ",
-    "R0115.OBJ",
-    "R0116.OBJ",
-    "R0117.OBJ",
-    "R0118.OBJ",
-    "R0119.OBJ",
-    "R0120.OBJ",
-    "R0121.OBJ",
-    "R0122.OBJ",
-    "R0123.OBJ",
-    "R0124.OBJ",
-    "R0125.OBJ",
     "D0115.OBJ",
     "D0116.OBJ",
     "F01CEBSS.OBJ",

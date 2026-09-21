@@ -169,7 +169,7 @@
    "mismatch": false
   },
   {
-   "module": "C_200F_2A70",
+   "module": "C_200F_3986",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -179,194 +179,18 @@
     "-N-"
    ],
    "source": [
-    "src/BOARDDRW.C"
-   ],
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_2AE2",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-B"
-   ],
-   "source": "src/BRDPAINT.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "C_31C4_3986",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": [
-    "src/BOARDSCR.C"
+    "src/BOARD.C"
    ],
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
    "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/BOARDSCR.C contains an `asm` statement",
+   "prediction_reason": "TCC.EXE source src/BOARD.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
   {
-   "module": "F_3A75",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-B"
-   ],
-   "source": "src/TURNLOOP.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4517",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/BRDTERR.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_462E",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/MENUBKDP.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4713",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-B"
-   ],
-   "source": "src/LVLDRV.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_48BE",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/BLITPAT.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_490D",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/BOOTSEED.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/BOOTSEED.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4943",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/CAMPADV.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "C_49E3_4A93",
+   "module": "C_3A75_4A93",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -381,8 +205,8 @@
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/GAME.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
@@ -447,7 +271,7 @@
    "mismatch": false
   },
   {
-   "module": "F_4F63",
+   "module": "C_4F63_520A",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -456,86 +280,14 @@
     "-f-",
     "-N-"
    ],
-   "source": "src/DOSWRT2.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4F96",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-B"
+   "source": [
+    "src/STARTUP.C"
    ],
-   "source": "src/CMDLINE.C",
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
    "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_50C1",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/BIOSEQP.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/BIOSEQP.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "M_50D2_53BF",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/M_50D2_53BF.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_520A",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-B"
-   ],
-   "source": "src/VIDMODE.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "prediction_reason": "TCC.EXE source src/STARTUP.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
@@ -671,8 +423,8 @@
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/RESOURCE.C contains an `asm` statement",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
    "category": "production-module",
    "mismatch": false
   },
@@ -717,7 +469,7 @@
    "mismatch": false
   },
   {
-   "module": "C_6990_6997",
+   "module": "C_6990_6B74",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -727,156 +479,20 @@
     "-N-"
    ],
    "source": [
-    "src/KEYCHAIN.C"
+    "src/KEYBOARD.C"
    ],
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_699E",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-B"
-   ],
-   "source": "src/KEYIRQH.C",
    "relocation_count": 1,
    "relocation_offsets": [
     27048
    ],
    "observed_direction": "single",
    "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "prediction_reason": "TCC.EXE source src/KEYBOARD.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
   {
-   "module": "M_6B1A_6B4A",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/KEYBIOS.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/KEYBIOS.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6B66",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/KEYBUFDR.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6B74",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/KEYCHACT.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6B7A",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/TIMERINS.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/TIMERINS.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6BAC",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/TIMERRST.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/TIMERRST.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6BCF",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/TIMERIRQ.C",
-   "relocation_count": 1,
-   "relocation_offsets": [
-    27609
-   ],
-   "observed_direction": "single",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/TIMERIRQ.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "C_6C26_6C87",
+   "module": "C_6B7A_6C87",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -888,16 +504,18 @@
    "source": [
     "src/TIMER.C"
    ],
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    27609
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/TIMER.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
   {
-   "module": "F_6CA6",
+   "module": "C_6CA6_6D3C",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -906,88 +524,14 @@
     "-f-",
     "-N-"
    ],
-   "source": "src/SPRSHSEL.C",
+   "source": [
+    "src/FONT.C"
+   ],
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
    "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/SPRSHSEL.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6CEA",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/SPRSHIDX.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6CF0",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/DLGLNHT.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6CF6",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/TXTLNWID.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/TXTLNWID.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6D3C",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/TXTWRAP.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "prediction_reason": "TCC.EXE source src/FONT.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
@@ -1605,307 +1149,17 @@
    "mismatch": false
   },
   {
-   "module": "M_C1A0_C232",
+   "module": "M_C1A0_CB48",
    "tool": "TASM.EXE",
    "flags": [
     "/mx"
    ],
-   "source": "asm/M_C1A0_C232.ASM",
+   "source": "asm/SOUND.ASM",
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
    "predicted_direction": "ascending",
    "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "M_C27D_C567",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/M_C27D_C567.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_C59A",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/SNDSCL4.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/SNDSCL4.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "M_C5A8_C5C6",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/M_C5A8_C5C6.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "M_C5D1_C706",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/M_C5D1_C706.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_C755",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "src/F_C755.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "M_C77A_C898",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/M_C77A_C898.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_C8D4",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "src/F_C8D4.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_C8E2",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-k",
-    "-B"
-   ],
-   "source": "src/SNDTICK.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_C914",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_C914.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_C988",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/SNDNOTE.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/SNDNOTE.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "M_C9A4_CA91",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/M_C9A4_CA91.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_CA9B",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_CA9B.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_CAD0",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-k",
-    "-B"
-   ],
-   "source": "src/SPKON.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_CADB",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-k",
-    "-B"
-   ],
-   "source": "src/SPKOFF.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_CAE6",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/PITDIV2.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/PITDIV2.C contains an `asm` statement",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_CAF1",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_CAF1.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_CB48",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-",
-    "-k"
-   ],
-   "source": "src/SNDSTOP.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
    "category": "production-module",
    "mismatch": false
   },
@@ -3650,10 +2904,10 @@
  "mismatches": [],
  "fresh_compile_verification": {
   "found": true,
-  "work_dir": "build\\production-b8z89_zn\\compile\\WORK",
-  "objects_checked": 55,
-  "agreements": 34,
-  "disagreements": 0,
+  "work_dir": "build\\production-pq37d75x\\compile\\WORK",
+  "objects_checked": 28,
+  "agreements": 14,
+  "disagreements": 1,
   "rows": [
    {
     "object": "R0000.OBJ",
@@ -3696,47 +2950,23 @@
     "agrees_with_prediction": true
    },
    {
+    "object": "R0009.OBJ",
+    "module": "C_200F_3986",
+    "raw_fixup_count": 407,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
     "object": "R0010.OBJ",
-    "module": "F_2AE2",
-    "raw_fixup_count": 111,
+    "module": "C_3A75_4A93",
+    "raw_fixup_count": 496,
     "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
     "object": "R0011.OBJ",
-    "module": "C_31C4_3986",
-    "raw_fixup_count": 112,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0012.OBJ",
-    "module": "F_3A75",
-    "raw_fixup_count": 329,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0015.OBJ",
-    "module": "F_4713",
-    "raw_fixup_count": 62,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0017.OBJ",
-    "module": "F_490D",
-    "raw_fixup_count": 12,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0020.OBJ",
     "module": "F_4AA8",
     "raw_fixup_count": 1,
     "raw_direction": "single",
@@ -3744,7 +2974,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0021.OBJ",
+    "object": "R0012.OBJ",
     "module": "F_4B0C",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -3752,7 +2982,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0022.OBJ",
+    "object": "R0013.OBJ",
     "module": "F_4E9F",
     "raw_fixup_count": 5,
     "raw_direction": "ascending",
@@ -3760,7 +2990,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0023.OBJ",
+    "object": "R0014.OBJ",
     "module": "F_4EEB",
     "raw_fixup_count": 6,
     "raw_direction": "ascending",
@@ -3768,39 +2998,15 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0025.OBJ",
-    "module": "F_4F96",
-    "raw_fixup_count": 36,
+    "object": "R0015.OBJ",
+    "module": "C_4F63_520A",
+    "raw_fixup_count": 77,
     "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
-    "object": "R0026.OBJ",
-    "module": "F_50C1",
-    "raw_fixup_count": 1,
-    "raw_direction": "single",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0027.OBJ",
-    "module": "M_50D2_53BF",
-    "raw_fixup_count": 19,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0028.OBJ",
-    "module": "F_520A",
-    "raw_fixup_count": 26,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0031.OBJ",
+    "object": "R0018.OBJ",
     "module": "F_6036",
     "raw_fixup_count": 6,
     "raw_direction": "ascending",
@@ -3808,7 +3014,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0032.OBJ",
+    "object": "R0019.OBJ",
     "module": "F_60A9",
     "raw_fixup_count": 11,
     "raw_direction": "mixed",
@@ -3816,7 +3022,7 @@
     "agrees_with_prediction": false
    },
    {
-    "object": "R0033.OBJ",
+    "object": "R0020.OBJ",
     "module": "F_6181",
     "raw_fixup_count": 7,
     "raw_direction": "mixed",
@@ -3824,79 +3030,39 @@
     "agrees_with_prediction": false
    },
    {
-    "object": "R0035.OBJ",
+    "object": "R0022.OBJ",
     "module": "C_6266_68AA",
     "raw_fixup_count": 159,
     "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0039.OBJ",
-    "module": "F_699E",
-    "raw_fixup_count": 38,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0040.OBJ",
-    "module": "M_6B1A_6B4A",
-    "raw_fixup_count": 2,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0041.OBJ",
-    "module": "F_6B66",
-    "raw_fixup_count": 1,
-    "raw_direction": "single",
     "predicted_direction": "descending",
-    "agrees_with_prediction": true
+    "agrees_with_prediction": false
    },
    {
-    "object": "R0043.OBJ",
-    "module": "F_6B7A",
-    "raw_fixup_count": 2,
+    "object": "R0025.OBJ",
+    "module": "C_6990_6B74",
+    "raw_fixup_count": 43,
+    "raw_direction": "mixed",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": false
+   },
+   {
+    "object": "R0026.OBJ",
+    "module": "C_6B7A_6C87",
+    "raw_fixup_count": 32,
+    "raw_direction": "mixed",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": false
+   },
+   {
+    "object": "R0027.OBJ",
+    "module": "C_6CA6_6D3C",
+    "raw_fixup_count": 14,
     "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
-    "object": "R0044.OBJ",
-    "module": "F_6BAC",
-    "raw_fixup_count": 2,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0045.OBJ",
-    "module": "F_6BCF",
-    "raw_fixup_count": 11,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0047.OBJ",
-    "module": "F_6CA6",
-    "raw_fixup_count": 8,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0050.OBJ",
-    "module": "F_6CF6",
-    "raw_fixup_count": 2,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0052.OBJ",
+    "object": "R0028.OBJ",
     "module": "M_6D86_6DCC",
     "raw_fixup_count": 19,
     "raw_direction": "ascending",
@@ -3904,7 +3070,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0053.OBJ",
+    "object": "R0029.OBJ",
     "module": "F_6EFF",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -3912,7 +3078,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0054.OBJ",
+    "object": "R0030.OBJ",
     "module": "F_6F4B",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -3920,7 +3086,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0074.OBJ",
+    "object": "R0050.OBJ",
     "module": "F_9EC3",
     "raw_fixup_count": 4,
     "raw_direction": "ascending",
@@ -3928,143 +3094,15 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0083.OBJ",
-    "module": "M_C1A0_C232",
-    "raw_fixup_count": 36,
+    "object": "R0059.OBJ",
+    "module": "M_C1A0_CB48",
+    "raw_fixup_count": 164,
     "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
-    "object": "R0084.OBJ",
-    "module": "M_C27D_C567",
-    "raw_fixup_count": 19,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0085.OBJ",
-    "module": "F_C59A",
-    "raw_fixup_count": 1,
-    "raw_direction": "single",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0086.OBJ",
-    "module": "M_C5A8_C5C6",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0087.OBJ",
-    "module": "M_C5D1_C706",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0088.OBJ",
-    "module": "F_C755",
-    "raw_fixup_count": 5,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0089.OBJ",
-    "module": "M_C77A_C898",
-    "raw_fixup_count": 13,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0090.OBJ",
-    "module": "F_C8D4",
-    "raw_fixup_count": 1,
-    "raw_direction": "single",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0091.OBJ",
-    "module": "F_C8E2",
-    "raw_fixup_count": 9,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0092.OBJ",
-    "module": "F_C914",
-    "raw_fixup_count": 16,
-    "raw_direction": "mixed",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": false
-   },
-   {
-    "object": "R0093.OBJ",
-    "module": "F_C988",
-    "raw_fixup_count": 3,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0094.OBJ",
-    "module": "M_C9A4_CA91",
-    "raw_fixup_count": 5,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0095.OBJ",
-    "module": "F_CA9B",
-    "raw_fixup_count": 5,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0096.OBJ",
-    "module": "F_CAD0",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0097.OBJ",
-    "module": "F_CADB",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0098.OBJ",
-    "module": "F_CAE6",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0099.OBJ",
-    "module": "F_CAF1",
-    "raw_fixup_count": 14,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0103.OBJ",
+    "object": "R0062.OBJ",
     "module": "M_D386_D3CF",
     "raw_fixup_count": 3,
     "raw_direction": "ascending",
@@ -4072,7 +3110,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0117.OBJ",
+    "object": "R0076.OBJ",
     "module": "M_D61C_D79C",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -4080,7 +3118,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0118.OBJ",
+    "object": "R0077.OBJ",
     "module": "M_D818_D825",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -4088,7 +3126,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0119.OBJ",
+    "object": "R0078.OBJ",
     "module": "C_D85F_D8F0",
     "raw_fixup_count": 15,
     "raw_direction": "ascending",

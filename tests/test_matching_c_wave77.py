@@ -18,11 +18,14 @@ class MatchingCWave77Tests(unittest.TestCase):
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_4F63')
         recipe_owner = next(r for r in recipe['owners'] if r['id'] == 'F_4F63')
         # F_4F63 (dos_write_handle2) was recovered as exact C; see
-        # docs/current/exact-c-recovery.md. The wave77 recipe still records
-        # its earlier symbolic-ASM form. Only the ownership facts this test
+        # docs/current/exact-c-recovery.md. It was later folded into the
+        # src/STARTUP.C translation-unit merge (module C_4F63_520A in
+        # layout/production-plan.json; see docs/current/asm-provenance.json),
+        # so its old standalone src/DOSWRT2.C is gone. The wave77 recipe still
+        # records that earlier form. Only the ownership facts this test
         # exercises (kind, source, extent) need to track the current truth.
         self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'src/DOSWRT2.C')
+        self.assertEqual(owner['source'], 'src/STARTUP.C')
         self.assertEqual(owner['start'], recipe_owner['start'])
         self.assertEqual(owner['end'], recipe_owner['end'])
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

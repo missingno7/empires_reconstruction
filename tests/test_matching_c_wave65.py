@@ -12,27 +12,23 @@ class MatchingCWave65Tests(unittest.TestCase):
     def test_recovered_complete_extent_and_fixups(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_53BF')
-        # F_53BF was reverted to symbolic ASM and now belongs to the grouped
-        # module M_50D2_53BF (see layout/production-plan.json and
-        # docs/current/asm-origin-review.json), which calls the renamed
-        # _opl_detect (was _fe54d). The standalone recovery/src/F_53BF.ASM this
-        # manifest region's 'source' field names is a stale leftover that
-        # still externs the pre-rename _fe54d and no longer matches the
-        # binding manifest['regions'] declares for this owner; compile and
-        # bind the grouped module instead, the way the production build does.
-        self.assertEqual(owner['kind'], 'MATCHING_ASM')
+        # F_53BF (the video-detect display-mode routine) is now recovered as
+        # exact C rather than symbolic ASM: it and F_50D2 were folded into the
+        # src/STARTUP.C translation-unit merge (module C_4F63_520A in
+        # layout/production-plan.json; see docs/current/asm-provenance.json).
+        # The grouped ASM module M_50D2_53BF this test used to compile no
+        # longer exists in layout/production-plan.json, so compile the
+        # current C unit the region's own 'source'/'build' name, exactly like
+        # any other single-region C member.
+        self.assertEqual(owner['kind'], 'MATCHING_C')
+        self.assertEqual(owner['source'], 'src/STARTUP.C')
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         lock = read_json(ROOT / 'layout/toolchain.json')
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
-        plan = read_json(ROOT / 'layout/production-plan.json')['modules']
-        module_plan = next(m for m in plan if m['id'] == 'M_50D2_53BF')
-        self.assertIn('F_53BF', module_plan['members'])
-        group_owner = {'id': module_plan['id'], 'kind': 'MATCHING_ASM', 'source': module_plan['source'],
-                       'build': {'flags_append': ''}}
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
-            receipts, _ = compile_sources(ROOT, [group_owner], Path(temporary), ROOT / 'toolchain',
+            receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain',
                                           resolve_runner(lock), lock)
-            module = read_object((Path(temporary) / receipts[group_owner['id']]['object']).read_bytes())
+            module = read_object((Path(temporary) / receipts[owner['id']]['object']).read_bytes())
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)
             self.assertEqual(len(data), 75)

@@ -18,37 +18,26 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_6D86', 'PAD_006FC5', 'F_6DCC'])
         self.assertEqual(module['end'] - module['start'], 377)
 
-    def test_keyboard_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_6B1A_6B4A')
-        self.assertEqual(module['members'], ['F_6B1A', 'F_6B4A'])
-        self.assertEqual(module['end'] - module['start'], 76)
+    # M_6B1A_6B4A was removed from layout/structural-source-modules.json: its
+    # members (F_6B1A, F_6B4A) are now inside the src/KEYBOARD.C
+    # translation-unit merge (module C_6990_6B74 in
+    # layout/production-plan.json; see docs/current/asm-provenance.json)
+    # rather than a standalone structural ASM/inline-asm source module.
 
-    def test_sound_control_module_has_contiguous_manifest_ownership(self):
+    # M_C1A0_C232, M_C27D_C567, M_C5A8_C5C6, M_C5D1_C706, M_C77A_C898 and
+    # M_C9A4_CA91 were removed from layout/structural-source-modules.json:
+    # the whole sound driver 0xC3A0..0xCD5C they used to carve up is now
+    # proven to be one hand-written TASM module, asm/SOUND.ASM (see
+    # docs/current/asm-provenance.json), replaced below by a single
+    # contiguous-ownership test for M_C1A0_CB48.
+    def test_sound_backend_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_C1A0_C232')
-        self.assertEqual(module['members'], ['F_C1A0', 'F_C1F7', 'F_C232'])
-        self.assertEqual(module['end'] - module['start'], 221)
-
-    def test_command_dispatch_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_C9A4_CA91')
-        self.assertEqual(module['members'], [
-            'F_C9A4', 'F_CA03', 'F_CA35', 'F_CA51', 'F_CA83', 'F_CA91',
-        ])
-        self.assertEqual(module['end'] - module['start'], 247)
-
-    def test_command_control_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_C27D_C567')
-        self.assertEqual(module['members'], [
-            'F_C27D', 'F_C2EA', 'F_C359', 'F_C3DB', 'F_C440', 'F_C501', 'F_C549', 'F_C567',
-        ])
-        self.assertEqual(module['end'] - module['start'], 797)
+        module = next(item for item in modules if item['id'] == 'M_C1A0_CB48')
+        self.assertEqual(len(module['members']), 41)
+        self.assertEqual(module['members'][0], 'F_C1A0')
+        self.assertEqual(module['members'][-1], 'F_CB48')
+        self.assertEqual(module['end'] - module['start'], 2492)
 
     def test_menu_control_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
@@ -73,12 +62,10 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_D818', 'F_D825'])
         self.assertEqual(module['end'] - module['start'], 71)
 
-    def test_control_setter_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_C5A8_C5C6')
-        self.assertEqual(module['members'], ['F_C5A8', 'F_C5B3', 'F_C5C6'])
-        self.assertEqual(module['end'] - module['start'], 41)
+    # M_C5A8_C5C6 was removed from layout/structural-source-modules.json for
+    # the same reason as the other sound sub-modules above: it is now part of
+    # the single hand-written asm/SOUND.ASM module, covered by
+    # test_sound_backend_module_has_contiguous_manifest_ownership.
 
     def test_far_record_decoder_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
@@ -87,12 +74,11 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_D386', 'F_D3CF'])
         self.assertEqual(module['end'] - module['start'], 84)
 
-    def test_display_adapter_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_50D2_53BF')
-        self.assertEqual(module['members'], ['F_50D2', 'F_53BF'])
-        self.assertEqual(module['end'] - module['start'], 312)
+    # M_50D2_53BF was removed from layout/structural-source-modules.json: its
+    # members (F_50D2, F_53BF) are now recovered as exact C and folded into
+    # the src/STARTUP.C translation-unit merge (module C_4F63_520A in
+    # layout/production-plan.json; see docs/current/asm-provenance.json)
+    # rather than a standalone structural ASM source module.
 
     def test_paired_display_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
@@ -101,19 +87,10 @@ class StructuralSourceModuleTests(unittest.TestCase):
         self.assertEqual(module['members'], ['F_988F', 'F_98CB'])
         self.assertEqual(module['end'] - module['start'], 121)
 
-    def test_sound_command_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_C5D1_C706')
-        self.assertEqual(module['members'], ['F_C5D1', 'F_C678', 'F_C6B9', 'F_C706'])
-        self.assertEqual(module['end'] - module['start'], 388)
-
-    def test_sound_backend_module_has_contiguous_manifest_ownership(self):
-        manifest = read_json(ROOT / 'layout/manifest.json')
-        modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_C77A_C898')
-        self.assertEqual(module['members'], ['F_C77A', 'F_C7CB', 'F_C834', 'F_C877', 'F_C898'])
-        self.assertEqual(module['end'] - module['start'], 346)
+    # M_C5D1_C706 was removed from layout/structural-source-modules.json for
+    # the same reason as the other sound sub-modules above: it is now part of
+    # the single hand-written asm/SOUND.ASM module, covered by
+    # test_sound_backend_module_has_contiguous_manifest_ownership.
 
     def test_record_renderer_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')

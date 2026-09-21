@@ -157,7 +157,11 @@ class CleanStructuralExeBuildTests(unittest.TestCase):
         self.assertNotRegex(board['text'], r'(?im)^\s*asm\b')
         parser = recovered_member('F_4F96')
         self.assertEqual(parser['tool'], 'TCC.EXE')
-        self.assertIn('-B', parser['flags'])
+        # The option parser's -B-shaped jump relaxation comes from inline asm
+        # elsewhere in its translation unit (STARTUP.C), not from a flag.
+        self.assertNotIn('-B', parser['flags'])
+        self.assertEqual(parser['source'], 'src/STARTUP.C')
+        self.assertRegex((ROOT / parser['source']).read_text(), r'(?im)^\s*asm\b')
         self.assertEqual(parser['end'] - parser['start'], 299)
         self.assertNotRegex(parser['text'], r'(?im)^\s*asm\b')
         for ident, size in [('F_B122', 693), ('F_28AC', 218), ('F_25B3', 761), ('F_8BAB', 1275), ('F_B99F', 1857), ('M_988F_98CB', 121), ('M_DAD7_DB35', 137), ('M_CB5C_CD23', 641), ('F_699E', 380), ('F_643A', 240), ('F_652A', 66), ('F_4F63', 51)]:

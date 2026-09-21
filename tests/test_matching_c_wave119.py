@@ -12,8 +12,14 @@ class MatchingCWave119Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave119.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_C27D')
-        self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'recovery/src/F_C27D.C')
+        # F_C27D's C candidate (recovery/src/F_C27D.C) is overturned: the whole
+        # sound driver 0xC3A0..0xCD5C is now proven to be one hand-written TASM
+        # module, asm/SOUND.ASM (M_C1A0_CB48); see
+        # docs/current/asm-provenance.json for why Turbo C cannot reproduce it
+        # (frames that never save SI/DI). The wave119 evidence below still
+        # matches the unchanged original bytes.
+        self.assertEqual(owner['kind'], 'MATCHING_ASM')
+        self.assertEqual(owner['source'], 'asm/SOUND.ASM')
         self.assertEqual(owner['end'] - owner['start'], 109)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_C27D')
         evidence = read_json(ROOT / 'docs/matching-wave119-evidence.json')

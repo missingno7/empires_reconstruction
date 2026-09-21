@@ -1,6 +1,657 @@
-/* src/GAME.C: Program lifecycle: main, game driver and shutdown.
+/* src/GAME.C: Turn loop, terrain, level driver, boot and campaign flow.
    One translation unit; the sections below were the separate member
-   sources of grouped module C_49E3_4A93 and keep their original ids. */
+   sources of grouped module C_3A75_4A93 and keep their original ids. */
+
+/* ---- F_3A75 (original code at 0x3A75) ---- */
+/* F_3A75 -- the turn loop.  Entry 13B75; the declared /24 player-query point
+   13C08 is the rect_table_hit_id() probe at offset 0x93 of this function. */
+struct C470 { char pad[0x15]; char b15; char rest[5]; };
+
+extern int f6b4a(), f6b1a(), hud_tab_next(), rect_table_hit_id();
+extern void timer_deadline_arm();
+extern void player_select_restart_confirm();
+extern void keyboard_chain_disable(void);
+extern int puzzle_deal_pieces();extern void gfx_wipe_rect();
+extern void record_table_delete_compact();
+extern void fcaf1();
+extern void f1ecd(void);
+extern void board_scroll_transition();
+extern void sprite_draw_cursor(void);
+extern int energy_adjust(), f60a9(), anim_frame_advance();
+extern void board_run_unit_script();
+extern void board_unit_script_trigger(void);
+extern void board_scan_wipe_effect(int);
+extern void board_advance_unit_moves(int a);
+extern int f_d79c(), fd386(), f1f91();extern void f4e9f();
+extern void board_redraw_view();
+extern void sprite_slots_redraw();
+extern void board_update_moving_records();
+extern int shadow_bitmap_hit_test(), hud_tab_get(), hud_scroll_move();extern void f4b0c();
+extern void cursor_trail_arm(void);
+extern void f329f(void);
+extern void board_raycast_step(void);
+extern void roundend_flash_panel_icons(void);
+extern void timer_deadline_wait(void);
+extern void f3986();
+extern char far *record_field_skip_n();
+
+extern int g0bc, g72c, g72e, g730, g732, g734, g736, g738, g73a;
+extern int g8fe, gb68, gb6a, gb6c, gb6e, gb70, g71e, g722, current_slot;
+extern int g40ce, g96e4, gb07a, board_record_index;
+extern char far *rect_queue_write_ptr;                 /* the edge cursor */
+#include "LAYOUT.H"
+#include "VIDEO.H"
+extern char far *ui_gfx_blob;
+extern char far *board_records;                 /* vram */
+extern char far *record_table_root;
+extern unsigned char far *gbfc4;
+extern char far *g40d0;                 /* objtab */
+extern char far *resource_stripe_table;                 /* sprite base */
+extern char str96ee[];
+extern unsigned char b740[];
+extern unsigned char b4380[], b4386[];
+extern unsigned char b437a[];
+extern char b438c[], b4396[], b43a0[], b43aa[];
+extern int w8bea[], w8bf4[];
+extern struct C470 c470[];
+
+int turn_loop_run()
+{
+    int key;                            /* bp-16 */
+    int obj;                            /* bp-14 */
+    int r;                              /* bp-12 */
+    int dir;                            /* bp-10 */
+    int oy;                             /* bp-0E */
+    int lastobj;                        /* bp-0C */
+    int probe;                          /* bp-0A */
+    int lastcur;                        /* bp-08 */
+    int blink;                          /* bp-06 */
+    char far *p;                        /* bp-04 */
+    register int x, d;                  /* si, di */
+
+    g730 = g732 = 0;
+    x = 0;
+    g96e4 = x;
+    blink = lastcur = g8fe = lastobj = x;
+    g0bc = gb70 = 1;
+    keyboard_chain_disable();
+    for (;;) {
+        timer_deadline_arm(0x18);
+        g40ce = dir = key = 0;
+        if (f6b4a()) {
+            g0bc = 0;
+            key = f6b1a();
+            if (key == 0xd) hud_tab_next();
+            else if (key == 0x1b) player_select_restart_confirm();
+            g0bc = 1;
+        }
+        rect_queue_write_ptr = ui_gfx_blob;
+        if ((obj = rect_table_hit_id((g736 >> 1) + 1, g738 + 1, 14, 0x27)) != 0 && obj != lastobj) {
+            if (obj < 7) {
+                record_table_delete_compact(obj);
+                obj--;
+                d = b4380[obj];
+                d <<= 1;
+                oy = b4386[obj];
+                b437a[obj] = 0;
+                gb07a = puzzle_deal_pieces();
+                rect_queue_write_ptr = ui_gfx_blob;
+                gfx_wipe_rect(d, oy + 0x148, 0x10, 0x10, d, oy + 0xb8);
+                gfx_wipe_rect(d, oy + 0xb8, 0x10, 0x10, d, oy);
+                fcaf1(2);
+                if (gb07a != 0) {
+                    sprite_draw_cursor();
+                    f1ecd();
+                    board_scroll_transition();
+                }
+            } else if (obj == 7) {
+                energy_adjust(c470[current_slot].b15 = 4);
+                record_table_delete_compact(obj);
+                d = ((unsigned char far *)board_records)[0x3e5];
+                d <<= 1;
+                oy = ((unsigned char far *)board_records)[0x3e6];
+                board_records[0x3e7] = 0;
+                gfx_wipe_rect(d, oy + 0x148, 0x10, 0x10, d, oy + 0xb8);
+                gfx_wipe_rect(d, oy + 0xb8, 0x10, 0x10, d, oy);
+                fcaf1(3);
+            } else if (obj < 0x20) {
+                p = record_field_skip_n(obj - 8);
+                if (p[1] != 2) board_run_unit_script(p);
+            } else if (obj < 0x30) {
+                board_advance_unit_moves(obj - 0x20);
+            }
+        }
+        lastobj = obj;
+        if (*g40d0 != 0) f60a9();
+        if (g8fe != 0) board_unit_script_trigger();
+        if (gb68 != 0 && g722 != 0) {
+            for (obj = 0; obj < g722; obj++) {
+                if (w8bf4[obj] - 2 <= g738 && w8bf4[obj] + 2 >= g738 &&
+                    w8bea[obj] <= g736 && w8bea[obj] + 0x10 >= g736) {
+                    if (g71e == 0) {
+                        g0bc = 0;
+                        board_scan_wipe_effect(obj);
+                        return 1;
+                    } else {
+                        g0bc = 0;
+                        r = anim_frame_advance(obj);
+                        if (r != 0) {
+                            if (r > 0) {
+                                board_scan_wipe_effect(obj);
+                                return 1;
+                            }
+                            return 0;
+                        }
+                        rect_queue_write_ptr = ui_gfx_blob;
+                        g0bc = 1;
+                        goto scanned;
+                    }
+                }
+            }
+        }
+scanned:
+        board_redraw_view();
+        f4e9f();
+        if (g8fe != 0) sprite_slots_redraw();
+        board_update_moving_records();
+        if (*record_table_root != 0) f_d79c();
+        if (*gbfc4 != 0) fd386();
+        if (gb6e != 0) {
+            if (x == 0 || gb68 == 0) {
+                x = 0;
+                g73a = x;
+                if ((f1f91(g736 + 0x21, g738 + 1, 0x27) & 7) == 0) {
+                    g736 += g734;
+                    dir = 1;
+                    if (g72e <= 8) {
+                        if (++g72e > 8) g72e = 1;
+                    }
+                }
+            }
+        } else if (gb6c != 0) {
+            if (x == 0 || gb68 == 0) {
+                g73a = 1;
+                x = 0;
+                if ((f1f91(g736, g738 + 1, 0x27) & 7) == 0) {
+                    g736 -= g734;
+                    dir = -1;
+                    if (g72e <= 8) {
+                        if (++g72e > 8) g72e = 1;
+                    }
+                }
+            }
+        }
+        if (gb68 != 0 && (f1f91(g736 + 0x10 - (g73a << 2), g738 + 1, 0x27) & 0x80) != 0) {
+                if (x == 0) {
+                    if (g736 % 8 == 0) {
+                        if ((f1f91(g736 + 0x14, g738 + 1, 0x1d) & 0x80) != 0)
+                            g736 += 4;
+                        else
+                            g736 -= 4;
+                    }
+                    x = 1;
+                } else if ((shadow_bitmap_hit_test(g736 + 0xf, g738 - 4, 2) & 0x80) != 0) {
+                    g738 -= 4;
+                    if (++x > 2) x = 1;
+                } else if ((shadow_bitmap_hit_test(g736 + 0xf, g738 - 2, 2) & 0x80) != 0) {
+                    g738 -= 2;
+                    if (++x > 2) x = 1;
+                }
+                g734 = 8;
+                g730 = 0;
+                g72e = x + 0x13;
+        } else if (gb6a != 0 && x != 0) {
+            if ((shadow_bitmap_hit_test(g736 + 0xf, g738 + 0x26, 2) & 0x80) != 0) {
+                g738 += 4;
+                if (++x > 2) x = 1;
+                g72e = x + 0x13;
+            } else {
+                x = 0;
+            }
+        }
+        if (x == 0) {
+            if (g730 != 0) {
+                if ((shadow_bitmap_hit_test(g736 + 8, g738 - 1, 9) & 7) == 0) {
+                    g738 -= b740[g730];
+                    g730--;
+                    if (++g72e > 0xb) g72e = 0xb;
+                    if (dir == 0) g72e = 0xa;
+                } else {
+                    g730 = 0;
+                }
+                goto moved;
+            }
+            if ((shadow_bitmap_hit_test(g736 + 8, g738 + 0x2f, 9) & 7) == 0) {
+                if (g732 != 0) {
+                    g738 += 8;
+                } else {
+                    g732 = 1;
+                    g738 += 2;
+                }
+                g72e = (dir & 1) + 0xa;
+                goto moved;
+            }
+            if (((probe = shadow_bitmap_hit_test(g736 + 8, g738 + 0x28, 9)) & 7) == 0) {
+                g738 += (((g738 + 0x30) / 8) << 3) - (g738 + 0x28);
+                g732 = 0;
+                g72e = (dir & 1) + 0xa;
+                fcaf1(0xb);
+                goto moved;
+            }
+            if (key == 0x20) {
+                if (hud_tab_get() == 1) {
+                    if ((shadow_bitmap_hit_test(g736 + 8, g738 - 1, 9) & 7) == 0) {
+                        fcaf1(0x10);
+                        g730 = 8;
+                        g72e = 9;
+                        g734 = dir ? 8 : 4;
+                    } else goto fell;
+                } else goto fell;
+                goto moved;
+            }
+            if (gb68 != 0 && gb70 != 0) {
+                if ((shadow_bitmap_hit_test(g736 + 8, g738 - 1, 9) & 7) == 0) {
+                    gb70 = 0;
+                    g730 = 5;
+                    g72e = 9;
+                    g734 = dir ? 8 : 4;
+                    fcaf1(0xc);
+                    goto moved;
+                }
+            }
+fell:
+            if (dir != 0) {
+                if (g72e > 8) g72e = 1;
+            } else {
+                g72e = 0;
+            }
+            if (probe & 8) {
+                if (probe & 0x10) {
+                    if ((f1f91(g736, g738 + 1, 0x27) & 7) == 0) {
+                        g736 -= g734;
+                        if (g736 <= -4) g736 = -0x11;
+                    }
+                } else {
+                    if ((f1f91(g736 + 0x21, g738 + 1, 0x27) & 7) == 0) {
+                        g736 += g734;
+                        if (g736 >= 0x130) g736 = 0x131;
+                    }
+                }
+            }
+            g734 = 4;
+        }
+moved:
+        if (key == 0x20) {
+            if ((obj = hud_tab_get()) == 2 && g72c == 0) {
+                    if (hud_scroll_move(-1) != -1) {
+                        g72c = 0x3a;
+                        blink = 0;
+                        fcaf1(0);
+                    } else {
+                        fcaf1(0x11);
+                    }
+            } else if (obj == 0 && x == 0) {
+                if (g8fe == 0) {
+                    cursor_trail_arm();
+                    fcaf1(0x14);
+                } else {
+                    fcaf1(0x17);
+                }
+            }
+        }
+        if (g72c == 1) g72c = 0;
+        f4b0c();
+        if (g738 < 0) {
+            if (b43a0[board_record_index] != 0) {
+                g738 = 0x90;
+                if (b43a0[board_record_index] - 1 != board_record_index) {
+                    board_record_index = b43a0[board_record_index] - 1;
+                    g8fe = lastcur = lastobj = 0;
+                    f329f();
+                }
+            } else {
+                g738 = 0;
+            }
+        } else if (g738 > 0x90) {
+            if (b43aa[board_record_index] != 0) {
+                g738 = 0;
+                if (b43aa[board_record_index] - 1 != board_record_index) {
+                    board_record_index = b43aa[board_record_index] - 1;
+                    g8fe = lastcur = lastobj = 0;
+                    f329f();
+                }
+            } else {
+                g738 = 0x90;
+            }
+        }
+        if (g736 < -0x10) {
+            if (b438c[board_record_index] != 0) {
+                g736 = 0x120;
+                if (b438c[board_record_index] - 1 != board_record_index) {
+                    board_record_index = b438c[board_record_index] - 1;
+                    g8fe = lastcur = lastobj = 0;
+                    f329f();
+                }
+            } else {
+                g736 = -0x10;
+            }
+        } else if (g736 > 0x130) {
+            if (b4396[board_record_index] != 0) {
+                g736 = 0;
+                if (b4396[board_record_index] - 1 != board_record_index) {
+                    board_record_index = b4396[board_record_index] - 1;
+                    g8fe = lastcur = lastobj = 0;
+                    f329f();
+                }
+            } else {
+                g736 = 0x130;
+            }
+        }
+        if (g8fe != 0) board_raycast_step();
+        if (blink != 0) {
+            blink--;
+            if (blink > 0x1a) {
+                gfx_copy_rect(g736, g738, resource_stripe_table + 0x39ec, g73a);
+            } else if (blink & 1) {
+                gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+            }
+        } else if (g72c != 0) {
+            gfx_copy_rect(g736, g738, (char far *)str96ee, 0);
+            g72c--;
+            gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+        } else {
+            if (g40ce != 0 && lastcur != g40ce) {
+            gfx_copy_rect(g736, g738, resource_stripe_table + 0x39ec, g73a);
+            blink = 0x1e;
+            fcaf1(1);
+            f1ecd();
+            g0bc = 0;
+            if (energy_adjust(-1) == 0) {
+                f3986();
+                return 0;
+            }
+            c470[current_slot].b15 = energy_adjust(0);
+            g0bc = 1;
+            x = 0;
+            lastcur = g40ce;
+            goto tail;
+            } else {
+            gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+            }
+            lastcur = g40ce;
+        }
+        f1ecd();
+tail:
+        timer_deadline_wait();
+        if (g71e != 0 && g96e4 == 0 && g736 > 0xbe) {
+            roundend_flash_panel_icons();
+            g96e4 = 1;
+        }
+    }
+    g0bc = 0;
+    return 1;
+}
+
+
+/* ---- F_4517 (original code at 0x4517) ---- */
+extern int resource_load_record();
+extern void movmem();
+extern void resource_load_record_into();
+extern int g73c;
+extern int g724[];
+extern char far *ui_gfx_shadow_a;
+extern char s79bf[];
+extern char a74a2[];
+extern char s8c12[];
+extern char far *g99d6;
+extern char far *a72b2[];
+
+void board_terrain_resources_load(di)
+int di;
+{
+    char far *d;
+    register int i;
+
+    if (g73c == di)
+        return;
+    g73c = di;
+    resource_load_record(di + 0x1015);
+    d = ui_gfx_shadow_a + 2;
+    for (i = 0; i < 5; i++, d += 0x31b)
+        movmem(d, s79bf + i * 0x319, 0x319);
+    for (i = 0; i < 6; i++, d += 0xbd)
+        movmem(d, a74a2 + i * 0xbb, 0xbb);
+    movmem(d, s8c12, 0xad2);
+    resource_load_record_into(di + 0x1019, g99d6);
+    i = 0;
+    for (; i < g724[g73c]; i++)
+        a72b2[i] = g99d6 + ((unsigned far *) g99d6)[i] + 2;
+    for (; i < 0x28; i++)
+        a72b2[i] = a72b2[0];
+}
+
+
+/* ---- F_462E (original code at 0x462E) ---- */
+/* F_462E -- paint the title/menu backdrop for the current mode.  si is the
+   mode, di the row offset chosen by the two-term disjunction at 4698. */
+extern int g9ade;
+extern int board_record_index;
+extern char far *board_records;
+extern char far *ui_gfx_shadow_a;
+extern unsigned char g4374[];
+extern char g0b3ae[];
+extern int menu_resources_load(), value_parity(), resource_load_record(), face7();extern void setmem();extern void movmem();
+extern void board_terrain_resources_load();
+
+#include "R3E8.H"
+extern struct record3e8 g43b4[];
+
+void menu_backdrop_paint(void)
+{
+    register int m, d;
+
+    menu_resources_load();
+    if (value_parity(g9ade))
+        m = 0x14;
+    else
+        m = g9ade / 2;
+    if (m == 0x15)
+        resource_load_record(0x42);
+    else
+        resource_load_record(m + 0x1000);
+    if (m == 0x14) {
+        movmem(ui_gfx_shadow_a, g4374, 0x2750);
+        setmem(g0b3ae, 0xbb8, 0);
+    } else {
+        if (face7() == 0 || m > 0x14)
+            d = 0;
+        else
+            d = 0x330c;
+        movmem(ui_gfx_shadow_a + d + 2, g4374, 0x2750);
+        movmem(ui_gfx_shadow_a + d + 0x2754, g0b3ae, 0xbb8);
+    }
+    if (m < 0x14)
+        board_terrain_resources_load(g4374[0] & 0x7f);
+    board_records = (char far *) &g43b4[board_record_index = 0];
+}
+
+
+/* ---- F_4713 (original code at 0x4713) ---- */
+/* F_4713 -- the level driver: set the map geometry, build the view, then run
+   the turn loop in F_3A75 and hand back its result.  No frame at all (no
+   parameters, no locals, one register variable), which is what -k- gives. */
+extern int value_parity();
+extern void menu_backdrop_paint(void);
+extern void puzzle_clear_grid(void);
+extern void board_redraw_paint(void);
+extern void roundend_round_setup(int n);
+extern void f7df1(void), hud_scroll_reset(void);
+extern void f4eeb();extern void gfx_clear_rect();extern void gfx_box();
+extern void hud_panel_open();
+extern void gfx_color_select(int n);
+extern void sprite_draw_cursor(void);
+extern void anim_step_loop(int, int, int, int, int, int);
+extern int tick_div8(), campaign_node_index(), turn_loop_run(), level_play_chapter();
+extern void resource_record_cache_reset(int n);
+extern void tutorial_hint_dialog_show(int);
+
+extern unsigned char b4374, b4375, b4376;
+extern int g71e, g722, g72c, g72e, g736, g738, g73a, g73e;
+extern int g1776, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8, g9ade, gb07a;
+
+int level_driver_run()
+{
+    register int r;
+
+    menu_backdrop_paint();
+    f7df1();
+    g736 = b4375;
+    g736 <<= 1;
+    g736 = ((g736 + 3) >> 2) << 2;
+    g738 = b4376;
+    if (b4374 & 0x80) g73a = 1;
+    else g73a = 0;
+    g72c = gb07a = g72e = 0;
+    if (value_parity(g9ade)) {
+        g722 = 3;
+        g8bea = g8bec = g8bee = 0xf4;
+        g8bf4 = 0x12;
+        g8bf6 = 0x42;
+        g8bf8 = 0x72;
+        g71e = 1;
+        board_redraw_paint();
+        roundend_round_setup(g9ade >> 1);
+    } else {
+        g722 = g71e = 0;
+        puzzle_clear_grid();
+        hud_scroll_reset();
+        board_redraw_paint();
+    }
+    if (g73e == 0) {
+        gfx_color_select(1);
+        gfx_clear_rect(8, 0x10, 0x130, 0x90);
+    }
+    anim_step_loop(8, 0xc8, 0x130, 0x90, 8, 0x10);
+    f4eeb(0);
+    sprite_draw_cursor();
+    hud_panel_open();
+    gfx_box(0, 0, 0x140, 0xc8);
+    if (tick_div8() != 4 && (g9ade & 7) == 0) {
+        tutorial_hint_dialog_show(0);
+        tutorial_hint_dialog_show(1);
+        if (tick_div8() == 1) tutorial_hint_dialog_show(2);
+        else if (tick_div8() == 2) tutorial_hint_dialog_show(3);
+    }
+    g1776 = 1;
+    if (value_parity(g9ade) == 0) {
+        if (tick_div8() != 4)
+            resource_record_cache_reset((tick_div8() << 2) + (g9ade & 2) + 0x1073);
+        else
+            resource_record_cache_reset((campaign_node_index() << 2) + 0x1073);
+    }
+    r = turn_loop_run();
+    if (r != 0 && g9ade == 0x27) {
+        r = level_play_chapter();
+        g9ade = 0x27;
+    }
+    return r;
+}
+
+
+/* ---- F_48BE (original code at 0x48BE) ---- */
+/* F_48BE -- patch the blitter at IP 0x039C in place with the variant record
+   for the current display mode.  The destination is a far pointer to CODE,
+   widened from the near function with a cast, which is why it pushes
+   `cs` and not a segment fixup. */
+extern int resource_load_record();
+extern void far *memmove();
+extern void runtime_base();
+extern char display_mode;                      /* DS:BFCD, the display mode */
+extern char far *ui_gfx_shadow_a;                 /* DS:C5C6 offset, DS:C5C8 segment */
+
+void blitter_patch_variant()
+{
+    register int n;
+
+    if (display_mode == 5) {
+        n = resource_load_record(2);
+        memmove((char far *) runtime_base, ui_gfx_shadow_a, n);
+    } else if (display_mode == 2) {
+        n = resource_load_record(3);
+        memmove((char far *) runtime_base, ui_gfx_shadow_a, n);
+    }
+}
+
+
+/* ---- F_490D (original code at 0x490D) ---- */
+/* F_490D -- boot init.  Entry 14A0D, 54 bytes.  A straight-line sequence
+   of twelve calls, no branches.  Disassembly (assets/AEPROG.EXE):
+       33C0 50 50 33C0 50   xor ax,ax; push ax; push ax; xor ax,ax; push ax
+       E8 F8B0              call biostime          (1FB0F)   -- biostime(0, 0L):
+                                                  the long/far arg is rightmost
+                                                  (pushed first, one xor then
+                                                  two pushes of the same zero
+                                                  for its two halves), the int
+                                                  arg is leftmost (pushed
+                                                  second, its own fresh xor)
+       83C406               add sp,6            (cdecl cleanup, 3 words)
+       50                   push ax             (biostime's own return value)
+       E8 E0AF              call srand          (1F9FE)   -- 1 arg
+       59                   pop cx              (cdecl cleanup, 1 word --
+                                                  TC 2.0 uses "pop reg" rather
+                                                  than "add sp,2" to discard
+                                                  exactly one pushed word)
+       E8 5822              call timer_irq_install          (16C7A)   -- 0 args
+       E8 3819              call dos_critical_error_install          (1635D)
+       E8 1C8A              call ui_gfx_alloc          (1D444)
+       E8 93FF              call blitter_patch_variant          (149BE)
+       E8 53B9              call video_alloc_framebuffer          (10381)
+       E8 248C              call player_record_load_publish          (1D655)
+       E8 2A20              call keyboard_irq_install          (16A5E)
+       FB                   sti                 (enable())
+       E8 A3D8              call resource_stripe_table_load          (122DB)   -- 0 args
+       E8 6ED8              call sprite_load_boot_sheets          (122A9)
+       33C0 50              xor ax,ax; push ax
+       E8 6523              call sprite_sheet_select          (16DA6)   -- 1 arg, 0
+       59                   pop cx              (cdecl cleanup, 1 word)
+       C3                   ret
+   The two 0-arg calls immediately after srand's cleanup (timer_irq_install, dos_critical_error_install, ...)
+   have no push before them and no pop/add after: void, no return value
+   used. */
+extern int  biostime();
+extern void srand();
+extern void timer_irq_install();
+extern void dos_critical_error_install();
+extern void ui_gfx_alloc();
+extern void blitter_patch_variant();
+extern void video_alloc_framebuffer();
+extern void player_record_load_publish();
+extern void keyboard_irq_install();
+extern void resource_stripe_table_load();
+extern void sprite_load_boot_sheets();
+extern void sprite_sheet_select();
+
+void boot_init_seed_rand()
+{
+    srand(biostime(0, 0L));
+    timer_irq_install();
+    dos_critical_error_install();
+    ui_gfx_alloc();
+    blitter_patch_variant();
+    video_alloc_framebuffer();
+    player_record_load_publish();
+    keyboard_irq_install();
+    asm sti;
+    resource_stripe_table_load();
+    sprite_load_boot_sheets();
+    sprite_sheet_select(0);
+}
+
+
+/* ---- F_4943 (original code at 0x4943) ---- */
+extern int value_parity(),level_driver_run();extern int current_slot,g9ade,g73e;
+#include "C470.H"
+void campaign_chapter_advance(i) register int i;{slot_table[current_slot].resume_round=i+1;g9ade=slot_table[current_slot].round_progress[i]*2+i*8;g73e=-1;while(1){if(value_parity(g9ade)){if(!level_driver_run())g9ade-=2;else{slot_table[current_slot].round_progress[i]++;if((g9ade&7)==7)break;}}else{while(!level_driver_run());}g9ade++;}}
 
 /* ---- F_49E3 (original code at 0x49E3) ---- */
 extern void sound_stop_reset(), fc834(), f697d(), timer_irq_restore();

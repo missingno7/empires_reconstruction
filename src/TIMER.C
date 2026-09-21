@@ -1,6 +1,91 @@
-/* src/TIMER.C: Timer waits and deadlines.
+/* src/TIMER.C: Timer: INT 8 install/restore, handler and tick helpers.
    One translation unit; the sections below were the separate member
-   sources of grouped module C_6C26_6C87 and keep their original ids. */
+   sources of grouped module C_6B7A_6C87 and keep their original ids. */
+
+/* ---- F_6B7A (original code at 0x6B7A) ---- */
+/* F_6B7A -- install the timer interrupt and program the PIT divisor. */
+extern void interrupt (*int8_saved_vector)(void);   /* saved INT 8 vector: offset at DS:0B7A, segment at DS:0B7C */
+extern void interrupt timer_irq_handler(void);      /* F_6BCF below, this unit's INT 8 handler */
+void timer_irq_install()
+{
+    asm push ax
+    asm push dx
+    asm push ds
+    asm push es
+    asm mov ax,3508h
+    asm int 21h
+    asm mov ax,es
+    asm mov word ptr int8_saved_vector+2,ax
+    asm mov word ptr int8_saved_vector,bx
+    asm mov dx,offset timer_irq_handler
+    asm push cs
+    asm pop ds
+    asm mov ax,2508h
+    asm int 21h
+    asm mov al,36h
+    asm out 43h,al
+    asm mov ax,13b1h
+    asm out 40h,al
+    asm mov al,ah
+    asm out 40h,al
+    asm mov al,0b6h
+    asm out 43h,al
+    asm pop es
+    asm pop ds
+    asm pop dx
+    asm pop ax
+}
+
+
+/* ---- F_6BAC (original code at 0x6BAC) ---- */
+/* F_6BAC -- restore the timer interrupt and reset the PIT divisor. */
+extern void interrupt (*int8_saved_vector)(void);   /* saved INT 8 vector: offset at DS:0B7A, segment at DS:0B7C */
+void timer_irq_restore()
+{
+    asm push ax
+    asm push dx
+    asm push ds
+    asm push es
+    asm mov dx,word ptr int8_saved_vector
+    asm mov ax,word ptr int8_saved_vector+2
+    asm mov ds,ax
+    asm mov ax,2508h
+    asm int 21h
+    asm mov al,36h
+    asm out 43h,al
+    asm xor ax,ax
+    asm out 40h,al
+    asm mov al,ah
+    asm out 40h,al
+    asm pop es
+    asm pop ds
+    asm pop dx
+    asm pop ax
+}
+
+
+/* ---- F_6BCF (original code at 0x6BCF) ---- */
+/* Timer IRQ0 handler (original F_6BCF): Turbo C interrupt ABI.
+   Every 13th tick calls the saved BIOS INT 8 vector; every tick advances the
+   32-bit tick counter and services the sound engine unless a request is
+   pending.  The bare PUSHF/POPF around the body is the one inline fragment:
+   the historical object keeps the caller flags across the STI. */
+extern int near timer_tick_phase,g237c,sound_enabled,music_enabled;
+extern unsigned long near timer_ticks;                    /* 32-bit tick counter */
+extern void interrupt (* near int8_saved_vector)(void);         /* saved INT 8 vector */
+extern void fc1a0(void);                            /* sound engine tick */
+void __sti__(void);
+void __outportb__(int,unsigned char);
+void interrupt timer_irq_handler(void)
+{
+ asm pushf;
+ __sti__();
+ ++timer_tick_phase; if(timer_tick_phase>=13) {timer_tick_phase=0;int8_saved_vector();}
+ ++timer_ticks;
+ if(!g237c && (sound_enabled || music_enabled)) fc1a0();
+ __outportb__(0x20,0x20);
+ asm popf;
+}
 
 extern unsigned long gb76;              /* DS:0B76, high word at DS:0B78 */
 extern unsigned long gc0d0;             /* DS:C0D0, high word at DS:C0D2 */

@@ -4,7 +4,7 @@
     {
       "id": "F_CA9B",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_CA9B.ASM",
+      "source": "asm/SOUND.ASM",
       "start": 52379,
       "end": 52432,
       "expected_sha256": "c4ce0ed8cffdb347ef381cde7c3b2401e0dd3a48ac2b367ce8d411294e946fc3",
@@ -49,7 +49,8 @@
       "matching_status": "EQUAL",
       "provenance": {
         "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the complete live-register note-shift path with owned call targets and explicit historical frame bytes"
+        "change": "Recover the complete live-register note-shift path with owned call targets and explicit historical frame bytes",
+        "reconstruction_source": "recovery/asm/F_CA9B.ASM"
       }
     }
   ]

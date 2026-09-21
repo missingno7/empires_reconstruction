@@ -271,7 +271,7 @@ unsigned p;
             break;
         }
     }
-    asm sti;
+    __sti__();
     return s;
 }
 

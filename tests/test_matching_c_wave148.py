@@ -17,8 +17,11 @@ class SymbolicAsmWave148Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave148.json')
         owner = next(region for region in manifest['regions'] if region['id'] == 'F_CA51')
+        # F_CA51 now lives inside the single hand-written asm/SOUND.ASM module
+        # (M_C1A0_CB48; see docs/current/asm-provenance.json), not the
+        # standalone recovery/asm/F_CA51.ASM this recipe recorded.
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'recovery/asm/F_CA51.ASM')
+        self.assertEqual(owner['source'], 'asm/SOUND.ASM')
         self.assertEqual(owner['end'] - owner['start'], 50)
         self.assertEqual(recipe['format'], 'empires-symbolic-asm-promotion-v1')
         self.assertEqual(recipe['conversions'][0]['id'], 'F_CA51')
@@ -34,7 +37,11 @@ class SymbolicAsmWave148Tests(unittest.TestCase):
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'],
                                       manifest['regions'], modules)
         mismatch(original[owner['start']:owner['end']], data, owner)
-        self.assertEqual([(fixup['offset'], fixup['target']) for fixup in proof['fixups']],
+        # 'offset' is now the fixup's absolute position in the much larger
+        # shared asm/SOUND.ASM segment; 'extent_offset' (position within this
+        # 50-byte extracted region) is the position-invariant quantity this
+        # test originally pinned.
+        self.assertEqual([(fixup['extent_offset'], fixup['target']) for fixup in proof['fixups']],
                          [(15, '_g1e84'), (38, '_g1e86'), (44, '_g1e86')])
         self.assertEqual(proof['load_relocations'], [])
 

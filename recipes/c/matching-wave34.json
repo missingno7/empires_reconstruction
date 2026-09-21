@@ -6,7 +6,7 @@
       "kind": "MATCHING_C",
       "start": 11490,
       "end": 13252,
-      "source": "src/BRDPAINT.C",
+      "source": "src/BOARD.C",
       "artifact": "regions/F_2AE2.bin",
       "expected_sha256": "ac6790f8c94583fa0fb3509f98947d7bb8d67932cb0eb9c4a8121e4e9091f0a5",
       "matching_status": "EQUAL",
@@ -14,7 +14,7 @@
         "segment": "_TEXT",
         "public": "_board_redraw_paint",
         "span": 1,
-        "flags_append": "-B",
+        "flags_append": "",
         "module_segments": {},
         "bindings": {
           "_g9ade": {

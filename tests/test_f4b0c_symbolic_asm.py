@@ -29,7 +29,15 @@ class F4B0CSymbolicAssemblyTests(unittest.TestCase):
                                       manifest['regions'], libraries)
         mismatch(original[owner['start']:owner['end']], data, owner)
         self.assertEqual(len(data), 915)
-        self.assertEqual(proof['fixups'], [])
+        # asm/F_4B0C.ASM's direct relative calls are now named externs (public
+        # index and existing sibling bindings) instead of the CALL_REL
+        # raw-encoding macro (see the region's own provenance.change in
+        # layout/manifest.json), so the eight call targets plus one repeated
+        # call now bind through real OMF fixups instead of folding into the
+        # raw bytes with none.
+        self.assertEqual(len(proof['fixups']), 9)
+        self.assertTrue(all(f['target_kind'] == 'external' for f in proof['fixups']))
+        self.assertEqual(proof['load_relocations'], [])
 
 
 if __name__ == '__main__':

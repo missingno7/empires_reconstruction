@@ -12,8 +12,12 @@ class MatchingCWave121Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave121.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_C834')
-        self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'recovery/src/F_C834.C')
+        # F_C834's C candidate (recovery/src/F_C834.C) is overturned: it is now
+        # part of the single hand-written TASM module asm/SOUND.ASM
+        # (M_C1A0_CB48); see docs/current/asm-provenance.json. The wave121
+        # evidence below still matches the unchanged original bytes.
+        self.assertEqual(owner['kind'], 'MATCHING_ASM')
+        self.assertEqual(owner['source'], 'asm/SOUND.ASM')
         self.assertEqual(owner['end'] - owner['start'], 67)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_C834')
         evidence = read_json(ROOT / 'docs/matching-wave121-evidence.json')

@@ -4,7 +4,7 @@
     {
       "id": "F_C232",
       "kind": "MATCHING_ASM",
-      "source": "recovery/asm/F_C232.ASM",
+      "source": "asm/SOUND.ASM",
       "start": 50226,
       "end": 50301,
       "expected_sha256": "73cb49feb03e6cbf5f43912e103ee9c071243e7178219775c525c7139bd05b65",
@@ -67,7 +67,8 @@
       "matching_status": "EQUAL",
       "provenance": {
         "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the complete 75-byte ES:DI table scan as Turbo C inline-assembler source with explicit historical frame bytes"
+        "change": "Recover the complete 75-byte ES:DI table scan as Turbo C inline-assembler source with explicit historical frame bytes",
+        "reconstruction_source": "recovery/asm/M_C1A0_C232.ASM"
       }
     }
   ]

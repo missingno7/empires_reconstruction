@@ -24,6 +24,12 @@ class MatchingCWave66Tests(unittest.TestCase):
                 data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
                 mismatch(original[owner['start']:owner['end']], data, owner)
                 self.assertEqual(len(data), owner['end'] - owner['start'])
-                self.assertEqual(len(proof['fixups']), 2 if owner['id']=='F_6B7A' else 2)
+                # Both routines now live in the merged src/TIMER.C translation
+                # unit (see docs/current/asm-provenance.json / the GAME.C-style
+                # TU merges). F_6B7A picks up one extra fixup: a same-segment
+                # ('_TEXT') offset16 the compiler now emits when generating the
+                # merged unit, resolved from the module base rather than a
+                # declared binding.
+                self.assertEqual(len(proof['fixups']), 3 if owner['id']=='F_6B7A' else 2)
                 self.assertEqual(proof['load_relocations'], [])
 if __name__ == '__main__': unittest.main()

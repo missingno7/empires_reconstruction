@@ -3,8 +3,8 @@
   "owners": [
     {
       "id": "F_CA91",
-      "kind": "MATCHING_C",
-      "source": "recovery/src/F_CA91.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/SOUND.ASM",
       "start": 52369,
       "end": 52379,
       "expected_sha256": "458c83f920938024c7995c29949061cf27e6c9760898868bdb93757e2e9ee785",
@@ -27,7 +27,8 @@
       "matching_status": "EQUAL",
       "provenance": {
         "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the 10-byte live-AL widening store with its explicit historical frame bytes"
+        "change": "Recover the 10-byte live-AL widening store with its explicit historical frame bytes",
+        "reconstruction_source": "recovery/asm/M_C9A4_CA91.ASM"
       }
     }
   ]

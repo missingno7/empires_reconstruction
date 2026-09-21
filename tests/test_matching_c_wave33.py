@@ -13,6 +13,11 @@ from mz import MZ
 
 
 class MatchingCWave33Tests(unittest.TestCase):
+    # F_338A (board_run_unit_script) was folded into the src/BOARD.C
+    # translation-unit merge (module C_200F_3986 in
+    # layout/production-plan.json; see docs/current/asm-provenance.json);
+    # its old standalone src/BOARDSCR.C is gone. recipes/c/matching-wave33.json
+    # is updated to compile it from src/BOARD.C instead.
     def test_fresh_dispatcher_matches(self):
         recipe = read_json(ROOT / 'recipes/c/matching-wave33.json')
         owner = recipe['owners'][0]
@@ -40,7 +45,15 @@ class MatchingCWave33Tests(unittest.TestCase):
             work = Path(temporary)
             mutated = dict(owner)
             mutated['source'] = 'build/F_338A_mutated.C'
-            source = (ROOT / owner['source']).read_text().replace('0x2ac', '0x2ad', 1)
+            # Plain '0x2ac' is no longer unique to F_338A now that src/BOARD.C
+            # also holds F_250C's own '...+0x2ac' literal earlier in the file
+            # (the first, wrong, match silently mutated F_250C instead and left
+            # F_338A's bytes unchanged). Anchor the replacement to the
+            # expression that is unique to F_338A's body.
+            before, after = '(c & 0x7f) * 3 + 0x2ac', '(c & 0x7f) * 3 + 0x2ad'
+            text = (ROOT / owner['source']).read_text()
+            self.assertEqual(text.count(before), 1)
+            source = text.replace(before, after, 1)
             (ROOT / mutated['source']).write_text(source)
             try:
                 receipts, _ = compile_sources(ROOT, [mutated], work / 'compiler', ROOT / 'toolchain',

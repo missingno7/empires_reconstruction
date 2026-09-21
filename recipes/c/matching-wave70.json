@@ -3,8 +3,8 @@
   "owners": [
     {
       "id": "F_C877",
-      "kind": "MATCHING_C",
-      "source": "recovery/src/F_C877.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/SOUND.ASM",
       "start": 51831,
       "end": 51864,
       "expected_sha256": "31295153914e2ff4fd9701e59b71a1da5377918d9cddfaf9315667d83777899d",
@@ -38,7 +38,8 @@
       "matching_status": "EQUAL",
       "provenance": {
         "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Recover the complete 33-byte timer-slice pump with explicit register bytes and numeric raw call target"
+        "change": "Recover the complete 33-byte timer-slice pump with explicit register bytes and numeric raw call target",
+        "reconstruction_source": "recovery/asm/M_C77A_C898.ASM"
       }
     }
   ]

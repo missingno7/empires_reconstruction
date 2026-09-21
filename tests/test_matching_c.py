@@ -15,6 +15,13 @@ from reconstruct import (read_json, compile_sources, read_object, bind_region, m
 
 class MatchingCTests(unittest.TestCase):
     def test_fresh_wave_and_codegen_negative_controls(self):
+        # recipes/c/matching-wave1.json's F_CB48 entry (used below only as the
+        # WRONG_FRAME negative control for the invented -k flag, not as a
+        # production owner) now points at recovery/src/SNDSTOP.C: F_CB48 is
+        # retired from src/ into the single hand-written asm/SOUND.ASM module
+        # (see docs/current/asm-provenance.json), but its recovered C source
+        # still exists under recovery/ and still exercises the -k/frame-length
+        # codegen check this test is about.
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave1.json')
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

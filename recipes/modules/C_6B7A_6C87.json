@@ -1,0 +1,44 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_6B7A_6C87",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_6B7A",
+      "path": "src/TIMER.C",
+      "public": "_timer_irq_install"
+    },
+    {
+      "owner": "F_6BAC",
+      "path": "src/TIMER.C",
+      "public": "_timer_irq_restore"
+    },
+    {
+      "owner": "F_6BCF",
+      "path": "src/TIMER.C",
+      "public": "_timer_irq_handler"
+    },
+    {
+      "owner": "F_6C26",
+      "path": "src/TIMER.C",
+      "public": "_timer_wait_ticks"
+    },
+    {
+      "owner": "F_6C57",
+      "path": "src/TIMER.C",
+      "public": "_timer_deadline_arm"
+    },
+    {
+      "owner": "F_6C6F",
+      "path": "src/TIMER.C",
+      "public": "_timer_deadline_wait"
+    },
+    {
+      "owner": "F_6C87",
+      "path": "src/TIMER.C",
+      "public": "_timer_deadline_reached"
+    }
+  ],
+  "evidence": "One translation unit proven byte-exact by tools/probe_tu.py (300 bytes, 32 fixups, no flags): the timer install/restore asm bodies (F_6B7A, F_6BAC), the interrupt handler (F_6BCF, pushf/popf inline asm) and the tick helpers (F_6C26..F_6C87). In one unit int8_saved_vector has its single far interrupt-pointer view (the asm writes word ptr halves) and TIMERINS takes the handler address symbolically (offset timer_irq_handler) instead of the literal 6BCFh. Members merged into src/TIMER.C. Members merged into src/TIMER.C."
+}

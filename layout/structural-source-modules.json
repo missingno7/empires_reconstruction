@@ -23,113 +23,6 @@
       "evidence": "F_6D86 ends at 0x6DC5; the seven following zero bytes are CS-addressed decoder state, and F_6DCC begins at 0x6DCC. One fresh TASM object has exact bound bytes and both entry publics."
     },
     {
-      "id": "M_6B1A_6B4A",
-      "kind": "MATCHING_C",
-      "source": "src/KEYBIOS.C",
-      "start": 27930,
-      "end": 28006,
-      "members": [
-        "F_6B1A",
-        "F_6B4A"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f6b1a",
-        "span": 2,
-        "flags_append": "",
-        "bindings": {
-          "_menu_list_active": {
-            "coordinate": "code_offset",
-            "owner": "F_792C",
-            "public": "_menu_list_active",
-            "addend": 0,
-            "evidence": "functions/F_792C.entry"
-          },
-          "_menu_loop_run": {
-            "coordinate": "code_offset",
-            "owner": "F_7964",
-            "public": "_menu_loop_run",
-            "addend": 0,
-            "evidence": "functions/F_7964.entry"
-          }
-        },
-        "module_segments": {}
-      },
-      "evidence": "One Turbo C translation unit with inline asm (src/KEYBIOS.C) reproduces all 76 bytes and both public offsets; the module has no far relocations, so the assembler-route FIXUPP order is not observable. asm/M_6B1A_6B4A.ASM is retained as reference.",
-      "status": "RECOVERED_C_MODULE"
-    },
-    {
-      "id": "M_C1A0_C232",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C1A0_C232.ASM",
-      "start": 50080,
-      "end": 50301,
-      "members": [
-        "F_C1A0",
-        "F_C1F7",
-        "F_C232"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fc1a0",
-        "span": 3,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Contiguous master sound tick, voice pump, and ES:DI voice-table scan. The first calls the second, the second calls the third, and all use the same 0x1764..0x17F4 sound-state BSS cluster. Fresh TASM emits publics at offsets 0, 87, and 146 and its complete bound extent matches."
-    },
-    {
-      "id": "M_C9A4_CA91",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C9A4_CA91.ASM",
-      "start": 52132,
-      "end": 52379,
-      "members": [
-        "F_C9A4",
-        "F_CA03",
-        "F_CA35",
-        "F_CA51",
-        "F_CA83",
-        "F_CA91"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c9a4",
-        "span": 6,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Contiguous table-command decoder, dispatcher, and all four dispatcher targets use the 0x1E84..0x1E94 control block. Fresh symbolic TASM has the original public offsets and bound 247-byte extent."
-    },
-    {
-      "id": "M_C27D_C567",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C27D_C567.ASM",
-      "start": 50301,
-      "end": 51098,
-      "members": [
-        "F_C27D",
-        "F_C2EA",
-        "F_C359",
-        "F_C3DB",
-        "F_C440",
-        "F_C501",
-        "F_C549",
-        "F_C567"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_fc27d",
-        "span": 8,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "F_C27D directly drives F_C2EA and F_C440; the contiguous sound-service, dispatcher, and control run shares the 0x1778..0x1814 state block. Fresh symbolic TASM is tested as one ordinary source contribution."
-    },
-    {
       "id": "M_CB5C_CD23",
       "kind": "MATCHING_C",
       "source": "src/OPTIONS.C",
@@ -337,27 +230,6 @@
       "evidence": "Adjacent reset and five-byte packed-record append routines operate on the same DS:2F30h initialized record table. Fresh symbolic TASM emits both historical entry offsets in one exact 71-byte no-fixup contribution."
     },
     {
-      "id": "M_C5A8_C5C6",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C5A8_C5C6.ASM",
-      "start": 51112,
-      "end": 51153,
-      "members": [
-        "F_C5A8",
-        "F_C5B3",
-        "F_C5C6"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c5a8",
-        "span": 3,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Three contiguous setters use the same SI-relative 0x17A4..0x17DCh command-control state block. Fresh symbolic TASM emits entry offsets 0, 11, and 30 in one exact 41-byte no-fixup contribution."
-    },
-    {
       "id": "M_D386_D3CF",
       "kind": "MATCHING_ASM",
       "source": "asm/M_D386_D3CF.ASM",
@@ -427,71 +299,6 @@
       }
     },
     {
-      "id": "M_50D2_53BF",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_50D2_53BF.ASM",
-      "start": 21202,
-      "end": 21514,
-      "members": [
-        "F_50D2",
-        "F_53BF"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f50d2",
-        "span": 2,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "Adjacent display-adapter detection and VGA mode selection. The combined source preserves F_50D2 forward EXTRN placement and appends F_53BF as a second ordinary _TEXT contribution."
-    },
-    {
-      "id": "M_C5D1_C706",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C5D1_C706.ASM",
-      "start": 51153,
-      "end": 51541,
-      "members": [
-        "F_C5D1",
-        "F_C678",
-        "F_C6B9",
-        "F_C706"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c5d1",
-        "span": 4,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "The contiguous command decode, speaker gate, voice-disable, and PIT-output entries use the same SI-relative 0x1766..0x17EC sound-control state. One fresh symbolic TASM object has the original public offsets 0, 167, 232, and 309, an exact 388-byte bound extent, and no OMF fixups."
-    },
-    {
-      "id": "M_C77A_C898",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_C77A_C898.ASM",
-      "start": 51578,
-      "end": 51924,
-      "members": [
-        "F_C77A",
-        "F_C7CB",
-        "F_C834",
-        "F_C877",
-        "F_C898"
-      ],
-      "build": {
-        "segment": "_TEXT",
-        "public": "_f_c77a",
-        "span": 5,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "evidence": "The contiguous sound-backend selection, voice-table reload, voice reset, timer-pump, and OPL register-output entries share the 0x1762..0x1830 sound-state block. One fresh symbolic TASM object has public offsets 0, 81, 186, 253, and 286, exactly 346 bound _TEXT bytes, and the original thirteen data/call fixups."
-    },
-    {
       "id": "M_D61C_D79C",
       "kind": "MATCHING_ASM",
       "source": "asm/M_D61C_D79C.ASM",
@@ -506,10 +313,13 @@
         "public": "_f_d61c",
         "span": 2,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_gfx_copy_rect": {"offset": 972, "coordinate": "code_offset", "evidence": "functions/F_03CC.entry"},
+          "_gfx_blit_bitmap": {"offset": 969, "coordinate": "code_offset", "evidence": "functions/F_03C9.entry"}
+        },
         "module_segments": {}
       },
-      "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups."
+      "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups. All six historical `call $+delta` targets resolve (load address, wrapped mod 65536 since the calls cross the 64K _TEXT frame boundary) to RUNTIME_BLOCK's _gfx_copy_rect (03CCh, the four non-loop renderer calls) and _gfx_blit_bitmap (03C9h, the two per-strip calls inside D61_strip_loop/D79_strip_loop), matching the public index and the same bindings already used by dozens of sibling regions."
     },
     {
       "id": "M_DDD9_DF98",
@@ -534,6 +344,493 @@
       "status": "RECOVERED_C_MODULE",
       "historical_translation_unit_proven": false,
       "evidence": "One pure Turbo C translation unit (src/MUSIC.C, no inline asm) reproduces all 700 bytes, four public offsets and, through the native object writer's descending FIXUPP order, the historical relocation order. asm/MUSIC.ASM is retained as reference."
+    },
+    {
+      "id": "M_C1A0_CB48",
+      "kind": "MATCHING_ASM",
+      "source": "asm/SOUND.ASM",
+      "start": 50080,
+      "end": 52572,
+      "members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232",
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567",
+        "F_C59A",
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6",
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706",
+        "F_C755",
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898",
+        "F_C8D4",
+        "F_C8E2",
+        "F_C914",
+        "F_C988",
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91",
+        "F_CA9B",
+        "F_CAD0",
+        "F_CADB",
+        "F_CAE6",
+        "F_CAF1",
+        "F_CB48"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_fc1a0",
+        "span": 41,
+        "flags_append": "",
+        "bindings": {
+          "_fc1f7": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C1F7.entry",
+            "owner": "F_C1F7",
+            "public": "_fc1f7",
+            "addend": 0
+          },
+          "_sound_tick_step": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C8E2.entry",
+            "owner": "F_C8E2",
+            "public": "_sound_tick_step",
+            "addend": 0
+          },
+          "_snd_flag": {
+            "offset": 6000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A0.phys"
+          },
+          "_snd_mode": {
+            "offset": 6020,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B4.phys"
+          },
+          "_snd_paused": {
+            "offset": 6008,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A8.phys"
+          },
+          "_snd_seg2": {
+            "offset": 5988,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P21294.phys"
+          },
+          "_v_b": {
+            "offset": 6012,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212AC.phys"
+          },
+          "_dv": {
+            "offset": 6028,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212BC.phys"
+          },
+          "_fc232": {
+            "coordinate": "code_offset",
+            "owner": "F_C232",
+            "public": "_fc232",
+            "addend": 0,
+            "evidence": "functions/F_C232.entry"
+          },
+          "_fc27d": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C27D.entry",
+            "owner": "F_C27D",
+            "public": "_fc27d",
+            "addend": 0
+          },
+          "_snd_flag2": {
+            "offset": 6006,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A6.phys"
+          },
+          "_sv": {
+            "offset": 6036,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212C4.phys"
+          },
+          "_g1784": {
+            "offset": 6020,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g178a": {
+            "offset": 6026,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g177a": {
+            "offset": 6010,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g178c": {
+            "offset": 6028,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17ac": {
+            "offset": 6060,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g179c": {
+            "offset": 6044,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17a4": {
+            "offset": 6052,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17b4": {
+            "offset": 6068,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17ec": {
+            "offset": 6124,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17f4": {
+            "offset": 6132,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g17bc": {
+            "offset": 6076,
+            "coordinate": "DGROUP_offset"
+          },
+          "_snd_nvoices": {
+            "offset": 6010,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212AA.phys"
+          },
+          "_v_a": {
+            "offset": 6060,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212DC.phys"
+          },
+          "_v_ctr": {
+            "offset": 6044,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212CC.phys"
+          },
+          "_v_hold": {
+            "offset": 6068,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212E4.phys"
+          },
+          "_v_len": {
+            "offset": 6076,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212EC.phys"
+          },
+          "_f_c2ea": {
+            "coordinate": "code_offset",
+            "owner": "F_C2EA",
+            "public": "_f_c2ea",
+            "addend": 0,
+            "evidence": "functions/F_C2EA.entry"
+          },
+          "_f_c440": {
+            "coordinate": "code_offset",
+            "owner": "F_C440",
+            "public": "_f_c440",
+            "addend": 0,
+            "evidence": "functions/F_C440.entry"
+          },
+          "_f_c6b9": {
+            "coordinate": "code_offset",
+            "owner": "F_C6B9",
+            "public": "_f_c6b9",
+            "addend": 0,
+            "evidence": "functions/F_C6B9.entry"
+          },
+          "_f_c755": {
+            "coordinate": "code_offset",
+            "owner": "F_C755",
+            "public": "_f_c755",
+            "addend": 0,
+            "evidence": "functions/F_C755.entry"
+          },
+          "_g1788": {
+            "offset": 6024,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete F_C567 data access"
+          },
+          "_g1786": {
+            "offset": 6022,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B6.phys; independently bound by F_C834"
+          },
+          "_snd_hi": {
+            "offset": 6022,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212B6.phys"
+          },
+          "_g1778": {
+            "offset": 6008,
+            "coordinate": "DGROUP_offset"
+          },
+          "_opl_port": {
+            "offset": 6192,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P21360.phys"
+          },
+          "_g1830": {
+            "offset": 6192,
+            "coordinate": "DGROUP_offset"
+          },
+          "_fc914": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C914.entry",
+            "owner": "F_C914",
+            "public": "_fc914",
+            "addend": 0
+          },
+          "_speaker_gate_off": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_CADB.entry",
+            "owner": "F_CADB",
+            "public": "_speaker_gate_off",
+            "addend": 0
+          },
+          "_snd_delay": {
+            "offset": 7824,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219C0.phys"
+          },
+          "_snd_len": {
+            "offset": 7822,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219BE.phys"
+          },
+          "_snd_on": {
+            "offset": 6000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A0.phys"
+          },
+          "_snd_one": {
+            "offset": 7828,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219C4.phys"
+          },
+          "_snd_seg": {
+            "offset": 5984,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P21290.phys"
+          },
+          "_sound_note_dispatch": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_C988.entry",
+            "owner": "F_C988",
+            "public": "_sound_note_dispatch",
+            "addend": 0
+          },
+          "_fca9b": {
+            "coordinate": "code_offset",
+            "owner": "F_CA9B",
+            "public": "_fca9b",
+            "addend": 0,
+            "evidence": "functions/F_CA9B.entry"
+          },
+          "_fcaf1": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_CAF1.entry",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0
+          },
+          "_sound_stop_reset": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_CB48.entry",
+            "owner": "F_CB48",
+            "public": "_sound_stop_reset",
+            "addend": 0
+          },
+          "_mus_arg": {
+            "offset": 7818,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219BA.phys"
+          },
+          "_mus_flag": {
+            "offset": 6004,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A4.phys"
+          },
+          "_mus_ptr": {
+            "offset": 7816,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219B8.phys"
+          },
+          "_f_c9a4": {
+            "coordinate": "code_offset",
+            "owner": "F_C9A4",
+            "public": "_f_c9a4",
+            "addend": 0,
+            "evidence": "functions/F_C9A4.entry"
+          },
+          "_f_ca03": {
+            "coordinate": "code_offset",
+            "owner": "F_CA03",
+            "public": "_f_ca03",
+            "addend": 0,
+            "evidence": "functions/F_CA03.entry"
+          },
+          "_speaker_gate_on": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_CAD0.entry",
+            "owner": "F_CAD0",
+            "public": "_speaker_gate_on",
+            "addend": 0
+          },
+          "_pit_channel2_set_divisor": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_CAE6.entry",
+            "owner": "F_CAE6",
+            "public": "_pit_channel2_set_divisor",
+            "addend": 0
+          },
+          "_notetab": {
+            "offset": 6140,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2132C.phys"
+          },
+          "_f_ca35": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA35",
+            "public": "_f_ca35",
+            "addend": 0
+          },
+          "_f_ca51": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA51",
+            "public": "_f_ca51",
+            "addend": 0
+          },
+          "_fca83": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA83",
+            "public": "_fca83",
+            "addend": 0
+          },
+          "_fca91": {
+            "coordinate": "code_offset",
+            "evidence": "complete F_CA03 call",
+            "owner": "F_CA91",
+            "public": "_fca91",
+            "addend": 0
+          },
+          "_g1e84": {
+            "offset": 7812,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          },
+          "_g1e86": {
+            "offset": 7814,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_CA51 symbolic assembly"
+          },
+          "_g1e92": {
+            "offset": 7826,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g1e90": {
+            "offset": 7824,
+            "coordinate": "DGROUP_offset"
+          },
+          "_g175e": {
+            "offset": 5982,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2128E.phys"
+          },
+          "_g1760": {
+            "offset": 5984,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P21290.phys"
+          },
+          "_sound_enabled": {
+            "offset": 5998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2129E.phys"
+          },
+          "_g1770": {
+            "offset": 6000,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A0.phys"
+          },
+          "_g1e88": {
+            "offset": 7816,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219B8.phys"
+          },
+          "_g1e8a": {
+            "offset": 7818,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219BA.phys"
+          },
+          "_g1e8c": {
+            "offset": 7820,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219BC.phys"
+          },
+          "_g1e8e": {
+            "offset": 7822,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219BE.phys"
+          },
+          "_g1e94": {
+            "offset": 7828,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P219C4.phys"
+          },
+          "_opl_init": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D99B.entry",
+            "owner": "F_D99B",
+            "public": "_opl_init",
+            "addend": 0
+          },
+          "_record_panel_rebuild": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D8F0.entry",
+            "owner": "F_D8F0",
+            "public": "_record_panel_rebuild",
+            "addend": 0
+          },
+          "_voice_bank_retune_on": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_DB60.entry",
+            "owner": "F_DB60",
+            "public": "_voice_bank_retune_on",
+            "addend": 0
+          },
+          "_voice_bank_update": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_DCC7.entry",
+            "owner": "F_DCC7",
+            "public": "_voice_bank_update",
+            "addend": 0
+          }
+        },
+        "module_segments": {}
+      },
+      "evidence": "One hand-written TASM module (0xC3A0..0xCD5C, 2492 bytes, byte-aligned, no pad): every framed routine uses SI/DI without saving them (Turbo C always emits push si/push di around inline asm naming them; probed: SNDSCL4+M_C5A8_C5C6 as a C unit is 6 bytes longer), register-ABI helpers save AX/CX/DX/BX inside frames, the OPL write uses a REPT 35 macro, and the seven former C wrappers (F_C59A, F_C8E2, F_C988, F_CAD0, F_CADB, F_CAE6, F_CB48) needed invented -k flags or dummy parameters only to obtain the hand-written frames; OPTIONS (M_CB5C_CD23) grows under -k, so the following C unit does not share those flags. Assembled as one unit: tools/probe_tu.py M_C1A0_C232 F_CB48 --asm asm/SOUND.ASM EXACT, 164 fixups."
     }
   ]
 }

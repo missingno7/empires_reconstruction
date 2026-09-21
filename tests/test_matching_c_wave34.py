@@ -13,6 +13,13 @@ from mz import MZ
 
 
 class MatchingCWave34Tests(unittest.TestCase):
+    # F_2AE2 (board_redraw_paint) was folded into the src/BOARD.C
+    # translation-unit merge (module C_200F_3986 in
+    # layout/production-plan.json; see docs/current/asm-provenance.json);
+    # its old standalone src/BRDPAINT.C is gone. It no longer needs the
+    # invented -B flag either -- the merged unit's own inline asm now
+    # explains the frame -- so recipes/c/matching-wave34.json is updated to
+    # compile it plainly from src/BOARD.C.
     def _bound(self, owner, source, work, original, manifest, lock, modules):
         candidate = dict(owner)
         candidate['source'] = source
@@ -42,7 +49,14 @@ class MatchingCWave34Tests(unittest.TestCase):
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             mutated = 'build/F_2AE2_mutated.C'
-            source = (ROOT / owner['source']).read_text().replace('0x2a', '0x2b', 1)
+            # Plain '0x2a' is no longer unique to F_2AE2 now that the merged
+            # src/BOARD.C holds several other '0x2a...'-prefixed literals
+            # belonging to other functions. Anchor the replacement to the
+            # comparison that is unique to F_2AE2's body.
+            before, after = 'g9ade == 0x2a)', 'g9ade == 0x2b)'
+            text = (ROOT / owner['source']).read_text()
+            self.assertEqual(text.count(before), 1)
+            source = text.replace(before, after, 1)
             (ROOT / mutated).write_text(source)
             try:
                 data = self._bound(owner, mutated, Path(temporary) / 'compiler',

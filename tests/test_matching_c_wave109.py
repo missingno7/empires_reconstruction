@@ -12,8 +12,13 @@ class MatchingCWave109Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave109.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_6B4A')
+        # KEYBIOS.C was folded into the src/KEYBOARD.C translation-unit merge
+        # (module C_6990_6B74 in layout/production-plan.json; see
+        # docs/current/asm-provenance.json). The sha256/fixups this test
+        # checks below are the archived recovery evidence, unaffected by the
+        # file move.
         self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'src/KEYBIOS.C')
+        self.assertEqual(owner['source'], 'src/KEYBOARD.C')
         self.assertEqual(owner['end'] - owner['start'], 28)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_6B4A')
         evidence = read_json(ROOT / 'docs/matching-wave109-evidence.json')

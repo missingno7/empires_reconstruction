@@ -1,0 +1,44 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_6990_6B74",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_6990",
+      "path": "src/KEYBOARD.C",
+      "public": "_keyboard_chain_enable"
+    },
+    {
+      "owner": "F_6997",
+      "path": "src/KEYBOARD.C",
+      "public": "_keyboard_chain_disable"
+    },
+    {
+      "owner": "F_699E",
+      "path": "src/KEYBOARD.C",
+      "public": "_keyboard_irq_handler"
+    },
+    {
+      "owner": "F_6B1A",
+      "path": "src/KEYBOARD.C",
+      "public": "_f6b1a"
+    },
+    {
+      "owner": "F_6B4A",
+      "path": "src/KEYBOARD.C",
+      "public": "_f6b4a"
+    },
+    {
+      "owner": "F_6B66",
+      "path": "src/KEYBOARD.C",
+      "public": "_keyboard_buffer_drain"
+    },
+    {
+      "owner": "F_6B74",
+      "path": "src/KEYBOARD.C",
+      "public": "_keyboard_chain_active"
+    }
+  ],
+  "evidence": "One translation unit proven byte-exact by tools/probe_tu.py (490 bytes, 43 fixups, no flags): KEYIRQH (F_699E) is byte-exact only under -B, which Turbo C 2.0 takes only for a unit containing inline asm; KEYBIOS (M_6B1A_6B4A) and KEYBUFDR (F_6B66) are its asm-bearing keyboard neighbours. KEYIRQ (C_695E_697D) cannot be in this unit: its setvect cast needs a non-interrupt declaration of keyboard_irq_handler (push cs), which conflicts with the interrupt definition. KEYCHAIN and KEYCHACT join by contiguity and subject. Members merged into src/KEYBOARD.C. Members merged into src/KEYBOARD.C."
+}

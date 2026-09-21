@@ -53,9 +53,28 @@ EXACT_NEAR_JUMP_MACRO = re.compile(
 ASM_TYPED_DATA_ALLOWLIST = set()
 
 
-def classify_source(path):
-    """Return the strongest mechanically verifiable source representation."""
+BANNER = re.compile(r'/\* ---- ([A-Z0-9_]+) \(original code at 0x[0-9A-Fa-f]+\) ---- \*/')
+
+
+def member_section(text, owner_id):
+    """The owner's own section of a merged translation unit, or the whole text."""
+    match = re.search(r'/\* ---- ' + re.escape(owner_id) + r' \(original code at', text)
+    if match is None:
+        return text
+    following = BANNER.search(text, match.end())
+    return text[match.start():following.start()] if following else text[match.start():]
+
+
+def classify_source(path, owner_id=None):
+    """Return the strongest mechanically verifiable source representation.
+
+    A merged unit is judged per member section: an inline-asm fragment in one
+    function does not make the unit's other functions inline-asm C."""
     text = path.read_text(errors='strict')
+    if owner_id:
+        text = member_section(text, owner_id)
+    # Comments that mention asm/ paths or the word asm are not statements.
+    text = re.sub(r'/\*.*?\*/', '', text, flags=re.S)
     if ASM_DB.search(text):
         return 'ASM_DB_CAPSULE'
     if ASM.search(text):
@@ -151,7 +170,7 @@ def report(manifest, runtime_metrics=None):
             if source.lower().endswith('.asm'):
                 level = classify_asm_source(path, source)
             else:
-                level = classify_source(path)
+                level = classify_source(path, owner['id'])
             if level == 'ASM_DB_CAPSULE':
                 capsules.append({'owner': owner['id'], 'source': source,
                                  'bytes': owner['end'] - owner['start']})

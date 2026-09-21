@@ -2,19 +2,17 @@
   "format": "empires-interface-audit-v1",
   "scope": "Review only; no production declaration edits or conflict suppression.",
   "raw_conflicts": 49,
-  "active_c_sources": 98,
+  "active_c_sources": 68,
   "categories": {
-    "ACTIVE_TYPE_REVIEW": 8,
+    "ACTIVE_TYPE_REVIEW": 4,
     "COMPACT_MODEL_SPELLING": 2,
-    "INACTIVE_REFERENCE_ONLY": 36,
+    "INACTIVE_REFERENCE_ONLY": 41,
     "LOCAL_TAG_REUSE": 1,
-    "RETURN_TYPE_REVIEW": 1,
     "VARIADIC_PROTOTYPE": 1
   },
   "open_categories": {
-    "ACTIVE_TYPE_REVIEW": 1,
     "COMPACT_MODEL_SPELLING": 1,
-    "INACTIVE_REFERENCE_ONLY": 34,
+    "INACTIVE_REFERENCE_ONLY": 35,
     "LOCAL_TAG_REUSE": 1
   },
   "resolutions": [
@@ -207,19 +205,6 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 217
-        },
-        {
-          "symbol": "f1f91",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 21
         }
       ],
       "excluded_declarations": [
@@ -239,6 +224,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_1F91.C",
           "line": 4
+        },
+        {
+          "symbol": "f1f91",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
         }
       ]
     },
@@ -248,21 +246,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f50d2",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/VIDMODE.C",
-          "line": 8
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "f50d2",
@@ -276,6 +260,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_50D2.C",
           "line": 6
+        },
+        {
+          "symbol": "f50d2",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/VIDMODE.C",
+          "line": 8
         }
       ]
     },
@@ -285,7 +282,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "f6036",
           "definition": false,
@@ -298,9 +296,7 @@
           "confidence": "MEDIUM",
           "file": "src/BRDPAINT.C",
           "line": 8
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "f6036",
           "definition": true,
@@ -322,21 +318,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f60a9",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 16
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "f60a9",
@@ -350,6 +332,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_60A9.C",
           "line": 5
+        },
+        {
+          "symbol": "f60a9",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 16
         }
       ]
     },
@@ -359,7 +354,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "f6181",
           "definition": false,
@@ -372,9 +368,7 @@
           "confidence": "MEDIUM",
           "file": "src/BOARDSCR.C",
           "line": 35
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "f6181",
           "definition": true,
@@ -511,7 +505,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "f_d61c",
           "definition": false,
@@ -524,9 +519,7 @@
           "confidence": "MEDIUM",
           "file": "src/BRDPAINT.C",
           "line": 8
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "f_d61c",
           "definition": true,
@@ -548,21 +541,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f_d79c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 21
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "f_d79c",
@@ -576,18 +555,9 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_D79C.C",
           "line": 2
-        }
-      ]
-    },
-    {
-      "id": "FUNCTION_ABI:fd386",
-      "kind": "FUNCTION_ABI",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
+        },
         {
-          "symbol": "fd386",
+          "symbol": "f_d79c",
           "definition": false,
           "return_type": "int",
           "argument_count": null,
@@ -599,7 +569,15 @@
           "file": "src/TURNLOOP.C",
           "line": 21
         }
-      ],
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:fd386",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "fd386",
@@ -615,17 +593,28 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_D386.C",
           "line": 6
+        },
+        {
+          "symbol": "fd386",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
         }
       ]
     },
     {
       "id": "FUNCTION_ABI:keyboard_irq_handler",
       "kind": "FUNCTION_ABI",
-      "category": "RETURN_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "return_type"
-      ],
+      "active_fields": [],
       "active_declarations": [
         {
           "symbol": "keyboard_irq_handler",
@@ -639,7 +628,9 @@
           "confidence": "MEDIUM",
           "file": "src/KEYIRQ.C",
           "line": 7
-        },
+        }
+      ],
+      "excluded_declarations": [
         {
           "symbol": "keyboard_irq_handler",
           "definition": true,
@@ -653,8 +644,7 @@
           "file": "src/KEYIRQH.C",
           "line": 12
         }
-      ],
-      "excluded_declarations": []
+      ]
     },
     {
       "id": "FUNCTION_ABI:menu_list_active",
@@ -675,19 +665,6 @@
           "confidence": "MEDIUM",
           "file": "src/DIALOG.C",
           "line": 20
-        },
-        {
-          "symbol": "menu_list_active",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/KEYBIOS.C",
-          "line": 7
         },
         {
           "symbol": "menu_list_active",
@@ -794,6 +771,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_6B1A.C",
           "line": 2
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYBIOS.C",
+          "line": 7
         }
       ]
     },
@@ -1037,7 +1027,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "strlen",
           "definition": false,
@@ -1052,9 +1043,7 @@
           "confidence": "MEDIUM",
           "file": "src/DOSWRT2.C",
           "line": 3
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "strlen",
           "definition": true,
@@ -1073,12 +1062,11 @@
     {
       "id": "GLOBAL_TYPE:a74a2",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "array"
-      ],
-      "active_declarations": [
+      "active_fields": [],
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "a74a2",
           "type": "char",
@@ -1101,8 +1089,7 @@
           "file": "src/BRDTERR.C",
           "line": 8
         }
-      ],
-      "excluded_declarations": []
+      ]
     },
     {
       "id": "GLOBAL_TYPE:b856",
@@ -1110,19 +1097,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "b856",
-          "type": "char",
-          "array": null,
-          "pointer_shape": null,
-          "storage": "near",
-          "size": 1,
-          "confidence": "MEDIUM",
-          "file": "src/KEYIRQH.C",
-          "line": 7
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "b856",
@@ -1134,6 +1109,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_50D2.C",
           "line": 4
+        },
+        {
+          "symbol": "b856",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": "near",
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 7
         }
       ]
     },
@@ -1144,28 +1130,6 @@
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
       "active_declarations": [
-        {
-          "symbol": "board_record_index",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 26
-        },
-        {
-          "symbol": "board_record_index",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 16
-        },
         {
           "symbol": "board_record_index",
           "type": "int",
@@ -1198,6 +1162,41 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 357
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 26
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 16
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_4EEB.C",
+          "line": 8
         },
         {
           "symbol": "board_record_index",
@@ -1221,30 +1220,50 @@
           "file": "src/TURNLOOP.C",
           "line": 36
         }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "board_record_index",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_4EEB.C",
-          "line": 8
-        }
       ]
     },
     {
       "id": "GLOBAL_TYPE:board_records",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
+      "active_fields": [],
       "active_declarations": [
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 174
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 196
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 359
+        }
+      ],
+      "excluded_declarations": [
         {
           "symbol": "board_records",
           "type": "char far *",
@@ -1280,36 +1299,14 @@
         },
         {
           "symbol": "board_records",
-          "type": "char far *",
+          "type": "unsigned long",
           "array": null,
-          "pointer_shape": "far",
+          "pointer_shape": null,
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 174
-        },
-        {
-          "symbol": "board_records",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 196
-        },
-        {
-          "symbol": "board_records",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 359
+          "file": "recovery/src/F_1F91.C",
+          "line": 2
         },
         {
           "symbol": "board_records",
@@ -1332,19 +1329,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 41
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "board_records",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_1F91.C",
-          "line": 2
         }
       ]
     },
@@ -1442,17 +1426,6 @@
           "confidence": "MEDIUM",
           "file": "src/ROUNDEND.C",
           "line": 9
-        },
-        {
-          "symbol": "g1770",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTOP.C",
-          "line": 1
         }
       ],
       "excluded_declarations": [
@@ -1466,6 +1439,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_CAF1.C",
           "line": 2
+        },
+        {
+          "symbol": "g1770",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTOP.C",
+          "line": 1
         }
       ]
     },
@@ -1484,9 +1468,11 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/CMDLINE.C",
-          "line": 4
-        },
+          "file": "src/RESCLOAD.C",
+          "line": 7
+        }
+      ],
+      "excluded_declarations": [
         {
           "symbol": "g1778",
           "type": "int",
@@ -1495,11 +1481,9 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 7
-        }
-      ],
-      "excluded_declarations": [
+          "file": "src/CMDLINE.C",
+          "line": 4
+        },
         {
           "symbol": "g1778",
           "type": "unsigned",
@@ -1519,19 +1503,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "g1e8a",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTOP.C",
-          "line": 1
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "g1e8a",
@@ -1543,6 +1515,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_CAF1.C",
           "line": 2
+        },
+        {
+          "symbol": "g1e8a",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTOP.C",
+          "line": 1
         }
       ]
     },
@@ -1617,7 +1600,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "g40d0",
           "type": "char far *",
@@ -1631,19 +1615,6 @@
         },
         {
           "symbol": "g40d0",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 44
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "g40d0",
           "type": "unsigned char *",
           "array": null,
           "pointer_shape": "far",
@@ -1652,6 +1623,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_60A9.C",
           "line": 2
+        },
+        {
+          "symbol": "g40d0",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 44
         }
       ]
     },
@@ -1705,17 +1687,6 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 357
-        },
-        {
-          "symbol": "g8fe",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 35
         }
       ],
       "excluded_declarations": [
@@ -1729,6 +1700,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_60A9.C",
           "line": 1
+        },
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 35
         }
       ]
     },
@@ -1738,7 +1720,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "gbfc4",
           "type": "unsigned char far *",
@@ -1752,19 +1735,6 @@
         },
         {
           "symbol": "gbfc4",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 43
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "gbfc4",
           "type": "char far *",
           "array": null,
           "pointer_shape": "far",
@@ -1773,6 +1743,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_D386.C",
           "line": 3
+        },
+        {
+          "symbol": "gbfc4",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 43
         }
       ]
     },
@@ -1823,23 +1804,10 @@
     {
       "id": "GLOBAL_TYPE:gbfcc",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
+      "active_fields": [],
       "active_declarations": [
-        {
-          "symbol": "gbfcc",
-          "type": "unsigned char",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 1,
-          "confidence": "MEDIUM",
-          "file": "src/BIOSEQP.C",
-          "line": 5
-        },
         {
           "symbol": "gbfcc",
           "type": "char",
@@ -1852,7 +1820,19 @@
           "line": 52
         }
       ],
-      "excluded_declarations": []
+      "excluded_declarations": [
+        {
+          "symbol": "gbfcc",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/BIOSEQP.C",
+          "line": 5
+        }
+      ]
     },
     {
       "id": "GLOBAL_TYPE:gc0ee",
@@ -1991,12 +1971,11 @@
     {
       "id": "GLOBAL_TYPE:int8_saved_vector",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
+      "active_fields": [],
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "int8_saved_vector",
           "type": "unsigned",
@@ -2032,8 +2011,7 @@
           "file": "src/TIMERRST.C",
           "line": 2
         }
-      ],
-      "excluded_declarations": []
+      ]
     },
     {
       "id": "GLOBAL_TYPE:objtab",
@@ -2094,17 +2072,6 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 14
-        },
-        {
-          "symbol": "rect_queue_write_ptr",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
           "file": "src/HITTEST.C",
           "line": 36
         },
@@ -2151,6 +2118,30 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 213
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 14
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_1ECD.C",
+          "line": 3
         },
         {
           "symbol": "rect_queue_write_ptr",
@@ -2162,19 +2153,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 37
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "rect_queue_write_ptr",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_1ECD.C",
-          "line": 3
         }
       ]
     },
@@ -2341,19 +2319,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "snd_delay",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDTICK.C",
-          "line": 8
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "snd_delay",
@@ -2365,6 +2331,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_C914.C",
           "line": 10
+        },
+        {
+          "symbol": "snd_delay",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDTICK.C",
+          "line": 8
         }
       ]
     },
@@ -2407,17 +2384,6 @@
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 19
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERIRQ.C",
-          "line": 6
         }
       ],
       "excluded_declarations": [
@@ -2431,6 +2397,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_CAF1.C",
           "line": 2
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
         }
       ]
     },
@@ -2497,17 +2474,6 @@
           "confidence": "MEDIUM",
           "file": "src/ANIMFRAM.C",
           "line": 9
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 14
         },
         {
           "symbol": "ui_gfx_blob",
@@ -2596,6 +2562,30 @@
           "confidence": "MEDIUM",
           "file": "src/RESOURCE.C",
           "line": 62
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 14
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_1ECD.C",
+          "line": 5
         },
         {
           "symbol": "ui_gfx_blob",
@@ -2607,19 +2597,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 40
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_1ECD.C",
-          "line": 5
         }
       ]
     },
@@ -2717,19 +2694,6 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 217
-        },
-        {
-          "symbol": "f1f91",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 21
         }
       ],
       "excluded_declarations": [
@@ -2749,6 +2713,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_1F91.C",
           "line": 4
+        },
+        {
+          "symbol": "f1f91",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
         }
       ]
     },
@@ -2758,21 +2735,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f50d2",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/VIDMODE.C",
-          "line": 8
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "f50d2",
@@ -2786,6 +2749,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_50D2.C",
           "line": 6
+        },
+        {
+          "symbol": "f50d2",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/VIDMODE.C",
+          "line": 8
         }
       ]
     },
@@ -2795,7 +2771,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "f6036",
           "definition": false,
@@ -2808,9 +2785,7 @@
           "confidence": "MEDIUM",
           "file": "src/BRDPAINT.C",
           "line": 8
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "f6036",
           "definition": true,
@@ -2832,21 +2807,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f60a9",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 16
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "f60a9",
@@ -2860,6 +2821,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_60A9.C",
           "line": 5
+        },
+        {
+          "symbol": "f60a9",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 16
         }
       ]
     },
@@ -2869,7 +2843,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "f6181",
           "definition": false,
@@ -2882,9 +2857,7 @@
           "confidence": "MEDIUM",
           "file": "src/BOARDSCR.C",
           "line": 35
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "f6181",
           "definition": true,
@@ -3021,7 +2994,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "f_d61c",
           "definition": false,
@@ -3034,9 +3008,7 @@
           "confidence": "MEDIUM",
           "file": "src/BRDPAINT.C",
           "line": 8
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "f_d61c",
           "definition": true,
@@ -3058,21 +3030,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f_d79c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 21
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "f_d79c",
@@ -3086,18 +3044,9 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_D79C.C",
           "line": 2
-        }
-      ]
-    },
-    {
-      "id": "FUNCTION_ABI:fd386",
-      "kind": "FUNCTION_ABI",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
+        },
         {
-          "symbol": "fd386",
+          "symbol": "f_d79c",
           "definition": false,
           "return_type": "int",
           "argument_count": null,
@@ -3109,7 +3058,15 @@
           "file": "src/TURNLOOP.C",
           "line": 21
         }
-      ],
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:fd386",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "fd386",
@@ -3125,6 +3082,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_D386.C",
           "line": 6
+        },
+        {
+          "symbol": "fd386",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
         }
       ]
     },
@@ -3147,19 +3117,6 @@
           "confidence": "MEDIUM",
           "file": "src/DIALOG.C",
           "line": 20
-        },
-        {
-          "symbol": "menu_list_active",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/KEYBIOS.C",
-          "line": 7
         },
         {
           "symbol": "menu_list_active",
@@ -3266,6 +3223,19 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_6B1A.C",
           "line": 2
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYBIOS.C",
+          "line": 7
         }
       ]
     },
@@ -3460,7 +3430,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "strlen",
           "definition": false,
@@ -3475,9 +3446,7 @@
           "confidence": "MEDIUM",
           "file": "src/DOSWRT2.C",
           "line": 3
-        }
-      ],
-      "excluded_declarations": [
+        },
         {
           "symbol": "strlen",
           "definition": true,
@@ -3499,19 +3468,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "b856",
-          "type": "char",
-          "array": null,
-          "pointer_shape": null,
-          "storage": "near",
-          "size": 1,
-          "confidence": "MEDIUM",
-          "file": "src/KEYIRQH.C",
-          "line": 7
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "b856",
@@ -3523,6 +3480,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_50D2.C",
           "line": 4
+        },
+        {
+          "symbol": "b856",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": "near",
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 7
         }
       ]
     },
@@ -3533,28 +3501,6 @@
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
       "active_declarations": [
-        {
-          "symbol": "board_record_index",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 26
-        },
-        {
-          "symbol": "board_record_index",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 16
-        },
         {
           "symbol": "board_record_index",
           "type": "int",
@@ -3587,6 +3533,41 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 357
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 26
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 16
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_4EEB.C",
+          "line": 8
         },
         {
           "symbol": "board_record_index",
@@ -3609,19 +3590,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 36
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "board_record_index",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_4EEB.C",
-          "line": 8
         }
       ]
     },
@@ -3719,17 +3687,6 @@
           "confidence": "MEDIUM",
           "file": "src/ROUNDEND.C",
           "line": 9
-        },
-        {
-          "symbol": "g1770",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTOP.C",
-          "line": 1
         }
       ],
       "excluded_declarations": [
@@ -3743,6 +3700,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_CAF1.C",
           "line": 2
+        },
+        {
+          "symbol": "g1770",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTOP.C",
+          "line": 1
         }
       ]
     },
@@ -3761,9 +3729,11 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/CMDLINE.C",
-          "line": 4
-        },
+          "file": "src/RESCLOAD.C",
+          "line": 7
+        }
+      ],
+      "excluded_declarations": [
         {
           "symbol": "g1778",
           "type": "int",
@@ -3772,11 +3742,9 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 7
-        }
-      ],
-      "excluded_declarations": [
+          "file": "src/CMDLINE.C",
+          "line": 4
+        },
         {
           "symbol": "g1778",
           "type": "unsigned",
@@ -3796,19 +3764,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "g1e8a",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTOP.C",
-          "line": 1
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "g1e8a",
@@ -3820,6 +3776,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_CAF1.C",
           "line": 2
+        },
+        {
+          "symbol": "g1e8a",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTOP.C",
+          "line": 1
         }
       ]
     },
@@ -3894,7 +3861,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "g40d0",
           "type": "char far *",
@@ -3908,19 +3876,6 @@
         },
         {
           "symbol": "g40d0",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 44
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "g40d0",
           "type": "unsigned char *",
           "array": null,
           "pointer_shape": "far",
@@ -3929,6 +3884,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_60A9.C",
           "line": 2
+        },
+        {
+          "symbol": "g40d0",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 44
         }
       ]
     },
@@ -3982,17 +3948,6 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 357
-        },
-        {
-          "symbol": "g8fe",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 35
         }
       ],
       "excluded_declarations": [
@@ -4006,6 +3961,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_60A9.C",
           "line": 1
+        },
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 35
         }
       ]
     },
@@ -4056,12 +4022,11 @@
     {
       "id": "GLOBAL_TYPE:int8_saved_vector",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
+      "active_fields": [],
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "int8_saved_vector",
           "type": "unsigned",
@@ -4097,8 +4062,7 @@
           "file": "src/TIMERRST.C",
           "line": 2
         }
-      ],
-      "excluded_declarations": []
+      ]
     },
     {
       "id": "GLOBAL_TYPE:objtab",
@@ -4218,19 +4182,7 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "snd_delay",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDTICK.C",
-          "line": 8
-        }
-      ],
+      "active_declarations": [],
       "excluded_declarations": [
         {
           "symbol": "snd_delay",
@@ -4242,6 +4194,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_C914.C",
           "line": 10
+        },
+        {
+          "symbol": "snd_delay",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDTICK.C",
+          "line": 8
         }
       ]
     },
@@ -4284,17 +4247,6 @@
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 19
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERIRQ.C",
-          "line": 6
         }
       ],
       "excluded_declarations": [
@@ -4308,6 +4260,17 @@
           "confidence": "MEDIUM",
           "file": "recovery/src/F_CAF1.C",
           "line": 2
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
         }
       ]
     },
@@ -4360,11 +4323,9 @@
     {
       "id": "FUNCTION_ABI:keyboard_irq_handler",
       "kind": "FUNCTION_ABI",
-      "category": "RETURN_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "return_type"
-      ],
+      "active_fields": [],
       "active_declarations": [
         {
           "symbol": "keyboard_irq_handler",
@@ -4378,7 +4339,9 @@
           "confidence": "MEDIUM",
           "file": "src/KEYIRQ.C",
           "line": 7
-        },
+        }
+      ],
+      "excluded_declarations": [
         {
           "symbol": "keyboard_irq_handler",
           "definition": true,
@@ -4392,8 +4355,7 @@
           "file": "src/KEYIRQH.C",
           "line": 12
         }
-      ],
-      "excluded_declarations": []
+      ]
     },
     {
       "id": "FUNCTION_ABI:str_concat_far_list",
@@ -4447,12 +4409,11 @@
     {
       "id": "GLOBAL_TYPE:a74a2",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "array"
-      ],
-      "active_declarations": [
+      "active_fields": [],
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "a74a2",
           "type": "char",
@@ -4475,18 +4436,50 @@
           "file": "src/BRDTERR.C",
           "line": 8
         }
-      ],
-      "excluded_declarations": []
+      ]
     },
     {
       "id": "GLOBAL_TYPE:board_records",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
+      "active_fields": [],
       "active_declarations": [
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 174
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 196
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 359
+        }
+      ],
+      "excluded_declarations": [
         {
           "symbol": "board_records",
           "type": "char far *",
@@ -4522,36 +4515,14 @@
         },
         {
           "symbol": "board_records",
-          "type": "char far *",
+          "type": "unsigned long",
           "array": null,
-          "pointer_shape": "far",
+          "pointer_shape": null,
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 174
-        },
-        {
-          "symbol": "board_records",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 196
-        },
-        {
-          "symbol": "board_records",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 359
+          "file": "recovery/src/F_1F91.C",
+          "line": 2
         },
         {
           "symbol": "board_records",
@@ -4575,19 +4546,6 @@
           "file": "src/TURNLOOP.C",
           "line": 41
         }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "board_records",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_1F91.C",
-          "line": 2
-        }
       ]
     },
     {
@@ -4596,7 +4554,8 @@
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
-      "active_declarations": [
+      "active_declarations": [],
+      "excluded_declarations": [
         {
           "symbol": "gbfc4",
           "type": "unsigned char far *",
@@ -4610,6 +4569,17 @@
         },
         {
           "symbol": "gbfc4",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_D386.C",
+          "line": 3
+        },
+        {
+          "symbol": "gbfc4",
           "type": "unsigned char far *",
           "array": null,
           "pointer_shape": "far",
@@ -4619,41 +4589,15 @@
           "file": "src/TURNLOOP.C",
           "line": 43
         }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "gbfc4",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_D386.C",
-          "line": 3
-        }
       ]
     },
     {
       "id": "GLOBAL_TYPE:gbfcc",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
+      "active_fields": [],
       "active_declarations": [
-        {
-          "symbol": "gbfcc",
-          "type": "unsigned char",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 1,
-          "confidence": "MEDIUM",
-          "file": "src/BIOSEQP.C",
-          "line": 5
-        },
         {
           "symbol": "gbfcc",
           "type": "char",
@@ -4666,7 +4610,19 @@
           "line": 52
         }
       ],
-      "excluded_declarations": []
+      "excluded_declarations": [
+        {
+          "symbol": "gbfcc",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/BIOSEQP.C",
+          "line": 5
+        }
+      ]
     },
     {
       "id": "GLOBAL_TYPE:gc0ee",
@@ -4817,17 +4773,6 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 14
-        },
-        {
-          "symbol": "rect_queue_write_ptr",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
           "file": "src/HITTEST.C",
           "line": 36
         },
@@ -4874,6 +4819,30 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 213
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 14
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_1ECD.C",
+          "line": 3
         },
         {
           "symbol": "rect_queue_write_ptr",
@@ -4885,19 +4854,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 37
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "rect_queue_write_ptr",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_1ECD.C",
-          "line": 3
         }
       ]
     },
@@ -5012,17 +4968,6 @@
         },
         {
           "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 14
-        },
-        {
-          "symbol": "ui_gfx_blob",
           "type": "unsigned",
           "array": null,
           "pointer_shape": null,
@@ -5108,6 +5053,30 @@
           "confidence": "MEDIUM",
           "file": "src/RESOURCE.C",
           "line": 62
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 14
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "recovery/src/F_1ECD.C",
+          "line": 5
         },
         {
           "symbol": "ui_gfx_blob",
@@ -5119,19 +5088,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 40
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "recovery/src/F_1ECD.C",
-          "line": 5
         }
       ]
     },

@@ -1,0 +1,39 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_4F63_520A",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_4F63",
+      "path": "src/STARTUP.C",
+      "public": "_dos_write_handle2"
+    },
+    {
+      "owner": "F_4F96",
+      "path": "src/STARTUP.C",
+      "public": "_cmdline_parse_args"
+    },
+    {
+      "owner": "F_50C1",
+      "path": "src/STARTUP.C",
+      "public": "_bios_equipment_probe"
+    },
+    {
+      "owner": "F_50D2",
+      "path": "src/STARTUP.C",
+      "public": "_f50d2"
+    },
+    {
+      "owner": "F_53BF",
+      "path": "src/STARTUP.C",
+      "public": "_f53bf"
+    },
+    {
+      "owner": "F_520A",
+      "path": "src/STARTUP.C",
+      "public": "_video_mode_select"
+    }
+  ],
+  "evidence": "One translation unit proven byte-exact by tools/probe_tu.py (958 bytes, 77 fixups, no flags): CMDLINE (F_4F96) and VIDMODE (F_520A) are byte-exact only under -B, which Turbo C 2.0 takes only for a unit containing inline asm; BIOSEQP's asm int 11h and the inline fragments of the video-adapter probe (F_50D2/F_53BF, recovered as C with pseudo-registers in src/VIDDET.C) supply it -- removing BIOSEQP's asm alone breaks CMDLINE's jump relaxation, and the NOP-padded byte stores in F_50D2 are TASM sizing a forward EXTRN, which only a TCC-generated unit produces. DOSWRT2 joins by contiguity; INTRO (also exact in the unit) is left separate as an ambiguous extension. Members merged into src/STARTUP.C. Members merged into src/STARTUP.C."
+}

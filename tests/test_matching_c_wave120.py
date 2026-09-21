@@ -13,10 +13,12 @@ class MatchingCWave120Tests(unittest.TestCase):
         recipe = read_json(ROOT / 'recipes/c/matching-wave120.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_CAF1')
         # F_CAF1 was reverted to symbolic ASM after the refactor grouped/reviewed
-        # asm-origin candidates; see docs/current/asm-origin-review.json. The
-        # wave120 evidence below still matches the unchanged original bytes.
+        # asm-origin candidates; see docs/current/asm-origin-review.json. It now
+        # lives inside the single hand-written asm/SOUND.ASM module
+        # (M_C1A0_CB48), not the standalone asm/F_CAF1.ASM. The wave120
+        # evidence below still matches the unchanged original bytes.
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'asm/F_CAF1.ASM')
+        self.assertEqual(owner['source'], 'asm/SOUND.ASM')
         self.assertEqual(owner['end'] - owner['start'], 87)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_CAF1')
         evidence = read_json(ROOT / 'docs/matching-wave120-evidence.json')

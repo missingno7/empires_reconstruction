@@ -12,10 +12,14 @@ class MatchingCWave112Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave112.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_6B1A')
-        # F_6B1A was promoted into the shared src/KEYBIOS.C translation unit
-        # (see layout/structural-source-modules.json), together with F_6B4A.
-        self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'src/KEYBIOS.C')
+        # F_6B1A was promoted into the shared translation unit, together with
+        # F_6B4A; that unit (formerly src/KEYBIOS.C) was itself folded into
+        # the larger src/KEYBOARD.C merge (module C_6990_6B74 in
+        # layout/production-plan.json; see docs/current/asm-provenance.json),
+        # and F_6B1A now compiles as plain C rather than needing the -B
+        # inline-asm flag (the unit's own inline asm explains the frame).
+        self.assertEqual(owner['kind'], 'MATCHING_C')
+        self.assertEqual(owner['source'], 'src/KEYBOARD.C')
         self.assertEqual(owner['end'] - owner['start'], 48)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_6B1A')
         evidence = read_json(ROOT / 'docs/matching-wave112-evidence.json')

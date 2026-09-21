@@ -17,8 +17,12 @@ class F25B3SymbolicAssemblyTests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_25B3')
         # F_25B3 was recovered as exact C; see docs/current/exact-c-recovery.md.
+        # It was later folded into the src/BOARD.C translation-unit merge
+        # (module C_200F_3986 in layout/production-plan.json; see
+        # docs/current/asm-provenance.json), so its old standalone
+        # src/BOARDDRW.C is gone.
         self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'src/BOARDDRW.C')
+        self.assertEqual(owner['source'], 'src/BOARD.C')
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         lock = read_json(ROOT / 'layout/toolchain.json')
         libraries = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
@@ -26,7 +30,7 @@ class F25B3SymbolicAssemblyTests(unittest.TestCase):
             receipts, _ = compile_sources(ROOT, [owner], Path(temporary), ROOT / 'toolchain',
                                            resolve_runner(lock), lock)
             module = read_object((Path(temporary) / receipts['F_25B3']['object']).read_bytes())
-            # F_25B3 now shares its src/BOARDDRW.C translation unit with
+            # F_25B3 now shares its src/BOARD.C translation unit with
             # several neighbouring functions (see
             # docs/current/exact-c-recovery.md), so the compiled module's
             # publics/fixups cover the whole file, not just this owner.

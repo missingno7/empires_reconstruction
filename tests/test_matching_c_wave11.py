@@ -15,6 +15,11 @@ from reconstruct import (read_json, compile_sources, read_object, bind_region, m
 
 class MatchingCWave11Tests(unittest.TestCase):
     def test_fresh_wave_and_expression_layout_mutants(self):
+        # F_4943 (campaign_chapter_advance) was folded into the src/GAME.C
+        # translation-unit merge (module C_3A75_4A93 in
+        # layout/production-plan.json; see docs/current/asm-provenance.json);
+        # its old standalone src/CAMPADV.C is gone. recipes/c/matching-wave11.json
+        # is updated to compile it from src/GAME.C instead.
         manifest = read_json(ROOT / 'layout/manifest.json')
         owners = [o for o in read_json(ROOT / 'recipes/c/matching-wave11.json')['owners'] if o['kind'] == 'MATCHING_C']
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

@@ -13,8 +13,6 @@
 ; and absolute position moves (with an optional redraw), enable/disable,
 ; bit-test-and-skip, and a random skip. near proc, no args/return; called
 ; once per interpreter tick; clobbers ax/bx/cx/dx/si/di, all pushed/popped.
-; CALL_REL retains original direct near-call encoding in this independently
-; emitted contribution.
 _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
@@ -23,9 +21,14 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-CALL_REL macro delta
- call $+delta
-endm
+extrn _gfx_color_select:near
+extrn _gfx_copy_rect:near
+extrn _gfx_vline:near
+extrn _fcaf1:near
+extrn _rand:near
+extrn _record_field_skip_n:near
+extrn _board_run_unit_script:near
+extrn _board_advance_unit_moves:near
 
 public _f4b0c
 _f4b0c proc near
@@ -38,7 +41,7 @@ _f4b0c proc near
 ; select drawing color 0Fh; di = record-table cursor, cx = record count
  mov ax,0fh
  push ax
- CALL_REL -18761 ; F_01CE
+ call _gfx_color_select
  pop ax
  mov di,0b3aeh
  xor cx,cx
@@ -107,7 +110,7 @@ render_record:
  push ax
  push word ptr [di+4h]
  push word ptr [di+2h]
- CALL_REL -18374 ; code_03CC
+ call _gfx_copy_rect
  add sp,byte ptr +0ah
 update_record:
 ; skip the redraw/collision path when already rendered
@@ -126,7 +129,7 @@ update_record:
  push bx
  push dx
  push ax
- CALL_REL -18451 ; code_03A5
+ call _gfx_vline
  add sp,byte ptr +6h
 collision_check:
 ; compute this record's bounding box (ax/cx = x range, dx/bp = y range)
@@ -294,7 +297,7 @@ opcode_call_caf1:
  xor ah,ah
  lodsb
  push ax
- CALL_REL 32254 ; F_CAF1
+ call _fcaf1
  pop ax
  jmp near ptr dispatch_opcode
 ; call F_2A2D(byte operand) then F_338A(dx, result)
@@ -302,11 +305,11 @@ opcode_dispatch_2a2d:
  xor ah,ah
  lodsb
  push ax
- CALL_REL -8913 ; F_2A2D
+ call _record_field_skip_n
  pop cx
  push dx
  push ax
- CALL_REL -6522 ; F_338A
+ call _board_run_unit_script
  pop cx
  pop cx
  jmp near ptr dispatch_opcode
@@ -315,7 +318,7 @@ opcode_dispatch_36f0:
  xor ah,ah
  lodsb
  push ax
- CALL_REL -5664 ; F_36F0
+ call _board_advance_unit_moves
  pop ax
  jmp near ptr dispatch_opcode
 ; two opcode variants (set flag = 1 / clear flag = 0) sharing the rest of
@@ -407,7 +410,7 @@ velocity_store:
  push ax
  push cx
  push dx
- CALL_REL -18918 ; code_03CC
+ call _gfx_copy_rect
  add sp,byte ptr +0ah
 move_no_redraw:
  jmp near ptr save_program_counter
@@ -528,7 +531,8 @@ opcode_skip_bytes:
 ; roll a random value via F_F90F and skip the following block (as above)
 ; unless it is >= the operand byte
 opcode_random_skip:
- CALL_REL 43645 ; code_F90F
+; random skip: rand() from the pinned CC.LIB (F_F90F)
+ call _rand
  mov bx,ax
  lodsb
  cmp bl,al

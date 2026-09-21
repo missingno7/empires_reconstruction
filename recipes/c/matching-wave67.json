@@ -4,7 +4,7 @@
     {
       "id": "F_C8D4",
       "kind": "MATCHING_ASM",
-      "source": "src/F_C8D4.ASM",
+      "source": "asm/SOUND.ASM",
       "start": 51924,
       "end": 51938,
       "expected_sha256": "e227e7a35b1c337907324b16ae8a3e8c8c1946f3d3684d91a94d5e94159b790f",
@@ -27,7 +27,8 @@
       "matching_status": "EQUAL",
       "provenance": {
         "method": "symbolic TASM reconstruction from complete disassembly and fresh full-extent OMF binding",
-        "change": "Replace the mechanical inline-assembly capsule with symbolic port-write assembly"
+        "change": "Replace the mechanical inline-assembly capsule with symbolic port-write assembly",
+        "reconstruction_source": "recovery/src/F_C8D4.ASM"
       }
     }
   ]

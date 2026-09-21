@@ -10,6 +10,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
+extrn _gfx_copy_rect:near
+extrn _gfx_blit_bitmap:near
+
 public _f_d61c, _f_d79c
 
 ; The original hand-written code addresses the first cell with an 8-bit
@@ -95,20 +98,20 @@ D61_attribute_ready:
     mov al,bl
     shl ax,1
     push ax
-    call $+2ce0h            ; historical renderer target
+    call _gfx_copy_rect
     mov bp,sp
     add word ptr [bp],0ch
     add word ptr [bp+4],82h
     cmp si,0
     jng short D61_strip_loop_done
 D61_strip_loop:
-    call $+2ccah            ; historical strip renderer target
+    call _gfx_blit_bitmap
     add word ptr [bp],8
     dec si
     jnz short D61_strip_loop
 D61_strip_loop_done:
     add word ptr [bp+4],62h
-    call $+2cbfh            ; historical renderer target
+    call _gfx_copy_rect
     add sp,0ah
     pop es
     pop cx
@@ -193,20 +196,20 @@ D79_attribute_ready:
     mov al,bl
     shl ax,1
     push ax
-    call $+2be5h            ; historical renderer target
+    call _gfx_copy_rect
     mov bp,sp
     add word ptr [bp],0ch
     add word ptr [bp+4],82h
     cmp si,0
     jng short D79_strip_loop_done
 D79_strip_loop:
-    call $+2bcfh            ; historical strip renderer target
+    call _gfx_blit_bitmap
     add word ptr [bp],8
     dec si
     jnz short D79_strip_loop
 D79_strip_loop_done:
     add word ptr [bp+4],62h
-    call $+2bc4h            ; historical renderer target
+    call _gfx_copy_rect
     add sp,0ah
     pop es
     pop cx

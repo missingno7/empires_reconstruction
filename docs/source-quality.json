@@ -10,21 +10,21 @@
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-      "bytes": 6066,
-      "owners": 46,
-      "sources": 20
+      "bytes": 16134,
+      "owners": 82,
+      "sources": 11
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 5925,
-      "owners": 56,
-      "sources": 28
+      "bytes": 5758,
+      "owners": 61,
+      "sources": 17
     },
     {
       "level": "MECHANICAL_C",
-      "bytes": 39948,
-      "owners": 236,
-      "sources": 79
+      "bytes": 30047,
+      "owners": 195,
+      "sources": 58
     },
     {
       "level": "HISTORICAL_STARTUP_OBJECT",
@@ -77,53 +77,6 @@
       "bytes": 377
     },
     {
-      "id": "M_6B1A_6B4A",
-      "source": "src/KEYBIOS.C",
-      "members": [
-        "F_6B1A",
-        "F_6B4A"
-      ],
-      "bytes": 76
-    },
-    {
-      "id": "M_C1A0_C232",
-      "source": "asm/M_C1A0_C232.ASM",
-      "members": [
-        "F_C1A0",
-        "F_C1F7",
-        "F_C232"
-      ],
-      "bytes": 221
-    },
-    {
-      "id": "M_C9A4_CA91",
-      "source": "asm/M_C9A4_CA91.ASM",
-      "members": [
-        "F_C9A4",
-        "F_CA03",
-        "F_CA35",
-        "F_CA51",
-        "F_CA83",
-        "F_CA91"
-      ],
-      "bytes": 247
-    },
-    {
-      "id": "M_C27D_C567",
-      "source": "asm/M_C27D_C567.ASM",
-      "members": [
-        "F_C27D",
-        "F_C2EA",
-        "F_C359",
-        "F_C3DB",
-        "F_C440",
-        "F_C501",
-        "F_C549",
-        "F_C567"
-      ],
-      "bytes": 797
-    },
-    {
       "id": "M_CB5C_CD23",
       "source": "src/OPTIONS.C",
       "members": [
@@ -155,16 +108,6 @@
       "bytes": 71
     },
     {
-      "id": "M_C5A8_C5C6",
-      "source": "asm/M_C5A8_C5C6.ASM",
-      "members": [
-        "F_C5A8",
-        "F_C5B3",
-        "F_C5C6"
-      ],
-      "bytes": 41
-    },
-    {
       "id": "M_D386_D3CF",
       "source": "asm/M_D386_D3CF.ASM",
       "members": [
@@ -181,38 +124,6 @@
         "F_98CB"
       ],
       "bytes": 121
-    },
-    {
-      "id": "M_50D2_53BF",
-      "source": "asm/M_50D2_53BF.ASM",
-      "members": [
-        "F_50D2",
-        "F_53BF"
-      ],
-      "bytes": 312
-    },
-    {
-      "id": "M_C5D1_C706",
-      "source": "asm/M_C5D1_C706.ASM",
-      "members": [
-        "F_C5D1",
-        "F_C678",
-        "F_C6B9",
-        "F_C706"
-      ],
-      "bytes": 388
-    },
-    {
-      "id": "M_C77A_C898",
-      "source": "asm/M_C77A_C898.ASM",
-      "members": [
-        "F_C77A",
-        "F_C7CB",
-        "F_C834",
-        "F_C877",
-        "F_C898"
-      ],
-      "bytes": 346
     },
     {
       "id": "M_D61C_D79C",
@@ -233,6 +144,54 @@
         "F_DF98"
       ],
       "bytes": 700
+    },
+    {
+      "id": "M_C1A0_CB48",
+      "source": "asm/SOUND.ASM",
+      "members": [
+        "F_C1A0",
+        "F_C1F7",
+        "F_C232",
+        "F_C27D",
+        "F_C2EA",
+        "F_C359",
+        "F_C3DB",
+        "F_C440",
+        "F_C501",
+        "F_C549",
+        "F_C567",
+        "F_C59A",
+        "F_C5A8",
+        "F_C5B3",
+        "F_C5C6",
+        "F_C5D1",
+        "F_C678",
+        "F_C6B9",
+        "F_C706",
+        "F_C755",
+        "F_C77A",
+        "F_C7CB",
+        "F_C834",
+        "F_C877",
+        "F_C898",
+        "F_C8D4",
+        "F_C8E2",
+        "F_C914",
+        "F_C988",
+        "F_C9A4",
+        "F_CA03",
+        "F_CA35",
+        "F_CA51",
+        "F_CA83",
+        "F_CA91",
+        "F_CA9B",
+        "F_CAD0",
+        "F_CADB",
+        "F_CAE6",
+        "F_CAF1",
+        "F_CB48"
+      ],
+      "bytes": 2492
     }
   ],
   "limitations": "Non-runtime classification is syntactic and allow-list driven for typed ASM data (see module docstring); MECHANICAL_C does not claim semantic recovery. RUNTIME_BLOCK.ASM bytes are taken from the assembler-measured runtime-progress.json categories, not re-derived here. Historical module ownership is tracked separately."

@@ -23,7 +23,11 @@ class MatchingCWave70Tests(unittest.TestCase):
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'], manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)
             self.assertEqual(len(data), 33)
-            self.assertEqual(len(proof['fixups']), 3)
+            # F_C877 now lives in the merged asm/SOUND.ASM module
+            # (M_C1A0_CB48); its call to _f_c6b9 is an intra-module near call
+            # TASM resolves at assemble time (no OMF fixup), leaving only the
+            # two DGROUP word references.
+            self.assertEqual(len(proof['fixups']), 2)
             self.assertEqual(proof['load_relocations'], [])
             self.assertEqual(data, bytes.fromhex('55 8b ec 51 56 33 f6 8b 0e 7a 17 83 3e 78 17 02 75 03 b9 04 00 e8 2a fe 83 c6 02 e2 f8 5e 59 5d c3'))
 if __name__ == '__main__': unittest.main()

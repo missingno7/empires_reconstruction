@@ -1,0 +1,59 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_3A75_4A93",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_3A75",
+      "path": "src/GAME.C",
+      "public": "_turn_loop_run"
+    },
+    {
+      "owner": "F_4517",
+      "path": "src/GAME.C",
+      "public": "_board_terrain_resources_load"
+    },
+    {
+      "owner": "F_462E",
+      "path": "src/GAME.C",
+      "public": "_menu_backdrop_paint"
+    },
+    {
+      "owner": "F_4713",
+      "path": "src/GAME.C",
+      "public": "_level_driver_run"
+    },
+    {
+      "owner": "F_48BE",
+      "path": "src/GAME.C",
+      "public": "_blitter_patch_variant"
+    },
+    {
+      "owner": "F_490D",
+      "path": "src/GAME.C",
+      "public": "_boot_init_seed_rand"
+    },
+    {
+      "owner": "F_4943",
+      "path": "src/GAME.C",
+      "public": "_campaign_chapter_advance"
+    },
+    {
+      "owner": "F_49E3",
+      "path": "src/GAME.C",
+      "public": "_game_shutdown"
+    },
+    {
+      "owner": "F_49F0",
+      "path": "src/GAME.C",
+      "public": "_game_run"
+    },
+    {
+      "owner": "F_4A93",
+      "path": "src/GAME.C",
+      "public": "_main"
+    }
+  ],
+  "evidence": "One translation unit proven byte-exact by tools/probe_tu.py (4146 bytes, 496 fixups, no flags): TURNLOOP (F_3A75) and LVLDRV (F_4713) are byte-exact only under -B, which Turbo C 2.0 takes only for a unit containing inline asm; BOOTSEED's asm sti (F_490D) is the inline asm that explains both, and BRDTERR, MENUBKDP and BLITPAT lie between them. BRDTERR's flat a74a2 view proves the unit starts after BRDPAINT. CAMPADV and GAME are -B-neutral and join by contiguity (the unit ends at the word-aligned assembler module F_4AA8). Members merged into src/GAME.C. Members merged into src/GAME.C."
+}

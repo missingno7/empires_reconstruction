@@ -13,6 +13,13 @@ from mz import MZ
 
 
 class MatchingCWave37Tests(unittest.TestCase):
+    # F_3A75 (the main turn loop) was folded into the src/GAME.C
+    # translation-unit merge (module C_3A75_4A93 in
+    # layout/production-plan.json; see docs/current/asm-provenance.json);
+    # its old standalone src/TURNLOOP.C is gone. It no longer needs the
+    # invented -B flag either -- the merged unit's own inline asm now
+    # explains the frame -- so recipes/c/matching-wave37.json is updated to
+    # compile it plainly from src/GAME.C.
     def test_fresh_turn_loop_matches(self):
         owner = read_json(ROOT / 'recipes/c/matching-wave37.json')['owners'][0]
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
@@ -36,7 +43,14 @@ class MatchingCWave37Tests(unittest.TestCase):
         modules = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)
         with tempfile.TemporaryDirectory(dir=ROOT / 'build') as temporary:
             mutated = 'build/F_3A75_mutated.C'
-            source = (ROOT / owner['source']).read_text().replace('0x18', '0x19', 1)
+            # Plain '0x18' is no longer unique to F_3A75 now that the merged
+            # src/GAME.C also carries an unrelated '0x18' inside a comment
+            # elsewhere in the file. Anchor the replacement to the call that
+            # is unique to F_3A75's body.
+            before, after = 'timer_deadline_arm(0x18)', 'timer_deadline_arm(0x19)'
+            text = (ROOT / owner['source']).read_text()
+            self.assertEqual(text.count(before), 1)
+            source = text.replace(before, after, 1)
             (ROOT / mutated).write_text(source)
             try:
                 candidate = dict(owner)

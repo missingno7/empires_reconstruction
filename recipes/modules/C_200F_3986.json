@@ -1,0 +1,119 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_200F_3986",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_200F",
+      "path": "src/BOARD.C",
+      "public": "_resource_icon_table_load"
+    },
+    {
+      "owner": "F_2119",
+      "path": "src/BOARD.C",
+      "public": "_resource_scoreboard_unpack"
+    },
+    {
+      "owner": "F_21A9",
+      "path": "src/BOARD.C",
+      "public": "_sprite_load_boot_sheets"
+    },
+    {
+      "owner": "F_21DB",
+      "path": "src/BOARD.C",
+      "public": "_resource_stripe_table_load"
+    },
+    {
+      "owner": "F_224C",
+      "path": "src/BOARD.C",
+      "public": "_hud_arena_init"
+    },
+    {
+      "owner": "F_2269",
+      "path": "src/BOARD.C",
+      "public": "_sprite_draw_cursor"
+    },
+    {
+      "owner": "F_22B1",
+      "path": "src/BOARD.C",
+      "public": "_board_redraw_view"
+    },
+    {
+      "owner": "F_233E",
+      "path": "src/BOARD.C",
+      "public": "_board_scan_wipe_effect"
+    },
+    {
+      "owner": "F_250C",
+      "path": "src/BOARD.C",
+      "public": "_f250c"
+    },
+    {
+      "owner": "F_257D",
+      "path": "src/BOARD.C",
+      "public": "_point_in_hotspot_rect"
+    },
+    {
+      "owner": "F_25B3",
+      "path": "src/BOARD.C",
+      "public": "_board_update_moving_records"
+    },
+    {
+      "owner": "F_28AC",
+      "path": "src/BOARD.C",
+      "public": "_board_mark_record_cells"
+    },
+    {
+      "owner": "F_2986",
+      "path": "src/BOARD.C",
+      "public": "_f2986"
+    },
+    {
+      "owner": "F_2A2D",
+      "path": "src/BOARD.C",
+      "public": "_record_field_skip_n"
+    },
+    {
+      "owner": "F_2A70",
+      "path": "src/BOARD.C",
+      "public": "_f2a70"
+    },
+    {
+      "owner": "F_2AE2",
+      "path": "src/BOARD.C",
+      "public": "_board_redraw_paint"
+    },
+    {
+      "owner": "F_31C4",
+      "path": "src/BOARD.C",
+      "public": "_board_scroll_transition"
+    },
+    {
+      "owner": "F_329F",
+      "path": "src/BOARD.C",
+      "public": "_f329f"
+    },
+    {
+      "owner": "F_32FA",
+      "path": "src/BOARD.C",
+      "public": "_f32fa"
+    },
+    {
+      "owner": "F_338A",
+      "path": "src/BOARD.C",
+      "public": "_board_run_unit_script"
+    },
+    {
+      "owner": "F_36F0",
+      "path": "src/BOARD.C",
+      "public": "_board_advance_unit_moves"
+    },
+    {
+      "owner": "F_3986",
+      "path": "src/BOARD.C",
+      "public": "_f3986"
+    }
+  ],
+  "evidence": "One translation unit proven byte-exact by tools/probe_tu.py (6758 bytes, 407 fixups, no flags): BRDPAINT (F_2AE2) is byte-exact only under -B, which Turbo C 2.0 takes only for a unit containing inline asm, and BOARDSCR (F_31C4..F_3986, asm in board_run_unit_script) is its only asm neighbour on this side; the a74a2 view conflict (2-D here, flat in BRDTERR) proves the unit ends before BRDTERR. BOARDDRW is -B-neutral and joins by contiguity and subject (board drawing). Members merged into src/BOARD.C. Members merged into src/BOARD.C."
+}

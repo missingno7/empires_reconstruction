@@ -19,49 +19,25 @@ Total EXE relocations: 106
 | F_1ECD | TASM.EXE | /mx | 0 | none | ascending |  |
 | F_1F17 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | F_1F91 | TASM.EXE | /mx | 0 | none | ascending |  |
-| C_200F_2A70 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_2AE2 | TCC.EXE | -c -mc -1- -f- -N- -B | 0 | none | ascending |  |
-| C_31C4_3986 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_3A75 | TCC.EXE | -c -mc -1- -f- -N- -B | 0 | none | ascending |  |
-| F_4517 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_462E | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_4713 | TCC.EXE | -c -mc -1- -f- -N- -B | 0 | none | ascending |  |
-| F_48BE | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_490D | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_4943 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| C_49E3_4A93 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
+| C_200F_3986 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
+| C_3A75_4A93 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | F_4AA8 | TASM.EXE | /mx | 0 | none | ascending |  |
 | F_4B0C | TASM.EXE | /mx | 0 | none | ascending |  |
 | F_4E9F | TASM.EXE | /mx | 0 | none | ascending |  |
 | F_4EEB | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_4F63 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_4F96 | TCC.EXE | -c -mc -1- -f- -N- -B | 0 | none | ascending |  |
-| F_50C1 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| M_50D2_53BF | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_520A | TCC.EXE | -c -mc -1- -f- -N- -B | 0 | none | ascending |  |
+| C_4F63_520A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | C_5321_56C6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_5A3B_6021 | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | descending |  |
 | F_6036 | TASM.EXE | /mx | 1 | single | ascending |  |
 | F_60A9 | TASM.EXE | /mx | 1 | single | ascending |  |
 | F_6181 | TASM.EXE | /mx | 1 | single | ascending |  |
 | C_622C_625D | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| C_6266_68AA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
+| C_6266_68AA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_68CF | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_695E_697D | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| C_6990_6997 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_699E | TCC.EXE | -c -mc -1- -f- -N- -B | 1 | single | ascending |  |
-| M_6B1A_6B4A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6B66 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_6B74 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_6B7A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6BAC | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6BCF | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | ascending |  |
-| C_6C26_6C87 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_6CA6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6CEA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_6CF0 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_6CF6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6D3C | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
+| C_6990_6B74 | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | ascending |  |
+| C_6B7A_6C87 | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | ascending |  |
+| C_6CA6_6D3C | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | M_6D86_6DCC | TASM.EXE | /mx | 0 | none | ascending |  |
 | F_6EFF | TASM.EXE | /mx | 0 | none | ascending |  |
 | F_6F4B | TASM.EXE | /mx | 0 | none | ascending |  |
@@ -93,24 +69,7 @@ Total EXE relocations: 106
 | C_A33F_AD0E | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | RELOC_F_AD25_F_ADCF | TCC.EXE | -c -mc -1- -f- -N- | 6 | descending | descending |  |
 | C_AF45_C15E | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| M_C1A0_C232 | TASM.EXE | /mx | 0 | none | ascending |  |
-| M_C27D_C567 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_C59A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| M_C5A8_C5C6 | TASM.EXE | /mx | 0 | none | ascending |  |
-| M_C5D1_C706 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_C755 | TASM.EXE | /mx | 0 | none | ascending |  |
-| M_C77A_C898 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_C8D4 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_C8E2 | TCC.EXE | -c -mc -1- -f- -N- -k -B | 0 | none | ascending |  |
-| F_C914 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_C988 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| M_C9A4_CA91 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_CA9B | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_CAD0 | TCC.EXE | -c -mc -1- -f- -N- -k -B | 0 | none | ascending |  |
-| F_CADB | TCC.EXE | -c -mc -1- -f- -N- -k -B | 0 | none | ascending |  |
-| F_CAE6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_CAF1 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_CB48 | TCC.EXE | -c -mc -1- -f- -N- -k | 0 | none | descending |  |
+| M_C1A0_CB48 | TASM.EXE | /mx | 0 | none | ascending |  |
 | M_CB5C_CD23 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_CDDD_D344 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | M_D386_D3CF | TASM.EXE | /mx | 0 | none | ascending |  |
@@ -307,7 +266,7 @@ Total EXE relocations: 106
 None.
 ## Fresh compile verification
 
-Checked against `build\production-b8z89_zn\compile\WORK` (55 objects, 34 agree with prediction, 0 disagree).
+Checked against `build\production-pq37d75x\compile\WORK` (28 objects, 14 agree with prediction, 1 disagree).
 
 | Object | Module | Raw fixups | Raw direction | Predicted | Agrees |
 |---|---|---|---|---|---|
@@ -316,56 +275,29 @@ Checked against `build\production-b8z89_zn\compile\WORK` (55 objects, 34 agree w
 | R0006.OBJ | F_1ECD | 6 | ascending | ascending | yes |
 | R0007.OBJ | F_1F17 | 1 | single | ascending | yes |
 | R0008.OBJ | F_1F91 | 1 | single | ascending | yes |
-| R0010.OBJ | F_2AE2 | 111 | ascending | ascending | yes |
-| R0011.OBJ | C_31C4_3986 | 112 | ascending | ascending | yes |
-| R0012.OBJ | F_3A75 | 329 | ascending | ascending | yes |
-| R0015.OBJ | F_4713 | 62 | ascending | ascending | yes |
-| R0017.OBJ | F_490D | 12 | ascending | ascending | yes |
-| R0020.OBJ | F_4AA8 | 1 | single | ascending | yes |
-| R0021.OBJ | F_4B0C | 0 | none | ascending | yes |
-| R0022.OBJ | F_4E9F | 5 | ascending | ascending | yes |
-| R0023.OBJ | F_4EEB | 6 | ascending | ascending | yes |
-| R0025.OBJ | F_4F96 | 36 | ascending | ascending | yes |
-| R0026.OBJ | F_50C1 | 1 | single | ascending | yes |
-| R0027.OBJ | M_50D2_53BF | 19 | ascending | ascending | yes |
-| R0028.OBJ | F_520A | 26 | ascending | ascending | yes |
-| R0031.OBJ | F_6036 | 6 | ascending | ascending | yes |
-| R0032.OBJ | F_60A9 | 11 | mixed | ascending | NO |
-| R0033.OBJ | F_6181 | 7 | mixed | ascending | NO |
-| R0035.OBJ | C_6266_68AA | 159 | ascending | ascending | yes |
-| R0039.OBJ | F_699E | 38 | ascending | ascending | yes |
-| R0040.OBJ | M_6B1A_6B4A | 2 | ascending | ascending | yes |
-| R0041.OBJ | F_6B66 | 1 | single | descending | yes |
-| R0043.OBJ | F_6B7A | 2 | ascending | ascending | yes |
-| R0044.OBJ | F_6BAC | 2 | ascending | ascending | yes |
-| R0045.OBJ | F_6BCF | 11 | ascending | ascending | yes |
-| R0047.OBJ | F_6CA6 | 8 | ascending | ascending | yes |
-| R0050.OBJ | F_6CF6 | 2 | ascending | ascending | yes |
-| R0052.OBJ | M_6D86_6DCC | 19 | ascending | ascending | yes |
-| R0053.OBJ | F_6EFF | 0 | none | ascending | yes |
-| R0054.OBJ | F_6F4B | 0 | none | ascending | yes |
-| R0074.OBJ | F_9EC3 | 4 | ascending | ascending | yes |
-| R0083.OBJ | M_C1A0_C232 | 36 | ascending | ascending | yes |
-| R0084.OBJ | M_C27D_C567 | 19 | ascending | ascending | yes |
-| R0085.OBJ | F_C59A | 1 | single | ascending | yes |
-| R0086.OBJ | M_C5A8_C5C6 | 0 | none | ascending | yes |
-| R0087.OBJ | M_C5D1_C706 | 0 | none | ascending | yes |
-| R0088.OBJ | F_C755 | 5 | ascending | ascending | yes |
-| R0089.OBJ | M_C77A_C898 | 13 | ascending | ascending | yes |
-| R0090.OBJ | F_C8D4 | 1 | single | ascending | yes |
-| R0091.OBJ | F_C8E2 | 9 | ascending | ascending | yes |
-| R0092.OBJ | F_C914 | 16 | mixed | ascending | NO |
-| R0093.OBJ | F_C988 | 3 | ascending | ascending | yes |
-| R0094.OBJ | M_C9A4_CA91 | 5 | ascending | ascending | yes |
-| R0095.OBJ | F_CA9B | 5 | ascending | ascending | yes |
-| R0096.OBJ | F_CAD0 | 0 | none | ascending | yes |
-| R0097.OBJ | F_CADB | 0 | none | ascending | yes |
-| R0098.OBJ | F_CAE6 | 0 | none | ascending | yes |
-| R0099.OBJ | F_CAF1 | 14 | ascending | ascending | yes |
-| R0103.OBJ | M_D386_D3CF | 3 | ascending | ascending | yes |
-| R0117.OBJ | M_D61C_D79C | 0 | none | ascending | yes |
-| R0118.OBJ | M_D818_D825 | 0 | none | ascending | yes |
-| R0119.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
+| R0009.OBJ | C_200F_3986 | 407 | ascending | ascending | yes |
+| R0010.OBJ | C_3A75_4A93 | 496 | ascending | ascending | yes |
+| R0011.OBJ | F_4AA8 | 1 | single | ascending | yes |
+| R0012.OBJ | F_4B0C | 0 | none | ascending | yes |
+| R0013.OBJ | F_4E9F | 5 | ascending | ascending | yes |
+| R0014.OBJ | F_4EEB | 6 | ascending | ascending | yes |
+| R0015.OBJ | C_4F63_520A | 77 | ascending | ascending | yes |
+| R0018.OBJ | F_6036 | 6 | ascending | ascending | yes |
+| R0019.OBJ | F_60A9 | 11 | mixed | ascending | NO |
+| R0020.OBJ | F_6181 | 7 | mixed | ascending | NO |
+| R0022.OBJ | C_6266_68AA | 159 | ascending | descending | NO |
+| R0025.OBJ | C_6990_6B74 | 43 | mixed | ascending | NO |
+| R0026.OBJ | C_6B7A_6C87 | 32 | mixed | ascending | NO |
+| R0027.OBJ | C_6CA6_6D3C | 14 | ascending | ascending | yes |
+| R0028.OBJ | M_6D86_6DCC | 19 | ascending | ascending | yes |
+| R0029.OBJ | F_6EFF | 0 | none | ascending | yes |
+| R0030.OBJ | F_6F4B | 0 | none | ascending | yes |
+| R0050.OBJ | F_9EC3 | 4 | ascending | ascending | yes |
+| R0059.OBJ | M_C1A0_CB48 | 164 | ascending | ascending | yes |
+| R0062.OBJ | M_D386_D3CF | 3 | ascending | ascending | yes |
+| R0076.OBJ | M_D61C_D79C | 0 | none | ascending | yes |
+| R0077.OBJ | M_D818_D825 | 0 | none | ascending | yes |
+| R0078.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
 
 ## TASM modules with descending historical relocations
 

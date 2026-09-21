@@ -13,6 +13,11 @@ from mz import MZ
 
 
 class MatchingCWave38Tests(unittest.TestCase):
+    # F_233E and F_21A9 were folded into the src/BOARD.C translation-unit
+    # merge (module C_200F_3986 in layout/production-plan.json; see
+    # docs/current/asm-provenance.json); their old standalone src/BOARDDRW.C
+    # is gone. recipes/c/matching-wave38.json is updated to compile both
+    # from src/BOARD.C.
     def test_fresh_small_routines_match(self):
         recipe = read_json(ROOT / 'recipes/c/matching-wave38.json')
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()

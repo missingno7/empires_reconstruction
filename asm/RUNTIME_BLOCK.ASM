@@ -157,8 +157,8 @@ runtime_packed_entry_deltas label word
 rt_01a1 label byte
     push bp
     mov bp,sp
-    db 056h
-    db 057h
+     push si
+     push di
     push ds
     cld
     mov ax,0eh
@@ -195,7 +195,7 @@ rt_01a1 label byte
     xor bx,bx
     mov cx,bx
     ; SI assignment remains a tracked raw recovery candidate.
-    db 08bh,0f3h
+     mov si,bx
     mov bp,1000h
     ; The planar clear loop follows. Its raw ES:[SI]/DI operations can
 ; now be transcribed directly in TASM; no compiler register wrapper exists.
@@ -205,39 +205,39 @@ rt_01a1 label byte
     inc dx
     mov al,0ch
     out dx,al
-    db 026h,08ah,024h
-    db 026h,088h,01ch
+    mov ah,byte ptr es:[si]
+    mov byte ptr es:[si],bl
     mov dx,3ceh
     mov al,8
     out dx,al
     inc dx
     mov al,3
     out dx,al
-    db 026h,08ah,024h
-    db 026h,088h,00ch
+    mov ah,byte ptr es:[si]
+    mov byte ptr es:[si],cl
     mov dx,3ceh
     mov al,8
     out dx,al
     inc dx
     mov al,0c0h
     out dx,al
-    db 026h,08ah,024h
-    db 026h,088h,03ch
-    db 046h
-    db 0feh,0c7h
+    mov ah,byte ptr es:[si]
+    mov byte ptr es:[si],bh
+    inc si
+    inc bh
     ; SI/DI accesses and their short back-edges remain literal; the nested
 ; plane/column counters can use ordinary TASM spellings.
-    db 080h,0ffh,010h
-    db 07ch,0c8h
-    db 032h,0ffh
+    cmp bh,10h
+    jl $-36h
+    xor bh,bh
     inc cl
     cmp cl,10h
-    db 07ch,0bfh
+     jl $-3fh
     ; The original used the byte-register form (32 C9), not XOR CX,CX.
-    db 032h,0c9h
+     xor cl,cl
     inc bl
     cmp bl,10h
-    db 07ch,0b6h
+     jl $-48h
     mov dx,3ceh
     mov al,8
     out dx,al
@@ -251,8 +251,8 @@ rt_01a1 label byte
     mov al,0
     out dx,al
     pop ds
-    db 05fh
-    db 05eh
+     pop di
+     pop si
     pop bp
     ret
     ; Restore the EGA palette register set, then provide the mode-13h entry.
@@ -303,21 +303,21 @@ rt_02a7 label byte
     push bp
     mov bp,sp
     ; This handler owns its SI/DI preservation explicitly.
-    db 056h
-    db 057h
+     push si
+     push di
     push ds
     cld
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0b7h,024h,039h
+    les si,[bx+3924h]
     shl bx,1
     shl bx,1
     ; DI-derived row addressing remains a tracked raw recovery candidate.
-    db 08bh,0fbh
-    db 0d1h,0e7h
-    db 0d1h,0e7h
-    db 003h,0fbh
+    mov di,bx
+    shl di,1
+    shl di,1
+    add di,bx
     mov ax,[bp+4]
     mov bx,[bp+8]
     mov cx,[bp+0ah]
@@ -329,14 +329,14 @@ rt_02a7 label byte
     shr bx,1
     sub bx,ax
     inc bx
-    db 003h,0f0h
-    db 003h,0f0h
-    db 003h,0f8h
+    add si,ax
+    add si,ax
+    add di,ax
     push es
     mov ax,0a000h
     mov es,ax
     ; Address the selected planar page and enter its unrolled blit tail.
-    db 081h,0c7h,000h,040h
+     add di,4000h
     mov bp,50h
     sub bp,bx
     mov dx,0a0h
@@ -344,1906 +344,1906 @@ rt_02a7 label byte
     sub dx,bx
     mov ax,cs:[bx+runtime_planar_entry_deltas-_f039c+RT_CS]
     ; TASM 1.0 needs the historical absolute CS-store spelling preserved.
-    db 02eh,0a3h,05fh,00bh
+     mov word ptr cs:[0b5fh],ax
     add ax,rt_07c5-_f039c+RT_CS
     pop ds
     jmp ax
 ; UNROLLED_CODE: 80 repetitions of 15-byte pixel transfer; falls into row tail
 rt_0307 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0316 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0325 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0334 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0343 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0352 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0361 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0370 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_037f label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_038e label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_039d label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_03ac label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_03bb label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_03ca label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_03d9 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_03e8 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_03f7 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0406 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0415 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0424 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0433 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0442 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0451 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0460 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_046f label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_047e label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_048d label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_049c label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_04ab label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_04ba label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_04c9 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_04d8 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_04e7 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_04f6 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0505 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0514 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0523 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0532 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0541 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0550 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_055f label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_056e label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_057d label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_058c label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_059b label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_05aa label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_05b9 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_05c8 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_05d7 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_05e6 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_05f5 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0604 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0613 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0622 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0631 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0640 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_064f label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_065e label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_066d label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_067c label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_068b label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_069a label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_06a9 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_06b8 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_06c7 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_06d6 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_06e5 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_06f4 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0703 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0712 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0721 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0730 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_073f label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_074e label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_075d label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_076c label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_077b label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_078a label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_0799 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 rt_07a8 label byte
-    db 0adh
-    db 08bh,0d8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 026h,08ah,027h
-    db 0aah
+    lodsw
+    mov bx,ax
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    shr bx,1
+    mov ah,es:[bx]
+    stosb
 ; CODE: row strides; LOOP to mutable jump 07C2; fallthrough restores DS/DI/SI/BP and RET
-    db 003h,0f2h
-    db 003h,0fdh
-    db 0e2h,005h
-    db 01fh
-    db 05fh
-    db 05eh
-    db 05dh
-    db 0c3h
+     add si,dx
+     add di,bp
+     loop $+7h
+     pop ds
+     pop di
+     pop si
+     pop bp
+     ret
 ; CODE: self-modified rel16 jump, written at 02FD
 ; Mutable rel16 operand at runtime 07C3, written by 02FD.
     JMP_NEAR rt_0307
 ; CODE: dispatch slot 3; bounded copy routine with loops and RET
 rt_07c5 label byte
-    db 055h
-    db 08bh,0ech
-    db 056h
-    db 057h
-    db 01eh
-    db 0fch
-    db 08bh,05eh,006h
-    db 0d1h,0e3h
-    db 0d1h,0e3h
-    db 0c4h,0b7h,024h,039h
-    db 08bh,046h,004h
-    db 08bh,0d0h
-    db 0d1h,0eah
-    db 003h,0f2h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 086h,0fbh
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 002h,0e3h
-    db 032h,0dbh
-    db 003h,0c3h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 003h,0c3h
-    db 08bh,056h,008h
-    db 0d1h,0e8h
-    db 083h,0d2h,000h
-    db 08bh,0f8h
-    db 006h
-    db 0b8h,000h,0b8h
-    db 08eh,0c0h
-    db 01fh
-    db 0d1h,0eah
-    db 083h,0d2h,000h
-    db 08bh,04eh,00ah
-    db 0b8h,0a0h,000h
-    db 02bh,0c2h
-    db 0bbh,000h,020h
-    db 02bh,0dah
-    db 0bdh,0a0h,080h
-    db 051h
-    db 08bh,0cah
-    db 0d1h,0e9h
-    db 0f3h,0a5h
-    db 0d1h,0d1h
-    db 0f3h,0a4h
-    db 059h
-    db 003h,0f0h
-    db 003h,0fbh
-    db 078h,004h
-    db 0e2h,0ech
-    db 0ebh,004h
-    db 003h,0fdh
-    db 0e2h,0e6h
-    db 01fh
-    db 05fh
-    db 05eh
-    db 05dh
-    db 0c3h
+    push bp
+    mov bp,sp
+    push si
+    push di
+    push ds
+    cld
+    mov bx,word ptr [bp+6]
+    shl bx,1
+    shl bx,1
+    les si,dword ptr [bx+3924h]
+    mov ax,word ptr [bp+4]
+    mov dx,ax
+    shr dx,1
+    add si,dx
+    shr bx,1
+    shr bx,1
+    xchg bh,bl
+    shr bx,1
+    shr bx,1
+    add ah,bl
+    xor bl,bl
+    add ax,bx
+    shr bx,1
+    shr bx,1
+    add ax,bx
+    mov dx,word ptr [bp+8]
+    shr ax,1
+    adc dx,0
+    mov di,ax
+    push es
+    mov ax,0b800h
+    mov es,ax
+    pop ds
+    shr dx,1
+    adc dx,0
+    mov cx,word ptr [bp+0ah]
+    mov ax,0a0h
+    sub ax,dx
+    mov bx,02000h
+    sub bx,dx
+    mov bp,080a0h
+    push cx
+    mov cx,dx
+    shr cx,1
+    rep movsw
+    rcl cx,1
+     rep movsb
+     pop cx
+     add si,ax
+     add di,bx
+     js $+6h
+     loop $-12h
+     jmp $+6h
+     add di,bp
+     loop $-18h
+     pop ds
+     pop di
+     pop si
+     pop bp
+     ret
 ; CODE: dispatch slot 4; setup ending at computed JMP AX
 rt_083b label byte
-    db 055h
-    db 08bh,0ech
-    db 056h
-    db 057h
-    db 01eh
-    db 0fch
-    db 08bh,05eh,006h
-    db 0d1h,0e3h
-    db 0d1h,0e3h
-    db 0c4h,0b7h,024h,039h
-    db 0d1h,0e3h
-    db 0d1h,0e3h
-    db 0d1h,0e3h
-    db 0d1h,0e3h
-    db 08bh,0fbh
-    db 0d1h,0e3h
-    db 0d1h,0e3h
-    db 003h,0fbh
-    db 08bh,046h,004h
-    db 08bh,05eh,008h
-    db 003h,0d8h
-    db 04bh
-    db 0d1h,0e8h
-    db 0d1h,0e0h
-    db 003h,0f8h
-    db 0d1h,0e8h
-    db 003h,0f0h
-    db 0d1h,0e8h
-    db 0d1h,0ebh
-    db 0d1h,0ebh
-    db 02bh,0d8h
-    db 043h
-    db 0d1h,0e3h
-    db 02eh,08bh,087h,08eh,004h
-    db 02eh,0a3h,0d9h,012h
-    db 0bah,0a0h,000h
-    db 02bh,0d3h
-    db 006h
-    db 0b9h,000h,0a0h
-    db 08eh,0c1h
-    db 01fh
-    db 08bh,04eh,00ah
-    db 0d1h,0e3h
-    db 0bdh,040h,001h
-    db 02bh,0ebh
-    db 005h,0dbh,012h
+    push bp
+    mov bp,sp
+    push si
+    push di
+    push ds
+    cld
+    mov bx,word ptr [bp+6]
+    shl bx,1
+    shl bx,1
+    les si,dword ptr [bx+3924h]
+    shl bx,1
+    shl bx,1
+    shl bx,1
+    shl bx,1
+    mov di,bx
+    shl bx,1
+    shl bx,1
+    add di,bx
+    mov ax,word ptr [bp+4]
+    mov bx,word ptr [bp+8]
+    add bx,ax
+    dec bx
+    shr ax,1
+    shl ax,1
+    add di,ax
+    shr ax,1
+    add si,ax
+    shr ax,1
+    shr bx,1
+    shr bx,1
+    sub bx,ax
+    inc bx
+    shl bx,1
+    mov ax,word ptr cs:[bx+48eh]
+    mov word ptr cs:[12d9h],ax
+    mov dx,0a0h
+    sub dx,bx
+    push es
+    mov cx,0a000h
+    mov es,cx
+    pop ds
+    mov cx,word ptr [bp+0ah]
+    shl bx,1
+    mov bp,0140h
+    sub bp,bx
+    add ax,12dbh
     jmp ax
 ; UNROLLED_CODE: 80 repetitions of 21-byte pixel transform; falls into row tail
 rt_089f label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_08b4 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_08c9 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_08de label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_08f3 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0908 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_091d label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0932 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0947 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_095c label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0971 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0986 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_099b label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_09b0 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_09c5 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_09da label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_09ef label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a04 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a19 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a2e label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a43 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a58 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a6d label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a82 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0a97 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0aac label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ac1 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ad6 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0aeb label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b00 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b15 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b2a label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b3f label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b54 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b69 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b7e label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0b93 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ba8 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0bbd label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0bd2 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0be7 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0bfc label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c11 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c26 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c3b label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c50 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c65 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c7a label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0c8f label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ca4 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0cb9 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0cce label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ce3 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0cf8 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d0d label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d22 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d37 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d4c label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d61 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d76 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0d8b label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0da0 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0db5 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0dca label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ddf label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0df4 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e09 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e1e label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e33 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e48 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e5d label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e72 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e87 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0e9c label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0eb1 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ec6 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0edb label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0ef0 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0f05 label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 rt_0f1a label byte
-    db 0adh
-    db 08ah,0ech
-    db 08bh,0d8h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 0d1h,0c3h
-    db 08ah,0e3h
-    db 0abh
-    db 08ah,0c5h
-    db 08ah,0e7h
-    db 0abh
+    lodsw
+    mov ch,ah
+    mov bx,ax
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    rol bx,1
+    mov ah,bl
+    stosw
+    mov al,ch
+    mov ah,bh
+    stosw
 ; CODE: row strides; LOOP to mutable jump 0F3C; epilogue RET
-    db 003h,0f2h
-    db 003h,0fdh
-    db 032h,0edh
-    db 0e2h,005h
-rt_0f37 label byte
-    db 01fh
-    db 05fh
-    db 05eh
-    db 05dh
-    db 0c3h
+     add si,dx
+     add di,bp
+     xor ch,ch
+     loop $+7h
+ rt_0f37 label byte
+     pop ds
+     pop di
+     pop si
+     pop bp
+     ret
 ; CODE: self-modified rel16 jump, written at 0880
 ; Mutable rel16 operand at runtime 0F3D, written by 0880.
     JMP_NEAR rt_089f
@@ -2331,40 +2331,44 @@ rt_0f3f label byte
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
-    db 08bh,05eh,004h
-    db 0d1h,0ebh
-    db 073h,01ch
-    db 08bh,04eh,00ah
-    db 057h
-    db 003h,0fbh
-    db 0b6h,0f0h
-    db 08ah,0d0h
-    db 080h,0e2h,00fh
-    db 026h,020h,035h
-    db 026h,008h,015h
-    db 003h,0feh
-    db 0e2h,0f6h
-    db 05fh
-    db 047h
-    db 0ffh,04eh,008h
-    db 003h,0fbh
-    db 02ah,0e4h
-    db 08bh,05eh,008h
-    db 0d1h,0ebh
-    db 073h,002h
-    db 0b4h,001h
-    db 08bh,056h,00ah
-    db 02bh,0f3h
-    db 08bh,0cbh
-    db 0f3h,0aah
-    db 003h,0feh
-    db 04ah
-    db 075h,0f7h
-    db 080h,0fch,000h
-    db 074h,019h
-    db 08bh,04eh,00ah
-    db 02bh,0feh
+    les di,dword ptr [bx+3924h]
+    mov bx,word ptr [bp+4]
+    shr bx,1
+    jae runtime_0fd4_next_row
+    mov cx,word ptr [bp+0ah]
+    push di
+    add di,bx
+    mov dh,0f0h
+    mov dl,al
+    and dl,0fh
+runtime_0fd4_pixel_loop:
+    and byte ptr es:[di],dh
+    or byte ptr es:[di],dl
+    add di,si
+    loop runtime_0fd4_pixel_loop
+    pop di
+    inc di
+    dec word ptr [bp+8]
+runtime_0fd4_next_row:
+    add di,bx
+    sub ah,ah
+    mov bx,word ptr [bp+8]
+    shr bx,1
+    jae runtime_0fd4_fill_start
+    mov ah,1
+runtime_0fd4_fill_start:
+    mov dx,word ptr [bp+0ah]
+    sub si,bx
+runtime_0fd4_fill_loop:
+    mov cx,bx
+    rep stosb
+    add di,si
+    dec dx
+    jne runtime_0fd4_fill_loop
+     cmp ah,0
+     je $+1bh
+     mov cx,word ptr ss:[bp+0ah]
+     sub di,si
     mov dh,0fh
     mov dl,al
     and dl,0f0h
@@ -2390,52 +2394,55 @@ rt_0f3f label byte
     mov bx,[bp+6]
     shl bx,1
     shl bx,1
-    db 0c4h,0bfh,024h,039h
-    db 08bh,05eh,004h
-    db 0d1h,0ebh
-    db 073h,013h
-    db 08bh,0cah
-    db 057h
-    db 003h,0fbh
-    db 0b0h,00fh
-    db 026h,030h,005h
-    db 003h,0feh
-    db 0e2h,0f9h
-    db 05fh
-    db 047h
-    db 0ffh,04eh,008h
-    db 003h,0fbh
-    db 057h
-    db 02ah,0e4h
-    db 08bh,04eh,008h
-    db 0d1h,0e9h
-    db 073h,002h
-    db 0b4h,001h
-    db 08bh,0d9h
-    db 0e3h,011h
-    db 0b0h,0ffh
-    db 02bh,0f1h
-    db 026h,030h,005h
-    db 047h
-    db 0e2h,0fah
-    db 003h,0feh
-    db 08bh,0cbh
-    db 04ah
-    db 075h,0f3h
-    db 05fh
-    db 003h,0fbh
-    db 080h,0fch,000h
-    db 074h,00fh
-    db 08bh,04eh,00ah
-    db 0b0h,0f0h
-    db 0beh,0a0h,000h
-    db 026h,030h,005h
-    db 003h,0feh
-    db 0e2h,0f9h
-    db 05eh
-    db 05fh
-    db 05dh
-    db 0c3h
+    les di,dword ptr [bx+3924h]
+    mov bx,word ptr [bp+4]
+    shr bx,1
+    jae runtime_104b_next_row
+    mov cx,dx
+    push di
+    add di,bx
+    mov al,0fh
+runtime_104b_pixel_loop:
+    xor byte ptr es:[di],al
+    add di,si
+    loop runtime_104b_pixel_loop
+    pop di
+    inc di
+    dec word ptr [bp+8]
+runtime_104b_next_row:
+    add di,bx
+    push di
+    sub ah,ah
+    mov cx,word ptr [bp+8]
+    shr cx,1
+    jae runtime_104b_fill_start
+    mov ah,1
+runtime_104b_fill_start:
+    mov bx,cx
+    jcxz $+13h
+     mov al,0ffh
+     sub si,cx
+     xor byte ptr es:[di],al
+     inc di
+     loop $-4h
+     add di,si
+     mov cx,bx
+     dec dx
+     jne $-0bh
+     pop di
+     add di,bx
+     cmp ah,0
+     je $+11h
+     mov cx,word ptr ss:[bp+0ah]
+     mov al,0f0h
+     mov si,0a0h
+     xor byte ptr es:[di],al
+     add di,si
+     loop $-5h
+     pop si
+     pop di
+     pop bp
+     ret
     ; F_03AE: planar rectangle-copy primitive.
     runtime_f03ae:
     push bp
@@ -2946,42 +2953,42 @@ rt_1494 label byte
     or byte ptr [di],dh
     shl al,1
     jae $+7
-    db 080h,025h,0f0h
-    db 008h,015h
+    and byte ptr ds:[di],0f0h
+    or byte ptr ds:[di],dl
 rt_14a7 label byte
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
+    inc di
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0fh
+    or byte ptr ds:[di],dh
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0f0h
+    or byte ptr ds:[di],dl
 rt_14ba label byte
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
+    inc di
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0fh
+    or byte ptr ds:[di],dh
+    shl al,1
+    jae $+7h
+     and byte ptr ds:[di],0f0h
+     or byte ptr ds:[di],dl
 rt_14cd label byte
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
-    db 080h,0fch,000h
-    db 075h,00eh
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
+     inc di
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0fh
+     or byte ptr ds:[di],dh
+     cmp ah,0
+     jne $+10h
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0f0h
+     or byte ptr ds:[di],dl
 rt_14e5 label byte
-    db 083h,0ebh,010h
+     sub bx,10h
     jg $-67h
     pop bx
     add di,word ptr [bp-4]
@@ -3010,49 +3017,49 @@ rt_1508 label byte
 rt_151b label byte
     shl al,1
     jae $+7
-    db 080h,025h,0f0h
-    db 008h,015h
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
+     and byte ptr ds:[di],0f0h
+     or byte ptr ds:[di],dl
+     inc di
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0fh
+     or byte ptr ds:[di],dh
 rt_152e label byte
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0f0h
+     or byte ptr ds:[di],dl
+     inc di
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0fh
+     or byte ptr ds:[di],dh
 rt_1541 label byte
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
-    db 047h
-    db 080h,0fch,000h
-    db 075h,00eh
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
+     shl al,1
+     jae $+7h
+    and byte ptr ds:[di],0f0h
+    or byte ptr ds:[di],dl
+    inc di
+    cmp ah,0
+    jne $+10h
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0fh
+    or byte ptr ds:[di],dh
 rt_1559 label byte
-    db 083h,0ebh,010h
-    db 07fh,097h
-    db 05bh
-    db 003h,07eh,0fch
-    db 0e2h,08eh
-    db 08bh,0c3h
-    db 0d1h,0e8h
-    db 01fh
-    db 05eh
-    db 05fh
-    db 083h,0c4h,004h
-    db 05dh
-    db 0c3h
+    sub bx,10h
+    jg $-67h
+    pop bx
+    add di,word ptr ss:[bp-4]
+    loop $-70h
+    mov ax,bx
+    shr ax,1
+    pop ds
+    pop si
+    pop di
+    add sp,4
+    pop bp
+    ret
 ; Even BX pixel count indexes CS:190C after signed comparison with 16. Nine words include the full-width entry. Negative/wrapped counts are not proven impossible.
 runtime_even_pixel_dispatch label word
     dw (rt_14e5-_f039c+RT_CS),(rt_14cd-_f039c+RT_CS),(rt_14cd-_f039c+RT_CS),(rt_14ba-_f039c+RT_CS),(rt_14ba-_f039c+RT_CS),(rt_14a7-_f039c+RT_CS),(rt_14a7-_f039c+RT_CS),(rt_1494-_f039c+RT_CS)
@@ -3075,46 +3082,47 @@ runtime_odd_pixel_dispatch label word
     les di,dword ptr [bx+3924h]
     mov bx,[bp+4]
     shr bx,1
-    db 003h,0fbh
-    db 0c5h,076h,008h
-    db 083h,0c6h,020h
-    db 0adh
-    db 02ah,0ffh
-    db 08ah,0d8h
-    db 08ah,0f7h
-    db 08ah,0d4h
-    db 052h
-    db 0b8h,0a0h,000h
-    db 02bh,0c3h
-    db 08bh,0cbh
-    db 0d1h,0e9h
-    db 0f3h,0a5h
-    db 0d1h,0d1h
-    db 0f3h,0a4h
-    db 003h,0f8h
-    db 04ah
-    db 075h,0f1h
-    db 05ah
-    db 01fh
-    db 083h,03eh,0bch,000h,001h
-    db 075h,01eh
-    db 08bh,04eh,006h
-    db 081h,0f9h,0c8h,000h
-    db 073h,015h
-    db 0c4h,03eh,0c4h,040h
-    db 08bh,046h,004h
-    db 0d1h,0e8h
-    db 08ah,0e1h
-    db 0abh
+    add di,bx
+    lds si,dword ptr [bp+8]
+    add si,20h
+    lodsw
+    sub bh,bh
+    mov bl,al
+    mov dh,bh
+    mov dl,ah
+    push dx
+    mov ax,0a0h
+    sub ax,bx
+runtime_15ab_copy_loop:
+    mov cx,bx
+    shr cx,1
+    rep movsw
+    rcl cx,1
+    rep movsb
+    add di,ax
+    dec dx
+    jne runtime_15ab_copy_loop
+    pop dx
+    pop ds
+    cmp word ptr ds:[0bch],1
+    jne $+20h
+    mov cx,word ptr [bp+6]
+    cmp cx,0c8h
+    jae $+17h
+    les di,dword ptr ds:[40c4h]
+    mov ax,word ptr [bp+4]
+    shr ax,1
+    mov ah,cl
+    stosw
 ; CODE: reachable blit tail; instruction at 15EF straddles old raw boundary 15F0; RET at 15FB
-    db 08ah,0c3h
-    db 08ah,0e2h
-    db 0abh
-    db 089h,03eh,0c4h,040h
-    db 05eh
-    db 05fh
-    db 05dh
-    db 0c3h
+    mov al,bl
+    mov ah,dl
+    stosw
+    mov word ptr ds:[40c4h],di
+    pop si
+    pop di
+    pop bp
+    ret
 ; BX=CS:1998 followed by CS XLAT at 17AB/1844; AL is an 8-bit index. For each value v, mask=(F0 if high nibble is zero else 0)|(0F if low nibble is zero else 0). RET at 15FB; next public root 16FC.
 runtime_transparency_mask label byte
     db 0ffh,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h,0f0h
@@ -3218,114 +3226,118 @@ runtime_transparency_mask label byte
     shl di,1
     shl di,1
     les di,dword ptr [di+3924h]
-    db 003h,0fbh
-    db 01fh
-    db 0bbh,098h,019h
-    db 057h
-    db 051h
-    db 0ach
-    db 08ah,0e0h
-    db 02eh,0d7h
-    db 026h,022h,005h
-    db 00ah,0c4h
-    db 0aah
-    db 0e2h,0f3h
-    db 059h
-    db 05fh
-    db 081h,0c7h,0a0h,000h
-    db 003h,0f5h
-    db 04ah
-    db 075h,0e6h
-    db 05dh
-    db 01fh
-    db 05fh
-    db 05eh
-    db 0fch
-    db 05dh
-    db 0c3h
-    db 0fdh
-    db 033h,0edh
-    db 003h,0d9h
-    db 003h,0d9h
-    db 0d1h,0ebh
-    db 04bh
-    db 08bh,0c3h
-    db 02bh,006h,098h,000h
-    db 078h,017h
-    db 040h
-    db 03bh,0c8h
-    db 076h,006h
-    db 08bh,0e9h
-    db 02bh,0e8h
-    db 08bh,0c8h
-    db 08bh,0c3h
-    db 02bh,006h,09ah,000h
-    db 076h,011h
-    db 02bh,0c8h
-    db 077h,007h
-    db 05dh
-    db 01fh
-    db 05fh
-    db 05eh
-    db 0fch
-    db 05dh
-    db 0c3h
-    db 02bh,0d8h
-    db 003h,0e8h
-    db 003h,0f0h
-    db 006h
-    db 057h
-    db 083h,03eh,0bch,000h,001h
-    db 075h,020h
-    db 081h,0ffh,0c8h,000h
-    db 073h,01ah
-    db 08bh,0c7h
-    db 08ah,0e0h
-    db 08ah,0c3h
-    db 02ah,0c1h
-    db 0feh,0c0h
-    db 0c4h,03eh,0c4h,040h
-    db 0fch
-    db 0abh
-    db 08ah,0c1h
-    db 08ah,0e2h
-    db 0abh
-    db 0fdh
-    db 089h,03eh,0c4h,040h
-    db 05fh
-    db 0d1h,0e7h
-    db 0d1h,0e7h
-    db 0c4h,0bdh,024h,039h
-    db 003h,0fbh
-    db 01fh
-    db 0bbh,098h,019h
-    db 057h
-    db 051h
-    db 08ah,004h
-    db 046h
-    db 0d0h,0c8h
-    db 0d0h,0c8h
-    db 0d0h,0c8h
-    db 0d0h,0c8h
-    db 08ah,0e0h
-    db 02eh,0d7h
-    db 026h,022h,005h
-    db 00ah,0c4h
-    db 0aah
-    db 0e2h,0e9h
-    db 059h
-    db 05fh
-    db 081h,0c7h,0a0h,000h
-    db 003h,0f5h
-    db 04ah
-    db 075h,0dch
-    db 05dh
-    db 01fh
-    db 05fh
-    db 05eh
-    db 0fch
-    db 05dh
-    db 0c3h
+    add di,bx
+    pop ds
+    mov bx,1998h
+runtime_17a0_row_loop:
+    push di
+    push cx
+runtime_17a0_pixel_loop:
+    lodsb
+    mov ah,al
+     xlat cs:[bx]
+    and al,byte ptr es:[di]
+    or al,ah
+    stosb
+    loop runtime_17a0_pixel_loop
+    pop cx
+    pop di
+    add di,0a0h
+    add si,bp
+    dec dx
+    jne runtime_17a0_row_loop
+    pop bp
+    pop ds
+    pop di
+    pop si
+    cld
+    pop bp
+    ret
+    std
+    xor bp,bp
+    add bx,cx
+    add bx,cx
+    shr bx,1
+    dec bx
+    mov ax,bx
+    sub ax,word ptr ds:[98h]
+    js $+19h
+    inc ax
+    cmp cx,ax
+    jbe $+8h
+     mov bp,cx
+     sub bp,ax
+     mov cx,ax
+     mov ax,bx
+     sub ax,word ptr ds:[09ah]
+     jbe $+13h
+     sub cx,ax
+     ja $+9h
+     pop bp
+     pop ds
+     pop di
+     pop si
+     cld
+     pop bp
+     ret
+     sub bx,ax
+     add bp,ax
+     add si,ax
+     push es
+     push di
+     cmp word ptr ds:[0bch],1
+     jne $+22h
+     cmp di,0c8h
+     jae $+1ch
+    mov ax,di
+    mov ah,al
+    mov al,bl
+    sub al,cl
+    inc al
+    les di,dword ptr ds:[40c4h]
+    cld
+    stosw
+    mov al,cl
+    mov ah,dl
+    stosw
+    std
+    mov word ptr ds:[40c4h],di
+    pop di
+    shl di,1
+    shl di,1
+    les di,dword ptr [di+3924h]
+    add di,bx
+    pop ds
+    mov bx,1998h
+runtime_180c_row_loop:
+    push di
+    push cx
+runtime_180c_pixel_loop:
+    mov al,byte ptr [si]
+    inc si
+    ror al,1
+    ror al,1
+    ror al,1
+    ror al,1
+    mov ah,al
+     xlat cs:[bx]
+    and al,byte ptr es:[di]
+    or al,ah
+    stosb
+    loop runtime_180c_pixel_loop
+    pop cx
+    pop di
+    add di,0a0h
+    add si,bp
+    dec dx
+    jne runtime_180c_row_loop
+    pop bp
+    pop ds
+    pop di
+    pop si
+    cld
+    pop bp
+    ret
     ; F_03CF: state-keyed planar pixel compositor. Remaining raw SI/DI
 ; operations are ordinary native TASM recovery candidates.
     runtime_f03cf:
@@ -3376,52 +3388,52 @@ rt_18b8 label byte
     or byte ptr [di],dh
     shl al,1
     jae $+7
-    db 080h,025h,0f0h
-    db 008h,015h
+    and byte ptr ds:[di],0f0h
+    or byte ptr ds:[di],dl
 rt_18cb label byte
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
+    inc di
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0fh
+    or byte ptr ds:[di],dh
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0f0h
+    or byte ptr ds:[di],dl
 rt_18de label byte
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
+    inc di
+    shl al,1
+    jae $+7h
+    and byte ptr ds:[di],0fh
+    or byte ptr ds:[di],dh
+    shl al,1
+    jae $+7h
+     and byte ptr ds:[di],0f0h
+     or byte ptr ds:[di],dl
 rt_18f1 label byte
-    db 047h
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,00fh
-    db 008h,035h
-    db 080h,0fch,000h
-    db 075h,00eh
-    db 0d0h,0e0h
-    db 073h,005h
-    db 080h,025h,0f0h
-    db 008h,015h
+     inc di
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0fh
+     or byte ptr ds:[di],dh
+     cmp ah,0
+     jne $+10h
+     shl al,1
+     jae $+7h
+     and byte ptr ds:[di],0f0h
+     or byte ptr ds:[di],dl
 rt_1909 label byte
-    db 083h,0ebh,010h
-    db 07fh,097h
-    db 05bh
-    db 003h,07eh,0feh
-    db 0e2h,08eh
-    db 01fh
-    db 05fh
-    db 05eh
-    db 083h,0c4h,002h
-    db 05dh
-    db 0c3h
+     sub bx,10h
+     jg $-67h
+     pop bx
+     add di,word ptr ss:[bp-2]
+     loop runtime_f03cf+42h
+     pop ds
+     pop di
+     pop si
+     add sp,2
+     pop bp
+     ret
 ; Unreferenced translated copy of runtime_even_pixel_dispatch (+0424h).
 runtime_unreferenced_pixel_dispatch label word
     dw (rt_1909-_f039c+RT_CS),(rt_18f1-_f039c+RT_CS),(rt_18f1-_f039c+RT_CS)

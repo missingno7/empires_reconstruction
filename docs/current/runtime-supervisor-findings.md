@@ -37,3 +37,28 @@ control-flow obligations. Six sites retain incomplete domains: 019C, 02A2,
 normal-mode or width assumptions remain explicit research obligations. In
 particular, source recovery of the patched jumps does not establish safety
 for arbitrary widths. Closed public roots remain 12/20.
+
+## Post-grinder supervisor pass (2026-09-21)
+
+Resolved RUNTIME_BLOCK:089F-08F3: four packed-transform bodies, 84 bytes.
+The archived failed attempt substituted planar15 instructions into packed21
+bodies and moved the entry labels; the first mismatch appeared earlier in the
+computed-entry delta table. The replacement preserves all four labels and uses
+the existing tested packed21 pattern. All eight pinned TASM rule tests pass,
+including comparison against every historical planar and packed repetition.
+Bounded FAST and fresh full ACCEPTANCE passed with 106 ordered relocations and
+EXE SHA256 1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10.
+The original failure diagnostic remains in recipes/runtime/task-state.json,
+now marked RESOLVED.
+
+Current runtime ownership is 5,839 symbolic instruction bytes, 69 intentional
+exact-encoding bytes, 662 typed data bytes, and one unresolved byte. All 5,908
+CFG-covered bytes are now symbolically recovered. Closed roots are 18/20;
+the six separately recorded caller-domain obligations are unchanged.
+
+Reviewed the remaining 19A2-19A3 card against runtime-trailer-evidence.json.
+The prior targeted probes found no proven incoming edge, pointer, or packaging
+convention. No new source/object or executable variant supplies the missing
+evidence. Preserve C3 and keep the card unresolved; spelling it RET would
+misrepresent classification progress. Resolving it needs the discriminating
+external evidence already listed in that report.

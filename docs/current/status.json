@@ -1,6 +1,6 @@
 {
   "format": "empires-factory-status-v1",
-  "input_fingerprint": "502f26111042cc9d06209e13f761c37ca5e1537fa87cbd971cacbb504ad62e37",
+  "input_fingerprint": "d9ce539662c5b6adf36e1b82b69df5a1bbaf7b3bf611ffe8b7aca17e8445b390",
   "acceptance_current": true,
   "acceptance": {
     "status": "BUILT",
@@ -21,26 +21,25 @@
   },
   "interfaces": {
     "function_symbols": 440,
-    "global_symbols": 453,
-    "conflicts_for_review": 223,
+    "global_symbols": 460,
+    "conflicts_for_review": 230,
     "proven_field_layout_equivalence_groups": 7,
     "unsupported_declarations": 6
   },
   "runtime": {
     "total_bytes": 6571,
-    "symbolic_instruction_bytes": 1973,
+    "symbolic_instruction_bytes": 5839,
     "typed_table_data_bytes": 662,
     "intentional_exact_encoding_bytes": 69,
-    "raw_unresolved_bytes": 3867,
-    "symbolically_recovered_bytes": 2042,
+    "raw_unresolved_bytes": 1,
+    "symbolically_recovered_bytes": 5908,
     "cfg_covered_bytes": 5908,
-    "closed_entry_roots": 12,
+    "closed_entry_roots": 18,
     "total_entry_roots": 20
   },
   "queue_counts": {
-    "CHEAP": 72,
     "SUPERVISOR": 1
   },
-  "next_task": "RUNTIME_BLOCK:083B-089D",
+  "next_task": null,
   "authority": "Only docs/current is current status. Other checkpoints are historical evidence."
 }

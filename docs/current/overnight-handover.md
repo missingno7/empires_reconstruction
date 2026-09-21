@@ -45,7 +45,7 @@ started by preparing this handover.
   The next supervisor step is canonical decoded-ASM source ownership plus an
   exact archive promotion/checker path. These are not yet consumable cards.
 * ASM representation is not proof of original assembly authorship. The
-  `asm-origin-review.json` inventory covers all 48 remaining production TASM modules;
+  `asm-origin-review.json` inventory covers all 44 remaining production TASM modules;
   C-like state machines and shared-frame continuations are marked for later
   review. No speculative ASM-to-C conversion belongs in the current grinder.
 * Audio evidence includes PIT/speaker output, an OPL timer/register path, and
@@ -91,3 +91,26 @@ inputs; the full EXE and relocation order still match. F_7964/F_7DD3 is next.
 
 F_7964/F_7DD3 is now also one exact C function (664 bytes). Current production
 has 291 unchanged source objects, 440 linker inputs, and 48 TASM modules.
+
+F_B40F now compiles as ordinary C (236 exact bytes); 47 production TASM modules
+remain. Two resource-pointer BSS aliases were recovered without moving storage.
+
+F_AA1F is now ordinary C too (327 exact bytes). Production has 46 TASM modules;
+the 72-card runtime CHEAP queue remains untouched by these C recoveries.
+
+F_B7F9 is now ordinary C (366 exact bytes), using existing workspace arrays.
+Production has 45 TASM modules; runtime grinder cards remain unconsumed.
+
+F_4F96 now compiles as exact ordinary C through Turbo C -B/TASM (299 bytes).
+There are 44 TASM-source modules; F_28AC remains held on a conversion mismatch.
+
+
+## Compiler-path review and run entry point
+
+Use `docs/current/grinder-run-prompt.md` for the prepared unattended run.
+`grinder-readiness.json` inventories all remaining ASM sources and keeps held C
+work separate from executable runtime cards. Check it with
+`python tools/prepare_grinder_handover.py --check` after the queue audit.
+Regenerate it after accepted runtime work with `python tools/prepare_grinder_handover.py`.
+No grinder has been started. The arithmetic -B probes match bytes but do not
+resolve the shared module's relocation ordering; no new C CHEAP cards were issued.

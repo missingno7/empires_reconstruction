@@ -1,0 +1,519 @@
+{
+  "format": "empires-c-path-probes-v1",
+  "results": [
+    {
+      "id": "F_DDD9",
+      "source": "src/F_DDD9.C",
+      "source_sha256": "5b196590db12afe480330cb2614f54a6d0412af85e8fe708ae692f8c91b26bd0",
+      "flags_append": "",
+      "expected_bytes": 165,
+      "actual_bytes": 165,
+      "expected_relocations": [
+        145,
+        120,
+        98,
+        79,
+        66,
+        44
+      ],
+      "publics": [
+        {
+          "name": "_fddd9",
+          "segment": "_TEXT",
+          "offset": 0
+        }
+      ],
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 42,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 64,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 77,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LDIV@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 96,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXLSH@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 118,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 143,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LDIV@",
+          "displacement": 0
+        }
+      ],
+      "promotion": "HELD_SHARED_MODULE",
+      "bytes_equal": true,
+      "actual_relocations": [
+        44,
+        66,
+        79,
+        98,
+        120,
+        145
+      ],
+      "relocation_order_equal": false
+    },
+    {
+      "id": "F_DE7E",
+      "source": "src/F_DE7E.C",
+      "source_sha256": "9eb8b49b70bf0b77a7f2d1a56059f87068093b295dc2d9b90c5bac1b37957f42",
+      "flags_append": "",
+      "expected_bytes": 124,
+      "actual_bytes": 124,
+      "expected_relocations": [
+        86,
+        62
+      ],
+      "publics": [
+        {
+          "name": "_fde7e",
+          "segment": "_TEXT",
+          "offset": 0
+        }
+      ],
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 14,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": true,
+          "target_kind": "external",
+          "target": "_fddd9",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 60,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 84,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LDIV@",
+          "displacement": 0
+        }
+      ],
+      "promotion": "HELD_SHARED_MODULE",
+      "bytes_equal": true,
+      "actual_relocations": [
+        62,
+        86
+      ],
+      "relocation_order_equal": false
+    },
+    {
+      "id": "F_DEFA",
+      "source": "src/F_DEFA.C",
+      "source_sha256": "306787f35d12b8a62db695ccb73ebdb7daacbe9d18e2e064c07febc58b257908",
+      "flags_append": "",
+      "expected_bytes": 158,
+      "actual_bytes": 158,
+      "expected_relocations": [],
+      "publics": [
+        {
+          "name": "_fdefa",
+          "segment": "_TEXT",
+          "offset": 0
+        }
+      ],
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 38,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc6c3",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 42,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": true,
+          "target_kind": "external",
+          "target": "_fde7e",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 75,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gca24",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 79,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gca24",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 81,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc6c3",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 90,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gca6d",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 124,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc5ea",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 131,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc64a",
+          "displacement": 0
+        }
+      ],
+      "promotion": "HELD_SHARED_MODULE",
+      "bytes_equal": true,
+      "actual_relocations": [],
+      "relocation_order_equal": true
+    },
+    {
+      "id": "F_DDD9",
+      "source": "src/F_DDD9.C",
+      "source_sha256": "5b196590db12afe480330cb2614f54a6d0412af85e8fe708ae692f8c91b26bd0",
+      "flags_append": "-B",
+      "expected_bytes": 165,
+      "actual_bytes": 165,
+      "expected_relocations": [
+        145,
+        120,
+        98,
+        79,
+        66,
+        44
+      ],
+      "publics": [
+        {
+          "name": "_fddd9",
+          "segment": "_TEXT",
+          "offset": 0
+        }
+      ],
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 42,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 64,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 77,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LDIV@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 96,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXLSH@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 118,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 143,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LDIV@",
+          "displacement": 0
+        }
+      ],
+      "promotion": "HELD_SHARED_MODULE",
+      "bytes_equal": true,
+      "actual_relocations": [
+        44,
+        66,
+        79,
+        98,
+        120,
+        145
+      ],
+      "relocation_order_equal": false
+    },
+    {
+      "id": "F_DE7E",
+      "source": "src/F_DE7E.C",
+      "source_sha256": "9eb8b49b70bf0b77a7f2d1a56059f87068093b295dc2d9b90c5bac1b37957f42",
+      "flags_append": "-B",
+      "expected_bytes": 124,
+      "actual_bytes": 124,
+      "expected_relocations": [
+        86,
+        62
+      ],
+      "publics": [
+        {
+          "name": "_fde7e",
+          "segment": "_TEXT",
+          "offset": 0
+        }
+      ],
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 14,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": true,
+          "target_kind": "external",
+          "target": "_fddd9",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 60,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LXMUL@",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 84,
+          "width": 4,
+          "loc": "pointer32",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "LDIV@",
+          "displacement": 0
+        }
+      ],
+      "promotion": "HELD_SHARED_MODULE",
+      "bytes_equal": true,
+      "actual_relocations": [
+        62,
+        86
+      ],
+      "relocation_order_equal": false
+    },
+    {
+      "id": "F_DEFA",
+      "source": "src/F_DEFA.C",
+      "source_sha256": "306787f35d12b8a62db695ccb73ebdb7daacbe9d18e2e064c07febc58b257908",
+      "flags_append": "-B",
+      "expected_bytes": 158,
+      "actual_bytes": 158,
+      "expected_relocations": [],
+      "publics": [
+        {
+          "name": "_fdefa",
+          "segment": "_TEXT",
+          "offset": 0
+        }
+      ],
+      "fixups": [
+        {
+          "segment": "_TEXT",
+          "offset": 38,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc6c3",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 42,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": true,
+          "target_kind": "external",
+          "target": "_fde7e",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 75,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gca24",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 79,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gca24",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 81,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc6c3",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 90,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gca6d",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 124,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc5ea",
+          "displacement": 0
+        },
+        {
+          "segment": "_TEXT",
+          "offset": 131,
+          "width": 2,
+          "loc": "offset16",
+          "self_relative": false,
+          "target_kind": "external",
+          "target": "_gc64a",
+          "displacement": 0
+        }
+      ],
+      "promotion": "HELD_SHARED_MODULE",
+      "bytes_equal": true,
+      "actual_relocations": [],
+      "relocation_order_equal": true
+    }
+  ],
+  "limitation": "Isolated compiler evidence only. Production M_DDD9_DF98 has four owners and globally ordered relocations; no promotion or production edits.",
+  "fixture_sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10"
+}

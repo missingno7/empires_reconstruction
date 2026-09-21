@@ -5098,8 +5098,8 @@
     },
     {
       "id": "F_4F96",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_4F96.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_4F96.C",
       "start": 20886,
       "end": 21185,
       "expected_sha256": "439951f6eb58b814bc86849bccc2df31a9b9ee4f627512678d4aeb5bb303eaf7",
@@ -5110,17 +5110,45 @@
         "segment": "_TEXT",
         "public": "_f4f96",
         "span": 1,
-        "flags_append": "",
-        "bindings": {},
+        "flags_append": "-B",
+        "bindings": {
+          "_gbfcd": {
+            "offset": 49101,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAFD.phys"
+          },
+          "_g1778": {
+            "offset": 6008,
+            "coordinate": "DGROUP_offset"
+          },
+          "__argc": {
+            "offset": 107,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete library fixup target with object addend subtraction"
+          },
+          "__argv": {
+            "offset": 109,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_FA9D.phys"
+          }
+        },
         "module_segments": {}
+      },
+      "provenance": {
+        "c_recovery": "All 299 bytes reproduced by ordinary Turbo C with -B and pinned TASM. Both switch comparisons and shortened-jump NOPs arise naturally; no inline ASM or object corrections."
       },
       "object": "R0054.OBJ",
       "members": [
         "F_4F96"
       ],
-      "tool": "TASM.EXE",
+      "tool": "TCC.EXE",
       "flags": [
-        "/mx"
+        "-c",
+        "-mc",
+        "-1-",
+        "-f-",
+        "-N-",
+        "-B"
       ],
       "publics": [
         {
@@ -16643,8 +16671,8 @@
     },
     {
       "id": "F_AA1F",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_AA1F.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_AA1F.C",
       "start": 44063,
       "end": 44390,
       "expected_sha256": "3d8fffe530ff71af2a1973029d3422e0a5ad7885ade84c2ba2d546ff045512c1",
@@ -16662,53 +16690,95 @@
             "owner": "F_A15E",
             "public": "_fa15e",
             "addend": 0,
-            "evidence": "F_AA1F symbolic direct near call"
+            "evidence": "Exact F_AA1F call operand"
           },
           "_f6b66": {
             "coordinate": "code_offset",
             "owner": "F_6B66",
             "public": "_f6b66",
             "addend": 0,
-            "evidence": "F_AA1F symbolic direct near call"
+            "evidence": "Exact F_AA1F call operand"
           },
           "_faf45": {
             "coordinate": "code_offset",
             "owner": "F_AF45",
             "public": "_faf45",
             "addend": 0,
-            "evidence": "F_AA1F symbolic direct near call"
+            "evidence": "Exact F_AA1F call operand"
           },
           "_fa036": {
             "coordinate": "code_offset",
             "owner": "F_A036",
             "public": "_fa036",
             "addend": 0,
-            "evidence": "F_AA1F symbolic direct near call"
+            "evidence": "Exact F_AA1F call operand"
           },
           "_f86c9": {
             "coordinate": "code_offset",
             "owner": "F_86C9",
             "public": "_f86c9",
             "addend": 0,
-            "evidence": "F_AA1F symbolic direct near call"
+            "evidence": "Exact F_AA1F call operand"
           },
           "_fa24e": {
             "coordinate": "code_offset",
             "owner": "F_A24E",
             "public": "_fa24e",
             "addend": 0,
-            "evidence": "F_AA1F symbolic direct near call"
+            "evidence": "Exact F_AA1F call operand"
+          },
+          "_gc57e": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50558,
+            "evidence": "Exact F_AA1F global operand"
+          },
+          "_gc46e": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50286,
+            "evidence": "Exact F_AA1F global operand"
+          },
+          "_g13b8": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5048,
+            "evidence": "Exact F_AA1F global operand"
+          },
+          "_g1356": {
+            "coordinate": "DGROUP_offset",
+            "offset": 4950,
+            "evidence": "Exact F_AA1F global operand"
+          },
+          "_g12e5": {
+            "coordinate": "DGROUP_offset",
+            "offset": 4837,
+            "evidence": "Exact F_AA1F global operand"
+          },
+          "_g13b1": {
+            "coordinate": "DGROUP_offset",
+            "offset": 5041,
+            "evidence": "Exact F_AA1F global operand"
+          },
+          "_gc470": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50288,
+            "evidence": "Exact F_AA1F global operand"
           }
         },
         "module_segments": {}
+      },
+      "provenance": {
+        "c_recovery": "All 327 original bytes reproduced by ordinary Turbo C: state switch, signed wraparound, 200-byte local buffer and far-pointer calls; no inline ASM, DB, or object corrections."
       },
       "object": "R0190.OBJ",
       "members": [
         "F_AA1F"
       ],
-      "tool": "TASM.EXE",
+      "tool": "TCC.EXE",
       "flags": [
-        "/mx"
+        "-c",
+        "-mc",
+        "-1-",
+        "-f-",
+        "-N-"
       ],
       "publics": [
         {
@@ -17464,8 +17534,8 @@
     },
     {
       "id": "F_B40F",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_B40F.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_B40F.C",
       "start": 46607,
       "end": 46843,
       "expected_sha256": "b55281c89a91716131425c8dbd43a3ad990c8e19a1099779519e8104d9be4fa3",
@@ -17477,17 +17547,75 @@
         "public": "_fbb40f",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_gb07c": {
+            "coordinate": "DGROUP_offset",
+            "offset": 45180,
+            "evidence": "Candidate instruction operands"
+          },
+          "_g9bfc": {
+            "coordinate": "DGROUP_offset",
+            "offset": 39932,
+            "evidence": "Candidate instruction operands"
+          },
+          "_f656c": {
+            "coordinate": "code_offset",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0,
+            "evidence": "Exact F_B40F call operand"
+          },
+          "_f684a": {
+            "coordinate": "code_offset",
+            "owner": "F_684A",
+            "public": "_f684a",
+            "addend": 0,
+            "evidence": "Exact F_B40F call operand"
+          },
+          "_gc596": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50582,
+            "evidence": "Candidate instruction operands"
+          },
+          "_gc5c6": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50630,
+            "evidence": "Candidate instruction operands"
+          },
+          "_gbf66": {
+            "coordinate": "DGROUP_offset",
+            "offset": 48998,
+            "evidence": "Candidate instruction operands"
+          },
+          "_gc592": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50578,
+            "evidence": "Candidate instruction operands"
+          },
+          "_memmove": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F39C.entry",
+            "owner": "LIB_MOVMEM",
+            "public": "_memmove",
+            "addend": 0
+          }
+        },
         "module_segments": {}
       },
-      "change": "Recover the complete compact-descriptor expansion routine as symbolic TASM; exact source has no OMF fixups.",
+      "provenance": {
+        "c_recovery": "All 236 bytes reproduced by ordinary Turbo C: compact offset table expansion and far-pointer tail fill; no inline ASM, DB, or object corrections."
+      },
       "object": "R0199.OBJ",
       "members": [
         "F_B40F"
       ],
-      "tool": "TASM.EXE",
+      "tool": "TCC.EXE",
       "flags": [
-        "/mx"
+        "-c",
+        "-mc",
+        "-1-",
+        "-f-",
+        "-N-"
       ],
       "publics": [
         {
@@ -18064,8 +18192,8 @@
     },
     {
       "id": "F_B7F9",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_B7F9.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/F_B7F9.C",
       "start": 47609,
       "end": 47975,
       "expected_sha256": "3e25a2af8d02916a744e1f7af69a658260b4ef49a9a8e0971156edf9d2a186b2",
@@ -18077,17 +18205,159 @@
         "public": "_fb7f9",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_gb3af": {
+            "offset": 45999,
+            "coordinate": "DGROUP_offset",
+            "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F"
+          },
+          "_gb6cf": {
+            "offset": 46799,
+            "coordinate": "DGROUP_offset",
+            "evidence": "independent write in F_B7F9 and read in complete F_B967"
+          },
+          "_gb52f": {
+            "offset": 46383,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2B05F.phys"
+          },
+          "_f4e9f": {
+            "coordinate": "code_offset",
+            "evidence": "complete fixup target with object addend subtraction",
+            "owner": "F_4E9F",
+            "public": "_f4e9f",
+            "addend": 0
+          },
+          "_f6c6f": {
+            "coordinate": "code_offset",
+            "owner": "F_6C6F",
+            "public": "_f6c6f",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f039f": {
+            "offset": 927,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_039F.entry"
+          },
+          "_f1ecd": {
+            "coordinate": "code_offset",
+            "owner": "F_1ECD",
+            "public": "_f1ecd",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gbfbc": {
+            "offset": 49084,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAEC.phys"
+          },
+          "_f03cc": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_f4b0c": {
+            "coordinate": "code_offset",
+            "owner": "F_4B0C",
+            "public": "_f4b0c",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f656c": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_656C.entry",
+            "owner": "F_656C",
+            "public": "_f656c",
+            "addend": 0
+          },
+          "_gc5ca": {
+            "offset": 50634,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0FA.phys"
+          },
+          "_gbc": {
+            "offset": 188,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_fd5f9": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_D5F9.entry",
+            "owner": "F_D5F9",
+            "public": "_fd5f9",
+            "addend": 0
+          },
+          "_f2269": {
+            "coordinate": "code_offset",
+            "evidence": "functions/F_2269.entry",
+            "owner": "F_2269",
+            "public": "_f2269",
+            "addend": 0
+          },
+          "_fcb48": {
+            "coordinate": "code_offset",
+            "owner": "F_CB48",
+            "public": "_fcb48",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_f6c57": {
+            "coordinate": "code_offset",
+            "owner": "F_6C57",
+            "public": "_f6c57",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_gc5c6": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_g40c4": {
+            "offset": 16580,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_23BF4.phys"
+          },
+          "_g1774": {
+            "offset": 6004,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P212A4.phys"
+          },
+          "_f03b4": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_fcaf1": {
+            "coordinate": "code_offset",
+            "owner": "F_CAF1",
+            "public": "_fcaf1",
+            "addend": 0,
+            "evidence": "complete fixup target with object addend subtraction"
+          },
+          "_g96": {
+            "offset": 150,
+            "coordinate": "DGROUP_offset",
+            "evidence": "complete fixup target with object addend subtraction"
+          }
+        },
         "module_segments": {}
       },
-      "change": "Recover the complete board/control state setup and workspace fill sequence as symbolic TASM; exact source has no OMF fixups.",
+      "provenance": {
+        "c_recovery": "All 366 bytes reproduced by ordinary Turbo C: display update and workspace fill loops; no inline ASM, DB, or object corrections."
+      },
       "object": "R0206.OBJ",
       "members": [
         "F_B7F9"
       ],
-      "tool": "TASM.EXE",
+      "tool": "TCC.EXE",
       "flags": [
-        "/mx"
+        "-c",
+        "-mc",
+        "-1-",
+        "-f-",
+        "-N-"
       ],
       "publics": [
         {
@@ -26595,14 +26865,14 @@
         },
         {
           "offset": 20,
-          "name": "gc590_workspace",
+          "name": "gc592_workspace",
           "count": 1,
           "element_bytes": 4,
           "source_type": "char far *"
         },
         {
           "offset": 24,
-          "name": "gc594_workspace",
+          "name": "gc596_workspace",
           "count": 1,
           "element_bytes": 4,
           "source_type": "char far *"

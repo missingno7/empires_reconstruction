@@ -71,3 +71,14 @@ Platform evidence is in `runtime-platform.json`; representation/origin triage is
 in `asm-origin-review.json`. ASM is not proof of historical ASM authorship.
 These reports do not authorize speculative C conversions or additional archive
 work in the overnight grinder.
+
+
+## Compiler-path review and run entry point
+
+Use `docs/current/grinder-run-prompt.md` for the prepared unattended run.
+`grinder-readiness.json` inventories all remaining ASM sources and keeps held C
+work separate from executable runtime cards. Check it with
+`python tools/prepare_grinder_handover.py --check` after the queue audit.
+Regenerate it after accepted runtime work with `python tools/prepare_grinder_handover.py`.
+No grinder has been started. The arithmetic -B probes match bytes but do not
+resolve the shared module's relocation ordering; no new C CHEAP cards were issued.

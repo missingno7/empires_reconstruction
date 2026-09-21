@@ -72,3 +72,68 @@ Full acceptance remains exact: 106 relocations, no unresolved symbols, no object
 transformations or EXE fallback. Current production has 291 unchanged source
 objects, 440 linker inputs, and 48 TASM modules. Ordinary C recoveries now total
 1,606 bytes across three functions; no runtime grinder cards were consumed.
+
+## F_B40F: compact descriptor expansion
+
+All 236 bytes now compile from ordinary C in src/F_B40F.C. The two input
+resources contain word offsets; the routine adds each byte offset plus two to
+the resource base, stores far pointers, then fills remaining slots from slot 0.
+The pinned library memmove public replaces the former fixed relative calls.
+Two existing four-byte BSS reserves now expose gc592/gc596 publics. Their old
+reserve labels incorrectly said gc590/gc594; their offsets and sizes did not
+change. Full acceptance verifies the resulting symbolic references and exact
+relocation order. No object corrections or inline assembly were introduced.
+
+Current production retains 291 source objects and 440 linker inputs, with 47
+TASM modules. Four exact C recoveries total 1,842 bytes. Runtime cards remain
+untouched. F_AA1F is another promising compiler-style state loop for follow-up;
+F_9EC3 uses saved DS, XLAT and LOOP and is not a pure-C priority.
+
+## F_AA1F: exact state-driven record transition
+
+src/F_AA1F.C now reproduces all 327 bytes with ordinary C, including the sparse
+key switch, signed remainder wraparound, 200-byte stack buffer, far-pointer
+assignment and return paths. Separating increment/decrement from the remainder
+assignment avoids unsequenced C modifications while preserving identical output.
+The final switch case falls through to the common cleanup without a break;
+adding that break emits an extra two-byte jump with the pinned compiler.
+
+Full EXE acceptance is byte-identical with all 106 relocations in exact order,
+zero unresolved symbols, and unchanged compiler objects. Production has 46 TASM
+modules; five exact C recoveries total 2,169 bytes. No runtime card was consumed.
+The ASM reference remains available. This proves an exact C reconstruction,
+not the original source text or authorship.
+
+## F_B7F9: display and workspace initialization
+
+src/F_B7F9.C reproduces all 366 bytes as ordinary C. Three bounded loops update
+the display and fill workspace ranges. Existing gb3af/gb52f arrays express the
+board fields as indexed accesses, avoiding new interior BSS aliases. Direct
+calls now use established symbol bindings instead of fixed relative operands.
+No inline ASM, byte directives, storage movement or object corrections are used.
+
+Production has 45 TASM modules; six recent exact C recoveries total 2,535 bytes.
+The runtime grinder queue is unchanged. Inspection of F_6036, F_60A9, F_6181,
+F_C914, F_CA9B and F_CAF1 found string operations, special register preservation,
+stack-argument rewriting or live-register inputs; these are not pure-C priorities.
+
+## F_4F96: compiler-to-assembler path recovered
+
+src/F_4F96.C reproduces all 299 bytes as ordinary C with Turbo C -B and the
+pinned TASM. Direct object generation produced 298 bytes, reversed CMP operand
+encoding in both sparse-switch searches, and different jump relaxation. The
+-B path naturally reproduces the historical short jumps plus NOPs. No inline
+assembly, explicit padding, generated-source edits or object corrections are
+needed. Existing runtime _argc/_argv publics provide the argument vector.
+
+The parser accepts case-insensitive graphics switches E/C/T/M/V selecting
+values 1/2/3/4/5, I selecting sound state 0, and SI/SA/ST selecting sound states
+0/2/1. These selector values alone do not prove a specific sound device.
+Production now has 44 TASM-source modules. This C module still invokes TASM
+through the normal compiler handoff. Seven exact C recoveries total 2,834 bytes.
+
+F_28AC remains ASM: a bounded C candidate reproduces its loops and addressing,
+but two byte-to-coordinate conversions lack the original XOR DX,DX and use
+MOV AH,0 instead of XOR AH,AH. Candidate extent is 214 versus 218 bytes. Tested
+integer-width/cast variations and -B did not resolve this; no padding or invented
+instructions were added. Further compiler-expression evidence is needed.

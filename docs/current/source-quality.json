@@ -17,15 +17,15 @@
       },
       {
         "level": "SYMBOLIC_ASM",
-        "bytes": 14456,
-        "owners": 86,
-        "sources": 47
+        "bytes": 13228,
+        "owners": 82,
+        "sources": 43
       },
       {
         "level": "MECHANICAL_C",
-        "bytes": 35372,
-        "owners": 232,
-        "sources": 232
+        "bytes": 36600,
+        "owners": 236,
+        "sources": 236
       },
       {
         "level": "HISTORICAL_STARTUP_OBJECT",
@@ -223,13 +223,13 @@
   "format": "empires-source-quality-ranges-v1",
   "runtime": {
     "total_bytes": 6571,
-    "symbolic_instruction_bytes": 1973,
+    "symbolic_instruction_bytes": 5839,
     "typed_table_data_bytes": 662,
     "intentional_exact_encoding_bytes": 69,
-    "raw_unresolved_bytes": 3867,
-    "symbolically_recovered_bytes": 2042,
+    "raw_unresolved_bytes": 1,
+    "symbolically_recovered_bytes": 5908,
     "cfg_covered_bytes": 5908,
-    "closed_entry_roots": 12,
+    "closed_entry_roots": 18,
     "total_entry_roots": 20
   },
   "scope": "Runtime emission is assembler-measured; other owners retain the legacy syntactic census."

@@ -2600,6 +2600,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f039f",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_C0E0.C",
           "line": 1
         },
@@ -3663,6 +3676,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f03b4",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_CE9E.C",
           "line": 1
         },
@@ -4408,6 +4434,24 @@
           "symbol": "f03cc",
           "definition": false,
           "return_type": "int",
+          "argument_count": 4,
+          "argument_types": [
+            "int",
+            "int",
+            "void far *",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 4
+        },
+        {
+          "symbol": "f03cc",
+          "definition": false,
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -4958,6 +5002,19 @@
         {
           "symbol": "f1ecd",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f1ecd",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -5465,6 +5522,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_4713.C",
           "line": 5
+        },
+        {
+          "symbol": "f2269",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f2269",
@@ -7076,6 +7146,19 @@
         {
           "symbol": "f4b0c",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f4b0c",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -7129,6 +7212,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_3A75.C",
           "line": 9
+        },
+        {
+          "symbol": "f4e9f",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f4e9f",
@@ -7335,6 +7431,19 @@
       "declarations": [
         {
           "symbol": "f4f96",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 6
+        },
+        {
+          "symbol": "f4f96",
           "definition": false,
           "return_type": "int",
           "argument_count": null,
@@ -7347,7 +7456,21 @@
           "line": 6
         }
       ],
-      "definitions": [],
+      "definitions": [
+        {
+          "symbol": "f4f96",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 6
+        }
+      ],
       "omf_public_evidence": [
         {
           "symbol": "_f4f96",
@@ -9054,6 +9177,32 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 4
+        },
+        {
+          "symbol": "f656c",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f656c",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_CF3C.C",
           "line": 1
         }
@@ -9297,6 +9446,22 @@
           "confidence": "MEDIUM",
           "file": "src/F_90A6.C",
           "line": 1
+        },
+        {
+          "symbol": "f684a",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 2,
+          "argument_types": [
+            "int",
+            "char far * far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 5
         },
         {
           "symbol": "f684a",
@@ -10422,6 +10587,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
+        },
+        {
+          "symbol": "f6b66",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
           "line": 3
         },
@@ -11021,6 +11199,19 @@
         {
           "symbol": "f6c57",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f6c57",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -11144,6 +11335,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_B6CD.C",
           "line": 1
+        },
+        {
+          "symbol": "f6c6f",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f6c6f",
@@ -15547,6 +15751,21 @@
           "symbol": "f86c9",
           "definition": false,
           "return_type": "int",
+          "argument_count": 1,
+          "argument_types": [
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 10
+        },
+        {
+          "symbol": "f86c9",
+          "definition": false,
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -19068,6 +19287,25 @@
           "confidence": "MEDIUM",
           "file": "src/F_A036.C",
           "line": 1
+        },
+        {
+          "symbol": "fa036",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 5,
+          "argument_types": [
+            "char far *",
+            "char far *",
+            "struct record far *",
+            "char far *",
+            "long"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 9
         }
       ],
       "definitions": [
@@ -19282,6 +19520,19 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_A15E.C",
+          "line": 8
+        },
+        {
+          "symbol": "fa15e",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
           "line": 8
         }
       ],
@@ -19502,6 +19753,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_A24E.C",
           "line": 4
+        },
+        {
+          "symbol": "fa24e",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
         },
         {
           "symbol": "fa24e",
@@ -20060,15 +20324,15 @@
         {
           "symbol": "faa1f",
           "definition": true,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_AA1F.C",
-          "line": 2
+          "line": 11
         },
         {
           "symbol": "faa1f",
@@ -20088,15 +20352,15 @@
         {
           "symbol": "faa1f",
           "definition": true,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_AA1F.C",
-          "line": 2
+          "line": 11
         }
       ],
       "omf_public_evidence": [
@@ -20465,6 +20729,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_A658.C",
           "line": 27
+        },
+        {
+          "symbol": "faf45",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
         },
         {
           "symbol": "faf45",
@@ -21210,14 +21487,14 @@
           "symbol": "fb7f9",
           "definition": true,
           "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_B7F9.C",
-          "line": 2
+          "line": 10
         }
       ],
       "definitions": [
@@ -21225,14 +21502,14 @@
           "symbol": "fb7f9",
           "definition": true,
           "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_B7F9.C",
-          "line": 2
+          "line": 10
         }
       ],
       "omf_public_evidence": [
@@ -21328,14 +21605,14 @@
           "symbol": "fbb40f",
           "definition": true,
           "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_B40F.C",
-          "line": 2
+          "line": 7
         },
         {
           "symbol": "fbb40f",
@@ -21356,14 +21633,14 @@
           "symbol": "fbb40f",
           "definition": true,
           "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_B40F.C",
-          "line": 2
+          "line": 7
         }
       ],
       "omf_public_evidence": [
@@ -22835,6 +23112,19 @@
         {
           "symbol": "fcaf1",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "fcaf1",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -23004,6 +23294,19 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
+          "line": 3
+        },
+        {
+          "symbol": "fcb48",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
           "line": 3
         },
         {
@@ -24816,6 +25119,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_56C6.C",
           "line": 30
+        },
+        {
+          "symbol": "fd5f9",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "fd5f9",
@@ -27767,6 +28083,23 @@
           "confidence": "MEDIUM",
           "file": "src/F_656C.C",
           "line": 53
+        },
+        {
+          "symbol": "memmove",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "void far *",
+            "void far *",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 6
         }
       ],
       "definitions": [],
@@ -28736,8 +29069,38 @@
       "aliases": []
     },
     {
+      "symbol": "_argc",
+      "declarations": [
+        {
+          "symbol": "_argc",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 4
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
       "symbol": "_argv",
       "declarations": [
+        {
+          "symbol": "_argv",
+          "type": "char far * far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 3
+        },
         {
           "symbol": "_argv",
           "type": "char * *",
@@ -28994,6 +29357,12 @@
           "offset": 107,
           "owner": null,
           "evidence": "complete library fixup target with object addend subtraction",
+          "caller": "F_4F96"
+        },
+        {
+          "offset": 107,
+          "owner": null,
+          "evidence": "complete library fixup target with object addend subtraction",
           "caller": "LIB_SETARGV"
         }
       ],
@@ -29007,6 +29376,12 @@
       "definitions": [],
       "type_confidence": "UNKNOWN",
       "storage_evidence": [
+        {
+          "offset": 109,
+          "owner": null,
+          "evidence": "storage_objects/G_FA9D.phys",
+          "caller": "F_4F96"
+        },
         {
           "offset": 109,
           "owner": null,
@@ -31810,6 +32185,60 @@
       "aliases": []
     },
     {
+      "symbol": "g12e5",
+      "declarations": [
+        {
+          "symbol": "g12e5",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 4
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 4837,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
+      "symbol": "g1356",
+      "declarations": [
+        {
+          "symbol": "g1356",
+          "type": "char near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 4
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 4950,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
       "symbol": "g1375",
       "declarations": [
         {
@@ -31891,6 +32320,65 @@
       "aliases": [
         "q139d"
       ]
+    },
+    {
+      "symbol": "g13b1",
+      "declarations": [
+        {
+          "symbol": "g13b1",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 4
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 5041,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [],
+      "aliases": []
+    },
+    {
+      "symbol": "g13b8",
+      "declarations": [
+        {
+          "symbol": "g13b8",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 5
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 5048,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          5048,
+          5052
+        ]
+      ],
+      "aliases": []
     },
     {
       "symbol": "g13d9",
@@ -33291,6 +33779,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_56C6.C",
           "line": 6
+        },
+        {
+          "symbol": "g1774",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 5
         }
       ],
       "definitions": [],
@@ -33300,6 +33798,12 @@
           "owner": null,
           "evidence": "storage_objects/G_P212A4.phys",
           "caller": "F_56C6"
+        },
+        {
+          "offset": 6004,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A4.phys",
+          "caller": "F_B7F9"
         }
       ],
       "struct_membership": [],
@@ -33400,6 +33904,16 @@
       "declarations": [
         {
           "symbol": "g1778",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 4
+        },
+        {
+          "symbol": "g1778",
           "type": "unsigned",
           "array": null,
           "pointer_shape": null,
@@ -33421,6 +33935,12 @@
       ],
       "definitions": [],
       "storage_evidence": [
+        {
+          "offset": 6008,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_4F96"
+        },
         {
           "offset": 6008,
           "owner": null,
@@ -35999,6 +36519,16 @@
         },
         {
           "symbol": "g40c4",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
+        },
+        {
+          "symbol": "g40c4",
           "type": "char far *",
           "array": null,
           "pointer_shape": "far",
@@ -36039,6 +36569,12 @@
           "owner": null,
           "evidence": "storage_objects/M_23BF4.phys",
           "caller": "F_B6CD"
+        },
+        {
+          "offset": 16580,
+          "owner": null,
+          "evidence": "storage_objects/M_23BF4.phys",
+          "caller": "F_B7F9"
         },
         {
           "offset": 16580,
@@ -38452,6 +38988,16 @@
           "pointer_shape": null,
           "size": 2,
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 5
+        },
+        {
+          "symbol": "g96",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
           "file": "src/F_CF3C.C",
           "line": 1
         }
@@ -38505,6 +39051,12 @@
           "owner": null,
           "evidence": "storage_objects/G_FAC6.phys",
           "caller": "F_B6CD"
+        },
+        {
+          "offset": 150,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_B7F9"
         },
         {
           "offset": 150,
@@ -39255,6 +39807,16 @@
         },
         {
           "symbol": "g9bfc",
+          "type": "char near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 2
+        },
+        {
+          "symbol": "g9bfc",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -39277,6 +39839,12 @@
           "owner": null,
           "evidence": "direct DS offset in complete F_4E9F fixup",
           "caller": "F_4E9F"
+        },
+        {
+          "offset": 39932,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
         },
         {
           "offset": 39932,
@@ -40210,6 +40778,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_4EEB.C",
           "line": 9
+        },
+        {
+          "symbol": "gb07c",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 3
         }
       ],
       "definitions": [],
@@ -40225,6 +40803,12 @@
           "owner": null,
           "evidence": "storage_objects/REGION_2ABAC.phys",
           "caller": "F_4EEB"
+        },
+        {
+          "offset": 45180,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
         }
       ],
       "struct_membership": [],
@@ -40517,6 +41101,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_338A.C",
           "line": 5
+        },
+        {
+          "symbol": "gb3af",
+          "type": "unsigned char near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 8
         }
       ],
       "definitions": [],
@@ -40526,6 +41120,12 @@
           "owner": null,
           "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F",
           "caller": "F_338A"
+        },
+        {
+          "offset": 45999,
+          "owner": null,
+          "evidence": "DS:B3AE count plus one; indexed record store corroborated by F_B60F",
+          "caller": "F_B7F9"
         }
       ],
       "struct_membership": [],
@@ -40731,6 +41331,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_B772.C",
           "line": 1
+        },
+        {
+          "symbol": "gb52f",
+          "type": "int near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 6
         }
       ],
       "definitions": [],
@@ -40740,6 +41350,12 @@
           "owner": null,
           "evidence": "storage_objects/REGION_2B05F.phys",
           "caller": "F_B772"
+        },
+        {
+          "offset": 46383,
+          "owner": null,
+          "evidence": "storage_objects/REGION_2B05F.phys",
+          "caller": "F_B7F9"
         }
       ],
       "struct_membership": [],
@@ -40900,6 +41516,16 @@
       "declarations": [
         {
           "symbol": "gb6cf",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 7
+        },
+        {
+          "symbol": "gb6cf",
           "type": "char",
           "array": null,
           "pointer_shape": null,
@@ -40911,6 +41537,12 @@
       ],
       "definitions": [],
       "storage_evidence": [
+        {
+          "offset": 46799,
+          "owner": null,
+          "evidence": "independent write in F_B7F9 and read in complete F_B967",
+          "caller": "F_B7F9"
+        },
         {
           "offset": 46799,
           "owner": null,
@@ -41737,6 +42369,16 @@
           "pointer_shape": null,
           "size": 2,
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 5
+        },
+        {
+          "symbol": "gbc",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
           "file": "src/F_C0E0.C",
           "line": 1
         }
@@ -41760,6 +42402,12 @@
           "owner": null,
           "evidence": "storage_objects/G_FAEC.phys",
           "caller": "F_B6CD"
+        },
+        {
+          "offset": 188,
+          "owner": null,
+          "evidence": "complete fixup target with object addend subtraction",
+          "caller": "F_B7F9"
         },
         {
           "offset": 188,
@@ -41840,6 +42488,16 @@
         },
         {
           "symbol": "gbf66",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 2
+        },
+        {
+          "symbol": "gbf66",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -41862,6 +42520,12 @@
           "owner": null,
           "evidence": "direct DS offset in complete F_4E9F fixup",
           "caller": "F_4E9F"
+        },
+        {
+          "offset": 48998,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
         },
         {
           "offset": 48998,
@@ -42125,6 +42789,16 @@
         },
         {
           "symbol": "gbfbc",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
+        },
+        {
+          "symbol": "gbfbc",
           "type": "char far *",
           "array": null,
           "pointer_shape": "far",
@@ -42193,6 +42867,12 @@
           "owner": null,
           "evidence": "storage_objects/M_2BAEC.phys",
           "caller": "F_462E"
+        },
+        {
+          "offset": 49084,
+          "owner": null,
+          "evidence": "storage_objects/M_2BAEC.phys",
+          "caller": "F_B7F9"
         },
         {
           "offset": 49084,
@@ -42517,6 +43197,16 @@
         },
         {
           "symbol": "gbfcd",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 5
+        },
+        {
+          "symbol": "gbfcd",
           "type": "char",
           "array": null,
           "pointer_shape": null,
@@ -42619,6 +43309,12 @@
           "owner": null,
           "evidence": "storage_objects/M_2BAFD.phys",
           "caller": "F_48BE"
+        },
+        {
+          "offset": 49101,
+          "owner": null,
+          "evidence": "storage_objects/M_2BAFD.phys",
+          "caller": "F_4F96"
         },
         {
           "offset": 49101,
@@ -48661,6 +49357,16 @@
           "pointer_shape": null,
           "size": 2,
           "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 3
+        },
+        {
+          "symbol": "gc46e",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
           "line": 4
         }
@@ -48672,6 +49378,12 @@
           "owner": null,
           "evidence": "storage_objects/M_2BF9E.phys",
           "caller": "F_A33F"
+        },
+        {
+          "offset": 50286,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
         },
         {
           "offset": 50286,
@@ -48783,6 +49495,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_A33F.C",
           "line": 2
+        },
+        {
+          "symbol": "gc470",
+          "type": "struct record",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 7
         },
         {
           "symbol": "gc470",
@@ -48920,6 +49642,12 @@
           "owner": null,
           "evidence": "storage_objects/M_2BFA0.phys",
           "caller": "F_A33F"
+        },
+        {
+          "offset": 50288,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
         },
         {
           "offset": 50288,
@@ -49567,6 +50295,21 @@
           "bytes": 27,
           "fields": [
             {
+              "name": "bytes",
+              "type": "char",
+              "offset": 0,
+              "bytes": 27
+            }
+          ],
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 6
+        },
+        {
+          "name": "record",
+          "bytes": 27,
+          "fields": [
+            {
               "name": "first",
               "type": "char",
               "offset": 0,
@@ -49924,6 +50667,16 @@
           "pointer_shape": null,
           "size": 2,
           "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 3
+        },
+        {
+          "symbol": "gc57e",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
           "line": 4
         }
@@ -49935,6 +50688,12 @@
           "owner": null,
           "evidence": "storage_objects/M_2C0AE.phys",
           "caller": "F_A33F"
+        },
+        {
+          "offset": 50558,
+          "owner": null,
+          "evidence": "Exact F_AA1F global operand",
+          "caller": "F_AA1F"
         },
         {
           "offset": 50558,
@@ -50110,6 +50869,70 @@
         [
           50574,
           50578
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "gc592",
+      "declarations": [
+        {
+          "symbol": "gc592",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 3
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 50578,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          50578,
+          50582
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "gc596",
+      "declarations": [
+        {
+          "symbol": "gc596",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 3
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 50582,
+          "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          50582,
+          50586
         ]
       ],
       "aliases": []
@@ -50764,6 +51587,26 @@
         },
         {
           "symbol": "gc5c6",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 3
+        },
+        {
+          "symbol": "gc5c6",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
+        },
+        {
+          "symbol": "gc5c6",
           "type": "char *",
           "array": null,
           "pointer_shape": "far",
@@ -50900,6 +51743,18 @@
         {
           "offset": 50630,
           "owner": null,
+          "evidence": "Candidate instruction operands",
+          "caller": "F_B40F"
+        },
+        {
+          "offset": 50630,
+          "owner": null,
+          "evidence": "storage_objects/M_2C0F6.phys",
+          "caller": "F_B7F9"
+        },
+        {
+          "offset": 50630,
+          "owner": null,
           "evidence": "storage_objects/M_2C0F6.phys",
           "caller": "F_CE9E"
         },
@@ -51010,6 +51865,16 @@
         },
         {
           "symbol": "gc5ca",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
+        },
+        {
+          "symbol": "gc5ca",
           "type": "char far *",
           "array": null,
           "pointer_shape": "far",
@@ -51078,6 +51943,12 @@
           "owner": null,
           "evidence": "storage_objects/M_2C0FA.phys",
           "caller": "F_B6CD"
+        },
+        {
+          "offset": 50634,
+          "owner": null,
+          "evidence": "storage_objects/M_2C0FA.phys",
+          "caller": "F_B7F9"
         },
         {
           "offset": 50634,
@@ -57855,6 +58726,21 @@
       "bytes": 27,
       "fields": [
         {
+          "name": "bytes",
+          "type": "char",
+          "offset": 0,
+          "bytes": 27
+        }
+      ],
+      "confidence": "MEDIUM",
+      "file": "src/F_AA1F.C",
+      "line": 6
+    },
+    {
+      "name": "record",
+      "bytes": 27,
+      "fields": [
+        {
           "name": "first",
           "type": "char",
           "offset": 0,
@@ -59914,6 +60800,21 @@
           "bytes": 27,
           "fields": [
             {
+              "name": "bytes",
+              "type": "char",
+              "offset": 0,
+              "bytes": 27
+            }
+          ],
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 6
+        },
+        {
+          "name": "record",
+          "bytes": 27,
+          "fields": [
+            {
               "name": "first",
               "type": "char",
               "offset": 0,
@@ -60975,6 +61876,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f039f",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_C0E0.C",
           "line": 1
         },
@@ -61958,6 +62872,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f03b4",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_CE9E.C",
           "line": 1
         },
@@ -62528,6 +63455,24 @@
           "symbol": "f03cc",
           "definition": false,
           "return_type": "int",
+          "argument_count": 4,
+          "argument_types": [
+            "int",
+            "int",
+            "void far *",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 4
+        },
+        {
+          "symbol": "f03cc",
+          "definition": false,
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -62627,6 +63572,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_B6CD.C",
           "line": 1
+        },
+        {
+          "symbol": "f1ecd",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f1ecd",
@@ -62748,6 +63706,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_4713.C",
           "line": 5
+        },
+        {
+          "symbol": "f2269",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f2269",
@@ -63572,6 +64543,19 @@
         {
           "symbol": "f4b0c",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f4b0c",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -63607,6 +64591,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_3A75.C",
           "line": 9
+        },
+        {
+          "symbol": "f4e9f",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f4e9f",
@@ -63769,6 +64766,45 @@
           "confidence": "MEDIUM",
           "file": "src/F_684A.C",
           "line": 9
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
+      "id": "FUNCTION_ABI:f4f96",
+      "kind": "FUNCTION_ABI",
+      "symbol": "f4f96",
+      "fields": [
+        "return_type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "f4f96",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 6
+        },
+        {
+          "symbol": "f4f96",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_520A.C",
+          "line": 6
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -64563,6 +65599,32 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 4
+        },
+        {
+          "symbol": "f656c",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f656c",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_CF3C.C",
           "line": 1
         }
@@ -64662,6 +65724,22 @@
           "confidence": "MEDIUM",
           "file": "src/F_90A6.C",
           "line": 1
+        },
+        {
+          "symbol": "f684a",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 2,
+          "argument_types": [
+            "int",
+            "char far * far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 5
         },
         {
           "symbol": "f684a",
@@ -65391,6 +66469,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
+        },
+        {
+          "symbol": "f6b66",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
           "line": 3
         },
@@ -65643,6 +66734,19 @@
         {
           "symbol": "f6c57",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "f6c57",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -65743,6 +66847,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_B6CD.C",
           "line": 1
+        },
+        {
+          "symbol": "f6c6f",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
         },
         {
           "symbol": "f6c6f",
@@ -68308,6 +69425,21 @@
           "symbol": "f86c9",
           "definition": false,
           "return_type": "int",
+          "argument_count": 1,
+          "argument_types": [
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 10
+        },
+        {
+          "symbol": "f86c9",
+          "definition": false,
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -68964,6 +70096,56 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
+      "id": "FUNCTION_ABI:fa036",
+      "kind": "FUNCTION_ABI",
+      "symbol": "fa036",
+      "fields": [
+        "return_type",
+        "argument_count",
+        "argument_types"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "fa036",
+          "definition": true,
+          "return_type": "long",
+          "argument_count": 2,
+          "argument_types": [
+            "char *",
+            "char *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_A036.C",
+          "line": 1
+        },
+        {
+          "symbol": "fa036",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 5,
+          "argument_types": [
+            "char far *",
+            "char far *",
+            "struct record far *",
+            "char far *",
+            "long"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 9
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
       "id": "FUNCTION_ABI:fa13f",
       "kind": "FUNCTION_ABI",
       "symbol": "fa13f",
@@ -69055,6 +70237,47 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
+      "id": "FUNCTION_ABI:fa15e",
+      "kind": "FUNCTION_ABI",
+      "symbol": "fa15e",
+      "fields": [
+        "return_type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "fa15e",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_A15E.C",
+          "line": 8
+        },
+        {
+          "symbol": "fa15e",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
       "id": "FUNCTION_ABI:fa1e0",
       "kind": "FUNCTION_ABI",
       "symbol": "fa1e0",
@@ -69117,6 +70340,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_A24E.C",
           "line": 4
+        },
+        {
+          "symbol": "fa24e",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
         },
         {
           "symbol": "fa24e",
@@ -69208,45 +70444,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "FUNCTION_ABI:faa1f",
-      "kind": "FUNCTION_ABI",
-      "symbol": "faa1f",
-      "fields": [
-        "return_type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "faa1f",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_AA1F.C",
-          "line": 2
-        },
-        {
-          "symbol": "faa1f",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_AB66.C",
-          "line": 3
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "FUNCTION_ABI:fad25",
       "kind": "FUNCTION_ABI",
       "symbol": "fad25",
@@ -69307,6 +70504,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_A658.C",
           "line": 27
+        },
+        {
+          "symbol": "faf45",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 8
         },
         {
           "symbol": "faf45",
@@ -69574,14 +70784,14 @@
           "symbol": "fbb40f",
           "definition": true,
           "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
+          "argument_count": 0,
+          "argument_types": [],
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_B40F.C",
-          "line": 2
+          "line": 7
         },
         {
           "symbol": "fbb40f",
@@ -70024,6 +71234,19 @@
         {
           "symbol": "fcaf1",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "fcaf1",
+          "definition": false,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -70175,6 +71398,19 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
+          "line": 3
+        },
+        {
+          "symbol": "fcb48",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
           "line": 3
         },
         {
@@ -71027,6 +72263,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 3
+        },
+        {
+          "symbol": "fd5f9",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/F_C0E0.C",
           "line": 1
         },
@@ -71423,6 +72672,23 @@
           "confidence": "MEDIUM",
           "file": "src/F_656C.C",
           "line": 53
+        },
+        {
+          "symbol": "memmove",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "void far *",
+            "void far *",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 6
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -71683,6 +72949,39 @@
           "confidence": "MEDIUM",
           "file": "src/F_A85E.C",
           "line": 41
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
+      "id": "GLOBAL_TYPE:_argv",
+      "kind": "GLOBAL_TYPE",
+      "symbol": "_argv",
+      "fields": [
+        "type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "_argv",
+          "type": "char far * far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 3
+        },
+        {
+          "symbol": "_argv",
+          "type": "char * *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_520A.C",
+          "line": 10
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -72229,6 +73528,16 @@
       "declarations": [
         {
           "symbol": "g1778",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 4
+        },
+        {
+          "symbol": "g1778",
           "type": "unsigned",
           "array": null,
           "pointer_shape": null,
@@ -72537,6 +73846,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_B6CD.C",
           "line": 1
+        },
+        {
+          "symbol": "g40c4",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
         },
         {
           "symbol": "g40c4",
@@ -72875,6 +74194,16 @@
         },
         {
           "symbol": "g9bfc",
+          "type": "char near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 2
+        },
+        {
+          "symbol": "g9bfc",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -72915,6 +74244,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_4EEB.C",
           "line": 9
+        },
+        {
+          "symbol": "gb07c",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 3
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -73001,6 +74340,39 @@
           "confidence": "MEDIUM",
           "file": "src/F_656C.C",
           "line": 56
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
+      "id": "GLOBAL_TYPE:gb3af",
+      "kind": "GLOBAL_TYPE",
+      "symbol": "gb3af",
+      "fields": [
+        "type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "gb3af",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_338A.C",
+          "line": 5
+        },
+        {
+          "symbol": "gb3af",
+          "type": "unsigned char near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 8
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -73112,6 +74484,39 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
+      "id": "GLOBAL_TYPE:gb52f",
+      "kind": "GLOBAL_TYPE",
+      "symbol": "gb52f",
+      "fields": [
+        "type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "gb52f",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_B772.C",
+          "line": 1
+        },
+        {
+          "symbol": "gb52f",
+          "type": "int near",
+          "array": "[]",
+          "pointer_shape": "near",
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 6
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
       "id": "GLOBAL_TYPE:gb68",
       "kind": "GLOBAL_TYPE",
       "symbol": "gb68",
@@ -73206,6 +74611,39 @@
           "confidence": "MEDIUM",
           "file": "src/F_699E.C",
           "line": 1
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
+      "id": "GLOBAL_TYPE:gb6cf",
+      "kind": "GLOBAL_TYPE",
+      "symbol": "gb6cf",
+      "fields": [
+        "type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "gb6cf",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 7
+        },
+        {
+          "symbol": "gb6cf",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_B967.C",
+          "line": 2
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -73381,6 +74819,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_1D47.C",
           "line": 1
+        },
+        {
+          "symbol": "gbf66",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 2
         },
         {
           "symbol": "gbf66",
@@ -73590,6 +75038,16 @@
         },
         {
           "symbol": "gbfbc",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
+        },
+        {
+          "symbol": "gbfbc",
           "type": "char far *",
           "array": null,
           "pointer_shape": "far",
@@ -73789,6 +75247,139 @@
           "confidence": "MEDIUM",
           "file": "src/F_6266.C",
           "line": 40
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfcd",
+      "kind": "GLOBAL_TYPE",
+      "symbol": "gbfcd",
+      "fields": [
+        "type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_0281.C",
+          "line": 15
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_48BE.C",
+          "line": 8
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_4F96.C",
+          "line": 5
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_520A.C",
+          "line": 11
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_5F3C.C",
+          "line": 1
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_656C.C",
+          "line": 62
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_6771.C",
+          "line": 1
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_67DC.C",
+          "line": 1
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_738A.C",
+          "line": 1
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_75F3.C",
+          "line": 13
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_950C.C",
+          "line": 1
+        },
+        {
+          "symbol": "gbfcd",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/F_9F40.C",
+          "line": 5
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -74700,6 +76291,16 @@
           "pointer_shape": null,
           "size": null,
           "confidence": "MEDIUM",
+          "file": "src/F_AA1F.C",
+          "line": 7
+        },
+        {
+          "symbol": "gc470",
+          "type": "struct record",
+          "array": "[]",
+          "pointer_shape": null,
+          "size": null,
+          "confidence": "MEDIUM",
           "file": "src/F_AB66.C",
           "line": 8
         },
@@ -74958,6 +76559,26 @@
         },
         {
           "symbol": "gc5c6",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B40F.C",
+          "line": 3
+        },
+        {
+          "symbol": "gc5c6",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
+        },
+        {
+          "symbol": "gc5c6",
           "type": "char *",
           "array": null,
           "pointer_shape": "far",
@@ -75078,6 +76699,16 @@
           "confidence": "MEDIUM",
           "file": "src/F_B6CD.C",
           "line": 1
+        },
+        {
+          "symbol": "gc5ca",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_B7F9.C",
+          "line": 9
         },
         {
           "symbol": "gc5ca",
@@ -76936,6 +78567,21 @@
       "confidence": "MEDIUM",
       "file": "src/F_A85E.C",
       "line": 1
+    },
+    {
+      "name": "record",
+      "bytes": 27,
+      "fields": [
+        {
+          "name": "bytes",
+          "type": "char",
+          "offset": 0,
+          "bytes": 27
+        }
+      ],
+      "confidence": "MEDIUM",
+      "file": "src/F_AA1F.C",
+      "line": 6
     },
     {
       "name": "record",

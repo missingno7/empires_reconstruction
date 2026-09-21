@@ -122,18 +122,6 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "F_4F96",
-      "source": "asm/F_4F96.ASM",
-      "bytes": 299,
-      "members": [
-        "F_4F96"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "M_50D2_53BF",
       "source": "asm/M_50D2_53BF.ASM",
       "bytes": 312,
@@ -319,47 +307,11 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "F_AA1F",
-      "source": "asm/F_AA1F.ASM",
-      "bytes": 327,
-      "members": [
-        "F_AA1F"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "F_B122",
       "source": "asm/F_B122.ASM",
       "bytes": 693,
       "members": [
         "F_B122"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_B40F",
-      "source": "asm/F_B40F.ASM",
-      "bytes": 236,
-      "members": [
-        "F_B40F"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "F_B7F9",
-      "source": "asm/F_B7F9.ASM",
-      "bytes": 366,
-      "members": [
-        "F_B7F9"
       ],
       "classification": "UNDETERMINED",
       "evidence": "Current TASM representation alone does not establish historical language.",
@@ -621,6 +573,13 @@
   "scope": "Representation versus origin triage. User-authorized exact C recovery is recorded separately; source provenance remains unproved.",
   "exact_c_recoveries": [
     {
+      "id": "F_4F96",
+      "source": "src/F_4F96.C",
+      "bytes": 299,
+      "evidence": "All 299 bytes reproduced by ordinary Turbo C with -B and pinned TASM. Both switch comparisons and shortened-jump NOPs arise naturally; no inline ASM or object corrections.",
+      "original_language_proven": false
+    },
+    {
       "id": "F_7964",
       "source": "src/F_7964.C",
       "bytes": 664,
@@ -635,10 +594,31 @@
       "original_language_proven": false
     },
     {
+      "id": "F_AA1F",
+      "source": "src/F_AA1F.C",
+      "bytes": 327,
+      "evidence": "All 327 original bytes reproduced by ordinary Turbo C: state switch, signed wraparound, 200-byte local buffer and far-pointer calls; no inline ASM, DB, or object corrections.",
+      "original_language_proven": false
+    },
+    {
       "id": "F_AB66",
       "source": "src/F_AB66.C",
       "bytes": 385,
       "evidence": "Ordinary C matched against all 385 original bytes with pinned Turbo C; no inline ASM or DB.",
+      "original_language_proven": false
+    },
+    {
+      "id": "F_B40F",
+      "source": "src/F_B40F.C",
+      "bytes": 236,
+      "evidence": "All 236 bytes reproduced by ordinary Turbo C: compact offset table expansion and far-pointer tail fill; no inline ASM, DB, or object corrections.",
+      "original_language_proven": false
+    },
+    {
+      "id": "F_B7F9",
+      "source": "src/F_B7F9.C",
+      "bytes": 366,
+      "evidence": "All 366 bytes reproduced by ordinary Turbo C: display update and workspace fill loops; no inline ASM, DB, or object corrections.",
       "original_language_proven": false
     }
   ]

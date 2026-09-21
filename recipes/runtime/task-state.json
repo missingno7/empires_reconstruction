@@ -1,1 +1,35 @@
-{}
+{
+  "RUNTIME_BLOCK:089F-08F3": {
+    "status": "RESOLVED",
+    "range": [
+      2207,
+      2291
+    ],
+    "reason": "Packed 21-byte UNROLLED_TRANSFER card was reached; the planar 15-byte transcription is not applicable and FAST rejected it.",
+    "failure": {
+      "candidate": "RUNTIME_BLOCK:089F-08F3",
+      "status": "FAIL",
+      "pattern": "UNKNOWN_BYTE_MISMATCH",
+      "message": "Runtime bytes differ",
+      "details": {
+        "first_mismatch": 396,
+        "expected": "9f f9 8a f9 75 f9 60 f9 32 ff 8a 1e",
+        "actual": "9d f9 87 f9 70 f9 5a f9 32 ff 8a 1e",
+        "expected_extent": 6571,
+        "actual_extent": 6577,
+        "candidate_offset": -1811,
+        "first_mismatch_hex": "0x18c"
+      },
+      "hint": null,
+      "input_fingerprint": "133eb1096fe9b028a1a4f7e08b908caca99390d15f4acc029cf52f2b3cfefc7b"
+    },
+    "saved_source": "build/blocked-candidates/RUNTIME_BLOCK_089F-08F3-cde2f5989aa9.ASM",
+    "supervisor_resolution": "Recovered four packed21 bodies with all four entry labels preserved. Archived failure used planar15 instructions, shifting labels and the earlier computed-entry table. Existing UNROLLED_TRANSFER packed21 regression covers all 80 bodies.",
+    "acceptance": {
+      "status": "ACCEPTED",
+      "candidate": "RUNTIME_BLOCK:089F-08F3",
+      "sha256": "1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10",
+      "raw_bytes_removed": 84
+    }
+  }
+}

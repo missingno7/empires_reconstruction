@@ -1,0 +1,7246 @@
+{
+  "format": "empires-grinder-readiness-v1",
+  "input_fingerprint": "d9ce539662c5b6adf36e1b82b69df5a1bbaf7b3bf611ffe8b7aca17e8445b390",
+  "run_started": false,
+  "source_inventory": [
+    {
+      "id": "RUNTIME_BLOCK",
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "source_sha256": "14f7499e823bfbbc7a9054eec5ccb31819306ac66fdb512083384d59ab399f0d",
+      "range_file_offsets": [
+        1436,
+        8007
+      ],
+      "bytes": 6571,
+      "route": "EXISTING_RUNTIME_CARDS",
+      "reason": "Use current bounded runtime cards; do not convert the whole block to C.",
+      "existing_c_sources": [
+        {
+          "path": "src/RUNTIME_BLOCK.C",
+          "sha256": "105bcf692ffab947d4f9099f2c164ae00eac1d28d2dac866701b60fafd3f8227",
+          "inline_asm_tokens": 793
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 162,
+          "instruction": "push ds"
+        },
+        {
+          "line": 165,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 168,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 171,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 174,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 177,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 180,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 183,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 186,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 189,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 192,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 204,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 207,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 212,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 215,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 220,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 223,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 243,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 246,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 249,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 252,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 253,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 261,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 264,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 267,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 270,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 273,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 276,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 279,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 282,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 285,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 288,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 292,
+          "instruction": "int 10h"
+        },
+        {
+          "line": 308,
+          "instruction": "push ds"
+        },
+        {
+          "line": 335,
+          "instruction": "push es"
+        },
+        {
+          "line": 349,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 353,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 360,
+          "instruction": "stosb"
+        },
+        {
+          "line": 362,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 369,
+          "instruction": "stosb"
+        },
+        {
+          "line": 371,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 378,
+          "instruction": "stosb"
+        },
+        {
+          "line": 380,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 387,
+          "instruction": "stosb"
+        },
+        {
+          "line": 389,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 396,
+          "instruction": "stosb"
+        },
+        {
+          "line": 398,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 405,
+          "instruction": "stosb"
+        },
+        {
+          "line": 407,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 414,
+          "instruction": "stosb"
+        },
+        {
+          "line": 416,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 423,
+          "instruction": "stosb"
+        },
+        {
+          "line": 425,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 432,
+          "instruction": "stosb"
+        },
+        {
+          "line": 434,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 441,
+          "instruction": "stosb"
+        },
+        {
+          "line": 443,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 450,
+          "instruction": "stosb"
+        },
+        {
+          "line": 452,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 459,
+          "instruction": "stosb"
+        },
+        {
+          "line": 461,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 468,
+          "instruction": "stosb"
+        },
+        {
+          "line": 470,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 477,
+          "instruction": "stosb"
+        },
+        {
+          "line": 479,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 486,
+          "instruction": "stosb"
+        },
+        {
+          "line": 488,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 495,
+          "instruction": "stosb"
+        },
+        {
+          "line": 497,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 504,
+          "instruction": "stosb"
+        },
+        {
+          "line": 506,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 513,
+          "instruction": "stosb"
+        },
+        {
+          "line": 515,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 522,
+          "instruction": "stosb"
+        },
+        {
+          "line": 524,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 531,
+          "instruction": "stosb"
+        },
+        {
+          "line": 533,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 540,
+          "instruction": "stosb"
+        },
+        {
+          "line": 542,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 549,
+          "instruction": "stosb"
+        },
+        {
+          "line": 551,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 558,
+          "instruction": "stosb"
+        },
+        {
+          "line": 560,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 567,
+          "instruction": "stosb"
+        },
+        {
+          "line": 569,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 576,
+          "instruction": "stosb"
+        },
+        {
+          "line": 578,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 585,
+          "instruction": "stosb"
+        },
+        {
+          "line": 587,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 594,
+          "instruction": "stosb"
+        },
+        {
+          "line": 596,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 603,
+          "instruction": "stosb"
+        },
+        {
+          "line": 605,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 612,
+          "instruction": "stosb"
+        },
+        {
+          "line": 614,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 621,
+          "instruction": "stosb"
+        },
+        {
+          "line": 623,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 630,
+          "instruction": "stosb"
+        },
+        {
+          "line": 632,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 639,
+          "instruction": "stosb"
+        },
+        {
+          "line": 641,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 648,
+          "instruction": "stosb"
+        },
+        {
+          "line": 650,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 657,
+          "instruction": "stosb"
+        },
+        {
+          "line": 659,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 666,
+          "instruction": "stosb"
+        },
+        {
+          "line": 668,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 675,
+          "instruction": "stosb"
+        },
+        {
+          "line": 677,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 684,
+          "instruction": "stosb"
+        },
+        {
+          "line": 686,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 693,
+          "instruction": "stosb"
+        },
+        {
+          "line": 695,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 702,
+          "instruction": "stosb"
+        },
+        {
+          "line": 704,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 711,
+          "instruction": "stosb"
+        },
+        {
+          "line": 713,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 720,
+          "instruction": "stosb"
+        },
+        {
+          "line": 722,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 729,
+          "instruction": "stosb"
+        },
+        {
+          "line": 731,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 738,
+          "instruction": "stosb"
+        },
+        {
+          "line": 740,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 747,
+          "instruction": "stosb"
+        },
+        {
+          "line": 749,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 756,
+          "instruction": "stosb"
+        },
+        {
+          "line": 758,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 765,
+          "instruction": "stosb"
+        },
+        {
+          "line": 767,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 774,
+          "instruction": "stosb"
+        },
+        {
+          "line": 776,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 783,
+          "instruction": "stosb"
+        },
+        {
+          "line": 785,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 792,
+          "instruction": "stosb"
+        },
+        {
+          "line": 794,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 801,
+          "instruction": "stosb"
+        },
+        {
+          "line": 803,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 810,
+          "instruction": "stosb"
+        },
+        {
+          "line": 812,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 819,
+          "instruction": "stosb"
+        },
+        {
+          "line": 821,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 828,
+          "instruction": "stosb"
+        },
+        {
+          "line": 830,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 837,
+          "instruction": "stosb"
+        },
+        {
+          "line": 839,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 846,
+          "instruction": "stosb"
+        },
+        {
+          "line": 848,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 855,
+          "instruction": "stosb"
+        },
+        {
+          "line": 857,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 864,
+          "instruction": "stosb"
+        },
+        {
+          "line": 866,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 873,
+          "instruction": "stosb"
+        },
+        {
+          "line": 875,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 882,
+          "instruction": "stosb"
+        },
+        {
+          "line": 884,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 891,
+          "instruction": "stosb"
+        },
+        {
+          "line": 893,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 900,
+          "instruction": "stosb"
+        },
+        {
+          "line": 902,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 909,
+          "instruction": "stosb"
+        },
+        {
+          "line": 911,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 918,
+          "instruction": "stosb"
+        },
+        {
+          "line": 920,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 927,
+          "instruction": "stosb"
+        },
+        {
+          "line": 929,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 936,
+          "instruction": "stosb"
+        },
+        {
+          "line": 938,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 945,
+          "instruction": "stosb"
+        },
+        {
+          "line": 947,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 954,
+          "instruction": "stosb"
+        },
+        {
+          "line": 956,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 963,
+          "instruction": "stosb"
+        },
+        {
+          "line": 965,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 972,
+          "instruction": "stosb"
+        },
+        {
+          "line": 974,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 981,
+          "instruction": "stosb"
+        },
+        {
+          "line": 983,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 990,
+          "instruction": "stosb"
+        },
+        {
+          "line": 992,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 999,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1001,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1008,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1010,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1017,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1019,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1026,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1028,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1035,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1037,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1044,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1046,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1053,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1055,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1062,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1064,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1071,
+          "instruction": "stosb"
+        },
+        {
+          "line": 1075,
+          "instruction": "loop $+7h"
+        },
+        {
+          "line": 1076,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 1090,
+          "instruction": "push ds"
+        },
+        {
+          "line": 1115,
+          "instruction": "push es"
+        },
+        {
+          "line": 1118,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 1127,
+          "instruction": "push cx"
+        },
+        {
+          "line": 1130,
+          "instruction": "rep movsw"
+        },
+        {
+          "line": 1132,
+          "instruction": "rep movsb"
+        },
+        {
+          "line": 1133,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 1137,
+          "instruction": "loop $-12h"
+        },
+        {
+          "line": 1140,
+          "instruction": "loop $-18h"
+        },
+        {
+          "line": 1141,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 1152,
+          "instruction": "push ds"
+        },
+        {
+          "line": 1185,
+          "instruction": "push es"
+        },
+        {
+          "line": 1188,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 1197,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1205,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1208,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1210,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1218,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1221,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1223,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1231,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1234,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1236,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1244,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1247,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1249,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1257,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1260,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1262,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1270,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1273,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1275,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1283,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1286,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1288,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1296,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1299,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1301,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1309,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1312,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1314,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1322,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1325,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1327,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1335,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1338,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1340,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1348,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1351,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1353,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1361,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1364,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1366,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1374,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1377,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1379,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1387,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1390,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1392,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1400,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1403,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1405,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1413,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1416,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1418,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1426,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1429,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1431,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1439,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1442,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1444,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1452,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1455,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1457,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1465,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1468,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1470,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1478,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1481,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1483,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1491,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1494,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1496,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1504,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1507,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1509,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1517,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1520,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1522,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1530,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1533,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1535,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1543,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1546,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1548,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1556,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1559,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1561,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1569,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1572,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1574,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1582,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1585,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1587,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1595,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1598,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1600,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1608,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1611,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1613,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1621,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1624,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1626,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1634,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1637,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1639,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1647,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1650,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1652,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1660,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1663,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1665,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1673,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1676,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1678,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1686,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1689,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1691,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1699,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1702,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1704,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1712,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1715,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1717,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1725,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1728,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1730,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1738,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1741,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1743,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1751,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1754,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1756,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1764,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1767,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1769,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1777,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1780,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1782,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1790,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1793,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1795,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1803,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1806,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1808,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1816,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1819,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1821,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1829,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1832,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1834,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1842,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1845,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1847,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1855,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1858,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1860,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1868,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1871,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1873,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1881,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1884,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1886,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1894,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1897,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1899,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1907,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1910,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1912,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1920,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1923,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1925,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1933,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1936,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1938,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1946,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1949,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1951,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1959,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1962,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1964,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1972,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1975,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1977,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1985,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1988,
+          "instruction": "stosw"
+        },
+        {
+          "line": 1990,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 1998,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2001,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2003,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2011,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2014,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2016,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2024,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2027,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2029,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2037,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2040,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2042,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2050,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2053,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2055,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2063,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2066,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2068,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2076,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2079,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2081,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2089,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2092,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2094,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2102,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2105,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2107,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2115,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2118,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2120,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2128,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2131,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2133,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2141,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2144,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2146,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2154,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2157,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2159,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2167,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2170,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2172,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2180,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2183,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2185,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2193,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2196,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2198,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2206,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2209,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2211,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2219,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2222,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2224,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2232,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2235,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2240,
+          "instruction": "loop $+7h"
+        },
+        {
+          "line": 2242,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2281,
+          "instruction": "rep stosb"
+        },
+        {
+          "line": 2317,
+          "instruction": "loop runtime_f03a5_loop"
+        },
+        {
+          "line": 2348,
+          "instruction": "loop runtime_0fd4_pixel_loop"
+        },
+        {
+          "line": 2364,
+          "instruction": "rep stosb"
+        },
+        {
+          "line": 2380,
+          "instruction": "loop runtime_f03a8_clear_loop"
+        },
+        {
+          "line": 2408,
+          "instruction": "loop runtime_104b_pixel_loop"
+        },
+        {
+          "line": 2427,
+          "instruction": "loop $-4h"
+        },
+        {
+          "line": 2441,
+          "instruction": "loop $-5h"
+        },
+        {
+          "line": 2452,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2476,
+          "instruction": "rep movsb"
+        },
+        {
+          "line": 2480,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2491,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2501,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2503,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 2509,
+          "instruction": "rep movsb"
+        },
+        {
+          "line": 2513,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2524,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2548,
+          "instruction": "rep movsw"
+        },
+        {
+          "line": 2550,
+          "instruction": "rep movsb"
+        },
+        {
+          "line": 2555,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2565,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2570,
+          "instruction": "stosw"
+        },
+        {
+          "line": 2583,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2613,
+          "instruction": "rep movsb"
+        },
+        {
+          "line": 2620,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2631,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2655,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 2662,
+          "instruction": "loop runtime_f03ba_inner_loop"
+        },
+        {
+          "line": 2669,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2680,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2712,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 2719,
+          "instruction": "loop runtime_f03bd_inner_loop"
+        },
+        {
+          "line": 2726,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2737,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2763,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 2776,
+          "instruction": "loop runtime_f03c0_low_loop"
+        },
+        {
+          "line": 2783,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 2796,
+          "instruction": "loop runtime_f03c0_high_loop"
+        },
+        {
+          "line": 2803,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2814,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2845,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 2858,
+          "instruction": "loop runtime_f03c3_low_loop"
+        },
+        {
+          "line": 2865,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 2878,
+          "instruction": "loop runtime_f03c3_high_loop"
+        },
+        {
+          "line": 2885,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 2897,
+          "instruction": "push ds"
+        },
+        {
+          "line": 2995,
+          "instruction": "loop $-70h"
+        },
+        {
+          "line": 3054,
+          "instruction": "loop $-70h"
+        },
+        {
+          "line": 3057,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3077,
+          "instruction": "push ds"
+        },
+        {
+          "line": 3088,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 3099,
+          "instruction": "rep movsw"
+        },
+        {
+          "line": 3101,
+          "instruction": "rep movsb"
+        },
+        {
+          "line": 3106,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3116,
+          "instruction": "stosw"
+        },
+        {
+          "line": 3120,
+          "instruction": "stosw"
+        },
+        {
+          "line": 3150,
+          "instruction": "push ds"
+        },
+        {
+          "line": 3198,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3209,
+          "instruction": "push es"
+        },
+        {
+          "line": 3219,
+          "instruction": "stosw"
+        },
+        {
+          "line": 3222,
+          "instruction": "stosw"
+        },
+        {
+          "line": 3230,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3234,
+          "instruction": "push cx"
+        },
+        {
+          "line": 3236,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 3238,
+          "instruction": "xlat cs:[bx]"
+        },
+        {
+          "line": 3241,
+          "instruction": "stosb"
+        },
+        {
+          "line": 3242,
+          "instruction": "loop runtime_17a0_pixel_loop"
+        },
+        {
+          "line": 3243,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 3250,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3277,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3286,
+          "instruction": "push es"
+        },
+        {
+          "line": 3299,
+          "instruction": "stosw"
+        },
+        {
+          "line": 3302,
+          "instruction": "stosw"
+        },
+        {
+          "line": 3310,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3314,
+          "instruction": "push cx"
+        },
+        {
+          "line": 3323,
+          "instruction": "xlat cs:[bx]"
+        },
+        {
+          "line": 3326,
+          "instruction": "stosb"
+        },
+        {
+          "line": 3327,
+          "instruction": "loop runtime_180c_pixel_loop"
+        },
+        {
+          "line": 3328,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 3335,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 3349,
+          "instruction": "push ds"
+        },
+        {
+          "line": 3430,
+          "instruction": "loop runtime_f03cf+42h"
+        },
+        {
+          "line": 3431,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "F_1ECD",
+      "source": "asm/F_1ECD.ASM",
+      "source_sha256": "18ff214d322a1ad38d8af7a0992e7489a8a026fab96b7c490ca31261e4f4800d",
+      "range_file_offsets": [
+        8397,
+        8471
+      ],
+      "bytes": 74,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_1ECD.C",
+          "sha256": "a16e1a7e9f7190bf38e499a0743f7172c4baa64054c221ba4387c84bfb6898ff",
+          "inline_asm_tokens": 34
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 29,
+          "instruction": "@@loop:"
+        },
+        {
+          "line": 30,
+          "instruction": "push    cx"
+        },
+        {
+          "line": 31,
+          "instruction": "push    ds"
+        },
+        {
+          "line": 32,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 34,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 50,
+          "instruction": "pop     ds"
+        },
+        {
+          "line": 51,
+          "instruction": "pop     cx"
+        },
+        {
+          "line": 52,
+          "instruction": "loop    @@loop"
+        }
+      ]
+    },
+    {
+      "id": "F_1F91",
+      "source": "asm/F_1F91.ASM",
+      "source_sha256": "643796e42e1a9052cb238ea12173d0c633648bee17b78f589f8456f5112e5818",
+      "range_file_offsets": [
+        8593,
+        8719
+      ],
+      "bytes": 126,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_1F91.C",
+          "sha256": "0d9799f8d15b345ba2e333f8809298ada69db23183a71d2ba23370e994ff36f5",
+          "inline_asm_tokens": 52
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 25,
+          "instruction": "push    ds"
+        },
+        {
+          "line": 75,
+          "instruction": "loop    @@row"
+        },
+        {
+          "line": 76,
+          "instruction": "pop     ds"
+        }
+      ]
+    },
+    {
+      "id": "F_25B3",
+      "source": "asm/F_25B3.ASM",
+      "source_sha256": "4c303ae341b366dd5fb4ff7f34b6a61ff269c33f73442ef56cb11dc2a2c57cc9",
+      "range_file_offsets": [
+        10163,
+        10924
+      ],
+      "bytes": 761,
+      "route": "HELD_C_RECONSTRUCTION",
+      "reason": "761-byte record update; recover byte-coordinate types first (related F_28AC mismatch).",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 58,
+          "instruction": "push ax"
+        },
+        {
+          "line": 82,
+          "instruction": "push ax"
+        },
+        {
+          "line": 85,
+          "instruction": "push ax"
+        },
+        {
+          "line": 88,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 89,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 100,
+          "instruction": "push ax"
+        },
+        {
+          "line": 102,
+          "instruction": "push ax"
+        },
+        {
+          "line": 105,
+          "instruction": "push ax"
+        },
+        {
+          "line": 115,
+          "instruction": "push ax"
+        },
+        {
+          "line": 116,
+          "instruction": "push ds"
+        },
+        {
+          "line": 118,
+          "instruction": "push ax"
+        },
+        {
+          "line": 127,
+          "instruction": "push ax"
+        },
+        {
+          "line": 130,
+          "instruction": "push ax"
+        },
+        {
+          "line": 132,
+          "instruction": "push ax"
+        },
+        {
+          "line": 149,
+          "instruction": "push ax"
+        },
+        {
+          "line": 152,
+          "instruction": "push ax"
+        },
+        {
+          "line": 154,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 155,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 166,
+          "instruction": "push ax"
+        },
+        {
+          "line": 168,
+          "instruction": "push ax"
+        },
+        {
+          "line": 171,
+          "instruction": "push ax"
+        },
+        {
+          "line": 179,
+          "instruction": "push ax"
+        },
+        {
+          "line": 180,
+          "instruction": "push ds"
+        },
+        {
+          "line": 182,
+          "instruction": "push ax"
+        },
+        {
+          "line": 185,
+          "instruction": "push ax"
+        },
+        {
+          "line": 192,
+          "instruction": "push ax"
+        },
+        {
+          "line": 195,
+          "instruction": "push ax"
+        },
+        {
+          "line": 197,
+          "instruction": "push ax"
+        },
+        {
+          "line": 217,
+          "instruction": "push ax"
+        },
+        {
+          "line": 220,
+          "instruction": "push ax"
+        },
+        {
+          "line": 222,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 223,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 234,
+          "instruction": "push ax"
+        },
+        {
+          "line": 236,
+          "instruction": "push ax"
+        },
+        {
+          "line": 239,
+          "instruction": "push ax"
+        },
+        {
+          "line": 248,
+          "instruction": "push ax"
+        },
+        {
+          "line": 249,
+          "instruction": "push ds"
+        },
+        {
+          "line": 251,
+          "instruction": "push ax"
+        },
+        {
+          "line": 259,
+          "instruction": "push ax"
+        },
+        {
+          "line": 262,
+          "instruction": "push ax"
+        },
+        {
+          "line": 264,
+          "instruction": "push ax"
+        },
+        {
+          "line": 281,
+          "instruction": "push ax"
+        },
+        {
+          "line": 284,
+          "instruction": "push ax"
+        },
+        {
+          "line": 286,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 287,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 298,
+          "instruction": "push ax"
+        },
+        {
+          "line": 300,
+          "instruction": "push ax"
+        },
+        {
+          "line": 303,
+          "instruction": "push ax"
+        },
+        {
+          "line": 311,
+          "instruction": "push ax"
+        },
+        {
+          "line": 312,
+          "instruction": "push ds"
+        },
+        {
+          "line": 314,
+          "instruction": "push ax"
+        },
+        {
+          "line": 318,
+          "instruction": "push ax"
+        },
+        {
+          "line": 324,
+          "instruction": "push ax"
+        },
+        {
+          "line": 327,
+          "instruction": "push ax"
+        },
+        {
+          "line": 329,
+          "instruction": "push ax"
+        }
+      ]
+    },
+    {
+      "id": "F_28AC",
+      "source": "asm/F_28AC.ASM",
+      "source_sha256": "b6846bc0cd4b4f4b5ab4e41be84eb9afd8fed83feae2b8a38ef4c807cce79abe",
+      "range_file_offsets": [
+        10924,
+        11142
+      ],
+      "bytes": 218,
+      "route": "HELD_SUPERVISOR",
+      "reason": "214/218-byte C near-match; -B did not resolve the two byte-coordinate conversions.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_28AC.C",
+          "sha256": "fbe45fe528c044054545a82279643c0a84538547b0bd5dd74a271bda06030b17",
+          "inline_asm_tokens": 10
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 50,
+          "instruction": "push ax"
+        },
+        {
+          "line": 68,
+          "instruction": "push ax"
+        },
+        {
+          "line": 69,
+          "instruction": "push ds"
+        },
+        {
+          "line": 71,
+          "instruction": "push ax"
+        },
+        {
+          "line": 81,
+          "instruction": "push ax"
+        },
+        {
+          "line": 82,
+          "instruction": "push ds"
+        },
+        {
+          "line": 84,
+          "instruction": "push ax"
+        }
+      ]
+    },
+    {
+      "id": "F_4AA8",
+      "source": "asm/F_4AA8.ASM",
+      "source_sha256": "ae7678f5f003e9be9992e370761fc79ec78fd57a44423e529375b6beaf195419",
+      "range_file_offsets": [
+        19624,
+        19724
+      ],
+      "bytes": 100,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_4AA8.C",
+          "sha256": "b8b37dffd2b3a38a22cea8b2675b4ccb81eff11ffb17840947e8acf23312ad64",
+          "inline_asm_tokens": 41
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 27,
+          "instruction": "jg      @@out"
+        },
+        {
+          "line": 30,
+          "instruction": "jg      @@out"
+        },
+        {
+          "line": 35,
+          "instruction": "jl      @@out"
+        },
+        {
+          "line": 40,
+          "instruction": "jl      @@out"
+        },
+        {
+          "line": 62,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 64,
+          "instruction": "push    cx"
+        },
+        {
+          "line": 67,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 70,
+          "instruction": "@@out:"
+        }
+      ]
+    },
+    {
+      "id": "F_4B0C",
+      "source": "asm/F_4B0C.ASM",
+      "source_sha256": "5123d6cd3dfddc14d93de8405ba541502219d5e7cefcca2f4392568129c32cf7",
+      "range_file_offsets": [
+        19724,
+        20639
+      ],
+      "bytes": 915,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_4B0C.C",
+          "sha256": "27e933039585e2a55b4a7c7333717241d391b9cd50283a5b214e3ea4ecb8667a",
+          "inline_asm_tokens": 41
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 33,
+          "instruction": "push ax"
+        },
+        {
+          "line": 37,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 51,
+          "instruction": "push cx"
+        },
+        {
+          "line": 77,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 99,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 103,
+          "instruction": "loop record_loop"
+        },
+        {
+          "line": 135,
+          "instruction": "push es"
+        },
+        {
+          "line": 137,
+          "instruction": "push ax"
+        },
+        {
+          "line": 173,
+          "instruction": "push ax"
+        },
+        {
+          "line": 239,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 257,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 353,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 385,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 391,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 413,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 417,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 433,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 435,
+          "instruction": "push ax"
+        },
+        {
+          "line": 439,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 445,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 447,
+          "instruction": "push ax"
+        },
+        {
+          "line": 451,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 455,
+          "instruction": "push ax"
+        },
+        {
+          "line": 459,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 461,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 467,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 469,
+          "instruction": "push ax"
+        },
+        {
+          "line": 473,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 485,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 529,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 539,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 555,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 575,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 613,
+          "instruction": "push es"
+        },
+        {
+          "line": 615,
+          "instruction": "push ax"
+        },
+        {
+          "line": 617,
+          "instruction": "push cx"
+        },
+        {
+          "line": 635,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 653,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 663,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 679,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 709,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 719,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 729,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 739,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 751,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 763,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 775,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 785,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 795,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 809,
+          "instruction": "lodsb"
+        }
+      ]
+    },
+    {
+      "id": "F_4E9F",
+      "source": "asm/F_4E9F.ASM",
+      "source_sha256": "2b5721a76e9fd6455b503fdba9f545fe73079a0bc0e8fca67bdf4f68c34ab3e6",
+      "range_file_offsets": [
+        20639,
+        20715
+      ],
+      "bytes": 76,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 29,
+          "instruction": "je      @@out"
+        },
+        {
+          "line": 37,
+          "instruction": "push    cx"
+        },
+        {
+          "line": 42,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 44,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 46,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 48,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 51,
+          "instruction": "pop     cx"
+        },
+        {
+          "line": 53,
+          "instruction": "loop    @@top"
+        },
+        {
+          "line": 54,
+          "instruction": "@@out:  pop     di"
+        }
+      ]
+    },
+    {
+      "id": "F_4EEB",
+      "source": "src/F_4EEB.ASM",
+      "source_sha256": "acd9d8da83a66c4cc7245ee9474ebdb624ece2767d2f7ba8f8069c933d1a9dd1",
+      "range_file_offsets": [
+        20715,
+        20835
+      ],
+      "bytes": 120,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_4EEB.C",
+          "sha256": "7f258c270d1a5b5722b0f1ca94cb15fa65a39c5be83da8947e7f79001b2f2a2f",
+          "inline_asm_tokens": 54
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 24,
+          "instruction": "push ax"
+        },
+        {
+          "line": 26,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 42,
+          "instruction": "push cx"
+        },
+        {
+          "line": 50,
+          "instruction": "push es"
+        },
+        {
+          "line": 51,
+          "instruction": "push ax"
+        },
+        {
+          "line": 54,
+          "instruction": "push ax"
+        },
+        {
+          "line": 69,
+          "instruction": "push ax"
+        },
+        {
+          "line": 73,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 76,
+          "instruction": "loop loop_records"
+        }
+      ]
+    },
+    {
+      "id": "F_4F63",
+      "source": "src/F_4F63.ASM",
+      "source_sha256": "3403ba664c28d99bff029211811e7aebce4b582e51bf9c7e53d95097502c1907",
+      "range_file_offsets": [
+        20835,
+        20886
+      ],
+      "bytes": 51,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 24,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 25,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 36,
+          "instruction": "int 21h"
+        }
+      ]
+    },
+    {
+      "id": "M_50D2_53BF",
+      "source": "asm/M_50D2_53BF.ASM",
+      "source_sha256": "53423c8207aa7ef24cb8e5aa9bd4f0ae38232e32a20a6f70dd99f6d963f95ef4",
+      "range_file_offsets": [
+        21202,
+        21514
+      ],
+      "bytes": 312,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_50D2.C",
+          "sha256": "ae8ab6f6e0bc4dd88525ce81f1d4942591357de4bb1f091f125f0b0d34f08029",
+          "inline_asm_tokens": 30
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 22,
+          "instruction": "int     10h"
+        },
+        {
+          "line": 40,
+          "instruction": "int     10h"
+        },
+        {
+          "line": 73,
+          "instruction": "int     10h"
+        },
+        {
+          "line": 83,
+          "instruction": "out     dx,al"
+        },
+        {
+          "line": 85,
+          "instruction": "in      al,dx"
+        },
+        {
+          "line": 88,
+          "instruction": "out     dx,al"
+        },
+        {
+          "line": 91,
+          "instruction": "loop    @@spin"
+        },
+        {
+          "line": 92,
+          "instruction": "in      al,dx"
+        },
+        {
+          "line": 94,
+          "instruction": "out     dx,al"
+        },
+        {
+          "line": 103,
+          "instruction": "int     10h"
+        },
+        {
+          "line": 155,
+          "instruction": "int 15h"
+        },
+        {
+          "line": 165,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 166,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 169,
+          "instruction": "loop wait_vga_port"
+        }
+      ]
+    },
+    {
+      "id": "F_6036",
+      "source": "asm/F_6036.ASM",
+      "source_sha256": "4fd59214c735c626dbfec1c892ab935254ca68cf6bdec55b7dc81ccce2ae7d18",
+      "range_file_offsets": [
+        25142,
+        25257
+      ],
+      "bytes": 115,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_6036.C",
+          "sha256": "a9f0efb11d4a59f0e0c39751d4d0ee826301400e0bd73a7006a29e12b55b2214",
+          "inline_asm_tokens": 21
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 16,
+          "instruction": "push ds"
+        },
+        {
+          "line": 21,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 27,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 29,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 39,
+          "instruction": "push ds"
+        },
+        {
+          "line": 40,
+          "instruction": "push cx"
+        },
+        {
+          "line": 41,
+          "instruction": "push es"
+        },
+        {
+          "line": 45,
+          "instruction": "push ax"
+        },
+        {
+          "line": 47,
+          "instruction": "push ax"
+        },
+        {
+          "line": 52,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 56,
+          "instruction": "pop es"
+        },
+        {
+          "line": 57,
+          "instruction": "push es"
+        },
+        {
+          "line": 59,
+          "instruction": "push ax"
+        },
+        {
+          "line": 60,
+          "instruction": "push es"
+        },
+        {
+          "line": 68,
+          "instruction": "pop es"
+        },
+        {
+          "line": 69,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 70,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 72,
+          "instruction": "loop sprite_loop"
+        },
+        {
+          "line": 74,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "F_60A9",
+      "source": "asm/F_60A9.ASM",
+      "source_sha256": "d6034c0963d794ebddb344565ae3c750724ca5cb570450e6c9eb31ed0244efc1",
+      "range_file_offsets": [
+        25257,
+        25473
+      ],
+      "bytes": 216,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_60A9.C",
+          "sha256": "ae05ce33f00bfe8bb9dada6cb8f3bc48d858f73727a827acf01b11a8aca7df6e",
+          "inline_asm_tokens": 32
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 36,
+          "instruction": "push    ds"
+        },
+        {
+          "line": 50,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 55,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 62,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 90,
+          "instruction": "push    ds"
+        },
+        {
+          "line": 91,
+          "instruction": "push    cx"
+        },
+        {
+          "line": 92,
+          "instruction": "push    es"
+        },
+        {
+          "line": 100,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 102,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 105,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 113,
+          "instruction": "pop     es"
+        },
+        {
+          "line": 114,
+          "instruction": "push    es"
+        },
+        {
+          "line": 116,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 117,
+          "instruction": "push    es"
+        },
+        {
+          "line": 127,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 130,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 132,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 137,
+          "instruction": "pop     es"
+        },
+        {
+          "line": 138,
+          "instruction": "pop     cx"
+        },
+        {
+          "line": 139,
+          "instruction": "pop     ds"
+        },
+        {
+          "line": 146,
+          "instruction": "pop     ds"
+        }
+      ]
+    },
+    {
+      "id": "F_6181",
+      "source": "asm/F_6181.ASM",
+      "source_sha256": "1b1e0a4bea33249e3484074b30b61939db5067d1e91a98d8878516d62e85798d",
+      "range_file_offsets": [
+        25473,
+        25644
+      ],
+      "bytes": 171,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_6181.C",
+          "sha256": "6b1b5948ab51bb5f23c351174e171b6a29c98b96b4794ad1d217518d7823ea11",
+          "inline_asm_tokens": 22
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 20,
+          "instruction": "org 57h"
+        },
+        {
+          "line": 25,
+          "instruction": "org 0"
+        },
+        {
+          "line": 31,
+          "instruction": "push ds"
+        },
+        {
+          "line": 41,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 72,
+          "instruction": "push es"
+        },
+        {
+          "line": 76,
+          "instruction": "org 5ch"
+        },
+        {
+          "line": 81,
+          "instruction": "push ax"
+        },
+        {
+          "line": 83,
+          "instruction": "push ax"
+        },
+        {
+          "line": 86,
+          "instruction": "push ax"
+        },
+        {
+          "line": 94,
+          "instruction": "pop es"
+        },
+        {
+          "line": 96,
+          "instruction": "push ax"
+        },
+        {
+          "line": 97,
+          "instruction": "push es"
+        },
+        {
+          "line": 107,
+          "instruction": "push ax"
+        },
+        {
+          "line": 110,
+          "instruction": "push ax"
+        },
+        {
+          "line": 112,
+          "instruction": "push ax"
+        },
+        {
+          "line": 117,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "F_643A",
+      "source": "asm/F_643A.ASM",
+      "source_sha256": "658c7e6820ceb97f0d5f5d903c702109bc164da8764af72ac4c8d647dd6a06d1",
+      "range_file_offsets": [
+        26170,
+        26410
+      ],
+      "bytes": 240,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_643A.C",
+          "sha256": "48843fbb802da68ed17cc4ef8811f3792cd302220a5b00d9ce610d18fb3ccc91",
+          "inline_asm_tokens": 58
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 35,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 38,
+          "instruction": "push ax"
+        },
+        {
+          "line": 44,
+          "instruction": "push ax"
+        },
+        {
+          "line": 50,
+          "instruction": "push ax"
+        },
+        {
+          "line": 53,
+          "instruction": "push ax"
+        },
+        {
+          "line": 58,
+          "instruction": "push ax"
+        },
+        {
+          "line": 61,
+          "instruction": "push ax"
+        },
+        {
+          "line": 70,
+          "instruction": "push ax"
+        },
+        {
+          "line": 76,
+          "instruction": "push ax"
+        },
+        {
+          "line": 83,
+          "instruction": "push ax"
+        },
+        {
+          "line": 91,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 97,
+          "instruction": "push ax"
+        },
+        {
+          "line": 99,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 102,
+          "instruction": "push ds"
+        },
+        {
+          "line": 104,
+          "instruction": "push ax"
+        },
+        {
+          "line": 106,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 107,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 110,
+          "instruction": "push ax"
+        },
+        {
+          "line": 112,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 121,
+          "instruction": "sti"
+        }
+      ]
+    },
+    {
+      "id": "F_652A",
+      "source": "asm/F_652A.ASM",
+      "source_sha256": "eed2a17081baa668facce472e59761705bfc6d37136aa4446af214767bdea3ae",
+      "range_file_offsets": [
+        26410,
+        26476
+      ],
+      "bytes": 66,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 24,
+          "instruction": "int 13h"
+        },
+        {
+          "line": 37,
+          "instruction": "int 13h"
+        },
+        {
+          "line": 43,
+          "instruction": "int 21h"
+        }
+      ]
+    },
+    {
+      "id": "F_699E",
+      "source": "asm/F_699E.ASM",
+      "source_sha256": "6e1037ff9b3fea445d27cd5cf6572050038b89db2516126b66dd8ea0f9961172",
+      "range_file_offsets": [
+        27550,
+        27930
+      ],
+      "bytes": 380,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_699E.C",
+          "sha256": "1c7c76633b6ecfc90cbce7f391369c4384b238c95fe3578df7083b77a0ed0236",
+          "inline_asm_tokens": 40
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 40,
+          "instruction": "push\tax"
+        },
+        {
+          "line": 42,
+          "instruction": "push\tcx"
+        },
+        {
+          "line": 44,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 45,
+          "instruction": "push\tds"
+        },
+        {
+          "line": 53,
+          "instruction": "sti"
+        },
+        {
+          "line": 54,
+          "instruction": "in\tal,60h"
+        },
+        {
+          "line": 62,
+          "instruction": "in\tal,61h"
+        },
+        {
+          "line": 67,
+          "instruction": "out\t61h,al"
+        },
+        {
+          "line": 69,
+          "instruction": "out\t61h,al"
+        },
+        {
+          "line": 71,
+          "instruction": "out\t20h,al"
+        },
+        {
+          "line": 91,
+          "instruction": "loop\tscan"
+        },
+        {
+          "line": 182,
+          "instruction": "pushf"
+        },
+        {
+          "line": 186,
+          "instruction": "in\tal,61h"
+        },
+        {
+          "line": 191,
+          "instruction": "out\t61h,al"
+        },
+        {
+          "line": 193,
+          "instruction": "out\t61h,al"
+        },
+        {
+          "line": 195,
+          "instruction": "out\t20h,al"
+        },
+        {
+          "line": 201,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 202,
+          "instruction": "pop\tes"
+        },
+        {
+          "line": 204,
+          "instruction": "pop\tcx"
+        },
+        {
+          "line": 206,
+          "instruction": "pop\tax"
+        },
+        {
+          "line": 207,
+          "instruction": "iret"
+        }
+      ]
+    },
+    {
+      "id": "M_6B1A_6B4A",
+      "source": "asm/M_6B1A_6B4A.ASM",
+      "source_sha256": "21cbf52c97c72cd293f3b3ffaaa71dae24d672a072e057a7ff922ee7d24bf19c",
+      "range_file_offsets": [
+        27930,
+        28006
+      ],
+      "bytes": 76,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_6B1A.C",
+          "sha256": "ecef6a649ca932c647c0d7559a311d2c7973c23644c1d0e293d61d85c89377f0",
+          "inline_asm_tokens": 22
+        },
+        {
+          "path": "src/F_6B4A.C",
+          "sha256": "691e92f35de112fa60dc4b6820efae2b469b4450482eeaf5de81cc324f211231",
+          "inline_asm_tokens": 13
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 21,
+          "instruction": "int     16h"
+        },
+        {
+          "line": 27,
+          "instruction": "jb      @@out"
+        },
+        {
+          "line": 29,
+          "instruction": "jg      @@out"
+        },
+        {
+          "line": 34,
+          "instruction": "jz      @@out"
+        },
+        {
+          "line": 36,
+          "instruction": "push    ax"
+        },
+        {
+          "line": 38,
+          "instruction": "pop     ax"
+        },
+        {
+          "line": 40,
+          "instruction": "jmp     short @@out"
+        },
+        {
+          "line": 43,
+          "instruction": "@@out:"
+        },
+        {
+          "line": 50,
+          "instruction": "int     16h"
+        }
+      ]
+    },
+    {
+      "id": "F_6BCF",
+      "source": "asm/F_6BCF.ASM",
+      "source_sha256": "e54d5c006883c6ea23d2ff81bb44420fc1f0d468a043aee9cee54b9fbc90e38f",
+      "range_file_offsets": [
+        28111,
+        28198
+      ],
+      "bytes": 87,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_6BCF.C",
+          "sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
+          "inline_asm_tokens": 33
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 15,
+          "instruction": "push ax"
+        },
+        {
+          "line": 17,
+          "instruction": "push cx"
+        },
+        {
+          "line": 19,
+          "instruction": "push es"
+        },
+        {
+          "line": 20,
+          "instruction": "push ds"
+        },
+        {
+          "line": 26,
+          "instruction": "pushf"
+        },
+        {
+          "line": 27,
+          "instruction": "sti"
+        },
+        {
+          "line": 32,
+          "instruction": "pushf"
+        },
+        {
+          "line": 47,
+          "instruction": "out 20h,al"
+        },
+        {
+          "line": 48,
+          "instruction": "popf"
+        },
+        {
+          "line": 52,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 53,
+          "instruction": "pop es"
+        },
+        {
+          "line": 55,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 57,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 58,
+          "instruction": "iret"
+        }
+      ]
+    },
+    {
+      "id": "M_6D86_6DCC",
+      "source": "asm/M_6D86_6DCC.ASM",
+      "source_sha256": "04a1d782c7485d4a0c51e6fb36bafb7549e2b99ce4111a2bf24626e102691e1e",
+      "range_file_offsets": [
+        28550,
+        28927
+      ],
+      "bytes": 377,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_6D86.C",
+          "sha256": "2aae6c3ec56772b37d23be10470caa88d3921b97219ebed2d398849caf4f0880",
+          "inline_asm_tokens": 30
+        },
+        {
+          "path": "src/F_6DCC.C",
+          "sha256": "70c93badf67727f38f72c15b9d68b337ea2ae024bba24490cb8b13cff62ba230",
+          "inline_asm_tokens": 13
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 25,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 26,
+          "instruction": "push\tds"
+        },
+        {
+          "line": 35,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 42,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 43,
+          "instruction": "rep\tstosb"
+        },
+        {
+          "line": 49,
+          "instruction": "rep\tmovsb"
+        },
+        {
+          "line": 56,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 57,
+          "instruction": "pop\tes"
+        },
+        {
+          "line": 75,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 76,
+          "instruction": "push\tds"
+        },
+        {
+          "line": 105,
+          "instruction": "loop\tL_bit1"
+        },
+        {
+          "line": 138,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 139,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 142,
+          "instruction": "movsb"
+        },
+        {
+          "line": 145,
+          "instruction": "rep\tmovsw"
+        },
+        {
+          "line": 150,
+          "instruction": "stosb"
+        },
+        {
+          "line": 164,
+          "instruction": "loop\tL_bit2"
+        },
+        {
+          "line": 195,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 196,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 199,
+          "instruction": "movsb"
+        },
+        {
+          "line": 202,
+          "instruction": "rep\tmovsw"
+        },
+        {
+          "line": 207,
+          "instruction": "stosb"
+        },
+        {
+          "line": 212,
+          "instruction": "pop\tds"
+        },
+        {
+          "line": 213,
+          "instruction": "pop\tes"
+        }
+      ]
+    },
+    {
+      "id": "F_6EFF",
+      "source": "asm/F_6EFF.ASM",
+      "source_sha256": "c4211b54a3c5e0518a5b6301eddb9dec706f6d640c6653b27a100c483ed94586",
+      "range_file_offsets": [
+        28927,
+        29003
+      ],
+      "bytes": 76,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 18,
+          "instruction": "push ds"
+        },
+        {
+          "line": 28,
+          "instruction": "stosw"
+        },
+        {
+          "line": 29,
+          "instruction": "loop clear_upper_nibbles"
+        },
+        {
+          "line": 32,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 37,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 52,
+          "instruction": "stosb"
+        },
+        {
+          "line": 53,
+          "instruction": "loop expand_next_byte"
+        },
+        {
+          "line": 54,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "F_6F4B",
+      "source": "asm/F_6F4B.ASM",
+      "source_sha256": "d7b021ba66f9a7d0f75f135e1aa0d9667aae30f3b213aa650b9f8b1bec6b4737",
+      "range_file_offsets": [
+        29003,
+        29123
+      ],
+      "bytes": 120,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_6F4B.C",
+          "sha256": "4c4cc0f58284c577f29d98428a6dcdd969bd14d50661d766585b8f31fae03d29",
+          "inline_asm_tokens": 10
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 15,
+          "instruction": "push ds"
+        },
+        {
+          "line": 23,
+          "instruction": "stosb"
+        },
+        {
+          "line": 35,
+          "instruction": "stosb"
+        },
+        {
+          "line": 36,
+          "instruction": "loop header_loop"
+        },
+        {
+          "line": 61,
+          "instruction": "stosb"
+        },
+        {
+          "line": 71,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "F_8BAB",
+      "source": "asm/F_8BAB.ASM",
+      "source_sha256": "73e474a41a1eae56bc3fed5819c1a4c7b4da9a783336a28ca4919c31ae8f6cd9",
+      "range_file_offsets": [
+        36267,
+        37542
+      ],
+      "bytes": 1275,
+      "route": "HELD_C_RECONSTRUCTION",
+      "reason": "1275-byte state machine with many callees; requires a complete C candidate and typed local frame.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_8BAB.C",
+          "sha256": "80fd5711fd6fec3bc1f5858f8d362ff7a0b3fff84c4ae0f8bdb58900843e9036",
+          "inline_asm_tokens": 54
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 76,
+          "instruction": "push ax"
+        },
+        {
+          "line": 78,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 82,
+          "instruction": "push ax"
+        },
+        {
+          "line": 84,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 94,
+          "instruction": "push ax"
+        },
+        {
+          "line": 96,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 108,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 127,
+          "instruction": "push ax"
+        },
+        {
+          "line": 129,
+          "instruction": "push ax"
+        },
+        {
+          "line": 132,
+          "instruction": "push ax"
+        },
+        {
+          "line": 135,
+          "instruction": "push ax"
+        },
+        {
+          "line": 139,
+          "instruction": "push ax"
+        },
+        {
+          "line": 141,
+          "instruction": "push ax"
+        },
+        {
+          "line": 144,
+          "instruction": "push ax"
+        },
+        {
+          "line": 147,
+          "instruction": "push ax"
+        },
+        {
+          "line": 152,
+          "instruction": "push ax"
+        },
+        {
+          "line": 155,
+          "instruction": "push ax"
+        },
+        {
+          "line": 157,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 158,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 175,
+          "instruction": "loop short $-7"
+        },
+        {
+          "line": 179,
+          "instruction": "org 124h"
+        },
+        {
+          "line": 217,
+          "instruction": "push ds"
+        },
+        {
+          "line": 218,
+          "instruction": "pop es"
+        },
+        {
+          "line": 226,
+          "instruction": "push ax"
+        },
+        {
+          "line": 228,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 237,
+          "instruction": "push ds"
+        },
+        {
+          "line": 238,
+          "instruction": "pop es"
+        },
+        {
+          "line": 251,
+          "instruction": "push ds"
+        },
+        {
+          "line": 252,
+          "instruction": "pop es"
+        },
+        {
+          "line": 261,
+          "instruction": "push ax"
+        },
+        {
+          "line": 263,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 265,
+          "instruction": "push ax"
+        },
+        {
+          "line": 267,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 269,
+          "instruction": "push ax"
+        },
+        {
+          "line": 271,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 279,
+          "instruction": "push ax"
+        },
+        {
+          "line": 281,
+          "instruction": "push ax"
+        },
+        {
+          "line": 291,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 292,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 297,
+          "instruction": "push ax"
+        },
+        {
+          "line": 300,
+          "instruction": "push ax"
+        },
+        {
+          "line": 307,
+          "instruction": "push ds"
+        },
+        {
+          "line": 308,
+          "instruction": "pop es"
+        },
+        {
+          "line": 328,
+          "instruction": "push ax"
+        },
+        {
+          "line": 330,
+          "instruction": "push ax"
+        },
+        {
+          "line": 333,
+          "instruction": "push ax"
+        },
+        {
+          "line": 336,
+          "instruction": "push ax"
+        },
+        {
+          "line": 341,
+          "instruction": "push ax"
+        },
+        {
+          "line": 344,
+          "instruction": "push ax"
+        },
+        {
+          "line": 349,
+          "instruction": "push ax"
+        },
+        {
+          "line": 351,
+          "instruction": "push ax"
+        },
+        {
+          "line": 354,
+          "instruction": "push ax"
+        },
+        {
+          "line": 357,
+          "instruction": "push ax"
+        },
+        {
+          "line": 361,
+          "instruction": "push ax"
+        },
+        {
+          "line": 365,
+          "instruction": "push ax"
+        },
+        {
+          "line": 368,
+          "instruction": "push ax"
+        },
+        {
+          "line": 373,
+          "instruction": "push ax"
+        },
+        {
+          "line": 376,
+          "instruction": "push ax"
+        },
+        {
+          "line": 378,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 379,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 386,
+          "instruction": "push ax"
+        },
+        {
+          "line": 388,
+          "instruction": "push ax"
+        },
+        {
+          "line": 391,
+          "instruction": "push ax"
+        },
+        {
+          "line": 394,
+          "instruction": "push ax"
+        },
+        {
+          "line": 403,
+          "instruction": "push ax"
+        },
+        {
+          "line": 408,
+          "instruction": "push ax"
+        },
+        {
+          "line": 411,
+          "instruction": "push ax"
+        },
+        {
+          "line": 416,
+          "instruction": "push ax"
+        },
+        {
+          "line": 419,
+          "instruction": "push ax"
+        },
+        {
+          "line": 421,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 422,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 424,
+          "instruction": "push ax"
+        },
+        {
+          "line": 426,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 449,
+          "instruction": "loop short $-7"
+        },
+        {
+          "line": 453,
+          "instruction": "org 369h"
+        },
+        {
+          "line": 503,
+          "instruction": "push ds"
+        },
+        {
+          "line": 504,
+          "instruction": "pop es"
+        },
+        {
+          "line": 512,
+          "instruction": "push ax"
+        },
+        {
+          "line": 514,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 518,
+          "instruction": "push ax"
+        },
+        {
+          "line": 525,
+          "instruction": "push ds"
+        },
+        {
+          "line": 526,
+          "instruction": "pop es"
+        },
+        {
+          "line": 531,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 535,
+          "instruction": "push ax"
+        },
+        {
+          "line": 537,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 539,
+          "instruction": "push ax"
+        },
+        {
+          "line": 541,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 551,
+          "instruction": "push ax"
+        },
+        {
+          "line": 553,
+          "instruction": "push ax"
+        },
+        {
+          "line": 561,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 562,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 566,
+          "instruction": "push ax"
+        },
+        {
+          "line": 568,
+          "instruction": "push ax"
+        },
+        {
+          "line": 576,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 577,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 585,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 588,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 591,
+          "instruction": "push ax"
+        },
+        {
+          "line": 593,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 608,
+          "instruction": "push ax"
+        },
+        {
+          "line": 610,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 614,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 617,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 625,
+          "instruction": "pop cx"
+        }
+      ]
+    },
+    {
+      "id": "M_988F_98CB",
+      "source": "asm/M_988F_98CB.ASM",
+      "source_sha256": "0f9325be1923fb90fa58885d9258a2ee33a8f226487516ced177ba9325b0543c",
+      "range_file_offsets": [
+        39567,
+        39688
+      ],
+      "bytes": 121,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_98CB.C",
+          "sha256": "8a7225060ae689f0727c534f7af17994ce9ff8e30fc0b4b33dd4fec715cf3ace",
+          "inline_asm_tokens": 5
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 15,
+          "instruction": "push ax"
+        },
+        {
+          "line": 17,
+          "instruction": "push ax"
+        },
+        {
+          "line": 19,
+          "instruction": "push ax"
+        },
+        {
+          "line": 21,
+          "instruction": "push ax"
+        },
+        {
+          "line": 23,
+          "instruction": "push ax"
+        },
+        {
+          "line": 25,
+          "instruction": "push ax"
+        },
+        {
+          "line": 31,
+          "instruction": "push ax"
+        },
+        {
+          "line": 33,
+          "instruction": "push ax"
+        },
+        {
+          "line": 35,
+          "instruction": "push ax"
+        },
+        {
+          "line": 37,
+          "instruction": "push ax"
+        },
+        {
+          "line": 47,
+          "instruction": "push ax"
+        },
+        {
+          "line": 49,
+          "instruction": "push ax"
+        },
+        {
+          "line": 51,
+          "instruction": "push ax"
+        },
+        {
+          "line": 53,
+          "instruction": "push ax"
+        },
+        {
+          "line": 55,
+          "instruction": "push ax"
+        },
+        {
+          "line": 57,
+          "instruction": "push ax"
+        },
+        {
+          "line": 63,
+          "instruction": "push ax"
+        },
+        {
+          "line": 65,
+          "instruction": "push ax"
+        },
+        {
+          "line": 67,
+          "instruction": "push ax"
+        },
+        {
+          "line": 69,
+          "instruction": "push ax"
+        }
+      ]
+    },
+    {
+      "id": "F_9EC3",
+      "source": "asm/F_9EC3.ASM",
+      "source_sha256": "7e40b4d89c849ff6e2a6199387a01fae91876475d3321dcc4cea5ac221076f84",
+      "range_file_offsets": [
+        41155,
+        41280
+      ],
+      "bytes": 125,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_9EC3.C",
+          "sha256": "0346752147f7626294f80152212d659db643efcd4c45936973c96b7a4c321810",
+          "inline_asm_tokens": 16
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 20,
+          "instruction": "push ds"
+        },
+        {
+          "line": 38,
+          "instruction": "push ds"
+        },
+        {
+          "line": 42,
+          "instruction": "xlat"
+        },
+        {
+          "line": 43,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 45,
+          "instruction": "push ds"
+        },
+        {
+          "line": 49,
+          "instruction": "xlat"
+        },
+        {
+          "line": 50,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 56,
+          "instruction": "movsb"
+        },
+        {
+          "line": 69,
+          "instruction": "loop F9_row"
+        },
+        {
+          "line": 70,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "F_B122",
+      "source": "asm/F_B122.ASM",
+      "source_sha256": "73a9ee615b35204177b88d67999e2ed7ff8502013178a0b41f817e18bd85b2db",
+      "range_file_offsets": [
+        45858,
+        46551
+      ],
+      "bytes": 693,
+      "route": "HELD_C_RECONSTRUCTION",
+      "reason": "693-byte table expansion; use exact F_B40F as reference, but derive each table and call binding independently.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_B122.C",
+          "sha256": "8c47cbdb388b020d94113691ff893bfe3f63196b9e67c248ed540f3b92af49d9",
+          "inline_asm_tokens": 29
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 36,
+          "instruction": "push cx"
+        },
+        {
+          "line": 41,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 55,
+          "instruction": "push ds"
+        },
+        {
+          "line": 57,
+          "instruction": "push ax"
+        },
+        {
+          "line": 59,
+          "instruction": "push ax"
+        },
+        {
+          "line": 71,
+          "instruction": "push ax"
+        },
+        {
+          "line": 73,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 75,
+          "instruction": "push ax"
+        },
+        {
+          "line": 78,
+          "instruction": "push ds"
+        },
+        {
+          "line": 80,
+          "instruction": "push ax"
+        },
+        {
+          "line": 85,
+          "instruction": "push ax"
+        },
+        {
+          "line": 87,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 89,
+          "instruction": "push ax"
+        },
+        {
+          "line": 92,
+          "instruction": "push ds"
+        },
+        {
+          "line": 94,
+          "instruction": "push ax"
+        },
+        {
+          "line": 104,
+          "instruction": "push ds"
+        },
+        {
+          "line": 106,
+          "instruction": "push ax"
+        },
+        {
+          "line": 108,
+          "instruction": "push ax"
+        }
+      ]
+    },
+    {
+      "id": "F_B99F",
+      "source": "asm/F_B99F.ASM",
+      "source_sha256": "acbbb61d947a0035c2fd983e0f75d5de97db6ae33fe8df10ba90dde798718d01",
+      "range_file_offsets": [
+        48031,
+        49888
+      ],
+      "bytes": 1857,
+      "route": "HELD_C_RECONSTRUCTION",
+      "reason": "1857-byte state machine with 148-byte local frame; scope and recover nested control flow before unattended work.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 35,
+          "instruction": "push ax"
+        },
+        {
+          "line": 42,
+          "instruction": "push cx"
+        },
+        {
+          "line": 52,
+          "instruction": "push cx"
+        },
+        {
+          "line": 70,
+          "instruction": "push ax"
+        },
+        {
+          "line": 72,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 128,
+          "instruction": "push ds"
+        },
+        {
+          "line": 130,
+          "instruction": "push ax"
+        },
+        {
+          "line": 132,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 133,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 135,
+          "instruction": "push ax"
+        },
+        {
+          "line": 136,
+          "instruction": "push ds"
+        },
+        {
+          "line": 138,
+          "instruction": "push ax"
+        },
+        {
+          "line": 174,
+          "instruction": "push ax"
+        },
+        {
+          "line": 177,
+          "instruction": "push ax"
+        },
+        {
+          "line": 180,
+          "instruction": "push ax"
+        },
+        {
+          "line": 202,
+          "instruction": "push ax"
+        },
+        {
+          "line": 211,
+          "instruction": "push cx"
+        },
+        {
+          "line": 219,
+          "instruction": "push cx"
+        },
+        {
+          "line": 237,
+          "instruction": "push ax"
+        },
+        {
+          "line": 240,
+          "instruction": "push ax"
+        },
+        {
+          "line": 263,
+          "instruction": "push ax"
+        },
+        {
+          "line": 272,
+          "instruction": "push cx"
+        },
+        {
+          "line": 280,
+          "instruction": "push cx"
+        },
+        {
+          "line": 293,
+          "instruction": "push ax"
+        },
+        {
+          "line": 296,
+          "instruction": "push ax"
+        },
+        {
+          "line": 299,
+          "instruction": "push ax"
+        },
+        {
+          "line": 326,
+          "instruction": "push ax"
+        },
+        {
+          "line": 329,
+          "instruction": "push ax"
+        },
+        {
+          "line": 332,
+          "instruction": "push ax"
+        },
+        {
+          "line": 352,
+          "instruction": "push ax"
+        },
+        {
+          "line": 355,
+          "instruction": "push ax"
+        },
+        {
+          "line": 358,
+          "instruction": "push ax"
+        },
+        {
+          "line": 381,
+          "instruction": "push ax"
+        },
+        {
+          "line": 383,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 392,
+          "instruction": "push ax"
+        },
+        {
+          "line": 395,
+          "instruction": "push ax"
+        },
+        {
+          "line": 398,
+          "instruction": "push ax"
+        },
+        {
+          "line": 404,
+          "instruction": "push ax"
+        },
+        {
+          "line": 406,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 432,
+          "instruction": "push ax"
+        },
+        {
+          "line": 435,
+          "instruction": "push ax"
+        },
+        {
+          "line": 438,
+          "instruction": "push ax"
+        },
+        {
+          "line": 455,
+          "instruction": "push ax"
+        },
+        {
+          "line": 457,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 492,
+          "instruction": "push ax"
+        },
+        {
+          "line": 494,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 500,
+          "instruction": "push ax"
+        },
+        {
+          "line": 502,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 506,
+          "instruction": "push ax"
+        },
+        {
+          "line": 508,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 518,
+          "instruction": "push ax"
+        },
+        {
+          "line": 520,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 524,
+          "instruction": "push ax"
+        },
+        {
+          "line": 526,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 543,
+          "instruction": "push ax"
+        },
+        {
+          "line": 547,
+          "instruction": "push ax"
+        },
+        {
+          "line": 549,
+          "instruction": "push ax"
+        },
+        {
+          "line": 592,
+          "instruction": "push ax"
+        },
+        {
+          "line": 608,
+          "instruction": "push cx"
+        },
+        {
+          "line": 620,
+          "instruction": "push ax"
+        },
+        {
+          "line": 621,
+          "instruction": "push ds"
+        },
+        {
+          "line": 623,
+          "instruction": "push ax"
+        },
+        {
+          "line": 636,
+          "instruction": "push cx"
+        },
+        {
+          "line": 653,
+          "instruction": "push ax"
+        },
+        {
+          "line": 660,
+          "instruction": "push ax"
+        },
+        {
+          "line": 662,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 666,
+          "instruction": "push ax"
+        },
+        {
+          "line": 668,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 686,
+          "instruction": "push cx"
+        },
+        {
+          "line": 718,
+          "instruction": "push ax"
+        },
+        {
+          "line": 720,
+          "instruction": "pop cx"
+        }
+      ]
+    },
+    {
+      "id": "M_C1A0_C232",
+      "source": "asm/M_C1A0_C232.ASM",
+      "source_sha256": "81443e564577826de53a2cf24569d61828525b1ce7aa63c1b6f0bdb1ea37e7aa",
+      "range_file_offsets": [
+        50080,
+        50301
+      ],
+      "bytes": 221,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_C1A0.C",
+          "sha256": "e461d97cabfc735f89952d12c53b52469f979640dad389ae897eeaa50b0e71ef",
+          "inline_asm_tokens": 27
+        },
+        {
+          "path": "src/F_C1F7.C",
+          "sha256": "cd48c3a5220b0de76dbf4347b6bd973360a9b40367d9680d6c2de4573c9ecd7c",
+          "inline_asm_tokens": 21
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 25,
+          "instruction": "push\tax"
+        },
+        {
+          "line": 26,
+          "instruction": "push\tcx"
+        },
+        {
+          "line": 31,
+          "instruction": "push\tes"
+        },
+        {
+          "line": 52,
+          "instruction": "tick_l3:\tpop\tes"
+        },
+        {
+          "line": 57,
+          "instruction": "pop\tcx"
+        },
+        {
+          "line": 58,
+          "instruction": "pop\tax"
+        },
+        {
+          "line": 112,
+          "instruction": "loop scan_entry"
+        }
+      ]
+    },
+    {
+      "id": "M_C27D_C567",
+      "source": "asm/M_C27D_C567.ASM",
+      "source_sha256": "be88e749dcced33916da8db3ccd1c5eba873fd00d95c24df6ea2276c258e1824",
+      "range_file_offsets": [
+        50301,
+        51098
+      ],
+      "bytes": 797,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_C27D.C",
+          "sha256": "90a24b6e5c2a5565e188a42dbc25fc56d9405803375607f70cf37079e2c9922a",
+          "inline_asm_tokens": 42
+        },
+        {
+          "path": "src/F_C2EA.C",
+          "sha256": "c7a6230f6433b19c157167ca3f5414a9fe3c2b9a54c97dc918f590d4b738aa09",
+          "inline_asm_tokens": 5
+        },
+        {
+          "path": "src/F_C359.C",
+          "sha256": "6da5a3940c3add2c9c75cb1168f8f516034a4dc1b4055183f0121ab0319b6531",
+          "inline_asm_tokens": 6
+        },
+        {
+          "path": "src/F_C3DB.C",
+          "sha256": "2bc8dbe5d182b62de346cd8808acd3804f80a9440e2c43a49e361c06236f9dc0",
+          "inline_asm_tokens": 5
+        },
+        {
+          "path": "src/F_C440.C",
+          "sha256": "8366622580ee2f01ddf4c804ac4288742d9f8e9ccb76dd9d7ec508c228117fc2",
+          "inline_asm_tokens": 8
+        },
+        {
+          "path": "src/F_C501.C",
+          "sha256": "00a6a40d390be0b00168e8f65251fe90289ddb21222cdab9654ac584e9f11e42",
+          "inline_asm_tokens": 3
+        }
+      ],
+      "instruction_observations": []
+    },
+    {
+      "id": "M_C5A8_C5C6",
+      "source": "asm/M_C5A8_C5C6.ASM",
+      "source_sha256": "2a4194abf171b5c39c077fad6f3b9994358128dbd6b7d2ee8fc150020a5f0b33",
+      "range_file_offsets": [
+        51112,
+        51153
+      ],
+      "bytes": 41,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": []
+    },
+    {
+      "id": "M_C5D1_C706",
+      "source": "asm/M_C5D1_C706.ASM",
+      "source_sha256": "b7da9652e62aa3233a5cf629cee4a19d0a154d3902c3847a1363b4baa78c76bb",
+      "range_file_offsets": [
+        51153,
+        51541
+      ],
+      "bytes": 388,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_C5D1.C",
+          "sha256": "735ab79e4e9a911c4ec090a0b8479fd516c966ca3221289f32ff1141093d4b3c",
+          "inline_asm_tokens": 7
+        },
+        {
+          "path": "src/F_C678.C",
+          "sha256": "3fb33c129e893e6910f1d4fbced4b5e76aa163e12f3f9725e2f9eadce998a2ad",
+          "inline_asm_tokens": 3
+        },
+        {
+          "path": "src/F_C6B9.C",
+          "sha256": "32004d61b20e6690910af47aed463a80f9ba24e98335532bbb00012c855bb675",
+          "inline_asm_tokens": 4
+        },
+        {
+          "path": "src/F_C706.C",
+          "sha256": "f361b24ae501c6b8aeb6676bb3be85a96a73632a8a0f76496dc012fd9fe7d80c",
+          "inline_asm_tokens": 4
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 106,
+          "instruction": "in al,61h"
+        },
+        {
+          "line": 108,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 114,
+          "instruction": "push es"
+        },
+        {
+          "line": 116,
+          "instruction": "push ax"
+        },
+        {
+          "line": 119,
+          "instruction": "push ax"
+        },
+        {
+          "line": 121,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 122,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 123,
+          "instruction": "pop es"
+        },
+        {
+          "line": 129,
+          "instruction": "in al,61h"
+        },
+        {
+          "line": 131,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 148,
+          "instruction": "in al,61h"
+        },
+        {
+          "line": 150,
+          "instruction": "out 61h,al"
+        },
+        {
+          "line": 156,
+          "instruction": "push es"
+        },
+        {
+          "line": 157,
+          "instruction": "push cx"
+        },
+        {
+          "line": 160,
+          "instruction": "push ax"
+        },
+        {
+          "line": 162,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 163,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 164,
+          "instruction": "pop es"
+        },
+        {
+          "line": 196,
+          "instruction": "out 42h,al"
+        },
+        {
+          "line": 198,
+          "instruction": "out 42h,al"
+        }
+      ]
+    },
+    {
+      "id": "F_C755",
+      "source": "src/F_C755.ASM",
+      "source_sha256": "66e1763caf3769cad999cc265fbf4482052fe028294f586560d89abc873c5fb9",
+      "range_file_offsets": [
+        51541,
+        51578
+      ],
+      "bytes": 37,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 32,
+          "instruction": "loop reset_voice"
+        }
+      ]
+    },
+    {
+      "id": "M_C77A_C898",
+      "source": "asm/M_C77A_C898.ASM",
+      "source_sha256": "0f01f1445070da537bb8557f59df83aa10a606e0516b21b41891a44f202043fa",
+      "range_file_offsets": [
+        51578,
+        51924
+      ],
+      "bytes": 346,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_C77A.C",
+          "sha256": "34c729f54a09d3b6005c30be0020c5e0b7a6a858a7e7f15f709dbed3e9a50ae7",
+          "inline_asm_tokens": 4
+        },
+        {
+          "path": "src/F_C7CB.C",
+          "sha256": "f187e7d026f27abc731538b37ce3b76bbc34309309e0193253a2bc3f8297cd8c",
+          "inline_asm_tokens": 5
+        },
+        {
+          "path": "src/F_C834.C",
+          "sha256": "f16d90ae3323f51f768e265c48534383c80a61cfb61cf77c3ff90f9877ff5332",
+          "inline_asm_tokens": 20
+        },
+        {
+          "path": "src/F_C877.C",
+          "sha256": "d00cf9fcb7a9ff8bd4af386d363acdfbb6435d81d0b85cfd84768d91778bef57",
+          "inline_asm_tokens": 8
+        },
+        {
+          "path": "src/F_C898.C",
+          "sha256": "86968a28a5f3134a17685ba0111a8f45383a09b4ead30b93d70b72759273bc72",
+          "inline_asm_tokens": 48
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 20,
+          "instruction": "push ax"
+        },
+        {
+          "line": 46,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 56,
+          "instruction": "push ax"
+        },
+        {
+          "line": 57,
+          "instruction": "push cx"
+        },
+        {
+          "line": 60,
+          "instruction": "push es"
+        },
+        {
+          "line": 68,
+          "instruction": "push es"
+        },
+        {
+          "line": 72,
+          "instruction": "pop es"
+        },
+        {
+          "line": 91,
+          "instruction": "loop C7CB_copy_voice"
+        },
+        {
+          "line": 94,
+          "instruction": "pop es"
+        },
+        {
+          "line": 97,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 98,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 108,
+          "instruction": "push ax"
+        },
+        {
+          "line": 109,
+          "instruction": "push cx"
+        },
+        {
+          "line": 115,
+          "instruction": "push cx"
+        },
+        {
+          "line": 124,
+          "instruction": "loop C834_reset_voice"
+        },
+        {
+          "line": 127,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 128,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 137,
+          "instruction": "push cx"
+        },
+        {
+          "line": 147,
+          "instruction": "loop C877_voice_count_ready"
+        },
+        {
+          "line": 149,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 161,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 162,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 163,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 164,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 165,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 166,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 167,
+          "instruction": "in al,dx"
+        },
+        {
+          "line": 170,
+          "instruction": "out dx,al"
+        },
+        {
+          "line": 173,
+          "instruction": "in al,dx"
+        }
+      ]
+    },
+    {
+      "id": "F_C8D4",
+      "source": "src/F_C8D4.ASM",
+      "source_sha256": "11e41b7f21430ba302e8b4bb0f216ba7859bb8af1d027390ea7aa22b6fa76257",
+      "range_file_offsets": [
+        51924,
+        51938
+      ],
+      "bytes": 14,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 20,
+          "instruction": "out dx,al"
+        }
+      ]
+    },
+    {
+      "id": "F_C914",
+      "source": "asm/F_C914.ASM",
+      "source_sha256": "628b0e69b42d6cfbf00fed009e6b65bae20022611161b1e96c842d3eda733e92",
+      "range_file_offsets": [
+        51988,
+        52104
+      ],
+      "bytes": 116,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_C914.C",
+          "sha256": "f81319328aa8bca95056209be522b8b5d168a29a83fbd29a084d5581afe57fb5",
+          "inline_asm_tokens": 32
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 51,
+          "instruction": "push ax"
+        },
+        {
+          "line": 53,
+          "instruction": "pop ax"
+        }
+      ]
+    },
+    {
+      "id": "M_C9A4_CA91",
+      "source": "asm/M_C9A4_CA91.ASM",
+      "source_sha256": "6bbaddbc7a5f29dc1731c9fae4aee06ed885842c45ced22cf1ecf745462f86bd",
+      "range_file_offsets": [
+        52132,
+        52379
+      ],
+      "bytes": 247,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_C9A4.C",
+          "sha256": "7690b047a594bada09dca2d9ba47706f3ad062360ce3bddbc3f25006153fdd8c",
+          "inline_asm_tokens": 4
+        },
+        {
+          "path": "src/F_CA83.C",
+          "sha256": "0ed1ebf8ec04ab225e87158dc4fa1fdca47228fb2776404d450fefd2c0475fac",
+          "inline_asm_tokens": 4
+        },
+        {
+          "path": "src/F_CA91.C",
+          "sha256": "3f5355d513df29e44c337415b531d6009b5e0674c3532b62f7b5f33298e814e1",
+          "inline_asm_tokens": 5
+        }
+      ],
+      "instruction_observations": []
+    },
+    {
+      "id": "F_CA9B",
+      "source": "asm/F_CA9B.ASM",
+      "source_sha256": "e9cc8f86156f877fea283aa1013f7d01d0d06c05724aedc4f9bf519e75af45b2",
+      "range_file_offsets": [
+        52379,
+        52432
+      ],
+      "bytes": 53,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": []
+    },
+    {
+      "id": "F_CAF1",
+      "source": "asm/F_CAF1.ASM",
+      "source_sha256": "89555835ddba3402331a0439392a3236772ea0fc3052cf2af98110d703cfa36a",
+      "range_file_offsets": [
+        52465,
+        52552
+      ],
+      "bytes": 87,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_CAF1.C",
+          "sha256": "b5c5fe96edfe32e7f1f70a74490bf62da8fe005a50e3c3b974ecec28d65baf35",
+          "inline_asm_tokens": 30
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 16,
+          "instruction": "push ax"
+        },
+        {
+          "line": 17,
+          "instruction": "push cx"
+        },
+        {
+          "line": 20,
+          "instruction": "push es"
+        },
+        {
+          "line": 42,
+          "instruction": "pop es"
+        },
+        {
+          "line": 45,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 46,
+          "instruction": "pop ax"
+        }
+      ]
+    },
+    {
+      "id": "M_CB5C_CD23",
+      "source": "asm/M_CB5C_CD23.ASM",
+      "source_sha256": "2b435679b2966f8037d2c611e11233580469561900297521e7348a4ba393ea2c",
+      "range_file_offsets": [
+        52572,
+        53213
+      ],
+      "bytes": 641,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_CB5C.C",
+          "sha256": "9ee41bd4cb5ad3599a9f4e59f7f2c658c55133c18d9049606ba36109c39a8a12",
+          "inline_asm_tokens": 7
+        },
+        {
+          "path": "src/F_CBBB.C",
+          "sha256": "a4919d43272682e8383385b546fe24f53d784e4b785c30ffead9e9e91557fb74",
+          "inline_asm_tokens": 6
+        },
+        {
+          "path": "src/F_CC17.C",
+          "sha256": "ba57c7f2fcf67f895e55ac5aad88e25e7a0e13b97943a6d201dd3b4775881817",
+          "inline_asm_tokens": 6
+        },
+        {
+          "path": "src/F_CC6B.C",
+          "sha256": "f6d20bd9b4d7e911fa31d251cc877c8f53baef06ad71fcded9dc7e6dadf7c897",
+          "inline_asm_tokens": 10
+        },
+        {
+          "path": "src/F_CD23.C",
+          "sha256": "e3ee33bf66b29f60d8cdba4b74e723e3fe6a8a0d956ed289e1d82c32b7b736ee",
+          "inline_asm_tokens": 10
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 23,
+          "instruction": "push ds"
+        },
+        {
+          "line": 24,
+          "instruction": "pop es"
+        },
+        {
+          "line": 30,
+          "instruction": "push ds"
+        },
+        {
+          "line": 32,
+          "instruction": "push ax"
+        },
+        {
+          "line": 34,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 35,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 44,
+          "instruction": "push ds"
+        },
+        {
+          "line": 45,
+          "instruction": "pop es"
+        },
+        {
+          "line": 54,
+          "instruction": "push ds"
+        },
+        {
+          "line": 55,
+          "instruction": "pop es"
+        },
+        {
+          "line": 76,
+          "instruction": "push ds"
+        },
+        {
+          "line": 77,
+          "instruction": "pop es"
+        },
+        {
+          "line": 83,
+          "instruction": "push ds"
+        },
+        {
+          "line": 85,
+          "instruction": "push ax"
+        },
+        {
+          "line": 87,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 88,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 93,
+          "instruction": "push ax"
+        },
+        {
+          "line": 99,
+          "instruction": "push ds"
+        },
+        {
+          "line": 100,
+          "instruction": "pop es"
+        },
+        {
+          "line": 101,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 125,
+          "instruction": "push ds"
+        },
+        {
+          "line": 126,
+          "instruction": "pop es"
+        },
+        {
+          "line": 132,
+          "instruction": "push ds"
+        },
+        {
+          "line": 134,
+          "instruction": "push ax"
+        },
+        {
+          "line": 136,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 137,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 142,
+          "instruction": "push ax"
+        },
+        {
+          "line": 148,
+          "instruction": "push ds"
+        },
+        {
+          "line": 149,
+          "instruction": "pop es"
+        },
+        {
+          "line": 150,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 182,
+          "instruction": "push ax"
+        },
+        {
+          "line": 183,
+          "instruction": "push ds"
+        },
+        {
+          "line": 185,
+          "instruction": "push ax"
+        },
+        {
+          "line": 189,
+          "instruction": "push ax"
+        },
+        {
+          "line": 191,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 193,
+          "instruction": "push ax"
+        },
+        {
+          "line": 195,
+          "instruction": "push ax"
+        },
+        {
+          "line": 197,
+          "instruction": "push ax"
+        },
+        {
+          "line": 201,
+          "instruction": "push ax"
+        },
+        {
+          "line": 203,
+          "instruction": "push ax"
+        },
+        {
+          "line": 205,
+          "instruction": "push ax"
+        },
+        {
+          "line": 209,
+          "instruction": "push ax"
+        },
+        {
+          "line": 211,
+          "instruction": "push ax"
+        },
+        {
+          "line": 213,
+          "instruction": "push ax"
+        },
+        {
+          "line": 223,
+          "instruction": "push ax"
+        },
+        {
+          "line": 226,
+          "instruction": "push ax"
+        },
+        {
+          "line": 227,
+          "instruction": "push ds"
+        },
+        {
+          "line": 232,
+          "instruction": "push ax"
+        },
+        {
+          "line": 243,
+          "instruction": "push ax"
+        },
+        {
+          "line": 245,
+          "instruction": "push ax"
+        },
+        {
+          "line": 247,
+          "instruction": "push ax"
+        },
+        {
+          "line": 249,
+          "instruction": "push ax"
+        },
+        {
+          "line": 282,
+          "instruction": "push ax"
+        },
+        {
+          "line": 283,
+          "instruction": "push ds"
+        },
+        {
+          "line": 285,
+          "instruction": "push ax"
+        },
+        {
+          "line": 289,
+          "instruction": "push ax"
+        },
+        {
+          "line": 291,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 293,
+          "instruction": "push ax"
+        },
+        {
+          "line": 295,
+          "instruction": "push ax"
+        },
+        {
+          "line": 297,
+          "instruction": "push ax"
+        },
+        {
+          "line": 301,
+          "instruction": "push ax"
+        },
+        {
+          "line": 303,
+          "instruction": "push ax"
+        },
+        {
+          "line": 305,
+          "instruction": "push ax"
+        },
+        {
+          "line": 309,
+          "instruction": "push ax"
+        },
+        {
+          "line": 311,
+          "instruction": "push ax"
+        },
+        {
+          "line": 313,
+          "instruction": "push ax"
+        },
+        {
+          "line": 323,
+          "instruction": "push ax"
+        },
+        {
+          "line": 326,
+          "instruction": "push ax"
+        },
+        {
+          "line": 327,
+          "instruction": "push ds"
+        },
+        {
+          "line": 332,
+          "instruction": "push ax"
+        },
+        {
+          "line": 343,
+          "instruction": "push ax"
+        },
+        {
+          "line": 345,
+          "instruction": "push ax"
+        },
+        {
+          "line": 347,
+          "instruction": "push ax"
+        },
+        {
+          "line": 349,
+          "instruction": "push ax"
+        }
+      ]
+    },
+    {
+      "id": "M_D386_D3CF",
+      "source": "asm/M_D386_D3CF.ASM",
+      "source_sha256": "1e245bc6ac550f17a0f80c8f61010d2c781ed89ac5250467101f589a4b6b5937",
+      "range_file_offsets": [
+        54662,
+        54746
+      ],
+      "bytes": 84,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_D386.C",
+          "sha256": "7cbd477b7a2cc88ff08782a52695f389e4cfecc8a8ef4d365db617d4d9648a07",
+          "inline_asm_tokens": 11
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 22,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 26,
+          "instruction": "push cx"
+        },
+        {
+          "line": 29,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 31,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 34,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 43,
+          "instruction": "push es"
+        },
+        {
+          "line": 49,
+          "instruction": "push cx"
+        },
+        {
+          "line": 54,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 55,
+          "instruction": "loop fd386_next_record"
+        },
+        {
+          "line": 66,
+          "instruction": "lodsb"
+        }
+      ]
+    },
+    {
+      "id": "M_D61C_D79C",
+      "source": "asm/M_D61C_D79C.ASM",
+      "source_sha256": "c48e271098c9411c1195c27b0a253f08c099935a8e8e60961169b9fee6f98d47",
+      "range_file_offsets": [
+        55324,
+        55831
+      ],
+      "bytes": 507,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_D61C.C",
+          "sha256": "a17c6a4ada7703d54b80d5566d9bd784814b249a9c5a8ab19c84ccddad468aad",
+          "inline_asm_tokens": 16
+        },
+        {
+          "path": "src/F_D79C.C",
+          "sha256": "a9813958b0f5f6685c36642c6e7ddc45b7f6802d8ab6d4cbe0dbd7756a43c556",
+          "inline_asm_tokens": 6
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 29,
+          "instruction": "push ds"
+        },
+        {
+          "line": 63,
+          "instruction": "push cx"
+        },
+        {
+          "line": 64,
+          "instruction": "push es"
+        },
+        {
+          "line": 88,
+          "instruction": "push ds"
+        },
+        {
+          "line": 89,
+          "instruction": "push ax"
+        },
+        {
+          "line": 93,
+          "instruction": "push ax"
+        },
+        {
+          "line": 97,
+          "instruction": "push ax"
+        },
+        {
+          "line": 113,
+          "instruction": "pop es"
+        },
+        {
+          "line": 114,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 115,
+          "instruction": "loop D61_record_loop"
+        },
+        {
+          "line": 143,
+          "instruction": "pop ds"
+        },
+        {
+          "line": 156,
+          "instruction": "push ds"
+        },
+        {
+          "line": 163,
+          "instruction": "push cx"
+        },
+        {
+          "line": 164,
+          "instruction": "push es"
+        },
+        {
+          "line": 188,
+          "instruction": "push ds"
+        },
+        {
+          "line": 189,
+          "instruction": "push ax"
+        },
+        {
+          "line": 192,
+          "instruction": "push ax"
+        },
+        {
+          "line": 195,
+          "instruction": "push ax"
+        },
+        {
+          "line": 211,
+          "instruction": "pop es"
+        },
+        {
+          "line": 212,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 213,
+          "instruction": "loop D79_record_loop"
+        },
+        {
+          "line": 214,
+          "instruction": "pop ds"
+        }
+      ]
+    },
+    {
+      "id": "M_D818_D825",
+      "source": "asm/M_D818_D825.ASM",
+      "source_sha256": "76e18d8dd6b4a9a166724c2893baaa3bb69b36f4b10d955ff2eb28003abd0a28",
+      "range_file_offsets": [
+        55832,
+        55903
+      ],
+      "bytes": 71,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [],
+      "instruction_observations": [
+        {
+          "line": 62,
+          "instruction": "stosb"
+        },
+        {
+          "line": 66,
+          "instruction": "stosw"
+        },
+        {
+          "line": 70,
+          "instruction": "stosw"
+        }
+      ]
+    },
+    {
+      "id": "M_DAD7_DB35",
+      "source": "asm/M_DAD7_DB35.ASM",
+      "source_sha256": "ed75709817659048656bde6e4e3a5815b9008c2249d9969194ba5742975c3198",
+      "range_file_offsets": [
+        56535,
+        56672
+      ],
+      "bytes": 137,
+      "route": "HELD_ORIGIN_REVIEW",
+      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_DAD7.C",
+          "sha256": "c030034298c738755e4fb378c8b6ff6bb20c968f47099f558aa00aa026ac616d",
+          "inline_asm_tokens": 5
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 43,
+          "instruction": "push ds"
+        },
+        {
+          "line": 44,
+          "instruction": "pop es"
+        },
+        {
+          "line": 56,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 77,
+          "instruction": "push ds"
+        },
+        {
+          "line": 78,
+          "instruction": "pop es"
+        },
+        {
+          "line": 84,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 105,
+          "instruction": "push ds"
+        },
+        {
+          "line": 106,
+          "instruction": "pop es"
+        },
+        {
+          "line": 111,
+          "instruction": "push ax"
+        },
+        {
+          "line": 115,
+          "instruction": "push ax"
+        },
+        {
+          "line": 117,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 118,
+          "instruction": "pop cx"
+        }
+      ]
+    },
+    {
+      "id": "M_DDD9_DF98",
+      "source": "asm/M_DDD9_DF98.ASM",
+      "source_sha256": "f1de1684fc3a0de54b105eb0615f50f82f95607d87afa15836bcb53100c6bb6b",
+      "range_file_offsets": [
+        57305,
+        58005
+      ],
+      "bytes": 700,
+      "route": "HELD_SUPERVISOR",
+      "reason": "Six compiler-path probes completed: byte matches, unresolved shared-module relocation order. See c-path-probes.json.",
+      "existing_c_sources": [
+        {
+          "path": "src/F_DDD9.C",
+          "sha256": "5b196590db12afe480330cb2614f54a6d0412af85e8fe708ae692f8c91b26bd0",
+          "inline_asm_tokens": 0
+        },
+        {
+          "path": "src/F_DE7E.C",
+          "sha256": "9eb8b49b70bf0b77a7f2d1a56059f87068093b295dc2d9b90c5bac1b37957f42",
+          "inline_asm_tokens": 0
+        },
+        {
+          "path": "src/F_DEFA.C",
+          "sha256": "306787f35d12b8a62db695ccb73ebdb7daacbe9d18e2e064c07febc58b257908",
+          "inline_asm_tokens": 0
+        },
+        {
+          "path": "src/F_DF98.C",
+          "sha256": "a18d8b2e3c466080a0868e29d880b4b69dd86a0097737805171b636c00b62643",
+          "inline_asm_tokens": 19
+        }
+      ],
+      "instruction_observations": [
+        {
+          "line": 19,
+          "instruction": "org 2bbh"
+        },
+        {
+          "line": 22,
+          "instruction": "org 2bah"
+        },
+        {
+          "line": 25,
+          "instruction": "org 2b8h"
+        },
+        {
+          "line": 28,
+          "instruction": "org 2b7h"
+        },
+        {
+          "line": 31,
+          "instruction": "org 2b6h"
+        },
+        {
+          "line": 34,
+          "instruction": "org 2b3h"
+        },
+        {
+          "line": 37,
+          "instruction": "org 2afh"
+        },
+        {
+          "line": 40,
+          "instruction": "org 2ach"
+        },
+        {
+          "line": 43,
+          "instruction": "org 2a9h"
+        },
+        {
+          "line": 46,
+          "instruction": "org 2a6h"
+        },
+        {
+          "line": 49,
+          "instruction": "org 2a2h"
+        },
+        {
+          "line": 52,
+          "instruction": "org 29eh"
+        },
+        {
+          "line": 55,
+          "instruction": "org 29ah"
+        },
+        {
+          "line": 58,
+          "instruction": "org 298h"
+        },
+        {
+          "line": 61,
+          "instruction": "org 296h"
+        },
+        {
+          "line": 64,
+          "instruction": "org 293h"
+        },
+        {
+          "line": 67,
+          "instruction": "org 291h"
+        },
+        {
+          "line": 70,
+          "instruction": "org 28eh"
+        },
+        {
+          "line": 73,
+          "instruction": "org 28ch"
+        },
+        {
+          "line": 76,
+          "instruction": "org 289h"
+        },
+        {
+          "line": 79,
+          "instruction": "org 287h"
+        },
+        {
+          "line": 82,
+          "instruction": "org 285h"
+        },
+        {
+          "line": 85,
+          "instruction": "org 283h"
+        },
+        {
+          "line": 88,
+          "instruction": "org 282h"
+        },
+        {
+          "line": 91,
+          "instruction": "org 27fh"
+        },
+        {
+          "line": 94,
+          "instruction": "org 27dh"
+        },
+        {
+          "line": 97,
+          "instruction": "org 27ah"
+        },
+        {
+          "line": 100,
+          "instruction": "org 276h"
+        },
+        {
+          "line": 103,
+          "instruction": "org 274h"
+        },
+        {
+          "line": 106,
+          "instruction": "org 271h"
+        },
+        {
+          "line": 109,
+          "instruction": "org 26fh"
+        },
+        {
+          "line": 112,
+          "instruction": "org 26eh"
+        },
+        {
+          "line": 115,
+          "instruction": "org 26bh"
+        },
+        {
+          "line": 118,
+          "instruction": "org 269h"
+        },
+        {
+          "line": 121,
+          "instruction": "org 267h"
+        },
+        {
+          "line": 124,
+          "instruction": "org 265h"
+        },
+        {
+          "line": 127,
+          "instruction": "org 263h"
+        },
+        {
+          "line": 130,
+          "instruction": "org 260h"
+        },
+        {
+          "line": 133,
+          "instruction": "org 25eh"
+        },
+        {
+          "line": 136,
+          "instruction": "org 25ch"
+        },
+        {
+          "line": 139,
+          "instruction": "org 25ah"
+        },
+        {
+          "line": 142,
+          "instruction": "org 258h"
+        },
+        {
+          "line": 145,
+          "instruction": "org 257h"
+        },
+        {
+          "line": 148,
+          "instruction": "org 254h"
+        },
+        {
+          "line": 151,
+          "instruction": "org 251h"
+        },
+        {
+          "line": 154,
+          "instruction": "org 24eh"
+        },
+        {
+          "line": 157,
+          "instruction": "org 24bh"
+        },
+        {
+          "line": 160,
+          "instruction": "org 247h"
+        },
+        {
+          "line": 163,
+          "instruction": "org 245h"
+        },
+        {
+          "line": 166,
+          "instruction": "org 242h"
+        },
+        {
+          "line": 169,
+          "instruction": "org 240h"
+        },
+        {
+          "line": 172,
+          "instruction": "org 23eh"
+        },
+        {
+          "line": 175,
+          "instruction": "org 23dh"
+        },
+        {
+          "line": 178,
+          "instruction": "org 23ah"
+        },
+        {
+          "line": 181,
+          "instruction": "org 237h"
+        },
+        {
+          "line": 184,
+          "instruction": "org 234h"
+        },
+        {
+          "line": 187,
+          "instruction": "org 232h"
+        },
+        {
+          "line": 190,
+          "instruction": "org 22fh"
+        },
+        {
+          "line": 193,
+          "instruction": "org 22dh"
+        },
+        {
+          "line": 196,
+          "instruction": "org 22bh"
+        },
+        {
+          "line": 199,
+          "instruction": "org 229h"
+        },
+        {
+          "line": 202,
+          "instruction": "org 224h"
+        },
+        {
+          "line": 205,
+          "instruction": "org 221h"
+        },
+        {
+          "line": 208,
+          "instruction": "org 21eh"
+        },
+        {
+          "line": 211,
+          "instruction": "org 21dh"
+        },
+        {
+          "line": 213,
+          "instruction": "push ax"
+        },
+        {
+          "line": 214,
+          "instruction": "org 21ch"
+        },
+        {
+          "line": 217,
+          "instruction": "org 219h"
+        },
+        {
+          "line": 220,
+          "instruction": "org 217h"
+        },
+        {
+          "line": 223,
+          "instruction": "org 214h"
+        },
+        {
+          "line": 226,
+          "instruction": "org 210h"
+        },
+        {
+          "line": 229,
+          "instruction": "org 20eh"
+        },
+        {
+          "line": 232,
+          "instruction": "org 20bh"
+        },
+        {
+          "line": 235,
+          "instruction": "org 208h"
+        },
+        {
+          "line": 238,
+          "instruction": "org 204h"
+        },
+        {
+          "line": 241,
+          "instruction": "org 200h"
+        },
+        {
+          "line": 244,
+          "instruction": "org 1feh"
+        },
+        {
+          "line": 247,
+          "instruction": "org 1fch"
+        },
+        {
+          "line": 250,
+          "instruction": "org 1f9h"
+        },
+        {
+          "line": 253,
+          "instruction": "org 1f6h"
+        },
+        {
+          "line": 256,
+          "instruction": "org 1f2h"
+        },
+        {
+          "line": 259,
+          "instruction": "org 1f0h"
+        },
+        {
+          "line": 262,
+          "instruction": "org 1edh"
+        },
+        {
+          "line": 265,
+          "instruction": "org 1ebh"
+        },
+        {
+          "line": 268,
+          "instruction": "org 1e8h"
+        },
+        {
+          "line": 271,
+          "instruction": "org 1e5h"
+        },
+        {
+          "line": 274,
+          "instruction": "org 1e1h"
+        },
+        {
+          "line": 277,
+          "instruction": "org 1deh"
+        },
+        {
+          "line": 280,
+          "instruction": "org 1dbh"
+        },
+        {
+          "line": 283,
+          "instruction": "org 1d6h"
+        },
+        {
+          "line": 286,
+          "instruction": "org 1d5h"
+        },
+        {
+          "line": 288,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 289,
+          "instruction": "org 1d4h"
+        },
+        {
+          "line": 292,
+          "instruction": "org 1d3h"
+        },
+        {
+          "line": 295,
+          "instruction": "org 1d0h"
+        },
+        {
+          "line": 298,
+          "instruction": "org 1cfh"
+        },
+        {
+          "line": 300,
+          "instruction": "push ax"
+        },
+        {
+          "line": 301,
+          "instruction": "org 1ceh"
+        },
+        {
+          "line": 304,
+          "instruction": "org 1cdh"
+        },
+        {
+          "line": 307,
+          "instruction": "org 1cah"
+        },
+        {
+          "line": 310,
+          "instruction": "org 1c7h"
+        },
+        {
+          "line": 313,
+          "instruction": "org 1c6h"
+        },
+        {
+          "line": 316,
+          "instruction": "org 1c5h"
+        },
+        {
+          "line": 319,
+          "instruction": "org 1c2h"
+        },
+        {
+          "line": 322,
+          "instruction": "org 1c0h"
+        },
+        {
+          "line": 325,
+          "instruction": "org 1bfh"
+        },
+        {
+          "line": 328,
+          "instruction": "org 1beh"
+        },
+        {
+          "line": 331,
+          "instruction": "org 1bdh"
+        },
+        {
+          "line": 334,
+          "instruction": "org 1bbh"
+        },
+        {
+          "line": 337,
+          "instruction": "org 1bah"
+        },
+        {
+          "line": 340,
+          "instruction": "org 1b9h"
+        },
+        {
+          "line": 343,
+          "instruction": "org 1b7h"
+        },
+        {
+          "line": 346,
+          "instruction": "org 1b3h"
+        },
+        {
+          "line": 349,
+          "instruction": "org 1b0h"
+        },
+        {
+          "line": 352,
+          "instruction": "org 1aeh"
+        },
+        {
+          "line": 355,
+          "instruction": "org 1aah"
+        },
+        {
+          "line": 358,
+          "instruction": "org 1a9h"
+        },
+        {
+          "line": 361,
+          "instruction": "org 1a6h"
+        },
+        {
+          "line": 364,
+          "instruction": "org 1a2h"
+        },
+        {
+          "line": 367,
+          "instruction": "org 19fh"
+        },
+        {
+          "line": 370,
+          "instruction": "org 19bh"
+        },
+        {
+          "line": 373,
+          "instruction": "org 198h"
+        },
+        {
+          "line": 376,
+          "instruction": "org 196h"
+        },
+        {
+          "line": 379,
+          "instruction": "org 191h"
+        },
+        {
+          "line": 382,
+          "instruction": "org 18fh"
+        },
+        {
+          "line": 385,
+          "instruction": "org 18ah"
+        },
+        {
+          "line": 388,
+          "instruction": "org 188h"
+        },
+        {
+          "line": 391,
+          "instruction": "org 186h"
+        },
+        {
+          "line": 394,
+          "instruction": "org 182h"
+        },
+        {
+          "line": 397,
+          "instruction": "org 17fh"
+        },
+        {
+          "line": 400,
+          "instruction": "org 179h"
+        },
+        {
+          "line": 403,
+          "instruction": "org 177h"
+        },
+        {
+          "line": 406,
+          "instruction": "org 174h"
+        },
+        {
+          "line": 409,
+          "instruction": "org 16eh"
+        },
+        {
+          "line": 412,
+          "instruction": "org 16ah"
+        },
+        {
+          "line": 415,
+          "instruction": "org 168h"
+        },
+        {
+          "line": 418,
+          "instruction": "org 166h"
+        },
+        {
+          "line": 421,
+          "instruction": "org 163h"
+        },
+        {
+          "line": 424,
+          "instruction": "org 161h"
+        },
+        {
+          "line": 427,
+          "instruction": "org 15ch"
+        },
+        {
+          "line": 430,
+          "instruction": "org 15ah"
+        },
+        {
+          "line": 433,
+          "instruction": "org 157h"
+        },
+        {
+          "line": 436,
+          "instruction": "org 154h"
+        },
+        {
+          "line": 439,
+          "instruction": "org 151h"
+        },
+        {
+          "line": 442,
+          "instruction": "org 150h"
+        },
+        {
+          "line": 445,
+          "instruction": "org 14dh"
+        },
+        {
+          "line": 448,
+          "instruction": "org 14ah"
+        },
+        {
+          "line": 451,
+          "instruction": "org 149h"
+        },
+        {
+          "line": 453,
+          "instruction": "push ax"
+        },
+        {
+          "line": 454,
+          "instruction": "org 146h"
+        },
+        {
+          "line": 457,
+          "instruction": "org 144h"
+        },
+        {
+          "line": 460,
+          "instruction": "org 141h"
+        },
+        {
+          "line": 463,
+          "instruction": "org 13fh"
+        },
+        {
+          "line": 466,
+          "instruction": "org 13eh"
+        },
+        {
+          "line": 468,
+          "instruction": "push ds"
+        },
+        {
+          "line": 469,
+          "instruction": "org 13bh"
+        },
+        {
+          "line": 472,
+          "instruction": "org 13ah"
+        },
+        {
+          "line": 474,
+          "instruction": "push ax"
+        },
+        {
+          "line": 475,
+          "instruction": "org 137h"
+        },
+        {
+          "line": 478,
+          "instruction": "org 135h"
+        },
+        {
+          "line": 481,
+          "instruction": "org 132h"
+        },
+        {
+          "line": 484,
+          "instruction": "org 130h"
+        },
+        {
+          "line": 487,
+          "instruction": "org 12eh"
+        },
+        {
+          "line": 490,
+          "instruction": "org 129h"
+        },
+        {
+          "line": 493,
+          "instruction": "org 128h"
+        },
+        {
+          "line": 496,
+          "instruction": "org 127h"
+        },
+        {
+          "line": 499,
+          "instruction": "org 124h"
+        },
+        {
+          "line": 502,
+          "instruction": "org 122h"
+        },
+        {
+          "line": 505,
+          "instruction": "org 121h"
+        },
+        {
+          "line": 508,
+          "instruction": "org 120h"
+        },
+        {
+          "line": 511,
+          "instruction": "org 11fh"
+        },
+        {
+          "line": 514,
+          "instruction": "org 11dh"
+        },
+        {
+          "line": 517,
+          "instruction": "org 11ch"
+        },
+        {
+          "line": 520,
+          "instruction": "org 11ah"
+        },
+        {
+          "line": 523,
+          "instruction": "org 117h"
+        },
+        {
+          "line": 526,
+          "instruction": "org 116h"
+        },
+        {
+          "line": 529,
+          "instruction": "org 112h"
+        },
+        {
+          "line": 532,
+          "instruction": "org 10fh"
+        },
+        {
+          "line": 535,
+          "instruction": "org 10ch"
+        },
+        {
+          "line": 538,
+          "instruction": "org 10ah"
+        },
+        {
+          "line": 541,
+          "instruction": "org 108h"
+        },
+        {
+          "line": 544,
+          "instruction": "org 106h"
+        },
+        {
+          "line": 547,
+          "instruction": "org 103h"
+        },
+        {
+          "line": 550,
+          "instruction": "org 100h"
+        },
+        {
+          "line": 553,
+          "instruction": "org 0fdh"
+        },
+        {
+          "line": 556,
+          "instruction": "org 0f8h"
+        },
+        {
+          "line": 559,
+          "instruction": "org 0f5h"
+        },
+        {
+          "line": 562,
+          "instruction": "org 0f2h"
+        },
+        {
+          "line": 565,
+          "instruction": "org 0f1h"
+        },
+        {
+          "line": 567,
+          "instruction": "push ax"
+        },
+        {
+          "line": 568,
+          "instruction": "org 0f0h"
+        },
+        {
+          "line": 571,
+          "instruction": "org 0edh"
+        },
+        {
+          "line": 574,
+          "instruction": "org 0ebh"
+        },
+        {
+          "line": 577,
+          "instruction": "org 0e8h"
+        },
+        {
+          "line": 580,
+          "instruction": "org 0e5h"
+        },
+        {
+          "line": 583,
+          "instruction": "org 0e0h"
+        },
+        {
+          "line": 586,
+          "instruction": "org 0ddh"
+        },
+        {
+          "line": 589,
+          "instruction": "org 0dbh"
+        },
+        {
+          "line": 592,
+          "instruction": "org 0d8h"
+        },
+        {
+          "line": 595,
+          "instruction": "org 0d5h"
+        },
+        {
+          "line": 598,
+          "instruction": "org 0d3h"
+        },
+        {
+          "line": 601,
+          "instruction": "org 0d0h"
+        },
+        {
+          "line": 604,
+          "instruction": "org 0cch"
+        },
+        {
+          "line": 607,
+          "instruction": "org 0c9h"
+        },
+        {
+          "line": 610,
+          "instruction": "org 0c6h"
+        },
+        {
+          "line": 613,
+          "instruction": "org 0c4h"
+        },
+        {
+          "line": 616,
+          "instruction": "org 0c2h"
+        },
+        {
+          "line": 619,
+          "instruction": "org 0c0h"
+        },
+        {
+          "line": 622,
+          "instruction": "org 0bdh"
+        },
+        {
+          "line": 625,
+          "instruction": "org 0bah"
+        },
+        {
+          "line": 628,
+          "instruction": "org 0b7h"
+        },
+        {
+          "line": 631,
+          "instruction": "org 0b6h"
+        },
+        {
+          "line": 633,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 634,
+          "instruction": "org 0b5h"
+        },
+        {
+          "line": 636,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 637,
+          "instruction": "org 0b2h"
+        },
+        {
+          "line": 640,
+          "instruction": "org 0afh"
+        },
+        {
+          "line": 643,
+          "instruction": "org 0ach"
+        },
+        {
+          "line": 646,
+          "instruction": "org 0abh"
+        },
+        {
+          "line": 649,
+          "instruction": "org 0a8h"
+        },
+        {
+          "line": 652,
+          "instruction": "org 0a6h"
+        },
+        {
+          "line": 655,
+          "instruction": "org 0a5h"
+        },
+        {
+          "line": 658,
+          "instruction": "org 0a4h"
+        },
+        {
+          "line": 661,
+          "instruction": "org 0a3h"
+        },
+        {
+          "line": 664,
+          "instruction": "org 0a1h"
+        },
+        {
+          "line": 667,
+          "instruction": "org 9fh"
+        },
+        {
+          "line": 670,
+          "instruction": "org 9ch"
+        },
+        {
+          "line": 673,
+          "instruction": "org 99h"
+        },
+        {
+          "line": 676,
+          "instruction": "org 96h"
+        },
+        {
+          "line": 679,
+          "instruction": "org 93h"
+        },
+        {
+          "line": 682,
+          "instruction": "org 8eh"
+        },
+        {
+          "line": 685,
+          "instruction": "org 8bh"
+        },
+        {
+          "line": 688,
+          "instruction": "org 88h"
+        },
+        {
+          "line": 691,
+          "instruction": "org 87h"
+        },
+        {
+          "line": 693,
+          "instruction": "push ax"
+        },
+        {
+          "line": 694,
+          "instruction": "org 86h"
+        },
+        {
+          "line": 697,
+          "instruction": "org 83h"
+        },
+        {
+          "line": 700,
+          "instruction": "org 80h"
+        },
+        {
+          "line": 703,
+          "instruction": "org 7dh"
+        },
+        {
+          "line": 706,
+          "instruction": "org 7ah"
+        },
+        {
+          "line": 709,
+          "instruction": "org 75h"
+        },
+        {
+          "line": 712,
+          "instruction": "org 72h"
+        },
+        {
+          "line": 715,
+          "instruction": "org 70h"
+        },
+        {
+          "line": 718,
+          "instruction": "org 6dh"
+        },
+        {
+          "line": 721,
+          "instruction": "org 6ah"
+        },
+        {
+          "line": 724,
+          "instruction": "org 67h"
+        },
+        {
+          "line": 727,
+          "instruction": "org 64h"
+        },
+        {
+          "line": 730,
+          "instruction": "org 5fh"
+        },
+        {
+          "line": 733,
+          "instruction": "org 5dh"
+        },
+        {
+          "line": 736,
+          "instruction": "org 5ah"
+        },
+        {
+          "line": 739,
+          "instruction": "org 57h"
+        },
+        {
+          "line": 742,
+          "instruction": "org 54h"
+        },
+        {
+          "line": 745,
+          "instruction": "org 51h"
+        },
+        {
+          "line": 748,
+          "instruction": "org 4ch"
+        },
+        {
+          "line": 751,
+          "instruction": "org 49h"
+        },
+        {
+          "line": 754,
+          "instruction": "org 46h"
+        },
+        {
+          "line": 757,
+          "instruction": "org 45h"
+        },
+        {
+          "line": 759,
+          "instruction": "push ax"
+        },
+        {
+          "line": 760,
+          "instruction": "org 44h"
+        },
+        {
+          "line": 763,
+          "instruction": "org 3fh"
+        },
+        {
+          "line": 766,
+          "instruction": "org 3ch"
+        },
+        {
+          "line": 769,
+          "instruction": "org 3ah"
+        },
+        {
+          "line": 772,
+          "instruction": "org 37h"
+        },
+        {
+          "line": 775,
+          "instruction": "org 34h"
+        },
+        {
+          "line": 778,
+          "instruction": "org 31h"
+        },
+        {
+          "line": 781,
+          "instruction": "org 2eh"
+        },
+        {
+          "line": 784,
+          "instruction": "org 29h"
+        },
+        {
+          "line": 787,
+          "instruction": "org 26h"
+        },
+        {
+          "line": 790,
+          "instruction": "org 24h"
+        },
+        {
+          "line": 793,
+          "instruction": "org 21h"
+        },
+        {
+          "line": 796,
+          "instruction": "org 1eh"
+        },
+        {
+          "line": 799,
+          "instruction": "org 1dh"
+        },
+        {
+          "line": 802,
+          "instruction": "org 1bh"
+        },
+        {
+          "line": 805,
+          "instruction": "org 18h"
+        },
+        {
+          "line": 808,
+          "instruction": "org 15h"
+        },
+        {
+          "line": 811,
+          "instruction": "org 12h"
+        },
+        {
+          "line": 814,
+          "instruction": "org 0fh"
+        },
+        {
+          "line": 817,
+          "instruction": "org 0eh"
+        },
+        {
+          "line": 820,
+          "instruction": "org 0ch"
+        },
+        {
+          "line": 823,
+          "instruction": "org 9h"
+        },
+        {
+          "line": 826,
+          "instruction": "org 6h"
+        },
+        {
+          "line": 829,
+          "instruction": "org 3h"
+        },
+        {
+          "line": 832,
+          "instruction": "org 1h"
+        },
+        {
+          "line": 835,
+          "instruction": "org 0h"
+        }
+      ]
+    }
+  ],
+  "compiler_path_checks": "docs/current/c-path-probes.json",
+  "ready_runtime_cards": 0,
+  "ready_c_cards": 0,
+  "ready_card_paths": [],
+  "held_c_reconstruction": [
+    {
+      "id": "F_25B3",
+      "scope": "761-byte record update; recover byte-coordinate types first (related F_28AC mismatch).",
+      "status": "HELD_NOT_EXECUTABLE",
+      "completion_gate": "Ordinary C candidate, exact whole extent and public/binding evidence; fresh full EXE and ordered relocation acceptance. Never insert DB/padding or patch objects."
+    },
+    {
+      "id": "F_8BAB",
+      "scope": "1275-byte state machine with many callees; requires a complete C candidate and typed local frame.",
+      "status": "HELD_NOT_EXECUTABLE",
+      "completion_gate": "Ordinary C candidate, exact whole extent and public/binding evidence; fresh full EXE and ordered relocation acceptance. Never insert DB/padding or patch objects."
+    },
+    {
+      "id": "F_B122",
+      "scope": "693-byte table expansion; use exact F_B40F as reference, but derive each table and call binding independently.",
+      "status": "HELD_NOT_EXECUTABLE",
+      "completion_gate": "Ordinary C candidate, exact whole extent and public/binding evidence; fresh full EXE and ordered relocation acceptance. Never insert DB/padding or patch objects."
+    },
+    {
+      "id": "F_B99F",
+      "scope": "1857-byte state machine with 148-byte local frame; scope and recover nested control flow before unattended work.",
+      "status": "HELD_NOT_EXECUTABLE",
+      "completion_gate": "Ordinary C candidate, exact whole extent and public/binding evidence; fresh full EXE and ordered relocation acceptance. Never insert DB/padding or patch objects."
+    }
+  ],
+  "run_instructions": "docs/current/grinder-run-prompt.md",
+  "stop_condition": "Stop when reconstruction_factory.py next returns null; never fall through to held C or supervisor tasks."
+}

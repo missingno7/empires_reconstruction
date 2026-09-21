@@ -3,7 +3,10 @@
 add_executable(empires
   main.c
   video_sdl.c
-  video_sdl.h)
+  video_sdl.h
+  clock.c
+  input_sdl.c
+  input_sdl.h)
 
 target_link_libraries(empires PRIVATE empires_core SDL3::SDL3)
 

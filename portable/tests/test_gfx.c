@@ -1,17 +1,19 @@
 /* test_gfx.c -- self-checking unit tests for portable/gfx (Milestone C).
  *
- * No DOS oracle fixtures exist yet on this branch (fixtures/gfx_cases.json
- * is produced by a separate agent), so these tests are built from first
- * principles: known-input/known-output checks for the nibble-precision
- * primitives, and cross-checks between a primitive under test and an
- * independent "naive" per-pixel reference built from gfx_set_pixel /
- * gfx_get_pixel (themselves a from-scratch transcription of a *different*
- * ASM routine, runtime_f03d2/f03d5, so agreement is a meaningful check on
- * indexing/parity, not a tautology).
+ * Two layers of coverage:
  *
- * A defensive loader for fixtures/gfx_cases.json is included and runs
- * automatically once that file exists; until then it prints a note and is
- * skipped without failing the test.
+ *  1. Hand-authored, first-principles checks: known-input/known-output
+ *     checks for the nibble-precision primitives, and cross-checks between
+ *     a primitive under test and an independent "naive" per-pixel
+ *     reference built from gfx_set_pixel/gfx_get_pixel (themselves a
+ *     from-scratch transcription of a *different* ASM routine,
+ *     runtime_f03d2/f03d5, so agreement is a meaningful check on
+ *     indexing/parity, not a tautology).
+ *
+ *  2. A loader/replayer for fixtures/gfx_cases.json (produced by a
+ *     separate agent's DOS-oracle harness; see run_gfx_cases_if_present()
+ *     below), which runs automatically once that file exists and prints a
+ *     note and skips cleanly if it doesn't.
  */
 #include "gfx.h"
 #include "sha256.h"
@@ -559,17 +561,21 @@ static void test_box_transform(void)
 /* Observed format (one JSON array of case objects):                   */
 /*   {name, seed, state:{result,gbc,g94,g96,g98,g9a},                  */
 /*    calls:[{op,args:[...],blob_hex?}],                               */
+/*    font?:{blob_hex,gc0de,gc0e2,gc0e4,gc0e6,line_height},            */
 /*    expect:{fb_sha256, fb_rows_touched:{"y":"hex"}, dirty_hex,       */
 /*             ret, save_hex}}                                         */
-/* seed fills the framebuffer via the LCG in fb_seed() above.  Every    */
-/* op in gfx.h except gfx_draw_char/gfx_blit_image/gfx_box appears in   */
-/* the fixture and is replayed for real; draw_char needs the real       */
-/* historical font resource (not embedded in the fixture, not available */
-/* standalone here) and is skipped with a printed note rather than       */
-/* failed.  A small hand-rolled JSON navigator (object/array field       */
-/* lookup only, no general parse tree) is used since no JSON library     */
-/* is linked into the portable tree; unrecognized ops/fields are          */
-/* skipped defensively rather than crashing the loader.                   */
+/* seed fills the framebuffer via the LCG in fb_seed() above.  Every op */
+/* in gfx.h except gfx_box appears in the fixture and is replayed for   */
+/* real, including draw_char (font state wired from the case's "font"   */
+/* object by load_font_if_present(), all four gc0dX offsets relative to */
+/* that object's own blob_hex) and blit_image (widths 4/8/12/16 only -- */
+/* see the comment above gfx_blit_image in primitives.c for why other   */
+/* widths are absent from the fixture).  A small hand-rolled JSON        */
+/* navigator (object/array field lookup only, no general parse tree) is  */
+/* used since no JSON library is linked into the portable tree; a        */
+/* draw_char case with no "font" object, or any op/arg-shape this        */
+/* loader doesn't recognize, is skipped defensively rather than           */
+/* crashing the loader.                                                   */
 /* ------------------------------------------------------------------ */
 
 static int hex_nibble(char c)
@@ -735,6 +741,7 @@ typedef struct {
     int unsupported;
     int have_ret;
     dos_int last_ret;
+    char last_op[32];
     uint8_t last_save[4 + 8192];
 } call_ctx;
 
@@ -748,6 +755,8 @@ static void run_one_call(const char *call_obj, void *vctx)
     const char *blobp;
 
     json_as_str(json_obj_get(call_obj, "op"), op, sizeof op);
+    strncpy(ctx->last_op, op, sizeof(ctx->last_op) - 1);
+    ctx->last_op[sizeof(ctx->last_op) - 1] = '\0';
     args.n = 0;
     json_arr_foreach(json_obj_get(call_obj, "args"), collect_arg_cb, &args);
 
@@ -801,14 +810,62 @@ static void run_one_call(const char *call_obj, void *vctx)
     } else if (strcmp(op, "get_pixel") == 0 && args.n == 2) {
         ctx->last_ret = gfx_get_pixel((dos_int)args.v[0], (dos_int)args.v[1]);
         ctx->have_ret = 1;
+    } else if (strcmp(op, "draw_char") == 0 && args.n == 3) {
+        /* Needs gc0e0/gc0de/gc0e2/gc0e4/gc0e6/dialog_line_height already
+         * set from the case's top-level "font" object (run_one_case, run
+         * before the calls array is walked). If a draw_char case somehow
+         * carries no font object, gc0e0 stays NULL and drawing through it
+         * would crash -- skip defensively instead. */
+        if (gc0e0 == NULL) {
+            ctx->unsupported = 1;
+        } else {
+            ctx->last_ret = gfx_draw_char((dos_int)args.v[0], (dos_int)args.v[1], (dos_int)args.v[2]);
+            ctx->have_ret = 1;
+        }
+    } else if (strcmp(op, "blit_image") == 0 && args.n == 2 && blob_len > 0) {
+        gfx_blit_image((dos_int)args.v[0], (dos_int)args.v[1], blob);
     } else {
-        /* draw_char/blit_image (need resources this loader doesn't have)
-         * or any op/arg-shape this loader doesn't recognize yet. */
+        /* Any op/arg-shape this loader doesn't recognize yet. */
         ctx->unsupported = 1;
     }
 }
 
 typedef struct { int total, passed, failed, skipped; } case_stats;
+
+typedef struct { char op[32]; int passed, failed, skipped; } op_stat;
+static op_stat g_op_stats[32];
+static int g_op_stat_count = 0;
+
+static op_stat *op_stat_get(const char *op)
+{
+    int i;
+    op_stat *s;
+    for (i = 0; i < g_op_stat_count; i++) {
+        if (strcmp(g_op_stats[i].op, op) == 0) return &g_op_stats[i];
+    }
+    if (g_op_stat_count >= (int)(sizeof(g_op_stats) / sizeof(g_op_stats[0]))) return NULL;
+    s = &g_op_stats[g_op_stat_count++];
+    memset(s, 0, sizeof *s);
+    strncpy(s->op, op, sizeof(s->op) - 1);
+    return s;
+}
+
+/* outcome: 1 = passed, 2 = failed, anything else = skipped. */
+static void record_outcome(case_stats *st, const char *op, int outcome)
+{
+    op_stat *os = op_stat_get(op);
+    if (outcome == 1) {
+        st->passed++;
+        if (os) os->passed++;
+    } else if (outcome == 2) {
+        st->failed++;
+        g_failures++;
+        if (os) os->failed++;
+    } else {
+        st->skipped++;
+        if (os) os->skipped++;
+    }
+}
 
 static void report_row_diffs(const char *rows_obj)
 {
@@ -832,6 +889,56 @@ static void report_row_diffs(const char *rows_obj)
         }
         p = json_skip_ws(json_skip_value(p));
         if (*p == ',') p = json_skip_ws(p + 1);
+    }
+}
+
+/* Case-level "font" object (draw_char only): {blob_hex, gc0de, gc0e2,
+ * gc0e4, gc0e6, line_height}, all four offsets relative to the blob's own
+ * start.  Wires gc0e0/gc0de/gc0e2/gc0e4/gc0e6/dialog_line_height (gfx.h's
+ * font state) straight from the fixture instead of a synthetic sheet. */
+static uint8_t g_font_buf[8192];
+
+static void load_font_if_present(const char *case_obj)
+{
+    const char *font = json_obj_get(case_obj, "font");
+    if (!font) return;
+    {
+        static char hex[16384];
+        json_as_str(json_obj_get(font, "blob_hex"), hex, sizeof hex);
+        hex_decode(hex, g_font_buf, sizeof g_font_buf);
+    }
+    gc0e0 = g_font_buf;
+    gc0de = (dos_uint)json_as_long(json_obj_get(font, "gc0de"));
+    gc0e2 = (dos_uint)json_as_long(json_obj_get(font, "gc0e2"));
+    gc0e4 = (dos_uint)json_as_long(json_obj_get(font, "gc0e4"));
+    gc0e6 = (dos_uint)json_as_long(json_obj_get(font, "gc0e6"));
+    dialog_line_height = (dos_int)json_as_long(json_obj_get(font, "line_height"));
+}
+
+/* On a fb_sha256 mismatch, report_row_diffs() already names which rows
+ * differ.  The fixture only carries a SHA-256 per row (not raw bytes), so
+ * we cannot recover the oracle's exact expected bytes to diff against --
+ * the best further diagnostic available is dumping our own computed bytes
+ * for the first differing row so a human can compare them against the
+ * font bits / expected glyph shape by hand. */
+static void dump_first_row_bytes(const char *rows_obj)
+{
+    const char *p = rows_obj;
+    if (!p || *p != '{') return;
+    p = json_skip_ws(p + 1);
+    if (*p == '}') return;
+    {
+        const char *kstart = p + 1;
+        int rownum = (int)strtol(kstart, NULL, 10);
+        if (rownum >= 0 && rownum < GFX_ROWS) {
+            const uint8_t *row = g3924[rownum];
+            int i;
+            printf("test_gfx: gfx_cases:   row %d our bytes:", rownum);
+            for (i = 0; i < GFX_ROW_BYTES; i++) {
+                if (row[i] != 0) printf(" [%d]=%02x", i, row[i]);
+            }
+            printf("\n");
+        }
     }
 }
 
@@ -860,6 +967,8 @@ static void run_one_case(const char *case_obj, void *vstats)
     g98    = (dos_int)json_as_long(json_obj_get(state, "g98"));
     g9a    = (dos_int)json_as_long(json_obj_get(state, "g9a"));
 
+    load_font_if_present(case_obj);
+
     memset(&cctx, 0, sizeof cctx);
     queue_start = rect_queue_write_ptr;
 
@@ -867,7 +976,7 @@ static void run_one_case(const char *case_obj, void *vstats)
     json_arr_foreach(callsp, run_one_call, &cctx);
 
     if (cctx.unsupported) {
-        st->skipped++;
+        record_outcome(st, cctx.last_op[0] ? cctx.last_op : "?", 0);
         return;
     }
 
@@ -878,8 +987,10 @@ static void run_one_case(const char *case_obj, void *vstats)
     if (strcmp(want_sha, got_sha) != 0) {
         printf("test_gfx: gfx_cases: FAIL '%s': fb_sha256 mismatch\n", name);
         report_row_diffs(json_obj_get(expect, "fb_rows_touched"));
-        st->failed++;
-        g_failures++;
+        if (strcmp(cctx.last_op, "draw_char") == 0) {
+            dump_first_row_bytes(json_obj_get(expect, "fb_rows_touched"));
+        }
+        record_outcome(st, cctx.last_op, 2);
         return;
     }
 
@@ -888,8 +999,7 @@ static void run_one_case(const char *case_obj, void *vstats)
         if ((long)cctx.last_ret != want_ret) {
             printf("test_gfx: gfx_cases: FAIL '%s': ret mismatch got=%ld want=%ld\n",
                    name, (long)cctx.last_ret, want_ret);
-            st->failed++;
-            g_failures++;
+            record_outcome(st, cctx.last_op, 2);
             return;
         }
     }
@@ -904,8 +1014,7 @@ static void run_one_case(const char *case_obj, void *vstats)
             if (strcmp(want_dirty, got_dirty) != 0) {
                 printf("test_gfx: gfx_cases: FAIL '%s': dirty_hex mismatch got=%s want=%s\n",
                        name, got_dirty, want_dirty);
-                st->failed++;
-                g_failures++;
+                record_outcome(st, cctx.last_op, 2);
                 return;
             }
         }
@@ -923,15 +1032,14 @@ static void run_one_case(const char *case_obj, void *vstats)
                 hex_encode(cctx.last_save, n, got_save, sizeof got_save);
                 if (strcmp(want_save, got_save) != 0) {
                     printf("test_gfx: gfx_cases: FAIL '%s': save_hex mismatch\n", name);
-                    st->failed++;
-                    g_failures++;
+                    record_outcome(st, cctx.last_op, 2);
                     return;
                 }
             }
         }
     }
 
-    st->passed++;
+    record_outcome(st, cctx.last_op, 1);
 }
 
 static void run_gfx_cases_if_present(void)
@@ -962,14 +1070,19 @@ static void run_gfx_cases_if_present(void)
     fclose(f);
 
     memset(&st, 0, sizeof st);
-    /* Save/restore the ambient clip + font state so later self-checking
-     * tests (there are none after this call in main(), but keep the
-     * habit) aren't affected. */
+    g_op_stat_count = 0;
     json_arr_foreach(json_skip_ws(buf), run_one_case, &st);
 
-    printf("test_gfx: gfx_cases.json: %d case(s): %d passed, %d failed, %d skipped "
-           "(skipped = needs a resource this standalone loader doesn't have, e.g. the real font)\n",
+    printf("test_gfx: gfx_cases.json: %d case(s): %d passed, %d failed, %d skipped\n",
            st.total, st.passed, st.failed, st.skipped);
+    {
+        int i;
+        for (i = 0; i < g_op_stat_count; i++) {
+            printf("test_gfx: gfx_cases:   %-24s passed=%d failed=%d skipped=%d\n",
+                   g_op_stats[i].op, g_op_stats[i].passed, g_op_stats[i].failed,
+                   g_op_stats[i].skipped);
+        }
+    }
 
     free(buf);
 }

@@ -593,7 +593,28 @@ void gfx_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
  * image = [bytesPerRow][rows][1bpp bits...]; always the even-x-start path
  * (di is unconditionally pre-decremented in the ASM); bx=bytes*4 there
  * means pixel_count = bytes*2 (task contract), i.e. bytesPerRow is the
- * DESTINATION planar byte width, not a literal source-bitmap byte count. */
+ * DESTINATION planar byte width, not a literal source-bitmap byte count.
+ *
+ * Oracle finding (2026-09-21, from the fixture generator's own probing):
+ * portable/tests/fixtures/gfx_cases.json only exercises bytesPerRow in
+ * {4,8,12,16} (byte widths that are multiples of 4).  For a byte width
+ * NOT divisible by 4, the oracle harness found that the real historical
+ * routine's control flow jumps into gfx_draw_char's own dispatch chain
+ * (runtime_even_pixel_dispatch / rt_1494.. -- see gfx_draw_char/
+ * gfx_paint_bits above) rather than staying self-contained, so its
+ * behavior for such widths depends on whatever code/data happens to sit
+ * at that shared location and is not a well-defined function of (x,y,
+ * image) alone; the oracle harness therefore excluded those widths from
+ * the fixture instead of asserting a specific answer for them.
+ *
+ * This port keeps gfx_paint_bits's closed form (paint bit k into byte
+ * k/2, alternating nibble roles) unchanged for ALL widths, multiple of 4
+ * or not: it is the literal, well-defined reduction of the ASM's
+ * unrolled dispatch chain, it matches the oracle exactly for every width
+ * the fixture DOES cover, and there is no well-defined historical
+ * behavior to match for the excluded widths in the first place.  Flagged
+ * here rather than silently assumed correct, per the oracle finding
+ * above -- do not "fix" this without new oracle data for those widths. */
 void gfx_blit_image(dos_int x, dos_int y, const uint8_t *image)
 {
     uint8_t color = (uint8_t)result;                          /* 3383 */

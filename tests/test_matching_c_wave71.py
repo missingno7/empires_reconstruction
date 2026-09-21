@@ -12,7 +12,7 @@ class MatchingCWave71Tests(unittest.TestCase):
     @unittest.skip(
         "layout/manifest.json currently binds F_D386's near-call target under "
         "the key '_gfx_blit_bitmap' (regions RUNTIME_BLOCK/F_D386 bindings), "
-        "but src/F_D386.C declares 'extern void f03c9()' and src/RUNTIME_BLOCK.C "
+        "but recovery/src/F_D386.C declares 'extern void f03c9()' and recovery/src/RUNTIME_BLOCK.C "
         "publics it as raw '_f03c9' (no '_gfx_blit_bitmap' alias exists in either "
         "source). Compiling F_D386 therefore emits an OMF fixup targeting "
         "'_f03c9', which is absent from build['bindings'], so bind_region raises "

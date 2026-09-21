@@ -1,6 +1,5 @@
 /* F_6B7A -- install the timer interrupt and program the PIT divisor. */
-extern unsigned int8_saved_vector;
-extern unsigned g0b7c;
+extern void interrupt (*int8_saved_vector)(void);   /* saved INT 8 vector: offset at DS:0B7A, segment at DS:0B7C */
 void timer_irq_install()
 {
     asm push ax
@@ -10,8 +9,8 @@ void timer_irq_install()
     asm mov ax,3508h
     asm int 21h
     asm mov ax,es
-    asm mov g0b7c,ax
-    asm mov int8_saved_vector,bx
+    asm mov word ptr int8_saved_vector+2,ax
+    asm mov word ptr int8_saved_vector,bx
     asm mov dx,6bcfh
     asm push cs
     asm pop ds

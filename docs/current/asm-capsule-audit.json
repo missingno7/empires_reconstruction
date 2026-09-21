@@ -10,7 +10,7 @@
   "production_emissions": [
     {
       "module": "F_4F96",
-      "source": "asm/F_4F96.ASM",
+      "source": "recovery/asm/F_4F96.ASM",
       "directives": [
         {
           "line": 55,
@@ -32,7 +32,7 @@
     },
     {
       "module": "F_699E",
-      "source": "asm/F_699E.ASM",
+      "source": "recovery/asm/F_699E.ASM",
       "directives": [
         {
           "line": 96,
@@ -76,7 +76,7 @@
     },
     {
       "module": "F_7964",
-      "source": "asm/F_7964.ASM",
+      "source": "recovery/asm/F_7964.ASM",
       "directives": [
         {
           "line": 10,
@@ -114,7 +114,7 @@
     },
     {
       "module": "F_880A",
-      "source": "asm/F_880A.ASM",
+      "source": "recovery/asm/F_880A.ASM",
       "directives": [
         {
           "line": 11,
@@ -144,7 +144,7 @@
     },
     {
       "module": "F_8BAB",
-      "source": "asm/F_8BAB.ASM",
+      "source": "recovery/asm/F_8BAB.ASM",
       "directives": [
         {
           "line": 44,
@@ -178,7 +178,7 @@
     },
     {
       "module": "F_AA1F",
-      "source": "asm/F_AA1F.ASM",
+      "source": "recovery/asm/F_AA1F.ASM",
       "directives": [
         {
           "line": 61,
@@ -192,59 +192,59 @@
     }
   ],
   "nonproduction_files_with_db": [
-    "src/DOS_STUB.C",
+    "recovery/src/DOS_STUB.C",
     "src/F_28AC.C",
-    "src/F_4B0C.C",
-    "src/F_4EEB.C",
-    "src/F_50D2.C",
-    "src/F_6036.C",
-    "src/F_60A9.C",
-    "src/F_6181.C",
+    "recovery/src/F_4B0C.C",
+    "recovery/src/F_4EEB.C",
+    "recovery/src/F_50D2.C",
+    "recovery/src/F_6036.C",
+    "recovery/src/F_60A9.C",
+    "recovery/src/F_6181.C",
     "src/F_643A.C",
     "src/KEYIRQH.C",
     "src/F_6BCF.C",
-    "src/F_6DCC.C",
-    "src/F_6F4B.C",
+    "recovery/src/F_6DCC.C",
+    "recovery/src/F_6F4B.C",
     "src/MENULOOP.C",
     "src/F_880A.C",
     "src/F_8BAB.C",
-    "src/F_98CB.C",
-    "src/F_9EC3.C",
+    "recovery/src/F_98CB.C",
+    "recovery/src/F_9EC3.C",
     "src/F_AA1F.C",
     "src/F_AB66.C",
     "src/F_B122.C",
     "src/F_B40F.C",
     "src/F_B7F9.C",
-    "src/F_C1A0.C",
-    "src/F_C27D.C",
-    "src/F_C2EA.C",
-    "src/F_C359.C",
-    "src/F_C3DB.C",
-    "src/F_C440.C",
-    "src/F_C501.C",
-    "src/F_C5D1.C",
-    "src/F_C678.C",
-    "src/F_C6B9.C",
-    "src/F_C706.C",
-    "src/F_C77A.C",
-    "src/F_C7CB.C",
-    "src/F_C834.C",
-    "src/F_C877.C",
-    "src/F_C914.C",
-    "src/F_C9A4.C",
-    "src/F_CAF1.C",
-    "src/F_CB5C.C",
-    "src/F_CBBB.C",
-    "src/F_CC17.C",
-    "src/F_CC6B.C",
-    "src/F_CD23.C",
-    "src/F_D386.C",
-    "src/F_D61C.C",
-    "src/F_D79C.C",
-    "src/F_DAD7.C",
-    "src/F_DF98.C",
-    "src/LIB_STRLEN.C",
-    "src/RUNTIME_BLOCK.C"
+    "recovery/src/F_C1A0.C",
+    "recovery/src/F_C27D.C",
+    "recovery/src/F_C2EA.C",
+    "recovery/src/F_C359.C",
+    "recovery/src/F_C3DB.C",
+    "recovery/src/F_C440.C",
+    "recovery/src/F_C501.C",
+    "recovery/src/F_C5D1.C",
+    "recovery/src/F_C678.C",
+    "recovery/src/F_C6B9.C",
+    "recovery/src/F_C706.C",
+    "recovery/src/F_C77A.C",
+    "recovery/src/F_C7CB.C",
+    "recovery/src/F_C834.C",
+    "recovery/src/F_C877.C",
+    "recovery/src/F_C914.C",
+    "recovery/src/F_C9A4.C",
+    "recovery/src/F_CAF1.C",
+    "recovery/src/F_CB5C.C",
+    "recovery/src/F_CBBB.C",
+    "recovery/src/F_CC17.C",
+    "recovery/src/F_CC6B.C",
+    "recovery/src/F_CD23.C",
+    "recovery/src/F_D386.C",
+    "recovery/src/F_D61C.C",
+    "recovery/src/F_D79C.C",
+    "recovery/src/F_DAD7.C",
+    "recovery/src/F_DF98.C",
+    "recovery/src/LIB_STRLEN.C",
+    "recovery/src/RUNTIME_BLOCK.C"
   ],
   "classification": {
     "RUNTIME_BLOCK": {

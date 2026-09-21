@@ -24,7 +24,14 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None, runner=None, veri
     if not isinstance(prelude, str) or not prelude.isascii():
         raise ValueError('Module candidate prelude must be ASCII text')
     pieces = [prelude.encode('ascii')] if prelude else []
-    pieces.extend(project_path(root, s['path']).read_bytes() for s in recipe['sources'])
+
+    def source_bytes(rel_path):
+        path = project_path(root, rel_path)
+        if not path.exists():
+            path = project_path(root, 'recovery/' + rel_path)
+        return path.read_bytes()
+
+    pieces.extend(source_bytes(s['path']) for s in recipe['sources'])
     combined = b'\r\n'.join(pieces)
     source = work / 'combined.C'
     source.write_bytes(combined)
@@ -79,7 +86,10 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None, runner=None, veri
                          'fixups': 0, 'status': 'EQUAL'}
     component_modules = owned_library_modules(manifest['regions'], toolchain or root / 'toolchain', read_json(root / 'layout/toolchain.json'))
     for spec, owner, public in zip(recipe['sources'], selected, publics):
-        if owner['source'] != spec['path'] or owner['build']['flags_append'] != recipe['flags_append']:
+        owner_source = owner['source']
+        if owner_source.startswith('recovery/'):
+            owner_source = owner_source[len('recovery/'):]
+        if owner_source != spec['path'] or owner['build']['flags_append'] != recipe['flags_append']:
             raise ValueError('Recipe differs from established source/flags')
         expected_offset = owner['start'] - selected[0]['start']
         if public['offset'] != expected_offset:
@@ -98,7 +108,7 @@ def probe(recipe_path, root=ROOT, toolchain=None, dosbox=None, runner=None, veri
         bases.add(proof['module_load_base'])
         all_fixups.extend(proof['fixups'])
         results.append({'owner': owner['id'], 'bytes': len(data), 'public_offset': public['offset'],
-                        'source_sha256': sha(project_path(root, spec['path']).read_bytes()), 'status': 'EQUAL', **proof})
+                        'source_sha256': sha(source_bytes(spec['path'])), 'status': 'EQUAL', **proof})
     if len(bases) != 1:
         raise ValueError('Individual extents imply inconsistent module placement')
     report = {'status': 'EQUAL', 'candidate': recipe['id'], 'historical_module_proven': False,

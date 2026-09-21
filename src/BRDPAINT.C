@@ -10,7 +10,8 @@ extern void board_mark_record_cells(void);
 extern void fd825(char, int, int, int, int);
 extern unsigned char near *f2a70();
 
-extern unsigned char far *board_records, far *gbfc4;
+extern char far *board_records;
+extern unsigned char far *gbfc4;
 extern unsigned char far *g96e6, far *g96ea;extern char far *g40d0;
 extern char far *record_table_root, far *ui_gfx_shadow_a;
 extern int g96, g94, g722, g73c, board_record_index, g9ade, gb07a;
@@ -104,8 +105,8 @@ void board_redraw_paint()
             gfx_copy_rect((w8 = b4380[i]) * 2, (j = b4386[i]) + 0xb8, s7400, 0);
             fd825(i + 1, w8, j, 8, 0x10);
         }
-    if (board_records[0x3e7] == board_record_index + 1) {
-        gfx_copy_rect((w8 = board_records[0x3e5]) * 2, (j = board_records[0x3e6]) + 0xb8, s735e, 0);
+    if (((unsigned char far *)board_records)[0x3e7] == board_record_index + 1) {
+        gfx_copy_rect((w8 = ((unsigned char far *)board_records)[0x3e5]) * 2, (j = ((unsigned char far *)board_records)[0x3e6]) + 0xb8, s735e, 0);
         fd825(7, w8, j, 8, 0x10);
     }
     p = (unsigned char far *) (record_table_root + *record_table_root * 4 + 1);

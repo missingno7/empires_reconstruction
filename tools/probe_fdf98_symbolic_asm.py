@@ -27,7 +27,7 @@ def run(root=ROOT, runner=None):
     candidate = {
         'id': 'F_DF98_SYMBOLIC',
         'kind': 'SYMBOLIC_ASM',
-        'source': 'asm/F_DF98.ASM',
+        'source': 'recovery/asm/F_DF98.ASM',
         'build': {'flags_append': ''},
     }
     reference = {

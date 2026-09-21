@@ -13,7 +13,7 @@ class SymbolicAsmWave110Tests(unittest.TestCase):
         recipe = read_json(ROOT / 'recipes/c/matching-wave110.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_D3CF')
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'asm/F_D3CF.ASM')
+        self.assertEqual(owner['source'], 'recovery/asm/F_D3CF.ASM')
         self.assertEqual(owner['end'] - owner['start'], 11)
         self.assertEqual(recipe['format'], 'empires-symbolic-asm-promotion-v1')
         self.assertEqual(recipe['conversions'][0]['id'], 'F_D3CF')

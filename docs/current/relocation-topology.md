@@ -51,7 +51,7 @@ Total EXE relocations: 106
 | C_6990_6997 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_699E | TCC.EXE | -c -mc -1- -f- -N- -B | 1 | single | ascending |  |
 | M_6B1A_6B4A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6B66 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
+| F_6B66 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_6B74 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_6B7A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | F_6BAC | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
@@ -335,7 +335,7 @@ Checked against `build\production-b8z89_zn\compile\WORK` (55 objects, 34 agree w
 | R0035.OBJ | C_6266_68AA | 159 | ascending | ascending | yes |
 | R0039.OBJ | F_699E | 38 | ascending | ascending | yes |
 | R0040.OBJ | M_6B1A_6B4A | 2 | ascending | ascending | yes |
-| R0041.OBJ | F_6B66 | 1 | single | ascending | yes |
+| R0041.OBJ | F_6B66 | 1 | single | descending | yes |
 | R0043.OBJ | F_6B7A | 2 | ascending | ascending | yes |
 | R0044.OBJ | F_6BAC | 2 | ascending | ascending | yes |
 | R0045.OBJ | F_6BCF | 11 | ascending | ascending | yes |

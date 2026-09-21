@@ -35,18 +35,22 @@ extern void gfx_bar(int x, int y, int n);
 extern void gfx_vline(int x, int y, int n);
 
 /* ---- F_01BC (original code at 0x01BC) ---- */
-/* F_01BC -- load a 256-entry DAC block through int 10h AX=1012h.  A TC frame
-   with a hand-written body (capsule rule 14's positive case): the frame is
-   forced by the parameter, and the body stays out of SI and DI, so TC saves
-   neither. */
+/* F_01BC -- load a 256-entry DAC block through int 10h AX=1012h.  The BIOS
+   register setup is C through Turbo C's pseudo-registers and __int__ (each
+   assignment compiles to the original mov/xor, `_BX = 0` to `xor bx,bx`);
+   only the far-pointer load stays asm: `les dx,pal` is one 3-byte
+   instruction, while `_ES = FP_SEG(pal); _DX = FP_OFF(pal)` compiles to two
+   loads and a segment move (5 bytes longer, probed 2026-09-21). */
+void __int__(int);
+
 void video_load_palette(pal)
 char far *pal;
 {
     asm les dx,pal
-    asm xor bx,bx
-    asm mov cx,100h
-    asm mov ax,1012h
-    asm int 10h
+    _BX = 0;
+    _CX = 0x100;
+    _AX = 0x1012;
+    __int__(0x10);
 }
 
 
@@ -136,11 +140,12 @@ void video_alloc_framebuffer()
 
 
 /* ---- F_034F (original code at 0x034F) ---- */
-/* F_034F -- switch to the text video mode through BIOS INT 10h. */
+/* F_034F -- switch to the text video mode through BIOS INT 10h (AX=0003h),
+   plain C through the _AX pseudo-register and the __int__ intrinsic. */
 void video_set_text_mode()
 {
-    asm mov ax,3
-    asm int 10h
+    _AX = 3;
+    __int__(0x10);
 }
 
 

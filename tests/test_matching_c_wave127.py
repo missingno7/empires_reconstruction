@@ -16,7 +16,7 @@ class MatchingCWave127Tests(unittest.TestCase):
         # asm-origin candidates; see docs/current/asm-origin-review.json. The
         # wave127 evidence below still matches the unchanged original bytes.
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'asm/F_50D2.ASM')
+        self.assertEqual(owner['source'], 'recovery/asm/F_50D2.ASM')
         self.assertEqual(owner['end'] - owner['start'], 237)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_50D2')
         evidence = read_json(ROOT / 'docs/matching-wave127-evidence.json')

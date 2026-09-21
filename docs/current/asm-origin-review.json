@@ -282,7 +282,7 @@
         "F_C898"
       ],
       "classification": "ASM_OR_MIXED_LIKELY",
-      "evidence": "Live-register sound routines and fixed OPL settling reads; src/F_C898.C is explicitly C with assembly body.",
+      "evidence": "Live-register sound routines and fixed OPL settling reads; recovery/src/F_C898.C is explicitly C with assembly body.",
       "original_language_proven": false,
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },

@@ -23,7 +23,7 @@
         "BP frames alone (where present in sub-entries) do not imply C; treated as ASM library code throughout."
       ],
       "reason_asm_remains": "This is the Turbo C/Borland runtime and startup dispatch block linked from the vendor runtime library, not game logic; there is no application-level C source to recover it from.",
-      "c_candidate_available": "src/RUNTIME_BLOCK.C exists and is documented as the frozen migration oracle used for symbol naming only, not a compiler-verified replacement.",
+      "c_candidate_available": "recovery/src/RUNTIME_BLOCK.C exists and is documented as the frozen migration oracle used for symbol naming only, not a compiler-verified replacement.",
       "re_c_attempted": "Not attempted; out of scope for exact re-C (library/runtime code, not a single compilable C function).",
       "result": "Keep exact ASM.",
       "next_action": "None beyond periodic symbol/name audits; summarize by entry-family group rather than per-byte (see summary.runtime_block_groups).",
@@ -49,7 +49,7 @@
         "No BP-frame stack arguments; state lives entirely in registers (SI read ptr, DI/queue ptr) across the loop body."
       ],
       "reason_asm_remains": "Negative compiler evidence: the register-driven queue-drain loop is not an idiom Turbo C 2.0 emits for this control flow.",
-      "c_candidate_available": "None active; no src/F_1ECD.C reference exists in the tree.",
+      "c_candidate_available": "None active; no recovery/src/F_1ECD.C reference exists in the tree.",
       "re_c_attempted": "Not attempted (no C path probe on record for this id).",
       "result": "Keep exact ASM.",
       "next_action": "None; classification is stable.",
@@ -124,11 +124,11 @@
       "evidence": [
         "Bytecode interpreter dispatch through a jump table (dispatch_opcode at 74Ah) with a save/resume program counter pattern; not a straight-line function.",
         "production-plan.json provenance notes: 'Replaced the exact inline asm-db capsule with symbolic TASM labels ... Direct relative calls preserve their original no-FIXUPP encoding through CALL_REL.'",
-        "src/F_4B0C.C is an inactive db-capsule reference (raw asm db bytes), not a real C recovery; production module is the symbolic ASM.",
+        "recovery/src/F_4B0C.C is an inactive db-capsule reference (raw asm db bytes), not a real C recovery; production module is the symbolic ASM.",
         "near proc, clobbers ax/bx/cx/dx/si/di all pushed/popped -- consistent with either origin, so classification rests on the capsule history, not register shape alone."
       ],
-      "reason_asm_remains": "The only production representation is TASM; src/F_4B0C.C is a byte-capsule stand-in, not a verified C source.",
-      "c_candidate_available": "src/F_4B0C.C exists but is an asm-db capsule (18 db lines), not usable C -- see capsules list.",
+      "reason_asm_remains": "The only production representation is TASM; recovery/src/F_4B0C.C is a byte-capsule stand-in, not a verified C source.",
+      "c_candidate_available": "recovery/src/F_4B0C.C exists but is an asm-db capsule (18 db lines), not usable C -- see capsules list.",
       "re_c_attempted": true,
       "result": "Opcode dispatch is `jmp [bx]` through a 29-entry table at DS:074A outside the function; Turbo C switch tables are CS-relative labels in the same object. Prologue pushes BP a second time and executes CLD with zero frame locals. Candidate skeleton in build/probes/rec7.",
       "next_action": "none",
@@ -175,11 +175,11 @@
       "confidence": "HIGH",
       "evidence": [
         "near proc, compact-model C calling convention: word arg y0 at [bp+4], no return value -- a genuine BP-frame stack argument, unlike the F_1ECD/F_1F91/F_4AA8/F_4E9F register-ABI cluster.",
-        "Header states this restates src/F_4EEB.C's original Turbo C inline-asm recovery with labels instead of raw db bytes.",
+        "Header states this restates recovery/src/F_4EEB.C's original Turbo C inline-asm recovery with labels instead of raw db bytes.",
         "si/di/bp preserved via push/pop, ax/bx/cx/dx clobbered -- the standard Turbo C callee-save shape for a function containing an inline asm block."
       ],
       "reason_asm_remains": "Historically an inline-asm C function (asm{} block inside a C source), so the production representation stays ASM even though the calling convention is pure C.",
-      "c_candidate_available": "src/F_4EEB.C -- explicitly cited by the header as the original inline-asm recovery this file restates symbolically.",
+      "c_candidate_available": "recovery/src/F_4EEB.C -- explicitly cited by the header as the original inline-asm recovery this file restates symbolically.",
       "re_c_attempted": true,
       "result": "Near-pointer C reproduces every field-addressing opcode (168 vs 120 bytes) but the original saves SI/DI after the first call and pushes a never-used SI; Turbo C saves register variables in the prologue and never emits dead saves. Notes in build/probes/rec10.",
       "next_action": "none",
@@ -249,11 +249,11 @@
       "classification": "PROBABLE_ORIGINAL_ASM",
       "confidence": "HIGH",
       "evidence": [
-        "near proc, no args/return -- header states this matches src/F_6036.C's Turbo C inline-asm body.",
+        "near proc, no args/return -- header states this matches recovery/src/F_6036.C's Turbo C inline-asm body.",
         "bp used as a running sprite-slot counter (data register, not frame pointer for stack args) alongside table traversal via SI/DI-style far pointer math -- consistent with an inline-asm block inside a C wrapper rather than a pure hand ASM routine."
       ],
       "reason_asm_remains": "Historically inline-asm C; production representation kept as symbolic ASM for byte-exact object match.",
-      "c_candidate_available": "src/F_6036.C -- cited directly by the header as the source this file matches.",
+      "c_candidate_available": "recovery/src/F_6036.C -- cited directly by the header as the source this file matches.",
       "re_c_attempted": true,
       "result": "lds si,[objtab] with lodsb/lodsw and a mid-body DS reload from DGROUP; not expressible from C.",
       "next_action": "none",
@@ -314,7 +314,7 @@
     },
     {
       "module": "M_6B1A_6B4A",
-      "source": "asm/M_6B1A_6B4A.ASM",
+      "source": "recovery/asm/M_6B1A_6B4A.ASM",
       "members": [
         {
           "id": "F_6B1A",
@@ -335,12 +335,12 @@
       "evidence": [
         "Header only names the two BIOS-keyboard entries (_f6b1a blocks/dispatches F1..F10, _f6b4a polls without consuming) without citing register-ABI or negative-compiler evidence.",
         "Direct BIOS INT 16h polling is plausible in either hand ASM or a C function with inline int86-style calls; the 76-byte pair is too small to carry strong structural signal either way from the header alone.",
-        "This session (rec3): exact inline-asm C reconstructions exist for BOTH members -- src/F_6B4A.C is already MATCHING_C/EQUAL in the manifest, and F_6B1A's own manifest provenance entry ('Translate the blocking BIOS keyboard poll using Turbo C inline assembly and compiler-generated SI preservation', matching_status EQUAL) shows a byte-exact inline-asm C reconstruction was already found historically for F_6B1A too, even though production currently still sources it from asm/F_6B1A.ASM. This directly contradicts the prior 'not attempted' UNKNOWN status: both members are individually solved as inline-asm C; what remains is a packaging step (merge the two into one C translation unit matching the module's combined object layout) rather than any further origin research."
+        "This session (rec3): exact inline-asm C reconstructions exist for BOTH members -- recovery/src/F_6B4A.C is already MATCHING_C/EQUAL in the manifest, and F_6B1A's own manifest provenance entry ('Translate the blocking BIOS keyboard poll using Turbo C inline assembly and compiler-generated SI preservation', matching_status EQUAL) shows a byte-exact inline-asm C reconstruction was already found historically for F_6B1A too, even though production currently still sources it from recovery/asm/F_6B1A.ASM. This directly contradicts the prior 'not attempted' UNKNOWN status: both members are individually solved as inline-asm C; what remains is a packaging step (merge the two into one C translation unit matching the module's combined object layout) rather than any further origin research."
       ],
       "reason_asm_remains": "Both members already have byte-exact inline-asm C reconstructions (F_6B4A production, F_6B1A historical/manifest); ASM remains the production source only because the two have not been merged into one C unit and promoted.",
       "c_candidate_available": "None documented.",
       "re_c_attempted": true,
-      "result": "PROMOTED: src/KEYBIOS.C (one translation unit with inline asm) reproduces all 76 bytes and both public offsets; production module is now MATCHING_C. asm/M_6B1A_6B4A.ASM retained as reference.",
+      "result": "PROMOTED: src/KEYBIOS.C (one translation unit with inline asm) reproduces all 76 bytes and both public offsets; production module is now MATCHING_C. recovery/asm/M_6B1A_6B4A.ASM retained as reference.",
       "next_action": "none",
       "production": false
     },
@@ -763,13 +763,13 @@
       "classification": "PROBABLE_MIXED_C_ASM",
       "confidence": "HIGH",
       "evidence": [
-        "asm-origin-review.json classification 'ASM_OR_MIXED_LIKELY': 'Live-register sound routines and fixed OPL settling reads; src/F_C898.C is explicitly C with assembly body.' -- direct evidence that at least F_C898 is a C function containing an inline-asm block (OPL register settling delay), not pure hand ASM.",
+        "asm-origin-review.json classification 'ASM_OR_MIXED_LIKELY': 'Live-register sound routines and fixed OPL settling reads; recovery/src/F_C898.C is explicitly C with assembly body.' -- direct evidence that at least F_C898 is a C function containing an inline-asm block (OPL register settling delay), not pure hand ASM.",
         "F_C77A (backend select/init) and F_C7CB (voice-state reload) are currently being re-tried as C by another agent per the task brief; not yet independently classified.",
         "F_C834/F_C877 share the OPL-output shape with F_C898 and are presumed to carry the same mixed C/inline-asm origin, though not individually confirmed.",
         "This session: F_C77A and F_C7CB individually confirmed PROBABLE_ORIGINAL_ASM/HIGH -- both contain instruction shapes (computed-displacement calls; register-passed-through-call ABI) that are categorically outside what any C compiler emitting relocatable OMF can produce, so no C phrasing was even attempted (see member_classifications)."
       ],
-      "reason_asm_remains": "F_C77A and F_C7CB are now confirmed hand ASM (computed-displacement calls, ES:DI-through-call ABI, neither expressible in relocatable-OMF C); F_C834/F_C877 presumed mixed by association with F_C898; F_C898 itself already confirmed mixed via src/F_C898.C.",
-      "c_candidate_available": "src/F_C898.C -- explicitly cited as C with an assembly body for the OPL settling read.",
+      "reason_asm_remains": "F_C77A and F_C7CB are now confirmed hand ASM (computed-displacement calls, ES:DI-through-call ABI, neither expressible in relocatable-OMF C); F_C834/F_C877 presumed mixed by association with F_C898; F_C898 itself already confirmed mixed via recovery/src/F_C898.C.",
+      "c_candidate_available": "recovery/src/F_C898.C -- explicitly cited as C with an assembly body for the OPL settling read.",
       "re_c_attempted": "F_C77A/F_C7CB: investigated and conclusively blocked this session (no C phrasing possible). F_C834/F_C877: not attempted. F_C898: already has a known mixed C/asm source.",
       "result": "F_C77A, F_C7CB, F_C834 and F_C877 are register-ABI assembler; F_C898 is C control with inline OPL register writes. The historical unit is mixed; keep exact ASM for the whole unit.",
       "next_action": "None: closed with member-level evidence.",
@@ -802,7 +802,7 @@
           "id": "F_C898",
           "classification": "PROBABLE_MIXED_C_ASM",
           "confidence": "HIGH",
-          "note": "src/F_C898.C is explicitly C with an inline-asm OPL settling-delay body (already documented, unchanged this session)."
+          "note": "recovery/src/F_C898.C is explicitly C with an inline-asm OPL settling-delay body (already documented, unchanged this session)."
         }
       ],
       "production": true
@@ -893,14 +893,14 @@
           "public": "operation",
           "classification": "PROBABLE_ORIGINAL_ASM",
           "confidence": "HIGH",
-          "note": "AL live-in widened and shifted into DGROUP. src/F_CA83.C reproduces the bytes only as a whole-body inline-asm wrapper under a dummy parameter; a whole-body asm wrapper is a reconstruction equivalent, not evidence of C origin."
+          "note": "AL live-in widened and shifted into DGROUP. recovery/src/F_CA83.C reproduces the bytes only as a whole-body inline-asm wrapper under a dummy parameter; a whole-body asm wrapper is a reconstruction equivalent, not evidence of C origin."
         },
         {
           "id": "F_CA91",
           "public": "operation",
           "classification": "PROBABLE_ORIGINAL_ASM",
           "confidence": "HIGH",
-          "note": "AL live-in widened into DGROUP with a hand-written frame. src/F_CA91.C is a whole-body inline-asm wrapper (reconstruction equivalent only)."
+          "note": "AL live-in widened into DGROUP with a hand-written frame. recovery/src/F_CA91.C is a whole-body inline-asm wrapper (reconstruction equivalent only)."
         }
       ],
       "bytes": 247,
@@ -1080,7 +1080,7 @@
     },
     {
       "module": "M_DDD9_DF98",
-      "source": "asm/MUSIC.ASM",
+      "source": "recovery/asm/MUSIC.ASM",
       "members": [
         {
           "id": "F_DDD9",
@@ -1111,22 +1111,22 @@
       "classification": "RECONSTRUCTION_ONLY_ASM",
       "confidence": "HIGH",
       "evidence": [
-        "asm-origin-review.json classification 'MIXED_RECONSTRUCTION_REVIEW_LATER': 'Surviving src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.'",
-        "docs/current/c-path-probes.json documents an F_DDD9 probe against src/F_DDD9.C, but 'limitation: Isolated compiler evidence only. Production M_DDD9_DF98 has four owners and globally ordered relocations; no promotion or production edits.' -- i.e. a single-function C probe cannot validate the whole four-owner contiguous module.",
+        "asm-origin-review.json classification 'MIXED_RECONSTRUCTION_REVIEW_LATER': 'Surviving recovery/src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.'",
+        "docs/current/c-path-probes.json documents an F_DDD9 probe against recovery/src/F_DDD9.C, but 'limitation: Isolated compiler evidence only. Production M_DDD9_DF98 has four owners and globally ordered relocations; no promotion or production edits.' -- i.e. a single-function C probe cannot validate the whole four-owner contiguous module.",
         "Header: 'Emit source contributions in descending address order so TASM emits the historical descending FIXUPP sequence' -- an ORG/fixup-order adapter that exists purely to reproduce object topology, one of the task's named ASM-evidence categories, and evidence the four functions were originally one compiled+linked unit whose relocation order must be preserved exactly.",
         "This session: a byte-exact pure-C reconstruction exists for the module's arithmetic core (src/MUSIC.C reference), and the relocation-topology audit (docs/current/relocation-topology.json) shows M_DDD9_DF98's EXE relocations are DESCENDING even though its production route is TASM.EXE (which predicts ASCENDING) -- a confirmed mismatch that is direct object-topology proof the original unit was compiled by Turbo C, not hand/TASM-assembled."
       ],
       "reason_asm_remains": "Native Turbo C origin is now confirmed by the relocation-direction mismatch (descending under a TASM route); ASM remains the production representation only because F_DF98 has not yet been expressed without an inline asm block.",
-      "c_candidate_available": "src/F_DDD9.C -- long-arithmetic C source, isolated-probe only per c-path-probes.json.",
+      "c_candidate_available": "recovery/src/F_DDD9.C -- long-arithmetic C source, isolated-probe only per c-path-probes.json.",
       "re_c_attempted": true,
-      "result": "PROMOTED: src/MUSIC.C, one pure Turbo C unit (no inline asm), reproduces all 700 bytes, the four public offsets and, via the native object writer's descending FIXUPP order, the historical relocation order; acceptance byte-identical. asm/MUSIC.ASM retained as reference.",
+      "result": "PROMOTED: src/MUSIC.C, one pure Turbo C unit (no inline asm), reproduces all 700 bytes, the four public offsets and, via the native object writer's descending FIXUPP order, the historical relocation order; acceptance byte-identical. recovery/asm/MUSIC.ASM retained as reference.",
       "next_action": "none",
       "production": false
     }
   ],
   "capsules": [
     {
-      "file": "src/DOS_STUB.C",
+      "file": "recovery/src/DOS_STUB.C",
       "lines": "4-22",
       "bytes": 404,
       "classification": "LEGITIMATE_DATA",
@@ -1134,11 +1134,11 @@
       "note": "Not one of the 32 TASM.EXE production-plan modules and not a TCC production source in production-plan.json; flagged as out-of-primary-scope but relevant."
     },
     {
-      "file": "src/F_4B0C.C",
+      "file": "recovery/src/F_4B0C.C",
       "lines": "4-15+",
       "bytes": 915,
       "classification": "INSTRUCTION_CAPSULE",
-      "reason": "Full-function `asm db` capsule (18+ db lines) encoding the entire F_4B0C opcode-interpreter body as raw instruction bytes. This is exactly the pattern the task calls out: opaque instruction bytes that should become symbolic. It HAS already become symbolic in production: the active production source for F_4B0C is asm/F_4B0C.ASM, whose provenance note states 'Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations.' src/F_4B0C.C is now an inactive superseded reference, not a production source.",
+      "reason": "Full-function `asm db` capsule (18+ db lines) encoding the entire F_4B0C opcode-interpreter body as raw instruction bytes. This is exactly the pattern the task calls out: opaque instruction bytes that should become symbolic. It HAS already become symbolic in production: the active production source for F_4B0C is asm/F_4B0C.ASM, whose provenance note states 'Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations.' recovery/src/F_4B0C.C is now an inactive superseded reference, not a production source.",
       "note": "Excluded from production scope per task instructions (inactive src/F_*.C reference), listed here only to record that the capsule this class of finding warns about was already resolved for this function."
     },
     {

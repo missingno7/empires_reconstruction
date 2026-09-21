@@ -31,7 +31,7 @@
     {
       "id": "DOS_STUB",
       "kind": "MATCHING_C",
-      "source": "src/DOS_STUB.C",
+      "source": "recovery/src/DOS_STUB.C",
       "start": 512,
       "end": 916,
       "expected_sha256": "79cf249420c5a3f2293266ed1ededcebbacd9ffa8785a463802392612a28b439",
@@ -53,7 +53,7 @@
       "end": 923,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_0194.C",
+      "source": "recovery/src/F_0194.C",
       "original_symbol": "F_0194",
       "artifact": "regions/F_0194.bin",
       "expected_sha256": "53f54c5ce1c02a46c9b29d2d2efc08e0d5bbef5f88ea1fbc68a8506eba8b3c3f",
@@ -87,7 +87,7 @@
       "end": 924,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_019B.C",
+      "source": "recovery/src/F_019B.C",
       "original_symbol": "F_019B",
       "artifact": "regions/F_019B.bin",
       "expected_sha256": "ae3f4619b0413d70d3004b9131c3752153074e45725be13b9a148978895e359e",
@@ -112,7 +112,7 @@
     {
       "id": "F_019C",
       "kind": "MATCHING_C",
-      "source": "src/F_019C.C",
+      "source": "recovery/src/F_019C.C",
       "start": 924,
       "end": 932,
       "expected_sha256": "aeb19f82e11c3536e82c536624996546d70e20ca9fceb262fdf497ba2408e372",
@@ -136,7 +136,7 @@
     {
       "id": "F_01A4",
       "kind": "MATCHING_C",
-      "source": "src/F_01A4.C",
+      "source": "recovery/src/F_01A4.C",
       "start": 932,
       "end": 954,
       "expected_sha256": "d15bed7a2d4d68678c376851a95fe1c41df8fe22a7628c7a1fabc0ea6e9730c1",
@@ -4294,7 +4294,7 @@
       "end": 21439,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_50D2.ASM",
+      "source": "recovery/asm/F_50D2.ASM",
       "original_symbol": "F_50D2",
       "artifact": "regions/F_50D2.bin",
       "expected_sha256": "b8ab9ee623ecd3d137c029b3e290649c28b6afd904471981fd311c16e4248eee",
@@ -4328,7 +4328,7 @@
     {
       "id": "F_53BF",
       "kind": "MATCHING_ASM",
-      "source": "src/F_53BF.ASM",
+      "source": "recovery/src/F_53BF.ASM",
       "start": 21439,
       "end": 21514,
       "expected_sha256": "6fed9f60d1cae2bfe28a56cc73a51b4ce804d7a0936c225a55dfc838d3b025aa",
@@ -7349,7 +7349,7 @@
       "end": 28613,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_6D86.ASM",
+      "source": "recovery/asm/F_6D86.ASM",
       "original_symbol": "F_6D86",
       "artifact": "regions/F_6D86.bin",
       "expected_sha256": "cd87f9da0d7af9fab6895ec031768588fc821349b792abf3c94f124ded0146a5",
@@ -7389,7 +7389,7 @@
       "end": 28927,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_6DCC.C",
+      "source": "recovery/src/F_6DCC.C",
       "original_symbol": "F_6DCC",
       "artifact": "regions/F_6DCC.bin",
       "expected_sha256": "1357ed0e49e2aa6b7a0d3099ba2f49e4daf748eb7b266022a400f9ff318d9ce1",
@@ -15611,7 +15611,7 @@
       "end": 50167,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_C1A0.ASM",
+      "source": "recovery/asm/F_C1A0.ASM",
       "original_symbol": "F_C1A0",
       "artifact": "regions/F_C1A0.bin",
       "expected_sha256": "8cb80ffdf6254084e9aa61ed263f6a6cc36321a723f154b93d916d11c190e51e",
@@ -15677,7 +15677,7 @@
       "end": 50226,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_C1F7.ASM",
+      "source": "recovery/asm/F_C1F7.ASM",
       "original_symbol": "F_C1F7",
       "artifact": "regions/F_C1F7.bin",
       "expected_sha256": "2bb2e7df506e73c85a2e7b65c1a5ca482c506b48b1b71c5954a9623e2fe8212e",
@@ -15735,7 +15735,7 @@
     {
       "id": "F_C232",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C232.ASM",
+      "source": "recovery/asm/F_C232.ASM",
       "start": 50226,
       "end": 50301,
       "expected_sha256": "73cb49feb03e6cbf5f43912e103ee9c071243e7178219775c525c7139bd05b65",
@@ -15807,7 +15807,7 @@
       "end": 50410,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_C27D.C",
+      "source": "recovery/src/F_C27D.C",
       "original_symbol": "F_C27D",
       "artifact": "regions/F_C27D.bin",
       "expected_sha256": "60c27416749667b01b3fb3015671b323b7e8ea71b4b4b836e3d48edd1b9d777f",
@@ -15889,7 +15889,7 @@
     {
       "id": "F_C2EA",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C2EA.ASM",
+      "source": "recovery/asm/F_C2EA.ASM",
       "start": 50410,
       "end": 50521,
       "expected_sha256": "21e0080919fa704106383aa723b3a442c4856be94736a353da751790de24c9d9",
@@ -15908,7 +15908,7 @@
     {
       "id": "F_C359",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C359.ASM",
+      "source": "recovery/asm/F_C359.ASM",
       "start": 50521,
       "end": 50651,
       "expected_sha256": "d8b82a5c2e9d60403835afb5291f9db90150d8f2aa67ad2ce70a31b95fd4b553",
@@ -15927,7 +15927,7 @@
     {
       "id": "F_C3DB",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C3DB.ASM",
+      "source": "recovery/asm/F_C3DB.ASM",
       "start": 50651,
       "end": 50752,
       "expected_sha256": "81738aeb7fd00aabe9501cdb52331d7acedd1d44bcb9e1a8e08138131cadd69e",
@@ -15946,7 +15946,7 @@
     {
       "id": "F_C440",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C440.ASM",
+      "source": "recovery/asm/F_C440.ASM",
       "start": 50752,
       "end": 50945,
       "expected_sha256": "b0ba62792d499409c79997c821a53244d5fe662f52a2a38d4f29f33eb88deb5b",
@@ -15965,7 +15965,7 @@
     {
       "id": "F_C501",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C501.ASM",
+      "source": "recovery/asm/F_C501.ASM",
       "start": 50945,
       "end": 51017,
       "expected_sha256": "10276a1b0cad7c432cb3d10aff6b5eb8e076a696692b6700a17a46031afd0424",
@@ -15984,7 +15984,7 @@
     {
       "id": "F_C549",
       "kind": "MATCHING_ASM",
-      "source": "src/F_C549.ASM",
+      "source": "recovery/src/F_C549.ASM",
       "start": 51017,
       "end": 51047,
       "expected_sha256": "c1f7f66fa1b8cb7a5cde4a30642d2ee87e6965933eb8542bd3fc4b6bec8ce6bc",
@@ -16003,7 +16003,7 @@
     {
       "id": "F_C567",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C567.ASM",
+      "source": "recovery/asm/F_C567.ASM",
       "start": 51047,
       "end": 51098,
       "expected_sha256": "a2c9268be7f423139d66a62f562812206bac6a372350eb1328101e6deb9e35c7",
@@ -16067,7 +16067,7 @@
     {
       "id": "F_C5A8",
       "kind": "MATCHING_ASM",
-      "source": "src/F_C5A8.ASM",
+      "source": "recovery/src/F_C5A8.ASM",
       "start": 51112,
       "end": 51123,
       "expected_sha256": "80cf1a61177c28afae7b5b085ca04aa782d1c412607d343653d1224e34220515",
@@ -16086,7 +16086,7 @@
     {
       "id": "F_C5B3",
       "kind": "MATCHING_ASM",
-      "source": "src/F_C5B3.ASM",
+      "source": "recovery/src/F_C5B3.ASM",
       "start": 51123,
       "end": 51142,
       "expected_sha256": "4ab6424b732439b57d64a81d4be2f0602b75588b70c1f7de1d278c5e808d65e0",
@@ -16105,7 +16105,7 @@
     {
       "id": "F_C5C6",
       "kind": "MATCHING_ASM",
-      "source": "src/F_C5C6.ASM",
+      "source": "recovery/src/F_C5C6.ASM",
       "start": 51142,
       "end": 51153,
       "expected_sha256": "2ecb329148159a9f1d75204125f247c05bbb9c7ff15ff004d0cbd1a88999ce54",
@@ -16124,7 +16124,7 @@
     {
       "id": "F_C5D1",
       "kind": "MATCHING_C",
-      "source": "src/F_C5D1.C",
+      "source": "recovery/src/F_C5D1.C",
       "start": 51153,
       "end": 51320,
       "expected_sha256": "271443f464479a2cc505ffa9d6f7da8070b6d878b01bfb6a995f8bcc9813c89a",
@@ -16143,7 +16143,7 @@
     {
       "id": "F_C678",
       "kind": "MATCHING_C",
-      "source": "src/F_C678.C",
+      "source": "recovery/src/F_C678.C",
       "start": 51320,
       "end": 51385,
       "expected_sha256": "cea34b61024eb3f88104da7792ac27580a50f99050bd32e216d96883eaf4a3a8",
@@ -16162,7 +16162,7 @@
     {
       "id": "F_C6B9",
       "kind": "MATCHING_C",
-      "source": "src/F_C6B9.C",
+      "source": "recovery/src/F_C6B9.C",
       "start": 51385,
       "end": 51462,
       "expected_sha256": "b440e94a5dc7a873ccb6ce61c3fd00439e767347a7091bd51197a0e976411cd5",
@@ -16181,7 +16181,7 @@
     {
       "id": "F_C706",
       "kind": "MATCHING_C",
-      "source": "src/F_C706.C",
+      "source": "recovery/src/F_C706.C",
       "start": 51462,
       "end": 51541,
       "expected_sha256": "f7293434f9cb16029e20c8be19b5caa880332f571f332f6f439f36584e8220d3",
@@ -16252,7 +16252,7 @@
     {
       "id": "F_C77A",
       "kind": "MATCHING_C",
-      "source": "src/F_C77A.C",
+      "source": "recovery/src/F_C77A.C",
       "start": 51578,
       "end": 51659,
       "expected_sha256": "7f86b839fc63e5286becb099355f6c08291affc5bca001a327703b4a8c19bb1e",
@@ -16271,7 +16271,7 @@
     {
       "id": "F_C7CB",
       "kind": "MATCHING_C",
-      "source": "src/F_C7CB.C",
+      "source": "recovery/src/F_C7CB.C",
       "start": 51659,
       "end": 51764,
       "expected_sha256": "f0792daaf03946542f30832c78fc01a6455e488aa228d57e4418cb530e550b49",
@@ -16293,7 +16293,7 @@
       "end": 51831,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_C834.C",
+      "source": "recovery/src/F_C834.C",
       "original_symbol": "F_C834",
       "artifact": "regions/F_C834.bin",
       "expected_sha256": "08e8339f9d9bfeb33fd85e4e46d3b4dd61a4d630fae9dbc39983a6a087a89d66",
@@ -16354,7 +16354,7 @@
     {
       "id": "F_C877",
       "kind": "MATCHING_C",
-      "source": "src/F_C877.C",
+      "source": "recovery/src/F_C877.C",
       "start": 51831,
       "end": 51864,
       "expected_sha256": "31295153914e2ff4fd9701e59b71a1da5377918d9cddfaf9315667d83777899d",
@@ -16397,7 +16397,7 @@
       "end": 51924,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_C898.C",
+      "source": "recovery/src/F_C898.C",
       "original_symbol": "F_C898",
       "artifact": "regions/F_C898.bin",
       "expected_sha256": "1aff723e3f8925d127b62c452cfb97c419824e6583fc93246718c534ccbb5e29",
@@ -16669,7 +16669,7 @@
     {
       "id": "F_C9A4",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_C9A4.ASM",
+      "source": "recovery/asm/F_C9A4.ASM",
       "start": 52132,
       "end": 52227,
       "expected_sha256": "94489bb646571201d4eae6b07b6bd69cb2e174ae95924d3448739e19a45eaa16",
@@ -16688,7 +16688,7 @@
     {
       "id": "F_CA03",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_CA03.ASM",
+      "source": "recovery/asm/F_CA03.ASM",
       "start": 52227,
       "end": 52277,
       "expected_sha256": "fc5c469abe90af478d959bfe8eb0821faa55d8f288c5ffd40648d7843bbd2cdf",
@@ -16736,7 +16736,7 @@
     {
       "id": "F_CA35",
       "kind": "MATCHING_ASM",
-      "source": "src/F_CA35.ASM",
+      "source": "recovery/src/F_CA35.ASM",
       "start": 52277,
       "end": 52305,
       "expected_sha256": "499cbfd6422b55b61c7f670d35313a16af3636dccd3f01fd28b71c5d7d0c0524",
@@ -16755,7 +16755,7 @@
     {
       "id": "F_CA51",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_CA51.ASM",
+      "source": "recovery/asm/F_CA51.ASM",
       "start": 52305,
       "end": 52355,
       "expected_sha256": "3e73414cedc8678c72ef233e17bf388a36704faf09b9b54e629c552d074c2865",
@@ -16788,7 +16788,7 @@
       "end": 52369,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_CA83.C",
+      "source": "recovery/src/F_CA83.C",
       "original_symbol": "F_CA83",
       "artifact": "regions/F_CA83.bin",
       "expected_sha256": "ff9b6e843b86be2f7aa034b890d5693a1f0889b6c4acf5d9a1c0e131899456fb",
@@ -16819,7 +16819,7 @@
     {
       "id": "F_CA91",
       "kind": "MATCHING_C",
-      "source": "src/F_CA91.C",
+      "source": "recovery/src/F_CA91.C",
       "start": 52369,
       "end": 52379,
       "expected_sha256": "458c83f920938024c7995c29949061cf27e6c9760898868bdb93757e2e9ee785",
@@ -18291,7 +18291,7 @@
     {
       "id": "F_D386",
       "kind": "MATCHING_C",
-      "source": "src/F_D386.C",
+      "source": "recovery/src/F_D386.C",
       "start": 54662,
       "end": 54735,
       "expected_sha256": "c52727ae50a891de4e8708e21193512cdb27cddf0b6de9bb60a142ba905af485",
@@ -18328,7 +18328,7 @@
     {
       "id": "F_D3CF",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_D3CF.ASM",
+      "source": "recovery/asm/F_D3CF.ASM",
       "start": 54735,
       "end": 54746,
       "expected_sha256": "470037ef91a639b045272f3919bb2396e9ce24c7f30453f99438f9ee5b7830e1",
@@ -18991,7 +18991,7 @@
     {
       "id": "F_D61C",
       "kind": "MATCHING_C",
-      "source": "src/F_D61C.C",
+      "source": "recovery/src/F_D61C.C",
       "start": 55324,
       "end": 55708,
       "expected_sha256": "304be6697bd43dd9465985edccef0cba4a865a7d3f9832af60ccc864ac88d8a6",
@@ -19010,7 +19010,7 @@
     {
       "id": "F_D79C",
       "kind": "MATCHING_C",
-      "source": "src/F_D79C.C",
+      "source": "recovery/src/F_D79C.C",
       "start": 55708,
       "end": 55831,
       "expected_sha256": "2b4464ca1a8ba7720a16177f17ba643855e60650e281559987a468609158e2b8",
@@ -19044,7 +19044,7 @@
     {
       "id": "F_D818",
       "kind": "MATCHING_ASM",
-      "source": "src/F_D818.ASM",
+      "source": "recovery/src/F_D818.ASM",
       "start": 55832,
       "end": 55845,
       "expected_sha256": "df46e15c6875236761c89018a9df8d57bdfa106f337f8cf34f20b24153b0a805",
@@ -19063,7 +19063,7 @@
     {
       "id": "F_D825",
       "kind": "MATCHING_ASM",
-      "source": "src/F_D825.ASM",
+      "source": "recovery/src/F_D825.ASM",
       "start": 55845,
       "end": 55903,
       "expected_sha256": "e51476579f8aaa4e624797021a93d15157f3409af018062fb5f2919d52aff183",
@@ -21796,7 +21796,7 @@
         "entry": "controls/correspondence/LIB_STRLEN.json",
         "library_sha256": "d60ce692d8a458fec2c9c1b9b8f70db6ecf79d32693fca7ce325fa8ef6c92179",
         "matching_c_evidence": "docs/matching-wave146-evidence.json",
-        "matching_c_source": "src/LIB_STRLEN.C",
+        "matching_c_source": "recovery/src/LIB_STRLEN.C",
         "module_sha256": "1d7eea610c2ec8e95322277394fee72c44a323df8941cb8ddc9ce6f45f3dfe00"
       }
     },
@@ -22381,7 +22381,7 @@
       "kind": "MATCHING_C",
       "start": 64446,
       "end": 64495,
-      "source": "src/F_F9BE.C",
+      "source": "recovery/src/F_F9BE.C",
       "build": {
         "segment": "_TEXT",
         "public": "_ff9be",

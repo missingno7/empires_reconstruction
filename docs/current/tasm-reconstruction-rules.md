@@ -62,7 +62,7 @@ is the older compatibility view.
 TLINK relocation order follows object and contribution emission order. Do not sort
 FIXUPP records by address during validation. TASM `ORG 5; call far_target; ORG 0;
 call far_target` emits contiguous final code but fixups at sites **6, then 1**.
-`asm/MUSIC.ASM` applies this rule to the real arithmetic module. Preserve
+`recovery/asm/MUSIC.ASM` applies this rule to the real arithmetic module. Preserve
 its source contribution ordering. Runtime card mode rejects ORG/alignment and
 include directives: changes to that topology belong to the supervisor.
 

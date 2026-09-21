@@ -15,7 +15,7 @@ class MatchingCWave65Tests(unittest.TestCase):
         # F_53BF was reverted to symbolic ASM and now belongs to the grouped
         # module M_50D2_53BF (see layout/production-plan.json and
         # docs/current/asm-origin-review.json), which calls the renamed
-        # _opl_detect (was _fe54d). The standalone src/F_53BF.ASM this
+        # _opl_detect (was _fe54d). The standalone recovery/src/F_53BF.ASM this
         # manifest region's 'source' field names is a stale leftover that
         # still externs the pre-rename _fe54d and no longer matches the
         # binding manifest['regions'] declares for this owner; compile and

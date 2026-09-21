@@ -25,7 +25,7 @@ def probe(root=ROOT):
     for flags in ('', '-B'):
         units = [copy.deepcopy(owners[name]) for name in CANDIDATES]
         for unit in units:
-            unit['source'] = 'src/' + unit['id'] + '.C'
+            unit['source'] = 'recovery/src/' + unit['id'] + '.C'
             unit['kind'] = 'MATCHING_C'
             unit['build']['flags_append'] = flags
         work = Path(tempfile.mkdtemp(prefix='c-path-', dir=root / 'build'))

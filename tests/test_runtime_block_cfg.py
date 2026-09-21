@@ -10,7 +10,7 @@ from analyze_runtime_block import analyze
 class RuntimeBlockCfgTests(unittest.TestCase):
     def test_dispatch_veneers_have_stable_bounded_roots(self):
         report = analyze((ROOT / 'build/regions/RUNTIME_BLOCK.bin').read_bytes(),
-                         ROOT / 'src/RUNTIME_BLOCK.C')
+                         ROOT / 'recovery/src/RUNTIME_BLOCK.C')
         self.assertEqual(report['bytes'], 6571)
         self.assertEqual(report['root_count'], 20)
         self.assertEqual(report['roots'][0]['aliases'], ['_runtime_base'])

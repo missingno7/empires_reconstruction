@@ -1,7 +1,7 @@
 # Grinder instructions
 
 Use only `docs/current/` for current status. The working runtime source is
-`asm/RUNTIME_BLOCK.ASM`; `src/RUNTIME_BLOCK.C` is the frozen migration oracle.
+`asm/RUNTIME_BLOCK.ASM`; `recovery/src/RUNTIME_BLOCK.C` is the frozen migration oracle.
 All card ranges are **runtime-relative, start inclusive, end exclusive**.
 
 1. Run `python tools/reconstruction_factory.py refresh`, then

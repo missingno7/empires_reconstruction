@@ -111,7 +111,7 @@
     {
       "id": "GLOBAL_TYPE:gbfc4",
       "outcome": "UNIFIED",
-      "resolution": "unsigned char far *gbfc4: src/TURNLOOP.C (previously char far *, dereferenced only as `*gbfc4 != 0`) now matches src/BRDPAINT.C. F_3A75 probe: EXACT. (src/F_D386.C's char far * declaration is an inactive reference source -- the TASM module M_D386_D3CF is what actually builds -- and was left untouched.)"
+      "resolution": "unsigned char far *gbfc4: src/TURNLOOP.C (previously char far *, dereferenced only as `*gbfc4 != 0`) now matches src/BRDPAINT.C. F_3A75 probe: EXACT. (recovery/src/F_D386.C's char far * declaration is an inactive reference source -- the TASM module M_D386_D3CF is what actually builds -- and was left untouched.)"
     },
     {
       "id": "GLOBAL_TYPE:gbfcc",
@@ -237,7 +237,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_1F91.C",
+          "file": "recovery/src/F_1F91.C",
           "line": 4
         }
       ]
@@ -274,7 +274,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_50D2.C",
+          "file": "recovery/src/F_50D2.C",
           "line": 6
         }
       ]
@@ -311,7 +311,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
+          "file": "recovery/src/F_6036.C",
           "line": 8
         }
       ]
@@ -348,7 +348,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 5
         }
       ]
@@ -385,7 +385,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
+          "file": "recovery/src/F_6181.C",
           "line": 7
         }
       ]
@@ -426,7 +426,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6D86.C",
+          "file": "recovery/src/F_6D86.C",
           "line": 2
         }
       ]
@@ -463,7 +463,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6DCC.C",
+          "file": "recovery/src/F_6DCC.C",
           "line": 2
         }
       ]
@@ -500,7 +500,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6F4B.C",
+          "file": "recovery/src/F_6F4B.C",
           "line": 2
         }
       ]
@@ -537,7 +537,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D61C.C",
+          "file": "recovery/src/F_D61C.C",
           "line": 2
         }
       ]
@@ -574,7 +574,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D79C.C",
+          "file": "recovery/src/F_D79C.C",
           "line": 2
         }
       ]
@@ -613,7 +613,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D386.C",
+          "file": "recovery/src/F_D386.C",
           "line": 6
         }
       ]
@@ -792,7 +792,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6B1A.C",
+          "file": "recovery/src/F_6B1A.C",
           "line": 2
         }
       ]
@@ -829,7 +829,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CBBB.C",
+          "file": "recovery/src/F_CBBB.C",
           "line": 2
         }
       ]
@@ -866,7 +866,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CB5C.C",
+          "file": "recovery/src/F_CB5C.C",
           "line": 2
         }
       ]
@@ -903,7 +903,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CC17.C",
+          "file": "recovery/src/F_CC17.C",
           "line": 2
         }
       ]
@@ -940,7 +940,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CC6B.C",
+          "file": "recovery/src/F_CC6B.C",
           "line": 2
         }
       ]
@@ -977,7 +977,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CD23.C",
+          "file": "recovery/src/F_CD23.C",
           "line": 2
         }
       ]
@@ -1065,7 +1065,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/LIB_STRLEN.C",
+          "file": "recovery/src/LIB_STRLEN.C",
           "line": 3
         }
       ]
@@ -1132,7 +1132,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_50D2.C",
+          "file": "recovery/src/F_50D2.C",
           "line": 4
         }
       ]
@@ -1231,7 +1231,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
+          "file": "recovery/src/F_4EEB.C",
           "line": 8
         }
       ]
@@ -1343,7 +1343,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1F91.C",
+          "file": "recovery/src/F_1F91.C",
           "line": 2
         }
       ]
@@ -1376,7 +1376,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -1409,7 +1409,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -1464,7 +1464,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -1508,7 +1508,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_C877.C",
+          "file": "recovery/src/F_C877.C",
           "line": 2
         }
       ]
@@ -1541,7 +1541,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -1562,7 +1562,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CA91.C",
+          "file": "recovery/src/F_CA91.C",
           "line": 2
         },
         {
@@ -1573,7 +1573,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -1606,7 +1606,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_9EC3.C",
+          "file": "recovery/src/F_9EC3.C",
           "line": 2
         }
       ]
@@ -1650,7 +1650,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 2
         }
       ]
@@ -1727,7 +1727,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 1
         }
       ]
@@ -1771,7 +1771,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_D386.C",
+          "file": "recovery/src/F_D386.C",
           "line": 3
         }
       ]
@@ -1815,7 +1815,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 2
         }
       ]
@@ -2063,7 +2063,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
+          "file": "recovery/src/F_6036.C",
           "line": 3
         },
         {
@@ -2074,7 +2074,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
+          "file": "recovery/src/F_6181.C",
           "line": 3
         }
       ]
@@ -2173,7 +2173,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1ECD.C",
+          "file": "recovery/src/F_1ECD.C",
           "line": 3
         }
       ]
@@ -2241,7 +2241,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
+          "file": "recovery/src/F_4EEB.C",
           "line": 9
         }
       ]
@@ -2363,7 +2363,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_C914.C",
+          "file": "recovery/src/F_C914.C",
           "line": 10
         }
       ]
@@ -2429,7 +2429,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -2462,7 +2462,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
+          "file": "recovery/src/F_6036.C",
           "line": 2
         },
         {
@@ -2473,7 +2473,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
+          "file": "recovery/src/F_6181.C",
           "line": 2
         }
       ]
@@ -2618,7 +2618,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1ECD.C",
+          "file": "recovery/src/F_1ECD.C",
           "line": 5
         }
       ]
@@ -2747,7 +2747,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_1F91.C",
+          "file": "recovery/src/F_1F91.C",
           "line": 4
         }
       ]
@@ -2784,7 +2784,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_50D2.C",
+          "file": "recovery/src/F_50D2.C",
           "line": 6
         }
       ]
@@ -2821,7 +2821,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
+          "file": "recovery/src/F_6036.C",
           "line": 8
         }
       ]
@@ -2858,7 +2858,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 5
         }
       ]
@@ -2895,7 +2895,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
+          "file": "recovery/src/F_6181.C",
           "line": 7
         }
       ]
@@ -2936,7 +2936,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6D86.C",
+          "file": "recovery/src/F_6D86.C",
           "line": 2
         }
       ]
@@ -2973,7 +2973,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6DCC.C",
+          "file": "recovery/src/F_6DCC.C",
           "line": 2
         }
       ]
@@ -3010,7 +3010,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6F4B.C",
+          "file": "recovery/src/F_6F4B.C",
           "line": 2
         }
       ]
@@ -3047,7 +3047,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D61C.C",
+          "file": "recovery/src/F_D61C.C",
           "line": 2
         }
       ]
@@ -3084,7 +3084,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D79C.C",
+          "file": "recovery/src/F_D79C.C",
           "line": 2
         }
       ]
@@ -3123,7 +3123,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D386.C",
+          "file": "recovery/src/F_D386.C",
           "line": 6
         }
       ]
@@ -3264,7 +3264,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_6B1A.C",
+          "file": "recovery/src/F_6B1A.C",
           "line": 2
         }
       ]
@@ -3301,7 +3301,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CBBB.C",
+          "file": "recovery/src/F_CBBB.C",
           "line": 2
         }
       ]
@@ -3338,7 +3338,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CB5C.C",
+          "file": "recovery/src/F_CB5C.C",
           "line": 2
         }
       ]
@@ -3375,7 +3375,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CC17.C",
+          "file": "recovery/src/F_CC17.C",
           "line": 2
         }
       ]
@@ -3412,7 +3412,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CC6B.C",
+          "file": "recovery/src/F_CC6B.C",
           "line": 2
         }
       ]
@@ -3449,7 +3449,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_CD23.C",
+          "file": "recovery/src/F_CD23.C",
           "line": 2
         }
       ]
@@ -3488,7 +3488,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/LIB_STRLEN.C",
+          "file": "recovery/src/LIB_STRLEN.C",
           "line": 3
         }
       ]
@@ -3521,7 +3521,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_50D2.C",
+          "file": "recovery/src/F_50D2.C",
           "line": 4
         }
       ]
@@ -3620,7 +3620,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
+          "file": "recovery/src/F_4EEB.C",
           "line": 8
         }
       ]
@@ -3653,7 +3653,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -3686,7 +3686,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -3741,7 +3741,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -3785,7 +3785,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_C877.C",
+          "file": "recovery/src/F_C877.C",
           "line": 2
         }
       ]
@@ -3818,7 +3818,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -3839,7 +3839,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CA91.C",
+          "file": "recovery/src/F_CA91.C",
           "line": 2
         },
         {
@@ -3850,7 +3850,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -3883,7 +3883,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_9EC3.C",
+          "file": "recovery/src/F_9EC3.C",
           "line": 2
         }
       ]
@@ -3927,7 +3927,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 2
         }
       ]
@@ -4004,7 +4004,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 1
         }
       ]
@@ -4048,7 +4048,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
+          "file": "recovery/src/F_60A9.C",
           "line": 2
         }
       ]
@@ -4128,7 +4128,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
+          "file": "recovery/src/F_6036.C",
           "line": 3
         },
         {
@@ -4139,7 +4139,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
+          "file": "recovery/src/F_6181.C",
           "line": 3
         }
       ]
@@ -4207,7 +4207,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
+          "file": "recovery/src/F_4EEB.C",
           "line": 9
         }
       ]
@@ -4240,7 +4240,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_C914.C",
+          "file": "recovery/src/F_C914.C",
           "line": 10
         }
       ]
@@ -4306,7 +4306,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
+          "file": "recovery/src/F_CAF1.C",
           "line": 2
         }
       ]
@@ -4339,7 +4339,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
+          "file": "recovery/src/F_6036.C",
           "line": 2
         },
         {
@@ -4350,7 +4350,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
+          "file": "recovery/src/F_6181.C",
           "line": 2
         }
       ]
@@ -4585,7 +4585,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1F91.C",
+          "file": "recovery/src/F_1F91.C",
           "line": 2
         }
       ]
@@ -4629,7 +4629,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_D386.C",
+          "file": "recovery/src/F_D386.C",
           "line": 3
         }
       ]
@@ -4896,7 +4896,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1ECD.C",
+          "file": "recovery/src/F_1ECD.C",
           "line": 3
         }
       ]
@@ -5130,7 +5130,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1ECD.C",
+          "file": "recovery/src/F_1ECD.C",
           "line": 5
         }
       ]

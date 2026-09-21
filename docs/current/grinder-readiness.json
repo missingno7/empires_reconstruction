@@ -1,6 +1,6 @@
 {
   "format": "empires-grinder-readiness-v1",
-  "input_fingerprint": "dfabc119024f6f43415d454be4c1bf0d66c0d3b670a8e94fa1cc7459a65fc6d9",
+  "input_fingerprint": "cc92a8106afe5f4e3c01b38bccbebfe05f09cee4a1a063340954a6e687fb2f2e",
   "run_started": false,
   "source_inventory": [
     {
@@ -16,7 +16,7 @@
       "reason": "Use current bounded runtime cards; do not convert the whole block to C.",
       "existing_c_sources": [
         {
-          "path": "src/RUNTIME_BLOCK.C",
+          "path": "recovery/src/RUNTIME_BLOCK.C",
           "sha256": "824e0a7bab15ce57a4e8c75bf58e1e89d85464a9d4023494fb8c7f440975479e",
           "inline_asm_tokens": 793
         }
@@ -2181,7 +2181,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_1ECD.C",
+          "path": "recovery/src/F_1ECD.C",
           "sha256": "e971f5fb724a54af085da2c48fbb6c8f3a527a6158bb601568fbf6bf513bf579",
           "inline_asm_tokens": 34
         }
@@ -2234,7 +2234,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_1F91.C",
+          "path": "recovery/src/F_1F91.C",
           "sha256": "a6a2a98a004e6a3d997c4d125177da8fc85ab25a7d22dbcdbe73e5af57a357d0",
           "inline_asm_tokens": 52
         }
@@ -2267,7 +2267,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_4AA8.C",
+          "path": "recovery/src/F_4AA8.C",
           "sha256": "3012565d00dc2c0dadde3c780884fae0600e651d2a87e0f5d12376cd7e42e71d",
           "inline_asm_tokens": 41
         }
@@ -2320,7 +2320,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_4B0C.C",
+          "path": "recovery/src/F_4B0C.C",
           "sha256": "27e933039585e2a55b4a7c7333717241d391b9cd50283a5b214e3ea4ecb8667a",
           "inline_asm_tokens": 41
         }
@@ -2592,7 +2592,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_4EEB.C",
+          "path": "recovery/src/F_4EEB.C",
           "sha256": "0a081c5d5a2a1ddb7a55be68a964d31eb7408e23179de68366700dcc80f0f11c",
           "inline_asm_tokens": 54
         }
@@ -2649,7 +2649,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_50D2.C",
+          "path": "recovery/src/F_50D2.C",
           "sha256": "ae8ab6f6e0bc4dd88525ce81f1d4942591357de4bb1f091f125f0b0d34f08029",
           "inline_asm_tokens": 30
         }
@@ -2726,7 +2726,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_6036.C",
+          "path": "recovery/src/F_6036.C",
           "sha256": "3aae02503b839a61fe488a0cf10fe4b60fbc8e5fba2baf30d8b0ccba11a11ac2",
           "inline_asm_tokens": 21
         }
@@ -2823,7 +2823,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_60A9.C",
+          "path": "recovery/src/F_60A9.C",
           "sha256": "5a1e3d99ff07247c76bc41a4956b3040d9c8f96900f90ff7b7a2eca8b770260d",
           "inline_asm_tokens": 32
         }
@@ -2928,7 +2928,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_6181.C",
+          "path": "recovery/src/F_6181.C",
           "sha256": "4ad354f726b857864e55b34e03c74d2a4c9fe3368c8435035caa38cb55cfbbea",
           "inline_asm_tokens": 22
         }
@@ -3001,83 +3001,6 @@
       ]
     },
     {
-      "id": "F_6BCF",
-      "source": "asm/F_6BCF.ASM",
-      "source_sha256": "bcffd7fe4b8d1b3d24af6fd2569220d561921830433429894514b0506e8d722b",
-      "range_file_offsets": [
-        28111,
-        28198
-      ],
-      "bytes": 87,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
-          "path": "src/F_6BCF.C",
-          "sha256": "3cdd29cfcfd419af5431a7744942e1dfa6711c2a72603b911ae3ba3b9cd90483",
-          "inline_asm_tokens": 33
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 15,
-          "instruction": "push ax"
-        },
-        {
-          "line": 17,
-          "instruction": "push cx"
-        },
-        {
-          "line": 19,
-          "instruction": "push es"
-        },
-        {
-          "line": 20,
-          "instruction": "push ds"
-        },
-        {
-          "line": 26,
-          "instruction": "pushf"
-        },
-        {
-          "line": 27,
-          "instruction": "sti"
-        },
-        {
-          "line": 32,
-          "instruction": "pushf"
-        },
-        {
-          "line": 47,
-          "instruction": "out 20h,al"
-        },
-        {
-          "line": 48,
-          "instruction": "popf"
-        },
-        {
-          "line": 52,
-          "instruction": "pop ds"
-        },
-        {
-          "line": 53,
-          "instruction": "pop es"
-        },
-        {
-          "line": 55,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 57,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 58,
-          "instruction": "iret"
-        }
-      ]
-    },
-    {
       "id": "M_6D86_6DCC",
       "source": "asm/M_6D86_6DCC.ASM",
       "source_sha256": "640dbe08e7171748df894e0c7f4ec524ad3c912e355dc28cb887b6aeb4186863",
@@ -3090,12 +3013,12 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_6D86.C",
+          "path": "recovery/src/F_6D86.C",
           "sha256": "2aae6c3ec56772b37d23be10470caa88d3921b97219ebed2d398849caf4f0880",
           "inline_asm_tokens": 30
         },
         {
-          "path": "src/F_6DCC.C",
+          "path": "recovery/src/F_6DCC.C",
           "sha256": "70c93badf67727f38f72c15b9d68b337ea2ae024bba24490cb8b13cff62ba230",
           "inline_asm_tokens": 13
         }
@@ -3259,7 +3182,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_6F4B.C",
+          "path": "recovery/src/F_6F4B.C",
           "sha256": "4c4cc0f58284c577f29d98428a6dcdd969bd14d50661d766585b8f31fae03d29",
           "inline_asm_tokens": 10
         }
@@ -3304,7 +3227,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_9EC3.C",
+          "path": "recovery/src/F_9EC3.C",
           "sha256": "0346752147f7626294f80152212d659db643efcd4c45936973c96b7a4c321810",
           "inline_asm_tokens": 16
         }
@@ -3365,12 +3288,12 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_C1A0.C",
+          "path": "recovery/src/F_C1A0.C",
           "sha256": "90f8530fb91ed14264338e7f314c628b0f895fa65e58264952c97d53f78f606d",
           "inline_asm_tokens": 27
         },
         {
-          "path": "src/F_C1F7.C",
+          "path": "recovery/src/F_C1F7.C",
           "sha256": "cd48c3a5220b0de76dbf4347b6bd973360a9b40367d9680d6c2de4573c9ecd7c",
           "inline_asm_tokens": 21
         }
@@ -3419,32 +3342,32 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_C27D.C",
+          "path": "recovery/src/F_C27D.C",
           "sha256": "90a24b6e5c2a5565e188a42dbc25fc56d9405803375607f70cf37079e2c9922a",
           "inline_asm_tokens": 42
         },
         {
-          "path": "src/F_C2EA.C",
+          "path": "recovery/src/F_C2EA.C",
           "sha256": "c7a6230f6433b19c157167ca3f5414a9fe3c2b9a54c97dc918f590d4b738aa09",
           "inline_asm_tokens": 5
         },
         {
-          "path": "src/F_C359.C",
+          "path": "recovery/src/F_C359.C",
           "sha256": "6da5a3940c3add2c9c75cb1168f8f516034a4dc1b4055183f0121ab0319b6531",
           "inline_asm_tokens": 6
         },
         {
-          "path": "src/F_C3DB.C",
+          "path": "recovery/src/F_C3DB.C",
           "sha256": "2bc8dbe5d182b62de346cd8808acd3804f80a9440e2c43a49e361c06236f9dc0",
           "inline_asm_tokens": 5
         },
         {
-          "path": "src/F_C440.C",
+          "path": "recovery/src/F_C440.C",
           "sha256": "8366622580ee2f01ddf4c804ac4288742d9f8e9ccb76dd9d7ec508c228117fc2",
           "inline_asm_tokens": 8
         },
         {
-          "path": "src/F_C501.C",
+          "path": "recovery/src/F_C501.C",
           "sha256": "00a6a40d390be0b00168e8f65251fe90289ddb21222cdab9654ac584e9f11e42",
           "inline_asm_tokens": 3
         }
@@ -3478,22 +3401,22 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_C5D1.C",
+          "path": "recovery/src/F_C5D1.C",
           "sha256": "735ab79e4e9a911c4ec090a0b8479fd516c966ca3221289f32ff1141093d4b3c",
           "inline_asm_tokens": 7
         },
         {
-          "path": "src/F_C678.C",
+          "path": "recovery/src/F_C678.C",
           "sha256": "3fb33c129e893e6910f1d4fbced4b5e76aa163e12f3f9725e2f9eadce998a2ad",
           "inline_asm_tokens": 3
         },
         {
-          "path": "src/F_C6B9.C",
+          "path": "recovery/src/F_C6B9.C",
           "sha256": "32004d61b20e6690910af47aed463a80f9ba24e98335532bbb00012c855bb675",
           "inline_asm_tokens": 4
         },
         {
-          "path": "src/F_C706.C",
+          "path": "recovery/src/F_C706.C",
           "sha256": "f361b24ae501c6b8aeb6676bb3be85a96a73632a8a0f76496dc012fd9fe7d80c",
           "inline_asm_tokens": 4
         }
@@ -3613,27 +3536,27 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_C77A.C",
+          "path": "recovery/src/F_C77A.C",
           "sha256": "34c729f54a09d3b6005c30be0020c5e0b7a6a858a7e7f15f709dbed3e9a50ae7",
           "inline_asm_tokens": 4
         },
         {
-          "path": "src/F_C7CB.C",
+          "path": "recovery/src/F_C7CB.C",
           "sha256": "f187e7d026f27abc731538b37ce3b76bbc34309309e0193253a2bc3f8297cd8c",
           "inline_asm_tokens": 5
         },
         {
-          "path": "src/F_C834.C",
+          "path": "recovery/src/F_C834.C",
           "sha256": "f16d90ae3323f51f768e265c48534383c80a61cfb61cf77c3ff90f9877ff5332",
           "inline_asm_tokens": 20
         },
         {
-          "path": "src/F_C877.C",
+          "path": "recovery/src/F_C877.C",
           "sha256": "d00cf9fcb7a9ff8bd4af386d363acdfbb6435d81d0b85cfd84768d91778bef57",
           "inline_asm_tokens": 8
         },
         {
-          "path": "src/F_C898.C",
+          "path": "recovery/src/F_C898.C",
           "sha256": "86968a28a5f3134a17685ba0111a8f45383a09b4ead30b93d70b72759273bc72",
           "inline_asm_tokens": 48
         }
@@ -3789,7 +3712,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_C914.C",
+          "path": "recovery/src/F_C914.C",
           "sha256": "0da5d612846d0a54b9656e52a5112e57c5f40d469ab189de2f9bc7f6379c3bac",
           "inline_asm_tokens": 32
         }
@@ -3818,17 +3741,17 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_C9A4.C",
+          "path": "recovery/src/F_C9A4.C",
           "sha256": "7690b047a594bada09dca2d9ba47706f3ad062360ce3bddbc3f25006153fdd8c",
           "inline_asm_tokens": 4
         },
         {
-          "path": "src/F_CA83.C",
+          "path": "recovery/src/F_CA83.C",
           "sha256": "0ed1ebf8ec04ab225e87158dc4fa1fdca47228fb2776404d450fefd2c0475fac",
           "inline_asm_tokens": 4
         },
         {
-          "path": "src/F_CA91.C",
+          "path": "recovery/src/F_CA91.C",
           "sha256": "3f5355d513df29e44c337415b531d6009b5e0674c3532b62f7b5f33298e814e1",
           "inline_asm_tokens": 5
         }
@@ -3862,7 +3785,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_CAF1.C",
+          "path": "recovery/src/F_CAF1.C",
           "sha256": "341ca48dd5df77837f75ceb2a616944e4fa298a6fb8817ff0d21a3b3edda6ba7",
           "inline_asm_tokens": 30
         }
@@ -3907,7 +3830,7 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_D386.C",
+          "path": "recovery/src/F_D386.C",
           "sha256": "2692128713d4d1a39e455dd06f8909bd800f1d63b8195d42e173bed229bc813a",
           "inline_asm_tokens": 11
         }
@@ -3968,12 +3891,12 @@
       "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
       "existing_c_sources": [
         {
-          "path": "src/F_D61C.C",
+          "path": "recovery/src/F_D61C.C",
           "sha256": "a17c6a4ada7703d54b80d5566d9bd784814b249a9c5a8ab19c84ccddad468aad",
           "inline_asm_tokens": 16
         },
         {
-          "path": "src/F_D79C.C",
+          "path": "recovery/src/F_D79C.C",
           "sha256": "a9813958b0f5f6685c36642c6e7ddc45b7f6802d8ab6d4cbe0dbd7756a43c556",
           "inline_asm_tokens": 6
         }

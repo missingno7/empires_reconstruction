@@ -792,8 +792,8 @@
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "TCC.EXE source src/KEYBUFDR.C contains an `asm` statement",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
    "category": "production-module",
    "mismatch": false
   },
@@ -3852,7 +3852,7 @@
     "module": "F_6B66",
     "raw_fixup_count": 1,
     "raw_direction": "single",
-    "predicted_direction": "ascending",
+    "predicted_direction": "descending",
     "agrees_with_prediction": true
    },
    {

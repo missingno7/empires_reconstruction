@@ -72,7 +72,7 @@ def source_has_inline_asm(source_path: Path) -> bool:
         return False
     text = source_path.read_text(errors="ignore")
     # Strip comments and string literals first: a comment such as "no inline asm"
-    # or a path like asm/MUSIC.ASM must not count as an asm statement.
+    # or a path like recovery/asm/MUSIC.ASM must not count as an asm statement.
     text = re.sub(r"/\*.*?\*/|//[^\n]*", " ", text, flags=re.S)
     text = re.sub(r'"(?:\\.|[^"\\])*"', '""', text)
     return re.search(r"(^|[;{}\s])asm\b", text) is not None

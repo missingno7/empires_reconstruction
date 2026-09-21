@@ -14,7 +14,7 @@ from reconstruct import read_json
 
 class OmfScaffoldTests(unittest.TestCase):
     def test_existing_turbo_c_dgroup_topology_is_untouched(self):
-        data = (ROOT / 'asm/F_652A.ASM').read_text()
+        data = (ROOT / 'recovery/asm/F_652A.ASM').read_text()
         self.assertIn('DGROUP group _DATA,_BSS', data)
         report_path = ROOT / 'build/tlink-structural-report.json'
         if not report_path.exists():

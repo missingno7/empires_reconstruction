@@ -18,7 +18,7 @@ class SymbolicAsmWave148Tests(unittest.TestCase):
         recipe = read_json(ROOT / 'recipes/c/matching-wave148.json')
         owner = next(region for region in manifest['regions'] if region['id'] == 'F_CA51')
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'asm/F_CA51.ASM')
+        self.assertEqual(owner['source'], 'recovery/asm/F_CA51.ASM')
         self.assertEqual(owner['end'] - owner['start'], 50)
         self.assertEqual(recipe['format'], 'empires-symbolic-asm-promotion-v1')
         self.assertEqual(recipe['conversions'][0]['id'], 'F_CA51')

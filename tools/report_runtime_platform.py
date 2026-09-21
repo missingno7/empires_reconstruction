@@ -54,7 +54,7 @@ def report(root=ROOT):
             {'value':3,'option':'T','driver':'built-in','evidence':'slot 3 -> runtime 0258; BIOS AX=0009h and ports 03DAh/03DEh'},
             {'value':4,'option':'M','driver':'built-in','evidence':'slot 4 -> runtime 0294; BIOS AX=0013h'},
             {'value':5,'option':'V','driver':'AE000_002','evidence':'F_48BE replaces code before first runtime call'}],
-            'mapping_source':'asm/F_4F96.ASM keys and handlers; src/F_520A.C memory-driven fallback',
+            'mapping_source':'recovery/asm/F_4F96.ASM keys and handlers; src/F_520A.C memory-driven fallback',
             'built_in_dispatch_context':[1,3,4],
             'limitation':'Context explains zero/out-of-table slots. It is not a local bounds check for arbitrary calls; built-in CFG retains incomplete status at 019C/02A2.'},
         'audio':[
@@ -74,8 +74,8 @@ def report(root=ROOT):
         'F_652A':('MATCHED_C_INTRINSICS','Full 66-byte extent recovered with Turbo C register pseudo-variables and __int__; no inline assembly.'),
         'F_7964':('C_LIKE_REVIEW_LATER','State loop shares its frame with continuation F_7DD3; do not independently re-C either owner.'),
         'F_7DD3':('SHARED_FRAME_CONTINUATION','Consumes BP locals and saved registers established by F_7964; not an independent C function.'),
-        'M_DDD9_DF98':('MIXED_RECONSTRUCTION_REVIEW_LATER','Surviving src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.'),
-        'M_C77A_C898':('ASM_OR_MIXED_LIKELY','Live-register sound routines and fixed OPL settling reads; src/F_C898.C is explicitly C with assembly body.'),
+        'M_DDD9_DF98':('MIXED_RECONSTRUCTION_REVIEW_LATER','Surviving recovery/src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.'),
+        'M_C77A_C898':('ASM_OR_MIXED_LIKELY','Live-register sound routines and fixed OPL settling reads; recovery/src/F_C898.C is explicitly C with assembly body.'),
         'M_50D2_53BF':('ORIGIN_UNPROVEN','Historical matching-C provenance included inline/fixed branch bytes. F_53BF calls the OPL timer probe; old VGA-probe wording is not hardware evidence.')}
     census=[]
     for module in read_json(root/'layout/production-plan.json')['modules']:

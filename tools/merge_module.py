@@ -13,6 +13,7 @@ build compiles is the same text. Run `python tools/production_plan.py` and
 """
 import argparse
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,6 +48,14 @@ def merge(module_id, target, root=ROOT, description=None):
         seen.append(path)
         region = regions[entry['owner']]
         text = (root / path).read_bytes().decode('latin1').replace('\r\n', '\n').replace('\r', '\n')
+        if re.search(r'^/\* ---- ' + re.escape(entry['owner']) + r' \(original code at', text, re.M):
+            # An already merged member file: keep its own section banners and
+            # drop its file head so its sections nest into the larger unit.
+            head = re.match(r'/\* ' + re.escape(path) + r':.*?\*/\s*', text, re.S)
+            if head:
+                text = text[head.end():]
+            parts.append(text.rstrip('\n') + '\n')
+            continue
         parts.append(banner(entry['owner'], region['start'] - 512, index == 0).replace('\r\n', '\n') + text.rstrip('\n') + '\n')
     head = (f'/* {target_rel}: {description or module_id}.\n'
             f'   One translation unit; the sections below were the separate member\n'

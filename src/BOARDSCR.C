@@ -42,7 +42,7 @@ extern int g73e, g736, g738;
 extern void anim_step_loop(int x, int y, int w, int h, int x2, int y2);
 extern void energy_set(int n);
 extern int confirm_quit_dialog(void);
-extern char g8bfe;
+extern char g8bfe[];
 extern void longjmp(void far *s, int n);
 
 /* ---- F_31C4 (original code at 0x31C4) ---- */
@@ -300,5 +300,5 @@ void f3986(void)
     slot_table[current_slot].value++;
     energy_set(slot_table[current_slot].state = 4);
     if (confirm_quit_dialog())
-        longjmp((char far *) &g8bfe, 2);
+        longjmp((char far *) g8bfe, 2);
 }

@@ -24,6 +24,8 @@ def prepare(root=ROOT):
         sources = []
         for member in module['members']:
             path = root / 'src' / (member + '.C')
+            if not path.exists():
+                path = root / 'recovery' / 'src' / (member + '.C')
             if path.exists():
                 body = path.read_text()
                 # Source-form triage only: comments do not count as inline ASM.

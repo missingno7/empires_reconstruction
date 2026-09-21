@@ -2,7 +2,7 @@
 
 The user authorized renewed matching-C work for compiler-like production ASM.
 F_AB66 is now an ordinary Turbo C translation unit in src/F_AB66.C, replacing
-asm/F_AB66.ASM in production. The ASM is retained as reference. No inline ASM,
+recovery/asm/F_AB66.ASM in production. The ASM is retained as reference. No inline ASM,
 DB directives, object corrections, or padding were added to obtain the match.
 
 All 385 linked bytes match the historical routine. Its natural stack frame has
@@ -542,9 +542,9 @@ only unresolved fixup fields differ in the single-module probe. Promoting it
 fails the ordered-relocation check: the compiler object emits the module's far
 fixups (LXMUL@, LDIV@, LXLSH@ calls) in ascending address order, and the
 historical executable carries them descending, which only the descending ORG
-contributions of asm/MUSIC.ASM reproduce. The module therefore stays TASM with
+contributions of recovery/asm/MUSIC.ASM reproduce. The module therefore stays TASM with
 the C unit kept as a reference; the constraint is documented in the ASM
-provenance report. src/F_DDD9.C, F_DE7E.C, F_DEFA.C and F_DF98.C remain
+provenance report. recovery/src/F_DDD9.C, F_DE7E.C, F_DEFA.C and F_DF98.C remain
 inactive per-function references.
 
 ## KEYBIOS: the BIOS keyboard helpers as one C unit
@@ -553,7 +553,7 @@ src/KEYBIOS.C combines the two exact inline-asm C reconstructions of F_6B1A
 and F_6B4A (INT 16h blocking read with the F1..F10 hot-key dispatch, and the
 non-consuming poll) into one translation unit that reproduces all 76 bytes and
 both public offsets; the module has no far relocations, so the assembler
-route's FIXUPP order is not observable. It replaces asm/M_6B1A_6B4A.ASM in
+route's FIXUPP order is not observable. It replaces recovery/asm/M_6B1A_6B4A.ASM in
 production (31 assembler modules remain). Full acceptance is byte-identical.
 
 ## Relocation order is object topology, not source language
@@ -574,7 +574,7 @@ octave into the voice tables, a miss recomputes through the octave and
 divisor helpers). With no inline asm in the unit, Turbo C's native object
 writer emits the module's far fixups descending, and the production build
 reproduces the historical relocation order without adapters. src/MUSIC.C
-replaces asm/MUSIC.ASM; three cache globals (g3752, gc5e4, gc5e6) that the
+replaces recovery/asm/MUSIC.ASM; three cache globals (g3752, gc5e4, gc5e6) that the
 assembler addressed by absolute offset are declared as DATA/BSS publics with
 bindings. Full acceptance is byte-identical with all 106 relocations in order;
 30 assembler modules remain.

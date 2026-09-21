@@ -80,3 +80,11 @@ Only `docs/current/` is authoritative current status. Older checkpoints and wave
 reports are retained as [historical evidence](docs/history/README.md), with stable
 paths for provenance and existing tests. The [workflow audit](docs/current/workflow-audit.md)
 records the migration priorities.
+
+`src/` and `asm/` hold only the sources the production plan actually compiles.
+Everything else that once lived there — capsule-only C references with `asm db`
+bytes, per-function ASM later merged into grouped `asm/M_*.ASM` modules, C
+modules retired by later promotions, and the frozen inline-ASM oracle for
+`asm/RUNTIME_BLOCK.ASM` — has moved to [`recovery/`](recovery/README.md) under
+the same file names. Nothing under `recovery/` is compiled; `layout/manifest.json`
+`source` fields for inactive regions point there for provenance.

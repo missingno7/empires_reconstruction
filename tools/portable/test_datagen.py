@@ -474,6 +474,58 @@ class DatagenTests(unittest.TestCase):
         source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
         self.assertIn('struct dialog dialog_player_name_entry = {', source)
 
+    # -- gc6c3 bug report: `T name[][N]` outer dimension from span --------
+
+    def test_multidim_array_outer_dimension_from_span(self):
+        # gc6c3 (DS:C6C3) is declared `unsigned char gc6c3[][24]` in
+        # MUSIC.C: the outer dimension is unspecified, so it must be
+        # filled in from the measured 600-byte span (600 / 24 = 25 rows)
+        # instead of being emitted as a bare `dos_uchar gc6c3[24]` (which
+        # silently dropped the outer dimension and the other 576 bytes).
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        gc6c3 = by_primary['gc6c3']
+        self.assertEqual(gc6c3['c_type'], 'dos_uchar[25][24]')
+        self.assertEqual(gc6c3['dims'], [25, 24])
+        self.assertEqual(gc6c3['size'], 600)
+        # gc6c3 lives past DATA_LEN (DS:C6C3), so it is a BSS object and is
+        # declared in game_state.h, not game_data.h.
+        state_header = (self.out_root / 'portable/generated/game_state.h').read_text('utf-8')
+        self.assertIn('extern dos_uchar gc6c3[25][24];', state_header)
+
+        # Bonus regression: hex-literal inner dimensions (`char
+        # gc136[][240]`, PUZZLE.C -- 240 is decimal here, but BOARD.C spells
+        # several siblings as `[0xe2]`/`[0x82]`/`[0xbb]`/`[0x62]`) must not
+        # be silently dropped by decimal-only dimension parsing either.
+        # a6f2a (DS:6F2A, BOARD.C's `char a6f2a[][0xe2]`) is the clearest
+        # hex case: 904 measured bytes / 226 (0xe2) = 4 rows.
+        a6f2a = by_primary['a6f2a']
+        self.assertEqual(a6f2a['c_type'], 'dos_char[4][226]')
+        self.assertEqual(a6f2a['dims'], [4, 226])
+        self.assertEqual(a6f2a['size'], 904)
+
+        # gc136 (DS:C136, PUZZLE.C's `char gc136[][240]`): 480 / 240 = 2.
+        gc136 = by_primary['gc136']
+        self.assertEqual(gc136['c_type'], 'dos_char[2][240]')
+        self.assertEqual(gc136['dims'], [2, 240])
+        self.assertEqual(gc136['size'], 480)
+
+        # ga22 (DS:0A22, RESOURCE.C's `char ga22[][16]`): 48 / 16 = 3.
+        ga22 = by_primary['ga22']
+        self.assertEqual(ga22['c_type'], 'dos_char[3][16]')
+        self.assertEqual(ga22['dims'], [3, 16])
+        self.assertEqual(ga22['size'], 48)
+
+        # None of these four should have produced a floor/ceil-rounding
+        # warning of their own: every span here divides its row size
+        # evenly (unlike e.g. gca6d, which genuinely floor-rounds).
+        for name in ('gc6c3', 'a6f2a', 'gc136', 'ga22'):
+            self.assertFalse(
+                any(e['name'] == name for e in self.aux['extra']['floor_arrays']),
+                f'{name} should reshape exactly, not floor-round')
+            self.assertFalse(
+                any(e['name'] == name for e in self.aux['extra']['ceil_arrays']),
+                f'{name} should reshape exactly, not ceil-round')
+
 
 if __name__ == '__main__':
     unittest.main()

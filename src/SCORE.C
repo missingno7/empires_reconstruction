@@ -15,6 +15,6 @@ void f99a2(void) { gfx_copy_rect_split(4,360,32,28,80,360); gfx_wipe_rect(80,362
 
 
 /* ---- F_99E2 (original code at 0x99E2) ---- */
-struct R { int a,b; };
-extern struct R g1271[];
+struct score_pos { int a,b; };
+extern struct score_pos g1271[];
 void score_set_position(int i) { score_panel_x=g1271[i].a; score_panel_y=g1271[i].b; }

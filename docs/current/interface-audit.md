@@ -107,3 +107,28 @@ Recommended next steps: review the signed/unsigned byte views with probes
 (signedness changes CBW versus XOR AH,AH and compare/branch selection, so each
 needs a byte-exact check), and group the remaining files into modules only
 where link order and compiler behavior support it.
+
+## Round: 2026-09-21 closure
+
+All ACTIVE findings from `docs/current/interface-audit.json` were re-checked
+against HEAD (`python tools/interface_census.py` then
+`python tools/audit_interface_conflicts.py`). The nine findings already
+carrying an `outcome` in `tools/audit_interface_conflicts.py`'s `resolutions`
+list (gfx_copy_rect, longjmp, keyboard_irq_handler, str_concat_far_list,
+a74a2, b437a, board_records, g96ee/g9bfc/gbf66/gbfc4/record_table_root,
+gbfcc, gc0ee, gc0fe, score_panel_x, ui_gfx_blob, voice_level_table,
+rect_queue_write_ptr/resource_stripe_table) still reproduce unchanged on
+HEAD -- same categories, same declarations, nothing to redo. The two
+findings in `open_findings` (COMPACT_MODEL_SPELLING:resource_ptr_table and
+LOCAL_TAG_REUSE:RECORD:R) are closed below. `python
+tools/audit_interface_conflicts.py` now reports `open: {}`.
+
+| Symbol | Outcome | Evidence / probe |
+| --- | --- | --- |
+| resource_ptr_table | UNIFIED | `char far *resource_ptr_table[]` spelled out consistently. src/LEVEL.C's hoisted top-of-file declaration (was plain `char *`) now says `far`, matching its own F_B99F-block declaration; the redundant duplicate declaration in that block (previously commented as an "alternate view") is removed so the merged unit keeps one declaration per symbol. src/MENURES.C's trailing declarator (was bare `*resource_ptr_table[]` after a `far *` list) now repeats `far` too. Under -mc an unqualified data pointer already defaults to far, so this was spelling only, never a real signed/near-far split. Probes: C_AF45_C15E (LEVEL.C) EXACT (4699/4699 bytes); F_1D47 (MENURES.C) EXACT (350/350 bytes). |
+| RECORD:R | UNIFIED | Tag `R` was reused for five unrelated, differently-shaped file-scoped structs (src/HELPMENU.C, src/LEVEL.C, src/MENULIST.C, src/PUZZLE.C, src/SCORE.C). Tags are file-scoped and are not emitted into the object, so renaming is byte-neutral; each got a distinct descriptive name instead of five identical-looking but incompatible `struct R` tags: HELPMENU.C to `struct dlg_pick_desc`, LEVEL.C to `struct actor_rec`, MENULIST.C to `struct catalog_entry` (include/GC0FE.H and include/GC316.H comments updated to match), PUZZLE.C to `struct piece_desc` (include/GC316.H comment updated), SCORE.C to `struct score_pos`. No field layouts changed and no symbol was renamed. Probes: C_D3DA_D49D (HELPMENU.C) EXACT (217/217 bytes); C_AF45_C15E (LEVEL.C) EXACT (4699/4699 bytes); F_7BFC (MENULIST.C) EXACT (405/405 bytes); C_8A37_969D (PUZZLE.C) EXACT (3605/3605 bytes); C_9962_99E2 (SCORE.C) EXACT (172/172 bytes). |
+
+`python tools/interface_census.py` now reports 9 raw conflicts (down from
+11); `python tools/audit_interface_conflicts.py` reports categories
+`{'ACTIVE_TYPE_REVIEW': 6, 'COMPACT_MODEL_SPELLING': 1, 'RETURN_TYPE_REVIEW': 1,
+'VARIADIC_PROTOTYPE': 1}` and `open: {}`.

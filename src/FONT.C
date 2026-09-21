@@ -7,7 +7,13 @@ extern unsigned char far *gc0d6[];
 extern unsigned gc0de,gc0e0,gc0e2,gc0e4,gc0e6,gc0ea;
 
 /* ---- F_6CA6 (original code at 0x6CA6) ---- */
-/* F_6CA6 -- index the far resource table and publish three spans. */
+/* F_6CA6 -- index the far resource table and publish three spans.  Asm body
+   under a TC frame (`[bp+4]` parameter, `push si` emitted for the asm).
+   Compiler evidence for keeping it asm: the far entry is walked in ES:SI
+   (`les si,[bx+table]`, three `add si,cx` steps published as offsets) -- Turbo
+   C never keeps a far pointer in ES:SI across statements and reloads ES per
+   access, so every C spelling re-materialises the pointer (probed 2026-09-21,
+   build/probes/keyb). */
 void sprite_sheet_select(i)
 int i;
 {

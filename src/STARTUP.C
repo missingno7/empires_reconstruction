@@ -171,6 +171,9 @@ l_fin:
 }
 
 /* ---- F_53BF (original code at 0x53BF) ---- */
+/* F_53BF -- sound-hardware probe; the inline fragments (flag tests straight
+   after INT 15h, `cmp al,0a5h`, `loop`) are the irreducible core listed in the
+   F_50D2 comment above. */
 sound_backend_probe()
 {
     snd_backend_mode = 0;

@@ -67,7 +67,13 @@ void interrupt keyboard_irq_handler(void)
 
 
 /* ---- F_6B1A (original code at 0x6B1A) ---- */
-/* F_6B1A -- blocking INT 16h read with the F1..F10 hot-key check. */
+/* F_6B1A -- blocking INT 16h read with the F1..F10 hot-key check.
+   Whole-body inline asm inside this C unit (the TC frame: no locals, `push si`
+   emitted by the compiler because the body names SI).  Compiler evidence for
+   keeping it asm (probed 2026-09-21): the body branches on the flags INT 16h
+   returns and on `or al,al` of the raw AX, and returns the value in AX with a
+   shifted AH -- a `_FLAGS` read compiles to `pushf`/`pop ax` and pseudo-register
+   spellings of the AH/AL shuffle reorder the branches (`build/probes/keyb`). */
 extern int menu_list_active();
 extern void menu_loop_run();
 
@@ -99,7 +105,9 @@ L_out: ;
 }
 
 /* ---- F_6B4A (original code at 0x6B4A) ---- */
-/* F_6B4A -- non-blocking INT 16h keyboard poll. */
+/* F_6B4A -- non-blocking INT 16h keyboard poll.  Same evidence as F_6B1A: the
+   `jz` straight after `int 16h` tests the ZF the BIOS returns, which no C
+   expression can observe without a `pushf`/`pop` pair. */
 int keyboard_poll_nonblocking()
 {
     asm mov ah,1

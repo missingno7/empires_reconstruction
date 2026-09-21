@@ -4,7 +4,13 @@
 #include "SOUND.H"
 
 /* ---- F_6B7A (original code at 0x6B7A) ---- */
-/* F_6B7A -- install the timer interrupt and program the PIT divisor. */
+/* F_6B7A -- install the timer interrupt and program the PIT divisor.
+   Whole-body inline asm (no frame: no parameters, no locals).  Compiler
+   evidence for keeping it asm: the body saves and restores AX/DX/DS/ES around
+   the two DOS calls and loads DS from CS (`push cs / pop ds`) for the
+   `set vector` call -- register choreography no C statement expresses; the
+   pseudo-register form (`_AX = 0x3508; __int__(0x21); ...`) drops the saves
+   and is shorter (probed 2026-09-21, build/probes/keyb). */
 extern void interrupt (*int8_saved_vector)(void);   /* saved INT 8 vector: offset at DS:0B7A, segment at DS:0B7C */
 extern void interrupt timer_irq_handler(void);      /* F_6BCF below, this unit's INT 8 handler */
 void timer_irq_install()
@@ -39,7 +45,9 @@ void timer_irq_install()
 
 
 /* ---- F_6BAC (original code at 0x6BAC) ---- */
-/* F_6BAC -- restore the timer interrupt and reset the PIT divisor. */
+/* F_6BAC -- restore the timer interrupt and reset the PIT divisor.  Same
+   register-save choreography as F_6B7A (push ax/dx/ds/es, DS loaded from the
+   saved vector's segment word): irreducible for the same reason. */
 void timer_irq_restore()
 {
     asm push ax

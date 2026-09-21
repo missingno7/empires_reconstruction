@@ -49,7 +49,11 @@ L_out: ;
 
 
 /* ---- F_D89A (original code at 0xD89A) ---- */
-/* F_D89A -- return the first rectangle-table id overlapping the query. */
+/* F_D89A -- return the first rectangle-table id overlapping the query.  Asm
+   body under a TC frame.  Compiler evidence for keeping it asm: `lodsb`/`lodsw`
+   scanning with `loop`, and BP repurposed as a data register (`mov bp,ax`) --
+   none of which Turbo C 2.0 emits from C (see docs/current/tu-structure.md,
+   fingerprints).  F_D85F above: `lodsb`, `rep movsb`, `loop` likewise. */
 int rect_table_hit_id(x,y,w,h)
 int x,y,w,h;
 {

@@ -1,19 +1,15 @@
 {
   "format": "empires-interface-audit-v1",
   "scope": "Review only; no production declaration edits or conflict suppression.",
-  "raw_conflicts": 11,
+  "raw_conflicts": 9,
   "active_c_sources": 60,
   "categories": {
     "ACTIVE_TYPE_REVIEW": 6,
-    "COMPACT_MODEL_SPELLING": 2,
-    "LOCAL_TAG_REUSE": 1,
+    "COMPACT_MODEL_SPELLING": 1,
     "RETURN_TYPE_REVIEW": 1,
     "VARIADIC_PROTOTYPE": 1
   },
-  "open_categories": {
-    "COMPACT_MODEL_SPELLING": 1,
-    "LOCAL_TAG_REUSE": 1
-  },
+  "open_categories": {},
   "resolutions": [
     {
       "id": "FUNCTION_ABI:f5321",
@@ -123,7 +119,7 @@
     {
       "id": "GLOBAL_TYPE:gc0fe",
       "outcome": "DOCUMENTED",
-      "resolution": "include/GC0FE.H already documents this as \"a genuine conflict, not unified\": F_7BFC (src/MENULIST.C) dereferences gc0fe as its own local `struct {int n; struct R *p;}` shape, which does not agree byte-for-byte with the shared far-pointer/record-catalog view F_7964/F_7D91 use. Kept as-is; nothing to change."
+      "resolution": "include/GC0FE.H already documents this as \"a genuine conflict, not unified\": F_7BFC (src/MENULIST.C) dereferences gc0fe as its own local `struct {int n; struct catalog_entry *p;}` shape, which does not agree byte-for-byte with the shared far-pointer/record-catalog view F_7964/F_7D91 use. Kept as-is; nothing to change."
     },
     {
       "id": "GLOBAL_TYPE:record_table_root",
@@ -154,37 +150,19 @@
       "id": "GLOBAL_TYPE:resource_stripe_table",
       "outcome": "UNIFIED",
       "resolution": "char far *resource_stripe_table spelled out consistently: src/LEVEL.C:213's `resource_ptr_table[]`/`resource_stripe_table` declarators now say `far` explicitly. C_AF45_C15E probe: EXACT (same edit/probe as rect_queue_write_ptr)."
+    },
+    {
+      "id": "GLOBAL_TYPE:resource_ptr_table",
+      "outcome": "UNIFIED",
+      "resolution": "char far *resource_ptr_table[] spelled out consistently: src/LEVEL.C's hoisted top-of-file declaration (line 29, previously plain `char *`) now says `far` explicitly, matching its own F_B99F-block declaration and src/BOARD.C/src/GAME.C's `resource_ptr_table_build()`; the redundant second LEVEL.C declaration (formerly at line ~220, marked as an \"alternate view\") is removed so the merged unit carries one declaration for the symbol. src/MENURES.C's declarator (previously bare `*resource_ptr_table[]` trailing a `far *` list) now repeats `far` explicitly too. Under -mc an unqualified data pointer already defaults to far, so this was spelling only. C_AF45_C15E probe: EXACT (4699/4699 bytes). F_1D47 probe: EXACT (350/350 bytes)."
+    },
+    {
+      "id": "RECORD:R",
+      "outcome": "UNIFIED",
+      "resolution": "struct tag `R` was reused across five unrelated file-scoped structs with different layouts (src/HELPMENU.C, src/LEVEL.C, src/MENULIST.C, src/PUZZLE.C, src/SCORE.C). Tags are file-scoped and are not emitted into the object file, so renaming is byte-neutral; each was given a distinct descriptive name instead of leaving five identically-named but incompatible tags: src/HELPMENU.C -> `struct dlg_pick_desc` (dialog list-pick descriptor: pointer/array/count), src/LEVEL.C -> `struct actor_rec` (23-byte actor record walked by chapter_map_sprites_wipe), src/MENULIST.C -> `struct catalog_entry` (the local record-catalog entry F_7BFC casts gc0fe through; include/GC0FE.H and include/GC316.H comments updated to the new name), src/PUZZLE.C -> `struct piece_desc` (2-byte a/b piece descriptor; include/GC316.H comment updated), src/SCORE.C -> `struct score_pos` (x/y score-panel position pair). No field layouts changed. Probes: C_D3DA_D49D (HELPMENU.C) EXACT (217/217 bytes), C_AF45_C15E (LEVEL.C) EXACT (4699/4699 bytes), F_7BFC (MENULIST.C) EXACT (405/405 bytes), C_8A37_969D (PUZZLE.C) EXACT (3605/3605 bytes), C_9962_99E2 (SCORE.C) EXACT (172/172 bytes)."
     }
   ],
   "findings": [
-    {
-      "id": "RECORD:R",
-      "kind": "RECORD_LAYOUT",
-      "category": "LOCAL_TAG_REUSE",
-      "note": "Tags are file scoped; matching tag names across files do not establish a shared type or an ABI conflict.",
-      "locations": [
-        {
-          "file": "src/HELPMENU.C",
-          "line": 8
-        },
-        {
-          "file": "src/LEVEL.C",
-          "line": 166
-        },
-        {
-          "file": "src/MENULIST.C",
-          "line": 7
-        },
-        {
-          "file": "src/PUZZLE.C",
-          "line": 221
-        },
-        {
-          "file": "src/SCORE.C",
-          "line": 18
-        }
-      ]
-    },
     {
       "id": "FUNCTION_ABI:keyboard_irq_handler",
       "kind": "FUNCTION_ABI",
@@ -425,7 +403,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "include/GC0FE.H",
-          "line": 12
+          "line": 14
         },
         {
           "symbol": "gc0fe",
@@ -437,51 +415,6 @@
           "confidence": "MEDIUM",
           "file": "src/MENULIST.C",
           "line": 7
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
-      "id": "GLOBAL_TYPE:resource_ptr_table",
-      "kind": "GLOBAL_TYPE",
-      "category": "COMPACT_MODEL_SPELLING",
-      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 29
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char far *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 221
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
         }
       ],
       "excluded_declarations": []
@@ -699,81 +632,7 @@
       "excluded_declarations": []
     }
   ],
-  "open_findings": [
-    {
-      "id": "RECORD:R",
-      "kind": "RECORD_LAYOUT",
-      "category": "LOCAL_TAG_REUSE",
-      "note": "Tags are file scoped; matching tag names across files do not establish a shared type or an ABI conflict.",
-      "locations": [
-        {
-          "file": "src/HELPMENU.C",
-          "line": 8
-        },
-        {
-          "file": "src/LEVEL.C",
-          "line": 166
-        },
-        {
-          "file": "src/MENULIST.C",
-          "line": 7
-        },
-        {
-          "file": "src/PUZZLE.C",
-          "line": 221
-        },
-        {
-          "file": "src/SCORE.C",
-          "line": 18
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:resource_ptr_table",
-      "kind": "GLOBAL_TYPE",
-      "category": "COMPACT_MODEL_SPELLING",
-      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 29
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char far *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 221
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "excluded_declarations": []
-    }
-  ],
+  "open_findings": [],
   "resolved": [
     {
       "id": "FUNCTION_ABI:keyboard_irq_handler",
@@ -1015,7 +874,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "include/GC0FE.H",
-          "line": 12
+          "line": 14
         },
         {
           "symbol": "gc0fe",

@@ -4,11 +4,13 @@
    this header declares it that way; F_7964/F_7D91 dereference it as the
    20-byte record catalog below, cast at the point of use.
 
-   F_7BFC also dereferences gc0fe, but as an unrelated {int n; struct R *p}
-   shape whose fields do not agree byte-for-byte with the catalog record
-   below (offset 0 is a struct-R text pointer there vs. two header ints
-   here) -- a genuine conflict, not unified; F_7BFC keeps its own local
-   struct declarations. */
+   F_7BFC also dereferences gc0fe, but as an unrelated {int n; struct
+   catalog_entry *p} shape whose fields do not agree byte-for-byte with the
+   catalog record below (offset 0 is a struct catalog_entry text pointer
+   there vs. two header ints here) -- a genuine conflict, not unified;
+   F_7BFC keeps its own local struct declarations (renamed from the
+   file-scoped tag `R` to `catalog_entry` for clarity; the tag name itself
+   is not part of the ABI). */
 extern char far *gc0fe;
 
 /* The 20-byte record entry F_7964 walks via gc0fe->records[] and F_7D91

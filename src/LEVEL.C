@@ -26,7 +26,7 @@ extern int g96;
 extern char *gc5a8, *gc580, *gc5ac, *gc59a, *gc5a4;
 extern char far *gc58a;
 extern char *gc58e, *gc584, *gc59e;
-extern char *resource_ptr_table[];
+extern char far *resource_ptr_table[];
 extern int board_record_index;
 extern unsigned char actor_record_table[];
 extern void board_actors_draw();
@@ -163,7 +163,7 @@ void level_free_descriptor_table()
 /* ---- F_B60F (original code at 0xB60F) ---- */
 /* alternate view: extern unsigned char tile_width_table[]; (no near) vs extern unsigned char near tile_width_table[]; at top */
 extern unsigned char tile_width_table[];
-struct R{char a,b;int x,y;char c,d,e;char rest[23];};chapter_map_sprites_wipe(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(actor_record_table+1);for(i=0;i<actor_record_table[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+tile_width_table[p->c]-1;b=(y=p->y)+tile_height_table[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
+struct actor_rec{char a,b;int x,y;char c,d,e;char rest[23];};chapter_map_sprites_wipe(){register int x,y;int i,r,b;struct actor_rec *p;p=(struct actor_rec *)(actor_record_table+1);for(i=0;i<actor_record_table[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+tile_width_table[p->c]-1;b=(y=p->y)+tile_height_table[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
 
 
 /* ---- F_B6CD (original code at 0xB6CD) ---- */
@@ -217,8 +217,6 @@ extern unsigned char near g740[];
 extern struct dialog near g1670;
 extern char game_abort_jmpbuf[];extern unsigned char g96ee[];
 extern unsigned long timer_ticks;
-/* alternate view: extern char far *resource_ptr_table[]; (far elements) vs extern char *resource_ptr_table[]; at top */
-extern char far *resource_ptr_table[];
 extern char far *resource_stripe_table;
 extern int slot_reset_for_new_game(), hud_tab_next();
 extern void level_display_init(void);

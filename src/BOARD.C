@@ -725,6 +725,14 @@ void board_run_unit_script(unsigned char far *s)
             i++;
             s++;
             r = (q = g43b4[*s].bytes) + (c & 0xf) * 4 + 0x2cb;
+            /* r[3] = -r[3], negated at WORD width without an extension: every
+               C spelling (28 standalone forms, 8 in context, 2026-09-21,
+               docs/history/probes/neg-ax-forms.C) folds a byte-lvalue negation
+               to `neg al`, and every route to `neg ax` (int/static/register
+               temp) materialises `mov ah,0` plus a spill/reload.  The original
+               relies on AH still being zero from the `and ax,0Fh` three
+               statements earlier, which only the author knew: hand-written
+               inline asm inside this otherwise compiled function. */
             asm les bx,r
             asm mov al,es:[bx+3]
             asm neg ax

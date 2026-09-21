@@ -218,7 +218,7 @@ void puzzle_free_resources()
 
 
 /* ---- F_929E (original code at 0x929E) ---- */
-struct R{char a,b;};puzzle_draw_piece(r,a,b) struct R r;int a,b;{int u,v;register int x,y;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}if(r.a==-1)gfx_wipe_rect(x,y+186,32,24,x,y);else{u=(r.a%3)*32;v=(r.a/3)*24+344;switch(r.b){case 0:gfx_wipe_rect(u,v,32,24,x,y);break;case 1:gfx_copy_rect_flip_h(u,v,32,24,x,y);break;case 2:gfx_copy_rect_flip_hv(u,v,32,24,x,y);break;case 3:gfx_copy_rect_flip_v(u,v,32,24,x,y);break;}}}
+struct piece_desc{char a,b;};puzzle_draw_piece(r,a,b) struct piece_desc r;int a,b;{int u,v;register int x,y;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}if(r.a==-1)gfx_wipe_rect(x,y+186,32,24,x,y);else{u=(r.a%3)*32;v=(r.a/3)*24+344;switch(r.b){case 0:gfx_wipe_rect(u,v,32,24,x,y);break;case 1:gfx_copy_rect_flip_h(u,v,32,24,x,y);break;case 2:gfx_copy_rect_flip_hv(u,v,32,24,x,y);break;case 3:gfx_copy_rect_flip_v(u,v,32,24,x,y);break;}}}
 
 
 /* ---- F_93AA (original code at 0x93AA) ---- */

@@ -11,7 +11,7 @@
 extern struct record3e8 g43b4[];
 
 extern int g072e, g00bc;
-extern char far *ui_gfx_blob, *rect_queue_write_ptr;
+extern char far *ui_gfx_blob, far *rect_queue_write_ptr;
 extern void f1ecd(void);
 extern void timer_deadline_wait(void);
 extern void board_redraw_view();
@@ -24,14 +24,14 @@ extern void hud_panel_open();
 extern void sound_stop_reset(void);
 extern void board_redraw_paint(void);
 extern int board_record_index;
-extern unsigned char far *board_records;
+extern char far *board_records;
 extern char far *src, far *dst;               /* DS:C5CA -> DS:40C4 */
 /*@SYM _src=0xC5CA kind=g key=storage_objects/M_2C0FA.phys*/
 /*@SYM _dst=0x40C4 kind=g key=storage_objects/M_23BF4.phys*/
 extern int gbc, g40ce;
 extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4, same entry as gfx_wipe_rect under this alias */
 /*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
-extern unsigned char far *record_table_root;
+extern char far *record_table_root;
 extern int f250c(), f32fa(), f6181();
 extern void fcaf1();
 extern int g96;
@@ -43,7 +43,7 @@ extern void anim_step_loop(int x, int y, int w, int h, int x2, int y2);
 extern void energy_set(int n);
 extern int confirm_quit_dialog(void);
 extern char g8bfe;
-extern void longjmp(char far *s, int n);
+extern void longjmp(void far *s, int n);
 
 /* ---- F_31C4 (original code at 0x31C4) ---- */
 /* F_31C4 -- scroll the board into view, redraw the frame, scroll it out.

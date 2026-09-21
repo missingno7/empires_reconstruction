@@ -459,6 +459,9 @@
       "original": "f727d",
       "address": "727D"
     },
+    "int8_saved_vector": {
+      "original": "g0b7a"
+    },
     "int9_saved_vector": {
       "original": "gc0cc"
     },
@@ -1065,6 +1068,10 @@
       "original": "f6c6f",
       "address": "6C6F"
     },
+    "timer_irq_handler": {
+      "original": "f6bcf",
+      "address": "6BCF"
+    },
     "timer_irq_install": {
       "original": "f6b7a",
       "address": "6B7A"
@@ -1072,6 +1079,12 @@
     "timer_irq_restore": {
       "original": "f6bac",
       "address": "6BAC"
+    },
+    "timer_tick_phase": {
+      "original": "gc0d4"
+    },
+    "timer_ticks": {
+      "original": "g0b76"
     },
     "timer_wait_ticks": {
       "original": "f6c26",

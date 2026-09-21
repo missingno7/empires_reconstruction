@@ -6860,7 +6860,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g0b7a": {
+          "_int8_saved_vector": {
             "offset": 2938,
             "coordinate": "DGROUP_offset"
           },
@@ -6893,7 +6893,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_g0b7a": {
+          "_int8_saved_vector": {
             "offset": 2938,
             "coordinate": "DGROUP_offset"
           },
@@ -6916,16 +6916,16 @@
       "id": "F_6BCF",
       "start": 28111,
       "end": 28198,
-      "kind": "MATCHING_ASM",
+      "kind": "MATCHING_C",
       "classification": "code",
-      "source": "asm/F_6BCF.ASM",
+      "source": "src/TIMERIRQ.C",
       "original_symbol": "F_6BCF",
       "artifact": "regions/F_6BCF.bin",
       "expected_sha256": "8ebd4127d1ea934d625b2b0997221918adab41d773f85a7af9fd286c989e3d70",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6bcf",
+        "public": "_timer_irq_handler",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -6937,7 +6937,7 @@
             "public": "_fc1a0",
             "addend": 0
           },
-          "_g0b76": {
+          "_timer_ticks": {
             "offset": 2934,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A6.phys"
@@ -6947,7 +6947,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206A8.phys"
           },
-          "_g0b7a": {
+          "_int8_saved_vector": {
             "offset": 2938,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P206AA.phys"
@@ -6967,7 +6967,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21EAC.phys"
           },
-          "_gc0d4": {
+          "_timer_tick_phase": {
             "offset": 49364,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC04.phys"
@@ -6975,10 +6975,8 @@
         }
       },
       "provenance": {
-        "method": "complete ASM extent translated to deterministic Turbo C interrupt source with fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "90dc22fdf6a897b96d6a18faadf511d5109d41ade4274f70a03bbc10895c42fb",
-        "source_sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
-        "change": "Use Turbo C interrupt prologue/epilogue for the timer ISR; inline assembly preserves its port I/O and interrupt-control body."
+        "method": "bounded exact-C probe (build/probes/f6bcf/notes.md)",
+        "change": "Turbo C interrupt function with a bare asm pushf/asm popf pair; EXACT 87/87 bytes, 11 fixups, CODE_AND_TOPOLOGY_MATCH; asm/F_6BCF.ASM retired."
       }
     },
     {

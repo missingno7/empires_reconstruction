@@ -10,7 +10,7 @@
 ; DGROUP:0C0CCh when neither DGROUP:0B72 nor di gates it, and falls into a
 ; shared port-61h ack / EOI tail before the nine-register epilogue and IRET.
 ; docs/agent-context/substrate.md's F_699E task: 1,038 call sites from inside
-; the master-tick ISR fC1A0's own caller (f6bcf) and 88 from the BIOS chain;
+; the master-tick ISR fC1A0's own caller (timer_irq_handler) and 88 from the BIOS chain;
 ; no callees inside its own 380-byte extent.
 ;
 ; Historical reference only. src/F_699E.C now matches the full extent using

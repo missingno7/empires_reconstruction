@@ -13,10 +13,11 @@ class MatchingCWave130Tests(unittest.TestCase):
         recipe = read_json(ROOT / 'recipes/c/matching-wave130.json')
         evidence = read_json(ROOT / 'docs/matching-wave130-evidence.json')
         # F_6BCF was reverted to symbolic ASM after the refactor's asm-origin
-        # review (see docs/current/asm-origin-review.json); F_699E remains
-        # C-owned. Both still match the unchanged original bytes recorded by
-        # the wave130 evidence.
-        expected_kind = {'F_6BCF': ('MATCHING_ASM', 'asm/F_6BCF.ASM'),
+        # review and recovered again as a Turbo C interrupt function with a
+        # bare pushf/popf inline pair (src/TIMERIRQ.C, build/probes/timer_irq_handler);
+        # F_699E remains C-owned. Both still match the unchanged original
+        # bytes recorded by the wave130 evidence.
+        expected_kind = {'F_6BCF': ('MATCHING_C', 'src/TIMERIRQ.C'),
                          'F_699E': ('MATCHING_C', 'src/KEYIRQH.C')}
         for ident, size, relocation in [('F_6BCF', 87, [27609]), ('F_699E', 380, [27048])]:
             owner = next(r for r in manifest['regions'] if r['id'] == ident)
@@ -33,7 +34,7 @@ class MatchingCWave130Tests(unittest.TestCase):
         # symbolic ASM (see docs/current/asm-origin-review.json), so the
         # production build no longer holds zero MATCHING_ASM bytes overall;
         # confirm the current total instead.
-        self.assertEqual(sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'MATCHING_ASM'), 10877)
+        self.assertEqual(sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'MATCHING_ASM'), 10790)
 
 
 if __name__ == '__main__':

@@ -314,6 +314,22 @@
           "confidence": "MEDIUM",
           "file": "src/KEYIRQH.C",
           "line": 5
+        },
+        {
+          "symbol": "__outportb__",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 2,
+          "argument_types": [
+            "int",
+            "unsigned char"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 11
         }
       ],
       "definitions": []
@@ -346,6 +362,19 @@
           "confidence": "MEDIUM",
           "file": "src/RESOURCE.C",
           "line": 126
+        },
+        {
+          "symbol": "__sti__",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 10
         }
       ],
       "definitions": []
@@ -6504,50 +6533,6 @@
       ]
     },
     {
-      "symbol": "f6bcf",
-      "declarations": [
-        {
-          "symbol": "f6bcf",
-          "definition": true,
-          "return_type": "void interrupt",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 5
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f6bcf",
-          "definition": true,
-          "return_type": "void interrupt",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 5
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f6bcf",
-          "address": 27599,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_6BCF",
-          "module_members": [
-            "F_6BCF"
-          ]
-        }
-      ]
-    },
-    {
       "symbol": "f6d86",
       "declarations": [
         {
@@ -10117,19 +10102,6 @@
       "declarations": [
         {
           "symbol": "fc1a0",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 3
-        },
-        {
-          "symbol": "fc1a0",
           "definition": true,
           "return_type": "void",
           "argument_count": null,
@@ -10140,6 +10112,19 @@
           "confidence": "MEDIUM",
           "file": "src/F_C1A0.C",
           "line": 7
+        },
+        {
+          "symbol": "fc1a0",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 9
         }
       ],
       "definitions": [
@@ -12738,8 +12723,8 @@
           "return_type": "void",
           "argument_count": 4,
           "argument_types": [
-            "unsigned",
-            "unsigned",
+            "int",
+            "int",
             "void far *",
             "int"
           ],
@@ -13611,7 +13596,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/SCOREPNL.C",
-          "line": 2
+          "line": 9
         },
         {
           "symbol": "gfx_wipe_rect",
@@ -16636,7 +16621,7 @@
           "return_type": "void",
           "argument_count": 2,
           "argument_types": [
-            "char far *",
+            "void far *",
             "int"
           ],
           "near_far": "near",
@@ -17150,7 +17135,7 @@
         {
           "symbol": "menu_list_active",
           "definition": false,
-          "return_type": "void",
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -23355,7 +23340,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/SCOREPNL.C",
-          "line": 2
+          "line": 9
         }
       ],
       "definitions": [
@@ -23370,7 +23355,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/SCOREPNL.C",
-          "line": 2
+          "line": 9
         }
       ],
       "omf_public_evidence": [
@@ -27039,6 +27024,50 @@
       ]
     },
     {
+      "symbol": "timer_irq_handler",
+      "declarations": [
+        {
+          "symbol": "timer_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 12
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "timer_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 12
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_timer_irq_handler",
+          "address": 27599,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_6BCF",
+          "module_members": [
+            "F_6BCF"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "timer_irq_install",
       "declarations": [
         {
@@ -30529,7 +30558,7 @@
         },
         {
           "symbol": "b437a",
-          "type": "char",
+          "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
           "storage": null,
@@ -31080,7 +31109,7 @@
       "declarations": [
         {
           "symbol": "board_records",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -31091,7 +31120,7 @@
         },
         {
           "symbol": "board_records",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -34915,56 +34944,10 @@
       ]
     },
     {
-      "symbol": "g0b76",
-      "declarations": [
-        {
-          "symbol": "g0b76",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2934,
-          "owner": null,
-          "evidence": "storage_objects/G_P206A6.phys",
-          "caller": "F_6BCF"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2934,
-          2936
-        ]
-      ],
-      "aliases": [
-        "gb76"
-      ]
-    },
-    {
       "symbol": "g0b78",
-      "declarations": [
-        {
-          "symbol": "g0b78",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        }
-      ],
+      "declarations": [],
       "definitions": [],
+      "type_confidence": "UNKNOWN",
       "storage_evidence": [
         {
           "offset": 2936,
@@ -34974,83 +34957,7 @@
         }
       ],
       "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2936,
-          2938
-        ]
-      ],
-      "aliases": []
-    },
-    {
-      "symbol": "g0b7a",
-      "declarations": [
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 2
-        },
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERINS.C",
-          "line": 2
-        },
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERRST.C",
-          "line": 2
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 2938,
-          "owner": null,
-          "evidence": null,
-          "caller": "F_6B7A"
-        },
-        {
-          "offset": 2938,
-          "owner": null,
-          "evidence": null,
-          "caller": "F_6BAC"
-        },
-        {
-          "offset": 2938,
-          "owner": null,
-          "evidence": "storage_objects/G_P206AA.phys",
-          "caller": "F_6BCF"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          2938,
-          2942
-        ],
-        [
-          2938,
-          2940
-        ]
-      ],
+      "known_storage_ranges": [],
       "aliases": []
     },
     {
@@ -38023,17 +37930,6 @@
       "declarations": [
         {
           "symbol": "g237c",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        },
-        {
-          "symbol": "g237c",
           "type": "int",
           "array": null,
           "pointer_shape": null,
@@ -38063,6 +37959,17 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "src/SNDSTART.C",
+          "line": 6
+        },
+        {
+          "symbol": "g237c",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
           "line": 6
         }
       ],
@@ -41326,7 +41233,7 @@
         },
         {
           "symbol": "g96ee",
-          "type": "char",
+          "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
           "storage": null,
@@ -41891,7 +41798,7 @@
         },
         {
           "symbol": "g9bfc",
-          "type": "char",
+          "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
           "storage": null,
@@ -43315,7 +43222,7 @@
         ]
       ],
       "aliases": [
-        "g0b76"
+        "timer_ticks"
       ]
     },
     {
@@ -43836,7 +43743,7 @@
         },
         {
           "symbol": "gbf66",
-          "type": "char",
+          "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
           "storage": null,
@@ -43910,7 +43817,7 @@
         },
         {
           "symbol": "gbfc4",
-          "type": "char far *",
+          "type": "unsigned char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -44903,39 +44810,6 @@
       "aliases": []
     },
     {
-      "symbol": "gc0d4",
-      "declarations": [
-        {
-          "symbol": "gc0d4",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 49364,
-          "owner": null,
-          "evidence": "storage_objects/M_2BC04.phys",
-          "caller": "F_6BCF"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          49364,
-          49366
-        ]
-      ],
-      "aliases": []
-    },
-    {
       "symbol": "gc0d6",
       "declarations": [
         {
@@ -45361,7 +45235,7 @@
         },
         {
           "symbol": "gc0ee",
-          "type": "struct H *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -45422,29 +45296,7 @@
           "caller": "F_78C3"
         }
       ],
-      "struct_membership": [
-        {
-          "name": "H",
-          "bytes": 48,
-          "fields": [
-            {
-              "name": "pad",
-              "type": "char",
-              "offset": 0,
-              "bytes": 40
-            },
-            {
-              "name": "ofs",
-              "type": "unsigned",
-              "offset": 40,
-              "bytes": 8
-            }
-          ],
-          "confidence": "MEDIUM",
-          "file": "src/SPRPOOLD.C",
-          "line": 6
-        }
-      ],
+      "struct_membership": [],
       "known_storage_ranges": [
         [
           49390,
@@ -47819,6 +47671,79 @@
       "aliases": []
     },
     {
+      "symbol": "int8_saved_vector",
+      "declarations": [
+        {
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERINS.C",
+          "line": 2
+        },
+        {
+          "symbol": "int8_saved_vector",
+          "type": "void interrupt ( * near int8_saved_vector)(void)",
+          "array": null,
+          "pointer_shape": "function",
+          "code_model": "far",
+          "storage": "near",
+          "interrupt": true,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 8
+        },
+        {
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERRST.C",
+          "line": 2
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2938,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_6B7A"
+        },
+        {
+          "offset": 2938,
+          "owner": null,
+          "evidence": null,
+          "caller": "F_6BAC"
+        },
+        {
+          "offset": 2938,
+          "owner": null,
+          "evidence": "storage_objects/G_P206AA.phys",
+          "caller": "F_6BCF"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2938,
+          2940
+        ],
+        [
+          2938,
+          2942
+        ]
+      ],
+      "aliases": []
+    },
+    {
       "symbol": "int9_saved_vector",
       "declarations": [
         {
@@ -48212,17 +48137,6 @@
       "declarations": [
         {
           "symbol": "music_enabled",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        },
-        {
-          "symbol": "music_enabled",
           "type": "int",
           "array": null,
           "pointer_shape": null,
@@ -48253,6 +48167,17 @@
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 19
+        },
+        {
+          "symbol": "music_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
         }
       ],
       "definitions": [],
@@ -49373,7 +49298,7 @@
         },
         {
           "symbol": "record_table_root",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -49452,7 +49377,7 @@
       "declarations": [
         {
           "symbol": "rect_queue_write_ptr",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -49640,7 +49565,7 @@
         },
         {
           "symbol": "resource_ptr_table",
-          "type": "char *",
+          "type": "char far *",
           "array": "[]",
           "pointer_shape": "far",
           "storage": null,
@@ -49725,7 +49650,7 @@
         },
         {
           "symbol": "resource_stripe_table",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -50376,7 +50301,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/SCOREPNL.C",
-          "line": 2
+          "line": 9
         }
       ],
       "definitions": [],
@@ -51502,17 +51427,6 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
           "file": "src/F_CAF1.C",
           "line": 2
         },
@@ -51548,6 +51462,17 @@
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 19
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
         }
       ],
       "definitions": [],
@@ -52188,6 +52113,74 @@
       "aliases": []
     },
     {
+      "symbol": "timer_tick_phase",
+      "declarations": [
+        {
+          "symbol": "timer_tick_phase",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": "near",
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 49364,
+          "owner": null,
+          "evidence": "storage_objects/M_2BC04.phys",
+          "caller": "F_6BCF"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          49364,
+          49366
+        ]
+      ],
+      "aliases": []
+    },
+    {
+      "symbol": "timer_ticks",
+      "declarations": [
+        {
+          "symbol": "timer_ticks",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": "near",
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 7
+        }
+      ],
+      "definitions": [],
+      "storage_evidence": [
+        {
+          "offset": 2934,
+          "owner": null,
+          "evidence": "storage_objects/G_P206A6.phys",
+          "caller": "F_6BCF"
+        }
+      ],
+      "struct_membership": [],
+      "known_storage_ranges": [
+        [
+          2934,
+          2938
+        ]
+      ],
+      "aliases": [
+        "gb76"
+      ]
+    },
+    {
       "symbol": "tx",
       "declarations": [
         {
@@ -52317,7 +52310,7 @@
         },
         {
           "symbol": "ui_gfx_blob",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -55263,190 +55256,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "FUNCTION_ABI:gfx_copy_rect",
-      "kind": "FUNCTION_ABI",
-      "symbol": "gfx_copy_rect",
-      "fields": [
-        "argument_types"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "include/VIDEO.H",
-          "line": 46
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 4,
-          "argument_types": [
-            "unsigned",
-            "unsigned",
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 29
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 6
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
-          "line": 6
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
-          "line": 5
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
-          "line": 3
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
-          "line": 5
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 15
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 55
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 4,
-          "argument_types": [
-            "int",
-            "int",
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 169
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 4,
-          "argument_types": [
-            "int",
-            "int",
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 229
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 41
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "FUNCTION_ABI:keyboard_irq_handler",
       "kind": "FUNCTION_ABI",
       "symbol": "keyboard_irq_handler",
@@ -55481,64 +55290,6 @@
           "confidence": "MEDIUM",
           "file": "src/KEYIRQH.C",
           "line": 12
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
-      "id": "FUNCTION_ABI:longjmp",
-      "kind": "FUNCTION_ABI",
-      "symbol": "longjmp",
-      "fields": [
-        "argument_types"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "longjmp",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 2,
-          "argument_types": [
-            "char far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 46
-        },
-        {
-          "symbol": "longjmp",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 2,
-          "argument_types": [
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 231
-        },
-        {
-          "symbol": "longjmp",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 13
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -55582,7 +55333,7 @@
         {
           "symbol": "menu_list_active",
           "definition": false,
-          "return_type": "void",
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -56008,41 +55759,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "GLOBAL_TYPE:b437a",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "b437a",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "b437a",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 18
-        },
-        {
-          "symbol": "b437a",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 49
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "GLOBAL_TYPE:b856",
       "kind": "GLOBAL_TYPE",
       "symbol": "b856",
@@ -56190,7 +55906,7 @@
       "declarations": [
         {
           "symbol": "board_records",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -56201,7 +55917,7 @@
         },
         {
           "symbol": "board_records",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -56286,52 +56002,6 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 41
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
-      "id": "GLOBAL_TYPE:g0b7a",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "g0b7a",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 2
-        },
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERINS.C",
-          "line": 2
-        },
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERRST.C",
-          "line": 2
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -56580,63 +56250,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "GLOBAL_TYPE:g237c",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "g237c",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "g237c",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDRQCLR.C",
-          "line": 3
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDRQDEC.C",
-          "line": 5
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 6
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "GLOBAL_TYPE:g3924",
       "kind": "GLOBAL_TYPE",
       "symbol": "g3924",
@@ -56797,133 +56410,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "GLOBAL_TYPE:g96ee",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "g96ee",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "g96ee",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 22
-        },
-        {
-          "symbol": "g96ee",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 210
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
-      "id": "GLOBAL_TYPE:g9bfc",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "g9bfc",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": "near",
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 14
-        },
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "g9bfc",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
-      "id": "GLOBAL_TYPE:gbf66",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "gbf66",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 14
-        },
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "gbf66",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "GLOBAL_TYPE:gbfc4",
       "kind": "GLOBAL_TYPE",
       "symbol": "gbfc4",
@@ -56957,7 +56443,7 @@
         },
         {
           "symbol": "gbfc4",
-          "type": "char far *",
+          "type": "unsigned char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -57139,7 +56625,7 @@
         },
         {
           "symbol": "gc0ee",
-          "type": "struct H *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -57187,9 +56673,9 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "GLOBAL_TYPE:music_enabled",
+      "id": "GLOBAL_TYPE:int8_saved_vector",
       "kind": "GLOBAL_TYPE",
-      "symbol": "music_enabled",
+      "symbol": "int8_saved_vector",
       "fields": [
         "type"
       ],
@@ -57197,48 +56683,39 @@
       "difficulty": "MEDIUM",
       "declarations": [
         {
-          "symbol": "music_enabled",
-          "type": "unsigned int",
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
           "array": null,
           "pointer_shape": null,
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
+          "file": "src/TIMERINS.C",
+          "line": 2
         },
         {
-          "symbol": "music_enabled",
-          "type": "int",
+          "symbol": "int8_saved_vector",
+          "type": "void interrupt ( * near int8_saved_vector)(void)",
           "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
+          "pointer_shape": "function",
+          "code_model": "far",
+          "storage": "near",
+          "interrupt": true,
+          "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/OPTIONS.C",
-          "line": 4
+          "file": "src/TIMERIRQ.C",
+          "line": 8
         },
         {
-          "symbol": "music_enabled",
-          "type": "int",
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
           "array": null,
           "pointer_shape": null,
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 20
-        },
-        {
-          "symbol": "music_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 19
+          "file": "src/TIMERRST.C",
+          "line": 2
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -57290,63 +56767,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "GLOBAL_TYPE:record_table_root",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "record_table_root",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "record_table_root",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 64
-        },
-        {
-          "symbol": "record_table_root",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 34
-        },
-        {
-          "symbol": "record_table_root",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 15
-        },
-        {
-          "symbol": "record_table_root",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 42
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "GLOBAL_TYPE:rect_queue_write_ptr",
       "kind": "GLOBAL_TYPE",
       "symbol": "rect_queue_write_ptr",
@@ -57358,7 +56778,7 @@
       "declarations": [
         {
           "symbol": "rect_queue_write_ptr",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -57492,7 +56912,7 @@
         },
         {
           "symbol": "resource_ptr_table",
-          "type": "char *",
+          "type": "char far *",
           "array": "[]",
           "pointer_shape": "far",
           "storage": null,
@@ -57511,63 +56931,6 @@
           "confidence": "MEDIUM",
           "file": "src/MENURES.C",
           "line": 1
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
-      "id": "GLOBAL_TYPE:resource_stripe_table",
-      "kind": "GLOBAL_TYPE",
-      "symbol": "resource_stripe_table",
-      "fields": [
-        "type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 21
-        },
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 29
-        },
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 213
-        },
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 45
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -57657,7 +57020,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/SCOREPNL.C",
-          "line": 2
+          "line": 9
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -57715,17 +57078,6 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
           "file": "src/F_CAF1.C",
           "line": 2
         },
@@ -57761,6 +57113,17 @@
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 19
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -57878,7 +57241,7 @@
         },
         {
           "symbol": "ui_gfx_blob",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,

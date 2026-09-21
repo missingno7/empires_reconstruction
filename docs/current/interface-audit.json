@@ -1,15 +1,21 @@
 {
   "format": "empires-interface-audit-v1",
   "scope": "Review only; no production declaration edits or conflict suppression.",
-  "raw_conflicts": 59,
-  "active_c_sources": 97,
+  "raw_conflicts": 49,
+  "active_c_sources": 98,
   "categories": {
-    "ACTIVE_TYPE_REVIEW": 16,
+    "ACTIVE_TYPE_REVIEW": 8,
     "COMPACT_MODEL_SPELLING": 2,
-    "INACTIVE_REFERENCE_ONLY": 37,
+    "INACTIVE_REFERENCE_ONLY": 36,
     "LOCAL_TAG_REUSE": 1,
-    "RETURN_TYPE_REVIEW": 2,
+    "RETURN_TYPE_REVIEW": 1,
     "VARIADIC_PROTOTYPE": 1
+  },
+  "open_categories": {
+    "ACTIVE_TYPE_REVIEW": 1,
+    "COMPACT_MODEL_SPELLING": 1,
+    "INACTIVE_REFERENCE_ONLY": 34,
+    "LOCAL_TAG_REUSE": 1
   },
   "resolutions": [
     {
@@ -51,6 +57,106 @@
     {
       "id": "GLOBAL_TYPE:q139d",
       "resolution": "F_56C6 now references the shared g139d dialog descriptor; the manifest binding was renamed at the same DGROUP offset."
+    },
+    {
+      "id": "FUNCTION_ABI:gfx_copy_rect",
+      "outcome": "UNIFIED",
+      "resolution": "void gfx_copy_rect(int,int,void far *,int): src/BOARDDRW.C's prototype (previously unsigned,unsigned,void far*,int) now matches src/LEVEL.C's int,int,void far*,int; int/unsigned only differ in comparison codegen, never in argument-push width, so the call sites are unaffected. C_200F_2A70 probe: EXACT (2771/2771 bytes)."
+    },
+    {
+      "id": "FUNCTION_ABI:longjmp",
+      "outcome": "UNIFIED",
+      "resolution": "void longjmp(void far *,int): src/BOARDSCR.C's char far* jmp_buf argument (with an explicit cast at the call site) now matches src/LEVEL.C's void far*; both are 4-byte far pointers so the cast becomes redundant, not load-bearing. C_31C4_3986 probe: EXACT (2225/2225 bytes)."
+    },
+    {
+      "id": "FUNCTION_ABI:keyboard_irq_handler",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "src/KEYIRQ.C keeps the untyped `extern void keyboard_irq_handler();` address-only reference used only to build the setvect() far pointer; src/KEYIRQH.C keeps its true definition `void interrupt keyboard_irq_handler(void)`. Byte evidence: retyping the KEYIRQ.C declaration to `extern void interrupt keyboard_irq_handler(void);` grows the address-of/cast sequence feeding setvect() -- C_695E_697D probe: wrong compiled extent length 53, expected 50 (+3 bytes). Reverted; baseline reprobed EXACT (50/50 bytes)."
+    },
+    {
+      "id": "FUNCTION_ABI:str_concat_far_list",
+      "outcome": "DOCUMENTED",
+      "resolution": "long str_concat_far_list(char far *, char far *, ...) at the definition (src/STRCATF.C) is genuinely variadic; the F_AA1F call site in src/SLOTMENU.C needs all five arguments typed (record argument as struct c470_record far *) because an untyped trailing argument changes the far address construction by four bytes. No declaration edit made; nothing further to unify."
+    },
+    {
+      "id": "GLOBAL_TYPE:a74a2",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "src/BRDPAINT.C keeps `char a74a2[][0xbb]` (its gfx_copy_rect(...,a74a2[c],0) call needs the 2-D row-pointer subscript); src/BRDTERR.C keeps the flat `char a74a2[]` (its `a74a2 + i*0xbb` pointer arithmetic needs a scalar char* that advances by 1 byte per unit, not by one 0xbb-byte row). The extent differs by declared shape only, not signedness. Byte evidence: retyping BRDTERR.C to the 2-D shape -- F_4517 probe: MISMATCH at +0x69 (mov dx,0BBh row-stride multiplier replaced by an unrelated immediate). Reverted; baseline reprobed EXACT (279/279 bytes)."
+    },
+    {
+      "id": "GLOBAL_TYPE:b437a",
+      "outcome": "UNIFIED",
+      "resolution": "unsigned char b437a[]: src/TURNLOOP.C (previously plain char) now matches src/BRDPAINT.C. F_2AE2 and F_3A75 probes: both EXACT."
+    },
+    {
+      "id": "GLOBAL_TYPE:board_records",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "char far *board_records unified across src/BOARDDRW.C and src/BOARDSCR.C (both previously unsigned char far *; C_200F_2A70 and C_31C4_3986 probes: EXACT). src/BRDPAINT.C keeps unsigned char far *board_records: it reads board_records[0x3e5]/[0x3e6] into ints used as pixel coordinates and needs the zero-extend. Byte evidence: retyping BRDPAINT.C to char far* -- F_2AE2 probe: wrong compiled extent length 1759, expected 1762 (-3 bytes, the sign-extend/zero-extend sequence at the two reads shrinks). Reverted; baseline reprobed EXACT (1762/1762 bytes)."
+    },
+    {
+      "id": "GLOBAL_TYPE:g96ee",
+      "outcome": "UNIFIED",
+      "resolution": "unsigned char g96ee[]: src/LEVEL.C (previously plain char, used only as a gfx_copy_rect pointer argument, no arithmetic) now matches src/BOARDDRW.C. C_AF45_C15E probe: EXACT."
+    },
+    {
+      "id": "GLOBAL_TYPE:g9bfc",
+      "outcome": "UNIFIED",
+      "resolution": "unsigned char g9bfc[]: src/MENURES.C (previously plain char, used only in memmove()) now matches the unsigned char declarations in src/LEVEL.C. F_1D47 probe: EXACT."
+    },
+    {
+      "id": "GLOBAL_TYPE:gbf66",
+      "outcome": "UNIFIED",
+      "resolution": "unsigned char gbf66[]: src/MENURES.C (previously plain char) now matches src/LEVEL.C, same edit as g9bfc. F_1D47 probe: EXACT."
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfc4",
+      "outcome": "UNIFIED",
+      "resolution": "unsigned char far *gbfc4: src/TURNLOOP.C (previously char far *, dereferenced only as `*gbfc4 != 0`) now matches src/BRDPAINT.C. F_3A75 probe: EXACT. (src/F_D386.C's char far * declaration is an inactive reference source -- the TASM module M_D386_D3CF is what actually builds -- and was left untouched.)"
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfcc",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "src/BIOSEQP.C keeps `unsigned char gbfcc` (a bitfield-derived value, no comparison); src/RESOURCE.C keeps `char gbfcc` because `gbfcc > 1` compiles to a signed JG. Byte evidence: retyping RESOURCE.C to unsigned char -- C_6266_68AA probe: MISMATCH at +0xB4, original=7F (JG) reconstructed=77 (JA). Reverted; baseline reprobed EXACT (1641/1641 bytes)."
+    },
+    {
+      "id": "GLOBAL_TYPE:gc0ee",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "src/SPRPOOLD.C's `struct H *gc0ee` was retyped to `char far *gc0ee` with a local `(struct H far *)gc0ee` cast at the one field access (F_78C3 probe: EXACT, 91/91 bytes) -- it no longer contributes to the conflict. src/HUD.C keeps three `char *gc0ee` (near, unqualified) declarations alongside four `char far *gc0ee` ones; this is pre-existing, already documented in src/HUD.C (F_7162/F_7202/F_7298 comments): giving the near form a far type there would change the pushes the call compiles to. No further edit made."
+    },
+    {
+      "id": "GLOBAL_TYPE:gc0fe",
+      "outcome": "DOCUMENTED",
+      "resolution": "include/GC0FE.H already documents this as \"a genuine conflict, not unified\": F_7BFC (src/MENULIST.C) dereferences gc0fe as its own local `struct {int n; struct R *p;}` shape, which does not agree byte-for-byte with the shared far-pointer/record-catalog view F_7964/F_7D91 use. Kept as-is; nothing to change."
+    },
+    {
+      "id": "GLOBAL_TYPE:record_table_root",
+      "outcome": "UNIFIED",
+      "resolution": "char far *record_table_root: src/BOARDSCR.C (previously unsigned char far *; f32fa() only does pointer arithmetic on it, no sign-sensitive dereference) now matches src/BOARDDRW.C, src/BRDPAINT.C and src/TURNLOOP.C. C_31C4_3986 probe: EXACT."
+    },
+    {
+      "id": "GLOBAL_TYPE:score_panel_x",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "score_panel_x is `int` everywhere except src/SCOREPNL.C, which deliberately redeclares it `char *` (far): the single gfx_wipe_rect() argument there reads the 4 bytes at &score_panel_x, and the adjacent int score_panel_y falls in the high word, packing both x2 and y2 into one far-pointer push. Confirmed load-bearing (F_9908 probe: EXACT, 90/90 bytes, unchanged); documented with an explanatory comment in src/SCOREPNL.C instead of unifying."
+    },
+    {
+      "id": "GLOBAL_TYPE:ui_gfx_blob",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "char far *ui_gfx_blob: src/LEVEL.C's one unspelled `char *ui_gfx_blob` (line 152) is now spelled `char far *`, matching its own other four declarations and every other active file (C_AF45_C15E probe: EXACT). src/DIALOG.C keeps two `unsigned ui_gfx_blob` declarations: F_8434/F_8453 push the two DGROUP words (offset, segment) as plain ints through a six-word thunk call, already documented in src/DIALOG.C as spelling the extent literally pushes. No further edit made."
+    },
+    {
+      "id": "GLOBAL_TYPE:voice_level_table",
+      "outcome": "CODEGEN_ALTERNATE_VIEW",
+      "resolution": "src/OPLVOICE.C and src/VOXCHAN.C keep `unsigned char voice_level_table[]` (plain assignment, no arithmetic); src/OPLREG.C keeps `char voice_level_table[]` because `v = voice_level_table[i] * v` compiles to a signed multiply. Byte evidence: retyping OPLREG.C to unsigned char -- C_E095_E54D probe: wrong compiled extent length 1367, expected 1366 (+1 byte). Reverted; baseline reprobed EXACT (1366/1366 bytes)."
+    },
+    {
+      "id": "GLOBAL_TYPE:rect_queue_write_ptr",
+      "outcome": "UNIFIED",
+      "resolution": "char far *rect_queue_write_ptr spelled out consistently: src/BOARDSCR.C's second declarator and src/LEVEL.C:213's declarators now say `far` explicitly instead of relying on the -mc default. C_31C4_3986 and C_AF45_C15E probes: both EXACT."
+    },
+    {
+      "id": "GLOBAL_TYPE:resource_stripe_table",
+      "outcome": "UNIFIED",
+      "resolution": "char far *resource_stripe_table spelled out consistently: src/LEVEL.C:213's `resource_ptr_table[]`/`resource_stripe_table` declarators now say `far` explicitly. C_AF45_C15E probe: EXACT (same edit/probe as rect_queue_write_ptr)."
     }
   ],
   "findings": [
@@ -513,190 +619,6 @@
       ]
     },
     {
-      "id": "FUNCTION_ABI:gfx_copy_rect",
-      "kind": "FUNCTION_ABI",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "argument_types"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "include/VIDEO.H",
-          "line": 46
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 4,
-          "argument_types": [
-            "unsigned",
-            "unsigned",
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 29
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 6
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 15
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 55
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 4,
-          "argument_types": [
-            "int",
-            "int",
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 169
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 4,
-          "argument_types": [
-            "int",
-            "int",
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 229
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 41
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
-          "line": 6
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
-          "line": 5
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_60A9.C",
-          "line": 3
-        },
-        {
-          "symbol": "gfx_copy_rect",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
-          "line": 5
-        }
-      ]
-    },
-    {
       "id": "FUNCTION_ABI:keyboard_irq_handler",
       "kind": "FUNCTION_ABI",
       "category": "RETURN_TYPE_REVIEW",
@@ -735,70 +657,11 @@
       "excluded_declarations": []
     },
     {
-      "id": "FUNCTION_ABI:longjmp",
-      "kind": "FUNCTION_ABI",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "argument_types"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "longjmp",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 2,
-          "argument_types": [
-            "char far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 46
-        },
-        {
-          "symbol": "longjmp",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 2,
-          "argument_types": [
-            "void far *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 231
-        },
-        {
-          "symbol": "longjmp",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 13
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
       "id": "FUNCTION_ABI:menu_list_active",
       "kind": "FUNCTION_ABI",
-      "category": "RETURN_TYPE_REVIEW",
+      "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "return_type"
-      ],
+      "active_fields": [],
       "active_declarations": [
         {
           "symbol": "menu_list_active",
@@ -816,7 +679,7 @@
         {
           "symbol": "menu_list_active",
           "definition": false,
-          "return_type": "void",
+          "return_type": "int",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
@@ -1242,40 +1105,6 @@
       "excluded_declarations": []
     },
     {
-      "id": "GLOBAL_TYPE:b437a",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "b437a",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 18
-        },
-        {
-          "symbol": "b437a",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 49
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
       "id": "GLOBAL_TYPE:b856",
       "kind": "GLOBAL_TYPE",
       "category": "INACTIVE_REFERENCE_ONLY",
@@ -1418,7 +1247,7 @@
       "active_declarations": [
         {
           "symbol": "board_records",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -1429,7 +1258,7 @@
         },
         {
           "symbol": "board_records",
-          "type": "unsigned char far *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -1515,50 +1344,6 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/F_1F91.C",
-          "line": 2
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:g0b7a",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERINS.C",
-          "line": 2
-        },
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/TIMERRST.C",
-          "line": 2
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "g0b7a",
-          "type": "unsigned long",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
           "line": 2
         }
       ]
@@ -1794,57 +1579,2279 @@
       ]
     },
     {
-      "id": "GLOBAL_TYPE:g237c",
+      "id": "GLOBAL_TYPE:g3924",
       "kind": "GLOBAL_TYPE",
       "category": "INACTIVE_REFERENCE_ONLY",
       "note": "Syntactic finding; not a confirmed runtime bug.",
       "active_fields": [],
       "active_declarations": [
         {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
+          "symbol": "g3924",
+          "type": "char far *",
+          "array": "[]",
+          "pointer_shape": "far",
           "storage": null,
-          "size": 2,
+          "size": null,
           "confidence": "MEDIUM",
-          "file": "src/SNDRQCLR.C",
-          "line": 3
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDRQDEC.C",
-          "line": 5
-        },
-        {
-          "symbol": "g237c",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 6
+          "file": "src/VIDEO.C",
+          "line": 31
         }
       ],
       "excluded_declarations": [
         {
-          "symbol": "g237c",
+          "symbol": "g3924",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_9EC3.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g40d0",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g40d0",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 14
+        },
+        {
+          "symbol": "g40d0",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 44
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g40d0",
+          "type": "unsigned char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_60A9.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g8fe",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 22
+        },
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 151
+        },
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 204
+        },
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 357
+        },
+        {
+          "symbol": "g8fe",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 35
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g8fe",
           "type": "unsigned int",
           "array": null,
           "pointer_shape": null,
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
+          "file": "src/F_60A9.C",
           "line": 1
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfc4",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "gbfc4",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 13
+        },
+        {
+          "symbol": "gbfc4",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 43
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "gbfc4",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_D386.C",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfc8",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "gbfc8",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 119
+        },
+        {
+          "symbol": "gbfc8",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "gbfc8",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_60A9.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfcc",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "gbfcc",
+          "type": "unsigned char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/BIOSEQP.C",
+          "line": 5
+        },
+        {
+          "symbol": "gbfcc",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/RESOURCE.C",
+          "line": 52
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:gc0ee",
+      "kind": "GLOBAL_TYPE",
+      "category": "COMPACT_MODEL_SPELLING",
+      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "gc0ee",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 34
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 45
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 103
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 142
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 192
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 278
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 285
+        },
+        {
+          "symbol": "gc0ee",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/SPRPOOLD.C",
+          "line": 7
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:gc0fe",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "gc0fe",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "include/GC0FE.H",
+          "line": 12
+        },
+        {
+          "symbol": "gc0fe",
+          "type": "struct S *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENULIST.C",
+          "line": 7
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:int8_saved_vector",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERINS.C",
+          "line": 2
+        },
+        {
+          "symbol": "int8_saved_vector",
+          "type": "void interrupt ( * near int8_saved_vector)(void)",
+          "array": null,
+          "pointer_shape": "function",
+          "code_model": "far",
+          "storage": "near",
+          "interrupt": true,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 8
+        },
+        {
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERRST.C",
+          "line": 2
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:objtab",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "objtab",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 32
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "objtab",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6036.C",
+          "line": 3
+        },
+        {
+          "symbol": "objtab",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6181.C",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:rect_queue_write_ptr",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 14
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 36
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 153
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 174
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 196
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 213
+        },
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 37
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "rect_queue_write_ptr",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_1ECD.C",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:resource_ptr_table",
+      "kind": "GLOBAL_TYPE",
+      "category": "COMPACT_MODEL_SPELLING",
+      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 61
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 99
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char far *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 213
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "resource_ptr_table",
+          "type": "unsigned long",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_4EEB.C",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:score_panel_x",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "score_panel_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/ANIMFRAM.C",
+          "line": 7
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MARKERS.C",
+          "line": 12
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MRKCELL.C",
+          "line": 2
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MRKCELL.C",
+          "line": 9
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/ROUNDEND.C",
+          "line": 9
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SCORE.C",
+          "line": 7
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 9
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:snd_delay",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "snd_delay",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDTICK.C",
+          "line": 8
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "snd_delay",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_C914.C",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:sound_enabled",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 4
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PLAYERSL.C",
+          "line": 20
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 19
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "sound_enabled",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:sprbase",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "sprbase",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 29
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "sprbase",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6036.C",
+          "line": 2
+        },
+        {
+          "symbol": "sprbase",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6181.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:ui_gfx_blob",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/ANIMFRAM.C",
+          "line": 9
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 14
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 331
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 344
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 152
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 173
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 195
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 212
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/PLAYERSL.C",
+          "line": 42
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/RESOURCE.C",
+          "line": 62
+        },
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 40
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "ui_gfx_blob",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_1ECD.C",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:voice_level_table",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "voice_level_table",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/OPLREG.C",
+          "line": 19
+        },
+        {
+          "symbol": "voice_level_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/OPLVOICE.C",
+          "line": 16
+        },
+        {
+          "symbol": "voice_level_table",
+          "type": "unsigned char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/VOXCHAN.C",
+          "line": 2
+        }
+      ],
+      "excluded_declarations": []
+    }
+  ],
+  "open_findings": [
+    {
+      "id": "RECORD:R",
+      "kind": "RECORD_LAYOUT",
+      "category": "LOCAL_TAG_REUSE",
+      "note": "Tags are file scoped; matching tag names across files do not establish a shared type or an ABI conflict.",
+      "locations": [
+        {
+          "file": "src/DLGPICK.C",
+          "line": 3
+        },
+        {
+          "file": "src/LEVEL.C",
+          "line": 142
+        },
+        {
+          "file": "src/MENULIST.C",
+          "line": 7
+        },
+        {
+          "file": "src/PUZZLE.C",
+          "line": 221
+        },
+        {
+          "file": "src/SCORE.C",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f1f91",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f1f91",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 217
+        },
+        {
+          "symbol": "f1f91",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f1f91",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_1F91.C",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f50d2",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f50d2",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/VIDMODE.C",
+          "line": 8
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f50d2",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_50D2.C",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f6036",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f6036",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 8
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f6036",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_6036.C",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f60a9",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f60a9",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 16
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f60a9",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_60A9.C",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f6181",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f6181",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 35
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f6181",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_6181.C",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f6d86",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f6d86",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/RESOURCE.C",
+          "line": 57
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f6d86",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_6D86.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f6dcc",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f6dcc",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/RESOURCE.C",
+          "line": 57
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f6dcc",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_6DCC.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f6f4b",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f6f4b",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/RESOURCE.C",
+          "line": 57
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f6f4b",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_6F4B.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f_d61c",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f_d61c",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 8
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f_d61c",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D61C.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:f_d79c",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "f_d79c",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "f_d79c",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D79C.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:fd386",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "fd386",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 21
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "fd386",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D386.C",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:menu_list_active",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 20
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYBIOS.C",
+          "line": 7
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULACT.C",
+          "line": 4
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULOOP.C",
+          "line": 6
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PROMPTS.C",
+          "line": 12
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 19
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 153
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 220
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 274
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_6B1A.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:options_toggle_music",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "options_toggle_music",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 21
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "options_toggle_music",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_CBBB.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:options_toggle_option",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "options_toggle_option",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 12
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "options_toggle_option",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_CB5C.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:options_toggle_sound",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "options_toggle_sound",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 30
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "options_toggle_sound",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_CC17.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:slot_backup_list_show",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "slot_backup_list_show",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 39
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "slot_backup_list_show",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_CC6B.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:slot_list_show",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "slot_list_show",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 52
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "slot_list_show",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_CD23.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "FUNCTION_ABI:strlen",
+      "kind": "FUNCTION_ABI",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "strlen",
+          "definition": false,
+          "return_type": "unsigned",
+          "argument_count": 1,
+          "argument_types": [
+            "const char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DOSWRT2.C",
+          "line": 3
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "strlen",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/LIB_STRLEN.C",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:b856",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "b856",
+          "type": "char",
+          "array": null,
+          "pointer_shape": null,
+          "storage": "near",
+          "size": 1,
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 7
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "b856",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_50D2.C",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:board_record_index",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 26
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 16
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 142
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 151
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 357
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MENUBKDP.C",
+          "line": 4
+        },
+        {
+          "symbol": "board_record_index",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 36
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "board_record_index",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_4EEB.C",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g175e",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g175e",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PLRLDPUB.C",
+          "line": 13
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g175e",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g1760",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g1760",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PLRLDPUB.C",
+          "line": 13
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g1760",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g1770",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g1770",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/INTRO.C",
+          "line": 35
+        },
+        {
+          "symbol": "g1770",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/ROUNDEND.C",
+          "line": 9
+        },
+        {
+          "symbol": "g1770",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTOP.C",
+          "line": 1
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g1770",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g1778",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g1778",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/CMDLINE.C",
+          "line": 4
+        },
+        {
+          "symbol": "g1778",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/RESCLOAD.C",
+          "line": 7
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g1778",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_C877.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g1e8a",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "g1e8a",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDSTOP.C",
+          "line": 1
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "g1e8a",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:g1e92",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [],
+      "excluded_declarations": [
+        {
+          "symbol": "g1e92",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CA91.C",
+          "line": 2
+        },
+        {
+          "symbol": "g1e92",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
         }
       ]
     },
@@ -2003,176 +4010,6 @@
       ]
     },
     {
-      "id": "GLOBAL_TYPE:g96ee",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "g96ee",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 22
-        },
-        {
-          "symbol": "g96ee",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 210
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
-      "id": "GLOBAL_TYPE:g9bfc",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": "near",
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 14
-        },
-        {
-          "symbol": "g9bfc",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "g9bfc",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
-      "id": "GLOBAL_TYPE:gbf66",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 14
-        },
-        {
-          "symbol": "gbf66",
-          "type": "unsigned char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 142
-        },
-        {
-          "symbol": "gbf66",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
-      "id": "GLOBAL_TYPE:gbfc4",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "gbfc4",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 13
-        },
-        {
-          "symbol": "gbfc4",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 43
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "gbfc4",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_D386.C",
-          "line": 3
-        }
-      ]
-    },
-    {
       "id": "GLOBAL_TYPE:gbfc8",
       "kind": "GLOBAL_TYPE",
       "category": "INACTIVE_REFERENCE_ONLY",
@@ -2217,6 +4054,587 @@
       ]
     },
     {
+      "id": "GLOBAL_TYPE:int8_saved_vector",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERINS.C",
+          "line": 2
+        },
+        {
+          "symbol": "int8_saved_vector",
+          "type": "void interrupt ( * near int8_saved_vector)(void)",
+          "array": null,
+          "pointer_shape": "function",
+          "code_model": "far",
+          "storage": "near",
+          "interrupt": true,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 8
+        },
+        {
+          "symbol": "int8_saved_vector",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERRST.C",
+          "line": 2
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:objtab",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "objtab",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 32
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "objtab",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6036.C",
+          "line": 3
+        },
+        {
+          "symbol": "objtab",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6181.C",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:resource_ptr_table",
+      "kind": "GLOBAL_TYPE",
+      "category": "COMPACT_MODEL_SPELLING",
+      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 61
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 99
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char far *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 213
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "resource_ptr_table",
+          "type": "unsigned long",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/F_4EEB.C",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:snd_delay",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "snd_delay",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SNDTICK.C",
+          "line": 8
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "snd_delay",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_C914.C",
+          "line": 10
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:sound_enabled",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 4
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PLAYERSL.C",
+          "line": 20
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 19
+        },
+        {
+          "symbol": "sound_enabled",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/TIMERIRQ.C",
+          "line": 6
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "sound_enabled",
+          "type": "unsigned int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/F_CAF1.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:sprbase",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "sprbase",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/HITTEST.C",
+          "line": 29
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "sprbase",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6036.C",
+          "line": 2
+        },
+        {
+          "symbol": "sprbase",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_6181.C",
+          "line": 2
+        }
+      ]
+    }
+  ],
+  "resolved": [
+    {
+      "id": "FUNCTION_ABI:keyboard_irq_handler",
+      "kind": "FUNCTION_ABI",
+      "category": "RETURN_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "return_type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQ.C",
+          "line": 7
+        },
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 12
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "FUNCTION_ABI:str_concat_far_list",
+      "kind": "FUNCTION_ABI",
+      "category": "VARIADIC_PROTOTYPE",
+      "note": "Definition declares a variadic prototype; callers pass compatible fixed arguments plus trailing typed arguments.",
+      "active_fields": [
+        "argument_count",
+        "argument_types"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "str_concat_far_list",
+          "definition": false,
+          "return_type": "long",
+          "argument_count": 5,
+          "argument_types": [
+            "char far *",
+            "char far *",
+            "struct c470_record far *",
+            "char far *",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 344
+        },
+        {
+          "symbol": "str_concat_far_list",
+          "definition": true,
+          "return_type": "long",
+          "argument_count": 3,
+          "argument_types": [
+            "char far *",
+            "char far *",
+            "..."
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/STRCATF.C",
+          "line": 5
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:a74a2",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "array"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "a74a2",
+          "type": "char",
+          "array": "[][0xbb]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 22
+        },
+        {
+          "symbol": "a74a2",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/BRDTERR.C",
+          "line": 8
+        }
+      ],
+      "excluded_declarations": []
+    },
+    {
+      "id": "GLOBAL_TYPE:board_records",
+      "kind": "GLOBAL_TYPE",
+      "category": "ACTIVE_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDDRW.C",
+          "line": 62
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BOARDSCR.C",
+          "line": 27
+        },
+        {
+          "symbol": "board_records",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 13
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 174
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 196
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 359
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENUBKDP.C",
+          "line": 5
+        },
+        {
+          "symbol": "board_records",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 41
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "board_records",
+          "type": "unsigned long",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_1F91.C",
+          "line": 2
+        }
+      ]
+    },
+    {
+      "id": "GLOBAL_TYPE:gbfc4",
+      "kind": "GLOBAL_TYPE",
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
+      "active_declarations": [
+        {
+          "symbol": "gbfc4",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/BRDPAINT.C",
+          "line": 13
+        },
+        {
+          "symbol": "gbfc4",
+          "type": "unsigned char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/TURNLOOP.C",
+          "line": 43
+        }
+      ],
+      "excluded_declarations": [
+        {
+          "symbol": "gbfc4",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/F_D386.C",
+          "line": 3
+        }
+      ]
+    },
+    {
       "id": "GLOBAL_TYPE:gbfcc",
       "kind": "GLOBAL_TYPE",
       "category": "ACTIVE_TYPE_REVIEW",
@@ -2253,8 +4671,8 @@
     {
       "id": "GLOBAL_TYPE:gc0ee",
       "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "category": "COMPACT_MODEL_SPELLING",
+      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
       "active_fields": [
         "type"
       ],
@@ -2338,7 +4756,7 @@
         },
         {
           "symbol": "gc0ee",
-          "type": "struct H *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -2385,172 +4803,15 @@
       "excluded_declarations": []
     },
     {
-      "id": "GLOBAL_TYPE:music_enabled",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "music_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/OPTIONS.C",
-          "line": 4
-        },
-        {
-          "symbol": "music_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 20
-        },
-        {
-          "symbol": "music_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 19
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "music_enabled",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:objtab",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "objtab",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HITTEST.C",
-          "line": 32
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "objtab",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
-          "line": 3
-        },
-        {
-          "symbol": "objtab",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
-          "line": 3
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:record_table_root",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "record_table_root",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 64
-        },
-        {
-          "symbol": "record_table_root",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDSCR.C",
-          "line": 34
-        },
-        {
-          "symbol": "record_table_root",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BRDPAINT.C",
-          "line": 15
-        },
-        {
-          "symbol": "record_table_root",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 42
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
       "id": "GLOBAL_TYPE:rect_queue_write_ptr",
       "kind": "GLOBAL_TYPE",
-      "category": "COMPACT_MODEL_SPELLING",
-      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
-      "active_fields": [
-        "type"
-      ],
+      "category": "INACTIVE_REFERENCE_ONLY",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [],
       "active_declarations": [
         {
           "symbol": "rect_queue_write_ptr",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
@@ -2641,128 +4902,6 @@
       ]
     },
     {
-      "id": "GLOBAL_TYPE:resource_ptr_table",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 61
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 99
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 213
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/MENURES.C",
-          "line": 1
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "resource_ptr_table",
-          "type": "unsigned long",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_4EEB.C",
-          "line": 9
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:resource_stripe_table",
-      "kind": "GLOBAL_TYPE",
-      "category": "COMPACT_MODEL_SPELLING",
-      "note": "Unqualified data pointers are far under -mc; these declarations differ only in spelling out far.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/BOARDDRW.C",
-          "line": 21
-        },
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 29
-        },
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 213
-        },
-        {
-          "symbol": "resource_stripe_table",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TURNLOOP.C",
-          "line": 45
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
       "id": "GLOBAL_TYPE:score_panel_x",
       "kind": "GLOBAL_TYPE",
       "category": "ACTIVE_TYPE_REVIEW",
@@ -2846,153 +4985,10 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/SCOREPNL.C",
-          "line": 2
+          "line": 9
         }
       ],
       "excluded_declarations": []
-    },
-    {
-      "id": "GLOBAL_TYPE:snd_delay",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "snd_delay",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SNDTICK.C",
-          "line": 8
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "snd_delay",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_C914.C",
-          "line": 10
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:sound_enabled",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "sound_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/OPTIONS.C",
-          "line": 4
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 20
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 19
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "sound_enabled",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_6BCF.C",
-          "line": 1
-        },
-        {
-          "symbol": "sound_enabled",
-          "type": "unsigned int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_CAF1.C",
-          "line": 2
-        }
-      ]
-    },
-    {
-      "id": "GLOBAL_TYPE:sprbase",
-      "kind": "GLOBAL_TYPE",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "sprbase",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HITTEST.C",
-          "line": 29
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "sprbase",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6036.C",
-          "line": 2
-        },
-        {
-          "symbol": "sprbase",
-          "type": "unsigned char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_6181.C",
-          "line": 2
-        }
-      ]
     },
     {
       "id": "GLOBAL_TYPE:ui_gfx_blob",
@@ -3049,7 +5045,7 @@
         },
         {
           "symbol": "ui_gfx_blob",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,

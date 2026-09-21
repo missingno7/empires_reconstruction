@@ -1,30 +1,30 @@
 {
-  "format": "empires-source-quality-v1",
+  "format": "empires-source-quality-v2",
   "scope": "Game-owned matching C/ASM plus legitimate historical library inputs",
   "levels": [
     {
       "level": "ASM_DB_CAPSULE",
-      "bytes": 6571,
-      "owners": 1,
-      "sources": 1
+      "bytes": 0,
+      "owners": 0,
+      "sources": 0
     },
     {
       "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-      "bytes": 2111,
-      "owners": 20,
+      "bytes": 5993,
+      "owners": 46,
       "sources": 20
     },
     {
       "level": "SYMBOLIC_ASM",
-      "bytes": 16062,
-      "owners": 91,
-      "sources": 52
+      "bytes": 6012,
+      "owners": 57,
+      "sources": 29
     },
     {
       "level": "MECHANICAL_C",
-      "bytes": 33766,
-      "owners": 229,
-      "sources": 229
+      "bytes": 39934,
+      "owners": 235,
+      "sources": 78
     },
     {
       "level": "HISTORICAL_STARTUP_OBJECT",
@@ -37,16 +37,34 @@
       "bytes": 5490,
       "owners": 50,
       "sources": 1
-    }
-  ],
-  "asm_db_capsules": [
+    },
     {
-      "owner": "RUNTIME_BLOCK",
-      "source": "src/RUNTIME_BLOCK.C",
-      "bytes": 6571
+      "level": "RUNTIME_SYMBOLIC_ASM",
+      "bytes": 5840,
+      "owners": 1,
+      "sources": 1
+    },
+    {
+      "level": "RUNTIME_TYPED_TABLE_DATA",
+      "bytes": 662,
+      "owners": 1,
+      "sources": 1
+    },
+    {
+      "level": "RUNTIME_INTENTIONAL_EXACT_ENCODING",
+      "bytes": 69,
+      "owners": 1,
+      "sources": 1
+    },
+    {
+      "level": "RUNTIME_RAW_UNRESOLVED",
+      "bytes": 0,
+      "owners": 0,
+      "sources": 0
     }
   ],
-  "asm_db_source_files": 1,
+  "asm_db_capsules": [],
+  "asm_db_source_files": 0,
   "structural_source_modules": [
     {
       "id": "M_6D86_6DCC",
@@ -60,7 +78,7 @@
     },
     {
       "id": "M_6B1A_6B4A",
-      "source": "asm/M_6B1A_6B4A.ASM",
+      "source": "src/KEYBIOS.C",
       "members": [
         "F_6B1A",
         "F_6B4A"
@@ -107,7 +125,7 @@
     },
     {
       "id": "M_CB5C_CD23",
-      "source": "asm/M_CB5C_CD23.ASM",
+      "source": "src/OPTIONS.C",
       "members": [
         "F_CB5C",
         "F_CBBB",
@@ -119,7 +137,7 @@
     },
     {
       "id": "M_DAD7_DB35",
-      "source": "asm/M_DAD7_DB35.ASM",
+      "source": "src/VOXCHAN.C",
       "members": [
         "F_DAD7",
         "F_DB17",
@@ -157,7 +175,7 @@
     },
     {
       "id": "M_988F_98CB",
-      "source": "asm/M_988F_98CB.ASM",
+      "source": "src/MRKCELL.C",
       "members": [
         "F_988F",
         "F_98CB"
@@ -207,7 +225,7 @@
     },
     {
       "id": "M_DDD9_DF98",
-      "source": "asm/M_DDD9_DF98.ASM",
+      "source": "src/MUSIC.C",
       "members": [
         "F_DDD9",
         "F_DE7E",
@@ -217,5 +235,5 @@
       "bytes": 700
     }
   ],
-  "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
+  "limitations": "Non-runtime classification is syntactic and allow-list driven for typed ASM data (see module docstring); MECHANICAL_C does not claim semantic recovery. RUNTIME_BLOCK.ASM bytes are taken from the assembler-measured runtime-progress.json categories, not re-derived here. Historical module ownership is tracked separately."
 }

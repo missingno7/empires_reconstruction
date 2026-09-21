@@ -30,16 +30,23 @@ class SourceQualityTests(unittest.TestCase):
 
     def test_manifest_inventory_is_complete(self):
         result = report(read_json(ROOT / 'layout/manifest.json'))
+        self.assertEqual(result['format'], 'empires-source-quality-v2')
         matching = [item for item in result['levels'] if item['level'] != 'HISTORICAL_LIBRARY']
         # Grouped multi-source modules reduced distinct matching owners from 347 to 345;
-        # see layout/production-plan.json.
-        self.assertEqual(sum(item['owners'] for item in matching), 345)
-        self.assertEqual(result['asm_db_source_files'], 1)
+        # RUNTIME_BLOCK now contributes 3 nonzero RUNTIME_* owner rows (raw_unresolved
+        # is 0) instead of 1 ASM_DB_CAPSULE row: 345 - 1 + 3 = 347.
+        self.assertEqual(sum(item['owners'] for item in matching), 347)
+        self.assertEqual(result['asm_db_source_files'], 0)
         capsule_level = next(item for item in result['levels']
                              if item['level'] == 'ASM_DB_CAPSULE')
-        self.assertEqual((capsule_level['bytes'], capsule_level['owners']), (6571, 1))
-        self.assertEqual([item['owner'] for item in result['asm_db_capsules']],
-                         ['RUNTIME_BLOCK'])
+        self.assertEqual((capsule_level['bytes'], capsule_level['owners']), (0, 0))
+        self.assertEqual(result['asm_db_capsules'], [])
+        raw_unresolved = next(item for item in result['levels']
+                              if item['level'] == 'RUNTIME_RAW_UNRESOLVED')
+        self.assertEqual(raw_unresolved['bytes'], 0)
+        runtime_levels = {item['level']: item['bytes'] for item in result['levels']
+                          if item['level'].startswith('RUNTIME_')}
+        self.assertEqual(sum(runtime_levels.values()), 6571)
 
     def test_f4b0c_is_symbolic_tasm(self):
         manifest = read_json(ROOT / 'layout/manifest.json')

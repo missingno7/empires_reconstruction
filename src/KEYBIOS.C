@@ -4,7 +4,7 @@
 
 /* ---- F_6B1A ---- */
 /* F_6B1A -- blocking INT 16h read with the F1..F10 hot-key check. */
-extern void menu_list_active();
+extern int menu_list_active();
 extern void menu_loop_run();
 
 int f6b1a()

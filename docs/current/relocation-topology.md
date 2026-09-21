@@ -55,7 +55,7 @@ Total EXE relocations: 106
 | F_6B74 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_6B7A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | F_6BAC | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_6BCF | TASM.EXE | /mx | 1 | single | ascending |  |
+| F_6BCF | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | ascending |  |
 | C_6C26_6C87 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_6CA6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | F_6CEA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
@@ -307,7 +307,7 @@ Total EXE relocations: 106
 None.
 ## Fresh compile verification
 
-Checked against `build\production-ze1i7bb0\compile\WORK` (55 objects, 33 agree with prediction, 0 disagree).
+Checked against `build\production-b8z89_zn\compile\WORK` (55 objects, 34 agree with prediction, 0 disagree).
 
 | Object | Module | Raw fixups | Raw direction | Predicted | Agrees |
 |---|---|---|---|---|---|
@@ -338,7 +338,7 @@ Checked against `build\production-ze1i7bb0\compile\WORK` (55 objects, 33 agree w
 | R0041.OBJ | F_6B66 | 1 | single | ascending | yes |
 | R0043.OBJ | F_6B7A | 2 | ascending | ascending | yes |
 | R0044.OBJ | F_6BAC | 2 | ascending | ascending | yes |
-| R0045.OBJ | F_6BCF | 11 | mixed | ascending | NO |
+| R0045.OBJ | F_6BCF | 11 | ascending | ascending | yes |
 | R0047.OBJ | F_6CA6 | 8 | ascending | ascending | yes |
 | R0050.OBJ | F_6CF6 | 2 | ascending | ascending | yes |
 | R0052.OBJ | M_6D86_6DCC | 19 | ascending | ascending | yes |

@@ -3,21 +3,21 @@
   "conversions": [
     {
       "id": "F_6BCF",
-      "source": "src/F_6BCF.C",
+      "source": "src/TIMERIRQ.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6bcf",
+        "public": "_timer_irq_handler",
         "span": 1,
         "flags_append": "",
         "bindings": {
           "_fc1a0": {"coordinate": "code_offset", "evidence": "complete timer ISR call", "owner": "F_C1A0", "public": "_fc1a0", "addend": 0},
-          "_g0b76": {"offset": 2934, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR data fixups"},
+          "_timer_ticks": {"offset": 2934, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR data fixups"},
           "_g0b78": {"offset": 2936, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR data fixups"},
-          "_g0b7a": {"offset": 2938, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR far-vector fixup"},
+          "_int8_saved_vector": {"offset": 2938, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR far-vector fixup"},
           "_sound_enabled": {"offset": 5998, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
           "_music_enabled": {"offset": 6002, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
           "_g237c": {"offset": 9084, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR gate fixup"},
-          "_gc0d4": {"offset": 49364, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR counter fixups"}
+          "_timer_tick_phase": {"offset": 49364, "coordinate": "DGROUP_offset", "evidence": "complete timer ISR counter fixups"}
         },
         "module_segments": {}
       },

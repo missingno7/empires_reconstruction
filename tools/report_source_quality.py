@@ -1,4 +1,34 @@
-"""Measure readable-source recovery independently from byte ownership."""
+"""Measure readable-source recovery independently from byte ownership.
+
+Runtime-block accounting rule (v2): asm/RUNTIME_BLOCK.ASM (owner
+RUNTIME_BLOCK) is no longer collapsed into a single ASM_DB_CAPSULE just
+because it contains `db` lines. Its owner bytes are instead taken verbatim
+from the assembler-measured categories in docs/current/runtime-progress.json
+(produced by tools/runtime_source.quality, mirrored into
+docs/current/status.json): symbolic_instruction_bytes, typed_table_data_bytes,
+intentional_exact_encoding_bytes and raw_unresolved_bytes. Those four numbers
+are not re-derived here by regex; they are read from that producer and must
+sum to exactly the RUNTIME_BLOCK owner's byte span (asserted below). They map
+to the levels RUNTIME_SYMBOLIC_ASM, RUNTIME_TYPED_TABLE_DATA,
+RUNTIME_INTENTIONAL_EXACT_ENCODING and RUNTIME_RAW_UNRESOLVED respectively.
+
+For every other ASM source, `db` usage is classified conservatively:
+ASM_DB_CAPSULE is reserved for `db` bytes that encode raw, unrecovered
+instruction opcodes. `db` bytes that are plainly data -- a label declared
+under an explicit data block (`... label:` followed by `db`/`dw` table rows,
+or `db 'text'` literal/table entries) -- are typed data, not an instruction
+capsule. Because general-purpose syntactic parsing cannot always separate
+"data db" from "instruction-encoding db" with certainty, the discrimination
+here is intentionally conservative and allow-list driven: a source file is
+only ever treated as containing typed (non-capsule) `db` data when every
+raw `db`/`dw` line in it falls inside a data region named in
+ASM_TYPED_DATA_ALLOWLIST below (labels documented, by inspection, as pure
+data tables in the module's own recipe/evidence). Anything else with a raw
+`db` outside of the one recognized exact-encoding macro remains a capsule.
+This keeps the rule mechanically checkable (an explicit, reviewable
+allow-list) rather than trying to infer instruction-vs-data intent from
+regex alone.
+"""
 from collections import defaultdict
 from pathlib import Path
 import re
@@ -15,6 +45,13 @@ EXACT_NEAR_JUMP_MACRO = re.compile(
     r'^\s*dw\s+target-\$-2\s*$\n'
     r'^\s*endm\s*$', re.IGNORECASE | re.MULTILINE)
 
+# Sources (other than RUNTIME_BLOCK.ASM, which is handled separately from the
+# runtime-progress.json measurement) whose entire raw `db`/`dw` content is
+# documented, by inspection of the module's own recipe/evidence, as data
+# tables rather than instruction-byte encodings. Empty until a module is
+# reviewed and added here explicitly; see the module docstring above.
+ASM_TYPED_DATA_ALLOWLIST = set()
+
 
 def classify_source(path):
     """Return the strongest mechanically verifiable source representation."""
@@ -26,7 +63,7 @@ def classify_source(path):
     return 'MECHANICAL_C'
 
 
-def classify_asm_source(path):
+def classify_asm_source(path, source=None):
     text = path.read_text(errors='strict')
     # A single DB in this narrowly defined macro expresses an intentional
     # symbolic near branch whose exact encoding TASM 1.0 otherwise changes to
@@ -35,7 +72,11 @@ def classify_asm_source(path):
     # remain capsules until their instructions are recovered symbolically.
     if EXACT_NEAR_JUMP_MACRO.search(text):
         text = EXACT_NEAR_JUMP_MACRO.sub('', text)
-    return 'ASM_DB_CAPSULE' if RAW_ASM_DB.search(text) else 'SYMBOLIC_ASM'
+    if not RAW_ASM_DB.search(text):
+        return 'SYMBOLIC_ASM'
+    if source in ASM_TYPED_DATA_ALLOWLIST:
+        return 'SYMBOLIC_ASM'
+    return 'ASM_DB_CAPSULE'
 
 
 def structural_module_members():
@@ -58,10 +99,21 @@ def structural_module_members():
     return members, modules
 
 
-def report(manifest):
+RUNTIME_LEVEL_MAP = {
+    'symbolic_instruction_bytes': 'RUNTIME_SYMBOLIC_ASM',
+    'typed_table_data_bytes': 'RUNTIME_TYPED_TABLE_DATA',
+    'intentional_exact_encoding_bytes': 'RUNTIME_INTENTIONAL_EXACT_ENCODING',
+    'raw_unresolved_bytes': 'RUNTIME_RAW_UNRESOLVED',
+}
+
+
+def report(manifest, runtime_metrics=None):
     classes = defaultdict(lambda: {'bytes': 0, 'owners': 0, 'sources': set()})
     capsules = []
     module_members, modules = structural_module_members()
+    if runtime_metrics is None:
+        progress_path = ROOT / 'docs/current/runtime-progress.json'
+        runtime_metrics = read_json(progress_path)['metrics'] if progress_path.exists() else None
     # The complete first 0x1BC load bytes are the pinned compact-model
     # C0C.OBJ contribution.  The fixed oracle still partitions that prefix
     # into small matching owners, but the normal TLINK build consumes C0C.OBJ
@@ -78,9 +130,26 @@ def report(manifest):
             source = owner.get('source', kind)
         elif kind in ('MATCHING_C', 'MATCHING_ASM'):
             source = module_members.get(owner['id'], owner['source'])
+            if owner['id'] == 'RUNTIME_BLOCK' or source == 'asm/RUNTIME_BLOCK.ASM':
+                if runtime_metrics is None:
+                    raise ValueError('RUNTIME_BLOCK owner requires docs/current/runtime-progress.json metrics')
+                owner_bytes = owner['end'] - owner['start']
+                measured = sum(runtime_metrics[key] for key in RUNTIME_LEVEL_MAP)
+                if measured != owner_bytes:
+                    raise ValueError(
+                        f'Runtime metrics ({measured}) do not sum to RUNTIME_BLOCK owner bytes ({owner_bytes})')
+                for key, level in RUNTIME_LEVEL_MAP.items():
+                    n = runtime_metrics[key]
+                    if n == 0:
+                        continue
+                    entry = classes[level]
+                    entry['bytes'] += n
+                    entry['owners'] += 1
+                    entry['sources'].add(source)
+                continue
             path = ROOT / source
             if source.lower().endswith('.asm'):
-                level = classify_asm_source(path)
+                level = classify_asm_source(path, source)
             else:
                 level = classify_source(path)
             if level == 'ASM_DB_CAPSULE':
@@ -95,19 +164,24 @@ def report(manifest):
     levels = []
     for level in ('ASM_DB_CAPSULE', 'C_WITH_SYMBOLIC_INLINE_ASM',
                   'SYMBOLIC_ASM', 'MECHANICAL_C', 'HISTORICAL_STARTUP_OBJECT',
-                  'HISTORICAL_LIBRARY'):
+                  'HISTORICAL_LIBRARY', 'RUNTIME_SYMBOLIC_ASM',
+                  'RUNTIME_TYPED_TABLE_DATA', 'RUNTIME_INTENTIONAL_EXACT_ENCODING',
+                  'RUNTIME_RAW_UNRESOLVED'):
         entry = classes[level]
         levels.append({'level': level, 'bytes': entry['bytes'], 'owners': entry['owners'],
                        'sources': len(entry['sources'])})
     capsules.sort(key=lambda item: (-item['bytes'], item['owner']))
-    return {'format': 'empires-source-quality-v1',
+    return {'format': 'empires-source-quality-v2',
             'scope': 'Game-owned matching C/ASM plus legitimate historical library inputs',
             'levels': levels,
             'asm_db_capsules': capsules,
             'asm_db_source_files': len({item['source'] for item in capsules}),
             'structural_source_modules': modules,
-            'limitations': ('Classification is syntactic. MECHANICAL_C does not claim semantic '
-                            'recovery; historical module ownership is tracked separately.')}
+            'limitations': ('Non-runtime classification is syntactic and allow-list driven for typed '
+                            'ASM data (see module docstring); MECHANICAL_C does not claim semantic '
+                            'recovery. RUNTIME_BLOCK.ASM bytes are taken from the assembler-measured '
+                            'runtime-progress.json categories, not re-derived here. Historical module '
+                            'ownership is tracked separately.')}
 
 
 def run():

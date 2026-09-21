@@ -40,13 +40,13 @@ extern char far *rect_queue_write_ptr;                 /* the edge cursor */
 extern char far *ui_gfx_blob;
 extern char far *board_records;                 /* vram */
 extern char far *record_table_root;
-extern char far *gbfc4;
+extern unsigned char far *gbfc4;
 extern char far *g40d0;                 /* objtab */
 extern char far *resource_stripe_table;                 /* sprite base */
 extern char str96ee[];
 extern unsigned char b740[];
 extern unsigned char b4380[], b4386[];
-extern char b437a[];
+extern unsigned char b437a[];
 extern char b438c[], b4396[], b43a0[], b43aa[];
 extern int w8bea[], w8bf4[];
 extern struct C470 c470[];

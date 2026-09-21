@@ -1,25 +1,25 @@
 {
   "owner_level_comparison": {
-    "format": "empires-source-quality-v1",
+    "format": "empires-source-quality-v2",
     "scope": "Game-owned matching C/ASM plus legitimate historical library inputs",
     "levels": [
       {
         "level": "ASM_DB_CAPSULE",
-        "bytes": 6571,
-        "owners": 1,
-        "sources": 1
+        "bytes": 0,
+        "owners": 0,
+        "sources": 0
       },
       {
         "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-        "bytes": 5993,
-        "owners": 46,
-        "sources": 20
+        "bytes": 6080,
+        "owners": 47,
+        "sources": 21
       },
       {
         "level": "SYMBOLIC_ASM",
-        "bytes": 6012,
-        "owners": 57,
-        "sources": 29
+        "bytes": 5925,
+        "owners": 56,
+        "sources": 28
       },
       {
         "level": "MECHANICAL_C",
@@ -38,16 +38,34 @@
         "bytes": 5490,
         "owners": 50,
         "sources": 1
-      }
-    ],
-    "asm_db_capsules": [
+      },
       {
-        "owner": "RUNTIME_BLOCK",
-        "source": "asm/RUNTIME_BLOCK.ASM",
-        "bytes": 6571
+        "level": "RUNTIME_SYMBOLIC_ASM",
+        "bytes": 5840,
+        "owners": 1,
+        "sources": 1
+      },
+      {
+        "level": "RUNTIME_TYPED_TABLE_DATA",
+        "bytes": 662,
+        "owners": 1,
+        "sources": 1
+      },
+      {
+        "level": "RUNTIME_INTENTIONAL_EXACT_ENCODING",
+        "bytes": 69,
+        "owners": 1,
+        "sources": 1
+      },
+      {
+        "level": "RUNTIME_RAW_UNRESOLVED",
+        "bytes": 0,
+        "owners": 0,
+        "sources": 0
       }
     ],
-    "asm_db_source_files": 1,
+    "asm_db_capsules": [],
+    "asm_db_source_files": 0,
     "structural_source_modules": [
       {
         "id": "M_6D86_6DCC",
@@ -218,7 +236,7 @@
         "bytes": 700
       }
     ],
-    "limitations": "Classification is syntactic. MECHANICAL_C does not claim semantic recovery; historical module ownership is tracked separately."
+    "limitations": "Non-runtime classification is syntactic and allow-list driven for typed ASM data (see module docstring); MECHANICAL_C does not claim semantic recovery. RUNTIME_BLOCK.ASM bytes are taken from the assembler-measured runtime-progress.json categories, not re-derived here. Historical module ownership is tracked separately."
   },
   "format": "empires-source-quality-ranges-v1",
   "runtime": {

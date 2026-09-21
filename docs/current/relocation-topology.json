@@ -856,18 +856,22 @@
   },
   {
    "module": "F_6BCF",
-   "tool": "TASM.EXE",
+   "tool": "TCC.EXE",
    "flags": [
-    "/mx"
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
    ],
-   "source": "asm/F_6BCF.ASM",
+   "source": "src/TIMERIRQ.C",
    "relocation_count": 1,
    "relocation_offsets": [
     27609
    ],
    "observed_direction": "single",
    "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
+   "prediction_reason": "TCC.EXE source src/TIMERIRQ.C contains an `asm` statement",
    "category": "production-module",
    "mismatch": false
   },
@@ -3646,9 +3650,9 @@
  "mismatches": [],
  "fresh_compile_verification": {
   "found": true,
-  "work_dir": "build\\production-ze1i7bb0\\compile\\WORK",
+  "work_dir": "build\\production-b8z89_zn\\compile\\WORK",
   "objects_checked": 55,
-  "agreements": 33,
+  "agreements": 34,
   "disagreements": 0,
   "rows": [
    {
@@ -3871,9 +3875,9 @@
     "object": "R0045.OBJ",
     "module": "F_6BCF",
     "raw_fixup_count": 11,
-    "raw_direction": "mixed",
+    "raw_direction": "ascending",
     "predicted_direction": "ascending",
-    "agrees_with_prediction": false
+    "agrees_with_prediction": true
    },
    {
     "object": "R0047.OBJ",

@@ -17,7 +17,7 @@ class MatchingCFrontierTests(unittest.TestCase):
         # The frontier invariant this test guards -- no unowned pinned-proven
         # code candidates -- still holds and is checked below.
         self.assertEqual(evidence['status'], 'OPEN')
-        self.assertEqual(evidence['matching_asm'], {'owners': 43, 'bytes': 10877})
+        self.assertEqual(evidence['matching_asm'], {'owners': 42, 'bytes': 10790})
         self.assertEqual(evidence['unowned_pinned_proven_code_entries'], [])
         self.assertEqual(evidence['unrecovered_machine_entries_intersecting_raw'], [])
         self.assertEqual(evidence['executable_prefix']['raw_owners_before_boundary'], [])

@@ -31,6 +31,37 @@ Full acceptance after these changes: SHA256
 1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10, 106
 relocations in order, unchanged compiler objects, fixture-free construction.
 
+## Round: gfx_copy_rect, longjmp, keyboard_irq_handler and 17 global-storage findings
+
+20 active findings (ACTIVE_TYPE_REVIEW, RETURN_TYPE_REVIEW:keyboard_irq_handler,
+COMPACT_MODEL_SPELLING:rect_queue_write_ptr/resource_stripe_table,
+VARIADIC_PROTOTYPE:str_concat_far_list) were reviewed symbol by symbol; each
+resolution is recorded in `tools/audit_interface_conflicts.py`'s `resolutions`
+list with an `outcome` of UNIFIED, CODEGEN_ALTERNATE_VIEW, FIXED or DOCUMENTED.
+`docs/current/interface-audit.json` now separates `open_findings` from
+`resolved` (a finding counts as resolved once its id is in `resolutions`).
+
+| Case | Outcome |
+| --- | --- |
+| gfx_copy_rect | UNIFIED to `void gfx_copy_rect(int,int,void far *,int)`. |
+| longjmp | UNIFIED to `void longjmp(void far *,int)`. |
+| keyboard_irq_handler | CODEGEN_ALTERNATE_VIEW: KEYIRQ.C's address-only `extern void keyboard_irq_handler();` vs KEYIRQH.C's `void interrupt` definition; retyping grows the setvect() cast sequence by 3 bytes (C_695E_697D probe). |
+| str_concat_far_list | DOCUMENTED: the variadic prototype already reproduces the definition; nothing to change. |
+| a74a2 | CODEGEN_ALTERNATE_VIEW: BRDPAINT.C needs the 2-D `char a74a2[][0xbb]` row-pointer view, BRDTERR.C needs the flat `char a74a2[]` for its stride arithmetic; unifying breaks the row-stride multiply (F_4517 probe). |
+| b437a | UNIFIED to `unsigned char b437a[]`. |
+| board_records | UNIFIED in BOARDDRW.C/BOARDSCR.C to `char far *`; BRDPAINT.C keeps `unsigned char far *` (CODEGEN_ALTERNATE_VIEW, needs the zero-extend reading board_records[0x3e5]/[0x3e6] into an int; F_2AE2 probe). |
+| g96ee, g9bfc, gbf66, gbfc4, record_table_root | UNIFIED to the unsigned/far spelling used elsewhere; all probes EXACT. |
+| gbfcc | CODEGEN_ALTERNATE_VIEW: RESOURCE.C's `gbfcc > 1` compiles to a signed JG; unifying to unsigned char turns it into JA (C_6266_68AA probe, byte 0xB4: 7F to 77). |
+| gc0ee | SPRPOOLD.C's `struct H *gc0ee` retyped to `char far *` with a local cast (F_78C3 probe EXACT); HUD.C's near-vs-far split stays, already documented in HUD.C. |
+| gc0fe | DOCUMENTED: include/GC0FE.H already records this as a genuine, non-unifiable conflict. |
+| score_panel_x | CODEGEN_ALTERNATE_VIEW: SCOREPNL.C's `char *score_panel_x` packs x2/y2 into one far-pointer push; documented in place (F_9908 probe EXACT, unchanged). |
+| ui_gfx_blob | LEVEL.C's stray unspelled `char *` UNIFIED to `char far *`; DIALOG.C's `unsigned ui_gfx_blob` word-pun stays, already documented in DIALOG.C. |
+| voice_level_table | CODEGEN_ALTERNATE_VIEW: OPLREG.C's `v = voice_level_table[i] * v` needs signed char; unifying to unsigned grows the module by 1 byte (C_E095_E54D probe). |
+| rect_queue_write_ptr, resource_stripe_table | UNIFIED spelling: two declarators that relied on the -mc default now spell `far` explicitly. |
+
+Full acceptance after these changes: SHA256
+1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10.
+
 ## Parser corrections
 
 Storage qualifiers after `*` no longer change the pointer shape or size;

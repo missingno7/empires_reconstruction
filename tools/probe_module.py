@@ -33,6 +33,18 @@ def probe(owner_ids, overrides=None, root=ROOT, as_c=None):
     plan = {m['id']: m for m in read_json(root / 'layout/production-plan.json')['modules']}
     owners, compiled, seen = [], [], set()
     members = {m: module['id'] for module in plan.values() for m in module.get('members', []) if module.get('sources')}
+    # Overrides bind to the owner ids being probed (or to members of a probed
+    # shared module).  A key naming anything else would be ignored silently and
+    # the production source would be measured instead of the candidate.
+    addressed = set(owner_ids)
+    for owner_id in owner_ids:
+        module = plan.get(members.get(owner_id, owner_id), {})
+        if module.get('sources'):
+            addressed.update(module.get('members', []))
+    for key in list(overrides or {}) + list(as_c or {}):
+        if key not in addressed:
+            raise SystemExit(f'--source/--as-c {key} names no probed owner; probe {key} itself '
+                             f'(a member of an assembler module is probed by its own region id)')
     concat = root / 'build/probes/_shared'
     for owner_id in owner_ids:
         override = overrides.get(owner_id) if overrides else None

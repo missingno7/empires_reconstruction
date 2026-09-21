@@ -26,7 +26,7 @@ extern void resource_scoreboard_unpack();
 extern void hud_icons_load();
 extern char far *g99d6;                 /* DS:99D6 offset, DS:99D8 segment */
 extern int g072c, g072e, g0736, g0738, g073a;
-extern void gfx_copy_rect(unsigned,unsigned,void far *,int);
+extern void gfx_copy_rect(int,int,void far *,int);
 extern int g736, g738;
 extern void gfx_wipe_rect();
 extern struct CEL cel[];
@@ -59,7 +59,7 @@ extern void timer_deadline_wait(void);                    /* 6C6F */
 /*@SYM _timer_deadline_wait=0x6C6F kind=f key=functions/F_6C6F.entry*/
 extern void box(int x, int y, int w, int h);                    /* 039F */
 /*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
-extern unsigned char far *board_records;
+extern char far *board_records;
 extern int point_in_hotspot_rect();
 extern char far *record_table_root;
 extern char far *record_field_skip_n();

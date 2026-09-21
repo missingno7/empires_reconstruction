@@ -28,9 +28,11 @@ class MatchingCWave83_84Tests(unittest.TestCase):
                 # docs/current/asm-origin-review.json); their recipes still
                 # record their earlier MATCHING_C form. Only the ownership
                 # facts this test exercises (kind, source, extent) need to
-                # track the current truth.
+                # track the current truth. Both members were later
+                # consolidated with F_60A9 into one word-alignment-proven
+                # TASM module (asm/SPRDRAW.ASM, id M_6036_6181).
                 self.assertEqual(owner['kind'], 'MATCHING_ASM')
-                self.assertEqual(owner['source'], f'asm/{ident}.ASM')
+                self.assertEqual(owner['source'], 'asm/SPRDRAW.ASM')
                 self.assertEqual(owner['start'], recipe_owner['start'])
                 self.assertEqual(owner['end'], recipe_owner['end'])
                 work = Path(temporary) / ident

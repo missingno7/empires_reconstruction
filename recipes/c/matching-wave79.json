@@ -4,7 +4,7 @@
     {
       "id": "F_D818",
       "kind": "MATCHING_ASM",
-      "source": "recovery/src/F_D818.ASM",
+      "source": "asm/M_D818_D825.ASM",
       "start": 55832,
       "end": 55845,
       "expected_sha256": "df46e15c6875236761c89018a9df8d57bdfa106f337f8cf34f20b24153b0a805",
@@ -18,6 +18,9 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "reconstruction_source": "recovery/src/F_D818.ASM"
       }
     }
   ]

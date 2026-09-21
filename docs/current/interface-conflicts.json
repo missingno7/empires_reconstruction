@@ -722,9 +722,11 @@
           "symbol": "_animated_tile_tick",
           "address": 24745,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_60A9",
+          "owner": "M_6036_6181",
           "module_members": [
-            "F_60A9"
+            "F_6036",
+            "F_60A9",
+            "F_6181"
           ]
         }
       ]
@@ -1138,8 +1140,11 @@
           "symbol": "_board_actors_draw",
           "address": 20203,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_4EEB",
+          "owner": "M_4AA8_4EEB",
           "module_members": [
+            "F_4AA8",
+            "F_4B0C",
+            "F_4E9F",
             "F_4EEB"
           ]
         }
@@ -12388,11 +12393,13 @@
           "symbol": "_lz_decompress",
           "address": 28108,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "M_6D86_6DCC",
+          "owner": "M_6D86_6F4B",
           "module_members": [
             "F_6D86",
             "PAD_006FC5",
-            "F_6DCC"
+            "F_6DCC",
+            "F_6EFF",
+            "F_6F4B"
           ]
         }
       ]
@@ -15091,9 +15098,12 @@
           "symbol": "_play_window_wipe_clipped",
           "address": 19112,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_4AA8",
+          "owner": "M_4AA8_4EEB",
           "module_members": [
-            "F_4AA8"
+            "F_4AA8",
+            "F_4B0C",
+            "F_4E9F",
+            "F_4EEB"
           ]
         }
       ]
@@ -19177,11 +19187,13 @@
           "symbol": "_rle_packbits_decode",
           "address": 28038,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "M_6D86_6DCC",
+          "owner": "M_6D86_6F4B",
           "module_members": [
             "F_6D86",
             "PAD_006FC5",
-            "F_6DCC"
+            "F_6DCC",
+            "F_6EFF",
+            "F_6F4B"
           ]
         }
       ]
@@ -23365,8 +23377,12 @@
           "symbol": "_sprite_decode_4bpp_mode13h",
           "address": 28491,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_6F4B",
+          "owner": "M_6D86_6F4B",
           "module_members": [
+            "F_6D86",
+            "PAD_006FC5",
+            "F_6DCC",
+            "F_6EFF",
             "F_6F4B"
           ]
         }
@@ -23395,9 +23411,13 @@
           "symbol": "_sprite_decode_4bpp_planar",
           "address": 28415,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_6EFF",
+          "owner": "M_6D86_6F4B",
           "module_members": [
-            "F_6EFF"
+            "F_6D86",
+            "PAD_006FC5",
+            "F_6DCC",
+            "F_6EFF",
+            "F_6F4B"
           ]
         }
       ]
@@ -23676,8 +23696,10 @@
           "symbol": "_sprite_record_adjust_draw",
           "address": 24961,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_6181",
+          "owner": "M_6036_6181",
           "module_members": [
+            "F_6036",
+            "F_60A9",
             "F_6181"
           ]
         }
@@ -23719,9 +23741,12 @@
           "symbol": "_sprite_script_frame_driver",
           "address": 19212,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_4B0C",
+          "owner": "M_4AA8_4EEB",
           "module_members": [
-            "F_4B0C"
+            "F_4AA8",
+            "F_4B0C",
+            "F_4E9F",
+            "F_4EEB"
           ]
         }
       ]
@@ -24178,9 +24203,11 @@
           "symbol": "_sprite_table_queue_draws",
           "address": 24630,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_6036",
+          "owner": "M_6036_6181",
           "module_members": [
-            "F_6036"
+            "F_6036",
+            "F_60A9",
+            "F_6181"
           ]
         }
       ]
@@ -24221,9 +24248,12 @@
           "symbol": "_sprite_table_wipe_active",
           "address": 20127,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_4E9F",
+          "owner": "M_4AA8_4EEB",
           "module_members": [
-            "F_4E9F"
+            "F_4AA8",
+            "F_4B0C",
+            "F_4E9F",
+            "F_4EEB"
           ]
         }
       ]

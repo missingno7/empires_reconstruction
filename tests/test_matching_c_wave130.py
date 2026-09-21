@@ -39,8 +39,15 @@ class MatchingCWave130Tests(unittest.TestCase):
         # confirm the current total instead. It grew from the prior 10790 with
         # the sound-driver re-closure: F_C27D and F_C834 (formerly C
         # candidates) are now proven ASM members of asm/SOUND.ASM
-        # (M_C1A0_CB48; see docs/current/asm-provenance.json).
-        self.assertEqual(sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'MATCHING_ASM'), 11442)
+        # (M_C1A0_CB48; see docs/current/asm-provenance.json).  12329 = every
+        # member of the assembler modules in layout/structural-source-modules.json
+        # now carries kind MATCHING_ASM and the module's file as its source
+        # (asm-provenance.json active_production_asm bytes minus the padding
+        # member and the RUNTIME_BLOCK owner's split are the same 12329).
+        self.assertEqual(sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'MATCHING_ASM'),
+                         sum(r['end'] - r['start'] for r in manifest['regions']
+                             if r.get('source', '').startswith('asm/') and r['kind'] == 'MATCHING_ASM'))
+        self.assertEqual(sum(r['end'] - r['start'] for r in manifest['regions'] if r['kind'] == 'MATCHING_ASM'), 12329)
 
 
 if __name__ == '__main__':

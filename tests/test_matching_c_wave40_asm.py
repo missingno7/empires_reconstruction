@@ -26,7 +26,13 @@ class MatchingCWave40AsmTests(unittest.TestCase):
             data, proof = bind_region(owner, module, MZ.parse(original), manifest['frames'],
                                       manifest['regions'], modules)
             mismatch(original[owner['start']:owner['end']], data, owner)
-            self.assertEqual(len(proof['fixups']), 5)
+            # F_4E9F was consolidated with F_4AA8/F_4B0C/F_4EEB into one
+            # word-alignment-proven TASM module (asm/SPRITES.ASM, id
+            # M_4AA8_4EEB); its call into _play_window_wipe_clipped (F_4AA8)
+            # is now an intra-module backward reference TASM resolves
+            # directly, with no linker fixup needed, so the standalone count
+            # drops from 5 to 4 (the remaining four DGROUP-offset fixups).
+            self.assertEqual(len(proof['fixups']), 4)
 
 
 if __name__ == '__main__':

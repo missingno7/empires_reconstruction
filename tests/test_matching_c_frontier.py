@@ -26,8 +26,14 @@ class MatchingCFrontierTests(unittest.TestCase):
         # frontier invariant this test guards -- no *unexplained* unowned
         # pinned-proven code candidates -- still holds: the current list below
         # is exactly that expected set, and no other candidate is unowned.
+        # F_6D86/PAD_006FC5/F_6DCC (asm/M_6D86_6DCC.ASM) were consolidated
+        # with F_6EFF and F_6F4B into one word-alignment-proven TASM module
+        # (asm/DECODE.ASM, id M_6D86_6F4B); F_6DCC's manifest region flips
+        # from MATCHING_C to MATCHING_ASM to match (it was already compiled
+        # as part of the ASM module, never independently as C), growing the
+        # MATCHING_ASM census by one owner and F_6DCC's 307 bytes.
         self.assertEqual(evidence['status'], 'OPEN')
-        self.assertEqual(evidence['matching_asm'], {'owners': 58, 'bytes': 11442})
+        self.assertEqual(evidence['matching_asm'], {'owners': 62, 'bytes': 12329})
         self.assertEqual(evidence['unowned_pinned_proven_code_entries'],
                          ['F_C59A', 'F_C898', 'F_C8E2', 'F_C988', 'F_CA83', 'F_CAD0', 'F_CADB', 'F_CAE6'])
         self.assertEqual(evidence['unrecovered_machine_entries_intersecting_raw'], [])

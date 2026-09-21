@@ -14,9 +14,9 @@ class StructuralSourceModuleTests(unittest.TestCase):
     def test_decoder_module_has_contiguous_manifest_ownership(self):
         manifest = read_json(ROOT / 'layout/manifest.json')
         modules = structural_source_modules(ROOT, manifest)
-        module = next(item for item in modules if item['id'] == 'M_6D86_6DCC')
-        self.assertEqual(module['members'], ['F_6D86', 'PAD_006FC5', 'F_6DCC'])
-        self.assertEqual(module['end'] - module['start'], 377)
+        module = next(item for item in modules if item['id'] == 'M_6D86_6F4B')
+        self.assertEqual(module['members'], ['F_6D86', 'PAD_006FC5', 'F_6DCC', 'F_6EFF', 'F_6F4B'])
+        self.assertEqual(module['end'] - module['start'], 573)
 
     # M_6B1A_6B4A was removed from layout/structural-source-modules.json: its
     # members (F_6B1A, F_6B4A) are now inside the src/KEYBOARD.C

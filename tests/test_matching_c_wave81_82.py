@@ -26,9 +26,12 @@ class MatchingCWave81_82Tests(unittest.TestCase):
                 # asm-origin review (see docs/current/asm-origin-review.json);
                 # the wave82 recipe still records its earlier MATCHING_C form.
                 # Only the ownership facts this test exercises (kind, source,
-                # extent) need to track the current truth.
+                # extent) need to track the current truth. Both members were
+                # later consolidated with F_6D86/PAD_006FC5/F_6DCC into one
+                # word-alignment-proven TASM module (asm/DECODE.ASM, id
+                # M_6D86_6F4B).
                 self.assertEqual(owner['kind'], 'MATCHING_ASM')
-                self.assertEqual(owner['source'], f'asm/{ident}.ASM')
+                self.assertEqual(owner['source'], 'asm/DECODE.ASM')
                 self.assertEqual(owner['start'], recipe_owner['start'])
                 self.assertEqual(owner['end'], recipe_owner['end'])
                 work = Path(temporary) / ident

@@ -21,16 +21,11 @@ Total EXE relocations: 106
 | F_1F91 | TASM.EXE | /mx | 0 | none | ascending |  |
 | C_200F_3986 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | C_3A75_4A93 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| F_4AA8 | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_4B0C | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_4E9F | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_4EEB | TASM.EXE | /mx | 0 | none | ascending |  |
+| M_4AA8_4EEB | TASM.EXE | /mx | 0 | none | ascending |  |
 | C_4F63_520A | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
 | C_5321_56C6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_5A3B_6021 | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | descending |  |
-| F_6036 | TASM.EXE | /mx | 1 | single | ascending |  |
-| F_60A9 | TASM.EXE | /mx | 1 | single | ascending |  |
-| F_6181 | TASM.EXE | /mx | 1 | single | ascending |  |
+| M_6036_6181 | TASM.EXE | /mx | 3 | ascending | ascending |  |
 | C_622C_625D | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_6266_68AA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_68CF | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
@@ -38,9 +33,7 @@ Total EXE relocations: 106
 | C_6990_6B74 | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | ascending |  |
 | C_6B7A_6C87 | TCC.EXE | -c -mc -1- -f- -N- | 1 | single | ascending |  |
 | C_6CA6_6D3C | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
-| M_6D86_6DCC | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_6EFF | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_6F4B | TASM.EXE | /mx | 0 | none | ascending |  |
+| M_6D86_6F4B | TASM.EXE | /mx | 0 | none | ascending |  |
 | C_6FC3_747B | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_75F3_7856 | TCC.EXE | -c -mc -1- -f- -N- | 3 | descending | descending |  |
 | F_7856 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
@@ -266,7 +259,7 @@ Total EXE relocations: 106
 None.
 ## Fresh compile verification
 
-Checked against `build\production-tzq2ozwi\compile\WORK` (27 objects, 16 agree with prediction, 0 disagree).
+Checked against `build\production-i_l5nnx6\compile\WORK` (20 objects, 13 agree with prediction, 0 disagree).
 
 | Object | Module | Raw fixups | Raw direction | Predicted | Agrees |
 |---|---|---|---|---|---|
@@ -277,26 +270,19 @@ Checked against `build\production-tzq2ozwi\compile\WORK` (27 objects, 16 agree w
 | R0008.OBJ | F_1F91 | 1 | single | ascending | yes |
 | R0009.OBJ | C_200F_3986 | 407 | ascending | ascending | yes |
 | R0010.OBJ | C_3A75_4A93 | 496 | ascending | ascending | yes |
-| R0011.OBJ | F_4AA8 | 1 | single | ascending | yes |
-| R0012.OBJ | F_4B0C | 9 | ascending | ascending | yes |
-| R0013.OBJ | F_4E9F | 5 | ascending | ascending | yes |
-| R0014.OBJ | F_4EEB | 6 | ascending | ascending | yes |
-| R0015.OBJ | C_4F63_520A | 77 | ascending | ascending | yes |
-| R0018.OBJ | F_6036 | 6 | ascending | ascending | yes |
-| R0019.OBJ | F_60A9 | 11 | mixed | ascending | NO |
-| R0020.OBJ | F_6181 | 7 | mixed | ascending | NO |
-| R0025.OBJ | C_6990_6B74 | 43 | mixed | ascending | NO |
-| R0026.OBJ | C_6B7A_6C87 | 32 | mixed | ascending | NO |
-| R0027.OBJ | C_6CA6_6D3C | 14 | ascending | ascending | yes |
-| R0028.OBJ | M_6D86_6DCC | 19 | ascending | ascending | yes |
-| R0029.OBJ | F_6EFF | 0 | none | ascending | yes |
-| R0030.OBJ | F_6F4B | 0 | none | ascending | yes |
-| R0050.OBJ | F_9EC3 | 4 | ascending | ascending | yes |
-| R0059.OBJ | M_C1A0_CB48 | 164 | ascending | ascending | yes |
-| R0062.OBJ | M_D386_D3CF | 3 | ascending | ascending | yes |
-| R0076.OBJ | M_D61C_D79C | 6 | ascending | ascending | yes |
-| R0077.OBJ | M_D818_D825 | 0 | none | ascending | yes |
-| R0078.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
+| R0011.OBJ | M_4AA8_4EEB | 20 | ascending | ascending | yes |
+| R0012.OBJ | C_4F63_520A | 77 | ascending | ascending | yes |
+| R0015.OBJ | M_6036_6181 | 24 | mixed | ascending | NO |
+| R0020.OBJ | C_6990_6B74 | 43 | mixed | ascending | NO |
+| R0021.OBJ | C_6B7A_6C87 | 32 | mixed | ascending | NO |
+| R0022.OBJ | C_6CA6_6D3C | 14 | ascending | ascending | yes |
+| R0023.OBJ | M_6D86_6F4B | 19 | ascending | ascending | yes |
+| R0043.OBJ | F_9EC3 | 4 | ascending | ascending | yes |
+| R0052.OBJ | M_C1A0_CB48 | 191 | ascending | ascending | yes |
+| R0055.OBJ | M_D386_D3CF | 3 | ascending | ascending | yes |
+| R0069.OBJ | M_D61C_D79C | 6 | ascending | ascending | yes |
+| R0070.OBJ | M_D818_D825 | 0 | none | ascending | yes |
+| R0071.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
 
 ## TASM modules with descending historical relocations
 

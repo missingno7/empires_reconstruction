@@ -19,7 +19,7 @@
         "level": "SYMBOLIC_ASM",
         "bytes": 5758,
         "owners": 61,
-        "sources": 17
+        "sources": 10
       },
       {
         "level": "MECHANICAL_C",
@@ -68,14 +68,16 @@
     "asm_db_source_files": 0,
     "structural_source_modules": [
       {
-        "id": "M_6D86_6DCC",
-        "source": "asm/M_6D86_6DCC.ASM",
+        "id": "M_6D86_6F4B",
+        "source": "asm/DECODE.ASM",
         "members": [
           "F_6D86",
           "PAD_006FC5",
-          "F_6DCC"
+          "F_6DCC",
+          "F_6EFF",
+          "F_6F4B"
         ],
-        "bytes": 377
+        "bytes": 573
       },
       {
         "id": "M_CB5C_CD23",
@@ -193,6 +195,27 @@
           "F_CB48"
         ],
         "bytes": 2492
+      },
+      {
+        "id": "M_4AA8_4EEB",
+        "source": "asm/SPRITES.ASM",
+        "members": [
+          "F_4AA8",
+          "F_4B0C",
+          "F_4E9F",
+          "F_4EEB"
+        ],
+        "bytes": 1211
+      },
+      {
+        "id": "M_6036_6181",
+        "source": "asm/SPRDRAW.ASM",
+        "members": [
+          "F_6036",
+          "F_60A9",
+          "F_6181"
+        ],
+        "bytes": 502
       }
     ],
     "limitations": "Non-runtime classification is syntactic and allow-list driven for typed ASM data (see module docstring); MECHANICAL_C does not claim semantic recovery. RUNTIME_BLOCK.ASM bytes are taken from the assembler-measured runtime-progress.json categories, not re-derived here. Historical module ownership is tracked separately."

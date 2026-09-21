@@ -21,7 +21,7 @@ class NativeDataPlanTests(unittest.TestCase):
         p=production_plan.generate()
         self.assertEqual(p['padding'], [])
         self.assertEqual({a['before_module'] for a in p['linker_alignment']},
-                         {'F_4AA8','M_6D86_6DCC','M_D61C_D79C','M_D818_D825'})
+                         {'M_4AA8_4EEB','M_6D86_6F4B','M_D61C_D79C','M_D818_D825'})
         self.assertFalse(any(name.startswith('P') for name in p['object_order']))
 
     def test_invalid_alignment_ownership_is_rejected(self):

@@ -52,7 +52,7 @@ class SourceQualityTests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_4B0C')
         self.assertEqual((owner['kind'], owner['source']),
-                         ('MATCHING_ASM', 'asm/F_4B0C.ASM'))
+                         ('MATCHING_ASM', 'asm/SPRITES.ASM'))
         self.assertEqual(classify_asm_source(ROOT / owner['source']), 'SYMBOLIC_ASM')
 
     def test_f4eeb_is_symbolic_tasm(self):

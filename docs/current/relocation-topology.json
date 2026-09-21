@@ -211,57 +211,12 @@
    "mismatch": false
   },
   {
-   "module": "F_4AA8",
+   "module": "M_4AA8_4EEB",
    "tool": "TASM.EXE",
    "flags": [
     "/mx"
    ],
-   "source": "asm/F_4AA8.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4B0C",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_4B0C.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4E9F",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_4E9F.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_4EEB",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_4EEB.ASM",
+   "source": "asm/SPRITES.ASM",
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
@@ -336,51 +291,19 @@
    "mismatch": false
   },
   {
-   "module": "F_6036",
+   "module": "M_6036_6181",
    "tool": "TASM.EXE",
    "flags": [
     "/mx"
    ],
-   "source": "asm/F_6036.ASM",
-   "relocation_count": 1,
+   "source": "asm/SPRDRAW.ASM",
+   "relocation_count": 3,
    "relocation_offsets": [
-    24683
-   ],
-   "observed_direction": "single",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_60A9",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_60A9.ASM",
-   "relocation_count": 1,
-   "relocation_offsets": [
-    24867
-   ],
-   "observed_direction": "single",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6181",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_6181.ASM",
-   "relocation_count": 1,
-   "relocation_offsets": [
+    24683,
+    24867,
     25049
    ],
-   "observed_direction": "single",
+   "observed_direction": "ascending",
    "predicted_direction": "ascending",
    "prediction_reason": "tool is TASM.EXE",
    "category": "production-module",
@@ -536,42 +459,12 @@
    "mismatch": false
   },
   {
-   "module": "M_6D86_6DCC",
+   "module": "M_6D86_6F4B",
    "tool": "TASM.EXE",
    "flags": [
     "/mx"
    ],
-   "source": "asm/M_6D86_6DCC.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6EFF",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_6EFF.ASM",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "ascending",
-   "prediction_reason": "tool is TASM.EXE",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_6F4B",
-   "tool": "TASM.EXE",
-   "flags": [
-    "/mx"
-   ],
-   "source": "asm/F_6F4B.ASM",
+   "source": "asm/DECODE.ASM",
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
@@ -2904,9 +2797,9 @@
  "mismatches": [],
  "fresh_compile_verification": {
   "found": true,
-  "work_dir": "build\\production-tzq2ozwi\\compile\\WORK",
-  "objects_checked": 27,
-  "agreements": 16,
+  "work_dir": "build\\production-i_l5nnx6\\compile\\WORK",
+  "objects_checked": 20,
+  "agreements": 13,
   "disagreements": 0,
   "rows": [
    {
@@ -2967,38 +2860,14 @@
    },
    {
     "object": "R0011.OBJ",
-    "module": "F_4AA8",
-    "raw_fixup_count": 1,
-    "raw_direction": "single",
+    "module": "M_4AA8_4EEB",
+    "raw_fixup_count": 20,
+    "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
     "object": "R0012.OBJ",
-    "module": "F_4B0C",
-    "raw_fixup_count": 9,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0013.OBJ",
-    "module": "F_4E9F",
-    "raw_fixup_count": 5,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0014.OBJ",
-    "module": "F_4EEB",
-    "raw_fixup_count": 6,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0015.OBJ",
     "module": "C_4F63_520A",
     "raw_fixup_count": 77,
     "raw_direction": "ascending",
@@ -3006,31 +2875,15 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0018.OBJ",
-    "module": "F_6036",
-    "raw_fixup_count": 6,
-    "raw_direction": "ascending",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0019.OBJ",
-    "module": "F_60A9",
-    "raw_fixup_count": 11,
+    "object": "R0015.OBJ",
+    "module": "M_6036_6181",
+    "raw_fixup_count": 24,
     "raw_direction": "mixed",
     "predicted_direction": "ascending",
     "agrees_with_prediction": false
    },
    {
     "object": "R0020.OBJ",
-    "module": "F_6181",
-    "raw_fixup_count": 7,
-    "raw_direction": "mixed",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": false
-   },
-   {
-    "object": "R0025.OBJ",
     "module": "C_6990_6B74",
     "raw_fixup_count": 43,
     "raw_direction": "mixed",
@@ -3038,7 +2891,7 @@
     "agrees_with_prediction": false
    },
    {
-    "object": "R0026.OBJ",
+    "object": "R0021.OBJ",
     "module": "C_6B7A_6C87",
     "raw_fixup_count": 32,
     "raw_direction": "mixed",
@@ -3046,7 +2899,7 @@
     "agrees_with_prediction": false
    },
    {
-    "object": "R0027.OBJ",
+    "object": "R0022.OBJ",
     "module": "C_6CA6_6D3C",
     "raw_fixup_count": 14,
     "raw_direction": "ascending",
@@ -3054,31 +2907,15 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0028.OBJ",
-    "module": "M_6D86_6DCC",
+    "object": "R0023.OBJ",
+    "module": "M_6D86_6F4B",
     "raw_fixup_count": 19,
     "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
-    "object": "R0029.OBJ",
-    "module": "F_6EFF",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0030.OBJ",
-    "module": "F_6F4B",
-    "raw_fixup_count": 0,
-    "raw_direction": "none",
-    "predicted_direction": "ascending",
-    "agrees_with_prediction": true
-   },
-   {
-    "object": "R0050.OBJ",
+    "object": "R0043.OBJ",
     "module": "F_9EC3",
     "raw_fixup_count": 4,
     "raw_direction": "ascending",
@@ -3086,15 +2923,15 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0059.OBJ",
+    "object": "R0052.OBJ",
     "module": "M_C1A0_CB48",
-    "raw_fixup_count": 164,
+    "raw_fixup_count": 191,
     "raw_direction": "ascending",
     "predicted_direction": "ascending",
     "agrees_with_prediction": true
    },
    {
-    "object": "R0062.OBJ",
+    "object": "R0055.OBJ",
     "module": "M_D386_D3CF",
     "raw_fixup_count": 3,
     "raw_direction": "ascending",
@@ -3102,7 +2939,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0076.OBJ",
+    "object": "R0069.OBJ",
     "module": "M_D61C_D79C",
     "raw_fixup_count": 6,
     "raw_direction": "ascending",
@@ -3110,7 +2947,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0077.OBJ",
+    "object": "R0070.OBJ",
     "module": "M_D818_D825",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -3118,7 +2955,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0078.OBJ",
+    "object": "R0071.OBJ",
     "module": "C_D85F_D8F0",
     "raw_fixup_count": 15,
     "raw_direction": "ascending",

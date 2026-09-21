@@ -17,7 +17,7 @@ class F4B0CSymbolicAssemblyTests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         owner = next(item for item in manifest['regions'] if item['id'] == 'F_4B0C')
         self.assertEqual((owner['kind'], owner['source']),
-                         ('MATCHING_ASM', 'asm/F_4B0C.ASM'))
+                         ('MATCHING_ASM', 'asm/SPRITES.ASM'))
         original = (ROOT / 'assets/AEPROG.EXE').read_bytes()
         lock = read_json(ROOT / 'layout/toolchain.json')
         libraries = owned_library_modules(manifest['regions'], ROOT / 'toolchain', lock)

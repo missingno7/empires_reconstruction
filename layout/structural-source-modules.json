@@ -2,25 +2,27 @@
   "format": "empires-structural-source-modules-v1",
   "modules": [
     {
-      "id": "M_6D86_6DCC",
+      "id": "M_6D86_6F4B",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_6D86_6DCC.ASM",
+      "source": "asm/DECODE.ASM",
       "start": 28550,
-      "end": 28927,
+      "end": 29123,
       "members": [
         "F_6D86",
         "PAD_006FC5",
-        "F_6DCC"
+        "F_6DCC",
+        "F_6EFF",
+        "F_6F4B"
       ],
       "build": {
         "segment": "_TEXT",
         "public": "_rle_packbits_decode",
-        "span": 2,
+        "span": 4,
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
       },
-      "evidence": "F_6D86 ends at 0x6DC5; the seven following zero bytes are CS-addressed decoder state, and F_6DCC begins at 0x6DCC. One fresh TASM object has exact bound bytes and both entry publics."
+      "evidence": "F_6D86 starts at 0x6F86, word-aligned with the PAD_006F85 pad TLINK supplies before a word-aligned 'segment word public CODE' module. F_6D86 ends at 0x6DC5 (module-relative); the seven following bytes (PAD_006FC5) are the LZ stage's CS-addressed bit-reader state, not alignment padding, and F_6DCC begins at 0x6DCC. F_6EFF (0x70FF) and F_6F4B (0x714B) both start at ODD addresses immediately following the routine before them in this same module, so neither can be the head of its own word-aligned module: each was assembled directly behind its predecessor in one TASM module. One fresh TASM object (asm/DECODE.ASM, extending the previously-proven asm/M_6D86_6DCC.ASM with F_6EFF and F_6F4B appended) reproduces the full byte range and all four public offsets identically to the original per-member bytes (probe_tu.py's member-offset check reports a spurious 'public None' mismatch for the PAD_006FC5 member -- a pre-existing tool limitation confirmed identical against the unmodified asm/M_6D86_6DCC.ASM baseline -- but the reconstructed and original hex dumps are byte-for-byte identical; python tools/probe_module.py M_6D86_6F4B reports EXACT, 573 bytes, 19 fixups, matching the members' standalone sum of 19+0+0)."
     },
     {
       "id": "M_CB5C_CD23",
@@ -314,8 +316,16 @@
         "span": 2,
         "flags_append": "",
         "bindings": {
-          "_gfx_copy_rect": {"offset": 972, "coordinate": "code_offset", "evidence": "functions/F_03CC.entry"},
-          "_gfx_blit_bitmap": {"offset": 969, "coordinate": "code_offset", "evidence": "functions/F_03C9.entry"}
+          "_gfx_copy_rect": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_gfx_blit_bitmap": {
+            "offset": 969,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03C9.entry"
+          }
         },
         "module_segments": {}
       },
@@ -762,11 +772,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2129E.phys"
           },
-          "_snd_on": {
-            "offset": 6000,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P212A0.phys"
-          },
           "_g1e88": {
             "offset": 7816,
             "coordinate": "DGROUP_offset",
@@ -824,6 +829,190 @@
         "module_segments": {}
       },
       "evidence": "One hand-written TASM module (0xC3A0..0xCD5C, 2492 bytes, byte-aligned, no pad): every framed routine uses SI/DI without saving them (Turbo C always emits push si/push di around inline asm naming them; probed: SNDSCL4+M_C5A8_C5C6 as a C unit is 6 bytes longer), register-ABI helpers save AX/CX/DX/BX inside frames, the OPL write uses a REPT 35 macro, and the seven former C wrappers (F_C59A, F_C8E2, F_C988, F_CAD0, F_CADB, F_CAE6, F_CB48) needed invented -k flags or dummy parameters only to obtain the hand-written frames; OPTIONS (M_CB5C_CD23) grows under -k, so the following C unit does not share those flags. Assembled as one unit: tools/probe_tu.py M_C1A0_C232 F_CB48 --asm asm/SOUND.ASM EXACT, 164 fixups."
+    },
+    {
+      "id": "M_4AA8_4EEB",
+      "kind": "MATCHING_ASM",
+      "source": "asm/SPRITES.ASM",
+      "start": 19624,
+      "end": 20835,
+      "members": [
+        "F_4AA8",
+        "F_4B0C",
+        "F_4E9F",
+        "F_4EEB"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_play_window_wipe_clipped",
+        "span": 4,
+        "flags_append": "",
+        "bindings": {
+          "_gfx_wipe_rect": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_gfx_color_select": {
+            "coordinate": "code_offset",
+            "owner": "F_01CE",
+            "public": "_gfx_color_select",
+            "addend": 0,
+            "evidence": "functions/F_01CE.entry"
+          },
+          "_gfx_copy_rect": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03CC.entry"
+          },
+          "_gfx_vline": {
+            "offset": 933,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03A5.entry"
+          },
+          "_stream_control_block_arm": {
+            "coordinate": "code_offset",
+            "owner": "F_CAF1",
+            "public": "_stream_control_block_arm",
+            "addend": 0,
+            "evidence": "functions/F_CAF1.entry"
+          },
+          "_record_field_skip_n": {
+            "coordinate": "code_offset",
+            "owner": "F_2A2D",
+            "public": "_record_field_skip_n",
+            "addend": 0,
+            "evidence": "functions/F_2A2D.entry"
+          },
+          "_board_run_unit_script": {
+            "coordinate": "code_offset",
+            "owner": "F_338A",
+            "public": "_board_run_unit_script",
+            "addend": 0,
+            "evidence": "functions/F_338A.entry"
+          },
+          "_board_advance_unit_moves": {
+            "coordinate": "code_offset",
+            "owner": "F_36F0",
+            "public": "_board_advance_unit_moves",
+            "addend": 0,
+            "evidence": "functions/F_36F0.entry"
+          },
+          "_rand": {
+            "offset": 63759,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_F90F.entry"
+          },
+          "_play_window_wipe_clipped": {
+            "coordinate": "code_offset",
+            "evidence": "F_4AA8 owned code entry",
+            "owner": "F_4AA8",
+            "public": "_play_window_wipe_clipped",
+            "addend": 0
+          },
+          "_actor_record_table": {
+            "offset": 45998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_board_record_index": {
+            "offset": 49082,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_tile_height_table": {
+            "offset": 48998,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_tile_width_table": {
+            "offset": 39932,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS offset in complete F_4E9F fixup"
+          },
+          "_resource_ptr_table": {
+            "offset": 45180,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/REGION_2ABAC.phys"
+          }
+        },
+        "module_segments": {}
+      },
+      "evidence": "F_4AA8 starts at 0x4CA8, word-aligned with the PAD_004CA7 pad TLINK supplies before a word-aligned 'segment word public CODE' module. F_4B0C (0x4D0C), F_4E9F (0x509F) and F_4EEB (0x50EB) all start at ODD addresses immediately following the routine before them in this same module, so none of them can be the head of its own word-aligned module: each was assembled directly behind its predecessor in one TASM module. One fresh TASM object (asm/SPRITES.ASM) reproduces all 1211 bytes and all four public offsets (python tools/probe_tu.py F_4AA8 F_4EEB --asm asm/SPRITES.ASM: EXACT, 1211 bytes, 20 fixups -- one fewer than the members' standalone sum of 21 because F_4E9F's call into _play_window_wipe_clipped is now an intra-module backward reference TASM resolves directly, with no linker fixup needed)."
+    },
+    {
+      "id": "M_6036_6181",
+      "kind": "MATCHING_ASM",
+      "source": "asm/SPRDRAW.ASM",
+      "start": 25142,
+      "end": 25644,
+      "members": [
+        "F_6036",
+        "F_60A9",
+        "F_6181"
+      ],
+      "build": {
+        "segment": "_TEXT",
+        "public": "_sprite_table_queue_draws",
+        "span": 3,
+        "flags_append": "",
+        "bindings": {
+          "_sprbase": {
+            "offset": 49096,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct LES source far-pointer at DS:BFC8"
+          },
+          "_objtab": {
+            "offset": 16592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct LDS object table at DS:40D0"
+          },
+          "_draw_queue_append": {
+            "owner": "F_D825",
+            "public": "_draw_queue_append",
+            "coordinate": "code_offset",
+            "addend": 0,
+            "evidence": "owned F_D825 record append"
+          },
+          "_gfx_copy_rect": {
+            "offset": 972,
+            "coordinate": "code_offset",
+            "evidence": "numeric near call target 03CC"
+          },
+          "_g0a20": {
+            "offset": 2592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS counter store at DS:0A20"
+          },
+          "_gfx_wipe_rect": {
+            "offset": 948,
+            "coordinate": "code_offset",
+            "evidence": "functions/F_03B4.entry"
+          },
+          "_g40d0": {
+            "offset": 16592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_23C00.phys"
+          },
+          "_g8fe": {
+            "offset": 2302,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P2042E.phys"
+          },
+          "_ga20": {
+            "offset": 2592,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/G_P20550.phys"
+          },
+          "_sprite_tile_bank": {
+            "offset": 49096,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2BAF8.phys"
+          }
+        },
+        "module_segments": {}
+      },
+      "evidence": "F_6036 starts at 0x6236, an even address with no preceding pad needed ('segment byte public CODE'). F_60A9 (0x62A9) and F_6181 (0x6381) both start at ODD addresses immediately following the routine before them in this same module, so neither can be the head of its own word-aligned module: each was assembled directly behind its predecessor in one TASM module. F_6181's three ORG-based fragments (module-relative 0/0x57/0x5c in its own former standalone module) are shifted by 0x14B, the combined length of F_6036+F_60A9 preceding it, to 0x14B/0x1A2/0x1A7 in the merged layout, preserving both the historical FIXUPP contribution order and the contiguous _TEXT byte layout. One fresh TASM object (asm/SPRDRAW.ASM) reproduces all 502 bytes and all three public offsets (python tools/probe_tu.py F_6036 F_6181 --asm asm/SPRDRAW.ASM: EXACT, 502 bytes, 24 fixups -- exactly the members' standalone sum of 6+11+7)."
     }
   ]
 }

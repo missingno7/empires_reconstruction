@@ -1433,71 +1433,28 @@
       "data_owners": []
     },
     {
-      "id": "F_4AA8",
-      "start": 19624,
-      "end": 19724,
+      "id": "M_4AA8_4EEB",
       "kind": "MATCHING_ASM",
-      "classification": "code",
-      "source": "asm/F_4AA8.ASM",
-      "original_symbol": "F_4AA8",
-      "artifact": "regions/F_4AA8.bin",
-      "expected_sha256": "aac72c41a68adbb48085a14845c49b89b9c885079f8b397802baf73b2e820ff9",
-      "matching_status": "EQUAL",
+      "source": "asm/SPRITES.ASM",
+      "start": 19624,
+      "end": 20835,
+      "members": [
+        "F_4AA8",
+        "F_4B0C",
+        "F_4E9F",
+        "F_4EEB"
+      ],
       "build": {
         "segment": "_TEXT",
         "public": "_play_window_wipe_clipped",
-        "span": 1,
+        "span": 4,
         "flags_append": "",
-        "module_segments": {},
         "bindings": {
           "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
-          }
-        }
-      },
-      "provenance": {
-        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "62c708e0c7151f07d16fa0742d658d3470af311a10821bc3790a623f0650fabc",
-        "source_sha256": "b8b37dffd2b3a38a22cea8b2675b4ccb81eff11ffb17840947e8acf23312ad64",
-        "change": "Translate the complete four-register rectangle clipping routine into Turbo C inline assembly with its existing near-call binding."
-      },
-      "object": "R0011.OBJ",
-      "members": [
-        "F_4AA8"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_4AA8",
-          "symbol": "_play_window_wipe_clipped",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4B0C",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_4B0C.ASM",
-      "start": 19724,
-      "end": 20639,
-      "expected_sha256": "aeb7a31da8434417bbbd45c5eb5aa2ba223e58faa0e3abf93772b8e9fccd2521",
-      "classification": "code",
-      "artifact": "regions/F_4B0C.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sprite_script_frame_driver",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
+          },
           "_gfx_color_select": {
             "coordinate": "code_offset",
             "owner": "F_01CE",
@@ -1547,51 +1504,7 @@
             "offset": 63759,
             "coordinate": "code_offset",
             "evidence": "functions/F_F90F.entry"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "method": "recursive control-flow reconstruction of the complete non-returning command interpreter; fresh TASM object equality",
-        "source_quality": "SYMBOLIC_ASM",
-        "change": "Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations. Direct relative calls are now named externs (public index and existing sibling bindings) instead of the CALL_REL raw-encoding macro; one call (code_F90F) remains relative, out of scope for this closure round."
-      },
-      "object": "R0012.OBJ",
-      "members": [
-        "F_4B0C"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_4B0C",
-          "symbol": "_sprite_script_frame_driver",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4E9F",
-      "start": 20639,
-      "end": 20715,
-      "kind": "MATCHING_ASM",
-      "classification": "code",
-      "source": "asm/F_4E9F.ASM",
-      "artifact": "regions/F_4E9F.bin",
-      "expected_sha256": "18c1c6b2bc455d464346c5396bffcda0199942bc9c068703061766ad0fa5bc48",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sprite_table_wipe_active",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
+          },
           "_play_window_wipe_clipped": {
             "coordinate": "code_offset",
             "evidence": "F_4AA8 owned code entry",
@@ -1618,104 +1531,41 @@
             "offset": 39932,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_4E9F fixup"
-          }
-        }
-      },
-      "provenance": {
-        "method": "local C reconstruction from complete ASM extent and fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "2b5721a76e9fd6455b503fdba9f545fe73079a0bc0e8fca67bdf4f68c34ab3e6",
-        "source_sha256": "6c71f23def94777074509b08594135baf633ef5aceb5b9fd6e6fce0f849a9c18",
-        "change": "Translate the complete record-table walk into a Turbo C source unit with byte-coded DI instructions preserving the historical register-save contract and five existing fixups."
-      },
-      "object": "R0013.OBJ",
-      "members": [
-        "F_4E9F"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_4E9F",
-          "symbol": "_sprite_table_wipe_active",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_4EEB",
-      "start": 20715,
-      "end": 20835,
-      "kind": "MATCHING_ASM",
-      "classification": "symbolic_sprite_record_walk",
-      "source": "asm/F_4EEB.ASM",
-      "original_symbol": "F_4EEB",
-      "artifact": "regions/F_4EEB.bin",
-      "expected_sha256": "e93b30a16ab59958fada995c3626e1cce7a75216e810b7136f2967d65dba4477",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_board_actors_draw",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_gfx_color_select": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_01CE.entry",
-            "owner": "F_01CE",
-            "public": "_gfx_color_select",
-            "addend": 0
-          },
-          "_gfx_vline": {
-            "offset": 933,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_03A5.entry"
-          },
-          "_gfx_copy_rect": {
-            "offset": 972,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_03CC.entry"
           },
           "_resource_ptr_table": {
             "offset": 45180,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2ABAC.phys"
-          },
-          "_actor_record_table": {
-            "offset": 45998,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/REGION_2AEDE.phys"
-          },
-          "_board_record_index": {
-            "offset": 49082,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/M_2BAEA.phys"
           }
-        }
+        },
+        "module_segments": {}
       },
-      "provenance": {
-        "method": "Complete symbolic TASM reconstruction from the previously matching inline-assembly extent; fresh TASM object matches bytes and all six relocatable fixups.",
-        "prior_source": "src/F_4EEB.C",
-        "change": "Replace the remaining byte-coded instruction fragments with named 16-bit TASM instructions and labels."
-      },
-      "object": "R0014.OBJ",
-      "members": [
-        "F_4EEB"
-      ],
+      "evidence": "F_4AA8 starts at 0x4CA8, word-aligned with the PAD_004CA7 pad TLINK supplies before a word-aligned 'segment word public CODE' module. F_4B0C (0x4D0C), F_4E9F (0x509F) and F_4EEB (0x50EB) all start at ODD addresses immediately following the routine before them in this same module, so none of them can be the head of its own word-aligned module: each was assembled directly behind its predecessor in one TASM module. One fresh TASM object (asm/SPRITES.ASM) reproduces all 1211 bytes and all four public offsets (python tools/probe_tu.py F_4AA8 F_4EEB --asm asm/SPRITES.ASM: EXACT, 1211 bytes, 20 fixups -- one fewer than the members' standalone sum of 21 because F_4E9F's call into _play_window_wipe_clipped is now an intra-module backward reference TASM resolves directly, with no linker fixup needed).",
+      "object": "R0011.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
       ],
       "publics": [
         {
+          "owner": "F_4AA8",
+          "symbol": "_play_window_wipe_clipped",
+          "offset": 0
+        },
+        {
+          "owner": "F_4B0C",
+          "symbol": "_sprite_script_frame_driver",
+          "offset": 100
+        },
+        {
+          "owner": "F_4E9F",
+          "symbol": "_sprite_table_wipe_active",
+          "offset": 1015
+        },
+        {
           "owner": "F_4EEB",
           "symbol": "_board_actors_draw",
-          "offset": 0
+          "offset": 1091
         }
       ],
       "data_component_offsets": {},
@@ -1762,7 +1612,7 @@
         "src/STARTUP.C"
       ],
       "recipe": "recipes/modules/C_4F63_520A.json",
-      "object": "R0015.OBJ",
+      "object": "R0012.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -1855,7 +1705,7 @@
         "src/INTRO.C"
       ],
       "recipe": "recipes/modules/C_5321_56C6.json",
-      "object": "R0016.OBJ",
+      "object": "R0013.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2003,7 +1853,7 @@
         "src/HITTEST.C"
       ],
       "recipe": "recipes/modules/C_5A3B_6021.json",
-      "object": "R0017.OBJ",
+      "object": "R0014.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2044,19 +1894,20 @@
       "data_owners": []
     },
     {
-      "id": "F_6036",
+      "id": "M_6036_6181",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_6036.ASM",
+      "source": "asm/SPRDRAW.ASM",
       "start": 25142,
-      "end": 25257,
-      "expected_sha256": "4bdc81dd1f27a93ccc7d533eea5ddee08fa566cb72ef77178e4796845390424b",
-      "classification": "code",
-      "artifact": "regions/F_6036.bin",
-      "matching_status": "EQUAL",
+      "end": 25644,
+      "members": [
+        "F_6036",
+        "F_60A9",
+        "F_6181"
+      ],
       "build": {
         "segment": "_TEXT",
         "public": "_sprite_table_queue_draws",
-        "span": 1,
+        "span": 3,
         "flags_append": "",
         "bindings": {
           "_sprbase": {
@@ -2085,56 +1936,11 @@
             "offset": 2592,
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS counter store at DS:0A20"
-          }
-        },
-        "module_segments": {}
-      },
-      "object": "R0018.OBJ",
-      "members": [
-        "F_6036"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_6036",
-          "symbol": "_sprite_table_queue_draws",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_60A9",
-      "start": 25257,
-      "end": 25473,
-      "kind": "MATCHING_ASM",
-      "classification": "code",
-      "source": "asm/F_60A9.ASM",
-      "original_symbol": "F_60A9",
-      "artifact": "regions/F_60A9.bin",
-      "expected_sha256": "be4cd64350e9a760d674a259dae5100a259339cea6d84c1e74b4a1b74eebef36",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_animated_tile_tick",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
+          },
           "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
-          },
-          "_gfx_copy_rect": {
-            "offset": 972,
-            "coordinate": "code_offset",
-            "evidence": "functions/F_03CC.entry"
           },
           "_g40d0": {
             "offset": 16592,
@@ -2156,85 +1962,30 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAF8.phys"
           }
-        }
-      },
-      "provenance": {
-        "method": "complete ASM extent translated to deterministic Turbo C source with inline assembly and fresh full-extent OMF binding",
-        "prior_asm_source_sha256": "d6034c0963d794ebddb344565ae3c750724ca5cb570450e6c9eb31ed0244efc1",
-        "source_sha256": "ae05ce33f00bfe8bb9dada6cb8f3bc48d858f73727a827acf01b11a8aca7df6e",
-        "change": "Preserve the animated-tile ticker instruction stream, six data fixups, four near calls and the DGROUP segment relocation in a C translation unit. BP/SI/DI and LDS/LES usage require inline assembly for exact codegen."
-      },
-      "object": "R0019.OBJ",
-      "members": [
-        "F_60A9"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
-        {
-          "owner": "F_60A9",
-          "symbol": "_animated_tile_tick",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6181",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_6181.ASM",
-      "start": 25473,
-      "end": 25644,
-      "expected_sha256": "b7ce3dabfad43ac93731dd4ee5f77e608819dd8800b05cbbdc26a890993b230b",
-      "classification": "code",
-      "artifact": "regions/F_6181.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sprite_record_adjust_draw",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_sprbase": {
-            "offset": 49096,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct LES source far-pointer at DS:BFC8"
-          },
-          "_objtab": {
-            "offset": 16592,
-            "coordinate": "DGROUP_offset",
-            "evidence": "direct LDS object table at DS:40D0"
-          },
-          "_gfx_wipe_rect": {
-            "offset": 948,
-            "coordinate": "code_offset",
-            "evidence": "numeric near call target 03B4"
-          },
-          "_gfx_copy_rect": {
-            "offset": 972,
-            "coordinate": "code_offset",
-            "evidence": "numeric near call target 03CC"
-          }
         },
         "module_segments": {}
       },
-      "object": "R0020.OBJ",
-      "members": [
-        "F_6181"
-      ],
+      "evidence": "F_6036 starts at 0x6236, an even address with no preceding pad needed ('segment byte public CODE'). F_60A9 (0x62A9) and F_6181 (0x6381) both start at ODD addresses immediately following the routine before them in this same module, so neither can be the head of its own word-aligned module: each was assembled directly behind its predecessor in one TASM module. F_6181's three ORG-based fragments (module-relative 0/0x57/0x5c in its own former standalone module) are shifted by 0x14B, the combined length of F_6036+F_60A9 preceding it, to 0x14B/0x1A2/0x1A7 in the merged layout, preserving both the historical FIXUPP contribution order and the contiguous _TEXT byte layout. One fresh TASM object (asm/SPRDRAW.ASM) reproduces all 502 bytes and all three public offsets (python tools/probe_tu.py F_6036 F_6181 --asm asm/SPRDRAW.ASM: EXACT, 502 bytes, 24 fixups -- exactly the members' standalone sum of 6+11+7).",
+      "object": "R0015.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
       ],
       "publics": [
         {
+          "owner": "F_6036",
+          "symbol": "_sprite_table_queue_draws",
+          "offset": 0
+        },
+        {
+          "owner": "F_60A9",
+          "symbol": "_animated_tile_tick",
+          "offset": 115
+        },
+        {
           "owner": "F_6181",
           "symbol": "_sprite_record_adjust_draw",
-          "offset": 0
+          "offset": 331
         }
       ],
       "data_component_offsets": {},
@@ -2297,7 +2048,7 @@
         "src/CRITERR.C"
       ],
       "recipe": "recipes/modules/C_622C_625D.json",
-      "object": "R0021.OBJ",
+      "object": "R0016.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2436,7 +2187,7 @@
         "src/RESOURCE.C"
       ],
       "recipe": "recipes/modules/C_6266_68AA.json",
-      "object": "R0022.OBJ",
+      "object": "R0017.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2558,7 +2309,7 @@
         "upstream_draft_sha256": "7920dc6dea6688f2c2ee9bf911ee896c8a38803a95d25ef8a5775aa00e7670df",
         "change": "Reverse the two chained flag assignments to reproduce store order; declare aliases explicitly"
       },
-      "object": "R0023.OBJ",
+      "object": "R0018.OBJ",
       "members": [
         "F_68CF"
       ],
@@ -2642,7 +2393,7 @@
         "src/KEYIRQ.C"
       ],
       "recipe": "recipes/modules/C_695E_697D.json",
-      "object": "R0024.OBJ",
+      "object": "R0019.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2712,7 +2463,7 @@
         "src/KEYBOARD.C"
       ],
       "recipe": "recipes/modules/C_6990_6B74.json",
-      "object": "R0025.OBJ",
+      "object": "R0020.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2806,7 +2557,7 @@
         "src/TIMER.C"
       ],
       "recipe": "recipes/modules/C_6B7A_6C87.json",
-      "object": "R0026.OBJ",
+      "object": "R0021.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2922,7 +2673,7 @@
         "src/FONT.C"
       ],
       "recipe": "recipes/modules/C_6CA6_6D3C.json",
-      "object": "R0027.OBJ",
+      "object": "R0022.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -2963,26 +2714,28 @@
       "data_owners": []
     },
     {
-      "id": "M_6D86_6DCC",
+      "id": "M_6D86_6F4B",
       "kind": "MATCHING_ASM",
-      "source": "asm/M_6D86_6DCC.ASM",
+      "source": "asm/DECODE.ASM",
       "start": 28550,
-      "end": 28927,
+      "end": 29123,
       "members": [
         "F_6D86",
         "PAD_006FC5",
-        "F_6DCC"
+        "F_6DCC",
+        "F_6EFF",
+        "F_6F4B"
       ],
       "build": {
         "segment": "_TEXT",
         "public": "_rle_packbits_decode",
-        "span": 2,
+        "span": 4,
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
       },
-      "evidence": "F_6D86 ends at 0x6DC5; the seven following zero bytes are CS-addressed decoder state, and F_6DCC begins at 0x6DCC. One fresh TASM object has exact bound bytes and both entry publics.",
-      "object": "R0028.OBJ",
+      "evidence": "F_6D86 starts at 0x6F86, word-aligned with the PAD_006F85 pad TLINK supplies before a word-aligned 'segment word public CODE' module. F_6D86 ends at 0x6DC5 (module-relative); the seven following bytes (PAD_006FC5) are the LZ stage's CS-addressed bit-reader state, not alignment padding, and F_6DCC begins at 0x6DCC. F_6EFF (0x70FF) and F_6F4B (0x714B) both start at ODD addresses immediately following the routine before them in this same module, so neither can be the head of its own word-aligned module: each was assembled directly behind its predecessor in one TASM module. One fresh TASM object (asm/DECODE.ASM, extending the previously-proven asm/M_6D86_6DCC.ASM with F_6EFF and F_6F4B appended) reproduces the full byte range and all four public offsets identically to the original per-member bytes (probe_tu.py's member-offset check reports a spurious 'public None' mismatch for the PAD_006FC5 member -- a pre-existing tool limitation confirmed identical against the unmodified asm/M_6D86_6DCC.ASM baseline -- but the reconstructed and original hex dumps are byte-for-byte identical; python tools/probe_module.py M_6D86_6F4B reports EXACT, 573 bytes, 19 fixups, matching the members' standalone sum of 19+0+0).",
+      "object": "R0023.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -3002,80 +2755,16 @@
           "owner": "F_6DCC",
           "symbol": "_lz_decompress",
           "offset": 70
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6EFF",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_6EFF.ASM",
-      "start": 28927,
-      "end": 29003,
-      "expected_sha256": "8de49aeafa69cea044fb111836bee070aebd396bc7db4783ea629cb83b35a586",
-      "classification": "code",
-      "artifact": "regions/F_6EFF.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sprite_decode_4bpp_planar",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "object": "R0029.OBJ",
-      "members": [
-        "F_6EFF"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
+        },
         {
           "owner": "F_6EFF",
           "symbol": "_sprite_decode_4bpp_planar",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_6F4B",
-      "kind": "MATCHING_ASM",
-      "source": "asm/F_6F4B.ASM",
-      "start": 29003,
-      "end": 29123,
-      "expected_sha256": "1eace2df86b082f568d66031ad704fa5cbc242725210c08ffc994c36edb43763",
-      "classification": "code",
-      "artifact": "regions/F_6F4B.bin",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sprite_decode_4bpp_mode13h",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {},
-        "module_segments": {}
-      },
-      "object": "R0030.OBJ",
-      "members": [
-        "F_6F4B"
-      ],
-      "tool": "TASM.EXE",
-      "flags": [
-        "/mx"
-      ],
-      "publics": [
+          "offset": 377
+        },
         {
           "owner": "F_6F4B",
           "symbol": "_sprite_decode_4bpp_mode13h",
-          "offset": 0
+          "offset": 453
         }
       ],
       "data_component_offsets": {},
@@ -3135,7 +2824,7 @@
         "src/HUD.C"
       ],
       "recipe": "recipes/modules/C_6FC3_747B.json",
-      "object": "R0031.OBJ",
+      "object": "R0024.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -3339,7 +3028,7 @@
         "src/PROMPTS.C"
       ],
       "recipe": "recipes/modules/C_75F3_7856.json",
-      "object": "R0032.OBJ",
+      "object": "R0025.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -3462,7 +3151,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Reconstruct complete C function from original instructions"
       },
-      "object": "R0033.OBJ",
+      "object": "R0026.OBJ",
       "members": [
         "F_7856"
       ],
@@ -3523,7 +3212,7 @@
         "source_sha256": "04fe1e7ae2bc25e4097911dac6fe0ff19aaa1326245d7d7f0b59a45c677feec3",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0034.OBJ",
+      "object": "R0027.OBJ",
       "members": [
         "F_78C3"
       ],
@@ -3576,7 +3265,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Reconstruct complete C function from original instructions"
       },
-      "object": "R0035.OBJ",
+      "object": "R0028.OBJ",
       "members": [
         "F_791E"
       ],
@@ -3632,7 +3321,7 @@
         "source_sha256": "107e57d48f80e464f083ab2634fcc39a6e8c44a9395efd918fae60050c4ec75d",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0036.OBJ",
+      "object": "R0029.OBJ",
       "members": [
         "F_7925"
       ],
@@ -3688,7 +3377,7 @@
         "source_sha256": "213ea3b5465c3c8036951980ae6ada1a0a59ef2e7ebe0a78272eaee03d77e20c",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0037.OBJ",
+      "object": "R0030.OBJ",
       "members": [
         "F_792C"
       ],
@@ -3766,7 +3455,7 @@
         "upstream_entry": "controls/correspondence/F_7932.json",
         "upstream_extent_sha256": "83441f093418db4d3034bbe618dca84380db32250a187a20e5aacacc180b0245"
       },
-      "object": "R0038.OBJ",
+      "object": "R0031.OBJ",
       "members": [
         "F_7932"
       ],
@@ -3946,7 +3635,7 @@
         ],
         "boundary_evidence": "F_7DD3 consumes the parent frame. Its sole active symbolic reference is the parent early return to cleanup+0x23; no independent caller."
       },
-      "object": "R0039.OBJ",
+      "object": "R0032.OBJ",
       "members": [
         "F_7964"
       ],
@@ -4067,7 +3756,7 @@
         "upstream_entry_sha256": "0cdd99f1c44a6c970009ec5c8c3d823db9be21c1e39c54247998bfc18e74ec9b",
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0040.OBJ",
+      "object": "R0033.OBJ",
       "members": [
         "F_7BFC"
       ],
@@ -4139,7 +3828,7 @@
         "src/DIALOG.C"
       ],
       "recipe": "recipes/modules/C_7D91_880A.json",
-      "object": "R0041.OBJ",
+      "object": "R0034.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4296,7 +3985,7 @@
         "src/PUZZLE.C"
       ],
       "recipe": "recipes/modules/C_8A37_969D.json",
-      "object": "R0042.OBJ",
+      "object": "R0035.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4424,7 +4113,7 @@
         "src/MARKERS.C"
       ],
       "recipe": "recipes/modules/C_984C_9871.json",
-      "object": "R0043.OBJ",
+      "object": "R0036.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4497,7 +4186,7 @@
       "provenance": {
         "c_recovery": "All 121 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
       },
-      "object": "R0044.OBJ",
+      "object": "R0037.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4567,7 +4256,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Reconstruct complete C function from original instructions"
       },
-      "object": "R0045.OBJ",
+      "object": "R0038.OBJ",
       "members": [
         "F_9908"
       ],
@@ -4642,7 +4331,7 @@
         "src/SCORE.C"
       ],
       "recipe": "recipes/modules/C_9962_99E2.json",
-      "object": "R0046.OBJ",
+      "object": "R0039.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4775,7 +4464,7 @@
         "src/ROUNDEND.C"
       ],
       "recipe": "recipes/modules/C_9A0E_9D79.json",
-      "object": "R0047.OBJ",
+      "object": "R0040.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -4870,7 +4559,7 @@
         "upstream_entry": "docs/upstream-inventory.json:F_9D8E",
         "upstream_extent_sha256": "c49179e559c15edf0fcf4ac1fcdfd6132e1374a9ea1b02343b38d160d2843930"
       },
-      "object": "R0048.OBJ",
+      "object": "R0041.OBJ",
       "members": [
         "F_9D8E"
       ],
@@ -5043,7 +4732,7 @@
         "source_sha256": "59d73494cb9871978dfbc0fdab7e6d5b3c705535d2f9f8784eac88b02f64f670",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0049.OBJ",
+      "object": "R0042.OBJ",
       "members": [
         "F_9DCC"
       ],
@@ -5091,7 +4780,7 @@
         },
         "module_segments": {}
       },
-      "object": "R0050.OBJ",
+      "object": "R0043.OBJ",
       "members": [
         "F_9EC3"
       ],
@@ -5169,7 +4858,7 @@
         "source_sha256": "8258e8917cf7dfbba9e5533edae11b5e6a06142a00664c202ae8bd542ae0abbb",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0051.OBJ",
+      "object": "R0044.OBJ",
       "members": [
         "F_9F40"
       ],
@@ -5215,7 +4904,7 @@
         "upstream_entry_sha256": "e2dd9760fabac41af8b68fc6d9f70c4aacd4977d4bb2968477bbd0dcdf7c1743",
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0052.OBJ",
+      "object": "R0045.OBJ",
       "members": [
         "F_A004"
       ],
@@ -5270,7 +4959,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Recover full C body including compiler-generated control flow and internal tables"
       },
-      "object": "R0053.OBJ",
+      "object": "R0046.OBJ",
       "members": [
         "F_A036"
       ],
@@ -5364,7 +5053,7 @@
         "src/SLOTS.C"
       ],
       "recipe": "recipes/modules/C_A09D_A24E.json",
-      "object": "R0054.OBJ",
+      "object": "R0047.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -5473,7 +5162,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "change": "Recover complete C routine and initialized static strings where present"
       },
-      "object": "R0055.OBJ",
+      "object": "R0048.OBJ",
       "members": [
         "F_A28D"
       ],
@@ -5614,7 +5303,7 @@
         "src/SLOTMENU.C"
       ],
       "recipe": "recipes/modules/C_A33F_AD0E.json",
-      "object": "R0056.OBJ",
+      "object": "R0049.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -5752,7 +5441,7 @@
         "src/SLOTCOPY.C"
       ],
       "recipe": "recipes/modules/C_AD25_AF45.json",
-      "object": "R0057.OBJ",
+      "object": "R0050.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -5872,7 +5561,7 @@
         "src/LEVEL.C"
       ],
       "recipe": "recipes/modules/C_AF45_C15E.json",
-      "object": "R0058.OBJ",
+      "object": "R0051.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6441,7 +6130,7 @@
         "module_segments": {}
       },
       "evidence": "One hand-written TASM module (0xC3A0..0xCD5C, 2492 bytes, byte-aligned, no pad): every framed routine uses SI/DI without saving them (Turbo C always emits push si/push di around inline asm naming them; probed: SNDSCL4+M_C5A8_C5C6 as a C unit is 6 bytes longer), register-ABI helpers save AX/CX/DX/BX inside frames, the OPL write uses a REPT 35 macro, and the seven former C wrappers (F_C59A, F_C8E2, F_C988, F_CAD0, F_CADB, F_CAE6, F_CB48) needed invented -k flags or dummy parameters only to obtain the hand-written frames; OPTIONS (M_CB5C_CD23) grows under -k, so the following C unit does not share those flags. Assembled as one unit: tools/probe_tu.py M_C1A0_C232 F_CB48 --asm asm/SOUND.ASM EXACT, 164 fixups.",
-      "object": "R0059.OBJ",
+      "object": "R0052.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -6793,7 +6482,7 @@
       "provenance": {
         "c_recovery": "All 641 bytes and five entry offsets reproduced by ordinary Turbo C in the unchanged shared module: row-setting callbacks and ten-row menus. Unused synthetic epilogue publics removed; no inline ASM or corrections."
       },
-      "object": "R0060.OBJ",
+      "object": "R0053.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6897,7 +6586,7 @@
         "src/PLAYERSL.C"
       ],
       "recipe": "recipes/modules/C_CDDD_D344.json",
-      "object": "R0061.OBJ",
+      "object": "R0054.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6996,7 +6685,7 @@
         "module_segments": {}
       },
       "evidence": "F_D386 branches directly to the adjacent F_D3CF continuation on a negative selector. One symbolic TASM contribution restores that control flow, preserves entry offsets 0 and 73, and retains the canonical far-data and handler call fixups.",
-      "object": "R0062.OBJ",
+      "object": "R0055.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -7078,7 +6767,7 @@
           "evidence": "docs/matching-c-wave15.md"
         }
       },
-      "object": "R0063.OBJ",
+      "object": "R0056.OBJ",
       "members": [
         "F_D3DA"
       ],
@@ -7135,7 +6824,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete 21-byte far-pointer wrapper and return path after the stale short boundary"
       },
-      "object": "R0064.OBJ",
+      "object": "R0057.OBJ",
       "members": [
         "F_D45C"
       ],
@@ -7192,7 +6881,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
       },
-      "object": "R0065.OBJ",
+      "object": "R0058.OBJ",
       "members": [
         "F_D471"
       ],
@@ -7249,7 +6938,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
       },
-      "object": "R0066.OBJ",
+      "object": "R0059.OBJ",
       "members": [
         "F_D487"
       ],
@@ -7306,7 +6995,7 @@
         "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
         "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
       },
-      "object": "R0067.OBJ",
+      "object": "R0060.OBJ",
       "members": [
         "F_D49D"
       ],
@@ -7398,7 +7087,7 @@
         "source_sha256": "cdc43a73ed26779b67bcaee189672d93fac0d6e8fedc9da4a44debf0c7fa419f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0068.OBJ",
+      "object": "R0061.OBJ",
       "members": [
         "F_D4B3"
       ],
@@ -7510,7 +7199,7 @@
         "source_sha256": "3216cf62c31b578e8001cd3d34e13e4f02ed02c13fd3c1b04d496f9d1409df7f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0069.OBJ",
+      "object": "R0062.OBJ",
       "members": [
         "F_D555"
       ],
@@ -7587,7 +7276,7 @@
         "source_sha256": "84326e74881800d04bcf112a78e0e753b1c452d97a7134dc76beebc7149d3a24",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0070.OBJ",
+      "object": "R0063.OBJ",
       "members": [
         "F_D593"
       ],
@@ -7643,7 +7332,7 @@
         "source_sha256": "5d65d80beab05a40ce8e2900b445dec4b9d8f80e5ba4d928bd2aa509b240d53d",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0071.OBJ",
+      "object": "R0064.OBJ",
       "members": [
         "F_D5A6"
       ],
@@ -7699,7 +7388,7 @@
         "source_sha256": "eb8414473303f736b7de8b2ea372f9c905c45916dcfc520858e7d58723c04696",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0072.OBJ",
+      "object": "R0065.OBJ",
       "members": [
         "F_D5B3"
       ],
@@ -7778,7 +7467,7 @@
         "source_sha256": "e4a251fb4a017363f4682a2b1317656d6603bef24abe569ce4a940345bdf8155",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0073.OBJ",
+      "object": "R0066.OBJ",
       "members": [
         "F_D5BA"
       ],
@@ -7849,7 +7538,7 @@
         "source_sha256": "89ee9f01a9e4efeb178d08d3e2520d7a0513276156d5b0994804dd390594729f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0074.OBJ",
+      "object": "R0067.OBJ",
       "members": [
         "F_D5F9"
       ],
@@ -7909,7 +7598,7 @@
         "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
         "extent_note": "Upstream extent is 16 bytes; C emits 15 through RET. The final zero remains RAW."
       },
-      "object": "R0075.OBJ",
+      "object": "R0068.OBJ",
       "members": [
         "F_D60C"
       ],
@@ -7962,7 +7651,7 @@
         "module_segments": {}
       },
       "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups. All six historical `call $+delta` targets resolve (load address, wrapped mod 65536 since the calls cross the 64K _TEXT frame boundary) to RUNTIME_BLOCK's _gfx_copy_rect (03CCh, the four non-loop renderer calls) and _gfx_blit_bitmap (03C9h, the two per-strip calls inside D61_strip_loop/D79_strip_loop), matching the public index and the same bindings already used by dozens of sibling regions.",
-      "object": "R0076.OBJ",
+      "object": "R0069.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -8002,7 +7691,7 @@
         "module_segments": {}
       },
       "evidence": "Adjacent reset and five-byte packed-record append routines operate on the same DS:2F30h initialized record table. Fresh symbolic TASM emits both historical entry offsets in one exact 71-byte no-fixup contribution.",
-      "object": "R0077.OBJ",
+      "object": "R0070.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -8062,7 +7751,7 @@
         "src/RECTTAB.C"
       ],
       "recipe": "recipes/modules/C_D85F_D8F0.json",
-      "object": "R0078.OBJ",
+      "object": "R0071.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8179,7 +7868,7 @@
         "src/OPLINIT.C"
       ],
       "recipe": "recipes/modules/C_D99B_DA49.json",
-      "object": "R0079.OBJ",
+      "object": "R0072.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8259,7 +7948,7 @@
         "source_sha256": "dd7272bb5db3f7d6fc19649182ad2de3d03e5ac670a49c2227385b266cad7289",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0080.OBJ",
+      "object": "R0073.OBJ",
       "members": [
         "F_DA66"
       ],
@@ -8331,7 +8020,7 @@
       "provenance": {
         "c_recovery": "All 137 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
       },
-      "object": "R0081.OBJ",
+      "object": "R0074.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8422,7 +8111,7 @@
         "src/OPLVOICE.C"
       ],
       "recipe": "recipes/modules/C_DB60_DDC7.json",
-      "object": "R0082.OBJ",
+      "object": "R0075.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8480,7 +8169,7 @@
       "status": "RECOVERED_C_MODULE",
       "historical_translation_unit_proven": false,
       "evidence": "One pure Turbo C translation unit (src/MUSIC.C, no inline asm) reproduces all 700 bytes, four public offsets and, through the native object writer's descending FIXUPP order, the historical relocation order. asm/MUSIC.ASM is retained as reference.",
-      "object": "R0083.OBJ",
+      "object": "R0076.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8576,7 +8265,7 @@
         "src/OPLREG.C"
       ],
       "recipe": "recipes/modules/C_E095_E54D.json",
-      "object": "R0084.OBJ",
+      "object": "R0077.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8719,7 +8408,7 @@
         "extent_evidence": "docs/matching-c-wave147.md",
         "library_crosscheck": "CC.LIB RAND module sha256 9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
       },
-      "object": "R0085.OBJ",
+      "object": "R0078.OBJ",
       "members": [
         "LIB_RAND"
       ],
@@ -8747,12 +8436,12 @@
   "linker_alignment": [
     {
       "owner": "PAD_004CA7",
-      "before_module": "F_4AA8",
+      "before_module": "M_4AA8_4EEB",
       "alignment": "word"
     },
     {
       "owner": "PAD_006F85",
-      "before_module": "M_6D86_6DCC",
+      "before_module": "M_6D86_6F4B",
       "alignment": "word"
     },
     {
@@ -11561,11 +11250,6 @@
     "R0013.OBJ",
     "R0014.OBJ",
     "R0015.OBJ",
-    "R0016.OBJ",
-    "R0017.OBJ",
-    "R0018.OBJ",
-    "R0019.OBJ",
-    "R0020.OBJ",
     "D0000.OBJ",
     "D0001.OBJ",
     "D0002.OBJ",
@@ -11592,10 +11276,18 @@
     "D0023.OBJ",
     "D0024.OBJ",
     "D0025.OBJ",
+    "R0016.OBJ",
+    "R0017.OBJ",
+    "R0018.OBJ",
+    "R0019.OBJ",
+    "R0020.OBJ",
     "R0021.OBJ",
     "R0022.OBJ",
     "R0023.OBJ",
     "R0024.OBJ",
+    "D0026.OBJ",
+    "D0027.OBJ",
+    "D0028.OBJ",
     "R0025.OBJ",
     "R0026.OBJ",
     "R0027.OBJ",
@@ -11603,18 +11295,8 @@
     "R0029.OBJ",
     "R0030.OBJ",
     "R0031.OBJ",
-    "D0026.OBJ",
-    "D0027.OBJ",
-    "D0028.OBJ",
     "R0032.OBJ",
     "R0033.OBJ",
-    "R0034.OBJ",
-    "R0035.OBJ",
-    "R0036.OBJ",
-    "R0037.OBJ",
-    "R0038.OBJ",
-    "R0039.OBJ",
-    "R0040.OBJ",
     "D0034.OBJ",
     "D0035.OBJ",
     "D0036.OBJ",
@@ -11637,19 +11319,19 @@
     "D0053.OBJ",
     "D0054.OBJ",
     "D0055.OBJ",
+    "R0034.OBJ",
+    "R0035.OBJ",
+    "R0036.OBJ",
+    "R0037.OBJ",
+    "R0038.OBJ",
+    "R0039.OBJ",
+    "R0040.OBJ",
     "R0041.OBJ",
-    "R0042.OBJ",
-    "R0043.OBJ",
-    "R0044.OBJ",
-    "R0045.OBJ",
-    "R0046.OBJ",
-    "R0047.OBJ",
-    "R0048.OBJ",
     "D0058.OBJ",
     "D0059.OBJ",
     "D0060.OBJ",
-    "R0049.OBJ",
-    "R0050.OBJ",
+    "R0042.OBJ",
+    "R0043.OBJ",
     "D0061.OBJ",
     "D0062.OBJ",
     "D0063.OBJ",
@@ -11666,13 +11348,13 @@
     "D0074.OBJ",
     "D0075.OBJ",
     "D0076.OBJ",
-    "R0051.OBJ",
-    "R0052.OBJ",
-    "R0053.OBJ",
-    "R0054.OBJ",
-    "R0055.OBJ",
-    "R0056.OBJ",
-    "R0057.OBJ",
+    "R0044.OBJ",
+    "R0045.OBJ",
+    "R0046.OBJ",
+    "R0047.OBJ",
+    "R0048.OBJ",
+    "R0049.OBJ",
+    "R0050.OBJ",
     "D0078.OBJ",
     "D0079.OBJ",
     "D0080.OBJ",
@@ -11709,6 +11391,13 @@
     "D0111.OBJ",
     "D0112.OBJ",
     "D0113.OBJ",
+    "R0051.OBJ",
+    "R0052.OBJ",
+    "R0053.OBJ",
+    "R0054.OBJ",
+    "R0055.OBJ",
+    "R0056.OBJ",
+    "R0057.OBJ",
     "R0058.OBJ",
     "R0059.OBJ",
     "R0060.OBJ",
@@ -11729,13 +11418,6 @@
     "R0075.OBJ",
     "R0076.OBJ",
     "R0077.OBJ",
-    "R0078.OBJ",
-    "R0079.OBJ",
-    "R0080.OBJ",
-    "R0081.OBJ",
-    "R0082.OBJ",
-    "R0083.OBJ",
-    "R0084.OBJ",
     "D0115.OBJ",
     "D0116.OBJ",
     "F01CEBSS.OBJ",

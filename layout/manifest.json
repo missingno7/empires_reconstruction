@@ -4012,7 +4012,7 @@
       "matching_status": "EQUAL",
       "build": {
         "encoder": "zero-pad-v1",
-        "linker_alignment_before": "F_4AA8"
+        "linker_alignment_before": "M_4AA8_4EEB"
       }
     },
     {
@@ -4021,7 +4021,7 @@
       "end": 19724,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_4AA8.ASM",
+      "source": "asm/SPRITES.ASM",
       "original_symbol": "F_4AA8",
       "artifact": "regions/F_4AA8.bin",
       "expected_sha256": "aac72c41a68adbb48085a14845c49b89b9c885079f8b397802baf73b2e820ff9",
@@ -4050,7 +4050,7 @@
     {
       "id": "F_4B0C",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_4B0C.ASM",
+      "source": "asm/SPRITES.ASM",
       "start": 19724,
       "end": 20639,
       "expected_sha256": "aeb7a31da8434417bbbd45c5eb5aa2ba223e58faa0e3abf93772b8e9fccd2521",
@@ -4128,7 +4128,7 @@
       "end": 20715,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_4E9F.ASM",
+      "source": "asm/SPRITES.ASM",
       "artifact": "regions/F_4E9F.bin",
       "expected_sha256": "18c1c6b2bc455d464346c5396bffcda0199942bc9c068703061766ad0fa5bc48",
       "matching_status": "EQUAL",
@@ -4181,7 +4181,7 @@
       "end": 20835,
       "kind": "MATCHING_ASM",
       "classification": "symbolic_sprite_record_walk",
-      "source": "asm/F_4EEB.ASM",
+      "source": "asm/SPRITES.ASM",
       "original_symbol": "F_4EEB",
       "artifact": "regions/F_4EEB.bin",
       "expected_sha256": "e93b30a16ab59958fada995c3626e1cce7a75216e810b7136f2967d65dba4477",
@@ -5601,7 +5601,7 @@
     {
       "id": "F_6036",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_6036.ASM",
+      "source": "asm/SPRDRAW.ASM",
       "start": 25142,
       "end": 25257,
       "expected_sha256": "4bdc81dd1f27a93ccc7d533eea5ddee08fa566cb72ef77178e4796845390424b",
@@ -5651,7 +5651,7 @@
       "end": 25473,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_60A9.ASM",
+      "source": "asm/SPRDRAW.ASM",
       "original_symbol": "F_60A9",
       "artifact": "regions/F_60A9.bin",
       "expected_sha256": "be4cd64350e9a760d674a259dae5100a259339cea6d84c1e74b4a1b74eebef36",
@@ -5705,7 +5705,7 @@
     {
       "id": "F_6181",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_6181.ASM",
+      "source": "asm/SPRDRAW.ASM",
       "start": 25473,
       "end": 25644,
       "expected_sha256": "b7ce3dabfad43ac93731dd4ee5f77e608819dd8800b05cbbdc26a890993b230b",
@@ -7393,7 +7393,7 @@
       "matching_status": "EQUAL",
       "build": {
         "encoder": "zero-pad-v1",
-        "linker_alignment_before": "M_6D86_6DCC"
+        "linker_alignment_before": "M_6D86_6F4B"
       }
     },
     {
@@ -7402,7 +7402,7 @@
       "end": 28613,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "recovery/asm/F_6D86.ASM",
+      "source": "asm/DECODE.ASM",
       "original_symbol": "F_6D86",
       "artifact": "regions/F_6D86.bin",
       "expected_sha256": "cd87f9da0d7af9fab6895ec031768588fc821349b792abf3c94f124ded0146a5",
@@ -7440,9 +7440,9 @@
       "id": "F_6DCC",
       "start": 28620,
       "end": 28927,
-      "kind": "MATCHING_C",
+      "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "recovery/src/F_6DCC.C",
+      "source": "asm/DECODE.ASM",
       "original_symbol": "F_6DCC",
       "artifact": "regions/F_6DCC.bin",
       "expected_sha256": "1357ed0e49e2aa6b7a0d3099ba2f49e4daf748eb7b266022a400f9ff318d9ce1",
@@ -7465,7 +7465,7 @@
     {
       "id": "F_6EFF",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_6EFF.ASM",
+      "source": "asm/DECODE.ASM",
       "start": 28927,
       "end": 29003,
       "expected_sha256": "8de49aeafa69cea044fb111836bee070aebd396bc7db4783ea629cb83b35a586",
@@ -7484,7 +7484,7 @@
     {
       "id": "F_6F4B",
       "kind": "MATCHING_ASM",
-      "source": "asm/F_6F4B.ASM",
+      "source": "asm/DECODE.ASM",
       "start": 29003,
       "end": 29123,
       "expected_sha256": "1eace2df86b082f568d66031ad704fa5cbc242725210c08ffc994c36edb43763",
@@ -18435,8 +18435,8 @@
     },
     {
       "id": "F_D386",
-      "kind": "MATCHING_C",
-      "source": "recovery/src/F_D386.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_D386_D3CF.ASM",
       "start": 54662,
       "end": 54735,
       "expected_sha256": "c52727ae50a891de4e8708e21193512cdb27cddf0b6de9bb60a142ba905af485",
@@ -18467,13 +18467,14 @@
       "matching_status": "EQUAL",
       "provenance": {
         "method": "local C reconstruction from complete disassembly subextent and fresh full-extent OMF binding",
-        "change": "Recover the 73-byte far-record decoder main routine; retain its 11-byte JS target tail as raw pending a second source proof"
+        "change": "Recover the 73-byte far-record decoder main routine; retain its 11-byte JS target tail as raw pending a second source proof",
+        "reconstruction_source": "recovery/src/F_D386.C"
       }
     },
     {
       "id": "F_D3CF",
       "kind": "MATCHING_ASM",
-      "source": "recovery/asm/F_D3CF.ASM",
+      "source": "asm/M_D386_D3CF.ASM",
       "start": 54735,
       "end": 54746,
       "expected_sha256": "470037ef91a639b045272f3919bb2396e9ce24c7f30453f99438f9ee5b7830e1",
@@ -18491,7 +18492,8 @@
       },
       "provenance": {
         "method": "local symbolic TASM reconstruction from complete continuation extent and fresh OMF boundary proof",
-        "change": "Preserve the non-returning 11-byte continuation without inline byte capsules."
+        "change": "Preserve the non-returning 11-byte continuation without inline byte capsules.",
+        "reconstruction_source": "recovery/asm/F_D3CF.ASM"
       }
     },
     {
@@ -19135,8 +19137,8 @@
     },
     {
       "id": "F_D61C",
-      "kind": "MATCHING_C",
-      "source": "recovery/src/F_D61C.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_D61C_D79C.ASM",
       "start": 55324,
       "end": 55708,
       "expected_sha256": "304be6697bd43dd9465985edccef0cba4a865a7d3f9832af60ccc864ac88d8a6",
@@ -19150,12 +19152,15 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "reconstruction_source": "recovery/src/F_D61C.C"
       }
     },
     {
       "id": "F_D79C",
-      "kind": "MATCHING_C",
-      "source": "recovery/src/F_D79C.C",
+      "kind": "MATCHING_ASM",
+      "source": "asm/M_D61C_D79C.ASM",
       "start": 55708,
       "end": 55831,
       "expected_sha256": "2b4464ca1a8ba7720a16177f17ba643855e60650e281559987a468609158e2b8",
@@ -19169,6 +19174,9 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "reconstruction_source": "recovery/src/F_D79C.C"
       }
     },
     {
@@ -19189,7 +19197,7 @@
     {
       "id": "F_D818",
       "kind": "MATCHING_ASM",
-      "source": "recovery/src/F_D818.ASM",
+      "source": "asm/M_D818_D825.ASM",
       "start": 55832,
       "end": 55845,
       "expected_sha256": "df46e15c6875236761c89018a9df8d57bdfa106f337f8cf34f20b24153b0a805",
@@ -19203,12 +19211,15 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "reconstruction_source": "recovery/src/F_D818.ASM"
       }
     },
     {
       "id": "F_D825",
       "kind": "MATCHING_ASM",
-      "source": "recovery/src/F_D825.ASM",
+      "source": "asm/M_D818_D825.ASM",
       "start": 55845,
       "end": 55903,
       "expected_sha256": "e51476579f8aaa4e624797021a93d15157f3409af018062fb5f2919d52aff183",
@@ -19222,6 +19233,9 @@
         "flags_append": "",
         "bindings": {},
         "module_segments": {}
+      },
+      "provenance": {
+        "reconstruction_source": "recovery/src/F_D825.ASM"
       }
     },
     {

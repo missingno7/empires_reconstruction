@@ -1,7 +1,17 @@
 # Empires reconstruction
 
-The executable reconstruction now has a bounded, cheap-model production workflow.
-Start with [the grinder instructions](docs/current/grinder-instructions.md),
+A byte-identical reconstruction of AEPROG.EXE from Turbo C 2.0 / TASM 1.0
+sources: `src/` holds the game's C translation units, `asm/` the hand-written
+assembler modules (sound driver, sprite/tile blitters, decoders, draw queue) and
+the runtime block, `include/` the shared interfaces.  86 modules link in one
+TLINK invocation to the original SHA with all 106 relocations in order.
+Which functions were compiled together is itself proven against the binary --
+see [translation-unit structure](docs/current/tu-structure.md) -- and the
+remaining work is tracked in [the closure frontier](docs/current/closure-frontier.md)
+and [ASM provenance](docs/current/asm-provenance.md).
+
+The runtime-block recovery workflow is still available: start with
+[the grinder instructions](docs/current/grinder-instructions.md),
 [generated status](docs/current/status.json), and
 [the ranked queue](docs/current/grinder-queue.json).
 
@@ -19,8 +29,8 @@ python tools/check_candidate.py RUNTIME_BLOCK:START-END --promote
 ```
 
 The working runtime source is [asm/RUNTIME_BLOCK.ASM](asm/RUNTIME_BLOCK.ASM),
-assembled directly by TASM 1.0. Its former inline-ASM C source remains a frozen
-oracle. FAST measures emitted source ranges, checks all runtime bytes, publics
+assembled directly by TASM 1.0. Its former inline-ASM C source is kept as a
+frozen oracle under `recovery/src/`. FAST measures emitted source ranges, checks all runtime bytes, publics
 and ordered fixups, rejects edits outside the card, and requires fewer unresolved
 bytes. Recursive CFG analysis leaves ambiguous code/data and indirect edges for
 supervision. [Tested TASM rules](docs/current/tasm-reconstruction-rules.md) and
@@ -48,7 +58,11 @@ python -m unittest discover -s tests -p test_build_exe.py
 ```
 
 Grouped modules live in named files (`tools/merge_module.py`); standalone files are
-renamed with `tools/rename_source.py`. `python tools/probe_module.py OWNER [--source OWNER=alt.C]` compiles single
+renamed with `tools/rename_source.py`. `python tools/probe_tu.py FIRST LAST` compiles a
+contiguous run of modules as one translation unit (or assembles one TASM candidate
+with `--asm`), `tools/tu_recipe.py` turns a proven run into a group recipe, and
+`python tools/audit_tu_flags.py --strict` keeps every -B/-k flag explained by inline
+asm in the same unit. `python tools/probe_module.py OWNER [--source OWNER=alt.C]` compiles single
 modules and compares their code and native DATA bytes with the original; use it
 before any declaration or header change. Shared interfaces live in `include/`; `python tools/rename_symbol.py old=new`
 renames symbols everywhere and records the original address name in

@@ -81,10 +81,34 @@ uint64_t sync_now_ns(void)
     return sec * 1000000000ull + rem * 1000000000ull / (uint64_t)freq.QuadPart;
 }
 
+#ifndef CREATE_WAITABLE_TIMER_HIGH_RESOLUTION
+#define CREATE_WAITABLE_TIMER_HIGH_RESOLUTION 0x00000002
+#endif
+
 void sync_sleep_ns(uint64_t ns)
 {
-    /* Sleep granularity is coarse; the tick thread compensates with an
-     * accumulator and only sleeps when comfortably ahead. */
+    /* Sleep() granularity is the scheduler quantum (up to ~15 ms), far too
+     * coarse for a 4.2 ms tick.  Use a high-resolution waitable timer
+     * (Windows 10 1803+); fall back to Sleep() when it is unavailable.  The
+     * tick thread still spins the last fraction of a millisecond itself. */
+    static __declspec(thread) HANDLE timer;
+    static __declspec(thread) int timer_tried;
+    if (ns == 0) {
+        SwitchToThread();
+        return;
+    }
+    if (!timer_tried) {
+        timer_tried = 1;
+        timer = CreateWaitableTimerExW(NULL, NULL, CREATE_WAITABLE_TIMER_HIGH_RESOLUTION, TIMER_ALL_ACCESS);
+    }
+    if (timer) {
+        LARGE_INTEGER due;
+        due.QuadPart = -(LONGLONG)((ns + 99) / 100);   /* relative, 100 ns units */
+        if (SetWaitableTimer(timer, &due, 0, NULL, NULL, FALSE)) {
+            WaitForSingleObject(timer, INFINITE);
+            return;
+        }
+    }
     DWORD ms = (DWORD)(ns / 1000000ull);
     if (ms == 0)
         SwitchToThread();

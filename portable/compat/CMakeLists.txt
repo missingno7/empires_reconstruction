@@ -1,0 +1,2 @@
+# compat sources
+target_sources(empires_core PRIVATE dos_compat.c)

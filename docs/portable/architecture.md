@@ -1,0 +1,165 @@
+# Portable source port — architecture contract
+
+Branch `portable-sdl3`, forked from tag `historical-exact-oracle-v1`
+(commit 873d1df0f505601d760c6880cdea0c6ae3d81405, AEPROG.EXE SHA-256
+1259348425483d8d97fd8821860b47cfdf58fc8029711eb0ed0e78ab33807a10).
+
+The historical tree (`src/`, `asm/`, `include/`, `recipes/`, `layout/`,
+`tools/` except `tools/portable/`) is the behavioral oracle and is **not
+edited** by port work.  Everything portable lives under `portable/`,
+`third_party/`, `tools/portable/`, `docs/portable/` and the top-level
+`CMakeLists.txt`.
+
+## Layout
+
+```
+CMakeLists.txt              top level: options, SDL3 / Nuked-OPL3 dependencies
+portable/
+  include/                  public headers, one per subsystem (see below)
+  compat/                   dos_types helpers, any temporary compatibility arena
+  resource/                 AE000/AE001 archive + DECODE.ASM semantic port
+  gfx/                      packed-4bpp software framebuffer + RUNTIME_BLOCK primitives
+  audio/                    SOUND.ASM state machine, OPL wrapper, speaker synth
+  platform/sdl3/            main(), window/texture, event pump, audio device, clock
+  generated/                game_data.[ch], game_state.[ch] from tools/portable/datagen.py
+  game/                     ported historical C translation units (normalized)
+  tests/                    ctest unit tests + small deterministic fixtures
+third_party/nuked-opl3/     pinned Nuked-OPL3 (fetched by CMake, or vendored)
+tools/portable/             python generators / fixture builders / oracle harness
+docs/portable/              this contract, inventories, parity notes
+```
+
+## Layering
+
+```
+ported game logic (portable/game)
+   |  calls only these interfaces:
+   v
+resource.h  gfx.h  timer.h  input.h  sound.h  dosio.h   (portable/include)
+   |
+   v
+portable/resource  portable/gfx  portable/audio  portable/compat
+   |
+   v
+portable/platform/sdl3  (the ONLY code that includes <SDL3/SDL.h>)
+```
+
+No file outside `portable/platform/sdl3/` may include SDL headers.  No file
+outside `portable/audio/` may include Nuked-OPL3 headers.
+
+## Integer discipline (Phase 1)
+
+`portable/include/dos_types.h` defines `dos_char/dos_uchar/dos_int/dos_uint/
+dos_long/dos_ulong` (8/8/16/16/32/32 bits) and `dos_i16/dos_u16/dos_add16/
+dos_sub16/dos_mul16`.  Rules:
+
+1. Every object the historical source declared `int`, `unsigned`, `long`,
+   `char` keeps that width via the alias.  Never use bare `int` for a
+   historical quantity.
+2. Where the historical comments prove a 16-bit truncation or a signed/
+   unsigned compare (docs/current/portability-boundaries.md §8), write it
+   explicitly with a cast or helper and cite the historical file/function in
+   a comment.
+3. Everything else is written naturally; differential tests decide whether
+   more sites need explicit wrapping.
+
+## Shared game state
+
+Every DGROUP object the ported C references becomes one real C object with
+the historical name (rename later, never alias-by-copy).  Two historical
+declarations of the same address with different types (e.g. `mode` /
+`display_mode` at DS:BFCD, `gb40` near/plain) become **one** object plus a
+`#define` alias, documented in `docs/portable/state-map.md`.
+
+- `portable/generated/game_data.[ch]`: initialized DATA objects generated from
+  `recipes/data/game-initialized.json` + `src/data/*.json`.  Pointer32
+  records become real C pointers to the target object (+ addend).
+- `portable/generated/game_state.[ch]`: BSS objects generated from
+  `src/data/GAME_BSS.json`, typed from the historical extern declarations.
+- Far pointers become plain pointers.  Row tables, blob pointers, etc. are
+  ordinary `uint8_t *`.
+- The 37,250-byte BSS is **not** modelled as a byte array; if a temporary
+  arena is needed for bring-up it lives in `portable/compat/` behind one
+  module with a tracked removal list.
+
+The supervisor owns the canonical ownership of every shared object.  Agents
+must not create alternative definitions of state that already exists in
+`portable/generated` or `portable/include`.
+
+## Video model (first target = historical display_mode 4, "M")
+
+Historical selector 4 (`-M`, BIOS mode 13h, built-in runtime slot 4) is the
+first supported mode.  Its model, taken from asm/RUNTIME_BLOCK.ASM:
+
+- Logical framebuffer: 320 x 488 pixels, packed 4 bpp, **160 bytes per row**,
+  high nibble = even x, low nibble = odd x.  All `gfx_*` primitives address
+  it through the 488-entry row table (`g3924`), stride hard-coded 0xA0.
+- `result` (DS:40C8) is the current color word; its low byte carries the
+  color in BOTH nibbles (`gfe[]`/`gbe[]`/`g3904[]` entries), chosen by
+  `gfx_color_select()`.
+- `gfx_box(x,y,w,h)` is the *present* primitive (runtime slot 4 = mode 13h):
+  it converts the packed rect to 320x200 8-bpp VRAM bytes with the exact
+  rol-4 nibble-pair transform of rt_083b/rt_089f and the VRAM byte then
+  selects a DAC entry from the 256-entry `g41e` palette (which maps byte v to
+  the color of v>>4).
+- `gfx_wipe_rect/gfx_blit_bitmap/gfx_copy_rect` append (x/2,y,w/2,h) byte
+  records to the dirty-rect queue at DS:40C4 when DS:00BC == 1 and y < 200.
+- `gfx_copy_rect` clips against the viewport words DS:94/96 (rows) and
+  DS:98/9A (byte columns) and uses the zero-nibble transparency mask.
+- `gfx_draw_char`/`gfx_blit_image` are 1-bpp MSB-first painters of `result`.
+
+SDL3 sits below: VRAM (8 bpp) -> DAC palette -> RGBA texture -> window,
+nearest-neighbour, integer scaled.  Selectors 2 and 5 (AE000_003/002
+replacement runtimes) are out of scope until Milestone G.
+
+## Timing model
+
+- `timer_ticks` advances at PIT 1193182 / 0x13B1 ≈ 236.7 Hz from a
+  fixed-step service (`portable/platform/sdl3/clock.c` -> `timer.h`).
+- A dedicated timer thread mirrors the historical INT 8 body once per tick:
+  `++timer_ticks; if (!sound_request_count && (sound_enabled || music_enabled))
+  sound_tick_entry();`  The 13:1 BIOS chain is dropped.
+- Game logic runs on its own thread and blocks in `timer_wait_ticks()` /
+  `timer_deadline_wait()` exactly as the historical busy-waits did; rendering
+  (texture upload) runs on the SDL main thread at display rate and never
+  drives game ticks.
+- Tests may run the timer in manual-step mode.
+
+## Input model
+
+SDL key events (main thread) feed two game-visible surfaces exactly as the
+historical INT 9 handler + BIOS INT 16h did:
+
+1. Level/edge state: `key_up_held`, `key_up_left_held`, `key_up_right_held`,
+   `key_up_released`, `gb6a`, `keyboard_state[1]` (Ctrl), with the same
+   scancode switch as `keyboard_irq_handler` (src/KEYBOARD.C) including the
+   `g856`-gated aliases.
+2. A BIOS-style keystroke FIFO (ASCII, scancode) for
+   `keyboard_read_blocking_hotkeys()` / `keyboard_poll_nonblocking()` /
+   `keyboard_buffer_drain()`; keys the handler swallows when
+   `keyboard_state[0]==0` never reach the FIFO.
+
+## Audio model
+
+Game-owned SOUND.ASM state machine reimplemented in C (`portable/audio/
+sound_driver.c`), serviced once per 236.7 Hz tick, emitting timestamped
+events (OPL register writes, PIT ch2 divisor, speaker gate).  Backends:
+Nuked-OPL3 (pinned) for OPL, a phase-continuous square-wave synth for the
+speaker.  Mixed PCM is pushed to one SDL3 audio stream.  Event logs are the
+first parity artifact; PCM comes after.
+
+## Testing
+
+- Pure subsystem unit tests under `portable/tests/` (ctest).
+- Golden fixtures under `portable/tests/fixtures/` are small and
+  deterministic; bulk game data is never committed.  Tests needing
+  `assets/AE000.DAT`/`AE001.DAT` skip cleanly when the assets are absent.
+- Historical oracle harness (`tools/portable/oracle/`) uses the pinned DOS
+  toolchain + MS-DOS Player only to *generate* fixtures; end users never
+  need it.
+
+## Milestones
+
+A skeleton -> B resource parity -> C framebuffer renderer -> D intro/menu ->
+E first playable level -> F audio -> G full parity.  Historical build
+(`python tools/build_exe.py verify`) must stay green at every milestone.

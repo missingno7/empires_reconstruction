@@ -2,9 +2,9 @@
    each 106/100 of the one before it, rounded as `(unsigned)l + 4 >> 3`.  The
    far pointer PARAMETER is advanced in place (`add word ptr [bp+4],2`), so
    the source increments the parameter rather than a local copy. */
-extern long fddd9();
+extern long music_note_to_divisor();
 
-void fde7e(p, a, b)
+void music_build_octave_table(p, a, b)
 unsigned far *p;
 int a;
 int b;
@@ -12,7 +12,7 @@ int b;
     long l;
     register int i;
 
-    *p = ((unsigned) (l = fddd9(a, b)) + 4) >> 3;
+    *p = ((unsigned) (l = music_note_to_divisor(a, b)) + 4) >> 3;
     p++;
     for (i = 1; i < 12; i++) {
         l = l * 106;

@@ -10,9 +10,9 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 
-public _f_cbbb
+public _options_toggle_music
 public _f_cbbb_end
-_f_cbbb:
+_options_toggle_music:
     push si
     mov ax, word ptr ds:[13edh]
     mov dx, 1bh

@@ -1,0 +1,1030 @@
+{
+  "format": "empires-asm-provenance-v1",
+  "scope": "All 32 TASM.EXE production modules in layout/production-plan.json, expanded per member region for multi-function modules. Data drawn from docs/current/asm-origin-review.json, module header comments (written this session, re-checked against ASM text), docs/current/timer-c-probes.json, docs/current/c-path-probes.json, docs/current/exact-c-recovery.md.",
+  "modules": [
+    {
+      "module": "RUNTIME_BLOCK",
+      "source": "asm/RUNTIME_BLOCK.ASM",
+      "members": [
+        {
+          "id": "RUNTIME_BLOCK",
+          "public": "(entry family; see summary)"
+        }
+      ],
+      "bytes": 6571,
+      "classification": "HISTORICAL_LIBRARY_OR_RUNTIME",
+      "confidence": "HIGH",
+      "evidence": [
+        "Computed entry into repeated bodies with CS patching (self-modifying dispatch), not expressible as a single C function.",
+        "Explicit DS preservation and direct port/BIOS I/O around startup/runtime dispatch.",
+        "Contains the MS-DOS/BIOS-driver-loader style entry family (video driver probing, EGA.DRV name literal) typical of a runtime support library rather than application logic.",
+        "BP frames alone (where present in sub-entries) do not imply C; treated as ASM library code throughout."
+      ],
+      "reason_asm_remains": "This is the Turbo C/Borland runtime and startup dispatch block linked from the vendor runtime library, not game logic; there is no application-level C source to recover it from.",
+      "c_candidate_available": "src/RUNTIME_BLOCK.C exists and is documented as the frozen migration oracle used for symbol naming only, not a compiler-verified replacement.",
+      "re_c_attempted": "Not attempted; out of scope for exact re-C (library/runtime code, not a single compilable C function).",
+      "result": "Keep exact ASM.",
+      "next_action": "None beyond periodic symbol/name audits; summarize by entry-family group rather than per-byte (see summary.runtime_block_groups)."
+    },
+    {
+      "module": "F_1ECD",
+      "source": "asm/F_1ECD.ASM",
+      "members": [
+        {
+          "id": "F_1ECD",
+          "public": "_f1ecd"
+        }
+      ],
+      "bytes": 74,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "cld/lodsw/loop queue-drain idiom (census R6) walking a far read/write pointer pair.",
+        "Header comment states explicitly this is 'not a C translation unit' based on the census idiom.",
+        "No BP-frame stack arguments; state lives entirely in registers (SI read ptr, DI/queue ptr) across the loop body."
+      ],
+      "reason_asm_remains": "Negative compiler evidence: the register-driven queue-drain loop is not an idiom Turbo C 2.0 emits for this control flow.",
+      "c_candidate_available": "None active; no src/F_1ECD.C reference exists in the tree.",
+      "re_c_attempted": "Not attempted (no C path probe on record for this id).",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_1F91",
+      "source": "asm/F_1F91.ASM",
+      "members": [
+        {
+          "id": "F_1F91",
+          "public": "_f1f91"
+        }
+      ],
+      "bytes": 126,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "DS saved/reloaded via lds; AX, BX, CX, DI simultaneously live scratch values across clamp sequence (register-ABI shape, not stack locals).",
+        "CX used as the loop counter of a `loop` instruction (census idiom (a)).",
+        "Header comment gives explicit negative compiler evidence for this shape."
+      ],
+      "reason_asm_remains": "Documented negative compiler evidence (task-known: specific case).",
+      "c_candidate_available": "None active.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_4AA8",
+      "source": "asm/F_4AA8.ASM",
+      "members": [
+        {
+          "id": "F_4AA8",
+          "public": "_f4aa8"
+        }
+      ],
+      "bytes": 100,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "AX, BX, CX, DX hold four simultaneously live variables (x1,y1,x2,y2) across four guard branches and four clamps.",
+        "TC 2.0 keeps at most one such variable in SI/DI and saves it; this body saves only BP and uses exactly the four caller-clobberable registers.",
+        "Header comment states explicitly: 'Hand-written assembly.'"
+      ],
+      "reason_asm_remains": "Documented negative compiler evidence (task-known: specific case).",
+      "c_candidate_available": "None active.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_4B0C",
+      "source": "asm/F_4B0C.ASM",
+      "members": [
+        {
+          "id": "F_4B0C",
+          "public": "_f4b0c"
+        }
+      ],
+      "bytes": 915,
+      "classification": "RECONSTRUCTION_ONLY_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Bytecode interpreter dispatch through a jump table (dispatch_opcode at 74Ah) with a save/resume program counter pattern; not a straight-line function.",
+        "production-plan.json provenance notes: 'Replaced the exact inline asm-db capsule with symbolic TASM labels ... Direct relative calls preserve their original no-FIXUPP encoding through CALL_REL.'",
+        "src/F_4B0C.C is an inactive db-capsule reference (raw asm db bytes), not a real C recovery; production module is the symbolic ASM.",
+        "near proc, clobbers ax/bx/cx/dx/si/di all pushed/popped -- consistent with either origin, so classification rests on the capsule history, not register shape alone."
+      ],
+      "reason_asm_remains": "The only production representation is TASM; src/F_4B0C.C is a byte-capsule stand-in, not a verified C source.",
+      "c_candidate_available": "src/F_4B0C.C exists but is an asm-db capsule (18 db lines), not usable C -- see capsules list.",
+      "re_c_attempted": "Not attempted as ordinary C; only symbolic-ASM reconstruction from the capsule has been done.",
+      "result": "Keep exact ASM (now symbolic, not raw db).",
+      "next_action": "Low priority: consider whether the opcode interpreter could ever be expressed in C; no immediate action."
+    },
+    {
+      "module": "F_4E9F",
+      "source": "asm/F_4E9F.ASM",
+      "members": [
+        {
+          "id": "F_4E9F",
+          "public": "_f4e9f"
+        }
+      ],
+      "bytes": 76,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "DI is the record cursor and CX the loop count, both live across a call and explicitly preserved with push cx / pop cx around it.",
+        "Header comment: 'TC 2.0 would spill the count to a stack local' -- explicit negative compiler evidence."
+      ],
+      "reason_asm_remains": "Documented negative compiler evidence (task-known: specific case).",
+      "c_candidate_available": "None active.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_4EEB",
+      "source": "src/F_4EEB.ASM",
+      "members": [
+        {
+          "id": "F_4EEB",
+          "public": "_f4eeb"
+        }
+      ],
+      "bytes": 120,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "near proc, compact-model C calling convention: word arg y0 at [bp+4], no return value -- a genuine BP-frame stack argument, unlike the F_1ECD/F_1F91/F_4AA8/F_4E9F register-ABI cluster.",
+        "Header states this restates src/F_4EEB.C's original Turbo C inline-asm recovery with labels instead of raw db bytes.",
+        "si/di/bp preserved via push/pop, ax/bx/cx/dx clobbered -- the standard Turbo C callee-save shape for a function containing an inline asm block."
+      ],
+      "reason_asm_remains": "Historically an inline-asm C function (asm{} block inside a C source), so the production representation stays ASM even though the calling convention is pure C.",
+      "c_candidate_available": "src/F_4EEB.C -- explicitly cited by the header as the original inline-asm recovery this file restates symbolically.",
+      "re_c_attempted": "Yes, historically, as inline-asm C (src/F_4EEB.C); not re-attempted as ordinary (non-inline-asm) C since the body does direct table/pointer arithmetic unlikely to be reproducible byte-exact without asm.",
+      "result": "Keep exact ASM (symbolic form of the original inline-asm C body).",
+      "next_action": "None; stable mixed classification."
+    },
+    {
+      "module": "M_50D2_53BF",
+      "source": "asm/M_50D2_53BF.ASM",
+      "members": [
+        {
+          "id": "F_50D2",
+          "public": "_f50d2"
+        },
+        {
+          "id": "F_53BF",
+          "public": "_f53bf"
+        }
+      ],
+      "bytes": 312,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "LOW",
+      "evidence": [
+        "Header: 'Segment/EXTRN layout copied from what TCC itself emits ... so every reference to _bbfcd is a forward reference' -- describes an object-topology adapter, consistent with either a compiler-emitted-then-hand-patched module or a careful hand-written imitation of TCC's segment order.",
+        "F_53BF calls the OPL timer probe; the old 'VGA-probe' wording in prior notes is explicitly disclaimed as not hardware evidence in asm-origin-review.json.",
+        "No forward jmp/mov padding is written by hand per the header, meaning the forward-reference sizing artifacts are load-bearing for object equality, not decorative.",
+        "This session: F_50D2 reaches a 220/237-byte near-exact C candidate that isolates the blocking fragment to a single SI-addressed ROM-signature probe (build/probes/rec3/F_50D2.C); F_53BF has only structural (redundant ds: override) evidence, no probe yet."
+      ],
+      "reason_asm_remains": "F_50D2: mostly plausible pseudo-var C, blocked only on a 2-instruction SI-addressed ROM probe fragment requiring inline asm. F_53BF: redundant ds: overrides suggest hand assembly but remain unconfirmed by a byte-diff probe.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "F_50D2: attempted, 220/237 bytes, blocked on the SI-addressed ROM probe fragment (build/probes/rec3/F_50D2.C). F_53BF: not attempted.",
+      "result": "Keep exact ASM; F_50D2 leans mixed C+inline-asm (MEDIUM), F_53BF leans hand ASM (LOW, unconfirmed).",
+      "next_action": "F_50D2: wrap the SI-addressed ROM-signature probe in a small inline-asm fragment and re-probe the rest as plain C. F_53BF: run an actual byte-diff C probe to confirm or refute the ds: override tell.",
+      "member_classifications": [
+        {
+          "id": "F_50D2",
+          "classification": "PROBABLE_MIXED_C_ASM",
+          "confidence": "MEDIUM",
+          "note": "build/probes/rec3/notes.md: a pseudo-var C candidate reaches 220/237 bytes (near-exact shape, correct branch count/opcodes for the INT 10h/port-I/O majority) but the ROM-signature probe fragment addresses es:[si] using SI as the pointer register with a matching push/pop si bracket; TCC -mc's own codegen for the equivalent far-byte dereference always allocates BX instead (no si push/pop needed), so the SI choice is only reproducible via literal inline asm for that fragment."
+        },
+        {
+          "id": "F_53BF",
+          "classification": "PROBABLE_ORIGINAL_ASM",
+          "confidence": "LOW",
+          "note": "Not probed with a fresh candidate this session (effort-budgeted). Structural tell only: every DGROUP data reference carries a redundant explicit ds: override, which TCC never emits for a DGROUP-relative access (DS already equals DGROUP under the small/compact-model ABI) -- consistent with a human assembling by consistent habit, not compiler output. Pending an actual byte-diff probe to confirm."
+        }
+      ]
+    },
+    {
+      "module": "F_6036",
+      "source": "asm/F_6036.ASM",
+      "members": [
+        {
+          "id": "F_6036",
+          "public": "_f6036"
+        }
+      ],
+      "bytes": 115,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "near proc, no args/return -- header states this matches src/F_6036.C's Turbo C inline-asm body.",
+        "bp used as a running sprite-slot counter (data register, not frame pointer for stack args) alongside table traversal via SI/DI-style far pointer math -- consistent with an inline-asm block inside a C wrapper rather than a pure hand ASM routine."
+      ],
+      "reason_asm_remains": "Historically inline-asm C; production representation kept as symbolic ASM for byte-exact object match.",
+      "c_candidate_available": "src/F_6036.C -- cited directly by the header as the source this file matches.",
+      "re_c_attempted": "Yes, historically (inline-asm C source exists and is cited); not re-attempted as ordinary C.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; stable mixed classification."
+    },
+    {
+      "module": "F_60A9",
+      "source": "asm/F_60A9.ASM",
+      "members": [
+        {
+          "id": "F_60A9",
+          "public": "_f60a9"
+        }
+      ],
+      "bytes": 216,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "BP used as a DATA register (mov bp,dx / mov dx,bp) and then re-pointed at the stack mid-body (mov bp,sp / add word ptr [bp],0B8h) to rewrite an already-pushed argument between two calls -- not an idiom any C compiler emits.",
+        "SI/DI driven by lodsb/lodsw with DS reloaded via lds; loop count lives in CX across two calls (census R1-R4, R6, R7).",
+        "The fixup at 6122h is proven to be a SEGMENT fixup patching DGROUP (the program's data paragraph, matching the Borland startup banner location), i.e. `mov ax,DGROUP` -- the DS-restore an asm module must perform after `lds` before calling a C function. This is direct evidence the routine calls INTO C, and is itself ASM."
+      ],
+      "reason_asm_remains": "Hard negative compiler evidence (BP as data register mid-body) plus positive object evidence that this module is an ASM caller of C helpers.",
+      "c_candidate_available": "None active.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_6181",
+      "source": "asm/F_6181.ASM",
+      "members": [
+        {
+          "id": "F_6181",
+          "public": "_f6181"
+        }
+      ],
+      "bytes": 171,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "Header describes an ORG/fixup-order adapter: 'TASM emits FIXUPP records in source-contribution order. Turbo C placed the DGROUP load before the two far-pointer records, even though its instruction is later in memory.' -- this is exactly the ORG/fixup-order-adapter evidence category called out in the task, and it exists purely to reproduce object topology.",
+        "The three ORG contributions preserve original contiguous _TEXT layout and historical FIXUPP record order -- strong signal the underlying code was originally produced with Turbo C conventions (DGROUP load pattern) even though the current representation is hand-built TASM.",
+        "No register-ABI or BP-frame evidence is cited in the header either way for the sprite-record body itself.",
+        "build/probes/rec4/notes.md: independent of the header's ORG/FIXUPP-ordering note, the body contains a mid-function push dx; mov bp,sp that re-bases BP to a NEW transient frame (while the function's own bp, set at entry, is still needed later for the final pop bp), then patches one of the just-pushed arguments in place (add word ptr [bp],0b8h) and reuses the same pushed stack slot for a second call to _gfx_wipe_rect. Turbo C fixes bp once at entry and re-evaluates/re-pushes a fresh argument list per call site; it has no mechanism to re-point bp mid-function or patch/reuse a pushed argument across two calls."
+      ],
+      "reason_asm_remains": "The header's own ORG/FIXUPP-ordering justification only explains the DGROUP-load placement; the mid-function bp re-basing and shared/patched pushed-argument idiom across two calls is a hand-optimization not expressible in plain C, confirmed this session.",
+      "c_candidate_available": "Not yet documented in exact-c-recovery.md or c-path-probes.json as of this audit.",
+      "re_c_attempted": "Investigated (no candidate written -- the bp-rebasing/argument-reuse idiom has no C phrasing to even attempt); conclusively blocked.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_6B1A_6B4A",
+      "source": "asm/M_6B1A_6B4A.ASM",
+      "members": [
+        {
+          "id": "F_6B1A",
+          "public": "_f6b1a"
+        },
+        {
+          "id": "F_6B4A",
+          "public": "_f6b4a"
+        }
+      ],
+      "bytes": 76,
+      "classification": "RECONSTRUCTION_ONLY_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "Header only names the two BIOS-keyboard entries (_f6b1a blocks/dispatches F1..F10, _f6b4a polls without consuming) without citing register-ABI or negative-compiler evidence.",
+        "Direct BIOS INT 16h polling is plausible in either hand ASM or a C function with inline int86-style calls; the 76-byte pair is too small to carry strong structural signal either way from the header alone.",
+        "This session (rec3): exact inline-asm C reconstructions exist for BOTH members -- src/F_6B4A.C is already MATCHING_C/EQUAL in the manifest, and F_6B1A's own manifest provenance entry ('Translate the blocking BIOS keyboard poll using Turbo C inline assembly and compiler-generated SI preservation', matching_status EQUAL) shows a byte-exact inline-asm C reconstruction was already found historically for F_6B1A too, even though production currently still sources it from asm/F_6B1A.ASM. This directly contradicts the prior 'not attempted' UNKNOWN status: both members are individually solved as inline-asm C; what remains is a packaging step (merge the two into one C translation unit matching the module's combined object layout) rather than any further origin research."
+      ],
+      "reason_asm_remains": "Both members already have byte-exact inline-asm C reconstructions (F_6B4A production, F_6B1A historical/manifest); ASM remains the production source only because the two have not been merged into one C unit and promoted.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": true,
+      "result": "PROMOTED: src/KEYBIOS.C (one translation unit with inline asm) reproduces all 76 bytes and both public offsets; production module is now MATCHING_C. asm/M_6B1A_6B4A.ASM retained as reference.",
+      "next_action": "none"
+    },
+    {
+      "module": "F_6BCF",
+      "source": "asm/F_6BCF.ASM",
+      "members": [
+        {
+          "id": "F_6BCF",
+          "public": "_f6bcf"
+        }
+      ],
+      "bytes": 87,
+      "classification": "PROBABLE_ORIGINAL_C",
+      "confidence": "HIGH",
+      "evidence": [
+        "docs/current/timer-c-probes.json: an ordinary Turbo C `void interrupt f6bcf(void)` using __sti__/__outportb__ intrinsics emits 85 bytes that match the production 87-byte body everywhere except the outer PUSHF/POPF pair (native interrupt C omits it: actual has 9c/ff1e at entry vs expected 9cff1e... difference is exactly the missing PUSHF at offset ~12 and POPF at the tail).",
+        "A second probe saving _FLAGS in a local emits 89 bytes (2 bytes too many: PUSHF/POP SI then PUSH SI/POPF, versus the historical bare PUSHF/POPF) -- confirms the only mismatch is flag-preservation strategy, not overall structure.",
+        "timer-c-probes.json finding: 'No exact replacement promoted' -- both probes are functionally C, differing only in how PUSHF/POPF is expressed."
+      ],
+      "reason_asm_remains": "Byte-exact match requires the historical bare PUSHF/POPF pair around the interrupt prologue/epilogue, which neither natural Turbo C interrupt-function expansion nor an explicit _FLAGS local reproduces exactly; production keeps the proven-byte-exact ASM.",
+      "c_candidate_available": "Yes -- docs/current/timer-c-probes.json probes 'interrupt_body' and 'flags_local', both C, both documented as near-exact (2-byte diffs).",
+      "re_c_attempted": "Yes, twice, documented in timer-c-probes.json; both close but not exact.",
+      "result": "Keep exact ASM; origin is almost certainly C (this is the strongest PROBABLE_ORIGINAL_C case in the set) but exact byte reproduction has not yet been achieved.",
+      "next_action": "Try a third probe emitting an explicit bare PUSHF at function entry (e.g. via #pragma or a one-line _asm pushf/_asm popf wrapper) to close the final 2-byte gap; if closed, promote to production C."
+    },
+    {
+      "module": "M_6D86_6DCC",
+      "source": "asm/M_6D86_6DCC.ASM",
+      "members": [
+        {
+          "id": "F_6D86",
+          "public": "_f6d86 (PackBits expansion)"
+        },
+        {
+          "id": "PAD_006FC5",
+          "public": "(module-local CS-addressed bit-reader state, not padding)"
+        },
+        {
+          "id": "F_6DCC",
+          "public": "_f6dcc (LZ stage)"
+        }
+      ],
+      "bytes": 377,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header proves the middle region is NOT alignment padding: 'The seven following bytes are the bit-reader state addressed through CS by the LZ stage at 6DCCh, so they are module-local initialized code-segment storage.' CS-addressed mutable state living inline in the code segment is a hand-ASM technique, not something C emits.",
+        "F_6D86 uses rep stosb / rep movsb driven by signed control-byte decode (PackBits idiom) with si compared against an explicit src+max_len bound -- string-instruction setup consistent with either hand ASM or an inline-asm C loop, but the CS-addressed state in the same contiguous module strongly favors hand ASM for the pair as a whole.",
+        "near proc, C calling convention (far ptrs at [bp+4]/[bp+8], word at [bp+0Ch]) for F_6D86 -- genuine BP-frame stack args, unlike the register-ABI cluster."
+      ],
+      "reason_asm_remains": "The CS-addressed local state used by F_6DCC cannot be expressed by an ordinary C function; the module is kept as one ASM unit to preserve that shared state's exact placement.",
+      "c_candidate_available": "None documented for F_6DCC; F_6D86's C-calling-convention shape could plausibly be probed separately.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "Low priority: probe F_6D86 alone as compact-model C now that its BP-frame args are known; F_6DCC/CS-state region must stay ASM regardless."
+    },
+    {
+      "module": "F_6EFF",
+      "source": "asm/F_6EFF.ASM",
+      "members": [
+        {
+          "id": "F_6EFF",
+          "public": "_f6eff"
+        }
+      ],
+      "bytes": 76,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "near proc, C calling convention: far ptr arg q at [bp+4], no return value -- genuine BP-frame stack argument.",
+        "Uses bx as a synthetic xlatb table base derived from the (now-masked) header words in place, and xlatb itself is a string-adjacent instruction requiring explicit AL/BX setup -- register-ABI detail embedded inside an otherwise C-shaped function, typical of an inline-asm block."
+      ],
+      "reason_asm_remains": "xlatb-based nibble expansion is not expressible in portable Turbo C; kept as (presumed) inline-asm C body.",
+      "c_candidate_available": "None documented under this exact name; sibling F_6F4B shares the same shape.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None immediate; low priority to probe given xlatb requirement."
+    },
+    {
+      "module": "F_6F4B",
+      "source": "asm/F_6F4B.ASM",
+      "members": [
+        {
+          "id": "F_6F4B",
+          "public": "_f6f4b"
+        }
+      ],
+      "bytes": 120,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "near proc, C calling convention: far ptr arg q at [bp+4], no return value -- same shape as its display_mode-2 sibling F_6EFF.",
+        "Double xlatb lookup per output byte through a palette table rewritten in place, with a shifting nibble-select count -- xlatb again requires explicit AL/BX register setup not expressible in portable C."
+      ],
+      "reason_asm_remains": "xlatb-based expansion is not expressible in portable Turbo C.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None immediate; pair with F_6EFF if either is ever probed."
+    },
+    {
+      "module": "F_9EC3",
+      "source": "asm/F_9EC3.ASM",
+      "members": [
+        {
+          "id": "F_9EC3",
+          "public": "_f9ec3"
+        }
+      ],
+      "bytes": 125,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "Header only describes behavior ('copy a clipped row through indexed source and destination tables') without citing register-ABI or negative-compiler evidence.",
+        "build/probes/rec3/notes.md: a real C candidate (array-of-far-pointers indexing, nested row-copy loops) reached only 164 bytes vs 125 expected. The original uses XLAT (opcode D7) twice for table lookups at DGROUP:12B0h/12C0h, with a push ds; mov bx,DGROUP; mov ds,bx; lea bx,...; xlat; pop ds DS-reload dance around each -- Turbo C 2.0's -mc codegen never emits XLAT for byte-array indexing (it always lowers to mov al,[bx+table]), and never saves/restores DS around a byte fetch; the DS reload only makes sense as a manual fix-up for an earlier lds-clobbered DS, a hand-composition pattern.",
+        "relocation-topology audit (docs/current/relocation-topology.json): F_9EC3's own EXE relocations are ASCENDING, matching its TASM.EXE production-route prediction with no mismatch -- topology evidence is consistent with (not contradicting) hand assembly."
+      ],
+      "reason_asm_remains": "Confirmed this session: XLAT-twice plus a manual DS reload around a lds-clobbered DS is definitively outside Turbo C -mc's instruction selection; no C phrasing gets within 30% of the byte count.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Attempted (build/probes/rec3/F_9EC3.C), 164 vs 125 bytes, wrong shape entirely; conclusively blocked.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_C1A0_C232",
+      "source": "asm/M_C1A0_C232.ASM",
+      "members": [
+        {
+          "id": "F_C1A0",
+          "public": "_fc1a0 (sound tick)"
+        },
+        {
+          "id": "F_C1F7",
+          "public": "_fc1f7 (voice pump)"
+        },
+        {
+          "id": "F_C232",
+          "public": "_fc232 (voice-table scanner)"
+        }
+      ],
+      "bytes": 221,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'contiguous sound-tick, voice-pump, and voice-table scanner. The first two entries call directly into the following entries and all three share the 0x1764..0x17F4 sound-control BSS cluster.' -- shared inline BSS cluster across entries is consistent with a small C translation unit compiled as one object contribution (module-static globals), not proof of hand ASM by itself.",
+        "F_C1A0 is called from F_6BCF's timer-tick path per F_6BCF's own header ('service sound when needed'), i.e. this cluster is the sound-service half of a proven-probable-C interrupt chain.",
+        "This session: F_C1F7 individually confirmed PROBABLE_ORIGINAL_ASM/HIGH via an independent re-probe of its zero-test idiom (see member_classifications). F_C1A0 and F_C232 remain unprobed."
+      ],
+      "reason_asm_remains": "F_C1F7 is one of the members other agents are currently re-trying as C per the task brief; kept ASM pending that outcome. F_C1F7's own zero-test idiom is independently confirmed unreproducible in C this session.",
+      "c_candidate_available": "Not yet documented for this module as of this audit.",
+      "re_c_attempted": "F_C1F7 attempted and conclusively blocked this session (see member_classifications); F_C1A0/F_C232 not separately attempted.",
+      "result": "Keep exact ASM; F_C1F7 confirmed hand ASM, F_C1A0/F_C232 still open.",
+      "next_action": "Probe F_C1A0/F_C232 individually; F_C1F7 needs no further work.",
+      "member_classifications": [
+        {
+          "id": "F_C1A0",
+          "classification": "UNKNOWN",
+          "confidence": "LOW",
+          "note": "Not individually probed this session; no register-ABI evidence on record."
+        },
+        {
+          "id": "F_C1F7",
+          "classification": "PROBABLE_ORIGINAL_ASM",
+          "confidence": "HIGH",
+          "note": "build/probes/rec2/notes.md: independently confirms the pre-existing ASM header note. TC 2.01 always lowers a zero-test to or reg,reg (58/58 occurrences over _TEXT except this one); this session's own C probes (goto-based mirror, then a forced register int local) reproduced or si,si, never the original's mov ax,[1776] / cmp ax,0 (3D-encoded) form. The bp-frame is also absent from the plain-C candidate where the original likewise has none, but the AX-immediate zero-test is the decisive, unreproducible tell."
+        },
+        {
+          "id": "F_C232",
+          "classification": "UNKNOWN",
+          "confidence": "LOW",
+          "note": "Not individually probed this session; no register-ABI evidence on record."
+        }
+      ]
+    },
+    {
+      "module": "M_C27D_C567",
+      "source": "asm/M_C27D_C567.ASM",
+      "members": [
+        {
+          "id": "F_C27D",
+          "public": "sound service"
+        },
+        {
+          "id": "F_C2EA",
+          "public": "command dispatch"
+        },
+        {
+          "id": "F_C359",
+          "public": "control helper"
+        },
+        {
+          "id": "F_C3DB",
+          "public": "control helper"
+        },
+        {
+          "id": "F_C440",
+          "public": "control helper"
+        },
+        {
+          "id": "F_C501",
+          "public": "control helper"
+        },
+        {
+          "id": "F_C549",
+          "public": "control helper"
+        },
+        {
+          "id": "F_C567",
+          "public": "control helper"
+        }
+      ],
+      "bytes": 797,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "LOW",
+      "evidence": [
+        "Header: 'contiguous sound service, command dispatch, and control helpers' -- part of the OPL/sound backend family alongside M_C1A0_C232, M_C5D1_C706, M_C77A_C898, M_C9A4_CA91, treated by the task as a sound cluster to evaluate function-by-function.",
+        "asm-origin-review.json evidence for this cluster's sibling notes: 'F_C27D and F_C834 independently establish the same sound-state offsets and F_C6B9 entry' (from src/F_C755.ASM header) -- indicates shared named DGROUP-offset state consistent with C globals used across many small dispatch functions.",
+        "No per-function register-ABI evidence documented yet for the 8 individual entries; this is a coarse module-level call pending per-function follow-up."
+      ],
+      "reason_asm_remains": "Sound cluster; kept ASM pending function-by-function review as instructed.",
+      "c_candidate_available": "None documented per-function yet.",
+      "re_c_attempted": "Not attempted per-function.",
+      "result": "Keep exact ASM.",
+      "next_action": "Function-by-function follow-up audit of F_C27D, F_C2EA, F_C359, F_C3DB, F_C440, F_C501, F_C549, F_C567 individually against register-ABI evidence, matching the treatment given to M_C77A_C898's F_C77A/F_C7CB."
+    },
+    {
+      "module": "M_C5A8_C5C6",
+      "source": "asm/M_C5A8_C5C6.ASM",
+      "members": [
+        {
+          "id": "F_C5A8",
+          "public": "store AL zero-extended through SI at DS:17A4h"
+        },
+        {
+          "id": "F_C5B3",
+          "public": "adjacent setter"
+        },
+        {
+          "id": "F_C5C6",
+          "public": "adjacent setter"
+        }
+      ],
+      "bytes": 41,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'adjacent setters for the SI-relative command-control state' -- SI held live across a family of tiny setters (SI-relative addressing as the calling convention itself) rather than a BP-frame stack argument.",
+        "41 bytes for 3 functions (~13 bytes each) is consistent with hand-written single-instruction-body setters (mov [si+n],al) that a compiler would not normally factor this tightly without inlining, which TCC of this era does not do."
+      ],
+      "reason_asm_remains": "SI-relative register-ABI calling convention across all three entries is not a C calling convention.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_C5D1_C706",
+      "source": "asm/M_C5D1_C706.ASM",
+      "members": [
+        {
+          "id": "F_C5D1",
+          "public": "decode command byte, update SI-relative voice-control slot"
+        },
+        {
+          "id": "F_C678",
+          "public": "speaker control"
+        },
+        {
+          "id": "F_C6B9",
+          "public": "speaker control"
+        },
+        {
+          "id": "F_C706",
+          "public": "PIT output"
+        }
+      ],
+      "bytes": 388,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'These four adjacent entries form one 388-byte no-fixup contribution. The historical compiler encoded calls outside this contribution as direct same-segment displacements, retained below as symbolic relative expressions.' -- 'the historical compiler' phrasing plus no-fixup same-segment call encoding is object-topology evidence of a single assembled unit, consistent with hand ASM emitted in one pass.",
+        "F_C5D1 uses the same SI-relative voice-control-slot addressing established as ASM-only in M_C5A8_C5C6.",
+        "F_C706 does direct PIT (8253/8254 timer) port output -- explicit port I/O, one of the task's named ASM-evidence categories."
+      ],
+      "reason_asm_remains": "SI-relative register ABI plus direct port I/O; no-fixup same-segment call encoding ties all four entries into one hand-assembled contribution.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_C755",
+      "source": "src/F_C755.ASM",
+      "members": [
+        {
+          "id": "F_C755",
+          "public": "reset per-voice state, service each configured voice"
+        }
+      ],
+      "bytes": 37,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'The names retain their DGROUP-offset provenance. F_C27D and F_C834 independently establish the same sound-state offsets and F_C6B9 entry.' -- cross-module corroboration of a shared register/offset-addressed sound-state block, consistent with the rest of the sound cluster's ASM-only addressing.",
+        "37 bytes for a reset-and-dispatch loop over voices is consistent with a tight hand-written loop; located under src/ alongside other small sound-cluster ASM helpers (F_C8D4)."
+      ],
+      "reason_asm_remains": "Part of the ASM-only sound-state cluster; shares addressing scheme with proven-ASM siblings.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_C77A_C898",
+      "source": "asm/M_C77A_C898.ASM",
+      "members": [
+        {
+          "id": "F_C77A",
+          "public": "select and initialise a sound backend"
+        },
+        {
+          "id": "F_C7CB",
+          "public": "voice-state reload"
+        },
+        {
+          "id": "F_C834",
+          "public": "OPL output"
+        },
+        {
+          "id": "F_C877",
+          "public": "OPL output"
+        },
+        {
+          "id": "F_C898",
+          "public": "OPL output"
+        }
+      ],
+      "bytes": 346,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "asm-origin-review.json classification 'ASM_OR_MIXED_LIKELY': 'Live-register sound routines and fixed OPL settling reads; src/F_C898.C is explicitly C with assembly body.' -- direct evidence that at least F_C898 is a C function containing an inline-asm block (OPL register settling delay), not pure hand ASM.",
+        "F_C77A (backend select/init) and F_C7CB (voice-state reload) are currently being re-tried as C by another agent per the task brief; not yet independently classified.",
+        "F_C834/F_C877 share the OPL-output shape with F_C898 and are presumed to carry the same mixed C/inline-asm origin, though not individually confirmed.",
+        "This session: F_C77A and F_C7CB individually confirmed PROBABLE_ORIGINAL_ASM/HIGH -- both contain instruction shapes (computed-displacement calls; register-passed-through-call ABI) that are categorically outside what any C compiler emitting relocatable OMF can produce, so no C phrasing was even attempted (see member_classifications)."
+      ],
+      "reason_asm_remains": "F_C77A and F_C7CB are now confirmed hand ASM (computed-displacement calls, ES:DI-through-call ABI, neither expressible in relocatable-OMF C); F_C834/F_C877 presumed mixed by association with F_C898; F_C898 itself already confirmed mixed via src/F_C898.C.",
+      "c_candidate_available": "src/F_C898.C -- explicitly cited as C with an assembly body for the OPL settling read.",
+      "re_c_attempted": "F_C77A/F_C7CB: investigated and conclusively blocked this session (no C phrasing possible). F_C834/F_C877: not attempted. F_C898: already has a known mixed C/asm source.",
+      "result": "Keep exact ASM; F_C77A/F_C7CB confirmed hand ASM, F_C898 confirmed mixed, F_C834/F_C877 still open by association.",
+      "next_action": "Audit F_C834/F_C877 individually against the same OPL-output shape as F_C898; F_C77A/F_C7CB/F_C898 need no further work.",
+      "member_classifications": [
+        {
+          "id": "F_C77A",
+          "classification": "PROBABLE_ORIGINAL_ASM",
+          "confidence": "HIGH",
+          "note": "build/probes/rec2/notes.md: both mode branches end in call $+<literal displacement> to unnamed in-block/cross-module targets (annotated 'historical target' by the prior researcher) rather than a FIXUPP-relocated extern symbol -- a compiled OMF call to another translation unit always goes through a relocated external reference, never a bare computed byte displacement."
+        },
+        {
+          "id": "F_C7CB",
+          "classification": "PROBABLE_ORIGINAL_ASM",
+          "confidence": "HIGH",
+          "note": "build/probes/rec2/notes.md: passes live ES:DI through a call (push es; push di; call ...; pop di; pop es) as an implicit register ABI, then also restores its own ES/DI -- Turbo C's calling convention only ever passes arguments by pushing evaluated C expressions per the callee's parameter list; it never threads live segment/index registers through a call site."
+        },
+        {
+          "id": "F_C834",
+          "classification": "PROBABLE_MIXED_C_ASM",
+          "confidence": "LOW",
+          "note": "Not individually probed; presumed to share F_C898's confirmed mixed C+inline-asm OPL-output shape."
+        },
+        {
+          "id": "F_C877",
+          "classification": "PROBABLE_MIXED_C_ASM",
+          "confidence": "LOW",
+          "note": "Not individually probed; presumed to share F_C898's confirmed mixed C+inline-asm OPL-output shape."
+        },
+        {
+          "id": "F_C898",
+          "classification": "PROBABLE_MIXED_C_ASM",
+          "confidence": "HIGH",
+          "note": "src/F_C898.C is explicitly C with an inline-asm OPL settling-delay body (already documented, unchanged this session)."
+        }
+      ]
+    },
+    {
+      "module": "F_C8D4",
+      "source": "src/F_C8D4.ASM",
+      "members": [
+        {
+          "id": "F_C8D4",
+          "public": "write AL to I/O port selected by DS global g1830"
+        }
+      ],
+      "bytes": 14,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "Header: 'Write the live AL value to the I/O port selected by the DS global g1830.' -- direct port I/O with the port number read from a DS-relative global and the value already live in AL (register-ABI input, not a stack argument).",
+        "14 bytes is too small to carry a C calling-convention prologue/epilogue and still perform the port write; consistent with a tiny hand-written leaf helper."
+      ],
+      "reason_asm_remains": "Direct port I/O with register-ABI input (AL) matches the task's named ASM-evidence category exactly.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "F_C914",
+      "source": "asm/F_C914.ASM",
+      "members": [
+        {
+          "id": "F_C914",
+          "public": "decode one command from the secondary music stream"
+        }
+      ],
+      "bytes": 116,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'Fetch the next command byte from the stream and split it into a low nibble (command code, AL) and high nibble (argument, AH).' -- AL/AH split of a fetched byte is register-ABI output shaping, typical of a hand-written stream decoder feeding a dispatch table.",
+        "Part of the music/sound-stream decoder family alongside M_C9A4_CA91 and MUSIC.ASM, all addressed through shared DGROUP control-block offsets."
+      ],
+      "reason_asm_remains": "AL/AH register-split output and command-stream cursor state match the sound/music cluster's established ASM-only addressing pattern.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_C9A4_CA91",
+      "source": "asm/M_C9A4_CA91.ASM",
+      "members": [
+        {
+          "id": "F_C9A4",
+          "public": "table-command decoder"
+        },
+        {
+          "id": "F_CA03",
+          "public": "operation"
+        },
+        {
+          "id": "F_CA35",
+          "public": "operation"
+        },
+        {
+          "id": "F_CA51",
+          "public": "operation"
+        },
+        {
+          "id": "F_CA83",
+          "public": "operation"
+        },
+        {
+          "id": "F_CA91",
+          "public": "operation"
+        }
+      ],
+      "bytes": 247,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'The command byte at ES:DI+1 selects shared DGROUP state in the 1E84h..1E94h control block. The dispatcher and all four operations are contiguous.' -- ES:DI register-ABI input plus a shared inline control-block addressed by fixed DGROUP offsets across 6 entries in one contiguous no-fixup contribution.",
+        "Four-way dispatch off a command nibble, matching F_C914's AL/AH split immediately upstream in the music-stream pipeline."
+      ],
+      "reason_asm_remains": "ES:DI register-ABI input across all six contiguous entries; task-named sound cluster to be treated function-by-function.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted per-function.",
+      "result": "Keep exact ASM.",
+      "next_action": "Function-by-function follow-up: individually verify F_CA03/F_CA35/F_CA51/F_CA83/F_CA91 against register-ABI evidence rather than relying on the dispatcher's header alone."
+    },
+    {
+      "module": "F_CA9B",
+      "source": "asm/F_CA9B.ASM",
+      "members": [
+        {
+          "id": "F_CA9B",
+          "public": "shift a note-derived value and update sound state"
+        }
+      ],
+      "bytes": 53,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'shift a note-derived value and update sound state. The 17FCh table base is a recovered literal whose data owner remains open.' -- fixed-offset table addressing into the shared sound-state block, same family as F_CA9B's C9A4/C1A0 neighbors.",
+        "Open data-owner note is flagged honestly rather than asserted; does not weaken the ASM-addressing evidence for the routine's own body."
+      ],
+      "reason_asm_remains": "Fixed-offset sound-state table addressing consistent with the rest of the ASM-only sound cluster.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "Resolve the 17FCh table's data owner separately (data-layout task, not language-origin); does not block this classification."
+    },
+    {
+      "module": "F_CAF1",
+      "source": "asm/F_CAF1.ASM",
+      "members": [
+        {
+          "id": "F_CAF1",
+          "public": "_fcaf1 -- initialize sound-tick state for one pending stream entry"
+        }
+      ],
+      "bytes": 87,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "Header only describes behavior without citing register-ABI or negative-compiler evidence.",
+        "Called from F_4B0C's opcode interpreter (per F_4B0C's header, opcode handlers 'call into F_CAF1/F_2A2D+...'), so it sits at a C/ASM boundary already, which is consistent with either origin.",
+        "build/probes/rec2/notes.md: four independent C phrasings (implicit-int MK_FP call, single far-pointer object, added register locals, reintroduced local MK_FP macro) all overshoot the 87-byte original by 2-25 bytes and never reproduce the bare mov es,g1760 + independent add di,g175e sequence, nor the fixed push ax/cx/si/di/es save mask (two of the five registers, ax and cx, are barely touched in the body -- not something TC's allocator spills)."
+      ],
+      "reason_asm_remains": "Confirmed this session: no plain-C phrasing reproduces the independent ES/DI staging or the fixed 5-register save mask; TC's far-pointer codegen always goes through les or a stack-built pointer, never separate mov es,/add.",
+      "c_candidate_available": "Not yet documented in exact-c-recovery.md or c-path-probes.json as of this audit.",
+      "re_c_attempted": "Attempted (4 iterations, build/probes/rec2/F_CAF1.C), none byte-exact; conclusively blocked, not a scaffolding/tuning gap.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_D386_D3CF",
+      "source": "asm/M_D386_D3CF.ASM",
+      "members": [
+        {
+          "id": "F_D386",
+          "public": "_fd386 -- decode a far record list, handle negative selector path"
+        },
+        {
+          "id": "F_D3CF",
+          "public": "direct branch continuation of F_D386, not an independent flow"
+        }
+      ],
+      "bytes": 84,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'F_D3CF is the direct branch continuation of F_D386, not an independent flow.' -- a function boundary that is purely a fall-through branch target is an object-topology/label artifact of hand assembly (or of the original compiler's basic-block layout reproduced label-for-label); either way the pair must stay one contiguous unit.",
+        "Far record-list decode with a negative-selector branch is consistent with register-ABI pointer walking (ES:DI-style) typical of the record-table family shared with F_1ECD/F_4E9F/F_6036."
+      ],
+      "reason_asm_remains": "Fall-through-only continuation function cannot be split or independently re-expressed in C without breaking the proven contiguous layout.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_D61C_D79C",
+      "source": "asm/M_D61C_D79C.ASM",
+      "members": [
+        {
+          "id": "F_D61C",
+          "public": "apply bright attributes, render all records, restore normal attributes"
+        },
+        {
+          "id": "F_D79C",
+          "public": "_f_d79c"
+        }
+      ],
+      "bytes": 507,
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header: 'The original hand-written code addresses the first cell with an 8-bit displacement and the following cells with 16-bit displacements. TASM makes that distinction naturally from the offsets below.' -- explicit statement of hand-written origin tied to an addressing-mode detail that falls out of TASM's own encoding rules, not a copied compiler artifact.",
+        "Renders an ES:DI command list -- register-ABI input list, not a stack-passed structure."
+      ],
+      "reason_asm_remains": "Header explicitly attributes the code to hand-written origin based on addressing-mode evidence.",
+      "c_candidate_available": "None documented.",
+      "re_c_attempted": "Not attempted.",
+      "result": "Keep exact ASM.",
+      "next_action": "None; classification is stable."
+    },
+    {
+      "module": "M_D818_D825",
+      "source": "asm/M_D818_D825.ASM",
+      "members": [
+        {
+          "id": "F_D818",
+          "public": "reset the DS:2F30h byte counter"
+        },
+        {
+          "id": "F_D825",
+          "public": "append operation for the DS:2F30h packed record table"
+        }
+      ],
+      "bytes": 71,
+      "classification": "PROBABLE_MIXED_C_ASM",
+      "confidence": "MEDIUM",
+      "evidence": [
+        "Header describes fixed DS-offset table reset/append operations without citing explicit register-ABI or negative-compiler evidence for either entry.",
+        "F_6036's header names fd825 as a callee with a register-ABI call signature (id=bp, x=bx, y=dx, color=0Fh, height=1Eh) -- all-register calling convention into F_D825, which favors ASM origin, but this is evidence from the caller's header, not F_D825's own body.",
+        "This session (rec2+rec4): F_D818 reaches a 13/13-byte exact-length C candidate; the only remaining discrepancy is Turbo C's register allocator choosing SI over DI for the sole register-class local, reconfirmed across 10+ declaration-order variants in rec4 as a fixed allocator preference rather than a steerable source difference -- not, by itself, proof of hand ASM."
+      ],
+      "reason_asm_remains": "F_D818's structure and length are fully explained by plain C; only an unexplained (but plausibly fixed-allocator) register choice is unresolved. F_D825 was not probed. Neither member has been shown to require anything C cannot express.",
+      "c_candidate_available": "Not yet documented in exact-c-recovery.md or c-path-probes.json as of this audit.",
+      "re_c_attempted": "F_D818: extensively attempted (rec2 + rec4, 10+ variants), 13/13 bytes reached, register-choice gap only. F_D825: not attempted (time-boxed).",
+      "result": "Keep exact ASM; leans PROBABLE_MIXED_C_ASM (not hand ASM) for both members, pending closure of F_D818's register-allocation gap and an F_D825 probe.",
+      "next_action": "Continue the F_D818 SI/DI register-allocation search (e.g. scoped/looped declarations not yet tried) and extend the same near-pointer idiom to a full F_D825 probe via probe_module.py.",
+      "member_classifications": [
+        {
+          "id": "F_D818",
+          "classification": "PROBABLE_MIXED_C_ASM",
+          "confidence": "MEDIUM",
+          "note": "build/probes/rec2+rec4/notes.md: register unsigned char near *p = g2f30; *p = 0; (compiled with -k to force the bp frame) reproduces the correct 13/13-byte length and overall shape (load pointer into an index register, dereference, push/pop that register); rec4's wider declaration-order search (D818b..k, 10+ variants) never got Turbo C's allocator to pick DI instead of SI for the sole register-class local -- looks like a fixed SI-first compiler preference, not a source-level-steerable choice, so the register mismatch is not evidence of hand ASM by itself."
+        },
+        {
+          "id": "F_D825",
+          "classification": "PROBABLE_MIXED_C_ASM",
+          "confidence": "LOW",
+          "note": "Not probed to a byte match (time-boxed both sessions). The mov ah,bl before each stosw reads as the classic TC idiom for packing two byte arguments into one word store; plausible as *(unsigned near *)p = (b & 0xff) | ((c & 0xff) << 8); given F_D818's near-miss in the same module, but untested against probe_module.py."
+        }
+      ]
+    },
+    {
+      "module": "M_DDD9_DF98",
+      "source": "asm/MUSIC.ASM",
+      "members": [
+        {
+          "id": "F_DDD9",
+          "public": "_fddd9"
+        },
+        {
+          "id": "F_DE7E",
+          "public": "_fde7e"
+        },
+        {
+          "id": "F_DEFA",
+          "public": "_fdefa"
+        },
+        {
+          "id": "F_DF98",
+          "public": "_fdf98"
+        }
+      ],
+      "bytes": 700,
+      "classification": "RECONSTRUCTION_ONLY_ASM",
+      "confidence": "HIGH",
+      "evidence": [
+        "asm-origin-review.json classification 'MIXED_RECONSTRUCTION_REVIEW_LATER': 'Surviving src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.'",
+        "docs/current/c-path-probes.json documents an F_DDD9 probe against src/F_DDD9.C, but 'limitation: Isolated compiler evidence only. Production M_DDD9_DF98 has four owners and globally ordered relocations; no promotion or production edits.' -- i.e. a single-function C probe cannot validate the whole four-owner contiguous module.",
+        "Header: 'Emit source contributions in descending address order so TASM emits the historical descending FIXUPP sequence' -- an ORG/fixup-order adapter that exists purely to reproduce object topology, one of the task's named ASM-evidence categories, and evidence the four functions were originally one compiled+linked unit whose relocation order must be preserved exactly.",
+        "This session: a byte-exact pure-C reconstruction exists for the module's arithmetic core (src/MUSIC.C reference), and the relocation-topology audit (docs/current/relocation-topology.json) shows M_DDD9_DF98's EXE relocations are DESCENDING even though its production route is TASM.EXE (which predicts ASCENDING) -- a confirmed mismatch that is direct object-topology proof the original unit was compiled by Turbo C, not hand/TASM-assembled."
+      ],
+      "reason_asm_remains": "Native Turbo C origin is now confirmed by the relocation-direction mismatch (descending under a TASM route); ASM remains the production representation only because F_DF98 has not yet been expressed without an inline asm block.",
+      "c_candidate_available": "src/F_DDD9.C -- long-arithmetic C source, isolated-probe only per c-path-probes.json.",
+      "re_c_attempted": true,
+      "result": "PROMOTED: src/MUSIC.C, one pure Turbo C unit (no inline asm), reproduces all 700 bytes, the four public offsets and, via the native object writer's descending FIXUPP order, the historical relocation order; acceptance byte-identical. asm/MUSIC.ASM retained as reference.",
+      "next_action": "none"
+    }
+  ],
+  "capsules": [
+    {
+      "file": "src/DOS_STUB.C",
+      "lines": "4-22",
+      "bytes": 404,
+      "classification": "LEGITIMATE_DATA",
+      "reason": "`asm db` capsule reproducing the literal MS-DOS EXE header stub (the 'This program requires...' /INT 21h loader preamble) byte-for-byte. This is vendor/linker boilerplate, not application logic, and by nature must be an exact byte sequence -- there is no symbolic source to recover it from. Outside layout/production-plan.json (it lives in layout/manifest.json, classification 'startup-stub'), included here for completeness since it matches the requested db-capsule pattern.",
+      "note": "Not one of the 32 TASM.EXE production-plan modules and not a TCC production source in production-plan.json; flagged as out-of-primary-scope but relevant."
+    },
+    {
+      "file": "src/F_4B0C.C",
+      "lines": "4-15+",
+      "bytes": 915,
+      "classification": "INSTRUCTION_CAPSULE",
+      "reason": "Full-function `asm db` capsule (18+ db lines) encoding the entire F_4B0C opcode-interpreter body as raw instruction bytes. This is exactly the pattern the task calls out: opaque instruction bytes that should become symbolic. It HAS already become symbolic in production: the active production source for F_4B0C is asm/F_4B0C.ASM, whose provenance note states 'Replaced the exact inline asm-db capsule with symbolic TASM labels, opcode branches, state-record accesses, and named direct-call relations.' src/F_4B0C.C is now an inactive superseded reference, not a production source.",
+      "note": "Excluded from production scope per task instructions (inactive src/F_*.C reference), listed here only to record that the capsule this class of finding warns about was already resolved for this function."
+    },
+    {
+      "file": "asm/RUNTIME_BLOCK.ASM",
+      "lines": "5",
+      "bytes": 1,
+      "classification": "LEGITIMATE_DATA",
+      "reason": "`db 0e9h` -- the first byte of a near-jmp opcode whose displacement is computed from instruction labels (per the module's own header: 'Table addresses derive from instruction labels; only the loader ABI base is fixed'). This is a single opcode byte kept literal because TASM's own `jmp` mnemonic would need the same encoding; not an opaque multi-instruction capsule.",
+      "note": "Single-byte opcode literal, not a capsule; included for completeness."
+    },
+    {
+      "file": "asm/RUNTIME_BLOCK.ASM",
+      "lines": "10",
+      "bytes": 1,
+      "classification": "LEGITIMATE_DATA",
+      "reason": "`db 0e8h` -- first byte of a near-call opcode at the runtime dispatch head, same rationale as line 5 (computed target, single opcode byte, not an opaque sequence).",
+      "note": "Single-byte opcode literal, not a capsule."
+    },
+    {
+      "file": "asm/RUNTIME_BLOCK.ASM",
+      "lines": "3128-3143",
+      "bytes": 256,
+      "classification": "LEGITIMATE_DATA",
+      "reason": "16 lines x 16 bytes of a fixed `0Fh,0F0h` planar/EGA bit-mask table (classic VGA/EGA plane-select mask ramp pattern: 0FFh row then descending 0Fh-prefixed rows). This is a genuine binary lookup table (graphics mask data), not encoded instructions -- no opcode structure, purely repetitive mask constants consumed as data by the video routines.",
+      "note": "Data table, correctly left as db; not an instruction capsule."
+    },
+    {
+      "file": "asm/RUNTIME_BLOCK.ASM",
+      "lines": "3502",
+      "bytes": 1,
+      "classification": "UNKNOWN",
+      "reason": "`db 0c3h` immediately before `runtime_driver_name label byte` / `db 'EGA.DRV',0`. C3h is the RET opcode. Header comment calls it an 'Unreferenced stub and driver name following the final code root' -- i.e. this single byte is presumed to be either (a) a leftover RET from a trimmed/unreferenced stub routine that once preceded the driver-name string in the historical object, or (b) padding that happens to equal a valid opcode by coincidence. Neither is proven; no cross-reference, fixup, or public symbol targets this byte.",
+      "note": "This is the task-specified 0x19A2 byte before the EGA.DRV name. Left as UNKNOWN rather than asserted LEGITIMATE_DATA because its status (real leftover RET vs coincidental padding byte) is not established by any evidence in the file."
+    }
+  ],
+  "summary": {
+    "modules_total": 32,
+    "member_regions_total": 65,
+    "by_classification": {
+      "HISTORICAL_LIBRARY_OR_RUNTIME": 1,
+      "PROBABLE_ORIGINAL_ASM": 18,
+      "RECONSTRUCTION_ONLY_ASM": 3,
+      "PROBABLE_MIXED_C_ASM": 9,
+      "PROBABLE_ORIGINAL_C": 1
+    },
+    "unknown_modules": [],
+    "unknown_modules_note": "UNKNOWN=0 as of this session. All six previously-UNKNOWN modules (M_50D2_53BF, F_6181, M_6B1A_6B4A, F_9EC3, F_CAF1, M_D818_D825) were resolved via probe evidence in build/probes/rec2, rec3, rec4 and the relocation-topology mismatch audit (docs/current/relocation-topology.json).",
+    "in_progress_re_c": [
+      "M_DDD9_DF98 (MUSIC.ASM, F_DF98 member only, others reconstructable)"
+    ],
+    "runtime_block_groups": {
+      "note": "RUNTIME_BLOCK is summarized by entry family, not per byte, per task instruction.",
+      "groups": [
+        "startup/dispatch head (computed jmp/call into repeated bodies, self-modifying CS patch)",
+        "video-adapter/driver probing entries",
+        "EGA/VGA graphics-mask data tables (e.g. 3128-3143)",
+        "unreferenced stub + EGA.DRV driver-name literal (3502-3504)"
+      ]
+    },
+    "capsules_total": 6,
+    "capsules_by_classification": {
+      "INSTRUCTION_CAPSULE": 1,
+      "LEGITIMATE_DATA": 4,
+      "UNKNOWN": 1
+    },
+    "note": "M_6B1A_6B4A (KEYBIOS.C) and M_DDD9_DF98 (MUSIC.C) promoted to C after this report was generated; 30 assembler modules remain in production. The runtime block has 0 raw bytes."
+  }
+}

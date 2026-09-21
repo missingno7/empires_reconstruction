@@ -1,8 +1,8 @@
 /* F_6181 -- adjust a sprite record and emit its two draw segments. */
 extern unsigned char far *sprbase;
 extern unsigned char far *objtab;
-extern void f03b4();
-extern void f03cc();
+extern void gfx_wipe_rect();
+extern void gfx_copy_rect();
 
 void f6181()
 {
@@ -19,13 +19,13 @@ void f6181()
     asm mov ax,DGROUP
     asm db 08eh,0d8h,052h,08bh,0ech,053h,0b8h,01eh,0,050h,0b8h,01eh,0,050h
     asm db 08bh,0c2h,05h,048h,01h,050h,053h
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm db 081h,046h,0,0b8h,0
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm db 05bh,083h,0c4h,0ah,05ah,007h,033h,0c0h,050h,006h,057h,052h,053h
-    asm call near ptr f03cc
+    asm call near ptr gfx_copy_rect
     asm db 05bh,05ah,083h,0c4h,6,08bh,0c2h,05h,0b8h,0,050h,053h
     asm db 0b8h,01eh,0,050h,0b8h,01eh,0,050h,052h,053h
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm db 083h,0c4h,0ch,01fh,05fh,05eh,05dh
 }

@@ -20,5 +20,5 @@ class MatchingCWave29Tests(unittest.TestCase):
         owner = read_json(ROOT / 'recipes/c/matching-wave29.json')['owners'][0]
         exact(owner['id'])
         mutant_rejected(owner['id'],
-                        b'f03cc(g0736, g0738, resource_stripe_table + g072e * 0x2a2, g073a);',
-                        b'f03cc(g0736, g0738, resource_stripe_table + g072e * 0x2a1, g073a);')
+                        b'gfx_copy_rect(g0736, g0738, resource_stripe_table + g072e * 0x2a2, g073a);',
+                        b'gfx_copy_rect(g0736, g0738, resource_stripe_table + g072e * 0x2a1, g073a);')

@@ -1,8 +1,8 @@
 ; F_4EEB -- called as f4eeb(y0) from F_329F/F_3986/F_31C4: walks a fixed
 ; 0x20-byte-stride table at gb3ae (count byte at [0], records from [1]),
-; and for every live record whose "screen id" word matches gbfba, does a
+; and for every live record whose "screen id" word matches board_record_index, does a
 ; copy() (03CC) of a jump-table sprite selected by [di+6] and, if a
-; trailing shadow-height byte at [di+0x1a] is set, an f03a5() strip too.
+; trailing shadow-height byte at [di+0x1a] is set, an gfx_vline() strip too.
 ; census R6 (loop): not a C translation unit.
 _TEXT   segment byte public 'CODE'
 DGROUP  group   _DATA,_BSS
@@ -20,7 +20,7 @@ _f4eeb  proc    near
         mov     bp,sp
         mov     ax,0fh
         push    ax
-        call    _f01ce
+        call    _gfx_color_select
         pop     ax
         push    si
         push    di
@@ -33,7 +33,7 @@ _f4eeb  proc    near
 @@loop:
         xor     ax,ax
         mov     al,byte ptr [di+1]
-        cmp     ax,_gbfba
+        cmp     ax,_board_record_index
         jne     @@skip
         cmp     byte ptr [di+8],1
         je      @@skip
@@ -44,14 +44,14 @@ _f4eeb  proc    near
         mov     bl,byte ptr [di+6]
         shl     bx,1
         shl     bx,1
-        les     ax,dword ptr _gb07c[bx]
+        les     ax,dword ptr _resource_ptr_table[bx]
         push    es
         push    ax
         mov     ax,[bp+4]
         add     ax,word ptr [di+4]
         push    ax
         push    word ptr [di+2]
-        call    _f03cc
+        call    _gfx_copy_rect
         add     sp,0ah
         cmp     byte ptr [di+1ah],0
         je      @@skip2
@@ -65,7 +65,7 @@ _f4eeb  proc    near
         push    bx
         push    dx
         push    ax
-        call    _f03a5
+        call    _gfx_vline
         add     sp,6
 @@skip2:
         pop     cx
@@ -80,10 +80,10 @@ _f4eeb  proc    near
 _f4eeb  endp
 _TEXT   ends
         public  _f4eeb
-        extrn   _f01ce:near
-        extrn   _f03cc:near
-        extrn   _f03a5:near
+        extrn   _gfx_color_select:near
+        extrn   _gfx_copy_rect:near
+        extrn   _gfx_vline:near
         extrn   _gb3ae:byte
-        extrn   _gbfba:word
-        extrn   _gb07c:word
+        extrn   _board_record_index:word
+        extrn   _resource_ptr_table:word
         end

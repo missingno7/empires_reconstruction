@@ -2,7 +2,7 @@
    the separately retained 11-byte tail immediately after this C extent. */
 extern char far *gbfc4;
 extern char far *a72b2[];
-extern void f03c9();
+extern void gfx_blit_bitmap();
 void fd386(dummy)
 int dummy;
 {
@@ -15,6 +15,6 @@ int dummy;
     asm db 0c4h,0b7h
     asm dw a72b2
     asm db 006h,056h,033h,0d2h,086h,0d5h,052h,0d1h,0e1h,051h
-    asm call near ptr f03c9
+    asm call near ptr gfx_blit_bitmap
     asm db 083h,0c4h,8,08bh,0f7h,083h,0c6h,0ch,059h,0e2h,0cah,05eh,05fh
 }

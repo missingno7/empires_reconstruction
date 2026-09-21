@@ -96,6 +96,10 @@ class TlinkStructureTests(unittest.TestCase):
             module = OmfReader().read((work / runtime['object']).read_bytes())
             publics = {public['name']: public['offset']
                        for public in module.publics_in('_TEXT')}
+            # The checked-in probe's RUNTIME_BLOCK object predates the
+            # symbol-names refresh (docs/current/symbol-names.json) that
+            # reverted several friendly aliases back to their raw
+            # address-based names; _runtime_block_end was untouched.
             self.assertEqual(publics['_f039c'], 0)
             self.assertEqual(publics['_f03d5'], 57)
             self.assertEqual(publics['_runtime_block_end'], 6571)

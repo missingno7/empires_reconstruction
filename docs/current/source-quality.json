@@ -11,15 +11,15 @@
       },
       {
         "level": "C_WITH_SYMBOLIC_INLINE_ASM",
-        "bytes": 5217,
-        "owners": 40,
-        "sources": 18
+        "bytes": 5993,
+        "owners": 46,
+        "sources": 20
       },
       {
         "level": "SYMBOLIC_ASM",
-        "bytes": 6788,
-        "owners": 63,
-        "sources": 31
+        "bytes": 6012,
+        "owners": 57,
+        "sources": 29
       },
       {
         "level": "MECHANICAL_C",
@@ -61,7 +61,7 @@
       },
       {
         "id": "M_6B1A_6B4A",
-        "source": "asm/M_6B1A_6B4A.ASM",
+        "source": "src/KEYBIOS.C",
         "members": [
           "F_6B1A",
           "F_6B4A"
@@ -208,7 +208,7 @@
       },
       {
         "id": "M_DDD9_DF98",
-        "source": "asm/MUSIC.ASM",
+        "source": "src/MUSIC.C",
         "members": [
           "F_DDD9",
           "F_DE7E",
@@ -223,11 +223,11 @@
   "format": "empires-source-quality-ranges-v1",
   "runtime": {
     "total_bytes": 6571,
-    "symbolic_instruction_bytes": 5839,
+    "symbolic_instruction_bytes": 5840,
     "typed_table_data_bytes": 662,
     "intentional_exact_encoding_bytes": 69,
-    "raw_unresolved_bytes": 1,
-    "symbolically_recovered_bytes": 5908,
+    "raw_unresolved_bytes": 0,
+    "symbolically_recovered_bytes": 5909,
     "cfg_covered_bytes": 5908,
     "closed_entry_roots": 18,
     "total_entry_roots": 20

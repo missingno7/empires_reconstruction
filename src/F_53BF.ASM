@@ -10,18 +10,18 @@ assume cs:_TEXT, ds:DGROUP
 
 public _f53bf
 extrn _g1778:word
-extrn _gbfcd:word
-extrn _fe54d:near
+extrn _display_mode:word
+extrn _opl_detect:near
 
 _f53bf proc near
     mov word ptr ds:_g1778,0
-    cmp word ptr ds:_gbfcd,3
+    cmp word ptr ds:_display_mode,3
     jne probe_mode
     mov word ptr ds:_g1778,1
     jmp short selected
 
 probe_mode:
-    call _fe54d
+    call _opl_detect
     or ax,ax
     jz bios_probe
     mov word ptr ds:_g1778,2

@@ -24,13 +24,13 @@ _f6b1a  proc    near
         cmp     al,44h
         jg      @@out
         mov     si,ax
-        call    _f792c
+        call    _menu_list_active
         or      ax,ax
         mov     ax,si
         jz      @@out
         sub     ax,013bh
         push    ax
-        call    _f7964
+        call    _menu_loop_run
         pop     ax
         mov     ax,si
         jmp     short @@out
@@ -42,6 +42,6 @@ _f6b1a  proc    near
 _f6b1a  endp
 _TEXT   ends
         public  _f6b1a
-        extrn   _f792c:near
-        extrn   _f7964:near
+        extrn   _menu_list_active:near
+        extrn   _menu_loop_run:near
         end

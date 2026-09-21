@@ -13,7 +13,7 @@ class MatchingCWave109Tests(unittest.TestCase):
         recipe = read_json(ROOT / 'recipes/c/matching-wave109.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_6B4A')
         self.assertEqual(owner['kind'], 'MATCHING_C')
-        self.assertEqual(owner['source'], 'src/F_6B4A.C')
+        self.assertEqual(owner['source'], 'src/KEYBIOS.C')
         self.assertEqual(owner['end'] - owner['start'], 28)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_6B4A')
         evidence = read_json(ROOT / 'docs/matching-wave109-evidence.json')

@@ -3,6 +3,7 @@
    sources of grouped module C_8A37_969D and keep their original ids. */
 
 #include "GC316.H"
+#include "VIDEO.H"
 
 /* puzzle_held_piece is declared here as plain char (see GC316.H's header
    comment); F_8BAB reinterprets it as the tile struct through this macro
@@ -37,18 +38,16 @@ extern void gfx_color_select(int n);
 extern void keyboard_chain_disable(void);
 extern int tick_div8(), resource_load_record();
 extern char far * strcpy();
-extern void f03cc();extern void f03c9();extern void f03b4();extern void f039f();
+extern void gfx_copy_rect();extern void gfx_blit_bitmap();extern void gfx_wipe_rect();extern void gfx_box();
 extern void resource_load_record_alloc();
 extern char far *gdc4,far *gdc8,far *ui_gfx_shadow_a;
 extern char gc136[][240];
 extern void free();
-extern int f03bd(), f03b7();
-extern void f03ba();
 extern unsigned far *g0dc8;
 extern void hud_prompt_message_draw();
 extern int hud_prompt_confirm_draw();
 extern char display_mode;
-extern void f03a5();extern void f03a2();extern void rect_border_draw();
+extern void gfx_bar();extern void rect_border_draw();
 
 /* ---- F_8A37 (original code at 0x8A37) ---- */
 /* F_8A37 -- clear the 4 x 6 slot grid.  Two statements, so two full address
@@ -195,7 +194,7 @@ int puzzle_run(void)
 
 
 /* ---- F_90A6 (original code at 0x90A6) ---- */
-puzzle_display_init(){int n,k;register int i,j;n=campaign_node_index();resource_load_record_alloc(tick_div8()*2+face7()+4201,&gdc4);resource_load_record(4159);f03c9(8,16,ui_gfx_shadow_a);f03b4(8,16,304,144,8,202);resource_load_record(tick_div8()*8+campaign_node_index()+face7()*4+4161);f03c9(0,344,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[0]+2);f03cc(140,44,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[1]+2,0);for(k=0;k<2;k++)strcpy(gc136[k],ui_gfx_shadow_a+((int *)ui_gfx_shadow_a+2)[k]+2);resource_load_record_alloc(4160,&gdc8);if(puzzle_solved_flag)f9440(1);else f9402(puzzle_held_piece!=-1);for(i=0;i<4;i++)for(j=0;j<6;j++)puzzle_draw_piece(puzzle_grid[i][j],i,j);for(i=0;i<n;i++)puzzle_draw_tray_piece(i);if(puzzle_solved_flag)puzzle_draw_tray_piece(n);f039f(8,16,304,144);}
+puzzle_display_init(){int n,k;register int i,j;n=campaign_node_index();resource_load_record_alloc(tick_div8()*2+face7()+4201,&gdc4);resource_load_record(4159);gfx_blit_bitmap(8,16,ui_gfx_shadow_a);gfx_wipe_rect(8,16,304,144,8,202);resource_load_record(tick_div8()*8+campaign_node_index()+face7()*4+4161);gfx_blit_bitmap(0,344,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[0]+2);gfx_copy_rect(140,44,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[1]+2,0);for(k=0;k<2;k++)strcpy(gc136[k],ui_gfx_shadow_a+((int *)ui_gfx_shadow_a+2)[k]+2);resource_load_record_alloc(4160,&gdc8);if(puzzle_solved_flag)f9440(1);else f9402(puzzle_held_piece!=-1);for(i=0;i<4;i++)for(j=0;j<6;j++)puzzle_draw_piece(puzzle_grid[i][j],i,j);for(i=0;i<n;i++)puzzle_draw_tray_piece(i);if(puzzle_solved_flag)puzzle_draw_tray_piece(n);gfx_box(8,16,304,144);}
 
 
 /* ---- F_9259 (original code at 0x9259) ---- */
@@ -219,11 +218,11 @@ void puzzle_free_resources()
 
 
 /* ---- F_929E (original code at 0x929E) ---- */
-struct R{char a,b;};puzzle_draw_piece(r,a,b) struct R r;int a,b;{int u,v;register int x,y;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}if(r.a==-1)f03b4(x,y+186,32,24,x,y);else{u=(r.a%3)*32;v=(r.a/3)*24+344;switch(r.b){case 0:f03b4(u,v,32,24,x,y);break;case 1:f03ba(u,v,32,24,x,y);break;case 2:f03bd(u,v,32,24,x,y);break;case 3:f03b7(u,v,32,24,x,y);break;}}}
+struct R{char a,b;};puzzle_draw_piece(r,a,b) struct R r;int a,b;{int u,v;register int x,y;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}if(r.a==-1)gfx_wipe_rect(x,y+186,32,24,x,y);else{u=(r.a%3)*32;v=(r.a/3)*24+344;switch(r.b){case 0:gfx_wipe_rect(u,v,32,24,x,y);break;case 1:gfx_copy_rect_flip_h(u,v,32,24,x,y);break;case 2:gfx_copy_rect_flip_hv(u,v,32,24,x,y);break;case 3:gfx_copy_rect_flip_v(u,v,32,24,x,y);break;}}}
 
 
 /* ---- F_93AA (original code at 0x93AA) ---- */
-puzzle_draw_tray_piece(i) register int i; {f03cc(0x108,27+(i<<5),gdc4+((unsigned *)gdc4)[i]+2,0);f039f(0x108,27+(i<<5),28,24);}
+puzzle_draw_tray_piece(i) register int i; {gfx_copy_rect(0x108,27+(i<<5),gdc4+((unsigned *)gdc4)[i]+2,0);gfx_box(0x108,27+(i<<5),28,24);}
 
 
 /* ---- F_9402 (original code at 0x9402) ---- */
@@ -235,15 +234,15 @@ f9440(i) int i; {hud_prompt_confirm_draw(gc136[i],0,11,1,1);}
 
 
 /* ---- F_9466 (original code at 0x9466) ---- */
-f9466(a,b,c,d) int a,b,c,d;{register int x,y;int u,v;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}switch(c){case 0:u=96;v=0x158;break;case 1:u=140;v=0x158;break;}if(!d)f03b4(x,y,42,30,u,v);else f03b4(u,v,42,30,x,y);}
+f9466(a,b,c,d) int a,b,c,d;{register int x,y;int u,v;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}switch(c){case 0:u=96;v=0x158;break;case 1:u=140;v=0x158;break;}if(!d)gfx_wipe_rect(x,y,42,30,u,v);else gfx_wipe_rect(u,v,42,30,x,y);}
 
 
 /* ---- F_950C (original code at 0x950C) ---- */
-f950c(a,b,c,d) int a,b,c,d;{int y,w,h,old,n1,n2,n3;register int i,x;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}w=32;h=24;old=f020f();n1=c?2:0;n2=d?5:0;n3=d?2:0;if(display_mode==2)gfx_color_select(3);else if(display_mode==3)gfx_color_select(0);else gfx_color_select(4);for(i=0;i<n1;i++){w+=2;h+=2;rect_border_draw(--x,--y,w,h);}gfx_color_select(8);for(i=0;i<n2;i++)f03a5(x+w+i,y+2,h);for(i=0;i<n3;i++)f03a2(x+5,y+h+i,w);gfx_color_select(old);}
+f950c(a,b,c,d) int a,b,c,d;{int y,w,h,old,n1,n2,n3;register int i,x;if(b<3){x=b*36+28;y=a*28+43;}else{b-=3;x=b*32+140;y=a*24+54;}w=32;h=24;old=f020f();n1=c?2:0;n2=d?5:0;n3=d?2:0;if(display_mode==2)gfx_color_select(3);else if(display_mode==3)gfx_color_select(0);else gfx_color_select(4);for(i=0;i<n1;i++){w+=2;h+=2;rect_border_draw(--x,--y,w,h);}gfx_color_select(8);for(i=0;i<n2;i++)gfx_vline(x+w+i,y+2,h);for(i=0;i<n3;i++)gfx_bar(x+5,y+h+i,w);gfx_color_select(old);}
 
 
 /* ---- F_963E (original code at 0x963E) ---- */
-puzzle_clear_cell(a,b) int a; register int b; {register int x; int y;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}f039f(x,y,42,30);}
+puzzle_clear_cell(a,b) int a; register int b; {register int x; int y;if(b<3){x=b*36+26;y=a*28+41;}else{b-=3;x=(b<<5)+138;y=a*24+52;}gfx_box(x,y,42,30);}
 
 
 /* ---- F_969D (original code at 0x969D) ---- */

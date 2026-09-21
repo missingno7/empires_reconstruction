@@ -5,6 +5,7 @@
 #include "DIALOG.H"
 #include "C470.H"
 #include "LAYOUT.H"
+#include "VIDEO.H"
 
 #define MK_FP(seg, ofs) ((void far *) (((unsigned long) (seg) << 16) | (unsigned) (ofs)))
 #define FP_SEG(fp) ((unsigned) ((unsigned long) (void far *) (fp) >> 16))
@@ -18,14 +19,9 @@ extern void sound_start(void), sound_stop_reset(), fc834(), sound_request_count_
 extern struct dialog dialog_select_restart_confirm;
 extern int music_enabled, sound_enabled;
 extern int current_slot, gc5b0, gc5b2[];
-extern void f03cc();
-extern void f03b4();
 extern int g22e0[], g22e8[];
 extern char far *ui_gfx_shadow_a;
 extern int resource_load_record(), player_select_draw_portraits();
-extern void f03c9();
-extern void f03a8();
-extern void f039f();
 extern void gfx_color_select(int n);
 extern int g96, g94, g98, g9a;
 extern char fad0e();
@@ -99,10 +95,10 @@ player_select_draw_portraits()
     for (i = 0; i < 4; i++) {
         x = g22e0[i];
         y = g22e8[i];
-        f03b4(x, y, 42, 32, i * 42, 400);
-        f03cc(x, y, ui_gfx_shadow_a, 0);
-        f03b4(x, y, 42, 32, i * 42, 432);
-        f03b4(i * 42, 400, 42, 32, x, y);
+        gfx_wipe_rect(x, y, 42, 32, i * 42, 400);
+        gfx_copy_rect(x, y, ui_gfx_shadow_a, 0);
+        gfx_wipe_rect(x, y, 42, 32, i * 42, 432);
+        gfx_wipe_rect(i * 42, 400, 42, 32, x, y);
     }
 }
 
@@ -114,17 +110,17 @@ player_select_draw_screen()
 
     g96 = 400;
     resource_load_record(26);
-    f03c9(0, 212, ui_gfx_shadow_a);
-    f03b4(0, 200, 320, 200, 0, 0);
+    gfx_blit_bitmap(0, 212, ui_gfx_shadow_a);
+    gfx_wipe_rect(0, 200, 320, 200, 0, 0);
     resource_load_record(27);
     g94 = 0;
-    f03cc(46, 12, ui_gfx_shadow_a, 0);
-    f03cc(262, 12, ui_gfx_shadow_a, 0);
+    gfx_copy_rect(46, 12, ui_gfx_shadow_a, 0);
+    gfx_copy_rect(262, 12, ui_gfx_shadow_a, 0);
     g94 = 16;
     resource_load_record(28);
     g98 = 3;
     g9a = 156;
-    f03cc(6, 17, ui_gfx_shadow_a, 0);
+    gfx_copy_rect(6, 17, ui_gfx_shadow_a, 0);
     g98 = 4;
     g9a = 155;
     for (i = 0; i < 4; i++) {
@@ -136,13 +132,13 @@ player_select_draw_screen()
         n += i;
         n += 3;
         resource_load_record(n + 26);
-        f03cc(g22e0[i], g22e8[i], ui_gfx_shadow_a, 0);
+        gfx_copy_rect(g22e0[i], g22e8[i], ui_gfx_shadow_a, 0);
     }
     resource_load_record(37);
     gfx_color_select(0);
-    f03a8(0, 188, 320, 12);
+    gfx_clear_rect(0, 188, 320, 12);
     player_select_draw_portraits();
-    f039f(0, 0, 320, 200);
+    gfx_box(0, 0, 320, 200);
 }
 
 
@@ -151,11 +147,11 @@ void player_select_load_flags(void) { register int flags,i; flags=fad0e(); gc5b2
 
 
 /* ---- F_D0D1 (original code at 0xD0D1) ---- */
-void player_select_clear_highlight(void) { register int x,y; x=g22e0[player_select_index]; y=g22e8[player_select_index]; f03b4(player_select_index*42,400,42,32,x,y); f039f(x,y,42,32); }
+void player_select_clear_highlight(void) { register int x,y; x=g22e0[player_select_index]; y=g22e8[player_select_index]; gfx_wipe_rect(player_select_index*42,400,42,32,x,y); gfx_box(x,y,42,32); }
 
 
 /* ---- F_D117 (original code at 0xD117) ---- */
-void player_select_draw_highlight(void) { register int x,y; x=g22e0[player_select_index]; y=g22e8[player_select_index]; f03b4(player_select_index*42,432,42,32,x,y); f039f(x,y,42,32); }
+void player_select_draw_highlight(void) { register int x,y; x=g22e0[player_select_index]; y=g22e8[player_select_index]; gfx_wipe_rect(player_select_index*42,432,42,32,x,y); gfx_box(x,y,42,32); }
 
 
 /* ---- F_D15D (original code at 0xD15D) ---- */
@@ -200,12 +196,12 @@ player_select_close_wipe()
     register int i;
 
     for (i = 0x98; i > 0; i--) {
-        f03b4(6, 13, 0x134, i, 6, 12);
-        f03b4(6, i + 0xd4, 0x134, 1, 6, i + 12);
-        f039f(6, 12, 0x134, i + 1);
+        gfx_wipe_rect(6, 13, 0x134, i, 6, 12);
+        gfx_wipe_rect(6, i + 0xd4, 0x134, 1, 6, i + 12);
+        gfx_box(6, 12, 0x134, i + 1);
     }
-    f03b4(6, 0xd4, 0x134, 1, 6, 12);
-    f039f(6, 12, 0x134, 1);
+    gfx_wipe_rect(6, 0xd4, 0x134, 1, 6, 12);
+    gfx_box(6, 12, 0x134, 1);
 }
 
 
@@ -223,9 +219,9 @@ int a;
     f7dfc();
     g1776 = 1;
     sound_request_count_dec();
-    f03b4(0, 0, 320, 16, 0, 200);
+    gfx_wipe_rect(0, 0, 320, 16, 0, 200);
     gfx_color_select(0);
-    f03a8(0, 0x184, 320, 12);
+    gfx_clear_rect(0, 0x184, 320, 12);
     slot_table[current_slot].resume_round = 0;
     keyboard_chain_enable();
     if (gc5b0 != 4) {

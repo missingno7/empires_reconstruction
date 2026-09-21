@@ -4,10 +4,10 @@
 
 extern int gb83, gb85, gb80, gb7e, g0b7e, gc0fa, gc0fc, gc0ec;
 extern char energy_meter, display_mode;
-extern void f03c9();
-extern void f039f();
-extern void f03a8(int a, int b, int c, int d);
-extern void f03b4();
+extern void gfx_blit_bitmap();
+extern void gfx_box();
+extern void gfx_clear_rect(int a, int b, int c, int d);
+extern void gfx_wipe_rect();
 extern void rect_border_draw();
 extern void gfx_color_select(int n);
 extern int f020f(void);
@@ -20,8 +20,8 @@ extern int tick_div8();
 extern int campaign_node_index();
 extern void resource_load_record_alloc();
 extern void tutorial_hint_dialog_show();
-extern void f03a2(int a, int b, int c);
-extern void f03a5(int a, int b, int c);
+extern void gfx_bar(int a, int b, int c);
+extern void gfx_vline(int a, int b, int c);
 
 /* ---- F_6FC3 (original code at 0x6FC3) ---- */
 hud_panel_clear() { gb83 = 0; }
@@ -49,13 +49,13 @@ void hud_panel_open(void)
     gc0fa = 0;
     gb83 = 1;
     gc0fc = 1;
-    f03c9(6, 0xa2, gc0ee + *(int far *) gc0ee + 2);
+    gfx_blit_bitmap(6, 0xa2, gc0ee + *(int far *) gc0ee + 2);
     hud_draw_meter();
     hud_tab_draw();
     energy_draw();
     f7417();
     f7443();
-    f039f(6, 0xa2, 0x134, 0x24);
+    gfx_box(6, 0xa2, 0x134, 0x24);
     hud_frame_draw();
     gc0fa = 1;
 }
@@ -71,24 +71,24 @@ void ui_overlay_show(void)
     switch (gb83) {
     case 1:
         gfx_color_select(gc0fc);
-        f03a8(14, 184, 102, 12);
-        f039f(14, 184, 102, 12);
+        gfx_clear_rect(14, 184, 102, 12);
+        gfx_box(14, 184, 102, 12);
         break;
     case 2:
-        f03b4(24, 388, 148, 10, 24, 188);
-        f039f(24, 188, 148, 10);
+        gfx_wipe_rect(24, 388, 148, 10, 24, 188);
+        gfx_box(24, 188, 148, 10);
         break;
     case 3:
         gfx_color_select(0);
-        f03a8(0, 188, 320, 12);
-        f039f(0, 188, 320, 12);
+        gfx_clear_rect(0, 188, 320, 12);
+        gfx_box(0, 188, 320, 12);
         break;
     case 5:
         gfx_color_select(0);
         rect_border_draw(6, 162, 308, 36);
         gfx_color_select(gc0fc);
-        f03a8(8, 163, 304, 34);
-        f039f(6, 162, 308, 36);
+        gfx_clear_rect(8, 163, 304, 34);
+        gfx_box(6, 162, 308, 36);
         break;
     }
     gfx_color_select(c);
@@ -110,8 +110,8 @@ void ui_overlay_hide(void)
         return;
     switch (gb83) {
     case 1:
-        f03c9(14, 0xb8, gc0ee + ((unsigned *)gc0ee)[2] + 2);
-        f039f(14, 0xb8, 0x66, 12);
+        gfx_blit_bitmap(14, 0xb8, gc0ee + ((unsigned *)gc0ee)[2] + 2);
+        gfx_box(14, 0xb8, 0x66, 12);
         break;
     case 2:
         hud_prompt_continue_draw();
@@ -149,11 +149,11 @@ void hud_draw_meter()
     x = 16;
     n = puzzle_piece_count() / 2;
     for (i = 0; i < n; i++) {
-        f03c9(x, 0xb0, gc0ee + ((unsigned *)gc0ee)[1] + 2);
+        gfx_blit_bitmap(x, 0xb0, gc0ee + ((unsigned *)gc0ee)[1] + 2);
         x += 18;
     }
     if (gc0fa)
-        f039f(16, 0xb0, 0x6a, 4);
+        gfx_box(16, 0xb0, 0x6a, 4);
 }
 
 
@@ -193,11 +193,11 @@ extern char *gc0ee;
 
 void hud_tab_draw()
 {
-    f03c9(0x98, 0xa6, gc0ee + ((unsigned *)(gc0ee + 6))[gb7e] + 2);
+    gfx_blit_bitmap(0x98, 0xa6, gc0ee + ((unsigned *)(gc0ee + 6))[gb7e] + 2);
     if (gb7e == 2)
-        f03c9(0xa6, 0xae, gc0ee + ((unsigned *)(gc0ee + 12))[gb80] + 2);
+        gfx_blit_bitmap(0xa6, 0xae, gc0ee + ((unsigned *)(gc0ee + 12))[gb80] + 2);
     if (gc0fa)
-        f039f(0x98, 0xa6, 0x2c, 0x1c);
+        gfx_box(0x98, 0xa6, 0x2c, 0x1c);
 }
 
 
@@ -263,12 +263,12 @@ void energy_draw()
     else
         gfx_color_select(2);
     if (x > 0)
-        f03a8(0xf4, 0xa4, x, 10);
+        gfx_clear_rect(0xf4, 0xa4, x, 10);
     gfx_color_select(8);
     if (x < 64)
-        f03a8(x + 0xf4, 0xa4, 64 - x, 10);
+        gfx_clear_rect(x + 0xf4, 0xa4, 64 - x, 10);
     if (gc0fa)
-        f039f(0xf4, 0xa4, 64, 10);
+        gfx_box(0xf4, 0xa4, 64, 10);
     gfx_color_select(c);
 }
 
@@ -277,14 +277,14 @@ void energy_draw()
 struct R7417 { char pad[22]; unsigned offsets[1]; };
 extern char far *gc0ee;
 
-void f7417(void) { f03c9(244,175,(char far *)gc0ee + ((struct R7417 far *)gc0ee)->offsets[tick_div8()] + 2); }
+void f7417(void) { gfx_blit_bitmap(244,175,(char far *)gc0ee + ((struct R7417 far *)gc0ee)->offsets[tick_div8()] + 2); }
 
 
 /* ---- F_7443 (original code at 0x7443) ---- */
 struct R7443 { char pad[32]; unsigned offsets[1]; };
 extern char far *gc0ee;
 
-void f7443(void) { register int i; i=campaign_node_index(); f03c9(244+i*16,186,(char far *)gc0ee + ((struct R7443 far *)gc0ee)->offsets[i] + 2); }
+void f7443(void) { register int i; i=campaign_node_index(); gfx_blit_bitmap(244+i*16,186,(char far *)gc0ee + ((struct R7443 far *)gc0ee)->offsets[i] + 2); }
 
 
 /* ---- F_747B (original code at 0x747B) ---- */
@@ -300,25 +300,25 @@ void hud_frame_draw(void)
 
     save = f020f();
     gfx_color_select(0);
-    f03a5(0, 0xd, 0xba);
-    f03a5(0x13f, 0xd, 0xba);
-    f03a2(0, 0xc7, 0x140);
-    f03a2(6, 0xf, 0x134);
-    f03a2(6, 0xa0, 0x134);
-    f03a5(6, 0x10, 0x90);
-    f03a5(7, 0x10, 0x90);
-    f03a5(0x138, 0x10, 0x90);
-    f03a5(0x139, 0x10, 0x90);
-    f03a5(6, 0xa2, 0x24);
-    f03a5(7, 0xa2, 0x24);
-    f03a5(0x138, 0xa2, 0x24);
-    f03a5(0x139, 0xa2, 0x24);
+    gfx_vline(0, 0xd, 0xba);
+    gfx_vline(0x13f, 0xd, 0xba);
+    gfx_bar(0, 0xc7, 0x140);
+    gfx_bar(6, 0xf, 0x134);
+    gfx_bar(6, 0xa0, 0x134);
+    gfx_vline(6, 0x10, 0x90);
+    gfx_vline(7, 0x10, 0x90);
+    gfx_vline(0x138, 0x10, 0x90);
+    gfx_vline(0x139, 0x10, 0x90);
+    gfx_vline(6, 0xa2, 0x24);
+    gfx_vline(7, 0xa2, 0x24);
+    gfx_vline(0x138, 0xa2, 0x24);
+    gfx_vline(0x139, 0xa2, 0x24);
     gfx_color_select(9);
-    f03a2(1, 0xd, 0x13e);
-    f03a2(1, 0xe, 0x13e);
-    f03a2(6, 0xa1, 0x134);
-    f03a2(1, 0xc6, 0x13e);
-    f03a8(1, 0xd, 5, 0xba);
-    f03a8(0x13a, 0xd, 5, 0xba);
+    gfx_bar(1, 0xd, 0x13e);
+    gfx_bar(1, 0xe, 0x13e);
+    gfx_bar(6, 0xa1, 0x134);
+    gfx_bar(1, 0xc6, 0x13e);
+    gfx_clear_rect(1, 0xd, 5, 0xba);
+    gfx_clear_rect(0x13a, 0xd, 5, 0xba);
     gfx_color_select(save);
 }

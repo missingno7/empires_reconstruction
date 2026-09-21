@@ -104,9 +104,9 @@ _f60a9  proc    near
         add     ax,148h
         push    ax
         push    bx
-        call    _f03b4
+        call    _gfx_wipe_rect
         add     word ptr [bp],0B8h
-        call    _f03b4
+        call    _gfx_wipe_rect
         pop     bx
         add     sp,0Ah
         pop     dx
@@ -118,7 +118,7 @@ _f60a9  proc    near
         push    di
         push    dx
         push    bx
-        call    _f03cc
+        call    _gfx_copy_rect
         pop     bx
         pop     dx
         add     sp,6
@@ -132,7 +132,7 @@ _f60a9  proc    near
         push    ax
         push    dx
         push    bx
-        call    _f03b4
+        call    _gfx_wipe_rect
         add     sp,0Ch
         pop     es
         pop     cx
@@ -151,8 +151,8 @@ _f60a9  proc    near
 _f60a9  endp
 _TEXT   ends
         public  _f60a9
-        extrn   _f03b4:near
-        extrn   _f03cc:near
+        extrn   _gfx_wipe_rect:near
+        extrn   _gfx_copy_rect:near
         extrn   _g8fe:word
         extrn   _ga20:word
         extrn   _gbfc8:dword

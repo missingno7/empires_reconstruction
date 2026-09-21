@@ -1,7 +1,7 @@
 ; F_1ECD -- "d()" in F_233E's cast animation: drains a queue of pending
 ; box() invalidation rectangles between the read pointer ui_gfx_blob and the
 ; write pointer rect_queue_write_ptr (both far pointers, 4 bytes each), calling
-; box(x,y,w,h) = f039f for each queued record, then resets the write
+; box(x,y,w,h) = gfx_box for each queued record, then resets the write
 ; pointer to the read pointer (queue emptied).  Record is 4 bytes:
 ; word1 lo=x/2 hi=y, word2 lo=w/2 hi=h -- census R6 (cld/lodsw/loop):
 ; not a C translation unit.
@@ -45,7 +45,7 @@ _f1ecd  proc    near
         shl     bx,1
         push    bx
         mov     ds,di
-        call    _f039f
+        call    _gfx_box
         add     sp,8
         pop     ds
         pop     cx
@@ -60,7 +60,7 @@ _f1ecd  proc    near
 _f1ecd  endp
 _TEXT   ends
         public  _f1ecd
-        extrn   _f039f:near
+        extrn   _gfx_box:near
         extrn   _rect_queue_write_ptr:word
         extrn   _g40c6:word
         extrn   _ui_gfx_blob:word

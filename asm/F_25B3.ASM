@@ -8,11 +8,11 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _f_25b3
+public _board_update_moving_records
 CALL_REL macro delta
     call $+delta
 endm
-_f_25b3 proc near
+_board_update_moving_records proc near
  push bp
  mov bp,sp
  sub sp,0ah
@@ -350,6 +350,6 @@ F25_done:
  mov sp,bp
  pop bp
  ret
-_f_25b3 endp
+_board_update_moving_records endp
 _TEXT ends
 end

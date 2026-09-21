@@ -1,11 +1,11 @@
 /* F_1F91 -- clamp a map span, then OR the bytes in its 26h-stride rows. */
-extern unsigned long gbfbc;
+extern unsigned long board_records;
 
 void f1f91(x,y,n)
 int x,y,n;
 {
     asm push ds
-    asm lds si,dword ptr gbfbc
+    asm lds si,dword ptr board_records
     asm mov ax,[bp+4]
     asm cmp ax,137h
     asm jg L_xhi

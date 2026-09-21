@@ -1,26 +1,5 @@
 {
-  "tasks": [
-    {
-      "id": "RUNTIME_BLOCK:19A2-19A3",
-      "priority": 1,
-      "kind": "SYMBOLIC_ASM_RECOVERY",
-      "difficulty": "SUPERVISOR",
-      "risk": "HIGH",
-      "range": [
-        6562,
-        6563
-      ],
-      "bytes": 1,
-      "source": "asm/RUNTIME_BLOCK.ASM",
-      "known_roots": [],
-      "dependencies": [],
-      "verification_command": "python tools/check_candidate.py RUNTIME_BLOCK:19A2-19A3",
-      "acceptance_command": "python tools/check_candidate.py RUNTIME_BLOCK:19A2-19A3 --promote",
-      "acceptance_required": true,
-      "card": "docs/current/candidates/RUNTIME_BLOCK_19A2-19A3.json",
-      "promotion_blocker": "Unknown code/data boundary"
-    }
-  ],
+  "tasks": [],
   "failure_memory": {
     "RUNTIME_BLOCK:089F-08F3": {
       "status": "RESOLVED",

@@ -6,9 +6,9 @@ _DATA ends
 _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
-public _f_cc17
+public _options_toggle_sound
 public _f_cc17_end
-_f_cc17:
+_options_toggle_sound:
  push si
  mov ax,word ptr ds:[13edh]
  mov dx,1bh

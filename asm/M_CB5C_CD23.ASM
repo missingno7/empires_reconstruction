@@ -7,13 +7,13 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 assume cs:_TEXT, ds:DGROUP
-public _f_cb5c, _f_cb5c_end, _f_cbbb, _f_cbbb_end, _f_cc17, _f_cc17_end, _f_cc6b, _f_cd23
+public _options_toggle_option, _f_cb5c_end, _options_toggle_music, _f_cbbb_end, _options_toggle_sound, _f_cc17_end, _slot_backup_list_show, _slot_list_show
 
 ; F_CB5C -- update the selected table row and clear its pending marker.
 ; This is the companion to F_CBBB.  It has no OMF fixups: helper and state
 ; relationships are encoded as the original direct same-segment/DGROUP forms.
 
-_f_cb5c:
+_options_toggle_option:
     push si
     mov ax, word ptr ds:[13edh]
     mov dx, 1bh
@@ -66,7 +66,7 @@ _f_cb5c_end:
 ; same-segment expressions, while its state/table references are typed direct
 ; DGROUP operands.
 
-_f_cbbb:
+_options_toggle_music:
     push si
     mov ax, word ptr ds:[13edh]
     mov dx, 1bh
@@ -115,7 +115,7 @@ _f_cbbb_end:
     ret
 
 ; F_CC17 -- submit the selected row's 0Dh table field.
-_f_cc17:
+_options_toggle_sound:
  push si
  mov ax,word ptr ds:[13edh]
  mov dx,1bh
@@ -164,15 +164,15 @@ _f_cc17_end:
 ; The original object contains no OMF call fixups.  Code-address constants
 ; therefore intentionally preserve its non-relocating near-call topology.
 
-f8480 equ 8680h
+dialog_draw equ 8680h
 record_table equ 103ceh
 menu_draw equ 105a2h
-f6cf0 equ 6ef0h
-fa28d equ 0a48dh
+dialog_line_height_get equ 6ef0h
+slot_row_draw equ 0a48dh
 f6b1a equ 6d1ah
-f8453 equ 8653h
+dialog_restore_screen equ 8653h
 
-_f_cc6b:
+_slot_backup_list_show:
     push bp
     mov bp, sp
     sub sp, 2
@@ -272,7 +272,7 @@ CC6B_done:
 ; therefore intentionally preserve its non-relocating near-call topology.
 
 
-_f_cd23:
+_slot_list_show:
     push bp
     mov bp, sp
     sub sp, 2

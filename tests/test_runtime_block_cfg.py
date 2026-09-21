@@ -13,8 +13,8 @@ class RuntimeBlockCfgTests(unittest.TestCase):
                          ROOT / 'src/RUNTIME_BLOCK.C')
         self.assertEqual(report['bytes'], 6571)
         self.assertEqual(report['root_count'], 20)
-        self.assertEqual(report['roots'][0]['aliases'], ['_f039c'])
-        self.assertEqual(report['roots'][1]['aliases'], ['_f039f', '_box'])
+        self.assertEqual(report['roots'][0]['aliases'], ['_runtime_base'])
+        self.assertEqual(report['roots'][1]['aliases'], ['_gfx_box', '_box'])
         self.assertEqual(report['roots'][-1]['target_offset'], 6511)
         self.assertTrue(all(60 <= item['target_offset'] < 6571 for item in report['roots']))
 

@@ -187,12 +187,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_2AE2 fixup"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
@@ -218,7 +218,7 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"

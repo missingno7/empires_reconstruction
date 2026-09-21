@@ -1,5 +1,5 @@
 /* F_4AA8 -- clip a rectangle and hand it to the wipe routine. */
-extern void f03b4();
+extern void gfx_wipe_rect();
 
 void f4aa8(x1, y1, w, h)
 int x1, y1, w, h;
@@ -43,7 +43,7 @@ L_y2ok: asm sub cx,ax
     asm add bx,0B8h
     asm push bx
     asm push ax
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm add sp,0Ch
 L_out: ;
 }

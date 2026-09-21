@@ -1,77 +1,77 @@
 /* RUNTIME_BLOCK -- exact startup/runtime dispatch block. */
-void f039c()
+void runtime_base()
 {
     asm db 0e9h,091h,001h
-    asm public _f039f
-    asm _f039f label near
+    asm public _gfx_box
+    asm _gfx_box label near
     asm public _box
     asm _box label near
     asm db 0e9h,094h,002h
-    asm public _f03a2
-    asm _f03a2 label near
+    asm public _gfx_bar
+    asm _gfx_bar label near
     asm public _bar
     asm _bar label near
     asm db 0e9h,036h,00fh
-    asm public _f03a5
-    asm _f03a5 label near
+    asm public _gfx_vline
+    asm _gfx_vline label near
     asm db 0e9h,07ch,00fh
-    asm public _f03a8
-    asm _f03a8 label near
+    asm public _gfx_clear_rect
+    asm _gfx_clear_rect label near
     asm public _clear
     asm _clear label near
     asm db 0e9h,0b2h,00fh
-    asm public _f03ab
-    asm _f03ab label near
+    asm public _gfx_fill_rect
+    asm _gfx_fill_rect label near
     asm public _fill
     asm _fill label near
     asm db 0e9h,026h,010h
-    asm public _f03ae
-    asm _f03ae label near
+    asm public _gfx_save_rect
+    asm _gfx_save_rect label near
     asm db 0e9h,092h,010h
-    asm public _f03b1
-    asm _f03b1 label near
+    asm public _gfx_restore_rect
+    asm _gfx_restore_rect label near
     asm db 0e9h,0d6h,010h
-    asm public _f03b4
-    asm _f03b4 label near
+    asm public _gfx_wipe_rect
+    asm _gfx_wipe_rect label near
     asm public _wipe
     asm _wipe label near
     asm db 0e9h,008h,011h
-    asm public _f03b7
-    asm _f03b7 label near
+    asm public _gfx_copy_rect_flip_v
+    asm _gfx_copy_rect_flip_v label near
     asm db 0e9h,07eh,011h
-    asm public _f03ba
-    asm _f03ba label near
+    asm public _gfx_copy_rect_flip_h
+    asm _gfx_copy_rect_flip_h label near
     asm db 0e9h,0d4h,011h
-    asm public _f03bd
-    asm _f03bd label near
+    asm public _gfx_copy_rect_flip_hv
+    asm _gfx_copy_rect_flip_hv label near
     asm db 0e9h,02ch,012h
-    asm public _f03c0
-    asm _f03c0 label near
+    asm public _gfx_copy_rect_split
+    asm _gfx_copy_rect_split label near
     asm db 0e9h,093h,012h
-    asm public _f03c3
-    asm _f03c3 label near
+    asm public _gfx_copy_rect_split_flip_v
+    asm _gfx_copy_rect_split_flip_v label near
     asm db 0e9h,031h,013h
-    asm public _f03c6
-    asm _f03c6 label near
+    asm public _gfx_draw_char
+    asm _gfx_draw_char label near
     asm db 0e9h,0dbh,013h
-    asm public _f03c9
-    asm _f03c9 label near
+    asm public _gfx_blit_bitmap
+    asm _gfx_blit_bitmap label near
     asm public _blit
     asm _blit label near
     asm db 0e9h,064h,015h
-    asm public _f03cc
-    asm _f03cc label near
+    asm public _gfx_copy_rect
+    asm _gfx_copy_rect label near
     asm public _copy
     asm _copy label near
     asm db 0e9h,0c9h,016h
-    asm public _f03cf
-    asm _f03cf label near
+    asm public _gfx_blit_image
+    asm _gfx_blit_image label near
     asm db 0e9h,02ah,018h
-    asm public _f03d2
-    asm _f03d2 label near
+    asm public _gfx_set_pixel
+    asm _gfx_set_pixel label near
     asm db 0e9h,0f5h,018h
-    asm public _f03d5
-    asm _f03d5 label near
+    asm public _gfx_get_pixel
+    asm _gfx_get_pixel label near
     asm db 0e9h,033h,019h
     asm db 000h,000h,03dh,005h,000h,000h,0f4h,005h,030h,006h,000h,000h
     asm db 043h,006h,000h,000h,061h,00bh,0d7h,00bh,0e3h,0ffh,0e3h,0ffh,0d4h,0ffh,0c5h,0ffh,0b6h,0ffh,0a7h,0ffh,098h,0ffh,089h,0ffh

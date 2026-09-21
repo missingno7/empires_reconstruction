@@ -16,7 +16,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_fd85f  proc    near
+_record_table_delete_compact  proc    near
         push    bp
         mov     bp,sp
         push    si
@@ -48,8 +48,8 @@ _fd85f  proc    near
         pop     si
         pop     bp
         ret
-_fd85f  endp
+_record_table_delete_compact  endp
 _TEXT   ends
-        public  _fd85f
+        public  _record_table_delete_compact
         extrn   _g2f30:byte
         end

@@ -10,7 +10,7 @@ _DATA ends
 
 _BSS segment word public 'BSS'
 
-    extrn _fe1f2:near
+    extrn _voice_write_level:near
 
     extrn _fc898:near
 
@@ -20,12 +20,12 @@ DGROUP group _DATA,_BSS
 
 assume cs:_TEXT, ds:DGROUP
 
-public _f_dad7, _f_dad7_end, _f_db17, _f_db35
+public _voice_channel_set_gate, _f_dad7_end, _voice_channel_level_refresh, _voice_channel_apply_freq
 
 
 
 ; F_DAD7 -- clamp a byte selection and submit its associated table entry.
-_f_dad7:
+_voice_channel_set_gate:
  push bp
  mov bp,sp
  push si
@@ -67,7 +67,7 @@ _f_dad7_end:
 
 
 
-_f_db17 proc near
+_voice_channel_level_refresh proc near
     push bp
     mov bp,sp
     push si
@@ -80,12 +80,12 @@ _f_db17 proc near
     cbw
     mov si,ax
     push si
-    call _fe1f2
+    call _voice_write_level
     pop cx
     pop si
     pop bp
     ret
-_f_db17 endp
+_voice_channel_level_refresh endp
 
 ; Original entry F_DB35 -- convert a signed state-table entry into a bar call.
 ;
@@ -95,7 +95,7 @@ _f_db17 endp
 
 
 
-_f_db35 proc near
+_voice_channel_apply_freq proc near
     push bp
     mov bp,sp
     push si
@@ -119,7 +119,7 @@ _f_db35 proc near
     pop si
     pop bp
     ret
-_f_db35 endp
+_voice_channel_apply_freq endp
 
 _TEXT ends
 

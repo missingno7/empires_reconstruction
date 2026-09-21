@@ -7,8 +7,8 @@
 extern int score_panel_x, score_panel_y, gc352, gc354, gc359, gc35b, gc35d;
 #include "LAYOUT.H"
 extern char far *ui_gfx_blob;
-extern void roundend_wait(), dialog_energy_lost_show(), f039f();
-extern int resource_load_record(), energy_adjust();extern void f03b4();
+extern void roundend_wait(), dialog_energy_lost_show(), gfx_box();
+extern int resource_load_record(), energy_adjust();extern void gfx_wipe_rect();
 extern void f7747();
 extern void score_set_position();
 extern void energy_set(int state);
@@ -38,7 +38,7 @@ int anim_frame_advance(int n)
     y = score_panel_y;
     score_set_position(gc352);
     gc354 = 1;
-    f03b4(score_panel_x, score_panel_y, 0x28, 0x1d, x, y - 0xb8);
-    f039f(x, y - 0xb8, 0x28, 0x1d);
+    gfx_wipe_rect(score_panel_x, score_panel_y, 0x28, 0x1d, x, y - 0xb8);
+    gfx_box(x, y - 0xb8, 0x28, 0x1d);
     return gc35b;
 }

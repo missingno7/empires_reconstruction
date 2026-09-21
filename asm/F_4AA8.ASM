@@ -65,7 +65,7 @@ _f4aa8  proc    near
         add     bx,0B8h
         push    bx
         push    ax
-        call    _f03b4
+        call    _gfx_wipe_rect
         add     sp,0Ch
 @@out:
         pop     bp
@@ -73,5 +73,5 @@ _f4aa8  proc    near
 _f4aa8  endp
 _TEXT   ends
         public  _f4aa8
-        extrn   _f03b4:near
+        extrn   _gfx_wipe_rect:near
         end

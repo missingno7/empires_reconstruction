@@ -1,0 +1,4097 @@
+{
+ "format": "empires-relocation-topology-v1",
+ "rule": "The EXE's 106 relocations are written by TLINK in the order of each object's FIXUPP subrecords, object by object in link order. Turbo C's native object writer emits FIXUPP subrecords in DESCENDING source-offset order; the generated DATA object (tools/data_omf.py) emits descending on purpose; TASM-produced objects -- hand-written assembler modules, Turbo C units compiled with '-B', and C units containing an inline `asm` statement (all of which restart the source through the assembler) -- emit ASCENDING. MUSIC (M_DDD9_DF98) is historically descending, so its original was a pure Turbo C unit; the TASM module reproduces it with descending ORG contributions.",
+ "exe": "assets\\AEPROG.EXE",
+ "plan": "layout\\production-plan.json",
+ "total_exe_relocations": 106,
+ "modules": [
+  {
+   "module": "C_01BC_0355",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/VIDEO.C"
+   ],
+   "relocation_count": 1,
+   "relocation_offsets": [
+    687
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/VIDEO.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "RUNTIME_BLOCK",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/RUNTIME_BLOCK.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1D47",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENURES.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1EA5",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/NODEIDX.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1EB4",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/TICKDIV.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1EC0",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/VALPAR.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1ECD",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_1ECD.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1F17",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SHBMPHIT.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/SHBMPHIT.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_1F91",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_1F91.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_200F_2A70",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/BOARDDRW.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_2AE2",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-B"
+   ],
+   "source": "src/BRDPAINT.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_31C4_3986",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/BOARDSCR.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/BOARDSCR.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_3A75",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-B"
+   ],
+   "source": "src/TURNLOOP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4517",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/BRDTERR.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_462E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENUBKDP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4713",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-B"
+   ],
+   "source": "src/LVLDRV.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_48BE",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/BLITPAT.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_490D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/BOOTSEED.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/BOOTSEED.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4943",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/CAMPADV.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_49E3_4A93",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/GAME.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4AA8",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_4AA8.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4B0C",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_4B0C.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4E9F",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_4E9F.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4EEB",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "src/F_4EEB.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4F63",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/DOSWRT2.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_4F96",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-B"
+   ],
+   "source": "src/CMDLINE.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_50C1",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/BIOSEQP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/BIOSEQP.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_50D2_53BF",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_50D2_53BF.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_520A",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-B"
+   ],
+   "source": "src/VIDMODE.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_5321_56C6",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/INTRO.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_5A3B_6021",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/HITTEST.C"
+   ],
+   "relocation_count": 1,
+   "relocation_offsets": [
+    23705
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6036",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_6036.ASM",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    24683
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_60A9",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_60A9.ASM",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    24867
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6181",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_6181.ASM",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    25049
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_622C_625D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/CRITERR.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_6266_68AA",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/RESOURCE.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/RESOURCE.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_68CF",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SNDFXTGL.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_695E_697D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/KEYIRQ.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_6990_6997",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/KEYCHAIN.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_699E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-B"
+   ],
+   "source": "src/KEYIRQH.C",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    27048
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_6B1A_6B4A",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/KEYBIOS.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/KEYBIOS.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6B66",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/KEYBUFDR.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/KEYBUFDR.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6B74",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/KEYCHACT.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6B7A",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/TIMERINS.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/TIMERINS.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6BAC",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/TIMERRST.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/TIMERRST.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6BCF",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_6BCF.ASM",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    27609
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_6C26_6C87",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/TIMER.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6CA6",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SPRSHSEL.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/SPRSHSEL.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6CEA",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SPRSHIDX.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6CF0",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/DLGLNHT.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6CF6",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/TXTLNWID.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/TXTLNWID.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6D3C",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/TXTWRAP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_6D86_6DCC",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_6D86_6DCC.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6EFF",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_6EFF.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_6F4B",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_6F4B.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_6FC3_747B",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/HUD.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_75F3_7856",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/PROMPTS.C"
+   ],
+   "relocation_count": 3,
+   "relocation_offsets": [
+    30627,
+    30381,
+    30219
+   ],
+   "observed_direction": "descending",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_7856",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/HUDPMSG.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_78C3",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SPRPOOLD.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_791E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENULEN.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_7925",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENULDIS.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_792C",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENULACT.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_7932",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENULSRC.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_7964",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENULOOP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_7BFC",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MENULIST.C",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    31869
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_7D91_880A",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/DIALOG.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_8A37_969D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/PUZZLE.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_984C_9871",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/MARKERS.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_988F_98CB",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MRKCELL.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_9908",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SCOREPNL.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_9962_99E2",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/SCORE.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_9A0E_9D79",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/ROUNDEND.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_9D8E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/DLGELOST.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_9DCC",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/ANIMFRAM.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_9EC3",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_9EC3.ASM",
+   "relocation_count": 2,
+   "relocation_offsets": [
+    40700,
+    40712
+   ],
+   "observed_direction": "ascending",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_9F40",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/ANIMSTEP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_A004",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/FSTPCPY.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_A036",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/STRCATF.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_A09D_A24E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/SLOTS.C"
+   ],
+   "relocation_count": 1,
+   "relocation_offsets": [
+    41597
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_A28D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SLOTROW.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_A33F_AD0E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/SLOTMENU.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "RELOC_F_AD25_F_ADCF",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/SLOTCOPY.C"
+   ],
+   "relocation_count": 6,
+   "relocation_offsets": [
+    44650,
+    44615,
+    44558,
+    44480,
+    44445,
+    44388
+   ],
+   "observed_direction": "descending",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_AF45_C15E",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/LEVEL.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_C1A0_C232",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_C1A0_C232.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_C27D_C567",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_C27D_C567.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_C59A",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SNDSCL4.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/SNDSCL4.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_C5A8_C5C6",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_C5A8_C5C6.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_C5D1_C706",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_C5D1_C706.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_C755",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "src/F_C755.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_C77A_C898",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_C77A_C898.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_C8D4",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "src/F_C8D4.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_C8E2",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-k",
+    "-B"
+   ],
+   "source": "src/SNDTICK.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_C914",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_C914.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_C988",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SNDNOTE.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/SNDNOTE.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_C9A4_CA91",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_C9A4_CA91.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_CA9B",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_CA9B.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_CAD0",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-k",
+    "-B"
+   ],
+   "source": "src/SPKON.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_CADB",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-k",
+    "-B"
+   ],
+   "source": "src/SPKOFF.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE with -B (restarts through the assembler)",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_CAE6",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/PITDIV2.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/PITDIV2.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_CAF1",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/F_CAF1.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_CB48",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-",
+    "-k"
+   ],
+   "source": "src/SNDSTOP.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_CB5C_CD23",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/OPTIONS.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_CDDD_D344",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/PLAYERSL.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_D386_D3CF",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_D386_D3CF.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D3DA",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/DLGPICK.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D45C",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/F_D45C.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D471",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/F_D471.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D487",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/F_D487.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D49D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/F_D49D.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D4B3",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/HINTDLG.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D555",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/PLRLDPUB.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D593",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SNDSTART.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D5A6",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SNDRQDEC.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D5B3",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/SNDRQCLR.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D5BA",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/RESCLOAD.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D5F9",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/RESCRST.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_D60C",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MUSRESUM.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_D61C_D79C",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_D61C_D79C.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_D818_D825",
+   "tool": "TASM.EXE",
+   "flags": [
+    "/mx"
+   ],
+   "source": "asm/M_D818_D825.ASM",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "tool is TASM.EXE",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_D85F_D8F0",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/RECTTAB.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "ascending",
+   "prediction_reason": "TCC.EXE source src/RECTTAB.C contains an `asm` statement",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_D99B_DA49",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/OPLINIT.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "F_DA66",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/VOXSLOAD.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_DAD7_DB35",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/VOXCHAN.C",
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_DB60_DDC7",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/OPLVOICE.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "M_DDD9_DF98",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/MUSIC.C",
+   "relocation_count": 10,
+   "relocation_offsets": [
+    57344,
+    57266,
+    57044,
+    57020,
+    56938,
+    56913,
+    56891,
+    56872,
+    56859,
+    56837
+   ],
+   "observed_direction": "descending",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "C_E095_E54D",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": [
+    "src/OPLREG.C"
+   ],
+   "relocation_count": 0,
+   "relocation_offsets": [],
+   "observed_direction": "none",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  },
+  {
+   "module": "LIB_RAND",
+   "tool": "TCC.EXE",
+   "flags": [
+    "-c",
+    "-mc",
+    "-1-",
+    "-f-",
+    "-N-"
+   ],
+   "source": "src/LIB_RAND.C",
+   "relocation_count": 1,
+   "relocation_offsets": [
+    63775
+   ],
+   "observed_direction": "single",
+   "predicted_direction": "descending",
+   "prediction_reason": "TCC.EXE, no -B, no inline asm",
+   "category": "production-module",
+   "mismatch": false
+  }
+ ],
+ "generated_and_library_objects": [
+  {
+   "object": "D0000.OBJ",
+   "id": "DATA_00FCC2",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0001.OBJ",
+   "id": "PALETTE_DAC6_011E",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0002.OBJ",
+   "id": "PALETTE_DAC6_041E",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0003.OBJ",
+   "id": "DATA_01034E_ALIGNMENT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0004.OBJ",
+   "id": "DATA_010354_CONTROL_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0005.OBJ",
+   "id": "DATA_01037A_POINTER_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0006.OBJ",
+   "id": "DATA_0103B2_POINTER_ATTRIBUTES",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0007.OBJ",
+   "id": "DATA_0103CE_RECORDS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0008.OBJ",
+   "id": "DATA_010486_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0009.OBJ",
+   "id": "DATA_010489_GFX_ERROR",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0010.OBJ",
+   "id": "DATA_0104D8_MEMORY_ERROR",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0011.OBJ",
+   "id": "DATA_01052B_ZERO_PREFIX",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0012.OBJ",
+   "id": "DATA_010532_CONTROL_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0013.OBJ",
+   "id": "DATA_010652_AE000_PATH",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0014.OBJ",
+   "id": "DATA_01065F_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0015.OBJ",
+   "id": "DATA_010662_AE001_PATH",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0016.OBJ",
+   "id": "DATA_01066F_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0017.OBJ",
+   "id": "DATA_010672_AE002_PATH",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0018.OBJ",
+   "id": "DATA_01067F_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0019.OBJ",
+   "id": "DATA_01067F_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0020.OBJ",
+   "id": "DATA_01068E_PROGRAM_DISK",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0021.OBJ",
+   "id": "DATA_0106AE_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0022.OBJ",
+   "id": "DATA_0106B1_ARTIFACTS_DISK",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0023.OBJ",
+   "id": "DATA_0106D3_ZERO_RUN",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0024.OBJ",
+   "id": "DATA_0106F7_WRITE_PROTECTED",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0025.OBJ",
+   "id": "DATA_01075A_FILE_ERROR_CONTROL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0026.OBJ",
+   "id": "DATA_01076E_ZERO_SUFFIX",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0027.OBJ",
+   "id": "DATA_010772_RESOURCE_ERROR",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0028.OBJ",
+   "id": "DATA_010798_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0029.OBJ",
+   "id": "DATA_0107B0_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0030.OBJ",
+   "id": "DATA_0107B6_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0031.OBJ",
+   "id": "C_DATA_75F3",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0032.OBJ",
+   "id": "C_DATA_7695",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0033.OBJ",
+   "id": "C_DATA_778B",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0034.OBJ",
+   "id": "DATA_0107E2_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0035.OBJ",
+   "id": "DATA_0107EA_HELP_TITLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0036.OBJ",
+   "id": "DATA_0107F4_HELP_TOPICS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0037.OBJ",
+   "id": "DATA_010848_FILE_F2_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0038.OBJ",
+   "id": "DATA_010848_FILE_F2_TEXT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0039.OBJ",
+   "id": "DATA_01085A_MENU_TOPICS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0040.OBJ",
+   "id": "DATA_0108A7_MENU_TABLE_A",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0041.OBJ",
+   "id": "DATA_0108A7_MENU_HALL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0042.OBJ",
+   "id": "DATA_0108A7_MENU_TABLE_B",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0043.OBJ",
+   "id": "DATA_0108A7_MENU_OPTIONS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0044.OBJ",
+   "id": "DATA_0108FE_OPTION_TOPICS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0045.OBJ",
+   "id": "DATA_010924_MENU_DESCRIPTORS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0046.OBJ",
+   "id": "DATA_0109AF_GO_BACK",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0047.OBJ",
+   "id": "DATA_0109BB_CONTROL_CODES",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0048.OBJ",
+   "id": "DATA_0109BD_CONTINUE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0049.OBJ",
+   "id": "DATA_0109CA_BACK_PAGE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0050.OBJ",
+   "id": "DATA_0109D9_NEXT_PAGE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0051.OBJ",
+   "id": "DATA_0109E7_DONE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0052.OBJ",
+   "id": "DATA_0109EC_YES",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0053.OBJ",
+   "id": "DATA_0109F0_NO",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0054.OBJ",
+   "id": "DATA_0109F3_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0055.OBJ",
+   "id": "DATA_0DCC",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0056.OBJ",
+   "id": "TEXT_118C",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0057.OBJ",
+   "id": "DATA_125D",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0058.OBJ",
+   "id": "DATA_1271",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0059.OBJ",
+   "id": "DATA_10ED1",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0060.OBJ",
+   "id": "PAD_10EDD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0061.OBJ",
+   "id": "DATA_10EE0",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0062.OBJ",
+   "id": "TEXT_12D0",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0063.OBJ",
+   "id": "TEXT_12D9",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0064.OBJ",
+   "id": "DATA_010F15_DIALOG_REMOVE_INTRO",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0065.OBJ",
+   "id": "DATA_010F86_DIALOG_REMOVE_SUFFIX",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0066.OBJ",
+   "id": "DATA_010FA5_RECORDS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0067.OBJ",
+   "id": "DATA_01101D_TRAILER",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0068.OBJ",
+   "id": "DATA_0101021_PLAYER_NAME_TITLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0069.OBJ",
+   "id": "DATA_011037_PLAYER_NAME_INSTRUCTION",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0070.OBJ",
+   "id": "DATA_010106A_PLAYER_LIST_FULL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0071.OBJ",
+   "id": "DATA_01010B2_EXIT_PROGRAM_TITLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0072.OBJ",
+   "id": "DATA_01010BF_EXIT_PROGRAM_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0073.OBJ",
+   "id": "DATA_010110E_REMOVE_PLAYER_TITLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0074.OBJ",
+   "id": "DATA_0101125_DIFFICULTY_TITLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0075.OBJ",
+   "id": "DATA_0101140_DIFFICULTY_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0076.OBJ",
+   "id": "DATA_0101220_ENERGY_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0077.OBJ",
+   "id": "C_DATA_A28D",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0078.OBJ",
+   "id": "TEXT_1660",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0079.OBJ",
+   "id": "DATA_01129F_LEVEL_CONTROL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0080.OBJ",
+   "id": "DATA_0112D6_LEVEL_COMPLETE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0081.OBJ",
+   "id": "DATA_01136D_ARTIFACTS_REMAIN",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0082.OBJ",
+   "id": "DATA_01138B_ZERO_PREFIX",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0083.OBJ",
+   "id": "DATA_01139E_SOUND",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0084.OBJ",
+   "id": "DATA_011AC6_NEW_USER_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0085.OBJ",
+   "id": "DATA_011B42_PLAYER_HEADER",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0086.OBJ",
+   "id": "DATA_011B6F_PLAYER_CAVERNS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0087.OBJ",
+   "id": "DATA_011B9A_RETURN_MAP_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0088.OBJ",
+   "id": "DATA_011C6E_START_GAME_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0089.OBJ",
+   "id": "DATA_011CE9_EXIT_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0090.OBJ",
+   "id": "DATA_011D90_RECORDS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0091.OBJ",
+   "id": "DATA_011E30_MUSIC",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0092.OBJ",
+   "id": "DATA_011E36_MUSIC_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0093.OBJ",
+   "id": "DATA_011E51_SOUND_EFFECTS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0094.OBJ",
+   "id": "DATA_011E5F_SOUND_PROMPT",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0095.OBJ",
+   "id": "DATA_011E82_NEW_USER_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0096.OBJ",
+   "id": "DATA_011E94_RETURN_MAP_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0097.OBJ",
+   "id": "DATA_011EA7_START_GAME_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0098.OBJ",
+   "id": "DATA_011EB6_HALL_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0099.OBJ",
+   "id": "DATA_011EC3_PLAYERS_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0100.OBJ",
+   "id": "DATA_011ED3_EXIT_SAVE_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0101.OBJ",
+   "id": "DATA_011EE1_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0102.OBJ",
+   "id": "DATA_011F01_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0103.OBJ",
+   "id": "TEXT_22D2",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0104.OBJ",
+   "id": "DATA_011F10_TABLE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0105.OBJ",
+   "id": "DATA_011F20_PAD",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0106.OBJ",
+   "id": "DATA_011F25_KEYBOARD_CONTROL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0107.OBJ",
+   "id": "DATA_011F32_KEYBOARD_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0108.OBJ",
+   "id": "DATA_011F45_PLAYING_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0109.OBJ",
+   "id": "DATA_011F56_OBSTACLES_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0110.OBJ",
+   "id": "DATA_011F6B_PUZZLES_LABEL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0111.OBJ",
+   "id": "DATA_011F86_USER_CONTROL",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0112.OBJ",
+   "id": "DATA_011F9A_NEW_USER_MESSAGE",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0113.OBJ",
+   "id": "DATA_011FAB_ZERO_PREFIX",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0114.OBJ",
+   "id": "DATA_011FAE_CACHED_INDEX",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0115.OBJ",
+   "id": "DATA_011FB0_ZERO_REGION",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "D0116.OBJ",
+   "id": "DATA_012C03_SOUND_INSTRUMENTS",
+   "category": "generated-data",
+   "predicted_direction": "descending",
+   "prediction_reason": "tools/data_omf.py emits DATA fixups descending on purpose",
+   "note": "No EXE-relative module span recorded for DATA objects in production-plan.json; direction is asserted by the generator's own design comment, not independently re-observed here."
+  },
+  {
+   "object": "F01CEBSS.OBJ",
+   "id": "F_01CE_BSS_PREFIX",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "ROWPTRS.OBJ",
+   "id": "ROW_POINTER_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "RSTATEB.OBJ",
+   "id": "RENDER_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G40D4B.OBJ",
+   "id": "RESOURCE25_WORKSPACE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "B4374B.OBJ",
+   "id": "B4374_CONTROL_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G43B4B.OBJ",
+   "id": "G43B4_RECORD_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "F200FB.OBJ",
+   "id": "F200F_RESOURCE_BUFFER_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G6F2AB.OBJ",
+   "id": "G6F2A_RECORD_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "A72B2B.OBJ",
+   "id": "A72B2_POINTER_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS7.OBJ",
+   "id": "F1D47_RESOURCE_POINTERS_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "F200FC.OBJ",
+   "id": "F200F_RESOURCE_44_45_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "A74A2B.OBJ",
+   "id": "A74A2_RECORD_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS8.OBJ",
+   "id": "RESOURCE46_CEL_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G893CB.OBJ",
+   "id": "G893C_RECORD_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSSA.OBJ",
+   "id": "BOARD_CONTROL_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "S8C12B.OBJ",
+   "id": "S8C12_RESOURCE_BUFFER_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G96BSS.OBJ",
+   "id": "G96_RESOURCE_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G9990B.OBJ",
+   "id": "G9990_RESOURCE_BUFFER_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G99BSS.OBJ",
+   "id": "RESOURCE_STATE_99D2_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "G9CF2B.OBJ",
+   "id": "G9CF2_RESOURCE_BUFFER_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GA6B6B.OBJ",
+   "id": "GA6B6_RESOURCE_BUFFER_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSSF.OBJ",
+   "id": "RESOURCE_SELECTION_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GB07CB.OBJ",
+   "id": "GB07C_RESOURCE_POINTER_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GB1CCB.OBJ",
+   "id": "GB1CC_RESOURCE_BUFFER_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GB3AEB.OBJ",
+   "id": "GB3AE_WORKSPACE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GBF66B.OBJ",
+   "id": "GBF66_RESOURCE_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "VIDSTATE.OBJ",
+   "id": "VIDEO_BOARD_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "SLOTBSS.OBJ",
+   "id": "SLOT_GRID_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS1.OBJ",
+   "id": "ANIMATION_CONTROL_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "ANIMBSS.OBJ",
+   "id": "ANIMATION_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GC360BSS.OBJ",
+   "id": "GC360_RECORD_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS3.OBJ",
+   "id": "ERROR_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "C470BSS.OBJ",
+   "id": "C470_RECORD_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS.OBJ",
+   "id": "GAMEPLAY_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "FLAGSBS.OBJ",
+   "id": "GC5B2_FLAGS_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS4.OBJ",
+   "id": "SOUND_RESOURCE_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "OCTAVES.OBJ",
+   "id": "NOTE_OCTAVE_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "NOTEIDX.OBJ",
+   "id": "NOTE_INDEX_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "SNDSTATE.OBJ",
+   "id": "SOUND_ENGINE_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "VOICEPTR.OBJ",
+   "id": "VOICE_POINTER_TABLE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "GAMEBSS6.OBJ",
+   "id": "SOUND_TABLE_STATE_BSS",
+   "category": "generated-bss",
+   "predicted_direction": null,
+   "prediction_reason": "BSS objects declare storage only (no LEDATA); typically carry no fixups"
+  },
+  {
+   "object": "C0C.OBJ",
+   "id": null,
+   "category": "library (CC.LIB)",
+   "predicted_direction": null,
+   "prediction_reason": "pulled from the pinned CC.LIB by TLINK, not a production-plan module"
+  }
+ ],
+ "mismatches": [],
+ "fresh_compile_verification": {
+  "found": true,
+  "work_dir": "build\\production-ze1i7bb0\\compile\\WORK",
+  "objects_checked": 55,
+  "agreements": 33,
+  "disagreements": 0,
+  "rows": [
+   {
+    "object": "R0000.OBJ",
+    "module": "C_01BC_0355",
+    "raw_fixup_count": 40,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0001.OBJ",
+    "module": "RUNTIME_BLOCK",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0006.OBJ",
+    "module": "F_1ECD",
+    "raw_fixup_count": 6,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0007.OBJ",
+    "module": "F_1F17",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0008.OBJ",
+    "module": "F_1F91",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0010.OBJ",
+    "module": "F_2AE2",
+    "raw_fixup_count": 111,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0011.OBJ",
+    "module": "C_31C4_3986",
+    "raw_fixup_count": 112,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0012.OBJ",
+    "module": "F_3A75",
+    "raw_fixup_count": 329,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0015.OBJ",
+    "module": "F_4713",
+    "raw_fixup_count": 62,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0017.OBJ",
+    "module": "F_490D",
+    "raw_fixup_count": 12,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0020.OBJ",
+    "module": "F_4AA8",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0021.OBJ",
+    "module": "F_4B0C",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0022.OBJ",
+    "module": "F_4E9F",
+    "raw_fixup_count": 5,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0023.OBJ",
+    "module": "F_4EEB",
+    "raw_fixup_count": 6,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0025.OBJ",
+    "module": "F_4F96",
+    "raw_fixup_count": 36,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0026.OBJ",
+    "module": "F_50C1",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0027.OBJ",
+    "module": "M_50D2_53BF",
+    "raw_fixup_count": 19,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0028.OBJ",
+    "module": "F_520A",
+    "raw_fixup_count": 26,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0031.OBJ",
+    "module": "F_6036",
+    "raw_fixup_count": 6,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0032.OBJ",
+    "module": "F_60A9",
+    "raw_fixup_count": 11,
+    "raw_direction": "mixed",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": false
+   },
+   {
+    "object": "R0033.OBJ",
+    "module": "F_6181",
+    "raw_fixup_count": 7,
+    "raw_direction": "mixed",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": false
+   },
+   {
+    "object": "R0035.OBJ",
+    "module": "C_6266_68AA",
+    "raw_fixup_count": 159,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0039.OBJ",
+    "module": "F_699E",
+    "raw_fixup_count": 38,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0040.OBJ",
+    "module": "M_6B1A_6B4A",
+    "raw_fixup_count": 2,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0041.OBJ",
+    "module": "F_6B66",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0043.OBJ",
+    "module": "F_6B7A",
+    "raw_fixup_count": 2,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0044.OBJ",
+    "module": "F_6BAC",
+    "raw_fixup_count": 2,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0045.OBJ",
+    "module": "F_6BCF",
+    "raw_fixup_count": 11,
+    "raw_direction": "mixed",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": false
+   },
+   {
+    "object": "R0047.OBJ",
+    "module": "F_6CA6",
+    "raw_fixup_count": 8,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0050.OBJ",
+    "module": "F_6CF6",
+    "raw_fixup_count": 2,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0052.OBJ",
+    "module": "M_6D86_6DCC",
+    "raw_fixup_count": 19,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0053.OBJ",
+    "module": "F_6EFF",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0054.OBJ",
+    "module": "F_6F4B",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0074.OBJ",
+    "module": "F_9EC3",
+    "raw_fixup_count": 4,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0083.OBJ",
+    "module": "M_C1A0_C232",
+    "raw_fixup_count": 36,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0084.OBJ",
+    "module": "M_C27D_C567",
+    "raw_fixup_count": 19,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0085.OBJ",
+    "module": "F_C59A",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0086.OBJ",
+    "module": "M_C5A8_C5C6",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0087.OBJ",
+    "module": "M_C5D1_C706",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0088.OBJ",
+    "module": "F_C755",
+    "raw_fixup_count": 5,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0089.OBJ",
+    "module": "M_C77A_C898",
+    "raw_fixup_count": 13,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0090.OBJ",
+    "module": "F_C8D4",
+    "raw_fixup_count": 1,
+    "raw_direction": "single",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0091.OBJ",
+    "module": "F_C8E2",
+    "raw_fixup_count": 9,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0092.OBJ",
+    "module": "F_C914",
+    "raw_fixup_count": 16,
+    "raw_direction": "mixed",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": false
+   },
+   {
+    "object": "R0093.OBJ",
+    "module": "F_C988",
+    "raw_fixup_count": 3,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0094.OBJ",
+    "module": "M_C9A4_CA91",
+    "raw_fixup_count": 5,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0095.OBJ",
+    "module": "F_CA9B",
+    "raw_fixup_count": 5,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0096.OBJ",
+    "module": "F_CAD0",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0097.OBJ",
+    "module": "F_CADB",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0098.OBJ",
+    "module": "F_CAE6",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0099.OBJ",
+    "module": "F_CAF1",
+    "raw_fixup_count": 14,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0103.OBJ",
+    "module": "M_D386_D3CF",
+    "raw_fixup_count": 3,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0117.OBJ",
+    "module": "M_D61C_D79C",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0118.OBJ",
+    "module": "M_D818_D825",
+    "raw_fixup_count": 0,
+    "raw_direction": "none",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   },
+   {
+    "object": "R0119.OBJ",
+    "module": "C_D85F_D8F0",
+    "raw_fixup_count": 15,
+    "raw_direction": "ascending",
+    "predicted_direction": "ascending",
+    "agrees_with_prediction": true
+   }
+  ]
+ },
+ "tasm_descending_candidates": []
+}

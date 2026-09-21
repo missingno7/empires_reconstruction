@@ -9,16 +9,16 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 
-f8480 equ 8680h
+dialog_draw equ 8680h
 record_table equ 103ceh
 menu_draw equ 105a2h
-f6cf0 equ 6ef0h
-fa28d equ 0a48dh
+dialog_line_height_get equ 6ef0h
+slot_row_draw equ 0a48dh
 f6b1a equ 6d1ah
-f8453 equ 8653h
+dialog_restore_screen equ 8653h
 
-public _f_cd23
-_f_cd23:
+public _slot_list_show
+_slot_list_show:
     push bp
     mov bp, sp
     sub sp, 2

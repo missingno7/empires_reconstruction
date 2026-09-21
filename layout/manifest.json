@@ -500,10 +500,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f039c": {
+          "_runtime_base": {
             "coordinate": "code_offset",
             "owner": "RUNTIME_BLOCK",
-            "public": "_f039c",
+            "public": "_runtime_base",
             "addend": 0,
             "evidence": "functions/F_039C.entry"
           }
@@ -560,12 +560,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
@@ -594,7 +594,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f039c",
+        "public": "_runtime_base",
         "span": 1,
         "flags_append": "",
         "bindings": {},
@@ -815,7 +815,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -1279,7 +1279,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_29502.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -1305,7 +1305,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -1576,7 +1576,7 @@
             "offset": 49084,
             "evidence": "F_25B3 historical instruction operands"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "coordinate": "code_offset",
             "offset": 972,
             "evidence": "Historical call operand and exact public index"
@@ -1591,7 +1591,7 @@
             "offset": 27332,
             "evidence": "F_25B3 historical instruction operands"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "coordinate": "code_offset",
             "offset": 948,
             "evidence": "Historical call operand and exact public index"
@@ -1645,10 +1645,10 @@
             "offset": 27332,
             "evidence": "Historical F_28AC operands"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "coordinate": "code_offset",
             "owner": "RUNTIME_BLOCK",
-            "public": "_f03cc",
+            "public": "_gfx_copy_rect",
             "addend": 0,
             "evidence": "Historical call target at load offset 03CCh; exact runtime secondary public"
           }
@@ -1677,7 +1677,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "raw F_03CC entry used by complete call fixups"
@@ -1963,12 +1963,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct DS offset in complete F_2AE2 fixup"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
@@ -1994,7 +1994,7 @@
             "public": "_f2a70",
             "addend": 0
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
@@ -2062,12 +2062,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -2316,12 +2316,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -2410,7 +2410,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -2710,7 +2710,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -3008,7 +3008,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "complete fixup target with object addend subtraction"
@@ -3299,12 +3299,12 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -3566,10 +3566,10 @@
             "public": "_memmove",
             "addend": 0
           },
-          "_f039c": {
+          "_runtime_base": {
             "coordinate": "code_offset",
             "owner": "RUNTIME_BLOCK",
-            "public": "_f039c",
+            "public": "_runtime_base",
             "addend": 0,
             "evidence": "functions/F_039C.entry"
           }
@@ -4033,7 +4033,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -4149,12 +4149,12 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -4525,17 +4525,17 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -4588,12 +4588,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -4745,7 +4745,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -4808,7 +4808,7 @@
             "public": "_hud_prompt_continue_draw",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -5335,7 +5335,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03d2": {
+          "_gfx_set_pixel": {
             "offset": 978,
             "coordinate": "code_offset",
             "evidence": "near-call target from complete function fixup"
@@ -5382,12 +5382,12 @@
             "public": "_f020f",
             "addend": 0
           },
-          "_f03d2": {
+          "_gfx_set_pixel": {
             "offset": 978,
             "coordinate": "code_offset",
             "evidence": "functions/F_03D2.entry"
           },
-          "_f03d5": {
+          "_gfx_get_pixel": {
             "offset": 981,
             "coordinate": "code_offset",
             "evidence": "functions/F_03D5.entry"
@@ -5462,7 +5462,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAFD.phys"
           },
-          "_f03d5": {
+          "_gfx_get_pixel": {
             "offset": 981,
             "coordinate": "code_offset",
             "evidence": "functions/F_03D5.entry"
@@ -5578,7 +5578,7 @@
             "addend": 0,
             "evidence": "owned F_D825 record append"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "numeric near call target 03CC"
@@ -5610,12 +5610,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -5675,12 +5675,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "direct LDS object table at DS:40D0"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "numeric near call target 03B4"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "numeric near call target 03CC"
@@ -6715,7 +6715,7 @@
       "end": 27978,
       "kind": "MATCHING_ASM",
       "classification": "code",
-      "source": "asm/F_6B1A.ASM",
+      "source": "src/KEYBIOS.C",
       "original_symbol": "F_6B1A",
       "artifact": "regions/F_6B1A.bin",
       "expected_sha256": "6afba8d22d336d14212b49c1157ef64c006471aefe3ef6616fb755279229d2d2",
@@ -6756,7 +6756,7 @@
       "end": 28006,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_6B4A.C",
+      "source": "src/KEYBIOS.C",
       "original_symbol": "F_6B4A",
       "artifact": "regions/F_6B4A.bin",
       "expected_sha256": "09b1fa6e7194fd9dccfb7eee36d5a8ea094febcd539a3f5706f3684f1655c375",
@@ -7308,7 +7308,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03c6": {
+          "_gfx_draw_char": {
             "offset": 966,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C6.entry"
@@ -7538,12 +7538,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -7664,17 +7664,17 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -7726,12 +7726,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC1E.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -7844,7 +7844,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC1E.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -7854,7 +7854,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2A.phys"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8009,7 +8009,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC1E.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -8024,7 +8024,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2A.phys"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8198,7 +8198,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -8208,7 +8208,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC2A.phys"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8251,7 +8251,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC1E.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -8293,7 +8293,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC1E.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -8341,17 +8341,17 @@
             "public": "_f020f",
             "addend": 0
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -8440,7 +8440,7 @@
             "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8554,7 +8554,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -8573,7 +8573,7 @@
             "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8723,7 +8723,7 @@
             "public": "_rect_border_draw",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -8742,7 +8742,7 @@
             "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8793,7 +8793,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC1C.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -8805,12 +8805,12 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -8845,7 +8845,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -9115,12 +9115,12 @@
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f03ab": {
+          "_gfx_fill_rect": {
             "coordinate": "code_offset",
             "offset": 939,
             "evidence": "F_03AB entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "coordinate": "code_offset",
             "offset": 927,
             "evidence": "F_039F entry"
@@ -9221,7 +9221,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -9245,12 +9245,12 @@
             "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
@@ -9262,7 +9262,7 @@
             "public": "_rect_border_draw",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -9558,12 +9558,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
@@ -9634,12 +9634,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03ab": {
+          "_gfx_fill_rect": {
             "offset": 939,
             "coordinate": "code_offset",
             "evidence": "functions/F_03AB.entry"
@@ -9736,7 +9736,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03ae": {
+          "_gfx_save_rect": {
             "offset": 942,
             "coordinate": "code_offset",
             "evidence": "functions/F_03AE.entry"
@@ -9800,12 +9800,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03b1": {
+          "_gfx_restore_rect": {
             "offset": 945,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B1.entry"
@@ -9927,7 +9927,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC3A.phys"
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -9939,12 +9939,12 @@
             "public": "_rect_border_draw",
             "addend": 0
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
@@ -10005,7 +10005,7 @@
             "public": "_dialog_fill_box",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -10805,17 +10805,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -10873,7 +10873,7 @@
             "public": "_puzzle_draw_tray_piece",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -10956,22 +10956,22 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "offset": 954,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BA.entry"
           },
-          "_f03bd": {
+          "_gfx_copy_rect_flip_hv": {
             "offset": 957,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BD.entry"
           },
-          "_f03b7": {
+          "_gfx_copy_rect_flip_v": {
             "offset": 951,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B7.entry"
@@ -11006,12 +11006,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208F4.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -11124,7 +11124,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -11181,12 +11181,12 @@
             "public": "_rect_border_draw",
             "addend": 0
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
@@ -11216,7 +11216,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -11284,7 +11284,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -11324,7 +11324,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BE7E.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -11357,12 +11357,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "coordinate": "code_offset",
             "offset": 954,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "coordinate": "code_offset",
             "offset": 948,
             "evidence": "Historical call operand and exact public index"
@@ -11406,12 +11406,12 @@
             "offset": 49998,
             "evidence": "F_98CB historical instruction operands"
           },
-          "_f03b7": {
+          "_gfx_copy_rect_flip_v": {
             "coordinate": "code_offset",
             "offset": 951,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "coordinate": "code_offset",
             "offset": 948,
             "evidence": "Historical call operand and exact public index"
@@ -11442,12 +11442,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "offset": 954,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BA.entry"
           },
-          "_f03b7": {
+          "_gfx_copy_rect_flip_v": {
             "offset": 951,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B7.entry"
@@ -11457,7 +11457,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BE7E.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -11488,7 +11488,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03c3": {
+          "_gfx_copy_rect_split_flip_v": {
             "offset": 963,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C3.entry"
@@ -11503,7 +11503,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BE7E.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -11533,7 +11533,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03c0": {
+          "_gfx_copy_rect_split": {
             "offset": 960,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C0.entry"
@@ -11548,7 +11548,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BE7E.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -11629,7 +11629,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03cf": {
+          "_gfx_blit_image": {
             "offset": 975,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CF.entry"
@@ -11784,7 +11784,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "function entry from complete function fixup"
@@ -11849,7 +11849,7 @@
             "public": "_rect_border_draw",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "function entry from complete function fixup"
@@ -11954,12 +11954,12 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "function entry from complete F_9D8E fixups"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "direct call target from complete F_9D8E fixups"
@@ -12002,12 +12002,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -12171,7 +12171,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -12314,7 +12314,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
@@ -12391,12 +12391,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03ab": {
+          "_gfx_fill_rect": {
             "offset": 939,
             "coordinate": "code_offset",
             "evidence": "functions/F_03AB.entry"
@@ -12426,12 +12426,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03ab": {
+          "_gfx_fill_rect": {
             "offset": 939,
             "coordinate": "code_offset",
             "evidence": "functions/F_03AB.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -12461,12 +12461,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03ab": {
+          "_gfx_fill_rect": {
             "offset": 939,
             "coordinate": "code_offset",
             "evidence": "functions/F_03AB.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -12633,7 +12633,7 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -12700,7 +12700,7 @@
             "public": "_hud_panel_clear",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -12737,12 +12737,12 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -12798,17 +12798,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1F.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "offset": 954,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BA.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -12865,7 +12865,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -12877,7 +12877,7 @@
             "public": "_text_draw_wrapped",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -13156,17 +13156,17 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
           },
-          "_f03ab": {
+          "_gfx_fill_rect": {
             "offset": 939,
             "coordinate": "code_offset",
             "evidence": "functions/F_03AB.entry"
@@ -13554,7 +13554,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "coordinate": "code_offset",
             "offset": 927,
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
@@ -13650,12 +13650,12 @@
             "public": "_dialog_run",
             "addend": 0
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "coordinate": "code_offset",
             "offset": 969,
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "coordinate": "code_offset",
             "offset": 936,
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
@@ -13969,17 +13969,17 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P20F1F.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "offset": 954,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BA.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -14051,12 +14051,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -14066,7 +14066,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAC6.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -14224,12 +14224,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -14524,7 +14524,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/REGION_2BA96.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -14623,7 +14623,7 @@
             "public": "_f4eeb",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -14795,7 +14795,7 @@
             "addend": 0,
             "evidence": "complete fixup target with object addend subtraction"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -14812,7 +14812,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BAEC.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -14884,7 +14884,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A4.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -15085,7 +15085,7 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "coordinate": "code_offset",
             "offset": 972,
             "evidence": "Historical call operand and exact public index"
@@ -15485,7 +15485,7 @@
             "public": "_sprite_draw_cursor",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -17284,7 +17284,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "coordinate": "code_offset",
             "offset": 927,
             "evidence": "Historical call operand and exact public index"
@@ -17314,7 +17314,7 @@
             "offset": 33875,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "coordinate": "code_offset",
             "offset": 930,
             "evidence": "Historical call operand and exact public index"
@@ -17358,7 +17358,7 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f039f": {
+          "_gfx_box": {
             "coordinate": "code_offset",
             "offset": 927,
             "evidence": "Historical call operand and exact public index"
@@ -17388,7 +17388,7 @@
             "offset": 33875,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "coordinate": "code_offset",
             "offset": 930,
             "evidence": "Historical call operand and exact public index"
@@ -17664,7 +17664,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21E18.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -17674,7 +17674,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -17721,12 +17721,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -17736,7 +17736,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAC4.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -17773,7 +17773,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -17785,7 +17785,7 @@
             "public": "_player_select_draw_portraits",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -17872,12 +17872,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21E18.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -17922,12 +17922,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21E18.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -18033,12 +18033,12 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"
@@ -18123,7 +18123,7 @@
             "public": "_sound_request_count_dec",
             "addend": 0
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -18135,7 +18135,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -18312,7 +18312,7 @@
             "offset": 29362,
             "coordinate": "DGROUP_offset"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset"
           }
@@ -19817,7 +19817,7 @@
       "end": 57470,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_DDD9.C",
+      "source": "src/MUSIC.C",
       "original_symbol": "F_DDD9",
       "artifact": "regions/F_DDD9.bin",
       "expected_sha256": "4608f9f1abd96c3e70c7e32ed7434842fc7c441b5e8fee9d02140a0c93f30e06",
@@ -19867,7 +19867,7 @@
       "end": 57594,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_DE7E.C",
+      "source": "src/MUSIC.C",
       "original_symbol": "F_DE7E",
       "artifact": "regions/F_DE7E.bin",
       "expected_sha256": "1e8b1c1417cca492dca9c14b6a3e03cac3205362d1831acbd35486c3d849fa3f",
@@ -19917,7 +19917,7 @@
       "end": 57752,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_DEFA.C",
+      "source": "src/MUSIC.C",
       "original_symbol": "F_DEFA",
       "artifact": "regions/F_DEFA.bin",
       "expected_sha256": "0647f9a1034d2479744adadc8537093b02b34b8426d9e1f76dbf3c1f0108c9f2",
@@ -19975,7 +19975,7 @@
     {
       "id": "F_DF98",
       "kind": "MATCHING_C",
-      "source": "src/F_DF98.C",
+      "source": "src/MUSIC.C",
       "start": 57752,
       "end": 58005,
       "expected_sha256": "ec8ec57195a54947df62b7f02ac0c5b330a8d8eda5ddb49c286860fd40326edc",
@@ -19999,6 +19999,21 @@
             "public": "LDIV@",
             "coordinate": "code_offset",
             "addend": 0
+          },
+          "_g3752": {
+            "coordinate": "DGROUP_offset",
+            "offset": 14162,
+            "evidence": "fdf98 cache key: DS:3752 long compared and stored (MUSIC.ASM absolute operands)"
+          },
+          "_gc5e4": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50660,
+            "evidence": "fdf98 cached octave value: DS:C5E4 word (MUSIC.ASM absolute operands)"
+          },
+          "_gc5e6": {
+            "coordinate": "DGROUP_offset",
+            "offset": 50662,
+            "evidence": "fdf98 cached far pointer: DS:C5E6 offset, DS:C5E8 segment (MUSIC.ASM absolute operands)"
           }
         },
         "module_segments": {}

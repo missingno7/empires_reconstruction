@@ -1,10 +1,9 @@
+#include "VIDEO.H"
 /* src/PROMPTS.C: Prompt boxes: continue, select and confirm.
    One translation unit; the sections below were the separate member
    sources of grouped module C_75F3_7856 and keep their original ids. */
 
 extern int f020f(), sprite_sheet_index_get();
-extern void f03a8();
-extern void f039f();
 extern void sprite_sheet_select();
 extern void gfx_color_select(int n);
 extern void text_draw_wrapped(int, int, char far *);
@@ -42,7 +41,7 @@ void hud_prompt_continue_draw()
         gfx_color_select(0xf);
     sprite_sheet_select(0);
     text_draw_wrapped(0x18, 0xbc, &cap);
-    f039f(0x18, 0xbc, 0x94, 0xa);
+    gfx_box(0x18, 0xbc, 0x94, 0xa);
     gfx_color_select(s);
     sprite_sheet_select(d);
 }
@@ -65,12 +64,12 @@ char *p;
     gc0f6 = p;
     gc0fc = 0;
     gfx_color_select(0);
-    f03a8(0, 0xbc, 0x140, 12);
+    gfx_clear_rect(0, 0xbc, 0x140, 12);
     gfx_color_select(15);
     sprite_sheet_select(0);
     text_draw_wrapped(10, 0xbd, p);
     text_draw_wrapped(0xaa, 0xbd, &cap);
-    f039f(0, 0xbc, 0x140, 12);
+    gfx_box(0, 0xbc, 0x140, 12);
     gfx_color_select(s);
     sprite_sheet_select(d);
 }
@@ -95,13 +94,13 @@ int a,b,c,e;
     gfx_color_select(0);
     rect_border_draw(6, 0xa2, 0x134, 0x24);
     gfx_color_select(b);
-    f03a8(8, 0xa3, 0x130, 0x22);
+    gfx_clear_rect(8, 0xa3, 0x130, 0x22);
     gfx_color_select(a);
     sprite_sheet_select(c);
     text_draw_wrapped(12, 0xa5, p);
     if (e)
         text_draw_wrapped(0xaa, 0xb9, &cap);
-    f039f(6, 0xa2, 0x134, 0x24);
+    gfx_box(6, 0xa2, 0x134, 0x24);
     gfx_color_select(s);
     sprite_sheet_select(d);
 }

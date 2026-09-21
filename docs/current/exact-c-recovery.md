@@ -532,3 +532,49 @@ disable and query, campaign chapter advance, keyboard IRQ handler, score panel
 draw, tutorial hint dialog) and their files were renamed; only the four
 uncalled dialog-pick wrappers keep address names. C470.H names resume_round
 and round_progress from their use in campaign_chapter_advance and GAME.C.
+
+## MUSIC: byte-exact C unit, relocation order keeps the assembler module
+
+src/MUSIC.C is one ordinary Turbo C translation unit (music_note_to_divisor,
+music_build_octave_table, music_reset_tuning_tables, fdf98 with its inline
+block) that reproduces all 700 bytes of M_DDD9_DF98 and its public offsets;
+only unresolved fixup fields differ in the single-module probe. Promoting it
+fails the ordered-relocation check: the compiler object emits the module's far
+fixups (LXMUL@, LDIV@, LXLSH@ calls) in ascending address order, and the
+historical executable carries them descending, which only the descending ORG
+contributions of asm/MUSIC.ASM reproduce. The module therefore stays TASM with
+the C unit kept as a reference; the constraint is documented in the ASM
+provenance report. src/F_DDD9.C, F_DE7E.C, F_DEFA.C and F_DF98.C remain
+inactive per-function references.
+
+## KEYBIOS: the BIOS keyboard helpers as one C unit
+
+src/KEYBIOS.C combines the two exact inline-asm C reconstructions of F_6B1A
+and F_6B4A (INT 16h blocking read with the F1..F10 hot-key dispatch, and the
+non-consuming poll) into one translation unit that reproduces all 76 bytes and
+both public offsets; the module has no far relocations, so the assembler
+route's FIXUPP order is not observable. It replaces asm/M_6B1A_6B4A.ASM in
+production (31 assembler modules remain). Full acceptance is byte-identical.
+
+## Relocation order is object topology, not source language
+
+Turbo C's native object writer emits FIXUPP subrecords in descending offset
+order; TASM-produced objects (assembler modules, -B units, units with inline
+asm) emit them ascending; TLINK keeps that order in the EXE relocation table.
+The MUSIC module's historically descending run therefore proves one native
+Turbo C unit with no inline asm, and the byte-exact src/MUSIC.C fails only
+because its fdf98 section is an inline-asm block. tools/audit_relocation_topology.py
+encodes the rule; docs/current/relocation-topology.md reports every module.
+
+## MUSIC promoted as pure C
+
+fdf98 is now structured C (a cached voice-frequency lookup: the key is
+(value - 8192) * music_tempo_scaled; a hit copies the cached far pointer and
+octave into the voice tables, a miss recomputes through the octave and
+divisor helpers). With no inline asm in the unit, Turbo C's native object
+writer emits the module's far fixups descending, and the production build
+reproduces the historical relocation order without adapters. src/MUSIC.C
+replaces asm/MUSIC.ASM; three cache globals (g3752, gc5e4, gc5e6) that the
+assembler addressed by absolute offset are declared as DATA/BSS publics with
+bindings. Full acceptance is byte-identical with all 106 relocations in order;
+30 assembler modules remain.

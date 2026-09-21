@@ -1845,8 +1845,22 @@
           "offset": 40,
           "name": "gc5e2_tail_state",
           "count": 1,
-          "element_bytes": 8,
-          "source_type": "unsigned char[8]"
+          "element_bytes": 2,
+          "source_type": "unsigned int"
+        },
+        {
+          "offset": 42,
+          "name": "gc5e4_cached_octave",
+          "count": 1,
+          "element_bytes": 2,
+          "source_type": "int"
+        },
+        {
+          "offset": 44,
+          "name": "gc5e6_cached_pointer",
+          "count": 1,
+          "element_bytes": 4,
+          "source_type": "char far *"
         }
       ]
     },

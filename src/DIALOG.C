@@ -5,6 +5,7 @@
 #include "DIALOG.H"
 #include "GC0FE.H"
 #include "LAYOUT.H"
+#include "VIDEO.H"
 
 /* Symbols redeclared identically (same form) by two or more sections are
    merged here. Symbols that a section needs in a different byte-significant
@@ -15,9 +16,7 @@
    ui_gfx_blob`/`gc5cc` (documented in LAYOUT.H: those two thunks push the
    far pointer's two words separately, so a `char far *` type here would add
    an extra push and break byte-exactness). */
-extern void f03a2();
-extern void f03a5();
-extern void f039f();
+extern void gfx_vline();
 extern int keyboard_chain_active(), menu_list_active(), f6b1a();
 extern void keyboard_chain_enable(void);
 extern void sound_start(void);
@@ -263,14 +262,14 @@ int n;
     y = ((int *)&dialog_divider1_y)[n];
     u = ((int *)&dialog_button1_label_w)[n];
     v = ((int *)&dialog_button1_label_rows)[n];
-    f03a2(x + 1, y, u - 2);
-    f03a2(x + 1, y + v - 1, u - 2);
-    f03a5(x, y + 1, v - 2);
-    f03a5(x + u - 1, y + 1, v - 2);
-    f03a2(x + 1, y + 1, 1);
-    f03a2(x + 1, y + v - 2, 1);
-    f03a2(x + u - 2, y + 1, 1);
-    f03a2(x + u - 2, y + v - 2, 1);
+    gfx_bar(x + 1, y, u - 2);
+    gfx_bar(x + 1, y + v - 1, u - 2);
+    gfx_vline(x, y + 1, v - 2);
+    gfx_vline(x + u - 1, y + 1, v - 2);
+    gfx_bar(x + 1, y + 1, 1);
+    gfx_bar(x + 1, y + v - 2, 1);
+    gfx_bar(x + u - 2, y + 1, 1);
+    gfx_bar(x + u - 2, y + v - 2, 1);
     text_draw_wrapped(((int *)&dialog_button1_label_cx)[n], (v - 10) / 2 + y + 1, (char far *)((char near **)&dialog_button1_label_off)[n]);
 }
 
@@ -283,7 +282,6 @@ int n;
    is recomputed for every one of them (rule 6).  Two register locals take
    SI then DI in declaration order (rule 12) and the two stack locals lie in
    reverse declaration order upward from bp (rule 1). */
-extern void f03ab();
 
 void dialog_fill_box(n)
 int n;
@@ -299,10 +297,10 @@ int n;
     y = ((int *)&dialog_divider1_y)[n];
     u = ((int *)&dialog_button1_label_w)[n];
     v = ((int *)&dialog_button1_label_rows)[n];
-    f03ab(x + 1, y + 2, u - 2, v - 4);
-    f03ab(x + 2, y + 1, u - 4, 1);
-    f03ab(x + 2, y + v - 2, u - 4, 1);
-    f039f(x, y, u, v);
+    gfx_fill_rect(x + 1, y + 2, u - 2, v - 4);
+    gfx_fill_rect(x + 2, y + 1, u - 4, 1);
+    gfx_fill_rect(x + 2, y + v - 2, u - 4, 1);
+    gfx_box(x, y, u, v);
 }
 
 
@@ -329,33 +327,32 @@ int a;
    DGROUP words wide.  Two adjacent words pushed segment-then-offset and two
    plain ints are the same six pushes, so they are spelled as the six ints
    the extent literally pushes. */
-extern void f03ae();
+extern void gfx_save_rect();
 extern unsigned ui_gfx_blob;                  /* DS:C5CA */
 extern unsigned gc5cc;                  /* DS:C5CC */
 
 void dialog_draw_shadow()
 {
-    f03ae(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h, ui_gfx_blob, gc5cc);
+    gfx_save_rect(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h, ui_gfx_blob, gc5cc);
 }
 
 
 /* ---- F_8453 (original code at 0x8453) ---- */
 /* F_8453 -- the pair of blits through the runtime-generated thunks at IP
    03B1h and 039Fh. */
-extern void f03b1();
+extern void gfx_restore_rect();
 extern unsigned ui_gfx_blob;                  /* DS:C5CA */
 extern unsigned gc5cc;                  /* DS:C5CC */
 
 void dialog_restore_screen()
 {
-    f03b1(dialog_box_x, dialog_box_y, ui_gfx_blob, gc5cc);
-    f039f(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h);
+    gfx_restore_rect(dialog_box_x, dialog_box_y, ui_gfx_blob, gc5cc);
+    gfx_box(dialog_box_x, dialog_box_y, dialog_box_w, dialog_box_h);
 }
 
 
 /* ---- F_8480 (original code at 0x8480) ---- */
 extern int f020f(), sprite_sheet_index_get();
-extern void f03a8();
 extern void sprite_sheet_select();
 extern void rect_border_draw();
 extern void dialog_draw_shadow(void);
@@ -365,18 +362,18 @@ extern void text_draw_wrapped(int, int, char far *);
 void dialog_draw(struct dialog far *p, int first)
 {int a,b,x,w,h;register int y,i;
 a=f020f();b=sprite_sheet_index_get();sprite_sheet_select(0);dialog_layout(p);if(first)dialog_draw_shadow();
-gfx_color_select(15);f03a8(dialog_box_x,dialog_box_y,dialog_box_w,dialog_box_h);
+gfx_color_select(15);gfx_clear_rect(dialog_box_x,dialog_box_y,dialog_box_w,dialog_box_h);
 x=dialog_box_x+4;y=dialog_box_y+2;if(p->kind!=2)y+=2;w=dialog_box_w-10;h=dialog_box_h-8;if(p->kind!=2)h-=2;
 gfx_color_select(0);for(i=0;i<2;i++){w+=2;h+=2;rect_border_draw(--x,--y,w,h);}
-gfx_color_select(0);for(i=0;i<2;i++)f03a5(x+w+i,y+2,h);
-for(i=0;i<2;i++)f03a2(x+2,y+h+i,w);
+gfx_color_select(0);for(i=0;i<2;i++)gfx_vline(x+w+i,y+2,h);
+for(i=0;i<2;i++)gfx_bar(x+2,y+h+i,w);
 x+=2;y+=2;w-=4;
-if(p->title){y+=2;gfx_color_select(0);text_draw_wrapped(dialog_title_x,y,p->title);y+=11;gfx_color_select(0);f03a2(x,y,w);}
+if(p->title){y+=2;gfx_color_select(0);text_draw_wrapped(dialog_title_x,y,p->title);y+=11;gfx_color_select(0);gfx_bar(x,y,w);}
 y+=dialog_text_inset_y;gfx_color_select(0);text_draw_wrapped(x+dialog_text_inset_x2,y,p->text);
-if(dialog_button_str){gfx_color_select(0);f03a2(x,dialog_button_label_y-2,w);gfx_color_select(0);text_draw_wrapped(dialog_button_label_x,dialog_button_label_y,(char *)(char near *)dialog_button_str);}
-if(p->kind==4||p->kind==5||p->kind==6){gfx_color_select(0);f03a2(x,dialog_divider1_y-2,w);}
+if(dialog_button_str){gfx_color_select(0);gfx_bar(x,dialog_button_label_y-2,w);gfx_color_select(0);text_draw_wrapped(dialog_button_label_x,dialog_button_label_y,(char *)(char near *)dialog_button_str);}
+if(p->kind==4||p->kind==5||p->kind==6){gfx_color_select(0);gfx_bar(x,dialog_divider1_y-2,w);}
 switch(p->kind){case 5:case 6:case 7:dialog_draw_button(1);case 4:dialog_draw_button(0);dialog_fill_box(p->initial);break;}
-f039f(dialog_box_x,dialog_box_y,dialog_box_w,dialog_box_h);gfx_color_select(a);sprite_sheet_select(b);
+gfx_box(dialog_box_x,dialog_box_y,dialog_box_w,dialog_box_h);gfx_color_select(a);sprite_sheet_select(b);
 }
 
 

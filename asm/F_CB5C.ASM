@@ -9,9 +9,9 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 
-public _f_cb5c
+public _options_toggle_option
 public _f_cb5c_end
-_f_cb5c:
+_options_toggle_option:
     push si
     mov ax, word ptr ds:[13edh]
     mov dx, 1bh

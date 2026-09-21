@@ -7,7 +7,7 @@ extern int f6b4a(), f6b1a(), hud_tab_next(), rect_table_hit_id();
 extern void timer_deadline_arm();
 extern void player_select_restart_confirm();
 extern void keyboard_chain_disable(void);
-extern int puzzle_deal_pieces();extern void f03b4();
+extern int puzzle_deal_pieces();extern void gfx_wipe_rect();
 extern void record_table_delete_compact();
 extern void fcaf1();
 extern void f1ecd(void);
@@ -26,7 +26,6 @@ extern int shadow_bitmap_hit_test(), hud_tab_get(), hud_scroll_move();extern voi
 extern void cursor_trail_arm(void);
 extern void f329f(void);
 extern void board_raycast_step(void);
-extern void f03cc();
 extern void roundend_flash_panel_icons(void);
 extern void timer_deadline_wait(void);
 extern void f3986();
@@ -37,6 +36,7 @@ extern int g8fe, gb68, gb6a, gb6c, gb6e, gb70, g71e, g722, current_slot;
 extern int g40ce, g96e4, gb07a, board_record_index;
 extern char far *rect_queue_write_ptr;                 /* the edge cursor */
 #include "LAYOUT.H"
+#include "VIDEO.H"
 extern char far *ui_gfx_blob;
 extern char far *board_records;                 /* vram */
 extern char far *record_table_root;
@@ -92,8 +92,8 @@ int turn_loop_run()
                 b437a[obj] = 0;
                 gb07a = puzzle_deal_pieces();
                 rect_queue_write_ptr = ui_gfx_blob;
-                f03b4(d, oy + 0x148, 0x10, 0x10, d, oy + 0xb8);
-                f03b4(d, oy + 0xb8, 0x10, 0x10, d, oy);
+                gfx_wipe_rect(d, oy + 0x148, 0x10, 0x10, d, oy + 0xb8);
+                gfx_wipe_rect(d, oy + 0xb8, 0x10, 0x10, d, oy);
                 fcaf1(2);
                 if (gb07a != 0) {
                     sprite_draw_cursor();
@@ -107,8 +107,8 @@ int turn_loop_run()
                 d <<= 1;
                 oy = ((unsigned char far *)board_records)[0x3e6];
                 board_records[0x3e7] = 0;
-                f03b4(d, oy + 0x148, 0x10, 0x10, d, oy + 0xb8);
-                f03b4(d, oy + 0xb8, 0x10, 0x10, d, oy);
+                gfx_wipe_rect(d, oy + 0x148, 0x10, 0x10, d, oy + 0xb8);
+                gfx_wipe_rect(d, oy + 0xb8, 0x10, 0x10, d, oy);
                 fcaf1(3);
             } else if (obj < 0x20) {
                 p = record_field_skip_n(obj - 8);
@@ -347,17 +347,17 @@ moved:
         if (blink != 0) {
             blink--;
             if (blink > 0x1a) {
-                f03cc(g736, g738, resource_stripe_table + 0x39ec, g73a);
+                gfx_copy_rect(g736, g738, resource_stripe_table + 0x39ec, g73a);
             } else if (blink & 1) {
-                f03cc(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+                gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
             }
         } else if (g72c != 0) {
-            f03cc(g736, g738, (char far *)str96ee, 0);
+            gfx_copy_rect(g736, g738, (char far *)str96ee, 0);
             g72c--;
-            f03cc(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+            gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
         } else {
             if (g40ce != 0 && lastcur != g40ce) {
-            f03cc(g736, g738, resource_stripe_table + 0x39ec, g73a);
+            gfx_copy_rect(g736, g738, resource_stripe_table + 0x39ec, g73a);
             blink = 0x1e;
             fcaf1(1);
             f1ecd();
@@ -372,7 +372,7 @@ moved:
             lastcur = g40ce;
             goto tail;
             } else {
-            f03cc(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
+            gfx_copy_rect(g736, g738, resource_stripe_table + g72e * 0x2a2, g73a);
             }
             lastcur = g40ce;
         }

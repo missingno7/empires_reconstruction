@@ -24,8 +24,8 @@
     },
     {
       "id": "M_6B1A_6B4A",
-      "kind": "MATCHING_ASM",
-      "source": "asm/M_6B1A_6B4A.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/KEYBIOS.C",
       "start": 27930,
       "end": 28006,
       "members": [
@@ -55,7 +55,8 @@
         },
         "module_segments": {}
       },
-      "evidence": "Adjacent BIOS INT 16h block/poll helpers have compatible TASM topology. One fresh object emits their two entries at offsets 0 and 48 with both call fixups bound to canonical reconstructed publics."
+      "evidence": "One Turbo C translation unit with inline asm (src/KEYBIOS.C) reproduces all 76 bytes and both public offsets; the module has no far relocations, so the assembler-route FIXUPP order is not observable. asm/M_6B1A_6B4A.ASM is retained as reference.",
+      "status": "RECOVERED_C_MODULE"
     },
     {
       "id": "M_C1A0_C232",
@@ -202,7 +203,7 @@
             "offset": 8564,
             "evidence": "F_CC17 historical instruction operands"
           },
-          "_f039f": {
+          "_gfx_box": {
             "coordinate": "code_offset",
             "offset": 927,
             "evidence": "Historical call operand and exact public index"
@@ -232,7 +233,7 @@
             "offset": 33875,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "coordinate": "code_offset",
             "offset": 930,
             "evidence": "Historical call operand and exact public index"
@@ -392,12 +393,12 @@
         "span": 2,
         "flags_append": "",
         "bindings": {
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "coordinate": "code_offset",
             "offset": 954,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "coordinate": "code_offset",
             "offset": 948,
             "evidence": "Historical call operand and exact public index"
@@ -412,7 +413,7 @@
             "offset": 49998,
             "evidence": "F_98CB historical instruction operands"
           },
-          "_f03b7": {
+          "_gfx_copy_rect_flip_v": {
             "coordinate": "code_offset",
             "offset": 951,
             "evidence": "Historical call operand and exact public index"
@@ -512,8 +513,8 @@
     },
     {
       "id": "M_DDD9_DF98",
-      "kind": "MATCHING_ASM",
-      "source": "asm/MUSIC.ASM",
+      "kind": "MATCHING_C",
+      "source": "src/MUSIC.C",
       "start": 57305,
       "end": 58005,
       "members": [
@@ -530,9 +531,9 @@
         "bindings": {},
         "module_segments": {}
       },
-      "status": "COMPATIBLE_RECONSTRUCTED_MODULE",
+      "status": "RECOVERED_C_MODULE",
       "historical_translation_unit_proven": false,
-      "evidence": "Complete 700-byte symbolic TASM module with four exact public offsets and 17 exact fixups. Descending ORG contributions emit historical FIXUPP ordering; F_DEFA DGROUP operands reproduce group frames."
+      "evidence": "One pure Turbo C translation unit (src/MUSIC.C, no inline asm) reproduces all 700 bytes, four public offsets and, through the native object writer's descending FIXUPP order, the historical relocation order. asm/MUSIC.ASM is retained as reference."
     }
   ]
 }

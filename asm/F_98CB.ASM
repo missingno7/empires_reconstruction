@@ -7,9 +7,9 @@ _DATA ends
 _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
-public _f_98cb
+public _marker_cell_draw_plain
 public _f_98cb_end
-_f_98cb:
+_marker_cell_draw_plain:
  mov ax,168h
  push ax
  mov ax,50h

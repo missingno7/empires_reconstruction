@@ -8,7 +8,7 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-extrn _f03c9:near
+extrn _gfx_blit_bitmap:near
 public _fd386, _fd3cf
 
 _fd386 proc near
@@ -47,7 +47,7 @@ fd386_lookup:
     push dx
     shl cx, 1
     push cx
-    call _f03c9
+    call _gfx_blit_bitmap
     add sp, 8
     mov si, di
     add si, 0ch

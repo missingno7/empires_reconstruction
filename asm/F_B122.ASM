@@ -9,7 +9,7 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fb122
+public _board_resource_expand
 
 ; These calls were direct same-segment calls in the original contribution.
 ; Keep the relation symbolic without introducing an OMF external reference.
@@ -62,7 +62,7 @@ REGISTER_TABLE macro table, selector, count, call_delta
     COPY_TABLE table,count
 endm
 
-_fb122 proc near
+_board_resource_expand proc near
     push si
     push di
     xor di,di
@@ -138,7 +138,7 @@ B122_tail_test:
     pop di
     pop si
     ret
-_fb122 endp
+_board_resource_expand endp
 
 _TEXT ends
 end

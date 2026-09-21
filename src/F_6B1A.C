@@ -1,6 +1,6 @@
 /* F_6B1A -- blocking INT 16h read with the F1..F10 hot-key check. */
-extern void f792c();
-extern void f7964();
+extern void menu_list_active();
+extern void menu_loop_run();
 
 int f6b1a()
 {
@@ -15,13 +15,13 @@ int f6b1a()
     asm cmp al,44h
     asm jg  L_out
     asm mov si,ax
-    asm call near ptr f792c
+    asm call near ptr menu_list_active
     asm or  ax,ax
     asm mov ax,si
     asm jz  L_out
     asm sub ax,013bh
     asm push ax
-    asm call near ptr f7964
+    asm call near ptr menu_loop_run
     asm pop ax
     asm mov ax,si
     asm jmp short L_out

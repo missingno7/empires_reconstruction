@@ -13,7 +13,7 @@ DGROUP group _DATA, _BSS
 _TEXT segment byte public 'CODE'
 assume cs:_TEXT, ds:DGROUP
 extrn _sprbase:dword, _objtab:dword
-extrn _f03b4:near, _f03cc:near
+extrn _gfx_wipe_rect:near, _gfx_copy_rect:near
 public _f6181
 
 ; Offset 57h: emit the DGROUP FIXUPP record before the low-address externals.
@@ -85,9 +85,9 @@ org 5ch
     add ax, 148h
     push ax
     push bx
-    call near ptr _f03b4
+    call near ptr _gfx_wipe_rect
     add word ptr [bp], 0b8h
-    call near ptr _f03b4
+    call near ptr _gfx_wipe_rect
     pop bx
     add sp, 10
     pop dx
@@ -98,7 +98,7 @@ org 5ch
     push di
     push dx
     push bx
-    call near ptr _f03cc
+    call near ptr _gfx_copy_rect
     pop bx
     pop dx
     add sp, 6
@@ -112,7 +112,7 @@ org 5ch
     push ax
     push dx
     push bx
-    call near ptr _f03b4
+    call near ptr _gfx_wipe_rect
     add sp, 12
     pop ds
     pop di

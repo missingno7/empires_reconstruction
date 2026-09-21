@@ -3,14 +3,12 @@
    sources of grouped module C_A09D_A24E and keep their original ids. */
 
 #include "C470.H"
+#include "VIDEO.H"
 
 extern void resource_load_record_into();
 extern int resource_load_record();
-extern void f03c9();
 extern char far *ui_gfx_shadow_a;
 extern void resource_file_write_record(unsigned, void far *);
-extern void f03ab();
-extern void f039f();
 extern char gc563;
 
 /* ---- F_A09D (original code at 0xA09D) ---- */
@@ -22,11 +20,11 @@ slot_menu_draw_header()
     resource_load_record_into(62, gc360);
     resource_load_record(60);
     for (i = 0; i < 3; i++)
-        f03c9(i * 18, 400, ui_gfx_shadow_a + ((int *)ui_gfx_shadow_a)[i] + 2);
+        gfx_blit_bitmap(i * 18, 400, ui_gfx_shadow_a + ((int *)ui_gfx_shadow_a)[i] + 2);
     resource_load_record(59);
-    f03c9(0, 440, ui_gfx_shadow_a);
+    gfx_blit_bitmap(0, 440, ui_gfx_shadow_a);
     resource_load_record(58);
-    f03c9(0, 457, ui_gfx_shadow_a);
+    gfx_blit_bitmap(0, 457, ui_gfx_shadow_a);
     resource_load_record(57);
 }
 
@@ -44,17 +42,17 @@ void slot_table_save() { resource_file_write_record(0x3d,slot_table); resource_f
 void slot_row_highlight(n)
 int n;
 {
-    f03ab(0x28, n * 11 + 0x3c, 0xf5, 10);
-    f039f(0x28, n * 11 + 0x3c, 0xf5, 10);
+    gfx_fill_rect(0x28, n * 11 + 0x3c, 0xf5, 10);
+    gfx_box(0x28, n * 11 + 0x3c, 0xf5, 10);
 }
 
 
 /* ---- F_A19D (original code at 0xA19D) ---- */
-void fa19d(void) { f03ab(40,126,238,10); f03ab(40,136,238,10); f039f(40,126,238,20); }
+void fa19d(void) { gfx_fill_rect(40,126,238,10); gfx_fill_rect(40,136,238,10); gfx_box(40,126,238,20); }
 
 
 /* ---- F_A1E0 (original code at 0xA1E0) ---- */
-void fa1e0(void) { f03ab(50,103,218,10); f03ab(50,113,218,10); f039f(50,103,218,20); }
+void fa1e0(void) { gfx_fill_rect(50,103,218,10); gfx_fill_rect(50,113,218,10); gfx_box(50,103,218,20); }
 
 
 /* ---- F_A223 (original code at 0xA223) ---- */

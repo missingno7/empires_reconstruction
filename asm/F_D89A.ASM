@@ -18,7 +18,7 @@ _BSS    segment word public 'BSS'
 b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
-_fd89a  proc    near
+_rect_table_hit_id  proc    near
         push    bp
         mov     bp,sp
         push    si
@@ -65,8 +65,8 @@ _fd89a  proc    near
         pop     si
         pop     bp
         ret
-_fd89a  endp
+_rect_table_hit_id  endp
 _TEXT   ends
-        public  _fd89a
+        public  _rect_table_hit_id
         extrn   _g2f30:byte
         end

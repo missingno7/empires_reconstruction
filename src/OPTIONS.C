@@ -3,7 +3,7 @@
 #include "DIALOG.H"
 extern int sound_enabled,music_enabled;
 extern struct dialog near dialog_toggle_option,dialog_toggle_music,dialog_toggle_sound,dialog_slot_backup_list,dialog_slot_list;
-extern int dialog_line_height_get(), f6b1a();extern void f03a2();extern void f039f();
+extern int dialog_line_height_get(), f6b1a();extern void gfx_bar();extern void gfx_box();
 extern void music_resume_if_valid(void);
 extern void fc834();
 extern void dialog_restore_screen();
@@ -41,10 +41,10 @@ int slot_backup_list_show(void)
  int height;
  register int i,y;
  dialog_draw(&dialog_slot_backup_list,1);gfx_color_select(0);
- f03a2(43,50,39);f03a2(157,50,38);f03a2(223,50,35);
+ gfx_bar(43,50,39);gfx_bar(157,50,38);gfx_bar(223,50,35);
  height=dialog_line_height_get();
  for(i=0,y=0;i<10;i++,y+=height+1) slot_row_draw(&gc360[i],y+52,0);
- f039f(8,0,304,200);
+ gfx_box(8,0,304,200);
  do {i=f6b1a();} while(i!=27&&i!=13);
  dialog_restore_screen();return 0;
 }
@@ -54,10 +54,10 @@ int slot_list_show(void)
  int height;
  register int i,y;
  dialog_draw(&dialog_slot_list,1);gfx_color_select(0);
- f03a2(43,50,39);f03a2(153,50,38);f03a2(220,50,55);
+ gfx_bar(43,50,39);gfx_bar(153,50,38);gfx_bar(220,50,55);
  height=dialog_line_height_get();
  for(i=0,y=0;i<10;i++,y+=height+1) slot_row_draw(&slot_table[i],y+52,1);
- f039f(8,0,304,200);
+ gfx_box(8,0,304,200);
  do {i=f6b1a();} while(i!=27&&i!=13);
  dialog_restore_screen();return 0;
 }

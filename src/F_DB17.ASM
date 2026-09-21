@@ -12,10 +12,10 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_db17
-extrn _fe1f2:near
+public _voice_channel_level_refresh
+extrn _voice_write_level:near
 
-_f_db17 proc near
+_voice_channel_level_refresh proc near
     push bp
     mov bp,sp
     push si
@@ -28,12 +28,12 @@ _f_db17 proc near
     cbw
     mov si,ax
     push si
-    call _fe1f2
+    call _voice_write_level
     pop cx
     pop si
     pop bp
     ret
-_f_db17 endp
+_voice_channel_level_refresh endp
 
 _TEXT ends
 end

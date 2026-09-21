@@ -4,17 +4,17 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-extrn _gb40:word, _gb3e:word, _gc0c9:word, _gc0c8:byte
+extrn _gb40:word, _gb3e:word, _slot_file_handle:word, _current_drive:byte
 extrn _gb33:word, _gb31:word, _gb2a:word
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f643a
-extrn _f6266:near, _lseek:near, _read:near, _write:near, _close:near
-extrn _f652a:near, _f86c9:near
+public _resource_file_write_record
+extrn _resource_file_open:near, _lseek:near, _read:near, _write:near, _close:near
+extrn _disk_reset_retry:near, _dialog_run:near
 
-_f643a proc near
+_resource_file_write_record proc near
     push bp
     mov bp,sp
     sub sp,0ch
@@ -31,7 +31,7 @@ _f643a proc near
 F643A_retry:
     mov word ptr _gb3e,0
     push di
-    call _f6266
+    call _resource_file_open
     pop cx
 
     xor ax,ax
@@ -42,7 +42,7 @@ F643A_retry:
     xor dx,dx
     push dx
     push ax
-    push word ptr _gc0c9
+    push word ptr _slot_file_handle
     call _lseek
     add sp,8
 
@@ -51,7 +51,7 @@ F643A_retry:
     push ss
     lea ax,[bp-0ah]
     push ax
-    push word ptr _gc0c9
+    push word ptr _slot_file_handle
     call _read
     add sp,8
     mov ax,4
@@ -59,7 +59,7 @@ F643A_retry:
     push ss
     lea ax,[bp-6]
     push ax
-    push word ptr _gc0c9
+    push word ptr _slot_file_handle
     call _read
     add sp,8
 
@@ -74,7 +74,7 @@ F643A_retry:
     adc dx,0
     push dx
     push ax
-    push word ptr _gc0c9
+    push word ptr _slot_file_handle
     call _lseek
     add sp,8
 
@@ -83,32 +83,32 @@ F643A_retry:
     push ax
     push word ptr [bp+8]
     push word ptr [bp+6]
-    push word ptr _gc0c9
+    push word ptr _slot_file_handle
     call _write
     add sp,8
-    push word ptr _gc0c9
+    push word ptr _slot_file_handle
     call _close
     pop cx
 
     cmp word ptr _gb3e,0
     jz short F643A_after_metadata
-    mov al,_gc0c8
+    mov al,_current_drive
     cbw
     push ax
-    call _f652a
+    call _disk_reset_retry
     pop cx
     mov _gb33,ds
     mov word ptr _gb31,0ac7h
     push ds
     mov ax,0b2ah
     push ax
-    call _f86c9
+    call _dialog_run
     pop cx
     pop cx
-    mov al,_gc0c8
+    mov al,_current_drive
     cbw
     push ax
-    call _f652a
+    call _disk_reset_retry
     pop cx
 F643A_after_metadata:
     cmp word ptr _gb3e,0
@@ -124,7 +124,7 @@ F643A_done:
     mov sp,bp
     pop bp
     ret
-_f643a endp
+_resource_file_write_record endp
 
 _TEXT ends
 end

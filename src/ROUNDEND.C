@@ -4,6 +4,7 @@
 
 struct HDR { char pad[0x122]; int f122; };
 #include "G0DCC.H"
+#include "VIDEO.H"
 
 extern int gc359, gc354, gc35d, gc35b, gc352, score_panel_x, score_panel_y, g1770;
 extern char far *ui_gfx_shadow_a;
@@ -11,7 +12,7 @@ extern void (*g12a1[])(void);
 extern void score_set_position(int n);
 extern void score_panel_clear(void);
 extern void gfx_color_select(int n);
-extern void f03cf(int x, int y, char far *p);
+extern void gfx_blit_image(int x, int y, char far *p);
 extern void fcaf1(int n);
 extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4 */
 /*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
@@ -21,8 +22,6 @@ extern void timer_wait_ticks(int n);
 extern void sound_stop_reset(void);
 extern void tutorial_hint_dialog_show(int n);
 extern int face7(), rand(), resource_load_record();
-extern void f03b4();
-extern void f03a8();
 extern void roundend_marker_show(int, int);
 extern void rect_border_draw();
 extern char gc356[];
@@ -42,10 +41,10 @@ void roundend_marker_show(int n, int j)
     score_panel_clear();
     if (n == gc359 && gc354 == 0) {
         gfx_color_select(5);
-        f03cf(score_panel_x, score_panel_y, ui_gfx_shadow_a + ((struct HDR far *) ui_gfx_shadow_a)->f122 + 2);
+        gfx_blit_image(score_panel_x, score_panel_y, ui_gfx_shadow_a + ((struct HDR far *) ui_gfx_shadow_a)->f122 + 2);
         gfx_color_select(0);
     } else {
-        f03cf(0, 0x168,
+        gfx_blit_image(0, 0x168,
               ui_gfx_shadow_a + ((int far *) ui_gfx_shadow_a)[g0dcc[gc35d].e[j].idx] + 2);
         (*g12a1[g0dcc[gc35d].e[j].sel])();
     }
@@ -82,7 +81,7 @@ void roundend_round_setup(int n)
 
     x = n;
     for (i = 0; i < 3; i++)
-        f03b4(0xf4, i * 0x30 + 0xc8, 0x30, 0x23, 0xf4, i * 0x30 + 0x10);
+        gfx_wipe_rect(0xf4, i * 0x30 + 0xc8, 0x30, 0x23, 0xf4, i * 0x30 + 0x10);
     gc35b = gc354 = gc35b = 0;
     gc35d = face7() * 0x14 + x;
     while ((g0dcc[gc35d].f16 & (1 << (x = rand() % 8))) == 0)
@@ -97,7 +96,7 @@ void roundend_round_setup(int n)
         gfx_color_select(7);
         rect_border_draw(a6 - 1, a4 - 1, 0x2c, 0x1f);
         gfx_color_select(0xf);
-        f03a8(a6, a4, 0x2a, 0x1d);
+        gfx_clear_rect(a6, a4, 0x2a, 0x1d);
     }
     for (x = 0; x < 9; x++)
         roundend_marker_show(x, x);
@@ -112,8 +111,8 @@ void roundend_round_setup(int n)
     roundend_marker_show(gc356[x], 9);
     roundend_marker_show(gc356[x ^ 1], 0xa);
     for (x = 0; x < 3; x++) {
-        f03b4(0xf4, x * 0x30 + 0xc8, 0x30, 0x23, 0xf4, x * 0x30 + 0x158);
-        f03b4(0xf4, x * 0x30 + 0x10, 0x30, 0x23, 0xf4, x * 0x30 + 0xc8);
+        gfx_wipe_rect(0xf4, x * 0x30 + 0xc8, 0x30, 0x23, 0xf4, x * 0x30 + 0x158);
+        gfx_wipe_rect(0xf4, x * 0x30 + 0x10, 0x30, 0x23, 0xf4, x * 0x30 + 0xc8);
     }
 }
 

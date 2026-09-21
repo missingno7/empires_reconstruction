@@ -135,19 +135,6 @@
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     },
     {
-      "id": "M_6B1A_6B4A",
-      "source": "asm/M_6B1A_6B4A.ASM",
-      "bytes": 76,
-      "members": [
-        "F_6B1A",
-        "F_6B4A"
-      ],
-      "classification": "UNDETERMINED",
-      "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
       "id": "F_6BCF",
       "source": "asm/F_6BCF.ASM",
       "bytes": 87,
@@ -400,21 +387,6 @@
       ],
       "classification": "UNDETERMINED",
       "evidence": "Current TASM representation alone does not establish historical language.",
-      "original_language_proven": false,
-      "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
-    },
-    {
-      "id": "M_DDD9_DF98",
-      "source": "asm/MUSIC.ASM",
-      "bytes": 700,
-      "members": [
-        "F_DDD9",
-        "F_DE7E",
-        "F_DEFA",
-        "F_DF98"
-      ],
-      "classification": "MIXED_RECONSTRUCTION_REVIEW_LATER",
-      "evidence": "Surviving src/F_DDD9.C expresses long arithmetic; module also preserves exact OMF/fixup ordering. C-looking syntax is not a safe mechanical replacement.",
       "original_language_proven": false,
       "grinder_action": "Keep exact ASM; semantic/re-C work deferred."
     }

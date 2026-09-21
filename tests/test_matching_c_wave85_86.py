@@ -101,8 +101,8 @@ class MatchingCWave85_86Tests(unittest.TestCase):
                     # MATCHING_C target's single primary public with zero
                     # addend. F_28AC's manifest binding still targets an
                     # internal RUNTIME_BLOCK secondary public (offset 0x3CC,
-                    # public _f03cc, versus RUNTIME_BLOCK's current primary
-                    # public _f039c), which that rule no longer permits;
+                    # public _gfx_copy_rect, versus RUNTIME_BLOCK's current primary
+                    # public _runtime_base), which that rule no longer permits;
                     # reconciling this needs a manifest/reconstruct.py change
                     # outside this test-only edit.
                     continue

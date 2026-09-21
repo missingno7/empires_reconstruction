@@ -2,12 +2,14 @@
    One translation unit; the sections below were the separate member
    sources of grouped module C_5A3B_6021 and keep their original ids. */
 
+#include "VIDEO.H"
+
 struct B3 { unsigned char a, b, c; };
 
 extern int g736, g738, g73a;
 extern int gc04e, gc0b0, gc0b6, gc0b8, gc0c0;
 extern int gc050[], gc080[];
-extern int f020f(), rect_table_hit_id(), f03d2(), board_raycast_hit_test();
+extern int f020f(), rect_table_hit_id(), board_raycast_hit_test();
 extern void fcaf1();
 extern void gfx_color_select(int n);
 extern char far *record_field_skip_n();
@@ -29,7 +31,7 @@ extern char far *edge;                  /* DS:40C4 */
 /*@SYM _edge=0x40C4 kind=g key=storage_objects/M_23BF4.phys*/
 extern char far *objtab;                /* DS:40D0 */
 /*@SYM _objtab=0x40D0 kind=g key=storage_objects/M_23C00.phys*/
-extern int f03d5();
+extern int gfx_get_pixel();
 extern int g40c8;
 extern char far *rect_queue_write_ptr;
 extern char display_mode;
@@ -179,7 +181,7 @@ after:
     gfx_color_select(14);
     for (i = 0; i < 0x18; i++) {
         if ((x = tx[i]) != 0) {
-            f03d2(x, y = ty[i]);
+            gfx_set_pixel(x, y = ty[i]);
             if (x < gc046) gc046 = x;
             if (gc048 < x) gc048 = x;
             if (y < gc04a) gc04a = y;
@@ -211,8 +213,8 @@ void sprite_slots_redraw(void)
     saved = f020f();
     for (i = 0; i < 0x18; i++) {
         if ((p = gc050[i]) != 0) {
-            g40c8 = f03d5(p, (w4 = gc080[i]) + 0xb8);
-            f03d2(p, w4);
+            g40c8 = gfx_get_pixel(p, (w4 = gc080[i]) + 0xb8);
+            gfx_set_pixel(p, w4);
         }
     }
     if (gc048 != 0) {
@@ -226,7 +228,7 @@ void sprite_slots_redraw(void)
 
 
 /* ---- F_5F3C (original code at 0x5F3C) ---- */
-board_raycast_hit_test(x,y) register int x,y;{char c;if(display_mode==5){switch(f03d5(x,y+0xb8)){case 0x83:return 1;case 0x86:return 2;case 0x8a:return 3;default:return 0;}}else{x-=gc0b2;y-=gc0b4;c=gc0c4[(y<<4)-y+(x>>1)];if(x&1)c&=15;else c=(c>>4)&15;if(display_mode==2){switch(c){case 2:return 1;case 3:return 2;case 4:return 3;default:return 0;}}else{switch(c){case 11:return 1;case 9:return 2;case 8:return 3;default:return 0;}}}}
+board_raycast_hit_test(x,y) register int x,y;{char c;if(display_mode==5){switch(gfx_get_pixel(x,y+0xb8)){case 0x83:return 1;case 0x86:return 2;case 0x8a:return 3;default:return 0;}}else{x-=gc0b2;y-=gc0b4;c=gc0c4[(y<<4)-y+(x>>1)];if(x&1)c&=15;else c=(c>>4)&15;if(display_mode==2){switch(c){case 2:return 1;case 3:return 2;case 4:return 3;default:return 0;}}else{switch(c){case 11:return 1;case 9:return 2;case 8:return 3;default:return 0;}}}}
 
 
 /* ---- F_6021 (original code at 0x6021) ---- */

@@ -1,4 +1,4 @@
-extern unsigned int gc0d4,g0b76,g0b78,g176e,g1772,g237c;
+extern unsigned int gc0d4,g0b76,g0b78,sound_enabled,music_enabled,g237c;
 extern unsigned long g0b7a;
 extern void fc1a0();
 
@@ -28,11 +28,11 @@ void interrupt f6bcf()
     asm db 000h
     asm db 075h,011h
     asm db 083h,03Eh
-    asm dw offset DGROUP:g176e
+    asm dw offset DGROUP:sound_enabled
     asm db 000h
     asm db 075h,007h
     asm db 083h,03Eh
-    asm dw offset DGROUP:g1772
+    asm dw offset DGROUP:music_enabled
     asm db 000h
     asm db 074h,003h
     asm call near ptr fc1a0

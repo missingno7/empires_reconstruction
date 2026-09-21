@@ -12,11 +12,10 @@ class MatchingCWave112Tests(unittest.TestCase):
         manifest = read_json(ROOT / 'layout/manifest.json')
         recipe = read_json(ROOT / 'recipes/c/matching-wave112.json')
         owner = next(r for r in manifest['regions'] if r['id'] == 'F_6B1A')
-        # F_6B1A was reverted to symbolic ASM after the refactor grouped/reviewed
-        # asm-origin candidates; see docs/current/asm-origin-review.json. The
-        # wave112 evidence below still matches the unchanged original bytes.
+        # F_6B1A was promoted into the shared src/KEYBIOS.C translation unit
+        # (see layout/structural-source-modules.json), together with F_6B4A.
         self.assertEqual(owner['kind'], 'MATCHING_ASM')
-        self.assertEqual(owner['source'], 'asm/F_6B1A.ASM')
+        self.assertEqual(owner['source'], 'src/KEYBIOS.C')
         self.assertEqual(owner['end'] - owner['start'], 48)
         self.assertEqual(recipe['conversions'][0]['id'], 'F_6B1A')
         evidence = read_json(ROOT / 'docs/matching-wave112-evidence.json')

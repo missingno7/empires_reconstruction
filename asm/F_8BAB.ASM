@@ -6,45 +6,45 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _f8bab
+public _puzzle_run
 extrn _f020f:near
-extrn _f6cea:near
-extrn _f792c:near
-extrn _f6b74:near
-extrn _f6990:near
-extrn _f6b66:near
-extrn _f1ea5:near
-extrn _f90a6:near
+extrn _sprite_sheet_index_get:near
+extrn _menu_list_active:near
+extrn _keyboard_chain_active:near
+extrn _keyboard_chain_enable:near
+extrn _keyboard_buffer_drain:near
+extrn _campaign_node_index:near
+extrn _puzzle_display_init:near
 extrn _face7:near
-extrn _fd4b3:near
-extrn _f7925:near
-extrn _f6c26:near
+extrn _tutorial_hint_dialog_show:near
+extrn _menu_list_disable:near
+extrn _timer_wait_ticks:near
 extrn _f6b1a:near
 extrn _f9440:near
-extrn _f791e:near
+extrn _menu_list_enable:near
 extrn _f9466:near
 extrn _f950c:near
-extrn _f963e:near
+extrn _puzzle_clear_cell:near
 extrn _fcaf1:near
-extrn _f6c57:near
+extrn _timer_deadline_arm:near
 extrn _f9402:near
-extrn _fce2a:near
-extrn _f929e:near
-extrn _f6c87:near
+extrn _player_select_restart_confirm:near
+extrn _puzzle_draw_piece:near
+extrn _timer_deadline_reached:near
 extrn _f6b4a:near
-extrn _f969d:near
-extrn _f93aa:near
-extrn _fcb48:near
-extrn _f9259:near
-extrn _f01ce:near
-extrn _f6ca6:near
-extrn _f6997:near
-extrn _fd5f9:near
+extrn _puzzle_check_solved:near
+extrn _puzzle_draw_tray_piece:near
+extrn _sound_stop_reset:near
+extrn _puzzle_free_resources:near
+extrn _gfx_color_select:near
+extrn _sprite_sheet_select:near
+extrn _keyboard_chain_disable:near
+extrn _resource_record_cache_reset:near
 JMP_NEAR macro target
  db 0e9h
  dw target-$-2
 endm
-_f8bab proc near
+_puzzle_run proc near
  push bp
  mov bp,sp
  sub sp,16h
@@ -58,43 +58,43 @@ _f8bab proc near
  mov [bp-2h],ax
   call _f020f
  mov [bp-0eh],ax
-  call _f6cea
+  call _sprite_sheet_index_get
  mov [bp-0ch],ax
-  call _f792c
+  call _menu_list_active
  mov [bp-8h],ax
-  call _f6b74
+  call _keyboard_chain_active
  mov [bp-0ah],ax
-  call _f6990
-  call _f6b66
-  call _f1ea5
+  call _keyboard_chain_enable
+  call _keyboard_buffer_drain
+  call _campaign_node_index
  mov [bp-6h],ax
-  call _f90a6
+  call _puzzle_display_init
   call _face7
  or ax,ax
  jz short $+12
  mov ax,8h
  push ax
-  call _fd4b3
+  call _tutorial_hint_dialog_show
  pop cx
  jmp short $+10
 L_8C05:
  mov ax,6h
  push ax
-  call _fd4b3
+  call _tutorial_hint_dialog_show
  pop cx
 L_8C0D:
  jmp near ptr $+1112
 L_8C10:
  cmp byte ptr ds:[0c134h],0h
  jz short $+80
-  call _f7925
+  call _menu_list_disable
  jmp short $+55
 L_8C1C:
  mov ax,76h
  push ax
-  call _f6c26
+  call _timer_wait_ticks
  pop cx
-  call _f6b66
+  call _keyboard_buffer_drain
   call _f6b1a
  mov [bp-16h],ax
  cmp ax,0dh
@@ -117,7 +117,7 @@ L_8C51:
  jl short $-57
  cmp word ptr [bp-8h],0h
  jz short $+5
-  call _f791e
+  call _menu_list_enable
 L_8C60:
  mov word ptr [bp-14h],1h
 L_8C65:
@@ -153,7 +153,7 @@ L_8C68:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f963e
+  call _puzzle_clear_cell
  pop cx
  pop cx
  mov al,word ptr ds:[0c346h]
@@ -259,7 +259,7 @@ L_8D52:
  mov word ptr [bp-10h],1h
  mov ax,76h
  push ax
-  call _f6c57
+  call _timer_deadline_arm
  pop cx
  mov ax,0eh
  push ax
@@ -272,7 +272,7 @@ L_8D52:
 L_8DB0:
  jmp short $+7
 L_8DB2:
-  call _fce2a
+  call _player_select_restart_confirm
  jmp short $+2
 L_8DB7:
  mov ax,1h
@@ -287,7 +287,7 @@ L_8DB7:
  jnz short $+11
  push di
  push si
-  call _f963e
+  call _puzzle_clear_cell
  pop cx
  pop cx
  jmp short $+46
@@ -311,7 +311,7 @@ L_8DD6:
  shl ax,1
  add bx,ax
  push word ptr [es:bx]
-  call _f929e
+  call _puzzle_draw_piece
  add sp,6h
 L_8E02:
  cmp byte ptr ds:[0c132h],0ffh
@@ -343,7 +343,7 @@ L_8E15:
  cbw
  push ax
  push word ptr ds:[0c132h]
-  call _f929e
+  call _puzzle_draw_piece
  add sp,6h
  xor ax,ax
  push ax
@@ -374,12 +374,12 @@ L_8E15:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f963e
+  call _puzzle_clear_cell
  pop cx
  pop cx
  mov word ptr [bp-12h],0h
 L_8E87:
-  call _f6c87
+  call _timer_deadline_reached
  or ax,ax
  jz short $+83
  mov ax,1h
@@ -417,12 +417,12 @@ L_8EBB:
  mov al,word ptr ds:[0c346h]
  cbw
  push ax
-  call _f963e
+  call _puzzle_clear_cell
  pop cx
  pop cx
  mov ax,76h
  push ax
-  call _f6c57
+  call _timer_deadline_arm
  pop cx
 L_8EDF:
   call _f6b4a
@@ -542,7 +542,7 @@ L_8FB8:
 L_8FED:
  jmp short $+7
 L_8FEF:
-  call _fce2a
+  call _player_select_restart_confirm
  jmp short $+2
 L_8FF4:
  cmp byte ptr ds:[0c132h],0ffh
@@ -557,7 +557,7 @@ L_8FF4:
  add sp,8h
  push di
  push si
-  call _f963e
+  call _puzzle_clear_cell
  pop cx
  pop cx
  jmp short $+63
@@ -572,21 +572,21 @@ L_9013:
  add sp,8h
  push di
  push si
-  call _f963e
+  call _puzzle_clear_cell
  pop cx
  pop cx
-  call _f969d
+  call _puzzle_check_solved
  mov word ptr ds:[0c134h],al
  or al,al
  jz short $+30
-  call _f6b66
+  call _keyboard_buffer_drain
  push word ptr [bp-4h]
   call _f9440
  pop cx
  push word ptr [bp-6h]
-  call _f93aa
+  call _puzzle_draw_tray_piece
  pop cx
-  call _fcb48
+  call _sound_stop_reset
  mov ax,1bh
  push ax
   call _fcaf1
@@ -606,22 +606,22 @@ L_9065:
 L_906E:
  mov ax,7h
  push ax
-  call _fd4b3
+  call _tutorial_hint_dialog_show
  pop cx
-  call _f9259
+  call _puzzle_free_resources
  push word ptr [bp-0eh]
-  call _f01ce
+  call _gfx_color_select
  pop cx
  push word ptr [bp-0ch]
-  call _f6ca6
+  call _sprite_sheet_select
  pop cx
  cmp word ptr [bp-0ah],0h
  jnz short $+5
-  call _f6997
+  call _keyboard_chain_disable
 L_9090:
-  call _f6b66
+  call _keyboard_buffer_drain
  push word ptr [bp-2h]
-  call _fd5f9
+  call _resource_record_cache_reset
  pop cx
  mov al,word ptr ds:[0c134h]
  cbw
@@ -632,6 +632,6 @@ L_90A0:
  mov sp,bp
  pop bp
  ret
-_f8bab endp
+_puzzle_run endp
 _TEXT ends
 end

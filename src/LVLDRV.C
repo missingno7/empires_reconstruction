@@ -7,7 +7,7 @@ extern void puzzle_clear_grid(void);
 extern void board_redraw_paint(void);
 extern void roundend_round_setup(int n);
 extern void f7df1(void), hud_scroll_reset(void);
-extern void f4eeb();extern void f03a8();extern void f039f();
+extern void f4eeb();extern void gfx_clear_rect();extern void gfx_box();
 extern void hud_panel_open();
 extern void gfx_color_select(int n);
 extern void sprite_draw_cursor(void);
@@ -50,13 +50,13 @@ int level_driver_run()
     }
     if (g73e == 0) {
         gfx_color_select(1);
-        f03a8(8, 0x10, 0x130, 0x90);
+        gfx_clear_rect(8, 0x10, 0x130, 0x90);
     }
     anim_step_loop(8, 0xc8, 0x130, 0x90, 8, 0x10);
     f4eeb(0);
     sprite_draw_cursor();
     hud_panel_open();
-    f039f(0, 0, 0x140, 0xc8);
+    gfx_box(0, 0, 0x140, 0xc8);
     if (tick_div8() != 4 && (g9ade & 7) == 0) {
         tutorial_hint_dialog_show(0);
         tutorial_hint_dialog_show(1);

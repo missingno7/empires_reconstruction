@@ -1,12 +1,12 @@
 {
   "format": "empires-grinder-readiness-v1",
-  "input_fingerprint": "d90c44c12f07fd78197114be7532bd9c2e70e3e9f02df275e36063903fb1b260",
+  "input_fingerprint": "dfabc119024f6f43415d454be4c1bf0d66c0d3b670a8e94fa1cc7459a65fc6d9",
   "run_started": false,
   "source_inventory": [
     {
       "id": "RUNTIME_BLOCK",
       "source": "asm/RUNTIME_BLOCK.ASM",
-      "source_sha256": "14f7499e823bfbbc7a9054eec5ccb31819306ac66fdb512083384d59ab399f0d",
+      "source_sha256": "45dd1c12b244950be0d209d62fa1a016b064c9ee2f83f97eaf8d4ac607eb3330",
       "range_file_offsets": [
         1436,
         8007
@@ -17,7 +17,7 @@
       "existing_c_sources": [
         {
           "path": "src/RUNTIME_BLOCK.C",
-          "sha256": "105bcf692ffab947d4f9099f2c164ae00eac1d28d2dac866701b60fafd3f8227",
+          "sha256": "824e0a7bab15ce57a4e8c75bf58e1e89d85464a9d4023494fb8c7f440975479e",
           "inline_asm_tokens": 793
         }
       ],
@@ -2171,7 +2171,7 @@
     {
       "id": "F_1ECD",
       "source": "asm/F_1ECD.ASM",
-      "source_sha256": "477aab7b5514f6bbf234201e339c14fee6d8aec27cf01a57c7f2809a0a3f094f",
+      "source_sha256": "29097cb44afc63a0f587d5290f031086d22f73f69b2fc1dd69c919deee36ae8a",
       "range_file_offsets": [
         8397,
         8471
@@ -2182,7 +2182,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_1ECD.C",
-          "sha256": "a16e1a7e9f7190bf38e499a0743f7172c4baa64054c221ba4387c84bfb6898ff",
+          "sha256": "e971f5fb724a54af085da2c48fbb6c8f3a527a6158bb601568fbf6bf513bf579",
           "inline_asm_tokens": 34
         }
       ],
@@ -2235,7 +2235,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_1F91.C",
-          "sha256": "0d9799f8d15b345ba2e333f8809298ada69db23183a71d2ba23370e994ff36f5",
+          "sha256": "a6a2a98a004e6a3d997c4d125177da8fc85ab25a7d22dbcdbe73e5af57a357d0",
           "inline_asm_tokens": 52
         }
       ],
@@ -2257,7 +2257,7 @@
     {
       "id": "F_4AA8",
       "source": "asm/F_4AA8.ASM",
-      "source_sha256": "ae7678f5f003e9be9992e370761fc79ec78fd57a44423e529375b6beaf195419",
+      "source_sha256": "6d7f9696acc8b67d3fb07ca9106cf47d136df82c01c18c794109140a36209dcf",
       "range_file_offsets": [
         19624,
         19724
@@ -2268,7 +2268,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_4AA8.C",
-          "sha256": "b8b37dffd2b3a38a22cea8b2675b4ccb81eff11ffb17840947e8acf23312ad64",
+          "sha256": "3012565d00dc2c0dadde3c780884fae0600e651d2a87e0f5d12376cd7e42e71d",
           "inline_asm_tokens": 41
         }
       ],
@@ -2582,7 +2582,7 @@
     {
       "id": "F_4EEB",
       "source": "src/F_4EEB.ASM",
-      "source_sha256": "8a6f55ee61869757bb911d63bb7f05a28c262b13cab0c6e89982c9de9f0f8f85",
+      "source_sha256": "3098942537c4a9c5f7f53a3ac80763390057da24fcc68f9c6616e1e1f830977a",
       "range_file_offsets": [
         20715,
         20835
@@ -2593,7 +2593,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_4EEB.C",
-          "sha256": "7f258c270d1a5b5722b0f1ca94cb15fa65a39c5be83da8947e7f79001b2f2a2f",
+          "sha256": "0a081c5d5a2a1ddb7a55be68a964d31eb7408e23179de68366700dcc80f0f11c",
           "inline_asm_tokens": 54
         }
       ],
@@ -2716,7 +2716,7 @@
     {
       "id": "F_6036",
       "source": "asm/F_6036.ASM",
-      "source_sha256": "87b989079c57b6004b3338baf7548120d7a8a62eb206b111b45413ed8c6f0164",
+      "source_sha256": "184fc3bd349f710ed69cb2ff7f08d1837966c09a80d94bb70a9ebb2f896dc217",
       "range_file_offsets": [
         25142,
         25257
@@ -2727,7 +2727,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_6036.C",
-          "sha256": "a9f0efb11d4a59f0e0c39751d4d0ee826301400e0bd73a7006a29e12b55b2214",
+          "sha256": "3aae02503b839a61fe488a0cf10fe4b60fbc8e5fba2baf30d8b0ccba11a11ac2",
           "inline_asm_tokens": 21
         }
       ],
@@ -2813,7 +2813,7 @@
     {
       "id": "F_60A9",
       "source": "asm/F_60A9.ASM",
-      "source_sha256": "d6034c0963d794ebddb344565ae3c750724ca5cb570450e6c9eb31ed0244efc1",
+      "source_sha256": "89774e2b667ac113f4f02775941d5a1ba3c25fb5caf3a61c8d618bfd47f51c4f",
       "range_file_offsets": [
         25257,
         25473
@@ -2824,7 +2824,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_60A9.C",
-          "sha256": "ae05ce33f00bfe8bb9dada6cb8f3bc48d858f73727a827acf01b11a8aca7df6e",
+          "sha256": "5a1e3d99ff07247c76bc41a4956b3040d9c8f96900f90ff7b7a2eca8b770260d",
           "inline_asm_tokens": 32
         }
       ],
@@ -2918,7 +2918,7 @@
     {
       "id": "F_6181",
       "source": "asm/F_6181.ASM",
-      "source_sha256": "1b1e0a4bea33249e3484074b30b61939db5067d1e91a98d8878516d62e85798d",
+      "source_sha256": "583e68b82fe457652bb1cb3dd1dc5bc4763d5e18a44f8d1dca1756ac4811206d",
       "range_file_offsets": [
         25473,
         25644
@@ -2929,7 +2929,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_6181.C",
-          "sha256": "6b1b5948ab51bb5f23c351174e171b6a29c98b96b4794ad1d217518d7823ea11",
+          "sha256": "4ad354f726b857864e55b34e03c74d2a4c9fe3368c8435035caa38cb55cfbbea",
           "inline_asm_tokens": 22
         }
       ],
@@ -3001,68 +3001,6 @@
       ]
     },
     {
-      "id": "M_6B1A_6B4A",
-      "source": "asm/M_6B1A_6B4A.ASM",
-      "source_sha256": "60c092b1bd883f0cbe4a735cb53d38a91204c3f627e8b3cb1406ee9efd57d56e",
-      "range_file_offsets": [
-        27930,
-        28006
-      ],
-      "bytes": 76,
-      "route": "HELD_ORIGIN_REVIEW",
-      "reason": "No existing ordinary-C candidate for a bounded flag-only test. Instruction observations do not prove source language.",
-      "existing_c_sources": [
-        {
-          "path": "src/F_6B1A.C",
-          "sha256": "ecef6a649ca932c647c0d7559a311d2c7973c23644c1d0e293d61d85c89377f0",
-          "inline_asm_tokens": 22
-        },
-        {
-          "path": "src/F_6B4A.C",
-          "sha256": "691e92f35de112fa60dc4b6820efae2b469b4450482eeaf5de81cc324f211231",
-          "inline_asm_tokens": 13
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 21,
-          "instruction": "int     16h"
-        },
-        {
-          "line": 27,
-          "instruction": "jb      @@out"
-        },
-        {
-          "line": 29,
-          "instruction": "jg      @@out"
-        },
-        {
-          "line": 34,
-          "instruction": "jz      @@out"
-        },
-        {
-          "line": 36,
-          "instruction": "push    ax"
-        },
-        {
-          "line": 38,
-          "instruction": "pop     ax"
-        },
-        {
-          "line": 40,
-          "instruction": "jmp     short @@out"
-        },
-        {
-          "line": 43,
-          "instruction": "@@out:"
-        },
-        {
-          "line": 50,
-          "instruction": "int     16h"
-        }
-      ]
-    },
-    {
       "id": "F_6BCF",
       "source": "asm/F_6BCF.ASM",
       "source_sha256": "bcffd7fe4b8d1b3d24af6fd2569220d561921830433429894514b0506e8d722b",
@@ -3076,7 +3014,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_6BCF.C",
-          "sha256": "c72ea236ef6f1a4052d2ef15e3c26b857788a6f4e9f0664f93671fbaf13869f0",
+          "sha256": "3cdd29cfcfd419af5431a7744942e1dfa6711c2a72603b911ae3ba3b9cd90483",
           "inline_asm_tokens": 33
         }
       ],
@@ -3428,7 +3366,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_C1A0.C",
-          "sha256": "e461d97cabfc735f89952d12c53b52469f979640dad389ae897eeaa50b0e71ef",
+          "sha256": "90f8530fb91ed14264338e7f314c628b0f895fa65e58264952c97d53f78f606d",
           "inline_asm_tokens": 27
         },
         {
@@ -3852,7 +3790,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_C914.C",
-          "sha256": "f81319328aa8bca95056209be522b8b5d168a29a83fbd29a084d5581afe57fb5",
+          "sha256": "0da5d612846d0a54b9656e52a5112e57c5f40d469ab189de2f9bc7f6379c3bac",
           "inline_asm_tokens": 32
         }
       ],
@@ -3925,7 +3863,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_CAF1.C",
-          "sha256": "b5c5fe96edfe32e7f1f70a74490bf62da8fe005a50e3c3b974ecec28d65baf35",
+          "sha256": "341ca48dd5df77837f75ceb2a616944e4fa298a6fb8817ff0d21a3b3edda6ba7",
           "inline_asm_tokens": 30
         }
       ],
@@ -3959,7 +3897,7 @@
     {
       "id": "M_D386_D3CF",
       "source": "asm/M_D386_D3CF.ASM",
-      "source_sha256": "1e245bc6ac550f17a0f80c8f61010d2c781ed89ac5250467101f589a4b6b5937",
+      "source_sha256": "abd2c0487d02dd7cfa481ba62c468e0b8b4bd69a0ca28f8bae1c7d6114d5503f",
       "range_file_offsets": [
         54662,
         54746
@@ -3970,7 +3908,7 @@
       "existing_c_sources": [
         {
           "path": "src/F_D386.C",
-          "sha256": "7cbd477b7a2cc88ff08782a52695f389e4cfecc8a8ef4d365db617d4d9648a07",
+          "sha256": "2692128713d4d1a39e455dd06f8909bd800f1d63b8195d42e173bed229bc813a",
           "inline_asm_tokens": 11
         }
       ],
@@ -4155,1178 +4093,6 @@
         {
           "line": 70,
           "instruction": "stosw"
-        }
-      ]
-    },
-    {
-      "id": "M_DDD9_DF98",
-      "source": "asm/MUSIC.ASM",
-      "source_sha256": "b4ab0e86c711b1cc1458729d56f2aab16f88906bb19e7237a2573ce06c0ba742",
-      "range_file_offsets": [
-        57305,
-        58005
-      ],
-      "bytes": 700,
-      "route": "HELD_SUPERVISOR",
-      "reason": "Six compiler-path probes completed: byte matches, unresolved shared-module relocation order. See c-path-probes.json.",
-      "existing_c_sources": [
-        {
-          "path": "src/F_DDD9.C",
-          "sha256": "5b196590db12afe480330cb2614f54a6d0412af85e8fe708ae692f8c91b26bd0",
-          "inline_asm_tokens": 0
-        },
-        {
-          "path": "src/F_DE7E.C",
-          "sha256": "9eb8b49b70bf0b77a7f2d1a56059f87068093b295dc2d9b90c5bac1b37957f42",
-          "inline_asm_tokens": 0
-        },
-        {
-          "path": "src/F_DEFA.C",
-          "sha256": "306787f35d12b8a62db695ccb73ebdb7daacbe9d18e2e064c07febc58b257908",
-          "inline_asm_tokens": 0
-        },
-        {
-          "path": "src/F_DF98.C",
-          "sha256": "a18d8b2e3c466080a0868e29d880b4b69dd86a0097737805171b636c00b62643",
-          "inline_asm_tokens": 19
-        }
-      ],
-      "instruction_observations": [
-        {
-          "line": 19,
-          "instruction": "org 2bbh"
-        },
-        {
-          "line": 22,
-          "instruction": "org 2bah"
-        },
-        {
-          "line": 25,
-          "instruction": "org 2b8h"
-        },
-        {
-          "line": 28,
-          "instruction": "org 2b7h"
-        },
-        {
-          "line": 31,
-          "instruction": "org 2b6h"
-        },
-        {
-          "line": 34,
-          "instruction": "org 2b3h"
-        },
-        {
-          "line": 37,
-          "instruction": "org 2afh"
-        },
-        {
-          "line": 40,
-          "instruction": "org 2ach"
-        },
-        {
-          "line": 43,
-          "instruction": "org 2a9h"
-        },
-        {
-          "line": 46,
-          "instruction": "org 2a6h"
-        },
-        {
-          "line": 49,
-          "instruction": "org 2a2h"
-        },
-        {
-          "line": 52,
-          "instruction": "org 29eh"
-        },
-        {
-          "line": 55,
-          "instruction": "org 29ah"
-        },
-        {
-          "line": 58,
-          "instruction": "org 298h"
-        },
-        {
-          "line": 61,
-          "instruction": "org 296h"
-        },
-        {
-          "line": 64,
-          "instruction": "org 293h"
-        },
-        {
-          "line": 67,
-          "instruction": "org 291h"
-        },
-        {
-          "line": 70,
-          "instruction": "org 28eh"
-        },
-        {
-          "line": 73,
-          "instruction": "org 28ch"
-        },
-        {
-          "line": 76,
-          "instruction": "org 289h"
-        },
-        {
-          "line": 79,
-          "instruction": "org 287h"
-        },
-        {
-          "line": 82,
-          "instruction": "org 285h"
-        },
-        {
-          "line": 85,
-          "instruction": "org 283h"
-        },
-        {
-          "line": 88,
-          "instruction": "org 282h"
-        },
-        {
-          "line": 91,
-          "instruction": "org 27fh"
-        },
-        {
-          "line": 94,
-          "instruction": "org 27dh"
-        },
-        {
-          "line": 97,
-          "instruction": "org 27ah"
-        },
-        {
-          "line": 100,
-          "instruction": "org 276h"
-        },
-        {
-          "line": 103,
-          "instruction": "org 274h"
-        },
-        {
-          "line": 106,
-          "instruction": "org 271h"
-        },
-        {
-          "line": 109,
-          "instruction": "org 26fh"
-        },
-        {
-          "line": 112,
-          "instruction": "org 26eh"
-        },
-        {
-          "line": 115,
-          "instruction": "org 26bh"
-        },
-        {
-          "line": 118,
-          "instruction": "org 269h"
-        },
-        {
-          "line": 121,
-          "instruction": "org 267h"
-        },
-        {
-          "line": 124,
-          "instruction": "org 265h"
-        },
-        {
-          "line": 127,
-          "instruction": "org 263h"
-        },
-        {
-          "line": 130,
-          "instruction": "org 260h"
-        },
-        {
-          "line": 133,
-          "instruction": "org 25eh"
-        },
-        {
-          "line": 136,
-          "instruction": "org 25ch"
-        },
-        {
-          "line": 139,
-          "instruction": "org 25ah"
-        },
-        {
-          "line": 142,
-          "instruction": "org 258h"
-        },
-        {
-          "line": 145,
-          "instruction": "org 257h"
-        },
-        {
-          "line": 148,
-          "instruction": "org 254h"
-        },
-        {
-          "line": 151,
-          "instruction": "org 251h"
-        },
-        {
-          "line": 154,
-          "instruction": "org 24eh"
-        },
-        {
-          "line": 157,
-          "instruction": "org 24bh"
-        },
-        {
-          "line": 160,
-          "instruction": "org 247h"
-        },
-        {
-          "line": 163,
-          "instruction": "org 245h"
-        },
-        {
-          "line": 166,
-          "instruction": "org 242h"
-        },
-        {
-          "line": 169,
-          "instruction": "org 240h"
-        },
-        {
-          "line": 172,
-          "instruction": "org 23eh"
-        },
-        {
-          "line": 175,
-          "instruction": "org 23dh"
-        },
-        {
-          "line": 178,
-          "instruction": "org 23ah"
-        },
-        {
-          "line": 181,
-          "instruction": "org 237h"
-        },
-        {
-          "line": 184,
-          "instruction": "org 234h"
-        },
-        {
-          "line": 187,
-          "instruction": "org 232h"
-        },
-        {
-          "line": 190,
-          "instruction": "org 22fh"
-        },
-        {
-          "line": 193,
-          "instruction": "org 22dh"
-        },
-        {
-          "line": 196,
-          "instruction": "org 22bh"
-        },
-        {
-          "line": 199,
-          "instruction": "org 229h"
-        },
-        {
-          "line": 202,
-          "instruction": "org 224h"
-        },
-        {
-          "line": 205,
-          "instruction": "org 221h"
-        },
-        {
-          "line": 208,
-          "instruction": "org 21eh"
-        },
-        {
-          "line": 211,
-          "instruction": "org 21dh"
-        },
-        {
-          "line": 213,
-          "instruction": "push ax"
-        },
-        {
-          "line": 214,
-          "instruction": "org 21ch"
-        },
-        {
-          "line": 217,
-          "instruction": "org 219h"
-        },
-        {
-          "line": 220,
-          "instruction": "org 217h"
-        },
-        {
-          "line": 223,
-          "instruction": "org 214h"
-        },
-        {
-          "line": 226,
-          "instruction": "org 210h"
-        },
-        {
-          "line": 229,
-          "instruction": "org 20eh"
-        },
-        {
-          "line": 232,
-          "instruction": "org 20bh"
-        },
-        {
-          "line": 235,
-          "instruction": "org 208h"
-        },
-        {
-          "line": 238,
-          "instruction": "org 204h"
-        },
-        {
-          "line": 241,
-          "instruction": "org 200h"
-        },
-        {
-          "line": 244,
-          "instruction": "org 1feh"
-        },
-        {
-          "line": 247,
-          "instruction": "org 1fch"
-        },
-        {
-          "line": 250,
-          "instruction": "org 1f9h"
-        },
-        {
-          "line": 253,
-          "instruction": "org 1f6h"
-        },
-        {
-          "line": 256,
-          "instruction": "org 1f2h"
-        },
-        {
-          "line": 259,
-          "instruction": "org 1f0h"
-        },
-        {
-          "line": 262,
-          "instruction": "org 1edh"
-        },
-        {
-          "line": 265,
-          "instruction": "org 1ebh"
-        },
-        {
-          "line": 268,
-          "instruction": "org 1e8h"
-        },
-        {
-          "line": 271,
-          "instruction": "org 1e5h"
-        },
-        {
-          "line": 274,
-          "instruction": "org 1e1h"
-        },
-        {
-          "line": 277,
-          "instruction": "org 1deh"
-        },
-        {
-          "line": 280,
-          "instruction": "org 1dbh"
-        },
-        {
-          "line": 283,
-          "instruction": "org 1d6h"
-        },
-        {
-          "line": 286,
-          "instruction": "org 1d5h"
-        },
-        {
-          "line": 288,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 289,
-          "instruction": "org 1d4h"
-        },
-        {
-          "line": 292,
-          "instruction": "org 1d3h"
-        },
-        {
-          "line": 295,
-          "instruction": "org 1d0h"
-        },
-        {
-          "line": 298,
-          "instruction": "org 1cfh"
-        },
-        {
-          "line": 300,
-          "instruction": "push ax"
-        },
-        {
-          "line": 301,
-          "instruction": "org 1ceh"
-        },
-        {
-          "line": 304,
-          "instruction": "org 1cdh"
-        },
-        {
-          "line": 307,
-          "instruction": "org 1cah"
-        },
-        {
-          "line": 310,
-          "instruction": "org 1c7h"
-        },
-        {
-          "line": 313,
-          "instruction": "org 1c6h"
-        },
-        {
-          "line": 316,
-          "instruction": "org 1c5h"
-        },
-        {
-          "line": 319,
-          "instruction": "org 1c2h"
-        },
-        {
-          "line": 322,
-          "instruction": "org 1c0h"
-        },
-        {
-          "line": 325,
-          "instruction": "org 1bfh"
-        },
-        {
-          "line": 328,
-          "instruction": "org 1beh"
-        },
-        {
-          "line": 331,
-          "instruction": "org 1bdh"
-        },
-        {
-          "line": 334,
-          "instruction": "org 1bbh"
-        },
-        {
-          "line": 337,
-          "instruction": "org 1bah"
-        },
-        {
-          "line": 340,
-          "instruction": "org 1b9h"
-        },
-        {
-          "line": 343,
-          "instruction": "org 1b7h"
-        },
-        {
-          "line": 346,
-          "instruction": "org 1b3h"
-        },
-        {
-          "line": 349,
-          "instruction": "org 1b0h"
-        },
-        {
-          "line": 352,
-          "instruction": "org 1aeh"
-        },
-        {
-          "line": 355,
-          "instruction": "org 1aah"
-        },
-        {
-          "line": 358,
-          "instruction": "org 1a9h"
-        },
-        {
-          "line": 361,
-          "instruction": "org 1a6h"
-        },
-        {
-          "line": 364,
-          "instruction": "org 1a2h"
-        },
-        {
-          "line": 367,
-          "instruction": "org 19fh"
-        },
-        {
-          "line": 370,
-          "instruction": "org 19bh"
-        },
-        {
-          "line": 373,
-          "instruction": "org 198h"
-        },
-        {
-          "line": 376,
-          "instruction": "org 196h"
-        },
-        {
-          "line": 379,
-          "instruction": "org 191h"
-        },
-        {
-          "line": 382,
-          "instruction": "org 18fh"
-        },
-        {
-          "line": 385,
-          "instruction": "org 18ah"
-        },
-        {
-          "line": 388,
-          "instruction": "org 188h"
-        },
-        {
-          "line": 391,
-          "instruction": "org 186h"
-        },
-        {
-          "line": 394,
-          "instruction": "org 182h"
-        },
-        {
-          "line": 397,
-          "instruction": "org 17fh"
-        },
-        {
-          "line": 400,
-          "instruction": "org 179h"
-        },
-        {
-          "line": 403,
-          "instruction": "org 177h"
-        },
-        {
-          "line": 406,
-          "instruction": "org 174h"
-        },
-        {
-          "line": 409,
-          "instruction": "org 16eh"
-        },
-        {
-          "line": 412,
-          "instruction": "org 16ah"
-        },
-        {
-          "line": 415,
-          "instruction": "org 168h"
-        },
-        {
-          "line": 418,
-          "instruction": "org 166h"
-        },
-        {
-          "line": 421,
-          "instruction": "org 163h"
-        },
-        {
-          "line": 424,
-          "instruction": "org 161h"
-        },
-        {
-          "line": 427,
-          "instruction": "org 15ch"
-        },
-        {
-          "line": 430,
-          "instruction": "org 15ah"
-        },
-        {
-          "line": 433,
-          "instruction": "org 157h"
-        },
-        {
-          "line": 436,
-          "instruction": "org 154h"
-        },
-        {
-          "line": 439,
-          "instruction": "org 151h"
-        },
-        {
-          "line": 442,
-          "instruction": "org 150h"
-        },
-        {
-          "line": 445,
-          "instruction": "org 14dh"
-        },
-        {
-          "line": 448,
-          "instruction": "org 14ah"
-        },
-        {
-          "line": 451,
-          "instruction": "org 149h"
-        },
-        {
-          "line": 453,
-          "instruction": "push ax"
-        },
-        {
-          "line": 454,
-          "instruction": "org 146h"
-        },
-        {
-          "line": 457,
-          "instruction": "org 144h"
-        },
-        {
-          "line": 460,
-          "instruction": "org 141h"
-        },
-        {
-          "line": 463,
-          "instruction": "org 13fh"
-        },
-        {
-          "line": 466,
-          "instruction": "org 13eh"
-        },
-        {
-          "line": 468,
-          "instruction": "push ds"
-        },
-        {
-          "line": 469,
-          "instruction": "org 13bh"
-        },
-        {
-          "line": 472,
-          "instruction": "org 13ah"
-        },
-        {
-          "line": 474,
-          "instruction": "push ax"
-        },
-        {
-          "line": 475,
-          "instruction": "org 137h"
-        },
-        {
-          "line": 478,
-          "instruction": "org 135h"
-        },
-        {
-          "line": 481,
-          "instruction": "org 132h"
-        },
-        {
-          "line": 484,
-          "instruction": "org 130h"
-        },
-        {
-          "line": 487,
-          "instruction": "org 12eh"
-        },
-        {
-          "line": 490,
-          "instruction": "org 129h"
-        },
-        {
-          "line": 493,
-          "instruction": "org 128h"
-        },
-        {
-          "line": 496,
-          "instruction": "org 127h"
-        },
-        {
-          "line": 499,
-          "instruction": "org 124h"
-        },
-        {
-          "line": 502,
-          "instruction": "org 122h"
-        },
-        {
-          "line": 505,
-          "instruction": "org 121h"
-        },
-        {
-          "line": 508,
-          "instruction": "org 120h"
-        },
-        {
-          "line": 511,
-          "instruction": "org 11fh"
-        },
-        {
-          "line": 514,
-          "instruction": "org 11dh"
-        },
-        {
-          "line": 517,
-          "instruction": "org 11ch"
-        },
-        {
-          "line": 520,
-          "instruction": "org 11ah"
-        },
-        {
-          "line": 523,
-          "instruction": "org 117h"
-        },
-        {
-          "line": 526,
-          "instruction": "org 116h"
-        },
-        {
-          "line": 529,
-          "instruction": "org 112h"
-        },
-        {
-          "line": 532,
-          "instruction": "org 10fh"
-        },
-        {
-          "line": 535,
-          "instruction": "org 10ch"
-        },
-        {
-          "line": 538,
-          "instruction": "org 10ah"
-        },
-        {
-          "line": 541,
-          "instruction": "org 108h"
-        },
-        {
-          "line": 544,
-          "instruction": "org 106h"
-        },
-        {
-          "line": 547,
-          "instruction": "org 103h"
-        },
-        {
-          "line": 550,
-          "instruction": "org 100h"
-        },
-        {
-          "line": 553,
-          "instruction": "org 0fdh"
-        },
-        {
-          "line": 556,
-          "instruction": "org 0f8h"
-        },
-        {
-          "line": 559,
-          "instruction": "org 0f5h"
-        },
-        {
-          "line": 562,
-          "instruction": "org 0f2h"
-        },
-        {
-          "line": 565,
-          "instruction": "org 0f1h"
-        },
-        {
-          "line": 567,
-          "instruction": "push ax"
-        },
-        {
-          "line": 568,
-          "instruction": "org 0f0h"
-        },
-        {
-          "line": 571,
-          "instruction": "org 0edh"
-        },
-        {
-          "line": 574,
-          "instruction": "org 0ebh"
-        },
-        {
-          "line": 577,
-          "instruction": "org 0e8h"
-        },
-        {
-          "line": 580,
-          "instruction": "org 0e5h"
-        },
-        {
-          "line": 583,
-          "instruction": "org 0e0h"
-        },
-        {
-          "line": 586,
-          "instruction": "org 0ddh"
-        },
-        {
-          "line": 589,
-          "instruction": "org 0dbh"
-        },
-        {
-          "line": 592,
-          "instruction": "org 0d8h"
-        },
-        {
-          "line": 595,
-          "instruction": "org 0d5h"
-        },
-        {
-          "line": 598,
-          "instruction": "org 0d3h"
-        },
-        {
-          "line": 601,
-          "instruction": "org 0d0h"
-        },
-        {
-          "line": 604,
-          "instruction": "org 0cch"
-        },
-        {
-          "line": 607,
-          "instruction": "org 0c9h"
-        },
-        {
-          "line": 610,
-          "instruction": "org 0c6h"
-        },
-        {
-          "line": 613,
-          "instruction": "org 0c4h"
-        },
-        {
-          "line": 616,
-          "instruction": "org 0c2h"
-        },
-        {
-          "line": 619,
-          "instruction": "org 0c0h"
-        },
-        {
-          "line": 622,
-          "instruction": "org 0bdh"
-        },
-        {
-          "line": 625,
-          "instruction": "org 0bah"
-        },
-        {
-          "line": 628,
-          "instruction": "org 0b7h"
-        },
-        {
-          "line": 631,
-          "instruction": "org 0b6h"
-        },
-        {
-          "line": 633,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 634,
-          "instruction": "org 0b5h"
-        },
-        {
-          "line": 636,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 637,
-          "instruction": "org 0b2h"
-        },
-        {
-          "line": 640,
-          "instruction": "org 0afh"
-        },
-        {
-          "line": 643,
-          "instruction": "org 0ach"
-        },
-        {
-          "line": 646,
-          "instruction": "org 0abh"
-        },
-        {
-          "line": 649,
-          "instruction": "org 0a8h"
-        },
-        {
-          "line": 652,
-          "instruction": "org 0a6h"
-        },
-        {
-          "line": 655,
-          "instruction": "org 0a5h"
-        },
-        {
-          "line": 658,
-          "instruction": "org 0a4h"
-        },
-        {
-          "line": 661,
-          "instruction": "org 0a3h"
-        },
-        {
-          "line": 664,
-          "instruction": "org 0a1h"
-        },
-        {
-          "line": 667,
-          "instruction": "org 9fh"
-        },
-        {
-          "line": 670,
-          "instruction": "org 9ch"
-        },
-        {
-          "line": 673,
-          "instruction": "org 99h"
-        },
-        {
-          "line": 676,
-          "instruction": "org 96h"
-        },
-        {
-          "line": 679,
-          "instruction": "org 93h"
-        },
-        {
-          "line": 682,
-          "instruction": "org 8eh"
-        },
-        {
-          "line": 685,
-          "instruction": "org 8bh"
-        },
-        {
-          "line": 688,
-          "instruction": "org 88h"
-        },
-        {
-          "line": 691,
-          "instruction": "org 87h"
-        },
-        {
-          "line": 693,
-          "instruction": "push ax"
-        },
-        {
-          "line": 694,
-          "instruction": "org 86h"
-        },
-        {
-          "line": 697,
-          "instruction": "org 83h"
-        },
-        {
-          "line": 700,
-          "instruction": "org 80h"
-        },
-        {
-          "line": 703,
-          "instruction": "org 7dh"
-        },
-        {
-          "line": 706,
-          "instruction": "org 7ah"
-        },
-        {
-          "line": 709,
-          "instruction": "org 75h"
-        },
-        {
-          "line": 712,
-          "instruction": "org 72h"
-        },
-        {
-          "line": 715,
-          "instruction": "org 70h"
-        },
-        {
-          "line": 718,
-          "instruction": "org 6dh"
-        },
-        {
-          "line": 721,
-          "instruction": "org 6ah"
-        },
-        {
-          "line": 724,
-          "instruction": "org 67h"
-        },
-        {
-          "line": 727,
-          "instruction": "org 64h"
-        },
-        {
-          "line": 730,
-          "instruction": "org 5fh"
-        },
-        {
-          "line": 733,
-          "instruction": "org 5dh"
-        },
-        {
-          "line": 736,
-          "instruction": "org 5ah"
-        },
-        {
-          "line": 739,
-          "instruction": "org 57h"
-        },
-        {
-          "line": 742,
-          "instruction": "org 54h"
-        },
-        {
-          "line": 745,
-          "instruction": "org 51h"
-        },
-        {
-          "line": 748,
-          "instruction": "org 4ch"
-        },
-        {
-          "line": 751,
-          "instruction": "org 49h"
-        },
-        {
-          "line": 754,
-          "instruction": "org 46h"
-        },
-        {
-          "line": 757,
-          "instruction": "org 45h"
-        },
-        {
-          "line": 759,
-          "instruction": "push ax"
-        },
-        {
-          "line": 760,
-          "instruction": "org 44h"
-        },
-        {
-          "line": 763,
-          "instruction": "org 3fh"
-        },
-        {
-          "line": 766,
-          "instruction": "org 3ch"
-        },
-        {
-          "line": 769,
-          "instruction": "org 3ah"
-        },
-        {
-          "line": 772,
-          "instruction": "org 37h"
-        },
-        {
-          "line": 775,
-          "instruction": "org 34h"
-        },
-        {
-          "line": 778,
-          "instruction": "org 31h"
-        },
-        {
-          "line": 781,
-          "instruction": "org 2eh"
-        },
-        {
-          "line": 784,
-          "instruction": "org 29h"
-        },
-        {
-          "line": 787,
-          "instruction": "org 26h"
-        },
-        {
-          "line": 790,
-          "instruction": "org 24h"
-        },
-        {
-          "line": 793,
-          "instruction": "org 21h"
-        },
-        {
-          "line": 796,
-          "instruction": "org 1eh"
-        },
-        {
-          "line": 799,
-          "instruction": "org 1dh"
-        },
-        {
-          "line": 802,
-          "instruction": "org 1bh"
-        },
-        {
-          "line": 805,
-          "instruction": "org 18h"
-        },
-        {
-          "line": 808,
-          "instruction": "org 15h"
-        },
-        {
-          "line": 811,
-          "instruction": "org 12h"
-        },
-        {
-          "line": 814,
-          "instruction": "org 0fh"
-        },
-        {
-          "line": 817,
-          "instruction": "org 0eh"
-        },
-        {
-          "line": 820,
-          "instruction": "org 0ch"
-        },
-        {
-          "line": 823,
-          "instruction": "org 9h"
-        },
-        {
-          "line": 826,
-          "instruction": "org 6h"
-        },
-        {
-          "line": 829,
-          "instruction": "org 3h"
-        },
-        {
-          "line": 832,
-          "instruction": "org 1h"
-        },
-        {
-          "line": 835,
-          "instruction": "org 0h"
         }
       ]
     }

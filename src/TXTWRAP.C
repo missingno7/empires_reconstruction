@@ -1,7 +1,7 @@
-/* F_6D3C -- draw a NUL-terminated far string, advancing x by whatever f03c6
+/* F_6D3C -- draw a NUL-terminated far string, advancing x by whatever gfx_draw_char
    returns per glyph and wrapping to the left margin on CR or LF. */
-extern int f03c6();
 #include "LAYOUT.H"
+#include "VIDEO.H"
 
 void text_draw_wrapped(x, y, s)
 int x;
@@ -17,7 +17,7 @@ char far *s;
             y += dialog_line_height;
             px = x;
         } else {
-            px += f03c6(px, y, c);
+            px += gfx_draw_char(px, y, c);
         }
     }
 }

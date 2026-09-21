@@ -5,6 +5,7 @@
 #include "C470.H"
 #include "TBL.H"
 #include "DIALOG.H"
+#include "VIDEO.H"
 
 /* Declarations below are grouped per original section. Many sections
    redeclare the same external symbol in a different form (prototyped vs.
@@ -17,9 +18,6 @@
 extern int current_slot;
 extern int cur, err, sound_enabled, music_enabled;
 extern char g12d0[];
-extern void f03b4();
-extern void f039f();
-extern void f03a8();
 extern void text_draw_wrapped(int, int, char far *);
 
 /* ---- F_A33F (original code at 0xA33F) ---- */
@@ -31,7 +29,7 @@ slot_list_draw()
 {
     register int i, y;
 
-    f03b4(0, 200, 320, 200, 0, 0);
+    gfx_wipe_rect(0, 200, 320, 200, 0, 0);
     gfx_color_select(0);
     y = 49;
     for (i = 0; i < slot_used_count; i++)
@@ -39,24 +37,24 @@ slot_list_draw()
     if (slot_select_error) {
         hud_prompt_select_draw(g12d9);
         gfx_color_select(0);
-        f03b4(0, 0x1b8 + (slot_select_error - 1) * 17, 192, 17, 66, 38);
+        gfx_wipe_rect(0, 0x1b8 + (slot_select_error - 1) * 17, 192, 17, 66, 38);
         if (slot_select_error == 1)
             text_draw_wrapped(43, y + 11, g1660);
     } else if (!slot_used_count)
         hud_panel_clear();
-    f039f(0, 0, 320, 200);
+    gfx_box(0, 0, 320, 200);
 }
 
 
 /* ---- F_A40A (original code at 0xA40A) ---- */
 extern void gfx_color_select();
 
-void slot_cursor_box(int x,int y,int c) { gfx_color_select(c); f03a8(x,y,8,10); f039f(x,y,8,10); }
+void slot_cursor_box(int x,int y,int c) { gfx_color_select(c); gfx_clear_rect(x,y,8,10); gfx_box(x,y,8,10); }
 
 
 /* ---- F_A43C (original code at 0xA43C) ---- */
 extern int timer_deadline_reached(), f6b4a(), f6b1a();
-extern void f03ba();
+extern void gfx_copy_rect_flip_h();
 extern void timer_deadline_arm();
 extern void slot_cursor_box();
 extern int g13ef;
@@ -75,10 +73,10 @@ int a, b;
                 slot_cursor_box(a, b, c ^= 15);
             if (++g13ef >= 3)
                 g13ef = 0;
-            f03b4(g13ef * 18, 400, 18, 33, 4, 85);
-            f03ba(4, 85, 18, 33, 0x12a, 85);
-            f039f(4, 85, 18, 33);
-            f039f(0x12a, 85, 18, 33);
+            gfx_wipe_rect(g13ef * 18, 400, 18, 33, 4, 85);
+            gfx_copy_rect_flip_h(4, 85, 18, 33, 0x12a, 85);
+            gfx_box(4, 85, 18, 33);
+            gfx_box(0x12a, 85, 18, 33);
             timer_deadline_arm(23);
         }
     }
@@ -103,10 +101,10 @@ player_name_edit()
     i = 0;
     while (1) {
         gfx_color_select(15);
-        f03a8(96, 100, 100, 10);
+        gfx_clear_rect(96, 100, 100, 10);
         gfx_color_select(0);
         text_draw_wrapped(96, 100, g12d0);
-        f039f(96, 100, 100, 10);
+        gfx_box(96, 100, 100, 10);
         c = g12d0[i];
         g12d0[i] = 0;
         x = text_line_width(g12d0) + 97;
@@ -220,8 +218,6 @@ int player_type_select(void)
 /* ---- F_A768 (original code at 0xA768) ---- */
 extern struct dialog dialog_quit_confirm;
 extern int keyboard_chain_active(), menu_list_active(), f6b1a();
-extern void f03ab();
-extern void f03a2();
 extern void sound_start(void);
 extern void menu_list_disable(void);
 extern void keyboard_chain_enable(void);
@@ -249,10 +245,10 @@ confirm_quit_dialog()
     ui_overlay_show();
     dialog_draw(&dialog_quit_confirm, 1);
     gfx_color_select(0);
-    f03a2(50, 95, 218);
-    f039f(50, 95, 218, 1);
-    f03ab(50, 103, 218, 10);
-    f039f(50, 103, 218, 20);
+    gfx_bar(50, 95, 218);
+    gfx_box(50, 95, 218, 1);
+    gfx_fill_rect(50, 103, 218, 10);
+    gfx_box(50, 103, 218, 20);
     while (di < 0) {
         switch (f6b1a()) {
         case 27: di = 1; i = 0; break;
@@ -384,7 +380,6 @@ int faa1f(void)
 /* Exact Turbo C recovery of the 385-byte selection/workspace routine.
    The far-pointer slot_row_draw prototype and local declaration order are byte-significant. */
 extern int keyboard_chain_active(), slot_menu_draw_header(), slot_find_free(), slot_list_draw(), faa1f(), player_slot_add_run();
-extern void f03c9();
 extern void menu_list_disable(void);
 extern void sound_start(void);
 extern void keyboard_chain_enable(void);
@@ -407,11 +402,11 @@ int fab66(void)
 
     saved = keyboard_chain_active(); menu_list_disable(); sound_stop_reset(); fc834();
     music_track_handle = -1; sound_start(); g98 = 0; g9a = 159; slot_menu_draw_header();
-    f03c9(0, 200, ui_gfx_shadow_a); gfx_color_select(0); slot_used_count = slot_find_free();
+    gfx_blit_bitmap(0, 200, ui_gfx_shadow_a); gfx_color_select(0); slot_used_count = slot_find_free();
     y = 249;
     for (i = 0; i < slot_used_count; i++) slot_row_draw(slot_table + i, y += 11, 1);
     anim_step_loop(0, 200, 320, 200, 0, 0);
-    f03c9(0, 200, ui_gfx_shadow_a); slot_select_error = 1; keyboard_chain_enable();
+    gfx_blit_bitmap(0, 200, ui_gfx_shadow_a); slot_select_error = 1; keyboard_chain_enable();
     do {
         if (!(slot_used_count = slot_find_free())) slot_select_error = 0;
         keyboard_buffer_drain(); slot_list_draw();
@@ -419,7 +414,7 @@ int fab66(void)
         if (selected == -1 && dialog_run(&g139d) != 1) selected = -2;
     } while (selected < -1);
     slot_table_save(); if (!saved) keyboard_chain_disable(); gfx_color_select(1);
-    f03a8(0, 0, 320, 200); f039f(0, 0, 320, 200);
+    gfx_clear_rect(0, 0, 320, 200); gfx_box(0, 0, 320, 200);
     g98 = 4; g9a = 155;
     sound_enabled = slot_table[selected].sound;
     music_enabled = slot_table[selected].music;

@@ -3,7 +3,7 @@
 ; frame within sprbase (byte flags & 1Fh, scaled by 1E6h, +2, added to the
 ; sprbase far pointer), then call fd825(id=bp, x=bx, y=dx, color=0Fh,
 ; height=1Eh) to fetch/validate the sprite frame, and append a compact draw
-; record via f03cc(x=shl(bx,1), y=dx+0B8h, ptr=es:di, w=0Fh-derived, flag=0).
+; record via gfx_copy_rect(x=shl(bx,1), y=dx+0B8h, ptr=es:di, w=0Fh-derived, flag=0).
 ; bp is a running sprite-slot counter starting at 2Fh, incremented once per
 ; sprite. Leaves g0a20 = 10 once the table is exhausted.
 ; near proc, no args/return; matches src/F_6036.C's Turbo C inline-asm body.
@@ -15,7 +15,7 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-extrn _fd825:near, _f03cc:near
+extrn _fd825:near, _gfx_copy_rect:near
 public _f6036
 _f6036 proc near
  push bp
@@ -70,7 +70,7 @@ sprite_loop:
  add sp,4
  pop es
  push es
-; append a compact draw record: f03cc(x=bx*2, y=dx+0B8h, ptr=es:di, flag=0)
+; append a compact draw record: gfx_copy_rect(x=bx*2, y=dx+0B8h, ptr=es:di, flag=0)
  xor ax,ax
  push ax
  push es
@@ -79,7 +79,7 @@ sprite_loop:
  push dx
  shl bx,1
  push bx
- call _f03cc
+ call _gfx_copy_rect
  add sp,0ah
  pop es
  pop cx

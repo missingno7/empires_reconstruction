@@ -12,12 +12,12 @@ JMP_NEAR macro target
     dw target-$-2
 endm
 
-public _f880a
-extrn _f6b74:near, _f6990:near, _f6b66:near, _f703e:near
-extrn _fd593:near, _f792c:near, _f7925:near, _f8480:near
-extrn _f6b1a:near, _f8378:near, _f8414:near
+public _dialog_list_run
+extrn _keyboard_chain_active:near, _keyboard_chain_enable:near, _keyboard_buffer_drain:near, _ui_overlay_show:near
+extrn _sound_start:near, _menu_list_active:near, _menu_list_disable:near, _dialog_draw:near
+extrn _f6b1a:near, _dialog_fill_box:near, _dialog_blink_box:near
 
-_f880a proc near
+_dialog_list_run proc near
  push bp
  mov bp,sp
  sub sp,1eh
@@ -26,15 +26,15 @@ _f880a proc near
  xor si,si
  mov word ptr [bp-6],1
  xor di,di
- call _f6b74
+ call _keyboard_chain_active
  mov [bp-0ah],ax
- call _f6990
- call _f6b66
- call _f703e
- call _fd593
- call _f792c
+ call _keyboard_chain_enable
+ call _keyboard_buffer_drain
+ call _ui_overlay_show
+ call _sound_start
+ call _menu_list_active
  mov [bp-8],ax
- call _f7925
+ call _menu_list_disable
  les bx,[bp+4]
  les bx,es:[bx]
  mov [bp-1ah],es
@@ -95,7 +95,7 @@ load_record:
  push ss
  lea ax,[bp-1eh]
  push ax
- call _f8480
+ call _dialog_draw
  add sp,6
  mov word ptr [bp-6],0
  mov word ptr [bp-4],0
@@ -126,7 +126,7 @@ state_move_neg:
  or si,si
  jle short state_move_done
  push di
- call _f8378
+ call _dialog_fill_box
  pop cx
  mov ax,di
  neg ax
@@ -134,13 +134,13 @@ state_move_neg:
  inc ax
  mov di,ax
  push di
- call _f8378
+ call _dialog_fill_box
  pop cx
 state_move_done:
  JMP_NEAR process_state
 state_move_pos:
  push di
- call _f8414
+ call _dialog_blink_box
  pop cx
  mov word ptr [bp-4],1
  jmp short process_state
@@ -158,13 +158,13 @@ state_reset:
  or di,di
  jle reset_after_move
  push di
- call _f8378
+ call _dialog_fill_box
  pop cx
 reset_after_move:
  xor di,di
  xor ax,ax
  push ax
- call _f8414
+ call _dialog_blink_box
  pop cx
  mov word ptr [bp-4],1
 reset_done:
@@ -175,7 +175,7 @@ state_zero_count:
  xor di,di
  xor ax,ax
  push ax
- call _f8414
+ call _dialog_blink_box
  pop cx
  mov word ptr [bp-4],1
  jmp short zero_count_finish
@@ -189,7 +189,7 @@ zero_count_done:
  mov di,1
  mov ax,1
  push ax
- call _f8414
+ call _dialog_blink_box
  pop cx
  mov word ptr [bp-4],1
 zero_count_finish:
@@ -241,6 +241,6 @@ state_loop:
  jle short f880a_end
  JMP_NEAR select_record
 f880a_end label byte
-_f880a endp
+_dialog_list_run endp
 _TEXT ends
 end

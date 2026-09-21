@@ -8,10 +8,10 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f652a
-extrn _gc0c8:byte
+public _disk_reset_retry
+extrn _current_drive:byte
 
-_f652a proc near
+_disk_reset_retry proc near
     push bp
     mov bp,sp
     sub sp,200h
@@ -20,7 +20,7 @@ _f652a proc near
     jmp short retry_test
 retry_read:
     mov ah,0
-    mov dl,ds:_gc0c8
+    mov dl,ds:_current_drive
     int 13h
     mov dx,ss
     lea ax,[bp-200h]
@@ -45,7 +45,7 @@ retry_test:
     mov sp,bp
     pop bp
     ret
-_f652a endp
+_disk_reset_retry endp
 
 _TEXT ends
 end

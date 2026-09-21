@@ -24,7 +24,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21E18.phys"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -34,7 +34,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -81,12 +81,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2C0F6.phys"
           },
-          "_f03c9": {
+          "_gfx_blit_bitmap": {
             "offset": 969,
             "coordinate": "code_offset",
             "evidence": "functions/F_03C9.entry"
           },
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
@@ -96,7 +96,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_FAC4.phys"
           },
-          "_f03cc": {
+          "_gfx_copy_rect": {
             "offset": 972,
             "coordinate": "code_offset",
             "evidence": "functions/F_03CC.entry"
@@ -133,7 +133,7 @@
             "public": "_gfx_color_select",
             "addend": 0
           },
-          "_f03a8": {
+          "_gfx_clear_rect": {
             "offset": 936,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
@@ -145,7 +145,7 @@
             "public": "_player_select_draw_portraits",
             "addend": 0
           },
-          "_f039f": {
+          "_gfx_box": {
             "offset": 927,
             "coordinate": "code_offset",
             "evidence": "functions/F_039F.entry"

@@ -1,11 +1,11 @@
 /* F_CAF1 -- update the sound tick state for one pending voice. */
-extern unsigned int g176e,g1760,g1e8a,g175e,g1e88,g1770,g1e8e,g1e92,g1e86,g1e90,g1e94,g1e8c;
+extern unsigned int sound_enabled,g1760,g1e8a,g175e,g1e88,g1770,g1e8e,g1e92,g1e86,g1e90,g1e94,g1e8c;
 
 void fcaf1()
 {
     asm db 055h,08Bh,0ECh,050h,051h,056h,057h,006h
     asm db 083h,03Eh
-    asm dw offset DGROUP:g176e
+    asm dw offset DGROUP:sound_enabled
     asm db 000h,074h,041h,08Eh,006h
     asm dw offset DGROUP:g1760
     asm db 08Bh,07Eh,004h,03Bh,03Eh

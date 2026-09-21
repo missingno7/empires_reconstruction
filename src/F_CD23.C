@@ -1,5 +1,5 @@
 /* F_CD23 -- mechanically split complete routine. */
-void f_cd23()
+void slot_list_show()
 {
     asm db 055h,08bh,0ech,083h,0ech,002h,056h,057h,0b8h,001h,000h,050h,01eh,0b8h,0d8h,021h,050h,0e8h,048h,0b7h,083h,0c4h,006h,033h
     asm db 0c0h,050h,0e8h,08dh,034h,059h,0b8h,027h,000h,050h,0b8h,032h,000h,050h,0b8h,02bh,000h,050h,0e8h,051h,036h,083h,0c4h,006h

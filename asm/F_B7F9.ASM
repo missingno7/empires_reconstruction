@@ -9,9 +9,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fb7f9
+public _level_display_init
 
-_fb7f9 proc near
+_level_display_init proc near
     push si
     push di
     mov ax,48h
@@ -157,7 +157,7 @@ B7_second_fill_test:
     pop di
     pop si
     ret
-_fb7f9 endp
+_level_display_init endp
 
 _TEXT ends
 end

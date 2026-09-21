@@ -1,10 +1,10 @@
 ; F_4EEB -- walk the record table at gb3ae (count in its first byte, 20h-byte
 ; records) and, for every record whose word at +1 equals board_record_index
-; and whose byte at +8 is not 1, blit its sprite via f03cc (color 0Fh
+; and whose byte at +8 is not 1, blit its sprite via gfx_copy_rect (color 0Fh
 ; selected first through gfx_color_select) at (word[+2], y0+word[+4]) using
 ; the far pointer looked up in resource_ptr_table[record byte +6 * 4]; when
 ; the record's byte at +1Ah is nonzero, additionally copy a strip of that
-; sprite via f03a5.  Matches src/F_4EEB.C's original Turbo C inline-asm
+; sprite via gfx_vline.  Matches src/F_4EEB.C's original Turbo C inline-asm
 ; recovery (kept for provenance); this file restates it with labels instead
 ; of raw db bytes and TASM syntax.
 ;
@@ -21,8 +21,8 @@ assume cs:_TEXT, ds:DGROUP
 
 public _f4eeb
 extrn _gfx_color_select:near
-extrn _f03a5:near
-extrn _f03cc:near
+extrn _gfx_vline:near
+extrn _gfx_copy_rect:near
 extrn _gb3ae:byte
 extrn _board_record_index:word
 extrn _resource_ptr_table:dword
@@ -69,7 +69,7 @@ loop_records:
     add ax,[di+4]
     push ax
     push word ptr [di+2]
-    call _f03cc
+    call _gfx_copy_rect
     add sp,0ah
 ; optional extra strip copy when byte at +1Ah is set
     cmp byte ptr [di+1ah],0
@@ -84,7 +84,7 @@ loop_records:
     push bx
     push dx
     push ax
-    call _f03a5
+    call _gfx_vline
     add sp,6
 skip_copy:
     pop cx

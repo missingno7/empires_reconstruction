@@ -25,15 +25,15 @@ _BSS	SEGMENT WORD PUBLIC 'BSS'
 	EXTRN	_gb6c:WORD		; DS:0B6C
 	EXTRN	_gb6e:WORD		; DS:0B6E
 	EXTRN	_gb70:WORD		; DS:0B70
-	EXTRN	_gb72:WORD		; DS:0B72
-	EXTRN	_gc0cc:DWORD		; DS:0C0CC .. 0C0CE, the old INT 09h vector chain
+	EXTRN	_keyboard_state:WORD		; DS:0B72
+	EXTRN	_int9_saved_vector:DWORD		; DS:0C0CC .. 0C0CE, the old INT 09h vector chain
 _BSS	ENDS
 
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	ASSUME	CS:_TEXT, DS:DGROUP
-	EXTRN	_f68cf:NEAR
-	PUBLIC	_f699e
-_f699e	PROC	NEAR
+	EXTRN	_sound_effects_toggle:NEAR
+	PUBLIC	_keyboard_irq_handler
+_keyboard_irq_handler	PROC	NEAR
 	push	ax
 	push	bx
 	push	cx
@@ -159,7 +159,7 @@ case1F:
 	je	xordi
 	or	si,si
 	je	xordi
-	call	_f68cf
+	call	_sound_effects_toggle
 	jmp	short jmptail
 xordi:
 	xor	di,di
@@ -173,11 +173,11 @@ nomatch:
 tail:
 	or	di,di
 	je	chain
-	cmp	word ptr _gb72,0
+	cmp	word ptr _keyboard_state,0
 	je	ack
 chain:
 	pushf
-	call	dword ptr _gc0cc
+	call	dword ptr _int9_saved_vector
 	jmp	short epilogue
 ack:
 	in	al,61h
@@ -202,6 +202,6 @@ epilogue:
 	pop	bx
 	pop	ax
 	iret
-_f699e	ENDP
+_keyboard_irq_handler	ENDP
 _TEXT	ENDS
 	END

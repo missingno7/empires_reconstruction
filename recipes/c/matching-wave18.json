@@ -14,22 +14,22 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f03b4": {
+          "_gfx_wipe_rect": {
             "offset": 948,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B4.entry"
           },
-          "_f03ba": {
+          "_gfx_copy_rect_flip_h": {
             "offset": 954,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BA.entry"
           },
-          "_f03bd": {
+          "_gfx_copy_rect_flip_hv": {
             "offset": 957,
             "coordinate": "code_offset",
             "evidence": "functions/F_03BD.entry"
           },
-          "_f03b7": {
+          "_gfx_copy_rect_flip_v": {
             "offset": 951,
             "coordinate": "code_offset",
             "evidence": "functions/F_03B7.entry"
@@ -85,12 +85,12 @@
             "public": "_rect_border_draw",
             "addend": 0
           },
-          "_f03a5": {
+          "_gfx_vline": {
             "offset": 933,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A5.entry"
           },
-          "_f03a2": {
+          "_gfx_bar": {
             "offset": 930,
             "coordinate": "code_offset",
             "evidence": "functions/F_03A2.entry"

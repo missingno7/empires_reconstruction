@@ -1,7 +1,7 @@
 /* F_C1A0 -- run the master sound tick.  The register-save sequence is
    byte-coded to retain the historical hand-written order. */
 extern void fc1f7();
-extern void fc8e2();
+extern void sound_tick_step();
 extern unsigned int v_b[],snd_flag,snd_mode,snd_paused,snd_seg2;
 
 void fc1a0()
@@ -17,7 +17,7 @@ void fc1a0()
     asm db 083h,03Eh
     asm dw offset DGROUP:snd_flag
     asm db 000h,074h,021h
-    asm call near ptr fc8e2
+    asm call near ptr sound_tick_step
     asm db 083h,03Eh
     asm dw offset DGROUP:snd_mode
     asm db 000h,074h,025h,083h,03Eh

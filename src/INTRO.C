@@ -3,6 +3,7 @@
    sources of grouped module C_5321_56C6 and keep their original ids. */
 
 #include "DIALOG.H"
+#include "VIDEO.H"
 /*@SYM _dialog_run=0x86C9 kind=f key=functions/F_86C9.entry*/
 
 struct E { int f0, f2, f4, f6, f8, fa, fc, fe; };
@@ -11,7 +12,7 @@ struct P { int a, b; };
 extern void intro_animate_step(struct E far *ev, int step, struct P far *q, int far *idx,
                   unsigned long far *when, int dx0, int dy0,
                   int far *ph, int far *pi, int far *pj, int far *pk);
-extern void f03b4(), f039f(), f03cc();
+extern void gfx_wipe_rect(), gfx_box(), gfx_copy_rect();
 extern void sound_stop_reset(void);
 extern void fcaf1(int n);
 extern unsigned long gb76;              /* DS:0B76 */
@@ -168,8 +169,8 @@ int far *ph, far *pi, far *pj, far *pk;
     n = ev[s].fe;
     switch (cmd) {
     case -1:
-        f03b4(x, y + 0xc8, w, h, x, y);
-        f039f(x, y, w, h);
+        gfx_wipe_rect(x, y + 0xc8, w, h, x, y);
+        gfx_box(x, y, w, h);
         break;
     case -2:
         sound_stop_reset();
@@ -183,11 +184,11 @@ int far *ph, far *pi, far *pj, far *pk;
         ow = *pj;
         oh = *pk;
         if (ow != 0)
-            f03b4(ox, oy + 0xc8, ow, oh, ox, oy);
-        f03cc(x, y, q[cmd], c);
+            gfx_wipe_rect(ox, oy + 0xc8, ow, oh, ox, oy);
+        gfx_copy_rect(x, y, q[cmd], c);
         if (ow != 0)
-            f039f(ox, oy, ow, oh);
-        f039f(x, y, w, h);
+            gfx_box(ox, oy, ow, oh);
+        gfx_box(x, y, w, h);
         *ph = x;
         *pi = y;
         *pj = w;
@@ -200,13 +201,12 @@ int far *ph, far *pi, far *pj, far *pk;
 /* ---- F_555B (original code at 0x555B) ---- */
 /* F_555B -- read record 0x33, draw it at the origin and then clear the
    320x200 frame. */
-extern void f03c9();
 
 void splash_draw_and_clear()
 {
     resource_load_record(0x33);
-    f03c9(0, 0, ui_gfx_shadow_a);
-    f03b4(0, 0, 0x140, 0xc8, 0, 0xc8);
+    gfx_blit_bitmap(0, 0, ui_gfx_shadow_a);
+    gfx_wipe_rect(0, 0, 0x140, 0xc8, 0, 0xc8);
 }
 
 
@@ -262,12 +262,12 @@ void resource_ptr_table_build()
    pointer GLOBAL pushes its segment word then its offset word (rule 5). */
 void bitmap_blit_topleft()
 {
-    f03cc(0, 0x20, gbfee[0], 0);
+    gfx_copy_rect(0, 0x20, gbfee[0], 0);
 }
 
 
 /* ---- F_568C (original code at 0x568C) ---- */
-void f568c(void) { f7676(); anim_step_loop(0,232,200,152,0,32); bitmap_blit_topleft(); hud_prompt_continue_draw(); f039f(0,0,320,200); }
+void f568c(void) { f7676(); anim_step_loop(0,232,200,152,0,32); bitmap_blit_topleft(); hud_prompt_continue_draw(); gfx_box(0,0,320,200); }
 
 
 /* ---- F_56C6 (original code at 0x56C6) ---- */

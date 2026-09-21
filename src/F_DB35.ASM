@@ -12,10 +12,10 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_db35
+public _voice_channel_apply_freq
 extrn _fc898:near
 
-_f_db35 proc near
+_voice_channel_apply_freq proc near
     push bp
     mov bp,sp
     push si
@@ -39,7 +39,7 @@ _f_db35 proc near
     pop si
     pop bp
     ret
-_f_db35 endp
+_voice_channel_apply_freq endp
 
 _TEXT ends
 end

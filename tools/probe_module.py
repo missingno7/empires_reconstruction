@@ -22,7 +22,7 @@ from reconstruct import (bind_region, compile_sources, owned_library_modules,
                          read_json, read_object)
 
 
-def probe(owner_ids, overrides=None, root=ROOT):
+def probe(owner_ids, overrides=None, root=ROOT, as_c=None):
     manifest = read_json(root / 'layout/manifest.json')
     lock = read_json(root / 'layout/toolchain.json')
     original = (root / 'assets/AEPROG.EXE').read_bytes()
@@ -56,6 +56,11 @@ def probe(owner_ids, overrides=None, root=ROOT):
         if owner_id not in plan and owner_id not in regions:
             raise SystemExit(f'unknown owner {owner_id}')
         owner = dict(plan.get(owner_id) or regions[owner_id])
+        if as_c and owner_id in as_c:
+            # Probe a C candidate for a region that production still assembles:
+            # compile the override with the pinned compiler flags and bind it as C.
+            owner['kind'] = 'MATCHING_C'
+            owner['build'] = {**owner['build'], 'flags_append': as_c[owner_id]}
         if owner.get('sources'):
             # Whole-module comparison: the production build checks the full compiled extent.
             bindings = dict(owner['build'].get('bindings', {}))
@@ -89,7 +94,12 @@ def probe(owner_ids, overrides=None, root=ROOT):
                 data_status.append('manifest-only owner: data placement not checked')
             for segment, place in (owner['build'].get('module_segments', {}) if owner['id'] in plan else {}).items():
                 emitted = module.segment_bytes(segment)
-                start = regions[place['owner']]['start'] + place.get('addend', 0)
+                if 'owner' in place:
+                    start = regions[place['owner']]['start'] + place.get('addend', 0)
+                elif place.get('coordinate') == 'DGROUP_offset' and 'offset' in place:
+                    start = 512 + manifest['frames']['DGROUP'] + place['offset']
+                else:
+                    data_status.append(f'{segment}: placement not checked ({place})'); continue
                 wanted = original[start:start + len(emitted)]
                 # Raw object bytes hold unresolved fixup fields; compare only the rest.
                 relocated = {f['offset'] + i for f in module.fixups_in(segment) for i in range(f['width'])}
@@ -124,9 +134,12 @@ def main(argv=None):
     parser.add_argument('owners', nargs='+')
     parser.add_argument('--source', action='append', default=[], metavar='OWNER=PATH')
     parser.add_argument('--hex', action='store_true', help='print reconstructed and original bytes')
+    parser.add_argument('--as-c', action='append', default=[], metavar='OWNER[=FLAGS]',
+                        help='treat OWNER as a C unit (optional extra compiler flags such as -B) for this probe')
     args = parser.parse_args(argv)
     overrides = dict(item.split('=', 1) for item in args.source)
-    results = probe(args.owners, overrides)
+    as_c = {item.split('=', 1)[0]: (item.split('=', 1)[1] if '=' in item else '') for item in args.as_c}
+    results = probe(args.owners, overrides, as_c=as_c)
     exact = True
     for owner_id, r in results.items():
         extra = ''.join(f', {d}' for d in r['data_segments'])

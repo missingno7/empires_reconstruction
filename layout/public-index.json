@@ -193,7 +193,7 @@
       ]
     },
     {
-      "symbol": "_f039c",
+      "symbol": "_runtime_base",
       "address": 924,
       "classification": "KNOWN_FUNCTION_ENTRY",
       "owner": "RUNTIME_BLOCK",
@@ -211,7 +211,7 @@
       ]
     },
     {
-      "symbol": "_f039f",
+      "symbol": "_gfx_box",
       "address": 927,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -229,7 +229,7 @@
       ]
     },
     {
-      "symbol": "_f03a2",
+      "symbol": "_gfx_bar",
       "address": 930,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -238,7 +238,7 @@
       ]
     },
     {
-      "symbol": "_f03a5",
+      "symbol": "_gfx_vline",
       "address": 933,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -256,17 +256,8 @@
       ]
     },
     {
-      "symbol": "_f03a8",
+      "symbol": "_gfx_clear_rect",
       "address": 936,
-      "classification": "KNOWN_SECONDARY_PUBLIC",
-      "owner": "RUNTIME_BLOCK",
-      "module_members": [
-        "RUNTIME_BLOCK"
-      ]
-    },
-    {
-      "symbol": "_f03ab",
-      "address": 939,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
       "module_members": [
@@ -283,7 +274,16 @@
       ]
     },
     {
-      "symbol": "_f03ae",
+      "symbol": "_gfx_fill_rect",
+      "address": 939,
+      "classification": "KNOWN_SECONDARY_PUBLIC",
+      "owner": "RUNTIME_BLOCK",
+      "module_members": [
+        "RUNTIME_BLOCK"
+      ]
+    },
+    {
+      "symbol": "_gfx_save_rect",
       "address": 942,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -292,7 +292,7 @@
       ]
     },
     {
-      "symbol": "_f03b1",
+      "symbol": "_gfx_restore_rect",
       "address": 945,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -301,7 +301,7 @@
       ]
     },
     {
-      "symbol": "_f03b4",
+      "symbol": "_gfx_wipe_rect",
       "address": 948,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -319,7 +319,7 @@
       ]
     },
     {
-      "symbol": "_f03b7",
+      "symbol": "_gfx_copy_rect_flip_v",
       "address": 951,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -328,7 +328,7 @@
       ]
     },
     {
-      "symbol": "_f03ba",
+      "symbol": "_gfx_copy_rect_flip_h",
       "address": 954,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -337,7 +337,7 @@
       ]
     },
     {
-      "symbol": "_f03bd",
+      "symbol": "_gfx_copy_rect_flip_hv",
       "address": 957,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -346,7 +346,7 @@
       ]
     },
     {
-      "symbol": "_f03c0",
+      "symbol": "_gfx_copy_rect_split",
       "address": 960,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -355,7 +355,7 @@
       ]
     },
     {
-      "symbol": "_f03c3",
+      "symbol": "_gfx_copy_rect_split_flip_v",
       "address": 963,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -364,7 +364,7 @@
       ]
     },
     {
-      "symbol": "_f03c6",
+      "symbol": "_gfx_draw_char",
       "address": 966,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -382,7 +382,7 @@
       ]
     },
     {
-      "symbol": "_f03c9",
+      "symbol": "_gfx_blit_bitmap",
       "address": 969,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -400,7 +400,7 @@
       ]
     },
     {
-      "symbol": "_f03cc",
+      "symbol": "_gfx_copy_rect",
       "address": 972,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -409,7 +409,7 @@
       ]
     },
     {
-      "symbol": "_f03cf",
+      "symbol": "_gfx_blit_image",
       "address": 975,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -418,7 +418,7 @@
       ]
     },
     {
-      "symbol": "_f03d2",
+      "symbol": "_gfx_set_pixel",
       "address": 978,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",
@@ -427,7 +427,7 @@
       ]
     },
     {
-      "symbol": "_f03d5",
+      "symbol": "_gfx_get_pixel",
       "address": 981,
       "classification": "KNOWN_SECONDARY_PUBLIC",
       "owner": "RUNTIME_BLOCK",

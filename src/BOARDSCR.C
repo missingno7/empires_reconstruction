@@ -6,6 +6,7 @@
 #include "R3E8.H"
 #include "GB3AF.H"
 #include "C470.H"
+#include "VIDEO.H"
 
 extern struct record3e8 g43b4[];
 
@@ -19,8 +20,6 @@ extern void sprite_draw_cursor(void);
 extern void timer_wait_ticks();
 extern int puzzle_run();
 extern void f4eeb(int n);
-extern void f03b4();
-extern void f039f();
 extern void hud_panel_open();
 extern void sound_stop_reset(void);
 extern void board_redraw_paint(void);
@@ -30,11 +29,10 @@ extern char far *src, far *dst;               /* DS:C5CA -> DS:40C4 */
 /*@SYM _src=0xC5CA kind=g key=storage_objects/M_2C0FA.phys*/
 /*@SYM _dst=0x40C4 kind=g key=storage_objects/M_23BF4.phys*/
 extern int gbc, g40ce;
-extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4, same entry as f03b4 under this alias */
+extern void wipe(int x, int y, int w, int h, int x2, int y2);   /* 03B4, same entry as gfx_wipe_rect under this alias */
 /*@SYM _wipe=0x03B4 kind=f key=functions/F_03B4.entry*/
 extern unsigned char far *record_table_root;
 extern int f250c(), f32fa(), f6181();
-extern void f03cc();
 extern void fcaf1();
 extern int g96;
 extern char s9a5c[], s99da[], s9b6e[], s9ae0[];
@@ -71,10 +69,10 @@ void board_scroll_transition(void)
     sound_stop_reset();
     puzzle_run();
     board_redraw_paint();
-    f03b4(8, 0xc8, 0x130, 0x90, 8, 0x10);
+    gfx_wipe_rect(8, 0xc8, 0x130, 0x90, 8, 0x10);
     f4eeb(0);
     sprite_draw_cursor();
-    f039f(8, 0x10, 0x130, 0x90);
+    gfx_box(8, 0x10, 0x130, 0x90);
     hud_panel_open();
     g00bc = 1;
     rect_queue_write_ptr = ui_gfx_blob;
@@ -129,26 +127,26 @@ void board_run_unit_script(unsigned char far *s)
             x = s[2];
             x <<= 1;
             y = s[3];
-            f03b4(x, y + 0x148, 0x18, 8, x, y + 0xb8);
+            gfx_wipe_rect(x, y + 0x148, 0x18, 8, x, y + 0xb8);
             g96 = 0x167;
             if (s[4] ^= 1)
-                f03cc(x, y + 0xb8, s9a5c, 0);
+                gfx_copy_rect(x, y + 0xb8, s9a5c, 0);
             else
-                f03cc(x, y + 0xb8, s99da, 0);
+                gfx_copy_rect(x, y + 0xb8, s99da, 0);
             g96 = 0x9f;
-            f03b4(x, y + 0xb8, 0x18, 8, x, y);
+            gfx_wipe_rect(x, y + 0xb8, 0x18, 8, x, y);
         } else {
             x = s[2];
             x <<= 1;
             y = s[3];
-            f03b4(x, y + 0x148, 0x18, 9, x, y + 0xb8);
+            gfx_wipe_rect(x, y + 0x148, 0x18, 9, x, y + 0xb8);
             g96 = 0x167;
             if (s[4] ^= 1)
-                f03cc(x, y + 0xb8, s9b6e, 0);
+                gfx_copy_rect(x, y + 0xb8, s9b6e, 0);
             else
-                f03cc(x, y + 0xb8, s9ae0, 0);
+                gfx_copy_rect(x, y + 0xb8, s9ae0, 0);
             g96 = 0x9f;
-            f03b4(x, y + 0xb8, 0x18, 9, x, y);
+            gfx_wipe_rect(x, y + 0xb8, 0x18, 9, x, y);
         }
         fcaf1(8);
     } else if (s[1] == 2)
@@ -233,7 +231,7 @@ void board_advance_unit_moves(int a)
             if (s != 0) {
                 p[4] = 0;
                 f2986(p);
-                f03b4(cx * 2, cy + 0xb8, 0x38, 0x10, cx * 2, cy);
+                gfx_wipe_rect(cx * 2, cy + 0xb8, 0x38, 0x10, cx * 2, cy);
             }
         } else {
             p[4] = ++s;
@@ -246,18 +244,18 @@ void board_advance_unit_moves(int a)
                 p[1] = p[3];
                 p[2] = cx;
                 p[3] = cy;
-                f03b4(cx * 2, cy + 0x148, 0x38, 0x10, cx * 2, cy);
-                f03b4(cx * 2, cy + 0x148, 0x38, 0x10, cx * 2, cy + 0xb8);
+                gfx_wipe_rect(cx * 2, cy + 0x148, 0x38, 0x10, cx * 2, cy);
+                gfx_wipe_rect(cx * 2, cy + 0x148, 0x38, 0x10, cx * 2, cy + 0xb8);
                 f2986(p);
                 cx = p[0];
                 cy = p[1];
-                f03b4(cx * 2, cy + 0xb8, 0x38, 0x10, cx * 2, cy);
+                gfx_wipe_rect(cx * 2, cy + 0xb8, 0x38, 0x10, cx * 2, cy);
                 u = cx / 4 + (cy / 8 - 1) * 0x26 - 1;
                 for (k = 0; k < 6; k++, u++)
                     board_records[u] = board_records[u + 0x26] = 7;
             } else {
                 f2986(p);
-                f03b4(cx * 2, cy + 0xb8, 0x38, 0x10, cx * 2, cy);
+                gfx_wipe_rect(cx * 2, cy + 0xb8, 0x38, 0x10, cx * 2, cy);
             }
         }
     }

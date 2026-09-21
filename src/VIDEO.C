@@ -22,7 +22,7 @@ extern void movmem(char far *s, char far *d, unsigned n);  /* CC.LIB MOVMEM, _TE
 extern char g9c[], gde[];  /* DGROUP+0x009C/0x00DE */
 extern char far *farmalloc();
 extern char far *video_normalize_far_ptr();
-extern void f039c();
+extern void runtime_base();
 extern void f0232();
 extern void video_load_palette();
 extern char display_mode;                      /* DS:BFCD, the display mode -- plain char view;
@@ -31,8 +31,8 @@ extern char far *g40ca;                 /* DS:40CA offset, DS:40CC segment */
 extern char far *g3924[];               /* DS:3924 */
 extern unsigned char g11e[];            /* DS:011E */
 extern unsigned char g41e[];            /* DS:041E */
-extern void f03a2(int x, int y, int n);
-extern void f03a5(int x, int y, int n);
+extern void gfx_bar(int x, int y, int n);
+extern void gfx_vline(int x, int y, int n);
 
 /* ---- F_01BC (original code at 0x01BC) ---- */
 /* F_01BC -- load a 256-entry DAC block through int 10h AX=1012h.  A TC frame
@@ -126,7 +126,7 @@ void video_alloc_framebuffer()
         g3924[i] = q;
         q = video_normalize_far_ptr(q + w);
     }
-    f039c();
+    runtime_base();
     f0232();
     if (display_mode == 5)
         video_load_palette(g11e);
@@ -147,8 +147,8 @@ void video_set_text_mode()
 /* ---- F_0355 (original code at 0x0355) ---- */
 void rect_border_draw(int x, int y, int w, int h)
 {
-    f03a2(x, y, w);
-    f03a5(x, y, h);
-    f03a2(x, y + h - 1, w);
-    f03a5(x + w - 1, y, h);
+    gfx_bar(x, y, w);
+    gfx_vline(x, y, h);
+    gfx_bar(x, y + h - 1, w);
+    gfx_vline(x + w - 1, y, h);
 }

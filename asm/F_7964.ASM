@@ -11,14 +11,14 @@ JMP_NEAR macro target
  dw target-$-2
 endm
 
-public _f7964
+public _menu_loop_run
 gc0fe equ 0c0feh
-extrn _f792c:near, _f7925:near, _f6b74:near, _f6990:near
-extrn _f6b66:near, _f703e:near, _fd593:near, _f7bfc:near
-extrn _f7d91:near, _f03ab:near, _f039f:near, _f6b1a:near
-extrn _f8453:near, _f_7dd3:near
+extrn _menu_list_active:near, _menu_list_disable:near, _keyboard_chain_active:near, _keyboard_chain_enable:near
+extrn _keyboard_buffer_drain:near, _ui_overlay_show:near, _sound_start:near, _menu_list_draw:near
+extrn _dialog_draw_panel:near, _gfx_fill_rect:near, _gfx_box:near, _f6b1a:near
+extrn _dialog_restore_screen:near, _f_7dd3:near
 
-_f7964 proc near
+_menu_loop_run proc near
  push bp
  mov bp,sp
  sub sp,14h
@@ -34,15 +34,15 @@ _f7964 proc near
 cleanup_entry:
  jmp near ptr _f_7dd3+23h
 initialize:
- call _f792c
+ call _menu_list_active
  mov [bp-12h],ax
- call _f7925
- call _f6b74
+ call _menu_list_disable
+ call _keyboard_chain_active
  mov [bp-14h],ax
- call _f6990
- call _f6b66
- call _f703e
- call _fd593
+ call _keyboard_chain_enable
+ call _keyboard_buffer_drain
+ call _ui_overlay_show
+ call _sound_start
  JMP_NEAR finish_check
 
 loop_start:
@@ -56,11 +56,11 @@ loop_start:
  mov [bp-0ch],es
  mov [bp-0eh],bx
  push si
- call _f7bfc
+ call _menu_list_draw
  pop cx
  push word ptr [bp-0ch]
  push word ptr [bp-0eh]
- call _f7d91
+ call _dialog_draw_panel
  pop cx
  pop cx
  mov word ptr [bp-2],0
@@ -83,7 +83,7 @@ key_loop:
  mov ax,es:[bx+12h]
  add ax,4
  push ax
- call _f03ab
+ call _gfx_fill_rect
  add sp,8
  mov ax,0ah
  push ax
@@ -98,7 +98,7 @@ key_loop:
  mov ax,es:[bx+12h]
  add ax,4
  push ax
- call _f039f
+ call _gfx_box
  add sp,8
  call _f6b1a
  mov [bp-6],ax
@@ -185,11 +185,11 @@ cancel_key:
  mov si,0ffffh
  jmp short redraw
 help_key:
- call _f8453
+ call _dialog_restore_screen
  mov word ptr [bp-2],1
  mov ax,0ffffh
  push ax
- call _f7bfc
+ call _menu_list_draw
  pop cx
  les bx,[bp-0eh]
  les bx,es:[bx+0ch]
@@ -242,7 +242,7 @@ redraw:
  mov ax,es:[bx+12h]
  add ax,4
  push ax
- call _f03ab
+ call _gfx_fill_rect
  add sp,8
  mov ax,0ah
  push ax
@@ -257,7 +257,7 @@ redraw:
  mov ax,es:[bx+12h]
  add ax,4
  push ax
- call _f039f
+ call _gfx_box
  add sp,8
 initial_loop:
  cmp word ptr [bp-8],0
@@ -266,14 +266,14 @@ initial_loop:
 finish_or_loop:
  cmp word ptr [bp-2],0
  jne finish_check
- call _f8453
+ call _dialog_restore_screen
 finish_check:
  cmp si,-1
  je cleanup_tail
  JMP_NEAR loop_start
 cleanup_tail:
  ; The historically adjacent F_7DD3 owner begins at this fall-through label.
-_f7964 endp
+_menu_loop_run endp
 _TEXT ends
 end
 

@@ -3,14 +3,14 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
- extrn _gc350:word, _gc34e:word
+ extrn _score_panel_y:word, _score_panel_x:word
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-extrn _f03ba:near, _f03b4:near
-public _f_988f, _f_98cb, _f_98cb_end
+extrn _gfx_copy_rect_flip_h:near, _gfx_wipe_rect:near
+public _marker_cell_draw_highlight, _marker_cell_draw_plain, _f_98cb_end
 
-_f_988f proc near
+_marker_cell_draw_highlight proc near
     mov ax,168h
     push ax
     mov ax,50h
@@ -23,10 +23,10 @@ _f_988f proc near
     push ax
     xor ax,ax
     push ax
-    call _f03ba
+    call _gfx_copy_rect_flip_h
     add sp,0ch
-    push word ptr ds:_gc350
-    push word ptr ds:_gc34e
+    push word ptr ds:_score_panel_y
+    push word ptr ds:_score_panel_x
     mov ax,1dh
     push ax
     mov ax,28h
@@ -35,14 +35,14 @@ _f_988f proc near
     push ax
     mov ax,50h
     push ax
-    call _f03b4
+    call _gfx_wipe_rect
     add sp,0ch
     ret
-_f_988f endp
+_marker_cell_draw_highlight endp
 
 
 
-_f_98cb:
+_marker_cell_draw_plain:
  mov ax,168h
  push ax
  mov ax,50h

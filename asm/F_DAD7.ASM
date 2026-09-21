@@ -6,9 +6,9 @@ _DATA ends
 _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
-public _f_dad7
+public _voice_channel_set_gate
 public _f_dad7_end
-_f_dad7:
+_voice_channel_set_gate:
  push bp
  mov bp,sp
  push si

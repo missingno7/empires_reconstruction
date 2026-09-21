@@ -11,7 +11,7 @@ g3754 equ 3754h
 gc5e4 equ 0c5e4h
 gc5e6 equ 0c5e6h
 gc5e8 equ 0c5e8h
-gca6b equ 0ca6bh
+music_tempo_scaled equ 0ca6bh
 gca24 equ 0ca24h
 gca26 equ 0ca26h
 gca6d equ 0ca6dh
@@ -100,7 +100,7 @@ _fdf98:
     cwd
     push dx
     push ax
-    mov ax, word ptr ds:[gca6b]
+    mov ax, word ptr ds:[music_tempo_scaled]
     cwd
     pop bx
     pop cx

@@ -1,19 +1,19 @@
 /* F_4EEB -- walk the record table and copy matching sprites.  DI-addressing
    and the historical register saves are byte-coded to prevent Turbo C from
    adding a different save pair around the inline-assembly body. */
-extern void f01ce();
-extern void f03a5();
-extern void f03cc();
+extern void gfx_color_select();
+extern void gfx_vline();
+extern void gfx_copy_rect();
 extern unsigned char gb3ae[];
-extern unsigned int gbfba;
-extern unsigned long gb07c[];
+extern unsigned int board_record_index;
+extern unsigned long resource_ptr_table[];
 
 void f4eeb(y0)
 int y0;
 {
     asm mov ax,0fh
     asm push ax
-    asm call near ptr f01ce
+    asm call near ptr gfx_color_select
     asm pop ax
     asm db 056h
     asm db 057h
@@ -26,7 +26,7 @@ int y0;
     asm db 047h
 L_loop: asm xor ax,ax
     asm db 08Ah,045h,001h
-    asm cmp ax,gbfba
+    asm cmp ax,board_record_index
     asm jne L_skip
     asm db 080h,07Dh,008h,001h
     asm je L_skip
@@ -37,14 +37,14 @@ L_loop: asm xor ax,ax
     asm db 08Ah,05Dh,006h
     asm shl bx,1
     asm shl bx,1
-    asm les ax,dword ptr gb07c[bx]
+    asm les ax,dword ptr resource_ptr_table[bx]
     asm push es
     asm push ax
     asm mov ax,[bp+4]
     asm db 003h,045h,004h
     asm push ax
     asm db 0FFh,075h,002h
-    asm call near ptr f03cc
+    asm call near ptr gfx_copy_rect
     asm add sp,0ah
     asm db 080h,07Dh,01Ah,000h
     asm je L_skip2
@@ -58,7 +58,7 @@ L_loop: asm xor ax,ax
     asm push bx
     asm push dx
     asm push ax
-    asm call near ptr f03a5
+    asm call near ptr gfx_vline
     asm add sp,6
 L_skip2: asm pop cx
 L_skip: asm db 083h,0C7h,020h

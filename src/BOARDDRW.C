@@ -26,9 +26,9 @@ extern void resource_scoreboard_unpack();
 extern void hud_icons_load();
 extern char far *g99d6;                 /* DS:99D6 offset, DS:99D8 segment */
 extern int g072c, g072e, g0736, g0738, g073a;
-extern void f03cc(unsigned,unsigned,void far *,int);
+extern void gfx_copy_rect(unsigned,unsigned,void far *,int);
 extern int g736, g738;
-extern void f03b4();
+extern void gfx_wipe_rect();
 extern struct CEL cel[];
 extern int  xa[], ya[];         /* DS:8BEA, DS:8BF4 */
 /*@SYM _xa=0x8BEA kind=g key=storage_objects/M_2871A.phys*/
@@ -163,10 +163,10 @@ void hud_arena_init()
 void sprite_draw_cursor(void)
 {
     if (g072c) {
-        f03cc(g0736, g0738, g96ee, 0);
+        gfx_copy_rect(g0736, g0738, g96ee, 0);
         g072c--;
     }
-    f03cc(g0736, g0738, resource_stripe_table + g072e * 0x2a2, g073a);
+    gfx_copy_rect(g0736, g0738, resource_stripe_table + g072e * 0x2a2, g073a);
 }
 
 
@@ -198,7 +198,7 @@ void board_redraw_view(void)
         y = g738;
         w2 = 0x28;
     }
-    f03b4(x, y + 0xb8, w4, w2, x, y);
+    gfx_wipe_rect(x, y + 0xb8, w4, w2, x, y);
 }
 
 
@@ -278,19 +278,19 @@ void board_update_moving_records(void)
     if(flag&32) {
      if(point_in_hotspot_rect(x+4,y-192)) *p=flag;
      else {
-      f03b4(x,y+144,16,56,x,y);
+      gfx_wipe_rect(x,y+144,16,56,x,y);
       y-=8;p[2]-=8;
-      g96=359;f03cc(x,y,g6ca6,0);g96=159;
-      f03b4(x,y,16,64,x,y-184);
+      g96=359;gfx_copy_rect(x,y,g6ca6,0);g96=159;
+      gfx_wipe_rect(x,y,16,64,x,y-184);
       board_records[index-38]=7;board_records[index+190]=0;
      }
     } else {
      if(point_in_hotspot_rect(x+4,y-120)) *p=flag;
      else {
-      f03b4(x,y+144,16,56,x,y);
+      gfx_wipe_rect(x,y+144,16,56,x,y);
       p[2]+=8;
-      g96=359;f03cc(x,y+8,g6ca6,0);g96=159;
-      f03b4(x,y,16,64,x,y-184);
+      g96=359;gfx_copy_rect(x,y+8,g6ca6,0);g96=159;
+      gfx_wipe_rect(x,y,16,64,x,y-184);
       board_records[index+228]=7;board_records[index]=0;
      }
     }
@@ -298,19 +298,19 @@ void board_update_moving_records(void)
     if(flag&32) {
      if(point_in_hotspot_rect(x-8,y-180)) *p=flag;
      else {
-      f03b4(x,y+144,56,16,x,y);
+      gfx_wipe_rect(x,y+144,56,16,x,y);
       x-=8;p[1]-=4;
-      g96=359;f03cc(x,y,g6ac4,0);g96=159;
-      f03b4(x,y,64,16,x,y-184);
+      g96=359;gfx_copy_rect(x,y,g6ac4,0);g96=159;
+      gfx_wipe_rect(x,y,64,16,x,y-184);
       board_records[index-1]=7;board_records[index+5]=0;
      }
     } else {
      if(point_in_hotspot_rect(x+64,y-180)) *p=flag;
      else {
-      f03b4(x,y+144,56,16,x,y);
+      gfx_wipe_rect(x,y+144,56,16,x,y);
       p[1]+=4;
-      g96=359;f03cc(x+8,y,g6ac4,0);g96=159;
-      f03b4(x,y,64,16,x,y-184);
+      g96=359;gfx_copy_rect(x+8,y,g6ac4,0);g96=159;
+      gfx_wipe_rect(x,y,64,16,x,y-184);
       board_records[index+6]=7;board_records[index]=0;
      }
     }
@@ -339,8 +339,8 @@ void board_mark_record_cells(void)
    y=(unsigned)(char far *)p[2];
    index=(x>>3)+((y>>3)-2)*38-1;
    y+=180;x-=4;
-   if(flag&128) {f03cc(x,y,g6ca6,0);stride=38;}
-   else {f03cc(x,y,g6ac4,0);stride=1;}
+   if(flag&128) {gfx_copy_rect(x,y,g6ca6,0);stride=38;}
+   else {gfx_copy_rect(x,y,g6ac4,0);stride=1;}
    for(j=0;j<6;j++,index+=stride) board_records[index]=7;
   }
  }
@@ -362,14 +362,14 @@ unsigned char far *p;
     saved = g00bc;
     di = p[0] * 2;
     n = p[1];
-    f03cc(di, n + 0xb8, gb1cc[0], 0);
+    gfx_copy_rect(di, n + 0xb8, gb1cc[0], 0);
     g00bc = 0;
     i = p[4] + 5;
     while (i < 10) {
         if (p[i] == 0)
             break;
         off = (i - 5) * 10 + di + 6;
-        f03cc(off, n + 0xb9, g893c[p[i] - 1], 0);
+        gfx_copy_rect(off, n + 0xb9, g893c[p[i] - 1], 0);
         ++i;
     }
     g00bc = saved;

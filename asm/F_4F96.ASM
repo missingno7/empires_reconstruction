@@ -5,9 +5,9 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _f4f96
+public _cmdline_parse_args
 
-_f4f96 proc near
+_cmdline_parse_args proc near
     push si
     mov si,1
     jmp scan_next
@@ -120,6 +120,6 @@ scan_next:
 done:
     pop si
     ret
-_f4f96 endp
+_cmdline_parse_args endp
 _TEXT ends
 end

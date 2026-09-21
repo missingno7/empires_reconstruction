@@ -6,11 +6,11 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _fb99f
+public _level_run_loop
 CALL_REL macro delta
  call $+delta
 endm
-_fb99f proc near
+_level_run_loop proc near
  push bp
  mov bp,sp
  sub sp,94h
@@ -740,6 +740,6 @@ L_C0DA:
  mov sp,bp
  pop bp
  ret
-_fb99f endp
+_level_run_loop endp
 _TEXT ends
 end

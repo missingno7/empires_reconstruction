@@ -8,9 +8,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f_28ac
+public _board_mark_record_cells
 
-_f_28ac proc near
+_board_mark_record_cells proc near
     push bp
     mov bp,sp
     sub sp,0eh
@@ -115,7 +115,7 @@ F28_done:
     mov sp,bp
     pop bp
     ret
-_f_28ac endp
+_board_mark_record_cells endp
 
 _TEXT ends
 end

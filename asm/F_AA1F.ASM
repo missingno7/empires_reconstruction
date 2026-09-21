@@ -12,12 +12,12 @@ g_13ba equ 13bah
 g_13b8 equ 13b8h
 
 public _faa1f
-extrn _fa15e:near
-extrn _f6b66:near
+extrn _slot_row_highlight:near
+extrn _keyboard_buffer_drain:near
 extrn _faf45:near
-extrn _fa036:near
-extrn _f86c9:near
-extrn _fa24e:near
+extrn _str_concat_far_list:near
+extrn _dialog_run:near
+extrn _slot_delete:near
 
 _faa1f proc near
  push bp
@@ -41,9 +41,9 @@ dispatch:
  mov ax,si
  mov [bp-0cch],ax
  push ax
- call _fa15e
+ call _slot_row_highlight
  pop cx
- call _f6b66
+ call _keyboard_buffer_drain
  call _faf45
  mov cx,5
  mov bx,offset state_keys
@@ -78,7 +78,7 @@ state_decrement:
  jmp cleanup_state
 state_remove:
  push word ptr [bp-0cch]
- call _fa15e
+ call _slot_row_highlight
  pop cx
  cmp word ptr ds:[g_c46e],1
  jne remove_not_one
@@ -90,7 +90,7 @@ remove_not_one:
  jmp finish
 state_first:
  push word ptr [bp-0cch]
- call _fa15e
+ call _slot_row_highlight
  pop cx
  cmp si,word ptr ds:[g_c57e]
  jne mode_two_logic
@@ -120,7 +120,7 @@ mode_two_logic:
  push ss
  lea ax,[bp-0c8h]
  push ax
- call _fa036
+ call _str_concat_far_list
  add sp,14h
  mov bx,ss
  mov es,bx
@@ -130,7 +130,7 @@ mode_two_logic:
  push ds
  mov ax,13b1h
  push ax
- call _f86c9
+ call _dialog_run
  pop cx
  pop cx
  mov [bp-0cah],ax
@@ -140,7 +140,7 @@ mode_two_logic:
  cmp word ptr [bp-0cah],0
  je mode_two_finish
  push si
- call _fa24e
+ call _slot_delete
  pop cx
 mode_two_finish:
  mov ax,-2
@@ -153,13 +153,13 @@ state_mode_two:
  jne cleanup_state
  mov word ptr ds:[g_c46e],2
  push word ptr [bp-0cch]
- call _fa15e
+ call _slot_row_highlight
  pop cx
  mov ax,-2
  jmp short finish
 cleanup_state:
  push word ptr [bp-0cch]
- call _fa15e
+ call _slot_row_highlight
  pop cx
 loop_entry:
  jmp dispatch

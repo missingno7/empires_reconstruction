@@ -9,9 +9,9 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _fbb40f
+public _level_expand_descriptors
 
-_fbb40f proc near
+_level_expand_descriptors proc near
     push si
     push di
     xor si,si
@@ -134,7 +134,7 @@ B40_tail_test:
     pop di
     pop si
     ret
-_fbb40f endp
+_level_expand_descriptors endp
 
 _TEXT ends
 end

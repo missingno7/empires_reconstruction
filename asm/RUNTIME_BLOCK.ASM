@@ -20,87 +20,87 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT,ds:DGROUP
 _TEXT segment byte public 'CODE'
-public _f039c
-_f039c label near
+public _runtime_base
+_runtime_base label near
 ; RUNTIME_BLOCK -- exact startup/runtime dispatch block.
     JMP_NEAR $+193h
-    public _f039f
-    _f039f label near
+    public _gfx_box
+    _gfx_box label near
     public _box
     _box label near
     JMP_NEAR $+296h
-    public _f03a2
-    _f03a2 label near
+    public _gfx_bar
+    _gfx_bar label near
     public _bar
     _bar label near
     JMP_NEAR $+0f38h
-    public _f03a5
-    _f03a5 label near
+    public _gfx_vline
+    _gfx_vline label near
     JMP_NEAR $+0f7eh
-    public _f03a8
-    _f03a8 label near
+    public _gfx_clear_rect
+    _gfx_clear_rect label near
     public _clear
     _clear label near
     JMP_NEAR $+0fb4h
-    public _f03ab
-    _f03ab label near
+    public _gfx_fill_rect
+    _gfx_fill_rect label near
     public _fill
     _fill label near
     JMP_NEAR $+1028h
-    public _f03ae
-    _f03ae label near
+    public _gfx_save_rect
+    _gfx_save_rect label near
     JMP_NEAR $+1094h
-    public _f03b1
-    _f03b1 label near
+    public _gfx_restore_rect
+    _gfx_restore_rect label near
     JMP_NEAR $+10d8h
-    public _f03b4
-    _f03b4 label near
+    public _gfx_wipe_rect
+    _gfx_wipe_rect label near
     public _wipe
     _wipe label near
     JMP_NEAR $+110ah
-    public _f03b7
-    _f03b7 label near
+    public _gfx_copy_rect_flip_v
+    _gfx_copy_rect_flip_v label near
     JMP_NEAR $+1180h
-    public _f03ba
-    _f03ba label near
+    public _gfx_copy_rect_flip_h
+    _gfx_copy_rect_flip_h label near
     JMP_NEAR $+11d6h
-    public _f03bd
-    _f03bd label near
+    public _gfx_copy_rect_flip_hv
+    _gfx_copy_rect_flip_hv label near
     JMP_NEAR $+122eh
-    public _f03c0
-    _f03c0 label near
+    public _gfx_copy_rect_split
+    _gfx_copy_rect_split label near
     JMP_NEAR $+1295h
-    public _f03c3
-    _f03c3 label near
+    public _gfx_copy_rect_split_flip_v
+    _gfx_copy_rect_split_flip_v label near
     JMP_NEAR $+1333h
-    public _f03c6
-    _f03c6 label near
+    public _gfx_draw_char
+    _gfx_draw_char label near
     JMP_NEAR $+13ddh
-    public _f03c9
-    _f03c9 label near
+    public _gfx_blit_bitmap
+    _gfx_blit_bitmap label near
     public _blit
     _blit label near
     JMP_NEAR $+1566h
-    public _f03cc
-    _f03cc label near
+    public _gfx_copy_rect
+    _gfx_copy_rect label near
     public _copy
     _copy label near
     JMP_NEAR $+16cbh
-    public _f03cf
-    _f03cf label near
+    public _gfx_blit_image
+    _gfx_blit_image label near
     JMP_NEAR $+182ch
-    public _f03d2
-    _f03d2 label near
+    public _gfx_set_pixel
+    _gfx_set_pixel label near
     JMP_NEAR $+18f7h
-    public _f03d5
-    _f03d5 label near
+    public _gfx_get_pixel
+    _gfx_get_pixel label near
     JMP_NEAR $+1935h
 ; 0194 clears BH, loads display selector, doubles BX; 019C indexes CS:03D8. Five stored slots; selector is not locally bounded.
 runtime_mode_dispatch label word
-    dw 0,(rt_01a1-_f039c+RT_CS),0,(rt_0258-_f039c+RT_CS),(rt_0294-_f039c+RT_CS)
+    dw 0,(rt_01a1-_runtime_base+RT_CS),0,(rt_0258-_runtime_base+RT_CS),(rt_0294-_runtime_base+RT_CS)
 ; 029A clears BH, loads display selector, doubles BX; 02A2 indexes CS:03E2. Mode 5 spills into the following table and remains unproven.
 runtime_blit_dispatch label word
-    dw 0,(rt_02a7-_f039c+RT_CS),0,(rt_07c5-_f039c+RT_CS),(rt_083b-_f039c+RT_CS)
+    dw 0,(rt_02a7-_runtime_base+RT_CS),0,(rt_07c5-_runtime_base+RT_CS),(rt_083b-_runtime_base+RT_CS)
 ; 02F8 reads CS:03EC+2*width; 02FD writes the rel16 at CS:0B5F; 0301 adds CS:0B61. 81 words: indices 0/1 alias, then 15-byte strides. Valid stored domain 0..80; caller width bounds remain unproven.
 runtime_planar_entry_deltas label word
     dw rt_07a8-rt_07c5,rt_07a8-rt_07c5,rt_0799-rt_07c5,rt_078a-rt_07c5
@@ -152,7 +152,7 @@ runtime_packed_entry_deltas label word
     ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).
     mov bl,byte ptr ds:[0bfcdh]
     shl bx,1
-    jmp word ptr cs:[bx+runtime_mode_dispatch-_f039c+RT_CS]
+    jmp word ptr cs:[bx+runtime_mode_dispatch-_runtime_base+RT_CS]
     ; EGA/VGA planar-mode initializer reached from the dispatch table.
 rt_01a1 label byte
     push bp
@@ -297,7 +297,7 @@ rt_0294 label byte
     ; mov bl, byte ptr ds:[0BFCDh] (TASM absolute-address encoding).
     mov bl,byte ptr ds:[0bfcdh]
     shl bx,1
-    jmp word ptr cs:[bx+runtime_blit_dispatch-_f039c+RT_CS]
+    jmp word ptr cs:[bx+runtime_blit_dispatch-_runtime_base+RT_CS]
     runtime_3e2_handler:
 rt_02a7 label byte
     push bp
@@ -342,10 +342,10 @@ rt_02a7 label byte
     mov dx,0a0h
     shl bx,1
     sub dx,bx
-    mov ax,cs:[bx+runtime_planar_entry_deltas-_f039c+RT_CS]
+    mov ax,cs:[bx+runtime_planar_entry_deltas-_runtime_base+RT_CS]
     ; TASM 1.0 needs the historical absolute CS-store spelling preserved.
      mov word ptr cs:[0b5fh],ax
-    add ax,rt_07c5-_f039c+RT_CS
+    add ax,rt_07c5-_runtime_base+RT_CS
     pop ds
     jmp ax
 ; UNROLLED_CODE: 80 repetitions of 15-byte pixel transfer; falls into row tail
@@ -2944,7 +2944,7 @@ rb_145c:
     jge $+0ch
     mov ah,bl
     and ah,2
-    jmp word ptr cs:[bx+runtime_even_pixel_dispatch-_f039c+RT_CS]
+    jmp word ptr cs:[bx+runtime_even_pixel_dispatch-_runtime_base+RT_CS]
 rt_1494 label byte
     inc di
     shl al,1
@@ -3003,7 +3003,7 @@ rt_14f2:
     jge $+0ch
     mov ah,bl
     and ah,2
-    jmp word ptr cs:[bx+runtime_odd_pixel_dispatch-_f039c+RT_CS]
+    jmp word ptr cs:[bx+runtime_odd_pixel_dispatch-_runtime_base+RT_CS]
 rt_1508 label byte
     shl al,1
     jae $+7
@@ -3062,12 +3062,12 @@ rt_1559 label byte
     ret
 ; Even BX pixel count indexes CS:190C after signed comparison with 16. Nine words include the full-width entry. Negative/wrapped counts are not proven impossible.
 runtime_even_pixel_dispatch label word
-    dw (rt_14e5-_f039c+RT_CS),(rt_14cd-_f039c+RT_CS),(rt_14cd-_f039c+RT_CS),(rt_14ba-_f039c+RT_CS),(rt_14ba-_f039c+RT_CS),(rt_14a7-_f039c+RT_CS),(rt_14a7-_f039c+RT_CS),(rt_1494-_f039c+RT_CS)
-    dw (rt_1494-_f039c+RT_CS)
+    dw (rt_14e5-_runtime_base+RT_CS),(rt_14cd-_runtime_base+RT_CS),(rt_14cd-_runtime_base+RT_CS),(rt_14ba-_runtime_base+RT_CS),(rt_14ba-_runtime_base+RT_CS),(rt_14a7-_runtime_base+RT_CS),(rt_14a7-_runtime_base+RT_CS),(rt_1494-_runtime_base+RT_CS)
+    dw (rt_1494-_runtime_base+RT_CS)
 ; Even BX pixel count indexes CS:191E; paired with table at 1570 and ends exactly at public blit target 1594.
 runtime_odd_pixel_dispatch label word
-    dw (rt_1559-_f039c+RT_CS),(rt_1541-_f039c+RT_CS),(rt_1541-_f039c+RT_CS),(rt_152e-_f039c+RT_CS),(rt_152e-_f039c+RT_CS),(rt_151b-_f039c+RT_CS),(rt_151b-_f039c+RT_CS),(rt_1508-_f039c+RT_CS)
-    dw (rt_1508-_f039c+RT_CS)
+    dw (rt_1559-_runtime_base+RT_CS),(rt_1541-_runtime_base+RT_CS),(rt_1541-_runtime_base+RT_CS),(rt_152e-_runtime_base+RT_CS),(rt_152e-_runtime_base+RT_CS),(rt_151b-_runtime_base+RT_CS),(rt_151b-_runtime_base+RT_CS),(rt_1508-_runtime_base+RT_CS)
+    dw (rt_1508-_runtime_base+RT_CS)
     ; F_03C9 / blit: planar bitmap blit from a 32-byte source header.
     runtime_blit_primitive:
     push bp
@@ -3379,7 +3379,7 @@ runtime_180c_pixel_loop:
     jge $+0ch
     mov ah,bl
     and ah,2
-    jmp word ptr cs:[bx+runtime_even_pixel_dispatch-_f039c+RT_CS]
+    jmp word ptr cs:[bx+runtime_even_pixel_dispatch-_runtime_base+RT_CS]
 rt_18b8 label byte
     inc di
     shl al,1
@@ -3436,9 +3436,9 @@ rt_1909 label byte
      ret
 ; Unreferenced translated copy of runtime_even_pixel_dispatch (+0424h).
 runtime_unreferenced_pixel_dispatch label word
-    dw (rt_1909-_f039c+RT_CS),(rt_18f1-_f039c+RT_CS),(rt_18f1-_f039c+RT_CS)
-    dw (rt_18de-_f039c+RT_CS),(rt_18de-_f039c+RT_CS),(rt_18cb-_f039c+RT_CS)
-    dw (rt_18cb-_f039c+RT_CS),(rt_18b8-_f039c+RT_CS),(rt_18b8-_f039c+RT_CS)
+    dw (rt_1909-_runtime_base+RT_CS),(rt_18f1-_runtime_base+RT_CS),(rt_18f1-_runtime_base+RT_CS)
+    dw (rt_18de-_runtime_base+RT_CS),(rt_18de-_runtime_base+RT_CS),(rt_18cb-_runtime_base+RT_CS)
+    dw (rt_18cb-_runtime_base+RT_CS),(rt_18b8-_runtime_base+RT_CS),(rt_18b8-_runtime_base+RT_CS)
 
     ; F_03D2: merge a nibble from a planar pixel with the current state.
     runtime_f03d2:
@@ -3498,8 +3498,12 @@ runtime_unreferenced_pixel_dispatch label word
     pop bp
     ret
 
-    ; Unreferenced stub and driver name following the final code root.
-    db 0c3h
+    ; Unreferenced stub: a lone RET with no discoverable caller (no CALL/JMP
+    ; target, no table entry, and no far-pointer field anywhere in the
+    ; built image resolves to this offset). Preserved byte-for-byte;
+    ; encoded as a named instruction so it is no longer raw/unresolved.
+runtime_unreferenced_ret label byte
+    ret
 runtime_driver_name label byte
     db 'EGA.DRV',0
     _runtime_block_end label byte

@@ -5,7 +5,7 @@
    `cwd` is instead an int multiply whose RESULT is widened (rule 5), which is
    what the first two statements do.  Three longs in a 0x0C frame, in reverse
    declaration order (rule 1): the one written first is declared last. */
-long fddd9(a, b)
+long music_note_to_divisor(a, b)
 int a;
 int b;
 {

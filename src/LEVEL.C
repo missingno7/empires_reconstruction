@@ -6,6 +6,7 @@
 #include "GB3AF.H"
 #include "DIALOG.H"
 #include "R3E8.H"
+#include "VIDEO.H"
 
 extern int resource_load_record();
 extern void resource_load_record_alloc(int,char far * far *);
@@ -18,9 +19,8 @@ extern void timer_deadline_arm();
 /* ---- F_AF45 (original code at 0xAF45) ---- */
 /* Preincrement must feed the comparison: separate statements emit a shorter
    memory comparison. Explicit return preserves the final epilogue jump. */
-extern void f03b4();
-extern void f03ba();
-extern void f039f();
+extern void gfx_wipe_rect();
+extern void gfx_box();
 extern int timer_deadline_reached();
 extern int f6b4a();
 extern int f6b1a();
@@ -28,21 +28,21 @@ extern int g13ef[];                     /* DS:13EF, the frame index */
 
 int faf45()
 {
-    f03b4(g13ef[0] * 0x12, 0x190, 0x12, 0x21, 0x04, 0x55);
-    f03ba(0x04, 0x55, 0x12, 0x21, 0x12a, 0x55);
-    f03b4(0x04, 0x55, 0x12, 0x21, 0x04, 0x11d);
-    f03b4(0x12a, 0x55, 0x12, 0x21, 0x12a, 0x11d);
-    f039f(0x04, 0x55, 0x12, 0x21);
-    f039f(0x12a, 0x55, 0x12, 0x21);
+    gfx_wipe_rect(g13ef[0] * 0x12, 0x190, 0x12, 0x21, 0x04, 0x55);
+    gfx_copy_rect_flip_h(0x04, 0x55, 0x12, 0x21, 0x12a, 0x55);
+    gfx_wipe_rect(0x04, 0x55, 0x12, 0x21, 0x04, 0x11d);
+    gfx_wipe_rect(0x12a, 0x55, 0x12, 0x21, 0x12a, 0x11d);
+    gfx_box(0x04, 0x55, 0x12, 0x21);
+    gfx_box(0x12a, 0x55, 0x12, 0x21);
     timer_deadline_arm(0x17);
     while (!f6b4a()) {
         if (timer_deadline_reached()) {
             if (++g13ef[0] >= 3)
                 g13ef[0] = 0;
-            f03b4(g13ef[0] * 0x12, 0x190, 0x12, 0x21, 0x04, 0x55);
-            f03ba(0x04, 0x55, 0x12, 0x21, 0x12a, 0x55);
-            f039f(0x04, 0x55, 0x12, 0x21);
-            f039f(0x12a, 0x55, 0x12, 0x21);
+            gfx_wipe_rect(g13ef[0] * 0x12, 0x190, 0x12, 0x21, 0x04, 0x55);
+            gfx_copy_rect_flip_h(0x04, 0x55, 0x12, 0x21, 0x12a, 0x55);
+            gfx_box(0x04, 0x55, 0x12, 0x21);
+            gfx_box(0x12a, 0x55, 0x12, 0x21);
             timer_deadline_arm(0x17);
         }
     }
@@ -52,7 +52,7 @@ int faf45()
 
 
 /* ---- F_B09A (original code at 0xB09A) ---- */
-extern void f03cc();extern void f03c9();extern void f03b4();extern char far *ui_gfx_shadow_a;extern int g96;fb09a(){resource_load_record(0x47);f03c9(6,200,ui_gfx_shadow_a);f03b4(6,200,0x134,0x90,6,0x158);resource_load_record(0x48);g96=400;f03cc(0x72,0xd3,ui_gfx_shadow_a,0);g96=0x9f;f03b4(6,200,0x134,0x90,6,16);}
+extern void gfx_copy_rect();extern void gfx_blit_bitmap();extern void gfx_wipe_rect();extern char far *ui_gfx_shadow_a;extern int g96;fb09a(){resource_load_record(0x47);gfx_blit_bitmap(6,200,ui_gfx_shadow_a);gfx_wipe_rect(6,200,0x134,0x90,6,0x158);resource_load_record(0x48);g96=400;gfx_copy_rect(0x72,0xd3,ui_gfx_shadow_a,0);g96=0x9f;gfx_wipe_rect(6,200,0x134,0x90,6,16);}
 
 
 /* ---- F_B122 (original code at 0xB122) ---- */
@@ -89,9 +89,9 @@ void board_resource_expand(void)
 
 
 /* ---- F_B3D7 (original code at 0xB3D7) ---- */
-extern void f03c9(), f03b4();
+extern void gfx_blit_bitmap(), gfx_wipe_rect();
 extern char far *ui_gfx_shadow_a;
-void fb3d7(void) { resource_load_record(84); f03c9(0,0,ui_gfx_shadow_a); f03b4(0,0,320,200,0,200); }
+void fb3d7(void) { resource_load_record(84); gfx_blit_bitmap(0,0,ui_gfx_shadow_a); gfx_wipe_rect(0,0,320,200,0,200); }
 
 
 /* ---- F_B40F (original code at 0xB40F) ---- */
@@ -139,18 +139,18 @@ void level_free_descriptor_table()
 
 
 /* ---- F_B60F (original code at 0xB60F) ---- */
-extern void f03b4();extern int board_record_index;extern unsigned char gb3ae[],g9bfc[],gbf66[];struct R{char a,b;int x,y;char c,d,e;char rest[23];};fb60f(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(gb3ae+1);for(i=0;i<gb3ae[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+g9bfc[p->c]-1;b=(y=p->y)+gbf66[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)f03b4(x,y+200,r-x+1,b-y+1,x,y);}}}
+extern void gfx_wipe_rect();extern int board_record_index;extern unsigned char gb3ae[],g9bfc[],gbf66[];struct R{char a,b;int x,y;char c,d,e;char rest[23];};fb60f(){register int x,y;int i,r,b;struct R *p;p=(struct R *)(gb3ae+1);for(i=0;i<gb3ae[0];i++,p++){if(!p->e&&p->b==board_record_index){r=(x=p->x)+g9bfc[p->c]-1;b=(y=p->y)+gbf66[p->c]-1;if(x<0)x=0;if(y<0)y=0;if(r>=0)gfx_wipe_rect(x,y+200,r-x+1,b-y+1,x,y);}}}
 
 
 /* ---- F_B6CD (original code at 0xB6CD) ---- */
-extern int hud_panel_clear(), fb60f();extern void f4eeb();extern void f4b0c();extern void f039f();
+extern int hud_panel_clear(), fb60f();extern void f4eeb();extern void f4b0c();extern void gfx_box();
 extern void menu_list_disable(void);
 extern void fb3d7(void);
 extern void f1ecd(void);
 extern void timer_deadline_wait(void);
 extern void level_expand_descriptors(void);extern int g8fe,gbc,board_record_index,g40ce,g98,g94,g96,g9a,g1776,g1784;
 extern char *ui_gfx_blob;
-extern char far *rect_queue_write_ptr;fb6cd(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;fb3d7();level_expand_descriptors();f4eeb(0);f039f(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;fb60f();f4b0c();if(rect_queue_write_ptr!=ui_gfx_blob)f1ecd();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
+extern char far *rect_queue_write_ptr;fb6cd(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;fb3d7();level_expand_descriptors();f4eeb(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;fb60f();f4b0c();if(rect_queue_write_ptr!=ui_gfx_blob)f1ecd();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
 
 
 /* ---- F_B772 (original code at 0xB772) ---- */
@@ -160,13 +160,13 @@ extern unsigned char gb3ae[];extern int near gb52f[];extern int gc588,gc5a2;stru
 /* ---- F_B7F9 (original code at 0xB7F9) ---- */
 /* Exact Turbo C reconstruction. Board fields use the existing workspace
  * arrays; no new storage or interior-address globals are introduced. */
-extern void timer_deadline_wait(void);extern void f4e9f();extern void f4b0c();extern void f03b4();extern void f039f();
+extern void timer_deadline_wait(void);extern void f4e9f();extern void f4b0c();extern void gfx_wipe_rect();extern void gfx_box();
 extern void fcaf1();
 extern void f1ecd(void);
 extern void resource_record_cache_reset();
 extern void sound_stop_reset(void);
 extern void sprite_draw_cursor(void);
-extern void f03cc(int,int,void far *,int);
+extern void gfx_copy_rect(int,int,void far *,int);
 extern int gbc,g1774,g96;
 extern int near gb52f[];
 extern unsigned char gb6cf;
@@ -178,12 +178,12 @@ void level_display_init(void)
  resource_load_record(0x48);gbc=0;((unsigned char near *)gb3af)[136]=1;((unsigned char near *)gb3af)[200]=1;((unsigned char near *)gb3af)[264]=1;((unsigned char near *)gb3af)[328]=1;
  sound_stop_reset();g1774=1;fcaf1(25);
  for(x=118;x<=198;x+=4) {
-  timer_deadline_arm(24);f03b4(x-4,355,92,117,x-4,27);f03cc(x,27,ui_gfx_shadow_a,0);
+  timer_deadline_arm(24);gfx_wipe_rect(x-4,355,92,117,x-4,27);gfx_copy_rect(x,27,ui_gfx_shadow_a,0);
   gb52f[33]+=4;gb52f[49]+=4;gb52f[65]+=4;gb52f[97]+=4;gb52f[129]+=4;gb52f[161]+=4;
-  f4b0c();sprite_draw_cursor();f039f(x-4,27,96,117);timer_deadline_wait();
+  f4b0c();sprite_draw_cursor();gfx_box(x-4,27,96,117);timer_deadline_wait();
  }
- g1774=0;sound_stop_reset();sprite_draw_cursor();g96=488;f03cc(x-4,355,ui_gfx_shadow_a,0);
- f03b4(6,344,308,144,6,200);g96=159;gbc=1;gb6cf=0;resource_record_cache_reset(69);
+ g1774=0;sound_stop_reset();sprite_draw_cursor();g96=488;gfx_copy_rect(x-4,355,ui_gfx_shadow_a,0);
+ gfx_wipe_rect(6,344,308,144,6,200);g96=159;gbc=1;gb6cf=0;resource_record_cache_reset(69);
  for(i=0;i<20;i++) {
   timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;f4e9f();f4b0c();sprite_draw_cursor();f1ecd();timer_deadline_wait();
  }
@@ -226,7 +226,7 @@ extern void timer_deadline_wait(void);
 extern void f3986();
 extern void resource_record_cache_reset();
 extern void board_raycast_step(void);
-extern void f03cc(int,int,void far *,int);
+extern void gfx_copy_rect(int,int,void far *,int);
 extern void movmem();
 extern void longjmp(void far *,int);
 int level_run_loop(void)
@@ -319,7 +319,7 @@ walk:
   if(g72c==1) g72c=0;
   f4b0c();
   if(once&&!gc588&&gb3af[12].flag) {
-   gb3af[12].rest[7]=1;once=0;g96=400;f03cc(160,274,resource_ptr_table[29],0);g96=159;
+   gb3af[12].rest[7]=1;once=0;g96=400;gfx_copy_rect(160,274,resource_ptr_table[29],0);g96=159;
   }
   if(g40ce&&last!=g40ce) hit=gb3ae[0]-g40ce;else hit=-1;
   last=g40ce;
@@ -327,16 +327,16 @@ walk:
   if(g8fe) board_raycast_step();
   if(hurt) {
    hurt--;
-   if(hurt>26) f03cc(g736,g738,resource_stripe_table+14828,g73a);
-   else if(hurt&1) f03cc(g736,g738,resource_stripe_table+g72e*674,g73a);
+   if(hurt>26) gfx_copy_rect(g736,g738,resource_stripe_table+14828,g73a);
+   else if(hurt&1) gfx_copy_rect(g736,g738,resource_stripe_table+g72e*674,g73a);
   } else if(g72c) {
-   f03cc(g736,g738,g96ee,0);g72c--;
-   f03cc(g736,g738,resource_stripe_table+g72e*674,g73a);
+   gfx_copy_rect(g736,g738,g96ee,0);g72c--;
+   gfx_copy_rect(g736,g738,resource_stripe_table+g72e*674,g73a);
   } else if(hit>4&&hit<=11) {
-   f03cc(g736,g738,resource_stripe_table+14828,g73a);hurt=30;fcaf1(1);f1ecd();gbc=0;
+   gfx_copy_rect(g736,g738,resource_stripe_table+14828,g73a);hurt=30;fcaf1(1);f1ecd();gbc=0;
    if(energy_adjust(-2)<=0) {f3986();return 0;}
    gbc=1;goto frame_end;
-  } else f03cc(g736,g738,resource_stripe_table+g72e*674,g73a);
+  } else gfx_copy_rect(g736,g738,resource_stripe_table+g72e*674,g73a);
   if(hit==13) {
    if(gb76>deadline) {
     g730=gb3af[13].flag=0;
@@ -356,10 +356,10 @@ frame_end:
 /* ---- F_C0E0 (original code at 0xC0E0) ---- */
 extern int g8fe,gbc,board_record_index,g40ce,g736,g738,g73a;
 extern struct record3e8 g43b4[];
-extern char far *board_records;extern int fb09a(), fb4fb(), level_run_loop();extern void f4eeb();extern void f039f();extern void board_resource_expand(void);extern void resource_record_cache_reset();extern void level_free_descriptor_table();
+extern char far *board_records;extern int fb09a(), fb4fb(), level_run_loop();extern void f4eeb();extern void gfx_box();extern void board_resource_expand(void);extern void resource_record_cache_reset();extern void level_free_descriptor_table();
 extern void fb55e(void);
 extern void sprite_draw_cursor(void);
-level_play(){register int r;gbc=g8fe=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;fb55e();fb09a();board_resource_expand();fb4fb();f4eeb(0);g736=16;g738=112;g73a=0;sprite_draw_cursor();f039f(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
+level_play(){register int r;gbc=g8fe=0;board_records=(char *)g43b4[board_record_index=1].bytes;g40ce=1;fb55e();fb09a();board_resource_expand();fb4fb();f4eeb(0);g736=16;g738=112;g73a=0;sprite_draw_cursor();gfx_box(8,16,304,144);resource_record_cache_reset(67);r=level_run_loop();level_free_descriptor_table();return r;}
 
 
 /* ---- F_C15E (original code at 0xC15E) ---- */

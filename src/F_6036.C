@@ -2,7 +2,7 @@
 extern unsigned char far *sprbase;
 extern unsigned char far *objtab;
 extern void fd825();
-extern void f03cc();
+extern void gfx_copy_rect();
 extern unsigned g0a20;
 
 void f6036()
@@ -22,7 +22,7 @@ void f6036()
     asm call near ptr fd825
     asm db 058h,05bh,05ah,083h,0c4h,4,07h,06h,033h,0c0h,050h
     asm db 06h,057h,081h,0c2h,0b8h,0,052h,0d1h,0e3h,053h
-    asm call near ptr f03cc
+    asm call near ptr gfx_copy_rect
     asm db 083h,0c4h,0ah,07h,059h,01fh,05fh,0e2h,0afh
     asm db 0c7h,06h
     asm dw g0a20

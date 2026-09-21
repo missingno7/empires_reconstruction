@@ -9,10 +9,10 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _f4f63
+public _dos_write_handle2
 extrn _strlen:near
 
-_f4f63 proc near
+_dos_write_handle2 proc near
     push bp
     mov bp,sp
     sub sp,2
@@ -39,7 +39,7 @@ _f4f63 proc near
     mov sp,bp
     pop bp
     ret
-_f4f63 endp
+_dos_write_handle2 endp
 
 _TEXT ends
 end

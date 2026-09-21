@@ -23,9 +23,10 @@ def public_aliases(source):
             groups[-1].extend(current)
             current = []
             groups.append([])
-    # The source declares f039c as the C function entry rather than inline
-    # assembly, so it is the first veneer root.
-    groups[0].insert(0, '_f039c')
+    # The source declares the block base (historically f039c, now runtime_base)
+    # as the C function entry rather than inline assembly, so it is the first
+    # veneer root.
+    groups[0].insert(0, '_runtime_base')
     return groups[:-1]
 
 

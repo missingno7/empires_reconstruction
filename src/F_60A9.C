@@ -1,6 +1,6 @@
 extern unsigned int g8fe, ga20;
 extern unsigned char far *gbfc8, *g40d0;
-extern void f03b4(), f03cc();
+extern void gfx_wipe_rect(), gfx_copy_rect();
 
 void f60a9()
 {
@@ -28,12 +28,12 @@ void f60a9()
     asm db 01Eh,051h,006h,052h
     asm mov ax,DGROUP
     asm db 08Eh,0D8h,052h,08Bh,0ECh,053h,0B8h,01Eh,000h,050h,0B8h,01Eh,000h,050h,08Bh,0C2h,005h,048h,001h,050h,053h
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm db 081h,046h,000h,0B8h,000h
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm db 05Bh,083h,0C4h,00Ah,05Ah,007h,006h,033h,0C0h,050h,006h,057h,052h,053h
-    asm call near ptr f03cc
+    asm call near ptr gfx_copy_rect
     asm db 05Bh,05Ah,083h,0C4h,006h,08Bh,0C2h,005h,0B8h,000h,050h,053h,0B8h,01Eh,000h,050h,0B8h,01Eh,000h,050h,052h,053h
-    asm call near ptr f03b4
+    asm call near ptr gfx_wipe_rect
     asm db 083h,0C4h,00Ch,007h,059h,01Fh,05Fh,049h,0E3h,003h,0E9h,05Fh,0FFh,01Fh,05Fh,05Eh,05Dh
 }

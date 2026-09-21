@@ -17,7 +17,7 @@ class MatchingCWave130Tests(unittest.TestCase):
         # C-owned. Both still match the unchanged original bytes recorded by
         # the wave130 evidence.
         expected_kind = {'F_6BCF': ('MATCHING_ASM', 'asm/F_6BCF.ASM'),
-                         'F_699E': ('MATCHING_C', 'src/F_699E.C')}
+                         'F_699E': ('MATCHING_C', 'src/KEYIRQH.C')}
         for ident, size, relocation in [('F_6BCF', 87, [27609]), ('F_699E', 380, [27048])]:
             owner = next(r for r in manifest['regions'] if r['id'] == ident)
             kind, source = expected_kind[ident]

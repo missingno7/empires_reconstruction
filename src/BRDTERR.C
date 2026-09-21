@@ -10,7 +10,7 @@ extern char s8c12[];
 extern char far *g99d6;
 extern char far *a72b2[];
 
-void f4517(di)
+void board_terrain_resources_load(di)
 int di;
 {
     char far *d;

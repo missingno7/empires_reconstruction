@@ -1,5 +1,5 @@
 #include "LAYOUT.H"
-int f6cf0(void)
+int dialog_line_height_get(void)
 {
     return dialog_line_height;
 }

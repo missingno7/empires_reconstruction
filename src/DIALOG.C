@@ -9,8 +9,8 @@
 /* Symbols redeclared identically (same form) by two or more sections are
    merged here. Symbols that a section needs in a different byte-significant
    form (a prototype vs. K&R empty parens, or a narrower/wider type) are kept
-   local to that section instead -- e.g. F_7DF1's prototyped `f7932(char
-   far *)` versus F_7DFC's K&R `f7932()`, F_8267's K&R `text_draw_wrapped()`
+   local to that section instead -- e.g. F_7DF1's prototyped `menu_list_source_set(char
+   far *)` versus F_7DFC's K&R `menu_list_source_set()`, F_8267's K&R `text_draw_wrapped()`
    versus F_8480's prototyped form, and F_8434/F_8453's `unsigned
    ui_gfx_blob`/`gc5cc` (documented in LAYOUT.H: those two thunks push the
    far pointer's two words separately, so a `char far *` type here would add
@@ -18,15 +18,15 @@
 extern void f03a2();
 extern void f03a5();
 extern void f039f();
-extern int keyboard_chain_active(), f792c(), f6b1a();
+extern int keyboard_chain_active(), menu_list_active(), f6b1a();
 extern void keyboard_chain_enable(void);
 extern void sound_start(void);
-extern void f7925(void);
+extern void menu_list_disable(void);
 extern void keyboard_buffer_drain(void);
 extern void dialog_fill_box();
 extern void ui_overlay_hide(void);
 extern void ui_overlay_show(void);
-extern void f791e(void);
+extern void menu_list_enable(void);
 extern void dialog_restore_screen();
 extern void sound_request_count_dec(void);
 extern void keyboard_chain_disable(void);
@@ -52,21 +52,21 @@ dialog_draw_panel(p)
 
 
 /* ---- F_7DF1 (original code at 0x7DF1) ---- */
-/* F_7DF1 -- hand one DGROUP buffer to f7932.  Compact model: the array name
+/* F_7DF1 -- hand one DGROUP buffer to menu_list_source_set.  Compact model: the array name
    becomes a far pointer, push ds / mov ax,OFFSET / push ax. */
 extern char g0d36[];
-extern void f7932(char far *);
+extern void menu_list_source_set(char far *);
 
 void f7df1(void)
 {
-    f7932(g0d36);
+    menu_list_source_set(g0d36);
 }
 
 
 /* ---- F_7DFC (original code at 0x7DFC) ---- */
-extern void f7932();
+extern void menu_list_source_set();
 extern char g0d78[];
-void f7dfc(void) { f7932(g0d78); }
+void f7dfc(void) { menu_list_source_set(g0d78); }
 
 
 /* ---- F_7E07 (original code at 0x7E07) ---- */
@@ -391,8 +391,8 @@ int dialog_run(struct dialog far *p)
     keyboard_chain_enable();
     ui_overlay_show();
     sound_start();
-    b = f792c();
-    f7925();
+    b = menu_list_active();
+    menu_list_disable();
     keyboard_buffer_drain();
     i = p->initial;
     dialog_draw(p, 1);
@@ -445,7 +445,7 @@ int dialog_run(struct dialog far *p)
         }
     }
     dialog_restore_screen();
-    if (b) f791e();
+    if (b) menu_list_enable();
     sound_request_count_dec();
     ui_overlay_hide();
     if (!a) keyboard_chain_disable();
@@ -467,7 +467,7 @@ int dialog_list_run(struct input far *p)
  register int selected,direction;
  selected=0; first=1; direction=0;
  outer=keyboard_chain_active(); keyboard_chain_enable(); keyboard_buffer_drain(); ui_overlay_show(); sound_start();
- state=f792c(); f7925();
+ state=menu_list_active(); menu_list_disable();
  v.title=p->title; v.sub=p->flag;
  v.cx=p->a;v.cy=p->b;v.w=p->c;v.lines=p->d;
  while(selected>=0 && selected<p->count) {
@@ -497,6 +497,6 @@ int dialog_list_run(struct input far *p)
    case 2:selected=p->count;break;
   }
  }
- dialog_restore_screen();if(state) f791e();sound_request_count_dec();ui_overlay_hide();if(!outer) keyboard_chain_disable();keyboard_buffer_drain();
+ dialog_restore_screen();if(state) menu_list_enable();sound_request_count_dec();ui_overlay_hide();if(!outer) keyboard_chain_disable();keyboard_buffer_drain();
  if(selected<0) return 0; else return 1;
 }

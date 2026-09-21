@@ -7,7 +7,7 @@
 extern int score_panel_x, score_panel_y, gc352, gc354, gc359, gc35b, gc35d;
 #include "LAYOUT.H"
 extern char far *ui_gfx_blob;
-extern void roundend_wait(), f9d8e(), f039f();
+extern void roundend_wait(), dialog_energy_lost_show(), f039f();
 extern int resource_load_record(), energy_adjust();extern void f03b4();
 extern void f7747();
 extern void score_set_position();
@@ -25,7 +25,7 @@ int anim_frame_advance(int n)
             f7747(ui_gfx_blob + 2);
             return 0;
         } else {
-            f9d8e();
+            dialog_energy_lost_show();
             energy_set(slot_table[current_slot].state = 4);
             return -1;
         }

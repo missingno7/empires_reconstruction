@@ -6,10 +6,10 @@
       "kind": "MATCHING_C",
       "start": 8357,
       "end": 8372,
-      "source": "src/F_1EA5.C",
+      "source": "src/NODEIDX.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1ea5",
+        "public": "_campaign_node_index",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -237,10 +237,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208A8.phys"
           },
-          "_f7932": {
+          "_menu_list_source_set": {
             "coordinate": "code_offset",
             "owner": "F_7932",
-            "public": "_f7932",
+            "public": "_menu_list_source_set",
             "addend": 0,
             "evidence": "functions/F_7932.entry"
           }

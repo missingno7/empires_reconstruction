@@ -68,11 +68,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC22.phys"
           },
-          "_f7856": {
+          "_hud_prompt_message_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7856.entry",
             "owner": "F_7856",
-            "public": "_f7856",
+            "public": "_hud_prompt_message_draw",
             "addend": 0
           }
         }
@@ -158,10 +158,10 @@
       "kind": "MATCHING_C",
       "start": 42125,
       "end": 42303,
-      "source": "src/F_A28D.C",
+      "source": "src/SLOTROW.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa28d",
+        "public": "_slot_row_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {
@@ -314,7 +314,7 @@
       "start": 70272,
       "end": 70288,
       "classification": "static_data",
-      "source": "src/F_A28D.C",
+      "source": "src/SLOTROW.C",
       "artifact": "regions/C_DATA_A28D.bin",
       "expected_sha256": "557eab64a41036d0ef8beb71a6f720f3db5bb9de3b5ca4e191be5b1c446434ab",
       "matching_status": "EQUAL",

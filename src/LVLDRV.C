@@ -12,9 +12,9 @@ extern void hud_panel_open();
 extern void gfx_color_select(int n);
 extern void sprite_draw_cursor(void);
 extern void anim_step_loop(int, int, int, int, int, int);
-extern int tick_div8(), f1ea5(), turn_loop_run(), level_play_chapter();
+extern int tick_div8(), campaign_node_index(), turn_loop_run(), level_play_chapter();
 extern void resource_record_cache_reset(int n);
-extern void fd4b3(int);
+extern void tutorial_hint_dialog_show(int);
 
 extern unsigned char b4374, b4375, b4376;
 extern int g71e, g722, g72c, g72e, g736, g738, g73a, g73e;
@@ -58,17 +58,17 @@ int level_driver_run()
     hud_panel_open();
     f039f(0, 0, 0x140, 0xc8);
     if (tick_div8() != 4 && (g9ade & 7) == 0) {
-        fd4b3(0);
-        fd4b3(1);
-        if (tick_div8() == 1) fd4b3(2);
-        else if (tick_div8() == 2) fd4b3(3);
+        tutorial_hint_dialog_show(0);
+        tutorial_hint_dialog_show(1);
+        if (tick_div8() == 1) tutorial_hint_dialog_show(2);
+        else if (tick_div8() == 2) tutorial_hint_dialog_show(3);
     }
     g1776 = 1;
     if (value_parity(g9ade) == 0) {
         if (tick_div8() != 4)
             resource_record_cache_reset((tick_div8() << 2) + (g9ade & 2) + 0x1073);
         else
-            resource_record_cache_reset((f1ea5() << 2) + 0x1073);
+            resource_record_cache_reset((campaign_node_index() << 2) + 0x1073);
     }
     r = turn_loop_run();
     if (r != 0 && g9ade == 0x27) {

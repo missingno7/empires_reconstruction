@@ -35,7 +35,7 @@ slot_list_draw()
     gfx_color_select(0);
     y = 49;
     for (i = 0; i < slot_used_count; i++)
-        fa28d(slot_table + i, y += 11, 1);
+        slot_row_draw(slot_table + i, y += 11, 1);
     if (slot_select_error) {
         hud_prompt_select_draw(g12d9);
         gfx_color_select(0);
@@ -152,10 +152,10 @@ extern void ui_overlay_show(void);          /* 703E */
 /*@SYM _ui_overlay_show=0x703E kind=f key=functions/F_703E.entry*/
 extern void sound_start(void);          /* D593 */
 /*@SYM _sound_start=0xD593 kind=f key=functions/F_D593.entry*/
-extern int  f792c(void);          /* 792C */
-/*@SYM _f792c=0x792C kind=f key=functions/F_792C.entry*/
-extern void f7925(void);          /* 7925 */
-/*@SYM _f7925=0x7925 kind=f key=functions/F_7925.entry*/
+extern int  menu_list_active(void);          /* 792C */
+/*@SYM _menu_list_active=0x792C kind=f key=functions/F_792C.entry*/
+extern void menu_list_disable(void);          /* 7925 */
+/*@SYM _menu_list_disable=0x7925 kind=f key=functions/F_7925.entry*/
 extern void box(int a, int b, int c, int d);        /* 039F */
 /*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern void gfx_color_select(int a);                            /* 01CE */
@@ -170,8 +170,8 @@ extern void fa19d(void);                              /* A19D */
 /*@SYM _fa19d=0xA19D kind=f key=functions/F_A19D.entry*/
 extern void dialog_restore_screen(void);          /* 8453 */
 /*@SYM _dialog_restore_screen=0x8453 kind=f key=functions/F_8453.entry*/
-extern void f791e(void);          /* 791E */
-/*@SYM _f791e=0x791E kind=f key=functions/F_791E.entry*/
+extern void menu_list_enable(void);          /* 791E */
+/*@SYM _menu_list_enable=0x791E kind=f key=functions/F_791E.entry*/
 extern void sound_request_count_dec(void);          /* D5A6 */
 /*@SYM _sound_request_count_dec=0xD5A6 kind=f key=functions/F_D5A6.entry*/
 extern void ui_overlay_hide(void);          /* 7162 */
@@ -191,8 +191,8 @@ int player_type_select(void)
     quit = 0;
     sv2 = keyboard_chain_active();
     keyboard_chain_enable(); keyboard_buffer_drain(); ui_overlay_show(); sound_start();
-    sv1 = f792c();
-    f7925();
+    sv1 = menu_list_active();
+    menu_list_disable();
     box(0, 0, 0x140, 0xc8);
     dialog_draw(&menu_empty_record, 1);
     gfx_color_select(0);
@@ -209,7 +209,7 @@ int player_type_select(void)
         }
     }
     dialog_restore_screen();
-    if (sv1) f791e();
+    if (sv1) menu_list_enable();
     sound_request_count_dec(); ui_overlay_hide();
     if (!sv2) keyboard_chain_disable();
     keyboard_buffer_drain();
@@ -219,15 +219,15 @@ int player_type_select(void)
 
 /* ---- F_A768 (original code at 0xA768) ---- */
 extern struct dialog dialog_quit_confirm;
-extern int keyboard_chain_active(), f792c(), f6b1a();
+extern int keyboard_chain_active(), menu_list_active(), f6b1a();
 extern void f03ab();
 extern void f03a2();
 extern void sound_start(void);
-extern void f7925(void);
+extern void menu_list_disable(void);
 extern void keyboard_chain_enable(void);
 extern void ui_overlay_hide(void);
 extern void ui_overlay_show(void);
-extern void f791e(void);
+extern void menu_list_enable(void);
 extern void dialog_restore_screen();
 extern void gfx_color_select(int n);
 extern void keyboard_chain_disable(void);
@@ -243,8 +243,8 @@ confirm_quit_dialog()
     di = -1;
     a = keyboard_chain_active();
     sound_start();
-    b = f792c();
-    f7925();
+    b = menu_list_active();
+    menu_list_disable();
     keyboard_chain_enable();
     ui_overlay_show();
     dialog_draw(&dialog_quit_confirm, 1);
@@ -264,7 +264,7 @@ confirm_quit_dialog()
     dialog_restore_screen();
     ui_overlay_hide();
     if (!a) keyboard_chain_disable();
-    if (b) f791e();
+    if (b) menu_list_enable();
     sound_request_count_dec();
     return i;
 }
@@ -275,10 +275,10 @@ extern struct dialog dialog_player_name_full, dialog_player_name_entry;
 extern int  keyboard_chain_active(void);                           /* 6B74 */
 /*@SYM _keyboard_chain_active=0x6B74 kind=f key=functions/F_6B74.entry*/
 extern void keyboard_chain_enable(void), keyboard_buffer_drain(void), ui_overlay_show(void), sound_start(void);
-extern int  f792c(void);                           /* 792C */
-/*@SYM _f792c=0x792C kind=f key=functions/F_792C.entry*/
-extern void f7925(void);                           /* 7925 */
-/*@SYM _f7925=0x7925 kind=f key=functions/F_7925.entry*/
+extern int  menu_list_active(void);                           /* 792C */
+/*@SYM _menu_list_active=0x792C kind=f key=functions/F_792C.entry*/
+extern void menu_list_disable(void);                           /* 7925 */
+/*@SYM _menu_list_disable=0x7925 kind=f key=functions/F_7925.entry*/
 extern void gfx_color_select(int a);                            /* 01CE */
 /*@SYM _gfx_color_select=0x01CE kind=f key=functions/F_01CE.entry*/
 extern void rect_border_draw(int a, int b, int c, int d);      /* 0355 */
@@ -287,7 +287,7 @@ extern void box(int a, int b, int c, int d);        /* 039F */
 /*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern int  player_name_edit(void);                             /* A525 */
 /*@SYM _player_name_edit=0xA525 kind=f key=functions/F_A525.entry*/
-extern void dialog_restore_screen(void), f791e(void), sound_request_count_dec(void), ui_overlay_hide(void);
+extern void dialog_restore_screen(void), menu_list_enable(void), sound_request_count_dec(void), ui_overlay_hide(void);
 extern void keyboard_chain_disable(void), keyboard_buffer_drain(void);
 extern void setmem(struct tbl_entry far *p, unsigned n, int v); /* F304 */
 /*@SYM _setmem=0xF304 kind=f key=functions/F_F304.entry*/
@@ -303,15 +303,15 @@ int player_slot_add_run(void)
     if (cur == 10) { dialog_run(&dialog_player_name_full); err = 2; return -2; }
     flag = keyboard_chain_active();
     keyboard_chain_enable(); keyboard_buffer_drain(); ui_overlay_show(); sound_start();
-    sv = f792c();
-    f7925();
+    sv = menu_list_active();
+    menu_list_disable();
     dialog_draw(&dialog_player_name_entry, 1);
     gfx_color_select(0);
     rect_border_draw(0x58, 0x5f, 0x78, 0x13);
     box(0x58, 0x5f, 0x78, 0x13);
     rc = player_name_edit();
     dialog_restore_screen();
-    if (sv) f791e();
+    if (sv) menu_list_enable();
     sound_request_count_dec(); ui_overlay_hide();
     if (!flag) keyboard_chain_disable();
     keyboard_buffer_drain();
@@ -382,10 +382,10 @@ int faa1f(void)
 
 /* ---- F_AB66 (original code at 0xAB66) ---- */
 /* Exact Turbo C recovery of the 385-byte selection/workspace routine.
-   The far-pointer fa28d prototype and local declaration order are byte-significant. */
+   The far-pointer slot_row_draw prototype and local declaration order are byte-significant. */
 extern int keyboard_chain_active(), slot_menu_draw_header(), slot_find_free(), slot_list_draw(), faa1f(), player_slot_add_run();
 extern void f03c9();
-extern void f7925(void);
+extern void menu_list_disable(void);
 extern void sound_start(void);
 extern void keyboard_chain_enable(void);
 extern void keyboard_buffer_drain(void);
@@ -405,11 +405,11 @@ int fab66(void)
     int y, saved;
     register int selected, i;
 
-    saved = keyboard_chain_active(); f7925(); sound_stop_reset(); fc834();
+    saved = keyboard_chain_active(); menu_list_disable(); sound_stop_reset(); fc834();
     music_track_handle = -1; sound_start(); g98 = 0; g9a = 159; slot_menu_draw_header();
     f03c9(0, 200, ui_gfx_shadow_a); gfx_color_select(0); slot_used_count = slot_find_free();
     y = 249;
-    for (i = 0; i < slot_used_count; i++) fa28d(slot_table + i, y += 11, 1);
+    for (i = 0; i < slot_used_count; i++) slot_row_draw(slot_table + i, y += 11, 1);
     anim_step_loop(0, 200, 320, 200, 0, 0);
     f03c9(0, 200, ui_gfx_shadow_a); slot_select_error = 1; keyboard_chain_enable();
     do {

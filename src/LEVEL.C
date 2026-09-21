@@ -144,13 +144,13 @@ extern void f03b4();extern int board_record_index;extern unsigned char gb3ae[],g
 
 /* ---- F_B6CD (original code at 0xB6CD) ---- */
 extern int hud_panel_clear(), fb60f();extern void f4eeb();extern void f4b0c();extern void f039f();
-extern void f7925(void);
+extern void menu_list_disable(void);
 extern void fb3d7(void);
 extern void f1ecd(void);
 extern void timer_deadline_wait(void);
 extern void level_expand_descriptors(void);extern int g8fe,gbc,board_record_index,g40ce,g98,g94,g96,g9a,g1776,g1784;
 extern char *ui_gfx_blob;
-extern char far *rect_queue_write_ptr;fb6cd(){register int i;f7925();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;fb3d7();level_expand_descriptors();f4eeb(0);f039f(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;fb60f();f4b0c();if(rect_queue_write_ptr!=ui_gfx_blob)f1ecd();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
+extern char far *rect_queue_write_ptr;fb6cd(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;fb3d7();level_expand_descriptors();f4eeb(0);f039f(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;fb60f();f4b0c();if(rect_queue_write_ptr!=ui_gfx_blob)f1ecd();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
 
 
 /* ---- F_B772 (original code at 0xB772) ---- */

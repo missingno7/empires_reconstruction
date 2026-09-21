@@ -17,6 +17,12 @@ _BSS	ENDS
 _TEXT	SEGMENT word PUBLIC 'CODE'
 	PUBLIC	_f6d86, _f6dcc
 
+; F_6D86 -- PackBits-style RLE expansion. far src=[bp+4], far dst=[bp+8],
+; word max_len=[bp+0Ch] (end-of-src bound for bx). Reads signed control
+; bytes: negative -> (1-n) repeats of the following byte (rep stosb);
+; non-negative -> copy n+1 literal bytes (rep movsb). Loops until si
+; reaches the src+max_len bound. Returns ax = bytes written (di - dst).
+; near proc, C calling convention; clobbers ax/bx/cx/dx; si/di/es/ds saved.
 _f6d86	PROC	NEAR
 	push	bp
 	mov	bp,sp
@@ -67,6 +73,17 @@ inleft	dw	0
 bitcnt	dw	0
 bitbuf	db	0
 
+; F_6DCC -- LZ-style decompressor (variable-width codes, growing from 9
+; bits, code 100h = width-increase marker). far src=[bp+4], far dst=[bp+8],
+; word src_len=[bp+0Ch]. bp = base of the src buffer, used to index a
+; string table of {start,end} word pairs immediately following the 2-byte
+; header (the encoder's back-reference table); codes <=0FFh are literal
+; bytes, codes >0FFh copy a previously emitted string via that table. The
+; bit reader's state (bitlen/inleft/bitcnt/bitbuf, declared as CS-relative
+; storage between the two procs) is shared code-segment storage, not stack
+; locals -- required so f6dcc can be re-entered opcode-by-opcode while si
+; tracks the compressed input. Returns ax = di (end of decompressed output).
+; near proc, C calling convention; clobbers ax/bx/cx/dx; si/di/es/ds saved.
 _f6dcc	PROC	NEAR
 	push	bp
 	mov	bp,sp

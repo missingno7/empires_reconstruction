@@ -26,8 +26,8 @@ class SharedHeaderTests(unittest.TestCase):
         record = self.layout('C470.H', 'c470_record')
         self.assertEqual(record['bytes'], 27)
         offsets = {f['name']: f['offset'] for f in record['fields']}
-        self.assertEqual({k: offsets[k] for k in ('value', 'flags', 'sound', 'music', 'option', 'pending', 'state', 'sub')},
-                         {'value': 9, 'flags': 11, 'sound': 13, 'music': 15, 'option': 17, 'pending': 19, 'state': 21, 'sub': 22})
+        self.assertEqual({k: offsets[k] for k in ('value', 'flags', 'sound', 'music', 'option', 'pending', 'state', 'round_progress')},
+                         {'value': 9, 'flags': 11, 'sound': 13, 'music': 15, 'option': 17, 'pending': 19, 'state': 21, 'round_progress': 22})
         dialog = self.layout('DIALOG.H', 'dialog')
         self.assertEqual(dialog['bytes'], 20)
         offsets = {f['name']: f['offset'] for f in dialog['fields']}

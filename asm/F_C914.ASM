@@ -13,7 +13,9 @@ public _fc914
 _fc914:
  push bp
  mov bp,sp
-L0: mov di,_mus_ptr
+; Fetch the next command byte from the stream and split it into a low
+; nibble (command code, AL) and high nibble (argument, AH).
+C914_dispatch: mov di,_mus_ptr
  mov al,es:[di]
  mov ah,al
  shr ah,1
@@ -22,31 +24,32 @@ L0: mov di,_mus_ptr
  shr ah,1
  and al,0fh
  cmp al,0
- jz short L1
+ jz short C914_command_zero
  cmp al,0dh
- jz short L2
+ jz short C914_command_d
  cmp al,0eh
- jz short L3
+ jz short C914_command_e
  cmp al,0fh
- jz short L4
+ jz short C914_command_f
+; Default path: ordinary note command.
  call _sound_note_dispatch
  call _f_c9a4
- jmp short L5
+ jmp short C914_advance
  nop
-L1: call _speaker_gate_off
+C914_command_zero: call _speaker_gate_off
  call _f_c9a4
- jmp short L5
+ jmp short C914_advance
  nop
-L2: call _f_ca03
+C914_command_d: call _f_ca03
  cmp _snd_delay,0
- jmp short L5
+ jmp short C914_advance
  nop
-L3: call _fca9b
- jmp short L5
+C914_command_e: call _fca9b
+ jmp short C914_advance
  nop
-L4: call _speaker_gate_off
+C914_command_f: call _speaker_gate_off
  cmp _mus_flag,0
- jz short L6
+ jz short C914_stop
  mov ax,_mus_arg
  push ax
  call _fcaf1
@@ -54,12 +57,12 @@ L4: call _speaker_gate_off
  inc _snd_delay
  pop bp
  ret
-L6: call _sound_stop_reset
+C914_stop: call _sound_stop_reset
  pop bp
  ret
-L5: add _mus_ptr,2
+C914_advance: add _mus_ptr,2
  cmp _snd_delay,0
- jz short L0
+ jz short C914_dispatch
  pop bp
  ret
 _TEXT ends

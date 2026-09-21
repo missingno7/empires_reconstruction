@@ -47,11 +47,11 @@ fadcf()
     slot_table[current_slot].state = 4;
     slot_table[current_slot].value = 1;
     slot_table[current_slot].option = 0;
-    slot_table[current_slot].byte12 = 0;
-    slot_table[current_slot].sub[0] = 0;
-    slot_table[current_slot].sub[1] = 0;
-    slot_table[current_slot].sub[2] = 0;
-    slot_table[current_slot].sub[3] = 0;
+    slot_table[current_slot].resume_round = 0;
+    slot_table[current_slot].round_progress[0] = 0;
+    slot_table[current_slot].round_progress[1] = 0;
+    slot_table[current_slot].round_progress[2] = 0;
+    slot_table[current_slot].round_progress[3] = 0;
     slot_table[current_slot].byte26 = 0;
     slot_table_save();
 }

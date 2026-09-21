@@ -325,7 +325,7 @@ fixture-independent construction. SHA256 remains
 
 ## F_699E: keyboard interrupt handler
 
-src/F_699E.C reproduces all 380 bytes using Turbo C's interrupt function
+src/KEYIRQH.C reproduces all 380 bytes using Turbo C's interrupt function
 extension and native __sti__, __inportb__, and __outportb__ intrinsics. The
 interrupt-qualified saved-vector pointer produces PUSHF plus the far call.
 The compiler generates all register saves, the DS setup, sparse switch table,
@@ -520,3 +520,15 @@ defined functions (TURNLOOP.C, CMDLINE.C, OPTIONS.C, SNDSTART.C, MUSIC.ASM, ...)
 have no established role yet. Every renamed module probes exact except
 M_DDD9_DF98, whose library far call the single-module binder cannot resolve;
 full acceptance covers it and remains byte-identical.
+
+## Readable assembler and final address names
+
+The 30 production assembler modules outside RUNTIME_BLOCK and MUSIC now carry
+header comments (purpose, calling convention, registers), block comments and
+descriptive labels; F_4B0C (the sprite-script interpreter) lost about 360
+decorative address labels. Every module was probed byte-exact. The remaining
+address-named C routines received behaviour-based names (menu list enable,
+disable and query, campaign chapter advance, keyboard IRQ handler, score panel
+draw, tutorial hint dialog) and their files were renamed; only the four
+uncalled dialog-pick wrappers keep address names. C470.H names resume_round
+and round_progress from their use in campaign_chapter_advance and GAME.C.

@@ -38,17 +38,17 @@ void game_shutdown(void) { sound_stop_reset(); fc834(); f697d(); timer_irq_resto
        0BC0 740D              or ax,ax; jz 4A77        -- if (n = ...) {
        FF4EFE                 dec word [bp-2]          --   n--;
        8B76FE 8BC6 50         mov si,[bp-2]; mov ax,si; push ax
-                                                       --   f4943(s = n)
+                                                       --   campaign_chapter_advance(s = n)
                                   (the assignment's VALUE is what is pushed:
                                    "s = n" loads si straight from memory, then
                                    the expression result goes through ax.  Two
                                    separate statements would have pushed si --
                                    see the loop body below, which does.)
-       E8 CDFE 59             call f4943; pop cx
+       E8 CDFE 59             call campaign_chapter_advance; pop cx
        EB0C                   jmp short 4A85           -- while (s != 4) {
        56 E8 EF87 59          push si; call player_select_run; pop cx
        8BF0                   mov si,ax                --   s = player_select_run(s);
-       56 E8 BFFE 59          push si; call f4943; pop cx   -- f4943(s);
+       56 E8 BFFE 59          push si; call campaign_chapter_advance; pop cx   -- campaign_chapter_advance(s);
        83FE04 75EF            cmp si,4; jnz 4A79       -- }
        E8 9862                call fad25
        5F 5E 8BE5 5D C3       pop di; pop si; mov sp,bp; pop bp; ret
@@ -60,7 +60,7 @@ void game_shutdown(void) { sound_stop_reset(); fc834(); f697d(); timer_irq_resto
    add bx,0x900; push ds; pop es`). */
 
 extern int  intro_run_chapter(), setjmp(), fab66(), player_select_run();
-extern void hud_arena_init(), ui_overlay_reset(), sound_request_count_clear(), f4943(), fad25();
+extern void hud_arena_init(), ui_overlay_reset(), sound_request_count_clear(), campaign_chapter_advance(), fad25();
 extern void puzzle_free_resources(void);
 extern void energy_set(int state);
 
@@ -84,14 +84,14 @@ void game_run()
     if (d < 2) {
         if (fab66() == -1) return;
         energy_set(slot_table[current_slot].state);
-        if (n = slot_table[current_slot].byte12) {
+        if (n = slot_table[current_slot].resume_round) {
             n--;
-            f4943(s = n);
+            campaign_chapter_advance(s = n);
         }
     }
     while (s != 4) {
         s = player_select_run(s);
-        f4943(s);
+        campaign_chapter_advance(s);
     }
     fad25();
 }

@@ -12,7 +12,7 @@ b@      label   byte
 _BSS    ends
 _TEXT   segment byte public 'CODE'
         public  _f6b1a, _f6b4a
-        extrn   _f792c:near
+        extrn   _menu_list_active:near
         extrn   _menu_loop_run:near
 
 _f6b1a  proc    near
@@ -28,7 +28,7 @@ _f6b1a  proc    near
         cmp     al,44h
         jg      @@out
         mov     si,ax
-        call    _f792c
+        call    _menu_list_active
         or      ax,ax
         mov     ax,si
         jz      @@out

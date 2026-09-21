@@ -9,7 +9,7 @@ extern char near b856;
 #define gb74 keyboard_state[1]
 extern void interrupt (*int9_saved_vector)(void);   /* saved INT 9 vector */
 extern void sound_effects_toggle(void);
-void interrupt f699e(void)
+void interrupt keyboard_irq_handler(void)
 {
  int ack;
  unsigned char scan;

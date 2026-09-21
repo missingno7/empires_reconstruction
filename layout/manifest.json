@@ -607,10 +607,10 @@
       "kind": "MATCHING_C",
       "start": 8007,
       "end": 8357,
-      "source": "src/F_1D47.C",
+      "source": "src/MENURES.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1d47",
+        "public": "_menu_resources_load",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -710,10 +710,10 @@
       "kind": "MATCHING_C",
       "start": 8357,
       "end": 8372,
-      "source": "src/F_1EA5.C",
+      "source": "src/NODEIDX.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f1ea5",
+        "public": "_campaign_node_index",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -3067,13 +3067,13 @@
       "end": 18478,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_4517.C",
+      "source": "src/BRDTERR.C",
       "artifact": "regions/F_4517.bin",
       "expected_sha256": "3bc647cc2cb5a264b5f5ec78c0ecfee2447b57ba2b665e2ba8ddeb964ba35609",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4517",
+        "public": "_board_terrain_resources_load",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -3164,11 +3164,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f1d47": {
+          "_menu_resources_load": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1D47.entry",
             "owner": "F_1D47",
-            "public": "_f1d47",
+            "public": "_menu_resources_load",
             "addend": 0
           },
           "_value_parity": {
@@ -3178,11 +3178,11 @@
             "public": "_value_parity",
             "addend": 0
           },
-          "_f4517": {
+          "_board_terrain_resources_load": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4517.entry",
             "owner": "F_4517",
-            "public": "_f4517",
+            "public": "_board_terrain_resources_load",
             "addend": 0
           },
           "_resource_load_record": {
@@ -3309,11 +3309,11 @@
             "coordinate": "code_offset",
             "evidence": "functions/F_03A8.entry"
           },
-          "_f1ea5": {
+          "_campaign_node_index": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1EA5.entry",
             "owner": "F_1EA5",
-            "public": "_f1ea5",
+            "public": "_campaign_node_index",
             "addend": 0
           },
           "_tick_div8": {
@@ -3414,11 +3414,11 @@
             "public": "_level_play_chapter",
             "addend": 0
           },
-          "_fd4b3": {
+          "_tutorial_hint_dialog_show": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D4B3.entry",
             "owner": "F_D4B3",
-            "public": "_fd4b3",
+            "public": "_tutorial_hint_dialog_show",
             "addend": 0
           },
           "_resource_record_cache_reset": {
@@ -3703,10 +3703,10 @@
       "kind": "MATCHING_C",
       "start": 19267,
       "end": 19427,
-      "source": "src/F_4943.C",
+      "source": "src/CAMPADV.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f4943",
+        "public": "_campaign_chapter_advance",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -3839,11 +3839,11 @@
             "public": "_hud_arena_init",
             "addend": 0
           },
-          "_f4943": {
+          "_campaign_chapter_advance": {
             "coordinate": "code_offset",
             "evidence": "functions/F_4943.entry",
             "owner": "F_4943",
-            "public": "_f4943",
+            "public": "_campaign_chapter_advance",
             "addend": 0
           },
           "_intro_run_chapter": {
@@ -6495,11 +6495,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f699e": {
+          "_keyboard_irq_handler": {
             "coordinate": "code_offset",
             "evidence": "functions/F_699E.entry",
             "owner": "F_699E",
-            "public": "_f699e",
+            "public": "_keyboard_irq_handler",
             "addend": 0
           },
           "_int9_saved_vector": {
@@ -6644,14 +6644,14 @@
       "end": 27930,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_699E.C",
+      "source": "src/KEYIRQH.C",
       "original_symbol": "F_699E",
       "artifact": "regions/F_699E.bin",
       "expected_sha256": "641531806bd04b1d59edbc711e024640fb84c889249860560b03504436ac034c",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f699e",
+        "public": "_keyboard_irq_handler",
         "span": 1,
         "flags_append": "-B",
         "module_segments": {},
@@ -6727,11 +6727,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_792C.entry",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0
           },
           "_menu_loop_run": {
@@ -7226,13 +7226,13 @@
     {
       "id": "F_6CF0",
       "kind": "MATCHING_C",
-      "source": "src/F_6CF0.C",
+      "source": "src/DLGLNHT.C",
       "start": 28400,
       "end": 28406,
       "expected_sha256": "bc6eafe4a4068866490e844ba5ad9b49f9344c5fd3e099379543ef5d0d68499c",
       "build": {
         "segment": "_TEXT",
-        "public": "_f6cf0",
+        "public": "_dialog_line_height_get",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -7765,11 +7765,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BC22.phys"
           },
-          "_f7856": {
+          "_hud_prompt_message_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7856.entry",
             "owner": "F_7856",
-            "public": "_f7856",
+            "public": "_hud_prompt_message_draw",
             "addend": 0
           }
         }
@@ -8137,11 +8137,11 @@
             "public": "_energy_draw",
             "addend": 0
           },
-          "_fd4b3": {
+          "_tutorial_hint_dialog_show": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D4B3.entry",
             "owner": "F_D4B3",
-            "public": "_fd4b3",
+            "public": "_tutorial_hint_dialog_show",
             "addend": 0
           },
           "_energy_meter": {
@@ -8281,11 +8281,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f1ea5": {
+          "_campaign_node_index": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1EA5.entry",
             "owner": "F_1EA5",
-            "public": "_f1ea5",
+            "public": "_campaign_node_index",
             "addend": 0
           },
           "_gc0ee": {
@@ -8604,18 +8604,18 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_792C.entry",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7925.entry",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0
           },
           "_hud_prompt_confirm_draw": {
@@ -8632,11 +8632,11 @@
             "public": "_f6b1a",
             "addend": 0
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_791E.entry",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0
           },
           "_hud_panel_open": {
@@ -8765,10 +8765,10 @@
       "kind": "MATCHING_C",
       "start": 31318,
       "end": 31427,
-      "source": "src/F_7856.C",
+      "source": "src/HUDPMSG.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7856",
+        "public": "_hud_prompt_message_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -8872,10 +8872,10 @@
       "kind": "MATCHING_C",
       "start": 31518,
       "end": 31525,
-      "source": "src/F_791E.C",
+      "source": "src/MENULEN.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f791e",
+        "public": "_menu_list_enable",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -8904,14 +8904,14 @@
       "end": 31532,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_7925.C",
+      "source": "src/MENULDIS.C",
       "original_symbol": "F_7925",
       "artifact": "regions/F_7925.bin",
       "expected_sha256": "1599e37b7c95191d079d56fafc41755223e9b588c09d8b6f09dcd768741b6ddf",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7925",
+        "public": "_menu_list_disable",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -8938,14 +8938,14 @@
       "end": 31538,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_792C.C",
+      "source": "src/MENULACT.C",
       "original_symbol": "F_792C",
       "artifact": "regions/F_792C.bin",
       "expected_sha256": "445ac54f1124f2e245ae6a727577363e154dcb17ed2a67940ff7d11ac22445f9",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f792c",
+        "public": "_menu_list_active",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -8972,13 +8972,13 @@
       "end": 31588,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_7932.C",
+      "source": "src/MENULSRC.C",
       "artifact": "regions/F_7932.bin",
       "expected_sha256": "83441f093418db4d3034bbe618dca84380db32250a187a20e5aacacc180b0245",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7932",
+        "public": "_menu_list_source_set",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -9000,17 +9000,17 @@
             "addend": 0,
             "evidence": "functions/F_7BFC.entry"
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0,
             "evidence": "functions/F_791E.entry"
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0,
             "evidence": "functions/F_7925.entry"
           }
@@ -9038,17 +9038,17 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0,
             "evidence": "F_7964 symbolic relation"
           },
@@ -9125,11 +9125,11 @@
             "offset": 927,
             "evidence": "F_039F entry"
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_791E.entry",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0
           },
           "_sound_request_count_dec": {
@@ -9329,11 +9329,11 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_f7932": {
+          "_menu_list_source_set": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7932.entry",
             "owner": "F_7932",
-            "public": "_f7932",
+            "public": "_menu_list_source_set",
             "addend": 0
           },
           "_g0d36": {
@@ -9371,11 +9371,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208A8.phys"
           },
-          "_f7932": {
+          "_menu_list_source_set": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7932.entry",
             "owner": "F_7932",
-            "public": "_f7932",
+            "public": "_menu_list_source_set",
             "addend": 0
           }
         }
@@ -10063,18 +10063,18 @@
             "public": "_sound_start",
             "addend": 0
           },
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_792C.entry",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7925.entry",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0
           },
           "_keyboard_buffer_drain": {
@@ -10119,11 +10119,11 @@
             "public": "_dialog_restore_screen",
             "addend": 0
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_791E.entry",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0
           },
           "_sound_request_count_dec": {
@@ -10210,17 +10210,17 @@
             "addend": 0,
             "evidence": "F_880A symbolic direct near call"
           },
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0,
             "evidence": "F_880A symbolic direct near call"
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0,
             "evidence": "F_880A symbolic direct near call"
           },
@@ -10259,11 +10259,11 @@
             "public": "_dialog_restore_screen",
             "addend": 0
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_791E.entry",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0
           },
           "_sound_request_count_dec": {
@@ -10492,10 +10492,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10520,10 +10520,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f1ea5": {
+          "_campaign_node_index": {
             "coordinate": "code_offset",
             "owner": "F_1EA5",
-            "public": "_f1ea5",
+            "public": "_campaign_node_index",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10541,17 +10541,17 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_fd4b3": {
+          "_tutorial_hint_dialog_show": {
             "coordinate": "code_offset",
             "owner": "F_D4B3",
-            "public": "_fd4b3",
+            "public": "_tutorial_hint_dialog_show",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10576,10 +10576,10 @@
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0,
             "evidence": "F_8BAB symbolic direct near call"
           },
@@ -10760,11 +10760,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f1ea5": {
+          "_campaign_node_index": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1EA5.entry",
             "owner": "F_1EA5",
-            "public": "_f1ea5",
+            "public": "_campaign_node_index",
             "addend": 0
           },
           "_gdc4": {
@@ -11054,11 +11054,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208F8.phys"
           },
-          "_f7856": {
+          "_hud_prompt_message_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7856.entry",
             "owner": "F_7856",
-            "public": "_f7856",
+            "public": "_hud_prompt_message_draw",
             "addend": 0
           }
         }
@@ -11434,10 +11434,10 @@
       "kind": "MATCHING_C",
       "start": 39688,
       "end": 39778,
-      "source": "src/F_9908.C",
+      "source": "src/SCOREPNL.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9908",
+        "public": "_score_panel_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -11743,11 +11743,11 @@
             "public": "_sound_stop_reset",
             "addend": 0
           },
-          "_fd4b3": {
+          "_tutorial_hint_dialog_show": {
             "coordinate": "code_offset",
             "evidence": "functions/F_D4B3.entry",
             "owner": "F_D4B3",
-            "public": "_fd4b3",
+            "public": "_tutorial_hint_dialog_show",
             "addend": 0
           },
           "_wipe": {
@@ -11929,13 +11929,13 @@
       "end": 40908,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_9D8E.C",
+      "source": "src/DLGELOST.C",
       "artifact": "regions/F_9D8E.bin",
       "expected_sha256": "c49179e559c15edf0fcf4ac1fcdfd6132e1374a9ea1b02343b38d160d2843930",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f9d8e",
+        "public": "_dialog_energy_lost_show",
         "span": 1,
         "flags_append": "",
         "module_segments": {
@@ -12054,11 +12054,11 @@
             "public": "_roundend_wait",
             "addend": 0
           },
-          "_f9d8e": {
+          "_dialog_energy_lost_show": {
             "coordinate": "code_offset",
             "evidence": "functions/F_9D8E.entry",
             "owner": "F_9D8E",
-            "public": "_f9d8e",
+            "public": "_dialog_energy_lost_show",
             "addend": 0
           },
           "_g0dcc": {
@@ -12219,10 +12219,10 @@
       "kind": "MATCHING_C",
       "start": 41476,
       "end": 41526,
-      "source": "src/F_A004.C",
+      "source": "src/FSTPCPY.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa004",
+        "public": "_far_stpcpy_capped",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -12251,11 +12251,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fa004": {
+          "_far_stpcpy_capped": {
             "coordinate": "code_offset",
             "evidence": "functions/F_A004.entry",
             "owner": "F_A004",
-            "public": "_fa004",
+            "public": "_far_stpcpy_capped",
             "addend": 0
           }
         }
@@ -12564,10 +12564,10 @@
       "kind": "MATCHING_C",
       "start": 42125,
       "end": 42303,
-      "source": "src/F_A28D.C",
+      "source": "src/SLOTROW.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa28d",
+        "public": "_slot_row_draw",
         "span": 1,
         "flags_append": "",
         "module_segments": {
@@ -12650,11 +12650,11 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_2BFA0.phys"
           },
-          "_fa28d": {
+          "_slot_row_draw": {
             "coordinate": "code_offset",
             "evidence": "functions/F_A28D.entry",
             "owner": "F_A28D",
-            "public": "_fa28d",
+            "public": "_slot_row_draw",
             "addend": 0
           },
           "_slot_used_count": {
@@ -13009,17 +13009,17 @@
             "addend": 0,
             "evidence": "functions/INIT_E.entry"
           },
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0,
             "evidence": "functions/INIT_F.entry"
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0,
             "evidence": "functions/INIT_G.entry"
           },
@@ -13044,10 +13044,10 @@
             "addend": 0,
             "evidence": "functions/DONE_A.entry"
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0,
             "evidence": "functions/DONE_B.entry"
           },
@@ -13109,18 +13109,18 @@
             "public": "_sound_start",
             "addend": 0
           },
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "evidence": "functions/F_792C.entry",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7925.entry",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0
           },
           "_keyboard_chain_enable": {
@@ -13206,11 +13206,11 @@
             "public": "_keyboard_chain_disable",
             "addend": 0
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_791E.entry",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0
           },
           "_sound_request_count_dec": {
@@ -13363,17 +13363,17 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f792c": {
+          "_menu_list_active": {
             "coordinate": "code_offset",
             "owner": "F_792C",
-            "public": "_f792c",
+            "public": "_menu_list_active",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -13405,10 +13405,10 @@
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0,
             "evidence": "near-call target from complete function fixup"
           },
@@ -13624,11 +13624,11 @@
             "offset": 5101,
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison"
           },
-          "_fa28d": {
+          "_slot_row_draw": {
             "coordinate": "code_offset",
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
             "owner": "F_A28D",
-            "public": "_fa28d",
+            "public": "_slot_row_draw",
             "addend": 0
           },
           "_slot_menu_draw_header": {
@@ -13693,11 +13693,11 @@
             "public": "_keyboard_buffer_drain",
             "addend": 0
           },
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "evidence": "F_AB66 decoded instruction operands and exact pinned-compiler candidate comparison",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0
           },
           "_fc834": {
@@ -14555,11 +14555,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f7925": {
+          "_menu_list_disable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_7925.entry",
             "owner": "F_7925",
-            "public": "_f7925",
+            "public": "_menu_list_disable",
             "addend": 0
           },
           "_hud_panel_clear": {
@@ -17294,7 +17294,7 @@
             "offset": 462,
             "evidence": "Historical call operand and exact public index"
           },
-          "_fa28d": {
+          "_slot_row_draw": {
             "coordinate": "code_offset",
             "offset": 41613,
             "evidence": "Historical call operand and exact public index"
@@ -17329,7 +17329,7 @@
             "offset": 33920,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f6cf0": {
+          "_dialog_line_height_get": {
             "coordinate": "code_offset",
             "offset": 27888,
             "evidence": "Historical call operand and exact public index"
@@ -17368,7 +17368,7 @@
             "offset": 462,
             "evidence": "Historical call operand and exact public index"
           },
-          "_fa28d": {
+          "_slot_row_draw": {
             "coordinate": "code_offset",
             "offset": 41613,
             "evidence": "Historical call operand and exact public index"
@@ -17403,7 +17403,7 @@
             "offset": 33920,
             "evidence": "Historical call operand and exact public index"
           },
-          "_f6cf0": {
+          "_dialog_line_height_get": {
             "coordinate": "code_offset",
             "offset": 27888,
             "evidence": "Historical call operand and exact public index"
@@ -18356,10 +18356,10 @@
       "kind": "MATCHING_C",
       "start": 54746,
       "end": 54876,
-      "source": "src/F_D3DA.C",
+      "source": "src/DLGPICK.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd3da",
+        "public": "_dialog_list_pick",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -18427,10 +18427,10 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fd3da": {
+          "_dialog_list_pick": {
             "coordinate": "code_offset",
             "owner": "F_D3DA",
-            "public": "_fd3da",
+            "public": "_dialog_list_pick",
             "addend": 0
           },
           "_g2302": {
@@ -18462,10 +18462,10 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fd3da": {
+          "_dialog_list_pick": {
             "coordinate": "code_offset",
             "owner": "F_D3DA",
-            "public": "_fd3da",
+            "public": "_dialog_list_pick",
             "addend": 0
           },
           "_g2315": {
@@ -18497,10 +18497,10 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fd3da": {
+          "_dialog_list_pick": {
             "coordinate": "code_offset",
             "owner": "F_D3DA",
-            "public": "_fd3da",
+            "public": "_dialog_list_pick",
             "addend": 0
           },
           "_g2326": {
@@ -18532,10 +18532,10 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_fd3da": {
+          "_dialog_list_pick": {
             "coordinate": "code_offset",
             "owner": "F_D3DA",
-            "public": "_fd3da",
+            "public": "_dialog_list_pick",
             "addend": 0
           },
           "_g233b": {
@@ -18559,14 +18559,14 @@
       "end": 55125,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_D4B3.C",
+      "source": "src/HINTDLG.C",
       "original_symbol": "F_D4B3",
       "artifact": "regions/F_D4B3.bin",
       "expected_sha256": "bd3d1ff8e4328574509d5daa1a837bf6f165e0891183fd28e1736943b3419cc1",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_fd4b3",
+        "public": "_tutorial_hint_dialog_show",
         "span": 1,
         "flags_append": "",
         "bindings": {
@@ -23312,7 +23312,7 @@
       "end": 69261,
       "kind": "EXACT_DATA",
       "classification": "static_text",
-      "source": "src/F_9D8E.C",
+      "source": "src/DLGELOST.C",
       "artifact": "regions/TEXT_118C.bin",
       "expected_sha256": "15906bc790213fbc39e32c7b51c0166ac5a404b5b2ab1401315d2bc82f859795",
       "matching_status": "EQUAL",
@@ -23328,7 +23328,7 @@
       "end": 69281,
       "kind": "EXACT_DATA",
       "classification": "static_data",
-      "source": "src/F_9D8E.C",
+      "source": "src/DLGELOST.C",
       "artifact": "regions/DATA_125D.bin",
       "expected_sha256": "ae9355c01436b50e26ce34efc08a3774db1a7d1532694cd824944ca34a33615a",
       "matching_status": "EQUAL",
@@ -23611,7 +23611,7 @@
       "start": 70272,
       "end": 70288,
       "classification": "static_data",
-      "source": "src/F_A28D.C",
+      "source": "src/SLOTROW.C",
       "artifact": "regions/C_DATA_A28D.bin",
       "expected_sha256": "557eab64a41036d0ef8beb71a6f720f3db5bb9de3b5ca4e191be5b1c446434ab",
       "matching_status": "EQUAL",

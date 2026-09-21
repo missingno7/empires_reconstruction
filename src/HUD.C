@@ -14,12 +14,12 @@ extern int f020f(void);
 extern void hud_draw_meter(void);
 extern void hud_tab_draw(void), energy_draw(void), f7417(void), f7443(void), hud_frame_draw(void);
 extern int hud_prompt_select_draw();
-extern void hud_prompt_continue_draw(), f7856();
+extern void hud_prompt_continue_draw(), hud_prompt_message_draw();
 extern int puzzle_piece_count();
 extern int tick_div8();
-extern int f1ea5();
+extern int campaign_node_index();
 extern void resource_load_record_alloc();
-extern void fd4b3();
+extern void tutorial_hint_dialog_show();
 extern void f03a2(int a, int b, int c);
 extern void f03a5(int a, int b, int c);
 
@@ -120,7 +120,7 @@ void ui_overlay_hide(void)
         hud_prompt_select_draw(gc0f6);
         break;
     case 5:
-        f7856(gc0f2, gc0ec);
+        hud_prompt_message_draw(gc0f2, gc0ec);
         break;
     }
 }
@@ -242,7 +242,7 @@ int n;
 {
     if (n != 0) {
         if (energy_meter == 2 && n < 0)
-            fd4b3(4);
+            tutorial_hint_dialog_show(4);
         if ((energy_meter += n) > 4)
             energy_meter = 4;
         energy_draw();
@@ -284,7 +284,7 @@ void f7417(void) { f03c9(244,175,(char far *)gc0ee + ((struct R7417 far *)gc0ee)
 struct R7443 { char pad[32]; unsigned offsets[1]; };
 extern char far *gc0ee;
 
-void f7443(void) { register int i; i=f1ea5(); f03c9(244+i*16,186,(char far *)gc0ee + ((struct R7443 far *)gc0ee)->offsets[i] + 2); }
+void f7443(void) { register int i; i=campaign_node_index(); f03c9(244+i*16,186,(char far *)gc0ee + ((struct R7443 far *)gc0ee)->offsets[i] + 2); }
 
 
 /* ---- F_747B (original code at 0x747B) ---- */

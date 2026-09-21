@@ -1,6 +1,6 @@
-extern int fd3da(int, int, char far *);
+extern int dialog_list_pick(int, int, char far *);
 extern char g2302[];
 int fd45c(void)
 {
-    return fd3da(0, 2, g2302);
+    return dialog_list_pick(0, 2, g2302);
 }

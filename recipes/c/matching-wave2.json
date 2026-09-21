@@ -114,11 +114,11 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_f1ea5": {
+          "_campaign_node_index": {
             "coordinate": "code_offset",
             "evidence": "functions/F_1EA5.entry",
             "owner": "F_1EA5",
-            "public": "_f1ea5",
+            "public": "_campaign_node_index",
             "addend": 0
           },
           "_gc0ee": {
@@ -200,10 +200,10 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P208F8.phys"
           },
-          "_f7856": {
+          "_hud_prompt_message_draw": {
             "coordinate": "code_offset",
             "owner": "F_7856",
-            "public": "_f7856",
+            "public": "_hud_prompt_message_draw",
             "addend": 0,
             "evidence": "functions/F_7856.entry"
           }
@@ -431,10 +431,10 @@
       "kind": "MATCHING_C",
       "start": 41476,
       "end": 41526,
-      "source": "src/F_A004.C",
+      "source": "src/FSTPCPY.C",
       "build": {
         "segment": "_TEXT",
-        "public": "_fa004",
+        "public": "_far_stpcpy_capped",
         "span": 1,
         "flags_append": "",
         "module_segments": {},

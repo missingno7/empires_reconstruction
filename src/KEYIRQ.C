@@ -4,7 +4,7 @@
 
 extern void interrupt (*getvect())();
 extern void setvect();
-extern void f699e();
+extern void keyboard_irq_handler();
 extern void interrupt (*int9_saved_vector)(void);   /* saved INT 9 vector: DS:C0CC offset, DS:C0CE segment */
 
 /* ---- F_695E (original code at 0x695E) ---- */
@@ -16,7 +16,7 @@ extern void interrupt (*int9_saved_vector)(void);   /* saved INT 9 vector: DS:C0
 void keyboard_irq_install()
 {
     int9_saved_vector = getvect(9);
-    setvect(9, (void (far *) ()) f699e);
+    setvect(9, (void (far *) ()) keyboard_irq_handler);
 }
 
 

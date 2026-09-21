@@ -21,9 +21,9 @@ _f50d2  proc    near
         mov     ah,0fh
         int     10h
         cmp     al,7
-        jne     @@1
+        jne     @@rom_sig_probe
         jmp     @@done
-@@1:
+@@rom_sig_probe:
         mov     ax,0f000h
         mov     es,ax
         mov     si,0fffeh
@@ -41,26 +41,26 @@ _f50d2  proc    near
         cmp     al,1ah
         jne     @@ega
         cmp     bl,0ah
-        jl      @@2
+        jl      @@check_ega_class
         mov     _bbfcd,4
         jmp     @@done
-@@2:
+@@check_ega_class:
         cmp     bl,4
-        je      @@3
+        je      @@mark_ega
         cmp     bl,5
-        jne     @@4
-@@3:
+        jne     @@check_vga_class
+@@mark_ega:
         mov     _bbfcd,1
         jmp     @@done
-@@4:
+@@check_vga_class:
         cmp     bl,7
-        je      @@5
+        je      @@mark_vga
         cmp     bl,8
-        jne     @@6
-@@5:
+        jne     @@check_mcga_class
+@@mark_vga:
         mov     _bbfcd,5
         jmp     @@done
-@@6:
+@@check_mcga_class:
         cmp     bl,2
         jne     @@ega
         mov     _bbfcd,2
@@ -97,7 +97,7 @@ _f50d2  proc    near
         mov     _bbfcd,2
 @@done:
         cmp     word ptr _bbfcd,1
-        jne     @@7
+        jne     @@check_pcjr
         mov     ah,12h
         mov     bl,10h
         int     10h
@@ -105,11 +105,11 @@ _f50d2  proc    near
         jne     @@fin
         mov     _bbfcd,2
         jmp     @@fin
-@@7:
+@@check_pcjr:
         cmp     word ptr _bbfcd,4
-        jne     @@8
+        jne     @@check_mcga
         jmp     @@fin
-@@8:
+@@check_mcga:
         cmp     word ptr _bbfcd,5
         jne     @@fin
 @@fin:

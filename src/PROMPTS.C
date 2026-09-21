@@ -10,8 +10,8 @@ extern void gfx_color_select(int n);
 extern void text_draw_wrapped(int, int, char far *);
 extern void rect_border_draw();
 extern void anim_step_loop();
-extern int f792c(), f6b1a(), hud_prompt_confirm_draw();
-extern void f7925(void), f791e(), hud_panel_open();
+extern int menu_list_active(), f6b1a(), hud_prompt_confirm_draw();
+extern void menu_list_disable(void), menu_list_enable(), hud_panel_open();
 extern int gb83, gc0fc;
 extern char *gc0f6;
 extern char display_mode;                      /* DS:BFCD */
@@ -77,7 +77,7 @@ char *p;
 
 
 /* ---- F_7747 (original code at 0x7747) ---- */
-void f7747(char far *p) { register int key, saved; saved=f792c(); f7925(); hud_prompt_confirm_draw(p,0,15,1,0); do { key=f6b1a(); } while (key!=13 && key!=27); if(saved) f791e(); hud_panel_open(); }
+void f7747(char far *p) { register int key, saved; saved=menu_list_active(); menu_list_disable(); hud_prompt_confirm_draw(p,0,15,1,0); do { key=f6b1a(); } while (key!=13 && key!=27); if(saved) menu_list_enable(); hud_panel_open(); }
 
 
 /* ---- F_778B (original code at 0x778B) ---- */

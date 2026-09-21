@@ -226,7 +226,7 @@ int a;
     f03b4(0, 0, 320, 16, 0, 200);
     gfx_color_select(0);
     f03a8(0, 0x184, 320, 12);
-    slot_table[current_slot].byte12 = 0;
+    slot_table[current_slot].resume_round = 0;
     keyboard_chain_enable();
     if (gc5b0 != 4) {
         hud_prompt_select_draw(g22d2);

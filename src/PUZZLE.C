@@ -15,13 +15,13 @@ extern int rand(void);
 extern int face7(void);
 extern void hud_draw_meter(void);
 extern int music_track_handle;
-extern int f020f(),sprite_sheet_index_get(),f792c(),keyboard_chain_active(),f1ea5();
+extern int f020f(),sprite_sheet_index_get(),menu_list_active(),keyboard_chain_active(),campaign_node_index();
 extern void keyboard_chain_enable(void);
 extern void keyboard_buffer_drain(void);
 extern int puzzle_display_init(),f6b1a(),f9440();
-extern void f7925(void);
-extern void fd4b3(int);
-extern void f791e(void);
+extern void menu_list_disable(void);
+extern void tutorial_hint_dialog_show(int);
+extern void menu_list_enable(void);
 extern void timer_wait_ticks(int n);
 extern int f9466(),f950c(),puzzle_clear_cell(),puzzle_draw_piece();
 extern void fcaf1();
@@ -45,7 +45,7 @@ extern void free();
 extern int f03bd(), f03b7();
 extern void f03ba();
 extern unsigned far *g0dc8;
-extern void f7856();
+extern void hud_prompt_message_draw();
 extern int hud_prompt_confirm_draw();
 extern char display_mode;
 extern void f03a5();extern void f03a2();extern void rect_border_draw();
@@ -121,18 +121,18 @@ int puzzle_run(void)
  int key,quit,redraw,flash,saved_input,saved_timer,saved_mode,saved_cursor,level,stage,saved_state;
  register int row,col;
  quit=0;redraw=1;flash=1;stage=0;saved_state=music_track_handle;
- saved_input=f020f();saved_timer=sprite_sheet_index_get();saved_cursor=f792c();saved_mode=keyboard_chain_active();
- keyboard_chain_enable();keyboard_buffer_drain();level=f1ea5();puzzle_display_init();
- if(face7()) fd4b3(8);else fd4b3(6);
+ saved_input=f020f();saved_timer=sprite_sheet_index_get();saved_cursor=menu_list_active();saved_mode=keyboard_chain_active();
+ keyboard_chain_enable();keyboard_buffer_drain();level=campaign_node_index();puzzle_display_init();
+ if(face7()) tutorial_hint_dialog_show(8);else tutorial_hint_dialog_show(6);
  while(!quit) {
   if(puzzle_solved_flag) {
-   f7925();
+   menu_list_disable();
    while(stage<2) {
     timer_wait_ticks(118);keyboard_buffer_drain();
     if((key=f6b1a())==13) {if(++stage<2) f9440(stage);}
     else if(key==27) stage=2;
    }
-   if(saved_cursor) f791e();
+   if(saved_cursor) menu_list_enable();
    quit=1;
   }
   while(GC132.kind==-1&&!quit) {
@@ -188,14 +188,14 @@ int puzzle_run(void)
    }
   }
  }
- fd4b3(7);puzzle_free_resources();gfx_color_select(saved_input);sprite_sheet_select(saved_timer);
+ tutorial_hint_dialog_show(7);puzzle_free_resources();gfx_color_select(saved_input);sprite_sheet_select(saved_timer);
  if(!saved_mode) keyboard_chain_disable();
  keyboard_buffer_drain();resource_record_cache_reset(saved_state);return puzzle_solved_flag;
 }
 
 
 /* ---- F_90A6 (original code at 0x90A6) ---- */
-puzzle_display_init(){int n,k;register int i,j;n=f1ea5();resource_load_record_alloc(tick_div8()*2+face7()+4201,&gdc4);resource_load_record(4159);f03c9(8,16,ui_gfx_shadow_a);f03b4(8,16,304,144,8,202);resource_load_record(tick_div8()*8+f1ea5()+face7()*4+4161);f03c9(0,344,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[0]+2);f03cc(140,44,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[1]+2,0);for(k=0;k<2;k++)strcpy(gc136[k],ui_gfx_shadow_a+((int *)ui_gfx_shadow_a+2)[k]+2);resource_load_record_alloc(4160,&gdc8);if(puzzle_solved_flag)f9440(1);else f9402(puzzle_held_piece!=-1);for(i=0;i<4;i++)for(j=0;j<6;j++)puzzle_draw_piece(puzzle_grid[i][j],i,j);for(i=0;i<n;i++)puzzle_draw_tray_piece(i);if(puzzle_solved_flag)puzzle_draw_tray_piece(n);f039f(8,16,304,144);}
+puzzle_display_init(){int n,k;register int i,j;n=campaign_node_index();resource_load_record_alloc(tick_div8()*2+face7()+4201,&gdc4);resource_load_record(4159);f03c9(8,16,ui_gfx_shadow_a);f03b4(8,16,304,144,8,202);resource_load_record(tick_div8()*8+campaign_node_index()+face7()*4+4161);f03c9(0,344,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[0]+2);f03cc(140,44,ui_gfx_shadow_a+((int *)ui_gfx_shadow_a)[1]+2,0);for(k=0;k<2;k++)strcpy(gc136[k],ui_gfx_shadow_a+((int *)ui_gfx_shadow_a+2)[k]+2);resource_load_record_alloc(4160,&gdc8);if(puzzle_solved_flag)f9440(1);else f9402(puzzle_held_piece!=-1);for(i=0;i<4;i++)for(j=0;j<6;j++)puzzle_draw_piece(puzzle_grid[i][j],i,j);for(i=0;i<n;i++)puzzle_draw_tray_piece(i);if(puzzle_solved_flag)puzzle_draw_tray_piece(n);f039f(8,16,304,144);}
 
 
 /* ---- F_9259 (original code at 0x9259) ---- */
@@ -227,7 +227,7 @@ puzzle_draw_tray_piece(i) register int i; {f03cc(0x108,27+(i<<5),gdc4+((unsigned
 
 
 /* ---- F_9402 (original code at 0x9402) ---- */
-void f9402(int i) { register int flag; flag=i && !face7(); f7856((char far *)g0dc8 + g0dc8[i] + 2,flag); }
+void f9402(int i) { register int flag; flag=i && !face7(); hud_prompt_message_draw((char far *)g0dc8 + g0dc8[i] + 2,flag); }
 
 
 /* ---- F_9440 (original code at 0x9440) ---- */

@@ -67,6 +67,10 @@
       "original": "f31c4",
       "address": "31C4"
     },
+    "board_terrain_resources_load": {
+      "original": "f4517",
+      "address": "4517"
+    },
     "board_unit_script_trigger": {
       "original": "f6021",
       "address": "6021"
@@ -78,6 +82,14 @@
     "boot_init_seed_rand": {
       "original": "f490d",
       "address": "490D"
+    },
+    "campaign_chapter_advance": {
+      "original": "f4943",
+      "address": "4943"
+    },
+    "campaign_node_index": {
+      "original": "f1ea5",
+      "address": "1EA5"
     },
     "cmdline_parse_args": {
       "original": "f4f96",
@@ -178,6 +190,10 @@
       "original": "f8434",
       "address": "8434"
     },
+    "dialog_energy_lost_show": {
+      "original": "f9d8e",
+      "address": "9D8E"
+    },
     "dialog_fill_box": {
       "original": "f8378",
       "address": "8378"
@@ -188,6 +204,14 @@
     },
     "dialog_line_height": {
       "original": "gc0e8"
+    },
+    "dialog_line_height_get": {
+      "original": "f6cf0",
+      "address": "6CF0"
+    },
+    "dialog_list_pick": {
+      "original": "fd3da",
+      "address": "D3DA"
     },
     "dialog_list_run": {
       "original": "f880a",
@@ -283,6 +307,10 @@
       "original": "f7343",
       "address": "7343"
     },
+    "far_stpcpy_capped": {
+      "original": "fa004",
+      "address": "A004"
+    },
     "game_run": {
       "original": "f49f0",
       "address": "49F0"
@@ -326,6 +354,10 @@
     "hud_prompt_continue_draw": {
       "original": "f75f3",
       "address": "75F3"
+    },
+    "hud_prompt_message_draw": {
+      "original": "f7856",
+      "address": "7856"
     },
     "hud_prompt_select_draw": {
       "original": "f7695",
@@ -386,6 +418,10 @@
       "original": "f6990",
       "address": "6990"
     },
+    "keyboard_irq_handler": {
+      "original": "f699e",
+      "address": "699E"
+    },
     "keyboard_irq_install": {
       "original": "f695e",
       "address": "695E"
@@ -432,13 +468,33 @@
       "original": "f462e",
       "address": "462E"
     },
+    "menu_list_active": {
+      "original": "f792c",
+      "address": "792C"
+    },
+    "menu_list_disable": {
+      "original": "f7925",
+      "address": "7925"
+    },
     "menu_list_draw": {
       "original": "f7bfc",
       "address": "7BFC"
     },
+    "menu_list_enable": {
+      "original": "f791e",
+      "address": "791E"
+    },
+    "menu_list_source_set": {
+      "original": "f7932",
+      "address": "7932"
+    },
     "menu_loop_run": {
       "original": "f7964",
       "address": "7964"
+    },
+    "menu_resources_load": {
+      "original": "f1d47",
+      "address": "1D47"
     },
     "music_build_octave_table": {
       "original": "fde7e",
@@ -757,6 +813,10 @@
       "original": "f984c",
       "address": "984C"
     },
+    "score_panel_draw": {
+      "original": "f9908",
+      "address": "9908"
+    },
     "score_panel_x": {
       "original": "gc34e"
     },
@@ -805,6 +865,10 @@
     "slot_menu_draw_header": {
       "original": "fa09d",
       "address": "A09D"
+    },
+    "slot_row_draw": {
+      "original": "fa28d",
+      "address": "A28D"
     },
     "slot_row_highlight": {
       "original": "fa15e",
@@ -937,6 +1001,10 @@
     "turn_loop_run": {
       "original": "f3a75",
       "address": "3A75"
+    },
+    "tutorial_hint_dialog_show": {
+      "original": "fd4b3",
+      "address": "D4B3"
     },
     "ui_gfx_alloc": {
       "original": "fd344",

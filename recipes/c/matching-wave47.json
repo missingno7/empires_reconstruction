@@ -7,13 +7,13 @@
       "end": 31588,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/F_7932.C",
+      "source": "src/MENULSRC.C",
       "artifact": "regions/F_7932.bin",
       "expected_sha256": "83441f093418db4d3034bbe618dca84380db32250a187a20e5aacacc180b0245",
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_f7932",
+        "public": "_menu_list_source_set",
         "span": 1,
         "flags_append": "",
         "module_segments": {},
@@ -21,8 +21,8 @@
           "_gc0fe": {"offset": 49406, "coordinate": "DGROUP_offset", "evidence": "storage_objects/M_2BC2E.phys"},
           "_g0bb4": {"offset": 2996, "coordinate": "DGROUP_offset", "evidence": "direct default far-pointer base in complete F_7932 fixups"},
           "_menu_list_draw": {"coordinate": "code_offset", "owner": "F_7BFC", "public": "_menu_list_draw", "addend": 0, "evidence": "functions/F_7BFC.entry"},
-          "_f791e": {"coordinate": "code_offset", "owner": "F_791E", "public": "_f791e", "addend": 0, "evidence": "functions/F_791E.entry"},
-          "_f7925": {"coordinate": "code_offset", "owner": "F_7925", "public": "_f7925", "addend": 0, "evidence": "functions/F_7925.entry"}
+          "_menu_list_enable": {"coordinate": "code_offset", "owner": "F_791E", "public": "_menu_list_enable", "addend": 0, "evidence": "functions/F_791E.entry"},
+          "_menu_list_disable": {"coordinate": "code_offset", "owner": "F_7925", "public": "_menu_list_disable", "addend": 0, "evidence": "functions/F_7925.entry"}
         }
       },
       "provenance": {

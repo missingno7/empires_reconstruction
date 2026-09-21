@@ -3,4 +3,4 @@ extern void gfx_color_select(), f03a8(), f039f();
 /* Shared dialog text and its descriptor form one native DATA contribution. */
 char text118c[] = "Sorry, better luck next time!\rYou lost the pieces to the last\rartifact.\rYou must go back, find them again,\rand put them together.\rThen try again to break this\rchamber's code.\r\rYour Energy meter will be reset.";
 struct dialog g125d = { 1, 0, 2, text118c, 0, -1, -1, -1, -1 };
-void f9d8e(void) { gfx_color_select(0); f03a8(8,16,304,145); f039f(8,16,304,145); dialog_run(&g125d); }
+void dialog_energy_lost_show(void) { gfx_color_select(0); f03a8(8,16,304,145); f039f(8,16,304,145); dialog_run(&g125d); }

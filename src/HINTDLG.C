@@ -8,7 +8,7 @@ extern void farfree();
 extern char far *g235d;
 extern struct dialog g2356;
 
-void fd4b3(int n)
+void tutorial_hint_dialog_show(int n)
 {
     char far *p;
 

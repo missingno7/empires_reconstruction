@@ -1,12 +1,12 @@
 {
   "format": "empires-interface-audit-v1",
   "scope": "Review only; no production declaration edits or conflict suppression.",
-  "raw_conflicts": 50,
+  "raw_conflicts": 49,
   "active_c_sources": 95,
   "categories": {
     "ACTIVE_TYPE_REVIEW": 16,
     "COMPACT_MODEL_SPELLING": 2,
-    "INACTIVE_REFERENCE_ONLY": 29,
+    "INACTIVE_REFERENCE_ONLY": 28,
     "LOCAL_TAG_REUSE": 1,
     "RETURN_TYPE_REVIEW": 1,
     "VARIADIC_PROTOTYPE": 1
@@ -61,7 +61,7 @@
       "note": "Tags are file scoped; matching tag names across files do not establish a shared type or an ABI conflict.",
       "locations": [
         {
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         },
         {
@@ -495,44 +495,6 @@
       ]
     },
     {
-      "id": "FUNCTION_ABI:f699e",
-      "kind": "FUNCTION_ABI",
-      "category": "RETURN_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "return_type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "f699e",
-          "definition": true,
-          "return_type": "void interrupt",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
-          "line": 12
-        },
-        {
-          "symbol": "f699e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/KEYIRQ.C",
-          "line": 7
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
       "id": "FUNCTION_ABI:f6d86",
       "kind": "FUNCTION_ABI",
       "category": "INACTIVE_REFERENCE_ONLY",
@@ -643,134 +605,6 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/F_6F4B.C",
-          "line": 2
-        }
-      ]
-    },
-    {
-      "id": "FUNCTION_ABI:f792c",
-      "kind": "FUNCTION_ABI",
-      "category": "INACTIVE_REFERENCE_ONLY",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [],
-      "active_declarations": [
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 21
-        },
-        {
-          "symbol": "f792c",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_792C.C",
-          "line": 4
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENULOOP.C",
-          "line": 6
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 13
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 18
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 155
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 222
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 278
-        }
-      ],
-      "excluded_declarations": [
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6B1A.C",
           "line": 2
         }
       ]
@@ -887,6 +721,44 @@
           "line": 6
         }
       ]
+    },
+    {
+      "id": "FUNCTION_ABI:keyboard_irq_handler",
+      "kind": "FUNCTION_ABI",
+      "category": "RETURN_TYPE_REVIEW",
+      "note": "Syntactic finding; not a confirmed runtime bug.",
+      "active_fields": [
+        "return_type"
+      ],
+      "active_declarations": [
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQ.C",
+          "line": 7
+        },
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 12
+        }
+      ],
+      "excluded_declarations": []
     },
     {
       "id": "FUNCTION_ABI:longjmp",
@@ -1061,7 +933,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 8
         }
       ],
@@ -1116,7 +988,7 @@
           "storage": "near",
           "size": 1,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 7
         }
       ],
@@ -1762,17 +1634,6 @@
       "active_declarations": [
         {
           "symbol": "g9bfc",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "g9bfc",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -1792,6 +1653,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 142
+        },
+        {
+          "symbol": "g9bfc",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "excluded_declarations": []
@@ -1805,17 +1677,6 @@
         "type"
       ],
       "active_declarations": [
-        {
-          "symbol": "gbf66",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
         {
           "symbol": "gbf66",
           "type": "unsigned char",
@@ -1837,6 +1698,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 142
+        },
+        {
+          "symbol": "gbf66",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "excluded_declarations": []
@@ -1902,8 +1774,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
+          "file": "src/LEVEL.C",
+          "line": 119
         },
         {
           "symbol": "gbfc8",
@@ -1913,8 +1785,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 119
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "excluded_declarations": [
@@ -2366,17 +2238,6 @@
         },
         {
           "symbol": "score_panel_x",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        },
-        {
-          "symbol": "score_panel_x",
           "type": "int",
           "array": null,
           "pointer_shape": null,
@@ -2429,6 +2290,17 @@
           "confidence": "MEDIUM",
           "file": "src/SCORE.C",
           "line": 6
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
         }
       ],
       "excluded_declarations": []

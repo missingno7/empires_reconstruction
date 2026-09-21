@@ -254,7 +254,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 4
         }
       ],
@@ -312,7 +312,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 5
         }
       ],
@@ -331,7 +331,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 3
         },
         {
@@ -1674,6 +1674,67 @@
       ]
     },
     {
+      "symbol": "board_terrain_resources_load",
+      "declarations": [
+        {
+          "symbol": "board_terrain_resources_load",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/BRDTERR.C",
+          "line": 13
+        },
+        {
+          "symbol": "board_terrain_resources_load",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENUBKDP.C",
+          "line": 10
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "board_terrain_resources_load",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/BRDTERR.C",
+          "line": 13
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_board_terrain_resources_load",
+          "address": 17687,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_4517",
+          "module_members": [
+            "F_4517"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "board_unit_script_trigger",
       "declarations": [
         {
@@ -1982,6 +2043,150 @@
           "owner": "LIB_FBRK",
           "module_members": [
             "FBRK"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "campaign_chapter_advance",
+      "declarations": [
+        {
+          "symbol": "campaign_chapter_advance",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/CAMPADV.C",
+          "line": 3
+        },
+        {
+          "symbol": "campaign_chapter_advance",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 63
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "campaign_chapter_advance",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/CAMPADV.C",
+          "line": 3
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_campaign_chapter_advance",
+          "address": 18755,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_4943",
+          "module_members": [
+            "F_4943"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "campaign_node_index",
+      "declarations": [
+        {
+          "symbol": "campaign_node_index",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 20
+        },
+        {
+          "symbol": "campaign_node_index",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/LVLDRV.C",
+          "line": 15
+        },
+        {
+          "symbol": "campaign_node_index",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/NODEIDX.C",
+          "line": 2
+        },
+        {
+          "symbol": "campaign_node_index",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 18
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "campaign_node_index",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/NODEIDX.C",
+          "line": 2
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_campaign_node_index",
+          "address": 7845,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_1EA5",
+          "module_members": [
+            "F_1EA5"
           ]
         }
       ]
@@ -2760,6 +2965,63 @@
       ]
     },
     {
+      "symbol": "dialog_energy_lost_show",
+      "declarations": [
+        {
+          "symbol": "dialog_energy_lost_show",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/ANIMFRAM.C",
+          "line": 10
+        },
+        {
+          "symbol": "dialog_energy_lost_show",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DLGELOST.C",
+          "line": 6
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "dialog_energy_lost_show",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DLGELOST.C",
+          "line": 6
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_dialog_energy_lost_show",
+          "address": 40334,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_9D8E",
+          "module_members": [
+            "F_9D8E"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "dialog_fill_box",
       "declarations": [
         {
@@ -2906,6 +3168,183 @@
       ]
     },
     {
+      "symbol": "dialog_line_height_get",
+      "declarations": [
+        {
+          "symbol": "dialog_line_height_get",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DLGLNHT.C",
+          "line": 2
+        },
+        {
+          "symbol": "dialog_line_height_get",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/OPTIONS.C",
+          "line": 6
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "dialog_line_height_get",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DLGLNHT.C",
+          "line": 2
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_dialog_line_height_get",
+          "address": 27888,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_6CF0",
+          "module_members": [
+            "F_6CF0"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "dialog_list_pick",
+      "declarations": [
+        {
+          "symbol": "dialog_list_pick",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DLGPICK.C",
+          "line": 3
+        },
+        {
+          "symbol": "dialog_list_pick",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D45C.C",
+          "line": 1
+        },
+        {
+          "symbol": "dialog_list_pick",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D471.C",
+          "line": 1
+        },
+        {
+          "symbol": "dialog_list_pick",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D487.C",
+          "line": 1
+        },
+        {
+          "symbol": "dialog_list_pick",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/F_D49D.C",
+          "line": 1
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "dialog_list_pick",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DLGPICK.C",
+          "line": 3
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_dialog_list_pick",
+          "address": 54234,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_D3DA",
+          "module_members": [
+            "F_D3DA"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "dialog_list_run",
       "declarations": [
         {
@@ -2933,7 +3372,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 1
         }
       ],
@@ -4325,7 +4764,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_1ECD.C",
+          "file": "src/DLGELOST.C",
           "line": 2
         },
         {
@@ -4338,20 +4777,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
-        },
-        {
-          "symbol": "f039f",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
+          "file": "src/F_1ECD.C",
           "line": 2
         },
         {
@@ -4366,6 +4792,19 @@
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
           "line": 8
+        },
+        {
+          "symbol": "f039f",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
         },
         {
           "symbol": "f039f",
@@ -4808,20 +5247,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
-        },
-        {
-          "symbol": "f03a8",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
+          "file": "src/DLGELOST.C",
           "line": 2
         },
         {
@@ -4841,6 +5267,19 @@
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
           "line": 9
+        },
+        {
+          "symbol": "f03a8",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
         },
         {
           "symbol": "f03a8",
@@ -5180,19 +5619,6 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        },
-        {
-          "symbol": "f03b4",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
           "file": "src/HUD.C",
           "line": 10
         },
@@ -5375,6 +5801,19 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
+        },
+        {
+          "symbol": "f03b4",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 20
         },
@@ -5418,19 +5857,6 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        },
-        {
-          "symbol": "f03b7",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
           "file": "src/MRKCELL.C",
           "line": 9
         },
@@ -5446,6 +5872,19 @@
           "confidence": "MEDIUM",
           "file": "src/PUZZLE.C",
           "line": 45
+        },
+        {
+          "symbol": "f03b7",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -5464,19 +5903,6 @@
     {
       "symbol": "f03ba",
       "declarations": [
-        {
-          "symbol": "f03ba",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        },
         {
           "symbol": "f03ba",
           "definition": false,
@@ -5515,6 +5941,19 @@
           "confidence": "MEDIUM",
           "file": "src/PUZZLE.C",
           "line": 46
+        },
+        {
+          "symbol": "f03ba",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
         },
         {
           "symbol": "f03ba",
@@ -5689,19 +6128,6 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
-        },
-        {
-          "symbol": "f03c9",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
           "file": "src/F_D386.C",
           "line": 5
         },
@@ -5717,6 +6143,19 @@
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
           "line": 7
+        },
+        {
+          "symbol": "f03c9",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
         },
         {
           "symbol": "f03c9",
@@ -6144,146 +6583,6 @@
           "owner": "RUNTIME_BLOCK",
           "module_members": [
             "RUNTIME_BLOCK"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f1d47",
-      "declarations": [
-        {
-          "symbol": "f1d47",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "f1d47",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENUBKDP.C",
-          "line": 9
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f1d47",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f1d47",
-          "address": 7495,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_1D47",
-          "module_members": [
-            "F_1D47"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f1ea5",
-      "declarations": [
-        {
-          "symbol": "f1ea5",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_1EA5.C",
-          "line": 2
-        },
-        {
-          "symbol": "f1ea5",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 20
-        },
-        {
-          "symbol": "f1ea5",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LVLDRV.C",
-          "line": 15
-        },
-        {
-          "symbol": "f1ea5",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 18
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f1ea5",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_1EA5.C",
-          "line": 2
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f1ea5",
-          "address": 7845,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_1EA5",
-          "module_members": [
-            "F_1EA5"
           ]
         }
       ]
@@ -6934,128 +7233,6 @@
             "F_338A",
             "F_36F0",
             "F_3986"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f4517",
-      "declarations": [
-        {
-          "symbol": "f4517",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
-          "line": 13
-        },
-        {
-          "symbol": "f4517",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENUBKDP.C",
-          "line": 10
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f4517",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
-          "line": 13
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f4517",
-          "address": 17687,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_4517",
-          "module_members": [
-            "F_4517"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f4943",
-      "declarations": [
-        {
-          "symbol": "f4943",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
-          "line": 3
-        },
-        {
-          "symbol": "f4943",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 63
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f4943",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
-          "line": 3
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f4943",
-          "address": 18755,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_4943",
-          "module_members": [
-            "F_4943"
           ]
         }
       ]
@@ -7915,63 +8092,6 @@
       ]
     },
     {
-      "symbol": "f699e",
-      "declarations": [
-        {
-          "symbol": "f699e",
-          "definition": true,
-          "return_type": "void interrupt",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
-          "line": 12
-        },
-        {
-          "symbol": "f699e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/KEYIRQ.C",
-          "line": 7
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f699e",
-          "definition": true,
-          "return_type": "void interrupt",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
-          "line": 12
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f699e",
-          "address": 27038,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_699E",
-          "module_members": [
-            "F_699E"
-          ]
-        }
-      ]
-    },
-    {
       "symbol": "f6b1a",
       "declarations": [
         {
@@ -8348,63 +8468,6 @@
           "owner": "F_6BCF",
           "module_members": [
             "F_6BCF"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f6cf0",
-      "declarations": [
-        {
-          "symbol": "f6cf0",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6CF0.C",
-          "line": 2
-        },
-        {
-          "symbol": "f6cf0",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/OPTIONS.C",
-          "line": 6
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f6cf0",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6CF0.C",
-          "line": 2
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f6cf0",
-          "address": 27888,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_6CF0",
-          "module_members": [
-            "F_6CF0"
           ]
         }
       ]
@@ -8897,419 +8960,8 @@
       ]
     },
     {
-      "symbol": "f7856",
-      "declarations": [
-        {
-          "symbol": "f7856",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 2,
-          "argument_types": [
-            "char *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
-        },
-        {
-          "symbol": "f7856",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 17
-        },
-        {
-          "symbol": "f7856",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 48
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f7856",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 2,
-          "argument_types": [
-            "char *",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f7856",
-          "address": 30806,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_7856",
-          "module_members": [
-            "F_7856"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f791e",
-      "declarations": [
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 29
-        },
-        {
-          "symbol": "f791e",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_791E.C",
-          "line": 1
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7932.C",
-          "line": 3
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENULOOP.C",
-          "line": 13
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 14
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 24
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 173
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 230
-        },
-        {
-          "symbol": "f791e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 290
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f791e",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_791E.C",
-          "line": 1
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f791e",
-          "address": 31006,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_791E",
-          "module_members": [
-            "F_791E"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f7925",
-      "declarations": [
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 24
-        },
-        {
-          "symbol": "f7925",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7925.C",
-          "line": 4
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7932.C",
-          "line": 3
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 147
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENULOOP.C",
-          "line": 7
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 14
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 22
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 157
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 226
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 280
-        },
-        {
-          "symbol": "f7925",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 388
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f7925",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7925.C",
-          "line": 4
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f7925",
-          "address": 31013,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_7925",
-          "module_members": [
-            "F_7925"
-          ]
-        }
-      ]
-    },
-    {
       "symbol": "f792c",
       "declarations": [
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 21
-        },
         {
           "symbol": "f792c",
           "definition": false,
@@ -9322,201 +8974,9 @@
           "confidence": "MEDIUM",
           "file": "src/F_6B1A.C",
           "line": 2
-        },
-        {
-          "symbol": "f792c",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_792C.C",
-          "line": 4
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENULOOP.C",
-          "line": 6
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 13
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 18
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 155
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 222
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 278
         }
       ],
-      "definitions": [
-        {
-          "symbol": "f792c",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_792C.C",
-          "line": 4
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f792c",
-          "address": 31020,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_792C",
-          "module_members": [
-            "F_792C"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f7932",
-      "declarations": [
-        {
-          "symbol": "f7932",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 58
-        },
-        {
-          "symbol": "f7932",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 67
-        },
-        {
-          "symbol": "f7932",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7932.C",
-          "line": 4
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f7932",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7932.C",
-          "line": 4
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f7932",
-          "address": 31026,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_7932",
-          "module_members": [
-            "F_7932"
-          ]
-        }
-      ]
+      "definitions": []
     },
     {
       "symbol": "f7964",
@@ -9997,50 +9457,6 @@
       ]
     },
     {
-      "symbol": "f9908",
-      "declarations": [
-        {
-          "symbol": "f9908",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f9908",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f9908",
-          "address": 39176,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_9908",
-          "module_members": [
-            "F_9908"
-          ]
-        }
-      ]
-    },
-    {
       "symbol": "f9962",
       "declarations": [
         {
@@ -10128,63 +9544,6 @@
             "F_9962",
             "F_99A2",
             "F_99E2"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "f9d8e",
-      "declarations": [
-        {
-          "symbol": "f9d8e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/ANIMFRAM.C",
-          "line": 10
-        },
-        {
-          "symbol": "f9d8e",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
-          "line": 6
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "f9d8e",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
-          "line": 6
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_f9d8e",
-          "address": 40334,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_9D8E",
-          "module_members": [
-            "F_9D8E"
           ]
         }
       ]
@@ -11489,72 +10848,6 @@
       ]
     },
     {
-      "symbol": "fa004",
-      "declarations": [
-        {
-          "symbol": "fa004",
-          "definition": true,
-          "return_type": "char far *",
-          "argument_count": 2,
-          "argument_types": [
-            "char far *",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_A004.C",
-          "line": 1
-        },
-        {
-          "symbol": "fa004",
-          "definition": false,
-          "return_type": "char far *",
-          "argument_count": 2,
-          "argument_types": [
-            "char far *",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/STRCATF.C",
-          "line": 4
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "fa004",
-          "definition": true,
-          "return_type": "char far *",
-          "argument_count": 2,
-          "argument_types": [
-            "char far *",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_A004.C",
-          "line": 1
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_fa004",
-          "address": 40964,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_A004",
-          "module_members": [
-            "F_A004"
-          ]
-        }
-      ]
-    },
-    {
       "symbol": "fa19d",
       "declarations": [
         {
@@ -11676,75 +10969,6 @@
             "F_A1E0",
             "F_A223",
             "F_A24E"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "fa28d",
-      "declarations": [
-        {
-          "symbol": "fa28d",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "struct c470_record far *",
-            "int",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "include/C470.H",
-          "line": 32
-        },
-        {
-          "symbol": "fa28d",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "struct c470_record far *",
-            "int",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
-          "line": 4
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "fa28d",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "struct c470_record far *",
-            "int",
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
-          "line": 4
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_fa28d",
-          "address": 41613,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_A28D",
-          "module_members": [
-            "F_A28D"
           ]
         }
       ]
@@ -12271,6 +11495,72 @@
       ]
     },
     {
+      "symbol": "far_stpcpy_capped",
+      "declarations": [
+        {
+          "symbol": "far_stpcpy_capped",
+          "definition": true,
+          "return_type": "char far *",
+          "argument_count": 2,
+          "argument_types": [
+            "char far *",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/FSTPCPY.C",
+          "line": 1
+        },
+        {
+          "symbol": "far_stpcpy_capped",
+          "definition": false,
+          "return_type": "char far *",
+          "argument_count": 2,
+          "argument_types": [
+            "char far *",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/STRCATF.C",
+          "line": 4
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "far_stpcpy_capped",
+          "definition": true,
+          "return_type": "char far *",
+          "argument_count": 2,
+          "argument_types": [
+            "char far *",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/FSTPCPY.C",
+          "line": 1
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_far_stpcpy_capped",
+          "address": 40964,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_A004",
+          "module_members": [
+            "F_A004"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "farcoreleft",
       "declarations": [
         {
@@ -12313,7 +11603,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D4B3.C",
+          "file": "src/HINTDLG.C",
           "line": 7
         },
         {
@@ -14081,126 +13371,6 @@
       ]
     },
     {
-      "symbol": "fd3da",
-      "declarations": [
-        {
-          "symbol": "fd3da",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
-          "line": 3
-        },
-        {
-          "symbol": "fd3da",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D45C.C",
-          "line": 1
-        },
-        {
-          "symbol": "fd3da",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D471.C",
-          "line": 1
-        },
-        {
-          "symbol": "fd3da",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D487.C",
-          "line": 1
-        },
-        {
-          "symbol": "fd3da",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D49D.C",
-          "line": 1
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "fd3da",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
-          "line": 3
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_fd3da",
-          "address": 54234,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D3DA",
-          "module_members": [
-            "F_D3DA"
-          ]
-        }
-      ]
-    },
-    {
       "symbol": "fd45c",
       "declarations": [
         {
@@ -14372,112 +13542,6 @@
           "owner": "F_D49D",
           "module_members": [
             "F_D49D"
-          ]
-        }
-      ]
-    },
-    {
-      "symbol": "fd4b3",
-      "declarations": [
-        {
-          "symbol": "fd4b3",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D4B3.C",
-          "line": 11
-        },
-        {
-          "symbol": "fd4b3",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 22
-        },
-        {
-          "symbol": "fd4b3",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/LVLDRV.C",
-          "line": 17
-        },
-        {
-          "symbol": "fd4b3",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 23
-        },
-        {
-          "symbol": "fd4b3",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/ROUNDEND.C",
-          "line": 22
-        }
-      ],
-      "definitions": [
-        {
-          "symbol": "fd4b3",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D4B3.C",
-          "line": 11
-        }
-      ],
-      "omf_public_evidence": [
-        {
-          "symbol": "_fd4b3",
-          "address": 54451,
-          "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D4B3",
-          "module_members": [
-            "F_D4B3"
           ]
         }
       ]
@@ -14834,7 +13898,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         },
         {
@@ -15077,28 +14141,13 @@
           "symbol": "gfx_color_select",
           "definition": false,
           "return_type": "void",
-          "argument_count": 1,
-          "argument_types": [
-            "int"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
-        },
-        {
-          "symbol": "gfx_color_select",
-          "definition": false,
-          "return_type": "void",
           "argument_count": null,
           "argument_types": null,
           "near_far": "near",
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
+          "file": "src/DLGELOST.C",
           "line": 2
         },
         {
@@ -15130,6 +14179,21 @@
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
           "line": 12
+        },
+        {
+          "symbol": "gfx_color_select",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
         },
         {
           "symbol": "gfx_color_select",
@@ -16168,6 +15232,82 @@
             "F_7695",
             "F_7747",
             "F_778B"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "hud_prompt_message_draw",
+      "declarations": [
+        {
+          "symbol": "hud_prompt_message_draw",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 17
+        },
+        {
+          "symbol": "hud_prompt_message_draw",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 2,
+          "argument_types": [
+            "char *",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
+        },
+        {
+          "symbol": "hud_prompt_message_draw",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 48
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "hud_prompt_message_draw",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 2,
+          "argument_types": [
+            "char *",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUDPMSG.C",
+          "line": 1
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_hud_prompt_message_draw",
+          "address": 30806,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_7856",
+          "module_members": [
+            "F_7856"
           ]
         }
       ]
@@ -17711,6 +16851,63 @@
       ]
     },
     {
+      "symbol": "keyboard_irq_handler",
+      "declarations": [
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQ.C",
+          "line": 7
+        },
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 12
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 12
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_keyboard_irq_handler",
+          "address": 27038,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_699E",
+          "module_members": [
+            "F_699E"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "keyboard_irq_install",
       "declarations": [
         {
@@ -17853,7 +17050,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
+          "file": "src/CAMPADV.C",
           "line": 1
         },
         {
@@ -17974,19 +17171,6 @@
       "declarations": [
         {
           "symbol": "level_free_descriptor_table",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "level_free_descriptor_table",
           "definition": true,
           "return_type": "void",
           "argument_count": null,
@@ -18010,6 +17194,19 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 359
+        },
+        {
+          "symbol": "level_free_descriptor_table",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [
@@ -18582,19 +17779,6 @@
           "symbol": "memmove",
           "definition": false,
           "return_type": "void far *",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "memmove",
-          "definition": false,
-          "return_type": "void far *",
           "argument_count": 3,
           "argument_types": [
             "void far *",
@@ -18607,6 +17791,19 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 12
+        },
+        {
+          "symbol": "memmove",
+          "definition": false,
+          "return_type": "void far *",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         },
         {
           "symbol": "memmove",
@@ -18736,11 +17933,172 @@
       ]
     },
     {
-      "symbol": "menu_list_draw",
+      "symbol": "menu_list_active",
       "declarations": [
         {
-          "symbol": "menu_list_draw",
+          "symbol": "menu_list_active",
           "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 21
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULACT.C",
+          "line": 4
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULOOP.C",
+          "line": 6
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PROMPTS.C",
+          "line": 13
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 18
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 155
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 222
+        },
+        {
+          "symbol": "menu_list_active",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 278
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "menu_list_active",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULACT.C",
+          "line": 4
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_menu_list_active",
+          "address": 31020,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_792C",
+          "module_members": [
+            "F_792C"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "menu_list_disable",
+      "declarations": [
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 24
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 147
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": true,
           "return_type": "void",
           "argument_count": null,
           "argument_types": null,
@@ -18748,9 +18106,144 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_7932.C",
+          "file": "src/MENULDIS.C",
+          "line": 4
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULOOP.C",
+          "line": 7
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULSRC.C",
           "line": 3
         },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PROMPTS.C",
+          "line": 14
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 22
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 157
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 226
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 280
+        },
+        {
+          "symbol": "menu_list_disable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 388
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "menu_list_disable",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULDIS.C",
+          "line": 4
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_menu_list_disable",
+          "address": 31013,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_7925",
+          "module_members": [
+            "F_7925"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "menu_list_draw",
+      "declarations": [
         {
           "symbol": "menu_list_draw",
           "definition": true,
@@ -18778,6 +18271,19 @@
           "confidence": "MEDIUM",
           "file": "src/MENULOOP.C",
           "line": 14
+        },
+        {
+          "symbol": "menu_list_draw",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULSRC.C",
+          "line": 3
         }
       ],
       "definitions": [
@@ -18805,6 +18311,230 @@
           "owner": "F_7BFC",
           "module_members": [
             "F_7BFC"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "menu_list_enable",
+      "declarations": [
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 29
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULEN.C",
+          "line": 1
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULOOP.C",
+          "line": 13
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULSRC.C",
+          "line": 3
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PROMPTS.C",
+          "line": 14
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 24
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 173
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 230
+        },
+        {
+          "symbol": "menu_list_enable",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTMENU.C",
+          "line": 290
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "menu_list_enable",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULEN.C",
+          "line": 1
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_menu_list_enable",
+          "address": 31006,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_791E",
+          "module_members": [
+            "F_791E"
+          ]
+        }
+      ]
+    },
+    {
+      "symbol": "menu_list_source_set",
+      "declarations": [
+        {
+          "symbol": "menu_list_source_set",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 58
+        },
+        {
+          "symbol": "menu_list_source_set",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/DIALOG.C",
+          "line": 67
+        },
+        {
+          "symbol": "menu_list_source_set",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULSRC.C",
+          "line": 4
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "menu_list_source_set",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENULSRC.C",
+          "line": 4
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_menu_list_source_set",
+          "address": 31026,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_7932",
+          "module_members": [
+            "F_7932"
           ]
         }
       ]
@@ -18858,6 +18588,63 @@
       ]
     },
     {
+      "symbol": "menu_resources_load",
+      "declarations": [
+        {
+          "symbol": "menu_resources_load",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENUBKDP.C",
+          "line": 9
+        },
+        {
+          "symbol": "menu_resources_load",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "menu_resources_load",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_menu_resources_load",
+          "address": 7495,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_1D47",
+          "module_members": [
+            "F_1D47"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "movmem",
       "declarations": [
         {
@@ -18883,7 +18670,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 2
         },
         {
@@ -22673,20 +22460,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "resource_load_record",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 1
         },
         {
@@ -22727,6 +22501,19 @@
           "confidence": "MEDIUM",
           "file": "src/MENUBKDP.C",
           "line": 9
+        },
+        {
+          "symbol": "resource_load_record",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         },
         {
           "symbol": "resource_load_record",
@@ -22858,20 +22645,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "resource_load_record_alloc",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 2
         },
         {
@@ -22884,7 +22658,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D4B3.C",
+          "file": "src/HINTDLG.C",
           "line": 6
         },
         {
@@ -22931,6 +22705,19 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 11
+        },
+        {
+          "symbol": "resource_load_record_alloc",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         },
         {
           "symbol": "resource_load_record_alloc",
@@ -23038,7 +22825,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 3
         },
         {
@@ -23956,6 +23743,50 @@
       ]
     },
     {
+      "symbol": "score_panel_draw",
+      "declarations": [
+        {
+          "symbol": "score_panel_draw",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "score_panel_draw",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_score_panel_draw",
+          "address": 39176,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_9908",
+          "module_members": [
+            "F_9908"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "score_set_position",
       "declarations": [
         {
@@ -24834,6 +24665,75 @@
       ]
     },
     {
+      "symbol": "slot_row_draw",
+      "declarations": [
+        {
+          "symbol": "slot_row_draw",
+          "definition": false,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "struct c470_record far *",
+            "int",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "include/C470.H",
+          "line": 36
+        },
+        {
+          "symbol": "slot_row_draw",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "struct c470_record far *",
+            "int",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTROW.C",
+          "line": 4
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "slot_row_draw",
+          "definition": true,
+          "return_type": "int",
+          "argument_count": 3,
+          "argument_types": [
+            "struct c470_record far *",
+            "int",
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTROW.C",
+          "line": 4
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_slot_row_draw",
+          "address": 41613,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_A28D",
+          "module_members": [
+            "F_A28D"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "slot_row_highlight",
       "declarations": [
         {
@@ -25002,7 +24902,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 11
         },
         {
@@ -26117,7 +26017,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
+          "file": "src/SLOTROW.C",
           "line": 4
         },
         {
@@ -26736,23 +26636,6 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
-          "line": 3
-        },
-        {
-          "symbol": "text_draw_wrapped",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": 3,
-          "argument_types": [
-            "int",
-            "int",
-            "char far *"
-          ],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
           "file": "src/INTRO.C",
           "line": 62
         },
@@ -26806,6 +26689,23 @@
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
           "line": 23
+        },
+        {
+          "symbol": "text_draw_wrapped",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 3,
+          "argument_types": [
+            "int",
+            "int",
+            "char far *"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/SLOTROW.C",
+          "line": 3
         },
         {
           "symbol": "text_draw_wrapped",
@@ -26882,8 +26782,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
-          "line": 2
+          "file": "src/SLOTMENU.C",
+          "line": 91
         },
         {
           "symbol": "text_line_width",
@@ -26895,8 +26795,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 91
+          "file": "src/SLOTROW.C",
+          "line": 2
         },
         {
           "symbol": "text_line_width",
@@ -27761,6 +27661,112 @@
       ]
     },
     {
+      "symbol": "tutorial_hint_dialog_show",
+      "declarations": [
+        {
+          "symbol": "tutorial_hint_dialog_show",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HINTDLG.C",
+          "line": 11
+        },
+        {
+          "symbol": "tutorial_hint_dialog_show",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HUD.C",
+          "line": 22
+        },
+        {
+          "symbol": "tutorial_hint_dialog_show",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/LVLDRV.C",
+          "line": 17
+        },
+        {
+          "symbol": "tutorial_hint_dialog_show",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/PUZZLE.C",
+          "line": 23
+        },
+        {
+          "symbol": "tutorial_hint_dialog_show",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/ROUNDEND.C",
+          "line": 22
+        }
+      ],
+      "definitions": [
+        {
+          "symbol": "tutorial_hint_dialog_show",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 1,
+          "argument_types": [
+            "int"
+          ],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/HINTDLG.C",
+          "line": 11
+        }
+      ],
+      "omf_public_evidence": [
+        {
+          "symbol": "_tutorial_hint_dialog_show",
+          "address": 54451,
+          "classification": "KNOWN_FUNCTION_ENTRY",
+          "owner": "F_D4B3",
+          "module_members": [
+            "F_D4B3"
+          ]
+        }
+      ]
+    },
+    {
       "symbol": "ui_gfx_alloc",
       "declarations": [
         {
@@ -28168,7 +28174,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
+          "file": "src/SLOTROW.C",
           "line": 2
         }
       ],
@@ -28211,7 +28217,7 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
+          "file": "src/CAMPADV.C",
           "line": 1
         },
         {
@@ -30448,7 +30454,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 11
         },
         {
@@ -30510,7 +30516,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 8
         }
       ],
@@ -31077,7 +31083,7 @@
           "storage": "near",
           "size": 1,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 7
         }
       ],
@@ -31832,7 +31838,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/C470.H",
-          "line": 26
+          "line": 30
         },
         {
           "symbol": "current_slot",
@@ -31842,7 +31848,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
+          "file": "src/CAMPADV.C",
           "line": 1
         },
         {
@@ -35392,7 +35398,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_7932.C",
+          "file": "src/MENULSRC.C",
           "line": 2
         }
       ],
@@ -35637,7 +35643,7 @@
           "storage": null,
           "size": 20,
           "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
+          "file": "src/DLGELOST.C",
           "line": 5
         }
       ],
@@ -35760,7 +35766,7 @@
             }
           ],
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         },
         {
@@ -36262,7 +36268,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
+          "file": "src/SLOTROW.C",
           "line": 4
         }
       ],
@@ -36283,7 +36289,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_A28D.C",
+          "file": "src/SLOTROW.C",
           "line": 4
         }
       ],
@@ -37895,7 +37901,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         }
       ],
@@ -37933,7 +37939,7 @@
             }
           ],
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         },
         {
@@ -38195,7 +38201,7 @@
           "storage": null,
           "size": 20,
           "confidence": "MEDIUM",
-          "file": "src/F_D4B3.C",
+          "file": "src/HINTDLG.C",
           "line": 9
         }
       ],
@@ -38292,7 +38298,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_D4B3.C",
+          "file": "src/HINTDLG.C",
           "line": 8
         }
       ],
@@ -39022,8 +39028,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
+          "file": "src/LEVEL.C",
+          "line": 115
         },
         {
           "symbol": "g40d4",
@@ -39033,8 +39039,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 115
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -39399,8 +39405,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
+          "file": "src/LEVEL.C",
+          "line": 15
         },
         {
           "symbol": "g720",
@@ -39410,8 +39416,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 15
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -39539,7 +39545,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 5
         }
       ],
@@ -39889,8 +39895,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
+          "file": "src/LEVEL.C",
+          "line": 119
         },
         {
           "symbol": "g7352",
@@ -39900,8 +39906,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 119
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -39939,8 +39945,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
+          "file": "src/LEVEL.C",
+          "line": 119
         },
         {
           "symbol": "g7356",
@@ -39950,8 +39956,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 119
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -39989,8 +39995,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
+          "file": "src/LEVEL.C",
+          "line": 119
         },
         {
           "symbol": "g735a",
@@ -40000,8 +40006,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 119
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -40498,7 +40504,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 4
         }
       ],
@@ -40548,7 +40554,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
+          "file": "src/CAMPADV.C",
           "line": 1
         },
         {
@@ -41781,7 +41787,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 10
         }
       ],
@@ -41975,18 +41981,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_1EA5.C",
-          "line": 1
-        },
-        {
-          "symbol": "g9ade",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_4943.C",
+          "file": "src/CAMPADV.C",
           "line": 1
         },
         {
@@ -42021,6 +42016,17 @@
           "confidence": "MEDIUM",
           "file": "src/MENUBKDP.C",
           "line": 3
+        },
+        {
+          "symbol": "g9ade",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/NODEIDX.C",
+          "line": 1
         },
         {
           "symbol": "g9ade",
@@ -42153,17 +42159,6 @@
       "declarations": [
         {
           "symbol": "g9bfc",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "g9bfc",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -42183,6 +42178,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 142
+        },
+        {
+          "symbol": "g9bfc",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -43179,7 +43185,7 @@
           "storage": "near",
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 6
         },
         {
@@ -43246,7 +43252,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 6
         },
         {
@@ -43296,7 +43302,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 6
         },
         {
@@ -43413,7 +43419,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 6
         },
         {
@@ -43480,7 +43486,7 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 6
         },
         {
@@ -43737,8 +43743,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
+          "file": "src/HUD.C",
+          "line": 5
         },
         {
           "symbol": "gb83",
@@ -43748,8 +43754,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 5
+          "file": "src/HUDPMSG.C",
+          "line": 1
         },
         {
           "symbol": "gb83",
@@ -43901,30 +43907,30 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_791E.C",
+          "file": "src/MENULACT.C",
+          "line": 2
+        },
+        {
+          "symbol": "gbb2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MENULDIS.C",
+          "line": 2
+        },
+        {
+          "symbol": "gbb2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/MENULEN.C",
           "line": 1
-        },
-        {
-          "symbol": "gbb2",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_7925.C",
-          "line": 2
-        },
-        {
-          "symbol": "gbb2",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/F_792C.C",
-          "line": 2
         }
       ],
       "definitions": [],
@@ -44119,17 +44125,6 @@
       "declarations": [
         {
           "symbol": "gbf66",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "gbf66",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -44149,6 +44144,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 142
+        },
+        {
+          "symbol": "gbf66",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -44302,17 +44308,6 @@
       "declarations": [
         {
           "symbol": "gbfc8",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "gbfc8",
           "type": "unsigned char far *",
           "array": null,
           "pointer_shape": "far",
@@ -44332,6 +44327,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 119
+        },
+        {
+          "symbol": "gbfc8",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -45587,8 +45593,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
+          "file": "src/HUD.C",
+          "line": 5
         },
         {
           "symbol": "gc0ec",
@@ -45598,8 +45604,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 5
+          "file": "src/HUDPMSG.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -45811,8 +45817,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
+          "file": "src/HUD.C",
+          "line": 103
         },
         {
           "symbol": "gc0f2",
@@ -45822,8 +45828,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 103
+          "file": "src/HUDPMSG.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -45962,8 +45968,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/F_7856.C",
-          "line": 1
+          "file": "src/HUD.C",
+          "line": 5
         },
         {
           "symbol": "gc0fc",
@@ -45973,8 +45979,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 5
+          "file": "src/HUDPMSG.C",
+          "line": 1
         },
         {
           "symbol": "gc0fc",
@@ -46483,7 +46489,7 @@
           "size": 270,
           "confidence": "MEDIUM",
           "file": "include/C470.H",
-          "line": 25
+          "line": 29
         }
       ],
       "definitions": [],
@@ -46543,7 +46549,7 @@
               "bytes": 1
             },
             {
-              "name": "byte12",
+              "name": "resume_round",
               "type": "char",
               "offset": 12,
               "bytes": 1
@@ -46579,7 +46585,7 @@
               "bytes": 1
             },
             {
-              "name": "sub",
+              "name": "round_progress",
               "type": "char",
               "offset": 22,
               "bytes": 4
@@ -47432,7 +47438,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         }
       ],
@@ -48078,8 +48084,8 @@
           "interrupt": true,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
-          "line": 10
+          "file": "src/KEYIRQ.C",
+          "line": 8
         },
         {
           "symbol": "int9_saved_vector",
@@ -48091,8 +48097,8 @@
           "interrupt": true,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/KEYIRQ.C",
-          "line": 8
+          "file": "src/KEYIRQH.C",
+          "line": 10
         }
       ],
       "definitions": [],
@@ -48131,17 +48137,6 @@
         {
           "symbol": "keyboard_state",
           "type": "int",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
-          "line": 6
-        },
-        {
-          "symbol": "keyboard_state",
-          "type": "int",
           "array": null,
           "pointer_shape": null,
           "storage": null,
@@ -48160,6 +48155,17 @@
           "confidence": "MEDIUM",
           "file": "src/KEYCHAIN.C",
           "line": 5
+        },
+        {
+          "symbol": "keyboard_state",
+          "type": "int",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 6
         }
       ],
       "definitions": [],
@@ -49827,17 +49833,6 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 61
         },
@@ -49862,6 +49857,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 213
+        },
+        {
+          "symbol": "resource_ptr_table",
+          "type": "char *",
+          "array": "[]",
+          "pointer_shape": "far",
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -50157,7 +50163,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 7
         }
       ],
@@ -50260,7 +50266,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 9
         }
       ],
@@ -50517,17 +50523,6 @@
         },
         {
           "symbol": "score_panel_x",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        },
-        {
-          "symbol": "score_panel_x",
           "type": "int",
           "array": null,
           "pointer_shape": null,
@@ -50580,6 +50575,17 @@
           "confidence": "MEDIUM",
           "file": "src/SCORE.C",
           "line": 6
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
         }
       ],
       "definitions": [],
@@ -50850,7 +50856,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/C470.H",
-          "line": 28
+          "line": 32
         }
       ],
       "definitions": [],
@@ -50897,7 +50903,7 @@
           "size": 270,
           "confidence": "MEDIUM",
           "file": "include/C470.H",
-          "line": 24
+          "line": 28
         }
       ],
       "definitions": [],
@@ -51059,7 +51065,7 @@
               "bytes": 1
             },
             {
-              "name": "byte12",
+              "name": "resume_round",
               "type": "char",
               "offset": 12,
               "bytes": 1
@@ -51095,7 +51101,7 @@
               "bytes": 1
             },
             {
-              "name": "sub",
+              "name": "round_progress",
               "type": "char",
               "offset": 22,
               "bytes": 4
@@ -51135,7 +51141,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/C470.H",
-          "line": 27
+          "line": 31
         }
       ],
       "definitions": [],
@@ -52351,7 +52357,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_9D8E.C",
+          "file": "src/DLGELOST.C",
           "line": 4
         }
       ],
@@ -52697,18 +52703,7 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "ui_gfx_shadow_a",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 6
         },
         {
@@ -52787,6 +52782,17 @@
           "confidence": "MEDIUM",
           "file": "src/MENUBKDP.C",
           "line": 6
+        },
+        {
+          "symbol": "ui_gfx_shadow_a",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         },
         {
           "symbol": "ui_gfx_shadow_a",
@@ -53860,7 +53866,7 @@
           "bytes": 1
         },
         {
-          "name": "byte12",
+          "name": "resume_round",
           "type": "char",
           "offset": 12,
           "bytes": 1
@@ -53896,7 +53902,7 @@
           "bytes": 1
         },
         {
-          "name": "sub",
+          "name": "round_progress",
           "type": "char",
           "offset": 22,
           "bytes": 4
@@ -54350,7 +54356,7 @@
         }
       ],
       "confidence": "MEDIUM",
-      "file": "src/F_D3DA.C",
+      "file": "src/DLGPICK.C",
       "line": 3
     },
     {
@@ -54842,7 +54848,7 @@
             }
           ],
           "confidence": "MEDIUM",
-          "file": "src/F_D3DA.C",
+          "file": "src/DLGPICK.C",
           "line": 3
         },
         {
@@ -55403,45 +55409,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "FUNCTION_ABI:f699e",
-      "kind": "FUNCTION_ABI",
-      "symbol": "f699e",
-      "fields": [
-        "return_type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "f699e",
-          "definition": true,
-          "return_type": "void interrupt",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
-          "line": 12
-        },
-        {
-          "symbol": "f699e",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/KEYIRQ.C",
-          "line": 7
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "FUNCTION_ABI:f6d86",
       "kind": "FUNCTION_ABI",
       "symbol": "f6d86",
@@ -55563,136 +55530,6 @@
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
     },
     {
-      "id": "FUNCTION_ABI:f792c",
-      "kind": "FUNCTION_ABI",
-      "symbol": "f792c",
-      "fields": [
-        "return_type"
-      ],
-      "priority": 50,
-      "difficulty": "MEDIUM",
-      "declarations": [
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 21
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "void",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_6B1A.C",
-          "line": 2
-        },
-        {
-          "symbol": "f792c",
-          "definition": true,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/F_792C.C",
-          "line": 4
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MENULOOP.C",
-          "line": 6
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PROMPTS.C",
-          "line": 13
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/PUZZLE.C",
-          "line": 18
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 155
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": null,
-          "argument_types": null,
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 222
-        },
-        {
-          "symbol": "f792c",
-          "definition": false,
-          "return_type": "int",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/SLOTMENU.C",
-          "line": 278
-        }
-      ],
-      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
-    },
-    {
       "id": "FUNCTION_ABI:f_d61c",
       "kind": "FUNCTION_ABI",
       "symbol": "f_d61c",
@@ -55807,6 +55644,45 @@
           "confidence": "MEDIUM",
           "file": "src/TURNLOOP.C",
           "line": 21
+        }
+      ],
+      "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
+    },
+    {
+      "id": "FUNCTION_ABI:keyboard_irq_handler",
+      "kind": "FUNCTION_ABI",
+      "symbol": "keyboard_irq_handler",
+      "fields": [
+        "return_type"
+      ],
+      "priority": 50,
+      "difficulty": "MEDIUM",
+      "declarations": [
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": false,
+          "return_type": "void",
+          "argument_count": null,
+          "argument_types": null,
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQ.C",
+          "line": 7
+        },
+        {
+          "symbol": "keyboard_irq_handler",
+          "definition": true,
+          "return_type": "void interrupt",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/KEYIRQH.C",
+          "line": 12
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -55989,7 +55865,7 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_4517.C",
+          "file": "src/BRDTERR.C",
           "line": 8
         }
       ],
@@ -56059,7 +55935,7 @@
           "storage": "near",
           "size": 1,
           "confidence": "MEDIUM",
-          "file": "src/F_699E.C",
+          "file": "src/KEYIRQH.C",
           "line": 7
         }
       ],
@@ -56719,17 +56595,6 @@
       "declarations": [
         {
           "symbol": "g9bfc",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "g9bfc",
           "type": "unsigned char",
           "array": "[]",
           "pointer_shape": null,
@@ -56749,6 +56614,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 142
+        },
+        {
+          "symbol": "g9bfc",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -56763,17 +56639,6 @@
       "priority": 50,
       "difficulty": "MEDIUM",
       "declarations": [
-        {
-          "symbol": "gbf66",
-          "type": "char",
-          "array": "[]",
-          "pointer_shape": null,
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
         {
           "symbol": "gbf66",
           "type": "unsigned char",
@@ -56795,6 +56660,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 142
+        },
+        {
+          "symbol": "gbf66",
+          "type": "char",
+          "array": "[]",
+          "pointer_shape": null,
+          "storage": null,
+          "size": null,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -56857,17 +56733,6 @@
       "declarations": [
         {
           "symbol": "gbfc8",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_1D47.C",
-          "line": 1
-        },
-        {
-          "symbol": "gbfc8",
           "type": "unsigned char far *",
           "array": null,
           "pointer_shape": "far",
@@ -56887,6 +56752,17 @@
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
           "line": 119
+        },
+        {
+          "symbol": "gbfc8",
+          "type": "char far *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/MENURES.C",
+          "line": 1
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -57335,17 +57211,6 @@
         },
         {
           "symbol": "score_panel_x",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/F_9908.C",
-          "line": 1
-        },
-        {
-          "symbol": "score_panel_x",
           "type": "int",
           "array": null,
           "pointer_shape": null,
@@ -57398,6 +57263,17 @@
           "confidence": "MEDIUM",
           "file": "src/SCORE.C",
           "line": 6
+        },
+        {
+          "symbol": "score_panel_x",
+          "type": "char *",
+          "array": null,
+          "pointer_shape": "far",
+          "storage": null,
+          "size": 4,
+          "confidence": "MEDIUM",
+          "file": "src/SCOREPNL.C",
+          "line": 1
         }
       ],
       "action": "Compare declaration with definition; require byte-exact FAST proof before editing."
@@ -57851,7 +57727,7 @@
           "bytes": 1
         },
         {
-          "name": "byte12",
+          "name": "resume_round",
           "type": "char",
           "offset": 12,
           "bytes": 1
@@ -57887,7 +57763,7 @@
           "bytes": 1
         },
         {
-          "name": "sub",
+          "name": "round_progress",
           "type": "char",
           "offset": 22,
           "bytes": 4

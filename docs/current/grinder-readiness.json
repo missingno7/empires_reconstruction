@@ -1,6 +1,6 @@
 {
   "format": "empires-grinder-readiness-v1",
-  "input_fingerprint": "4e669fd2d314c697719bd8c27510492a5a78ad14e08e65d09464875b3c12ba12",
+  "input_fingerprint": "d90c44c12f07fd78197114be7532bd9c2e70e3e9f02df275e36063903fb1b260",
   "run_started": false,
   "source_inventory": [
     {
@@ -2310,7 +2310,7 @@
     {
       "id": "F_4B0C",
       "source": "asm/F_4B0C.ASM",
-      "source_sha256": "5123d6cd3dfddc14d93de8405ba541502219d5e7cefcca2f4392568129c32cf7",
+      "source_sha256": "53d0e8f656aa8c53d0b299e60e5993306c183d80aebdd00be430c2937487ecc0",
       "range_file_offsets": [
         19724,
         20639
@@ -2327,11 +2327,11 @@
       ],
       "instruction_observations": [
         {
-          "line": 33,
+          "line": 40,
           "instruction": "push ax"
         },
         {
-          "line": 37,
+          "line": 42,
           "instruction": "pop ax"
         },
         {
@@ -2339,191 +2339,191 @@
           "instruction": "push cx"
         },
         {
-          "line": 77,
+          "line": 67,
           "instruction": "lodsb"
         },
         {
-          "line": 99,
+          "line": 83,
           "instruction": "pop cx"
         },
         {
-          "line": 103,
+          "line": 85,
           "instruction": "loop record_loop"
         },
         {
-          "line": 135,
+          "line": 106,
           "instruction": "push es"
         },
         {
-          "line": 137,
+          "line": 107,
           "instruction": "push ax"
         },
         {
-          "line": 173,
+          "line": 128,
           "instruction": "push ax"
         },
         {
-          "line": 239,
+          "line": 166,
           "instruction": "lodsw"
+        },
+        {
+          "line": 175,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 235,
+          "instruction": "pop ax"
         },
         {
           "line": 257,
           "instruction": "lodsw"
         },
         {
-          "line": 353,
+          "line": 262,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 281,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 283,
+          "instruction": "lodsw"
+        },
+        {
+          "line": 295,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 296,
+          "instruction": "push ax"
+        },
+        {
+          "line": 298,
           "instruction": "pop ax"
         },
         {
-          "line": 385,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 391,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 413,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 417,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 433,
+          "line": 303,
           "instruction": "lodsb"
         },
         {
-          "line": 435,
+          "line": 304,
           "instruction": "push ax"
         },
         {
-          "line": 439,
+          "line": 306,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 308,
+          "instruction": "push ax"
+        },
+        {
+          "line": 310,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 311,
+          "instruction": "pop cx"
+        },
+        {
+          "line": 316,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 317,
+          "instruction": "push ax"
+        },
+        {
+          "line": 319,
           "instruction": "pop ax"
         },
         {
-          "line": 445,
+          "line": 330,
           "instruction": "lodsb"
         },
         {
-          "line": 447,
-          "instruction": "push ax"
-        },
-        {
-          "line": 451,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 455,
-          "instruction": "push ax"
-        },
-        {
-          "line": 459,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 461,
-          "instruction": "pop cx"
-        },
-        {
-          "line": 467,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 469,
-          "instruction": "push ax"
-        },
-        {
-          "line": 473,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 485,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 529,
+          "line": 355,
           "instruction": "lodsw"
         },
         {
-          "line": 539,
+          "line": 363,
           "instruction": "lodsb"
         },
         {
-          "line": 555,
+          "line": 374,
           "instruction": "lodsw"
         },
         {
-          "line": 575,
+          "line": 384,
           "instruction": "lodsb"
         },
         {
-          "line": 613,
+          "line": 406,
           "instruction": "push es"
         },
         {
-          "line": 615,
+          "line": 407,
           "instruction": "push ax"
         },
         {
-          "line": 617,
+          "line": 408,
           "instruction": "push cx"
         },
         {
-          "line": 635,
+          "line": 423,
           "instruction": "lodsw"
         },
         {
-          "line": 653,
+          "line": 432,
           "instruction": "lodsb"
         },
         {
-          "line": 663,
+          "line": 441,
           "instruction": "lodsw"
         },
         {
-          "line": 679,
+          "line": 449,
           "instruction": "lodsw"
         },
         {
-          "line": 709,
+          "line": 477,
           "instruction": "lodsw"
         },
         {
-          "line": 719,
+          "line": 482,
           "instruction": "lodsw"
         },
         {
-          "line": 729,
+          "line": 487,
           "instruction": "lodsw"
         },
         {
-          "line": 739,
+          "line": 492,
           "instruction": "lodsw"
         },
         {
-          "line": 751,
+          "line": 498,
           "instruction": "lodsb"
         },
         {
-          "line": 763,
+          "line": 504,
           "instruction": "lodsb"
         },
         {
-          "line": 775,
+          "line": 510,
           "instruction": "lodsb"
         },
         {
-          "line": 785,
+          "line": 515,
           "instruction": "lodsb"
         },
         {
-          "line": 795,
+          "line": 523,
           "instruction": "lodsb"
         },
         {
-          "line": 809,
+          "line": 533,
           "instruction": "lodsb"
         }
       ]
@@ -2582,7 +2582,7 @@
     {
       "id": "F_4EEB",
       "source": "src/F_4EEB.ASM",
-      "source_sha256": "49db4e3a1e02d8dbb04d952a577c9f9ff3fc677d1add4904a2b9c896045b31c5",
+      "source_sha256": "8a6f55ee61869757bb911d63bb7f05a28c262b13cab0c6e89982c9de9f0f8f85",
       "range_file_offsets": [
         20715,
         20835
@@ -2599,39 +2599,39 @@
       ],
       "instruction_observations": [
         {
-          "line": 24,
+          "line": 35,
           "instruction": "push ax"
         },
         {
-          "line": 26,
+          "line": 37,
           "instruction": "pop ax"
         },
         {
-          "line": 42,
+          "line": 56,
           "instruction": "push cx"
         },
         {
-          "line": 50,
+          "line": 65,
           "instruction": "push es"
         },
         {
-          "line": 51,
+          "line": 66,
           "instruction": "push ax"
         },
         {
-          "line": 54,
+          "line": 70,
           "instruction": "push ax"
         },
         {
-          "line": 69,
+          "line": 86,
           "instruction": "push ax"
         },
         {
-          "line": 73,
+          "line": 90,
           "instruction": "pop cx"
         },
         {
-          "line": 76,
+          "line": 94,
           "instruction": "loop loop_records"
         }
       ]
@@ -2639,7 +2639,7 @@
     {
       "id": "M_50D2_53BF",
       "source": "asm/M_50D2_53BF.ASM",
-      "source_sha256": "f009792af89398bc09cc5b7754e9755a684d8ddd68aeb6cef5ac1c49c7e131ac",
+      "source_sha256": "1c38989eb72a142161b291dbb821cfd60d9daa7d8fd555731071d1a4ac9412b8",
       "range_file_offsets": [
         21202,
         21514
@@ -2716,7 +2716,7 @@
     {
       "id": "F_6036",
       "source": "asm/F_6036.ASM",
-      "source_sha256": "4fd59214c735c626dbfec1c892ab935254ca68cf6bdec55b7dc81ccce2ae7d18",
+      "source_sha256": "87b989079c57b6004b3338baf7548120d7a8a62eb206b111b45413ed8c6f0164",
       "range_file_offsets": [
         25142,
         25257
@@ -2733,79 +2733,79 @@
       ],
       "instruction_observations": [
         {
-          "line": 16,
+          "line": 25,
           "instruction": "push ds"
         },
         {
-          "line": 21,
-          "instruction": "lodsb"
-        },
-        {
-          "line": 27,
-          "instruction": "lodsw"
-        },
-        {
-          "line": 29,
+          "line": 32,
           "instruction": "lodsb"
         },
         {
           "line": 39,
-          "instruction": "push ds"
-        },
-        {
-          "line": 40,
-          "instruction": "push cx"
+          "instruction": "lodsw"
         },
         {
           "line": 41,
+          "instruction": "lodsb"
+        },
+        {
+          "line": 53,
+          "instruction": "push ds"
+        },
+        {
+          "line": 54,
+          "instruction": "push cx"
+        },
+        {
+          "line": 55,
           "instruction": "push es"
-        },
-        {
-          "line": 45,
-          "instruction": "push ax"
-        },
-        {
-          "line": 47,
-          "instruction": "push ax"
-        },
-        {
-          "line": 52,
-          "instruction": "pop ax"
-        },
-        {
-          "line": 56,
-          "instruction": "pop es"
-        },
-        {
-          "line": 57,
-          "instruction": "push es"
-        },
-        {
-          "line": 59,
-          "instruction": "push ax"
         },
         {
           "line": 60,
-          "instruction": "push es"
+          "instruction": "push ax"
         },
         {
-          "line": 68,
+          "line": 62,
+          "instruction": "push ax"
+        },
+        {
+          "line": 67,
+          "instruction": "pop ax"
+        },
+        {
+          "line": 71,
           "instruction": "pop es"
         },
         {
-          "line": 69,
+          "line": 72,
+          "instruction": "push es"
+        },
+        {
+          "line": 75,
+          "instruction": "push ax"
+        },
+        {
+          "line": 76,
+          "instruction": "push es"
+        },
+        {
+          "line": 84,
+          "instruction": "pop es"
+        },
+        {
+          "line": 85,
           "instruction": "pop cx"
         },
         {
-          "line": 70,
+          "line": 86,
           "instruction": "pop ds"
         },
         {
-          "line": 72,
+          "line": 88,
           "instruction": "loop sprite_loop"
         },
         {
-          "line": 74,
+          "line": 91,
           "instruction": "pop ds"
         }
       ]
@@ -3003,7 +3003,7 @@
     {
       "id": "M_6B1A_6B4A",
       "source": "asm/M_6B1A_6B4A.ASM",
-      "source_sha256": "88bf9b5fd2f2aaa3a87ff00056440d9a55aa6fa3a2dbf5674190ad747c151ad8",
+      "source_sha256": "60c092b1bd883f0cbe4a735cb53d38a91204c3f627e8b3cb1406ee9efd57d56e",
       "range_file_offsets": [
         27930,
         28006
@@ -3142,7 +3142,7 @@
     {
       "id": "M_6D86_6DCC",
       "source": "asm/M_6D86_6DCC.ASM",
-      "source_sha256": "04a1d782c7485d4a0c51e6fb36bafb7549e2b99ce4111a2bf24626e102691e1e",
+      "source_sha256": "640dbe08e7171748df894e0c7f4ec524ad3c912e355dc28cb887b6aeb4186863",
       "range_file_offsets": [
         28550,
         28927
@@ -3164,99 +3164,99 @@
       ],
       "instruction_observations": [
         {
-          "line": 25,
+          "line": 31,
           "instruction": "push\tes"
         },
         {
-          "line": 26,
+          "line": 32,
           "instruction": "push\tds"
         },
         {
-          "line": 35,
+          "line": 41,
           "instruction": "lodsb"
         },
         {
-          "line": 42,
+          "line": 48,
           "instruction": "lodsb"
-        },
-        {
-          "line": 43,
-          "instruction": "rep\tstosb"
         },
         {
           "line": 49,
+          "instruction": "rep\tstosb"
+        },
+        {
+          "line": 55,
           "instruction": "rep\tmovsb"
         },
         {
-          "line": 56,
+          "line": 62,
           "instruction": "pop\tds"
         },
         {
-          "line": 57,
+          "line": 63,
           "instruction": "pop\tes"
         },
         {
-          "line": 75,
+          "line": 92,
           "instruction": "push\tes"
         },
         {
-          "line": 76,
+          "line": 93,
           "instruction": "push\tds"
         },
         {
-          "line": 105,
+          "line": 122,
           "instruction": "loop\tL_bit1"
         },
         {
-          "line": 138,
+          "line": 155,
           "instruction": "push\tes"
         },
         {
-          "line": 139,
+          "line": 156,
           "instruction": "pop\tds"
         },
         {
-          "line": 142,
+          "line": 159,
           "instruction": "movsb"
         },
         {
-          "line": 145,
+          "line": 162,
           "instruction": "rep\tmovsw"
         },
         {
-          "line": 150,
+          "line": 167,
           "instruction": "stosb"
         },
         {
-          "line": 164,
+          "line": 181,
           "instruction": "loop\tL_bit2"
         },
         {
-          "line": 195,
+          "line": 212,
           "instruction": "push\tes"
         },
         {
-          "line": 196,
+          "line": 213,
           "instruction": "pop\tds"
         },
         {
-          "line": 199,
+          "line": 216,
           "instruction": "movsb"
         },
         {
-          "line": 202,
+          "line": 219,
           "instruction": "rep\tmovsw"
         },
         {
-          "line": 207,
+          "line": 224,
           "instruction": "stosb"
         },
         {
-          "line": 212,
+          "line": 229,
           "instruction": "pop\tds"
         },
         {
-          "line": 213,
+          "line": 230,
           "instruction": "pop\tes"
         }
       ]
@@ -3264,7 +3264,7 @@
     {
       "id": "F_6EFF",
       "source": "asm/F_6EFF.ASM",
-      "source_sha256": "c4211b54a3c5e0518a5b6301eddb9dec706f6d640c6653b27a100c483ed94586",
+      "source_sha256": "ae875855caf51b0c80c217ce9868c8566965cc9e74849e80aa66e53b6cae7ed8",
       "range_file_offsets": [
         28927,
         29003
@@ -3275,35 +3275,35 @@
       "existing_c_sources": [],
       "instruction_observations": [
         {
-          "line": 18,
+          "line": 27,
           "instruction": "push ds"
         },
         {
-          "line": 28,
+          "line": 37,
           "instruction": "stosw"
         },
         {
-          "line": 29,
+          "line": 38,
           "instruction": "loop clear_upper_nibbles"
         },
         {
-          "line": 32,
+          "line": 41,
           "instruction": "lodsw"
         },
         {
-          "line": 37,
+          "line": 46,
           "instruction": "lodsb"
         },
         {
-          "line": 52,
+          "line": 61,
           "instruction": "stosb"
         },
         {
-          "line": 53,
+          "line": 62,
           "instruction": "loop expand_next_byte"
         },
         {
-          "line": 54,
+          "line": 63,
           "instruction": "pop ds"
         }
       ]
@@ -3311,7 +3311,7 @@
     {
       "id": "F_6F4B",
       "source": "asm/F_6F4B.ASM",
-      "source_sha256": "d7b021ba66f9a7d0f75f135e1aa0d9667aae30f3b213aa650b9f8b1bec6b4737",
+      "source_sha256": "874bf129ad1e6cc2d61eda4caed2e086ee56bc43281388b8fe961fe9cf5f4e52",
       "range_file_offsets": [
         29003,
         29123
@@ -3328,27 +3328,27 @@
       ],
       "instruction_observations": [
         {
-          "line": 15,
+          "line": 26,
           "instruction": "push ds"
-        },
-        {
-          "line": 23,
-          "instruction": "stosb"
         },
         {
           "line": 35,
           "instruction": "stosb"
         },
         {
-          "line": 36,
-          "instruction": "loop header_loop"
-        },
-        {
-          "line": 61,
+          "line": 48,
           "instruction": "stosb"
         },
         {
-          "line": 71,
+          "line": 49,
+          "instruction": "loop header_loop"
+        },
+        {
+          "line": 78,
+          "instruction": "stosb"
+        },
+        {
+          "line": 88,
           "instruction": "pop ds"
         }
       ]
@@ -3841,7 +3841,7 @@
     {
       "id": "F_C914",
       "source": "asm/F_C914.ASM",
-      "source_sha256": "644730c38f600c0cab80648f8dafffabc89f07e8f0d5ce3e2b4c3611edf0c3ca",
+      "source_sha256": "457328263ae673c179165ae165dbfd2447dbc02fda8ec0a5d71056b7ac0330ec",
       "range_file_offsets": [
         51988,
         52104
@@ -3858,11 +3858,11 @@
       ],
       "instruction_observations": [
         {
-          "line": 51,
+          "line": 54,
           "instruction": "push ax"
         },
         {
-          "line": 53,
+          "line": 56,
           "instruction": "pop ax"
         }
       ]

@@ -43,7 +43,7 @@ class SymbolicAsmWave149Tests(unittest.TestCase):
         sub_fixups = [(fixup['extent_offset'] - sub_start, fixup['target']) for fixup in proof['fixups']
                      if sub_start <= fixup['extent_offset'] < sub_end]
         self.assertEqual(sub_fixups,
-                         [(5, '_menu_list_draw'), (15, '_f791e'), (18, '_sound_request_count_dec'),
+                         [(5, '_menu_list_draw'), (15, '_menu_list_enable'), (18, '_sound_request_count_dec'),
                           (21, '_ui_overlay_hide'), (30, '_keyboard_chain_disable'), (33, '_keyboard_buffer_drain')])
         self.assertEqual(proof['load_relocations'], [])
 

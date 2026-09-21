@@ -19,7 +19,7 @@ extern void box(int x, int y, int w, int h);                    /* 039F */
 /*@SYM _box=0x039F kind=f key=functions/F_039F.entry*/
 extern void timer_wait_ticks(int n);
 extern void sound_stop_reset(void);
-extern void fd4b3(int n);
+extern void tutorial_hint_dialog_show(int n);
 extern int face7(), rand(), resource_load_record();
 extern void f03b4();
 extern void f03a8();
@@ -65,7 +65,7 @@ void roundend_flash_panel_icons(void)
         timer_wait_ticks(0x78);
         sound_stop_reset();
     }
-    fd4b3(5);
+    tutorial_hint_dialog_show(5);
 }
 
 

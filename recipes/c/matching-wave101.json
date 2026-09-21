@@ -24,11 +24,11 @@
             "public": "_menu_list_draw",
             "addend": 0
           },
-          "_f791e": {
+          "_menu_list_enable": {
             "coordinate": "code_offset",
             "evidence": "functions/F_791E.entry",
             "owner": "F_791E",
-            "public": "_f791e",
+            "public": "_menu_list_enable",
             "addend": 0
           },
           "_sound_request_count_dec": {
@@ -80,7 +80,7 @@
         "flags_append": "",
         "bindings": {
           "_dialog_restore_screen": {"coordinate": "code_offset", "evidence": "functions/F_8453.entry", "owner": "F_8453", "public": "_dialog_restore_screen", "addend": 0},
-          "_f791e": {"coordinate": "code_offset", "evidence": "functions/F_791E.entry", "owner": "F_791E", "public": "_f791e", "addend": 0},
+          "_menu_list_enable": {"coordinate": "code_offset", "evidence": "functions/F_791E.entry", "owner": "F_791E", "public": "_menu_list_enable", "addend": 0},
           "_sound_request_count_dec": {"coordinate": "code_offset", "evidence": "functions/F_D5A6.entry", "owner": "F_D5A6", "public": "_sound_request_count_dec", "addend": 0},
           "_ui_overlay_hide": {"coordinate": "code_offset", "evidence": "functions/F_7162.entry", "owner": "F_7162", "public": "_ui_overlay_hide", "addend": 0},
           "_keyboard_chain_disable": {"coordinate": "code_offset", "evidence": "functions/F_6997.entry", "owner": "F_6997", "public": "_keyboard_chain_disable", "addend": 0},

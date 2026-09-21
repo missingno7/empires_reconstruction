@@ -1,4 +1,13 @@
-; Original entry F_6EFF -- normalize eight packed words, then expand a nibble stream.
+; F_6EFF -- decode a packed 4-bit-per-pixel sprite/tile record in place, the
+; display_mode!=2 (EGA/VGA planar) sibling of F_6F4B. far ptr q = [bp+4]
+; points at a record: 8 packed header/palette words whose upper nibble of
+; each byte is masked off (and 0F0Fh), then a width/height byte pair, then
+; packed nibble pixel data. bx is left pointing at the (now-masked) header,
+; which doubles as the two xlatb translation tables used to expand each
+; packed byte's low and high nibble into a full output byte (low nibble via
+; table+((byte&0F00Fh) form, high nibble via table+(byte>>4)), OR'd together.
+; near proc, C calling convention: far ptr arg q at [bp+4], no return value.
+; Clobbers ax/bx/cx/dx; si/di/ds/bp saved via push/pop.
 
 _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'

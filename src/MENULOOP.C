@@ -3,14 +3,14 @@
  * Preserve local declaration and comparison evaluation order. */
 #include "GC0FE.H"
 #define g0fecat ((struct gc0fe_catalog far *) gc0fe)
-extern int f792c(), keyboard_chain_active(), f6b1a();extern void f03ab();extern void f039f();
-extern void f7925(void);
+extern int menu_list_active(), keyboard_chain_active(), f6b1a();extern void f03ab();extern void f039f();
+extern void menu_list_disable(void);
 extern void keyboard_chain_enable(void);
 extern void keyboard_buffer_drain(void);
 extern void sound_start(void);
 extern void ui_overlay_hide(void);
 extern void ui_overlay_show(void);
-extern void f791e(void);
+extern void menu_list_enable(void);
 extern void menu_list_draw();
 extern void dialog_restore_screen();
 extern void sound_request_count_dec(void);
@@ -24,7 +24,7 @@ void menu_loop_run(int initial)
  register int selected,row;
  selected=initial;
  if(selected<0 || selected>=g0fecat->count) return;
- state=f792c();f7925();outer=keyboard_chain_active();keyboard_chain_enable();keyboard_buffer_drain();ui_overlay_show();sound_start();
+ state=menu_list_active();menu_list_disable();outer=keyboard_chain_active();keyboard_chain_enable();keyboard_buffer_drain();ui_overlay_show();sound_start();
  while(selected!=-1) {
   oldselected=selected;p=&g0fecat->records[selected];menu_list_draw(selected);dialog_draw_panel(p);
   cleared=0;row=0;done=0;
@@ -58,6 +58,6 @@ void menu_loop_run(int initial)
   }
   if(!cleared) dialog_restore_screen();
  }
- menu_list_draw(-1);if(state) f791e();sound_request_count_dec();ui_overlay_hide();if(!outer) keyboard_chain_disable();keyboard_buffer_drain();
+ menu_list_draw(-1);if(state) menu_list_enable();sound_request_count_dec();ui_overlay_hide();if(!outer) keyboard_chain_disable();keyboard_buffer_drain();
 }
 

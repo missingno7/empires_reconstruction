@@ -124,9 +124,20 @@ static char far *mk_fp(unsigned seg, unsigned off)
 #define FONT_C0E6_OFF      0xC0E6u
 #define FONT_C0E8_OFF      0xC0E8u
 
-#define FB_STRIDE 0xA0u                /* 160 bytes/row, display_mode 4 */
+/* display_mode 4 (EGA/mode-13h-packed, asm/RUNTIME_BLOCK.ASM): 160
+ * bytes/row, packed 4bpp. display_mode 5 (VGA replacement runtime,
+ * AE000_002, built by build_oracle.py's build_vga()): 320 bytes/row,
+ * 8bpp direct.  Both variants share this one source file, staged as
+ * ORACLE.C / ORACLEV.C -- build_vga() rewrites just these two literals
+ * when staging ORACLEV.C (the pinned TCC 2.0 has no reliable command-line
+ * -D; every gfx_* primitive's word-argument count/order is otherwise
+ * identical between the two runtimes, verified against
+ * docs/portable/reference/AE000_002-vga-runtime.lst, so nothing else
+ * needs to differ). FB_STRIDE/FB_BYTES markers: VGA_STRIDE_MARKER /
+ * VGA_BYTES_MARKER. */
+#define FB_STRIDE 0xA0u                /* 160 bytes/row, display_mode 4; VGA_STRIDE_MARKER */
+#define FB_BYTES  78080UL              /* FB_STRIDE * FB_ROWS; VGA_BYTES_MARKER */
 #define FB_ROWS   488u
-#define FB_BYTES  78080UL              /* FB_STRIDE * FB_ROWS */
 
 #define QUEUE_BUF_BYTES 8208UL
 #define BLOB_BUF_BYTES  8192UL

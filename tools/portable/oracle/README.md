@@ -29,12 +29,14 @@ it only *produces* `portable/tests/fixtures/*.json`.
   matching ordinary left-to-right C parameter order), swaps `DS` to the
   fake DGROUP block, does one near `CALL`, swaps `DS` back, and returns
   `AX`. No C statement runs while `DS` is switched.
-- `build_oracle.py` -- assembles/compiles/links `ORACLE.EXE` and verifies
-  `_runtime_base` (the entry point of `asm/RUNTIME_BLOCK.ASM`, which is
-  position-dependent: `RT_CS equ 039Ch`) lands at exactly `_TEXT+0x039C`,
-  inserting a padding `_TEXT` object (`tools/omf_scaffold.make_text_padding`)
-  between `C0C.OBJ` and `RUNTIME_BLOCK.OBJ` and re-linking until it does.
-  Output: `build/oracle/ORACLE.EXE` (+ `ORACLE.MAP`).
+- `build_oracle.py` -- `build()` assembles/compiles/links `ORACLE.EXE` and
+  verifies `_runtime_base` (the entry point of `asm/RUNTIME_BLOCK.ASM`,
+  which is position-dependent: `RT_CS equ 039Ch`) lands at exactly
+  `_TEXT+0x039C`, inserting a padding `_TEXT` object
+  (`tools/omf_scaffold.make_text_padding`) between `C0C.OBJ` and
+  `RUNTIME_BLOCK.OBJ` and re-linking until it does. Output:
+  `build/oracle/ORACLE.EXE` (+ `ORACLE.MAP`). `build_vga()` builds the
+  second variant, `ORACLEV.EXE` -- see "VGA runtime" below.
 - `gen_fixtures.py` -- builds the ORACLE.IN scripts, runs them through
   MS-DOS Player (falls back to DOSBox via `tools/dos_runner.py`), and
   writes `portable/tests/fixtures/{gfx_cases,decode_cases,
@@ -47,8 +49,9 @@ python tools/portable/oracle/build_oracle.py
 python tools/portable/oracle/gen_fixtures.py
 ```
 
-(`gen_fixtures.py` builds `ORACLE.EXE` itself if it's missing; pass
-`--skip-build` to reuse an existing one, `--skip-resource` to skip
+(`build_oracle.py`'s `__main__` builds both `ORACLE.EXE` and
+`ORACLEV.EXE`; `gen_fixtures.py` builds whichever is missing itself. Pass
+`--skip-build` to reuse existing EXEs, `--skip-resource` to skip
 `resource_golden_dos.json`, `--dosbox` to force the DOSBox backend.)
 
 ## ORACLE.IN / ORACLE.OUT record format
@@ -121,6 +124,82 @@ blob's segment and the words at `0xC0DE`/`0xC0E2`/`0xC0E4`/`0xC0E6` to
 `blob_offset + <that field>`, exactly what `do_set_font()` does). The
 case's own `expect.ret` is the glyph's advance (`gfx_draw_char`'s return
 value).
+
+Every case also has `"mode"`: `4` for the EGA/packed-4bpp runtime
+(`asm/RUNTIME_BLOCK.ASM`, `ORACLE.EXE`, 160 bytes/row), `5` for the VGA
+runtime (see next section, `ORACLEV.EXE`, 320 bytes/row). `fb_rows_touched`
+rows are `stride` bytes (160 or 320, matching `mode`); `fb_sha256` covers
+the whole `488*stride`-byte framebuffer.
+
+## VGA runtime (display_mode 5, `ORACLEV.EXE`)
+
+Display selector 5 replaces `asm/RUNTIME_BLOCK.ASM` at CS:039C with a
+different blob loaded from the resource archive: `AE000_002` (type
+0x46, flags 3 -- LZ then RLE, no sprite decode since the type isn't
+0x47/0/1), 1886 decoded bytes, `sha256 763d28e6...`. The annotated
+disassembly is `docs/portable/reference/AE000_002-vga-runtime.lst`; it
+uses the same 20-entry jump table order as `asm/RUNTIME_BLOCK.ASM` /
+`VIDEO.H` (`gfx_box` first -- skipped, present/VRAM, same as the EGA
+harness -- then bar, vline, clear_rect, fill_rect, save_rect,
+restore_rect, wipe_rect, the five copy_rect variants, draw_char,
+blit_bitmap, copy_rect, blit_image, set_pixel, get_pixel), row stride
+`0x140` (320 bytes, 8bpp direct), and the same absolute DGROUP layout
+(`0x3924` row table, `0x40C8` result, `0xBC` gbc, `0x40C4` dirty cursor,
+`0x94/0x96/0x98/0x9A` clip, `0xC0DE..0xC0E8` font).
+
+**`build_oracle.py build_vga()`** decodes `AE000_002` independently in
+Python (`tools/resource_codecs.decode_payload`, cross-checked against the
+sha256 above and against `resource_golden_dos.json`'s own DOS-derived
+value for the same record -- both already verified to agree, see "Fixed
+bug" below) and wraps it in a *generated* TASM module
+(`make_vga_runtime_asm`): the 1886 bytes as `db`, with `PUBLIC` labels
+(`_runtime_base`, `_gfx_bar`, `_gfx_vline`, ...) planted at the jump
+table's byte offsets (3 bytes apart, read straight off the `.lst`) so the
+rest of the harness (`ds_call`, `ORACLE.C`'s `do_call` dispatch) needs no
+changes at all -- every primitive's word-argument count and order is
+*identical* between the EGA and VGA runtimes (confirmed against the
+`.lst`), only what the bytes at those offsets *do* differs. Linked the
+same way as `ORACLE.EXE` (`C0C.OBJ + PAD.OBJ + RUNTIME_VGA.OBJ +
+ORACLEV.OBJ + DECODE.OBJ + DSCALL.OBJ`, `_runtime_base` iterated to
+`_TEXT+0x039C`; observed `pad_len=0x1E0`, identical to the EGA build
+since `C0C.OBJ` is unchanged).
+
+`ORACLEV.OBJ` is `ORACLE.C` recompiled as `ORACLEV.C` with `FB_STRIDE`/
+`FB_BYTES` rewritten from 0xA0/78080 to 0x140/156160 (`build_vga()` does
+a literal string substitution on the two marked `#define` lines --
+the pinned Turbo C 2.0 has no reliably working command-line `-D`, and
+nothing else in `ORACLE.C` needed to change). `gfx_box` is still never
+called (same as the EGA harness).
+
+**Unit semantics differ from EGA**, confirmed instruction-by-instruction
+against the `.lst`: `x`/`y`/`w`/`h`/`n` are plain pixel(=byte, 8bpp)
+values everywhere -- no `/2` packing -- **except** `gfx_copy_rect`'s clip
+comparison against `g98`/`g9a` and the dirty-queue x-records, which the
+VGA machine code still computes in the same packed `x/2` unit as EGA
+(`sar bx,1` right before the `[98h]`/`[9ah]` compares; `shr ax,1` before
+every dirty-queue x/w `stosw`). `gen_vga_cases()`'s default state uses
+`g9a=159` (320px canvas / 2 - 1, i.e. the same convention as EGA's
+`g9a=79` for its 160-byte canvas) for exactly this reason.
+`blit_bitmap`/`copy_rect`'s source blob keeps the *same* packed-4bpp
+pixel data as EGA (it is the same on-disk resource, shared by both
+renderers) but its 32-byte header is now meaningful:
+`make_bitmap_blob_vga` fills bytes 0..15 with a distinct "EGA table"
+(unused by this runtime) and bytes 16..31 with a distinct "VGA table"
+(`0xA0+i`), which the VGA code `xlat`s each nibble through (verified: a
+generated case's painted bytes equal `vga_table[nibble]`, not
+`ega_table[nibble]`, confirming no EGA/VGA table mixup). `blit_image` is
+exercised at `bytes_per_row` 1, 2, 3, 5 -- this routine's per-bit loop is
+a straight-line 8-way unroll with plain `loop` back-edges, no CS-relative
+jump table, so it has none of `gfx_blit_image`'s EGA-mode bug (see
+"Known issue" below).
+
+Case counts (`gen_vga_cases`, 103 total): bar 8 (+4 more as the first
+call in each `get_pixel` case, 12 total) vline 6, clear_rect 4,
+fill_rect 4, save_rect 4, restore_rect 3, wipe_rect 8 (gbc 0/1 x 4
+geometries), copy_rect_flip_v/flip_h/flip_hv/split/split_flip_v 3 each
+(15, even and odd sizes), draw_char 28 (14 widths x 2 x-parities, same
+synthetic font as EGA), blit_bitmap 4, copy_rect 7 (no-clip, flip 0/1,
+row/column partial/full clip), blit_image 4, set_pixel 4, get_pixel 4.
 
 ## Invariants
 

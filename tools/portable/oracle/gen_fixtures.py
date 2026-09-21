@@ -34,7 +34,8 @@ OPS = {
 }
 
 FB_ROWS = 488
-FB_STRIDE = 0xA0
+FB_STRIDE = 0xA0        # display_mode 4 (EGA/packed 4bpp): 160 bytes/row
+VGA_FB_STRIDE = 0x140   # display_mode 5 (VGA/AE000_002, 8bpp): 320 bytes/row
 
 
 # ---------------------------------------------------------------------------
@@ -109,11 +110,11 @@ class Reader:
         self.at += n
         return v
 
-    def dump(self):
+    def dump(self, stride=FB_STRIDE):
         tag = self._take(1)[0]
         if tag != 0xD0:
             raise ValueError(f'expected DUMP tag 0xD0 at {self.at - 1}, got 0x{tag:02X}')
-        fb = self._take(FB_STRIDE * FB_ROWS)
+        fb = self._take(stride * FB_ROWS)
         dlen = struct.unpack('<H', self._take(2))[0]
         dirty = self._take(dlen)
         ret = struct.unpack('<h', self._take(2))[0]
@@ -144,23 +145,23 @@ class Reader:
         return self.at >= len(self.data)
 
 
-def run_oracle(runner, script_bytes, label):
+def run_oracle(runner, script_bytes, label, exe_name='ORACLE.EXE'):
     work = ROOT / 'build/oracle' / f'run-{label}'
     if work.exists():
         import shutil
         shutil.rmtree(work)
     work.mkdir(parents=True)
     import shutil
-    shutil.copyfile(ROOT / 'build/oracle/ORACLE.EXE', work / 'ORACLE.EXE')
+    shutil.copyfile(ROOT / 'build/oracle' / exe_name, work / exe_name)
     for name in ('AE000.DAT', 'AE001.DAT'):
         src = ROOT / 'assets' / name
         if src.exists():
             shutil.copyfile(src, work / name)
     (work / 'ORACLE.IN').write_bytes(script_bytes)
-    result, command, output = runner.run(work / 'ORACLE.EXE', [], work, timeout=300)
+    result, command, output = runner.run(work / exe_name, [], work, timeout=300)
     (work / 'RUN.LOG').write_bytes(output)
     if result.returncode:
-        raise SystemExit(f'ORACLE.EXE ({label}) failed, exit {result.returncode}; see {work / "RUN.LOG"}\n'
+        raise SystemExit(f'{exe_name} ({label}) failed, exit {result.returncode}; see {work / "RUN.LOG"}\n'
                          f'--- tail ---\n{output[-2000:].decode("latin1", "replace")}')
     out = (work / 'ORACLE.OUT').read_bytes()
     return Reader(out)
@@ -182,20 +183,21 @@ def rows_of_interest(spans, cap=8):
     return rows
 
 
-def fb_row(fb, row):
-    return fb[row * FB_STRIDE:(row + 1) * FB_STRIDE]
+def fb_row(fb, row, stride=FB_STRIDE):
+    return fb[row * stride:(row + 1) * stride]
 
 
-def finish_case(name, seed, state, calls, dump, touch_spans, font=None):
+def finish_case(name, seed, state, calls, dump, touch_spans, font=None, mode=4, stride=FB_STRIDE):
     rows = rows_of_interest(touch_spans)
     case = {
         'name': name,
+        'mode': mode,
         'seed': seed,
         'state': state,
         'calls': calls,
         'expect': {
             'fb_sha256': sha256(dump['fb']),
-            'fb_rows_touched': {str(r): fb_row(dump['fb'], r).hex() for r in rows},
+            'fb_rows_touched': {str(r): fb_row(dump['fb'], r, stride).hex() for r in rows},
             'dirty_hex': dump['dirty'].hex(),
             'ret': dump['ret'],
             'save_hex': dump['save'].hex() if dump['save'] else None,
@@ -219,6 +221,38 @@ def make_bitmap_blob(bytes_per_row, rows, data):
 def make_image_blob(bytes_per_row, rows, data):
     assert len(data) == bytes_per_row * rows
     return bytes([bytes_per_row, rows]) + data
+
+
+def make_bitmap_blob_vga(bytes_per_row, rows, data):
+    """blit_bitmap/copy_rect blob for the VGA runtime: same 32-byte-header +
+    word(bpr,rows) + packed-4bpp-data layout as make_bitmap_blob (the
+    resource itself is shared between EGA and VGA rendering; `data` is
+    still packed 4bpp, 2 pixels/byte), but the header's two halves are now
+    meaningful: bytes 0..15 are the EGA color table (unused by the VGA
+    code, given distinct values so a EGA/VGA mixup would produce visibly
+    wrong output rather than accidentally matching), bytes 16..31 are the
+    VGA table (`xlat`-indexed: nibble value -> 8bpp color, 0xA0+i so it is
+    trivially distinguishable from real pixel data)."""
+    assert 0 < bytes_per_row <= 255 and 0 < rows <= 255
+    assert len(data) == bytes_per_row * rows
+    ega_table = bytes((0x50 + i) & 0xFF for i in range(16))
+    vga_table = bytes((0xA0 + i) & 0xFF for i in range(16))
+    return ega_table + vga_table + bytes([bytes_per_row, rows]) + data
+
+
+def nibble_data(bpr, rows, with_zero=False):
+    """Packed-4bpp source pixel bytes for copy_rect-family tests (shared by
+    both EGA and VGA case generators -- the packed-nibble *source* format
+    is identical; only how the destination gets painted differs)."""
+    out = bytearray()
+    for i in range(bpr * rows):
+        v = (i * 0x27 + 3) & 0xFF
+        if with_zero and i % 5 == 0:
+            v &= 0xF0  # low nibble transparent
+        if with_zero and i % 7 == 0:
+            v &= 0x0F  # high nibble transparent
+        out.append(v)
+    return bytes(out)
 
 
 FONT_WIDTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 20]
@@ -357,16 +391,6 @@ def gen_gfx_cases(script, seed_counter):
             touch_spans=[(y, rows)])
 
     # ---- copy_rect: flip 0/1, transparent (zero) nibbles, clipping ----
-    def nibble_data(bpr, rows, with_zero=False):
-        out = bytearray()
-        for i in range(bpr * rows):
-            v = (i * 0x27 + 3) & 0xFF
-            if with_zero and i % 5 == 0:
-                v &= 0xF0  # low nibble transparent
-            if with_zero and i % 7 == 0:
-                v &= 0x0F  # high nibble transparent
-            out.append(v)
-        return bytes(out)
 
     for x, y, bpr, rows, flip, g94_, g96_, g98_, g9a_, label in [
         (10, 20, 4, 4, 0, 0, 487, 0, 79, 'noclip'),
@@ -454,6 +478,187 @@ def run_gfx(runner):
             cases.append(finish_case(name, seed, state, json_calls, dump, spans, font=font))
         if not reader.eof():
             raise SystemExit(f'gfx chunk {chunk_no}: {len(reader.data) - reader.at} unread trailing bytes in ORACLE.OUT')
+    return cases
+
+
+# ---------------------------------------------------------------------------
+# gfx_cases.json (VGA / display_mode 5 / ORACLEV.EXE) -- see
+# docs/portable/reference/AE000_002-vga-runtime.lst.  Word counts/argument
+# order for every primitive are identical to the EGA runtime; the only
+# semantic difference is that x/y/w/h/n are plain PIXEL (=byte, 8bpp)
+# values instead of packed-nibble byte-columns, EXCEPT gfx_copy_rect's
+# clip comparisons against g98/g9a and the dirty-queue x-records, which
+# the VGA machine code still computes in the same packed (x/2) unit as
+# EGA (confirmed: `sar bx,1` before the g98h/g9ah compares, `shr ax,1`
+# before every dirty-queue x/w stosw).  gfx_box is skipped (present/VRAM,
+# out of scope, same as the EGA harness).
+# ---------------------------------------------------------------------------
+
+def gen_vga_cases(script, seed_counter):
+    cases_meta = []
+
+    def add(name, calls, state=None, touch_spans=None, seed=None, font=None):
+        nonlocal seed_counter
+        if seed is None:
+            seed_counter += 1
+            seed = seed_counter * 2654435761 & 0xFFFFFFFF
+        # g9a=159: gfx_copy_rect's only clip in play here compares against
+        # x/2 (packed units); the VGA canvas is 320 px wide -> 160 packed
+        # columns, valid range 0..159 (matches g9a=79 for EGA's 160-byte,
+        # 80-column canvas).
+        state = state or dict(result=0x00, gbc=0, g94=0, g96=487, g98=0, g9a=159)
+        script.seed_fb(seed)
+        script.set_state(**state)
+        for c in calls:
+            script.call(c['op'], c['args'], c.get('blob', b''))
+        script.dump()
+        cases_meta.append((name, seed, state, calls, touch_spans or [(0, 4)], font))
+
+    # ---- bar: widths 1..9, x near both edges of the 320px-wide canvas ----
+    for x, n, y in [(0, 1, 3), (1, 1, 3), (2, 4, 10), (3, 5, 10),
+                    (0, 9, 20), (317, 1, 5), (300, 2, 5), (150, 3, 199)]:
+        add(f'bar_x{x}_n{n}_y{y}', [{'op': 'bar', 'args': [x, y, n]}],
+            state=dict(result=0x1A, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, 1)])
+
+    # ---- vline: heights 1..9 ----
+    for x, n, y in [(0, 1, 3), (200, 1, 3), (4, 5, 10), (5, 9, 10), (200, 3, 5), (201, 4, 202)]:
+        add(f'vline_x{x}_n{n}_y{y}', [{'op': 'vline', 'args': [x, y, n]}],
+            state=dict(result=0x2B, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, n)])
+
+    # ---- clear_rect / fill_rect ----
+    for x, y, w, h in [(0, 0, 1, 1), (5, 5, 9, 3), (2, 198, 16, 4), (0, 480, 20, 8)]:
+        add(f'clear_x{x}_y{y}_w{w}_h{h}', [{'op': 'clear_rect', 'args': [x, y, w, h]}],
+            state=dict(result=0x37, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, h)])
+        add(f'fill_x{x}_y{y}_w{w}_h{h}', [{'op': 'fill_rect', 'args': [x, y, w, h]}],
+            state=dict(result=0x37, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, h)])
+
+    # ---- save_rect / restore_rect (header is now plain w,h in pixels) ----
+    for x, y, w, h in [(0, 10, 8, 3), (4, 40, 12, 5), (0, 199, 5, 2), (150, 300, 9, 4)]:
+        add(f'save_x{x}_y{y}_w{w}_h{h}', [{'op': 'save_rect', 'args': [x, y, w, h]}],
+            touch_spans=[(y, h)])
+
+    for x, y, w, rows in [(0, 60, 4, 3), (10, 60, 7, 3), (2, 300, 6, 4)]:
+        data = bytes(((i * 0x11 + 7) & 0xFF) for i in range(w * rows))
+        buf = struct.pack('<HH', w, rows) + data
+        add(f'restore_x{x}_y{y}_w{w}_rows{rows}',
+            [{'op': 'restore_rect', 'args': [x, y], 'blob': buf}],
+            touch_spans=[(y, rows)])
+
+    # ---- wipe_rect: gbc 0/1, y<200 vs y>=200 (dirty gating) ----
+    for gbc in (0, 1):
+        for sx, sy, w, h, dx, dy in [(0, 10, 8, 3, 20, 15), (5, 10, 9, 3, 21, 15),
+                                      (0, 190, 6, 4, 5, 197), (0, 300, 6, 4, 5, 400)]:
+            add(f'wipe_gbc{gbc}_sx{sx}_sy{sy}_dx{dx}_dy{dy}',
+                [{'op': 'wipe_rect', 'args': [sx, sy, w, h, dx, dy]}],
+                state=dict(result=0, gbc=gbc, g94=0, g96=487, g98=0, g9a=159),
+                touch_spans=[(sy, h), (dy, h)])
+
+    # ---- copy_rect_flip_v / flip_h / flip_hv / split / split_flip_v:
+    # even AND odd sizes ----
+    for opname in ('copy_rect_flip_v', 'copy_rect_flip_h', 'copy_rect_flip_hv',
+                   'copy_rect_split', 'copy_rect_split_flip_v'):
+        for sx, sy, w, h, dx, dy in [(0, 5, 8, 4, 30, 5), (1, 5, 7, 5, 31, 5), (0, 5, 20, 6, 0, 60)]:
+            add(f'{opname}_sx{sx}_sy{sy}_w{w}_h{h}_dx{dx}_dy{dy}',
+                [{'op': opname, 'args': [sx, sy, w, h, dx, dy]}],
+                state=dict(result=0, gbc=1, g94=0, g96=487, g98=0, g9a=159),
+                touch_spans=[(sy, h), (dy, h)])
+
+    # ---- draw_char: widths 1..12,16,20, even/odd x (same synthetic font
+    # as the EGA cases -- font state/table layout is DGROUP-identical) ----
+    font_blob, font_state = build_font_blob()
+    script.set_font(font_state['c0de'], font_state['c0e2'], font_state['c0e4'],
+                    font_state['c0e6'], font_state['line_height'], font_blob)
+    font_segment_index = len(script.segments) - 1
+    font_fixture = {
+        'blob_hex': font_blob.hex(),
+        'gc0de': font_state['c0de'], 'gc0e2': font_state['c0e2'],
+        'gc0e4': font_state['c0e4'], 'gc0e6': font_state['c0e6'],
+        'line_height': font_state['line_height'],
+    }
+    for i, width in enumerate(FONT_WIDTHS):
+        glyph = i + 1
+        for x in (40, 41):
+            add(f'draw_char_g{glyph}_w{width}_x{x}',
+                [{'op': 'draw_char', 'args': [x, 50, glyph]}],
+                state=dict(result=0x0F, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+                touch_spans=[(50, FONT_LINE_HEIGHT)], font=font_fixture)
+
+    # ---- blit_bitmap: packed-4bpp source, EGA table at +0 / VGA table at
+    # +0x10 (see make_bitmap_blob_vga) ----
+    for x, y, bpr, rows in [(0, 70, 4, 3), (5, 70, 4, 3), (2, 250, 6, 5), (0, 350, 3, 4)]:
+        data = bytes(((i * 0x13 + 5) & 0xFF) for i in range(bpr * rows))
+        add(f'blit_bitmap_x{x}_y{y}_bpr{bpr}_rows{rows}',
+            [{'op': 'blit_bitmap', 'args': [x, y], 'blob': make_bitmap_blob_vga(bpr, rows, data)}],
+            touch_spans=[(y, rows)])
+
+    # ---- copy_rect: flip 0/1, transparent (zero) nibbles, row/column clip
+    # (g98/g9a stay in packed x/2 units; unclipped default is 0..159) ----
+    for x, y, bpr, rows, flip, g94_, g96_, g98_, g9a_, label in [
+        (10, 20, 4, 4, 0, 0, 487, 0, 159, 'noclip'),
+        (10, 20, 4, 4, 1, 0, 487, 0, 159, 'noclip_flip'),
+        (10, 20, 4, 4, 0, 25, 30, 0, 159, 'row_partial_clip'),
+        (10, 20, 4, 4, 0, 100, 110, 0, 159, 'row_full_clip'),
+        (10, 20, 4, 4, 0, 0, 487, 3, 4, 'col_partial_clip'),
+        (10, 20, 4, 4, 0, 0, 487, 0, 2, 'col_full_clip'),   # target packed-cols 5..8, clip 0..2
+        (5, 400, 3, 5, 1, 0, 487, 0, 159, 'flip1_lowy'),
+    ]:
+        data = nibble_data(bpr, rows, with_zero=True)
+        add(f'copy_rect_{label}_flip{flip}',
+            [{'op': 'copy_rect', 'args': [x, y, flip], 'blob': make_bitmap_blob_vga(bpr, rows, data)}],
+            state=dict(result=0, gbc=1, g94=g94_, g96=g96_, g98=g98_, g9a=g9a_),
+            touch_spans=[(y, rows)])
+
+    # ---- blit_image: n (bytes_per_row) = 1,2,3,5 -- this VGA routine has
+    # no dispatch-table bug (unrolled straight-line 8-way unroll, no CS
+    # jump table), so small widths are fine ----
+    for x, y, bpr, rows in [(0, 90, 1, 6), (5, 90, 2, 5), (0, 250, 3, 4), (2, 350, 5, 6)]:
+        data = bytes(((i * 0x5B + 0x3C) & 0xFF) for i in range(bpr * rows))
+        add(f'blit_image_x{x}_y{y}_bpr{bpr}_rows{rows}',
+            [{'op': 'blit_image', 'args': [x, y], 'blob': make_image_blob(bpr, rows, data)}],
+            state=dict(result=0x21, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, rows)])
+
+    # ---- set_pixel / get_pixel ----
+    for x, y in [(0, 12), (1, 12), (150, 300), (319, 300)]:
+        add(f'set_pixel_x{x}_y{y}', [{'op': 'set_pixel', 'args': [x, y]}],
+            state=dict(result=0x09, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, 1)])
+    for x, y in [(0, 12), (1, 12), (150, 300), (319, 300)]:
+        add(f'get_pixel_x{x}_y{y}', [{'op': 'bar', 'args': [x, y, 1]}, {'op': 'get_pixel', 'args': [x, y]}],
+            state=dict(result=0x0C, gbc=0, g94=0, g96=487, g98=0, g9a=159),
+            touch_spans=[(y, 1)])
+
+    return cases_meta, font_segment_index
+
+
+VGA_CHUNK_SIZE = 25
+
+
+def run_vga(runner):
+    script = Script()
+    cases_meta, font_segment_index = gen_vga_cases(script, seed_counter=5000)
+    case_segments = [seg for i, seg in enumerate(script.segments) if i != font_segment_index]
+    font_segment = script.segments[font_segment_index]
+    assert len(case_segments) == len(cases_meta)
+
+    cases = []
+    for chunk_no, start in enumerate(range(0, len(cases_meta), VGA_CHUNK_SIZE)):
+        chunk_meta = cases_meta[start:start + VGA_CHUNK_SIZE]
+        chunk_segs = case_segments[start:start + VGA_CHUNK_SIZE]
+        script_bytes = b'ORC1' + font_segment + b''.join(chunk_segs) + bytes([0xFF])
+        reader = run_oracle(runner, script_bytes, f'vga-{chunk_no:02d}', exe_name='ORACLEV.EXE')
+        for name, seed, state, calls, spans, font in chunk_meta:
+            dump = reader.dump(stride=VGA_FB_STRIDE)
+            json_calls = [{'op': c['op'], 'args': c['args'], **({'blob_hex': c['blob'].hex()} if c.get('blob') else {})}
+                         for c in calls]
+            cases.append(finish_case(name, seed, state, json_calls, dump, spans, font=font,
+                                     mode=5, stride=VGA_FB_STRIDE))
+        if not reader.eof():
+            raise SystemExit(f'vga chunk {chunk_no}: {len(reader.data) - reader.at} unread trailing bytes in ORACLE.OUT')
     return cases
 
 
@@ -588,12 +793,17 @@ def main():
 
     if not args.skip_build or not (ROOT / 'build/oracle/ORACLE.EXE').exists():
         build_oracle.build(runner=runner)
+    if not args.skip_build or not (ROOT / 'build/oracle/ORACLEV.EXE').exists():
+        build_oracle.build_vga(runner=runner)
 
     FIXTURES.mkdir(parents=True, exist_ok=True)
 
     gfx_cases = run_gfx(runner)
-    (FIXTURES / 'gfx_cases.json').write_text(json.dumps(gfx_cases, indent=1) + '\n', encoding='utf-8')
-    print(f'gfx_cases.json: {len(gfx_cases)} cases, {(FIXTURES / "gfx_cases.json").stat().st_size} bytes')
+    vga_cases = run_vga(runner)
+    all_gfx_cases = gfx_cases + vga_cases
+    (FIXTURES / 'gfx_cases.json').write_text(json.dumps(all_gfx_cases, indent=1) + '\n', encoding='utf-8')
+    print(f'gfx_cases.json: {len(all_gfx_cases)} cases ({len(gfx_cases)} mode=4 EGA + '
+         f'{len(vga_cases)} mode=5 VGA), {(FIXTURES / "gfx_cases.json").stat().st_size} bytes')
 
     decode_cases = gen_decode_cases_and_write(runner)
 

@@ -9,7 +9,26 @@
 #include <stdint.h>
 #include "dos_types.h"
 #include "game_structs.h"
+#include "game_funcs.h"  /* struct input (DIALOG.C-local) */
 #include "game_state.h"  /* a DATA pointer targets BSS state */
+
+/* energy_meter  (DS offset not known to any of the 7 symbol sources) */
+extern dos_char energy_meter;  /* defined in portable/game/prompts.c */
+
+/* gb80  (DS:0B80, component DATA_0107B0_TABLE) */
+extern dos_int gb80;  /* defined in portable/game/prompts.c */
+
+/* gb85  (DS offset not known to any of the 7 symbol sources) */
+extern dos_int gb85;  /* defined in portable/game/prompts.c */
+
+/* gc0d0  (DS offset not known to any of the 7 symbol sources) */
+extern dos_ulong gc0d0;  /* defined in portable/game/timer.c */
+
+/* hud_prompt_kind  (DS offset not known to any of the 7 symbol sources) */
+extern dos_int hud_prompt_kind;  /* defined in portable/game/prompts.c */
+
+/* music_track_handle  (DS:237E, component DATA_011FAE_CACHED_INDEX) */
+extern dos_int music_track_handle;  /* defined in portable/game/rescache.c */
 
 /* DATA_00FCC2  DS:0092  size 2  (flat, component DATA_00FCC2) */
 extern uint8_t DATA_00FCC2[2];
@@ -287,15 +306,17 @@ extern dos_uint *g0dc8;
 #define gdc8 g0dc8
 
 /* g0dcc  DS:0DCC  size 960  (flat, component DATA_0DCC) */
-extern uint8_t g0dcc[960];
+extern struct g0dcc_entry g0dcc[40];
 /* DATA_0DCC (recipe component id; nothing points at it) */
 
-/* g1271  DS:1271  size 48  (flat, component DATA_1271) */
-extern uint8_t g1271[48];
+/* a1271  DS:1271  size 48  (flat, component DATA_1271) */
+extern uint8_t a1271[48];
 /* DATA_1271 (recipe component id; nothing points at it) */
+#define g1271 a1271
 
 /* g12a1  DS:12A1  size 12  (flat, component DATA_10ED1) */
-extern uint8_t g12a1[12];
+/* code-pointer table -- resolved via layout/production-plan.json publics */
+extern void (*g12a1[6])(void);
 /* DATA_10ED1 (recipe component id; nothing points at it) */
 
 /* PAD_10EDD  DS:12AD  size 3  (flat, component PAD_10EDD) */
@@ -336,8 +357,8 @@ extern struct dialog g139d;
 extern struct dialog dialog_slot_delete_confirm;
 #define g13b1 dialog_slot_delete_confirm
 
-/* dialog_13C5  DS:13C5  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
-extern struct dialog dialog_13C5;
+/* menu_empty_record  DS:13C5  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog menu_empty_record;
 
 /* dialog_quit_confirm  DS:13D9  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
 extern struct dialog dialog_quit_confirm;
@@ -756,17 +777,9 @@ extern dos_int g22e0[4];
 /* g22e8  DS:22E8  size 8  (flat, component DATA_011F10_TABLE) */
 extern dos_int g22e8[4];
 
-/* g22f0  DS:22F0  size 5  (flat, component DATA_011F20_PAD) */
-extern uint8_t g22f0[5];
-/* DATA_011F20_PAD (recipe component id; nothing points at it) */
-
-/* DATA_011F25_KEYBOARD_CONTROL  DS:22F5  size 13  (struct-component, component DATA_011F25_KEYBOARD_CONTROL) */
-struct DATA_011F25_KEYBOARD_CONTROL_s {
-    void *runtime_buffer;
-    dos_uchar mode;
-    dos_uint control_words[4];
-};
-extern struct DATA_011F25_KEYBOARD_CONTROL_s DATA_011F25_KEYBOARD_CONTROL;
+/* g22f0  DS:22F0  size 18  (override-struct, component override:g22f0) */
+/* struct input is declared in game_funcs.h */
+extern struct input g22f0;
 
 /* g2302  DS:2302  size 19  (flat, component DATA_011F32_KEYBOARD_LABEL) */
 extern dos_char g2302[19];
@@ -818,8 +831,8 @@ struct DATA_012C03_SOUND_INSTRUMENTS_s {
 extern uint8_t sound_instrument_region[1924];
 #define DATA_012C03_SOUND_INSTRUMENTS (*(struct DATA_012C03_SOUND_INSTRUMENTS_s *)(sound_instrument_region + 1))
 #define sound_instr_region_2FD3 ((uint8_t *)(sound_instrument_region + 1))
-#define voice_byte_table ((dos_char *)(sound_instrument_region + 18))
 #define g2fe4 ((dos_char *)(sound_instrument_region + 18))
+#define voice_byte_table ((dos_char *)(sound_instrument_region + 18))
 #define g2ff6 ((dos_char *)(sound_instrument_region + 36))
 #define g3008 ((dos_char *)(sound_instrument_region + 54))
 #define g301a ((dos_char *)(sound_instrument_region + 72))
@@ -828,6 +841,22 @@ extern uint8_t sound_instrument_region[1924];
 #define ui_panel_glyph_records ((struct g2fd2_entry *)(sound_instrument_region))
 
 /* Rule B: interior alias expressions (see docs/portable/state-map.md "Interior aliases") */
+#define DATA_01037A_POINTER_TABLE (b740[10])
+#define DATA_0103B2_POINTER_ATTRIBUTES (b740[66])
+#define DATA_0103CE_RECORDS (b740[94])
+#define DATA_01052B_ZERO_PREFIX (s8a8[83])
+#define DATA_0107EA_HELP_TITLE (g0bb4[6])
+#define DATA_0107F4_HELP_TOPICS (g0bb4[16])
+#define DATA_010848_FILE_F2_TABLE (g0bb4[100])
+#define DATA_010848_FILE_F2_TEXT (g0bb4[108])
+#define DATA_01085A_MENU_TOPICS (g0bb4[118])
+#define DATA_0108A7_MENU_TABLE_A (g0bb4[195])
+#define DATA_0108A7_MENU_HALL (g0bb4[205])
+#define DATA_0108A7_MENU_TABLE_B (g0bb4[263])
+#define DATA_0108A7_MENU_OPTIONS (g0bb4[271])
+#define DATA_0108FE_OPTION_TOPICS (g0bb4[282])
+#define g13b8 (dialog_slot_delete_confirm.text)
+#define DATA_011F01_PAD (*((dos_char *)(g22b2) + 31))
 #define gb31 (*(dos_char **)(((dos_char *)(&gb2a)) + 7))
 #define g0d36 ((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 66))
 #define g0d78 ((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 132))

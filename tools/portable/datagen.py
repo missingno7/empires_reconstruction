@@ -34,6 +34,7 @@ import bisect
 import hashlib
 import json
 import re
+import struct
 import sys
 from pathlib import Path
 
@@ -63,6 +64,7 @@ RECIPE_PATH = ROOT / 'recipes/data/game-initialized.json'
 BSS_JSON_PATH = ROOT / 'src/data/GAME_BSS.json'
 SYMNAMES_PATH = ROOT / 'docs/current/symbol-names.json'
 STATE_OWNERSHIP_PATH = ROOT / 'tools/portable/state_ownership.json'
+DATAGEN_OVERRIDES_PATH = ROOT / 'tools/portable/datagen_overrides.json'
 EXE_PATH = ROOT / 'assets/AEPROG.EXE'
 PORTABLE_DATA_DIR = ROOT / 'portable/data'
 
@@ -329,6 +331,37 @@ def _offset_from_name_convention(name):
     return offset if 0 <= offset < DGROUP_LEN else None
 
 
+PORTED_C_TOPLEVEL_DEF_RE = re.compile(
+    r'^(dos_char|dos_uchar|dos_int|dos_uint|dos_long|dos_ulong)\s+(\**)\s*(\w+)\s*(\[[^\]]*\])?\s*(?:=\s*[^;]+)?;')
+
+
+def scan_ported_c_definitions():
+    """portable/game/*.c top-level (column-0 -- i.e. file-scope, not a
+    function-local declaration, which is always indented in this
+    codebase's style) global variable DEFINITIONS (point 5, "ported-C-
+    owned DATA"): a code_owned recipe component's real storage is one of
+    these (e.g. portable/game/prompts.c's `dos_int gb80 = 4;`, the real
+    definition behind DATA_0107B0_TABLE/code_owner F_75F3) -- game_data.h
+    needs an `extern` DECLARATION for it (never a second definition; the
+    .c file already has the one and only definition) so any OTHER ported
+    unit that references the name by its historical g-name can see it.
+
+    Returns name -> (file_path_relative_to_ROOT, declaration_text, i.e.
+    the type/stars/name/dims with no initializer and no trailing ';').
+    """
+    out = {}
+    for path in sorted((ROOT / 'portable/game').glob('*.c')):
+        text = path.read_text(encoding='utf-8')
+        for line in text.splitlines():
+            m = PORTED_C_TOPLEVEL_DEF_RE.match(line)
+            if not m:
+                continue
+            base, stars, name, dims = m.groups()
+            decl = f"{base} {stars}{name}{dims or ''}"
+            out[name] = (str(path.relative_to(ROOT)).replace('\\', '/'), decl)
+    return out
+
+
 def load_state_ownership():
     doc = read_json(STATE_OWNERSHIP_PATH)
     owned = set()
@@ -351,6 +384,82 @@ def _qualify_decl(decl, qualifier):
 
 def _qualify_defn(defn, qualifier):
     return f'{qualifier} {defn}'
+
+
+# tools/portable/datagen_overrides.json field kinds -> (byte width, is a
+# pointer field that needs resolving through component refs).
+OVERRIDE_FIELD_KIND = {
+    'farptr': (4, True), 'nearptr': (2, True),
+    'u8': (1, False), 'i8': (1, False), 'u16': (2, False), 'i16': (2, False),
+    'u32': (4, False), 'i32': (4, False),
+}
+
+# A 'struct' override's field kind list only says a pointer field's WIDTH
+# (farptr/nearptr), not its declared C pointee type -- that comes from the
+# real struct definition (portable/include/game_funcs.h for `struct
+# input`, since it -- unlike game_structs.h's curated set -- is not one of
+# KNOWN_STRUCT_SIZES/STRUCT_FIELD_LAYOUTS_FOR_ALIASING). Resolved pointer
+# values are cast to it, per the coordinator's own worked example
+# (`.records = (dos_char **)gc5ce`).
+OVERRIDE_STRUCT_FIELD_C_TYPES = {
+    'input': {'title': 'dos_char *', 'records': 'dos_char **'},
+}
+
+# Which header declares a 'struct' override's tag, when it is not one of
+# game_structs.h's KNOWN_STRUCT_SIZES (game_data.c needs the #include).
+OVERRIDE_STRUCT_TAG_HEADER = {'input': 'game_funcs.h'}
+
+
+def _parse_override_c_type(text):
+    """'dos_uchar[385]' -> ('dos_uchar', [385]); 'struct gc316_tile' ->
+    ('struct gc316_tile', []) -- datagen_overrides.json's plain (non-
+    'struct') `c_type` string, split into the (base, dims) shape the rest
+    of the generator already carries on every symbol."""
+    dims = [v for v in (_c_int_literal(d) for d in ARRAY_DIM_RE.findall(text)) if v is not None]
+    base = ARRAY_DIM_RE.sub('', text).strip()
+    return base, dims
+
+
+def load_datagen_overrides():
+    """tools/portable/datagen_overrides.json: manual entries that win over
+    every automatic derivation rule for their own [offset, offset+length)
+    span -- for the handful of real historical objects no amount of
+    generic symbol-driven inference gets right on its own: a struct
+    reinterpreting two OTHER named scalars' storage (`gc132_tile` over
+    `puzzle_held_piece`+`gc133`), a struct assembled from bytes that
+    straddle two unrelated recipe components with no historical name of
+    its own binding them together (`g22f0`, DIALOG.C's `struct input`),
+    or a byte array the historical code walks with a +1 offset that no
+    'skip'-style component encodes (`actor_record_table`).
+
+    Schema (a JSON list): [{"name", "offset" (hex string), "length",
+    "c_type" (optional plain "base[dims]" string), "struct" (optional
+    {"tag", "fields": [[name, kind], ...]}, kind one of farptr/nearptr/
+    u8/i8/u16/i16/u32/i32/bytes:N), "aliases" (optional {alias: "C
+    expression"})}]. A 'struct' entry emits a designated initializer (DATA
+    only -- see resolve_symbols/_emit_override_struct): farptr/nearptr
+    fields are resolved through whatever recipe component's refs fall
+    inside the override's own span, cast to OVERRIDE_STRUCT_FIELD_C_TYPES'
+    declared field type, or a literal NULL when the raw bytes are all
+    zero and nothing refs that offset. A plain `c_type` entry (DATA or
+    BSS) just declares that type at that offset/length, no initializer
+    logic. Either kind's `aliases` become `#define` macros with exactly
+    the given expression text (chainable: one alias's expression may
+    itself be another alias's name).
+    """
+    if not DATAGEN_OVERRIDES_PATH.exists():
+        return []
+    raw = read_json(DATAGEN_OVERRIDES_PATH)
+    out = []
+    for e in raw:
+        off_field = e['offset']
+        offset = int(off_field, 16) if isinstance(off_field, str) else off_field
+        out.append({
+            'name': e['name'], 'offset': offset, 'length': e['length'],
+            'c_type': e.get('c_type'), 'struct': e.get('struct'),
+            'aliases': e.get('aliases') or {},
+        })
+    return out
 
 
 class SymbolTable:
@@ -381,7 +490,7 @@ class SymbolTable:
         return self.names_by_offset.get(offset, set())
 
 
-def build_symbol_table(components, externs):
+def build_symbol_table(components, externs, interface_conflicts_offsets=()):
     """Merge the six symbol sources named in the task brief into one table
     keyed by raw DGROUP offset (0 = DS:0000, DGROUP_LEN = end of BSS).
 
@@ -452,11 +561,21 @@ def build_symbol_table(components, externs):
             friendly_of_offset.setdefault(off, friendly)
 
     # (iv) extern `/* DS:xxxx */` comments (any declaration parse_all_externs
-    # found an explicit offset for).
+    # found an explicit offset for) -- and (vii) interface-conflicts.json
+    # typed entries merged into this same dict by generate(), each tagged
+    # with its own `_source` so it registers under the right name here
+    # instead of being misattributed as an ordinary extern-comment.
     for name, decls in externs.items():
         for decl in decls:
             if decl['offset'] is not None:
-                table.add(name, decl['offset'], 'extern-comment')
+                table.add(name, decl['offset'], decl.get('_source', 'extern-comment'))
+
+    # (vii) docs/current/interface-conflicts.json: every usable entry names
+    # its offset even when it has no parseable declared type (an untyped
+    # name here is still a real historical name, just like a
+    # component-public or GAME_BSS public with no type of its own).
+    for name, off in interface_conflicts_offsets:
+        table.add(name, off, 'interface-conflicts')
 
     # GAME_BSS is the one pointer target name used by the recipe sources that
     # is neither a component id nor a historical g-name: it means "BSS base".
@@ -483,6 +602,7 @@ def build_symbol_table(components, externs):
 EXTERN_STMT_RE = re.compile(r'extern\s+([^;{}]+?)\s*;\s*(?:/\*(.*?)\*/)?')
 DS_HEX_RE = re.compile(r'DS:([0-9A-Fa-f]{1,4})\b')
 FUNC_PTR_DECL_RE = re.compile(r'\(\s*\*\s*(\w+)\s*\)\s*\(')
+FUNC_PTR_ARRAY_DECL_RE = re.compile(r'\(\s*\*\s*(\w+)\s*(\[[^\]]*\](?:\s*\[[^\]]*\])*)\s*\)\s*\(')
 FUNC_PROTO_RE = re.compile(r'\w\s*\(')
 
 
@@ -547,6 +667,14 @@ def _split_declarator(decl):
     next known symbol even though the portable object is always a native
     (8-byte) pointer."""
     decl = decl.strip()
+    fpa = FUNC_PTR_ARRAY_DECL_RE.search(decl)
+    if fpa:
+        # An ARRAY of function pointers (`void (*g12a1[])(void)`), not a
+        # single function-pointer variable -- same 'void (*)(void)' element
+        # type, but with real array dims so it goes through the normal
+        # array-sizing/reshape machinery (point: "code-pointer tables").
+        dims = [d.strip() for d in ARRAY_DIM_RE.findall(fpa.group(2))]
+        return fpa.group(1), 'void (*)(void)', dims, False, True, False
     fp = FUNC_PTR_DECL_RE.search(decl)
     if fp:
         return fp.group(1), 'void (*)(void)', [], False, True, False
@@ -587,6 +715,27 @@ SINGLE_ARRAY_FIELD_STRUCTS = {
     'struct ga5e_entry': 'b', 'struct record3e8': 'bytes', 'struct gc91b_entry': 'f',
 }
 
+# Every OTHER pointer-free (portable/include/game_structs.h `#pragma
+# pack(push, 1)`) struct's field widths, in declaration order (an array
+# field repeats its element width `count` times; a nested anonymous
+# struct's fields are flattened the same way) -- ISO C's brace-elision
+# rule lets a flat, non-designated `{ v0, v1, ... }` initializer fill a
+# nested aggregate correctly as long as the VALUES appear in this same
+# order, so no field *names* are needed here, just byte widths, to emit a
+# byte-exact `struct X name[N] = { {...}, {...}, ... };` instead of an
+# untyped uint8_t fallback (point 3: "every historical struct type must
+# emit its real struct, not uint8_t[]"). Sum of widths must equal
+# KNOWN_STRUCT_SIZES[struct] (asserted in emit_generic_flat_object).
+STRUCT_INIT_FIELD_WIDTHS = {
+    # g0dcc_entry: struct { uchar idx; char sel; } e[11]; char f16; char f17;
+    'struct g0dcc_entry': [1] * 22 + [1, 1],
+    'struct g2fd2_entry': [1, 1],                    # b0; b1;
+    'struct gb3af_entry': [1] * 32,                  # flag; rest[31];
+    'struct gc316_tile': [1, 1],                     # kind; rot;
+    # tbl_entry: pad0[9]; a9(int); b11; pad1; d13(int); f15(int); h17(int); j19(int); l21; pad2[5];
+    'struct tbl_entry': [1] * 9 + [2, 1, 1, 2, 2, 2, 2, 1] + [1] * 5,
+}
+
 # Rule B: (offset, field name, element size, element count) for structs
 # whose interior-alias field path we can name precisely; anything not
 # listed here still gets a rule-B alias, just the generic
@@ -597,6 +746,16 @@ STRUCT_FIELD_LAYOUTS_FOR_ALIASING = {
         (12, 'resume_round', 1, 1), (13, 'sound', 2, 1), (15, 'music', 2, 1),
         (17, 'option', 2, 1), (19, 'pending', 2, 1), (21, 'state', 1, 1),
         (22, 'round_progress', 1, 4), (26, 'byte26', 1, 1),
+    ],
+    # struct dialog (DIALOG_FIELD_LAYOUT below, restated as (off, name,
+    # elem_size, count) for _struct_field_path) -- used by source (vii)
+    # (docs/current/interface-conflicts.json) interior-alias names that
+    # land inside a `ptrrec-dialog` record instead of at its own base
+    # offset, e.g. g13b8 (DS:13B8) = dialog_slot_delete_confirm.text.
+    'struct dialog': [
+        (0, 'kind', 2, 1), (2, 'title', 4, 1), (6, 'sub', 1, 1), (7, 'text', 4, 1),
+        (11, 'initial', 1, 1), (12, 'cx', 2, 1), (14, 'cy', 2, 1), (16, 'w', 2, 1),
+        (18, 'lines', 2, 1),
     ],
 }
 
@@ -647,7 +806,13 @@ def resolve_primitive(base):
 def historical_elem_size(base, is_ptr, is_near, mapped):
     """Byte width of ONE element for span computation -- dos_* primitive
     width, a known struct's historical size, or a pointer's historical
-    (near=2/far=4) width."""
+    (near=2/far=4) width. A scalar function pointer (rule A/H: an
+    interrupt vector etc.) keeps the default FAR (4-byte) width -- the
+    real IVT stores a segment:offset pair -- but see the had_array-only
+    override in resolve_symbols' reshape branch for an ARRAY of function
+    pointers (a compact-model code-pointer TABLE, e.g. ROUNDEND.C's
+    g12a1[]), which really is 2 bytes/entry (near: this program's own
+    single code segment, not a far interrupt vector)."""
     if is_ptr or base == 'void (*)(void)':
         return _historical_ptr_width(is_near)
     if base in KNOWN_STRUCT_SIZES:
@@ -687,9 +852,22 @@ def parse_all_externs():
                 # single declarator + single DS: address is the overwhelming
                 # common case); anything else either has no comment (offsets
                 # come from elsewhere) or is ambiguous and is treated as
-                # having no comment rather than guessed.
-                offsets = ([int(h, 16) for h in hexoffs]
-                           if len(hexoffs) == len(declarators) else [None] * len(declarators))
+                # having no comment rather than guessed -- EXCEPT the one
+                # other unambiguous shape: a single (possibly pointer-
+                # array) declarator with an "X offset, Y segment" comment
+                # (e.g. `extern char far *gbfee[]; /* DS:BFEE offset,
+                # DS:BFF0 segment */`) -- same two-hex pattern rule A
+                # already resolves for a lone far pointer, just also
+                # covering the array-of-far-pointers spelling; the first
+                # hex is this declarator's own offset (the second, the
+                # +2 segment half, is absorbed by rule A elsewhere, never
+                # its own span).
+                if len(hexoffs) == len(declarators):
+                    offsets = [int(h, 16) for h in hexoffs]
+                elif len(declarators) == 1 and len(hexoffs) == 2:
+                    offsets = [int(hexoffs[0], 16)]
+                else:
+                    offsets = [None] * len(declarators)
                 shared_base = None
                 for declarator, offset in zip(declarators, offsets):
                     split = _split_declarator(declarator)
@@ -709,6 +887,75 @@ def parse_all_externs():
                     }
                     results.setdefault(name, []).append(entry)
     return results
+
+
+INTERFACE_CONFLICTS_PATH = ROOT / 'docs' / 'current' / 'interface-conflicts.json'
+C_IDENT_RE = re.compile(r'^[A-Za-z_]\w*$')
+
+
+def load_interface_conflicts():
+    """Source (vii): docs/current/interface-conflicts.json's `globals`
+    array -- an independent OMF/interface-census cross-check that names a
+    handful of DGROUP offsets none of sources (i)-(vi) do, or corrects an
+    offset-fallback name to the real historical one (e.g. a `ptrrec-dialog`
+    record generic-named `dialog_13C5` because nothing else named DS:13C5
+    is really `menu_empty_record`, per SLOTMENU.C).
+
+    Each entry's `storage_evidence[].offset` (falling back to
+    `known_storage_ranges[0][0]` when there is no storage_evidence) gives
+    the DGROUP offset; `declarations[0].type`/`.array` (when present) gives
+    the historical type, parsed through the same `_split_declarator`
+    machinery as any other extern so it participates in the normal
+    widest/most-structured-wins type contest and 'Alias type conflicts'
+    reporting -- just tagged 'interface-conflicts' (source vii, ranked
+    below the more directly-sourced (i)-(v) in NAME_SOURCE_PRIORITY, since
+    this source's own `confidence` levels run LOW/MEDIUM/UNKNOWN) instead
+    of 'extern-comment' (source iv).
+
+    Returns (offsets, typed_entries): `offsets` is [(name, offset), ...]
+    for every usable entry (even an untyped one still names its offset, the
+    same way a component-public or GAME_BSS public can); `typed_entries` is
+    name -> [entry, ...] in the exact shape parse_all_externs() produces
+    (plus `_source`), ready to merge into that dict.
+    """
+    if not INTERFACE_CONFLICTS_PATH.exists():
+        return [], {}
+    doc = read_json(INTERFACE_CONFLICTS_PATH)
+    offsets = []
+    typed_entries = {}
+    for entry in doc.get('globals', ()):
+        name = entry.get('symbol')
+        if not name or not C_IDENT_RE.match(name):
+            continue  # e.g. 'LDIV@'/'8087': not a valid C identifier, skip
+        offset = None
+        for se in entry.get('storage_evidence', ()):
+            off = se.get('offset')
+            if isinstance(off, int):
+                offset = off
+                break
+        if offset is None:
+            for lo, *_rest in entry.get('known_storage_ranges', ()):
+                offset = lo
+                break
+        if offset is None or not (0 <= offset < DGROUP_LEN):
+            continue
+        offsets.append((name, offset))
+        decls = entry.get('declarations') or []
+        if not decls or not decls[0].get('type'):
+            continue
+        d = decls[0]
+        decl_text = f"{d['type']} {name}{d.get('array') or ''}"
+        split = _split_declarator(decl_text)
+        if split is None:
+            continue  # a function prototype-shaped 'type' text: skip
+        _, base, dims, is_ptr, is_func_ptr, is_near = split
+        typed_entries.setdefault(name, []).append({
+            'offset': offset, 'type_text': decl_text, 'base': base, 'dims': dims,
+            'is_ptr': is_ptr, 'is_func_ptr': is_func_ptr, 'is_near': is_near,
+            'file': d.get('file') or 'docs/current/interface-conflicts.json',
+            'line': d.get('line') or 0, '_source': 'interface-conflicts',
+        })
+    return offsets, typed_entries
 
 
 # ---------------------------------------------------------------------------
@@ -766,8 +1013,8 @@ def load_bss_typed_reserves():
 
 NAME_SOURCE_PRIORITY = (
     'symbol-names-friendly', 'extern-comment', 'game-bss-public',
-    'production-plan-binding', 'symbol-names-raw', 'name-convention',
-    'component-public',
+    'production-plan-binding', 'symbol-names-raw', 'interface-conflicts',
+    'name-convention', 'component-public',
 )
 
 # typed-data-v1/empires-sound-data-v1/empires-sound-instruments-v1/
@@ -836,6 +1083,30 @@ def _types_compatible(a, b):
     return a_mapped is not None and a_mapped == b_mapped and a['is_ptr'] == b['is_ptr']
 
 
+# Sources whose evidence, ON ITS OWN, is too weak to anchor a span
+# boundary or win a type contest: a bare offset-derived identifier
+# (name-convention, or interface-conflicts' own g-prefixed placeholder for
+# an entry with no declared type at all -- e.g. `g0b78`, `type_confidence:
+# "UNKNOWN"`, zero `declarations`) or a component's own generated id.
+WEAK_ONLY_TAGS = frozenset({'name-convention', 'component-public', 'interface-conflicts'})
+
+
+def _is_weak_name(name, table, externs):
+    """A name is 'weak' when every source that ever named it is drawn from
+    WEAK_ONLY_TAGS *and* it has no real declared type anywhere in `externs`
+    (a typed interface-conflicts entry, e.g. `g13b8`/`menu_empty_record`,
+    carries genuine src/*.C-sourced type evidence and is NOT weak just
+    because its only *offset* tag happens to be 'interface-conflicts').
+    Such a name must never terminate/clip another, strongly-evidenced
+    span, and -- per supervisor decision -- if it lands inside one anyway
+    it becomes an element/field alias of that object instead of its own
+    boundary."""
+    tags = table.tags_by_name.get(name, set())
+    if not tags or not tags <= WEAK_ONLY_TAGS:
+        return False
+    return not externs.get(name)
+
+
 def resolve_historical_type(names, externs, table, primary=None):
     """Gather every extern declaration for any name in `names`; pick the
     widest/most-structured as the historical type (point 3), and report the
@@ -854,7 +1125,12 @@ def resolve_historical_type(names, externs, table, primary=None):
     alias_reports is [{'name', 'entry', 'compatible'}] for every
     *distinctly-shaped* declaration that was not chosen.
     """
-    candidates = [(n, d) for n in names for d in externs.get(n, ())]
+    # `names` is a set; iterate it in a fixed (sorted) order so `candidates`
+    # -- and therefore `alias_reports` below, which several output paths
+    # (state-map.md's "Alias type conflicts" table, symbols.json's
+    # `alias_type_reports`) emit in list order -- doesn't depend on
+    # Python's per-process hash-randomized set iteration order.
+    candidates = [(n, d) for n in sorted(names) for d in externs.get(n, ())]
     if not candidates:
         return None, None, []
     corroborated = [(n, d) for n, d in candidates
@@ -1011,7 +1287,7 @@ def _split_sound_component(component, table, friendly_of_offset, externs):
     return symbols, warnings
 
 
-def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
+def resolve_symbols(components, table, friendly_of_offset, externs, ownership, overrides=()):
     """Symbol-driven object model (recipe components are only a byte source
     and a last-resort naming fallback, per the supervisor review): walk
     DGROUP from DS:0000 to the end of BSS. At each position:
@@ -1053,17 +1329,21 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
 
     typed_reserves = load_bss_typed_reserves()
     all_offsets = sorted(table.names_by_offset)
-    # Offsets named by something other than a bare component-public
-    # fallback (source (v): the component's own id, added unconditionally
-    # as a last resort even when nothing real names that spot) -- used as
-    # the boundary for sizing/reshaping a wider historical array, so an
-    # anonymous component's mere presence (e.g. a zero-pad component's own
-    # id) can never truncate ga22[3][16] mid-shape. A *real* name-
-    # convention symbol (e.g. gde, with no DS: comment) still counts: only
-    # the synthetic component-id fallback is excluded.
+    # Offsets named by at least one STRONG name -- used as the boundary for
+    # sizing/reshaping a wider historical array, so a weak name can never
+    # truncate one (ga22[3][16] mid-shape, or -- supervisor decision --
+    # timer_ticks' `unsigned long` down to a 2-byte byte array just because
+    # an untyped interface-conflicts offset-placeholder happens to land 2
+    # bytes later). A name is weak when EVERY source that ever named it is
+    # in WEAK_ONLY_TAGS (component-public's synthetic per-component
+    # fallback id, a bare name-convention decode, or an untyped
+    # interface-conflicts entry with no declared type) -- see
+    # `_is_weak_name`. Anything else (a real DS:-commented extern, a
+    # binding, a BSS public, a *typed* interface-conflicts entry, ...)
+    # still counts as strong and anchors a boundary as before.
     corroborated_offsets = sorted(
         off for off, names in table.names_by_offset.items()
-        if any(table.tags_by_name.get(n, set()) != {'component-public'} for n in names))
+        if any(not _is_weak_name(n, table, externs) for n in names))
 
     def next_named_offset_after(pos):
         i = bisect.bisect_right(all_offsets, pos)
@@ -1073,10 +1353,45 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
         i = bisect.bisect_right(corroborated_offsets, pos)
         return corroborated_offsets[i] if i < len(corroborated_offsets) else DGROUP_LEN
 
+    def _name_matches_element_type(name, elem_base, elem_is_ptr):
+        entry, _, _ = resolve_historical_type({name}, externs, table, name)
+        # A name declared with its OWN array brackets (even an unspecified
+        # `T name[]`, e.g. `int xa[], ya[];` -- two SEPARATE arrays sharing
+        # one extern statement, not one array plus a stray element name) is
+        # always a genuinely separate object, never folded in as one of
+        # this array's own elements just because the element type matches.
+        return (entry is not None and entry['base'] == elem_base and entry['is_ptr'] == elem_is_ptr
+                and not entry['dims'])
+
+    def next_array_terminator_after(pos, elem_base, elem_is_ptr):
+        """For an undimensioned array being reshaped (element type
+        elem_base/elem_is_ptr): the next offset holding a name that
+        actually terminates the array, per supervisor decision ("weak
+        names do not terminate spans"). A name there does NOT terminate
+        the array -- it becomes an element alias instead -- when it is
+        either weak (`_is_weak_name`: name-convention/component-public/
+        untyped-interface-conflicts is its only evidence) or genuinely
+        declared with the SAME type as the array's own element (e.g.
+        `int g8bec;` inside `int xa[]`, or `char far *t4;` inside `char
+        far *gbfee[]`) -- only a name with real, DIFFERENTLY-typed
+        evidence still ends the span."""
+        off = pos + 1
+        while off < DGROUP_LEN:
+            for n in table.names_at(off):
+                if _is_weak_name(n, table, externs):
+                    continue
+                if _name_matches_element_type(n, elem_base, elem_is_ptr):
+                    continue
+                return off
+            off += 1
+        return DGROUP_LEN
+
+    overrides_by_offset = {ov['offset']: ov for ov in overrides}
     protected_starts = sorted(
-        c['ds_offset'] for c in components
-        if c['kind'] in ('code_owned', 'toolchain_opaque')
-        or (c['kind'] == 'data' and c['format'] in STRUCT_SHAPED_FORMATS))
+        set(c['ds_offset'] for c in components
+            if c['kind'] in ('code_owned', 'toolchain_opaque')
+            or (c['kind'] == 'data' and c['format'] in STRUCT_SHAPED_FORMATS))
+        | set(overrides_by_offset))
 
     def next_protected_start_after(pos):
         i = bisect.bisect_right(protected_starts, pos)
@@ -1088,6 +1403,43 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
     cursor = 0
     while cursor < DGROUP_LEN:
         component = comp_owner_at.get(cursor) if cursor < DATA_LEN else None
+
+        # -- manual overrides: win over every automatic rule, claimed
+        # whole, suppressing every component/symbol otherwise generated in
+        # [offset, offset+length) -- see tools/portable/datagen_overrides.json.
+        if cursor in overrides_by_offset:
+            ov = overrides_by_offset[cursor]
+            ov_refs = []
+            for c in components:
+                if c['kind'] != 'data':
+                    continue
+                c_lo, c_hi = c['ds_offset'], c['ds_offset'] + c['length']
+                if c_hi <= cursor or c_lo >= cursor + ov['length']:
+                    continue
+                for r in c.get('refs', ()):
+                    abs_off = c['ds_offset'] + r['offset']
+                    if cursor <= abs_off < cursor + ov['length']:
+                        ov_refs.append({**r, 'offset': abs_off - cursor})
+            section = 'data' if cursor < DATA_LEN else 'bss'
+            if ov.get('struct'):
+                c_type, dims, is_ptr, emit_path = f"struct {ov['struct']['tag']}", [], False, 'override-struct'
+            else:
+                base, dims = _parse_override_c_type(ov['c_type']) if ov.get('c_type') else (None, [])
+                c_type, is_ptr, emit_path = base, False, 'flat'
+            sym = _make_symbol(cursor, ov['length'], section, ov['name'], [], [ov['name']], None,
+                                'generated', f"override:{ov['name']}", c_type,
+                                'manual override (tools/portable/datagen_overrides.json)',
+                                dims, is_ptr, [], c_type is None, emit_path=emit_path)
+            sym['override'] = ov
+            sym['override_refs'] = ov_refs
+            symbols.append(sym)
+            for alias, expr in ov['aliases'].items():
+                extra['interior_alias'].append({
+                    'name': alias, 'offset': cursor, 'array_name': ov['name'],
+                    'array_offset': cursor, 'expr': expr, 'c_type': c_type,
+                })
+            cursor += ov['length']
+            continue
 
         # -- protected regions: claimed as one unit regardless of naming ---
         if component is not None and component['ds_offset'] == cursor and component['kind'] == 'code_owned':
@@ -1148,6 +1500,26 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                     aliases = []
                 if rec_start == 0:
                     aliases.append(component['id'])
+                # Source (vii): docs/current/interface-conflicts.json can
+                # name a byte *inside* this record (e.g. g13b8 = DS:13B8 =
+                # this record's own `.text` field at sub-offset 7) rather
+                # than at the record's own base -- the record's own
+                # historical `struct dialog` type wins (as rule B does for
+                # any other fully-dimensioned/structured declared type),
+                # and the interior name becomes a `.field` alias macro via
+                # STRUCT_FIELD_LAYOUTS_FOR_ALIASING['struct dialog'].
+                for sub in range(1, record_size):
+                    interior_names = table.names_at(abs_off + sub) - {component['id']}
+                    if not interior_names:
+                        continue
+                    path = _struct_field_path('struct dialog', sub)
+                    expr = (f'({c_ident(primary)}{path})' if path
+                            else f'(*((dos_char *)(&{c_ident(primary)}) + {sub}))')
+                    for n in sorted(interior_names):
+                        extra['interior_alias'].append({
+                            'name': n, 'offset': abs_off + sub, 'array_name': primary,
+                            'array_offset': abs_off, 'expr': expr, 'c_type': 'struct dialog',
+                        })
                 symbols.append(_make_symbol(abs_off, record_size, 'data', primary, sorted(aliases),
                                              sorted(names | {component['id']}) if rec_start == 0
                                              else (sorted(names) or [primary]), None, 'generated',
@@ -1194,7 +1566,15 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
 
         primary = _pick_primary(names, table, friendly_of_offset, cursor)
         aliases = sorted(n for n in names if n != primary)
-        owned_name = next((n for n in names if n in ownership), None) if cursor >= DATA_LEN else None
+        # `names` is a set; iterate `[primary] + aliases` (aliases already
+        # sorted above) instead of the set directly, so which owned name
+        # gets reported is deterministic -- preferring the object's own
+        # canonical primary name -- rather than depending on hash-
+        # randomized set iteration order (this fed a real cross-process
+        # nondeterminism in the emitted `owned_by` field, e.g. `cur_idx`
+        # vs. `g3902` for the same object depending on process hash seed).
+        owned_name = (next((n for n in [primary] + aliases if n in ownership), None)
+                      if cursor >= DATA_LEN else None)
         section = 'data' if cursor < DATA_LEN else 'bss'
         emit_path_override = None
         ceil_overshoot = False
@@ -1216,11 +1596,17 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
         elif chosen is not None:
             mapped, note = resolve_primitive(chosen['base'])
             is_ptr = chosen['is_ptr'] or chosen['base'] == 'void (*)(void)'
-            if chosen['base'] == 'void (*)(void)':
+            if chosen['base'] == 'void (*)(void)' and not chosen['dims']:
                 # Rule A/H: DOS plumbing (interrupt vectors etc.) with no
                 # portable meaning -- still emitted, as a plain `void *`,
                 # not a function-pointer type, so ported units compile.
-                mapped = 'void'
+                # Only for a SCALAR function pointer, though -- an ARRAY of
+                # them (`void (*g12a1[])(void)`, point 2 "code-pointer
+                # tables") keeps its real historical type so it goes
+                # through emit_generic_flat_object's dedicated code-
+                # pointer-table resolution instead of this DOS-plumbing
+                # fallback.
+                mapped, is_ptr = 'void', True
             c_type, type_note = mapped, note
             dims = [v for v in (_c_int_literal(d) for d in chosen['dims']) if v is not None]
             had_array = bool(chosen['dims'])  # even a single unspecified `[]` counts
@@ -1236,7 +1622,10 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
             # No extern/typed_reserves evidence, but an 's'-prefixed
             # name-convention name (source vi) claims this offset: treated
             # as a DATA string (dos_char[]) rather than a plain byte array.
-            s_name = next(n for n in names if _is_s_string_name(n))
+            # `names` is a set; pick deterministically (sorted) rather than
+            # depending on hash-randomized set iteration order for which
+            # name ends up quoted in the generated comment.
+            s_name = next(n for n in sorted(names) if _is_s_string_name(n))
             c_type, dims, is_ptr, untyped = 'dos_char', [], False, False
             type_note = f"[name-convention {s_name}: 's'-prefixed names are DATA strings]"
 
@@ -1347,13 +1736,34 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
             # the span-derived outer dimension entirely).
             size = typed_reserves[cursor]['span']
         else:
-            # A partially-dimensioned array's reshape needs the same
-            # corroborated-only boundary as the clip-safety check above (a
-            # coincidental name-convention match must not truncate it);
-            # anything with no resolved array type at all should stop at
-            # ANY named offset, including a weak one, to stay conservative.
+            # A partially-dimensioned array's reshape runs to the next
+            # STRONG symbol -- one that is neither weak (name-convention/
+            # component-public/untyped-interface-conflicts) nor typed
+            # identically to the array's own element (an interior name
+            # declared with the SAME element type is one of the array's
+            # own elements, not a competing object -- see
+            # next_array_terminator_after / "weak names do not terminate
+            # spans"); anything with no resolved array type at all should
+            # stop at ANY named offset, including a weak one, to stay
+            # conservative.
             if had_array and c_type is not None:
-                boundary = min(next_corroborated_offset_after(cursor), next_protected_start_after(cursor))
+                boundary = min(next_array_terminator_after(cursor, chosen['base'], is_ptr),
+                                next_protected_start_after(cursor))
+                # A code-pointer table's (point 2) own recipe component
+                # span is real data provenance, not just a naming
+                # convenience -- it must never absorb a NEIGHBORING
+                # component's unrelated bytes just because nothing strong
+                # names the offset right after it (u16le-table-v1 isn't a
+                # STRUCT_SHAPED_FORMATS protected component, so
+                # next_protected_start_after doesn't already cover this).
+                # Scoped to func-ptr arrays only: an ordinary data array's
+                # sanctioned overshoot into a neighboring PROTECTED
+                # component (rule E: ga5e's last record legitimately
+                # overlaps gb2a's leading bytes) must keep working exactly
+                # as before -- next_protected_start_after already bounds
+                # that case correctly on its own.
+                if component is not None and chosen['base'] == 'void (*)(void)':
+                    boundary = min(boundary, component['ds_offset'] + component['length'])
             else:
                 boundary = min(next_named_offset_after(cursor), next_protected_start_after(cursor))
             size = max(boundary - cursor, 1)
@@ -1361,14 +1771,54 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                 # An array with an unspecified outer dimension (possibly
                 # its *only* dimension, e.g. `long ga52[]`): reshape the
                 # measured span using whatever inner dims ARE explicit.
-                elem_size = historical_elem_size(chosen['base'], is_ptr,
-                                                  chosen.get('is_near', False), c_type)
+                if chosen['base'] == 'void (*)(void)':
+                    # Point 2 "code-pointer tables": an ARRAY of function
+                    # pointers is a compact-model code address (this
+                    # program's own single _TEXT segment) -- 2 bytes, not
+                    # historical_elem_size's far-pointer default (correct
+                    # for rule A/H's SCALAR interrupt-vector case, which
+                    # never reaches this had_array branch at all).
+                    elem_size = 2
+                else:
+                    elem_size = historical_elem_size(chosen['base'], is_ptr,
+                                                      chosen.get('is_near', False), c_type)
                 inner = 1
                 for d in dims:
                     inner *= d
                 row_bytes = inner * elem_size
                 if row_bytes and size % row_bytes == 0:
                     dims = [size // row_bytes] + dims
+                    if primary == 'g13ef' and dims == [1]:
+                        # Rule D special case: SLOTMENU.C declares a scalar
+                        # `int g13ef;`; LEVEL.C's `int g13ef[]` is only
+                        # ever indexed at [0] -- it names the same single
+                        # int, not a large array. The general weak-name-
+                        # aware boundary now measures this correctly on
+                        # its own (no longer needs its own dedicated
+                        # branch below), but the porting note is still
+                        # worth keeping for whoever ports SLOTMENU.C/
+                        # LEVEL.C.
+                        extra['porting_notes'].append(
+                            'SLOTMENU.C uses the scalar spelling: it must be ported as g13ef[0] '
+                            "(LEVEL.C's `int g13ef[]` is only ever indexed at [0]).")
+                    # Every name strictly inside [cursor, cursor+size) is,
+                    # by next_array_terminator_after's own contract, either
+                    # weak or same-element-typed -- safe to alias to its
+                    # element (or, if it lands off an element boundary, a
+                    # raw byte-offset cast) without re-checking.
+                    off = cursor + 1
+                    while off < cursor + size:
+                        for n in sorted(table.names_at(off)):
+                            sub = off - cursor
+                            if row_bytes and sub % row_bytes == 0:
+                                elem_expr = f'({primary}[{sub // row_bytes}])'
+                            else:
+                                elem_expr = f'(*((dos_char *)({primary}) + {sub}))'
+                            extra['interior_alias'].append({
+                                'name': n, 'offset': off, 'array_name': primary,
+                                'array_offset': cursor, 'expr': elem_expr, 'c_type': c_type,
+                            })
+                        off += 1
                 elif primary in STORAGE_ALIAS_UNIONS and next_protected_start_after(cursor) == boundary \
                         and not (comp_owner_at.get(boundary) or {}).get('refs'):
                     # Rule F: real historical aliasing of the same storage
@@ -1693,6 +2143,41 @@ def _nested_int_array(values, dims, signed_wrap=None):
     return '{\n    ' + ',\n    '.join(rows) + '\n}'
 
 
+_TEXT_OFFSET_TO_FUNCTION_CACHE = None
+
+
+def text_offset_to_function_name():
+    """_TEXT-relative code offset (layout/manifest.json's `frames['_TEXT']`
+    coordinate, matching docs/current/interface-conflicts.json's OMF
+    evidence and DATA-embedded code-pointer tables like ROUNDEND.C's
+    g12a1[]) -> the ported C function's name (no leading '_').
+
+    layout/production-plan.json's modules give a FILE-byte `start` for
+    each compiled module and, per module, a `publics` list of
+    {owner, symbol, offset} where `offset` is relative to that module's
+    OWN start -- so a public's file address is `module['start'] +
+    public['offset']`, and its _TEXT-frame offset is that minus the
+    512-byte DOS EXE header (the same `+ 512` used elsewhere for the
+    DGROUP frame; manifest.json's `frames['_TEXT']` is 0, so this is the
+    whole adjustment). Verified against all 6 of g12a1's entries (e.g.
+    0x9871 -> `_roundend_draw_marker`, confirmed via module C_984C_9871).
+    """
+    global _TEXT_OFFSET_TO_FUNCTION_CACHE
+    if _TEXT_OFFSET_TO_FUNCTION_CACHE is None:
+        plan = read_json(PLAN_PATH)
+        out = {}
+        for m in plan['modules']:
+            base = m['start'] - 512
+            for p in m.get('publics', ()):
+                symbol = p.get('symbol')
+                if not symbol:
+                    continue
+                name = symbol[1:] if symbol.startswith('_') else symbol
+                out[base + p['offset']] = name
+        _TEXT_OFFSET_TO_FUNCTION_CACHE = out
+    return _TEXT_OFFSET_TO_FUNCTION_CACHE
+
+
 def emit_generic_flat_object(symbol, image, ident):
     """Emit a symbol-driven object that is neither a whole anonymous
     component (format-aware fallback, see describe_and_emit_component) nor
@@ -1716,6 +2201,37 @@ def emit_generic_flat_object(symbol, image, ident):
         defn = f'uint8_t {ident}[{n}] = {c_int_array(values)};\n'
         return {'c_type': f'uint8_t[{n}]', 'emit_kind': 'array', 'header_extra': [],
                 'decl': f'extern uint8_t {ident}[{n}];', 'defn': defn, 'verify_bytes': raw}
+
+    if c_type == 'void (*)(void)' and dims:
+        # An ARRAY of function pointers (point 2, "code-pointer tables"):
+        # each 2-byte historical element (compact model: code near, see
+        # historical_elem_size) is a raw _TEXT-relative code offset, not a
+        # DATA-side recipe ref -- resolve it against every ported
+        # function's own entry offset (text_offset_to_function_name())
+        # instead of the DATA-pointer machinery (PointerResolver), which
+        # has no notion of code addresses at all.
+        count = 1
+        for d in dims:
+            count *= d
+        text_map = text_offset_to_function_name()
+        values, missing = [], []
+        for i in range(count):
+            off = int.from_bytes(raw[i * 2:i * 2 + 2], 'little')
+            fn = text_map.get(off)
+            if fn is None:
+                missing.append((i, off))
+                values.append(f'(void (*)(void))0 /* unresolved _TEXT:{off:04x}, no public found */')
+            else:
+                values.append(f'(void (*)(void)){fn}')
+        dims_suffix = ''.join(f'[{d}]' for d in dims)
+        rows = ',\n    '.join(values)
+        defn = f'void (*{ident}{dims_suffix})(void) = {{\n    {rows}\n}};\n'
+        note = (f' /* {len(missing)} unresolved code offset(s): '
+                f'{", ".join(f"{o:04x}" for _, o in missing)} */' if missing else '')
+        return {'c_type': f'void (*)(void){dims_suffix}', 'emit_kind': 'array',
+                'header_extra': [f'/* code-pointer table -- resolved via layout/production-plan.json '
+                                  f'publics{note} */'],
+                'decl': f'extern void (*{ident}{dims_suffix})(void);', 'defn': defn, 'verify_bytes': raw}
 
     if is_ptr or c_type == 'void (*)(void)':
         if all(b == 0 for b in raw):
@@ -1749,6 +2265,31 @@ def emit_generic_flat_object(symbol, image, ident):
         dims_suffix = f'[{count}]' if not dims else ''.join(f'[{d}]' for d in dims)
         rows = ',\n    '.join('{ .' + field + ' = ' + c_int_array(list(raw[i * elem:(i + 1) * elem]))
                               + ' }' for i in range(count))
+        defn = f'{c_type} {ident}{dims_suffix} = {{\n    {rows}\n}};\n'
+        return {'c_type': f'{c_type}{dims_suffix}', 'emit_kind': 'array', 'header_extra': [],
+                'decl': f'extern {c_type} {ident}{dims_suffix};', 'defn': defn, 'verify_bytes': raw}
+
+    if c_type in STRUCT_INIT_FIELD_WIDTHS:
+        # A pointer-free struct with more than one field, but every field's
+        # byte width is known (see STRUCT_INIT_FIELD_WIDTHS) -- a flat,
+        # non-designated positional initializer per record, relying on
+        # ISO C brace elision to fill any nested aggregate field, is always
+        # byte-exact and needs no field *names* (point 3: real struct type,
+        # not a uint8_t[] fallback, for every historical struct extern).
+        widths = STRUCT_INIT_FIELD_WIDTHS[c_type]
+        elem = KNOWN_STRUCT_SIZES[c_type]
+        assert sum(widths) == elem, f'{c_type} STRUCT_INIT_FIELD_WIDTHS sums to {sum(widths)}, not {elem}'
+        count = max(len(raw) // elem, 1)
+        dims_suffix = f'[{count}]' if not dims else ''.join(f'[{d}]' for d in dims)
+        records = []
+        for i in range(count):
+            rec, off = raw[i * elem:(i + 1) * elem], 0
+            values = []
+            for w in widths:
+                values.append(str(int.from_bytes(rec[off:off + w], 'little')))
+                off += w
+            records.append('{ ' + ', '.join(values) + ' }')
+        rows = ',\n    '.join(records)
         defn = f'{c_type} {ident}{dims_suffix} = {{\n    {rows}\n}};\n'
         return {'c_type': f'{c_type}{dims_suffix}', 'emit_kind': 'array', 'header_extra': [],
                 'decl': f'extern {c_type} {ident}{dims_suffix};', 'defn': defn, 'verify_bytes': raw}
@@ -1795,8 +2336,10 @@ def emit_generic_flat_object(symbol, image, ident):
             'decl': decl, 'defn': defn, 'verify_bytes': raw}
 
 
-TYPED_SCALAR_C = {'u8': 'dos_uchar', 'i8': 'dos_char', 'u16': 'dos_uint', 'i16': 'dos_int'}
-TYPED_SCALAR_SIZE = {'u8': 1, 'i8': 1, 'u16': 2, 'i16': 2}
+TYPED_SCALAR_C = {'u8': 'dos_uchar', 'i8': 'dos_char', 'u16': 'dos_uint', 'i16': 'dos_int',
+                  'u32': 'dos_ulong', 'i32': 'dos_long'}
+TYPED_SCALAR_SIZE = {'u8': 1, 'i8': 1, 'u16': 2, 'i16': 2, 'u32': 4, 'i32': 4}
+TYPED_SCALAR_STRUCT_FMT = {'u8': '<B', 'i8': '<b', 'u16': '<H', 'i16': '<h', 'u32': '<L', 'i32': '<l'}
 
 
 # (offset, field name, C type, width, is_pointer32) -- include/DIALOG.H's
@@ -1815,6 +2358,58 @@ DIALOG_FIELD_LAYOUT = [
     (16, 'w', 'dos_int', 2, False),
     (18, 'lines', 'dos_int', 2, False),
 ]
+
+
+def _emit_override_struct(symbol, image, ident, resolver):
+    """tools/portable/datagen_overrides.json 'struct' entry: a designated
+    initializer assembled from `struct.fields` (kind-tagged byte spans),
+    with farptr/nearptr fields resolved through whatever recipe
+    component's ref falls at that byte (collected into
+    `symbol['override_refs']` by resolve_symbols, rebased to be relative
+    to this override's own base offset) -- or a literal NULL when the raw
+    bytes are all zero and nothing refs that offset. Scalar fields read
+    straight off the DATA image. A resolved pointer is cast to
+    OVERRIDE_STRUCT_FIELD_C_TYPES' declared field type when one is on
+    file, matching the struct's real (game_funcs.h-declared) field type.
+    """
+    ov = symbol['override']
+    tag = ov['struct']['tag']
+    base = symbol['offset']
+    raw = image[base:base + symbol['size']]
+    refs_by_off = {r['offset']: r for r in symbol['override_refs']}
+    field_types = OVERRIDE_STRUCT_FIELD_C_TYPES.get(tag, {})
+    parts = []
+    sub = 0
+    for fname, kind in ov['struct']['fields']:
+        if kind == 'bytes' or kind.startswith('bytes:'):
+            n = int(kind.split(':', 1)[1]) if ':' in kind else 1
+            parts.append(f'.{fname} = {c_int_array(list(raw[sub:sub + n]))}')
+            sub += n
+            continue
+        width, is_ptr_field = OVERRIDE_FIELD_KIND[kind]
+        if is_ptr_field:
+            ref = refs_by_off.get(sub)
+            if ref is not None:
+                expr = resolver.expr(ref['target'], ref.get('addend', 0), _EMIT_KIND_REGISTRY)
+                cast = field_types.get(fname)
+                parts.append(f'.{fname} = {f"({cast})" if cast else ""}{expr}')
+            elif all(b == 0 for b in raw[sub:sub + width]):
+                parts.append(f'.{fname} = NULL')
+            else:
+                parts.append(f'.{fname} = NULL /* unresolved {kind} field, '
+                              f'raw bytes {raw[sub:sub + width].hex()} -- needs a supervisor decision */')
+        else:
+            value = struct.unpack_from(TYPED_SCALAR_STRUCT_FMT[kind], raw, sub)[0]
+            parts.append(f'.{fname} = {value}')
+        sub += width
+    assert sub == symbol['size'], f'override struct {tag!r} fields sum to {sub} bytes, not {symbol["size"]}'
+    header_extra = []
+    header_include = OVERRIDE_STRUCT_TAG_HEADER.get(tag)
+    if header_include:
+        header_extra.append(f'/* struct {tag} is declared in {header_include} */')
+    defn = f'struct {tag} {ident} = {{ ' + ', '.join(parts) + ' };\n'
+    return {'c_type': f'struct {tag}', 'emit_kind': 'struct', 'header_extra': header_extra,
+            'decl': f'extern struct {tag} {ident};', 'defn': defn, 'verify_bytes': raw}
 
 
 def _emit_as_known_struct(component, image, struct_name, field_layout, ident, resolver, comp_by_id):
@@ -1950,7 +2545,12 @@ def _interior_view_macros(component, table, friendly_of_offset, externs, base_ex
             expr = f'(({c_type} *)({base_expr} + {off}))'
         else:
             expr = f'(*({c_type} *)({base_expr} + {off}))'
-        for n in names:
+        # `names` is a set (from `names_at`/`table.names_at`); sort before
+        # emitting so the order of same-offset macro lines in the generated
+        # header (e.g. `g2fe4` vs `voice_byte_table`) is stable across
+        # separate process invocations, not dependent on hash-randomized
+        # set iteration order.
+        for n in sorted(names):
             macros.append((n, expr))
         local += size
     return macros
@@ -2305,6 +2905,14 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
             _EMIT_KIND_REGISTRY[s['primary']] = 'struct'
             _STRUCT_FIELD_REGISTRY[s['primary']] = [
                 (off, name, width, width) for off, name, _, width, _ in DIALOG_FIELD_LAYOUT]
+        elif s['emit_path'] == 'override-struct':
+            _EMIT_KIND_REGISTRY[s['primary']] = 'struct'
+            fields, off = [], 0
+            for fname, kind in s['override']['struct']['fields']:
+                width = OVERRIDE_FIELD_KIND[kind][0]
+                fields.append((off, fname, width, width))
+                off += width
+            _STRUCT_FIELD_REGISTRY[s['primary']] = fields
         else:
             # A plain scalar (no dims, not the untyped-fallback byte array)
             # needs `&name`, not array-decay, if something ever points at
@@ -2313,6 +2921,21 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
             is_scalar = not s['dims'] and not s['untyped'] and s['emit_path'] != 'sound-ptr-array' \
                 and s['c_type'] not in (None,) and s['c_type'] != 'void (*)(void)'
             _EMIT_KIND_REGISTRY[s['primary']] = 'scalar' if is_scalar else 'array'
+
+    # A DATA pointer (an override-struct field, or any other symbolic ref)
+    # can legitimately target a BSS object -- emit_game_state() hasn't run
+    # yet (game_data.[ch] is built first), so without this, resolving such
+    # a ref would find no emit_kind for the BSS target and default to
+    # `&name` even when the target is really an array that should decay
+    # (e.g. `gc5ce`: `dos_char *gc5ce[3]`, target of g22f0's `.records`
+    # field -- this fell back to `&gc5ce` instead of `gc5ce` before this
+    # loop existed). Same is_scalar heuristic emit_game_state() itself
+    # effectively uses (c_type set, no array dims -> scalar).
+    for s in symbols:
+        if s['section'] != 'bss' or s['definition_site'] != 'generated':
+            continue
+        is_scalar = not s['dims'] and s['c_type'] not in (None, 'jmp_buf') and s['c_type'] != 'void (*)(void)'
+        _EMIT_KIND_REGISTRY[s['primary']] = 'scalar' if is_scalar else 'array'
 
     resolver = PointerResolver(table, symbols)
 
@@ -2330,17 +2953,78 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
         if needs_game_state_h:
             break
 
+    # A 'struct' override whose tag is not one of game_structs.h's
+    # KNOWN_STRUCT_SIZES (e.g. `struct input`, DIALOG.C-local, declared in
+    # game_funcs.h) needs that header visible before its `extern struct
+    # input g22f0;` declaration.
+    needs_game_funcs_h = any(
+        s['emit_path'] == 'override-struct'
+        and s['override']['struct']['tag'] in OVERRIDE_STRUCT_TAG_HEADER
+        for s in data_symbols)
+
     header_lines = [HEADER_BANNER.format(name='game_data.h'), '#ifndef PORTABLE_GAME_DATA_H',
                      '#define PORTABLE_GAME_DATA_H', '', '#include <stdint.h>',
                      '#include "dos_types.h"', '#include "game_structs.h"']
+    if needs_game_funcs_h:
+        header_lines.append('#include "game_funcs.h"  /* struct input (DIALOG.C-local) */')
     if needs_game_state_h:
         header_lines.append('#include "game_state.h"  /* a DATA pointer targets BSS state */')
     header_lines.append('')
-    source_lines = [HEADER_BANNER.format(name='game_data.c'), '#include "game_data.h"', '']
+    # A code-pointer table (point 2) casts each element to a NAMED ported
+    # function (e.g. `(void (*)(void))roundend_draw_marker`) -- those
+    # prototypes are declared in game_funcs.h, needed only in the .c file
+    # (the .h declaration itself, `extern void (*g12a1[6])(void);`, names
+    # no other type).
+    needs_game_funcs_h_source = any(
+        s['c_type'] == 'void (*)(void)' and s['dims'] and s['definition_site'] == 'generated'
+        for s in data_symbols)
+    source_lines = [HEADER_BANNER.format(name='game_data.c'), '#include "game_data.h"']
+    if needs_game_funcs_h_source:
+        source_lines.append('#include "game_funcs.h"  /* code-pointer table function names */')
+    source_lines.append('')
 
     verify_bytes = {}
     emitted_count = 0
     skipped_owned = 0
+
+    # Point 5, "ported-C-owned DATA": the ported .c file IS the owner, full
+    # stop -- this must NOT depend on the generator already having offset
+    # knowledge for the name (most of PROMPTS.C's own block never got one:
+    # energy_meter/hud_prompt_kind/gb85 have no symbols.json entry at all,
+    # per portable/game/hud.c's own blocking comment). So: every top-level
+    # object DEFINITION scan_ported_c_definitions() finds in
+    # portable/game/*.c (never a `static` one -- the regex only matches a
+    # line starting with a bare dos_* type, which a `static` prefix can
+    # never do -- and never a function, which needs an argument list
+    # between the name and `;`/`{` that the regex has no room for) gets an
+    # `extern` declaration in game_data.h -- UNLESS the generator already
+    # emits a 'generated' object under that same name (primary or alias)
+    # elsewhere, which would collide. When an offset IS separately known
+    # (a 'ported-C:*' symbol's own name/alias), the DS offset and
+    # component id are shown too, for the state-map.md row; otherwise the
+    # declaration still goes out, just without that provenance.
+    ported_defs = scan_ported_c_definitions()
+    generated_names = {n for s in symbols if s['definition_site'] == 'generated'
+                        for n in (s['primary'], *s['aliases'])}
+    offset_of_ported_name = {}
+    for s in data_symbols:
+        if not s['definition_site'].startswith('ported-C:'):
+            continue
+        for name in s['names']:
+            offset_of_ported_name[name] = (s['offset'], s['component_id'])
+    ported_c_owned_report = []
+    for name in sorted(ported_defs):
+        if name in generated_names:
+            continue
+        file_path, decl = ported_defs[name]
+        offset, component_id = offset_of_ported_name.get(name, (None, None))
+        loc = f"DS:{offset:04X}, component {component_id}" if offset is not None \
+            else 'DS offset not known to any of the 7 symbol sources'
+        header_lines.append(f'/* {name}  ({loc}) */')
+        header_lines.append(f'extern {decl};  /* defined in {file_path} */')
+        header_lines.append('')
+        ported_c_owned_report.append({'name': name, 'offset': offset, 'file': file_path,
+                                       'component_id': component_id})
 
     for s in data_symbols:
         if s['definition_site'] == 'subsystem-owned':
@@ -2383,6 +3067,8 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
             }
             result = _emit_as_known_struct(record, image, 'struct dialog', DIALOG_FIELD_LAYOUT,
                                             primary, resolver, comp_by_id)
+        elif s['emit_path'] == 'override-struct':
+            result = _emit_override_struct(s, image, primary, resolver)
         else:
             result = emit_generic_flat_object(s, image, primary)
 
@@ -2460,7 +3146,7 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
     return {
         'emitted': emitted_count, 'skipped_owned': skipped_owned,
         'skipped_code_owned': skipped_code_owned, 'skipped_toolchain': skipped_toolchain,
-        'verify_bytes': verify_bytes,
+        'verify_bytes': verify_bytes, 'ported_c_owned': ported_c_owned_report,
     }
 
 
@@ -2488,7 +3174,7 @@ def emit_game_state(symbols, extra, qualifiers, out_dir):
         header_lines.insert(6, '#include <setjmp.h>  /* rule G: jmp_buf game_abort_jmpbuf */')
 
     elem_size_of = {'dos_char': 1, 'dos_uchar': 1, 'dos_int': 2, 'dos_uint': 2,
-                    'dos_long': 4, 'dos_ulong': 4, 'uint8_t': 1}
+                    'dos_long': 4, 'dos_ulong': 4, 'uint8_t': 1, **KNOWN_STRUCT_SIZES}
 
     for s in bss_symbols:
         if s['definition_site'] != 'generated':
@@ -2832,6 +3518,21 @@ def write_state_map_md(components, symbols, table, notes, warnings, data_report,
                       f"| `{c['code_owner']}` |")
     lines.append('')
 
+    ported_c_owned = data_report.get('ported_c_owned', [])
+    if ported_c_owned:
+        lines += ['Point 5: every top-level object `portable/game/*.c` DEFINES '
+                  '(scan_ported_c_definitions) that the generator does not already emit under '
+                  'that same name gets an `extern` declaration in game_data.h (never a second '
+                  'definition) so other ported units can see it -- regardless of whether any of '
+                  'the 7 symbol sources happens to know its DS offset.', '',
+                  '| name | DS offset | component id | defined in |',
+                  '|---|---|---|---|']
+        for e in sorted(ported_c_owned, key=lambda e: (e['offset'] is None, e['offset'] or 0)):
+            offset_cell = f"{e['offset']:#06x}" if e['offset'] is not None else '(unknown)'
+            component_cell = f"`{e['component_id']}`" if e['component_id'] else '(unknown)'
+            lines.append(f"| `{e['name']}` | {offset_cell} | {component_cell} | `{e['file']}` |")
+        lines.append('')
+
     out_path.write_text('\n'.join(lines), encoding='utf-8', newline='\n')
 
 
@@ -2844,9 +3545,32 @@ def generate(out_generated=None, out_docs=None, verbose=True):
     exe_check = cross_check_against_exe(image, components)
 
     externs = parse_all_externs()
-    table, friendly = build_symbol_table(components, externs)
+    ic_offsets, ic_typed_entries = load_interface_conflicts()
+    # Source (vii) is an independent OMF/interface-census scan: it also
+    # finds genuine Turbo C runtime-library internals (atexit counter,
+    # malloc's free-list head, the ctype table, the open-file-descriptor
+    # table, ...) that happen to fall inside a toolchain_opaque region --
+    # correctly unmodeled (no recipe bytes, no portable meaning) before
+    # this source existed. Naming them would only produce a "name falls
+    # inside an opaque region, nothing to emit" warning for something
+    # nobody ported and nothing points at; drop any (vii) entry whose
+    # offset lands in a toolchain_opaque/code_owned region instead.
+    _opaque_ranges = [(c['ds_offset'], c['ds_offset'] + c['length'])
+                       for c in components if c['kind'] in ('toolchain_opaque', 'code_owned')]
+
+    def _in_opaque_region(off):
+        return any(lo <= off < hi for lo, hi in _opaque_ranges)
+
+    ic_offsets = [(n, o) for n, o in ic_offsets if not _in_opaque_region(o)]
+    ic_typed_entries = {n: entries for n, entries in ic_typed_entries.items()
+                         if not _in_opaque_region(entries[0]['offset'])}
+    for name, entries in ic_typed_entries.items():
+        externs.setdefault(name, []).extend(entries)
+    table, friendly = build_symbol_table(components, externs, ic_offsets)
     ownership = load_state_ownership()
-    symbols, warnings, extra = resolve_symbols(components, table, friendly, externs, ownership)
+    overrides = load_datagen_overrides()
+    symbols, warnings, extra = resolve_symbols(components, table, friendly, externs, ownership,
+                                                overrides)
 
     qualifiers = load_emit_qualifiers()
     data_report = emit_game_data(image, components, symbols, table, externs, extra, qualifiers,

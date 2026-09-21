@@ -19,7 +19,6 @@
     "DATA_01101D_TRAILER": "current_slot",
     "DATA_011D90_RECORDS": "dialog_toggle_music",
     "DATA_011F10_TABLE": "g22e0",
-    "DATA_011F20_PAD": "g22f0",
     "DATA_011F32_KEYBOARD_LABEL": "g2302",
     "DATA_011F45_PLAYING_LABEL": "g2315",
     "DATA_011F56_OBSTACLES_LABEL": "g2326",
@@ -28,7 +27,7 @@
     "DATA_011FB0_ZERO_REGION": "g2380",
     "DATA_0DCC": "g0dcc",
     "DATA_10ED1": "g12a1",
-    "DATA_1271": "g1271",
+    "DATA_1271": "a1271",
     "GAME_BSS": "cur_idx",
     "PALETTE_DAC6_011E": "g11e",
     "PALETTE_DAC6_041E": "g41e",
@@ -52,9 +51,9 @@
     "g0736": "cursor_x",
     "g0738": "cursor_y",
     "g073a": "cursor_facing_left",
-    "g0b3ae": "actor_record_table",
     "g0b7a": "int8_saved_vector",
     "g0bc": "gbc",
+    "g1271": "a1271",
     "g1375": "dialog_player_name_entry",
     "g1389": "dialog_player_name_full",
     "g13b1": "dialog_slot_delete_confirm",
@@ -118,8 +117,6 @@
     "g9bfc": "tile_width_table",
     "ga20": "g0a20",
     "gb07c": "resource_ptr_table",
-    "gb3ae": "actor_record_table",
-    "gb3af": "actor_state_table",
     "gb68": "key_up_held",
     "gb6c": "key_up_left_held",
     "gb6e": "key_up_right_held",
@@ -168,7 +165,6 @@
     "gc12c": "dialog_button1_label_cx",
     "gc12e": "dialog_button2_label_cx",
     "gc130": "puzzle_piece_total",
-    "gc132": "puzzle_held_piece",
     "gc134": "puzzle_solved_flag",
     "gc135": "puzzle_cursor_col",
     "gc316": "puzzle_grid",
@@ -855,20 +851,6 @@
       "type_note": null,
       "untyped": false
     },
-    "DATA_011F25_KEYBOARD_CONTROL": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "struct DATA_011F25_KEYBOARD_CONTROL_s",
-      "component_id": "DATA_011F25_KEYBOARD_CONTROL",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 8949,
-      "owned_by": null,
-      "section": "data",
-      "size": 13,
-      "type_note": null,
-      "untyped": false
-    },
     "DATA_011F9A_NEW_USER_MESSAGE": {
       "alias_type_reports": [],
       "aliases": [],
@@ -925,6 +907,31 @@
       "type_note": null,
       "untyped": false
     },
+    "a1271": {
+      "alias_type_reports": [
+        {
+          "compatible": false,
+          "file": "src/SCORE.C",
+          "line": 19,
+          "name": "g1271",
+          "type_text": "struct score_pos g1271[]"
+        }
+      ],
+      "aliases": [
+        "DATA_1271",
+        "g1271"
+      ],
+      "c_type": "uint8_t[48]",
+      "component_id": "DATA_1271",
+      "conflict": true,
+      "definition_site": "generated",
+      "ds_offset": 4721,
+      "owned_by": null,
+      "section": "data",
+      "size": 48,
+      "type_note": "historical 'struct <anonymous>' has no portable definition yet [extern a1271 @ src/ROUNDEND.C:29: struct <anonymous> a1271[]]",
+      "untyped": false
+    },
     "a6f2a": {
       "alias_type_reports": [],
       "aliases": [
@@ -944,14 +951,14 @@
     "a72b2": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char *[40]",
+      "c_type": "dos_char *[43]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 29362,
       "owned_by": null,
       "section": "bss",
-      "size": 160,
+      "size": 172,
       "type_note": " [extern a72b2 @ src/BOARD.C:420: char far *a72b2[]]",
       "untyped": false
     },
@@ -994,28 +1001,17 @@
       "untyped": false
     },
     "actor_record_table": {
-      "alias_type_reports": [
-        {
-          "compatible": false,
-          "file": "src/GAME.C",
-          "line": 441,
-          "name": "g0b3ae",
-          "type_text": "char g0b3ae[]"
-        }
-      ],
-      "aliases": [
-        "g0b3ae",
-        "gb3ae"
-      ],
-      "c_type": "dos_uchar[1]",
-      "component_id": null,
-      "conflict": true,
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_uchar[385]",
+      "component_id": "override:actor_record_table",
+      "conflict": false,
       "definition_site": "generated",
       "ds_offset": 45998,
       "owned_by": null,
       "section": "bss",
-      "size": 1,
-      "type_note": " [extern actor_record_table @ src/LEVEL.C:31: unsigned char actor_record_table[]]",
+      "size": 385,
+      "type_note": "manual override (tools/portable/datagen_overrides.json)",
       "untyped": false
     },
     "actor_sprite_dims_table": {
@@ -1023,7 +1019,7 @@
       "aliases": [
         "g40d4"
       ],
-      "c_type": "dos_uchar[672]",
+      "c_type": "dos_char[672]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -1031,23 +1027,7 @@
       "owned_by": null,
       "section": "bss",
       "size": 672,
-      "type_note": " [typed_reserves RESOURCE25_WORKSPACE_BSS: unsigned char[672]]",
-      "untyped": false
-    },
-    "actor_state_table": {
-      "alias_type_reports": [],
-      "aliases": [
-        "gb3af"
-      ],
-      "c_type": "struct gb3af_entry[12]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 45999,
-      "owned_by": null,
-      "section": "bss",
-      "size": 384,
-      "type_note": " [extern actor_state_table @ include/GB3AF.H:9: struct gb3af_entry near actor_state_table[]]",
+      "type_note": " [extern actor_sprite_dims_table @ src/LEVEL.C:139: char actor_sprite_dims_table[]]",
       "untyped": false
     },
     "b4374": {
@@ -1063,43 +1043,15 @@
       "aliases": [
         "g4374"
       ],
-      "c_type": "dos_uchar[1]",
+      "c_type": "dos_uchar[3]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 17268,
       "owned_by": null,
       "section": "bss",
-      "size": 1,
+      "size": 3,
       "type_note": " [extern g4374 @ src/GAME.C:440: unsigned char g4374[]]",
-      "untyped": false
-    },
-    "b4375": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17269,
-      "owned_by": null,
-      "section": "bss",
-      "size": 1,
-      "type_note": " [extern b4375 @ src/GAME.C:496: unsigned char b4374, b4375, b4376]",
-      "untyped": false
-    },
-    "b4376": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17270,
-      "owned_by": null,
-      "section": "bss",
-      "size": 1,
-      "type_note": " [extern b4376 @ src/GAME.C:496: unsigned char b4374, b4375, b4376]",
       "untyped": false
     },
     "b4377": {
@@ -1292,14 +1244,14 @@
       "aliases": [
         "gbfee"
       ],
-      "c_type": "dos_char *[1]",
+      "c_type": "dos_char *[22]",
       "component_id": null,
       "conflict": true,
       "definition_site": "generated",
       "ds_offset": 49134,
       "owned_by": null,
       "section": "bss",
-      "size": 4,
+      "size": 88,
       "type_note": " [extern gbfee @ src/INTRO.C:29: char far *gbfee[]]",
       "untyped": false
     },
@@ -1354,7 +1306,7 @@
       "conflict": false,
       "definition_site": "subsystem-owned",
       "ds_offset": 14594,
-      "owned_by": "g3902",
+      "owned_by": "cur_idx",
       "section": "bss",
       "size": 2,
       "type_note": " [extern cur_idx @ src/VIDEO.C:8: int cur_idx]",
@@ -1443,20 +1395,6 @@
       "section": "data",
       "size": 2,
       "type_note": " [extern cursor_y @ src/BOARD.C:30: int cursor_x, cursor_y]",
-      "untyped": false
-    },
-    "dialog_13C5": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "struct dialog",
-      "component_id": "DATA_010FA5_RECORDS",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 5061,
-      "owned_by": null,
-      "section": "data",
-      "size": 20,
-      "type_note": null,
       "untyped": false
     },
     "dialog_box_h": {
@@ -2058,7 +1996,7 @@
       "conflict": true,
       "definition_site": "subsystem-owned",
       "ds_offset": 49101,
-      "owned_by": "mode",
+      "owned_by": "display_mode",
       "section": "bss",
       "size": 1,
       "type_note": " [extern display_mode @ src/ANIMSTEP.C:6: char display_mode]",
@@ -2163,7 +2101,7 @@
       "aliases": [
         "DATA_0DCC"
       ],
-      "c_type": "uint8_t[960]",
+      "c_type": "struct g0dcc_entry[40]",
       "component_id": "DATA_0DCC",
       "conflict": false,
       "definition_site": "generated",
@@ -2171,8 +2109,8 @@
       "owned_by": null,
       "section": "data",
       "size": 960,
-      "type_note": " [extern g0dcc @ include/G0DCC.H:14: struct g0dcc_entry g0dcc[]]historical type struct g0dcc_entry not field-decomposed here",
-      "untyped": true
+      "type_note": " [extern g0dcc @ include/G0DCC.H:14: struct g0dcc_entry g0dcc[]]",
+      "untyped": false
     },
     "g11e": {
       "alias_type_reports": [],
@@ -2190,28 +2128,12 @@
       "type_note": " [extern g11e @ src/VIDEO.C:32: unsigned char g11e[]]",
       "untyped": false
     },
-    "g1271": {
-      "alias_type_reports": [],
-      "aliases": [
-        "DATA_1271"
-      ],
-      "c_type": "uint8_t[48]",
-      "component_id": "DATA_1271",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 4721,
-      "owned_by": null,
-      "section": "data",
-      "size": 48,
-      "type_note": "historical 'struct score_pos' has no portable definition yet [extern g1271 @ src/SCORE.C:19: struct score_pos g1271[]]",
-      "untyped": false
-    },
     "g12a1": {
       "alias_type_reports": [],
       "aliases": [
         "DATA_10ED1"
       ],
-      "c_type": "uint8_t[12]",
+      "c_type": "void (*)(void)[6]",
       "component_id": "DATA_10ED1",
       "conflict": false,
       "definition_site": "generated",
@@ -2219,7 +2141,7 @@
       "owned_by": null,
       "section": "data",
       "size": 12,
-      "type_note": null,
+      "type_note": " [extern g12a1 @ src/ROUNDEND.C:12: void (*g12a1[])(void)]",
       "untyped": false
     },
     "g12d0": {
@@ -2498,18 +2420,16 @@
     },
     "g22f0": {
       "alias_type_reports": [],
-      "aliases": [
-        "DATA_011F20_PAD"
-      ],
-      "c_type": "uint8_t[5]",
-      "component_id": "DATA_011F20_PAD",
+      "aliases": [],
+      "c_type": "struct input",
+      "component_id": "override:g22f0",
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 8944,
       "owned_by": null,
       "section": "data",
-      "size": 5,
-      "type_note": null,
+      "size": 18,
+      "type_note": "manual override (tools/portable/datagen_overrides.json)",
       "untyped": false
     },
     "g2302": {
@@ -2878,48 +2798,6 @@
       "type_note": " [extern g734 @ src/GAME.C:35: int gbc, hud_scroll_cooldown_ticks, g72e, g730, g732, g734, cursor_x, cursor_y, cursor_facing_left]",
       "untyped": false
     },
-    "g7352": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char *",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 29522,
-      "owned_by": null,
-      "section": "bss",
-      "size": 4,
-      "type_note": " [extern g7352 @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank]",
-      "untyped": false
-    },
-    "g7356": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char *",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 29526,
-      "owned_by": null,
-      "section": "bss",
-      "size": 4,
-      "type_note": " [extern g7356 @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank]",
-      "untyped": false
-    },
-    "g735a": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char *",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 29530,
-      "owned_by": null,
-      "section": "bss",
-      "size": 4,
-      "type_note": " [extern g735a @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank]",
-      "untyped": false
-    },
     "g735e": {
       "alias_type_reports": [
         {
@@ -3022,62 +2900,6 @@
       "section": "data",
       "size": 2,
       "type_note": " [extern g857 @ src/INTRO.C:36: int  g857, g94, g96, g98, g9a, mus_flag, snd_flag2]",
-      "untyped": false
-    },
-    "g8bec": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_int",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 35820,
-      "owned_by": null,
-      "section": "bss",
-      "size": 2,
-      "type_note": " [extern g8bec @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8]",
-      "untyped": false
-    },
-    "g8bee": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_int",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 35822,
-      "owned_by": null,
-      "section": "bss",
-      "size": 2,
-      "type_note": " [extern g8bee @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8]",
-      "untyped": false
-    },
-    "g8bf6": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_int",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 35830,
-      "owned_by": null,
-      "section": "bss",
-      "size": 2,
-      "type_note": " [extern g8bf6 @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8]",
-      "untyped": false
-    },
-    "g8bf8": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_int",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 35832,
-      "owned_by": null,
-      "section": "bss",
-      "size": 2,
-      "type_note": " [extern g8bf8 @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8]",
       "untyped": false
     },
     "g8fc": {
@@ -3396,10 +3218,10 @@
       "alias_type_reports": [
         {
           "compatible": true,
-          "file": "src/STARTUP.C",
-          "line": 219,
-          "name": "ba22",
-          "type_text": "char ba22[3][16]"
+          "file": "src/RESOURCE.C",
+          "line": 53,
+          "name": "ga22",
+          "type_text": "char ga22[][16]"
         }
       ],
       "aliases": [
@@ -3414,7 +3236,7 @@
       "owned_by": null,
       "section": "data",
       "size": 48,
-      "type_note": " [extern ga22 @ src/RESOURCE.C:53: char ga22[][16]]",
+      "type_note": " [extern ba22 @ src/STARTUP.C:219: char ba22[3][16]]",
       "untyped": false
     },
     "ga52": {
@@ -4132,18 +3954,18 @@
       "type_note": "historical 'struct S' has no portable definition yet [extern gc0fe @ src/MENULIST.C:7: struct S *gc0fe]",
       "untyped": true
     },
-    "gc133": {
+    "gc132_tile": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char",
-      "component_id": null,
+      "c_type": "struct gc316_tile",
+      "component_id": "override:gc132_tile",
       "conflict": false,
       "definition_site": "generated",
-      "ds_offset": 49459,
+      "ds_offset": 49458,
       "owned_by": null,
       "section": "bss",
-      "size": 1,
-      "type_note": " [extern gc133 @ src/PUZZLE.C:14: char puzzle_held_piece, gc133, puzzle_solved_flag, puzzle_cursor_col, puzzle_cursor_row]",
+      "size": 2,
+      "type_note": "manual override (tools/portable/datagen_overrides.json)",
       "untyped": false
     },
     "gc136": {
@@ -4457,7 +4279,7 @@
     "gc5ce": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char *",
+      "c_type": "dos_char *[3]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -4465,7 +4287,7 @@
       "owned_by": null,
       "section": "bss",
       "size": 12,
-      "type_note": " [typed_reserves SOUND_RESOURCE_STATE_BSS: char far *[3]]",
+      "type_note": " [extern gc5ce @ src/HELPMENU.C:8: char * gc5ce[]]",
       "untyped": false
     },
     "gc5da": {
@@ -5354,6 +5176,20 @@
       "type_note": null,
       "untyped": false
     },
+    "menu_empty_record": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "struct dialog",
+      "component_id": "DATA_010FA5_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 5061,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
     "menu_list_enabled": {
       "alias_type_reports": [],
       "aliases": [
@@ -5674,22 +5510,6 @@
       "type_note": " [extern puzzle_grid @ include/GC316.H:13: struct gc316_tile puzzle_grid[4][6]]",
       "untyped": false
     },
-    "puzzle_held_piece": {
-      "alias_type_reports": [],
-      "aliases": [
-        "gc132"
-      ],
-      "c_type": "dos_char",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 49458,
-      "owned_by": null,
-      "section": "bss",
-      "size": 1,
-      "type_note": " [extern puzzle_held_piece @ src/PUZZLE.C:14: char puzzle_held_piece, gc133, puzzle_solved_flag, puzzle_cursor_col, puzzle_cursor_row]",
-      "untyped": false
-    },
     "puzzle_piece_total": {
       "alias_type_reports": [],
       "aliases": [
@@ -5782,7 +5602,7 @@
       "conflict": false,
       "definition_site": "subsystem-owned",
       "ds_offset": 16580,
-      "owned_by": "g40c4",
+      "owned_by": "rect_queue_write_ptr",
       "section": "bss",
       "size": 4,
       "type_note": " [extern rect_queue_write_ptr @ src/BOARD.C:568: char far *ui_gfx_blob, far *rect_queue_write_ptr]",
@@ -6386,20 +6206,6 @@
       "type_note": " [extern t2 @ src/INTRO.C:39: char far *t1, far *t2, far *t3, far *t4]",
       "untyped": false
     },
-    "t4": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char *",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 49138,
-      "owned_by": null,
-      "section": "bss",
-      "size": 4,
-      "type_note": " [extern t4 @ src/INTRO.C:39: char far *t1, far *t2, far *t3, far *t4]",
-      "untyped": false
-    },
     "tab_flag": {
       "alias_type_reports": [],
       "aliases": [],
@@ -6789,14 +6595,14 @@
         "g8bea",
         "w8bea"
       ],
-      "c_type": "dos_int[1]",
+      "c_type": "dos_int[5]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 35818,
       "owned_by": null,
       "section": "bss",
-      "size": 2,
+      "size": 10,
       "type_note": " [extern xa @ src/BOARD.C:33: int  xa[], ya[]]",
       "untyped": false
     },
@@ -6814,14 +6620,14 @@
         "g8bf4",
         "w8bf4"
       ],
-      "c_type": "dos_int[1]",
+      "c_type": "dos_int[5]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 35828,
       "owned_by": null,
       "section": "bss",
-      "size": 2,
+      "size": 10,
       "type_note": " [extern ya @ src/BOARD.C:33: int  xa[], ya[]]",
       "untyped": false
     }

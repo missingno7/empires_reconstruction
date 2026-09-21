@@ -9,13 +9,9 @@ dos_int g40ce;
 
 dos_char *objtab;
 
-dos_uchar actor_sprite_dims_table[672];
+dos_char actor_sprite_dims_table[672];
 
-dos_uchar b4374[1];
-
-dos_uchar b4375;
-
-dos_uchar b4376;
+dos_uchar b4374[3];
 
 dos_uchar b4377[3];
 
@@ -43,13 +39,7 @@ dos_char g6e88[162][1];
 
 dos_char a6f2a[4][226];
 
-dos_char *a72b2[40];
-
-dos_char *g7352;
-
-dos_char *g7356;
-
-dos_char *g735a;
+dos_char *a72b2[43];
 
 dos_char g735e[162][1];
 
@@ -63,17 +53,9 @@ uint8_t cel[3965];
 
 dos_char a893c[7][98];
 
-dos_int xa[1];
+dos_int xa[5];
 
-dos_int g8bec;
-
-dos_int g8bee;
-
-dos_int ya[1];
-
-dos_int g8bf6;
-
-dos_int g8bf8;
+dos_int ya[5];
 
 jmp_buf game_abort_jmpbuf;
 
@@ -117,9 +99,7 @@ dos_char *resource_ptr_table[84];
 
 dos_char gb1cc[482][1];
 
-dos_uchar actor_record_table[1];
-
-struct gb3af_entry actor_state_table[12];
+dos_uchar actor_record_table[385];
 
 dos_int gb52f[208];
 
@@ -145,9 +125,7 @@ dos_char *t1;
 
 dos_char *t2;
 
-dos_char *buf[1];
-
-dos_char *t4;
+dos_char *buf[22];
 
 dos_int gc046;
 
@@ -249,9 +227,7 @@ dos_int dialog_button2_label_cx;
 
 dos_int puzzle_piece_total;
 
-dos_char puzzle_held_piece;
-
-dos_char gc133;
+struct gc316_tile gc132_tile;
 
 dos_char puzzle_solved_flag;
 
@@ -319,7 +295,7 @@ dos_int gc5b2[4];
 
 dos_int player_select_index;
 
-dos_char *gc5ce;
+dos_char *gc5ce[3];
 
 dos_char *gc5da;
 

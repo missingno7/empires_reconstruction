@@ -18,19 +18,13 @@ extern dos_int g40ce;
 extern dos_char *objtab;
 #define g40d0 objtab
 
-/* actor_sprite_dims_table  DS:40D4  size 672 --  [typed_reserves RESOURCE25_WORKSPACE_BSS: unsigned char[672]] */
-extern dos_uchar actor_sprite_dims_table[672];
+/* actor_sprite_dims_table  DS:40D4  size 672 --  [extern actor_sprite_dims_table @ src/LEVEL.C:139: char actor_sprite_dims_table[]] */
+extern dos_char actor_sprite_dims_table[672];
 #define g40d4 actor_sprite_dims_table
 
-/* b4374  DS:4374  size 1 --  [extern g4374 @ src/GAME.C:440: unsigned char g4374[]] */
-extern dos_uchar b4374[1];
+/* b4374  DS:4374  size 3 --  [extern g4374 @ src/GAME.C:440: unsigned char g4374[]] */
+extern dos_uchar b4374[3];
 #define g4374 b4374
-
-/* b4375  DS:4375  size 1 --  [extern b4375 @ src/GAME.C:496: unsigned char b4374, b4375, b4376] */
-extern dos_uchar b4375;
-
-/* b4376  DS:4376  size 1 --  [extern b4376 @ src/GAME.C:496: unsigned char b4374, b4375, b4376] */
-extern dos_uchar b4376;
 
 /* b4377  DS:4377  size 3 --  [extern b4377 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]] */
 extern dos_uchar b4377[3];
@@ -73,17 +67,8 @@ extern dos_char g6e88[162][1];
 extern dos_char a6f2a[4][226];
 #define g6f2a a6f2a
 
-/* a72b2  DS:72B2  size 160 --  [extern a72b2 @ src/BOARD.C:420: char far *a72b2[]] */
-extern dos_char *a72b2[40];
-
-/* g7352  DS:7352  size 4 --  [extern g7352 @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank] */
-extern dos_char *g7352;
-
-/* g7356  DS:7356  size 4 --  [extern g7356 @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank] */
-extern dos_char *g7356;
-
-/* g735a  DS:735A  size 4 --  [extern g735a @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank] */
-extern dos_char *g735a;
+/* a72b2  DS:72B2  size 172 --  [extern a72b2 @ src/BOARD.C:420: char far *a72b2[]] */
+extern dos_char *a72b2[43];
 
 /* g735e  DS:735E  size 162 --  [extern g735e @ src/BOARD.C:11: char g9a5c[][1], g7400[][1], g735e[][1]] */
 extern dos_char g735e[162][1];
@@ -107,27 +92,15 @@ extern uint8_t cel[3965];
 extern dos_char a893c[7][98];
 #define g893c a893c
 
-/* xa  DS:8BEA  size 2 --  [extern xa @ src/BOARD.C:33: int  xa[], ya[]] */
-extern dos_int xa[1];
+/* xa  DS:8BEA  size 10 --  [extern xa @ src/BOARD.C:33: int  xa[], ya[]] */
+extern dos_int xa[5];
 #define g8bea xa
 #define w8bea xa
 
-/* g8bec  DS:8BEC  size 2 --  [extern g8bec @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8] */
-extern dos_int g8bec;
-
-/* g8bee  DS:8BEE  size 2 --  [extern g8bee @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8] */
-extern dos_int g8bee;
-
-/* ya  DS:8BF4  size 2 --  [extern ya @ src/BOARD.C:33: int  xa[], ya[]] */
-extern dos_int ya[1];
+/* ya  DS:8BF4  size 10 --  [extern ya @ src/BOARD.C:33: int  xa[], ya[]] */
+extern dos_int ya[5];
 #define g8bf4 ya
 #define w8bf4 ya
-
-/* g8bf6  DS:8BF6  size 2 --  [extern g8bf6 @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8] */
-extern dos_int g8bf6;
-
-/* g8bf8  DS:8BF8  size 2 --  [extern g8bf8 @ src/GAME.C:497: int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8] */
-extern dos_int g8bf8;
 
 /* game_abort_jmpbuf  DS:8BFE  size 20 (rule G: host jmp_buf, historical size was Turbo C's 20 bytes) */
 extern jmp_buf game_abort_jmpbuf;
@@ -204,14 +177,8 @@ extern dos_char *resource_ptr_table[84];
 /* gb1cc  DS:B1CC  size 482 --  [extern gb1cc @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
 extern dos_char gb1cc[482][1];
 
-/* actor_record_table  DS:B3AE  size 1 --  [extern actor_record_table @ src/LEVEL.C:31: unsigned char actor_record_table[]] */
-extern dos_uchar actor_record_table[1];
-#define g0b3ae actor_record_table
-#define gb3ae actor_record_table
-
-/* actor_state_table  DS:B3AF  size 384 --  [extern actor_state_table @ include/GB3AF.H:9: struct gb3af_entry near actor_state_table[]] */
-extern struct gb3af_entry actor_state_table[12];
-#define gb3af actor_state_table
+/* actor_record_table  DS:B3AE  size 385 -- manual override (tools/portable/datagen_overrides.json) */
+extern dos_uchar actor_record_table[385];
 
 /* gb52f  DS:B52F  size 416 --  [extern gb52f @ src/LEVEL.C:39: int near gb52f[]] */
 extern dos_int gb52f[208];
@@ -258,12 +225,9 @@ extern dos_char *t1;
 /* t2  DS:BFE6  size 4 --  [extern t2 @ src/INTRO.C:39: char far *t1, far *t2, far *t3, far *t4] */
 extern dos_char *t2;
 
-/* buf  DS:BFEE  size 4 --  [extern gbfee @ src/INTRO.C:29: char far *gbfee[]] */
-extern dos_char *buf[1];
+/* buf  DS:BFEE  size 88 --  [extern gbfee @ src/INTRO.C:29: char far *gbfee[]] */
+extern dos_char *buf[22];
 #define gbfee buf
-
-/* t4  DS:BFF2  size 4 --  [extern t4 @ src/INTRO.C:39: char far *t1, far *t2, far *t3, far *t4] */
-extern dos_char *t4;
 
 /* gc046  DS:C046  size 2 --  [extern gc046 @ src/HITTEST.C:23: int gc046, gc048, gc04a, gc04c] */
 extern dos_int gc046;
@@ -442,12 +406,8 @@ extern dos_int dialog_button2_label_cx;
 extern dos_int puzzle_piece_total;
 #define gc130 puzzle_piece_total
 
-/* puzzle_held_piece  DS:C132  size 1 --  [extern puzzle_held_piece @ src/PUZZLE.C:14: char puzzle_held_piece, gc133, puzzle_solved_flag, puzzle_cursor_col, puzzle_cursor_row] */
-extern dos_char puzzle_held_piece;
-#define gc132 puzzle_held_piece
-
-/* gc133  DS:C133  size 1 --  [extern gc133 @ src/PUZZLE.C:14: char puzzle_held_piece, gc133, puzzle_solved_flag, puzzle_cursor_col, puzzle_cursor_row] */
-extern dos_char gc133;
+/* gc132_tile  DS:C132  size 2 -- manual override (tools/portable/datagen_overrides.json) */
+extern struct gc316_tile gc132_tile;
 
 /* puzzle_solved_flag  DS:C134  size 1 --  [extern puzzle_solved_flag @ src/PUZZLE.C:14: char puzzle_held_piece, gc133, puzzle_solved_flag, puzzle_cursor_col, puzzle_cursor_row] */
 extern dos_char puzzle_solved_flag;
@@ -563,8 +523,8 @@ extern dos_int gc5b2[4];
 extern dos_int player_select_index;
 #define gc5ba player_select_index
 
-/* gc5ce  DS:C5CE  size 12 --  [typed_reserves SOUND_RESOURCE_STATE_BSS: char far *[3]] */
-extern dos_char *gc5ce;
+/* gc5ce  DS:C5CE  size 12 --  [extern gc5ce @ src/HELPMENU.C:8: char * gc5ce[]] */
+extern dos_char *gc5ce[3];
 
 /* gc5da  DS:C5DA  size 4 --  [extern gc5da @ src/PLRLDPUB.C:9: char far *gc5da] */
 extern dos_char *gc5da;
@@ -646,6 +606,21 @@ extern dos_uint gca6d[11];
 #define tab_bias gca6d
 
 /* Rule B: interior alias expressions (see docs/portable/state-map.md "Interior aliases") */
+#define b4375 (b4374[1])
+#define b4376 (b4374[2])
+#define g7352 (a72b2[40])
+#define g7356 (a72b2[41])
+#define g735a (a72b2[42])
+#define g8bec (xa[1])
+#define g8bee (xa[2])
+#define g8bf6 (ya[1])
+#define g8bf8 (ya[2])
+#define actor_state_table ((struct gb3af_entry *)(actor_record_table + 1))
+#define gb3af actor_state_table
+#define t4 (buf[1])
+#define puzzle_held_piece (gc132_tile.kind)
+#define gc133 (gc132_tile.rot)
+#define gc132 (gc132_tile.kind)
 #define gc563 (slot_table[9].text[0])
 
 #endif /* PORTABLE_GAME_STATE_H */

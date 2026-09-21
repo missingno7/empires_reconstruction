@@ -12,7 +12,9 @@
  *   3. game_state.h (BSS) then game_data.h (initialized DATA, which itself
  *      targets BSS state -- game_data.h already includes game_state.h, but
  *      spelling it out here keeps this header's own ordering obvious).
- *   4. The hand-written service headers (gfx/resource/timer/input/sound).
+ *   4. The hand-written service headers (gfx/resource/timer/input/sound),
+ *      plus startup.h (video_mode_select/video_set_text_mode/cmdline
+ *      wiring, supervisor-written per tu-porting-rules.md sec 5).
  *   5. cclib.h before <stdlib.h>/<string.h> at the bottom -- NOT a hazard
  *      in practice (cclib.h includes those two itself, before defining its
  *      `#define rand cc_rand`-style macros -- see cclib.h's own header
@@ -34,6 +36,7 @@
 #include "timer.h"
 #include "input.h"
 #include "sound.h"
+#include "startup.h"
 
 #include "cclib.h"
 #include "dosio.h"

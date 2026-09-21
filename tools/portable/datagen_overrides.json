@@ -1,0 +1,41 @@
+[
+  {
+    "name": "g22f0",
+    "offset": "0x22F0",
+    "length": 18,
+    "struct": {
+      "tag": "input",
+      "fields": [
+        ["title", "farptr"],
+        ["flag", "u8"],
+        ["records", "farptr"],
+        ["count", "i8"],
+        ["a", "i16"],
+        ["b", "i16"],
+        ["c", "i16"],
+        ["d", "i16"]
+      ]
+    }
+  },
+  {
+    "name": "actor_record_table",
+    "offset": "0xB3AE",
+    "length": 385,
+    "c_type": "dos_uchar[385]",
+    "aliases": {
+      "actor_state_table": "((struct gb3af_entry *)(actor_record_table + 1))",
+      "gb3af": "actor_state_table"
+    }
+  },
+  {
+    "name": "gc132_tile",
+    "offset": "0xC132",
+    "length": 2,
+    "c_type": "struct gc316_tile",
+    "aliases": {
+      "puzzle_held_piece": "(gc132_tile.kind)",
+      "gc133": "(gc132_tile.rot)",
+      "gc132": "(gc132_tile.kind)"
+    }
+  }
+]

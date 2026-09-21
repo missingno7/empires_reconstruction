@@ -4,6 +4,9 @@
 Run with:  python -m unittest tools.portable.test_datagen -v
        or:  python tools/portable/test_datagen.py
 """
+import os
+import re
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -230,6 +233,52 @@ class DatagenTests(unittest.TestCase):
             import shutil
             shutil.rmtree(out2, ignore_errors=True)
 
+    def test_generation_is_deterministic_across_processes(self):
+        # test_generation_is_deterministic above only proves determinism
+        # WITHIN one interpreter, where PYTHONHASHSEED is fixed for the
+        # whole process -- it can't catch output that depends on
+        # hash-randomized set iteration order, which varies between
+        # separate `python` invocations unless PYTHONHASHSEED is pinned.
+        # Run the generator in two real subprocesses with two different,
+        # explicit hash seeds and require byte-identical output; this is
+        # what actually matters for `python tools/portable/datagen.py`
+        # not producing spurious diffs on every regeneration.
+        script = (
+            "import sys; from pathlib import Path; "
+            "sys.path.insert(0, {tp!r}); import datagen as dg; "
+            "dg.generate(out_generated=Path({gen!r}), out_docs=Path({docs!r}), verbose=False)"
+        )
+        tools_portable = str(Path(dg.__file__).resolve().parent)
+        outs = []
+        for seed in ('1', '98765'):
+            out_dir = Path(tempfile.mkdtemp())
+            outs.append(out_dir)
+            gen_dir = out_dir / 'portable/generated'
+            docs_dir = out_dir / 'docs/portable'
+            env = dict(os.environ, PYTHONHASHSEED=seed)
+            code = script.format(tp=tools_portable, gen=str(gen_dir), docs=str(docs_dir))
+            result = subprocess.run([sys.executable, '-c', code], env=env,
+                                     capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0,
+                              f'generator subprocess (PYTHONHASHSEED={seed}) failed:\n'
+                              f'{result.stdout}\n{result.stderr}')
+        try:
+            gen1, gen2 = (o / 'portable/generated' for o in outs)
+            docs1, docs2 = (o / 'docs/portable' for o in outs)
+            for name in ('game_data.h', 'game_data.c', 'game_state.h', 'game_state.c',
+                         'symbols.json'):
+                self.assertEqual((gen1 / name).read_bytes(), (gen2 / name).read_bytes(),
+                                  f'{name} is not deterministic across separate processes '
+                                  '(PYTHONHASHSEED=1 vs PYTHONHASHSEED=98765): a `set()` in '
+                                  'the alias-name path is probably being iterated unsorted')
+            self.assertEqual((docs1 / 'state-map.md').read_bytes(),
+                              (docs2 / 'state-map.md').read_bytes(),
+                              'state-map.md is not deterministic across separate processes')
+        finally:
+            import shutil
+            for o in outs:
+                shutil.rmtree(o, ignore_errors=True)
+
     # -- supervisor rules A-H (derivation-warning resolutions) ------------
 
     def test_zero_remaining_derivation_warnings(self):
@@ -452,10 +501,14 @@ class DatagenTests(unittest.TestCase):
         # symbol lands on that record (else dialog_XXXX by DS offset), with
         # designated initializers and resolved pointer fields exactly like
         # gb2a. Neither component id survives as a #define (nothing points
-        # at either by its own id).
+        # at either by its own id). `menu_empty_record` (DS:13C5, source
+        # (vii): docs/current/interface-conflicts.json/SLOTMENU.C:185) is
+        # the historical name for what would otherwise be the one record
+        # with no name from any other source -- it replaces the DS-offset
+        # fallback entirely, so all 14 records now have a real name.
         by_primary = {s['primary']: s for s in self.aux['symbols']}
         named_records = ('dialog_player_name_entry', 'dialog_player_name_full',
-                         'dialog_slot_delete_confirm', 'dialog_quit_confirm',
+                         'dialog_slot_delete_confirm', 'menu_empty_record', 'dialog_quit_confirm',
                          'dialog_toggle_music', 'dialog_toggle_sound', 'dialog_toggle_option',
                          'dialog_select_quit_confirm', 'dialog_select_menu_confirm',
                          'dialog_slot_backup_list', 'dialog_slot_list',
@@ -465,9 +518,12 @@ class DatagenTests(unittest.TestCase):
             self.assertEqual(sym['c_type'], 'struct dialog', name)
             self.assertEqual(sym['size'], 20, name)
             self.assertIn(sym['component_id'], ('DATA_010FA5_RECORDS', 'DATA_011D90_RECORDS'), name)
-        # The DS-offset fallback name for the one record with no historical name.
-        self.assertTrue(any(s['primary'].startswith('dialog_') and s['c_type'] == 'struct dialog'
-                            and s['primary'] not in named_records for s in self.aux['symbols']))
+        # Exactly 14 ptrrec-dialog records total (6 + 8); none is left
+        # using the raw DS-offset `dialog_XXXX` fallback spelling any more.
+        ptrrec_records = [s for s in self.aux['symbols'] if s.get('emit_path') == 'ptrrec-dialog']
+        self.assertEqual(len(ptrrec_records), 14)
+        self.assertFalse(any(re.match(r'^dialog_[0-9A-F]{4}$', s['primary']) for s in ptrrec_records),
+                          [s['primary'] for s in ptrrec_records])
         header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
         self.assertNotIn('#define DATA_010FA5_RECORDS ', header)
         self.assertNotIn('#define DATA_011D90_RECORDS ', header)
@@ -525,6 +581,139 @@ class DatagenTests(unittest.TestCase):
             self.assertFalse(
                 any(e['name'] == name for e in self.aux['extra']['ceil_arrays']),
                 f'{name} should reshape exactly, not ceil-round')
+
+    # -- source (vii): docs/current/interface-conflicts.json --------------
+
+    def test_interface_conflicts_source_names_offsets_and_interior_fields(self):
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        # menu_empty_record (DS:13C5): the historical name for what would
+        # otherwise be the DS-offset `dialog_13C5` fallback.
+        rec = by_primary['menu_empty_record']
+        self.assertEqual(rec['offset'], 0x13C5)
+        self.assertEqual(rec['c_type'], 'struct dialog')
+        # g13b8 (DS:13B8) is an interior alias of dialog_slot_delete_confirm's
+        # own .text field (sub-offset 7), not a separate object.
+        self.assertNotIn('g13b8', by_primary)
+        ia = {x['name']: x for x in self.aux['extra']['interior_alias']}
+        self.assertEqual(ia['g13b8']['expr'], '(dialog_slot_delete_confirm.text)')
+
+    # -- datagen_overrides.json --------------------------------------------
+
+    def test_overrides_file_g22f0_struct_input_resolved_initializer(self):
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertIn('extern struct input g22f0;', header)
+        self.assertIn('#include "game_funcs.h"', header)
+        self.assertIn(
+            'struct input g22f0 = { .title = NULL, .flag = 0, '
+            '.records = (dos_char **)gc5ce, .count = 0, .a = 11, .b = 14, .c = 285, .d = 11 };',
+            source)
+
+    def test_overrides_file_actor_record_table_and_gc132_tile_aliases(self):
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        art = by_primary['actor_record_table']
+        self.assertEqual(art['offset'], 0xB3AE)
+        self.assertEqual(art['size'], 385)
+        tile = by_primary['gc132_tile']
+        self.assertEqual(tile['offset'], 0xC132)
+        self.assertEqual(tile['c_type'], 'struct gc316_tile')
+        header = (self.out_root / 'portable/generated/game_state.h').read_text('utf-8')
+        self.assertIn(
+            '#define actor_state_table ((struct gb3af_entry *)(actor_record_table + 1))', header)
+        self.assertIn('#define gb3af actor_state_table', header)
+        self.assertIn('#define puzzle_held_piece (gc132_tile.kind)', header)
+        self.assertIn('#define gc133 (gc132_tile.rot)', header)
+        self.assertNotIn('puzzle_held_piece[', header)
+
+    # -- weak names do not terminate spans ---------------------------------
+
+    def test_weak_names_do_not_terminate_undimensioned_arrays(self):
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        xa, ya = by_primary['xa'], by_primary['ya']
+        self.assertEqual((xa['c_type'], xa['dims']), ('dos_int[5]', [5]))
+        self.assertEqual((ya['c_type'], ya['dims']), ('dos_int[5]', [5]))
+        self.assertEqual(ya['offset'] - xa['offset'], 10)
+        ia = {x['name']: x for x in self.aux['extra']['interior_alias']}
+        self.assertEqual(ia['g8bec']['expr'], '(xa[1])')
+        self.assertEqual(ia['g8bee']['expr'], '(xa[2])')
+        self.assertEqual(ia['t4']['expr'], '(buf[1])')
+        # buf/gbfee: one real object at DS:BFEE, 22 far-pointer elements.
+        buf = by_primary['buf']
+        self.assertEqual(buf['offset'], 0xBFEE)
+        self.assertEqual(buf['dims'], [22])
+        self.assertNotIn('gbfee', by_primary)
+
+    # -- struct sizes (point 3) ---------------------------------------------
+
+    def test_struct_typed_bss_arrays_use_the_real_struct_not_uint8(self):
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        g0dcc = by_primary['g0dcc']
+        self.assertEqual(g0dcc['c_type'], 'struct g0dcc_entry[40]')
+        self.assertEqual(g0dcc['size'], 960)
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        self.assertIn('extern struct g0dcc_entry g0dcc[40];', header)
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertIn('struct g0dcc_entry g0dcc[40] = {', source)
+        self.assertNotIn('uint8_t g0dcc[', header)
+
+    # -- code-pointer tables (point 2) --------------------------------------
+
+    def test_code_pointer_table_resolves_to_ported_function_names(self):
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        g12a1 = by_primary['g12a1']
+        self.assertEqual(g12a1['offset'], 0x12A1)
+        self.assertEqual(g12a1['size'], 12)
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertIn('extern void (*g12a1[6])(void);', header)
+        for fn in ('roundend_draw_marker', 'marker_cell_draw_highlight', 'marker_cell_draw_plain',
+                   'score_panel_draw', 'f99a2', 'f9962'):
+            self.assertIn(f'(void (*)(void)){fn}', source)
+        self.assertIn('#include "game_funcs.h"', source)
+
+    # -- ported-C-owned DATA (point 5) --------------------------------------
+
+    def test_ported_c_owned_data_gets_extern_declarations(self):
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        self.assertIn('extern dos_int gb80;  /* defined in portable/game/prompts.c */', header)
+        self.assertIn(
+            'extern dos_int music_track_handle;  /* defined in portable/game/rescache.c */', header)
+        # Never a SECOND definition -- game_data.c must not define these
+        # (the ported .c file already does).
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertNotIn('dos_int gb80 =', source)
+
+    def test_ported_c_owned_declarations_do_not_need_a_known_offset(self):
+        # PROMPTS.C's own block: `dos_int gb80 = 4; dos_char energy_meter = 4;
+        # dos_int hud_prompt_kind = 0; dos_int gb85 = 0;` -- only gb80 has a
+        # DS offset from any of the 7 symbol sources (per
+        # portable/game/hud.c's own blocking comment, the other three have
+        # none at all), but the ported .c file is the owner regardless, so
+        # ALL FOUR must get an extern declaration.
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        for decl in ('extern dos_char energy_meter;  /* defined in portable/game/prompts.c */',
+                     'extern dos_int hud_prompt_kind;  /* defined in portable/game/prompts.c */',
+                     'extern dos_int gb85;  /* defined in portable/game/prompts.c */'):
+            self.assertIn(decl, header)
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        # These three genuinely have no generated symbol of their own.
+        for name in ('energy_meter', 'hud_prompt_kind', 'gb85'):
+            self.assertNotIn(name, by_primary)
+            self.assertNotIn(name, {a for s in self.aux['symbols'] for a in s['aliases']})
+        # The report records them with offset/component_id both None.
+        report_by_name = {e['name']: e for e in self.report['game_data']['ported_c_owned']}
+        for name in ('energy_meter', 'hud_prompt_kind', 'gb85'):
+            self.assertIsNone(report_by_name[name]['offset'], name)
+            self.assertIsNone(report_by_name[name]['component_id'], name)
+            self.assertEqual(report_by_name[name]['file'], 'portable/game/prompts.c', name)
+        # gb80 DOES have a known offset, and it's still reported.
+        self.assertEqual(report_by_name['gb80']['offset'], 0x0B80)
+
+    def test_ported_c_owned_report_marks_unknown_offsets_in_state_map(self):
+        state_map = (self.out_root / 'docs/portable/state-map.md').read_text('utf-8')
+        self.assertIn('`energy_meter` | (unknown) | (unknown) | `portable/game/prompts.c`',
+                      state_map)
+        self.assertIn('`gb80` | 0x0b80 |', state_map)
 
 
 if __name__ == '__main__':

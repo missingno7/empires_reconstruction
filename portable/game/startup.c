@@ -115,3 +115,13 @@ dos_int video_mode_select(void)
     /* PORT: farcoreleft() memory gate retired; display_mode stays as chosen. */
     return 1;
 }
+
+/* F_034F (src/VIDEO.C) -- historically `_AX=3; __int__(0x10);`, a BIOS
+ * INT 10h AX=0003h call switching the adapter back to 80x25 text mode
+ * before DOS exit.  PORT: no-op -- there is no BIOS text mode on the SDL3
+ * target (docs/portable/architecture.md's "SDL3 sits below" pipeline owns
+ * the window for the whole process lifetime), so this call has nothing
+ * portable to do. */
+void video_set_text_mode(void)
+{
+}

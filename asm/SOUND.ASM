@@ -33,8 +33,8 @@
 ;     macro-generated settling delay a hand assembler reaches for and a C
 ;     compiler's inline-asm expander does not produce.
 ;
-; See REPORT.md next to this file for the full former-source-to-proc table
-; and the extern symbols this module still reaches outside the cluster.
+; The former-source-to-proc table is recorded per proc below (each banner
+; names its former file); the state block is mapped in docs/current/sound-state.md.
 ;
 ; ----------------------------------------------------------------------------
 ; API summary for a future portable (e.g. SDL3) replacement

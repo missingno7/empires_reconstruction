@@ -10,8 +10,8 @@ assume cs:_TEXT, ds:DGROUP
 
 public _sound_ctlblock_command_dispatch
 extrn _sound_ctlblock_flags_latch:near
-extrn _stream_level_percent_scale:near
-extrn _stream_level_base_set:near
+extrn _stream_percent_scale_store:near
+extrn _stream_base_value_set:near
 extrn _stream_note_delay_set:near
 
 _sound_ctlblock_command_dispatch proc near
@@ -26,7 +26,7 @@ _sound_ctlblock_command_dispatch proc near
 check_two_or_less:
     cmp ah,2
     jg check_three
-    call _stream_level_percent_scale
+    call _stream_percent_scale_store
     jmp short done
     nop
 check_three:
@@ -38,7 +38,7 @@ check_three:
 check_four:
     cmp ah,4
     jne done
-    call _stream_level_base_set
+    call _stream_base_value_set
 done:
     pop bp
     ret

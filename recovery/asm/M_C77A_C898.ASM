@@ -4,8 +4,8 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-    extrn _snd_mode:word, _snd_hi:word, _snd_nvoices:word, _snd_paused:word
-    extrn _v_a:word, _v_b:word, _g1778:word, _g177a:word, _voice_disable:near
+    extrn _snd_mode:word, _snd_hi:word, _snd_nvoices:word, _snd_backend_mode:word
+    extrn _v_a:word, _v_b:word, _snd_backend_mode:word, _g177a:word, _voice_disable:near
     extrn _opl_port:word
 _BSS ends
 DGROUP group _DATA,_BSS
@@ -113,7 +113,7 @@ _sound_voices_reset proc near
     xor si,si
     mov cx,_snd_nvoices
     push cx
-    cmp word ptr _snd_paused,2
+    cmp word ptr _snd_backend_mode,2
     jnz short C834_reset_voice
     mov word ptr _snd_nvoices,4
 C834_reset_voice:
@@ -138,7 +138,7 @@ _sound_voices_disable_all proc near
     push si
     xor si,si
     mov cx,_g177a
-    cmp word ptr _g1778,2
+    cmp word ptr _snd_backend_mode,2
     jnz short C877_voice_count_ready
     mov cx,4
 C877_voice_count_ready:

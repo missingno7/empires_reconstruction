@@ -1,6 +1,7 @@
 /* src/TIMER.C: Timer: INT 8 install/restore, handler and tick helpers.
    One translation unit; the sections below were the separate member
    sources of grouped module C_6B7A_6C87 and keep their original ids. */
+#include "SOUND.H"
 
 /* ---- F_6B7A (original code at 0x6B7A) ---- */
 /* F_6B7A -- install the timer interrupt and program the PIT divisor. */
@@ -69,7 +70,7 @@ void timer_irq_restore()
    32-bit tick counter and services the sound engine unless a request is
    pending.  The bare PUSHF/POPF around the body is the one inline fragment:
    the historical object keeps the caller flags across the STI. */
-extern int near timer_tick_phase,sound_request_count,sound_enabled,music_enabled;
+extern int near timer_tick_phase,sound_request_count;
 extern unsigned long near timer_ticks;                    /* 32-bit tick counter */
 extern void sound_tick_entry(void);                            /* sound engine tick */
 void __sti__(void);

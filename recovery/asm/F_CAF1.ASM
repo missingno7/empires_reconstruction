@@ -4,8 +4,8 @@ assume cs:_TEXT, ds:DGROUP
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-extrn _sound_enabled:word, _g1760:word, _g1e8a:word, _g175e:word
-extrn _g1e88:word, _g1770:word, _g1e8e:word, _g1e92:word
+extrn _sound_enabled:word, _g1760:word, _g1e8a:word, _snd_base:word
+extrn _g1e88:word, _snd_on:word, _g1e8e:word, _stream_note_delay:word
 extrn _g1e86:word, _g1e90:word, _g1e94:word, _g1e8c:word
 _BSS ends
 DGROUP group _DATA, _BSS
@@ -26,13 +26,13 @@ _stream_control_block_arm:
  ja short done
  mov _g1e8a,di
  shl di,1
- add di,_g175e
+ add di,_snd_base
  mov ax,es:[di]
- add ax,_g175e
+ add ax,_snd_base
  mov _g1e88,ax
- mov _g1770,2
+ mov _snd_on,2
  mov _g1e8e,6
- mov _g1e92,1
+ mov _stream_note_delay,1
  xor ax,ax
  mov _g1e86,ax
  mov _g1e90,ax

@@ -12,9 +12,9 @@
         "bindings": {
           "_sound_voice_pump_loop": {"coordinate": "code_offset", "evidence": "F_C1F7 owned code entry"},
           "_sound_tick_step": {"coordinate": "code_offset", "evidence": "F_C8E2 owned code entry"},
-          "_snd_flag": {"offset": 6000, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
+          "_snd_on": {"offset": 6000, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
           "_snd_mode": {"offset": 6020, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
-          "_snd_paused": {"offset": 6008, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
+          "_snd_backend_mode": {"offset": 6008, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
           "_snd_seg2": {"offset": 5988, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"},
           "_v_b": {"offset": 6012, "coordinate": "DGROUP_offset", "evidence": "complete F_C1A0 fixup"}
         },

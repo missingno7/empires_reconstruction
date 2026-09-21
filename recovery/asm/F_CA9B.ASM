@@ -13,7 +13,7 @@ public _stream_note_program
 extrn _speaker_gate_off:near
 extrn _pit_channel2_set_divisor:near
 extrn _speaker_gate_on:near
-extrn _g1e92:word
+extrn _stream_note_delay:word
 extrn _g1e90:word
 
 _stream_note_program proc near
@@ -39,7 +39,7 @@ shift_note:
     call _pit_channel2_set_divisor
     call _speaker_gate_on
 store_current_value:
-    mov ax,ds:_g1e92
+    mov ax,ds:_stream_note_delay
     mov ds:_g1e90,ax
     pop bp
     ret

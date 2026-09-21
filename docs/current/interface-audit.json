@@ -1,17 +1,16 @@
 {
   "format": "empires-interface-audit-v1",
   "scope": "Review only; no production declaration edits or conflict suppression.",
-  "raw_conflicts": 12,
+  "raw_conflicts": 11,
   "active_c_sources": 68,
   "categories": {
-    "ACTIVE_TYPE_REVIEW": 7,
+    "ACTIVE_TYPE_REVIEW": 6,
     "COMPACT_MODEL_SPELLING": 2,
     "LOCAL_TAG_REUSE": 1,
     "RETURN_TYPE_REVIEW": 1,
     "VARIADIC_PROTOTYPE": 1
   },
   "open_categories": {
-    "ACTIVE_TYPE_REVIEW": 1,
     "COMPACT_MODEL_SPELLING": 1,
     "LOCAL_TAG_REUSE": 1
   },
@@ -170,7 +169,7 @@
         },
         {
           "file": "src/LEVEL.C",
-          "line": 142
+          "line": 166
         },
         {
           "file": "src/MENULIST.C",
@@ -251,7 +250,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
-          "line": 344
+          "line": 333
         },
         {
           "symbol": "str_concat_far_list",
@@ -291,7 +290,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/BOARD.C",
-          "line": 419
+          "line": 423
         },
         {
           "symbol": "a74a2",
@@ -302,7 +301,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/GAME.C",
-          "line": 404
+          "line": 407
         }
       ],
       "excluded_declarations": []
@@ -336,7 +335,7 @@
           "size": 1,
           "confidence": "MEDIUM",
           "file": "src/STARTUP.C",
-          "line": 58
+          "line": 60
         }
       ],
       "excluded_declarations": []
@@ -359,18 +358,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
-          "line": 34
-        },
-        {
-          "symbol": "gc0ee",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 45
+          "line": 25
         },
         {
           "symbol": "gc0ee",
@@ -385,25 +373,14 @@
         },
         {
           "symbol": "gc0ee",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
-          "line": 142
-        },
-        {
-          "symbol": "gc0ee",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 192
+          "line": 276
         },
         {
           "symbol": "gc0ee",
@@ -414,18 +391,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
-          "line": 278
-        },
-        {
-          "symbol": "gc0ee",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 285
+          "line": 283
         },
         {
           "symbol": "gc0ee",
@@ -476,57 +442,6 @@
       "excluded_declarations": []
     },
     {
-      "id": "GLOBAL_TYPE:int8_saved_vector",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "int8_saved_vector",
-          "type": "void interrupt ( * int8_saved_vector)(void)",
-          "array": null,
-          "pointer_shape": "function",
-          "code_model": "far",
-          "storage": null,
-          "interrupt": true,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 7
-        },
-        {
-          "symbol": "int8_saved_vector",
-          "type": "void interrupt ( * int8_saved_vector)(void)",
-          "array": null,
-          "pointer_shape": "function",
-          "code_model": "far",
-          "storage": null,
-          "interrupt": true,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 42
-        },
-        {
-          "symbol": "int8_saved_vector",
-          "type": "void interrupt ( * near int8_saved_vector)(void)",
-          "array": null,
-          "pointer_shape": "function",
-          "code_model": "far",
-          "storage": "near",
-          "interrupt": true,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 75
-        }
-      ],
-      "excluded_declarations": []
-    },
-    {
       "id": "GLOBAL_TYPE:resource_ptr_table",
       "kind": "GLOBAL_TYPE",
       "category": "COMPACT_MODEL_SPELLING",
@@ -544,18 +459,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
-          "line": 61
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 99
+          "line": 29
         },
         {
           "symbol": "resource_ptr_table",
@@ -566,7 +470,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
-          "line": 213
+          "line": 221
         },
         {
           "symbol": "resource_ptr_table",
@@ -632,19 +536,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/MRKCELL.C",
-          "line": 9
-        },
-        {
-          "symbol": "score_panel_x",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
           "file": "src/ROUNDEND.C",
-          "line": 9
+          "line": 10
         },
         {
           "symbol": "score_panel_x",
@@ -700,7 +593,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/BOARD.C",
-          "line": 567
+          "line": 570
         },
         {
           "symbol": "ui_gfx_blob",
@@ -711,18 +604,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "src/DIALOG.C",
-          "line": 331
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 344
+          "line": 33
         },
         {
           "symbol": "ui_gfx_blob",
@@ -733,7 +615,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/GAME.C",
-          "line": 44
+          "line": 41
         },
         {
           "symbol": "ui_gfx_blob",
@@ -744,40 +626,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
-          "line": 152
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 173
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 195
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 212
+          "line": 37
         },
         {
           "symbol": "ui_gfx_blob",
@@ -822,7 +671,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/OPLREG.C",
-          "line": 19
+          "line": 20
         },
         {
           "symbol": "voice_level_table",
@@ -863,7 +712,7 @@
         },
         {
           "file": "src/LEVEL.C",
-          "line": 142
+          "line": 166
         },
         {
           "file": "src/MENULIST.C",
@@ -878,57 +727,6 @@
           "line": 18
         }
       ]
-    },
-    {
-      "id": "GLOBAL_TYPE:int8_saved_vector",
-      "kind": "GLOBAL_TYPE",
-      "category": "ACTIVE_TYPE_REVIEW",
-      "note": "Syntactic finding; not a confirmed runtime bug.",
-      "active_fields": [
-        "type"
-      ],
-      "active_declarations": [
-        {
-          "symbol": "int8_saved_vector",
-          "type": "void interrupt ( * int8_saved_vector)(void)",
-          "array": null,
-          "pointer_shape": "function",
-          "code_model": "far",
-          "storage": null,
-          "interrupt": true,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 7
-        },
-        {
-          "symbol": "int8_saved_vector",
-          "type": "void interrupt ( * int8_saved_vector)(void)",
-          "array": null,
-          "pointer_shape": "function",
-          "code_model": "far",
-          "storage": null,
-          "interrupt": true,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 42
-        },
-        {
-          "symbol": "int8_saved_vector",
-          "type": "void interrupt ( * near int8_saved_vector)(void)",
-          "array": null,
-          "pointer_shape": "function",
-          "code_model": "far",
-          "storage": "near",
-          "interrupt": true,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/TIMER.C",
-          "line": 75
-        }
-      ],
-      "excluded_declarations": []
     },
     {
       "id": "GLOBAL_TYPE:resource_ptr_table",
@@ -948,18 +746,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
-          "line": 61
-        },
-        {
-          "symbol": "resource_ptr_table",
-          "type": "char *",
-          "array": "[]",
-          "pointer_shape": "far",
-          "storage": null,
-          "size": null,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 99
+          "line": 29
         },
         {
           "symbol": "resource_ptr_table",
@@ -970,7 +757,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
-          "line": 213
+          "line": 221
         },
         {
           "symbol": "resource_ptr_table",
@@ -1053,7 +840,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/SLOTMENU.C",
-          "line": 344
+          "line": 333
         },
         {
           "symbol": "str_concat_far_list",
@@ -1093,7 +880,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/BOARD.C",
-          "line": 419
+          "line": 423
         },
         {
           "symbol": "a74a2",
@@ -1104,7 +891,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/GAME.C",
-          "line": 404
+          "line": 407
         }
       ],
       "excluded_declarations": []
@@ -1138,7 +925,7 @@
           "size": 1,
           "confidence": "MEDIUM",
           "file": "src/STARTUP.C",
-          "line": 58
+          "line": 60
         }
       ],
       "excluded_declarations": []
@@ -1161,18 +948,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
-          "line": 34
-        },
-        {
-          "symbol": "gc0ee",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 45
+          "line": 25
         },
         {
           "symbol": "gc0ee",
@@ -1187,25 +963,14 @@
         },
         {
           "symbol": "gc0ee",
-          "type": "char *",
+          "type": "char far *",
           "array": null,
           "pointer_shape": "far",
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
-          "line": 142
-        },
-        {
-          "symbol": "gc0ee",
-          "type": "char *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 192
+          "line": 276
         },
         {
           "symbol": "gc0ee",
@@ -1216,18 +981,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/HUD.C",
-          "line": 278
-        },
-        {
-          "symbol": "gc0ee",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/HUD.C",
-          "line": 285
+          "line": 283
         },
         {
           "symbol": "gc0ee",
@@ -1327,19 +1081,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/MRKCELL.C",
-          "line": 9
-        },
-        {
-          "symbol": "score_panel_x",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
           "file": "src/ROUNDEND.C",
-          "line": 9
+          "line": 10
         },
         {
           "symbol": "score_panel_x",
@@ -1395,7 +1138,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/BOARD.C",
-          "line": 567
+          "line": 570
         },
         {
           "symbol": "ui_gfx_blob",
@@ -1406,18 +1149,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "src/DIALOG.C",
-          "line": 331
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/DIALOG.C",
-          "line": 344
+          "line": 33
         },
         {
           "symbol": "ui_gfx_blob",
@@ -1428,7 +1160,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/GAME.C",
-          "line": 44
+          "line": 41
         },
         {
           "symbol": "ui_gfx_blob",
@@ -1439,40 +1171,7 @@
           "size": 4,
           "confidence": "MEDIUM",
           "file": "src/LEVEL.C",
-          "line": 152
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 173
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 195
-        },
-        {
-          "symbol": "ui_gfx_blob",
-          "type": "char far *",
-          "array": null,
-          "pointer_shape": "far",
-          "storage": null,
-          "size": 4,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 212
+          "line": 37
         },
         {
           "symbol": "ui_gfx_blob",
@@ -1517,7 +1216,7 @@
           "size": null,
           "confidence": "MEDIUM",
           "file": "src/OPLREG.C",
-          "line": 19
+          "line": 20
         },
         {
           "symbol": "voice_level_table",

@@ -4,7 +4,7 @@
 
 void __int__(int);
 extern char far * far *_argv;
-extern int g1778;
+#include "SOUND.H"
 extern char display_mode;
 
 /* ---- F_4F63 (original code at 0x4F63) ---- */
@@ -38,12 +38,12 @@ void cmdline_parse_args(void)
     case 'T':case 't':display_mode=3;break;
     case 'M':case 'm':display_mode=4;break;
     case 'V':case 'v':display_mode=5;break;
-    case 'I':case 'i':g1778=0;break;
+    case 'I':case 'i':snd_backend_mode=0;break;
     case 'S':case 's':
      switch(_argv[i][2]) {
-      case 'I':case 'i':g1778=0;break;
-      case 'A':case 'a':g1778=2;break;
-      case 'T':case 't':g1778=1;break;
+      case 'I':case 'i':snd_backend_mode=0;break;
+      case 'A':case 'a':snd_backend_mode=2;break;
+      case 'T':case 't':snd_backend_mode=1;break;
      }
      break;
    }
@@ -169,14 +169,14 @@ l_fin:
 /* ---- F_53BF (original code at 0x53BF) ---- */
 sound_backend_probe()
 {
-    g1778 = 0;
+    snd_backend_mode = 0;
     asm cmp word ptr display_mode,3
     asm jne l_probe_mode
-    g1778 = 1;
+    snd_backend_mode = 1;
     goto l_selected;
 l_probe_mode:
     if (opl_detect() != 0) {
-        g1778 = 2;
+        snd_backend_mode = 2;
         goto l_selected;
     }
     _AH = 0xc0;
@@ -194,7 +194,7 @@ l_wait_vga_port:
     asm cmp al,0a5h
     asm jne l_selected
     asm loop l_wait_vga_port
-    g1778 = 3;
+    snd_backend_mode = 3;
 l_selected:
     ;
 }

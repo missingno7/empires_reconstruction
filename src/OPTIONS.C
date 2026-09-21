@@ -1,7 +1,7 @@
 /* Option/music/sound toggles and the two record listings. */
 #include "C470.H"
 #include "DIALOG.H"
-extern int sound_enabled,music_enabled;
+#include "SOUND.H"
 extern struct dialog near dialog_toggle_option,dialog_toggle_music,dialog_toggle_sound,dialog_slot_backup_list,dialog_slot_list;
 extern int dialog_line_height_get(), keyboard_read_blocking_hotkeys();extern void gfx_bar();extern void gfx_box();
 extern void music_resume_if_valid(void);

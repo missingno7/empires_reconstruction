@@ -10,12 +10,12 @@
         "span": 1,
         "flags_append": "",
         "bindings": {
-          "_dv": {"offset": 6028, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
+          "_voice_stream_cursor_table": {"offset": 6028, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
           "_sound_voice_table_prime": {"offset": 49714, "coordinate": "code_offset", "evidence": "F_C232 owned code entry"},
           "_sound_voice_service_loop": {"coordinate": "code_offset", "evidence": "F_C27D owned code entry"},
           "_snd_flag2": {"offset": 6006, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
           "_snd_mode": {"offset": 6020, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"},
-          "_sv": {"offset": 6036, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"}
+          "_voice_stream_base_table": {"offset": 6036, "coordinate": "DGROUP_offset", "evidence": "complete F_C1F7 fixup"}
         },
         "module_segments": {}
       },

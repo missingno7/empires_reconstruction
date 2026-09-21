@@ -1,7 +1,7 @@
 /* F_C834 -- reset the sound voices.  Register saves and SI addressing are
    byte-coded to preserve the hand-written module's order exactly. */
 extern void voice_disable();
-extern unsigned int snd_mode,snd_hi,snd_nvoices,snd_paused,v_a[],v_b[];
+extern unsigned int snd_mode,snd_hi,snd_nvoices,snd_backend_mode,v_a[],v_b[];
 
 void sound_voices_reset()
 {
@@ -12,7 +12,7 @@ void sound_voices_reset()
     asm db 0FFh,0FFh,033h,0F6h,08Bh,00Eh
     asm dw offset DGROUP:snd_nvoices
     asm db 051h,083h,03Eh
-    asm dw offset DGROUP:snd_paused
+    asm dw offset DGROUP:snd_backend_mode
     asm db 002h,075h,006h,0C7h,006h
     asm dw offset DGROUP:snd_nvoices
     asm db 004h,000h

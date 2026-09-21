@@ -5,11 +5,11 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-    extrn _g1e84:word, _g1e86:word, _g1e92:word
+    extrn _g1e84:word, _g1e86:word, _stream_note_delay:word
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
-public _sound_stream_delay_decode, _sound_ctlblock_command_dispatch, _sound_ctlblock_flags_latch, _stream_level_percent_scale, _stream_level_base_set, _stream_note_delay_set
+public _sound_stream_delay_decode, _sound_ctlblock_command_dispatch, _sound_ctlblock_flags_latch, _stream_percent_scale_store, _stream_base_value_set, _stream_note_delay_set
 
 _sound_stream_delay_decode:
     push bp
@@ -67,7 +67,7 @@ _sound_ctlblock_command_dispatch proc near
 check_two_or_less:
     cmp ah,2
     jg check_three
-    call _stream_level_percent_scale
+    call _stream_percent_scale_store
     jmp short done
     nop
 check_three:
@@ -79,7 +79,7 @@ check_three:
 check_four:
     cmp ah,4
     jne done
-    call _stream_level_base_set
+    call _stream_base_value_set
 done:
     pop bp
     ret
@@ -105,7 +105,7 @@ _sound_ctlblock_flags_latch endp
 
 
 
-_stream_level_percent_scale proc near
+_stream_percent_scale_store proc near
     push bp
     mov bp,sp
     mov bl,ah
@@ -132,11 +132,11 @@ store_zero:
     mov word ptr ds:_g1e86,0
     pop bp
     ret
-_stream_level_percent_scale endp
+_stream_percent_scale_store endp
 
 
 
-_stream_level_base_set proc near
+_stream_base_value_set proc near
     push bp
     mov bp,sp
     xor ah,ah
@@ -145,13 +145,13 @@ _stream_level_base_set proc near
     mov word ptr ds:_g1e84,ax
     pop bp
     ret
-_stream_level_base_set endp
+_stream_base_value_set endp
 
 _stream_note_delay_set proc near
     push bp
     mov bp,sp
     xor ah,ah
-    mov ds:_g1e92,ax
+    mov ds:_stream_note_delay,ax
     pop bp
     ret
 _stream_note_delay_set endp

@@ -3,13 +3,13 @@ _TEXT segment byte public 'CODE'
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-    extrn _v_a:word, _v_ctr:word, _snd_paused:word, _v_hold:word
+    extrn _v_a:word, _v_ctr:word, _snd_backend_mode:word, _v_hold:word
     extrn _v_len:word, _snd_nvoices:word, _g1788:word, _g178a:word
 _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 extrn _voice_disable:near, _sound_voices_reset_and_service:near
-public _sound_voice_service_loop, _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_level_percent_scale
+public _sound_voice_service_loop, _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_percent_scale_store
 
 command_cursor equ 178ch
 command_value equ 179ch
@@ -30,7 +30,7 @@ L1:	cmp	word ptr [si+_v_a],0
 	cmp	word ptr [si+_v_a],0
 	je	L3
 L2:	dec	word ptr [si+_v_ctr]
-	cmp	word ptr _snd_paused,1
+	cmp	word ptr _snd_backend_mode,1
 	je	L3
 	cmp	word ptr [si+_v_hold],1
 	je	L3
@@ -51,7 +51,7 @@ L3:	add	si,2
 	jne	L4
 	call	near ptr _sound_voices_reset_and_service
 	jmp	L5
-L4:	cmp	word ptr _snd_paused,1
+L4:	cmp	word ptr _snd_backend_mode,1
 	jne	L5
 	call	near ptr _sound_control_block_advance
 L5:	pop	bp
@@ -122,7 +122,7 @@ C2EA_done:
 ; emitted without OMF fixups by the original compiler, so the same-segment
 ; offsets are deliberately retained as symbolic relative expressions.
 
-snd_paused equ 1778h
+snd_backend_mode equ 1778h
 voice_table_a equ 17fch
 voice_table_b equ 1814h
 voice_state equ 177ch
@@ -130,9 +130,9 @@ voice_state equ 177ch
 _sound_control_value_select:
     push bp
     mov bp, sp
-    cmp word ptr ds:[snd_paused], 1
+    cmp word ptr ds:[snd_backend_mode], 1
     jz short C359_paused_mode
-    cmp word ptr ds:[snd_paused], 2
+    cmp word ptr ds:[snd_backend_mode], 2
     jz short C359_alternate_table
 
     mov cl, ah
@@ -412,7 +412,7 @@ C549_done:
 _sound_command_flags_update endp
 
 ; F_C567 -- signed scale-and-store for the sound-data state pair.
-_voice_level_percent_scale proc near
+_voice_percent_scale_store proc near
     push bp
     mov bp, sp
     mov bl, ah
@@ -440,7 +440,7 @@ C567_store_zero:
 C567_done:
     pop bp
     ret
-_voice_level_percent_scale endp
+_voice_percent_scale_store endp
 
 
 _TEXT ends

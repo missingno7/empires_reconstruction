@@ -9,7 +9,7 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 assume cs:_TEXT, ds:DGROUP
-public _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_level_percent_scale
+public _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_percent_scale_store
 
 ; F_C2EA -- dispatch the low nibble of the current ES:DI command byte.
 ; AL, AH, SI, ES and DI are caller-owned state.  The original compiler emitted
@@ -84,7 +84,7 @@ C2EA_done:
 ; emitted without OMF fixups by the original compiler, so the same-segment
 ; offsets are deliberately retained as symbolic relative expressions.
 
-snd_paused equ 1778h
+snd_backend_mode equ 1778h
 voice_table_a equ 17fch
 voice_table_b equ 1814h
 voice_state equ 177ch
@@ -92,9 +92,9 @@ voice_state equ 177ch
 _sound_control_value_select:
     push bp
     mov bp, sp
-    cmp word ptr ds:[snd_paused], 1
+    cmp word ptr ds:[snd_backend_mode], 1
     jz short C359_paused_mode
-    cmp word ptr ds:[snd_paused], 2
+    cmp word ptr ds:[snd_backend_mode], 2
     jz short C359_alternate_table
 
     mov cl, ah
@@ -374,7 +374,7 @@ C549_done:
 _sound_command_flags_update endp
 
 ; F_C567 -- signed scale-and-store for the sound-data state pair.
-_voice_level_percent_scale proc near
+_voice_percent_scale_store proc near
     push bp
     mov bp, sp
     mov bl, ah
@@ -402,7 +402,7 @@ C567_store_zero:
 C567_done:
     pop bp
     ret
-_voice_level_percent_scale endp
+_voice_percent_scale_store endp
 
 _TEXT ends
 end

@@ -10,10 +10,10 @@ _BSS	SEGMENT WORD PUBLIC 'BSS'
 	; /*@SYM _snd_mode=0x1784 kind=g key=storage_objects/G_P212B4.phys*/
 	EXTRN	_snd_flag2:WORD		; DS:1776
 	; /*@SYM _snd_flag2=0x1776 kind=g key=storage_objects/G_P212A6.phys*/
-	EXTRN	_sv:WORD		; DS:1794
-	; /*@SYM _sv=0x1794 kind=g key=storage_objects/G_P212C4.phys*/
-	EXTRN	_dv:WORD		; DS:178C
-	; /*@SYM _dv=0x178C kind=g key=storage_objects/G_P212BC.phys*/
+	EXTRN	_voice_stream_base_table:WORD		; DS:1794
+	; /*@SYM _voice_stream_base_table=0x1794 kind=g key=storage_objects/G_P212C4.phys*/
+	EXTRN	_voice_stream_cursor_table:WORD		; DS:178C
+	; /*@SYM _voice_stream_cursor_table=0x178C kind=g key=storage_objects/G_P212BC.phys*/
 _BSS	ENDS
 
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
@@ -33,14 +33,14 @@ L2:	call	near ptr _sound_voice_service_loop
 	mov	ax,word ptr _snd_flag2
 	cmp	ax,0
 	je	L3
-	mov	ax,word ptr _sv
-	mov	word ptr _dv,ax
-	mov	ax,word ptr _sv+2
-	mov	word ptr _dv+2,ax
-	mov	ax,word ptr _sv+4
-	mov	word ptr _dv+4,ax
-	mov	ax,word ptr _sv+6
-	mov	word ptr _dv+6,ax
+	mov	ax,word ptr _voice_stream_base_table
+	mov	word ptr _voice_stream_cursor_table,ax
+	mov	ax,word ptr _voice_stream_base_table+2
+	mov	word ptr _voice_stream_cursor_table+2,ax
+	mov	ax,word ptr _voice_stream_base_table+4
+	mov	word ptr _voice_stream_cursor_table+4,ax
+	mov	ax,word ptr _voice_stream_base_table+6
+	mov	word ptr _voice_stream_cursor_table+6,ax
 	jmp	L1
 L3:	pop	bp
 	ret

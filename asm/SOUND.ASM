@@ -43,19 +43,20 @@ _DATA   segment word public 'DATA'
 ; that `offset _notetab` immediates get a DGROUP-consistent frame (TLINK reports
 ; a fixup overflow for an offset immediate declared under _BSS).
     extrn _v_a:word, _v_b:word, _v_ctr:word, _v_hold:word, _v_len:word
-    extrn _snd_flag:word, _snd_flag2:word, _snd_mode:word, _snd_paused:word
+    extrn _snd_flag2:word, _snd_mode:word, _snd_backend_mode:word
     extrn _snd_seg2:word, _snd_nvoices:word, _snd_hi:word
-    extrn _sv:word, _dv:word
-    extrn _g1778:word, _g1784:word, _g1786:word, _g1788:word, _g178a:word
-    extrn _g178c:word, _g179c:word, _g177a:word
-    extrn _g17a4:word, _g17ac:word, _g17b4:word, _g17bc:word, _g17ec:word, _g17f4:word
-    extrn _opl_port:word, _g1830:word
+    extrn _voice_stream_base_table:word, _voice_stream_cursor_table:word
+    extrn _g1784:word, _g1786:word, _g1788:word, _g178a:word
+    extrn _g179c:word, _g177a:word
+    extrn _g17a4:word, _g17ac:word, _g17b4:word, _g17bc:word, _voice_rest_table:word, _g17f4:word
+    extrn _opl_port:word
     extrn _mus_ptr:word, _mus_arg:word, _mus_flag:word
     extrn _snd_delay:word, _snd_seg:word, _snd_on:word, _snd_len:word, _snd_one:word
     extrn _notetab:word
     extrn _sound_enabled:word
-    extrn _g175e:word, _g1e84:word, _g1e86:word, _g1e88:word
-    extrn _g1e8a:word, _g1e8c:word, _g1e92:word
+    extrn _music_enabled:word
+    extrn _snd_base:word, _snd_base2:word, _g1e84:word, _g1e86:word, _g1e88:word
+    extrn _g1e8a:word, _g1e8c:word, _stream_note_delay:word
 _DATA   ends
 _BSS    segment word public 'BSS'
 _BSS    ends
@@ -67,7 +68,7 @@ _TEXT   segment byte public 'CODE'
     extrn _opl_init:near                                          ; OPLINIT.C
     extrn _record_panel_rebuild:near                              ; RECTTAB.C
         public _sound_tick_entry, _sound_voice_pump_loop, _sound_voice_table_prime
-        public _sound_voice_service_loop, _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_level_percent_scale
+        public _sound_voice_service_loop, _sound_command_stream_dispatch, _sound_control_value_select, _sound_command_value_derive, _sound_control_block_advance, _sound_secondary_cmd_dispatch, _sound_command_flags_update, _voice_percent_scale_store
         public _sound_param_scale4
         public _f_c5a8, _sound_table_word_select_store, _f_c5c6
         public _voice_command_decode_apply, _voice_enable, _voice_disable, _sound_pit_divisor_program
@@ -77,7 +78,7 @@ _TEXT   segment byte public 'CODE'
         public _sound_tick_step
         public _sound_stream_command_step
         public _sound_note_dispatch
-        public _sound_stream_delay_decode, _sound_ctlblock_command_dispatch, _sound_ctlblock_flags_latch, _stream_level_percent_scale, _stream_level_base_set, _stream_note_delay_set
+        public _sound_stream_delay_decode, _sound_ctlblock_command_dispatch, _sound_ctlblock_flags_latch, _stream_percent_scale_store, _stream_base_value_set, _stream_note_delay_set
         public _stream_note_program
         public _speaker_gate_on
         public _speaker_gate_off
@@ -109,12 +110,12 @@ _sound_tick_entry	PROC	NEAR
 	mov	word ptr _v_b+2,ax
 	mov	word ptr _v_b+4,ax
 	mov	word ptr _v_b+6,ax
-	cmp	word ptr _snd_flag,0
+	cmp	word ptr _snd_on,0
 	je	tick_l2
 	call	near ptr _sound_tick_step
 	cmp	word ptr _snd_mode,0
 	je	tick_l3
-	cmp	word ptr _snd_paused,0
+	cmp	word ptr _snd_backend_mode,0
 	jne	tick_l1
 	mov	word ptr _v_b,1
 tick_l1:	mov	es,word ptr _snd_seg2
@@ -136,7 +137,7 @@ tick_l3:	pop	es
 _sound_tick_entry	ENDP
 
 ; F_C1F7 -- pump loop: rescan the voice table in mode 2, dispatch one
-; command batch, then optionally freeze the just-read state into _dv.
+; command batch, then optionally freeze the just-read state into _voice_stream_cursor_table.
 _sound_voice_pump_loop	PROC	NEAR
 	push	bp
 	mov	bp,sp
@@ -149,21 +150,21 @@ pump_l2:	call	near ptr _sound_voice_service_loop
 	mov	ax,word ptr _snd_flag2
 	cmp	ax,0
 	je	pump_l3
-	mov	ax,word ptr _sv
-	mov	word ptr _dv,ax
-	mov	ax,word ptr _sv+2
-	mov	word ptr _dv+2,ax
-	mov	ax,word ptr _sv+4
-	mov	word ptr _dv+4,ax
-	mov	ax,word ptr _sv+6
-	mov	word ptr _dv+6,ax
+	mov	ax,word ptr _voice_stream_base_table
+	mov	word ptr _voice_stream_cursor_table,ax
+	mov	ax,word ptr _voice_stream_base_table+2
+	mov	word ptr _voice_stream_cursor_table+2,ax
+	mov	ax,word ptr _voice_stream_base_table+4
+	mov	word ptr _voice_stream_cursor_table+4,ax
+	mov	ax,word ptr _voice_stream_base_table+6
+	mov	word ptr _voice_stream_cursor_table+6,ax
 	jmp	pump_l1
 pump_l3:	pop	bp
 	ret
 _sound_voice_pump_loop	ENDP
 
 ; F_C232 -- voice-table scanner: (re)prime every configured voice's
-; SI-relative control slots from the ES:[si+_g178c] entry table.
+; SI-relative control slots from the ES:[si+_voice_stream_cursor_table] entry table.
 _sound_voice_table_prime proc near
     push bp
     mov bp,sp
@@ -176,14 +177,14 @@ _sound_voice_table_prime proc near
     xor si,si
 scan_entry:
     mov ds:[si+_g17ac],ax
-    mov di,ds:[si+_g178c]
+    mov di,ds:[si+_voice_stream_cursor_table]
     cmp byte ptr es:[di],0ffh
     je next_entry
     mov ds:[si+_g17ac],bx
     mov ds:[si+_g179c],ax
     mov word ptr ds:[si+_g17a4],1
     mov ds:[si+_g17b4],ax
-    mov ds:[si+_g17ec],ax
+    mov ds:[si+_voice_rest_table],ax
     mov ds:[si+_g17f4],ax
     mov ds:[si+_g17bc],dx
 next_entry:
@@ -198,12 +199,14 @@ _sound_voice_table_prime endp
 ; and control helpers.
 ; ============================================================================
 
-command_cursor equ 178ch
-command_value equ 179ch
-command_guard equ 17ech
-command_state equ 17ach
-command_index equ 17f4h
-command_mode equ 17e4h
+; command_cursor, command_value, command_guard, command_state and command_index
+; each duplicated an existing DGROUP extern (_voice_stream_cursor_table, _v_ctr,
+; _voice_rest_table, _v_a and _g17f4 respectively); retired in favor of the
+; extern name used directly below.
+; voice_pending_table is the sole surviving name for DS:17E4 -- no data symbol
+; was ever declared for it (state_mode/command_mode were two equates for the
+; same unbound address); kept as a plain equate, not an extern.
+voice_pending_table equ 17e4h
 
 ; F_C27D -- per-voice service loop: advance each voice's counter, retrigger
 ; command dispatch and the voice-off entry as their timers expire, and
@@ -220,7 +223,7 @@ L1:	cmp	word ptr [si+_v_a],0
 	cmp	word ptr [si+_v_a],0
 	je	L3
 L2:	dec	word ptr [si+_v_ctr]
-	cmp	word ptr _snd_paused,1
+	cmp	word ptr _snd_backend_mode,1
 	je	L3
 	cmp	word ptr [si+_v_hold],1
 	je	L3
@@ -241,14 +244,14 @@ L3:	add	si,2
 	jne	L4
 	call	near ptr _sound_voices_reset_and_service
 	jmp	L5
-L4:	cmp	word ptr _snd_paused,1
+L4:	cmp	word ptr _snd_backend_mode,1
 	jne	L5
 	call	near ptr _sound_control_block_advance
 L5:	pop	bp
 	ret
 _sound_voice_service_loop	ENDP
 
-; F_C2EA -- command-stream dispatcher: split the byte at [si+command_cursor]
+; F_C2EA -- command-stream dispatcher: split the byte at [si+_voice_stream_cursor_table]
 ; into a low-nibble opcode and act on it (0/D/E/F get dedicated handlers,
 ; anything else falls through to F_C359 + F_C3DB), then loop while more
 ; command bytes remain.
@@ -256,7 +259,7 @@ _sound_command_stream_dispatch:
     push bp
     mov bp, sp
 C2EA_dispatch:
-    mov di, [si+command_cursor]
+    mov di, [si+_voice_stream_cursor_table]
     mov al, es:[di]
     mov ah, al
     shr ah, 1
@@ -274,20 +277,20 @@ C2EA_dispatch:
     jz short C2EA_command_f
     call _sound_control_value_select
     call _sound_command_value_derive
-    mov word ptr [si+command_guard], 0
+    mov word ptr [si+_voice_rest_table], 0
     jmp short C2EA_advance
     nop
 
 C2EA_command_zero:
     call _voice_disable
     call _sound_command_value_derive
-    mov word ptr [si+command_guard], 1
+    mov word ptr [si+_voice_rest_table], 1
     jmp short C2EA_advance
     nop
 
 C2EA_command_d:
     call _sound_secondary_cmd_dispatch
-    cmp word ptr [si+command_value], 0
+    cmp word ptr [si+_v_ctr], 0
     jmp short C2EA_advance
     nop
 
@@ -297,14 +300,14 @@ C2EA_command_e:
     nop
 
 C2EA_command_f:
-    mov word ptr [si+command_state], 0
+    mov word ptr [si+_v_a], 0
     call _voice_disable
     jmp short C2EA_done
     nop
 
 C2EA_advance:
-    add word ptr [si+command_cursor], 2
-    cmp word ptr [si+command_value], 0
+    add word ptr [si+_voice_stream_cursor_table], 2
+    cmp word ptr [si+_v_ctr], 0
     jz short C2EA_dispatch
 C2EA_done:
     pop bp
@@ -324,9 +327,9 @@ voice_table_b equ 1814h            ; DS:1814, second note/frequency table
 _sound_control_value_select:
     push bp
     mov bp, sp
-    cmp word ptr ds:_g1778, 1
+    cmp word ptr ds:_snd_backend_mode, 1
     jz short C359_paused_mode
-    cmp word ptr ds:_g1778, 2
+    cmp word ptr ds:_snd_backend_mode, 2
     jz short C359_alternate_table
 
     mov cl, ah
@@ -398,8 +401,6 @@ C359_done:
 ; Both _g1788 and _g178a are word memory operands.  TASM 1.0 discards the
 ; memory type of an EQU in these contexts, so retain typed absolute
 ; operands.
-command_index equ 17f4h
-command_mode equ 17e4h
 
 _sound_command_value_derive:
     push bp
@@ -424,24 +425,24 @@ C3DB_decode_flags:
 C3DB_test_index_flag:
     test ah, 10h
     jz short C3DB_increment_index
-    cmp word ptr [si+command_index], 3
+    cmp word ptr [si+_g17f4], 3
     jz short C3DB_store_value
-    cmp word ptr [si+command_index], 1
+    cmp word ptr [si+_g17f4], 1
     jz short C3DB_force_index_three
-    inc word ptr [si+command_index]
+    inc word ptr [si+_g17f4]
     jmp short C3DB_store_value
     nop
 C3DB_force_index_three:
-    mov word ptr [si+command_index], 3
+    mov word ptr [si+_g17f4], 3
     jmp short C3DB_store_value
     nop
 C3DB_increment_index:
-    cmp word ptr [si+command_index], 0
+    cmp word ptr [si+_g17f4], 0
     jz short C3DB_store_value
-    inc word ptr [si+command_index]
+    inc word ptr [si+_g17f4]
 C3DB_store_value:
-    mov [si+command_value], bx
-    mov word ptr [si+command_mode], 1
+    mov [si+_v_ctr], bx
+    mov word ptr [si+voice_pending_table], 1
     pop bp
     ret
 
@@ -450,17 +451,16 @@ C3DB_store_value:
 ; same-segment relative expression to preserve that historical object
 ; topology.
 
+; state_ready, state_mode, state_index, state_guard, state_allow, state_limit
+; and state_value each duplicated an existing DGROUP extern (_v_a,
+; voice_pending_table, _g17f4, _voice_rest_table, _v_hold, _v_len and _v_ctr
+; respectively); retired in favor of the extern/equate name used directly
+; below.  state_active, state_cursor_mode, state_cursor, state_cursor_next and
+; state_text have no corresponding extern and stay as equates.
 state_active equ 177ch
-state_ready equ 17ach
-state_mode equ 17e4h
-state_index equ 17f4h
 state_cursor_mode equ 17d4h
 state_cursor equ 17c4h
 state_cursor_next equ 17cch
-state_guard equ 17ech
-state_allow equ 17b4h
-state_limit equ 17bch
-state_value equ 179ch
 state_text equ 17dch
 
 _sound_control_block_advance:
@@ -473,18 +473,18 @@ C440_slot_loop:
     jz short C440_slot_ready
     jmp C440_slot_done
 C440_slot_ready:
-    cmp word ptr [si+state_ready], 0
+    cmp word ptr [si+_v_a], 0
     jnz short C440_slot_mode
     jmp C440_slot_done
 C440_slot_mode:
-    cmp word ptr [si+state_mode], 1
+    cmp word ptr [si+voice_pending_table], 1
     jnz short C440_alternate_mode
-    mov word ptr [si+state_mode], 0
-    cmp word ptr [si+state_index], 2
+    mov word ptr [si+voice_pending_table], 0
+    cmp word ptr [si+_g17f4], 2
     jl short C440_reset_cursor
-    cmp word ptr [si+state_index], 3
+    cmp word ptr [si+_g17f4], 3
     jz short C440_select_char
-    mov word ptr [si+state_index], 0
+    mov word ptr [si+_g17f4], 0
     jmp short C440_select_char
     nop
 C440_reset_cursor:
@@ -494,20 +494,20 @@ C440_reset_cursor:
     jmp short C440_select_char
     nop
 C440_alternate_mode:
-    cmp word ptr [si+state_guard], 1
+    cmp word ptr [si+_voice_rest_table], 1
     jnz short C440_alternate_index
     mov al, 0fh
     jmp short C440_render
     nop
 C440_alternate_index:
-    cmp word ptr [si+state_index], 1
+    cmp word ptr [si+_g17f4], 1
     jz short C440_select_char
-    cmp word ptr [si+state_index], 3
+    cmp word ptr [si+_g17f4], 3
     jz short C440_select_char
-    cmp word ptr [si+state_allow], 1
+    cmp word ptr [si+_v_hold], 1
     jz short C440_select_char
-    mov cx, [si+state_limit]
-    cmp [si+state_value], cx
+    mov cx, [si+_v_len]
+    cmp [si+_v_ctr], cx
     jng short C440_render_blank
 C440_select_char:
     cmp word ptr [si+state_cursor_mode], 0
@@ -559,7 +559,7 @@ _sound_secondary_cmd_dispatch:
 C501_test_two:
  cmp ah,2
  jg short C501_test_three
- call _voice_level_percent_scale
+ call _voice_percent_scale_store
  jmp short C501_done
  nop
 C501_test_three:
@@ -608,7 +608,7 @@ C549_done:
 _sound_command_flags_update endp
 
 ; F_C567 -- signed scale-and-store for the sound-data state pair.
-_voice_level_percent_scale proc near
+_voice_percent_scale_store proc near
     push bp
     mov bp, sp
     mov bl, ah
@@ -636,7 +636,7 @@ C567_store_zero:
 C567_done:
     pop bp
     ret
-_voice_level_percent_scale endp
+_voice_percent_scale_store endp
 
 ; ============================================================================
 ; former src/SNDSCL4.C -- F_C59A.  TC frame with a hand-written body, the
@@ -705,6 +705,11 @@ _f_c5c6 endp
 ; expressions.
 ; ============================================================================
 
+; voice_retune_base_table -- per-voice queued PIT-divisor/tone value awaiting
+; delivery to the 9-voice OPL bank; no data symbol exists at DS:1766, so this
+; stays a plain equate rather than an extern.
+voice_retune_base_table equ 1766h
+
 ; F_C5D1 -- decode one command byte and update the selected SI-relative
 ; voice-control slot.
 _voice_command_decode_apply proc near
@@ -715,18 +720,18 @@ _voice_command_decode_apply proc near
     cmp dx,0
     jnz short C5D1_have_value
     call _voice_disable
-    mov word ptr [si+_g17ec],1
+    mov word ptr [si+_voice_rest_table],1
     jmp C5D1_store_result
 C5D1_have_value:
-    cmp word ptr ds:_g1778,1
+    cmp word ptr ds:_snd_backend_mode,1
     jz short C5D1_mode_one
-    cmp word ptr ds:_g1778,2
+    cmp word ptr ds:_snd_backend_mode,2
     jz short C5D1_mode_two
     mov cl,7
     shl dx,cl
     neg dx
     mov cl,ah
-    mov bx,word ptr ds:_g1778
+    mov bx,word ptr ds:_snd_backend_mode
     shl bx,1
     mov bx,[bx+182ch]                      ; DS:182C, unnamed word table
     mov ax,[bx]
@@ -775,7 +780,7 @@ C5D1_frequency_ready:
     mov ax,dx
     call _sound_pit_divisor_program
     mov word ptr [si+17e4h],1              ; DS:17E4
-    mov word ptr [si+_g17ec],0
+    mov word ptr [si+_voice_rest_table],0
 C5D1_store_result:
     mov ax,[si+_g17a4]
     mov [si+_g179c],ax
@@ -790,9 +795,9 @@ _voice_enable proc near
     mov bp,sp
     cmp word ptr [si+_v_b],0
     jnz short C678_done
-    cmp word ptr ds:_g1778,1
+    cmp word ptr ds:_snd_backend_mode,1
     jz short C678_open_alt_gate
-    cmp word ptr ds:_g1778,2
+    cmp word ptr ds:_snd_backend_mode,2
     jz short C678_queue_value
     in al,61h
     or al,3
@@ -803,7 +808,7 @@ C678_queue_value:
     push si
     push di
     push es
-    mov ax,[si+1766h]                      ; DS:1766, per-voice queue slot
+    mov ax,[si+voice_retune_base_table]
     push ax
     mov ax,si
     shr ax,1
@@ -831,9 +836,9 @@ _voice_disable proc near
     mov bp,sp
     cmp word ptr [si+_v_b],0
     jnz short C6B9_done
-    cmp word ptr ds:_g1778,1
+    cmp word ptr ds:_snd_backend_mode,1
     jz short C6B9_queue_reset
-    cmp word ptr ds:_g1778,2
+    cmp word ptr ds:_snd_backend_mode,2
     jz short C6B9_queue_stop
     in al,61h
     and al,0fch
@@ -879,9 +884,9 @@ _sound_pit_divisor_program proc near
     mov bp,sp
     cmp word ptr [si+_v_b],0
     jnz short C706_done
-    cmp word ptr ds:_g1778,1
+    cmp word ptr ds:_snd_backend_mode,1
     jz short C706_emit_nibbles
-    cmp word ptr ds:_g1778,2
+    cmp word ptr ds:_snd_backend_mode,2
     jz short C706_store_queued
     out 42h,al
     mov al,ah
@@ -889,7 +894,7 @@ _sound_pit_divisor_program proc near
     jmp short C706_done
     nop
 C706_store_queued:
-    mov [si+1766h],ax                      ; DS:1766, per-voice queue slot
+    mov [si+voice_retune_base_table],ax
     jmp short C706_done
     nop
 C706_emit_nibbles:
@@ -949,7 +954,7 @@ _sound_backend_select_init proc near
     push bp
     mov bp,sp
     push ax
-    mov ax,word ptr ds:_g1778
+    mov ax,word ptr ds:_snd_backend_mode
     cmp ax,1
     jz short C77A_mode_one
     cmp ax,2
@@ -967,7 +972,7 @@ C77A_mode_two:
 C77A_mode_three:
     mov word ptr ds:_opl_port,205h
     mov word ptr ds:_g177a,4
-    mov word ptr ds:_g1778,1
+    mov word ptr ds:_snd_backend_mode,1
     jmp short C77A_done
 C77A_mode_one:
     mov word ptr ds:_opl_port,0c0h
@@ -992,9 +997,9 @@ _sound_voice_table_reload proc near
     mov es,word ptr ds:_snd_seg2
     mov di,[bp+4]
     mov word ptr ds:_g1786,di
-    cmp word ptr ds:[1772h],0               ; DS:1772
+    cmp word ptr ds:_music_enabled,0
     jz short C7CB_done
-    cmp word ptr ds:_g1778,2
+    cmp word ptr ds:_snd_backend_mode,2
     jnz short C7CB_select_width
     push es
     push di
@@ -1004,19 +1009,18 @@ _sound_voice_table_reload proc near
     mov word ptr ds:_g177a,4
 C7CB_select_width:
     mov cl,1
-    cmp word ptr ds:_g1778,0
+    cmp word ptr ds:_snd_backend_mode,0
     jz short C7CB_width_ready
     mov cl,3
 C7CB_width_ready:
     shl di,cl
     xor si,si
     mov cx,word ptr ds:_g177a
-    add di,word ptr ds:[1762h]              ; DS:1762 (documented as g1762 in PLRLDPUB.C,
-                                             ; but not independently bound here)
+    add di,word ptr ds:_snd_base2
 C7CB_copy_voice:
     mov ax,es:[di]
-    add ax,word ptr ds:[1762h]              ; DS:1762
-    mov [si+_g178c],ax
+    add ax,word ptr ds:_snd_base2
+    mov [si+_voice_stream_cursor_table],ax
     mov [si+1794h],ax                      ; DS:1794, F_C7CB's second array
     add di,2
     add si,2
@@ -1045,7 +1049,7 @@ _sound_voices_reset proc near
     xor si,si
     mov cx,_snd_nvoices
     push cx
-    cmp word ptr _snd_paused,2
+    cmp word ptr _snd_backend_mode,2
     jnz short C834_reset_voice
     mov word ptr _snd_nvoices,4
 C834_reset_voice:
@@ -1070,7 +1074,7 @@ _sound_voices_disable_all proc near
     push si
     xor si,si
     mov cx,_g177a
-    cmp word ptr _g1778,2
+    cmp word ptr _snd_backend_mode,2
     jnz short C877_voice_count_ready
     mov cx,4
 C877_voice_count_ready:
@@ -1110,7 +1114,7 @@ _opl_register_write endp
 
 ; ============================================================================
 ; former src/F_C8D4.ASM -- write the live AL value to the I/O port
-; selected by the DS global _g1830 (the same OPL port as _opl_port above,
+; selected by the DS global _opl_port (the same OPL port as _opl_port above,
 ; under this contribution's original alias).
 ; ============================================================================
 
@@ -1118,7 +1122,7 @@ _opl_port_write_byte proc near
     push bp
     mov bp,sp
     push dx
-    mov dx,word ptr ds:_g1830
+    mov dx,word ptr ds:_opl_port
     out dx,al
     jmp short $+2
     pop dx
@@ -1309,7 +1313,7 @@ _sound_ctlblock_command_dispatch proc near
 check_two_or_less:
     cmp ah,2
     jg check_three
-    call _stream_level_percent_scale
+    call _stream_percent_scale_store
     jmp short CA03_done
     nop
 check_three:
@@ -1321,7 +1325,7 @@ check_three:
 check_four:
     cmp ah,4
     jne CA03_done
-    call _stream_level_base_set
+    call _stream_base_value_set
 CA03_done:
     pop bp
     ret
@@ -1346,7 +1350,7 @@ _sound_ctlblock_flags_latch endp
 
 ; F_CA51 -- signed percentage scale-and-store, the 1E84/1E86 twin of
 ; F_C567.
-_stream_level_percent_scale proc near
+_stream_percent_scale_store proc near
     push bp
     mov bp,sp
     mov bl,ah
@@ -1373,10 +1377,10 @@ store_zero:
     mov word ptr ds:_g1e86,0
     pop bp
     ret
-_stream_level_percent_scale endp
+_stream_percent_scale_store endp
 
 ; F_CA83 -- scale a raw 0..63 value by 4 and store it through _g1e84.
-_stream_level_base_set proc near
+_stream_base_value_set proc near
     push bp
     mov bp,sp
     xor ah,ah
@@ -1385,14 +1389,14 @@ _stream_level_base_set proc near
     mov word ptr ds:_g1e84,ax
     pop bp
     ret
-_stream_level_base_set endp
+_stream_base_value_set endp
 
-; F_CA91 -- store AL (zero-extended) through _g1e92.
+; F_CA91 -- store AL (zero-extended) through _stream_note_delay.
 _stream_note_delay_set proc near
     push bp
     mov bp,sp
     xor ah,ah
-    mov ds:_g1e92,ax
+    mov ds:_stream_note_delay,ax
     pop bp
     ret
 _stream_note_delay_set endp
@@ -1403,7 +1407,7 @@ _stream_note_delay_set endp
 ; ============================================================================
 
 ; F_CA9B -- look up a divisor in _notetab for a shifted note delta, program
-; the PIT and speaker gate, then copy _g1e92 into _snd_delay.
+; the PIT and speaker gate, then copy _stream_note_delay into _snd_delay.
 _stream_note_program proc near
     push bp
     mov bp,sp
@@ -1427,7 +1431,7 @@ shift_note:
     call _pit_channel2_set_divisor
     call _speaker_gate_on
 store_current_value:
-    mov ax,ds:_g1e92
+    mov ax,ds:_stream_note_delay
     mov ds:_snd_delay,ax
     pop bp
     ret
@@ -1488,7 +1492,7 @@ _pit_channel2_set_divisor endp
 ; ============================================================================
 
 ; F_CAF1 -- when enabled and the caller's index is new, latch it, look up
-; its far-pointer entry via _g175e, and reset the 1E84..1E94 control
+; its far-pointer entry via _snd_base, and reset the 1E84..1E94 control
 ; block for that entry.
 _stream_control_block_arm:
  push bp
@@ -1506,13 +1510,13 @@ _stream_control_block_arm:
  ja short CAF1_done
  mov _g1e8a,di
  shl di,1
- add di,_g175e
+ add di,_snd_base
  mov ax,es:[di]
- add ax,_g175e
+ add ax,_snd_base
  mov _g1e88,ax
  mov _snd_on,2
  mov _snd_len,6
- mov _g1e92,1
+ mov _stream_note_delay,1
  xor ax,ax
  mov _g1e86,ax
  mov _snd_delay,ax

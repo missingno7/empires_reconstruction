@@ -9,8 +9,8 @@ _BSS	SEGMENT WORD PUBLIC 'BSS'
 	; /*@SYM _v_a=0x17AC kind=g key=storage_objects/G_P212DC.phys*/
 	EXTRN	_v_ctr:WORD		; DS:179C
 	; /*@SYM _v_ctr=0x179C kind=g key=storage_objects/G_P212CC.phys*/
-	EXTRN	_snd_paused:WORD	; DS:1778
-	; /*@SYM _snd_paused=0x1778 kind=g key=storage_objects/G_P212A8.phys*/
+	EXTRN	_snd_backend_mode:WORD	; DS:1778
+	; /*@SYM _snd_backend_mode=0x1778 kind=g key=storage_objects/G_P212A8.phys*/
 	EXTRN	_v_hold:WORD		; DS:17B4
 	; /*@SYM _v_hold=0x17B4 kind=g key=storage_objects/G_P212E4.phys*/
 	EXTRN	_v_len:WORD		; DS:17BC
@@ -38,7 +38,7 @@ L1:	cmp	word ptr [si+_v_a],0
 	cmp	word ptr [si+_v_a],0
 	je	L3
 L2:	dec	word ptr [si+_v_ctr]
-	cmp	word ptr _snd_paused,1
+	cmp	word ptr _snd_backend_mode,1
 	je	L3
 	cmp	word ptr [si+_v_hold],1
 	je	L3
@@ -59,7 +59,7 @@ L3:	add	si,2
 	jne	L4
 	call	near ptr _fc755
 	jmp	L5
-L4:	cmp	word ptr _snd_paused,1
+L4:	cmp	word ptr _snd_backend_mode,1
 	jne	L5
 	call	near ptr _fc440
 L5:	pop	bp

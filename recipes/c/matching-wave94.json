@@ -347,18 +347,18 @@
             "public": "_sound_ctlblock_flags_latch",
             "addend": 0
           },
-          "_stream_level_percent_scale": {
+          "_stream_percent_scale_store": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA51",
-            "public": "_stream_level_percent_scale",
+            "public": "_stream_percent_scale_store",
             "addend": 0
           },
-          "_stream_level_base_set": {
+          "_stream_base_value_set": {
             "coordinate": "code_offset",
             "evidence": "complete F_CA03 call",
             "owner": "F_CA83",
-            "public": "_stream_level_base_set",
+            "public": "_stream_base_value_set",
             "addend": 0
           },
           "_stream_note_delay_set": {
@@ -403,7 +403,7 @@
       "matching_status": "EQUAL",
       "build": {
         "segment": "_TEXT",
-        "public": "_stream_level_percent_scale",
+        "public": "_stream_percent_scale_store",
         "span": 1,
         "flags_append": "",
         "bindings": {

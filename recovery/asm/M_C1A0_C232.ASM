@@ -10,10 +10,10 @@ d@	LABEL	BYTE
 _DATA	ENDS
 _BSS	SEGMENT WORD PUBLIC 'BSS'
 b@	LABEL	BYTE
-	EXTRN	_v_b:WORD,_snd_flag:WORD,_snd_mode:WORD,_snd_paused:WORD,_snd_seg2:WORD
-	EXTRN	_snd_flag2:WORD,_sv:WORD,_dv:WORD
-	EXTRN	_g1784:WORD,_g178a:WORD,_g177a:WORD,_g178c:WORD,_g179c:WORD
-	EXTRN	_g17a4:WORD,_g17ac:WORD,_g17b4:WORD,_g17ec:WORD,_g17f4:WORD,_g17bc:WORD
+	EXTRN	_v_b:WORD,_snd_on:WORD,_snd_mode:WORD,_snd_backend_mode:WORD,_snd_seg2:WORD
+	EXTRN	_snd_flag2:WORD,_voice_stream_base_table:WORD,_voice_stream_cursor_table:WORD
+	EXTRN	_g1784:WORD,_g178a:WORD,_g177a:WORD,_voice_stream_cursor_table:WORD,_g179c:WORD
+	EXTRN	_g17a4:WORD,_g17ac:WORD,_g17b4:WORD,_voice_rest_table:WORD,_g17f4:WORD,_g17bc:WORD
 _BSS	ENDS
 _TEXT	SEGMENT BYTE PUBLIC 'CODE'
 	PUBLIC	_sound_tick_entry, _sound_voice_pump_loop, _sound_voice_table_prime
@@ -34,12 +34,12 @@ _sound_tick_entry	PROC	NEAR
 	mov	word ptr _v_b+2,ax
 	mov	word ptr _v_b+4,ax
 	mov	word ptr _v_b+6,ax
-	cmp	word ptr _snd_flag,0
+	cmp	word ptr _snd_on,0
 	je	tick_l2
 	call	near ptr _sound_tick_step
 	cmp	word ptr _snd_mode,0
 	je	tick_l3
-	cmp	word ptr _snd_paused,0
+	cmp	word ptr _snd_backend_mode,0
 	jne	tick_l1
 	mov	word ptr _v_b,1
 tick_l1:	mov	es,word ptr _snd_seg2
@@ -72,14 +72,14 @@ pump_l2:	call	near ptr _sound_voice_service_loop
 	mov	ax,word ptr _snd_flag2
 	cmp	ax,0
 	je	pump_l3
-	mov	ax,word ptr _sv
-	mov	word ptr _dv,ax
-	mov	ax,word ptr _sv+2
-	mov	word ptr _dv+2,ax
-	mov	ax,word ptr _sv+4
-	mov	word ptr _dv+4,ax
-	mov	ax,word ptr _sv+6
-	mov	word ptr _dv+6,ax
+	mov	ax,word ptr _voice_stream_base_table
+	mov	word ptr _voice_stream_cursor_table,ax
+	mov	ax,word ptr _voice_stream_base_table+2
+	mov	word ptr _voice_stream_cursor_table+2,ax
+	mov	ax,word ptr _voice_stream_base_table+4
+	mov	word ptr _voice_stream_cursor_table+4,ax
+	mov	ax,word ptr _voice_stream_base_table+6
+	mov	word ptr _voice_stream_cursor_table+6,ax
 	jmp	pump_l1
 pump_l3:	pop	bp
 	ret
@@ -97,14 +97,14 @@ _sound_voice_table_prime proc near
     xor si,si
 scan_entry:
     mov ds:[si+_g17ac],ax
-    mov di,ds:[si+_g178c]
+    mov di,ds:[si+_voice_stream_cursor_table]
     cmp byte ptr es:[di],0ffh
     je next_entry
     mov ds:[si+_g17ac],bx
     mov ds:[si+_g179c],ax
     mov word ptr ds:[si+_g17a4],1
     mov ds:[si+_g17b4],ax
-    mov ds:[si+_g17ec],ax
+    mov ds:[si+_voice_rest_table],ax
     mov ds:[si+_g17f4],ax
     mov ds:[si+_g17bc],dx
 next_entry:

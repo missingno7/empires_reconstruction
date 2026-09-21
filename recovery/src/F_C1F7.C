@@ -3,8 +3,8 @@ extern void sound_voice_table_prime();
 extern void sound_voice_service_loop();
 extern unsigned int snd_mode;
 extern unsigned int snd_flag2;
-extern unsigned int sv[];
-extern unsigned int dv[];
+extern unsigned int voice_stream_base_table[];
+extern unsigned int voice_stream_cursor_table[];
 
 void sound_voice_pump_loop()
 {
@@ -19,14 +19,14 @@ L2: asm call near ptr sound_voice_service_loop
     asm mov ax,word ptr snd_flag2
     asm cmp ax,0
     asm je L3
-    asm mov ax,word ptr sv
-    asm mov word ptr dv,ax
-    asm mov ax,word ptr sv+2
-    asm mov word ptr dv+2,ax
-    asm mov ax,word ptr sv+4
-    asm mov word ptr dv+4,ax
-    asm mov ax,word ptr sv+6
-    asm mov word ptr dv+6,ax
+    asm mov ax,word ptr voice_stream_base_table
+    asm mov word ptr voice_stream_cursor_table,ax
+    asm mov ax,word ptr voice_stream_base_table+2
+    asm mov word ptr voice_stream_cursor_table+2,ax
+    asm mov ax,word ptr voice_stream_base_table+4
+    asm mov word ptr voice_stream_cursor_table+4,ax
+    asm mov ax,word ptr voice_stream_base_table+6
+    asm mov word ptr voice_stream_cursor_table+6,ax
     asm jmp L1
 L3: asm pop bp
 }

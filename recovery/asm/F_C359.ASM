@@ -10,7 +10,7 @@ _BSS segment word public 'BSS'
 _BSS ends
 DGROUP group _DATA, _BSS
 
-snd_paused equ 1778h
+snd_backend_mode equ 1778h
 voice_table_a equ 17fch
 voice_table_b equ 1814h
 voice_state equ 177ch
@@ -19,9 +19,9 @@ public _sound_control_value_select
 _sound_control_value_select:
     push bp
     mov bp, sp
-    cmp word ptr ds:[snd_paused], 1
+    cmp word ptr ds:[snd_backend_mode], 1
     jz short paused_mode
-    cmp word ptr ds:[snd_paused], 2
+    cmp word ptr ds:[snd_backend_mode], 2
     jz short alternate_table
 
     mov cl, ah

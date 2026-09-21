@@ -3,6 +3,7 @@
    sources of grouped module C_E095_E54D and keep their original ids. */
 
 #include "GC91B.H"
+#include "SOUND.H"
 
 extern void voice_apply_field();
 extern void voice_program_all();
@@ -35,7 +36,6 @@ extern char tab_ix[];                   /* DS:C64A, byte per note */
 extern char tab_oct[];                  /* DS:C5EA, byte per note */
 /*@SYM _tab_oct=0xC5EA kind=g key=storage_objects/REGION_2C11A.phys*/
 extern int inport();
-extern unsigned g1830;                  /* DS:1830 */
 
 /* ---- F_E095 (original code at 0xE095) ---- */
 /* F_E095 -- store one byte into the voice's 14-byte record at a runtime
@@ -346,12 +346,12 @@ int opl_detect()
 
     opl_register_write(4, 0x60);
     opl_register_write(4, 0x80);
-    d = inport(g1830);
+    d = inport(opl_port);
     opl_register_write(2, 0xff);
     opl_register_write(4, 0x21);
     for (i = 0; i < 200; i++)
-        inport(g1830);
-    t = inport(g1830);
+        inport(opl_port);
+    t = inport(opl_port);
     opl_register_write(4, 0x60);
     opl_register_write(4, 0x80);
     return (!(d & 0xe0) && (t & 0xe0) == 0xc0);

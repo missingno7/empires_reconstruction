@@ -8,11 +8,11 @@ _BSS ends
 DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
-public _voice_level_percent_scale
+public _voice_percent_scale_store
 extrn _g1788:word
 extrn _g178a:word
 
-_voice_level_percent_scale proc near
+_voice_percent_scale_store proc near
     push bp
     mov bp,sp
     mov bl,ah
@@ -40,7 +40,7 @@ store_zero:
 done:
     pop bp
     ret
-_voice_level_percent_scale endp
+_voice_percent_scale_store endp
 
 _TEXT ends
 end

@@ -4,6 +4,7 @@
 
 #include "DIALOG.H"
 #include "VIDEO.H"
+#include "SOUND.H"
 /*@SYM _dialog_run=0x86C9 kind=f key=functions/F_86C9.entry*/
 
 struct E { int f0, f2, f4, f6, f8, fa, fc, fe; };
@@ -32,7 +33,7 @@ extern void anim_step_loop(int a,int b,int c,int d,int e,int f); /* 9F40 */
 /*@SYM _anim_step_loop=0x9F40 kind=f key=functions/F_9F40.entry*/
 extern void bitmap_blit_topleft(void);                 /* 5673 */
 extern void hud_prompt_continue_draw(void);                 /* 75F3 */
-extern int  g857, g94, g96, g98, g9a, g1770, g1774, g1776;
+extern int  g857, g94, g96, g98, g9a, g1774, g1776;
 extern unsigned char vmode;              /* DS:BFCD */
 /*@SYM _vmode=0xBFCD kind=g key=storage_objects/M_2BAFD.phys*/
 extern char far *t1, far *t2, far *t3, far *t4;   /* BFE2, BFE6, BFDE, BFF2 */
@@ -333,7 +334,7 @@ top:
         g94 = 0; g9a = 0x9f; g1774 = 1;
         stream_control_block_arm(0x18);
         intro_play_script((struct E far *)(t1 + 0x344), 0xa, 0x2d, (struct P far *)buf);
-        g1770 = 1;
+        snd_on = 1;
         sound_stop_reset();
         g1774 = 0;
         timer_wait_ticks(0xed);
@@ -344,7 +345,7 @@ top:
         stream_control_block_arm(0x18);
         intro_play_script((struct E far *)(t1 + 0x66c), 0xb, 0x28, (struct P far *)buf);
         g1774 = 0;
-        g1770 = 1;
+        snd_on = 1;
         sound_stop_reset();
         intro_play_script((struct E far *)(t1 + 0x5fa), 7, 0x1e, (struct P far *)buf);
         g94 = 0x10; g96 = 0x9f; g98 = 4; g9a = 0x9b;

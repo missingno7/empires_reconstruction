@@ -5,8 +5,9 @@
 struct HDR { char pad[0x122]; int f122; };
 #include "G0DCC.H"
 #include "VIDEO.H"
+#include "SOUND.H"
 
-extern int gc359, gc354, gc35d, gc35b, gc352, score_panel_x, score_panel_y, g1770;
+extern int gc359, gc354, gc35d, gc35b, gc352, score_panel_x, score_panel_y;
 extern char far *ui_gfx_shadow_a;
 extern void (*g12a1[])(void);
 extern void score_set_position(int n);
@@ -118,4 +119,4 @@ void roundend_round_setup(int n)
 
 
 /* ---- F_9D79 (original code at 0x9D79) ---- */
-void roundend_wait(void) { sound_stop_reset(); stream_control_block_arm(9); while (g1770) ; }
+void roundend_wait(void) { sound_stop_reset(); stream_control_block_arm(9); while (snd_on) ; }

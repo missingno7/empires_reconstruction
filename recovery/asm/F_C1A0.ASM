@@ -7,12 +7,12 @@ _DATA	ENDS
 _BSS	SEGMENT WORD PUBLIC 'BSS'
 	EXTRN	_v_b:WORD		; DS:177C .. 1782
 	; /*@SYM _v_b=0x177C kind=g key=storage_objects/G_P212AC.phys*/
-	EXTRN	_snd_flag:WORD		; DS:1770
-	; /*@SYM _snd_flag=0x1770 kind=g key=storage_objects/G_P212A0.phys*/
+	EXTRN	_snd_on:WORD		; DS:1770
+	; /*@SYM _snd_on=0x1770 kind=g key=storage_objects/G_P212A0.phys*/
 	EXTRN	_snd_mode:WORD		; DS:1784
 	; /*@SYM _snd_mode=0x1784 kind=g key=storage_objects/G_P212B4.phys*/
-	EXTRN	_snd_paused:WORD	; DS:1778
-	; /*@SYM _snd_paused=0x1778 kind=g key=storage_objects/G_P212A8.phys*/
+	EXTRN	_snd_backend_mode:WORD	; DS:1778
+	; /*@SYM _snd_backend_mode=0x1778 kind=g key=storage_objects/G_P212A8.phys*/
 	EXTRN	_snd_seg2:WORD		; DS:1764
 	; /*@SYM _snd_seg2=0x1764 kind=g key=storage_objects/G_P21294.phys*/
 _BSS	ENDS
@@ -37,12 +37,12 @@ _sound_tick_entry	PROC	NEAR
 	mov	word ptr _v_b+2,ax
 	mov	word ptr _v_b+4,ax
 	mov	word ptr _v_b+6,ax
-	cmp	word ptr _snd_flag,0
+	cmp	word ptr _snd_on,0
 	je	L2
 	call	near ptr _sound_tick_step
 	cmp	word ptr _snd_mode,0
 	je	L3
-	cmp	word ptr _snd_paused,0
+	cmp	word ptr _snd_backend_mode,0
 	jne	L1
 	mov	word ptr _v_b,1
 L1:	mov	es,word ptr _snd_seg2

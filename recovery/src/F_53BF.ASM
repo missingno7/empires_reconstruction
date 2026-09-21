@@ -9,22 +9,22 @@ DGROUP group _DATA,_BSS
 assume cs:_TEXT, ds:DGROUP
 
 public _sound_backend_probe
-extrn _g1778:word
+extrn _snd_backend_mode:word
 extrn _display_mode:word
 extrn _opl_detect:near
 
 _sound_backend_probe proc near
-    mov word ptr ds:_g1778,0
+    mov word ptr ds:_snd_backend_mode,0
     cmp word ptr ds:_display_mode,3
     jne probe_mode
-    mov word ptr ds:_g1778,1
+    mov word ptr ds:_snd_backend_mode,1
     jmp short selected
 
 probe_mode:
     call _opl_detect
     or ax,ax
     jz bios_probe
-    mov word ptr ds:_g1778,2
+    mov word ptr ds:_snd_backend_mode,2
     jmp short selected
 
 bios_probe:
@@ -44,7 +44,7 @@ wait_vga_port:
     cmp al,0a5h
     jne selected
     loop wait_vga_port
-    mov word ptr ds:_g1778,3
+    mov word ptr ds:_snd_backend_mode,3
 
 selected:
     ret

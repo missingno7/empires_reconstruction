@@ -2,7 +2,7 @@
    byte-coded to retain the historical hand-written order. */
 extern void sound_voice_pump_loop();
 extern void sound_tick_step();
-extern unsigned int v_b[],snd_flag,snd_mode,snd_paused,snd_seg2;
+extern unsigned int v_b[],snd_on,snd_mode,snd_backend_mode,snd_seg2;
 
 void sound_tick_entry()
 {
@@ -15,13 +15,13 @@ void sound_tick_entry()
     asm db 0A3h
     asm dw offset DGROUP:v_b+6
     asm db 083h,03Eh
-    asm dw offset DGROUP:snd_flag
+    asm dw offset DGROUP:snd_on
     asm db 000h,074h,021h
     asm call near ptr sound_tick_step
     asm db 083h,03Eh
     asm dw offset DGROUP:snd_mode
     asm db 000h,074h,025h,083h,03Eh
-    asm dw offset DGROUP:snd_paused
+    asm dw offset DGROUP:snd_backend_mode
     asm db 000h,075h,006h,0C7h,006h
     asm dw offset DGROUP:v_b
     asm db 001h,000h,08Eh,006h

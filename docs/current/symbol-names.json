@@ -802,6 +802,10 @@
     "opl_note_select": {
       "original": "gc6b4"
     },
+    "opl_port": {
+      "original": "g1830",
+      "address": "1830"
+    },
     "opl_port_write_byte": {
       "original": "fc8d4",
       "address": "C8D4"
@@ -1210,6 +1214,26 @@
     "slot_used_count": {
       "original": "gc57e"
     },
+    "snd_backend_mode": {
+      "original": "g1778",
+      "aliases": [
+        "snd_paused"
+      ],
+      "address": "1778"
+    },
+    "snd_base": {
+      "original": "g175e"
+    },
+    "snd_base2": {
+      "original": "g1762"
+    },
+    "snd_on": {
+      "original": "g1770",
+      "aliases": [
+        "snd_flag"
+      ],
+      "address": "1770"
+    },
     "sound_backend_probe": {
       "original": "f53bf",
       "address": "51BF"
@@ -1411,17 +1435,16 @@
       "original": "fa036",
       "address": "A036"
     },
+    "stream_base_value_set": {
+      "original": "fca83",
+      "address": "CA83"
+    },
     "stream_control_block_arm": {
       "original": "fcaf1",
       "address": "CAF1"
     },
-    "stream_level_base_set": {
-      "original": "fca83",
-      "address": "CA83"
-    },
-    "stream_level_percent_scale": {
-      "original": "f_ca51",
-      "address": "CA51"
+    "stream_note_delay": {
+      "original": "g1e92"
     },
     "stream_note_delay_set": {
       "original": "fca91",
@@ -1430,6 +1453,10 @@
     "stream_note_program": {
       "original": "fca9b",
       "address": "CA9B"
+    },
+    "stream_percent_scale_store": {
+      "original": "f_ca51",
+      "address": "CA51"
     },
     "text_draw_wrapped": {
       "original": "f6d3c",
@@ -1590,10 +1617,6 @@
       "original": "fe52a",
       "address": "E52A"
     },
-    "voice_level_percent_scale": {
-      "original": "fc567",
-      "address": "C567"
-    },
     "voice_level_table": {
       "original": "gca50"
     },
@@ -1612,9 +1635,16 @@
     "voice_param_record": {
       "original": "gc91b"
     },
+    "voice_percent_scale_store": {
+      "original": "fc567",
+      "address": "C567"
+    },
     "voice_program_all": {
       "original": "fe1c4",
       "address": "E1C4"
+    },
+    "voice_rest_table": {
+      "original": "g17ec"
     },
     "voice_set_field": {
       "original": "fe095",
@@ -1627,6 +1657,17 @@
     "voice_slot_load_pair": {
       "original": "fda66",
       "address": "DA66"
+    },
+    "voice_stream_base_table": {
+      "original": "sv",
+      "address": "1794"
+    },
+    "voice_stream_cursor_table": {
+      "original": "g178c",
+      "aliases": [
+        "dv"
+      ],
+      "address": "178C"
     },
     "voice_update_tone": {
       "original": "fdd72",

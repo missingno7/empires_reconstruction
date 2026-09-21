@@ -6,6 +6,7 @@
 #include "C470.H"
 #include "LAYOUT.H"
 #include "VIDEO.H"
+#include "SOUND.H"
 
 #define MK_FP(seg, ofs) ((void far *) (((unsigned long) (seg) << 16) | (unsigned) (ofs)))
 #define FP_SEG(fp) ((unsigned) ((unsigned long) (void far *) (fp) >> 16))
@@ -17,7 +18,6 @@ extern void slot_table_save();
 extern struct dialog dialog_select_menu_confirm;
 extern void sound_start(void), sound_stop_reset(), sound_voices_reset(), sound_request_count_dec();
 extern struct dialog dialog_select_restart_confirm;
-extern int music_enabled, sound_enabled;
 extern int current_slot, gc5b0, gc5b2[];
 extern int g22e0[], g22e8[];
 extern char far *ui_gfx_shadow_a;

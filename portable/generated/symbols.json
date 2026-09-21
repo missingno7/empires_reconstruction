@@ -14,7 +14,6 @@
     "DATA_010F86_DIALOG_REMOVE_SUFFIX": "g1356",
     "DATA_010FA5_RECORDS": "dialog_player_name_entry",
     "DATA_01101D_TRAILER": "current_slot",
-    "DATA_01139E_SOUND": "sound_enabled",
     "DATA_011D90_RECORDS": "dialog_toggle_music",
     "DATA_011F10_TABLE": "g22e0",
     "DATA_011F20_PAD": "g22f0",
@@ -42,6 +41,7 @@
     "edge": "rect_queue_write_ptr",
     "err": "slot_select_error",
     "f1": "sound_enabled",
+    "f2": "music_enabled",
     "g00bc": "gbc",
     "g00be": "gbe",
     "g072c": "hud_scroll_cooldown_ticks",
@@ -59,6 +59,27 @@
     "g1762": "snd_base2",
     "g1764": "snd_seg2",
     "g176e": "sound_enabled",
+    "g1770": "snd_on",
+    "g1772": "music_enabled",
+    "g1774": "mus_flag",
+    "g1776": "snd_flag2",
+    "g1778": "snd_backend_mode",
+    "g177a": "snd_nvoices",
+    "g1784": "snd_mode",
+    "g1786": "snd_hi",
+    "g178c": "voice_stream_cursor_table",
+    "g179c": "v_ctr",
+    "g17ac": "v_a",
+    "g17b4": "v_hold",
+    "g17bc": "v_len",
+    "g17ec": "voice_rest_table",
+    "g1830": "opl_port",
+    "g1e88": "mus_ptr",
+    "g1e8a": "mus_arg",
+    "g1e8e": "snd_len",
+    "g1e90": "snd_delay",
+    "g1e92": "stream_note_delay",
+    "g1e94": "snd_one",
     "g2160": "dialog_toggle_music",
     "g237c": "sound_request_count",
     "g237e": "music_track_handle",
@@ -161,6 +182,7 @@
     "gdc8": "g0dc8",
     "mode": "display_mode",
     "n_sel": "current_slot",
+    "note_divisors": "notetab",
     "off": "gca62",
     "pool": "resource_stripe_table",
     "s6e88": "g6e88",
@@ -1361,7 +1383,7 @@
       "conflict": false,
       "definition_site": "subsystem-owned",
       "ds_offset": 14594,
-      "owned_by": "cur_idx",
+      "owned_by": "g3902",
       "section": "bss",
       "size": 2,
       "type_note": " [extern cur_idx @ src/VIDEO.C:8: int cur_idx]",
@@ -1874,10 +1896,10 @@
       "alias_type_reports": [
         {
           "compatible": false,
-          "file": "src/VIDEO.C",
-          "line": 10,
-          "name": "mode",
-          "type_text": "unsigned char mode"
+          "file": "src/INTRO.C",
+          "line": 37,
+          "name": "vmode",
+          "type_text": "unsigned char vmode"
         }
       ],
       "aliases": [
@@ -1891,7 +1913,7 @@
       "conflict": true,
       "definition_site": "subsystem-owned",
       "ds_offset": 49101,
-      "owned_by": "mode",
+      "owned_by": "display_mode",
       "section": "bss",
       "size": 1,
       "type_note": " [extern display_mode @ src/ANIMSTEP.C:6: char display_mode]",
@@ -2155,6 +2177,104 @@
       "section": "data",
       "size": 15,
       "type_note": " [extern g1660 @ src/SLOTMENU.C:50: char g12d9[], g1660[]]",
+      "untyped": false
+    },
+    "g1788": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6024,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "g178a": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6026,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "g17a4": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6052,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "g17f4": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[8]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6132,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "g1e84": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7812,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "g1e86": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7814,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "g1e8c": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[2]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7820,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
       "untyped": false
     },
     "g22b2": {
@@ -4591,6 +4711,496 @@
       "type_note": " [extern keyboard_state @ src/KEYBOARD.C:5: int near keyboard_state[]]",
       "untyped": false
     },
+    "lookup_0119": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6279,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_011c": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6282,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_011f": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6285,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0122": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6288,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0125": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6291,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0128": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6294,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_012b": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6297,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_012e": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6300,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0131": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6303,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0134": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6306,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0137": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6309,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_013a": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6312,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_013d": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6315,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0140": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6318,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0143": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6321,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0146": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6324,
+      "owned_by": null,
+      "section": "data",
+      "size": 3,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0149": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[7]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6327,
+      "owned_by": null,
+      "section": "data",
+      "size": 7,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0150": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[20]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6334,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0164": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[31]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6354,
+      "owned_by": null,
+      "section": "data",
+      "size": 31,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0183": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[6]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6385,
+      "owned_by": null,
+      "section": "data",
+      "size": 6,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0189": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[69]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6391,
+      "owned_by": null,
+      "section": "data",
+      "size": 69,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01ce": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[6]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6460,
+      "owned_by": null,
+      "section": "data",
+      "size": 6,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01d4": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[6]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6466,
+      "owned_by": null,
+      "section": "data",
+      "size": 6,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01da": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[6]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6472,
+      "owned_by": null,
+      "section": "data",
+      "size": 6,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01e0": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[6]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6478,
+      "owned_by": null,
+      "section": "data",
+      "size": 6,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01e6": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[6]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6484,
+      "owned_by": null,
+      "section": "data",
+      "size": 6,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01ec": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[5]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6490,
+      "owned_by": null,
+      "section": "data",
+      "size": 5,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01f1": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[8]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6495,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_01f9": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[587]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6503,
+      "owned_by": null,
+      "section": "data",
+      "size": 587,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0444": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[544]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7090,
+      "owned_by": null,
+      "section": "data",
+      "size": 544,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0664": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[45]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7634,
+      "owned_by": null,
+      "section": "data",
+      "size": 45,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0691": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[31]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7679,
+      "owned_by": null,
+      "section": "data",
+      "size": 31,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_06b0": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[49]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7710,
+      "owned_by": null,
+      "section": "data",
+      "size": 49,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_06e1": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[48]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7759,
+      "owned_by": null,
+      "section": "data",
+      "size": 48,
+      "type_note": null,
+      "untyped": false
+    },
+    "lookup_0711": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[5]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7807,
+      "owned_by": null,
+      "section": "data",
+      "size": 5,
+      "type_note": null,
+      "untyped": false
+    },
     "menu_list_enabled": {
       "alias_type_reports": [],
       "aliases": [
@@ -4606,6 +5216,71 @@
       "section": "data",
       "size": 2,
       "type_note": " [extern menu_list_enabled @ src/MENULACT.C:2: int menu_list_enabled]",
+      "untyped": false
+    },
+    "mus_arg": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1e8a"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7818,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "mus_flag": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1774"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6004,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "mus_ptr": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1e88"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7816,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "music_enabled": {
+      "alias_type_reports": [],
+      "aliases": [
+        "f2",
+        "g1772"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6002,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
       "untyped": false
     },
     "music_tempo": {
@@ -4653,6 +5328,36 @@
       "owned_by": null,
       "section": "data",
       "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "note_divisors_octave": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[24]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6164,
+      "owned_by": null,
+      "section": "data",
+      "size": 24,
+      "type_note": null,
+      "untyped": false
+    },
+    "notetab": {
+      "alias_type_reports": [],
+      "aliases": [
+        "note_divisors"
+      ],
+      "c_type": "dos_uint[12]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6140,
+      "owned_by": null,
+      "section": "data",
+      "size": 24,
       "type_note": null,
       "untyped": false
     },
@@ -4718,6 +5423,22 @@
       "section": "bss",
       "size": 1,
       "type_note": " [extern opl_note_select @ src/OPLINIT.C:21: char opl_note_select]",
+      "untyped": false
+    },
+    "opl_port": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1830"
+      ],
+      "c_type": "dos_uint",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6192,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
       "untyped": false
     },
     "opl_vib_depth": {
@@ -5046,17 +5767,17 @@
       "alias_type_reports": [
         {
           "compatible": false,
-          "file": "src/GAME.C",
-          "line": 53,
-          "name": "c470",
-          "type_text": "struct C470 c470[]"
-        },
-        {
-          "compatible": false,
           "file": "include/TBL.H",
           "line": 18,
           "name": "tbl",
           "type_text": "struct tbl_entry tbl[]"
+        },
+        {
+          "compatible": false,
+          "file": "src/GAME.C",
+          "line": 53,
+          "name": "c470",
+          "type_text": "struct C470 c470[]"
         }
       ],
       "aliases": [
@@ -5108,6 +5829,22 @@
       "type_note": " [extern slot_used_count @ include/C470.H:31: int slot_used_count]",
       "untyped": false
     },
+    "snd_backend_mode": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1778"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6008,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
     "snd_base": {
       "alias_type_reports": [],
       "aliases": [
@@ -5138,6 +5875,134 @@
       "section": "data",
       "size": 2,
       "type_note": " [extern snd_base2 @ include/SOUND.H:16: unsigned snd_base2]",
+      "untyped": false
+    },
+    "snd_delay": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1e90"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7824,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_flag2": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1776"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6006,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_hi": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1786"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6022,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_len": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1e8e"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7822,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_mode": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1784"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6020,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_nvoices": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g177a"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6010,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_on": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1770"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6000,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
+      "untyped": false
+    },
+    "snd_one": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1e94"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7828,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
       "untyped": false
     },
     "snd_seg": {
@@ -5172,21 +6037,48 @@
       "type_note": " [extern snd_seg2 @ include/SOUND.H:14: unsigned snd_seg2]",
       "untyped": false
     },
+    "sound_dispatch_182C": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "void *[2]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6188,
+      "owned_by": null,
+      "section": "data",
+      "size": 4,
+      "type_note": null,
+      "untyped": false
+    },
+    "sound_dispatch_1832": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "void *[36]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6194,
+      "owned_by": null,
+      "section": "data",
+      "size": 72,
+      "type_note": null,
+      "untyped": false
+    },
     "sound_enabled": {
       "alias_type_reports": [],
       "aliases": [
-        "DATA_01139E_SOUND",
         "f1",
         "g176e"
       ],
-      "c_type": "struct sound_enabled_s",
+      "c_type": "dos_int",
       "component_id": "DATA_01139E_SOUND",
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 5998,
       "owned_by": null,
       "section": "data",
-      "size": 1832,
+      "size": 2,
       "type_note": null,
       "untyped": false
     },
@@ -5202,6 +6094,34 @@
       "section": "data",
       "size": 1924,
       "type_note": " [extern ui_panel_glyph_records @ include/G2FD2.H:9: struct g2fd2_entry ui_panel_glyph_records[]]",
+      "untyped": false
+    },
+    "sound_region_17C4": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[40]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6084,
+      "owned_by": null,
+      "section": "data",
+      "size": 40,
+      "type_note": null,
+      "untyped": false
+    },
+    "sound_region_187A": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[13]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6266,
+      "owned_by": null,
+      "section": "data",
+      "size": 13,
+      "type_note": null,
       "untyped": false
     },
     "sound_request_count": {
@@ -5235,6 +6155,22 @@
       "section": "bss",
       "size": 4,
       "type_note": " [extern sprite_tile_bank @ src/LEVEL.C:143: char far *g7352, far *g7356, far *g735a, far *sprite_tile_bank]",
+      "untyped": false
+    },
+    "stream_note_delay": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1e92"
+      ],
+      "c_type": "dos_int",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 7826,
+      "owned_by": null,
+      "section": "data",
+      "size": 2,
+      "type_note": null,
       "untyped": false
     },
     "t1": {
@@ -5476,6 +6412,84 @@
       "type_note": " [extern ui_gfx_shadow_b @ src/PLAYERSL.C:43: char far *ui_gfx_shadow_b]",
       "untyped": false
     },
+    "v_a": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g17ac"
+      ],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6060,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "v_b": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6012,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "v_ctr": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g179c"
+      ],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6044,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "v_hold": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g17b4"
+      ],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6068,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "v_len": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g17bc"
+      ],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6076,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
     "voice_level_table": {
       "alias_type_reports": [
         {
@@ -5514,6 +6528,52 @@
       "section": "bss",
       "size": 252,
       "type_note": " [extern voice_param_record @ include/GC91B.H:10: struct gc91b_entry voice_param_record[]]",
+      "untyped": false
+    },
+    "voice_rest_table": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g17ec"
+      ],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6124,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "voice_stream_base_table": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6036,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
+      "untyped": false
+    },
+    "voice_stream_cursor_table": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g178c"
+      ],
+      "c_type": "dos_int[4]",
+      "component_id": "DATA_01139E_SOUND",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 6028,
+      "owned_by": null,
+      "section": "data",
+      "size": 8,
+      "type_note": null,
       "untyped": false
     },
     "wig": {

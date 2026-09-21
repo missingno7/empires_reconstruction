@@ -20,8 +20,9 @@
 #include <stdbool.h>
 
 /* DGROUP state this module owns (declared extern in timer.h). */
-volatile dos_ulong timer_ticks;  /* DS:0B76 free-running tick counter */
-dos_ulong gc0d0;                 /* DS:C0D0 armed deadline */
+/* timer_ticks (DS:0B76) is initialized DATA and lives in the generated
+ * game_data.c (with the volatile qualifier from state_ownership.json). */
+dos_ulong gc0d0;                 /* DS:C0D0 armed deadline (BSS, owned here) */
 
 /* Sound engine hooks (src/TIMER.C F_6BCF).  The real driver lives in
  * portable/audio (not written yet as of Phase 7); portable/audio/sound_stub.c

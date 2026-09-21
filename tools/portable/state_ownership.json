@@ -1,6 +1,6 @@
 {
   "format": "portable-state-ownership-v1",
-  "description": "BSS objects defined by hand-written portable subsystems; tools/portable/datagen.py must not emit definitions for these. Every INITIALIZED (DATA) object is always emitted by the generator, even when a subsystem uses it (e.g. gfx reads g94..g9a, gbc, g9c, gbe, gde, gfe from game_data.h).",
+  "description": "BSS objects defined by hand-written portable subsystems; tools/portable/datagen.py must not emit definitions for these BSS names. Every INITIALIZED (DATA) object is always emitted by the generator (subsystems declare them extern), optionally with the qualifier listed in emit_qualifiers.",
   "owners": {
     "portable/gfx": [
       "g3924",
@@ -47,5 +47,8 @@
       "b856",
       "int9_saved_vector"
     ]
+  },
+  "emit_qualifiers": {
+    "timer_ticks": "volatile"
   }
 }

@@ -329,6 +329,22 @@ def load_state_ownership():
     return owned
 
 
+def load_emit_qualifiers():
+    """tools/portable/state_ownership.json['emit_qualifiers']: primary name
+    -> a C qualifier ('volatile', ...) to prepend to both the extern
+    declaration and the definition datagen.py emits for it."""
+    doc = read_json(STATE_OWNERSHIP_PATH)
+    return dict(doc.get('emit_qualifiers', {}))
+
+
+def _qualify_decl(decl, qualifier):
+    return decl.replace('extern ', f'extern {qualifier} ', 1)
+
+
+def _qualify_defn(defn, qualifier):
+    return f'{qualifier} {defn}'
+
+
 class SymbolTable:
     """Accumulates (name -> offset) and (offset -> {names}) from every
     source, recording a conflict whenever the same name is asserted at two
@@ -854,6 +870,120 @@ def _historical_span(entry):
     return elem_size * product
 
 
+def _split_sound_component(component, table, friendly_of_offset, externs):
+    """Supervisor round 3: DATA_01139E_SOUND (empires-sound-data-v1) must be
+    symbol-split like a flat component, not left as one opaque struct --
+    include/SOUND.H already gives almost every word in [DS:176E, DS:1E96) a
+    real extern with a DS: comment, so the ordinary per-offset historical-
+    type resolution just works once let loose inside this component's own
+    byte range. Three kinds of local span result:
+
+      * named  -- a real historical symbol (SOUND.H extern, or this
+                  component's own 'note_divisors'/'note_divisors_octave'/
+                  'lookup_XXXX' publics): typed/sized exactly as the main
+                  walk would (reusing resolve_historical_type/
+                  _historical_span), falling back to next-boundary sizing
+                  for the two publics (they have no extern type).
+      * ptr_array -- a run of consecutive, UNNAMED pointer32/offset16 refs
+                  of the same width (the dispatch table at DS:1832, the two
+                  note-bank pointers at DS:182C): one `void *name[N]`
+                  array, named by its own DS offset since nothing else
+                  names it (SOUND.ASM addresses it by raw displacement).
+      * byte_region -- bytes with no name and no ref (the LOW-confidence
+                  17C4/17CC/17D4/17DC/17E4/17F4 words docs/current/
+                  sound-state.md documents as ASM-internal, and the tail
+                  words after the last lookup table): `uint8_t
+                  sound_region_XXXX[N]`, named by DS offset, so the whole
+                  1832-byte span still round-trips exactly.
+
+    Returns (symbols, warnings); a warning fires if a pointer ref is ever
+    found straddling a named symbol's boundary (asked for explicitly --
+    none are expected, since every SOUND.H field is word-granular and every
+    ref is a whole word).
+    """
+    comp_base, length, comp_id = component['ds_offset'], component['length'], component['id']
+    refs_by_off = {r['offset']: r for r in component['refs']}
+    ref_width = {off: (4 if r.get('loc', 'pointer32') == 'pointer32' else 2)
+                 for off, r in refs_by_off.items()}
+
+    def names_at(local):
+        return table.names_at(comp_base + local) - {comp_id}
+
+    symbols, warnings = [], []
+    local = 0
+    while local < length:
+        names = names_at(local)
+        if not names and local not in refs_by_off:
+            start = local
+            local += 1
+            while local < length and not names_at(local) and local not in refs_by_off:
+                local += 1
+            size = local - start
+            abs_off = comp_base + start
+            ident = f'sound_region_{abs_off:04X}'
+            symbols.append(_make_symbol(abs_off, size, 'data', ident, [], [ident], None,
+                                         'generated', comp_id, None, None, [], False, [], True))
+            continue
+
+        if local in refs_by_off and not names:
+            start, width = local, ref_width[local]
+            run = []
+            while (local < length and local in refs_by_off and ref_width.get(local) == width
+                   and not (names_at(local) if local != start else set())):
+                run.append(refs_by_off[local])
+                local += width
+            size = local - start
+            abs_off = comp_base + start
+            ident = f'sound_dispatch_{abs_off:04X}'
+            symbols.append({
+                'offset': abs_off, 'size': size, 'section': 'data', 'primary': ident,
+                'aliases': [], 'names': [ident], 'owned_by': None, 'definition_site': 'generated',
+                'component_id': comp_id, 'c_type': None, 'type_note': None, 'dims': [len(run)],
+                'is_ptr': True, 'untyped': False, 'conflict': False, 'emit_path': 'sound-ptr-array',
+                'alias_type_reports': [], 'refs': run, 'ref_width': width,
+            })
+            continue
+
+        # Named (SOUND.H extern, or a component-local public like
+        # note_divisors/lookup_0119). Straddle check first: a ref must
+        # never start strictly inside a named object (only ever cleanly
+        # at/after its end), and a named object boundary must never fall
+        # strictly inside a ref's own width.
+        abs_off = comp_base + local
+        primary = _pick_primary(names, table, friendly_of_offset, abs_off)
+        aliases = sorted(n for n in names if n != primary)
+        chosen, chosen_name, alias_reports = resolve_historical_type(names, externs, table, primary)
+        c_type = dims = is_ptr = type_note = None
+        untyped = True
+        size = None
+        if chosen is not None:
+            mapped, note = resolve_primitive(chosen['base'])
+            is_ptr = chosen['is_ptr'] or chosen['base'] == 'void (*)(void)'
+            if chosen['base'] == 'void (*)(void)':
+                mapped = 'void'
+            c_type, type_note = mapped, note
+            dims = [int(d) for d in chosen['dims'] if d.isdigit()]
+            untyped = mapped is None
+            size = _historical_span(chosen)
+        if size is None:
+            nxt = local + 1
+            while nxt < length and not names_at(nxt) and nxt not in refs_by_off:
+                nxt += 1
+            size = nxt - local
+            c_type, dims, is_ptr, untyped = None, [], False, True
+        for k in range(local + 1, local + size):
+            if k in refs_by_off:
+                warnings.append(f'DATA_01139E_SOUND: pointer ref at local {k:#x} straddles named '
+                                 f'object {primary!r} ({local:#x}..{local + size:#x}) -- needs a '
+                                 'supervisor decision, not auto-split.')
+        symbols.append(_make_symbol(abs_off, size, 'data', primary, aliases, sorted(names),
+                                     None, 'generated', comp_id, c_type, type_note, dims, is_ptr,
+                                     alias_reports, untyped))
+        local += size
+
+    return symbols, warnings
+
+
 def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
     """Symbol-driven object model (recipe components are only a byte source
     and a last-resort naming fallback, per the supervisor review): walk
@@ -951,6 +1081,17 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                     f"region {component['id']} ({component['classification']}); no bytes are "
                     'available for it (not in recipes/data/game-initialized.json) so nothing is '
                     'emitted -- investigate whether this name is real.')
+            cursor += component['length']
+            continue
+        if (component is not None and component['ds_offset'] == cursor and component['kind'] == 'data'
+                and component['format'] == SOUND_FORMAT):
+            # Supervisor round 3: DATA_01139E_SOUND must be symbol-split
+            # like a flat component, not left as one opaque struct --
+            # include/SOUND.H names almost every word in it.
+            split_symbols, split_warnings = _split_sound_component(
+                component, table, friendly_of_offset, externs)
+            symbols.extend(split_symbols)
+            warnings.extend(split_warnings)
             cursor += component['length']
             continue
         if (component is not None and component['ds_offset'] == cursor and component['kind'] == 'data'
@@ -1615,6 +1756,21 @@ def _emit_as_known_struct(component, image, struct_name, field_layout, ident, re
             'decl': f'extern {struct_name} {ident};', 'defn': defn, 'verify_bytes': bytes(verify)}
 
 
+def _emit_sound_ptr_array(symbol, resolver):
+    """A run of unnamed pointer32/offset16 words inside the (now symbol-
+    split) DATA_01139E_SOUND component -- e.g. the 36-entry dispatch table
+    at DS:1832 or the 2-entry note-bank pointer pair at DS:182C. Each
+    element resolves through the same PointerResolver every other
+    component pointer field uses."""
+    ident = c_ident(symbol['primary'])
+    n = len(symbol['refs'])
+    exprs = [resolver.expr(r['target'], r.get('addend', 0), _EMIT_KIND_REGISTRY) for r in symbol['refs']]
+    body = ',\n    '.join(f'(void *)({e})' for e in exprs)
+    defn = f'void *{ident}[{n}] = {{\n    {body}\n}};\n'
+    return {'c_type': f'void *[{n}]', 'emit_kind': 'array', 'header_extra': [],
+            'decl': f'extern void *{ident}[{n}];', 'defn': defn, 'verify_bytes': b'\x00' * symbol['size']}
+
+
 def _emit_storage_union(image, symbol, union_info, comp_by_id):
     """Rule F: the raw-byte union object for a declared type that
     genuinely overlaps a neighboring struct-shaped component's storage.
@@ -1914,7 +2070,7 @@ HEADER_BANNER = """/* {name} -- GENERATED by tools/portable/datagen.py. DO NOT E
 """
 
 
-def emit_game_data(image, components, symbols, table, externs, extra, out_dir):
+def emit_game_data(image, components, symbols, table, externs, extra, qualifiers, out_dir):
     """Objects are symbol-driven (see resolve_symbols): each generated DATA
     symbol's `emit_path` says which emitter produces it --
     'struct-component' (describe_and_emit_component's TYPED/SOUND/PTRREC/
@@ -1955,10 +2111,14 @@ def emit_game_data(image, components, symbols, table, externs, extra, out_dir):
                     (off, name, width, width) for off, name, _, width, _ in DIALOG_FIELD_LAYOUT]
             elif c['format'] == TYPED_FORMAT:
                 _STRUCT_FIELD_REGISTRY[s['primary']] = _typed_data_field_layout(c['extra']['fields'])
-            elif c['format'] == SOUND_FORMAT:
-                _STRUCT_FIELD_REGISTRY[s['primary']] = _sound_data_field_layout(c['extra']['doc'])
         else:
-            _EMIT_KIND_REGISTRY[s['primary']] = 'array'
+            # A plain scalar (no dims, not the untyped-fallback byte array)
+            # needs `&name`, not array-decay, if something ever points at
+            # it; everything else (arrays, uint8_t[] fallbacks, the sound
+            # ptr-array objects) decays like a normal C array.
+            is_scalar = not s['dims'] and not s['untyped'] and s['emit_path'] != 'sound-ptr-array' \
+                and s['c_type'] not in (None,) and s['c_type'] != 'void (*)(void)'
+            _EMIT_KIND_REGISTRY[s['primary']] = 'scalar' if is_scalar else 'array'
 
     resolver = PointerResolver(table, symbols)
 
@@ -2016,13 +2176,19 @@ def emit_game_data(image, components, symbols, table, externs, extra, out_dir):
         elif s['emit_path'] == 'storage-union':
             union_info = next(u for u in extra['storage_alias'] if u['union_name'] == s['primary'])
             result = _emit_storage_union(image, s, union_info, comp_by_id)
+        elif s['emit_path'] == 'sound-ptr-array':
+            result = _emit_sound_ptr_array(s, resolver)
         else:
             result = emit_generic_flat_object(s, image, primary)
 
         tag = f"{s['emit_path']}, component {s['component_id']}" if s['component_id'] else s['emit_path']
         header_lines.append(f"/* {s['primary']}  DS:{s['offset']:04X}  size {s['size']}  ({tag}) */")
         header_lines += result['header_extra']
-        header_lines.append(result['decl'])
+        qualifier = qualifiers.get(s['primary'])
+        decl, defn = result['decl'], result['defn']
+        if qualifier:
+            decl, defn = _qualify_decl(decl, qualifier), _qualify_defn(defn, qualifier)
+        header_lines.append(decl)
         for alias in s['aliases']:
             if alias == s['component_id'] and alias not in referenced_component_ids:
                 header_lines.append(f'/* {alias} (recipe component id; nothing points at it) */')
@@ -2031,7 +2197,7 @@ def emit_game_data(image, components, symbols, table, externs, extra, out_dir):
         for macro_name, macro_expr in result.get('extra_macros', []):
             header_lines.append(f'#define {c_ident(macro_name)} {macro_expr}')
         header_lines.append('')
-        source_lines.append(result['defn'])
+        source_lines.append(defn)
         verify_bytes[s['primary']] = result['verify_bytes']
         # Feed the emitted type back into the symbol record so
         # symbols.json/state-map.md report the real C type instead of
@@ -2067,7 +2233,7 @@ def emit_game_data(image, components, symbols, table, externs, extra, out_dir):
     }
 
 
-def emit_game_state(symbols, extra, out_dir):
+def emit_game_state(symbols, extra, qualifiers, out_dir):
     """portable/generated/game_state.[ch]: one zero-initialized BSS object
     per unowned BSS symbol, typed from layout/production-plan.json['bss']
     typed_reserves when known, from an extern `/* DS:XXXX */` comment when
@@ -2110,11 +2276,16 @@ def emit_game_state(symbols, extra, out_dir):
             # jmp_buf object, never `jmp_buf name[N]`.
             header_lines.append(f"/* {s['primary']}  DS:{s['offset']:04X}  size {s['size']} "
                                  '(rule G: host jmp_buf, historical size was Turbo C\'s 20 bytes) */')
-            header_lines.append(f'extern jmp_buf {name};')
+            qualifier = qualifiers.get(s['primary'])
+            jb_decl = f'extern jmp_buf {name};'
+            jb_defn = f'jmp_buf {name};\n'
+            if qualifier:
+                jb_decl, jb_defn = _qualify_decl(jb_decl, qualifier), _qualify_defn(jb_defn, qualifier)
+            header_lines.append(jb_decl)
             for alias in s['aliases']:
                 header_lines.append(f'#define {c_ident(alias)} {name}')
             header_lines.append('')
-            source_lines.append(f'jmp_buf {name};\n')
+            source_lines.append(jb_defn)
             emitted += 1
             continue
 
@@ -2150,6 +2321,9 @@ def emit_game_state(symbols, extra, out_dir):
         s['c_type'] = display_type
         note = f" -- {s['type_note']}" if s.get('type_note') else ''
         header_lines.append(f"/* {s['primary']}  DS:{s['offset']:04X}  size {s['size']}{note} */")
+        qualifier = qualifiers.get(s['primary'])
+        if qualifier:
+            decl, defn = _qualify_decl(decl, qualifier), _qualify_defn(defn, qualifier)
         header_lines.append(decl)
         for alias in s['aliases']:
             header_lines.append(f'#define {c_ident(alias)} {name}')
@@ -2443,8 +2617,9 @@ def generate(out_generated=None, out_docs=None, verbose=True):
     ownership = load_state_ownership()
     symbols, warnings, extra = resolve_symbols(components, table, friendly, externs, ownership)
 
-    data_report = emit_game_data(image, components, symbols, table, externs, extra, out_generated)
-    state_report = emit_game_state(symbols, extra, out_generated)
+    qualifiers = load_emit_qualifiers()
+    data_report = emit_game_data(image, components, symbols, table, externs, extra, qualifiers, out_generated)
+    state_report = emit_game_state(symbols, extra, qualifiers, out_generated)
 
     symbols_doc = write_symbols_json(components, symbols, table, notes,
                                       out_generated / 'symbols.json')

@@ -18,14 +18,10 @@
 #include "input.h"
 #include "sync.h"
 
-/* ---- DGROUP state (input.h's extern declarations) ---- */
-dos_int  key_up_held;          /* DS:0B68 */
-dos_int  gb6a;                 /* DS:0B6A */
-dos_int  key_up_left_held;     /* DS:0B6C */
-dos_int  key_up_right_held;    /* DS:0B6E */
-dos_int  key_up_released;      /* DS:0B70 */
-dos_int  keyboard_state[2];    /* DS:0B72: [0] chain gate, [1] Ctrl held */
-dos_char b856;                 /* DS:0856 (g856) */
+/* ---- DGROUP state: key_up_held/gb6a/key_up_left_held/key_up_right_held/
+ * key_up_released/keyboard_state (DS:0B68..0B76) and b856 (DS:0856) are
+ * initialized DATA objects and therefore defined by the generated
+ * portable/generated/game_data.c (all zero historically). ---- */
 
 /* Not-yet-ported callees; see portable/game/keyboard_stubs.c. */
 extern void    sound_effects_toggle(void);

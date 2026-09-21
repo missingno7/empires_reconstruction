@@ -345,6 +345,72 @@ class DatagenTests(unittest.TestCase):
                        header.replace('  ', ' '))
         self.assertIn('DATA_012C03_SOUND_INSTRUMENTS_s', header)
 
+    # -- supervisor round 4: sound split + emit_qualifiers -----------------
+
+    def test_sound_component_is_symbol_split(self):
+        # DATA_01139E_SOUND must no longer be one opaque struct with
+        # `#define sound_enabled DATA_01139E_SOUND`; every SOUND.H name
+        # becomes its own typed object, the 38 pointer refs become
+        # pointer-typed sound_dispatch_XXXX arrays, and the unnamed gaps
+        # become sound_region_XXXX byte arrays -- with zero straddle
+        # warnings and the whole 1832-byte span still exactly covered.
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        self.assertNotIn('DATA_01139E_SOUND', by_primary)  # no monolithic object any more
+        for name in ('sound_enabled', 'snd_on', 'music_enabled', 'mus_flag', 'snd_flag2',
+                     'snd_backend_mode', 'snd_nvoices', 'snd_mode', 'snd_hi', 'opl_port'):
+            sym = by_primary[name]
+            self.assertIn(sym['c_type'], ('dos_int', 'dos_uint'), name)
+            self.assertEqual(sym['dims'], [], name)
+            self.assertEqual(sym['component_id'], 'DATA_01139E_SOUND', name)
+        for name, count in (('v_b', 4), ('voice_stream_cursor_table', 4),
+                            ('voice_stream_base_table', 4), ('v_ctr', 4), ('v_hold', 4),
+                            ('v_len', 4), ('voice_rest_table', 4), ('notetab', 12)):
+            self.assertEqual(by_primary[name]['dims'], [count], name)
+        # The 38 refs: two note-bank pointers (grouped, since neither is
+        # individually named) + the 36-entry dispatch table.
+        dispatch = by_primary['sound_dispatch_182C']
+        self.assertEqual(dispatch['is_ptr'], True)
+        self.assertEqual(dispatch['dims'], [2])
+        big_dispatch = by_primary['sound_dispatch_1832']
+        self.assertEqual(big_dispatch['dims'], [36])
+        total_refs = sum(len(s.get('refs', [])) for s in self.aux['symbols']
+                         if s['component_id'] == 'DATA_01139E_SOUND')
+        self.assertEqual(total_refs, 38)
+        # Full coverage, no gaps: every sound sub-symbol's span is
+        # contiguous across the whole 1832-byte component.
+        sound_syms = sorted((s for s in self.aux['symbols']
+                             if s['component_id'] == 'DATA_01139E_SOUND'),
+                            key=lambda s: s['offset'])
+        cursor = 0x176E
+        for s in sound_syms:
+            self.assertEqual(s['offset'], cursor, s['primary'])
+            cursor += s['size']
+        self.assertEqual(cursor, 0x176E + 1832)
+        # No pointer ref ever straddled a named object's boundary.
+        self.assertEqual([w for w in self.aux['warnings'] if 'straddles' in w], [])
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        self.assertIn('extern dos_int sound_enabled;', header)
+        self.assertIn('extern void *sound_dispatch_1832[36];', header)
+
+    def test_sound_request_count_is_dos_int(self):
+        # Explicitly asked for by the supervisor: DS:237C, outside the
+        # sound component entirely, unaffected by the split.
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        sym = by_primary['sound_request_count']
+        self.assertEqual(sym['offset'], 0x237C)
+        self.assertEqual(sym['c_type'], 'dos_int')
+
+    def test_emit_qualifiers_applied_to_declaration_and_definition(self):
+        # tools/portable/state_ownership.json's emit_qualifiers.timer_ticks
+        # = "volatile" must land on both the extern decl and the definition.
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertIn('extern volatile dos_ulong timer_ticks;', header)
+        self.assertIn('volatile dos_ulong timer_ticks = 0;', source)
+        # Nothing else picked up a qualifier it shouldn't have.
+        qualifiers = dg.load_emit_qualifiers()
+        self.assertEqual(qualifiers, {'timer_ticks': 'volatile'})
+
 
 if __name__ == '__main__':
     unittest.main()

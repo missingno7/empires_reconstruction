@@ -386,7 +386,7 @@ dos_int keyboard_state[2] = {
     0, 0
 };
 
-dos_ulong timer_ticks = 0;
+volatile dos_ulong timer_ticks = 0;
 
 void *int8_saved_vector = 0;
 
@@ -813,157 +813,256 @@ dos_uint snd_base2 = 0;
 
 dos_uint snd_seg2 = 0;
 
-struct sound_enabled_s sound_enabled = {
-    .state_words = {
-    1, 0, 1, 0, 0, 65535, 0, 0, 0, 0, 0, 0,
-    65535, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+dos_int sound_enabled = 1;
+
+dos_int snd_on = 0;
+
+dos_int music_enabled = 1;
+
+dos_int mus_flag = 0;
+
+dos_int snd_flag2 = 0;
+
+dos_int snd_backend_mode = -1;
+
+dos_int snd_nvoices = 0;
+
+dos_int v_b[4] = {
+    0, 0, 0, 0
+};
+
+dos_int snd_mode = 0;
+
+dos_int snd_hi = -1;
+
+dos_int g1788 = 0;
+
+dos_int g178a = 0;
+
+dos_int voice_stream_cursor_table[4] = {
+    0, 0, 0, 0
+};
+
+dos_int voice_stream_base_table[4] = {
+    0, 0, 0, 0
+};
+
+dos_int v_ctr[4] = {
+    0, 0, 0, 0
+};
+
+dos_int g17a4[4] = {
+    0, 0, 0, 0
+};
+
+dos_int v_a[4] = {
+    0, 0, 0, 0
+};
+
+dos_int v_hold[4] = {
+    0, 0, 0, 0
+};
+
+dos_int v_len[4] = {
+    0, 0, 0, 0
+};
+
+uint8_t sound_region_17C4[40] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-},
-    .note_divisors = {
-    36488, 34441, 32508, 30683, 28961, 27336, 25801, 24353, 22987, 21696, 20479, 19329,
-    1720, 1624, 1533, 1447, 1365, 1289, 1216, 1148, 1084, 1023, 965, 911
-},
-    .note_divisors_ptr = (dos_uint *)(&sound_enabled.note_divisors),
-    .note_divisors_octave_ptr = (dos_uint *)(&sound_enabled.note_divisors[12]),
-    .opl_port = 904,
-    .dispatch = {
-        (dos_uchar *)(&sound_enabled.lookup_0164),
-        (dos_uchar *)(&sound_enabled.lookup_01f9),
-        (dos_uchar *)(&sound_enabled.lookup_01f9),
-        (dos_uchar *)(&sound_enabled.lookup_0691),
-        (dos_uchar *)(&sound_enabled.lookup_06b0),
-        (dos_uchar *)(&sound_enabled.lookup_06e1),
-        (dos_uchar *)(&sound_enabled.lookup_0444),
-        (dos_uchar *)(&sound_enabled.lookup_0189),
-        (dos_uchar *)(&sound_enabled.lookup_0664),
-        (dos_uchar *)(&sound_enabled.lookup_0149),
-        (dos_uchar *)(&sound_enabled.lookup_0183),
-        (dos_uchar *)(&sound_enabled.lookup_01ce),
-        (dos_uchar *)(&sound_enabled.lookup_01d4),
-        (dos_uchar *)(&sound_enabled.lookup_01da),
-        (dos_uchar *)(&sound_enabled.lookup_01e0),
-        (dos_uchar *)(&sound_enabled.lookup_01e6),
-        (dos_uchar *)(&sound_enabled.lookup_01ec),
-        (dos_uchar *)(&sound_enabled.lookup_01f1),
-        (dos_uchar *)(&sound_enabled.lookup_0150),
-        (dos_uchar *)(&sound_enabled.lookup_0711),
-        (dos_uchar *)(&sound_enabled.lookup_0119),
-        (dos_uchar *)(&sound_enabled.lookup_011c),
-        (dos_uchar *)(&sound_enabled.lookup_011f),
-        (dos_uchar *)(&sound_enabled.lookup_0122),
-        (dos_uchar *)(&sound_enabled.lookup_0125),
-        (dos_uchar *)(&sound_enabled.lookup_0128),
-        (dos_uchar *)(&sound_enabled.lookup_012b),
-        (dos_uchar *)(&sound_enabled.lookup_012e),
-        (dos_uchar *)(&sound_enabled.lookup_0131),
-        (dos_uchar *)(&sound_enabled.lookup_0134),
-        (dos_uchar *)(&sound_enabled.lookup_0137),
-        (dos_uchar *)(&sound_enabled.lookup_013a),
-        (dos_uchar *)(&sound_enabled.lookup_013d),
-        (dos_uchar *)(&sound_enabled.lookup_0140),
-        (dos_uchar *)(&sound_enabled.lookup_0143),
-        (dos_uchar *)(&sound_enabled.lookup_0146)
-    },
-    .lookup_prefix = {
+    0, 0, 0, 0
+};
+
+dos_int voice_rest_table[4] = {
+    0, 0, 0, 0
+};
+
+uint8_t g17f4[8] = {
+    0, 0, 0, 0, 0, 0, 0, 0
+};
+
+dos_uint notetab[12] = {
+    36488, 34441, 32508, 30683, 28961, 27336, 25801, 24353, 22987, 21696, 20479, 19329
+};
+
+uint8_t note_divisors_octave[24] = {
+    184, 6, 88, 6, 253, 5, 167, 5, 85, 5, 9, 5,
+    192, 4, 124, 4, 60, 4, 255, 3, 197, 3, 143, 3
+};
+
+void *sound_dispatch_182C[2] = {
+    (void *)(notetab),
+    (void *)(note_divisors_octave)
+};
+
+dos_uint opl_port = 904;
+
+void *sound_dispatch_1832[36] = {
+    (void *)(lookup_0164),
+    (void *)(lookup_01f9),
+    (void *)(lookup_01f9),
+    (void *)(lookup_0691),
+    (void *)(lookup_06b0),
+    (void *)(lookup_06e1),
+    (void *)(lookup_0444),
+    (void *)(lookup_0189),
+    (void *)(lookup_0664),
+    (void *)(lookup_0149),
+    (void *)(lookup_0183),
+    (void *)(lookup_01ce),
+    (void *)(lookup_01d4),
+    (void *)(lookup_01da),
+    (void *)(lookup_01e0),
+    (void *)(lookup_01e6),
+    (void *)(lookup_01ec),
+    (void *)(lookup_01f1),
+    (void *)(lookup_0150),
+    (void *)(lookup_0711),
+    (void *)(lookup_0119),
+    (void *)(lookup_011c),
+    (void *)(lookup_011f),
+    (void *)(lookup_0122),
+    (void *)(lookup_0125),
+    (void *)(lookup_0128),
+    (void *)(lookup_012b),
+    (void *)(lookup_012e),
+    (void *)(lookup_0131),
+    (void *)(lookup_0134),
+    (void *)(lookup_0137),
+    (void *)(lookup_013a),
+    (void *)(lookup_013d),
+    (void *)(lookup_0140),
+    (void *)(lookup_0143),
+    (void *)(lookup_0146)
+};
+
+uint8_t sound_region_187A[13] = {
     0, 0, 0, 0, 7, 7, 7, 7, 255, 255, 0, 255,
     255
-},
-    .lookup_0119 = {
+};
+
+uint8_t lookup_0119[3] = {
     0, 255, 255
-},
-    .lookup_011c = {
+};
+
+uint8_t lookup_011c[3] = {
     1, 255, 255
-},
-    .lookup_011f = {
+};
+
+uint8_t lookup_011f[3] = {
     2, 255, 255
-},
-    .lookup_0122 = {
+};
+
+uint8_t lookup_0122[3] = {
     3, 255, 255
-},
-    .lookup_0125 = {
+};
+
+uint8_t lookup_0125[3] = {
     4, 255, 255
-},
-    .lookup_0128 = {
+};
+
+uint8_t lookup_0128[3] = {
     5, 255, 255
-},
-    .lookup_012b = {
+};
+
+uint8_t lookup_012b[3] = {
     6, 255, 255
-},
-    .lookup_012e = {
+};
+
+uint8_t lookup_012e[3] = {
     7, 255, 255
-},
-    .lookup_0131 = {
+};
+
+uint8_t lookup_0131[3] = {
     8, 255, 255
-},
-    .lookup_0134 = {
+};
+
+uint8_t lookup_0134[3] = {
     9, 255, 255
-},
-    .lookup_0137 = {
+};
+
+uint8_t lookup_0137[3] = {
     10, 255, 255
-},
-    .lookup_013a = {
+};
+
+uint8_t lookup_013a[3] = {
     11, 255, 255
-},
-    .lookup_013d = {
+};
+
+uint8_t lookup_013d[3] = {
     12, 255, 255
-},
-    .lookup_0140 = {
+};
+
+uint8_t lookup_0140[3] = {
     13, 255, 255
-},
-    .lookup_0143 = {
+};
+
+uint8_t lookup_0143[3] = {
     14, 255, 255
-},
-    .lookup_0146 = {
+};
+
+uint8_t lookup_0146[3] = {
     15, 255, 255
-},
-    .lookup_0149 = {
+};
+
+uint8_t lookup_0149[7] = {
     0, 255, 255, 255, 255, 255, 255
-},
-    .lookup_0150 = {
+};
+
+uint8_t lookup_0150[20] = {
     14, 14, 14, 14, 13, 13, 13, 13, 12, 12, 12, 12,
     11, 11, 11, 11, 255, 255, 255, 255
-},
-    .lookup_0164 = {
+};
+
+uint8_t lookup_0164[31] = {
     14, 9, 5, 0, 1, 1, 1, 1, 2, 2, 2, 2,
     2, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4,
     4, 4, 4, 4, 4, 255, 255
-},
-    .lookup_0183 = {
+};
+
+uint8_t lookup_0183[6] = {
     6, 4, 0, 2, 1, 255
-},
-    .lookup_0189 = {
+};
+
+uint8_t lookup_0189[69] = {
     6, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3,
     3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4,
     4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5,
     5, 5, 5, 5, 5, 5, 5, 5, 255
-},
-    .lookup_01ce = {
+};
+
+uint8_t lookup_01ce[6] = {
     9, 7, 3, 5, 4, 255
-},
-    .lookup_01d4 = {
+};
+
+uint8_t lookup_01d4[6] = {
     14, 7, 0, 4, 1, 255
-},
-    .lookup_01da = {
+};
+
+uint8_t lookup_01da[6] = {
     14, 9, 3, 7, 4, 255
-},
-    .lookup_01e0 = {
+};
+
+uint8_t lookup_01e0[6] = {
     14, 7, 0, 7, 1, 255
-},
-    .lookup_01e6 = {
+};
+
+uint8_t lookup_01e6[6] = {
     14, 9, 3, 9, 4, 255
-},
-    .lookup_01ec = {
+};
+
+uint8_t lookup_01ec[5] = {
     9, 0, 1, 2, 255
-},
-    .lookup_01f1 = {
+};
+
+uint8_t lookup_01f1[8] = {
     10, 3, 4, 5, 255, 7, 0, 255
-},
-    .lookup_01f9 = {
+};
+
+uint8_t lookup_01f9[587] = {
     10, 0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3,
     3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4,
     4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -1013,8 +1112,9 @@ struct sound_enabled_s sound_enabled = {
     14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
     14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
     14, 14, 14, 14, 14, 14, 14, 14, 15, 255, 255
-},
-    .lookup_0444 = {
+};
+
+uint8_t lookup_0444[544] = {
     12, 2, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5,
     5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6,
     6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7,
@@ -1061,38 +1161,59 @@ struct sound_enabled_s sound_enabled = {
     14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
     14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14,
     14, 15, 255, 255
-},
-    .lookup_0664 = {
+};
+
+uint8_t lookup_0664[45] = {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10,
     10, 5, 6, 7, 8, 9, 9, 10, 10, 11, 11, 11,
     9, 9, 10, 10, 11, 11, 11, 12, 12, 12, 12, 8,
     9, 10, 10, 11, 11, 11, 11, 255, 255
-},
-    .lookup_0691 = {
+};
+
+uint8_t lookup_0691[31] = {
     3, 4, 5, 6, 7, 8, 9, 9, 10, 10, 11, 11,
     11, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14,
     14, 14, 14, 14, 15, 255, 255
-},
-    .lookup_06b0 = {
+};
+
+uint8_t lookup_06b0[49] = {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10,
     10, 5, 6, 7, 8, 9, 9, 10, 10, 11, 11, 11,
     9, 9, 10, 10, 11, 11, 11, 12, 12, 12, 12, 13,
     13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 15, 255,
     255
-},
-    .lookup_06e1 = {
+};
+
+uint8_t lookup_06e1[48] = {
     0, 4, 6, 8, 10, 10, 10, 10, 10, 10, 10, 10,
     10, 10, 10, 10, 10, 10, 10, 10, 12, 14, 255, 255,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255
-},
-    .lookup_0711 = {
-    15, 15, 255, 255, 0
-},
-    .tail_words = {
-    0, 0, 0, 65535, 0, 0, 0, 0, 0
-}
 };
+
+uint8_t lookup_0711[5] = {
+    15, 15, 255, 255, 0
+};
+
+dos_int g1e84 = 0;
+
+dos_int g1e86 = 0;
+
+dos_int mus_ptr = 0;
+
+dos_int mus_arg = -1;
+
+uint8_t g1e8c[2] = {
+    0, 0
+};
+
+dos_int snd_len = 0;
+
+dos_int snd_delay = 0;
+
+dos_int stream_note_delay = 0;
+
+dos_int snd_one = 0;
 
 uint8_t DATA_011AC6_NEW_USER_PROMPT[124] = {
     84, 104, 101, 32, 78, 101, 119, 32, 85, 115, 101, 114,

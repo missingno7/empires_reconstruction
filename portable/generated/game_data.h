@@ -191,7 +191,7 @@ extern dos_int keyboard_state[2];
 #define gb72 keyboard_state
 
 /* timer_ticks  DS:0B76  size 4  (flat, component DATA_010798_PAD) */
-extern dos_ulong timer_ticks;
+extern volatile dos_ulong timer_ticks;
 #define gb76 timer_ticks
 
 /* int8_saved_vector  DS:0B7A  size 4  (flat, component DATA_010798_PAD) */
@@ -407,56 +407,246 @@ extern dos_uint snd_base2;
 extern dos_uint snd_seg2;
 #define g1764 snd_seg2
 
-/* sound_enabled  DS:176E  size 1832  (struct-component, component DATA_01139E_SOUND) */
-struct sound_enabled_s {
-    dos_uint state_words[71];
-    dos_uint note_divisors[24];
-    dos_uint *note_divisors_ptr;
-    dos_uint *note_divisors_octave_ptr;
-    dos_uint opl_port;
-    dos_uchar *dispatch[36];
-    dos_uchar lookup_prefix[13];
-    dos_uchar lookup_0119[3];
-    dos_uchar lookup_011c[3];
-    dos_uchar lookup_011f[3];
-    dos_uchar lookup_0122[3];
-    dos_uchar lookup_0125[3];
-    dos_uchar lookup_0128[3];
-    dos_uchar lookup_012b[3];
-    dos_uchar lookup_012e[3];
-    dos_uchar lookup_0131[3];
-    dos_uchar lookup_0134[3];
-    dos_uchar lookup_0137[3];
-    dos_uchar lookup_013a[3];
-    dos_uchar lookup_013d[3];
-    dos_uchar lookup_0140[3];
-    dos_uchar lookup_0143[3];
-    dos_uchar lookup_0146[3];
-    dos_uchar lookup_0149[7];
-    dos_uchar lookup_0150[20];
-    dos_uchar lookup_0164[31];
-    dos_uchar lookup_0183[6];
-    dos_uchar lookup_0189[69];
-    dos_uchar lookup_01ce[6];
-    dos_uchar lookup_01d4[6];
-    dos_uchar lookup_01da[6];
-    dos_uchar lookup_01e0[6];
-    dos_uchar lookup_01e6[6];
-    dos_uchar lookup_01ec[5];
-    dos_uchar lookup_01f1[8];
-    dos_uchar lookup_01f9[587];
-    dos_uchar lookup_0444[544];
-    dos_uchar lookup_0664[45];
-    dos_uchar lookup_0691[31];
-    dos_uchar lookup_06b0[49];
-    dos_uchar lookup_06e1[48];
-    dos_uchar lookup_0711[5];
-    dos_uint tail_words[9];
-};
-extern struct sound_enabled_s sound_enabled;
-/* DATA_01139E_SOUND (recipe component id; nothing points at it) */
+/* sound_enabled  DS:176E  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int sound_enabled;
 #define f1 sound_enabled
 #define g176e sound_enabled
+
+/* snd_on  DS:1770  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_on;
+#define g1770 snd_on
+
+/* music_enabled  DS:1772  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int music_enabled;
+#define f2 music_enabled
+#define g1772 music_enabled
+
+/* mus_flag  DS:1774  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int mus_flag;
+#define g1774 mus_flag
+
+/* snd_flag2  DS:1776  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_flag2;
+#define g1776 snd_flag2
+
+/* snd_backend_mode  DS:1778  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_backend_mode;
+#define g1778 snd_backend_mode
+
+/* snd_nvoices  DS:177A  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_nvoices;
+#define g177a snd_nvoices
+
+/* v_b  DS:177C  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int v_b[4];
+
+/* snd_mode  DS:1784  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_mode;
+#define g1784 snd_mode
+
+/* snd_hi  DS:1786  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_hi;
+#define g1786 snd_hi
+
+/* g1788  DS:1788  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int g1788;
+
+/* g178a  DS:178A  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int g178a;
+
+/* voice_stream_cursor_table  DS:178C  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int voice_stream_cursor_table[4];
+#define g178c voice_stream_cursor_table
+
+/* voice_stream_base_table  DS:1794  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int voice_stream_base_table[4];
+
+/* v_ctr  DS:179C  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int v_ctr[4];
+#define g179c v_ctr
+
+/* g17a4  DS:17A4  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int g17a4[4];
+
+/* v_a  DS:17AC  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int v_a[4];
+#define g17ac v_a
+
+/* v_hold  DS:17B4  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int v_hold[4];
+#define g17b4 v_hold
+
+/* v_len  DS:17BC  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int v_len[4];
+#define g17bc v_len
+
+/* sound_region_17C4  DS:17C4  size 40  (flat, component DATA_01139E_SOUND) */
+extern uint8_t sound_region_17C4[40];
+
+/* voice_rest_table  DS:17EC  size 8  (flat, component DATA_01139E_SOUND) */
+extern dos_int voice_rest_table[4];
+#define g17ec voice_rest_table
+
+/* g17f4  DS:17F4  size 8  (flat, component DATA_01139E_SOUND) */
+extern uint8_t g17f4[8];
+
+/* notetab  DS:17FC  size 24  (flat, component DATA_01139E_SOUND) */
+extern dos_uint notetab[12];
+#define note_divisors notetab
+
+/* note_divisors_octave  DS:1814  size 24  (flat, component DATA_01139E_SOUND) */
+extern uint8_t note_divisors_octave[24];
+
+/* sound_dispatch_182C  DS:182C  size 4  (sound-ptr-array, component DATA_01139E_SOUND) */
+extern void *sound_dispatch_182C[2];
+
+/* opl_port  DS:1830  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_uint opl_port;
+#define g1830 opl_port
+
+/* sound_dispatch_1832  DS:1832  size 72  (sound-ptr-array, component DATA_01139E_SOUND) */
+extern void *sound_dispatch_1832[36];
+
+/* sound_region_187A  DS:187A  size 13  (flat, component DATA_01139E_SOUND) */
+extern uint8_t sound_region_187A[13];
+
+/* lookup_0119  DS:1887  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0119[3];
+
+/* lookup_011c  DS:188A  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_011c[3];
+
+/* lookup_011f  DS:188D  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_011f[3];
+
+/* lookup_0122  DS:1890  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0122[3];
+
+/* lookup_0125  DS:1893  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0125[3];
+
+/* lookup_0128  DS:1896  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0128[3];
+
+/* lookup_012b  DS:1899  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_012b[3];
+
+/* lookup_012e  DS:189C  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_012e[3];
+
+/* lookup_0131  DS:189F  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0131[3];
+
+/* lookup_0134  DS:18A2  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0134[3];
+
+/* lookup_0137  DS:18A5  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0137[3];
+
+/* lookup_013a  DS:18A8  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_013a[3];
+
+/* lookup_013d  DS:18AB  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_013d[3];
+
+/* lookup_0140  DS:18AE  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0140[3];
+
+/* lookup_0143  DS:18B1  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0143[3];
+
+/* lookup_0146  DS:18B4  size 3  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0146[3];
+
+/* lookup_0149  DS:18B7  size 7  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0149[7];
+
+/* lookup_0150  DS:18BE  size 20  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0150[20];
+
+/* lookup_0164  DS:18D2  size 31  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0164[31];
+
+/* lookup_0183  DS:18F1  size 6  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0183[6];
+
+/* lookup_0189  DS:18F7  size 69  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0189[69];
+
+/* lookup_01ce  DS:193C  size 6  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01ce[6];
+
+/* lookup_01d4  DS:1942  size 6  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01d4[6];
+
+/* lookup_01da  DS:1948  size 6  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01da[6];
+
+/* lookup_01e0  DS:194E  size 6  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01e0[6];
+
+/* lookup_01e6  DS:1954  size 6  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01e6[6];
+
+/* lookup_01ec  DS:195A  size 5  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01ec[5];
+
+/* lookup_01f1  DS:195F  size 8  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01f1[8];
+
+/* lookup_01f9  DS:1967  size 587  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_01f9[587];
+
+/* lookup_0444  DS:1BB2  size 544  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0444[544];
+
+/* lookup_0664  DS:1DD2  size 45  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0664[45];
+
+/* lookup_0691  DS:1DFF  size 31  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0691[31];
+
+/* lookup_06b0  DS:1E1E  size 49  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_06b0[49];
+
+/* lookup_06e1  DS:1E4F  size 48  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_06e1[48];
+
+/* lookup_0711  DS:1E7F  size 5  (flat, component DATA_01139E_SOUND) */
+extern uint8_t lookup_0711[5];
+
+/* g1e84  DS:1E84  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int g1e84;
+
+/* g1e86  DS:1E86  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int g1e86;
+
+/* mus_ptr  DS:1E88  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int mus_ptr;
+#define g1e88 mus_ptr
+
+/* mus_arg  DS:1E8A  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int mus_arg;
+#define g1e8a mus_arg
+
+/* g1e8c  DS:1E8C  size 2  (flat, component DATA_01139E_SOUND) */
+extern uint8_t g1e8c[2];
+
+/* snd_len  DS:1E8E  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_len;
+#define g1e8e snd_len
+
+/* snd_delay  DS:1E90  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_delay;
+#define g1e90 snd_delay
+
+/* stream_note_delay  DS:1E92  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int stream_note_delay;
+#define g1e92 stream_note_delay
+
+/* snd_one  DS:1E94  size 2  (flat, component DATA_01139E_SOUND) */
+extern dos_int snd_one;
+#define g1e94 snd_one
 
 /* DATA_011AC6_NEW_USER_PROMPT  DS:1E96  size 124  (flat, component DATA_011AC6_NEW_USER_PROMPT) */
 extern uint8_t DATA_011AC6_NEW_USER_PROMPT[124];

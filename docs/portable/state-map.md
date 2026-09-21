@@ -7,7 +7,7 @@ DATA image: 14594 bytes (DS:0000..DS:3902), built from the `recipes/data/game-in
 ## Summary
 
 - DATA components: 108 carry recipe bytes, 9 owned by a ported C file (their static initializers, not this generator, supply the bytes), 17 toolchain/alignment bytes not modeled at all (Turbo C startup/runtime-library data the port does not use; no bytes read or emitted for these).
-- game_data.c: 132 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
+- game_data.c: 203 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
 - game_state.c: 180 objects emitted (178 typed, 2 untyped uint8_t fallback), 22 skipped (subsystem-owned).
 - Symbol names merged from all six sources: 685, covering 462 distinct DGROUP offsets.
 - Offset-ambiguous names recorded during the merge (same name, two different offsets across sources -- the earlier-added source won): 0.
@@ -34,12 +34,12 @@ Several historical names resolve to the same DGROUP offset with types that aren'
 | 0x96ee | `g96ee` : dos_uchar[674] | `str96ee` : `char str96ee[]` (src/GAME.C:47) |
 | 0xb3ae | `actor_record_table` : dos_uchar[1] | `g0b3ae` : `char g0b3ae[]` (src/GAME.C:441) |
 | 0xbfcc | `gbfcc` : dos_char | `gbfcc` : `unsigned char gbfcc` (src/STARTUP.C:60) |
-| 0xbfcd | `display_mode` : dos_char | `mode` : `unsigned char mode` (src/VIDEO.C:10) |
+| 0xbfcd | `display_mode` : dos_char | `vmode` : `unsigned char vmode` (src/INTRO.C:37) |
 | 0xbfde | `gbfde` : dos_uint * | `t3` : `char far *t1, far *t2, far *t3, far *t4` (src/INTRO.C:39) |
 | 0xbfee | `buf` : dos_char *[1] | `buf` : `char buf[]` (src/INTRO.C:44) |
 | 0xc0fe | `gc0fe` : uint8_t * | `gc0fe` : `char far *gc0fe` (include/GC0FE.H:14) |
-| 0xc470 | `slot_table` : struct c470_record[10] | `c470` : `struct C470 c470[]` (src/GAME.C:53) |
 | 0xc470 | `slot_table` : struct c470_record[10] | `tbl` : `struct tbl_entry tbl[]` (include/TBL.H:18) |
+| 0xc470 | `slot_table` : struct c470_record[10] | `c470` : `struct C470 c470[]` (src/GAME.C:53) |
 | 0xc5ca | `ui_gfx_blob` : dos_char | `ui_gfx_blob` : `unsigned ui_gfx_blob` (src/DIALOG.C:33) |
 | 0xc5ea | `gc5ea` : dos_uchar[96] | `tab_oct` : `char tab_oct[]` (src/OPLREG.C:36) |
 | 0xc64a | `gc64a` : dos_uchar[96] | `tab_ix` : `char tab_ix[]` (src/OPLREG.C:34) |
@@ -196,7 +196,78 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `snd_seg` | data | 0x1760 | 2 | dos_uint | generated | `g1760` |
 | `snd_base2` | data | 0x1762 | 2 | dos_uint | generated | `g1762` |
 | `snd_seg2` | data | 0x1764 | 2 | dos_uint | generated | `g1764` |
-| `sound_enabled` | data | 0x176e | 1832 | struct sound_enabled_s | generated | `DATA_01139E_SOUND`, `f1`, `g176e` |
+| `sound_enabled` | data | 0x176e | 2 | dos_int | generated | `f1`, `g176e` |
+| `snd_on` | data | 0x1770 | 2 | dos_int | generated | `g1770` |
+| `music_enabled` | data | 0x1772 | 2 | dos_int | generated | `f2`, `g1772` |
+| `mus_flag` | data | 0x1774 | 2 | dos_int | generated | `g1774` |
+| `snd_flag2` | data | 0x1776 | 2 | dos_int | generated | `g1776` |
+| `snd_backend_mode` | data | 0x1778 | 2 | dos_int | generated | `g1778` |
+| `snd_nvoices` | data | 0x177a | 2 | dos_int | generated | `g177a` |
+| `v_b` | data | 0x177c | 8 | dos_int[4] | generated |  |
+| `snd_mode` | data | 0x1784 | 2 | dos_int | generated | `g1784` |
+| `snd_hi` | data | 0x1786 | 2 | dos_int | generated | `g1786` |
+| `g1788` | data | 0x1788 | 2 | dos_int | generated |  |
+| `g178a` | data | 0x178a | 2 | dos_int | generated |  |
+| `voice_stream_cursor_table` | data | 0x178c | 8 | dos_int[4] | generated | `g178c` |
+| `voice_stream_base_table` | data | 0x1794 | 8 | dos_int[4] | generated |  |
+| `v_ctr` | data | 0x179c | 8 | dos_int[4] | generated | `g179c` |
+| `g17a4` | data | 0x17a4 | 8 | dos_int[4] | generated |  |
+| `v_a` | data | 0x17ac | 8 | dos_int[4] | generated | `g17ac` |
+| `v_hold` | data | 0x17b4 | 8 | dos_int[4] | generated | `g17b4` |
+| `v_len` | data | 0x17bc | 8 | dos_int[4] | generated | `g17bc` |
+| `sound_region_17C4` | data | 0x17c4 | 40 | uint8_t[40] | generated |  |
+| `voice_rest_table` | data | 0x17ec | 8 | dos_int[4] | generated | `g17ec` |
+| `g17f4` | data | 0x17f4 | 8 | uint8_t[8] | generated |  |
+| `notetab` | data | 0x17fc | 24 | dos_uint[12] | generated | `note_divisors` |
+| `note_divisors_octave` | data | 0x1814 | 24 | uint8_t[24] | generated |  |
+| `sound_dispatch_182C` | data | 0x182c | 4 | void *[2] | generated |  |
+| `opl_port` | data | 0x1830 | 2 | dos_uint | generated | `g1830` |
+| `sound_dispatch_1832` | data | 0x1832 | 72 | void *[36] | generated |  |
+| `sound_region_187A` | data | 0x187a | 13 | uint8_t[13] | generated |  |
+| `lookup_0119` | data | 0x1887 | 3 | uint8_t[3] | generated |  |
+| `lookup_011c` | data | 0x188a | 3 | uint8_t[3] | generated |  |
+| `lookup_011f` | data | 0x188d | 3 | uint8_t[3] | generated |  |
+| `lookup_0122` | data | 0x1890 | 3 | uint8_t[3] | generated |  |
+| `lookup_0125` | data | 0x1893 | 3 | uint8_t[3] | generated |  |
+| `lookup_0128` | data | 0x1896 | 3 | uint8_t[3] | generated |  |
+| `lookup_012b` | data | 0x1899 | 3 | uint8_t[3] | generated |  |
+| `lookup_012e` | data | 0x189c | 3 | uint8_t[3] | generated |  |
+| `lookup_0131` | data | 0x189f | 3 | uint8_t[3] | generated |  |
+| `lookup_0134` | data | 0x18a2 | 3 | uint8_t[3] | generated |  |
+| `lookup_0137` | data | 0x18a5 | 3 | uint8_t[3] | generated |  |
+| `lookup_013a` | data | 0x18a8 | 3 | uint8_t[3] | generated |  |
+| `lookup_013d` | data | 0x18ab | 3 | uint8_t[3] | generated |  |
+| `lookup_0140` | data | 0x18ae | 3 | uint8_t[3] | generated |  |
+| `lookup_0143` | data | 0x18b1 | 3 | uint8_t[3] | generated |  |
+| `lookup_0146` | data | 0x18b4 | 3 | uint8_t[3] | generated |  |
+| `lookup_0149` | data | 0x18b7 | 7 | uint8_t[7] | generated |  |
+| `lookup_0150` | data | 0x18be | 20 | uint8_t[20] | generated |  |
+| `lookup_0164` | data | 0x18d2 | 31 | uint8_t[31] | generated |  |
+| `lookup_0183` | data | 0x18f1 | 6 | uint8_t[6] | generated |  |
+| `lookup_0189` | data | 0x18f7 | 69 | uint8_t[69] | generated |  |
+| `lookup_01ce` | data | 0x193c | 6 | uint8_t[6] | generated |  |
+| `lookup_01d4` | data | 0x1942 | 6 | uint8_t[6] | generated |  |
+| `lookup_01da` | data | 0x1948 | 6 | uint8_t[6] | generated |  |
+| `lookup_01e0` | data | 0x194e | 6 | uint8_t[6] | generated |  |
+| `lookup_01e6` | data | 0x1954 | 6 | uint8_t[6] | generated |  |
+| `lookup_01ec` | data | 0x195a | 5 | uint8_t[5] | generated |  |
+| `lookup_01f1` | data | 0x195f | 8 | uint8_t[8] | generated |  |
+| `lookup_01f9` | data | 0x1967 | 587 | uint8_t[587] | generated |  |
+| `lookup_0444` | data | 0x1bb2 | 544 | uint8_t[544] | generated |  |
+| `lookup_0664` | data | 0x1dd2 | 45 | uint8_t[45] | generated |  |
+| `lookup_0691` | data | 0x1dff | 31 | uint8_t[31] | generated |  |
+| `lookup_06b0` | data | 0x1e1e | 49 | uint8_t[49] | generated |  |
+| `lookup_06e1` | data | 0x1e4f | 48 | uint8_t[48] | generated |  |
+| `lookup_0711` | data | 0x1e7f | 5 | uint8_t[5] | generated |  |
+| `g1e84` | data | 0x1e84 | 2 | dos_int | generated |  |
+| `g1e86` | data | 0x1e86 | 2 | dos_int | generated |  |
+| `mus_ptr` | data | 0x1e88 | 2 | dos_int | generated | `g1e88` |
+| `mus_arg` | data | 0x1e8a | 2 | dos_int | generated | `g1e8a` |
+| `g1e8c` | data | 0x1e8c | 2 | uint8_t[2] | generated |  |
+| `snd_len` | data | 0x1e8e | 2 | dos_int | generated | `g1e8e` |
+| `snd_delay` | data | 0x1e90 | 2 | dos_int | generated | `g1e90` |
+| `stream_note_delay` | data | 0x1e92 | 2 | dos_int | generated | `g1e92` |
+| `snd_one` | data | 0x1e94 | 2 | dos_int | generated | `g1e94` |
 | `DATA_011AC6_NEW_USER_PROMPT` | data | 0x1e96 | 124 | uint8_t[124] | generated |  |
 | `DATA_011B42_PLAYER_HEADER` | data | 0x1f12 | 45 | uint8_t[45] | generated |  |
 | `DATA_011B6F_PLAYER_CAVERNS` | data | 0x1f3f | 43 | uint8_t[43] | generated |  |

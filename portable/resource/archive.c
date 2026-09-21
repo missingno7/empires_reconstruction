@@ -30,7 +30,7 @@ uint8_t *ui_gfx_blob = NULL;     /* DS:C5CA */
 uint8_t *ui_gfx_shadow_a = NULL; /* DS:C5C6 */
 uint8_t *ui_gfx_shadow_b = NULL; /* DS:C5BE */
 dos_char gc0cb = 0;              /* DS:C0CB */
-dos_char display_mode = 4;       /* DS:BFCD -- the port runs mode 4 ("-M") */
+dos_char display_mode = 5;       /* DS:BFCD -- the port runs selector 5 (VGA, "-V") */
 
 /* ---- Staging block (src/PLAYERSL.C ui_gfx_alloc) --------------------- */
 static uint8_t *g_staging_block = NULL;
@@ -165,6 +165,8 @@ static int read_whole_file(const char *path, uint8_t **out_data, long *out_size)
     return 0;
 }
 
+static void apply_save_overlays(int dir);
+
 int resource_archive_open(int dir)
 {
     char path[1024];
@@ -203,6 +205,92 @@ int resource_archive_open(int dir)
      * i = 0..N-2, so there are N-1 records. */
     g_archives[dir].record_count = (unsigned)(stamp / 4u) - 1u;
     g_archives[dir].is_open = 1;
+    apply_save_overlays(dir);
+    return 0;
+}
+
+/* ---- Save-slot persistence (src/RESOURCE.C resource_file_write_record) --
+ * Historically slot_table_save() wrote the two slot tables straight INTO
+ * the archive record payload on the (writable) Artifacts Disk: lseek to
+ * table[slot] + 2, write length - 2 bytes.  The port never mutates the
+ * archives: each written record becomes an overlay file
+ * <savedir>/AE00d_NNN.rec holding the payload, applied over the in-memory
+ * image when the archive is opened, so resource_load_record sees exactly
+ * the bytes the historical code would have read back. */
+static char g_save_dir[1024] = ".";
+
+void resource_set_save_dir(const char *dir)
+{
+    if (!dir || !*dir)
+        dir = ".";
+    strncpy(g_save_dir, dir, sizeof(g_save_dir) - 1);
+    g_save_dir[sizeof(g_save_dir) - 1] = '\0';
+}
+
+static void overlay_path(char *out, size_t out_sz, int dir, unsigned index)
+{
+    char name[32];
+    snprintf(name, sizeof name, "AE00%d_%03u.rec", dir, index);
+    join_path(out, out_sz, g_save_dir, name);
+}
+
+static void apply_save_overlays(int dir)
+{
+    resource_archive *a = &g_archives[dir];
+    unsigned i;
+    for (i = 0; i < a->record_count; i++) {
+        char path[1024];
+        uint8_t *bytes = NULL;
+        long n = 0;
+        uint32_t o1 = dos_rd32(a->data + 4u * i);
+        uint32_t o2 = dos_rd32(a->data + 4u * (i + 1u));
+        overlay_path(path, sizeof path, dir, i);
+        if (read_whole_file(path, &bytes, &n) != 0)
+            continue;
+        if (o2 >= o1 + 2u && (uint32_t)n == o2 - o1 - 2u)
+            memcpy(a->data + o1 + 2u, bytes, (size_t)n);
+        else
+            fprintf(stderr, "resource: ignoring overlay %s (size %ld, record payload %lu)\n",
+                    path, n, (unsigned long)(o2 - o1 - 2u));
+        free(bytes);
+    }
+}
+
+int resource_file_write_record(dos_uint index, const void *data)
+{
+    dos_uint group = (dos_uint)(index >> 12);
+    dos_uint slot = (dos_uint)(index & 0xfffu);
+    resource_archive *a;
+    uint32_t o1, o2;
+    dos_int length;
+    char path[1024];
+    FILE *f;
+
+    if (group > 2u || (!g_archives[group].is_open && resource_archive_open((int)group) != 0)) {
+        g_failure_fn((int)group, "write: archive not open");
+        return -1;
+    }
+    a = &g_archives[group];
+    if (slot >= a->record_count) {
+        g_failure_fn((int)group, "write: record index out of range");
+        return -1;
+    }
+    o1 = dos_rd32(a->data + 4u * slot);
+    o2 = dos_rd32(a->data + 4u * (slot + 1u));
+    length = dos_i16((int32_t)(o2 - o1));      /* `int length = second - first;` */
+    if (length < 2)
+        return -1;
+    memcpy(a->data + o1 + 2u, data, (size_t)(length - 2));
+    overlay_path(path, sizeof path, (int)group, slot);
+    f = fopen(path, "wb");
+    if (!f) {
+        /* Save-slot writes fail outright (docs/current/portability-boundaries.md
+         * section 9): report, do not retry. */
+        g_failure_fn((int)group, "write: cannot create save overlay");
+        return -1;
+    }
+    fwrite(data, 1, (size_t)(length - 2), f);
+    fclose(f);
     return 0;
 }
 

@@ -56,6 +56,15 @@ dos_int resource_load_record(dos_uint packed);
 void resource_load_record_alloc(dos_int packed, uint8_t **pp);
 void resource_load_record_into(dos_uint packed, uint8_t *q);
 
+/* Save-slot persistence: src/RESOURCE.C resource_file_write_record wrote
+ * the record payload back into the archive on disk.  The port keeps the
+ * in-memory image updated and persists an overlay file per record under
+ * the save directory (default "."); overlays are applied when the archive
+ * is opened.  Returns 0 on success, -1 on failure (write failures are not
+ * retried). */
+void resource_set_save_dir(const char *dir);
+int  resource_file_write_record(dos_uint index, const void *data);
+
 /* Raw access used by tests and tools: returns a pointer into the archive's
  * in-memory image for record `index` of directory `dir` and its length
  * (the full 32-bit end-start), or NULL if out of range. */

@@ -139,6 +139,10 @@ int main(void)
     char path[1024];
     int failures = 0;
     int checked = 0;
+
+    /* The golden manifest was produced with the historical selector-4
+     * pipeline (planar sprite fix-up applied); the port defaults to 5. */
+    display_mode = 4;
     int skipped = 0;
     static const char *const prefixes[2] = { "AE000", "AE001" };
     int dir;

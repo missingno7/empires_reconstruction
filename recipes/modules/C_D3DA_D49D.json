@@ -1,0 +1,34 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_D3DA_D49D",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_D3DA",
+      "path": "src/HELPMENU.C",
+      "public": "_dialog_list_pick"
+    },
+    {
+      "owner": "F_D45C",
+      "path": "src/HELPMENU.C",
+      "public": "_help_topic_keyboard_show"
+    },
+    {
+      "owner": "F_D471",
+      "path": "src/HELPMENU.C",
+      "public": "_help_topic_playing_show"
+    },
+    {
+      "owner": "F_D487",
+      "path": "src/HELPMENU.C",
+      "public": "_help_topic_obstacles_show"
+    },
+    {
+      "owner": "F_D49D",
+      "path": "src/HELPMENU.C",
+      "public": "_help_topic_puzzles_show"
+    }
+  ],
+  "evidence": "Readability grouping proven byte-exact by tools/probe_tu.py (217 bytes, 13 fixups, no flags): the shared help-topic list dialog (dialog_list_pick) and its four F1 help-topic wrappers, which the DGROUP:0C18 handler table reaches. Byte-neutral: no flag or declaration forces the unit. Members merged into src/HELPMENU.C. Members merged into src/HELPMENU.C."
+}

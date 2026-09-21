@@ -4121,8 +4121,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "symbol": "dialog_list_pick",
@@ -4138,8 +4138,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D45C.C",
-          "line": 1
+          "file": "src/HELPMENU.C",
+          "line": 12
         },
         {
           "symbol": "dialog_list_pick",
@@ -4155,8 +4155,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D471.C",
-          "line": 1
+          "file": "src/HELPMENU.C",
+          "line": 21
         },
         {
           "symbol": "dialog_list_pick",
@@ -4172,8 +4172,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D487.C",
-          "line": 1
+          "file": "src/HELPMENU.C",
+          "line": 30
         },
         {
           "symbol": "dialog_list_pick",
@@ -4189,8 +4189,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D49D.C",
-          "line": 1
+          "file": "src/HELPMENU.C",
+          "line": 39
         }
       ],
       "definitions": [
@@ -4208,8 +4208,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         }
       ],
       "omf_public_evidence": [
@@ -4217,9 +4217,13 @@
           "symbol": "_dialog_list_pick",
           "address": 54234,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D3DA",
+          "owner": "C_D3DA_D49D",
           "module_members": [
-            "F_D3DA"
+            "F_D3DA",
+            "F_D45C",
+            "F_D471",
+            "F_D487",
+            "F_D49D"
           ]
         }
       ]
@@ -4252,8 +4256,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 1
+          "file": "src/HELPMENU.C",
+          "line": 6
         }
       ],
       "definitions": [
@@ -6579,8 +6583,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "symbol": "free",
@@ -8537,8 +8541,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D45C.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 14
         }
       ],
       "definitions": [
@@ -8552,8 +8556,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D45C.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 14
         }
       ],
       "omf_public_evidence": [
@@ -8561,9 +8565,13 @@
           "symbol": "_help_topic_keyboard_show",
           "address": 54364,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D45C",
+          "owner": "C_D3DA_D49D",
           "module_members": [
-            "F_D45C"
+            "F_D3DA",
+            "F_D45C",
+            "F_D471",
+            "F_D487",
+            "F_D49D"
           ]
         }
       ]
@@ -8581,8 +8589,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D487.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 32
         }
       ],
       "definitions": [
@@ -8596,8 +8604,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D487.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 32
         }
       ],
       "omf_public_evidence": [
@@ -8605,9 +8613,13 @@
           "symbol": "_help_topic_obstacles_show",
           "address": 54407,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D487",
+          "owner": "C_D3DA_D49D",
           "module_members": [
-            "F_D487"
+            "F_D3DA",
+            "F_D45C",
+            "F_D471",
+            "F_D487",
+            "F_D49D"
           ]
         }
       ]
@@ -8625,8 +8637,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D471.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 23
         }
       ],
       "definitions": [
@@ -8640,8 +8652,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D471.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 23
         }
       ],
       "omf_public_evidence": [
@@ -8649,9 +8661,13 @@
           "symbol": "_help_topic_playing_show",
           "address": 54385,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D471",
+          "owner": "C_D3DA_D49D",
           "module_members": [
-            "F_D471"
+            "F_D3DA",
+            "F_D45C",
+            "F_D471",
+            "F_D487",
+            "F_D49D"
           ]
         }
       ]
@@ -8669,8 +8685,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D49D.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 41
         }
       ],
       "definitions": [
@@ -8684,8 +8700,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/F_D49D.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 41
         }
       ],
       "omf_public_evidence": [
@@ -8693,8 +8709,12 @@
           "symbol": "_help_topic_puzzles_show",
           "address": 54429,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D49D",
+          "owner": "C_D3DA_D49D",
           "module_members": [
+            "F_D3DA",
+            "F_D45C",
+            "F_D471",
+            "F_D487",
             "F_D49D"
           ]
         }
@@ -14023,19 +14043,6 @@
       "declarations": [
         {
           "symbol": "music_resume_if_valid",
-          "definition": true,
-          "return_type": "void",
-          "argument_count": 0,
-          "argument_types": [],
-          "near_far": "near",
-          "calling_convention": "cdecl",
-          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
-          "confidence": "MEDIUM",
-          "file": "src/MUSRESUM.C",
-          "line": 3
-        },
-        {
-          "symbol": "music_resume_if_valid",
           "definition": false,
           "return_type": "void",
           "argument_count": 0,
@@ -14046,6 +14053,19 @@
           "confidence": "MEDIUM",
           "file": "src/OPTIONS.C",
           "line": 7
+        },
+        {
+          "symbol": "music_resume_if_valid",
+          "definition": true,
+          "return_type": "void",
+          "argument_count": 0,
+          "argument_types": [],
+          "near_far": "near",
+          "calling_convention": "cdecl",
+          "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
+          "confidence": "MEDIUM",
+          "file": "src/RESCACHE.C",
+          "line": 39
         },
         {
           "symbol": "music_resume_if_valid",
@@ -14072,8 +14092,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/MUSRESUM.C",
-          "line": 3
+          "file": "src/RESCACHE.C",
+          "line": 39
         }
       ],
       "omf_public_evidence": [
@@ -14081,8 +14101,10 @@
           "symbol": "_music_resume_if_valid",
           "address": 54796,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D60C",
+          "owner": "C_D5BA_D60C",
           "module_members": [
+            "F_D5BA",
+            "F_D5F9",
             "F_D60C"
           ]
         }
@@ -15202,7 +15224,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/PLRLDPUB.C",
-          "line": 18
+          "line": 15
         }
       ],
       "definitions": [
@@ -15217,7 +15239,7 @@
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
           "file": "src/PLRLDPUB.C",
-          "line": 18
+          "line": 15
         }
       ],
       "omf_public_evidence": [
@@ -18471,8 +18493,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 2
+          "file": "src/HELPMENU.C",
+          "line": 7
         },
         {
           "symbol": "resource_load_record_alloc",
@@ -18664,8 +18686,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 3
+          "file": "src/RESCACHE.C",
+          "line": 8
         },
         {
           "symbol": "resource_load_record_into",
@@ -18828,8 +18850,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 9
+          "file": "src/RESCACHE.C",
+          "line": 14
         },
         {
           "symbol": "resource_record_cache_load",
@@ -18841,8 +18863,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCRST.C",
-          "line": 2
+          "file": "src/RESCACHE.C",
+          "line": 27
         }
       ],
       "definitions": [
@@ -18858,8 +18880,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 9
+          "file": "src/RESCACHE.C",
+          "line": 14
         }
       ],
       "omf_public_evidence": [
@@ -18867,9 +18889,11 @@
           "symbol": "_resource_record_cache_load",
           "address": 54714,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D5BA",
+          "owner": "C_D5BA_D60C",
           "module_members": [
-            "F_D5BA"
+            "F_D5BA",
+            "F_D5F9",
+            "F_D60C"
           ]
         }
       ]
@@ -18958,8 +18982,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCRST.C",
-          "line": 4
+          "file": "src/RESCACHE.C",
+          "line": 29
         }
       ],
       "definitions": [
@@ -18975,8 +18999,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCRST.C",
-          "line": 4
+          "file": "src/RESCACHE.C",
+          "line": 29
         }
       ],
       "omf_public_evidence": [
@@ -18984,9 +19008,11 @@
           "symbol": "_resource_record_cache_reset",
           "address": 54777,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D5F9",
+          "owner": "C_D5BA_D60C",
           "module_members": [
-            "F_D5F9"
+            "F_D5BA",
+            "F_D5F9",
+            "F_D60C"
           ]
         }
       ]
@@ -21882,8 +21908,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDRQCLR.C",
-          "line": 5
+          "file": "src/SNDREQ.C",
+          "line": 41
         }
       ],
       "definitions": [
@@ -21897,8 +21923,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDRQCLR.C",
-          "line": 5
+          "file": "src/SNDREQ.C",
+          "line": 41
         }
       ],
       "omf_public_evidence": [
@@ -21906,8 +21932,10 @@
           "symbol": "_sound_request_count_clear",
           "address": 54707,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D5B3",
+          "owner": "C_D593_D5B3",
           "module_members": [
+            "F_D593",
+            "F_D5A6",
             "F_D5B3"
           ]
         }
@@ -21978,8 +22006,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDRQDEC.C",
-          "line": 7
+          "file": "src/SNDREQ.C",
+          "line": 29
         }
       ],
       "definitions": [
@@ -21993,8 +22021,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDRQDEC.C",
-          "line": 7
+          "file": "src/SNDREQ.C",
+          "line": 29
         }
       ],
       "omf_public_evidence": [
@@ -22002,9 +22030,11 @@
           "symbol": "_sound_request_count_dec",
           "address": 54694,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D5A6",
+          "owner": "C_D593_D5B3",
           "module_members": [
-            "F_D5A6"
+            "F_D593",
+            "F_D5A6",
+            "F_D5B3"
           ]
         }
       ]
@@ -22131,8 +22161,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 8
+          "file": "src/SNDREQ.C",
+          "line": 13
         }
       ],
       "definitions": [
@@ -22146,8 +22176,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 8
+          "file": "src/SNDREQ.C",
+          "line": 13
         }
       ],
       "omf_public_evidence": [
@@ -22155,9 +22185,11 @@
           "symbol": "_sound_start",
           "address": 54675,
           "classification": "KNOWN_FUNCTION_ENTRY",
-          "owner": "F_D593",
+          "owner": "C_D593_D5B3",
           "module_members": [
-            "F_D593"
+            "F_D593",
+            "F_D5A6",
+            "F_D5B3"
           ]
         }
       ]
@@ -22305,8 +22337,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 3
+          "file": "src/SNDREQ.C",
+          "line": 8
         }
       ],
       "definitions": [],
@@ -22844,8 +22876,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/MUSRESUM.C",
-          "line": 2
+          "file": "src/RESCACHE.C",
+          "line": 27
         },
         {
           "symbol": "sound_voice_table_reload",
@@ -22857,8 +22889,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/RESCRST.C",
-          "line": 2
+          "file": "src/RESCACHE.C",
+          "line": 38
         }
       ],
       "definitions": [],
@@ -22927,8 +22959,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 5
+          "file": "src/SNDREQ.C",
+          "line": 10
         }
       ],
       "definitions": [],
@@ -25847,8 +25879,8 @@
           "calling_convention": "cdecl",
           "evidence": "Turbo C -mc: near code, far default data pointers; () has unspecified arguments",
           "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 4
+          "file": "src/SNDREQ.C",
+          "line": 9
         },
         {
           "symbol": "timer_wait_ticks",
@@ -34366,8 +34398,8 @@
             }
           ],
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "name": "R",
@@ -35053,226 +35085,6 @@
       "aliases": []
     },
     {
-      "symbol": "g1760",
-      "declarations": [
-        {
-          "symbol": "g1760",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PLRLDPUB.C",
-          "line": 14
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 5984,
-          "owner": null,
-          "evidence": "storage_objects/G_P21290.phys",
-          "caller": "F_CAF1"
-        },
-        {
-          "offset": 5984,
-          "owner": null,
-          "evidence": "storage_objects/G_P21290.phys",
-          "caller": "F_D555"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          5984,
-          5986
-        ]
-      ],
-      "aliases": [
-        "snd_seg"
-      ]
-    },
-    {
-      "symbol": "g1764",
-      "declarations": [
-        {
-          "symbol": "g1764",
-          "type": "unsigned",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PLRLDPUB.C",
-          "line": 14
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 5988,
-          "owner": null,
-          "evidence": "storage_objects/G_P21294.phys",
-          "caller": "F_D555"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          5988,
-          5990
-        ]
-      ],
-      "aliases": [
-        "snd_seg2"
-      ]
-    },
-    {
-      "symbol": "g1774",
-      "declarations": [
-        {
-          "symbol": "g1774",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 36
-        },
-        {
-          "symbol": "g1774",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 188
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 6004,
-          "owner": null,
-          "evidence": "storage_objects/G_P212A4.phys",
-          "caller": "F_56C6"
-        },
-        {
-          "offset": 6004,
-          "owner": null,
-          "evidence": "storage_objects/G_P212A4.phys",
-          "caller": "F_B7F9"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          6004,
-          6006
-        ]
-      ],
-      "aliases": [
-        "mus_flag"
-      ]
-    },
-    {
-      "symbol": "g1776",
-      "declarations": [
-        {
-          "symbol": "g1776",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/GAME.C",
-          "line": 497
-        },
-        {
-          "symbol": "g1776",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/INTRO.C",
-          "line": 36
-        },
-        {
-          "symbol": "g1776",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/LEVEL.C",
-          "line": 36
-        },
-        {
-          "symbol": "g1776",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
-          "file": "src/PLAYERSL.C",
-          "line": 39
-        }
-      ],
-      "definitions": [],
-      "storage_evidence": [
-        {
-          "offset": 6006,
-          "owner": null,
-          "evidence": "storage_objects/G_P212A6.phys",
-          "caller": "F_4713"
-        },
-        {
-          "offset": 6006,
-          "owner": null,
-          "evidence": "storage_objects/G_P212A6.phys",
-          "caller": "F_56C6"
-        },
-        {
-          "offset": 6006,
-          "owner": null,
-          "evidence": "storage_objects/G_P212A6.phys",
-          "caller": "F_B6CD"
-        },
-        {
-          "offset": 6006,
-          "owner": null,
-          "evidence": "F_B99F historical instruction operands",
-          "caller": "F_B99F"
-        },
-        {
-          "offset": 6006,
-          "owner": null,
-          "evidence": "storage_objects/G_P212A6.phys",
-          "caller": "F_D26C"
-        }
-      ],
-      "struct_membership": [],
-      "known_storage_ranges": [
-        [
-          6006,
-          6008
-        ]
-      ],
-      "aliases": [
-        "snd_flag2"
-      ]
-    },
-    {
       "symbol": "g177a",
       "declarations": [],
       "definitions": [],
@@ -35387,7 +35199,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 36
+          "line": 32
         }
       ],
       "definitions": [],
@@ -35426,7 +35238,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 39
+          "line": 35
         }
       ],
       "definitions": [],
@@ -35484,7 +35296,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 44
+          "line": 40
         }
       ],
       "definitions": [],
@@ -35597,7 +35409,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 60
+          "line": 56
         }
       ],
       "definitions": [],
@@ -35636,7 +35448,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 61
+          "line": 57
         }
       ],
       "definitions": [],
@@ -35946,8 +35758,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         }
       ],
       "definitions": [],
@@ -35984,8 +35796,8 @@
             }
           ],
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "name": "R",
@@ -36134,8 +35946,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_D45C.C",
-          "line": 2
+          "file": "src/HELPMENU.C",
+          "line": 13
         }
       ],
       "definitions": [],
@@ -36162,8 +35974,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_D471.C",
-          "line": 2
+          "file": "src/HELPMENU.C",
+          "line": 22
         }
       ],
       "definitions": [],
@@ -36190,8 +36002,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_D487.C",
-          "line": 2
+          "file": "src/HELPMENU.C",
+          "line": 31
         }
       ],
       "definitions": [],
@@ -36218,8 +36030,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/F_D49D.C",
-          "line": 2
+          "file": "src/HELPMENU.C",
+          "line": 40
         }
       ],
       "definitions": [],
@@ -43167,8 +42979,8 @@
           "storage": null,
           "size": null,
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         }
       ],
       "definitions": [],
@@ -43217,8 +43029,8 @@
           "storage": null,
           "size": 4,
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 4
+          "file": "src/RESCACHE.C",
+          "line": 9
         }
       ],
       "definitions": [],
@@ -44692,7 +44504,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 63
+          "line": 59
         }
       ],
       "definitions": [],
@@ -44717,10 +44529,55 @@
     },
     {
       "symbol": "mus_flag",
-      "declarations": [],
+      "declarations": [
+        {
+          "symbol": "mus_flag",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "include/SOUND.H",
+          "line": 24
+        },
+        {
+          "symbol": "mus_flag",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/INTRO.C",
+          "line": 36
+        },
+        {
+          "symbol": "mus_flag",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 188
+        }
+      ],
       "definitions": [],
-      "type_confidence": "UNKNOWN",
       "storage_evidence": [
+        {
+          "offset": 6004,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A4.phys",
+          "caller": "F_56C6"
+        },
+        {
+          "offset": 6004,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A4.phys",
+          "caller": "F_B7F9"
+        },
         {
           "offset": 6004,
           "owner": null,
@@ -44729,10 +44586,13 @@
         }
       ],
       "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": [
-        "g1774"
-      ]
+      "known_storage_ranges": [
+        [
+          6004,
+          6006
+        ]
+      ],
+      "aliases": []
     },
     {
       "symbol": "mus_ptr",
@@ -44746,7 +44606,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 62
+          "line": 58
         }
       ],
       "definitions": [],
@@ -44781,7 +44641,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 23
+          "line": 20
         },
         {
           "symbol": "music_enabled",
@@ -44933,17 +44793,6 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/MUSRESUM.C",
-          "line": 1
-        },
-        {
-          "symbol": "music_track_handle",
-          "type": "int",
-          "array": null,
-          "pointer_shape": null,
-          "storage": null,
-          "size": 2,
-          "confidence": "MEDIUM",
           "file": "src/PUZZLE.C",
           "line": 18
         },
@@ -44955,8 +44804,19 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/RESCLOAD.C",
-          "line": 6
+          "file": "src/RESCACHE.C",
+          "line": 11
+        },
+        {
+          "symbol": "music_track_handle",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/RESCACHE.C",
+          "line": 37
         },
         {
           "symbol": "music_track_handle",
@@ -45070,7 +44930,7 @@
           "size": 24,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 56
+          "line": 52
         }
       ],
       "definitions": [],
@@ -45394,7 +45254,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 57
+          "line": 53
         }
       ],
       "definitions": [],
@@ -47497,7 +47357,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 31
+          "line": 27
         }
       ],
       "definitions": [],
@@ -47566,7 +47426,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 18
+          "line": 15
         }
       ],
       "definitions": [],
@@ -47605,7 +47465,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 19
+          "line": 16
         }
       ],
       "definitions": [],
@@ -47644,7 +47504,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 65
+          "line": 61
         }
       ],
       "definitions": [],
@@ -47675,22 +47535,110 @@
     },
     {
       "symbol": "snd_flag2",
-      "declarations": [],
+      "declarations": [
+        {
+          "symbol": "snd_flag2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "include/SOUND.H",
+          "line": 25
+        },
+        {
+          "symbol": "snd_flag2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/GAME.C",
+          "line": 497
+        },
+        {
+          "symbol": "snd_flag2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/INTRO.C",
+          "line": 36
+        },
+        {
+          "symbol": "snd_flag2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/LEVEL.C",
+          "line": 36
+        },
+        {
+          "symbol": "snd_flag2",
+          "type": "int",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "src/PLAYERSL.C",
+          "line": 39
+        }
+      ],
       "definitions": [],
-      "type_confidence": "UNKNOWN",
       "storage_evidence": [
         {
           "offset": 6006,
           "owner": null,
           "evidence": "storage_objects/G_P212A6.phys",
+          "caller": "F_4713"
+        },
+        {
+          "offset": 6006,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A6.phys",
+          "caller": "F_56C6"
+        },
+        {
+          "offset": 6006,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A6.phys",
+          "caller": "F_B6CD"
+        },
+        {
+          "offset": 6006,
+          "owner": null,
+          "evidence": "F_B99F historical instruction operands",
+          "caller": "F_B99F"
+        },
+        {
+          "offset": 6006,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A6.phys",
           "caller": "F_C1F7"
+        },
+        {
+          "offset": 6006,
+          "owner": null,
+          "evidence": "storage_objects/G_P212A6.phys",
+          "caller": "F_D26C"
         }
       ],
       "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": [
-        "g1776"
-      ]
+      "known_storage_ranges": [
+        [
+          6006,
+          6008
+        ]
+      ],
+      "aliases": []
     },
     {
       "symbol": "snd_hi",
@@ -47704,7 +47652,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 35
+          "line": 31
         }
       ],
       "definitions": [],
@@ -47739,7 +47687,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 64
+          "line": 60
         }
       ],
       "definitions": [],
@@ -47774,7 +47722,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 34
+          "line": 30
         }
       ],
       "definitions": [],
@@ -47821,7 +47769,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 32
+          "line": 28
         }
       ],
       "definitions": [],
@@ -47862,7 +47810,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 26
+          "line": 23
         }
       ],
       "definitions": [],
@@ -47925,7 +47873,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 67
+          "line": 63
         }
       ],
       "definitions": [],
@@ -47950,41 +47898,87 @@
     },
     {
       "symbol": "snd_seg",
-      "declarations": [],
+      "declarations": [
+        {
+          "symbol": "snd_seg",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "include/SOUND.H",
+          "line": 13
+        }
+      ],
       "definitions": [],
-      "type_confidence": "UNKNOWN",
       "storage_evidence": [
         {
           "offset": 5984,
           "owner": null,
           "evidence": "storage_objects/G_P21290.phys",
           "caller": "F_C8E2"
+        },
+        {
+          "offset": 5984,
+          "owner": null,
+          "evidence": "storage_objects/G_P21290.phys",
+          "caller": "F_CAF1"
+        },
+        {
+          "offset": 5984,
+          "owner": null,
+          "evidence": "storage_objects/G_P21290.phys",
+          "caller": "F_D555"
         }
       ],
       "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": [
-        "g1760"
-      ]
+      "known_storage_ranges": [
+        [
+          5984,
+          5986
+        ]
+      ],
+      "aliases": []
     },
     {
       "symbol": "snd_seg2",
-      "declarations": [],
+      "declarations": [
+        {
+          "symbol": "snd_seg2",
+          "type": "unsigned",
+          "array": null,
+          "pointer_shape": null,
+          "storage": null,
+          "size": 2,
+          "confidence": "MEDIUM",
+          "file": "include/SOUND.H",
+          "line": 14
+        }
+      ],
       "definitions": [],
-      "type_confidence": "UNKNOWN",
       "storage_evidence": [
         {
           "offset": 5988,
           "owner": null,
           "evidence": "storage_objects/G_P21294.phys",
           "caller": "F_C1A0"
+        },
+        {
+          "offset": 5988,
+          "owner": null,
+          "evidence": "storage_objects/G_P21294.phys",
+          "caller": "F_D555"
         }
       ],
       "struct_membership": [],
-      "known_storage_ranges": [],
-      "aliases": [
-        "g1764"
-      ]
+      "known_storage_ranges": [
+        [
+          5988,
+          5990
+        ]
+      ],
+      "aliases": []
     },
     {
       "symbol": "sound_enabled",
@@ -47998,7 +47992,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 22
+          "line": 19
         },
         {
           "symbol": "sound_enabled",
@@ -48073,8 +48067,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/SNDRQCLR.C",
-          "line": 3
+          "file": "src/SNDREQ.C",
+          "line": 11
         },
         {
           "symbol": "sound_request_count",
@@ -48084,8 +48078,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/SNDRQDEC.C",
-          "line": 5
+          "file": "src/SNDREQ.C",
+          "line": 27
         },
         {
           "symbol": "sound_request_count",
@@ -48095,8 +48089,8 @@
           "storage": null,
           "size": 2,
           "confidence": "MEDIUM",
-          "file": "src/SNDSTART.C",
-          "line": 6
+          "file": "src/SNDREQ.C",
+          "line": 39
         },
         {
           "symbol": "sound_request_count",
@@ -48355,7 +48349,7 @@
           "size": 2,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 66
+          "line": 62
         }
       ],
       "definitions": [],
@@ -49699,7 +49693,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 45
+          "line": 41
         }
       ],
       "definitions": [],
@@ -49740,7 +49734,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 33
+          "line": 29
         }
       ],
       "definitions": [],
@@ -49779,7 +49773,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 43
+          "line": 39
         }
       ],
       "definitions": [],
@@ -49814,7 +49808,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 46
+          "line": 42
         }
       ],
       "definitions": [],
@@ -49849,7 +49843,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 47
+          "line": 43
         }
       ],
       "definitions": [],
@@ -50155,7 +50149,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 54
+          "line": 50
         }
       ],
       "definitions": [],
@@ -50188,7 +50182,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 42
+          "line": 38
         }
       ],
       "definitions": [],
@@ -50221,7 +50215,7 @@
           "size": 8,
           "confidence": "MEDIUM",
           "file": "include/SOUND.H",
-          "line": 41
+          "line": 37
         }
       ],
       "definitions": [],
@@ -50978,33 +50972,6 @@
       "line": 456
     },
     {
-      "name": "R",
-      "bytes": 10,
-      "fields": [
-        {
-          "name": "p",
-          "type": "char *",
-          "offset": 0,
-          "bytes": 4
-        },
-        {
-          "name": "a",
-          "type": "char",
-          "offset": 4,
-          "bytes": 5
-        },
-        {
-          "name": "n",
-          "type": "char",
-          "offset": 9,
-          "bytes": 1
-        }
-      ],
-      "confidence": "MEDIUM",
-      "file": "src/DLGPICK.C",
-      "line": 3
-    },
-    {
       "name": "C470",
       "bytes": 27,
       "fields": [
@@ -51030,6 +50997,33 @@
       "confidence": "MEDIUM",
       "file": "src/GAME.C",
       "line": 5
+    },
+    {
+      "name": "R",
+      "bytes": 10,
+      "fields": [
+        {
+          "name": "p",
+          "type": "char *",
+          "offset": 0,
+          "bytes": 4
+        },
+        {
+          "name": "a",
+          "type": "char",
+          "offset": 4,
+          "bytes": 5
+        },
+        {
+          "name": "n",
+          "type": "char",
+          "offset": 9,
+          "bytes": 1
+        }
+      ],
+      "confidence": "MEDIUM",
+      "file": "src/HELPMENU.C",
+      "line": 8
     },
     {
       "name": "B3",
@@ -51493,8 +51487,8 @@
             }
           ],
           "confidence": "MEDIUM",
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "name": "R",

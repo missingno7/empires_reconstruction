@@ -1,5 +1,5 @@
 /* F_CAF1 -- update the sound tick state for one pending voice. */
-extern unsigned int sound_enabled,g1760,g1e8a,snd_base,g1e88,snd_on,g1e8e,stream_note_delay,g1e86,g1e90,g1e94,g1e8c;
+extern unsigned int sound_enabled,snd_seg,g1e8a,snd_base,g1e88,snd_on,g1e8e,stream_note_delay,g1e86,g1e90,g1e94,g1e8c;
 
 void stream_control_block_arm()
 {
@@ -7,7 +7,7 @@ void stream_control_block_arm()
     asm db 083h,03Eh
     asm dw offset DGROUP:sound_enabled
     asm db 000h,074h,041h,08Eh,006h
-    asm dw offset DGROUP:g1760
+    asm dw offset DGROUP:snd_seg
     asm db 08Bh,07Eh,004h,03Bh,03Eh
     asm dw offset DGROUP:g1e8a
     asm db 077h,034h,089h,03Eh

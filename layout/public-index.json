@@ -6644,44 +6644,64 @@
       "symbol": "_dialog_list_pick",
       "address": 54234,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D3DA",
+      "owner": "C_D3DA_D49D",
       "module_members": [
-        "F_D3DA"
+        "F_D3DA",
+        "F_D45C",
+        "F_D471",
+        "F_D487",
+        "F_D49D"
       ]
     },
     {
       "symbol": "_help_topic_keyboard_show",
       "address": 54364,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D45C",
+      "owner": "C_D3DA_D49D",
       "module_members": [
-        "F_D45C"
+        "F_D3DA",
+        "F_D45C",
+        "F_D471",
+        "F_D487",
+        "F_D49D"
       ]
     },
     {
       "symbol": "_help_topic_playing_show",
       "address": 54385,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D471",
+      "owner": "C_D3DA_D49D",
       "module_members": [
-        "F_D471"
+        "F_D3DA",
+        "F_D45C",
+        "F_D471",
+        "F_D487",
+        "F_D49D"
       ]
     },
     {
       "symbol": "_help_topic_obstacles_show",
       "address": 54407,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D487",
+      "owner": "C_D3DA_D49D",
       "module_members": [
-        "F_D487"
+        "F_D3DA",
+        "F_D45C",
+        "F_D471",
+        "F_D487",
+        "F_D49D"
       ]
     },
     {
       "symbol": "_help_topic_puzzles_show",
       "address": 54429,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D49D",
+      "owner": "C_D3DA_D49D",
       "module_members": [
+        "F_D3DA",
+        "F_D45C",
+        "F_D471",
+        "F_D487",
         "F_D49D"
       ]
     },
@@ -6707,26 +6727,32 @@
       "symbol": "_sound_start",
       "address": 54675,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D593",
+      "owner": "C_D593_D5B3",
       "module_members": [
-        "F_D593"
+        "F_D593",
+        "F_D5A6",
+        "F_D5B3"
       ]
     },
     {
       "symbol": "_sound_request_count_dec",
       "address": 54694,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D5A6",
+      "owner": "C_D593_D5B3",
       "module_members": [
-        "F_D5A6"
+        "F_D593",
+        "F_D5A6",
+        "F_D5B3"
       ]
     },
     {
       "symbol": "_sound_request_count_clear",
       "address": 54707,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D5B3",
+      "owner": "C_D593_D5B3",
       "module_members": [
+        "F_D593",
+        "F_D5A6",
         "F_D5B3"
       ]
     },
@@ -6734,26 +6760,32 @@
       "symbol": "_resource_record_cache_load",
       "address": 54714,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D5BA",
+      "owner": "C_D5BA_D60C",
       "module_members": [
-        "F_D5BA"
+        "F_D5BA",
+        "F_D5F9",
+        "F_D60C"
       ]
     },
     {
       "symbol": "_resource_record_cache_reset",
       "address": 54777,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D5F9",
+      "owner": "C_D5BA_D60C",
       "module_members": [
-        "F_D5F9"
+        "F_D5BA",
+        "F_D5F9",
+        "F_D60C"
       ]
     },
     {
       "symbol": "_music_resume_if_valid",
       "address": 54796,
       "classification": "KNOWN_FUNCTION_ENTRY",
-      "owner": "F_D60C",
+      "owner": "C_D5BA_D60C",
       "module_members": [
+        "F_D5BA",
+        "F_D5F9",
         "F_D60C"
       ]
     },

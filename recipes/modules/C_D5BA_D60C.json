@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_D5BA_D60C",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_D5BA",
+      "path": "src/RESCACHE.C",
+      "public": "_resource_record_cache_load"
+    },
+    {
+      "owner": "F_D5F9",
+      "path": "src/RESCACHE.C",
+      "public": "_resource_record_cache_reset"
+    },
+    {
+      "owner": "F_D60C",
+      "path": "src/RESCACHE.C",
+      "public": "_music_resume_if_valid"
+    }
+  ],
+  "evidence": "Readability grouping proven byte-exact by tools/probe_tu.py (97 bytes, 12 fixups, 2 bytes of private DATA): the record-cache load/reset helpers and the music-resume check around music_track_handle (DS:237E). Byte-neutral. Members merged into src/RESCACHE.C. Members merged into src/RESCACHE.C."
+}

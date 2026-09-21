@@ -36,7 +36,7 @@ extern void keyboard_chain_enable(void);
 extern void resource_record_cache_reset();
 extern void keyboard_chain_disable(void);
 extern void player_select_load_flags(void), player_select_mark(int), menu_list_source_set_players(void), menu_list_source_set_default(void);
-extern int g1776;
+extern int snd_flag2;
 extern char g22d2[];
 extern char far *farmalloc();
 extern char far *ui_gfx_blob;                 /* DS:C5CA offset, DS:C5CC segment */
@@ -217,7 +217,7 @@ int a;
     player_select_mark(a);
     player_select_draw_screen();
     menu_list_source_set_players();
-    g1776 = 1;
+    snd_flag2 = 1;
     sound_request_count_dec();
     gfx_wipe_rect(0, 0, 320, 16, 0, 200);
     gfx_color_select(0);
@@ -239,7 +239,7 @@ int a;
     menu_list_source_set_default();
     if (!s)
         keyboard_chain_disable();
-    g1776 = 0;
+    snd_flag2 = 0;
     sound_voices_reset();
     return player_select_index;
 }

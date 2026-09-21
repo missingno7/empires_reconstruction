@@ -494,7 +494,7 @@ extern void resource_record_cache_reset(int n);
 extern void tutorial_hint_dialog_show(int);
 
 extern unsigned char b4374, b4375, b4376;
-extern int g1776, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8;
+extern int snd_flag2, g8bea, g8bec, g8bee, g8bf4, g8bf6, g8bf8;
 
 int level_driver_run()
 {
@@ -539,7 +539,7 @@ int level_driver_run()
         if (tick_div8() == 1) tutorial_hint_dialog_show(2);
         else if (tick_div8() == 2) tutorial_hint_dialog_show(3);
     }
-    g1776 = 1;
+    snd_flag2 = 1;
     if (value_parity(campaign_round_node_cursor) == 0) {
         if (tick_div8() != 4)
             resource_record_cache_reset((tick_div8() << 2) + (campaign_round_node_cursor & 2) + 0x1073);

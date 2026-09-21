@@ -7,7 +7,7 @@
       "end": 18478,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/BRDTERR.C",
+      "source": "src/GAME.C",
       "artifact": "regions/F_4517.bin",
       "expected_sha256": "3bc647cc2cb5a264b5f5ec78c0ecfee2447b57ba2b665e2ba8ddeb964ba35609",
       "matching_status": "EQUAL",
@@ -18,18 +18,73 @@
         "flags_append": "",
         "module_segments": {},
         "bindings": {
-          "_resource_load_record": {"coordinate":"code_offset","owner":"F_656C","public":"_resource_load_record","addend":0,"evidence":"functions/F_656C.entry"},
-          "_movmem": {"coordinate":"code_offset","owner":"LIB_MOVMEM","public":"_movmem","addend":0,"evidence":"CC.LIB/MOVMEM"},
-          "_resource_load_record_into": {"coordinate":"code_offset","owner":"F_68AA","public":"_resource_load_record_into","addend":0,"evidence":"functions/F_68AA.entry"},
-          "_g73c": {"offset":1852,"coordinate":"DGROUP_offset","evidence":"direct DS word in complete F_4517 fixups"},
-          "_g724": {"offset":1828,"coordinate":"DGROUP_offset","evidence":"direct DS table in complete F_4517 fixups"},
-          "_ui_gfx_shadow_a": {"offset":50630,"coordinate":"DGROUP_offset","evidence":"storage_objects/M_2C0F6.phys"},
-          "_s79bf": {"offset":31167,"coordinate":"DGROUP_offset","evidence":"direct DS source array in complete F_4517 fixups"},
-          "_a74a2": {"offset":29858,"coordinate":"DGROUP_offset","evidence":"direct DS source array in complete F_4517 fixups"},
-          "_s8c12": {"offset":35858,"coordinate":"DGROUP_offset","evidence":"direct DS source block in complete F_4517 fixups"},
-          "_g99d6": {"offset":39382,"coordinate":"DGROUP_offset","evidence":"storage_objects/M_29506.phys"},
-          "_a72b2": {"offset":29362,"coordinate":"DGROUP_offset","evidence":"direct DS far-pointer table in complete F_4517 fixups"}
+          "_resource_load_record": {
+            "coordinate": "code_offset",
+            "owner": "F_656C",
+            "public": "_resource_load_record",
+            "addend": 0,
+            "evidence": "functions/F_656C.entry"
+          },
+          "_movmem": {
+            "coordinate": "code_offset",
+            "owner": "LIB_MOVMEM",
+            "public": "_movmem",
+            "addend": 0,
+            "evidence": "CC.LIB/MOVMEM"
+          },
+          "_resource_load_record_into": {
+            "coordinate": "code_offset",
+            "owner": "F_68AA",
+            "public": "_resource_load_record_into",
+            "addend": 0,
+            "evidence": "functions/F_68AA.entry"
+          },
+          "_g73c": {
+            "offset": 1852,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS word in complete F_4517 fixups"
+          },
+          "_g724": {
+            "offset": 1828,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS table in complete F_4517 fixups"
+          },
+          "_ui_gfx_shadow_a": {
+            "offset": 50630,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_2C0F6.phys"
+          },
+          "_s79bf": {
+            "offset": 31167,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS source array in complete F_4517 fixups"
+          },
+          "_a74a2": {
+            "offset": 29858,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS source array in complete F_4517 fixups"
+          },
+          "_s8c12": {
+            "offset": 35858,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS source block in complete F_4517 fixups"
+          },
+          "_g99d6": {
+            "offset": 39382,
+            "coordinate": "DGROUP_offset",
+            "evidence": "storage_objects/M_29506.phys"
+          },
+          "_a72b2": {
+            "offset": 29362,
+            "coordinate": "DGROUP_offset",
+            "evidence": "direct DS far-pointer table in complete F_4517 fixups"
+          }
         }
+      },
+      "provenance": {
+        "method": "local C reconstruction from complete disassembly and fresh full-extent OMF binding",
+        "upstream_entry": "controls/correspondence/F_4517.json",
+        "upstream_extent_sha256": "3bc647cc2cb5a264b5f5ec78c0ecfee2447b57ba2b665e2ba8ddeb964ba35609"
       }
     }
   ]

@@ -1112,7 +1112,7 @@
    "mismatch": false
   },
   {
-   "module": "F_D3DA",
+   "module": "C_D3DA_D49D",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -1121,83 +1121,9 @@
     "-f-",
     "-N-"
    ],
-   "source": "src/DLGPICK.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D45C",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
+   "source": [
+    "src/HELPMENU.C"
    ],
-   "source": "src/F_D45C.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D471",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/F_D471.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D487",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/F_D487.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D49D",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/F_D49D.C",
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
@@ -1245,7 +1171,7 @@
    "mismatch": false
   },
   {
-   "module": "F_D593",
+   "module": "C_D593_D5B3",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -1254,7 +1180,9 @@
     "-f-",
     "-N-"
    ],
-   "source": "src/SNDSTART.C",
+   "source": [
+    "src/SNDREQ.C"
+   ],
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
@@ -1264,7 +1192,7 @@
    "mismatch": false
   },
   {
-   "module": "F_D5A6",
+   "module": "C_D5BA_D60C",
    "tool": "TCC.EXE",
    "flags": [
     "-c",
@@ -1273,83 +1201,9 @@
     "-f-",
     "-N-"
    ],
-   "source": "src/SNDRQDEC.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D5B3",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
+   "source": [
+    "src/RESCACHE.C"
    ],
-   "source": "src/SNDRQCLR.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D5BA",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/RESCLOAD.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D5F9",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/RESCRST.C",
-   "relocation_count": 0,
-   "relocation_offsets": [],
-   "observed_direction": "none",
-   "predicted_direction": "descending",
-   "prediction_reason": "TCC.EXE, no -B, no inline asm",
-   "category": "production-module",
-   "mismatch": false
-  },
-  {
-   "module": "F_D60C",
-   "tool": "TCC.EXE",
-   "flags": [
-    "-c",
-    "-mc",
-    "-1-",
-    "-f-",
-    "-N-"
-   ],
-   "source": "src/MUSRESUM.C",
    "relocation_count": 0,
    "relocation_offsets": [],
    "observed_direction": "none",
@@ -2797,7 +2651,7 @@
  "mismatches": [],
  "fresh_compile_verification": {
   "found": true,
-  "work_dir": "build\\production-i_l5nnx6\\compile\\WORK",
+  "work_dir": "build\\production-hxsady1i\\compile\\WORK",
   "objects_checked": 20,
   "agreements": 13,
   "disagreements": 0,
@@ -2939,7 +2793,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0069.OBJ",
+    "object": "R0061.OBJ",
     "module": "M_D61C_D79C",
     "raw_fixup_count": 6,
     "raw_direction": "ascending",
@@ -2947,7 +2801,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0070.OBJ",
+    "object": "R0062.OBJ",
     "module": "M_D818_D825",
     "raw_fixup_count": 0,
     "raw_direction": "none",
@@ -2955,7 +2809,7 @@
     "agrees_with_prediction": true
    },
    {
-    "object": "R0071.OBJ",
+    "object": "R0063.OBJ",
     "module": "C_D85F_D8F0",
     "raw_fixup_count": 15,
     "raw_direction": "ascending",

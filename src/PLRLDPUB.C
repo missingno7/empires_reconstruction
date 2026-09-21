@@ -11,17 +11,14 @@ extern unsigned gc5dc;                  /* DS:C5DC */
 extern unsigned gc5de;                  /* DS:C5DE */
 extern unsigned gc5e0;                  /* DS:C5E0 */
 #include "SOUND.H"
-extern unsigned g1760, g1764;           /* DS:1760, DS:1764 -- see SOUND.H's
-                                            comment on why snd_seg/snd_seg2
-                                            are not declared there */
 
 void player_record_load_publish()
 {
     gc5da = farmalloc(0x620L);
     resource_load_record_alloc(0x41, &gc5de);
-    g1760 = gc5e0;
+    snd_seg = gc5e0;
     snd_base = gc5de;
-    g1764 = gc5dc;
+    snd_seg2 = gc5dc;
     snd_base2 = (unsigned) gc5da;
     sound_backend_select_init();
 }

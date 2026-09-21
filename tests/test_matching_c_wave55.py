@@ -31,7 +31,8 @@ class MatchingCWave55Tests(unittest.TestCase):
                                           manifest['regions'], modules)
                 mismatch(original[owner['start']:owner['end']], data, owner)
                 self.assertEqual(len(data), 22)
-                self.assertEqual(len(proof['fixups']), 2)
+                # dialog_list_pick is now a call inside src/HELPMENU.C (no fixup); the title string stays external.
+                self.assertEqual(len(proof['fixups']), 1)
                 self.assertEqual(proof['load_relocations'], [])
                 self.assertEqual(data[:2], bytes.fromhex('1e b8'))
                 self.assertEqual(data[-3:], bytes.fromhex('eb 00 c3'))

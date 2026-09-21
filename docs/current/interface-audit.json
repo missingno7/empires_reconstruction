@@ -2,7 +2,7 @@
   "format": "empires-interface-audit-v1",
   "scope": "Review only; no production declaration edits or conflict suppression.",
   "raw_conflicts": 11,
-  "active_c_sources": 68,
+  "active_c_sources": 60,
   "categories": {
     "ACTIVE_TYPE_REVIEW": 6,
     "COMPACT_MODEL_SPELLING": 2,
@@ -164,8 +164,8 @@
       "note": "Tags are file scoped; matching tag names across files do not establish a shared type or an ABI conflict.",
       "locations": [
         {
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "file": "src/LEVEL.C",
@@ -707,8 +707,8 @@
       "note": "Tags are file scoped; matching tag names across files do not establish a shared type or an ABI conflict.",
       "locations": [
         {
-          "file": "src/DLGPICK.C",
-          "line": 3
+          "file": "src/HELPMENU.C",
+          "line": 8
         },
         {
           "file": "src/LEVEL.C",

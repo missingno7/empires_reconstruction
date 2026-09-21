@@ -4,7 +4,7 @@ assume cs:_TEXT, ds:DGROUP
 _DATA segment word public 'DATA'
 _DATA ends
 _BSS segment word public 'BSS'
-extrn _sound_enabled:word, _g1760:word, _g1e8a:word, _snd_base:word
+extrn _sound_enabled:word, _snd_seg:word, _g1e8a:word, _snd_base:word
 extrn _g1e88:word, _snd_on:word, _g1e8e:word, _stream_note_delay:word
 extrn _g1e86:word, _g1e90:word, _g1e94:word, _g1e8c:word
 _BSS ends
@@ -20,7 +20,7 @@ _stream_control_block_arm:
  push es
  cmp _sound_enabled,0
  jz short done
- mov es,_g1760
+ mov es,_snd_seg
  mov di,[bp+4]
  cmp di,_g1e8a
  ja short done

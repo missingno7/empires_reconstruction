@@ -33,7 +33,7 @@ extern void board_actors_draw();
 extern void sprite_script_frame_driver();
 extern void rect_queue_flush(void);
 extern void timer_deadline_wait(void);
-extern int g8fe, gbc, g40ce, g1776, g1784;
+extern int g8fe, gbc, g40ce, snd_flag2, g1784;
 extern char far *ui_gfx_blob;
 extern char far *rect_queue_write_ptr;
 extern int near gb52f[];
@@ -172,7 +172,7 @@ extern void menu_list_disable(void);
 extern void chapter_map_backdrop_draw(void);
 extern void level_expand_descriptors(void);
 extern int g98, g94, g9a;
-level_chapter_driver(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;chapter_map_backdrop_draw();level_expand_descriptors();board_actors_draw(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;chapter_map_sprites_wipe();sprite_script_frame_driver();if(rect_queue_write_ptr!=ui_gfx_blob)rect_queue_flush();timer_deadline_wait();if(++i==200)g1776=0;}while(i<200||g1784);}
+level_chapter_driver(){register int i;menu_list_disable();hud_panel_clear();board_record_index=gbc=g8fe=0;g40ce=1;g94=g98=0;g96=0x1e8;g9a=160;chapter_map_backdrop_draw();level_expand_descriptors();board_actors_draw(0);gfx_box(0,0,320,200);gbc=1;i=0;do{timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;chapter_map_sprites_wipe();sprite_script_frame_driver();if(rect_queue_write_ptr!=ui_gfx_blob)rect_queue_flush();timer_deadline_wait();if(++i==200)snd_flag2=0;}while(i<200||g1784);}
 
 
 /* ---- F_B772 (original code at 0xB772) ---- */
@@ -185,18 +185,18 @@ struct R_B772{char a,b;int x,y;char c;char rest[25];};fb772(){register int i,j;i
 extern void sound_stop_reset(void);
 /* alternate view: typed extern void gfx_copy_rect(int,int,void far *,int); vs untyped extern void gfx_copy_rect(); at top */
 extern void gfx_copy_rect(int,int,void far *,int);
-extern int g1774;
+extern int mus_flag;
 void level_display_init(void)
 {
  register int x,i;
  resource_load_record(0x48);gbc=0;((unsigned char near *)actor_state_table)[136]=1;((unsigned char near *)actor_state_table)[200]=1;((unsigned char near *)actor_state_table)[264]=1;((unsigned char near *)actor_state_table)[328]=1;
- sound_stop_reset();g1774=1;stream_control_block_arm(25);
+ sound_stop_reset();mus_flag=1;stream_control_block_arm(25);
  for(x=118;x<=198;x+=4) {
   timer_deadline_arm(24);gfx_wipe_rect(x-4,355,92,117,x-4,27);gfx_copy_rect(x,27,ui_gfx_shadow_a,0);
   gb52f[33]+=4;gb52f[49]+=4;gb52f[65]+=4;gb52f[97]+=4;gb52f[129]+=4;gb52f[161]+=4;
   sprite_script_frame_driver();sprite_draw_cursor();gfx_box(x-4,27,96,117);timer_deadline_wait();
  }
- g1774=0;sound_stop_reset();sprite_draw_cursor();g96=488;gfx_copy_rect(x-4,355,ui_gfx_shadow_a,0);
+ mus_flag=0;sound_stop_reset();sprite_draw_cursor();g96=488;gfx_copy_rect(x-4,355,ui_gfx_shadow_a,0);
  gfx_wipe_rect(6,344,308,144,6,200);g96=159;gbc=1;gb6cf=0;resource_record_cache_reset(69);
  for(i=0;i<20;i++) {
   timer_deadline_arm(24);rect_queue_write_ptr=ui_gfx_blob;sprite_table_wipe_active();sprite_script_frame_driver();sprite_draw_cursor();rect_queue_flush();timer_deadline_wait();
@@ -257,7 +257,7 @@ int level_run_loop(void)
    else if(delay&&!--delay) {
     if(face7()) level_display_init();
     else {
-     gbc=0;slot_reset_for_new_game();g1776=0;while(g1784);g1776=1;
+     gbc=0;slot_reset_for_new_game();snd_flag2=0;while(g1784);snd_flag2=1;
      dialog_run(&g1670);longjmp(game_abort_jmpbuf,1);
     }
    }

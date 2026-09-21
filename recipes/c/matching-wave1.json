@@ -387,7 +387,13 @@
         "public": "_music_resume_if_valid",
         "span": 1,
         "flags_append": "",
-        "module_segments": {},
+        "module_segments": {
+          "_DATA": {
+            "owner": "DATA_011FAE_CACHED_INDEX",
+            "coordinate": "DGROUP_offset",
+            "addend": 0
+          }
+        },
         "bindings": {
           "_music_track_handle": {
             "offset": 9086,
@@ -403,7 +409,7 @@
           }
         }
       },
-      "source": "src/MUSRESUM.C",
+      "source": "src/RESCACHE.C",
       "artifact": "regions/F_D60C.bin",
       "classification": "code",
       "matching_status": "EQUAL",

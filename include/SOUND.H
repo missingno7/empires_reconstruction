@@ -8,13 +8,10 @@
    every current consumer are declared here; the rest stay local/ASM-internal
    -- see the comments below for why each one was left out. */
 
-/* Loaded sound-resource block (far pointer split across two DS words each;
-   set once by src/PLRLDPUB.C).
-   snd_seg/snd_seg2 (DS:1760/1764) are omitted: asm/SOUND.ASM already externs
-   them as _snd_seg/_snd_seg2, but PLRLDPUB.C still spells the same two words
-   g1760/g1764 -- that alias was not part of this pass's renames, so the name
-   is not yet unified enough to promote to a shared declaration here; they
-   stay a local extern in PLRLDPUB.C. */
+/* Loaded sound-resource block: two far pointers split across DS words, set
+   once by src/PLRLDPUB.C (resource block and 0x620-byte staging block). */
+extern unsigned snd_seg;        /* DS:1760 -- resource block segment */
+extern unsigned snd_seg2;       /* DS:1764 -- staging block segment */
 extern unsigned snd_base;       /* DS:175E -- offset half of the resource pointer */
 extern unsigned snd_base2;      /* DS:1762 -- staging-block offset */
 
@@ -24,10 +21,9 @@ extern int music_enabled;       /* DS:1772 */
 
 /* Sound-effects engine state (up to 4 concurrent "voices"). */
 extern int snd_on;              /* DS:1770 -- a stream is armed/playing */
-/* mus_flag (DS:1774) and snd_flag2 (DS:1776) are omitted for the same reason
-   as snd_seg above: asm/SOUND.ASM already externs them under those names,
-   but every C caller (INTRO.C, LEVEL.C, GAME.C, PLAYERSL.C) still spells
-   them g1774/g1776; not unified by this pass, so they stay local. */
+extern int mus_flag;            /* DS:1774 -- keep auto-chaining the music stream (INTRO.C/LEVEL.C set it around a stream start) */
+extern int snd_flag2;           /* DS:1776 -- gates the pump loop's cursor reset to the stream base; the UI code
+                                    sets it to 1 while a screen is up and clears it in the chapter loop */
 extern int snd_backend_mode;    /* DS:1778 -- 0=PC speaker,1=Tandy gate,2=queued OPL,3=probe-only */
 extern int snd_nvoices;         /* DS:177A -- 1 or 4 */
 extern int v_b[4];              /* DS:177C -- per-voice output-suppressed gate */

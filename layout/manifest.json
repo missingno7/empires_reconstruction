@@ -3428,7 +3428,7 @@
             "public": "_resource_record_cache_reset",
             "addend": 0
           },
-          "_g1776": {
+          "_snd_flag2": {
             "offset": 6006,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A6.phys"
@@ -4997,12 +4997,12 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A0.phys"
           },
-          "_g1774": {
+          "_mus_flag": {
             "offset": 6004,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A4.phys"
           },
-          "_g1776": {
+          "_snd_flag2": {
             "offset": 6006,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A6.phys"
@@ -14724,7 +14724,7 @@
             "public": "_timer_deadline_wait",
             "addend": 0
           },
-          "_g1776": {
+          "_snd_flag2": {
             "offset": 6006,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A6.phys"
@@ -14930,7 +14930,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/M_23BF4.phys"
           },
-          "_g1774": {
+          "_mus_flag": {
             "offset": 6004,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A4.phys"
@@ -15284,7 +15284,7 @@
             "addend": 0,
             "evidence": "Historical F_B99F call operand and exact public index"
           },
-          "_g1776": {
+          "_snd_flag2": {
             "coordinate": "DGROUP_offset",
             "offset": 6006,
             "evidence": "F_B99F historical instruction operands"
@@ -17146,7 +17146,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2128E.phys"
           },
-          "_g1760": {
+          "_snd_seg": {
             "offset": 5984,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21290.phys"
@@ -18254,7 +18254,7 @@
             "public": "_menu_list_source_set_players",
             "addend": 0
           },
-          "_g1776": {
+          "_snd_flag2": {
             "offset": 6006,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P212A6.phys"
@@ -18501,7 +18501,7 @@
       "kind": "MATCHING_C",
       "start": 54746,
       "end": 54876,
-      "source": "src/DLGPICK.C",
+      "source": "src/HELPMENU.C",
       "build": {
         "segment": "_TEXT",
         "public": "_dialog_list_pick",
@@ -18561,7 +18561,7 @@
     {
       "id": "F_D45C",
       "kind": "MATCHING_C",
-      "source": "src/F_D45C.C",
+      "source": "src/HELPMENU.C",
       "start": 54876,
       "end": 54897,
       "expected_sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
@@ -18596,7 +18596,7 @@
     {
       "id": "F_D471",
       "kind": "MATCHING_C",
-      "source": "src/F_D471.C",
+      "source": "src/HELPMENU.C",
       "start": 54897,
       "end": 54919,
       "expected_sha256": "60ae921e6906de565ee547b8e63987a84ca3ee51b6cb9f8f59217f3254b2af36",
@@ -18631,7 +18631,7 @@
     {
       "id": "F_D487",
       "kind": "MATCHING_C",
-      "source": "src/F_D487.C",
+      "source": "src/HELPMENU.C",
       "start": 54919,
       "end": 54941,
       "expected_sha256": "2f4027c1b69a19aa411ab533ec23bd3637dd12f42c3e69e8f5f7af1f72b5e2ff",
@@ -18666,7 +18666,7 @@
     {
       "id": "F_D49D",
       "kind": "MATCHING_C",
-      "source": "src/F_D49D.C",
+      "source": "src/HELPMENU.C",
       "start": 54941,
       "end": 54963,
       "expected_sha256": "503fdaf7eadb6a174f92acdbb8caeff5423b817e03cf4010b4d66939b34bf5ba",
@@ -18804,7 +18804,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2128E.phys"
           },
-          "_g1760": {
+          "_snd_seg": {
             "offset": 5984,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21290.phys"
@@ -18814,7 +18814,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21292.phys"
           },
-          "_g1764": {
+          "_snd_seg2": {
             "offset": 5988,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21294.phys"
@@ -18864,7 +18864,7 @@
       "end": 55206,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/SNDSTART.C",
+      "source": "src/SNDREQ.C",
       "original_symbol": "F_D593",
       "artifact": "regions/F_D593.bin",
       "expected_sha256": "29a7de80b34670836b87e92970736066b4bc99ab9e1dc16dda40bef8abbb3245",
@@ -18919,7 +18919,7 @@
       "end": 55219,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/SNDRQDEC.C",
+      "source": "src/SNDREQ.C",
       "original_symbol": "F_D5A6",
       "artifact": "regions/F_D5A6.bin",
       "expected_sha256": "052c3ff722c3d4e491ffea7b0f08913122846f4d7f3f35bbbfa624c609f901e7",
@@ -18953,7 +18953,7 @@
       "end": 55226,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/SNDRQCLR.C",
+      "source": "src/SNDREQ.C",
       "original_symbol": "F_D5B3",
       "artifact": "regions/F_D5B3.bin",
       "expected_sha256": "905ef22b25108a5742fc5ec28a053d489af935a262f306bfa1da2a25ca408adb",
@@ -18987,7 +18987,7 @@
       "end": 55289,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/RESCLOAD.C",
+      "source": "src/RESCACHE.C",
       "original_symbol": "F_D5BA",
       "artifact": "regions/F_D5BA.bin",
       "expected_sha256": "6a7374a5a052ecf7ba46abb821694e7c46f7d4b7a07b7aca5e73fe816815bc77",
@@ -19045,7 +19045,7 @@
       "end": 55308,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/RESCRST.C",
+      "source": "src/RESCACHE.C",
       "original_symbol": "F_D5F9",
       "artifact": "regions/F_D5F9.bin",
       "expected_sha256": "cc276b53767aa8e5c6652dc86a4cc4cd30b762098abb5f18ccdf223235e45f12",
@@ -19108,7 +19108,7 @@
           }
         }
       },
-      "source": "src/MUSRESUM.C",
+      "source": "src/RESCACHE.C",
       "artifact": "regions/F_D60C.bin",
       "classification": "code",
       "matching_status": "EQUAL",

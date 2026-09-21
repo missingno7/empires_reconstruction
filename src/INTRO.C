@@ -33,7 +33,7 @@ extern void anim_step_loop(int a,int b,int c,int d,int e,int f); /* 9F40 */
 /*@SYM _anim_step_loop=0x9F40 kind=f key=functions/F_9F40.entry*/
 extern void bitmap_blit_topleft(void);                 /* 5673 */
 extern void hud_prompt_continue_draw(void);                 /* 75F3 */
-extern int  g857, g94, g96, g98, g9a, g1774, g1776;
+extern int  g857, g94, g96, g98, g9a, mus_flag, snd_flag2;
 extern unsigned char vmode;              /* DS:BFCD */
 /*@SYM _vmode=0xBFCD kind=g key=storage_objects/M_2BAFD.phys*/
 extern char far *t1, far *t2, far *t3, far *t4;   /* BFE2, BFE6, BFDE, BFF2 */
@@ -295,7 +295,7 @@ int intro_run_chapter(void)
         copy(0xec, 0x89, t4, 0);
         bitmap_blit_topleft();
         box(0, 0, 0x140, 0xc8);
-        g1776 = 1;
+        snd_flag2 = 1;
         resource_record_cache_reset(0x35);
         intro_play_script((struct E far *)(t1 + 2), 0x34, 0x1e, (struct P far *)buf);
         hud_prompt_continue_draw();
@@ -331,20 +331,20 @@ top:
             }
         if (k == 2 && key == -1) { f568c(); goto top; }
         anim_step_loop(0, 0x17e, 0xbc, 0x10, 0, 0xb6);
-        g94 = 0; g9a = 0x9f; g1774 = 1;
+        g94 = 0; g9a = 0x9f; mus_flag = 1;
         stream_control_block_arm(0x18);
         intro_play_script((struct E far *)(t1 + 0x344), 0xa, 0x2d, (struct P far *)buf);
         snd_on = 1;
         sound_stop_reset();
-        g1774 = 0;
+        mus_flag = 0;
         timer_wait_ticks(0xed);
         intro_play_script((struct E far *)(t1 + 0x498), 0x16, 0x1e, (struct P far *)buf);
         intro_play_script((struct E far *)(t1 + 0x3e6), 0xb, 0x28, (struct P far *)buf);
         timer_wait_ticks(0xed);
-        g1774 = 1;
+        mus_flag = 1;
         stream_control_block_arm(0x18);
         intro_play_script((struct E far *)(t1 + 0x66c), 0xb, 0x28, (struct P far *)buf);
-        g1774 = 0;
+        mus_flag = 0;
         snd_on = 1;
         sound_stop_reset();
         intro_play_script((struct E far *)(t1 + 0x5fa), 7, 0x1e, (struct P far *)buf);

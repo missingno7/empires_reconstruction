@@ -1,0 +1,24 @@
+{
+  "format": "empires-c-module-candidate-v1",
+  "id": "C_D593_D5B3",
+  "segment": "_TEXT",
+  "flags_append": "",
+  "sources": [
+    {
+      "owner": "F_D593",
+      "path": "src/SNDREQ.C",
+      "public": "_sound_start"
+    },
+    {
+      "owner": "F_D5A6",
+      "path": "src/SNDREQ.C",
+      "public": "_sound_request_count_dec"
+    },
+    {
+      "owner": "F_D5B3",
+      "path": "src/SNDREQ.C",
+      "public": "_sound_request_count_clear"
+    }
+  ],
+  "evidence": "Readability grouping proven byte-exact by tools/probe_tu.py (39 bytes, 7 fixups): the sound-request start/count helpers around sound_request_count (DS:237C). Byte-neutral. Members merged into src/SNDREQ.C. Members merged into src/SNDREQ.C."
+}

@@ -6063,11 +6063,6 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2128E.phys"
           },
-          "_g1760": {
-            "offset": 5984,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P21290.phys"
-          },
           "_sound_enabled": {
             "offset": 5998,
             "coordinate": "DGROUP_offset",
@@ -6707,11 +6702,10 @@
       "data_owners": []
     },
     {
-      "id": "F_D3DA",
+      "id": "C_D3DA_D49D",
       "kind": "MATCHING_C",
       "start": 54746,
-      "end": 54876,
-      "source": "src/DLGPICK.C",
+      "end": 54963,
       "build": {
         "segment": "_TEXT",
         "public": "_dialog_list_pick",
@@ -6767,10 +6761,18 @@
           "evidence": "docs/matching-c-wave15.md"
         }
       },
-      "object": "R0056.OBJ",
       "members": [
-        "F_D3DA"
+        "F_D3DA",
+        "F_D45C",
+        "F_D471",
+        "F_D487",
+        "F_D49D"
       ],
+      "sources": [
+        "src/HELPMENU.C"
+      ],
+      "recipe": "recipes/modules/C_D3DA_D49D.json",
+      "object": "R0056.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -6784,234 +6786,26 @@
           "owner": "F_D3DA",
           "symbol": "_dialog_list_pick",
           "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D45C",
-      "kind": "MATCHING_C",
-      "source": "src/F_D45C.C",
-      "start": 54876,
-      "end": 54897,
-      "expected_sha256": "42dc477f982cb84f437b0bee33f6ca96a020bee352ec57a696c5c0d8c94dbe81",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_help_topic_keyboard_show",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_dialog_list_pick": {
-            "coordinate": "code_offset",
-            "owner": "F_D3DA",
-            "public": "_dialog_list_pick",
-            "addend": 0
-          },
-          "_g2302": {
-            "coordinate": "DGROUP_offset",
-            "offset": 8962
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_D45C",
-      "artifact": "regions/F_D45C.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
-        "change": "Recover the complete 21-byte far-pointer wrapper and return path after the stale short boundary"
-      },
-      "object": "R0057.OBJ",
-      "members": [
-        "F_D45C"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+        },
         {
           "owner": "F_D45C",
           "symbol": "_help_topic_keyboard_show",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D471",
-      "kind": "MATCHING_C",
-      "source": "src/F_D471.C",
-      "start": 54897,
-      "end": 54919,
-      "expected_sha256": "60ae921e6906de565ee547b8e63987a84ca3ee51b6cb9f8f59217f3254b2af36",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_help_topic_playing_show",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_dialog_list_pick": {
-            "coordinate": "code_offset",
-            "owner": "F_D3DA",
-            "public": "_dialog_list_pick",
-            "addend": 0
-          },
-          "_g2315": {
-            "coordinate": "DGROUP_offset",
-            "offset": 8981
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_D471",
-      "artifact": "regions/F_D471.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
-        "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
-      },
-      "object": "R0058.OBJ",
-      "members": [
-        "F_D471"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+          "offset": 130
+        },
         {
           "owner": "F_D471",
           "symbol": "_help_topic_playing_show",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D487",
-      "kind": "MATCHING_C",
-      "source": "src/F_D487.C",
-      "start": 54919,
-      "end": 54941,
-      "expected_sha256": "2f4027c1b69a19aa411ab533ec23bd3637dd12f42c3e69e8f5f7af1f72b5e2ff",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_help_topic_obstacles_show",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_dialog_list_pick": {
-            "coordinate": "code_offset",
-            "owner": "F_D3DA",
-            "public": "_dialog_list_pick",
-            "addend": 0
-          },
-          "_g2326": {
-            "coordinate": "DGROUP_offset",
-            "offset": 8998
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_D487",
-      "artifact": "regions/F_D487.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
-        "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
-      },
-      "object": "R0059.OBJ",
-      "members": [
-        "F_D487"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+          "offset": 151
+        },
         {
           "owner": "F_D487",
           "symbol": "_help_topic_obstacles_show",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D49D",
-      "kind": "MATCHING_C",
-      "source": "src/F_D49D.C",
-      "start": 54941,
-      "end": 54963,
-      "expected_sha256": "503fdaf7eadb6a174f92acdbb8caeff5423b817e03cf4010b4d66939b34bf5ba",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_help_topic_puzzles_show",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_dialog_list_pick": {
-            "coordinate": "code_offset",
-            "owner": "F_D3DA",
-            "public": "_dialog_list_pick",
-            "addend": 0
-          },
-          "_g233b": {
-            "coordinate": "DGROUP_offset",
-            "offset": 9019
-          }
-        }
-      },
-      "classification": "code",
-      "original_symbol": "F_D49D",
-      "artifact": "regions/F_D49D.bin",
-      "matching_status": "EQUAL",
-      "provenance": {
-        "method": "local C reconstruction from recovered complete wrapper extent and fresh full-extent OMF binding",
-        "change": "Recover the complete far-pointer wrapper and return path following F_D45C"
-      },
-      "object": "R0060.OBJ",
-      "members": [
-        "F_D49D"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
+          "offset": 173
+        },
         {
           "owner": "F_D49D",
           "symbol": "_help_topic_puzzles_show",
-          "offset": 0
+          "offset": 195
         }
       ],
       "data_component_offsets": {},
@@ -7087,7 +6881,7 @@
         "source_sha256": "cdc43a73ed26779b67bcaee189672d93fac0d6e8fedc9da4a44debf0c7fa419f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0061.OBJ",
+      "object": "R0057.OBJ",
       "members": [
         "F_D4B3"
       ],
@@ -7146,7 +6940,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P2128E.phys"
           },
-          "_g1760": {
+          "_snd_seg": {
             "offset": 5984,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21290.phys"
@@ -7156,7 +6950,7 @@
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21292.phys"
           },
-          "_g1764": {
+          "_snd_seg2": {
             "offset": 5988,
             "coordinate": "DGROUP_offset",
             "evidence": "storage_objects/G_P21294.phys"
@@ -7199,7 +6993,7 @@
         "source_sha256": "3216cf62c31b578e8001cd3d34e13e4f02ed02c13fd3c1b04d496f9d1409df7f",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0062.OBJ",
+      "object": "R0058.OBJ",
       "members": [
         "F_D555"
       ],
@@ -7223,12 +7017,11 @@
       "data_owners": []
     },
     {
-      "id": "F_D593",
+      "id": "C_D593_D5B3",
       "start": 55187,
-      "end": 55206,
+      "end": 55226,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/SNDSTART.C",
       "original_symbol": "F_D593",
       "artifact": "regions/F_D593.bin",
       "expected_sha256": "29a7de80b34670836b87e92970736066b4bc99ab9e1dc16dda40bef8abbb3245",
@@ -7276,10 +7069,16 @@
         "source_sha256": "84326e74881800d04bcf112a78e0e753b1c452d97a7134dc76beebc7149d3a24",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0063.OBJ",
       "members": [
-        "F_D593"
+        "F_D593",
+        "F_D5A6",
+        "F_D5B3"
       ],
+      "sources": [
+        "src/SNDREQ.C"
+      ],
+      "recipe": "recipes/modules/C_D593_D5B3.json",
+      "object": "R0059.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7293,118 +7092,16 @@
           "owner": "F_D593",
           "symbol": "_sound_start",
           "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D5A6",
-      "start": 55206,
-      "end": 55219,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SNDRQDEC.C",
-      "original_symbol": "F_D5A6",
-      "artifact": "regions/F_D5A6.bin",
-      "expected_sha256": "052c3ff722c3d4e491ffea7b0f08913122846f4d7f3f35bbbfa624c609f901e7",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sound_request_count_dec",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_sound_request_count": {
-            "offset": 9084,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P21EAC.phys"
-          }
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_D5A6.json",
-        "entry_sha256": "8ede244b0837e97ed7e737374b347a0d1207efb5ce96d0b9326745efe6c13797",
-        "record_sha256": "825fd63f9f3c01d5f3494b629afca3577538604fd11ca77fda3e353d184381a4",
-        "source_sha256": "5d65d80beab05a40ce8e2900b445dec4b9d8f80e5ba4d928bd2aa509b240d53d",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0064.OBJ",
-      "members": [
-        "F_D5A6"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_D5A6",
           "symbol": "_sound_request_count_dec",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D5B3",
-      "start": 55219,
-      "end": 55226,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/SNDRQCLR.C",
-      "original_symbol": "F_D5B3",
-      "artifact": "regions/F_D5B3.bin",
-      "expected_sha256": "905ef22b25108a5742fc5ec28a053d489af935a262f306bfa1da2a25ca408adb",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_sound_request_count_clear",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_sound_request_count": {
-            "offset": 9084,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P21EAC.phys"
-          }
+          "offset": 19
         },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_D5B3.json",
-        "entry_sha256": "7445cfac64a49a6620dbb983cde60c546fe8fd93fe21d1d3e9aeccfe6b01e483",
-        "record_sha256": "96602f00d205a1658ea365ff58b178ee94f0ca093b7aa9aa4564bcea6b24acc7",
-        "source_sha256": "eb8414473303f736b7de8b2ea372f9c905c45916dcfc520858e7d58723c04696",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0065.OBJ",
-      "members": [
-        "F_D5B3"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
         {
           "owner": "F_D5B3",
           "symbol": "_sound_request_count_clear",
-          "offset": 0
+          "offset": 32
         }
       ],
       "data_component_offsets": {},
@@ -7412,12 +7109,11 @@
       "data_owners": []
     },
     {
-      "id": "F_D5BA",
+      "id": "C_D5BA_D60C",
       "start": 55226,
-      "end": 55289,
+      "end": 55323,
       "kind": "MATCHING_C",
       "classification": "code",
-      "source": "src/RESCLOAD.C",
       "original_symbol": "F_D5BA",
       "artifact": "regions/F_D5BA.bin",
       "expected_sha256": "6a7374a5a052ecf7ba46abb821694e7c46f7d4b7a07b7aca5e73fe816815bc77",
@@ -7467,10 +7163,16 @@
         "source_sha256": "e4a251fb4a017363f4682a2b1317656d6603bef24abe569ce4a940345bdf8155",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0066.OBJ",
       "members": [
-        "F_D5BA"
+        "F_D5BA",
+        "F_D5F9",
+        "F_D60C"
       ],
+      "sources": [
+        "src/RESCACHE.C"
+      ],
+      "recipe": "recipes/modules/C_D5BA_D60C.json",
+      "object": "R0060.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7484,6 +7186,16 @@
           "owner": "F_D5BA",
           "symbol": "_resource_record_cache_load",
           "offset": 0
+        },
+        {
+          "owner": "F_D5F9",
+          "symbol": "_resource_record_cache_reset",
+          "offset": 63
+        },
+        {
+          "owner": "F_D60C",
+          "symbol": "_music_resume_if_valid",
+          "offset": 82
         }
       ],
       "data_component_offsets": {
@@ -7495,131 +7207,6 @@
       "data_owners": [
         "DATA_011FAE_CACHED_INDEX"
       ]
-    },
-    {
-      "id": "F_D5F9",
-      "start": 55289,
-      "end": 55308,
-      "kind": "MATCHING_C",
-      "classification": "code",
-      "source": "src/RESCRST.C",
-      "original_symbol": "F_D5F9",
-      "artifact": "regions/F_D5F9.bin",
-      "expected_sha256": "cc276b53767aa8e5c6652dc86a4cc4cd30b762098abb5f18ccdf223235e45f12",
-      "matching_status": "EQUAL",
-      "build": {
-        "segment": "_TEXT",
-        "public": "_resource_record_cache_reset",
-        "span": 1,
-        "flags_append": "",
-        "bindings": {
-          "_resource_record_cache_load": {
-            "coordinate": "code_offset",
-            "evidence": "functions/F_D5BA.entry",
-            "owner": "F_D5BA",
-            "public": "_resource_record_cache_load",
-            "addend": 0
-          },
-          "_sound_voice_table_reload": {
-            "coordinate": "code_offset",
-            "owner": "F_C7CB",
-            "public": "_sound_voice_table_reload",
-            "addend": 0,
-            "evidence": "functions/F_C7CB.entry"
-          }
-        },
-        "module_segments": {}
-      },
-      "provenance": {
-        "project": "empires_forged",
-        "entry": "controls/correspondence/F_D5F9.json",
-        "entry_sha256": "fd15c336d49414087dab240bdbfabb0caa10110ba8ce59a31290fa0c07965f84",
-        "record_sha256": "5d52eb11e606b0672fac89f20abb5d7335ac2087402111b55b9b663f3a7bfa94",
-        "source_sha256": "89ee9f01a9e4efeb178d08d3e2520d7a0513276156d5b0994804dd390594729f",
-        "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
-      },
-      "object": "R0067.OBJ",
-      "members": [
-        "F_D5F9"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_D5F9",
-          "symbol": "_resource_record_cache_reset",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
-    },
-    {
-      "id": "F_D60C",
-      "kind": "MATCHING_C",
-      "start": 55308,
-      "end": 55323,
-      "build": {
-        "segment": "_TEXT",
-        "public": "_music_resume_if_valid",
-        "span": 1,
-        "flags_append": "",
-        "module_segments": {},
-        "bindings": {
-          "_music_track_handle": {
-            "offset": 9086,
-            "coordinate": "DGROUP_offset",
-            "evidence": "storage_objects/G_P21EAE.phys"
-          },
-          "_sound_voice_table_reload": {
-            "coordinate": "code_offset",
-            "owner": "F_C7CB",
-            "public": "_sound_voice_table_reload",
-            "addend": 0,
-            "evidence": "functions/F_C7CB.entry"
-          }
-        }
-      },
-      "source": "src/MUSRESUM.C",
-      "artifact": "regions/F_D60C.bin",
-      "classification": "code",
-      "matching_status": "EQUAL",
-      "expected_sha256": "a29322396d2184d144f2d42a1df44be3e1eb3e16c28efc34b8f4b9ae47a038f7",
-      "provenance": {
-        "method": "local C reconstruction and fresh full-extent OMF binding",
-        "upstream_entry_sha256": "2f67c65e10e2281aa3e8a1fa22f05783d378af2bc2cda01f381f8da6fd88b1c1",
-        "upstream_profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e",
-        "extent_note": "Upstream extent is 16 bytes; C emits 15 through RET. The final zero remains RAW."
-      },
-      "object": "R0068.OBJ",
-      "members": [
-        "F_D60C"
-      ],
-      "tool": "TCC.EXE",
-      "flags": [
-        "-c",
-        "-mc",
-        "-1-",
-        "-f-",
-        "-N-"
-      ],
-      "publics": [
-        {
-          "owner": "F_D60C",
-          "symbol": "_music_resume_if_valid",
-          "offset": 0
-        }
-      ],
-      "data_component_offsets": {},
-      "data_offsets": {},
-      "data_owners": []
     },
     {
       "id": "M_D61C_D79C",
@@ -7651,7 +7238,7 @@
         "module_segments": {}
       },
       "evidence": "The two contiguous record-stream renderers share the ES:DI traversal, 0x2380 cell lattice, and all three direct same-segment renderer calls. One fresh symbolic TASM object has public offsets 0 and 384, an exact 507-byte bound _TEXT extent, and no OMF fixups. All six historical `call $+delta` targets resolve (load address, wrapped mod 65536 since the calls cross the 64K _TEXT frame boundary) to RUNTIME_BLOCK's _gfx_copy_rect (03CCh, the four non-loop renderer calls) and _gfx_blit_bitmap (03C9h, the two per-strip calls inside D61_strip_loop/D79_strip_loop), matching the public index and the same bindings already used by dozens of sibling regions.",
-      "object": "R0069.OBJ",
+      "object": "R0061.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -7691,7 +7278,7 @@
         "module_segments": {}
       },
       "evidence": "Adjacent reset and five-byte packed-record append routines operate on the same DS:2F30h initialized record table. Fresh symbolic TASM emits both historical entry offsets in one exact 71-byte no-fixup contribution.",
-      "object": "R0070.OBJ",
+      "object": "R0062.OBJ",
       "tool": "TASM.EXE",
       "flags": [
         "/mx"
@@ -7751,7 +7338,7 @@
         "src/RECTTAB.C"
       ],
       "recipe": "recipes/modules/C_D85F_D8F0.json",
-      "object": "R0071.OBJ",
+      "object": "R0063.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7868,7 +7455,7 @@
         "src/OPLINIT.C"
       ],
       "recipe": "recipes/modules/C_D99B_DA49.json",
-      "object": "R0072.OBJ",
+      "object": "R0064.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -7948,7 +7535,7 @@
         "source_sha256": "dd7272bb5db3f7d6fc19649182ad2de3d03e5ac670a49c2227385b266cad7289",
         "profile_sha256": "e885cc1d9f24a4d9075cb8767f468640df07f02867bf620152705b9adcd0572e"
       },
-      "object": "R0073.OBJ",
+      "object": "R0065.OBJ",
       "members": [
         "F_DA66"
       ],
@@ -8020,7 +7607,7 @@
       "provenance": {
         "c_recovery": "All 137 bytes and all function entry offsets reproduced by ordinary Turbo C in the existing shared module. Unused reconstruction end-marker publics removed; no inline ASM or object corrections."
       },
-      "object": "R0074.OBJ",
+      "object": "R0066.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8111,7 +7698,7 @@
         "src/OPLVOICE.C"
       ],
       "recipe": "recipes/modules/C_DB60_DDC7.json",
-      "object": "R0075.OBJ",
+      "object": "R0067.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8169,7 +7756,7 @@
       "status": "RECOVERED_C_MODULE",
       "historical_translation_unit_proven": false,
       "evidence": "One pure Turbo C translation unit (src/MUSIC.C, no inline asm) reproduces all 700 bytes, four public offsets and, through the native object writer's descending FIXUPP order, the historical relocation order. asm/MUSIC.ASM is retained as reference.",
-      "object": "R0076.OBJ",
+      "object": "R0068.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8265,7 +7852,7 @@
         "src/OPLREG.C"
       ],
       "recipe": "recipes/modules/C_E095_E54D.json",
-      "object": "R0077.OBJ",
+      "object": "R0069.OBJ",
       "tool": "TCC.EXE",
       "flags": [
         "-c",
@@ -8408,7 +7995,7 @@
         "extent_evidence": "docs/matching-c-wave147.md",
         "library_crosscheck": "CC.LIB RAND module sha256 9adaae14486007cfbaa3e67e149d452ce0cd33468922e64a78df0b497b44b55b"
       },
-      "object": "R0078.OBJ",
+      "object": "R0070.OBJ",
       "members": [
         "LIB_RAND"
       ],
@@ -11410,14 +10997,6 @@
     "R0067.OBJ",
     "R0068.OBJ",
     "R0069.OBJ",
-    "R0070.OBJ",
-    "R0071.OBJ",
-    "R0072.OBJ",
-    "R0073.OBJ",
-    "R0074.OBJ",
-    "R0075.OBJ",
-    "R0076.OBJ",
-    "R0077.OBJ",
     "D0115.OBJ",
     "D0116.OBJ",
     "F01CEBSS.OBJ",

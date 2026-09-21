@@ -4,7 +4,7 @@
     {
       "id": "F_28AC",
       "kind": "MATCHING_C",
-      "source": "src/BOARDDRW.C",
+      "source": "src/BOARD.C",
       "start": 10924,
       "end": 11142,
       "expected_sha256": "b40ab86ba45e1c3834205e466d8480c643376503a9c6876a60e3e1b89f4708cb",
@@ -16,8 +16,35 @@
         "public": "_board_mark_record_cells",
         "span": 1,
         "flags_append": "",
-        "bindings": {},
+        "bindings": {
+          "_board_records": {
+            "coordinate": "DGROUP_offset",
+            "offset": 49084,
+            "evidence": "Historical F_28AC operands"
+          },
+          "_g6ca6": {
+            "coordinate": "DGROUP_offset",
+            "offset": 27814,
+            "evidence": "Historical F_28AC operands"
+          },
+          "_g6ac4": {
+            "coordinate": "DGROUP_offset",
+            "offset": 27332,
+            "evidence": "Historical F_28AC operands"
+          },
+          "_gfx_copy_rect": {
+            "coordinate": "code_offset",
+            "owner": "RUNTIME_BLOCK",
+            "public": "_gfx_copy_rect",
+            "addend": 0,
+            "evidence": "Historical call target at load offset 03CCh; exact runtime secondary public"
+          }
+        },
         "module_segments": {}
+      },
+      "change": "Exact ordinary C board drawing loop with compiler-specific byte-to-coordinate conversion; no inline ASM or byte corrections.",
+      "provenance": {
+        "c_recovery": "All 218 bytes reproduced by ordinary Turbo C. A far-pointer cast preserves historical AX:DX zero extension before unsigned coordinate assignment; original source spelling remains unknown."
       }
     },
     {

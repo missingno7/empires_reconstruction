@@ -66,19 +66,11 @@ Total EXE relocations: 106
 | M_CB5C_CD23 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | C_CDDD_D344 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | M_D386_D3CF | TASM.EXE | /mx | 0 | none | ascending |  |
-| F_D3DA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D45C | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D471 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D487 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D49D | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
+| C_D3DA_D49D | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_D4B3 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | F_D555 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D593 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D5A6 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D5B3 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D5BA | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D5F9 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
-| F_D60C | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
+| C_D593_D5B3 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
+| C_D5BA_D60C | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | descending |  |
 | M_D61C_D79C | TASM.EXE | /mx | 0 | none | ascending |  |
 | M_D818_D825 | TASM.EXE | /mx | 0 | none | ascending |  |
 | C_D85F_D8F0 | TCC.EXE | -c -mc -1- -f- -N- | 0 | none | ascending |  |
@@ -259,7 +251,7 @@ Total EXE relocations: 106
 None.
 ## Fresh compile verification
 
-Checked against `build\production-i_l5nnx6\compile\WORK` (20 objects, 13 agree with prediction, 0 disagree).
+Checked against `build\production-hxsady1i\compile\WORK` (20 objects, 13 agree with prediction, 0 disagree).
 
 | Object | Module | Raw fixups | Raw direction | Predicted | Agrees |
 |---|---|---|---|---|---|
@@ -280,9 +272,9 @@ Checked against `build\production-i_l5nnx6\compile\WORK` (20 objects, 13 agree w
 | R0043.OBJ | F_9EC3 | 4 | ascending | ascending | yes |
 | R0052.OBJ | M_C1A0_CB48 | 191 | ascending | ascending | yes |
 | R0055.OBJ | M_D386_D3CF | 3 | ascending | ascending | yes |
-| R0069.OBJ | M_D61C_D79C | 6 | ascending | ascending | yes |
-| R0070.OBJ | M_D818_D825 | 0 | none | ascending | yes |
-| R0071.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
+| R0061.OBJ | M_D61C_D79C | 6 | ascending | ascending | yes |
+| R0062.OBJ | M_D818_D825 | 0 | none | ascending | yes |
+| R0063.OBJ | C_D85F_D8F0 | 15 | ascending | ascending | yes |
 
 ## TASM modules with descending historical relocations
 

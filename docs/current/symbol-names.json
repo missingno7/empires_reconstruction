@@ -749,6 +749,12 @@
       "original": "faf45",
       "address": "AF45"
     },
+    "mus_flag": {
+      "original": "mus_flag",
+      "aliases": [
+        "g1774"
+      ]
+    },
     "music_build_octave_table": {
       "original": "fde7e",
       "address": "DE7E"
@@ -1227,12 +1233,30 @@
     "snd_base2": {
       "original": "g1762"
     },
+    "snd_flag2": {
+      "original": "snd_flag2",
+      "aliases": [
+        "g1776"
+      ]
+    },
     "snd_on": {
       "original": "g1770",
       "aliases": [
         "snd_flag"
       ],
       "address": "1770"
+    },
+    "snd_seg": {
+      "original": "snd_seg",
+      "aliases": [
+        "g1760"
+      ]
+    },
+    "snd_seg2": {
+      "original": "snd_seg2",
+      "aliases": [
+        "g1764"
+      ]
     },
     "sound_backend_probe": {
       "original": "f53bf",

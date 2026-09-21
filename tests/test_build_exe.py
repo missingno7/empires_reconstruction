@@ -83,7 +83,7 @@ class CleanStructuralExeBuildTests(unittest.TestCase):
         self.assertNotIn('F_A28D', separated)
         self.assertNotIn('F_D5BA', separated)
         plan = __import__('json').loads((ROOT / 'layout/production-plan.json').read_text())
-        for ident in ('F_A28D', 'F_D5BA', 'F_9D8E', 'C_75F3_7856'):
+        for ident in ('F_A28D', 'C_D5BA_D60C', 'F_9D8E', 'C_75F3_7856'):  # F_D5BA's DATA travels in RESCACHE.C's object
             raw = Path(report['session']) / 'compile' / report['compiled_objects'][ident]
             module = next(m for m in plan['modules'] if m['id'] == ident)
             staged = Path(report['session']) / 'WORK' / module['object']

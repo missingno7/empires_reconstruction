@@ -411,6 +411,69 @@ class DatagenTests(unittest.TestCase):
         qualifiers = dg.load_emit_qualifiers()
         self.assertEqual(qualifiers, {'timer_ticks': 'volatile'})
 
+    # -- supervisor round 5: finish the structural-component splits -------
+
+    def test_sound_instruments_interior_names_are_macro_views(self):
+        # DATA_012C03_SOUND_INSTRUMENTS's 6 interior names become macro
+        # casts into the same sound_instrument_region storage rule F
+        # already established for ui_panel_glyph_records -- no separate
+        # top-level objects (would duplicate the overlapping storage).
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        for name in ('voice_byte_table', 'g2fe4', 'g2ff6', 'g3008', 'g301a', 'g3044', 'g3752'):
+            self.assertNotIn(name, by_primary, name)
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        self.assertIn('#define voice_byte_table ((dos_char *)(sound_instrument_region + 18))', header)
+        self.assertIn('#define g3752 (*(dos_long *)(sound_instrument_region + 1920))', header)
+        self.assertIn('#define ui_panel_glyph_records ((struct g2fd2_entry *)(sound_instrument_region))',
+                       header)
+
+    def test_typed_data_interior_names_are_field_or_byte_cast_macros(self):
+        # gb31 lands exactly on DATA_01075A_FILE_ERROR_CONTROL's (gb2a's)
+        # own `.text` pointer field -- a real, typed pointer-value alias,
+        # not a second definition; the struct itself is untouched (still
+        # one real `struct dialog gb2a`). g1670 (a *different* struct
+        # dialog living entirely inside DATA_01129F_LEVEL_CONTROL) gets its
+        # own correctly-typed struct-dialog cast, not a field-name guess.
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        gb2a = by_primary['gb2a']
+        self.assertEqual(gb2a['c_type'], 'struct dialog')
+        self.assertEqual(gb2a['size'], 20)
+        for name in ('gb31', 'g0d36', 'g0d78', 'g1670', 'g1684', 'g235d'):
+            self.assertNotIn(name, by_primary, name)
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        self.assertIn('#define gb31 (*(dos_char **)(((dos_char *)(&gb2a)) + 7))', header)
+        self.assertIn('#define g1670 (*(struct dialog *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 1))',
+                       header)
+
+    def test_pointer_records_components_become_one_dialog_per_record(self):
+        # DATA_010FA5_RECORDS (6 records) and DATA_011D90_RECORDS (8
+        # records) are no longer one struct-array each: every 20-byte
+        # record is its own `struct dialog`, named by whatever historical
+        # symbol lands on that record (else dialog_XXXX by DS offset), with
+        # designated initializers and resolved pointer fields exactly like
+        # gb2a. Neither component id survives as a #define (nothing points
+        # at either by its own id).
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        named_records = ('dialog_player_name_entry', 'dialog_player_name_full',
+                         'dialog_slot_delete_confirm', 'dialog_quit_confirm',
+                         'dialog_toggle_music', 'dialog_toggle_sound', 'dialog_toggle_option',
+                         'dialog_select_quit_confirm', 'dialog_select_menu_confirm',
+                         'dialog_slot_backup_list', 'dialog_slot_list',
+                         'dialog_select_restart_confirm')
+        for name in named_records:
+            sym = by_primary[name]
+            self.assertEqual(sym['c_type'], 'struct dialog', name)
+            self.assertEqual(sym['size'], 20, name)
+            self.assertIn(sym['component_id'], ('DATA_010FA5_RECORDS', 'DATA_011D90_RECORDS'), name)
+        # The DS-offset fallback name for the one record with no historical name.
+        self.assertTrue(any(s['primary'].startswith('dialog_') and s['c_type'] == 'struct dialog'
+                            and s['primary'] not in named_records for s in self.aux['symbols']))
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        self.assertNotIn('#define DATA_010FA5_RECORDS ', header)
+        self.assertNotIn('#define DATA_011D90_RECORDS ', header)
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertIn('struct dialog dialog_player_name_entry = {', source)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -7,11 +7,11 @@ DATA image: 14594 bytes (DS:0000..DS:3902), built from the `recipes/data/game-in
 ## Summary
 
 - DATA components: 108 carry recipe bytes, 9 owned by a ported C file (their static initializers, not this generator, supply the bytes), 17 toolchain/alignment bytes not modeled at all (Turbo C startup/runtime-library data the port does not use; no bytes read or emitted for these).
-- game_data.c: 203 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
+- game_data.c: 214 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
 - game_state.c: 180 objects emitted (178 typed, 2 untyped uint8_t fallback), 22 skipped (subsystem-owned).
-- Symbol names merged from all six sources: 685, covering 462 distinct DGROUP offsets.
+- Symbol names merged from all six sources: 687, covering 462 distinct DGROUP offsets.
 - Offset-ambiguous names recorded during the merge (same name, two different offsets across sources -- the earlier-added source won): 0.
-- Alias type conflicts (same offset, incompatible declared types across its names): 16.
+- Alias type conflicts (same offset, incompatible declared types across its names): 15.
 - Derivation warnings: 0.
 
 ## EXE cross-check (optional)
@@ -28,18 +28,17 @@ Several historical names resolve to the same DGROUP offset with types that aren'
 
 | offset | chosen name : type | other name : type (file:line) |
 |---|---|---|
-| 0x0b31 | `gb31` : dos_char * | `gb31` : `char far * near gb31` (src/RESOURCE.C:124) |
 | 0x0dc8 | `g0dc8` : dos_uint * | `gdc8` : `char far *gdc4,far *gdc8,far *ui_gfx_shadow_a` (src/PUZZLE.C:43) |
 | 0x79bf | `cel` : uint8_t[3965] | `s79bf` : `char s8c12[], s79bf[], s7400[], s735e[]` (src/BOARD.C:418) |
 | 0x96ee | `g96ee` : dos_uchar[674] | `str96ee` : `char str96ee[]` (src/GAME.C:47) |
 | 0xb3ae | `actor_record_table` : dos_uchar[1] | `g0b3ae` : `char g0b3ae[]` (src/GAME.C:441) |
 | 0xbfcc | `gbfcc` : dos_char | `gbfcc` : `unsigned char gbfcc` (src/STARTUP.C:60) |
-| 0xbfcd | `display_mode` : dos_char | `vmode` : `unsigned char vmode` (src/INTRO.C:37) |
+| 0xbfcd | `display_mode` : dos_char | `mode` : `unsigned char mode` (src/VIDEO.C:10) |
 | 0xbfde | `gbfde` : dos_uint * | `t3` : `char far *t1, far *t2, far *t3, far *t4` (src/INTRO.C:39) |
 | 0xbfee | `buf` : dos_char *[1] | `buf` : `char buf[]` (src/INTRO.C:44) |
 | 0xc0fe | `gc0fe` : uint8_t * | `gc0fe` : `char far *gc0fe` (include/GC0FE.H:14) |
-| 0xc470 | `slot_table` : struct c470_record[10] | `tbl` : `struct tbl_entry tbl[]` (include/TBL.H:18) |
 | 0xc470 | `slot_table` : struct c470_record[10] | `c470` : `struct C470 c470[]` (src/GAME.C:53) |
+| 0xc470 | `slot_table` : struct c470_record[10] | `tbl` : `struct tbl_entry tbl[]` (include/TBL.H:18) |
 | 0xc5ca | `ui_gfx_blob` : dos_char | `ui_gfx_blob` : `unsigned ui_gfx_blob` (src/DIALOG.C:33) |
 | 0xc5ea | `gc5ea` : dos_uchar[96] | `tab_oct` : `char tab_oct[]` (src/OPLREG.C:36) |
 | 0xc64a | `gc64a` : dos_uchar[96] | `tab_ix` : `char tab_ix[]` (src/OPLREG.C:34) |
@@ -63,6 +62,12 @@ A name landing inside a fully-dimensioned declared array/struct type: the declar
 
 | name | DS offset | array | expression |
 |---|---|---|---|
+| `gb31` | 0x0b31 | `gb2a` (`struct dialog`) | `(*(dos_char **)(((dos_char *)(&gb2a)) + 7))` |
+| `g0d36` | 0x0d36 | `DATA_010924_MENU_DESCRIPTORS` (`struct DATA_010924_MENU_DESCRIPTORS_s`) | `((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 66))` |
+| `g0d78` | 0x0d78 | `DATA_010924_MENU_DESCRIPTORS` (`struct DATA_010924_MENU_DESCRIPTORS_s`) | `((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 132))` |
+| `g1670` | 0x1670 | `DATA_01129F_LEVEL_CONTROL` (`struct DATA_01129F_LEVEL_CONTROL_s`) | `(*(struct dialog *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 1))` |
+| `g1684` | 0x1684 | `DATA_01129F_LEVEL_CONTROL` (`struct DATA_01129F_LEVEL_CONTROL_s`) | `((dos_int *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 21))` |
+| `g235d` | 0x235d | `g2356` (`struct dialog`) | `(*(dos_char **)(((dos_char *)(&g2356)) + 7))` |
 | `gc563` | 0xc563 | `slot_table` (`struct c470_record`) | `(slot_table[9].text[0])` |
 
 ## Struct arrays rounded up (rule E)
@@ -79,6 +84,7 @@ The measured span wasn't a whole number of elements; floored to the widest whole
 
 | name | DS offset | measured | element size | count | leftover bytes |
 |---|---|---|---|---|---|
+| `g2380` | 0x2380 | 2992 | 130 (`dos_char`) | 23 | 2 |
 | `gca6d` | 0xca6d | 23 | 2 (`dos_uint`) | 11 | 1 |
 
 ## Storage aliases (rule F)
@@ -127,9 +133,8 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `b740` | data | 0x0740 | 278 | dos_uchar[278] | generated | `g740` |
 | `b856` | data | 0x0856 | 1 | dos_char | generated | `DATA_010486_PAD` |
 | `g857` | data | 0x0857 | 2 | dos_int | generated |  |
-| `DATA_010489_GFX_ERROR` | data | 0x0859 | 79 | uint8_t[79] | generated |  |
-| `DATA_0104D8_MEMORY_ERROR` | data | 0x08a8 | 83 | uint8_t[83] | generated |  |
-| `DATA_01052B_ZERO_PREFIX` | data | 0x08fb | 1 | uint8_t[1] | generated |  |
+| `s859` | data | 0x0859 | 79 | dos_char[79] | generated | `DATA_010489_GFX_ERROR` |
+| `s8a8` | data | 0x08a8 | 84 | dos_char[84] | generated | `DATA_0104D8_MEMORY_ERROR` |
 | `g8fc` | data | 0x08fc | 2 | dos_int | generated |  |
 | `raycast_trail_active` | data | 0x08fe | 2 | dos_int | generated | `g8fe` |
 | `wig` | data | 0x0900 | 288 | dos_int[12][12] | generated |  |
@@ -137,7 +142,7 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `ga22` | data | 0x0a22 | 48 | dos_char[3][16] | generated | `DATA_010652_AE000_PATH`, `ba22` |
 | `ga52` | data | 0x0a52 | 12 | dos_long[3] | generated | `DATA_01067F_TABLE` |
 | `ga5e` | data | 0x0a5e | 210 | struct ga5e_entry[6] | generated | `DATA_01068E_PROGRAM_DISK` |
-| `gb31` | data | 0x0b31 | 4 | dos_char * :warning: conflict | generated |  |
+| `gb2a` | data | 0x0b2a | 20 | struct dialog | generated | `DATA_01075A_FILE_ERROR_CONTROL` |
 | `gb3e` | data | 0x0b3e | 2 | dos_int | generated | `DATA_01076E_ZERO_SUFFIX` |
 | `gb40` | data | 0x0b40 | 2 | dos_int | generated |  |
 | `gb42` | data | 0x0b42 | 38 | dos_char[38] | generated | `DATA_010772_RESOURCE_ERROR` |
@@ -175,7 +180,12 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `g12d9` | data | 0x12d9 | 12 | dos_char[12] | generated | `TEXT_12D9` |
 | `g12e5` | data | 0x12e5 | 113 | dos_char[113] | generated | `DATA_010F15_DIALOG_REMOVE_INTRO` |
 | `g1356` | data | 0x1356 | 31 | dos_char[31] | generated | `DATA_010F86_DIALOG_REMOVE_SUFFIX` |
-| `dialog_player_name_entry` | data | 0x1375 | 120 | struct dialog_player_name_entry_record_s[6] | generated | `DATA_010FA5_RECORDS`, `g1375` |
+| `dialog_player_name_entry` | data | 0x1375 | 20 | struct dialog | generated | `DATA_010FA5_RECORDS`, `g1375` |
+| `dialog_player_name_full` | data | 0x1389 | 20 | struct dialog | generated | `g1389` |
+| `g139d` | data | 0x139d | 20 | struct dialog | generated |  |
+| `dialog_slot_delete_confirm` | data | 0x13b1 | 20 | struct dialog | generated | `g13b1` |
+| `dialog_13C5` | data | 0x13c5 | 20 | struct dialog | generated |  |
+| `dialog_quit_confirm` | data | 0x13d9 | 20 | struct dialog | generated | `g13d9` |
 | `current_slot` | data | 0x13ed | 2 | dos_int | generated | `DATA_01101D_TRAILER`, `g13ed`, `n_sel` |
 | `g13ef` | data | 0x13ef | 2 | dos_int[1] | generated |  |
 | `DATA_0101021_PLAYER_NAME_TITLE` | data | 0x13f1 | 22 | uint8_t[22] | generated |  |
@@ -274,7 +284,14 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `DATA_011B9A_RETURN_MAP_PROMPT` | data | 0x1f6a | 212 | uint8_t[212] | generated |  |
 | `DATA_011C6E_START_GAME_PROMPT` | data | 0x203e | 123 | uint8_t[123] | generated |  |
 | `DATA_011CE9_EXIT_PROMPT` | data | 0x20b9 | 167 | uint8_t[167] | generated |  |
-| `dialog_toggle_music` | data | 0x2160 | 160 | struct dialog_toggle_music_record_s[8] | generated | `DATA_011D90_RECORDS`, `g2160` |
+| `dialog_toggle_music` | data | 0x2160 | 20 | struct dialog | generated | `DATA_011D90_RECORDS`, `g2160` |
+| `dialog_toggle_sound` | data | 0x2174 | 20 | struct dialog | generated | `g2174` |
+| `dialog_toggle_option` | data | 0x2188 | 20 | struct dialog | generated | `g2188` |
+| `dialog_select_quit_confirm` | data | 0x219c | 20 | struct dialog | generated | `g219c` |
+| `dialog_select_menu_confirm` | data | 0x21b0 | 20 | struct dialog | generated | `g21b0` |
+| `dialog_slot_backup_list` | data | 0x21c4 | 20 | struct dialog | generated | `g21c4` |
+| `dialog_slot_list` | data | 0x21d8 | 20 | struct dialog | generated | `g21d8` |
+| `dialog_select_restart_confirm` | data | 0x21ec | 20 | struct dialog | generated | `g21ec` |
 | `DATA_011E30_MUSIC` | data | 0x2200 | 6 | uint8_t[6] | generated |  |
 | `DATA_011E36_MUSIC_PROMPT` | data | 0x2206 | 27 | uint8_t[27] | generated |  |
 | `DATA_011E51_SOUND_EFFECTS` | data | 0x2221 | 14 | uint8_t[14] | generated |  |
@@ -301,7 +318,7 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `DATA_011FAB_ZERO_PREFIX` | data | 0x237b | 1 | uint8_t[1] | generated |  |
 | `sound_request_count` | data | 0x237c | 2 | dos_int | generated | `g237c` |
 | `music_track_handle` | data | 0x237e | 2 |  | ported-C:F_D5BA | `g237e` |
-| `g2380` | data | 0x2380 | 2992 | dos_char[2992] | generated | `DATA_011FB0_ZERO_REGION` |
+| `g2380` | data | 0x2380 | 2990 | dos_char[23][130] | generated | `DATA_011FB0_ZERO_REGION` |
 | `g2f30` | data | 0x2f30 | 162 | dos_uchar[162] | generated |  |
 | `sound_instrument_region` | data | 0x2fd2 | 1924 | uint8_t[1924] | generated |  |
 | `cur_idx` | bss | 0x3902 | 2 | dos_int | subsystem-owned | `GAME_BSS`, `g3902` |
@@ -325,20 +342,20 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `b43a0` | bss | 0x43a0 | 10 | dos_char[10] | generated |  |
 | `b43aa` | bss | 0x43aa | 10 | dos_char[10] | generated |  |
 | `g43b4` | bss | 0x43b4 | 10000 | struct record3e8[10] | generated |  |
-| `g6ac4` | bss | 0x6ac4 | 482 | dos_char[1] | generated |  |
-| `g6ca6` | bss | 0x6ca6 | 482 | dos_char[1] | generated |  |
-| `g6e88` | bss | 0x6e88 | 162 | dos_char[1] | generated | `s6e88` |
-| `a6f2a` | bss | 0x6f2a | 904 | dos_char[904] | generated | `g6f2a` |
+| `g6ac4` | bss | 0x6ac4 | 482 | dos_char[482][1] | generated |  |
+| `g6ca6` | bss | 0x6ca6 | 482 | dos_char[482][1] | generated |  |
+| `g6e88` | bss | 0x6e88 | 162 | dos_char[162][1] | generated | `s6e88` |
+| `a6f2a` | bss | 0x6f2a | 904 | dos_char[4][226] | generated | `g6f2a` |
 | `a72b2` | bss | 0x72b2 | 160 | dos_char *[40] | generated |  |
 | `g7352` | bss | 0x7352 | 4 | dos_char * | generated |  |
 | `g7356` | bss | 0x7356 | 4 | dos_char * | generated |  |
 | `g735a` | bss | 0x735a | 4 | dos_char * | generated |  |
-| `g735e` | bss | 0x735e | 162 | dos_char[1] | generated | `s735e` |
-| `g7400` | bss | 0x7400 | 162 | dos_char[1] | generated | `s7400` |
-| `a74a2` | bss | 0x74a2 | 1122 | dos_char[1122] | generated |  |
-| `g7904` | bss | 0x7904 | 187 | dos_char[1] | generated |  |
+| `g735e` | bss | 0x735e | 162 | dos_char[162][1] | generated | `s735e` |
+| `g7400` | bss | 0x7400 | 162 | dos_char[162][1] | generated | `s7400` |
+| `a74a2` | bss | 0x74a2 | 1122 | dos_char[6][187] | generated |  |
+| `g7904` | bss | 0x7904 | 187 | dos_char[187][1] | generated |  |
 | `cel` | bss | 0x79bf | 3965 | uint8_t[3965] :warning: conflict | generated | `s79bf` |
-| `a893c` | bss | 0x893c | 686 | dos_char[686] | generated | `g893c` |
+| `a893c` | bss | 0x893c | 686 | dos_char[7][98] | generated | `g893c` |
 | `xa` | bss | 0x8bea | 2 | dos_int[1] | generated | `g8bea`, `w8bea` |
 | `g8bec` | bss | 0x8bec | 2 | dos_int | generated |  |
 | `g8bee` | bss | 0x8bee | 2 | dos_int | generated |  |
@@ -351,21 +368,21 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `g96e6` | bss | 0x96e6 | 4 | dos_uchar * | generated |  |
 | `g96ea` | bss | 0x96ea | 4 | dos_uchar * | generated |  |
 | `g96ee` | bss | 0x96ee | 674 | dos_uchar[674] :warning: conflict | generated | `str96ee` |
-| `g9990` | bss | 0x9990 | 66 | dos_char[1] | generated |  |
+| `g9990` | bss | 0x9990 | 66 | dos_char[66][1] | generated |  |
 | `resource_stripe_table` | bss | 0x99d2 | 4 | dos_char * | generated | `g99d2`, `pool` |
 | `g99d6` | bss | 0x99d6 | 4 | dos_char * | generated |  |
-| `g99da` | bss | 0x99da | 130 | dos_char[1] | generated | `s99da` |
-| `g9a5c` | bss | 0x9a5c | 130 | dos_char[1] | generated | `s9a5c` |
+| `g99da` | bss | 0x99da | 130 | dos_char[130][1] | generated | `s99da` |
+| `g9a5c` | bss | 0x9a5c | 130 | dos_char[130][1] | generated | `s9a5c` |
 | `campaign_round_node_cursor` | bss | 0x9ade | 2 | dos_int | generated | `g9ade` |
-| `g9ae0` | bss | 0x9ae0 | 142 | dos_char[1] | generated | `s9ae0` |
-| `g9b6e` | bss | 0x9b6e | 142 | dos_char[1] | generated | `s9b6e` |
+| `g9ae0` | bss | 0x9ae0 | 142 | dos_char[142][1] | generated | `s9ae0` |
+| `g9b6e` | bss | 0x9b6e | 142 | dos_char[142][1] | generated | `s9b6e` |
 | `tile_width_table` | bss | 0x9bfc | 84 | dos_uchar[84] | generated | `g9bfc` |
-| `g9c50` | bss | 0x9c50 | 162 | dos_char[1] | generated | `s9c50` |
+| `g9c50` | bss | 0x9c50 | 162 | dos_char[162][1] | generated | `s9c50` |
 | `g9cf2` | bss | 0x9cf2 | 2500 | dos_uchar[2500] | generated |  |
 | `ga6b6` | bss | 0xa6b6 | 2500 | dos_uchar[2500] | generated |  |
 | `gb07a` | bss | 0xb07a | 2 | dos_int | generated |  |
 | `resource_ptr_table` | bss | 0xb07c | 336 | dos_char *[84] | generated | `gb07c` |
-| `gb1cc` | bss | 0xb1cc | 482 | dos_char[1] | generated |  |
+| `gb1cc` | bss | 0xb1cc | 482 | dos_char[482][1] | generated |  |
 | `actor_record_table` | bss | 0xb3ae | 1 | dos_uchar[1] :warning: conflict | generated | `g0b3ae`, `gb3ae` |
 | `actor_state_table` | bss | 0xb3af | 384 | struct gb3af_entry[12] | generated | `gb3af` |
 | `gb52f` | bss | 0xb52f | 416 | dos_int[208] | generated |  |
@@ -449,7 +466,7 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `gc133` | bss | 0xc133 | 1 | dos_char | generated |  |
 | `puzzle_solved_flag` | bss | 0xc134 | 1 | dos_char | generated | `gc134` |
 | `puzzle_cursor_col` | bss | 0xc135 | 1 | dos_char | generated | `gc135` |
-| `gc136` | bss | 0xc136 | 480 | dos_char[240] | generated |  |
+| `gc136` | bss | 0xc136 | 480 | dos_char[2][240] | generated |  |
 | `puzzle_grid` | bss | 0xc316 | 48 | struct gc316_tile[4][6] | generated | `gc316` |
 | `puzzle_cursor_row` | bss | 0xc346 | 1 | dos_char | generated | `gc346` |
 | `score_panel_x` | bss | 0xc34e | 2 | dos_int | generated | `gc34e` |
@@ -497,7 +514,7 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `opl_vib_depth` | bss | 0xc6b5 | 1 | dos_char | generated | `gc6b5` |
 | `gc6b6` | bss | 0xc6b6 | 11 | dos_char[11] | generated |  |
 | `music_tempo` | bss | 0xc6c1 | 2 | dos_int | generated | `gc6c1` |
-| `gc6c3` | bss | 0xc6c3 | 600 | dos_uchar[24] | generated |  |
+| `gc6c3` | bss | 0xc6c3 | 600 | dos_uchar[25][24] | generated |  |
 | `voice_param_record` | bss | 0xc91b | 252 | struct gc91b_entry[18] | generated | `gc91b` |
 | `tab_flag` | bss | 0xca17 | 11 | dos_char[11] | generated |  |
 | `opl_enabled` | bss | 0xca22 | 2 | dos_int | generated | `gca22` |

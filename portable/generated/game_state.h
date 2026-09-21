@@ -60,17 +60,17 @@ extern dos_char b43aa[10];
 extern struct record3e8 g43b4[10];
 
 /* g6ac4  DS:6AC4  size 482 --  [extern g6ac4 @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
-extern dos_char g6ac4[1];
+extern dos_char g6ac4[482][1];
 
 /* g6ca6  DS:6CA6  size 482 --  [extern g6ca6 @ src/BOARD.C:10: char g6ca6[][1], g9ae0[][1], g99da[][1], g9c50[][1], g9b6e[][1]] */
-extern dos_char g6ca6[1];
+extern dos_char g6ca6[482][1];
 
 /* g6e88  DS:6E88  size 162 --  [extern g6e88 @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
-extern dos_char g6e88[1];
+extern dos_char g6e88[162][1];
 #define s6e88 g6e88
 
 /* a6f2a  DS:6F2A  size 904 --  [extern a6f2a @ src/BOARD.C:421: char a74a2[][0xbb], a6f2a[][0xe2], a893c[][0x62]] */
-extern dos_char a6f2a[904];
+extern dos_char a6f2a[4][226];
 #define g6f2a a6f2a
 
 /* a72b2  DS:72B2  size 160 --  [extern a72b2 @ src/BOARD.C:420: char far *a72b2[]] */
@@ -86,25 +86,25 @@ extern dos_char *g7356;
 extern dos_char *g735a;
 
 /* g735e  DS:735E  size 162 --  [extern g735e @ src/BOARD.C:11: char g9a5c[][1], g7400[][1], g735e[][1]] */
-extern dos_char g735e[1];
+extern dos_char g735e[162][1];
 #define s735e g735e
 
 /* g7400  DS:7400  size 162 --  [extern g7400 @ src/BOARD.C:11: char g9a5c[][1], g7400[][1], g735e[][1]] */
-extern dos_char g7400[1];
+extern dos_char g7400[162][1];
 #define s7400 g7400
 
 /* a74a2  DS:74A2  size 1122 --  [extern a74a2 @ src/BOARD.C:421: char a74a2[][0xbb], a6f2a[][0xe2], a893c[][0x62]] */
-extern dos_char a74a2[1122];
+extern dos_char a74a2[6][187];
 
 /* g7904  DS:7904  size 187 --  [extern g7904 @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
-extern dos_char g7904[1];
+extern dos_char g7904[187][1];
 
 /* cel  DS:79BF  size 3965 -- historical 'struct CEL' has no portable definition yet [extern cel @ src/BOARD.C:32: struct CEL cel[]] */
 extern uint8_t cel[3965];
 #define s79bf cel
 
 /* a893c  DS:893C  size 686 --  [extern a893c @ src/BOARD.C:421: char a74a2[][0xbb], a6f2a[][0xe2], a893c[][0x62]] */
-extern dos_char a893c[686];
+extern dos_char a893c[7][98];
 #define g893c a893c
 
 /* xa  DS:8BEA  size 2 --  [extern xa @ src/BOARD.C:33: int  xa[], ya[]] */
@@ -150,7 +150,7 @@ extern dos_uchar g96ee[674];
 #define str96ee g96ee
 
 /* g9990  DS:9990  size 66 --  [extern g9990 @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
-extern dos_char g9990[1];
+extern dos_char g9990[66][1];
 
 /* resource_stripe_table  DS:99D2  size 4 --  [extern resource_stripe_table @ src/BOARD.C:21: char far *resource_stripe_table] */
 extern dos_char *resource_stripe_table;
@@ -161,11 +161,11 @@ extern dos_char *resource_stripe_table;
 extern dos_char *g99d6;
 
 /* g99da  DS:99DA  size 130 --  [extern g99da @ src/BOARD.C:10: char g6ca6[][1], g9ae0[][1], g99da[][1], g9c50[][1], g9b6e[][1]] */
-extern dos_char g99da[1];
+extern dos_char g99da[130][1];
 #define s99da g99da
 
 /* g9a5c  DS:9A5C  size 130 --  [extern g9a5c @ src/BOARD.C:11: char g9a5c[][1], g7400[][1], g735e[][1]] */
-extern dos_char g9a5c[1];
+extern dos_char g9a5c[130][1];
 #define s9a5c g9a5c
 
 /* campaign_round_node_cursor  DS:9ADE  size 2 --  [extern campaign_round_node_cursor @ src/BOARD.C:415: int g94, g722, g73c, campaign_round_node_cursor, gb07a] */
@@ -173,11 +173,11 @@ extern dos_int campaign_round_node_cursor;
 #define g9ade campaign_round_node_cursor
 
 /* g9ae0  DS:9AE0  size 142 --  [extern g9ae0 @ src/BOARD.C:10: char g6ca6[][1], g9ae0[][1], g99da[][1], g9c50[][1], g9b6e[][1]] */
-extern dos_char g9ae0[1];
+extern dos_char g9ae0[142][1];
 #define s9ae0 g9ae0
 
 /* g9b6e  DS:9B6E  size 142 --  [extern g9b6e @ src/BOARD.C:10: char g6ca6[][1], g9ae0[][1], g99da[][1], g9c50[][1], g9b6e[][1]] */
-extern dos_char g9b6e[1];
+extern dos_char g9b6e[142][1];
 #define s9b6e g9b6e
 
 /* tile_width_table  DS:9BFC  size 84 --  [extern tile_width_table @ src/LEVEL.C:14: unsigned char near tile_width_table[],tile_height_table[]] */
@@ -185,7 +185,7 @@ extern dos_uchar tile_width_table[84];
 #define g9bfc tile_width_table
 
 /* g9c50  DS:9C50  size 162 --  [extern g9c50 @ src/BOARD.C:10: char g6ca6[][1], g9ae0[][1], g99da[][1], g9c50[][1], g9b6e[][1]] */
-extern dos_char g9c50[1];
+extern dos_char g9c50[162][1];
 #define s9c50 g9c50
 
 /* g9cf2  DS:9CF2  size 2500 --  [extern g9cf2 @ src/BOARD.C:16: unsigned char g9cf2[]] */
@@ -202,7 +202,7 @@ extern dos_char *resource_ptr_table[84];
 #define gb07c resource_ptr_table
 
 /* gb1cc  DS:B1CC  size 482 --  [extern gb1cc @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
-extern dos_char gb1cc[1];
+extern dos_char gb1cc[482][1];
 
 /* actor_record_table  DS:B3AE  size 1 --  [extern actor_record_table @ src/LEVEL.C:31: unsigned char actor_record_table[]] */
 extern dos_uchar actor_record_table[1];
@@ -458,7 +458,7 @@ extern dos_char puzzle_cursor_col;
 #define gc135 puzzle_cursor_col
 
 /* gc136  DS:C136  size 480 --  [extern gc136 @ src/PUZZLE.C:44: char gc136[][240]] */
-extern dos_char gc136[240];
+extern dos_char gc136[2][240];
 
 /* puzzle_grid  DS:C316  size 48 --  [extern puzzle_grid @ include/GC316.H:13: struct gc316_tile puzzle_grid[4][6]] */
 extern struct gc316_tile puzzle_grid[4][6];
@@ -613,7 +613,7 @@ extern dos_int music_tempo;
 #define gc6c1 music_tempo
 
 /* gc6c3  DS:C6C3  size 600 --  [extern gc6c3 @ src/MUSIC.C:22: unsigned char gc6c3[][24]] */
-extern dos_uchar gc6c3[24];
+extern dos_uchar gc6c3[25][24];
 
 /* voice_param_record  DS:C91B  size 252 --  [extern voice_param_record @ include/GC91B.H:10: struct gc91b_entry voice_param_record[]] */
 extern struct gc91b_entry voice_param_record[18];

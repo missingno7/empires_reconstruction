@@ -3,9 +3,12 @@
     "DATA_01034E_ALIGNMENT": "g71e",
     "DATA_010354_CONTROL_TABLE": "g724",
     "DATA_010486_PAD": "b856",
+    "DATA_010489_GFX_ERROR": "s859",
+    "DATA_0104D8_MEMORY_ERROR": "s8a8",
     "DATA_010652_AE000_PATH": "ga22",
     "DATA_01067F_TABLE": "ga52",
     "DATA_01068E_PROGRAM_DISK": "ga5e",
+    "DATA_01075A_FILE_ERROR_CONTROL": "gb2a",
     "DATA_01076E_ZERO_SUFFIX": "gb3e",
     "DATA_010772_RESOURCE_ERROR": "gb42",
     "DATA_010798_PAD": "key_up_held",
@@ -53,6 +56,9 @@
     "g0b7a": "int8_saved_vector",
     "g0bc": "gbc",
     "g1375": "dialog_player_name_entry",
+    "g1389": "dialog_player_name_full",
+    "g13b1": "dialog_slot_delete_confirm",
+    "g13d9": "dialog_quit_confirm",
     "g13ed": "current_slot",
     "g175e": "snd_base",
     "g1760": "snd_seg",
@@ -81,6 +87,13 @@
     "g1e92": "stream_note_delay",
     "g1e94": "snd_one",
     "g2160": "dialog_toggle_music",
+    "g2174": "dialog_toggle_sound",
+    "g2188": "dialog_toggle_option",
+    "g219c": "dialog_select_quit_confirm",
+    "g21b0": "dialog_select_menu_confirm",
+    "g21c4": "dialog_slot_backup_list",
+    "g21d8": "dialog_slot_list",
+    "g21ec": "dialog_select_restart_confirm",
     "g237c": "sound_request_count",
     "g237e": "music_track_handle",
     "g3902": "cur_idx",
@@ -391,48 +404,6 @@
       "owned_by": null,
       "section": "data",
       "size": 96,
-      "type_note": null,
-      "untyped": false
-    },
-    "DATA_010489_GFX_ERROR": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "uint8_t[79]",
-      "component_id": "DATA_010489_GFX_ERROR",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 2137,
-      "owned_by": null,
-      "section": "data",
-      "size": 79,
-      "type_note": null,
-      "untyped": false
-    },
-    "DATA_0104D8_MEMORY_ERROR": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "uint8_t[83]",
-      "component_id": "DATA_0104D8_MEMORY_ERROR",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 2216,
-      "owned_by": null,
-      "section": "data",
-      "size": 83,
-      "type_note": null,
-      "untyped": false
-    },
-    "DATA_01052B_ZERO_PREFIX": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "uint8_t[1]",
-      "component_id": "DATA_01052B_ZERO_PREFIX",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 2299,
-      "owned_by": null,
-      "section": "data",
-      "size": 1,
       "type_note": null,
       "untyped": false
     },
@@ -959,7 +930,7 @@
       "aliases": [
         "g6f2a"
       ],
-      "c_type": "dos_char[904]",
+      "c_type": "dos_char[4][226]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -995,7 +966,7 @@
         }
       ],
       "aliases": [],
-      "c_type": "dos_char[1122]",
+      "c_type": "dos_char[6][187]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -1011,7 +982,7 @@
       "aliases": [
         "g893c"
       ],
-      "c_type": "dos_char[686]",
+      "c_type": "dos_char[7][98]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -1474,6 +1445,20 @@
       "type_note": " [extern cursor_y @ src/BOARD.C:30: int cursor_x, cursor_y]",
       "untyped": false
     },
+    "dialog_13C5": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "struct dialog",
+      "component_id": "DATA_010FA5_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 5061,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
     "dialog_box_h": {
       "alias_type_reports": [],
       "aliases": [
@@ -1800,14 +1785,142 @@
         "DATA_010FA5_RECORDS",
         "g1375"
       ],
-      "c_type": "struct dialog_player_name_entry_record_s[6]",
+      "c_type": "struct dialog",
       "component_id": "DATA_010FA5_RECORDS",
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 4981,
       "owned_by": null,
       "section": "data",
-      "size": 120,
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_player_name_full": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g1389"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_010FA5_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 5001,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_quit_confirm": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g13d9"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_010FA5_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 5081,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_select_menu_confirm": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g21b0"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8624,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_select_quit_confirm": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g219c"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8604,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_select_restart_confirm": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g21ec"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8684,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_slot_backup_list": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g21c4"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8644,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_slot_delete_confirm": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g13b1"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_010FA5_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 5041,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_slot_list": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g21d8"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8664,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
       "type_note": null,
       "untyped": false
     },
@@ -1881,14 +1994,46 @@
         "DATA_011D90_RECORDS",
         "g2160"
       ],
-      "c_type": "struct dialog_toggle_music_record_s[8]",
+      "c_type": "struct dialog",
       "component_id": "DATA_011D90_RECORDS",
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 8544,
       "owned_by": null,
       "section": "data",
-      "size": 160,
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_toggle_option": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g2188"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8584,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
+      "untyped": false
+    },
+    "dialog_toggle_sound": {
+      "alias_type_reports": [],
+      "aliases": [
+        "g2174"
+      ],
+      "c_type": "struct dialog",
+      "component_id": "DATA_011D90_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 8564,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
       "type_note": null,
       "untyped": false
     },
@@ -1896,10 +2041,10 @@
       "alias_type_reports": [
         {
           "compatible": false,
-          "file": "src/INTRO.C",
-          "line": 37,
-          "name": "vmode",
-          "type_text": "unsigned char vmode"
+          "file": "src/VIDEO.C",
+          "line": 10,
+          "name": "mode",
+          "type_text": "unsigned char mode"
         }
       ],
       "aliases": [
@@ -1913,7 +2058,7 @@
       "conflict": true,
       "definition_site": "subsystem-owned",
       "ds_offset": 49101,
-      "owned_by": "display_mode",
+      "owned_by": "mode",
       "section": "bss",
       "size": 1,
       "type_note": " [extern display_mode @ src/ANIMSTEP.C:6: char display_mode]",
@@ -2139,6 +2284,20 @@
       "section": "data",
       "size": 31,
       "type_note": " [extern g1356 @ src/SLOTMENU.C:326: char near g1356[],g12e5[]]",
+      "untyped": false
+    },
+    "g139d": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "struct dialog",
+      "component_id": "DATA_010FA5_RECORDS",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 5021,
+      "owned_by": null,
+      "section": "data",
+      "size": 20,
+      "type_note": null,
       "untyped": false
     },
     "g13ef": {
@@ -2438,14 +2597,14 @@
       "aliases": [
         "DATA_011FB0_ZERO_REGION"
       ],
-      "c_type": "dos_char[2992]",
+      "c_type": "dos_char[23][130]",
       "component_id": "DATA_011FB0_ZERO_REGION",
       "conflict": false,
       "definition_site": "generated",
       "ds_offset": 9088,
       "owned_by": null,
       "section": "data",
-      "size": 2992,
+      "size": 2990,
       "type_note": " [extern g2380 @ src/BOARD.C:15: char g2380[][0x82]]",
       "untyped": false
     },
@@ -2552,7 +2711,7 @@
     "g6ac4": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[482][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -2566,7 +2725,7 @@
     "g6ca6": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[482][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -2590,7 +2749,7 @@
       "aliases": [
         "s6e88"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[162][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -2774,7 +2933,7 @@
       "aliases": [
         "s735e"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[162][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -2826,7 +2985,7 @@
       "aliases": [
         "s7400"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[162][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -2840,7 +2999,7 @@
     "g7904": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[187][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3046,7 +3205,7 @@
     "g9990": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[66][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3084,7 +3243,7 @@
       "aliases": [
         "s99da"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[130][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3122,7 +3281,7 @@
       "aliases": [
         "s9a5c"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[130][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3146,7 +3305,7 @@
       "aliases": [
         "s9ae0"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[142][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3170,7 +3329,7 @@
       "aliases": [
         "s9b6e"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[142][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3208,7 +3367,7 @@
       "aliases": [
         "s9c50"
       ],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[162][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3337,7 +3496,7 @@
     "gb1cc": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char[1]",
+      "c_type": "dos_char[482][1]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -3348,26 +3507,20 @@
       "type_note": " [extern gb1cc @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]]",
       "untyped": false
     },
-    "gb31": {
-      "alias_type_reports": [
-        {
-          "compatible": false,
-          "file": "src/RESOURCE.C",
-          "line": 124,
-          "name": "gb31",
-          "type_text": "char far * near gb31"
-        }
+    "gb2a": {
+      "alias_type_reports": [],
+      "aliases": [
+        "DATA_01075A_FILE_ERROR_CONTROL"
       ],
-      "aliases": [],
-      "c_type": "dos_char *",
+      "c_type": "struct dialog",
       "component_id": "DATA_01075A_FILE_ERROR_CONTROL",
-      "conflict": true,
+      "conflict": false,
       "definition_site": "generated",
-      "ds_offset": 2865,
+      "ds_offset": 2858,
       "owned_by": null,
       "section": "data",
-      "size": 4,
-      "type_note": " [extern gb31 @ src/RESOURCE.C:50: char far *gb31]",
+      "size": 20,
+      "type_note": null,
       "untyped": false
     },
     "gb3e": {
@@ -3996,7 +4149,7 @@
     "gc136": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_char[240]",
+      "c_type": "dos_char[2][240]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -4450,7 +4603,7 @@
     "gc6c3": {
       "alias_type_reports": [],
       "aliases": [],
-      "c_type": "dos_uchar[24]",
+      "c_type": "dos_uchar[25][24]",
       "component_id": null,
       "conflict": false,
       "definition_site": "generated",
@@ -5684,6 +5837,38 @@
       "type_note": " [extern result @ src/VIDEO.C:17: int result]",
       "untyped": false
     },
+    "s859": {
+      "alias_type_reports": [],
+      "aliases": [
+        "DATA_010489_GFX_ERROR"
+      ],
+      "c_type": "dos_char[79]",
+      "component_id": "DATA_010489_GFX_ERROR",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 2137,
+      "owned_by": null,
+      "section": "data",
+      "size": 79,
+      "type_note": " [extern s859 @ src/STARTUP.C:220: char s859[], s8a8[]]",
+      "untyped": false
+    },
+    "s8a8": {
+      "alias_type_reports": [],
+      "aliases": [
+        "DATA_0104D8_MEMORY_ERROR"
+      ],
+      "c_type": "dos_char[84]",
+      "component_id": "DATA_0104D8_MEMORY_ERROR",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 2216,
+      "owned_by": null,
+      "section": "data",
+      "size": 84,
+      "type_note": " [extern s8a8 @ src/STARTUP.C:220: char s859[], s8a8[]]",
+      "untyped": false
+    },
     "s8c12": {
       "alias_type_reports": [],
       "aliases": [],
@@ -5767,17 +5952,17 @@
       "alias_type_reports": [
         {
           "compatible": false,
-          "file": "include/TBL.H",
-          "line": 18,
-          "name": "tbl",
-          "type_text": "struct tbl_entry tbl[]"
-        },
-        {
-          "compatible": false,
           "file": "src/GAME.C",
           "line": 53,
           "name": "c470",
           "type_text": "struct C470 c470[]"
+        },
+        {
+          "compatible": false,
+          "file": "include/TBL.H",
+          "line": 18,
+          "name": "tbl",
+          "type_text": "struct tbl_entry tbl[]"
         }
       ],
       "aliases": [

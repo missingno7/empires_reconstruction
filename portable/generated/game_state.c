@@ -35,13 +35,13 @@ dos_char b43aa[10];
 
 struct record3e8 g43b4[10];
 
-dos_char g6ac4[1];
+dos_char g6ac4[482][1];
 
-dos_char g6ca6[1];
+dos_char g6ca6[482][1];
 
-dos_char g6e88[1];
+dos_char g6e88[162][1];
 
-dos_char a6f2a[904];
+dos_char a6f2a[4][226];
 
 dos_char *a72b2[40];
 
@@ -51,17 +51,17 @@ dos_char *g7356;
 
 dos_char *g735a;
 
-dos_char g735e[1];
+dos_char g735e[162][1];
 
-dos_char g7400[1];
+dos_char g7400[162][1];
 
-dos_char a74a2[1122];
+dos_char a74a2[6][187];
 
-dos_char g7904[1];
+dos_char g7904[187][1];
 
 uint8_t cel[3965];
 
-dos_char a893c[686];
+dos_char a893c[7][98];
 
 dos_int xa[1];
 
@@ -87,25 +87,25 @@ dos_uchar *g96ea;
 
 dos_uchar g96ee[674];
 
-dos_char g9990[1];
+dos_char g9990[66][1];
 
 dos_char *resource_stripe_table;
 
 dos_char *g99d6;
 
-dos_char g99da[1];
+dos_char g99da[130][1];
 
-dos_char g9a5c[1];
+dos_char g9a5c[130][1];
 
 dos_int campaign_round_node_cursor;
 
-dos_char g9ae0[1];
+dos_char g9ae0[142][1];
 
-dos_char g9b6e[1];
+dos_char g9b6e[142][1];
 
 dos_uchar tile_width_table[84];
 
-dos_char g9c50[1];
+dos_char g9c50[162][1];
 
 dos_uchar g9cf2[2500];
 
@@ -115,7 +115,7 @@ dos_int gb07a;
 
 dos_char *resource_ptr_table[84];
 
-dos_char gb1cc[1];
+dos_char gb1cc[482][1];
 
 dos_uchar actor_record_table[1];
 
@@ -257,7 +257,7 @@ dos_char puzzle_solved_flag;
 
 dos_char puzzle_cursor_col;
 
-dos_char gc136[240];
+dos_char gc136[2][240];
 
 struct gc316_tile puzzle_grid[4][6];
 
@@ -347,7 +347,7 @@ dos_char gc6b6[11];
 
 dos_int music_tempo;
 
-dos_uchar gc6c3[24];
+dos_uchar gc6c3[25][24];
 
 struct gc91b_entry voice_param_record[18];
 

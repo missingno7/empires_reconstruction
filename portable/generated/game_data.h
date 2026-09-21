@@ -116,14 +116,13 @@ extern dos_char b856;
 /* g857  DS:0857  size 2  (flat, component DATA_010486_PAD) */
 extern dos_int g857;
 
-/* DATA_010489_GFX_ERROR  DS:0859  size 79  (flat, component DATA_010489_GFX_ERROR) */
-extern uint8_t DATA_010489_GFX_ERROR[79];
+/* s859  DS:0859  size 79  (flat, component DATA_010489_GFX_ERROR) */
+extern dos_char s859[79];
+/* DATA_010489_GFX_ERROR (recipe component id; nothing points at it) */
 
-/* DATA_0104D8_MEMORY_ERROR  DS:08A8  size 83  (flat, component DATA_0104D8_MEMORY_ERROR) */
-extern uint8_t DATA_0104D8_MEMORY_ERROR[83];
-
-/* DATA_01052B_ZERO_PREFIX  DS:08FB  size 1  (flat, component DATA_01052B_ZERO_PREFIX) */
-extern uint8_t DATA_01052B_ZERO_PREFIX[1];
+/* s8a8  DS:08A8  size 84  (flat, component DATA_0104D8_MEMORY_ERROR) */
+extern dos_char s8a8[84];
+/* DATA_0104D8_MEMORY_ERROR (recipe component id; nothing points at it) */
 
 /* g8fc  DS:08FC  size 2  (flat, component DATA_01052B_ZERO_PREFIX) */
 extern dos_int g8fc;
@@ -152,8 +151,9 @@ extern dos_long ga52[3];
 extern struct ga5e_entry ga5e[6];
 #define DATA_01068E_PROGRAM_DISK ga5e
 
-/* gb31  DS:0B31  size 4  (flat, component DATA_01075A_FILE_ERROR_CONTROL) */
-extern dos_char *gb31;
+/* gb2a  DS:0B2A  size 20  (struct-component, component DATA_01075A_FILE_ERROR_CONTROL) */
+extern struct dialog gb2a;
+/* DATA_01075A_FILE_ERROR_CONTROL (recipe component id; nothing points at it) */
 
 /* gb3e  DS:0B3E  size 2  (flat, component DATA_01076E_ZERO_SUFFIX) */
 extern dos_int gb3e;
@@ -320,18 +320,28 @@ extern dos_char g12e5[113];
 extern dos_char g1356[31];
 /* DATA_010F86_DIALOG_REMOVE_SUFFIX (recipe component id; nothing points at it) */
 
-/* dialog_player_name_entry  DS:1375  size 120  (struct-component, component DATA_010FA5_RECORDS) */
-struct dialog_player_name_entry_record_s {
-    dos_uint word;
-    void * pointer_a;
-    dos_uchar byte_a;
-    void * pointer_b;
-    dos_uchar byte_b;
-    dos_uchar tail[8];
-};
-extern struct dialog_player_name_entry_record_s dialog_player_name_entry[6];
+/* dialog_player_name_entry  DS:1375  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog dialog_player_name_entry;
 /* DATA_010FA5_RECORDS (recipe component id; nothing points at it) */
 #define g1375 dialog_player_name_entry
+
+/* dialog_player_name_full  DS:1389  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog dialog_player_name_full;
+#define g1389 dialog_player_name_full
+
+/* g139d  DS:139D  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog g139d;
+
+/* dialog_slot_delete_confirm  DS:13B1  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog dialog_slot_delete_confirm;
+#define g13b1 dialog_slot_delete_confirm
+
+/* dialog_13C5  DS:13C5  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog dialog_13C5;
+
+/* dialog_quit_confirm  DS:13D9  size 20  (ptrrec-dialog, component DATA_010FA5_RECORDS) */
+extern struct dialog dialog_quit_confirm;
+#define g13d9 dialog_quit_confirm
 
 /* current_slot  DS:13ED  size 2  (flat, component DATA_01101D_TRAILER) */
 extern dos_int current_slot;
@@ -666,18 +676,38 @@ extern uint8_t DATA_011C6E_START_GAME_PROMPT[123];
 /* DATA_011CE9_EXIT_PROMPT  DS:20B9  size 167  (flat, component DATA_011CE9_EXIT_PROMPT) */
 extern uint8_t DATA_011CE9_EXIT_PROMPT[167];
 
-/* dialog_toggle_music  DS:2160  size 160  (struct-component, component DATA_011D90_RECORDS) */
-struct dialog_toggle_music_record_s {
-    dos_uint word;
-    dos_char * pointer_a;
-    dos_uchar byte_a;
-    dos_char * pointer_b;
-    dos_uchar byte_b;
-    dos_uchar tail[8];
-};
-extern struct dialog_toggle_music_record_s dialog_toggle_music[8];
+/* dialog_toggle_music  DS:2160  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_toggle_music;
 /* DATA_011D90_RECORDS (recipe component id; nothing points at it) */
 #define g2160 dialog_toggle_music
+
+/* dialog_toggle_sound  DS:2174  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_toggle_sound;
+#define g2174 dialog_toggle_sound
+
+/* dialog_toggle_option  DS:2188  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_toggle_option;
+#define g2188 dialog_toggle_option
+
+/* dialog_select_quit_confirm  DS:219C  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_select_quit_confirm;
+#define g219c dialog_select_quit_confirm
+
+/* dialog_select_menu_confirm  DS:21B0  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_select_menu_confirm;
+#define g21b0 dialog_select_menu_confirm
+
+/* dialog_slot_backup_list  DS:21C4  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_slot_backup_list;
+#define g21c4 dialog_slot_backup_list
+
+/* dialog_slot_list  DS:21D8  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_slot_list;
+#define g21d8 dialog_slot_list
+
+/* dialog_select_restart_confirm  DS:21EC  size 20  (ptrrec-dialog, component DATA_011D90_RECORDS) */
+extern struct dialog dialog_select_restart_confirm;
+#define g21ec dialog_select_restart_confirm
 
 /* DATA_011E30_MUSIC  DS:2200  size 6  (flat, component DATA_011E30_MUSIC) */
 extern uint8_t DATA_011E30_MUSIC[6];
@@ -768,8 +798,8 @@ extern uint8_t DATA_011FAB_ZERO_PREFIX[1];
 extern dos_int sound_request_count;
 #define g237c sound_request_count
 
-/* g2380  DS:2380  size 2992  (flat, component DATA_011FB0_ZERO_REGION) */
-extern dos_char g2380[2992];
+/* g2380  DS:2380  size 2990  (flat, component DATA_011FB0_ZERO_REGION) */
+extern dos_char g2380[23][130];
 /* DATA_011FB0_ZERO_REGION (recipe component id; nothing points at it) */
 
 /* g2f30  DS:2F30  size 162  (flat, component DATA_011FB0_ZERO_REGION) */
@@ -787,6 +817,22 @@ struct DATA_012C03_SOUND_INSTRUMENTS_s {
 };
 extern uint8_t sound_instrument_region[1924];
 #define DATA_012C03_SOUND_INSTRUMENTS (*(struct DATA_012C03_SOUND_INSTRUMENTS_s *)(sound_instrument_region + 1))
+#define sound_instr_region_2FD3 ((uint8_t *)(sound_instrument_region + 1))
+#define voice_byte_table ((dos_char *)(sound_instrument_region + 18))
+#define g2fe4 ((dos_char *)(sound_instrument_region + 18))
+#define g2ff6 ((dos_char *)(sound_instrument_region + 36))
+#define g3008 ((dos_char *)(sound_instrument_region + 54))
+#define g301a ((dos_char *)(sound_instrument_region + 72))
+#define g3044 ((uint8_t *)(sound_instrument_region + 114))
+#define g3752 (*(dos_long *)(sound_instrument_region + 1920))
 #define ui_panel_glyph_records ((struct g2fd2_entry *)(sound_instrument_region))
+
+/* Rule B: interior alias expressions (see docs/portable/state-map.md "Interior aliases") */
+#define gb31 (*(dos_char **)(((dos_char *)(&gb2a)) + 7))
+#define g0d36 ((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 66))
+#define g0d78 ((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 132))
+#define g1670 (*(struct dialog *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 1))
+#define g1684 ((dos_int *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 21))
+#define g235d (*(dos_char **)(((dos_char *)(&g2356)) + 7))
 
 #endif /* PORTABLE_GAME_DATA_H */

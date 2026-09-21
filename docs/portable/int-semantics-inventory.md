@@ -432,6 +432,48 @@ stated is about the type, not the bound).
 
 **Confidence:** HIGH (disassembly-cited); LOW risk.
 
+### 16. `src/OPLREG.C:312`, `voice_set_frequency` (F_E48A)
+
+```c
+note += tab_bias[v];
+```
+
+`tab_bias` (== `gca24`'s sibling table `gca6d`, DS:CA6D) is declared `extern
+int tab_bias[];` (signed) in `src/OPLREG.C:31`, but `src/MUSIC.C:19`
+declares the *same* DS:CA6D storage `extern unsigned gca6d[];`, and
+`src/MUSIC.C:105`'s `music_voice_frequency_lookup` writes a **negative**
+value straight into it: `gc5e4 = gca6d[i] = -(t / 25);`. This is not a
+disassembly-cited fact the way 1-15 are (found while porting, not by the
+task's grep sweep) — added here per the tu-port-agent-brief.md report
+workflow rather than left undocumented.
+
+On the 8086 the write (through the `unsigned` name) and this read (through
+the `int` name) agree bit-for-bit because both are exactly one 16-bit
+register-width word; a negative value stored as `unsigned` and read back as
+`int` reproduces the original negative value exactly (two's-complement,
+same width both sides).
+
+**Portable spelling:** `gca24`/`tab_bias`'s generated type is `dos_uint`
+(`portable/generated/game_state.h`, following `MUSIC.C`'s `unsigned`
+declaration). Storing into it (as `MUSIC.C` does) needs no helper --
+implicit truncation-on-store already reproduces the wraparound (rule 2).
+Reading it back into a signed accumulator, as this site does, is the part
+that breaks under modern promotion: a `dos_uint` promotes to a
+*nonnegative* 32-bit `int` (all `uint16_t` values fit in `int`, so
+promotion does not reinterpret the sign bit), so a bare `note +=
+tab_bias[v];` would add the wrong large positive value instead of the
+historical 16-bit wraparound ADD. Reinterpret-cast at the read site instead:
+```c
+note += (dos_int)tab_bias[v];
+```
+`(dos_int)` on a `dos_uint` value is a same-width reinterpretation (no
+promotion in between), which recovers the original negative value exactly
+the way the 8086's raw 16-bit ADD did.
+
+**Confidence:** HIGH (the negative store at `MUSIC.C:105` and the signed
+`extern` at `OPLREG.C:31` are both directly in the historical source, not
+inferred); ported in `portable/game/oplreg.c`'s `voice_set_frequency`.
+
 ---
 
 ## Part 2 — Review candidates (regex sweep, unverified)
@@ -548,10 +590,13 @@ a concrete evidence source, and grep alone cannot provide that citation.
 
 ## Summary
 
-- **15 confirmed width/signedness facts** (Part 1), each disassembly-cited
-  in the historical source's own comments, spanning RESOURCE.C (4),
+- **16 confirmed width/signedness facts** (Part 1) span RESOURCE.C (4),
   VIDEO.C (1), TIMER.C (2), INTRO.C (2), SNDREQ.C (1), OPLINIT.C (1),
-  OPLREG.C (1), PLAYERSL.C (1), TICKDIV.C (1), OPLVOICE.C (1).
+  OPLREG.C (2), PLAYERSL.C (1), TICKDIV.C (1), OPLVOICE.C (1). Facts 1-15
+  are each disassembly-cited in the historical source's own comments; fact
+  16 (OPLREG.C:312) was found during Wave 2 porting rather than by the
+  original grep sweep and is cited to the historical source directly (see
+  its own confidence note).
 - **~94 review candidates** from the regex sweep (34 `long` sites, 17 `>>`
   sites, 10 `%` sites, 33 `/` sites; some overlap with the confirmed facts
   and are cross-referenced above), plus 2 flagged mixed-type-comparison

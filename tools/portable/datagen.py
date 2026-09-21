@@ -284,14 +284,22 @@ def cross_check_against_exe(image, components):
 
 G_NAME_RE = re.compile(r'^[gG]([0-9a-fA-F]{1,4})$')
 
-# Source (vi): names matching /^[gb]0?[0-9a-f]{2,4}$/ in src/*.C and
+# Source (vi): names matching /^[gbs]0?[0-9a-f]{2,4}$/ in src/*.C and
 # include/*.H encode their own DS offset in hex -- g94 -> 0x0094,
-# gb6a -> 0x0B6A, g0b3ae -> BSS 0xB3AE, b856 -> 0x0856.  A leading 'b' is
-# the same convention observed for a handful of byte-sized scratch
-# variables (b856 et al); 3-4 hex digits cover the DGROUP range, an
-# optional literal '0' lets a 2-digit offset (0x0856 -> "856") sit next to
-# 4-digit ones without ambiguity.
-NAME_CONVENTION_RE = re.compile(r'^[gb]0?([0-9a-f]{2,4})$', re.IGNORECASE)
+# gb6a -> 0x0B6A, g0b3ae -> BSS 0xB3AE, b856 -> 0x0856. 'b'/'s' are the same
+# convention observed for byte-sized scratch variables ('b', e.g. b856) and
+# DATA strings ('s', e.g. STARTUP.C's `extern char s859[], s8a8[];`,
+# BOARD.C's `s8c12[]`/`s79bf[]`/`s7400[]`/`s735e[]`); 3-4 hex digits cover
+# the DGROUP range, an optional literal '0' lets a 2-digit offset
+# (0x0859 -> "859") sit next to 4-digit ones without ambiguity.
+NAME_CONVENTION_RE = re.compile(r'^[gbs]0?([0-9a-f]{2,4})$', re.IGNORECASE)
+S_STRING_NAME_RE = re.compile(r'^s0?[0-9a-f]{2,4}$', re.IGNORECASE)
+
+
+def _is_s_string_name(name):
+    """An 's'-prefixed name-convention name implies dos_char[] (a string)
+    when nothing stronger types the same offset -- see resolve_symbols."""
+    return bool(name) and bool(S_STRING_NAME_RE.match(name))
 
 
 def _offset_from_g_name(raw):
@@ -496,6 +504,23 @@ def _split_top_level_commas(text):
     return parts
 DECL_RE = re.compile(r'^(?P<pre>(?:.*[\s*])?)(?P<name>[A-Za-z_]\w*)(?P<dims>(?:\s*\[[^\]]*\])*)\s*$')
 ARRAY_DIM_RE = re.compile(r'\[\s*([^\]]*)\s*\]')
+
+
+def _c_int_literal(text):
+    """Parse one array-dimension token as a C integer literal: plain
+    decimal ('24') or hex ('0xe2'/'0XE2', common in this codebase for
+    record widths -- e.g. `char g6f2a[][0xe2]`). Returns None for anything
+    else (empty -- an unspecified dimension -- or an expression), so
+    callers can still tell "no dimension given" apart from "dimension 0"."""
+    text = text.strip()
+    if not text:
+        return None
+    if text[:2].lower() == '0x':
+        try:
+            return int(text, 16)
+        except ValueError:
+            return None
+    return int(text) if text.isdigit() else None
 
 PRIMITIVE_C_TYPE = {
     'char': 'dos_char', 'signed char': 'dos_char', 'unsigned char': 'dos_uchar',
@@ -706,7 +731,7 @@ def load_bss_typed_reserves():
             abs_off = DATA_LEN + block['logical_start'] + tr['offset']
             raw_base = ARRAY_DIM_RE.sub('', tr['source_type']).strip()
             dims_text = ARRAY_DIM_RE.findall(tr['source_type'])
-            dims = [int(d) for d in dims_text if d.strip().isdigit()]
+            dims = [v for v in (_c_int_literal(d) for d in dims_text) if v is not None]
             is_ptr = raw_base.endswith('*')
             if raw_base in ('far pointer offset word', 'far pointer segment word'):
                 base = raw_base  # checked verbatim in resolve_primitive; do not strip 'far'
@@ -789,8 +814,9 @@ def _type_rank(entry):
     elem_size = historical_elem_size(base, entry['is_ptr'], entry.get('is_near', False), mapped)
     dims_product, has_unspecified_dim = 1, False
     for d in entry['dims']:
-        if d.isdigit():
-            dims_product *= int(d)
+        v = _c_int_literal(d)
+        if v is not None:
+            dims_product *= v
         else:
             has_unspecified_dim = True
     span = elem_size * dims_product
@@ -864,9 +890,10 @@ def _historical_span(entry):
     elem_size = historical_elem_size(base, entry['is_ptr'], entry.get('is_near', False), mapped)
     product = 1
     for d in entry['dims']:
-        if not d.isdigit():
+        v = _c_int_literal(d)
+        if v is None:
             return None  # an unspecified dimension: bounded by next symbol instead
-        product *= int(d)
+        product *= v
     return elem_size * product
 
 
@@ -962,7 +989,7 @@ def _split_sound_component(component, table, friendly_of_offset, externs):
             if chosen['base'] == 'void (*)(void)':
                 mapped = 'void'
             c_type, type_note = mapped, note
-            dims = [int(d) for d in chosen['dims'] if d.isdigit()]
+            dims = [v for v in (_c_int_literal(d) for d in chosen['dims']) if v is not None]
             untyped = mapped is None
             size = _historical_span(chosen)
         if size is None:
@@ -1095,6 +1122,40 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
             cursor += component['length']
             continue
         if (component is not None and component['ds_offset'] == cursor and component['kind'] == 'data'
+                and component['format'] == PTRREC_FORMAT):
+            # Round 5: each 20-byte record in a u16-farptr-u8-farptr-u8-
+            # tail8-v1 component is byte-for-byte a `struct dialog`
+            # (word=kind, pointer_a=title, byte_a=sub, pointer_b=text,
+            # byte_b=initial, tail[8]=cx/cy/w/lines) -- one object per
+            # record, named by whatever historical symbol lands on that
+            # record's own offset, else dialog_XXXX by DS offset.
+            assert component['length'] % KNOWN_STRUCT_SIZES['struct dialog'] == 0
+            record_size = KNOWN_STRUCT_SIZES['struct dialog']
+            for rec_start in range(0, component['length'], record_size):
+                abs_off = cursor + rec_start
+                # The component id (a source-(v) component-public, never a
+                # real historical name) is excluded here so it can never
+                # win the primary slot for a record -- it is kept only as
+                # an alias, and only on whichever record is actually
+                # pointed at by that id (see referenced_component_ids in
+                # emit_game_data).
+                names = table.names_at(abs_off) - {component['id']}
+                if names:
+                    primary = _pick_primary(names, table, friendly_of_offset, abs_off)
+                    aliases = sorted(n for n in names if n != primary)
+                else:
+                    primary = f'dialog_{abs_off:04X}'
+                    aliases = []
+                if rec_start == 0:
+                    aliases.append(component['id'])
+                symbols.append(_make_symbol(abs_off, record_size, 'data', primary, sorted(aliases),
+                                             sorted(names | {component['id']}) if rec_start == 0
+                                             else (sorted(names) or [primary]), None, 'generated',
+                                             component['id'], None, None, [], False, [], False,
+                                             emit_path='ptrrec-dialog'))
+            cursor += component['length']
+            continue
+        if (component is not None and component['ds_offset'] == cursor and component['kind'] == 'data'
                 and component['format'] in STRUCT_SHAPED_FORMATS):
             names = table.names_at(cursor)
             primary = _pick_primary(names, table, friendly_of_offset, cursor) if names else component['id']
@@ -1136,6 +1197,7 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
         owned_name = next((n for n in names if n in ownership), None) if cursor >= DATA_LEN else None
         section = 'data' if cursor < DATA_LEN else 'bss'
         emit_path_override = None
+        ceil_overshoot = False
 
         chosen, chosen_name, alias_type_reports = resolve_historical_type(names, externs, table, primary)
         c_type = dims = is_ptr = type_note = None
@@ -1160,7 +1222,7 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                 # not a function-pointer type, so ported units compile.
                 mapped = 'void'
             c_type, type_note = mapped, note
-            dims = [int(d) for d in chosen['dims'] if d.isdigit()]
+            dims = [v for v in (_c_int_literal(d) for d in chosen['dims']) if v is not None]
             had_array = bool(chosen['dims'])  # even a single unspecified `[]` counts
             untyped = mapped is None
             type_note = (type_note or '') + f" [extern {chosen_name} @ {chosen['file']}:{chosen['line']}: " \
@@ -1170,6 +1232,13 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
             c_type, type_note, dims, is_ptr = mapped, note, tr['dims'], tr['is_ptr']
             untyped = mapped is None
             type_note = (type_note or '') + f" [typed_reserves {tr['block']}: {tr['source_type']}]"
+        elif any(_is_s_string_name(n) for n in names):
+            # No extern/typed_reserves evidence, but an 's'-prefixed
+            # name-convention name (source vi) claims this offset: treated
+            # as a DATA string (dos_char[]) rather than a plain byte array.
+            s_name = next(n for n in names if _is_s_string_name(n))
+            c_type, dims, is_ptr, untyped = 'dos_char', [], False, False
+            type_note = f"[name-convention {s_name}: 's'-prefixed names are DATA strings]"
 
         span = tr['span'] if c_type == 'jmp_buf' else (_historical_span(chosen) if chosen is not None else None)
         if span is not None:
@@ -1263,9 +1332,19 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                     c_type, dims, is_ptr, untyped = None, [], False, True
                     type_note = f"declared type conflicted with a nearer symbol at DS:{safe_boundary:04x}"
             size = span
-        elif section == 'bss' and c_type is not None and dims:
+        elif chosen is None and section == 'bss' and c_type is not None and dims:
             # typed_reserves already gave an authoritative span (see
             # load_bss_typed_reserves' own count*element_bytes check).
+            # Gated on `chosen is None`: when an extern DID resolve (chosen
+            # is not None) but its span came back unspecified (the branch
+            # above only sets `span is not None` for a FULLY dimensioned
+            # type), `dims` here holds only the inner dimension(s) of a
+            # `T name[][N]`-style declarator and still needs the reshape
+            # below to fill in the missing outer count from the measured
+            # span -- taking this shortcut instead would silently keep the
+            # un-reshaped inner-only dims (see gc6c3: `unsigned char
+            # gc6c3[][24]` was emitted as `dos_uchar gc6c3[24]`, dropping
+            # the span-derived outer dimension entirely).
             size = typed_reserves[cursor]['span']
         else:
             # A partially-dimensioned array's reshape needs the same
@@ -1327,7 +1406,13 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                     # partially covered by the measured span -- the
                     # historical code only ever reads whole records, so
                     # round UP and document the resulting overlap with
-                    # whatever object follows.
+                    # whatever object follows (its own, independent copy of
+                    # the same DATA-image bytes -- this can legitimately
+                    # overlap a protected struct-component's leading bytes,
+                    # e.g. ga5e's last 6 bytes duplicate gb2a's first 6;
+                    # `cursor_advance` below still stops at that
+                    # component's own base so it is claimed atomically
+                    # right after, undiminished).
                     count = -(-size // row_bytes)  # ceil
                     new_size = count * row_bytes
                     dims = [count] + dims
@@ -1337,6 +1422,7 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                         'overlap_at': cursor + size, 'c_type': c_type,
                     })
                     size = new_size
+                    ceil_overshoot = True
                 elif row_bytes:
                     # Rule D: floor -- keep the type, leave the incomplete
                     # trailing element's bytes unnamed/unclaimed (the
@@ -1357,7 +1443,16 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership):
                                      owned_name, definition_site, component['id'] if component else None,
                                      c_type, type_note, dims, is_ptr, alias_type_reports, untyped,
                                      emit_path=emit_path_override or 'flat'))
-        cursor += size
+        # Normally the object's own span IS how far the walk advances --
+        # except a rule-E ceil can overshoot into a protected struct-
+        # component's own base (sanctioned: two independent objects with
+        # their own copies of the same overlapping DATA-image bytes). The
+        # outer walk must still stop AT that base, never skip past it, so
+        # the struct-component is claimed atomically right after, in full.
+        if ceil_overshoot:
+            cursor = min(cursor + size, next_protected_start_after(cursor))
+        else:
+            cursor += size
 
     return symbols, warnings, extra
 
@@ -1771,13 +1866,106 @@ def _emit_sound_ptr_array(symbol, resolver):
             'decl': f'extern void *{ident}[{n}];', 'defn': defn, 'verify_bytes': b'\x00' * symbol['size']}
 
 
-def _emit_storage_union(image, symbol, union_info, comp_by_id):
+def _interior_view_macros(component, table, friendly_of_offset, externs, base_expr,
+                           container_local_base, include_gaps=True, gap_prefix='sound_instr_region',
+                           own_names=frozenset()):
+    """Split `component`'s own byte range into named pieces (and, when
+    `include_gaps`, byte gaps too), like _split_sound_component but with no
+    pointer refs to resolve, and return them as (name, macro_expr) pairs
+    that VIEW into existing storage -- `base_expr` is a C expression for a
+    byte pointer (`dos_char *`/`uint8_t *`-compatible) to the start of that
+    storage, `container_local_base` bytes before this component's own
+    start -- instead of creating new top-level objects. Used both for
+    rule F's shared union storage and (round 5) for a struct-shaped
+    component's OWN storage, so an interior name's byte-cast alias is
+    always correct regardless of whether it lines up with that struct's
+    own (arbitrarily-named) field boundaries.
+
+    `own_names` are names ALREADY claimed by the real top-level object this
+    view is attached to (its own primary + aliases, e.g. `gb2a`/
+    `DATA_01075A_FILE_ERROR_CONTROL`) -- typically sitting at local offset
+    0 with a fully-dimensioned historical type (e.g. `struct dialog`) that
+    would otherwise swallow the *entire* span in one step and hide any
+    OTHER interior name (e.g. `gb31`) from ever being reached; skipped
+    byte-by-byte instead of measured, so the scan can keep going past them."""
+    comp_base, length, comp_id = component['ds_offset'], component['length'], component['id']
+
+    def names_at(local):
+        return table.names_at(comp_base + local) - {comp_id}
+
+    macros = []
+    local = 0
+    while local < length:
+        if names_at(local) & own_names:
+            local += 1
+            continue
+        names = names_at(local)
+        off = container_local_base + local
+        if not names:
+            start_abs = comp_base + local
+            local += 1
+            while local < length and not names_at(local):
+                local += 1
+            if include_gaps:
+                name = f'{gap_prefix}_{start_abs:04X}'
+                macros.append((name, f'((uint8_t *)({base_expr} + {off}))'))
+            continue
+        abs_off = comp_base + local
+        primary = _pick_primary(names, table, friendly_of_offset, abs_off)
+        chosen, chosen_name, _ = resolve_historical_type(names, externs, table, primary)
+        c_type, dims, size, is_ptr = None, [], None, False
+        if chosen is not None:
+            mapped, _ = resolve_primitive(chosen['base'])
+            c_type = mapped
+            is_ptr = chosen['is_ptr'] or chosen['base'] == 'void (*)(void)'
+            if chosen['base'] == 'void (*)(void)':
+                c_type = 'void'
+            dims = [v for v in (_c_int_literal(d) for d in chosen['dims']) if v is not None]
+            size = _historical_span(chosen)
+        if size is None:
+            nxt = local + 1
+            while nxt < length and not names_at(nxt):
+                nxt += 1
+            measured = nxt - local
+            # An unspecified array (e.g. `int g1684[]`) still has a known
+            # element width -- reshape the measured span with it instead of
+            # discarding the type down to a raw byte cast.
+            elem_size = (historical_elem_size(chosen['base'], chosen['is_ptr'],
+                                               chosen.get('is_near', False), c_type)
+                         if chosen is not None and c_type is not None else None)
+            if elem_size and measured % elem_size == 0:
+                dims = [measured // elem_size]
+            else:
+                c_type, dims = None, []
+            size = measured
+        if c_type is None:
+            expr = f'((uint8_t *)({base_expr} + {off}))'
+        elif is_ptr:
+            # The storage holds a POINTER VALUE (e.g. `char far *gb31`
+            # landing on struct dialog's own `.text` field): cast to
+            # "pointer to a `c_type *`" and dereference once, so the macro
+            # itself evaluates to that pointer value, not to `*c_type`.
+            expr = f'(*({c_type} **)({base_expr} + {off}))'
+        elif dims:
+            expr = f'(({c_type} *)({base_expr} + {off}))'
+        else:
+            expr = f'(*({c_type} *)({base_expr} + {off}))'
+        for n in names:
+            macros.append((n, expr))
+        local += size
+    return macros
+
+
+def _emit_storage_union(image, symbol, union_info, comp_by_id, table, friendly_of_offset, externs):
     """Rule F: the raw-byte union object for a declared type that
     genuinely overlaps a neighboring struct-shaped component's storage.
     Emits the union as `uint8_t <name>[N]` from the DATA image, plus the
     struct typedef the overlapping component's own emitter would have
-    produced (needed for the macro cast, even though no separate instance
-    of it exists any more) and the two `#define`-as-cast macro views."""
+    produced (needed for the whole-struct macro cast, even though no
+    separate instance of it exists any more), the overlapping declared
+    type's own macro cast, AND (since the absorbed component is itself
+    symbol-split, per the follow-up round) one macro view per historically
+    named interior symbol / unnamed byte gap inside it."""
     offset, size = symbol['offset'], symbol['size']
     raw = image[offset:offset + size]
     orig_name, union_component_id = union_info['members']
@@ -1792,6 +1980,8 @@ def _emit_storage_union(image, symbol, union_info, comp_by_id):
         struct_lines, _ = _sound_instruments_struct_lines(comp_ident)
         macros.append((union_component_id,
                         f'(*(struct {comp_ident}_s *)({ident} + {offset_into_union}))'))
+        macros.extend(_interior_view_macros(union_component, table, friendly_of_offset, externs,
+                                             ident, offset_into_union))
     else:
         raise ValueError(f'rule F union with {union_component["format"]!r} is not implemented; '
                           'needs a supervisor decision (see docs/portable/state-map.md)')
@@ -2070,7 +2260,7 @@ HEADER_BANNER = """/* {name} -- GENERATED by tools/portable/datagen.py. DO NOT E
 """
 
 
-def emit_game_data(image, components, symbols, table, externs, extra, qualifiers, out_dir):
+def emit_game_data(image, components, symbols, table, externs, extra, qualifiers, friendly_of_offset, out_dir):
     """Objects are symbol-driven (see resolve_symbols): each generated DATA
     symbol's `emit_path` says which emitter produces it --
     'struct-component' (describe_and_emit_component's TYPED/SOUND/PTRREC/
@@ -2111,6 +2301,10 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
                     (off, name, width, width) for off, name, _, width, _ in DIALOG_FIELD_LAYOUT]
             elif c['format'] == TYPED_FORMAT:
                 _STRUCT_FIELD_REGISTRY[s['primary']] = _typed_data_field_layout(c['extra']['fields'])
+        elif s['emit_path'] == 'ptrrec-dialog':
+            _EMIT_KIND_REGISTRY[s['primary']] = 'struct'
+            _STRUCT_FIELD_REGISTRY[s['primary']] = [
+                (off, name, width, width) for off, name, _, width, _ in DIALOG_FIELD_LAYOUT]
         else:
             # A plain scalar (no dims, not the untyped-fallback byte array)
             # needs `&name`, not array-decay, if something ever points at
@@ -2175,9 +2369,20 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
             result = describe_and_emit_component(c, image, table, resolver, comp_by_id, primary)
         elif s['emit_path'] == 'storage-union':
             union_info = next(u for u in extra['storage_alias'] if u['union_name'] == s['primary'])
-            result = _emit_storage_union(image, s, union_info, comp_by_id)
+            result = _emit_storage_union(image, s, union_info, comp_by_id, table, friendly_of_offset,
+                                          externs)
         elif s['emit_path'] == 'sound-ptr-array':
             result = _emit_sound_ptr_array(s, resolver)
+        elif s['emit_path'] == 'ptrrec-dialog':
+            c = comp_by_id[s['component_id']]
+            rec_start = s['offset'] - c['ds_offset']
+            record = {
+                'ds_offset': s['offset'], 'length': s['size'],
+                'refs': [{**r, 'offset': r['offset'] - rec_start} for r in c['refs']
+                         if rec_start <= r['offset'] < rec_start + s['size']],
+            }
+            result = _emit_as_known_struct(record, image, 'struct dialog', DIALOG_FIELD_LAYOUT,
+                                            primary, resolver, comp_by_id)
         else:
             result = emit_generic_flat_object(s, image, primary)
 
@@ -2210,6 +2415,32 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
 
     skipped_code_owned = sum(1 for c in components if c['kind'] == 'code_owned')
     skipped_toolchain = sum(1 for c in components if c['kind'] == 'toolchain_opaque')
+
+    # Round 5: typed-data-v1 struct-shaped components with a historically
+    # named interior symbol (e.g. gb31 landing on DATA_01075A_FILE_ERROR_
+    # CONTROL's own 'text' pointer field) get one alias macro per name,
+    # computed the same byte-offset-cast way as the round-4 sound-
+    # instruments interior split -- correct regardless of whether the name
+    # happens to line up with the component's own (arbitrarily-generated)
+    # field boundaries. No gap markers here: the struct's own fields
+    # already fully and correctly cover every byte (unlike the round-4
+    # union case, which had genuinely unaccounted-for storage).
+    for s in data_symbols:
+        if s['emit_path'] != 'struct-component' or s['definition_site'] != 'generated':
+            continue
+        c = comp_by_id[s['component_id']]
+        if c['format'] != TYPED_FORMAT:
+            continue
+        primary_ident = c_ident(s['primary'])
+        base_expr = f'((dos_char *)(&{primary_ident}))'
+        own_names = {s['primary'], *s['aliases']}
+        for name, expr in _interior_view_macros(c, table, friendly_of_offset, externs, base_expr, 0,
+                                                  include_gaps=False, own_names=own_names):
+            extra['interior_alias'].append({
+                'name': name, 'offset': table.offset_by_name.get(name, c['ds_offset']),
+                'array_name': s['primary'], 'array_offset': c['ds_offset'],
+                'expr': expr, 'c_type': s['c_type'],
+            })
 
     data_interior = [ia for ia in extra['interior_alias'] if ia['offset'] < DATA_LEN]
     if data_interior:
@@ -2618,7 +2849,8 @@ def generate(out_generated=None, out_docs=None, verbose=True):
     symbols, warnings, extra = resolve_symbols(components, table, friendly, externs, ownership)
 
     qualifiers = load_emit_qualifiers()
-    data_report = emit_game_data(image, components, symbols, table, externs, extra, qualifiers, out_generated)
+    data_report = emit_game_data(image, components, symbols, table, externs, extra, qualifiers,
+                                  friendly, out_generated)
     state_report = emit_game_state(symbols, extra, qualifiers, out_generated)
 
     symbols_doc = write_symbols_json(components, symbols, table, notes,

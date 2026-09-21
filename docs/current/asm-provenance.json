@@ -105,8 +105,8 @@
         }
       ],
       "bytes": 915,
-      "classification": "RECONSTRUCTION_ONLY_ASM",
-      "confidence": "MEDIUM",
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
       "evidence": [
         "Bytecode interpreter dispatch through a jump table (dispatch_opcode at 74Ah) with a save/resume program counter pattern; not a straight-line function.",
         "production-plan.json provenance notes: 'Replaced the exact inline asm-db capsule with symbolic TASM labels ... Direct relative calls preserve their original no-FIXUPP encoding through CALL_REL.'",
@@ -115,9 +115,9 @@
       ],
       "reason_asm_remains": "The only production representation is TASM; src/F_4B0C.C is a byte-capsule stand-in, not a verified C source.",
       "c_candidate_available": "src/F_4B0C.C exists but is an asm-db capsule (18 db lines), not usable C -- see capsules list.",
-      "re_c_attempted": "Not attempted as ordinary C; only symbolic-ASM reconstruction from the capsule has been done.",
-      "result": "Keep exact ASM (now symbolic, not raw db).",
-      "next_action": "Low priority: consider whether the opcode interpreter could ever be expressed in C; no immediate action."
+      "re_c_attempted": true,
+      "result": "Opcode dispatch is `jmp [bx]` through a 29-entry table at DS:074A outside the function; Turbo C switch tables are CS-relative labels in the same object. Prologue pushes BP a second time and executes CLD with zero frame locals. Candidate skeleton in build/probes/rec7.",
+      "next_action": "none"
     },
     {
       "module": "F_4E9F",
@@ -151,8 +151,8 @@
         }
       ],
       "bytes": 120,
-      "classification": "PROBABLE_MIXED_C_ASM",
-      "confidence": "MEDIUM",
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
       "evidence": [
         "near proc, compact-model C calling convention: word arg y0 at [bp+4], no return value -- a genuine BP-frame stack argument, unlike the F_1ECD/F_1F91/F_4AA8/F_4E9F register-ABI cluster.",
         "Header states this restates src/F_4EEB.C's original Turbo C inline-asm recovery with labels instead of raw db bytes.",
@@ -160,9 +160,9 @@
       ],
       "reason_asm_remains": "Historically an inline-asm C function (asm{} block inside a C source), so the production representation stays ASM even though the calling convention is pure C.",
       "c_candidate_available": "src/F_4EEB.C -- explicitly cited by the header as the original inline-asm recovery this file restates symbolically.",
-      "re_c_attempted": "Yes, historically, as inline-asm C (src/F_4EEB.C); not re-attempted as ordinary (non-inline-asm) C since the body does direct table/pointer arithmetic unlikely to be reproducible byte-exact without asm.",
-      "result": "Keep exact ASM (symbolic form of the original inline-asm C body).",
-      "next_action": "None; stable mixed classification."
+      "re_c_attempted": true,
+      "result": "Near-pointer C reproduces every field-addressing opcode (168 vs 120 bytes) but the original saves SI/DI after the first call and pushes a never-used SI; Turbo C saves register variables in the prologue and never emits dead saves. Notes in build/probes/rec10.",
+      "next_action": "none"
     },
     {
       "module": "M_50D2_53BF",
@@ -216,17 +216,17 @@
         }
       ],
       "bytes": 115,
-      "classification": "PROBABLE_MIXED_C_ASM",
-      "confidence": "MEDIUM",
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
       "evidence": [
         "near proc, no args/return -- header states this matches src/F_6036.C's Turbo C inline-asm body.",
         "bp used as a running sprite-slot counter (data register, not frame pointer for stack args) alongside table traversal via SI/DI-style far pointer math -- consistent with an inline-asm block inside a C wrapper rather than a pure hand ASM routine."
       ],
       "reason_asm_remains": "Historically inline-asm C; production representation kept as symbolic ASM for byte-exact object match.",
       "c_candidate_available": "src/F_6036.C -- cited directly by the header as the source this file matches.",
-      "re_c_attempted": "Yes, historically (inline-asm C source exists and is cited); not re-attempted as ordinary C.",
-      "result": "Keep exact ASM.",
-      "next_action": "None; stable mixed classification."
+      "re_c_attempted": true,
+      "result": "lds si,[objtab] with lodsb/lodsw and a mid-body DS reload from DGROUP; not expressible from C.",
+      "next_action": "none"
     },
     {
       "module": "F_60A9",
@@ -366,17 +366,17 @@
         }
       ],
       "bytes": 76,
-      "classification": "PROBABLE_MIXED_C_ASM",
-      "confidence": "MEDIUM",
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
       "evidence": [
         "near proc, C calling convention: far ptr arg q at [bp+4], no return value -- genuine BP-frame stack argument.",
         "Uses bx as a synthetic xlatb table base derived from the (now-masked) header words in place, and xlatb itself is a string-adjacent instruction requiring explicit AL/BX setup -- register-ABI detail embedded inside an otherwise C-shaped function, typical of an inline-asm block."
       ],
       "reason_asm_remains": "xlatb-based nibble expansion is not expressible in portable Turbo C; kept as (presumed) inline-asm C body.",
       "c_candidate_available": "None documented under this exact name; sibling F_6F4B shares the same shape.",
-      "re_c_attempted": "Not attempted.",
-      "result": "Keep exact ASM.",
-      "next_action": "None immediate; low priority to probe given xlatb requirement."
+      "re_c_attempted": true,
+      "result": "xlatb nibble decoder with lds/les, cld and string loops; no C equivalent.",
+      "next_action": "none"
     },
     {
       "module": "F_6F4B",
@@ -388,17 +388,17 @@
         }
       ],
       "bytes": 120,
-      "classification": "PROBABLE_MIXED_C_ASM",
-      "confidence": "MEDIUM",
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
       "evidence": [
         "near proc, C calling convention: far ptr arg q at [bp+4], no return value -- same shape as its display_mode-2 sibling F_6EFF.",
         "Double xlatb lookup per output byte through a palette table rewritten in place, with a shifting nibble-select count -- xlatb again requires explicit AL/BX register setup not expressible in portable C."
       ],
       "reason_asm_remains": "xlatb-based expansion is not expressible in portable Turbo C.",
       "c_candidate_available": "None documented.",
-      "re_c_attempted": "Not attempted.",
-      "result": "Keep exact ASM.",
-      "next_action": "None immediate; pair with F_6EFF if either is ever probed."
+      "re_c_attempted": true,
+      "result": "xlatb nibble decoder (mode 13h sibling of F_6EFF); no C equivalent.",
+      "next_action": "none"
     },
     {
       "module": "F_9EC3",
@@ -512,8 +512,8 @@
         }
       ],
       "bytes": 797,
-      "classification": "PROBABLE_MIXED_C_ASM",
-      "confidence": "LOW",
+      "classification": "PROBABLE_ORIGINAL_ASM",
+      "confidence": "HIGH",
       "evidence": [
         "Header: 'contiguous sound service, command dispatch, and control helpers' -- part of the OPL/sound backend family alongside M_C1A0_C232, M_C5D1_C706, M_C77A_C898, M_C9A4_CA91, treated by the task as a sound cluster to evaluate function-by-function.",
         "asm-origin-review.json evidence for this cluster's sibling notes: 'F_C27D and F_C834 independently establish the same sound-state offsets and F_C6B9 entry' (from src/F_C755.ASM header) -- indicates shared named DGROUP-offset state consistent with C globals used across many small dispatch functions.",
@@ -521,9 +521,9 @@
       ],
       "reason_asm_remains": "Sound cluster; kept ASM pending function-by-function review as instructed.",
       "c_candidate_available": "None documented per-function yet.",
-      "re_c_attempted": "Not attempted per-function.",
-      "result": "Keep exact ASM.",
-      "next_action": "Function-by-function follow-up audit of F_C27D, F_C2EA, F_C359, F_C3DB, F_C440, F_C501, F_C549, F_C567 individually against register-ABI evidence, matching the treatment given to M_C77A_C898's F_C77A/F_C7CB."
+      "re_c_attempted": true,
+      "result": "All eight members take SI (voice/slot) and AL/AH/ES:DI as implicit inputs, have no [bp+n] arguments and use SI/DI as unsaved scratch across calls; any C wrapper (even inline asm bodies) inserts push/pop si and changes bytes (build/probes/rec8/notes.md). Whole-unit candidate matched only as raw byte capsules, which are not admissible.",
+      "next_action": "none"
     },
     {
       "module": "M_C5A8_C5C6",
@@ -1025,6 +1025,11 @@
       "LEGITIMATE_DATA": 4,
       "UNKNOWN": 1
     },
-    "note": "M_6B1A_6B4A (KEYBIOS.C) and M_DDD9_DF98 (MUSIC.C) promoted to C after this report was generated; 30 assembler modules remain in production. The runtime block has 0 raw bytes."
+    "note": "Updated after re-C rounds: MUSIC.C and KEYBIOS.C promoted; F_4B0C, F_4EEB, F_6036, F_6EFF, F_6F4B, M_C27D_C567 confirmed assembler with concrete compiler evidence. 30 assembler modules remain in production.",
+    "HISTORICAL_LIBRARY_OR_RUNTIME": 1,
+    "PROBABLE_ORIGINAL_ASM": 24,
+    "PROBABLE_MIXED_C_ASM": 4,
+    "RECONSTRUCTION_ONLY_ASM": 2,
+    "PROBABLE_ORIGINAL_C": 1
   }
 }

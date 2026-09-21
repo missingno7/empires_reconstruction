@@ -86,6 +86,16 @@ The supervisor owns the canonical ownership of every shared object.  Agents
 must not create alternative definitions of state that already exists in
 `portable/generated` or `portable/include`.
 
+Ownership rule for hand-written subsystems: a subsystem module may *define*
+the DGROUP objects its public header declares (e.g. `portable/gfx` defines
+`g3924`, `result`, `gbc`, `rect_queue_write_ptr`, `g94..g9a`, `gc0de..gc0e8`;
+`portable/resource` defines `ui_gfx_blob/shadow_a/shadow_b`, `gc0cb`,
+`display_mode`).  Those names are listed in
+`tools/portable/state_ownership.json` and the generator skips them, so each
+object has exactly one definition.  Historical names are kept for every
+DGROUP object; new names are used only for objects that never existed
+historically (e.g. `gfx_vram`).
+
 ## Video model (first target = historical display_mode 4, "M")
 
 Historical selector 4 (`-M`, BIOS mode 13h, built-in runtime slot 4) is the

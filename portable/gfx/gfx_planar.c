@@ -1,7 +1,14 @@
-/* primitives.c -- software graphics primitives, semantic transcription of
- * asm/RUNTIME_BLOCK.ASM (the mode-4/mode-13h dispatch slot's routines) plus
- * the present path (rt_083b / rt_089f).  See docs/portable/architecture.md
- * "Video model" and portable/include/gfx.h for the contract.
+/* gfx_planar.c -- packed-4bpp software graphics driver (display selectors
+ * 1/3/4), semantic transcription of asm/RUNTIME_BLOCK.ASM (the mode-4/
+ * mode-13h dispatch slot's routines) plus the present path (rt_083b /
+ * rt_089f).  See docs/portable/architecture.md "Video model" and
+ * portable/gfx/gfx_drivers.h for the contract; the public gfx_<name>()
+ * dispatchers that pick between this driver and gfx_vga.c live in
+ * gfx_dispatch.c.
+ *
+ * Every primitive here is named planar_<name> (non-static, declared in
+ * gfx_drivers.h) rather than gfx_<name>, so it can coexist in the same
+ * link with gfx_vga.c's vga_<name> routines.
  *
  * Conventions used throughout this file:
  *  - 16-bit x86 registers are modelled as uint16_t (unsigned ops: shr/add/
@@ -20,6 +27,7 @@
  *    not obviously safe is called out in a comment.
  */
 #include "gfx.h"
+#include "gfx_drivers.h"
 
 #include <string.h>
 
@@ -35,8 +43,8 @@ static uint8_t gfx_transparency_mask(uint8_t v)
     return m;
 }
 
-/* Shared even/odd-start 1bpp painter used by gfx_draw_char and
- * gfx_blit_image (both reuse the same unrolled 8-slot dispatch chain in
+/* Shared even/odd-start 1bpp painter used by planar_draw_char and
+ * planar_blit_image (both reuse the same unrolled 8-slot dispatch chain in
  * the ASM: runtime_even_pixel_dispatch / runtime_odd_pixel_dispatch at
  * ~3084-3090, entered mid-chain for a partial final byte).  Rather than
  * reproduce the self-modified computed-jmp machinery, this paints pixel
@@ -53,7 +61,7 @@ static uint8_t gfx_transparency_mask(uint8_t v)
  * loop does directly via `n`. */
 /* Returns the number of source bytes consumed (ceil(count/8), 0 if
  * count==0), since that need not equal any destination byte-stride the
- * caller separately computes (e.g. gfx_draw_char's dest stride is
+ * caller separately computes (e.g. planar_draw_char's dest stride is
  * (width+1)>>1, a different quantity from ceil(width/8)). */
 static uint16_t gfx_paint_bits(uint8_t *base, const uint8_t *bits, uint16_t count,
                                 int odd_start, uint8_t hi_color, uint8_t lo_color)
@@ -81,7 +89,7 @@ static uint16_t gfx_paint_bits(uint8_t *base, const uint8_t *bits, uint16_t coun
 }
 
 /* ---- F_03A2 / bar: asm/RUNTIME_BLOCK.ASM 2255-2294 (runtime_bar_primitive). */
-void gfx_bar(dos_int x, dos_int y, dos_int n)
+void planar_bar(dos_int x, dos_int y, dos_int n)
 {
     uint8_t al = (uint8_t)result;                       /* 2262 */
     uint16_t cx = (uint16_t)n;                            /* 2263 */
@@ -109,7 +117,7 @@ void gfx_bar(dos_int x, dos_int y, dos_int n)
 }
 
 /* ---- F_03A5 / vline: asm/RUNTIME_BLOCK.ASM 2296-2326 (runtime_f03a5). */
-void gfx_vline(dos_int x, dos_int y, dos_int n)
+void planar_vline(dos_int x, dos_int y, dos_int n)
 {
     uint8_t al = (uint8_t)result;                        /* 2301 */
     uint16_t cx = (uint16_t)n;                             /* 2302 */
@@ -134,7 +142,7 @@ void gfx_vline(dos_int x, dos_int y, dos_int n)
 
 /* ---- F_03A8 / clear: asm/RUNTIME_BLOCK.ASM 2328-2391 (runtime_clear_primitive,
  * falling into the shared rt_1034 epilogue). */
-void gfx_clear_rect(dos_int x, dos_int y, dos_int w, dos_int h)
+void planar_clear_rect(dos_int x, dos_int y, dos_int w, dos_int h)
 {
     uint8_t al = (uint8_t)result;                          /* 2334 */
     uint8_t *rowptr = g3924[(uint16_t)y];                     /* 2337-2340 */
@@ -178,7 +186,7 @@ void gfx_clear_rect(dos_int x, dos_int y, dos_int w, dos_int h)
 }
 
 /* ---- F_03AB / fill: asm/RUNTIME_BLOCK.ASM 2392-2454 (runtime_f03ab). */
-void gfx_fill_rect(dos_int x, dos_int y, dos_int w, dos_int h)
+void planar_fill_rect(dos_int x, dos_int y, dos_int w, dos_int h)
 {
     uint16_t rows = (uint16_t)h;
     uint8_t *rowptr = g3924[(uint16_t)y];                      /* 2401-2404 */
@@ -222,7 +230,7 @@ void gfx_fill_rect(dos_int x, dos_int y, dos_int w, dos_int h)
 
 /* ---- F_03AE / save: asm/RUNTIME_BLOCK.ASM 2455-2493 (runtime_f03ae).
  * buf layout: word bytes, word rows, then bytes*rows raw planar data. */
-void gfx_save_rect(dos_int x, dos_int y, dos_int w, dos_int h, uint8_t *buf)
+void planar_save_rect(dos_int x, dos_int y, dos_int w, dos_int h, uint8_t *buf)
 {
     uint16_t ax = (uint16_t)x;
     uint16_t bx = (uint16_t)(ax + (uint16_t)w);                 /* 2464 */
@@ -247,7 +255,7 @@ void gfx_save_rect(dos_int x, dos_int y, dos_int w, dos_int h, uint8_t *buf)
 }
 
 /* ---- F_03B1 / restore: asm/RUNTIME_BLOCK.ASM 2494-2526 (runtime_f03b1). */
-void gfx_restore_rect(dos_int x, dos_int y, const uint8_t *buf)
+void planar_restore_rect(dos_int x, dos_int y, const uint8_t *buf)
 {
     uint16_t ax = (uint16_t)((uint16_t)x >> 1);                    /* 2502-2503 */
     uint8_t *di = g3924[(uint16_t)y] + ax;                            /* 2504-2508 */
@@ -264,8 +272,8 @@ void gfx_restore_rect(dos_int x, dos_int y, const uint8_t *buf)
 }
 
 /* Append a 4-byte dirty-rect record: word1=(y<<8)|(col&0xFF),
- * word2=(rows<<8)|(bytes&0xFF).  Shared shape used by gfx_wipe_rect,
- * gfx_blit_bitmap and gfx_copy_rect's forward path. */
+ * word2=(rows<<8)|(bytes&0xFF).  Shared shape used by planar_wipe_rect,
+ * planar_blit_bitmap and planar_copy_rect's forward path. */
 static void gfx_dirty_queue_append(uint16_t y, uint16_t col, uint16_t rows, uint16_t bytes)
 {
     dos_wr16(rect_queue_write_ptr, (uint16_t)((y << 8) | (col & 0xFFu)));
@@ -275,7 +283,7 @@ static void gfx_dirty_queue_append(uint16_t y, uint16_t col, uint16_t rows, uint
 }
 
 /* ---- F_03B4 / wipe: asm/RUNTIME_BLOCK.ASM 2527-2585 (runtime_f03b4). */
-void gfx_wipe_rect(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
+void planar_wipe_rect(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
 {
     uint8_t *di = g3924[(uint16_t)dy] + ((uint16_t)dx >> 1);          /* 2535-2541 */
     const uint8_t *si = g3924[(uint16_t)sy] + ((uint16_t)sx >> 1);      /* 2542-2548 */
@@ -294,7 +302,7 @@ void gfx_wipe_rect(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos
 }
 
 /* ---- F_03B7 / copy_rect_flip_v: asm/RUNTIME_BLOCK.ASM 2586-2633 (runtime_f03b7). */
-void gfx_copy_rect_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
+void planar_copy_rect_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
 {
     uint8_t *di = g3924[(uint16_t)dy] + ((uint16_t)dx >> 1);          /* 2594-2600 */
     const uint8_t *si = g3924[(uint16_t)sy] + ((uint16_t)sx >> 1);      /* 2601-2607 */
@@ -312,7 +320,7 @@ void gfx_copy_rect_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int 
 }
 
 /* ---- F_03BA / copy_rect_flip_h: asm/RUNTIME_BLOCK.ASM 2634-2682 (runtime_f03ba). */
-void gfx_copy_rect_flip_h(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
+void planar_copy_rect_flip_h(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
 {
     uint8_t *di = g3924[(uint16_t)dy] + ((uint16_t)dx >> 1);          /* 2642-2648 */
     const uint8_t *si = g3924[(uint16_t)sy] + ((uint16_t)sx >> 1);      /* 2649-2655 */
@@ -332,7 +340,7 @@ void gfx_copy_rect_flip_h(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int 
 }
 
 /* ---- F_03BD / copy_rect_flip_hv: asm/RUNTIME_BLOCK.ASM 2683-2739 (runtime_f03bd). */
-void gfx_copy_rect_flip_hv(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
+void planar_copy_rect_flip_hv(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
 {
     uint8_t *di = g3924[(uint16_t)dy] + ((uint16_t)dx >> 1);          /* 2691-2697 */
     const uint8_t *si = g3924[(uint16_t)sy] + ((uint16_t)sx >> 1);      /* 2698-2704 */
@@ -358,7 +366,7 @@ void gfx_copy_rect_flip_hv(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int
  * adjacent (0xA0 apart) destination bytes, row #2 supplies the HIGH
  * nibble of the same two bytes; each outer step then moves one BYTE
  * column to the left and repeats for h>>1 pairs. */
-void gfx_copy_rect_split(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
+void planar_copy_rect_split(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
 {
     uint8_t *di0 = g3924[(uint16_t)dy] + ((uint16_t)dx >> 1);         /* 2748-2754 */
     const uint8_t *si = g3924[(uint16_t)sy] + ((uint16_t)sx >> 1);      /* 2755-2761 */
@@ -391,12 +399,12 @@ void gfx_copy_rect_split(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int d
 }
 
 /* ---- F_03C3 / copy_rect_split_flip_v: asm/RUNTIME_BLOCK.ASM 2817-2898
- * (runtime_f03c3).  Same row-pair transpose as gfx_copy_rect_split but the
+ * (runtime_f03c3).  Same row-pair transpose as planar_copy_rect_split but the
  * per-byte pair walks UPWARD (0xA0 subtracted) and the outer step moves
  * one column to the RIGHT; the nibble roles are also swapped between the
  * two passes (see the ASM: this "low_loop" writes the HIGH nibble, this
  * "high_loop" writes the LOW nibble -- opposite of copy_rect_split). */
-void gfx_copy_rect_split_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
+void planar_copy_rect_split_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h, dos_int dx, dos_int dy)
 {
     uint8_t *di0 = g3924[(uint16_t)dy] + ((uint16_t)dx >> 1);         /* 2825-2831 */
     const uint8_t *si = g3924[(uint16_t)sy] + ((uint16_t)sx >> 1);      /* 2832-2838 */
@@ -434,7 +442,7 @@ void gfx_copy_rect_split_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h, do
  * metrics come from four byte tables at gc0e4 (width), gc0e6/gc0e2
  * (data-offset low/high byte), all indexed by glyph and relative to the
  * gc0e0 base; glyph bits live at gc0e0+gc0de+dataOffset. */
-dos_int gfx_draw_char(dos_int x, dos_int y, dos_int glyph)
+dos_int planar_draw_char(dos_int x, dos_int y, dos_int glyph)
 {
     uint16_t g = (uint16_t)glyph;
     uint16_t width = gc0e0[g + gc0e4];                       /* 2911-2914 */
@@ -463,7 +471,7 @@ dos_int gfx_draw_char(dos_int x, dos_int y, dos_int glyph)
 
 /* ---- F_03C9 / blit: asm/RUNTIME_BLOCK.ASM 3091-3146 (runtime_blit_primitive).
  * bitmap+0x20 holds a (bytesPerRow, rows) byte pair; data follows at +0x22. */
-void gfx_blit_bitmap(dos_int x, dos_int y, const uint8_t *bitmap)
+void planar_blit_bitmap(dos_int x, dos_int y, const uint8_t *bitmap)
 {
     uint8_t *di = g3924[(uint16_t)y] + ((uint16_t)x >> 1);       /* 3099-3105 */
     const uint8_t *si = bitmap + 0x20;                              /* 3106-3107 */
@@ -486,7 +494,7 @@ void gfx_blit_bitmap(dos_int x, dos_int y, const uint8_t *bitmap)
  * + rt_17c7 flip path).  bitmap+0x20 holds a (bytesPerRow, rows) pair,
  * data follows at +0x22; g94/g96 clip rows, g98/g9a clip byte-columns.
  * Transparency: dst = (dst & mask(src)) | src via gfx_transparency_mask. */
-void gfx_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
+void planar_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
 {
     const uint8_t *si = bitmap + 0x20;                                 /* 3173-3174 */
     uint16_t header_bytes = si[0];                                        /* 3175 */
@@ -599,8 +607,8 @@ void gfx_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
  * portable/tests/fixtures/gfx_cases.json only exercises bytesPerRow in
  * {4,8,12,16} (byte widths that are multiples of 4).  For a byte width
  * NOT divisible by 4, the oracle harness found that the real historical
- * routine's control flow jumps into gfx_draw_char's own dispatch chain
- * (runtime_even_pixel_dispatch / rt_1494.. -- see gfx_draw_char/
+ * routine's control flow jumps into planar_draw_char's own dispatch chain
+ * (runtime_even_pixel_dispatch / rt_1494.. -- see planar_draw_char/
  * gfx_paint_bits above) rather than staying self-contained, so its
  * behavior for such widths depends on whatever code/data happens to sit
  * at that shared location and is not a well-defined function of (x,y,
@@ -615,7 +623,7 @@ void gfx_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
  * behavior to match for the excluded widths in the first place.  Flagged
  * here rather than silently assumed correct, per the oracle finding
  * above -- do not "fix" this without new oracle data for those widths. */
-void gfx_blit_image(dos_int x, dos_int y, const uint8_t *image)
+void planar_blit_image(dos_int x, dos_int y, const uint8_t *image)
 {
     uint8_t color = (uint8_t)result;                          /* 3383 */
     uint8_t dh = (uint8_t)(color & 0xF0u);                       /* 3384-3385 */
@@ -626,7 +634,7 @@ void gfx_blit_image(dos_int x, dos_int y, const uint8_t *image)
     si += 2;
     uint16_t pixel_count = (uint16_t)(bytes * 2u);                         /* 3401-3402: bx=bytes*4 (=2*pixels) */
     uint16_t xcol = (uint16_t)((uint16_t)x >> 1);                            /* 3392-3394 */
-    /* See gfx_draw_char's comment: address each row directly through
+    /* See planar_draw_char's comment: address each row directly through
      * g3924 instead of reproducing the ASM's (0xA0-bytes) remainder
      * against a `di` that (unlike here) it kept walking forward. */
     for (uint16_t row = 0; row < rows; row++) {                               /* 3405 dec di folded into gfx_paint_bits' even-start formula */
@@ -636,7 +644,7 @@ void gfx_blit_image(dos_int x, dos_int y, const uint8_t *image)
 }
 
 /* ---- F_03D2 / set_pixel: asm/RUNTIME_BLOCK.ASM 3480-3512 (runtime_f03d2). */
-void gfx_set_pixel(dos_int x, dos_int y)
+void planar_set_pixel(dos_int x, dos_int y)
 {
     uint8_t *di = g3924[(uint16_t)y];                     /* 3485-3488 */
     uint16_t bx = (uint16_t)x;
@@ -655,7 +663,7 @@ void gfx_set_pixel(dos_int x, dos_int y)
 }
 
 /* ---- F_03D5 / get_pixel: asm/RUNTIME_BLOCK.ASM 3513-3540 (runtime_f03d5). */
-dos_int gfx_get_pixel(dos_int x, dos_int y)
+dos_int planar_get_pixel(dos_int x, dos_int y)
 {
     const uint8_t *di = g3924[(uint16_t)y];               /* 3518-3521 */
     uint16_t bx = (uint16_t)x;
@@ -668,14 +676,14 @@ dos_int gfx_get_pixel(dos_int x, dos_int y)
     return (dos_int)(al & 0x0Fu);                                     /* 3524-3525, 3533-3536: jb rt_1997 (odd x) */
 }
 
-/* ---- gfx_box / present: asm/RUNTIME_BLOCK.ASM 1149-1197 (rt_083b setup,
+/* ---- planar_box / present: asm/RUNTIME_BLOCK.ASM 1149-1197 (rt_083b setup,
  * dispatch slot 4 = mode 13h) + 1198-2253 (rt_089f unrolled transform and
  * row-tail; the self-modified computed jmp just unrolls exactly `groups`
  * iterations per row, reproduced here as a plain loop).  Converts the
  * packed 4bpp framebuffer rect to 8bpp VRAM bytes; gfx_vram byte v is
  * later resolved to a colour by the caller via the 256-entry DAC through
  * v (see docs/portable/architecture.md "Video model"). */
-void gfx_box(dos_int x, dos_int y, dos_int w, dos_int h)
+void planar_box(dos_int x, dos_int y, dos_int w, dos_int h)
 {
     uint16_t xv = (uint16_t)x;
     uint16_t wv = (uint16_t)w;

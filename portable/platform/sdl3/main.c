@@ -19,6 +19,12 @@
 #include "game_data.h"
 #include "video_sdl.h"
 
+/* portable/resource owns display_mode (DS:BFCD); it defaults to 4 there
+ * (archive.c is not ours to edit -- see the task note this line carries).
+ * The primary target is now display selector 5 (VGA, 8bpp/320-byte rows),
+ * so main() overrides it before anything touches the framebuffer. */
+extern dos_char display_mode;
+
 #define SELFTEST_DURATION_MS 300
 
 /* Draw a scene that exercises the primitives the port has today: the 16
@@ -83,6 +89,8 @@ int main(int argc, char **argv)
             dump_path = argv[++i];
     }
 
+    display_mode = 5;   /* VGA (8bpp, row stride 0x140): the primary target */
+
     if (!sdl_video_init("Empires (portable)")) {
         sdl_video_shutdown();
         return 1;
@@ -90,7 +98,7 @@ int main(int argc, char **argv)
 
     gfx_framebuffer_init();
     color_lookup_tables_init();
-    video_load_palette(g41e);                    /* src/VIDEO.C: mode 4 loads g41e */
+    video_load_palette(display_mode == 5 ? g11e : g41e);   /* src/VIDEO.C: mode 5 loads g11e, mode 4 loads g41e */
     draw_demo_scene();
     if (dump_path)
         dump_vram_ppm(dump_path);

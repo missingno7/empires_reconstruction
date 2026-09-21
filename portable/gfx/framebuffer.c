@@ -44,8 +44,18 @@ dos_int g3904[16];           /* DS:3904 */
  * outside this file needs the DOS-style far-pointer/paragraph-normalize
  * dance video_alloc_framebuffer did (src/VIDEO.C F_0281); we allocate one
  * flat contiguous block instead (rows ARE contiguous per the architecture
- * doc, so `pointer += 0xA0` from any row is legitimate). */
+ * doc, so `pointer += gfx_row_bytes()` from any row is legitimate). */
 static uint8_t *g40ca;
+
+/* Row stride of the block g40ca currently points at (src/VIDEO.C
+ * video_alloc_framebuffer: w = 0x140 for display_mode 5, 0x50 for
+ * display_mode 2, 0xA0 otherwise), set by the last gfx_framebuffer_init(). */
+static dos_int s_gfx_row_bytes = GFX_ROW_BYTES;
+
+dos_int gfx_row_bytes(void)
+{
+    return s_gfx_row_bytes;
+}
 
 /* Backing store for the dirty-rect queue that rect_queue_write_ptr walks.
  * The historical queue's capacity is owned by whatever consumes it
@@ -56,21 +66,26 @@ static uint8_t *g40ca;
 #define RECT_QUEUE_CAPACITY (4u * 1024u)
 static uint8_t s_rect_queue[RECT_QUEUE_CAPACITY];
 
-/* ---- framebuffer allocation (src/VIDEO.C F_0281 video_alloc_framebuffer,
- * mode-4 path only: w = 0xA0, 488 rows).  The historical far-pointer
- * normalize/farmalloc dance is DOS segment plumbing with no portable
- * meaning; we keep only its observable effect (488 row pointers, each
- * 0xA0 bytes apart, into one zeroed block) and skip video_load_palette
- * here per the task contract ("do not load palette here"). */
+/* ---- framebuffer allocation (src/VIDEO.C F_0281 video_alloc_framebuffer:
+ * w = 0x140 for display_mode 5, 0x50 for display_mode 2, 0xA0 otherwise;
+ * 488 rows always).  The historical far-pointer normalize/farmalloc dance
+ * is DOS segment plumbing with no portable meaning; we keep only its
+ * observable effect (488 row pointers, each gfx_row_bytes() apart, into one
+ * zeroed block) and skip video_load_palette here per the task contract
+ * ("do not load palette here"). */
 void gfx_framebuffer_init(void)
 {
     if (g40ca != NULL) {
         gfx_framebuffer_shutdown();
     }
 
-    g40ca = (uint8_t *)calloc((size_t)GFX_ROW_BYTES * GFX_ROWS, 1);
+    if (mode == 5)      s_gfx_row_bytes = GFX_ROW_BYTES_VGA;
+    else if (mode == 2) s_gfx_row_bytes = 0x50;
+    else                s_gfx_row_bytes = GFX_ROW_BYTES;
+
+    g40ca = (uint8_t *)calloc((size_t)s_gfx_row_bytes * GFX_ROWS, 1);
     for (int i = 0; i < GFX_ROWS; i++) {
-        g3924[i] = g40ca + (size_t)i * GFX_ROW_BYTES;
+        g3924[i] = g40ca + (size_t)i * s_gfx_row_bytes;
     }
 
     rect_queue_write_ptr = s_rect_queue;

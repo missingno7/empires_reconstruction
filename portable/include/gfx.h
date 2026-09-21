@@ -11,7 +11,8 @@
 
 #include "dos_types.h"
 
-#define GFX_ROW_BYTES   0xA0
+#define GFX_ROW_BYTES       0xA0    /* packed-4bpp driver row stride (display selectors 1/3/4) */
+#define GFX_ROW_BYTES_VGA   0x140   /* 8bpp VGA driver row stride (display selector 5) */
 #define GFX_ROWS        488
 #define GFX_VRAM_W      320
 #define GFX_VRAM_H      200
@@ -38,10 +39,12 @@ extern uint8_t gfx_vram[GFX_VRAM_W * GFX_VRAM_H];
 extern uint8_t gfx_dac[256 * 3];
 extern uint32_t gfx_vram_generation;  /* incremented by every gfx_box */
 
-/* Allocate the framebuffer and fill gfx_rows (src/VIDEO.C video_alloc_framebuffer, w=0xA0). */
+/* Allocate the framebuffer and fill g3924 (src/VIDEO.C video_alloc_framebuffer:
+ * w = 0x140 for display_mode 5, 0x50 for display_mode 2, 0xA0 otherwise). */
 void gfx_framebuffer_init(void);
 void gfx_framebuffer_shutdown(void);
-uint8_t *gfx_framebuffer(void);       /* row 0; rows are contiguous, 160 bytes apart */
+uint8_t *gfx_framebuffer(void);       /* row 0; rows are contiguous, gfx_row_bytes() apart */
+dos_int gfx_row_bytes(void);          /* current row stride, set by the last gfx_framebuffer_init() */
 
 /* ---- primitives, 1:1 with include/VIDEO.H ---- */
 void gfx_box(dos_int x, dos_int y, dos_int w, dos_int h);                       /* present rect to VRAM */

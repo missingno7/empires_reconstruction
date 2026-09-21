@@ -26,6 +26,11 @@
 #endif
 #include <stdlib.h>
 
+/* portable/resource owns display_mode (DS:BFCD); selects between the
+ * packed-4bpp driver (gfx_planar.c, modes 1/3/4) and the 8bpp VGA driver
+ * (gfx_vga.c, mode 5) inside every gfx_<name>() dispatcher. */
+extern dos_char display_mode;
+
 static int g_failures = 0;
 
 static void fail(const char *test, const char *what)
@@ -43,18 +48,22 @@ static void check(const char *test, int cond, const char *what)
 /* Framebuffer helpers                                                 */
 /* ------------------------------------------------------------------ */
 
+/* Both helpers use gfx_row_bytes() (not the GFX_ROW_BYTES compile-time
+ * constant) so they size correctly whichever driver the last
+ * gfx_framebuffer_init() allocated for: 0xA0 bytes/row for the planar
+ * driver (display_mode 4), 0x140 for the VGA driver (display_mode 5). */
 static void fb_zero(void)
 {
-    memset(gfx_framebuffer(), 0, (size_t)GFX_ROW_BYTES * GFX_ROWS);
+    memset(gfx_framebuffer(), 0, (size_t)gfx_row_bytes() * GFX_ROWS);
 }
 
-/* Deterministic LCG seed fill, same recurrence the (future) fixture
- * format uses: x = x*1103515245+12345 (mod 2^32), byte = (x>>16)&0xFF,
- * row-major over the whole 488*160 framebuffer. */
+/* Deterministic LCG seed fill, same recurrence the fixture format uses:
+ * x = x*1103515245+12345 (mod 2^32), byte = (x>>16)&0xFF, row-major over
+ * the whole framebuffer (488*gfx_row_bytes() bytes). */
 static void fb_seed(uint32_t seed)
 {
     uint8_t *p = gfx_framebuffer();
-    size_t n = (size_t)GFX_ROW_BYTES * GFX_ROWS;
+    size_t n = (size_t)gfx_row_bytes() * GFX_ROWS;
     uint32_t x = seed;
     for (size_t i = 0; i < n; i++) {
         x = x * 1103515245u + 12345u;
@@ -554,6 +563,534 @@ static void test_box_transform(void)
     check(t, gfx_vram_generation == gen_before + 1, "gfx_vram_generation should increment once per gfx_box call");
 }
 
+/* ==================================================================== */
+/* VGA driver (display_mode 5) first-principles checks.  Caller must set */
+/* display_mode = 5 and re-init the framebuffer before this section, and */
+/* restore display_mode afterwards (see run_vga_tests() / main()).       */
+/*                                                                       */
+/* Every helper above (fb_zero/fb_seed/ref_paint_span/ref_paint_vspan/   */
+/* rects_equal*) is mode-agnostic -- they only call gfx_get_pixel/       */
+/* gfx_set_pixel/gfx_framebuffer()/gfx_row_bytes(), so they are reused   */
+/* as-is.  Colours below use the FULL byte range (not just 0..15) to     */
+/* prove the VGA driver really writes whole bytes, not nibbles; expected */
+/* values are therefore NOT masked to 0x0F the way the mode-4 checks     */
+/* (nibble-precision) are.                                               */
+/* ==================================================================== */
+
+static void vga_test_bar(void)
+{
+    const char *t = "vga_bar";
+    for (dos_int x = 0; x < 4; x++) {
+        for (dos_int n = 1; n <= 5; n++) {
+            fb_zero();
+            result = 0xC7;
+            gfx_bar(x, 0, n);
+            ref_paint_span(x, 1, n, 0xC7);
+            if (!rects_equal(x, 0, x, 1, n, 1)) {
+                fprintf(stderr, "test_gfx: %s: mismatch at x=%d n=%d\n", t, (int)x, (int)n);
+                g_failures++;
+            }
+            if (x > 0 && gfx_get_pixel((dos_int)(x - 1), 0) != 0) fail(t, "bled left of span");
+            if (gfx_get_pixel((dos_int)(x + n), 0) != 0) fail(t, "bled right of span");
+        }
+    }
+}
+
+static void vga_test_vline(void)
+{
+    const char *t = "vga_vline";
+    for (dos_int x = 0; x < 4; x++) {
+        for (dos_int n = 1; n <= 5; n++) {
+            fb_zero();
+            result = 0xC7;
+            gfx_vline(x, 0, n);
+            ref_paint_vspan((dos_int)(x + 20), 0, n, 0xC7);
+            if (!rects_equal(x, 0, (dos_int)(x + 20), 0, 1, n)) {
+                fprintf(stderr, "test_gfx: %s: mismatch at x=%d n=%d\n", t, (int)x, (int)n);
+                g_failures++;
+            }
+            if (gfx_get_pixel(x, n) != 0) fail(t, "bled below span");
+        }
+    }
+}
+
+static void vga_test_clear_rect(void)
+{
+    const char *t = "vga_clear_rect";
+    for (int iter = 0; iter < 40; iter++) {
+        dos_int x = (dos_int)(next_rand() % 40);
+        dos_int y = (dos_int)(next_rand() % 30);
+        dos_int w = (dos_int)(1 + next_rand() % 20);
+        dos_int h = (dos_int)(1 + next_rand() % 8);
+        dos_int x2 = (dos_int)(x + 100);
+
+        fb_zero();
+        result = 0x9A;
+        gfx_clear_rect(x, y, w, h);
+        for (dos_int r = 0; r < h; r++) ref_paint_span(x2, (dos_int)(y + r), w, 0x9A);
+
+        if (!rects_equal(x, y, x2, y, w, h)) {
+            fprintf(stderr, "test_gfx: %s: mismatch iter=%d x=%d y=%d w=%d h=%d\n",
+                    t, iter, (int)x, (int)y, (int)w, (int)h);
+            g_failures++;
+        }
+    }
+}
+
+/* gfx_fill_rect XORs 0x0F into every byte, literally, in BOTH drivers
+ * (docs/portable/reference/AE000_002-vga-runtime.lst 04B8 `mov al,0xf`).
+ * Unlike the mode-4 check, the expected value is NOT masked to 0x0F: VGA
+ * pixels are full bytes, so XORing the low nibble of an arbitrary seeded
+ * byte can produce any value in 0..255, not just 0..15. */
+static void vga_test_fill_rect(void)
+{
+    const char *t = "vga_fill_rect";
+    for (int iter = 0; iter < 30; iter++) {
+        dos_int x = (dos_int)(next_rand() % 40);
+        dos_int y = (dos_int)(next_rand() % 30);
+        dos_int w = (dos_int)(1 + next_rand() % 20);
+        dos_int h = (dos_int)(1 + next_rand() % 8);
+
+        fb_seed(0xFACADEu + (uint32_t)iter);
+        uint8_t snapshot[32 * 16];
+        for (dos_int r = 0; r < h; r++)
+            for (dos_int c = 0; c < w; c++)
+                snapshot[r * 32 + c] = (uint8_t)gfx_get_pixel((dos_int)(x + c), (dos_int)(y + r));
+
+        gfx_fill_rect(x, y, w, h);
+        for (dos_int r = 0; r < h; r++) {
+            for (dos_int c = 0; c < w; c++) {
+                dos_int expect = (dos_int)(uint8_t)(snapshot[r * 32 + c] ^ 0x0Fu);
+                dos_int got = gfx_get_pixel((dos_int)(x + c), (dos_int)(y + r));
+                if (got != expect) {
+                    fprintf(stderr, "test_gfx: %s: xor mismatch iter=%d (%d,%d) got=%d want=%d\n",
+                            t, iter, (int)c, (int)r, (int)got, (int)expect);
+                    g_failures++;
+                }
+            }
+        }
+        gfx_fill_rect(x, y, w, h); /* toggle back */
+        for (dos_int r = 0; r < h; r++) {
+            for (dos_int c = 0; c < w; c++) {
+                if (gfx_get_pixel((dos_int)(x + c), (dos_int)(y + r)) != snapshot[r * 32 + c]) {
+                    fail(t, "double-toggle didn't restore");
+                }
+            }
+        }
+    }
+}
+
+static void vga_test_save_restore(void)
+{
+    const char *t = "vga_save_restore";
+    dos_int x = 3, y = 5, w = 9, h = 6;
+    fb_seed(4200);
+    uint8_t buf[4 + 64 * 32];
+    gfx_save_rect(x, y, w, h, buf);
+    check(t, dos_rd16(buf) == (uint16_t)w, "save header width should equal w (no halving in VGA mode)");
+    check(t, dos_rd16(buf + 2) == (uint16_t)h, "save header height should equal h");
+
+    dos_int shadow_x = 200;
+    for (dos_int r = 0; r < h; r++)
+        for (dos_int c = 0; c < w; c++) {
+            dos_int v = gfx_get_pixel((dos_int)(x + c), (dos_int)(y + r));
+            dos_int saved = result;
+            result = v;
+            gfx_set_pixel((dos_int)(shadow_x + c), (dos_int)(y + r));
+            result = saved;
+        }
+
+    result = 0x00;
+    gfx_clear_rect(x, y, w, h);
+    check(t, rects_equal(x, y, shadow_x, y, w, h) == 0, "corruption step didn't change anything (test bug)");
+
+    gfx_restore_rect(x, y, buf);
+    if (!rects_equal(x, y, shadow_x, y, w, h)) {
+        fail(t, "restored region does not match pre-corruption snapshot");
+    }
+}
+
+static void vga_test_wipe_rect(void)
+{
+    const char *t = "vga_wipe_rect";
+    dos_int sx = 2, sy = 4, w = 10, h = 7, dx = 90, dy = 20;
+    fb_seed(700);
+    gbc = 0;
+    gfx_wipe_rect(sx, sy, w, h, dx, dy);
+    if (!rects_equal(sx, sy, dx, dy, w, h)) {
+        fail(t, "destination does not match source after wipe");
+    }
+}
+
+static void vga_test_wipe_rect_dirty_queue(void)
+{
+    const char *t = "vga_wipe_rect_dirty_queue";
+    fb_seed(100);
+    gbc = 1;
+    uint8_t queue[64];
+    uint8_t *saved_queue_ptr = rect_queue_write_ptr;
+    memset(queue, 0xAA, sizeof queue);
+    rect_queue_write_ptr = queue;
+    gfx_wipe_rect(0, 0, 8, 3, 10, 5); /* dy=5 < 0xC8, should append (HALF units, same as mode 4) */
+    dos_uint w1 = dos_rd16(queue);
+    dos_uint w2 = dos_rd16(queue + 2);
+    check(t, (w1 >> 8) == 5, "record y byte wrong");
+    check(t, (w1 & 0xFF) == (10 >> 1), "record x/2 byte wrong");
+    check(t, (w2 >> 8) == 3, "record h byte wrong");
+    check(t, (w2 & 0xFF) == (8 >> 1), "record w/2 byte wrong");
+    check(t, rect_queue_write_ptr == queue + 4, "write pointer did not advance by 4");
+    rect_queue_write_ptr = saved_queue_ptr;
+    gbc = 0;
+}
+
+static void vga_test_flip_h(void)
+{
+    fb_seed(990);
+    dos_int sx = 4, sy = 2, w = 12, h = 5, dx = 60, dy = 30;
+    gfx_copy_rect_flip_h(sx, sy, w, h, dx, dy);
+    if (!rects_equal_mirrored_h(sx, sy, dx, dy, w, h)) {
+        fail("vga_flip_h", "destination is not a horizontal mirror of the source");
+    }
+}
+
+static void vga_test_flip_v(void)
+{
+    fb_seed(1230);
+    dos_int sx = 4, sy = 2, w = 8, h = 6, dx = 60, dy = 40;
+    gfx_copy_rect_flip_v(sx, sy, w, h, dx, dy);
+    if (!rects_equal_mirrored_v(sx, sy, dx, dy, w, h)) {
+        fail("vga_flip_v", "destination is not a vertical mirror of the source");
+    }
+}
+
+static void vga_test_flip_hv(void)
+{
+    fb_seed(550);
+    dos_int sx = 4, sy = 2, w = 8, h = 6, dx = 60, dy = 60;
+    gfx_copy_rect_flip_hv(sx, sy, w, h, dx, dy);
+    for (dos_int r = 0; r < h; r++) {
+        for (dos_int c = 0; c < w; c++) {
+            dos_int a = gfx_get_pixel((dos_int)(sx + c), (dos_int)(sy + r));
+            dos_int b = gfx_get_pixel((dos_int)(dx + w - 1 - c), (dos_int)(dy + h - 1 - r));
+            if (a != b) {
+                fail("vga_flip_hv", "destination is not a 180-degree mirror of the source");
+                return;
+            }
+        }
+    }
+}
+
+/* gfx_copy_rect_split turns h SOURCE rows into h DESTINATION columns:
+ * source row r (0..h-1), columns sx..sx+w-1, lands at dest column
+ * dx+h-1-r, rows dy..dy+w-1 (docs/portable/reference/AE000_002-vga-runtime.lst
+ * 0694-06DA). */
+static void vga_test_split(void)
+{
+    const char *t = "vga_split";
+    dos_int sx = 2, sy = 10, w = 6, h = 8, dx = 150, dy = 100;
+    fb_seed(3333);
+    gfx_copy_rect_split(sx, sy, w, h, dx, dy);
+    for (dos_int r = 0; r < h; r++) {
+        for (dos_int k = 0; k < w; k++) {
+            dos_int srcv = gfx_get_pixel((dos_int)(sx + k), (dos_int)(sy + r));
+            dos_int dstv = gfx_get_pixel((dos_int)(dx + h - 1 - r), (dos_int)(dy + k));
+            if (srcv != dstv) {
+                fprintf(stderr, "test_gfx: %s: mismatch r=%d k=%d src=%d dst=%d\n",
+                        t, (int)r, (int)k, (int)srcv, (int)dstv);
+                g_failures++;
+                return;
+            }
+        }
+    }
+}
+
+/* gfx_copy_rect_split_flip_v: same transpose, vertically flipped: source
+ * row r lands at dest column dx+r, rows dy+w-1 down to dy (0x6DB-0x72B). */
+static void vga_test_split_flip_v(void)
+{
+    const char *t = "vga_split_flip_v";
+    dos_int sx = 2, sy = 10, w = 6, h = 8, dx = 200, dy = 100;
+    fb_seed(4444);
+    gfx_copy_rect_split_flip_v(sx, sy, w, h, dx, dy);
+    for (dos_int r = 0; r < h; r++) {
+        for (dos_int k = 0; k < w; k++) {
+            dos_int srcv = gfx_get_pixel((dos_int)(sx + k), (dos_int)(sy + r));
+            dos_int dstv = gfx_get_pixel((dos_int)(dx + r), (dos_int)(dy + w - 1 - k));
+            if (srcv != dstv) {
+                fprintf(stderr, "test_gfx: %s: mismatch r=%d k=%d src=%d dst=%d\n",
+                        t, (int)r, (int)k, (int)srcv, (int)dstv);
+                g_failures++;
+                return;
+            }
+        }
+    }
+}
+
+/* gfx_draw_char: same font-state contract as the planar driver, but every
+ * painted pixel gets the FULL colour byte (result's low byte), not a
+ * nibble, and gfx_draw_char's return value is the raw width (no >>1). */
+static void vga_test_draw_char(void)
+{
+    const char *t = "vga_draw_char";
+    static uint8_t sheet[64];
+    memset(sheet, 0, sizeof sheet);
+    sheet[0] = 10; /* glyph 0 width = 10 (needs 2 source bytes/row) */
+    sheet[1] = 3;  /* glyph 1 width = 3 */
+    sheet[4] = 0;  sheet[8] = 0;   /* glyph0 data offset (from gc0de) = 0 */
+    sheet[5] = 3;  sheet[9] = 0;   /* glyph1 data offset (from gc0de) = 3 */
+
+    gc0e0 = sheet;
+    gc0e4 = 0;
+    gc0e6 = 4;
+    gc0e2 = 8;
+    gc0de = 16;
+    dialog_line_height = 2;
+
+    uint8_t *g0 = sheet + 16;
+    g0[0] = 0xC0; g0[1] = 0x00;  /* row0: pixels 0,1 set */
+    g0[2] = 0x3C; g0[3] = 0x00;  /* row1: pixels 2,3,4,5 set */
+
+    fb_zero();
+    result = 0xAB; /* full byte colour, deliberately outside 0..15 */
+    dos_int adv = gfx_draw_char(0, 0, 0);
+    check(t, adv == 10, "advance should equal the raw glyph width (no >>1, unlike planar)");
+
+    check(t, gfx_get_pixel(0, 0) == 0xAB, "row0 pixel0 should carry the full colour byte");
+    check(t, gfx_get_pixel(1, 0) == 0xAB, "row0 pixel1 should carry the full colour byte");
+    for (int c = 2; c < 10; c++) {
+        if (gfx_get_pixel(c, 0) != 0) fail(t, "row0 tail pixel should be unpainted (0)");
+    }
+    for (int c = 0; c < 10; c++) {
+        int expect = (c >= 2 && c <= 5) ? 0xAB : 0;
+        dos_int got = gfx_get_pixel(c, 1);
+        if (got != expect) {
+            fprintf(stderr, "test_gfx: %s: row1 pixel%d got=%d expect=%d\n", t, c, (int)got, expect);
+            g_failures++;
+        }
+    }
+
+    dialog_line_height = 1;
+    uint8_t *g1 = sheet + 16 + 3;
+    g1[0] = 0xA0; /* top 3 bits: 1,0,1 */
+    fb_zero();
+    result = 0xAB;
+    adv = gfx_draw_char(5, 0, 1);
+    check(t, adv == 3, "advance width for glyph1 should equal its table width");
+    check(t, gfx_get_pixel(5, 0) == 0xAB, "glyph1 pixel0 should be painted");
+    check(t, gfx_get_pixel(6, 0) == 0, "glyph1 pixel1 should be unpainted");
+    check(t, gfx_get_pixel(7, 0) == 0xAB, "glyph1 pixel2 should be painted");
+
+    gc0e0 = NULL; gc0de = gc0e2 = gc0e4 = gc0e6 = 0; dialog_line_height = 0;
+}
+
+/* gfx_blit_bitmap: table = bitmap+0x10 (16 distinct bytes here, so hi/lo
+ * nibble -> table lookup is unambiguous), header at +0x20, data at +0x22;
+ * dirty record still HALF units. */
+static void vga_test_blit_bitmap(void)
+{
+    const char *t = "vga_blit_bitmap";
+    static uint8_t bmp[0x22 + 3 * 2]; /* 2 bytes/row (4 pixels), 3 rows */
+    memset(bmp, 0, sizeof bmp);
+    for (int i = 0; i < 16; i++) bmp[0x10 + i] = (uint8_t)(0x40 + i); /* VGA table: table[n] = 0x40+n */
+    bmp[0x20] = 2; /* packed bytes/row */
+    bmp[0x21] = 3; /* rows */
+    bmp[0x22 + 0] = 0x12; bmp[0x22 + 1] = 0x34; /* row0: nibbles 1,2,3,4 */
+    bmp[0x22 + 2] = 0x56; bmp[0x22 + 3] = 0x78; /* row1 */
+    bmp[0x22 + 4] = 0x9A; bmp[0x22 + 5] = 0xBC; /* row2 */
+
+    fb_zero();
+    gbc = 1;
+    uint8_t queue[64];
+    uint8_t *saved_queue_ptr = rect_queue_write_ptr;
+    memset(queue, 0, sizeof queue);
+    rect_queue_write_ptr = queue;
+
+    gfx_blit_bitmap(10, 30, bmp);
+
+    static const uint8_t nibbles[3][4] = { {1,2,3,4}, {5,6,7,8}, {9,0xA,0xB,0xC} };
+    for (int r = 0; r < 3; r++) {
+        for (int c = 0; c < 4; c++) {
+            dos_int got = gfx_get_pixel((dos_int)(10 + c), (dos_int)(30 + r));
+            dos_int want = (dos_int)(0x40 + nibbles[r][c]);
+            if (got != want) {
+                fprintf(stderr, "test_gfx: %s: (%d,%d) got=%d want=%d\n", t, c, r, (int)got, (int)want);
+                g_failures++;
+            }
+        }
+    }
+
+    dos_uint w1 = dos_rd16(queue);
+    dos_uint w2 = dos_rd16(queue + 2);
+    check(t, (w1 >> 8) == 30, "dirty record y wrong");
+    check(t, (w1 & 0xFF) == (10 >> 1), "dirty record x/2 wrong");
+    check(t, (w2 >> 8) == 3, "dirty record rows wrong");
+    check(t, (w2 & 0xFF) == 2, "dirty record packed_bytes wrong");
+
+    rect_queue_write_ptr = saved_queue_ptr;
+    gbc = 0;
+}
+
+/* gfx_copy_rect: transparency (zero nibble = see-through, through the
+ * table) and row/column clipping, forward and flip=1 (mirrored) paths. */
+static void vga_test_copy_rect(void)
+{
+    const char *t = "vga_copy_rect_transparency";
+    static uint8_t bmp[0x22 + 4 * 2];
+    memset(bmp, 0, sizeof bmp);
+    for (int i = 0; i < 16; i++) bmp[0x10 + i] = (uint8_t)(0x50 + i); /* identity-ish table */
+    bmp[0x20] = 2; /* bytes per row -> 4 pixel columns */
+    bmp[0x21] = 2; /* rows */
+    /* row0: 0x10,0x02 -> nibbles [1,0,0,2]; row1: 0x00,0x30 -> [0,0,3,0] */
+    bmp[0x22 + 0] = 0x10; bmp[0x22 + 1] = 0x02;
+    bmp[0x22 + 2] = 0x00; bmp[0x22 + 3] = 0x30;
+
+    g94 = -1; g96 = 500; g98 = -1; g9a = 500;
+
+    fb_zero();
+    result = 0x99;
+    gfx_clear_rect(0, 0, 8, 2); /* known nonzero background so transparency is observable */
+
+    gbc = 0;
+    gfx_copy_rect(0, 0, bmp, 0);
+
+    dos_int expect_row0[4] = { 0x51, 0x99, 0x99, 0x52 };
+    dos_int expect_row1[4] = { 0x99, 0x99, 0x53, 0x99 };
+    for (int c = 0; c < 4; c++) {
+        dos_int got0 = gfx_get_pixel(c, 0);
+        dos_int got1 = gfx_get_pixel(c, 1);
+        if (got0 != expect_row0[c]) {
+            fprintf(stderr, "test_gfx: %s: row0 col%d got=%d expect=%d\n", t, c, (int)got0, (int)expect_row0[c]);
+            g_failures++;
+        }
+        if (got1 != expect_row1[c]) {
+            fprintf(stderr, "test_gfx: %s: row1 col%d got=%d expect=%d\n", t, c, (int)got1, (int)expect_row1[c]);
+            g_failures++;
+        }
+    }
+
+    /* Row/column clipping: 4 rows x 4 packed bytes (8 pixel columns), fully
+     * opaque colour 1, clipped to rows [1,2] and PACKED columns [1,2]
+     * (pixel columns 2..5) via g94/g96/g98/g9a. */
+    {
+        const char *tc = "vga_copy_rect_clipping";
+        static uint8_t bmp2[0x22 + 4 * 4];
+        memset(bmp2, 0, sizeof bmp2);
+        for (int i = 0; i < 16; i++) bmp2[0x10 + i] = (uint8_t)i; /* identity table: keeps nibble==value */
+        bmp2[0x20] = 4;
+        bmp2[0x21] = 4;
+        for (int i = 0; i < 16; i++) bmp2[0x22 + i] = 0x11; /* opaque, nibble 1 both halves */
+
+        g94 = 1; g96 = 2;
+        g98 = 1; g9a = 2;
+
+        fb_zero();
+        gbc = 0;
+        gfx_copy_rect(0, 0, bmp2, 0);
+
+        for (int r = 0; r < 4; r++) {
+            for (int c = 0; c < 8; c++) {
+                int in_row = (r == 1 || r == 2);
+                int in_col = (c >= 2 && c <= 5);
+                dos_int expect = (in_row && in_col) ? 1 : 0;
+                dos_int got = gfx_get_pixel(c, r);
+                if (got != expect) {
+                    fprintf(stderr, "test_gfx: %s: (%d,%d) got=%d expect=%d\n", tc, c, r, (int)got, (int)expect);
+                    g_failures++;
+                }
+            }
+        }
+        g94 = -1; g96 = 500; g98 = -1; g9a = 500;
+    }
+
+    /* flip=1: horizontally mirrored draw of the same fully-opaque 4x4
+     * packed bitmap; column c of the source should land at (w_px-1-c). */
+    {
+        const char *tf = "vga_copy_rect_flip";
+        static uint8_t bmp3[0x22 + 2 * 1];
+        memset(bmp3, 0, sizeof bmp3);
+        for (int i = 0; i < 16; i++) bmp3[0x10 + i] = (uint8_t)(0x60 + i);
+        bmp3[0x20] = 2; /* bytes per row -> 4 pixel columns */
+        bmp3[0x21] = 1; /* 1 row */
+        bmp3[0x22 + 0] = 0x12; /* nibbles [1,2] (packed byte 0) */
+        bmp3[0x22 + 1] = 0x34; /* nibbles [3,4] (packed byte 1) */
+        /* unmirrored pixel order (left to right): 1,2,3,4 -> table 0x61,0x62,0x63,0x64 */
+
+        fb_zero();
+        gbc = 0;
+        gfx_copy_rect(20, 0, bmp3, 1);
+
+        dos_int want[4] = { 0x64, 0x63, 0x62, 0x61 }; /* mirrored: rightmost source pixel first */
+        for (int c = 0; c < 4; c++) {
+            dos_int got = gfx_get_pixel((dos_int)(20 + c), 0);
+            if (got != want[c]) {
+                fprintf(stderr, "test_gfx: %s: col%d got=%d want=%d\n", tf, c, (int)got, (int)want[c]);
+                g_failures++;
+            }
+        }
+    }
+}
+
+/* gfx_box (present): for display_mode 5 this is a literal byte-for-byte
+ * copy from g3924[y]+x into gfx_vram (no nibble unpacking, unlike the
+ * planar driver -- docs/portable/reference/AE000_002-vga-runtime.lst
+ * 03DE-0424). */
+static void vga_test_box(void)
+{
+    const char *t = "vga_box";
+    fb_zero();
+    uint8_t *row0 = gfx_framebuffer();
+    for (int i = 0; i < 6; i++) row0[i] = (uint8_t)(0x20 + i);
+
+    gfx_box(0, 0, 6, 1);
+    for (int i = 0; i < 6; i++) {
+        uint8_t got = gfx_vram[i];
+        uint8_t want = (uint8_t)(0x20 + i);
+        if (got != want) {
+            fprintf(stderr, "test_gfx: %s: vram[%d] got=0x%02x want=0x%02x\n", t, i, got, want);
+            g_failures++;
+        }
+    }
+
+    uint32_t gen_before = gfx_vram_generation;
+    gfx_box(0, 0, 6, 1);
+    check(t, gfx_vram_generation == gen_before + 1, "gfx_vram_generation should increment once per gfx_box call");
+}
+
+/* Runs the whole VGA section under display_mode = 5 with its own
+ * framebuffer, then restores display_mode = 4 and re-inits for whatever
+ * runs next (the oracle-fixture replayer switches per case on its own, but
+ * main()'s own bookkeeping stays simple if display_mode is mode 4 again
+ * whenever a "plain" gfx_framebuffer_init() happens outside that replay). */
+static void run_vga_tests(void)
+{
+    display_mode = 5;
+    gfx_framebuffer_init();
+    g94 = -1; g96 = 500; g98 = -1; g9a = 500;
+    gc0e0 = NULL; gc0de = gc0e2 = gc0e4 = gc0e6 = 0;
+    dialog_line_height = 0;
+    gbc = 0;
+
+    vga_test_bar();
+    vga_test_vline();
+    vga_test_clear_rect();
+    vga_test_fill_rect();
+    vga_test_save_restore();
+    vga_test_wipe_rect();
+    vga_test_wipe_rect_dirty_queue();
+    vga_test_flip_h();
+    vga_test_flip_v();
+    vga_test_flip_hv();
+    vga_test_split();
+    vga_test_split_flip_v();
+    vga_test_draw_char();
+    vga_test_blit_bitmap();
+    vga_test_copy_rect();
+    vga_test_box();
+
+    display_mode = 4;
+    gfx_framebuffer_init();
+}
+
 /* ------------------------------------------------------------------ */
 /* fixtures/gfx_cases.json loader/replayer (runs only if the file is   */
 /* present -- it is produced by a separate agent's oracle harness).    */
@@ -832,8 +1369,11 @@ static void run_one_call(const char *call_obj, void *vctx)
 
 typedef struct { int total, passed, failed, skipped; } case_stats;
 
-typedef struct { char op[32]; int passed, failed, skipped; } op_stat;
-static op_stat g_op_stats[32];
+/* op_stat keys are "<op>" for mode-4 cases and "<op>[mode5]" for mode-5
+ * cases, so the printed table (run_gfx_cases_if_present) reports mode-5
+ * pass/fail per op separately from mode-4's, per the coordinator's request. */
+typedef struct { char op[40]; int passed, failed, skipped; } op_stat;
+static op_stat g_op_stats[48];
 static int g_op_stat_count = 0;
 
 static op_stat *op_stat_get(const char *op)
@@ -850,10 +1390,16 @@ static op_stat *op_stat_get(const char *op)
     return s;
 }
 
-/* outcome: 1 = passed, 2 = failed, anything else = skipped. */
-static void record_outcome(case_stats *st, const char *op, int outcome)
+/* outcome: 1 = passed, 2 = failed, anything else = skipped.  `mode` is the
+ * case's own display_mode (4 or 5): mode-5 outcomes are tracked under a
+ * distinct op_stat key so they can be reported separately. */
+static void record_outcome(case_stats *st, const char *op, dos_char mode, int outcome)
 {
-    op_stat *os = op_stat_get(op);
+    char key[40];
+    op_stat *os;
+    if (mode == 5) snprintf(key, sizeof key, "%s[mode5]", op);
+    else           snprintf(key, sizeof key, "%s", op);
+    os = op_stat_get(key);
     if (outcome == 1) {
         st->passed++;
         if (os) os->passed++;
@@ -882,7 +1428,7 @@ static void report_row_diffs(const char *rows_obj)
         json_as_str(p, want_row, sizeof want_row);
         if (rownum >= 0 && rownum < GFX_ROWS) {
             char got_row[65];
-            sha256_hex(g3924[rownum], GFX_ROW_BYTES, got_row);
+            sha256_hex(g3924[rownum], gfx_row_bytes(), got_row);
             if (strcmp(want_row, got_row) != 0) {
                 printf("test_gfx: gfx_cases:   row %d differs\n", rownum);
             }
@@ -915,12 +1461,28 @@ static void load_font_if_present(const char *case_obj)
     dialog_line_height = (dos_int)json_as_long(json_obj_get(font, "line_height"));
 }
 
+/* Fixture cases carry an optional "mode" field (4 if absent); switching
+ * modes mid-replay needs a fresh gfx_framebuffer_init() (row stride 0xA0 vs
+ * 0x140) before the next case's fb_seed().  Tracked with a sentinel so the
+ * very first case (whatever mode it asks for) always (re-)initializes,
+ * regardless of what mode earlier hand-authored tests left active. */
+static int s_fixture_mode_active = -1;
+
+static void ensure_fixture_mode(dos_char m)
+{
+    if (s_fixture_mode_active == m) return;
+    display_mode = m;
+    gfx_framebuffer_shutdown();
+    gfx_framebuffer_init();
+    s_fixture_mode_active = m;
+}
+
 /* On a fb_sha256 mismatch, report_row_diffs() already names which rows
  * differ.  The fixture only carries a SHA-256 per row (not raw bytes), so
  * we cannot recover the oracle's exact expected bytes to diff against --
  * the best further diagnostic available is dumping our own computed bytes
  * for the first differing row so a human can compare them against the
- * font bits / expected glyph shape by hand. */
+ * font bits / expected glyph shape (mode 4) or the .lst (mode 5) by hand. */
 static void dump_first_row_bytes(const char *rows_obj)
 {
     const char *p = rows_obj;
@@ -934,7 +1496,7 @@ static void dump_first_row_bytes(const char *rows_obj)
             const uint8_t *row = g3924[rownum];
             int i;
             printf("test_gfx: gfx_cases:   row %d our bytes:", rownum);
-            for (i = 0; i < GFX_ROW_BYTES; i++) {
+            for (i = 0; i < gfx_row_bytes(); i++) {
                 if (row[i] != 0) printf(" [%d]=%02x", i, row[i]);
             }
             printf("\n");
@@ -947,6 +1509,8 @@ static void run_one_case(const char *case_obj, void *vstats)
     case_stats *st = (case_stats *)vstats;
     char name[64];
     uint32_t seed;
+    dos_char case_mode;
+    const char *modep;
     const char *state;
     const char *callsp;
     const char *expect;
@@ -956,6 +1520,11 @@ static void run_one_case(const char *case_obj, void *vstats)
 
     st->total++;
     json_as_str(json_obj_get(case_obj, "name"), name, sizeof name);
+
+    modep = json_obj_get(case_obj, "mode");
+    case_mode = (dos_char)(modep ? json_as_long(modep) : 4);
+    ensure_fixture_mode(case_mode);
+
     seed = json_as_u32(json_obj_get(case_obj, "seed"));
     fb_seed(seed);
 
@@ -976,21 +1545,24 @@ static void run_one_case(const char *case_obj, void *vstats)
     json_arr_foreach(callsp, run_one_call, &cctx);
 
     if (cctx.unsupported) {
-        record_outcome(st, cctx.last_op[0] ? cctx.last_op : "?", 0);
+        record_outcome(st, cctx.last_op[0] ? cctx.last_op : "?", case_mode, 0);
         return;
     }
 
     expect = json_obj_get(case_obj, "expect");
     json_as_str(json_obj_get(expect, "fb_sha256"), want_sha, sizeof want_sha);
-    sha256_hex(gfx_framebuffer(), (size_t)GFX_ROW_BYTES * GFX_ROWS, got_sha);
+    sha256_hex(gfx_framebuffer(), (size_t)gfx_row_bytes() * GFX_ROWS, got_sha);
 
     if (strcmp(want_sha, got_sha) != 0) {
-        printf("test_gfx: gfx_cases: FAIL '%s': fb_sha256 mismatch\n", name);
+        printf("test_gfx: gfx_cases: FAIL '%s' (mode %d): fb_sha256 mismatch\n", name, (int)case_mode);
         report_row_diffs(json_obj_get(expect, "fb_rows_touched"));
-        if (strcmp(cctx.last_op, "draw_char") == 0) {
+        /* Any mode-5 failure gets the same byte dump draw_char failures
+         * always got: the coordinator asked for the first differing row's
+         * bytes so it can be re-derived from the .lst by hand. */
+        if (strcmp(cctx.last_op, "draw_char") == 0 || case_mode == 5) {
             dump_first_row_bytes(json_obj_get(expect, "fb_rows_touched"));
         }
-        record_outcome(st, cctx.last_op, 2);
+        record_outcome(st, cctx.last_op, case_mode, 2);
         return;
     }
 
@@ -999,7 +1571,7 @@ static void run_one_case(const char *case_obj, void *vstats)
         if ((long)cctx.last_ret != want_ret) {
             printf("test_gfx: gfx_cases: FAIL '%s': ret mismatch got=%ld want=%ld\n",
                    name, (long)cctx.last_ret, want_ret);
-            record_outcome(st, cctx.last_op, 2);
+            record_outcome(st, cctx.last_op, case_mode, 2);
             return;
         }
     }
@@ -1014,7 +1586,7 @@ static void run_one_case(const char *case_obj, void *vstats)
             if (strcmp(want_dirty, got_dirty) != 0) {
                 printf("test_gfx: gfx_cases: FAIL '%s': dirty_hex mismatch got=%s want=%s\n",
                        name, got_dirty, want_dirty);
-                record_outcome(st, cctx.last_op, 2);
+                record_outcome(st, cctx.last_op, case_mode, 2);
                 return;
             }
         }
@@ -1032,14 +1604,14 @@ static void run_one_case(const char *case_obj, void *vstats)
                 hex_encode(cctx.last_save, n, got_save, sizeof got_save);
                 if (strcmp(want_save, got_save) != 0) {
                     printf("test_gfx: gfx_cases: FAIL '%s': save_hex mismatch\n", name);
-                    record_outcome(st, cctx.last_op, 2);
+                    record_outcome(st, cctx.last_op, case_mode, 2);
                     return;
                 }
             }
         }
     }
 
-    record_outcome(st, cctx.last_op, 1);
+    record_outcome(st, cctx.last_op, case_mode, 1);
 }
 
 static void run_gfx_cases_if_present(void)
@@ -1071,17 +1643,37 @@ static void run_gfx_cases_if_present(void)
 
     memset(&st, 0, sizeof st);
     g_op_stat_count = 0;
+    s_fixture_mode_active = -1;
     json_arr_foreach(json_skip_ws(buf), run_one_case, &st);
 
     printf("test_gfx: gfx_cases.json: %d case(s): %d passed, %d failed, %d skipped\n",
            st.total, st.passed, st.failed, st.skipped);
     {
+        /* Two passes so mode-4 ops (plain key) print before mode-5 ops
+         * (key suffixed "[mode5]"), giving a clean, separately reportable
+         * mode-5 block regardless of insertion order. */
         int i;
+        int m5_total = 0, m5_passed = 0, m5_failed = 0, m5_skipped = 0;
+        printf("test_gfx: gfx_cases:   -- mode 4 --\n");
         for (i = 0; i < g_op_stat_count; i++) {
+            if (strstr(g_op_stats[i].op, "[mode5]")) continue;
             printf("test_gfx: gfx_cases:   %-24s passed=%d failed=%d skipped=%d\n",
                    g_op_stats[i].op, g_op_stats[i].passed, g_op_stats[i].failed,
                    g_op_stats[i].skipped);
         }
+        printf("test_gfx: gfx_cases:   -- mode 5 (VGA) --\n");
+        for (i = 0; i < g_op_stat_count; i++) {
+            if (!strstr(g_op_stats[i].op, "[mode5]")) continue;
+            printf("test_gfx: gfx_cases:   %-24s passed=%d failed=%d skipped=%d\n",
+                   g_op_stats[i].op, g_op_stats[i].passed, g_op_stats[i].failed,
+                   g_op_stats[i].skipped);
+            m5_total += g_op_stats[i].passed + g_op_stats[i].failed + g_op_stats[i].skipped;
+            m5_passed += g_op_stats[i].passed;
+            m5_failed += g_op_stats[i].failed;
+            m5_skipped += g_op_stats[i].skipped;
+        }
+        printf("test_gfx: gfx_cases: mode 5 (VGA) subtotal: %d case(s): %d passed, %d failed, %d skipped\n",
+               m5_total, m5_passed, m5_failed, m5_skipped);
     }
 
     free(buf);
@@ -1099,6 +1691,7 @@ int main(void)
     _CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE);
     _CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
 #endif
+    display_mode = 4;
     gfx_framebuffer_init();
     g94 = -1; g96 = 500; g98 = -1; g9a = 500;
     gc0e0 = NULL; gc0de = gc0e2 = gc0e4 = gc0e6 = 0;
@@ -1119,6 +1712,8 @@ int main(void)
     test_copy_rect_transparency();
     test_copy_rect_clipping();
     test_box_transform();
+
+    run_vga_tests();   /* display_mode = 5 section; leaves display_mode = 4 behind */
 
     run_gfx_cases_if_present();
 

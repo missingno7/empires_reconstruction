@@ -107,7 +107,7 @@ dos_int video_mode_select(void)
     bios_equipment_probe();
     video_adapter_detect();
     if (display_mode == 0) {
-        dos_write_handle2((dos_char *)DATA_010489_GFX_ERROR);   /* s859 */
+        dos_write_handle2(s859);
         return 0;
     }
     sound_backend_probe();

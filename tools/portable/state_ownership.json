@@ -2,10 +2,58 @@
   "format": "portable-state-ownership-v1",
   "description": "DGROUP objects defined by hand-written portable subsystems; tools/portable/datagen.py must not emit definitions for these.",
   "owners": {
-    "portable/gfx": ["g3924", "result", "gbc", "rect_queue_write_ptr", "g40c4", "g94", "g96", "g98", "g9a",
-                     "gc0de", "gc0e0", "gc0e2", "gc0e4", "gc0e6", "dialog_line_height",
-                     "cur_idx", "g3902", "g3904", "gbe", "g00be", "gfe", "g40ca"],
-    "portable/resource": ["ui_gfx_blob", "ui_gfx_shadow_a", "ui_gfx_shadow_b", "gc0cb", "display_mode", "mode",
-                          "gb3e", "gb40", "slot_file_handle", "gb31", "current_drive"]
+    "portable/gfx": [
+      "g3924",
+      "result",
+      "gbc",
+      "rect_queue_write_ptr",
+      "g40c4",
+      "g94",
+      "g96",
+      "g98",
+      "g9a",
+      "gc0de",
+      "gc0e0",
+      "gc0e2",
+      "gc0e4",
+      "gc0e6",
+      "dialog_line_height",
+      "cur_idx",
+      "g3902",
+      "g3904",
+      "gbe",
+      "g00be",
+      "gfe",
+      "g40ca"
+    ],
+    "portable/resource": [
+      "ui_gfx_blob",
+      "ui_gfx_shadow_a",
+      "ui_gfx_shadow_b",
+      "gc0cb",
+      "display_mode",
+      "mode",
+      "gb3e",
+      "gb40",
+      "slot_file_handle",
+      "gb31",
+      "current_drive"
+    ],
+    "portable/game/timer.c": [
+      "timer_ticks",
+      "gc0d0",
+      "timer_tick_phase",
+      "int8_saved_vector"
+    ],
+    "portable/game/keyboard.c": [
+      "key_up_held",
+      "gb6a",
+      "key_up_left_held",
+      "key_up_right_held",
+      "key_up_released",
+      "keyboard_state",
+      "b856",
+      "int9_saved_vector"
+    ]
   }
 }

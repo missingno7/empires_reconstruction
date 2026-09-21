@@ -13,7 +13,7 @@ members; runtime block 6571; C 44257 bytes / 261 members.  Unexplained compiler
 flags (`tools/audit_tu_flags.py`): 0.  Reconstruction artifacts left: none
 (no capsules, no `call $+`, no label-less branches, no invented flags).
 
-## 1. PURE_C opportunities (C with inline asm that may still shrink)
+## 1. C with inline asm (all closed with compiler evidence)
 
 | Member | Unit | Bytes | asm lines | Why it remains | Last probe | Next experiment | Leverage |
 |---|---|---|---|---|---|---|---|
@@ -36,8 +36,8 @@ flags (`tools/audit_tu_flags.py`): 0.  Reconstruction artifacts left: none
 | asm/SPRITES.ASM (M_4AA8_4EEB) | 1211 | word-aligned pad before F_4AA8; odd-address members packed behind it; bytecode interpreter with LODS/jump table; BP repurposed; all calls symbolic | none |
 | asm/SPRDRAW.ASM (M_6036_6181) | 502 | LOOP/LODS/XLAT bodies, mid-function `mov bp,sp`; 60A9/6181 odd-aligned behind 6036 | none |
 | asm/DECODE.ASM (M_6D86_6F4B) | 573 | word-aligned pad + internal pad, RLE/LZ/4bpp decoders; 6EFF/6F4B odd-aligned behind 6DCC | none |
-| F_1ECD, F_1F91, F_9EC3 | 325 | odd addresses between C units, TC-order prologues, XLAT/LODS bodies | undecidable between asm-body-in-C and byte-aligned TASM: keep, documented in tu-structure.md |
-| M_D386_D3CF, M_D61C_D79C, M_D818_D825 | 662 | `push di; push si` hand order, word-aligned pads, stack-argument patching; all calls symbolic | none |
+| asm/RECTQ.ASM, asm/BOARDCOL.ASM, asm/ANIMROW.ASM (F_1ECD, F_1F91, F_9EC3) | 325 | odd addresses between C units, TC-order prologues, XLAT/LODS bodies | undecidable between asm-body-in-C and byte-aligned TASM: keep, documented in tu-structure.md |
+| asm/ICONANIM.ASM, asm/DRAWQ.ASM, asm/DRAWQBUF.ASM (M_D386_D3CF, M_D61C_D79C, M_D818_D825) | 662 | `push di; push si` hand order, word-aligned pads, stack-argument patching; all calls symbolic | none |
 | RUNTIME_BLOCK | 6571 | EGA driver / library runtime; all 80 relative branches labelled | none in this phase |
 
 ## 3. TU structure
@@ -57,24 +57,27 @@ Anchors that end units: see tu-structure.md.
 - `display_mode` (char) vs former `bbfcd`/`mode` byte views unified in STARTUP.C;
   VIDEO.C still carries the `mode` unsigned-char view (documented).
 - include/SOUND.H declares the sound state every consumer types identically;
-  docs/current/sound-state.md maps every word.  Left LOW-confidence (no name):
-  DS:17C4, 17CC, 17D4, 17DC, 17F4, 1E8C and the two internal tables at 182C/1832;
-  two per-voice equates in SOUND.ASM (voice_pending_table 17E4,
-  voice_retune_base_table 1766) have no data symbol to bind to.
+  docs/current/sound-state.md maps every word with its mechanism.  Words that
+  only asm/SOUND.ASM touches (DS:17C4..17DC pause-renderer cursors, 17E4, 1766,
+  1814, 182C/1832 tables) stay ASM-internal equates with a `no data public`
+  comment: they sit inside string-table DATA components and no C unit reads
+  them, so no data public is added for them (supervisor decision, freeze pass).
+- Open interface findings: 0 (docs/current/interface-audit.md, round
+  2026-09-21 closure); remaining syntactic differences are documented
+  CODEGEN_ALTERNATE_VIEWs.
 
 ## 5. Naming / readability
 
-89 publics were behaviour-named on 2026-09-21 from their own banners, callers and
-data (evidence table: the naming research in the commit message; originals in
-docs/current/symbol-names.json).  15 address names remain, all with only a
-mechanical description: f250c, f2986, f32fa (BOARD.C script opcode handlers),
-f568c (INTRO), f7417 (HUD), f9402/f9440 (PUZZLE messages), f9962/f99a2 (SCORE
-frame draws), face7/fb09a/fb4fb/fb772 (SLOTMENU/LEVEL), f_c5a8/f_c5c6 (sound
-state setters for DS:17A4/17DC).  Next: name the sound state block fields
-(DS:1760..17F4, 1E84..1E94) from SOUND.ASM's per-proc comments, which unlocks
-the last two and the remaining absolute displacements; the globals table in the
-research (g9ade, gc360, g8bfe, g736/g738/g73a, g237c, gb68..gb70, gb3ae, gbfc8,
-gbfc4, g9bfc/gbf66, gc5cc) is the next batch.
+97 publics and 29 globals were behaviour-named on 2026-09-21 from their own
+banners, callers and data (originals and retired aliases in
+docs/current/symbol-names.json; research in docs/history/).  12 address names
+remain, each with only a mechanical description and a recorded missing fact
+(docs/history/naming-research-2026-09-21.md and the frontier research of the
+freeze pass): f250c, f2986, f32fa (BOARD.C script opcode handlers), f7417
+(HUD), f9402/f9440 (PUZZLE cached-text draws), f9962/f99a2 (SCORE frame draws,
+no callers in C), fb09a, fb772 (LEVEL), f_c5a8/f_c5c6 (sound setters of
+LOW-confidence state words).  They are not renamed on purpose: a speculative
+name would be worse than the address.
 
 ## 6. Source layout
 
@@ -84,5 +87,17 @@ recipes for proven-ASM modules moved next to their sources under recovery/.
 
 ## 7. Blockers / tooling
 
-- BOARDSCR `neg ax` (row 1): closed as irreducible (see row).
-- `tools/interface_census.py` still globs src/*.C only (recovery/ excluded on purpose).
+- None open.  `tools/probe_module.py` cannot bind two modules on its own
+  (MUSIC's CC.LIB long-arithmetic externals, secondary runtime publics);
+  acceptance covers them.
+
+## 8. Freeze
+
+Historical-source closure is complete: fresh acceptance on HEAD, exact SHA,
+106 ordered relocations, tests green, 0 raw runtime bytes, 0 unexplained TU
+flags, 0 topology mismatches, 0 capsules, 0 UNKNOWN provenance, 0 open
+interface findings, every remaining ASM member evidenced, every inline-asm
+fragment with compiler evidence, docs/layout in agreement, and
+docs/current/portability-boundaries.md written.  The tree is tagged as the
+exact historical oracle for the portable port; historical reconstruction work
+stops here.

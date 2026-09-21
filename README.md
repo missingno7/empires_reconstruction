@@ -3,7 +3,7 @@
 A byte-identical reconstruction of AEPROG.EXE from Turbo C 2.0 / TASM 1.0
 sources: `src/` holds the game's C translation units, `asm/` the hand-written
 assembler modules (sound driver, sprite/tile blitters, decoders, draw queue) and
-the runtime block, `include/` the shared interfaces.  86 modules link in one
+the runtime block, `include/` the shared interfaces.  71 modules link in one
 TLINK invocation to the original SHA with all 106 relocations in order.
 Which functions were compiled together is itself proven against the binary --
 see [translation-unit structure](docs/current/tu-structure.md) -- and the

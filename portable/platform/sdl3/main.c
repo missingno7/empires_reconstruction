@@ -1,8 +1,10 @@
-/* main.c -- SDL3 executable entry point (Milestone A skeleton).
+/* main.c -- SDL3 executable entry point.
  *
- * Creates a resizable, integer-scaled window and presents a test pattern
- * through video_sdl.h.  Once portable/gfx exists, gfx_vram/gfx_dac replace
- * the local test buffers below and get passed to sdl_video_present() as-is.
+ * Milestone C state: the software framebuffer (portable/gfx) is presented
+ * through video_sdl.h.  Until the ported game logic exists, `--demo` (the
+ * default) draws a primitive test scene with the real gfx_* calls so the
+ * present path (packed 4bpp -> mode-13h VRAM -> g41e DAC -> texture) can be
+ * checked by eye.  `--selftest` runs the loop for ~300 ms and exits 0.
  *
  * Only files in portable/platform/sdl3/ may include <SDL3/SDL.h>.
  */
@@ -10,66 +12,99 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 
+#include "gfx.h"
+#include "game_data.h"
 #include "video_sdl.h"
 
-/* Selftest runs the loop for roughly this many milliseconds, then exits
- * cleanly with status 0 (used by CI / tests, no human required). */
 #define SELFTEST_DURATION_MS 300
 
-static uint8_t s_vram8[SDL_VIDEO_LOGICAL_W * SDL_VIDEO_LOGICAL_H];
-static uint8_t s_dac6[256 * 3];
-
-/* Fill the test buffers with a visible 16-colour gradient: the DAC's first
- * 16 entries ramp red/green up and blue down, and the framebuffer is split
- * into 16 vertical bands indexing those entries. */
-static void build_test_pattern(void)
+/* Draw a scene that exercises the primitives the port has today: the 16
+ * logical colours through gfx_color_select, bars, vlines, rect fills, a
+ * save/restore round trip and the XOR fill, then present it. */
+static void draw_demo_scene(void)
 {
-    memset(s_dac6, 0, sizeof(s_dac6));
-    for (int i = 0; i < 16; ++i) {
-        uint8_t level = (uint8_t)(i * 4); /* 0..60, within the 6-bit 0..63 DAC range */
-        s_dac6[i * 3 + 0] = level;
-        s_dac6[i * 3 + 1] = level;
-        s_dac6[i * 3 + 2] = (uint8_t)(60 - level);
-    }
+    dos_int i;
+    static uint8_t saved[4 + 40 * 20];
 
-    for (int y = 0; y < SDL_VIDEO_LOGICAL_H; ++y) {
-        for (int x = 0; x < SDL_VIDEO_LOGICAL_W; ++x) {
-            uint8_t band = (uint8_t)((x * 16) / SDL_VIDEO_LOGICAL_W);
-            s_vram8[(size_t)y * SDL_VIDEO_LOGICAL_W + x] = band;
-        }
+    gfx_color_select(0);
+    gfx_clear_rect(0, 0, 320, 200);
+    for (i = 0; i < 16; i++) {
+        gfx_color_select(i);
+        gfx_clear_rect((dos_int)(i * 20), 8, 20, 40);
     }
+    gfx_color_select(15);
+    rect_border_draw(4, 60, 312, 100);
+    gfx_color_select(4);
+    gfx_clear_rect(11, 71, 61, 31);          /* odd x / odd w: nibble clipping */
+    gfx_fill_rect(20, 80, 41, 13);           /* XOR inside the block */
+    gfx_color_select(2);
+    for (i = 0; i < 40; i++)
+        gfx_vline((dos_int)(100 + i * 2), (dos_int)(70 + (i & 7)), 30);
+    gfx_save_rect(11, 71, 40, 20, saved);
+    gfx_restore_rect(200, 110, saved);
+    gfx_restore_rect(201, 135, saved);
+    gfx_copy_rect_flip_h(11, 71, 40, 20, 240, 110);
+    gfx_copy_rect_flip_v(11, 71, 40, 20, 240, 135);
+    gfx_color_select(14);
+    for (i = 0; i < 300; i += 3)
+        gfx_set_pixel((dos_int)(10 + i), (dos_int)(180 + ((i / 3) & 3)));
+    gfx_box(0, 0, 320, 200);                 /* present everything */
+}
+
+/* Write the presented VRAM as a binary PPM (DAC expanded to 8-bit RGB) so
+ * the pixel output can be inspected without a display. */
+static void dump_vram_ppm(const char *path)
+{
+    FILE *f = fopen(path, "wb");
+    if (!f)
+        return;
+    fprintf(f, "P6\n%d %d\n255\n", GFX_VRAM_W, GFX_VRAM_H);
+    for (int i = 0; i < GFX_VRAM_W * GFX_VRAM_H; i++) {
+        const uint8_t *rgb6 = gfx_dac + gfx_vram[i] * 3;
+        uint8_t rgb[3];
+        for (int c = 0; c < 3; c++)
+            rgb[c] = (uint8_t)((rgb6[c] << 2) | (rgb6[c] >> 4));
+        fwrite(rgb, 1, 3, f);
+    }
+    fclose(f);
 }
 
 int main(int argc, char **argv)
 {
     bool selftest = false;
+    const char *dump_path = NULL;
     for (int i = 1; i < argc; ++i) {
-        if (strcmp(argv[i], "--selftest") == 0) {
+        if (strcmp(argv[i], "--selftest") == 0)
             selftest = true;
-        }
+        else if (strcmp(argv[i], "--dump-vram") == 0 && i + 1 < argc)
+            dump_path = argv[++i];
     }
 
-    bool ok = sdl_video_init("Empires (portable)");
-    if (!ok) {
+    if (!sdl_video_init("Empires (portable)")) {
         sdl_video_shutdown();
         return 1;
     }
 
-    build_test_pattern();
+    gfx_framebuffer_init();
+    color_lookup_tables_init();
+    video_load_palette(&g41e[0][0]);         /* src/VIDEO.C: mode 4 loads g41e */
+    draw_demo_scene();
+    if (dump_path)
+        dump_vram_ppm(dump_path);
 
     Uint64 start_ticks = SDL_GetTicks();
     bool quit = false;
     while (!quit) {
         quit = sdl_video_poll_events();
-        sdl_video_present(s_vram8, s_dac6);
-
-        if (selftest && (SDL_GetTicks() - start_ticks) >= SELFTEST_DURATION_MS) {
+        sdl_video_present(gfx_vram, gfx_dac);
+        if (selftest && (SDL_GetTicks() - start_ticks) >= SELFTEST_DURATION_MS)
             quit = true;
-        }
     }
 
+    gfx_framebuffer_shutdown();
     sdl_video_shutdown();
     return 0;
 }

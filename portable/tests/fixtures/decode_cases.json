@@ -1,0 +1,112 @@
+[
+ {
+  "name": "rle_all_literal",
+  "kind": 0,
+  "param": 4,
+  "blob_hex": "03aabbcc",
+  "expect": {
+   "ret": 3,
+   "data_hex": "aabbcc",
+   "data_sha256": "fa22dfe1da9013b3c1145040acae9089e0c08bc1c1a0719614f4b73add6f6ef5"
+  }
+ },
+ {
+  "name": "rle_all_repeat",
+  "kind": 0,
+  "param": 2,
+  "blob_hex": "fb77",
+  "expect": {
+   "ret": 6,
+   "data_hex": "777777777777",
+   "data_sha256": "ea3d7d28fd6e362047d6424bc9229093f3a54ed7d92b36f0d2858c70ed8d7005"
+  }
+ },
+ {
+  "name": "rle_mixed",
+  "kind": 0,
+  "param": 8,
+  "blob_hex": "021122fd990101",
+  "expect": {
+   "ret": 8,
+   "data_hex": "1122999999990100",
+   "data_sha256": "1de79f4fd075b3503c190a870116125a6ade82cb9d43a5a182f25d0626381b6f"
+  }
+ },
+ {
+  "name": "rle_single_literal",
+  "kind": 0,
+  "param": 2,
+  "blob_hex": "015a",
+  "expect": {
+   "ret": 1,
+   "data_hex": "5a",
+   "data_sha256": "bbeebd879e1dff6918546dc0c179fdde505f2a21591c9a9c96e36b054ec5af83"
+  }
+ },
+ {
+  "name": "rle_zero_repeat_edgecase",
+  "kind": 0,
+  "param": 3,
+  "blob_hex": "0066",
+  "expect": {
+   "ret": 35,
+   "data_hex": "66fd990101000000000000000000000000000000000000000000000000000000000000",
+   "data_sha256": "f892020cb746feebf046c795e720da1686275b9fa36660fb2f1a14c780516df3"
+  }
+ },
+ {
+  "name": "lz_smoke_a",
+  "kind": 1,
+  "param": 6,
+  "blob_hex": "060000000000",
+  "expect": {
+   "ret": 3,
+   "data_hex": "000000",
+   "data_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c"
+  }
+ },
+ {
+  "name": "lz_smoke_b",
+  "kind": 1,
+  "param": 8,
+  "blob_hex": "0800ffff00000000",
+  "expect": {
+   "ret": 3,
+   "data_hex": "000000",
+   "data_sha256": "709e80c88487a2411e1ee4dfb9f22a861492d20c4765150c0c794abd70f8147c"
+  }
+ },
+ {
+  "name": "sprite_planar_basic",
+  "kind": 2,
+  "param": 0,
+  "blob_hex": "00f102f304f506f708f90afb0cfd0eff001f3e5d7c9bbad9f81736557493b2d1",
+  "expect": {
+   "ret": 32,
+   "data_hex": "000102030405060708090a0b0c0d0e0f001f3e5d7c9bbad9f81736557493b2d1",
+   "data_sha256": "038b43e9cbdba6c615c13e5917e84f8fdf040b1ddc930d465123320bb4c98ca6"
+  }
+ },
+ {
+  "name": "sprite_planar_zero_nibbles",
+  "kind": 2,
+  "param": 0,
+  "blob_hex": "000102030405060708090a0b0c0d0e0f00ff0ff000ff0ff000ff0ff000ff0ff000ff0ff000ff0ff0",
+  "expect": {
+   "ret": 40,
+   "data_hex": "000102030405060708090a0b0c0d0e0f00ff0ff000ff0ff000ff0ff000ff0ff000ff0ff000ff0ff0",
+   "data_sha256": "c3a2dd945db7f9f4b6349e3d1518fa6197b4b87d62f79184964d0fc7dee3792c"
+  }
+ },
+ {
+  "name": "sprite_mode13h_basic",
+  "kind": 3,
+  "param": 0,
+  "blob_hex": "0004080c1014181c2024282c303438032c557ea7d0f9224b749dc6ef18416a93bce50e",
+  "expect": {
+   "ret": 35,
+   "data_hex": "001111111212121213131313141414112c557ea7d0f9224b749dc6ef18416a93bce504",
+   "data_sha256": "61305a3a38cf5f41bd23bea5ff34b2b9374544324b4e6cfca5425c4b140d0bb6"
+  }
+ }
+]

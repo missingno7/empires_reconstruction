@@ -3,6 +3,31 @@
 #include "gfx_tween.h"
 #include "trace.h"
 
+/* The original intro only looked at the BIOS key buffer at its prompt
+ * boundaries.  Keep that behavior for every other part of the game, but let
+ * the portable Space shortcut be observed by the animation loops too. */
+static bool s_intro_active;
+static bool s_intro_skip_requested;
+
+dos_int intro_skip_poll(void)
+{
+    if (!s_intro_active)
+        return 0;
+    if (s_intro_skip_requested)
+        return 1;
+    if (keyboard_poll_nonblocking() == 0x20) {
+        (void)keyboard_read_blocking_hotkeys();
+        s_intro_skip_requested = true;
+        return 1;
+    }
+    return 0;
+}
+
+dos_int intro_skip_requested(void)
+{
+    return s_intro_skip_requested ? 1 : 0;
+}
+
 
 /* PORT: `vmode` (src/INTRO.C local extern, "unsigned char vmode;" at DS:BFCD)
    is the historical local name for `display_mode` (portable/include/
@@ -35,8 +60,11 @@ void intro_play_script(struct E *ev, dos_int count, dos_int step, dos_char **q)
     idx = 0;
     when = 0;
     w = 0;
-    while (idx < count)
+    while (idx < count) {
+        if (intro_skip_poll())
+            break;
         intro_animate_step(ev, step, q, &idx, &when, 0, 0, &x, &y, &w, &h);
+    }
 }
 
 
@@ -187,13 +215,17 @@ void splash_draw_and_clear()
 dos_int intro_wait_key()
 {
     while (timer_deadline_reached() == 0) {
+        if (intro_skip_poll())
+            return 0x20;
         if (keyboard_poll_nonblocking()) {
             if ((g8fc = keyboard_read_blocking_hotkeys()) == 0x0d)
                 return (0x0d);
             else if (g8fc == 0x1b)
                 return (g8fc);
-            else if (g8fc == 0x20)
+            else if (g8fc == 0x20) {
+                s_intro_skip_requested = true;
                 return (g8fc); /* portable shortcut: skip to player sign-in */
+            }
         }
     }
     return (-1);
@@ -259,6 +291,8 @@ dos_int intro_run_chapter(void)
     dos_int again, k;
 
     again = 1;
+    s_intro_active = (g857 == 0);
+    s_intro_skip_requested = false;
     if (g857 == 0) {
         g96 = 0x18f; g98 = 0; g9a = 0xa0;
         gfx_color_select(0);
@@ -274,13 +308,15 @@ dos_int intro_run_chapter(void)
         snd_flag2 = 1;
         resource_record_cache_reset(0x35);
         intro_play_script((struct E *)(t1 + 2), 0x34, 0x1e, gbfee);
+        if (intro_skip_requested())
+            goto skip_intro;
         hud_prompt_continue_draw();
 top:
         while (again) {
                 timer_deadline_arm(0x1bc6);
                 key = intro_wait_key();
                 switch (key) {
-                case 0x1b: if (dialog_run(&g139d) == 1) return -1; break;
+                case 0x1b: if (dialog_run(&g139d) == 1) { s_intro_active = false; return -1; } break;
                 case 0x20: goto skip_intro;
                 case -1:
                 case 0x0d: again = 0; break;
@@ -290,6 +326,8 @@ top:
             again = 1;
             for (k = 0; k < 2; k++) {
                 anim_step_loop(0, 0xe8, 0xc8, 0x8a, 0, 0x20);
+                if (intro_skip_requested())
+                    goto skip_intro;
                 if (display_mode == 2) gfx_color_select(5); else gfx_color_select(0xf);
                 text_draw_wrapped(8, 0x1e, t2 + ((dos_int *)t2)[k] + 2);
                 hud_prompt_continue_draw();
@@ -298,7 +336,7 @@ top:
                     timer_deadline_arm(0x1bc6);
                     key = intro_wait_key();
                     switch (key) {
-                    case 0x1b: if (dialog_run(&g139d) == 1) return -1; break;
+                    case 0x1b: if (dialog_run(&g139d) == 1) { s_intro_active = false; return -1; } break;
                     case 0x20: goto skip_intro;
                     case -1:
                     case 0x0d: again = 0; break;
@@ -307,27 +345,45 @@ top:
                 }
                 again = 1;
             }
-        if (k == 2 && key == -1) { intro_title_picture_redisplay(); goto top; }
+        if (k == 2 && key == -1) {
+            intro_title_picture_redisplay();
+            if (intro_skip_requested())
+                goto skip_intro;
+            goto top;
+        }
         anim_step_loop(0, 0x17e, 0xbc, 0x10, 0, 0xb6);
+        if (intro_skip_requested())
+            goto skip_intro;
         g94 = 0; g9a = 0x9f; mus_flag = 1;
         stream_control_block_arm(0x18);
         intro_play_script((struct E *)(t1 + 0x344), 0xa, 0x2d, gbfee);
+        if (intro_skip_requested())
+            goto skip_intro;
         snd_on = 1;
         sound_stop_reset();
         mus_flag = 0;
         timer_wait_ticks(0xed);
         intro_play_script((struct E *)(t1 + 0x498), 0x16, 0x1e, gbfee);
+        if (intro_skip_requested())
+            goto skip_intro;
         intro_play_script((struct E *)(t1 + 0x3e6), 0xb, 0x28, gbfee);
+        if (intro_skip_requested())
+            goto skip_intro;
         timer_wait_ticks(0xed);
         mus_flag = 1;
         stream_control_block_arm(0x18);
         intro_play_script((struct E *)(t1 + 0x66c), 0xb, 0x28, gbfee);
+        if (intro_skip_requested())
+            goto skip_intro;
         mus_flag = 0;
         snd_on = 1;
         sound_stop_reset();
         intro_play_script((struct E *)(t1 + 0x5fa), 7, 0x1e, gbfee);
+        if (intro_skip_requested())
+            goto skip_intro;
         g94 = 0x10; g96 = 0x9f; g98 = 4; g9a = 0x9b;
         free(t1); free(t2); free(gbfde);   /* t3 == gbfde */
+        s_intro_active = false;
     } else {
         gfx_color_select(0);
         gfx_clear_rect(0, 0, 0x140, 0xc8);
@@ -339,6 +395,7 @@ skip_intro:
     /* Space is a host convenience shortcut.  Stop intro audio and free the
      * chapter-owned allocations before continuing to slot_menu_run(). */
     EMPIRES_TRACE("intro_skip_to_player_sign_in");
+    s_intro_active = false;
     sound_stop_reset();
     mus_flag = 0;
     snd_on = 1;

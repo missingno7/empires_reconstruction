@@ -10,6 +10,8 @@ void anim_step_loop(dos_int a, dos_int b, dos_int c, dos_int d, dos_int e, dos_i
 
     q = c;
     for (i = 0; i < 0x10; i++) {
+        if (intro_skip_poll())
+            return;
         timer_deadline_arm(9);
         if (display_mode == 5)
             anim_step_row_copy(a, b, q, d, e, f, i, 0x140);

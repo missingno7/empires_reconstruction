@@ -39,8 +39,11 @@
 #include "game.h"
 #include "gfx_tween.h"
 
-static void board_platform_copy(int index, dos_int x, dos_int y, const uint8_t *bitmap)
+static void board_platform_copy_visible(int index, dos_int x, dos_int y, const uint8_t *bitmap)
 {
+    /* The board renderer first paints the platform into the off-screen
+     * 488-row board and then wipes that region into the visible 200-row
+     * viewport.  Only this final screen-space redraw is a tween object. */
     gfx_tween_tag = GFX_TWEEN_TAG_PLATFORM(index);
     gfx_copy_rect(x, y, bitmap, 0);
     gfx_tween_tag = 0;
@@ -298,8 +301,9 @@ void board_update_moving_records(void)
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 16, 56, (dos_int)x, (dos_int)y);
                         y -= 8;
                         p[2] -= 8;
-                        g96 = 359; board_platform_copy(i, (dos_int)x, (dos_int)y, (const uint8_t *)g6ca6[0]); g96 = 159;
+                        g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ca6[0], 0); g96 = 159;
                         gfx_wipe_rect((dos_int)x, (dos_int)y, 16, 64, (dos_int)x, (dos_int)(y - 184));
+                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ca6[0]);
                         board_records[index - 38] = 7;
                         board_records[index + 190] = 0;
                     }
@@ -309,8 +313,9 @@ void board_update_moving_records(void)
                     else {
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 16, 56, (dos_int)x, (dos_int)y);
                         p[2] += 8;
-                        g96 = 359; board_platform_copy(i, (dos_int)x, (dos_int)(y + 8), (const uint8_t *)g6ca6[0]); g96 = 159;
+                        g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)(y + 8), (const uint8_t *)g6ca6[0], 0); g96 = 159;
                         gfx_wipe_rect((dos_int)x, (dos_int)y, 16, 64, (dos_int)x, (dos_int)(y - 184));
+                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ca6[0]);
                         board_records[index + 228] = 7;
                         board_records[index] = 0;
                     }
@@ -323,8 +328,9 @@ void board_update_moving_records(void)
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 56, 16, (dos_int)x, (dos_int)y);
                         x -= 8;
                         p[1] -= 4;
-                        g96 = 359; board_platform_copy(i, (dos_int)x, (dos_int)y, (const uint8_t *)g6ac4[0]); g96 = 159;
+                        g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ac4[0], 0); g96 = 159;
                         gfx_wipe_rect((dos_int)x, (dos_int)y, 64, 16, (dos_int)x, (dos_int)(y - 184));
+                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ac4[0]);
                         board_records[index - 1] = 7;
                         board_records[index + 5] = 0;
                     }
@@ -334,8 +340,9 @@ void board_update_moving_records(void)
                     else {
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 56, 16, (dos_int)x, (dos_int)y);
                         p[1] += 4;
-                        g96 = 359; board_platform_copy(i, (dos_int)(x + 8), (dos_int)y, (const uint8_t *)g6ac4[0]); g96 = 159;
+                        g96 = 359; gfx_copy_rect((dos_int)(x + 8), (dos_int)y, (const uint8_t *)g6ac4[0], 0); g96 = 159;
                         gfx_wipe_rect((dos_int)x, (dos_int)y, 64, 16, (dos_int)x, (dos_int)(y - 184));
+                        board_platform_copy_visible(i, (dos_int)(x + 8), (dos_int)(y - 184), (const uint8_t *)g6ac4[0]);
                         board_records[index + 6] = 7;
                         board_records[index] = 0;
                     }
@@ -369,10 +376,10 @@ void board_mark_record_cells(void)
             y += 180;
             x -= 4;
             if (flag & 128) {
-                board_platform_copy(i, (dos_int)x, (dos_int)y, (const uint8_t *)g6ca6[0]);
+                gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ca6[0], 0);
                 stride = 38;
             } else {
-                board_platform_copy(i, (dos_int)x, (dos_int)y, (const uint8_t *)g6ac4[0]);
+                gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ac4[0], 0);
                 stride = 1;
             }
             for (j = 0; j < 6; j++, index += stride)

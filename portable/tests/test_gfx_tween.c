@@ -158,6 +158,22 @@ static void test_live_present_falls_back(void)
     teardown();
 }
 
+static void test_platform_tag_interpolates_between_frames(void)
+{
+    uint8_t out[320 * 200];
+    int n, mx, my;
+    setup();
+    make_bitmap(0x43);
+
+    frame(GFX_TWEEN_TAG_PLATFORM(4), 100, 60, 0.0, 100.0);
+    erase(100, 60);
+    frame(GFX_TWEEN_TAG_PLATFORM(4), 108, 60, 100.0, 200.0);
+    CHECK(gfx_tween_compose(out, 150.0, gfx_vram_generation));
+    n = count_marker(out, 0x43, &mx, &my);
+    CHECK(n == 8 && mx == 104 && my == 60);
+    teardown();
+}
+
 static void test_presenter_resume_after_live_mode(void)
 {
     uint8_t out[320 * 200];
@@ -324,6 +340,7 @@ int main(void)
     test_beam_grows_and_shrinks();
     test_edge_clipping_matches_game();
     test_interpolates_between_frames();
+    test_platform_tag_interpolates_between_frames();
     test_teleport_and_unmatched_draw_at_current();
     test_live_present_falls_back();
     test_presenter_resume_after_live_mode();

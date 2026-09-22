@@ -59,6 +59,9 @@ dos_int anim_frame_advance(dos_int n);
 
 /* ==== src/ANIMSTEP.C ==== */
 void anim_step_loop(dos_int a, dos_int b, dos_int c, dos_int d, dos_int e, dos_int f);
+/* Portable intro shortcut polling used by ANIMSTEP.C; no historical symbol. */
+dos_int intro_skip_poll(void);
+dos_int intro_skip_requested(void);
 
 /* ==== src/BOARD.C ==== */
 void resource_icon_table_load(void);

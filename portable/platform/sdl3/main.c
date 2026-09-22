@@ -27,6 +27,7 @@
 #include <string.h>
 
 #include "game.h"
+#include "trace.h"
 #include "sync.h"
 #include "input_sdl.h"
 #include "video_sdl.h"
@@ -39,7 +40,7 @@ static volatile bool s_game_finished = false;
  * headless bring-up runs and replay tests.  Each entry fires once the game
  * has been continuously asking for a key (empty polls or blocking waits)
  * for at_ms, i.e. it is idle waiting for the user. */
-typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; } script_key;
+typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; char marker[32]; int repeat; } script_key;
 static script_key s_script[64];
 static int s_script_n, s_script_next;
 
@@ -49,6 +50,20 @@ static void parse_script(const char *spec)
     while (*spec && s_script_n < 64) {
         char *end;
         script_key k;
+        memset(&k, 0, sizeof k);
+        if (*spec == '@') {                       /* wait for a trace marker */
+            size_t n = strcspn(spec + 1, ",");
+            if (n >= sizeof k.marker) n = sizeof k.marker - 1;
+            memcpy(k.marker, spec + 1, n);
+            s_script[s_script_n++] = k;
+            spec += 1 + n;
+            if (*spec == ',') spec++;
+            continue;
+        }
+        if (*spec == '*') {                       /* repeat until the next marker fires */
+            k.repeat = 1;
+            spec++;
+        }
         k.at_ms = (Uint64)strtoull(spec, &end, 10);
         if (*end != ':') break;
         k.scan = (uint8_t)strtoul(end + 1, &end, 16);
@@ -144,10 +159,15 @@ static void choose_asset_dir(char *out, size_t n, const char *explicit)
     snprintf(out, n, "assets");
 }
 
+void crash_handler_install(void);
+
 int main(int argc, char **argv)
 {
+    crash_handler_install();
     bool selftest = false, demo = false;
     const char *dump_path = NULL, *assets = NULL, *saves = NULL;
+    Uint64 dump_interval = 0, next_dump = 0;
+    int dump_index = 0;
     char asset_dir[1024];
     sync_thread game_thread = { NULL };
 
@@ -168,6 +188,8 @@ int main(int argc, char **argv)
             saves = argv[++i];
         else if (strcmp(argv[i], "--script") == 0 && i + 1 < argc)
             parse_script(argv[++i]);
+        else if (strcmp(argv[i], "--dump-interval") == 0 && i + 1 < argc)
+            dump_interval = (Uint64)strtoull(argv[++i], NULL, 10);
     }
 
     if (!sdl_video_init("Empires (portable)")) {
@@ -214,11 +236,33 @@ int main(int argc, char **argv)
             if (input_empty_reads == last_empty_seen && !input_blocked)
                 idle_since = now;               /* not asking: reset */
             last_empty_seen = input_empty_reads;
-            if (s_script_next < s_script_n && now - idle_since >= s_script[s_script_next].at_ms) {
-                const script_key *k = &s_script[s_script_next++];
-                input_key_event(k->scan, true, k->ascii);
-                input_key_event(k->scan, false, 0);
-                idle_since = now;
+            /* A marker entry is satisfied when the game emits that trace;
+             * a '*' key entry before it keeps firing (when idle) until then. */
+            {
+                static unsigned seen_seq;
+                int cur = s_script_next;
+                if (cur < s_script_n && s_script[cur].repeat && cur + 1 < s_script_n &&
+                    s_script[cur + 1].marker[0])
+                    cur = cur + 1;              /* look at the marker first */
+                if (cur < s_script_n && s_script[cur].marker[0]) {
+                    if (empires_trace_seq != seen_seq) {
+                        seen_seq = empires_trace_seq;
+                        if (empires_trace_last &&
+                            strncmp(empires_trace_last, s_script[cur].marker, strlen(s_script[cur].marker)) == 0) {
+                            s_script_next = cur + 1;
+                            idle_since = now;
+                        }
+                    }
+                }
+                if (s_script_next < s_script_n && !s_script[s_script_next].marker[0] &&
+                    now - idle_since >= s_script[s_script_next].at_ms) {
+                    const script_key *k = &s_script[s_script_next];
+                    if (!k->repeat)
+                        s_script_next++;
+                    input_key_event(k->scan, true, k->ascii);
+                    input_key_event(k->scan, false, 0);
+                    idle_since = now;
+                }
             }
         }
         if (gfx_vram_generation != presented_generation || demo) {
@@ -226,6 +270,12 @@ int main(int argc, char **argv)
             sdl_video_present(gfx_vram, gfx_dac);
         } else {
             SDL_Delay(4);
+        }
+        if (dump_interval && dump_path && SDL_GetTicks() - start_ticks >= next_dump) {
+            char path[1100];
+            snprintf(path, sizeof path, "%s.%03d.ppm", dump_path, dump_index++);
+            dump_vram_ppm(path);
+            next_dump += dump_interval;
         }
         if (selftest && (SDL_GetTicks() - start_ticks) >= s_selftest_ms)
             quit = true;

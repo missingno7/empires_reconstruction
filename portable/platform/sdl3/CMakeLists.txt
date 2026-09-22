@@ -6,7 +6,8 @@ add_executable(empires
   video_sdl.h
 
   input_sdl.c
-  input_sdl.h)
+  input_sdl.h
+  crash_win32.c)
 
 target_link_libraries(empires PRIVATE empires_core SDL3::SDL3)
 

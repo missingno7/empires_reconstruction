@@ -180,6 +180,20 @@ static void dispatch_call(const char *scenario_name, const char *line)
         sound_backend_select_init();
     } else if (sscanf(line, "voice_table_reload %d", &arg) == 1) {
         sound_voice_table_reload((dos_int)arg);
+    } else if (strcmp(line, "voice_cursors_direct") == 0) {
+        /* C twin of emu.py's SoundMachine.poke_voice_cursors_direct() --
+         * see gen_scenarios.py's mode2_queued_opl comment for why this
+         * bypasses sound_voice_table_reload()'s record_panel_rebuild()
+         * call (an unrelated UI subsystem, out of scope here). */
+        /* voice_stream_cursor_table/voice_stream_base_table are declared
+         * dos_int[4] in game_data.h (SOUND_VOICE_COUNT_MAX in
+         * portable/audio/sound_driver_internal.h, a private header this
+         * test does not include). */
+        int voice;
+        for (voice = 0; voice < 4; voice++) {
+            voice_stream_cursor_table[voice] = 0;
+            voice_stream_base_table[voice] = 0;
+        }
     } else if (sscanf(line, "arm %d", &arg) == 1) {
         stream_control_block_arm((dos_int)arg);
     } else if (strcmp(line, "voices_reset") == 0) {
@@ -198,29 +212,22 @@ static void run_one(const char *fixture_dir, const char *name)
     char path[1024];
     snprintf(path, sizeof path, "%s/sound_scenario_%s.txt", fixture_dir, name);
 
-    fprintf(stderr, "DEBUG: run_one %s path=%s\n", name, path); fflush(stderr);
     struct scenario sc;
     if (!parse_scenario(path, &sc)) {
         fail(name, "could not parse fixture (missing/malformed -- regenerate with "
                     "python tools/portable/sound_oracle/gen_scenarios.py)");
         return;
     }
-    fprintf(stderr, "DEBUG: %s parsed: resource_len=%ld voice_len=%ld calls=%d ticks=%d events=%d\n",
-            name, sc.resource_len, sc.voice_len, sc.call_count, sc.ticks, sc.event_count);
-    fflush(stderr);
 
     sound_event_log_clear();
     sound_set_resource_blocks(sc.resource_len > 0 ? g_resource_block : NULL,
                                sc.voice_len > 0 ? g_voice_block : NULL);
     sound_driver_restore(sc.region_initial);
 
-    fprintf(stderr, "DEBUG: %s dispatching calls\n", name); fflush(stderr);
     for (int i = 0; i < sc.call_count; i++)
         dispatch_call(name, sc.call_lines[i]);
-    fprintf(stderr, "DEBUG: %s ticking\n", name); fflush(stderr);
     for (int t = 0; t < sc.ticks; t++)
         sound_tick_entry();
-    fprintf(stderr, "DEBUG: %s ticked\n", name); fflush(stderr);
 
     /* -- compare the event log -- */
     size_t got_count = sound_event_log_count();
@@ -273,15 +280,10 @@ static void run_one(const char *fixture_dir, const char *name)
 int main(void)
 {
     const char *fixture_dir = EMPIRES_FIXTURE_DIR;
-    fprintf(stderr, "DEBUG: fixture_dir=%s\n", fixture_dir); fflush(stderr);
 
-    fprintf(stderr, "DEBUG: before sanity_gate_off\n"); fflush(stderr);
     run_one(fixture_dir, "sanity_gate_off");
-    fprintf(stderr, "DEBUG: before mode0_basic\n"); fflush(stderr);
     run_one(fixture_dir, "mode0_basic");
-    fprintf(stderr, "DEBUG: before mode2_queued_opl\n"); fflush(stderr);
     run_one(fixture_dir, "mode2_queued_opl");
-    fprintf(stderr, "DEBUG: done\n"); fflush(stderr);
 
     if (g_failures) {
         fprintf(stderr, "test_sound_parity: %d failure(s)\n", g_failures);

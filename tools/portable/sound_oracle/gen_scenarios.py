@@ -87,6 +87,10 @@ def call_arm(n: int):
     return Call(f'arm {n}', lambda m: m.run_routine('stream_control_block_arm', (n,)))
 
 
+def call_voice_cursors_direct():
+    return Call('voice_cursors_direct', lambda m: m.poke_voice_cursors_direct())
+
+
 def call_voices_reset():
     return Call('voices_reset', lambda m: m.run_routine('sound_voices_reset'))
 
@@ -185,13 +189,20 @@ def main():
 
     # Scenario 3: backend mode 2 (queued OPL bank) -- exercises
     # opl_init()'s call chain (F_D99B et al, still inside the same _TEXT
-    # mapping) from inside sound_backend_select_init(), then the same call
-    # order as scenario 2.
+    # mapping) from inside sound_backend_select_init(), then the same cue
+    # arms as scenario 2. Uses voice_cursors_direct instead of
+    # voice_table_reload(0): backend mode 2's reload path calls
+    # record_panel_rebuild() (F_D8F0), an unrelated UI record-panel
+    # renderer neither this oracle nor the plain sound-driver test
+    # environment models (real crash observed on both sides -- the ASM
+    # under Unicorn with no VRAM/other resource blocks mapped, and the C
+    # port's own record_panel_rebuild() with no framebuffer/gc5da state
+    # set up); see SoundMachine.poke_voice_cursors_direct()'s docstring.
     run_scenario(
         'mode2_queued_opl', backend_mode=2, resource_bytes=resource_bytes, voice_bytes=voice_bytes,
         calls=[
             call_select_init(),
-            call_voice_table_reload(0),
+            call_voice_cursors_direct(),
             call_arm(2),
             call_arm(3),
             call_arm(26),

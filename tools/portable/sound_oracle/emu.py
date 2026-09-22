@@ -424,6 +424,22 @@ class SoundMachine:
         ax = self.uc.reg_read(UC_X86_REG_AX)
         return ax
 
+    def poke_voice_cursors_direct(self) -> None:
+        """Set voice_stream_cursor_table[i]=voice_stream_base_table[i]=0
+        for all 4 voices directly, bypassing sound_voice_table_reload().
+        Used only for the backend-mode-2 scenario: F_C7CB's mode-2 branch
+        calls record_panel_rebuild() (F_D8F0), an unrelated UI record-
+        panel renderer this oracle does not model (see the
+        RECORD_PANEL_REBUILD_CS_OFFSET stub in __init__ and this
+        function's C-side twin, dispatch_call()'s "voice_cursors_direct"
+        case, in portable/tests/test_sound_parity.c) -- this achieves the
+        same net per-voice state a non-crashing reload would have (cursor
+        == base == offset 0 of the voice block) without exercising that
+        dependency on either side of the comparison."""
+        for voice in range(4):
+            self.write_word(0x178C + voice * 2, 0)  # voice_stream_cursor_table[voice]
+            self.write_word(0x1794 + voice * 2, 0)  # voice_stream_base_table[voice]
+
     def tick(self, n: int = 1) -> None:
         for _ in range(n):
             self._tick += 1

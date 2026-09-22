@@ -303,7 +303,7 @@ void board_update_moving_records(void)
                         p[2] -= 8;
                         g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ca6[0], 0); g96 = 159;
                         gfx_wipe_rect((dos_int)x, (dos_int)y, 16, 64, (dos_int)x, (dos_int)(y - 184));
-                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ca6[0]);
+                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y + 8 - 184), (const uint8_t *)g6ca6[0]);
                         board_records[index - 38] = 7;
                         board_records[index + 190] = 0;
                     }

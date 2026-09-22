@@ -123,7 +123,7 @@ void port_debug_install_menu(void)
         .count = 2,
         .text = port_debug_menu_text,
         .callbacks = port_debug_menu_callbacks,
-        .width = 120,
+        .width = 140,
         .x = 220
     };
     menu_b[3] = menu_a[3];

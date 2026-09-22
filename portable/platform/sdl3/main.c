@@ -246,6 +246,7 @@ static void load_config(char *path, size_t n, const char *explicit)
     added |= config_default_int("audio.sound_volume", 100);   /* sound effects (cue stream), percent (0..200) */
     added |= config_default_bool("video.fullscreen", false);  /* borderless fullscreen at start */
     added |= config_default_bool("video.interpolation", true);/* present at host fps with interpolated sprites */
+    added |= config_default_bool("video.integer_scaling", false); /* preserve aspect without integer-only sizing */
     added |= config_default_bool("debug.enabled", false);     /* opt-in portable F4 Debug menu */
     added |= config_default_string("paths.assets", "");       /* AE000.DAT/AE001.DAT directory; "" = auto */
     added |= config_default_string("paths.saves", "");        /* save-slot overlays; "" = asset directory */
@@ -376,6 +377,7 @@ int main(int argc, char **argv)
     int sound_volume = -1;         /* --sound-volume PCT; -1 = config value */
     int fullscreen = -1;           /* --fullscreen / --windowed; -1 = config value */
     int interpolation = -1;        /* --interpolation on|off; -1 = config value */
+    bool integer_scaling;
     bool debug_enabled;
     char asset_dir[1024];
     char config_file[1024];
@@ -429,13 +431,14 @@ int main(int argc, char **argv)
     if (interpolation < 0)
         interpolation = s_deterministic ? 0 :   /* pinned replays present the game's own frames */
                         (config_get_bool("video.interpolation", true) ? 1 : 0);
+    integer_scaling = config_get_bool("video.integer_scaling", false);
     debug_enabled = config_get_bool("debug.enabled", false);
     if (!assets && config_get_string("paths.assets", "")[0])
         assets = config_get_string("paths.assets", "");
     if (!saves && config_get_string("paths.saves", "")[0])
         saves = config_get_string("paths.saves", "");
 
-    if (!sdl_video_init("Empires (portable)")) {
+    if (!sdl_video_init("Empires (portable)", integer_scaling)) {
         sdl_video_shutdown();
         return 1;
     }
@@ -489,6 +492,7 @@ int main(int argc, char **argv)
     s_start_ticks = now_ms();
     uint32_t presented_generation = 0;
     bool last_interpolation = port_settings_interpolation();
+    bool window_needs_present = true;
     bool quit = false;
     while (!quit) {
         SDL_Event ev;
@@ -496,8 +500,16 @@ int main(int argc, char **argv)
             if (ev.type == SDL_EVENT_QUIT)
                 quit = true;
             else if (ev.type == SDL_EVENT_KEY_DOWN && ev.key.key == SDLK_RETURN &&
-                     (ev.key.mod & SDL_KMOD_ALT) && !ev.key.repeat)
-                sdl_video_toggle_fullscreen();      /* host convenience, not a game key */
+                     (ev.key.mod & SDL_KMOD_ALT) && !ev.key.repeat) {
+                sdl_video_toggle_fullscreen();       /* host convenience, not a game key */
+                window_needs_present = true;
+            }
+            else if (ev.type == SDL_EVENT_WINDOW_RESIZED ||
+                     ev.type == SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED ||
+                     ev.type == SDL_EVENT_WINDOW_EXPOSED ||
+                     ev.type == SDL_EVENT_WINDOW_DISPLAY_SCALE_CHANGED ||
+                     ev.type == SDL_EVENT_WINDOW_SHOWN)
+                window_needs_present = true;
             else if (ev.type == SDL_EVENT_KEY_DOWN || ev.type == SDL_EVENT_KEY_UP)
                 input_sdl_handle_event(&ev);
         }
@@ -532,17 +544,20 @@ int main(int argc, char **argv)
                  * game presented meanwhile must still reach the window. */
                 s_last_presented = s_tween_frame;
                 sdl_video_present(s_tween_frame, gfx_dac);
+                window_needs_present = false;
                 sdl_video_pace_frame();             /* no-op when vsync already blocked */
-            } else if (gen != presented_generation || s_last_presented != gfx_vram) {
+            } else if (gen != presented_generation || s_last_presented != gfx_vram || window_needs_present) {
                 presented_generation = gen;
                 s_last_presented = gfx_vram;
                 sdl_video_present(gfx_vram, gfx_dac);
+                window_needs_present = false;
             } else {
                 SDL_Delay(2);
             }
-        } else if (gfx_vram_generation != presented_generation || demo) {
+        } else if (gfx_vram_generation != presented_generation || demo || window_needs_present) {
             presented_generation = gfx_vram_generation;
             sdl_video_present(gfx_vram, gfx_dac);
+            window_needs_present = false;
         } else {
             SDL_Delay(4);
         }

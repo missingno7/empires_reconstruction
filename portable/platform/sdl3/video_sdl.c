@@ -8,7 +8,7 @@ static SDL_Renderer *s_renderer = NULL;
 static SDL_Texture  *s_texture  = NULL;
 static bool           s_quit_requested = false;
 
-bool sdl_video_init(const char *title)
+bool sdl_video_init(const char *title, bool integer_scaling)
 {
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("SDL_Init failed: %s", SDL_GetError());
@@ -29,9 +29,12 @@ bool sdl_video_init(const char *title)
         return false;
     }
 
+    SDL_RendererLogicalPresentation presentation = integer_scaling
+        ? SDL_LOGICAL_PRESENTATION_INTEGER_SCALE
+        : SDL_LOGICAL_PRESENTATION_LETTERBOX;
     if (!SDL_SetRenderLogicalPresentation(s_renderer,
                                            SDL_VIDEO_LOGICAL_W, SDL_VIDEO_LOGICAL_H,
-                                           SDL_LOGICAL_PRESENTATION_INTEGER_SCALE)) {
+                                           presentation)) {
         SDL_Log("SDL_SetRenderLogicalPresentation failed: %s", SDL_GetError());
         return false;
     }

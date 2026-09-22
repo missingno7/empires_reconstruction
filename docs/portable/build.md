@@ -86,7 +86,7 @@ first run, so it is always there to edit:
 {
   "audio":  { "music_volume": 100, "sound_volume": 100 },
   "paths":  { "assets": "", "saves": "" },
-  "video":  { "fullscreen": false, "interpolation": true },
+  "video":  { "fullscreen": false, "interpolation": true, "integer_scaling": false },
   "debug":  { "enabled": false }
 }
 ```
@@ -98,7 +98,9 @@ effects (the cue stream: jumps, the beam, pickups), both in percent
 still toggles); `video.interpolation` presents the ~9.86 Hz game frames
 at the host refresh rate with the player and actor sprites drawn at
 positions interpolated between consecutive frames (see "Frame
-interpolation" in architecture.md); `debug.enabled` opt-in enables the
+interpolation" in architecture.md); `video.integer_scaling` keeps
+nearest-neighbour scaling to integer multiples when true, while false uses
+aspect-preserving letterbox scaling and is the default; `debug.enabled` opt-in enables the
 portable F4 Debug menu with only `Complete Chamber` and `Unlimited Energy`;
 it is disabled by default and Unlimited Energy is never saved;
 `paths.assets` / `paths.saves`

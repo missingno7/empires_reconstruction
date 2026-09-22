@@ -77,7 +77,7 @@ static void test_disabled_then_overlay(void)
           "Debug tab occupies the right-hand top-bar region");
     check(g0d36.records[3].x + g0d36.records[3].label_width + 2 <= 320,
           "Debug tab fits in the 320px top bar");
-    check(320 - (g0d36.records[3].width + 10) == 190,
+    check(320 - (g0d36.records[3].width + 10) == 170,
           "Debug submenu has a calculable on-screen clamp position");
 
     /* Reinitialization to disabled restores the original catalog pointers. */
@@ -119,7 +119,7 @@ static void test_panel_geometry(void)
 {
     static uint8_t fake_font[512];
     struct menu_record debug = {
-        .width = 120,
+        .width = 140,
         .x = 220
     };
     struct dialog q;
@@ -147,7 +147,7 @@ static void test_panel_geometry(void)
         panel_x = 0;
     check(panel_x + dialog_box_w <= 320,
           "Debug submenu outer frame fits inside the logical screen");
-    check(panel_x == 190, "Debug submenu shifts left without moving its top tab");
+    check(panel_x == 170, "Debug submenu shifts left without moving its top tab");
 }
 
 int main(void)

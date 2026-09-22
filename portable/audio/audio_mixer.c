@@ -75,10 +75,37 @@ static float pct_to_gain(int percent)
     return (float)percent / 100.0f;
 }
 
-void audio_mixer_set_music_volume(int percent)   { s_gain_music = pct_to_gain(percent); }
-void audio_mixer_set_effects_volume(int percent) { s_gain_effects = pct_to_gain(percent); }
-int  audio_mixer_music_volume(void)   { return (int)(s_gain_music * 100.0f + 0.5f); }
-int  audio_mixer_effects_volume(void) { return (int)(s_gain_effects * 100.0f + 0.5f); }
+void audio_mixer_set_music_volume(int percent)
+{
+    ensure_mutex();
+    sync_mutex_lock(&s_ring_mutex);
+    s_gain_music = pct_to_gain(percent);
+    sync_mutex_unlock(&s_ring_mutex);
+}
+
+void audio_mixer_set_effects_volume(int percent)
+{
+    ensure_mutex();
+    sync_mutex_lock(&s_ring_mutex);
+    s_gain_effects = pct_to_gain(percent);
+    sync_mutex_unlock(&s_ring_mutex);
+}
+
+int audio_mixer_music_volume(void)
+{
+    float gain;
+    ensure_mutex();
+    sync_mutex_lock(&s_ring_mutex); gain = s_gain_music; sync_mutex_unlock(&s_ring_mutex);
+    return (int)(gain * 100.0f + 0.5f);
+}
+
+int audio_mixer_effects_volume(void)
+{
+    float gain;
+    ensure_mutex();
+    sync_mutex_lock(&s_ring_mutex); gain = s_gain_effects; sync_mutex_unlock(&s_ring_mutex);
+    return (int)(gain * 100.0f + 0.5f);
+}
 
 void audio_mixer_init(int sample_rate)
 {
@@ -213,9 +240,19 @@ static uint64_t peek_next_sample_pos(void)
 void audio_render(int16_t *out, int frames)
 {
     int i = 0;
+    float music_gain;
+    float effects_gain;
 
     if (frames <= 0)
         return;
+
+    /* Snapshot once per callback.  Setters may run on the game/main thread,
+     * but the PCM loop never takes a mutex per sample. */
+    ensure_mutex();
+    sync_mutex_lock(&s_ring_mutex);
+    music_gain = s_gain_music;
+    effects_gain = s_gain_effects;
+    sync_mutex_unlock(&s_ring_mutex);
 
     while (i < frames) {
         uint64_t cur = s_cursor + (uint64_t)i;
@@ -242,8 +279,8 @@ void audio_render(int16_t *out, int frames)
             float opl_sample = opl_backend_generate();
             float spk_sample = speaker_synth_generate(&s_speaker, s_sample_rate);
 
-            float spk_gain = s_gain_speaker * (s_speaker_origin == AUDIO_ORIGIN_EFFECTS ? s_gain_effects : s_gain_music);
-            float mixed = opl_sample * s_gain_opl * s_gain_music + spk_sample * spk_gain;
+            float spk_gain = s_gain_speaker * (s_speaker_origin == AUDIO_ORIGIN_EFFECTS ? effects_gain : music_gain);
+            float mixed = opl_sample * s_gain_opl * music_gain + spk_sample * spk_gain;
             if (mixed > 1.0f)
                 mixed = 1.0f;
             else if (mixed < -1.0f)

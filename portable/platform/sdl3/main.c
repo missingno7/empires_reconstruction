@@ -44,6 +44,8 @@
 #include "audio.h"
 #include "config.h"
 #include "gfx_tween.h"
+#include "port_options.h"
+#include "port_settings.h"
 
 static Uint64 s_selftest_ms = 300;
 static bool s_deterministic;   /* --deterministic: manual ticks, virtual time for scripts/dumps */
@@ -334,7 +336,9 @@ static dos_ulong s_tween_prev_deadline;
 static unsigned s_tween_frames, s_tween_late, s_tween_remaining_sum;
 static void tween_frame_observer(dos_ulong now_ticks, dos_ulong deadline_ticks)
 {
-    double now = (double)SDL_GetTicksNS() / 1e6;
+    /* This callback runs on the game thread; use the portable monotonic
+     * clock rather than touching SDL from that thread. */
+    double now = (double)sync_now_ns() / 1e6;
     dos_ulong period = deadline_ticks - s_tween_prev_deadline;      /* frame length in ticks */
     if (s_tween_prev_deadline == 0 || period == 0 || period > 120)   /* first frame, or not a frame loop */
         period = deadline_ticks > now_ticks ? deadline_ticks - now_ticks : 0;
@@ -434,13 +438,21 @@ int main(int argc, char **argv)
     if (fullscreen)
         sdl_video_set_fullscreen(true);
     audio_sdl_init(); /* logs and continues without audio on failure -- see audio_sdl.h */
-    audio_mixer_set_music_volume(music_volume);
-    audio_mixer_set_effects_volume(sound_volume);
-    if (interpolation && !demo) {
+    if (!port_settings_init(music_volume, sound_volume, interpolation != 0, config_file)) {
+        fprintf(stderr, "cannot initialize portable settings for %s\n", config_file);
+        audio_sdl_shutdown();
+        sdl_video_shutdown();
+        return 1;
+    }
+    port_options_install();
+    if (!demo && !s_deterministic) {
+        /* Allocate/capture once.  The menu toggles only the presenter-side
+         * preference, so it never resets structures used by the game thread. */
         gfx_tween_set_enabled(true);
         timer_set_frame_observer(tween_frame_observer);
-        sdl_video_set_vsync(true);
     }
+    if (!demo && !s_deterministic)
+        sdl_video_set_vsync(port_settings_interpolation());
 
     startup_set_args(argc, argv);
     choose_asset_dir(asset_dir, sizeof asset_dir, assets);
@@ -470,6 +482,7 @@ int main(int argc, char **argv)
 
     s_start_ticks = now_ms();
     uint32_t presented_generation = 0;
+    bool last_interpolation = port_settings_interpolation();
     bool quit = false;
     while (!quit) {
         SDL_Event ev;
@@ -484,7 +497,12 @@ int main(int argc, char **argv)
         }
         if (!s_deterministic)
             bringup_step();
-        if (gfx_tween_enabled()) {
+        bool interpolation_now = !s_deterministic && !demo && port_settings_interpolation();
+        if (interpolation_now != last_interpolation) {
+            last_interpolation = interpolation_now;
+            sdl_video_set_vsync(interpolation_now);
+        }
+        if (interpolation_now) {
             /* Host-rate presentation: a composed frame every refresh (vsync
              * paces the loop), or the live VRAM when there is no frame to
              * interpolate. */

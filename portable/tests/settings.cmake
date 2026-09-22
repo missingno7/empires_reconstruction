@@ -1,0 +1,2 @@
+empires_add_test(test_port_settings test_port_settings.c)
+empires_add_test(test_port_options test_port_options.c)

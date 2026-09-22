@@ -139,6 +139,30 @@ static void test_event_scheduling(void)
     check(t, audio_mixer_events_applied_count() == 3, "tick-20 event not applied at its scheduled sample");
 }
 
+static void test_volume_controls(void)
+{
+    const char *t = "volume_controls";
+    int16_t buf[1024] = {0};
+
+    audio_mixer_init(TEST_SAMPLE_RATE);
+    audio_mixer_set_music_volume(-1);
+    audio_mixer_set_effects_volume(999);
+    check(t, audio_mixer_music_volume() == 0, "music setter clamps to zero");
+    check(t, audio_mixer_effects_volume() == 200, "effects setter clamps to 200");
+
+    /* Render through the callback boundary as the SDL audio thread does;
+     * the locked callback snapshot must preserve the normal event timeline. */
+    audio_mixer_push_event(AUDIO_EVENT_NIBBLE_WRITE, 0, 1, 0);
+    audio_render(buf, (int)audio_mixer_ticks_to_samples(AUDIO_LATENCY_TICKS) + 8);
+    check(t, audio_mixer_events_applied_count() == 1,
+          "volume plumbing does not change event rendering semantics");
+    audio_mixer_set_music_volume(73);
+    audio_mixer_set_effects_volume(187);
+    audio_render(buf, 32);
+    check(t, audio_mixer_music_volume() == 73 && audio_mixer_effects_volume() == 187,
+          "setter/getter path remains usable during rendering");
+}
+
 /* ---------------------------------------------------------------------
  * (c) OPL backend: configure a simple note on channel 0 and check the
  * rendered buffer is non-silent while held, then key it off and check it
@@ -231,6 +255,7 @@ int main(void)
 {
     test_speaker_synth();
     test_event_scheduling();
+    test_volume_controls();
     test_opl_backend();
 
     if (g_failures) {

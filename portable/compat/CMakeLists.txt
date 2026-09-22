@@ -8,4 +8,4 @@ target_sources(empires_core PRIVATE cclib.c dosio.c)
 
 # config.c: empires.json host configuration store (portable/include/config.h);
 # platform-independent so tests and future in-game settings share it.
-target_sources(empires_core PRIVATE config.c)
+target_sources(empires_core PRIVATE config.c port_settings.c)

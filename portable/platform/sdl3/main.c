@@ -442,6 +442,9 @@ int main(int argc, char **argv)
         sdl_video_shutdown();
         return 1;
     }
+    /* Legacy menu transitions draw directly into VRAM in a tight loop.  Let
+     * the game thread wait for the SDL presenter on those explicit steps. */
+    gfx_present_sync_set_enabled(!demo);
     if (fullscreen)
         sdl_video_set_fullscreen(true);
     audio_sdl_init(); /* logs and continues without audio on failure -- see audio_sdl.h */
@@ -529,7 +532,7 @@ int main(int argc, char **argv)
             last_interpolation = interpolation_now;
             sdl_video_set_vsync(interpolation_now);
         }
-        if (interpolation_now) {
+        if (interpolation_now && !gfx_present_sync_requested()) {
             /* Host-rate presentation: a composed frame every refresh (vsync
              * paces the loop), or the live VRAM when there is no frame to
              * interpolate. */
@@ -551,6 +554,9 @@ int main(int argc, char **argv)
                 s_last_presented = gfx_vram;
                 sdl_video_present(gfx_vram, gfx_dac);
                 window_needs_present = false;
+                if (gfx_present_sync_requested())
+                    sdl_video_pace_frame();
+                gfx_present_sync_ack(gen);
             } else {
                 SDL_Delay(2);
             }
@@ -558,6 +564,9 @@ int main(int argc, char **argv)
             presented_generation = gfx_vram_generation;
             sdl_video_present(gfx_vram, gfx_dac);
             window_needs_present = false;
+            if (gfx_present_sync_requested())
+                sdl_video_pace_frame();
+            gfx_present_sync_ack(presented_generation);
         } else {
             SDL_Delay(4);
         }
@@ -602,6 +611,7 @@ int main(int argc, char **argv)
             _Exit(0);
         }
     }
+    gfx_present_sync_set_enabled(false);
     gfx_framebuffer_shutdown();
     audio_sdl_shutdown();
     sdl_video_shutdown();

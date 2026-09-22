@@ -9,6 +9,8 @@
 #ifndef PORTABLE_GFX_H
 #define PORTABLE_GFX_H
 
+#include <stdbool.h>
+
 #include "dos_types.h"
 
 #define GFX_ROW_BYTES       0xA0    /* packed-4bpp driver row stride (display selectors 1/3/4) */
@@ -45,6 +47,13 @@ void gfx_framebuffer_init(void);
 void gfx_framebuffer_shutdown(void);
 uint8_t *gfx_framebuffer(void);       /* row 0; rows are contiguous, gfx_row_bytes() apart */
 dos_int gfx_row_bytes(void);          /* current row stride, set by the last gfx_framebuffer_init() */
+
+/* Host-present synchronization for event-driven legacy animations. */
+void gfx_present_sync_set_enabled(bool enabled);
+void gfx_present_sync_begin(void);
+void gfx_present_sync_wait(void);
+bool gfx_present_sync_requested(void);
+void gfx_present_sync_ack(uint32_t generation);
 
 /* ---- primitives, 1:1 with include/VIDEO.H ---- */
 void gfx_box(dos_int x, dos_int y, dos_int w, dos_int h);                       /* present rect to VRAM */

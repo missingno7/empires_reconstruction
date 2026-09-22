@@ -184,12 +184,16 @@ dos_int player_select_close_wipe(void)
     dos_int i;
 
     for (i = 0x98; i > 0; i--) {
+        gfx_present_sync_begin();
         gfx_wipe_rect(6, 13, 0x134, i, 6, 12);
         gfx_wipe_rect(6, i + 0xd4, 0x134, 1, 6, i + 12);
         gfx_box(6, 12, 0x134, i + 1);
+        gfx_present_sync_wait();
     }
+    gfx_present_sync_begin();
     gfx_wipe_rect(6, 0xd4, 0x134, 1, 6, 12);
     gfx_box(6, 12, 0x134, 1);
+    gfx_present_sync_wait();
     return 0;
 }
 
@@ -204,6 +208,8 @@ dos_int player_select_run(dos_int a)
     player_select_load_flags();
     resource_record_cache_reset(49);
     player_select_mark(a);
+    if (gc5b0 == 4)
+        gfx_present_sync_begin();
     player_select_draw_screen();
     menu_list_source_set_players();
     snd_flag2 = 1;
@@ -222,6 +228,7 @@ dos_int player_select_run(dos_int a)
         player_select_choose_slot();
     } else {
         hud_panel_clear();
+        gfx_present_sync_wait();
         player_select_close_wipe();
         player_select_index = 4;
     }

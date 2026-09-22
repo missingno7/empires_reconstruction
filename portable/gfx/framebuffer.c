@@ -9,7 +9,9 @@
  */
 #include "gfx.h"
 #include "game_data.h"   /* g94..g9a, gbc, g9c, gbe, gde, gfe: generated DATA */
+#include "sync.h"
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -65,6 +67,87 @@ dos_int gfx_row_bytes(void)
  * 4 bytes/record, generous headroom for a full-screen worth of dirty rows. */
 #define RECT_QUEUE_CAPACITY (4u * 1024u)
 static uint8_t s_rect_queue[RECT_QUEUE_CAPACITY];
+
+/* DOS drew directly into visible VRAM. SDL uploads that VRAM from the main
+ * thread, so a tight legacy animation loop otherwise overwrites all
+ * intermediate frames before the presenter can run. The front end enables
+ * this barrier; tests and non-SDL callers leave it disabled. */
+static sync_mutex s_present_sync_mutex;
+static sync_cond s_present_sync_cond;
+static bool s_present_sync_initialized;
+static bool s_present_sync_enabled;
+static bool s_present_sync_requested;
+static uint32_t s_present_sync_presented;
+
+static void present_sync_init(void)
+{
+    if (s_present_sync_initialized)
+        return;
+    sync_mutex_init(&s_present_sync_mutex);
+    sync_cond_init(&s_present_sync_cond);
+    s_present_sync_initialized = true;
+}
+
+void gfx_present_sync_set_enabled(bool enabled)
+{
+    present_sync_init();
+    sync_mutex_lock(&s_present_sync_mutex);
+    s_present_sync_enabled = enabled;
+    s_present_sync_requested = false;
+    sync_cond_broadcast(&s_present_sync_cond);
+    sync_mutex_unlock(&s_present_sync_mutex);
+}
+
+void gfx_present_sync_begin(void)
+{
+    if (!s_present_sync_initialized)
+        return;
+    sync_mutex_lock(&s_present_sync_mutex);
+    if (s_present_sync_enabled)
+        s_present_sync_requested = true;
+    sync_mutex_unlock(&s_present_sync_mutex);
+}
+
+void gfx_present_sync_wait(void)
+{
+    uint32_t target;
+
+    if (!s_present_sync_initialized)
+        return;
+    sync_mutex_lock(&s_present_sync_mutex);
+    if (!s_present_sync_enabled || !s_present_sync_requested) {
+        sync_mutex_unlock(&s_present_sync_mutex);
+        return;
+    }
+    target = gfx_vram_generation;
+    while (s_present_sync_enabled && s_present_sync_presented < target)
+        sync_cond_wait(&s_present_sync_cond, &s_present_sync_mutex);
+    s_present_sync_requested = false;
+    sync_mutex_unlock(&s_present_sync_mutex);
+}
+
+bool gfx_present_sync_requested(void)
+{
+    bool requested;
+
+    if (!s_present_sync_initialized)
+        return false;
+    sync_mutex_lock(&s_present_sync_mutex);
+    requested = s_present_sync_enabled && s_present_sync_requested;
+    sync_mutex_unlock(&s_present_sync_mutex);
+    return requested;
+}
+
+void gfx_present_sync_ack(uint32_t generation)
+{
+    if (!s_present_sync_initialized)
+        return;
+    sync_mutex_lock(&s_present_sync_mutex);
+    if (generation > s_present_sync_presented)
+        s_present_sync_presented = generation;
+    sync_cond_broadcast(&s_present_sync_cond);
+    sync_mutex_unlock(&s_present_sync_mutex);
+}
 
 /* ---- framebuffer allocation (src/VIDEO.C F_0281 video_alloc_framebuffer:
  * w = 0x140 for display_mode 5, 0x50 for display_mode 2, 0xA0 otherwise;

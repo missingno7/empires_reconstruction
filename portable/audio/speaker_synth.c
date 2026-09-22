@@ -1,6 +1,8 @@
 /* speaker_synth.c -- see speaker_synth.h. */
 #include "speaker_synth.h"
 
+#include <math.h>
+
 #define SPEAKER_PIT_HZ 1193182.0
 
 float speaker_synth_generate(PcSpeaker *spk, int sample_rate)
@@ -14,9 +16,7 @@ float speaker_synth_generate(PcSpeaker *spk, int sample_rate)
     double step = freq / (double)sample_rate;
     float sample = (spk->phase < 0.5) ? 1.0f : -1.0f;
 
-    spk->phase += step;
-    if (spk->phase >= 1.0)
-        spk->phase -= (double)(uint64_t)spk->phase; /* fmod-free wrap, step is always < a few thousand */
+    spk->phase = fmod(spk->phase + step, 1.0);
 
     return sample;
 }

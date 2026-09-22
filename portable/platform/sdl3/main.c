@@ -34,6 +34,7 @@
 #include "sync.h"
 #include "input_sdl.h"
 #include "video_sdl.h"
+#include "audio_sdl.h"
 
 static Uint64 s_selftest_ms = 300;
 static bool s_deterministic;   /* --deterministic: manual ticks, virtual time for scripts/dumps */
@@ -299,6 +300,7 @@ int main(int argc, char **argv)
         sdl_video_shutdown();
         return 1;
     }
+    audio_sdl_init(); /* logs and continues without audio on failure -- see audio_sdl.h */
 
     startup_set_args(argc, argv);
     choose_asset_dir(asset_dir, sizeof asset_dir, assets);
@@ -320,6 +322,7 @@ int main(int argc, char **argv)
     } else {
         if (!sync_thread_start(&game_thread, game_thread_fn, NULL)) {
             fprintf(stderr, "cannot start the game thread\n");
+            audio_sdl_shutdown();
             sdl_video_shutdown();
             return 1;
         }
@@ -362,11 +365,13 @@ int main(int argc, char **argv)
              * closed window ends the process outright, like a DOS reboot
              * would have.  Save slots are already on disk at that point. */
             fflush(stdout);
+            audio_sdl_shutdown();
             sdl_video_shutdown();
             _Exit(0);
         }
     }
     gfx_framebuffer_shutdown();
+    audio_sdl_shutdown();
     sdl_video_shutdown();
     return 0;
 }

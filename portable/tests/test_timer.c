@@ -89,6 +89,9 @@ static void test_sign_extension_negative_n(void)
  * historical quirk, preserved literally rather than fixed. */
 static void test_wraparound_near_0xffffffff(void)
 {
+    /* Pure compare semantics: in manual mode a polled deadline also
+     * advances one tick (deterministic replays), so check with manual off. */
+    timer_service_set_manual(false);
     timer_ticks = 0xFFFFFFF0u;
     timer_deadline_arm(0x20);
     CHECK(gc0d0 == 0x10u); /* 0xFFFFFFF0 + 0x20 wraps past 0 */
@@ -101,6 +104,7 @@ static void test_wraparound_near_0xffffffff(void)
     CHECK(timer_deadline_reached() == 0); /* genuinely not caught up to gc0d0=0x10 yet */
     timer_ticks = 0x00000010u;
     CHECK(timer_deadline_reached() == 1); /* genuinely caught up */
+    timer_service_set_manual(true);
 }
 
 int main(void)

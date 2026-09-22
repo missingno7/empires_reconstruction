@@ -26,6 +26,9 @@
 #include "game.h"
 #include "sound_driver_internal.h"
 #include "trace.h" /* a defensive iteration cap tripping is worth a trace line -- see the two "GUARD HIT" call sites below */
+#include "audio.h" /* Milestone F: the four sound_backend_* hooks below also
+                     * forward to the PCM mixer -- see their bodies and
+                     * audio.h's header comment for the timeline scheme. */
 
 /* ===========================================================================
  * Command-stream memory (sound.h) and event log
@@ -116,26 +119,44 @@ const struct sound_event *sound_event_log_get(size_t index)
     return &g_event_log[(base + index) % SOUND_EVENT_LOG_CAPACITY];
 }
 
-/* ---- the four backend hooks (sound.h) -- default impl: log the event ---- */
+/* ---- the four backend hooks (sound.h) ----
+ *
+ * Each hook does two things: (1) the original default impl -- append to
+ * the in-memory event log portable/tests/test_sound.c inspects (tick =
+ * g_tick, this file's own "calls to sound_tick_entry() so far" counter);
+ * (2) Milestone F addition -- forward the same event to the PCM mixer
+ * (portable/audio/audio_mixer.c) via audio_mixer_push_event(), tagged
+ * with the CURRENT timer_ticks (portable/game/timer.c increments
+ * timer_ticks before it ever calls sound_tick_entry(), so this is exactly
+ * the tick this hardware write belongs to -- see audio.h's header
+ * comment for the full timeline scheme). AUDIO_EVENT_* (audio.h) and
+ * enum sound_event_kind (sound.h) are numerically identical by contract
+ * (both 0=OPL write, 1=PIT divisor, 2=speaker gate, 3=nibble write), so
+ * the kind value is passed straight through. */
 
 void sound_backend_opl_write(uint8_t reg, uint8_t val)
 {
     event_log_push(SOUND_EVENT_OPL_WRITE, reg, val);
+    audio_mixer_push_event(SOUND_EVENT_OPL_WRITE, (uint32_t)timer_ticks, reg, val);
 }
 
 void sound_backend_pit_divisor(uint16_t divisor)
 {
     event_log_push(SOUND_EVENT_PIT_DIVISOR, divisor, 0);
+    audio_mixer_push_event(SOUND_EVENT_PIT_DIVISOR, (uint32_t)timer_ticks, divisor, 0);
 }
 
 void sound_backend_speaker_gate(int enabled, int tandy_mode)
 {
     event_log_push(SOUND_EVENT_SPEAKER_GATE, (uint16_t)(enabled != 0), (uint16_t)(tandy_mode != 0));
+    audio_mixer_push_event(SOUND_EVENT_SPEAKER_GATE, (uint32_t)timer_ticks,
+                            (uint16_t)(enabled != 0), (uint16_t)(tandy_mode != 0));
 }
 
 void sound_backend_nibble_port_write(uint8_t value)
 {
     event_log_push(SOUND_EVENT_NIBBLE_WRITE, value, 0);
+    audio_mixer_push_event(SOUND_EVENT_NIBBLE_WRITE, (uint32_t)timer_ticks, value, 0);
 }
 
 /* opl_write() (sound.h): the new backend primitive src/OPLREG.C's ported

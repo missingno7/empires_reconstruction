@@ -5,6 +5,9 @@ add_executable(empires
   video_sdl.c
   video_sdl.h
 
+  audio_sdl.c
+  audio_sdl.h
+
   input_sdl.c
   input_sdl.h
   crash_win32.c)

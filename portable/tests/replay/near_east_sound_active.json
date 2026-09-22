@@ -1,0 +1,25 @@
+{
+  "description": "Same intro -> sign-in -> Near East chamber 0 walk/jump path as intro_to_level.json, but with EMPIRES_NOSOUND unset (no_sound: false) so the 236.7 Hz timer thread's sound state machine (Nuked OPL3 + PC speaker synthesis) runs live instead of being bypassed. Confirms no hang/crash with sound active and reports the 'sound events logged' trace line at exit (opl/pit/gate/nibble counters) for comparison against a NOSOUND run of the same script.",
+  "virtual_ms": 60000,
+  "dump_interval_ms": 5000,
+  "no_sound": false,
+  "script": "*2500:1c:0d,@slot_menu_run,3000:48,1500:1c:0d,@player_select_run,3000:1c:0d,@level_driver_run,3000:1c:0d,3000:1c:0d,+1000:4d:0:5000,+500:39:20:200,+1000:4d:0:5000",
+  "expected": {
+    "frames": [
+      "811fb6952dfb1ad23530e2e599d487d1fc1992240af180a96952284a885b4e78",
+      "cab7e480bf54e48197a07cce381d2d963313e343a328d86a76eee9fef34388b9",
+      "79afcb62d4bb45423dd1b1f4fae705befdad0614acf630db65bc54b5b9180cfe",
+      "a1121e7f1dffdfdfb1ff6cce626d3c14e7b65eebfd7630a0afe3c8dfb3dd8778",
+      "3eefff1ff84f060ab4f33688616a7e2e1d80bc5da18bf6e4ca01b70f681dfa7c",
+      "c3d98b7e1d3b4adfd013a319310a3076993bdefcf5925cd901c99653938ebcd9",
+      "cbb0ec30443a8d4f2e6ef44ec99da6a1de9e0bf01c64cf1859c92567a1446a09",
+      "8ad464343a55c0cac60efd8f429b3cf96053c5761ca4748f778c9664fb8aec97",
+      "e4e4bead12b2840c5b9a6a41f7328f760d983f816ddeb5a54509f0724ef3cbc0",
+      "9c529b7ff2b0abb0eaeaf765eaf2ecc673290ea5716546bfab2df80384ec834c",
+      "fdd6e0335810e82fa1066e0f3bf6955110cd3be4654e7f10f67c36cc597c873a",
+      "fdd6e0335810e82fa1066e0f3bf6955110cd3be4654e7f10f67c36cc597c873a",
+      "fdd6e0335810e82fa1066e0f3bf6955110cd3be4654e7f10f67c36cc597c873a"
+    ],
+    "final": "fdd6e0335810e82fa1066e0f3bf6955110cd3be4654e7f10f67c36cc597c873a"
+  }
+}

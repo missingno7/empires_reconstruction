@@ -56,13 +56,14 @@ static volatile bool s_game_finished = false;
  * for at_ms, i.e. it is idle waiting for the user. */
 typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; Uint64 hold_ms; char marker[32]; int repeat; int timed; } script_key;
 static uint8_t s_held_scan; static Uint64 s_release_at;
-static script_key s_script[64];
+#define SCRIPT_MAX 1024
+static script_key s_script[SCRIPT_MAX];
 static int s_script_n, s_script_next;
 
 
 static void parse_script(const char *spec)
 {
-    while (*spec && s_script_n < 64) {
+    while (*spec && s_script_n < SCRIPT_MAX) {
         char *end;
         script_key k;
         memset(&k, 0, sizeof k);
@@ -94,6 +95,33 @@ static void parse_script(const char *spec)
         s_script[s_script_n++] = k;
         spec = (*end == ',') ? end + 1 : end;
     }
+    if (*spec)
+        fprintf(stderr, "script: %d entries parsed, remaining text ignored: %.40s\n", s_script_n, spec);
+}
+
+/* --script-file FILE: the same syntax, whitespace/newlines allowed between
+ * entries, '#' comments to end of line. */
+static void parse_script_file(const char *path)
+{
+    FILE *f = fopen(path, "rb");
+    char *text, *out;
+    long n;
+    if (!f) { fprintf(stderr, "script: cannot open %s\n", path); return; }
+    fseek(f, 0, SEEK_END); n = ftell(f); fseek(f, 0, SEEK_SET);
+    text = (char *)malloc((size_t)n + 1);
+    if (!text) { fclose(f); return; }
+    n = (long)fread(text, 1, (size_t)n, f);
+    fclose(f);
+    text[n] = 0;
+    out = text;
+    for (char *in = text; *in; in++) {          /* strip comments and whitespace */
+        if (*in == '#') { while (*in && *in != 0x0a) in++; if (!*in) break; continue; }
+        if (*in == ' ' || *in == 0x09 || *in == 0x0d || *in == 0x0a) continue;
+        *out++ = *in;
+    }
+    *out = 0;
+    parse_script(text);
+    free(text);
 }
 
 static void game_thread_fn(void *arg)
@@ -292,6 +320,8 @@ int main(int argc, char **argv)
             saves = argv[++i];
         else if (strcmp(argv[i], "--script") == 0 && i + 1 < argc)
             parse_script(argv[++i]);
+        else if (strcmp(argv[i], "--script-file") == 0 && i + 1 < argc)
+            parse_script_file(argv[++i]);
         else if (strcmp(argv[i], "--dump-interval") == 0 && i + 1 < argc)
             s_dump_interval = (Uint64)strtoull(argv[++i], NULL, 10);
     }

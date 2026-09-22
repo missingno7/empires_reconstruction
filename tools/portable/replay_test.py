@@ -24,14 +24,22 @@ def main():
         env.pop('EMPIRES_TRACE', None)
         env['EMPIRES_NOSOUND'] = '1' if m.get('no_sound', True) else ''
         if not m.get('no_sound', True): env.pop('EMPIRES_NOSOUND')
-        cmd = [exe, '--deterministic', '--selftest-ms', str(m['virtual_ms']), '--script', m['script'],
-               '--assets', assets, '--saves', work, '--dump-vram', dump, '--dump-interval', str(m['dump_interval_ms'])]
-        r = subprocess.run(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=m.get('timeout_s', 300))
-        if r.returncode != 0:
-            print('replay: executable failed', r.returncode, r.stderr.decode(errors='replace')[-2000:]); return 1
-        frames = sorted(f for f in os.listdir(work) if f.startswith('frame.ppm.'))
-        hashes = [hashlib.sha256(open(os.path.join(work, f), 'rb').read()).hexdigest() for f in frames]
-        final = hashlib.sha256(open(dump, 'rb').read()).hexdigest()
+        # A manifest is one run, or a chain of runs sharing the saves directory
+        # ("runs": [{script, virtual_ms, dump_interval_ms}, ...]) for save/resume flows.
+        runs = m.get('runs') or [m]
+        hashes, final = [], None
+        for ri, run in enumerate(runs):
+            for f in os.listdir(work):
+                if f.startswith('frame.ppm'):
+                    os.remove(os.path.join(work, f))
+            cmd = [exe, '--deterministic', '--selftest-ms', str(run['virtual_ms']), '--script', run['script'],
+                   '--assets', assets, '--saves', work, '--dump-vram', dump, '--dump-interval', str(run['dump_interval_ms'])]
+            r = subprocess.run(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=m.get('timeout_s', 300))
+            if r.returncode != 0:
+                print('replay: executable failed (run %d)' % ri, r.returncode, r.stderr.decode(errors='replace')[-2000:]); return 1
+            frames = sorted(f for f in os.listdir(work) if f.startswith('frame.ppm.'))
+            hashes += [hashlib.sha256(open(os.path.join(work, f), 'rb').read()).hexdigest() for f in frames]
+            final = hashlib.sha256(open(dump, 'rb').read()).hexdigest()
         if update:
             m['expected'] = {'frames': hashes, 'final': final}
             json.dump(m, open(manifest_path, 'w'), indent=2)

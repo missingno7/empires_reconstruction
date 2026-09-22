@@ -35,6 +35,9 @@ extern void sound_tick_entry(void);
 static bool s_manual = false;
 
 static int s_sound_service_enabled = -1;
+static timer_tick_observer_fn s_observer;
+
+void timer_set_tick_observer(timer_tick_observer_fn fn) { s_observer = fn; }
 
 void timer_service_tick(void)
 {
@@ -43,6 +46,15 @@ void timer_service_tick(void)
         s_sound_service_enabled = getenv("EMPIRES_NOSOUND") == NULL;   /* bring-up switch */
     if (s_sound_service_enabled && !sound_request_count && (sound_enabled || music_enabled))
         sound_tick_entry();
+    if (s_observer)
+        s_observer();
+}
+
+dos_ulong timer_poll(void)
+{
+    if (s_manual)
+        timer_service_tick();
+    return timer_ticks;
 }
 
 /* F_6C26: t = n + timer_ticks.  n is a signed 16-bit int (dos_int); the
@@ -89,6 +101,10 @@ void timer_deadline_wait(void)
  * historical quirk, not a bug to fix here. */
 dos_int timer_deadline_reached(void)
 {
+    /* Manual (deterministic replay) mode: a polled deadline costs one tick,
+     * so poll loops such as intro_wait_key elapse in virtual time. */
+    if (s_manual)
+        timer_service_tick();
     if (timer_ticks < gc0d0)
         return 0;
     return 1;

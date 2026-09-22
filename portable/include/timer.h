@@ -29,6 +29,11 @@ extern dos_ulong gc0d0;                  /* DS:C0D0 armed deadline */
  * tests).  Runs sound_tick_entry() under the historical gate. */
 void timer_service_tick(void);
 
+/* Read the tick counter at a busy-poll site (a loop that spins on
+ * timer_ticks without calling a wait helper).  Real-time mode: the plain
+ * value.  Manual mode: also advances one tick so virtual time flows. */
+dos_ulong timer_poll(void);
+
 /* src/TIMER.C helpers, semantics unchanged (n is a signed 16-bit int that is
  * sign-extended before the unsigned 32-bit add, exactly like `cwd`). */
 void    timer_wait_ticks(dos_int n);
@@ -49,6 +54,11 @@ void timer_platform_stop(void);
 /* Block the calling (game) thread until timer_ticks has changed, or return
  * immediately in manual mode.  Used by the wait helpers instead of a hot spin. */
 void timer_platform_wait_tick(void);
+/* Optional observer invoked after every tick (on the ticking thread):
+ * deterministic replays hook their scripted input / frame dumps here. */
+typedef void (*timer_tick_observer_fn)(void);
+void timer_set_tick_observer(timer_tick_observer_fn fn);
+
 /* Manual mode: no thread; tests advance time with timer_service_tick(). */
 void timer_service_set_manual(bool manual);
 bool timer_service_is_manual(void);

@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "sync.h"
+#include "timer.h"
 
 /* ---- DGROUP state: key_up_held/gb6a/key_up_left_held/key_up_right_held/
  * key_up_released/keyboard_state (DS:0B68..0B76) and b856 (DS:0856) are
@@ -147,6 +148,15 @@ void input_platform_wait_key(void)
         input_empty_reads++;
     input_blocked = 1;
     while (s_fifo_count == 0) {
+        if (timer_service_is_manual()) {
+            /* Deterministic replay: the historical INT 16h wait let the
+             * timer keep running; advance virtual time (and let the tick
+             * observer inject scripted keys) instead of sleeping. */
+            sync_mutex_unlock(&s_fifo_mutex);
+            timer_service_tick();
+            sync_mutex_lock(&s_fifo_mutex);
+            continue;
+        }
         sync_cond_wait(&s_fifo_cond, &s_fifo_mutex);
     }
     input_blocked = 0;

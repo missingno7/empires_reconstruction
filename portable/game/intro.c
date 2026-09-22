@@ -112,7 +112,7 @@ void intro_animate_step(struct E *ev, dos_int step, dos_char **q, dos_int *idx,
     dos_int oh;                             /* bp-02 */
     dos_int s, x;                           /* si, di */
 
-    if (*when > timer_ticks) return;
+    if (*when > timer_poll()) return;   /* busy-poll site: see timer_poll() */
     s = (*idx)++;
     cmd = ev[s].f0;
     x = ev[s].f2 + dx0;

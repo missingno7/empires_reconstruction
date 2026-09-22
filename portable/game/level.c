@@ -380,7 +380,7 @@ walk:
             gbc = 1; goto frame_end;
         } else gfx_copy_rect(cursor_x, cursor_y, (const uint8_t *)(resource_stripe_table + g72e * 674), cursor_facing_left);
         if (hit == 13) {
-            if (timer_ticks > deadline) {
+            if (timer_poll() > deadline) {   /* busy-poll site: see timer_poll() */
                 g730 = actor_state_table[13].flag = 0;
                 if (--remaining < 0) remaining = 0;
                 if (!remaining && !slot_is_new_game()) { rect_queue_flush(); resource_record_cache_reset(69); goto frame_end; }

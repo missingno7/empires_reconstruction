@@ -1,0 +1,23 @@
+{
+  "description": "Intro (Enter through the pages) -> sign-in (last player) -> map (Near East) -> level: dismiss tutorials, walk right, change tool, walk right.",
+  "virtual_ms": 100000,
+  "dump_interval_ms": 10000,
+  "no_sound": true,
+  "script": "*2500:1c:0d,@slot_menu_run,3000:48,1500:1c:0d,@player_select_run,3000:1c:0d,@level_driver_run,3000:1c:0d,3000:1c:0d,3000:1c:0d,3000:1c:0d,+2000:4d:0:3000,+3500:39:20,+1000:4d:0:2000",
+  "expected": {
+    "frames": [
+      "811fb6952dfb1ad23530e2e599d487d1fc1992240af180a96952284a885b4e78",
+      "79afcb62d4bb45423dd1b1f4fae705befdad0614acf630db65bc54b5b9180cfe",
+      "3eefff1ff84f060ab4f33688616a7e2e1d80bc5da18bf6e4ca01b70f681dfa7c",
+      "cbb0ec30443a8d4f2e6ef44ec99da6a1de9e0bf01c64cf1859c92567a1446a09",
+      "e4e4bead12b2840c5b9a6a41f7328f760d983f816ddeb5a54509f0724ef3cbc0",
+      "821d5c186d384ff9e6877e116478892c73d873d90b040d4c645355c878fadf2a",
+      "3d20650506e3dc7cf97b92b164d801974341063eac9f415d4d127b67c3625eba",
+      "ce10605434aac71e830566217abe095fff4507a253b984a9679f27930e0015cf",
+      "6bc852687e32d4e358c1a3e7c2c9e52087202932323d809755c0dfa1d6680250",
+      "6bc852687e32d4e358c1a3e7c2c9e52087202932323d809755c0dfa1d6680250",
+      "6bc852687e32d4e358c1a3e7c2c9e52087202932323d809755c0dfa1d6680250"
+    ],
+    "final": "6bc852687e32d4e358c1a3e7c2c9e52087202932323d809755c0dfa1d6680250"
+  }
+}

@@ -187,30 +187,41 @@ interpolated, without touching game logic, its tick ratio or any pixel
 the game produces:
 
 - Capture (game thread): game code sets `gfx_tween_tag` around the
-  player draw (`turn_loop_run`, `level_run_loop`) and the actor-record
-  draws (`sprite_script_frame_driver`, `board_actors_draw`) -- plain
-  stores, no behavioural effect.  The VGA driver's `vga_copy_rect` /
-  `vga_vline` record a tagged blit (arguments, clip words, a copy of the
-  bitmap, the pixels it is about to cover) and then draw exactly as
-  before.
+  player draw (`turn_loop_run`, `level_run_loop`), the actor-record draws
+  (`sprite_script_frame_driver`, `board_actors_draw`), the intro's
+  event-driven sprite (`intro_animate_step`) and the flashlight trail
+  pixels (`board_raycast_step`, tagged by age) -- plain stores, no
+  behavioural effect.  The VGA driver's `vga_copy_rect` / `vga_vline` /
+  `vga_set_pixel` record a tagged draw into the visible rows (arguments,
+  clip words, a copy of the bitmap, the pixels it is about to cover) and
+  then draw exactly as before.
 - Publish (game thread): `timer_deadline_wait()` reports the frame
-  boundary through `timer_set_frame_observer`; the front end snapshots
-  VRAM, the op list and the frame period (deadline minus the previous
-  deadline, i.e. the game's own 24 ticks) as frame n.
-- Compose (presenter thread, every refresh): start from frame n's VRAM,
-  put back the covered pixels of every op (newest first), redraw each op
-  with the same driver clip/draw code at `lerp(frame n-1, frame n,
-  alpha)`, alpha being the host time's progress through the frame period
-  since the publish.  Ops match between frames by tag and order; a
-  per-axis jump over 48 px (projectile spawn, room change) is a teleport
-  and is not smoothed.  When the game presents something after the
-  publish without a new frame following (menus, dialogs, transitions),
-  the presenter falls back to the live VRAM.
+  boundary through `timer_set_frame_observer`, and event-driven code
+  reports its own through `timer_frame_boundary(next_event_tick)`; the
+  front end snapshots VRAM, the op list and the window (this deadline
+  minus the previous one, i.e. the game's own 24 ticks, or the event
+  delay) as a frame.
+- Compose (presenter thread, every refresh): the presenter keeps, per
+  (tag, ordinal), the latest op and the one before it with their windows.
+  An op is active while its own window runs or when it belongs to the
+  newest frame; starting from the newest VRAM, active ops are erased
+  (covered pixels put back, newest first) and redrawn in order with the
+  same driver clip/draw code at `lerp(previous, latest, alpha)`, alpha
+  being the host time's progress through the op's window.  A per-axis
+  jump over 48 px (projectile spawn, room change) is a teleport and is
+  not smoothed.  The beam trail is grown at the head and shortened at the
+  tail progressively (8 of its 24 pixels change per frame) instead of
+  lerped.  When the game presents something after the publish without a
+  new frame following (menus, dialogs, transitions), the presenter falls
+  back to the live VRAM -- and keeps presenting it until the next publish,
+  so pending screens never stay hidden behind a composed frame.
 
-Interpolation is between consecutive game frames only: an actor whose
-bytecode moves it every N-th frame still steps every N frames.  Pinned
-deterministic replays keep it off; `test_gfx_tween` covers capture,
-matching, teleports and the fallback.
+Interpolation is between consecutive draws of the same object only: an
+actor whose bytecode moves it every N-th frame still steps every N frames.
+Pinned deterministic replays keep it off (`--interpolation on` can force
+it for debugging; `EMPIRES_TWEEN_DEBUG=1` logs publishes); `test_gfx_tween`
+covers capture, matching, teleports, event windows, the beam and the
+fallback.
 
 ## Host configuration
 

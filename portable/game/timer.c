@@ -85,12 +85,17 @@ void timer_deadline_arm(dos_int n)
 
 /* F_6C6F: spin until the armed deadline passes (same manual-mode rule as
  * timer_wait_ticks -- see file header comment). */
+void timer_frame_boundary(dos_ulong next_ticks)
+{
+    if (s_frame_observer)
+        s_frame_observer(timer_ticks, next_ticks);
+}
+
 void timer_deadline_wait(void)
 {
     /* Frame boundary for the presenter (frame interpolation): everything
      * the game wanted on screen for this deadline window has been drawn. */
-    if (s_frame_observer)
-        s_frame_observer(timer_ticks, gc0d0);
+    timer_frame_boundary(gc0d0);
     while (timer_ticks < gc0d0) {
         if (s_manual)
             timer_service_tick();

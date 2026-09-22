@@ -490,11 +490,14 @@ int main(int argc, char **argv)
              * interpolate. */
             uint32_t gen = gfx_vram_generation;
             if (gfx_tween_compose(s_tween_frame, (double)SDL_GetTicksNS() / 1e6, gen)) {
-                presented_generation = gen;
+                /* presented_generation stays what the live VRAM last shown
+                 * had: a composed frame is not the live VRAM, so once the
+                 * composer stops (menu, dialog, transition) whatever the
+                 * game presented meanwhile must still reach the window. */
                 s_last_presented = s_tween_frame;
                 sdl_video_present(s_tween_frame, gfx_dac);
                 sdl_video_pace_frame();             /* no-op when vsync already blocked */
-            } else if (gen != presented_generation) {
+            } else if (gen != presented_generation || s_last_presented != gfx_vram) {
                 presented_generation = gen;
                 s_last_presented = gfx_vram;
                 sdl_video_present(gfx_vram, gfx_dac);

@@ -35,7 +35,11 @@
 /* ---- tagging (game code) ------------------------------------------------ */
 extern int gfx_tween_tag;                       /* 0 = untagged; set around a tweenable draw */
 #define GFX_TWEEN_TAG_PLAYER      1
+#define GFX_TWEEN_TAG_INTRO       2             /* the intro's event-driven sprite */
 #define GFX_TWEEN_TAG_ACTOR(i)    (0x100 + (int)(i))
+/* Flashlight beam trail pixel by age (0 = newest of the 24, 8 new per
+ * frame): the presenter grows the head and shortens the tail progressively. */
+#define GFX_TWEEN_TAG_BEAM(age)   (0x200 + (int)(age))
 
 #define GFX_TWEEN_SNAP_DISTANCE   48            /* per-axis pixels; larger = teleport */
 
@@ -48,12 +52,15 @@ struct vga_copy_clip;
 void gfx_tween_capture_copy_rect(int tag, dos_int x, dos_int y, const uint8_t *bitmap,
                                  dos_int flip, const struct vga_copy_clip *clip);
 void gfx_tween_capture_vline(int tag, dos_int x, dos_int y, dos_int n, uint8_t color);
+void gfx_tween_capture_pixel(int tag, dos_int x, dos_int y, uint8_t color);
 
 /* ---- frame boundary (game thread) ------------------------------------- */
 /* Snapshot the presented VRAM plus the ops captured since the previous
  * publish as the newest frame.  `now_ms` is the host clock at publish,
- * `deadline_ms` when the game will start the next frame (the armed
- * deadline), `vram_generation` the gfx_vram_generation value at publish. */
+ * `deadline_ms` when the game will draw the next one (the armed deadline,
+ * or an event-driven animation's next event time), `vram_generation` the
+ * gfx_vram_generation value at publish.  The front end calls this from the
+ * timer frame observer (timer_set_frame_observer). */
 void gfx_tween_frame_publish(double now_ms, double deadline_ms, uint32_t vram_generation);
 
 /* ---- presenter (host thread) ------------------------------------------ */

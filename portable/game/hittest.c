@@ -1,5 +1,6 @@
 /* src/HITTEST.C: Tile and sprite hit testing. */
 #include "game.h"
+#include "gfx_tween.h"
 
 struct B3 { dos_uchar a, b, c; };
 
@@ -158,7 +159,11 @@ after:
     gfx_color_select(14);
     for (i = 0; i < 0x18; i++) {
         if ((x = tx[i]) != 0) {
+            /* frame interpolation: trail pixel tagged by age (gc04e is the
+             * newest slot) -- observer tag only, see gfx_tween.h */
+            gfx_tween_tag = GFX_TWEEN_TAG_BEAM((gc04e - i + 0x18) % 0x18);
             gfx_set_pixel(x, y = ty[i]);
+            gfx_tween_tag = 0;
             if (x < gc046) gc046 = x;
             if (gc048 < x) gc048 = x;
             if (y < gc04a) gc04a = y;

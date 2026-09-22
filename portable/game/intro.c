@@ -1,5 +1,6 @@
 /* src/INTRO.C: Intro chapter driver and animation steps. */
 #include "game.h"
+#include "gfx_tween.h"
 #include "trace.h"
 
 
@@ -127,6 +128,7 @@ void intro_animate_step(struct E *ev, dos_int step, dos_char **q, dos_int *idx,
     case -1:
         gfx_wipe_rect(x, y + 0xc8, w, h, x, y);
         gfx_box(x, y, w, h);
+        timer_frame_boundary(*when);    /* frame interpolation: event done, next at *when */
         break;
     case -2:
         sound_stop_reset();
@@ -146,10 +148,13 @@ void intro_animate_step(struct E *ev, dos_int step, dos_char **q, dos_int *idx,
         /* PORT (supervisor decision): q is dos_char **q (the flattened
            gbfee far-pointer table); q[cmd] is directly the bitmap pointer
            gbfee[cmd], not a byte-reinterpreted struct any more. */
+        gfx_tween_tag = GFX_TWEEN_TAG_INTRO;     /* frame interpolation observer tag, see gfx_tween.h */
         gfx_copy_rect(x, y, (const uint8_t *)q[cmd], c);
+        gfx_tween_tag = 0;
         if (ow != 0)
             gfx_box(ox, oy, ow, oh);
         gfx_box(x, y, w, h);
+        timer_frame_boundary(*when);    /* frame interpolation: event done, next at *when */
         *ph = x;
         *pi = y;
         *pj = w;

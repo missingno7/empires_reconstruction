@@ -64,6 +64,10 @@ void timer_set_tick_observer(timer_tick_observer_fn fn);
  * finished frame here. */
 typedef void (*timer_frame_observer_fn)(dos_ulong now_ticks, dos_ulong deadline_ticks);
 void timer_set_frame_observer(timer_frame_observer_fn fn);
+/* Report a frame boundary explicitly (event-driven animations that poll
+ * timer_ticks instead of calling timer_deadline_wait(): the intro), with
+ * the tick at which the next event is due.  No effect on timing. */
+void timer_frame_boundary(dos_ulong next_ticks);
 
 /* Manual mode: no thread; tests advance time with timer_service_tick(). */
 void timer_service_set_manual(bool manual);

@@ -184,8 +184,114 @@ static void test_disabled_and_untagged_capture_nothing(void)
     gfx_framebuffer_shutdown();
 }
 
+/* Edge geometry: a 32x48 sprite drawn partially outside the play window
+ * (clip g94..g96 = rows 16..159, g98..g9a = packed columns 4..155), at
+ * negative x, past the right edge, and below the bottom, both mirrored
+ * and not.  Composed at alpha 0.5 between two identical frames the result
+ * must equal the frame the game presented. */
+static uint8_t s_big[0x22 + 16 * 48];
+static void test_edge_clipping_matches_game(void)
+{
+    static const dos_int xs[] = { -16, -8, -2, 0, 3, 8, 280, 296, 300, 304, 311 };
+    static const dos_int ys[] = { 0, 10, 16, 100, 130, 144, 158 };
+    uint8_t out[320 * 200];
+    int bad = 0;
+    for (int flip = 0; flip < 2; flip++)
+        for (size_t xi = 0; xi < sizeof xs / sizeof xs[0]; xi++)
+            for (size_t yi = 0; yi < sizeof ys / sizeof ys[0]; yi++) {
+                setup();
+                g94 = 16; g96 = 159; g98 = 4; g9a = 155;
+                memset(s_big, 0, sizeof s_big);
+                s_big[0x11] = 0x42; s_big[0x12] = 0x43;
+                s_big[0x20] = 16; s_big[0x21] = 48;
+                for (int i = 0; i < 16 * 48; i++) s_big[0x22 + i] = (uint8_t)((i & 1) ? 0x12 : 0x21);
+                gfx_tween_tag = GFX_TWEEN_TAG_PLAYER;
+                gfx_copy_rect(xs[xi], ys[yi], s_big, flip);
+                gfx_tween_tag = 0;
+                gfx_box(0, 0, 320, 200);
+                gfx_tween_frame_publish(0.0, 100.0, gfx_vram_generation);
+                gfx_tween_tag = GFX_TWEEN_TAG_PLAYER;
+                gfx_copy_rect(xs[xi], ys[yi], s_big, flip);
+                gfx_tween_tag = 0;
+                gfx_box(0, 0, 320, 200);
+                gfx_tween_frame_publish(100.0, 200.0, gfx_vram_generation);
+                if (!gfx_tween_compose(out, 150.0, gfx_vram_generation) || memcmp(out, gfx_vram, sizeof out) != 0) {
+                    fprintf(stderr, "edge mismatch: x=%d y=%d flip=%d\n", (int)xs[xi], (int)ys[yi], flip);
+                    bad++;
+                }
+                teardown();
+            }
+    CHECK(bad == 0);
+}
+
+/* Event-driven objects: a sprite published with its own window keeps
+ * interpolating across an unrelated publish (an erase event with no ops),
+ * and finds its previous position across publishes that did not draw it. */
+static void test_event_driven_windows(void)
+{
+    uint8_t out[320 * 200];
+    int n, mx, my;
+    setup();
+    make_bitmap(0x42);
+    frame(GFX_TWEEN_TAG_INTRO, 10, 20, 0.0, 100.0);
+    erase(10, 20);
+    frame(GFX_TWEEN_TAG_INTRO, 30, 20, 100.0, 300.0);        /* 200 ms window */
+    gfx_box(0, 0, 320, 200);
+    gfx_tween_frame_publish(150.0, 150.0, gfx_vram_generation); /* erase event, no ops */
+    CHECK(gfx_tween_compose(out, 200.0, gfx_vram_generation));  /* alpha .5 of the sprite's own window */
+    n = count_marker(out, 0x42, &mx, &my);
+    CHECK(n == 8 && mx == 20 && my == 20);
+
+    /* next event: previous position found two publishes back */
+    erase(30, 20);
+    frame(GFX_TWEEN_TAG_INTRO, 50, 20, 300.0, 400.0);
+    CHECK(gfx_tween_compose(out, 350.0, gfx_vram_generation));
+    n = count_marker(out, 0x42, &mx, &my);
+    CHECK(n == 8 && mx == 40 && my == 20);
+    teardown();
+}
+
+/* Beam trail: 24 pixels, 8 new per frame.  At alpha .5 the four newest
+ * head pixels are still hidden and the four oldest tail pixels of the
+ * previous frame still linger. */
+static void beam_frame(int head, double t0, double t1)
+{
+    /* pixel of absolute index c sits at (100 + 2c, 50); ages 0..23 from head */
+    gfx_color_select(14);
+    for (int age = 23; age >= 0; age--) {
+        int c = head - age;
+        gfx_tween_tag = GFX_TWEEN_TAG_BEAM(age);
+        gfx_set_pixel((dos_int)(100 + 2 * c), 50);
+        gfx_tween_tag = 0;
+    }
+    gfx_box(0, 0, 320, 200);
+    gfx_tween_frame_publish(t0, t1, gfx_vram_generation);
+}
+static void test_beam_grows_and_shrinks(void)
+{
+    uint8_t out[320 * 200];
+    setup();
+    g3904[14] = 14;
+    beam_frame(23, 0.0, 100.0);                    /* pixels c = 0..23 */
+    for (int c = 0; c < 8; c++) g3924[50][100 + 2 * c] = 7;   /* game erases the tail */
+    beam_frame(31, 100.0, 200.0);                  /* pixels c = 8..31 */
+    CHECK(gfx_tween_compose(out, 150.0, gfx_vram_generation));
+    /* visible: c = 4..27 (tail 4..7 lingering, head 28..31 not yet) */
+    for (int c = 0; c < 36; c++) {
+        bool on = out[50 * 320 + 100 + 2 * c] == 14;
+        bool want = c >= 4 && c <= 27;
+        if (on != want) { fprintf(stderr, "beam c=%d on=%d want=%d\n", c, on, want); s_failures++; }
+    }
+    CHECK(gfx_tween_compose(out, 200.0, gfx_vram_generation));
+    CHECK(memcmp(out, gfx_vram, sizeof out) == 0);
+    teardown();
+}
+
 int main(void)
 {
+    test_event_driven_windows();
+    test_beam_grows_and_shrinks();
+    test_edge_clipping_matches_game();
     test_interpolates_between_frames();
     test_teleport_and_unmatched_draw_at_current();
     test_live_present_falls_back();

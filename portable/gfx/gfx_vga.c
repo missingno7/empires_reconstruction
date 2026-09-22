@@ -577,14 +577,13 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
 
     if (!vga_copy_rect_clip(x, y, bitmap, flip, g94, g96, g98, g9a, &c))
         return;
-    if (gbc == 1 && c.yv < 0xC8u) {                                                      /* 096C-0977 / 0A2E-0A39 */
+    if (gbc == 1 && c.yv < 0xC8u)                                                        /* 096C-0977 / 0A2E-0A39 */
         vga_dirty_queue_append(c.yv, (uint16_t)(uint8_t)c.col, c.dxr, c.cx);             /* 0979-0989 / 0A45-0A51 (leftcol in AL) */
-        /* Frame interpolation: a tagged sprite blit is captured (with the
-         * pixels it is about to cover) for the presenter -- an observer
-         * only, the draw below is unchanged. */
-        if (gfx_tween_tag != 0)
-            gfx_tween_capture_copy_rect(gfx_tween_tag, x, y, bitmap, flip, &c);
-    }
+    /* Frame interpolation: a tagged sprite blit into the visible rows is
+     * captured (with the pixels it is about to cover) for the presenter --
+     * an observer only, the draw below is unchanged. */
+    if (gfx_tween_tag != 0 && c.yv < 0xC8u)
+        gfx_tween_capture_copy_rect(gfx_tween_tag, x, y, bitmap, flip, &c);
     vga_copy_rect_draw(g3924, &c, table, flip);
 }
 
@@ -592,6 +591,8 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
 void vga_set_pixel(dos_int x, dos_int y)
 {
     uint8_t *di = g3924[(uint16_t)y];        /* 0AC9-0AD0 */
+    if (gfx_tween_tag != 0)                   /* frame interpolation observer, see vga_copy_rect */
+        gfx_tween_capture_pixel(gfx_tween_tag, x, y, (uint8_t)result);
     di[(uint16_t)x] = (uint8_t)result;          /* 0AD4-0ADA */
 }
 

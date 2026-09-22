@@ -107,6 +107,30 @@ void sdl_video_toggle_fullscreen(void)
     SDL_SetWindowFullscreen(s_window, !full);
 }
 
+void sdl_video_set_vsync(bool on)
+{
+    if (s_renderer && !SDL_SetRenderVSync(s_renderer, on ? 1 : SDL_RENDERER_VSYNC_DISABLED))
+        SDL_Log("SDL_SetRenderVSync failed: %s", SDL_GetError());
+}
+
+void sdl_video_pace_frame(void)
+{
+    static Uint64 last_ns;
+    static Uint64 period_ns;
+    Uint64 now = SDL_GetTicksNS();
+    if (period_ns == 0) {
+        float hz = 60.0f;
+        SDL_DisplayID id = s_window ? SDL_GetDisplayForWindow(s_window) : 0;
+        const SDL_DisplayMode *mode = id ? SDL_GetCurrentDisplayMode(id) : NULL;
+        if (mode && mode->refresh_rate > 1.0f)
+            hz = mode->refresh_rate;
+        period_ns = (Uint64)(1e9 / hz);
+    }
+    if (last_ns != 0 && now - last_ns < period_ns)
+        SDL_DelayNS(period_ns - (now - last_ns));
+    last_ns = SDL_GetTicksNS();
+}
+
 void sdl_video_set_fullscreen(bool full)
 {
     if (s_window)

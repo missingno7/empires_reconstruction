@@ -29,6 +29,7 @@
  */
 #include "gfx.h"
 #include "gfx_drivers.h"
+#include "gfx_tween.h"
 
 #include <string.h>
 
@@ -128,6 +129,8 @@ void vga_vline(dos_int x, dos_int y, dos_int n)
     uint8_t *di = g3924[(uint16_t)y] + (uint16_t)x;   /* 044E-0459 */
     uint8_t al = (uint8_t)result;                        /* 045F */
     uint16_t cx = (uint16_t)n;                              /* 045C */
+    if (gfx_tween_tag != 0)                               /* frame interpolation observer, see vga_copy_rect */
+        gfx_tween_capture_vline(gfx_tween_tag, x, y, n, al);
     for (uint16_t k = 0; k < cx; k++) {                        /* 0465-0468 */
         *di = al;
         di += VGA_ROW_BYTES;                                     /* bx=0x13f; stosb(+1)+add di,bx(+0x13f) = +0x140 */
@@ -417,9 +420,17 @@ void vga_blit_bitmap(dos_int x, dos_int y, const uint8_t *bitmap)
  * units, then double for the byte address" shape as gfx_planar.c's
  * gfx_copy_rect, except each packed unit here is 2 whole destination BYTES
  * instead of 2 nibbles inside 1 byte. */
-void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
+/* The blit is split into a clip step (vga_copy_rect_clip) and a draw step
+ * (vga_copy_rect_draw), both parameterised on the row table and the clip
+ * words instead of reading g3924/g94..g9a directly, so that the frame
+ * interpolation presenter (gfx_tween.c) can replay a captured blit into its
+ * own 320x200 buffer with exactly this code.  vga_copy_rect() itself
+ * composes them with the historical globals, in the historical order:
+ * clip, dirty-queue record, draw. */
+bool vga_copy_rect_clip(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip,
+                        dos_int c94, dos_int c96, dos_int c98, dos_int c9a,
+                        struct vga_copy_clip *out)
 {
-    const uint8_t *table = bitmap + 0x10;                                    /* 08F8-08FE (si pushed/popped as bx) */
     const uint8_t *si = bitmap + 0x20;                                          /* 08FF */
     uint16_t header_bytes = si[0];                                                 /* 0902 al */
     uint16_t header_rows  = si[1];                                                    /* 0902 ah */
@@ -431,15 +442,15 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
 
     /* ---- row clip against g94/g96, identical to gfx_planar.c's gfx_copy_rect
      * (0913-0930). */
-    int16_t ax = (int16_t)(g96 - yv);            /* 0913-0916 */
-    if (ax < 0) return;                             /* 0918: js (bail, nothing drawn) */
+    int16_t ax = (int16_t)(c96 - yv);            /* 0913-0916 */
+    if (ax < 0) return false;                       /* 0918: js (bail, nothing drawn) */
     ax = (int16_t)(ax + 1);                           /* 091A */
     if ((uint16_t)dxr > (uint16_t)ax) dxr = (uint16_t)ax;  /* 091B-091F */
 
-    ax = (int16_t)(g94 - yv);                            /* 0921-0924 */
+    ax = (int16_t)(c94 - yv);                            /* 0921-0924 */
     if (ax > 0) {                                           /* 0926: jle skip */
         dxr = (uint16_t)(dxr - (uint16_t)ax);                  /* 0928 */
-        if ((int16_t)dxr <= 0) return;                            /* 092A: jbe bail */
+        if ((int16_t)dxr <= 0) return false;                      /* 092A: jbe bail */
         yv = (int16_t)(yv + ax);                                     /* 092C */
         si += (uint8_t)ax * (uint8_t)cx;                               /* 092E-0930: mul cl (AL*CL, 8-bit) */
     }
@@ -448,14 +459,14 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
 
     if (flip == 0) {                                                        /* 0935-093B */
         uint16_t bxcol = (uint16_t)((int16_t)x >> 1);                          /* 093E: sar bx,1 (signed) */
-        ax = (int16_t)(g9a - (int16_t)bxcol);                                    /* 0943-0946 */
-        if (ax < 0) return;                                                        /* 0948 */
+        ax = (int16_t)(c9a - (int16_t)bxcol);                                    /* 0943-0946 */
+        if (ax < 0) return false;                                                  /* 0948 */
         ax = (int16_t)(ax + 1);                                                      /* 094A */
         if ((uint16_t)cx > (uint16_t)ax) {                                             /* 094B-094F */
             bp_extra = (int16_t)(cx - (uint16_t)ax);                                      /* 0951 */
             cx = (uint16_t)ax;                                                              /* 0953 */
         }
-        ax = (int16_t)(g98 - (int16_t)bxcol);                                                 /* 0955-0958 */
+        ax = (int16_t)(c98 - (int16_t)bxcol);                                                 /* 0955-0958 */
         if (ax > 0) {                                                                           /* 095A: jle skip */
             cx = (uint16_t)((int16_t)cx - ax);                                                     /* 095C */
             if ((int16_t)cx > 0) {                                                                    /* 095E: ja */
@@ -463,13 +474,53 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
                 bp_extra = (int16_t)(bp_extra + ax);                                                        /* 0966 */
                 si += (uint16_t)ax;                                                                           /* 0968 */
             } else {
-                return;                                                                                          /* cx<=0: bail */
+                return false;                                                                                    /* cx<=0: bail */
             }
         }
-        if (gbc == 1 && (uint16_t)yv < 0xC8u) {                                                                    /* 096C-0977 */
-            vga_dirty_queue_append((uint16_t)yv, (uint16_t)bxcol, dxr, cx);                                           /* 0979-0989 */
+        out->col = bxcol;                    /* leftmost dest packed-pair column */
+        out->startcol = bxcol;               /* the column the draw starts from */
+    } else {                                                                      /* flip path, 09F9-0ABF */
+        /* 09FC-0A02: bx = ((x + 2*header_bytes) >> 1) - 1, the rightmost
+         * dest packed-pair column of the (unclipped) mirrored rect. */
+        uint16_t rightcol = (uint16_t)((uint16_t)(((uint16_t)x + 2u * header_bytes) >> 1) - 1u);
+        ax = (int16_t)((int16_t)rightcol - c98);                                       /* 0A03-0A05 */
+        if (ax < 0) return false;                                                        /* 0A09 */
+        ax = (int16_t)(ax + 1);                                                            /* 0A0B */
+        if ((uint16_t)cx > (uint16_t)ax) {                                                   /* 0A0C-0A10 */
+            bp_extra = (int16_t)(cx - (uint16_t)ax);                                            /* 0A12 */
+            cx = (uint16_t)ax;                                                                    /* 0A14 */
         }
-        uint8_t *di = g3924[(uint16_t)yv] + (size_t)2u * bxcol;                                                        /* 098D-0998 */
+        ax = (int16_t)((int16_t)rightcol - c9a);                                                    /* 0A16-0A18 */
+        if (ax > 0) {                                                                                  /* 0A1C: jbe skip */
+            cx = (uint16_t)((int16_t)cx - ax);                                                            /* 0A1E */
+            if ((int16_t)cx > 0) {                                                                           /* 0A20: ja */
+                rightcol = (uint16_t)(rightcol - (uint16_t)ax);                                                  /* 0A26 */
+                bp_extra = (int16_t)(bp_extra + ax);                                                               /* 0A28 */
+                si += (uint16_t)ax;                                                                                  /* 0A2A */
+            } else {
+                return false;                                                                                          /* bail */
+            }
+        }
+        out->col = (uint16_t)(rightcol - cx + 1u);   /* leftmost column (0A3B-0A43 computes it in AL) */
+        out->startcol = rightcol;                    /* the mirrored draw starts at the right edge */
+    }
+    out->yv = (uint16_t)yv;
+    out->dxr = dxr;
+    out->cx = cx;
+    out->bp_extra = bp_extra;
+    out->si = si;
+    return true;
+}
+
+void vga_copy_rect_draw(uint8_t *const *rows, const struct vga_copy_clip *c,
+                        const uint8_t *table, dos_int flip)
+{
+    const uint8_t *si = c->si;
+    uint16_t cx = c->cx, dxr = c->dxr;
+    int16_t bp_extra = c->bp_extra;
+
+    if (flip == 0) {
+        uint8_t *di = rows[c->yv] + (size_t)2u * c->startcol;                                                          /* 098D-0998 */
         for (uint16_t row = 0; row < dxr; row++) {                                                                        /* 099C-09BF */
             uint8_t *rdi = di;
             for (uint16_t k = 0; k < cx; k++) {                                                                              /* 099E-09B4 */
@@ -492,33 +543,8 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
             di += VGA_ROW_BYTES;                                                                                                              /* 09B8/09CA/09ED */
             si += bp_extra;                                                                                                                      /* 09BC/09CE/09F1 */
         }
-    } else {                                                                      /* flip path, 09F9-0ABF */
-        /* 09FC-0A02: bx = ((x + 2*header_bytes) >> 1) - 1, the rightmost
-         * dest packed-pair column of the (unclipped) mirrored rect. */
-        uint16_t rightcol = (uint16_t)((uint16_t)(((uint16_t)x + 2u * header_bytes) >> 1) - 1u);
-        ax = (int16_t)((int16_t)rightcol - g98);                                       /* 0A03-0A05 */
-        if (ax < 0) return;                                                              /* 0A09 */
-        ax = (int16_t)(ax + 1);                                                            /* 0A0B */
-        if ((uint16_t)cx > (uint16_t)ax) {                                                   /* 0A0C-0A10 */
-            bp_extra = (int16_t)(cx - (uint16_t)ax);                                            /* 0A12 */
-            cx = (uint16_t)ax;                                                                    /* 0A14 */
-        }
-        ax = (int16_t)((int16_t)rightcol - g9a);                                                    /* 0A16-0A18 */
-        if (ax > 0) {                                                                                  /* 0A1C: jbe skip */
-            cx = (uint16_t)((int16_t)cx - ax);                                                            /* 0A1E */
-            if ((int16_t)cx > 0) {                                                                           /* 0A20: ja */
-                rightcol = (uint16_t)(rightcol - (uint16_t)ax);                                                  /* 0A26 */
-                bp_extra = (int16_t)(bp_extra + ax);                                                               /* 0A28 */
-                si += (uint16_t)ax;                                                                                  /* 0A2A */
-            } else {
-                return;                                                                                                /* bail */
-            }
-        }
-        if (gbc == 1 && (uint16_t)yv < 0xC8u) {                                                                          /* 0A2E-0A39 */
-            uint8_t leftcol = (uint8_t)((uint8_t)rightcol - (uint8_t)cx + 1u);                                              /* 0A3B-0A43 */
-            vga_dirty_queue_append((uint16_t)yv, leftcol, dxr, cx);                                                            /* 0A45-0A51 */
-        }
-        uint8_t *di = g3924[(uint16_t)yv] + (size_t)2u * rightcol;                                                               /* 0A55-0A60 */
+    } else {
+        uint8_t *di = rows[c->yv] + (size_t)2u * c->startcol;                                                                    /* 0A55-0A60 */
         for (uint16_t row = 0; row < dxr; row++) {                                                                                  /* 0A64-0A8A */
             uint8_t *rdi = di;
             for (uint16_t k = 0; k < cx; k++) {                                                                                        /* 0A66-0A95 */
@@ -542,6 +568,24 @@ void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
             si += bp_extra;                                                                                                                              /* 0A87/0A9D/0ABA */
         }
     }
+}
+
+void vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
+{
+    const uint8_t *table = bitmap + 0x10;                                    /* 08F8-08FE (si pushed/popped as bx) */
+    struct vga_copy_clip c;
+
+    if (!vga_copy_rect_clip(x, y, bitmap, flip, g94, g96, g98, g9a, &c))
+        return;
+    if (gbc == 1 && c.yv < 0xC8u) {                                                      /* 096C-0977 / 0A2E-0A39 */
+        vga_dirty_queue_append(c.yv, (uint16_t)(uint8_t)c.col, c.dxr, c.cx);             /* 0979-0989 / 0A45-0A51 (leftcol in AL) */
+        /* Frame interpolation: a tagged sprite blit is captured (with the
+         * pixels it is about to cover) for the presenter -- an observer
+         * only, the draw below is unchanged. */
+        if (gfx_tween_tag != 0)
+            gfx_tween_capture_copy_rect(gfx_tween_tag, x, y, bitmap, flip, &c);
+    }
+    vga_copy_rect_draw(g3924, &c, table, flip);
 }
 
 /* ---- gfx_set_pixel: .lst 0AC5-0ADF. */

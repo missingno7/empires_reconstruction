@@ -142,6 +142,16 @@ struct sound_event {
     uint16_t b;
 };
 
+/* Producing cluster of the event being emitted (audio.h's
+ * enum audio_event_origin mirrors these values): the driver marks the
+ * cue-stream helpers (speaker_gate_on/off, pit_channel2_set_divisor --
+ * the sound effects) as SOUND_ORIGIN_EFFECTS; everything else, including
+ * every OPL write, is music.  Informational for the mixer's volume split
+ * only; the event log ignores it. */
+#define SOUND_ORIGIN_MUSIC   0
+#define SOUND_ORIGIN_EFFECTS 1
+int sound_backend_event_origin(void);
+
 void sound_backend_opl_write(uint8_t reg, uint8_t val);
 void sound_backend_pit_divisor(uint16_t divisor);
 void sound_backend_speaker_gate(int enabled, int tandy_mode);

@@ -16,10 +16,12 @@
  * --deterministic (no tick thread: the game's own waits/polls advance the
  * 236.7 Hz clock, and --script/--selftest-ms/--dump-interval run on that
  * virtual time, so a run is reproducible for regression tests),
- * --volume PCT (master output volume, 0..200; also EMPIRES_VOLUME),
- * --fullscreen / --windowed, --config PATH (empires.json location, default:
- * next to the executable; written with the defaults on first run).
- * Switches and environment override the file for this run only.
+ * --music-volume PCT / --sound-volume PCT (0..200), --fullscreen /
+ * --windowed, --interpolation on|off (draw the ~9.86 Hz game frames at the
+ * host refresh rate with sprites interpolated, see gfx_tween.h), --config
+ * PATH (empires.json location, default: next to the executable; written
+ * with the defaults on first run).  Switches override the file for this
+ * run only.
  * Historical switches (-E/-C/-T/-M/-V, -I, -S?) pass through to
  * cmdline_parse_args().
  *
@@ -41,6 +43,7 @@
 #include "audio_sdl.h"
 #include "audio.h"
 #include "config.h"
+#include "gfx_tween.h"
 
 static Uint64 s_selftest_ms = 300;
 static bool s_deterministic;   /* --deterministic: manual ticks, virtual time for scripts/dumps */
@@ -169,6 +172,7 @@ static void draw_demo_scene(void)
 }
 
 /* Write the presented VRAM as a binary PPM (DAC expanded to 8-bit RGB). */
+static const uint8_t *s_last_presented = gfx_vram;   /* what the window shows: live VRAM or a composed frame */
 static void dump_vram_ppm(const char *path)
 {
     FILE *f = fopen(path, "wb");
@@ -176,7 +180,7 @@ static void dump_vram_ppm(const char *path)
         return;
     fprintf(f, "P6\n%d %d\n255\n", GFX_VRAM_W, GFX_VRAM_H);
     for (int i = 0; i < GFX_VRAM_W * GFX_VRAM_H; i++) {
-        const uint8_t *rgb6 = gfx_dac + gfx_vram[i] * 3;
+        const uint8_t *rgb6 = gfx_dac + s_last_presented[i] * 3;
         uint8_t rgb[3];
         for (int c = 0; c < 3; c++)
             rgb[c] = (uint8_t)((rgb6[c] << 2) | (rgb6[c] >> 4));
@@ -217,11 +221,12 @@ static void choose_asset_dir(char *out, size_t n, const char *explicit)
 
 /* empires.json: `explicit` (--config PATH) or the file next to the
  * executable.  Registers the built-in defaults (a loaded file wins), and
- * writes the file when it does not exist yet so users can find it.  A
+ * writes the file when it does not exist yet, or when a setting it does
+ * not mention yet was added, so users can always find every key.  A
  * malformed file is reported and ignored (defaults), never overwritten. */
 static void load_config(char *path, size_t n, const char *explicit)
 {
-    bool missing = false;
+    bool missing = false, added = false;
     char err[256];
 
     if (explicit) {
@@ -234,12 +239,14 @@ static void load_config(char *path, size_t n, const char *explicit)
     if (!config_load(path, &missing, err, sizeof err) && !missing)
         fprintf(stderr, "%s: %s -- using defaults\n", path, err);
 
-    config_default_int("audio.volume", 100);         /* master volume, percent (0..200) */
-    config_default_bool("video.fullscreen", false);  /* borderless fullscreen at start */
-    config_default_string("paths.assets", "");       /* AE000.DAT/AE001.DAT directory; "" = auto */
-    config_default_string("paths.saves", "");        /* save-slot overlays; "" = asset directory */
+    added |= config_default_int("audio.music_volume", 100);   /* music (OPL voices), percent (0..200) */
+    added |= config_default_int("audio.sound_volume", 100);   /* sound effects (cue stream), percent (0..200) */
+    added |= config_default_bool("video.fullscreen", false);  /* borderless fullscreen at start */
+    added |= config_default_bool("video.interpolation", true);/* present at host fps with interpolated sprites */
+    added |= config_default_string("paths.assets", "");       /* AE000.DAT/AE001.DAT directory; "" = auto */
+    added |= config_default_string("paths.saves", "");        /* save-slot overlays; "" = asset directory */
 
-    if (missing && !config_save(path))
+    if ((missing || (added && !err[0])) && !config_save(path))
         fprintf(stderr, "cannot write %s (continuing with defaults)\n", path);
 }
 
@@ -313,6 +320,33 @@ static void bringup_step(void)
 
 static volatile bool s_virtual_deadline_hit;
 
+/* Frame interpolation: publish the finished frame at every
+ * timer_deadline_wait() (game thread).  The interpolation window is one
+ * game frame long -- the distance between this deadline and the previous
+ * one, i.e. the game's own 24-tick period -- starting at the publish, so
+ * the presenter moves sprites from frame n-1 to frame n over exactly the
+ * time the game spends between computing n and computing n+1.  (Measuring
+ * from the publish to the deadline instead would freeze motion for as long
+ * as each frame takes to compute.)  Ticks convert to host milliseconds at
+ * the historical 236.7 Hz. */
+static uint8_t s_tween_frame[GFX_VRAM_W * GFX_VRAM_H];
+static dos_ulong s_tween_prev_deadline;
+static unsigned s_tween_frames, s_tween_late, s_tween_remaining_sum;
+static void tween_frame_observer(dos_ulong now_ticks, dos_ulong deadline_ticks)
+{
+    double now = (double)SDL_GetTicksNS() / 1e6;
+    dos_ulong period = deadline_ticks - s_tween_prev_deadline;      /* frame length in ticks */
+    if (s_tween_prev_deadline == 0 || period == 0 || period > 120)   /* first frame, or not a frame loop */
+        period = deadline_ticks > now_ticks ? deadline_ticks - now_ticks : 0;
+    s_tween_prev_deadline = deadline_ticks;
+    if (deadline_ticks > now_ticks)
+        s_tween_remaining_sum += (unsigned)(deadline_ticks - now_ticks);
+    else
+        s_tween_late++;
+    s_tween_frames++;
+    gfx_tween_frame_publish(now, now + (double)period * (1000.0 / TIMER_TICK_HZ), gfx_vram_generation);
+}
+
 static void deterministic_tick_observer(void)
 {
     bringup_step();
@@ -332,8 +366,10 @@ int main(int argc, char **argv)
     crash_handler_install();
     bool selftest = false, demo = false;
     const char *assets = NULL, *saves = NULL, *config_path = NULL;
-    int volume = -1;               /* --volume PCT / EMPIRES_VOLUME; -1 = config value */
+    int music_volume = -1;         /* --music-volume PCT; -1 = config value */
+    int sound_volume = -1;         /* --sound-volume PCT; -1 = config value */
     int fullscreen = -1;           /* --fullscreen / --windowed; -1 = config value */
+    int interpolation = -1;        /* --interpolation on|off; -1 = config value */
     char asset_dir[1024];
     char config_file[1024];
     sync_thread game_thread = { NULL };
@@ -361,8 +397,12 @@ int main(int argc, char **argv)
             parse_script_file(argv[++i]);
         else if (strcmp(argv[i], "--dump-interval") == 0 && i + 1 < argc)
             s_dump_interval = (Uint64)strtoull(argv[++i], NULL, 10);
-        else if (strcmp(argv[i], "--volume") == 0 && i + 1 < argc)
-            volume = (int)strtol(argv[++i], NULL, 10);
+        else if (strcmp(argv[i], "--music-volume") == 0 && i + 1 < argc)
+            music_volume = (int)strtol(argv[++i], NULL, 10);
+        else if (strcmp(argv[i], "--sound-volume") == 0 && i + 1 < argc)
+            sound_volume = (int)strtol(argv[++i], NULL, 10);
+        else if (strcmp(argv[i], "--interpolation") == 0 && i + 1 < argc)
+            interpolation = strcmp(argv[++i], "off") != 0 && strcmp(argv[i], "0") != 0;
         else if (strcmp(argv[i], "--fullscreen") == 0)
             fullscreen = 1;
         else if (strcmp(argv[i], "--windowed") == 0)
@@ -370,16 +410,18 @@ int main(int argc, char **argv)
         else if (strcmp(argv[i], "--config") == 0 && i + 1 < argc)
             config_path = argv[++i];
     }
-    if (volume < 0 && getenv("EMPIRES_VOLUME"))
-        volume = (int)strtol(getenv("EMPIRES_VOLUME"), NULL, 10);
-
     /* Configuration file: defaults < empires.json < environment < switches.
      * Env/CLI overrides apply to this run only and are never written back. */
     load_config(config_file, sizeof config_file, config_path);
-    if (volume < 0)
-        volume = config_get_int("audio.volume", 100);
+    if (music_volume < 0)
+        music_volume = config_get_int("audio.music_volume", 100);
+    if (sound_volume < 0)
+        sound_volume = config_get_int("audio.sound_volume", 100);
     if (fullscreen < 0)
         fullscreen = config_get_bool("video.fullscreen", false) ? 1 : 0;
+    if (interpolation < 0)
+        interpolation = s_deterministic ? 0 :   /* pinned replays present the game's own frames */
+                        (config_get_bool("video.interpolation", true) ? 1 : 0);
     if (!assets && config_get_string("paths.assets", "")[0])
         assets = config_get_string("paths.assets", "");
     if (!saves && config_get_string("paths.saves", "")[0])
@@ -392,7 +434,13 @@ int main(int argc, char **argv)
     if (fullscreen)
         sdl_video_set_fullscreen(true);
     audio_sdl_init(); /* logs and continues without audio on failure -- see audio_sdl.h */
-    audio_mixer_set_master_volume(volume);
+    audio_mixer_set_music_volume(music_volume);
+    audio_mixer_set_effects_volume(sound_volume);
+    if (interpolation && !demo) {
+        gfx_tween_set_enabled(true);
+        timer_set_frame_observer(tween_frame_observer);
+        sdl_video_set_vsync(true);
+    }
 
     startup_set_args(argc, argv);
     choose_asset_dir(asset_dir, sizeof asset_dir, assets);
@@ -436,7 +484,24 @@ int main(int argc, char **argv)
         }
         if (!s_deterministic)
             bringup_step();
-        if (gfx_vram_generation != presented_generation || demo) {
+        if (gfx_tween_enabled()) {
+            /* Host-rate presentation: a composed frame every refresh (vsync
+             * paces the loop), or the live VRAM when there is no frame to
+             * interpolate. */
+            uint32_t gen = gfx_vram_generation;
+            if (gfx_tween_compose(s_tween_frame, (double)SDL_GetTicksNS() / 1e6, gen)) {
+                presented_generation = gen;
+                s_last_presented = s_tween_frame;
+                sdl_video_present(s_tween_frame, gfx_dac);
+                sdl_video_pace_frame();             /* no-op when vsync already blocked */
+            } else if (gen != presented_generation) {
+                presented_generation = gen;
+                s_last_presented = gfx_vram;
+                sdl_video_present(gfx_vram, gfx_dac);
+            } else {
+                SDL_Delay(2);
+            }
+        } else if (gfx_vram_generation != presented_generation || demo) {
             presented_generation = gfx_vram_generation;
             sdl_video_present(gfx_vram, gfx_dac);
         } else {
@@ -459,6 +524,15 @@ int main(int argc, char **argv)
         }
         fprintf(stderr, "[trace] sound events logged: %zu (opl=%zu pit=%zu gate=%zu nibble=%zu)\n",
                 n, kinds[0], kinds[1], kinds[2], kinds[3]);
+        if (gfx_tween_enabled()) {
+            unsigned published, composed, interpolated, live;
+            gfx_tween_stats(&published, &composed, &interpolated, &live);
+            fprintf(stderr, "[trace] interpolation: %u frames published, %u composed (%u interpolated), %u live fallbacks\n",
+                    published, composed, interpolated, live);
+            fprintf(stderr, "[trace] interpolation: %u frames, %u late (deadline already passed), mean %.1f ticks left at publish\n",
+                    s_tween_frames, s_tween_late,
+                    s_tween_frames > s_tween_late ? (double)s_tween_remaining_sum / (double)(s_tween_frames - s_tween_late) : 0.0);
+        }
     }
 
     if (!demo) {

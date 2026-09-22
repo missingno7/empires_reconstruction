@@ -41,6 +41,16 @@ void sdl_video_present(const uint8_t *vram8, const uint8_t *dac6);
 void sdl_video_toggle_fullscreen(void);
 void sdl_video_set_fullscreen(bool full);
 
+/* Vertical sync on the renderer (frame interpolation paces the presenter
+ * with it).  Off by default. */
+void sdl_video_set_vsync(bool on);
+
+/* Sleep the remainder of one display refresh period since the previous
+ * present, so a presenter loop that vsync did not block (unsupported, or
+ * a windowed compositor that returns immediately) still runs at the
+ * display's rate instead of spinning. */
+void sdl_video_pace_frame(void);
+
 /* Pump the SDL event queue.  Returns true once a quit has been requested
  * (SDL_EVENT_QUIT, window close, or the Escape key). */
 bool sdl_video_poll_events(void);

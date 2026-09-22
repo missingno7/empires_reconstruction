@@ -14,8 +14,25 @@
  * rather than instruction-for-instruction.
  */
 #include "game.h"
+#include "gfx_tween.h"
 #include "trace.h"
 #include "asm_sprites.h"
+
+/* Frame interpolation (gfx_tween.h): the presenter smooths actor-record
+ * draws between game frames.  Tagging is a plain store around the existing
+ * call -- no behavioural effect. */
+static void actor_copy_rect(dos_uint idx, dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip)
+{
+    gfx_tween_tag = GFX_TWEEN_TAG_ACTOR(idx);
+    gfx_copy_rect(x, y, bitmap, flip);
+    gfx_tween_tag = 0;
+}
+static void actor_vline(dos_uint idx, dos_int x, dos_int y, dos_int n)
+{
+    gfx_tween_tag = GFX_TWEEN_TAG_ACTOR(idx);
+    gfx_vline(x, y, n);
+    gfx_tween_tag = 0;
+}
 
 #ifdef _MSC_VER
 /* Several sites below take the address of a dos_uint field inside
@@ -107,8 +124,8 @@ void board_actors_draw(dos_int y0)
         if (!actor_record_bitmap(rec))
             EMPIRES_TRACE("board_actors_draw: record %u frame %u has no bitmap (board %d)",
                           (unsigned)i, (unsigned)rec->sprite_frame, (int)board_record_index);
-        gfx_copy_rect(rec->x, (dos_int)(y0 + rec->y),
-                      actor_record_bitmap(rec), rec->dir_flip);
+        actor_copy_rect(i, rec->x, (dos_int)(y0 + rec->y),
+                        actor_record_bitmap(rec), rec->dir_flip);
 
         if (rec->vline_extra != 0) {
             /* mov ax,[di+2h]; add ax,10h / mov bx,[di+4h]; sub bx,dx; inc bx
@@ -118,7 +135,7 @@ void board_actors_draw(dos_int y0)
              * instruction sequence appears in sprite_script_frame_driver's
              * update_record below ("mirrors F_4EEB's copy step" per the
              * ASM's own comment); not "fixed" here, see the port report. */
-            gfx_vline((dos_int)(rec->x + 0x10), (dos_int)rec->vline_extra,
+            actor_vline(i, (dos_int)(rec->x + 0x10), (dos_int)rec->vline_extra,
                       (dos_int)(rec->y - rec->vline_extra + 1));
         }
     }
@@ -342,7 +359,7 @@ static enum sprite_script_control op_move_clamped(struct actor_record *rec, dos_
     /* velocity_store: */
     rec->sprite_frame = candidate;
     if (rec->active != 1) {
-        gfx_copy_rect(rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
+        actor_copy_rect(idx, rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
     }
     rec->saved_pc = *si;
     return SS_YIELD_NEXT;
@@ -362,7 +379,7 @@ static enum sprite_script_control op_set_position(struct actor_record *rec, dos_
     rec->sprite_frame = (dos_uchar)(operand & 0x7Fu);
     rec->dir_flip = (dos_uchar)((operand >> 7) & 1u);
     if (rec->active != 1) {
-        gfx_copy_rect(rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
+        actor_copy_rect(idx, rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
     }
     rec->saved_pc = *si;
     return SS_YIELD_NEXT;
@@ -389,7 +406,7 @@ static enum sprite_script_control op_set_position_and_frame(struct actor_record 
     if ((dos_int)new_board == board_record_index) { /* cmp bx,ds:[BFBAh] -- zero-extended byte vs the full word */
         rec->sprite_frame = (dos_uchar)(op2_lo & 0x7Fu);
         if (rec->active != 1) {
-            gfx_copy_rect(rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
+            actor_copy_rect(idx, rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
         }
     }
     /* else: move_no_redraw -- x/y/board_id/dir_flip already updated
@@ -559,7 +576,7 @@ void sprite_script_frame_driver(void)
 
     render_record:
         if (rec->active == 1) continue; /* next_record */
-        gfx_copy_rect(rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
+        actor_copy_rect(idx, rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
 
     update_record:
         /* Also reached directly (goto) from the OP_MOVE_CLAMPED/
@@ -572,7 +589,7 @@ void sprite_script_frame_driver(void)
         if (rec->vline_extra != 0) {
             /* mirrors board_actors_draw's identical strip copy, see the
              * note there about the apparently-swapped gfx_vline args. */
-            gfx_vline((dos_int)(rec->x + 0x10), (dos_int)rec->vline_extra,
+            actor_vline(idx, (dos_int)(rec->x + 0x10), (dos_int)rec->vline_extra,
                       (dos_int)(rec->y - rec->vline_extra + 1));
         }
 

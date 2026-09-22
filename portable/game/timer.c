@@ -36,8 +36,10 @@ static bool s_manual = false;
 
 static int s_sound_service_enabled = -1;
 static timer_tick_observer_fn s_observer;
+static timer_frame_observer_fn s_frame_observer;
 
 void timer_set_tick_observer(timer_tick_observer_fn fn) { s_observer = fn; }
+void timer_set_frame_observer(timer_frame_observer_fn fn) { s_frame_observer = fn; }
 
 void timer_service_tick(void)
 {
@@ -85,6 +87,10 @@ void timer_deadline_arm(dos_int n)
  * timer_wait_ticks -- see file header comment). */
 void timer_deadline_wait(void)
 {
+    /* Frame boundary for the presenter (frame interpolation): everything
+     * the game wanted on screen for this deadline window has been drawn. */
+    if (s_frame_observer)
+        s_frame_observer(timer_ticks, gc0d0);
     while (timer_ticks < gc0d0) {
         if (s_manual)
             timer_service_tick();

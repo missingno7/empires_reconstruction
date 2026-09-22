@@ -15,6 +15,7 @@
  * bound of 1 byte is unsafe until the generator is fixed.
  */
 #include "game.h"
+#include "gfx_tween.h"
 
 /* ---- F_AF45 (original code at 0xAF45) ---- */
 dos_int menu_wait_key_animated(void)
@@ -366,6 +367,7 @@ walk:
         last = g40ce;
         if (cursor_x < 8) cursor_x = 8; else if (cursor_x > 272) cursor_x = 272;
         if (raycast_trail_active) board_raycast_step();
+        gfx_tween_tag = GFX_TWEEN_TAG_PLAYER;   /* frame interpolation: the player draws below (observer tag, see gfx_tween.h) */
         if (hurt) {
             hurt--;
             if (hurt > 26) gfx_copy_rect(cursor_x, cursor_y, (const uint8_t *)(resource_stripe_table + 14828), cursor_facing_left);
@@ -375,10 +377,12 @@ walk:
             gfx_copy_rect(cursor_x, cursor_y, (const uint8_t *)(resource_stripe_table + g72e * 674), cursor_facing_left);
         } else if (hit > 4 && hit <= 11) {
             gfx_copy_rect(cursor_x, cursor_y, (const uint8_t *)(resource_stripe_table + 14828), cursor_facing_left);
+            gfx_tween_tag = 0;
             hurt = 30; stream_control_block_arm(1); rect_queue_flush(); gbc = 0;
             if (energy_adjust(-2) <= 0) { board_record_complete(); return 0; }
             gbc = 1; goto frame_end;
         } else gfx_copy_rect(cursor_x, cursor_y, (const uint8_t *)(resource_stripe_table + g72e * 674), cursor_facing_left);
+        gfx_tween_tag = 0;
         if (hit == 13) {
             if (timer_poll() > deadline) {   /* busy-poll site: see timer_poll() */
                 g730 = actor_state_table[13].flag = 0;

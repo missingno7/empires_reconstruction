@@ -45,6 +45,7 @@
  *    compiles (movmem takes an untyped pointer, no static bound check).
  */
 #include "game.h"
+#include "gfx_tween.h"
 #include "trace.h"
 
 /* ---- F_3A75 (original code at 0x3A75) ---- */
@@ -347,6 +348,7 @@ moved:
             }
         }
         if (raycast_trail_active != 0) board_raycast_step();
+        gfx_tween_tag = GFX_TWEEN_TAG_PLAYER;   /* frame interpolation: the player draws below (observer tag, see gfx_tween.h) */
         if (blink != 0) {
             blink--;
             if (blink > 0x1a) {
@@ -361,6 +363,7 @@ moved:
         } else {
             if (g40ce != 0 && lastcur != g40ce) {
             gfx_copy_rect(cursor_x, cursor_y, (const uint8_t *)(resource_stripe_table + 0x39ec), cursor_facing_left);
+            gfx_tween_tag = 0;
             blink = 0x1e;
             stream_control_block_arm(1);
             rect_queue_flush();
@@ -379,6 +382,7 @@ moved:
             }
             lastcur = g40ce;
         }
+        gfx_tween_tag = 0;
         rect_queue_flush();
 tail:
         timer_deadline_wait();

@@ -32,8 +32,9 @@ build-portable\portable\platform\sdl3\Release\empires.exe --assets assets
 ctest --test-dir build-portable -C Release
 ```
 
-Settings (volume, fullscreen, data directories) persist in `empires.json`
-next to the executable, written with the defaults on first run.  See
+Settings (music/sound volume, fullscreen, frame interpolation, data
+directories) persist in `empires.json` next to the executable, written
+with the defaults on first run.  See
 [docs/portable/architecture.md](docs/portable/architecture.md) (the
 contract), [docs/portable/build.md](docs/portable/build.md) (build, run,
 configuration, tests) and `docs/portable/*.md` for the inventories and audits.  The

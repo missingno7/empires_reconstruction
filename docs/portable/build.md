@@ -84,19 +84,24 @@ first run, so it is always there to edit:
 
 ```json
 {
-  "audio":  { "volume": 100 },
+  "audio":  { "music_volume": 100, "sound_volume": 100 },
   "paths":  { "assets": "", "saves": "" },
-  "video":  { "fullscreen": false }
+  "video":  { "fullscreen": false, "interpolation": true }
 }
 ```
 
-`audio.volume` is the master output level in percent (0..200);
-`video.fullscreen` starts in borderless fullscreen (Alt+Enter still
-toggles); `paths.assets` / `paths.saves` replace the automatic directory
-lookup when non-empty.  Command-line switches (`--volume PCT`,
-`--fullscreen` / `--windowed`, `--assets`, `--saves`) and the
-`EMPIRES_VOLUME` environment variable override the file for one run and
-are never written back.  A malformed file is reported on stderr and
+`audio.music_volume` scales the music (the OPL voices, or the PC speaker
+while the music player drives it) and `audio.sound_volume` the sound
+effects (the cue stream: jumps, the beam, pickups), both in percent
+(0..200); `video.fullscreen` starts in borderless fullscreen (Alt+Enter
+still toggles); `video.interpolation` presents the ~9.86 Hz game frames
+at the host refresh rate with the player and actor sprites drawn at
+positions interpolated between consecutive frames (see "Frame
+interpolation" in architecture.md); `paths.assets` / `paths.saves`
+replace the automatic directory lookup when non-empty.  Command-line
+switches (`--music-volume PCT`, `--sound-volume PCT`, `--fullscreen` /
+`--windowed`, `--interpolation on|off`, `--assets`, `--saves`) override
+the file for one run and are never written back.  A malformed file is reported on stderr and
 ignored (defaults), never overwritten.  Unknown keys are preserved, so
 later settings (tweening, in-game options) extend the same file; the
 store is `portable/include/config.h`, platform-independent and unit

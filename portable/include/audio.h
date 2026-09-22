@@ -116,6 +116,16 @@ enum audio_event_kind {
     AUDIO_EVENT_NIBBLE_WRITE = 3
 };
 
+/* Which of the driver's two clusters produced an event: the multi-voice
+ * music player, or the single cue stream that plays the sound effects
+ * (jumps, the beam, pickups...).  Mirrors sound.h's SOUND_ORIGIN_*.  The
+ * OPL chip is only ever driven by music; the PC speaker is shared, and the
+ * synth takes the volume of whichever cluster wrote to it last. */
+enum audio_event_origin {
+    AUDIO_ORIGIN_MUSIC = 0,
+    AUDIO_ORIGIN_EFFECTS = 1
+};
+
 /* Fixed scheduling margin, in ticks, added to every event's sample
  * position -- see the timeline scheme above. ~3 ticks @ 236.7 Hz ~= 13 ms. */
 #define AUDIO_LATENCY_TICKS 3
@@ -132,11 +142,15 @@ void audio_mixer_init(int sample_rate);
  * compatibility. */
 void audio_mixer_shutdown(void);
 
-/* Master output volume in percent (0..200, default 100).  Scales the mix
- * after the fixed per-source gains; does not touch the event timeline, so
- * the sound state machine's output stays identical at any setting. */
-void audio_mixer_set_master_volume(int percent);
-int  audio_mixer_master_volume(void);
+/* Output volumes in percent (0..200, default 100): music (the OPL voices,
+ * or the speaker while the music player drives it) and sound effects (the
+ * speaker while the cue stream drives it).  They scale the mix after the
+ * fixed per-source gains and never touch the event timeline, so the sound
+ * state machine's output stays identical at any setting. */
+void audio_mixer_set_music_volume(int percent);
+void audio_mixer_set_effects_volume(int percent);
+int  audio_mixer_music_volume(void);
+int  audio_mixer_effects_volume(void);
 
 /* Push one backend event, produced at tick `tick` (portable/game/timer.c's
  * timer_ticks at the moment of the historical hardware write).  Thread
@@ -145,6 +159,9 @@ int  audio_mixer_master_volume(void);
  * struct sound_event does: OPL (reg,val), PIT (divisor,-), speaker gate
  * (enabled,tandy_mode), nibble (value,-). */
 void audio_mixer_push_event(int kind, uint32_t tick, uint16_t a, uint16_t b);
+/* Same, with the producing cluster (enum audio_event_origin); the plain
+ * form is AUDIO_ORIGIN_MUSIC. */
+void audio_mixer_push_event_from(int kind, uint32_t tick, uint16_t a, uint16_t b, int origin);
 
 /* Render `frames` mono 16-bit PCM samples at the sample_rate given to
  * audio_mixer_init(), applying every event whose scheduled sample position

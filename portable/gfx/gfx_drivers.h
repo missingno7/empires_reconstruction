@@ -57,6 +57,26 @@ void    vga_copy_rect_split_flip_v(dos_int sx, dos_int sy, dos_int w, dos_int h,
 dos_int vga_draw_char(dos_int x, dos_int y, dos_int glyph);
 void    vga_blit_bitmap(dos_int x, dos_int y, const uint8_t *bitmap);
 void    vga_copy_rect(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip);
+
+/* vga_copy_rect's two halves, shared with the frame-interpolation replay
+ * (gfx_tween.c).  The clip step reproduces the listing's row/column clip
+ * against explicit clip words (the historical g94/g96/g98/g9a) and fills
+ * the geometry the draw step needs; the draw step paints through `rows`
+ * (a row-pointer table with the 0x140 stride) instead of g3924. */
+struct vga_copy_clip {
+    uint16_t yv;            /* first dest row after clipping */
+    uint16_t dxr;           /* rows to draw */
+    uint16_t col;           /* leftmost dest packed-pair column (2 pixels each) */
+    uint16_t startcol;      /* column the draw starts from (== col, or the right edge when mirrored) */
+    uint16_t cx;            /* packed columns to draw per row */
+    int16_t  bp_extra;      /* source bytes to skip per row (clipped-away width) */
+    const uint8_t *si;      /* first source byte */
+};
+bool    vga_copy_rect_clip(dos_int x, dos_int y, const uint8_t *bitmap, dos_int flip,
+                           dos_int c94, dos_int c96, dos_int c98, dos_int c9a,
+                           struct vga_copy_clip *out);
+void    vga_copy_rect_draw(uint8_t *const *rows, const struct vga_copy_clip *c,
+                           const uint8_t *table, dos_int flip);
 void    vga_blit_image(dos_int x, dos_int y, const uint8_t *image);
 void    vga_set_pixel(dos_int x, dos_int y);
 dos_int vga_get_pixel(dos_int x, dos_int y);

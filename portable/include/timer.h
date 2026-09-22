@@ -58,6 +58,12 @@ void timer_platform_wait_tick(void);
  * deterministic replays hook their scripted input / frame dumps here. */
 typedef void (*timer_tick_observer_fn)(void);
 void timer_set_tick_observer(timer_tick_observer_fn fn);
+/* Optional observer invoked (on the game thread) when timer_deadline_wait()
+ * is entered, i.e. at the end of a game frame, with the current tick and
+ * the armed deadline: the frame-interpolation presenter publishes the
+ * finished frame here. */
+typedef void (*timer_frame_observer_fn)(dos_ulong now_ticks, dos_ulong deadline_ticks);
+void timer_set_frame_observer(timer_frame_observer_fn fn);
 
 /* Manual mode: no thread; tests advance time with timer_service_tick(). */
 void timer_service_set_manual(bool manual);

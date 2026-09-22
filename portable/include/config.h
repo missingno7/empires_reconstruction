@@ -66,9 +66,11 @@ bool config_set_number(const char *key, double value);
 bool config_set_bool(const char *key, bool value);
 bool config_set_string(const char *key, const char *value);
 
-/* Defaults: set only when the key is absent (so a loaded file wins). */
-void config_default_int(const char *key, int value);
-void config_default_bool(const char *key, bool value);
-void config_default_string(const char *key, const char *value);
+/* Defaults: set only when the key is absent (so a loaded file wins).
+ * Return true when the key was added, so a caller can write the file back
+ * and keep it complete as new settings appear. */
+bool config_default_int(const char *key, int value);
+bool config_default_bool(const char *key, bool value);
+bool config_default_string(const char *key, const char *value);
 
 #endif /* PORTABLE_CONFIG_H */

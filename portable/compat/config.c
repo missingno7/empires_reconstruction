@@ -125,19 +125,19 @@ bool config_set_string(const char *key, const char *value)
     return true;
 }
 
-void config_default_int(const char *key, int value)
+bool config_default_int(const char *key, int value)
 {
-    if (!find(key)) config_set_int(key, value);
+    return !find(key) && config_set_int(key, value);
 }
 
-void config_default_bool(const char *key, bool value)
+bool config_default_bool(const char *key, bool value)
 {
-    if (!find(key)) config_set_bool(key, value);
+    return !find(key) && config_set_bool(key, value);
 }
 
-void config_default_string(const char *key, const char *value)
+bool config_default_string(const char *key, const char *value)
 {
-    if (!find(key)) config_set_string(key, value);
+    return !find(key) && config_set_string(key, value);
 }
 
 /* ---- parser --------------------------------------------------------- */

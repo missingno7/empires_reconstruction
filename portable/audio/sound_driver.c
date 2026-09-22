@@ -134,29 +134,39 @@ const struct sound_event *sound_event_log_get(size_t index)
  * (both 0=OPL write, 1=PIT divisor, 2=speaker gate, 3=nibble write), so
  * the kind value is passed straight through. */
 
+/* SOUND_ORIGIN_EFFECTS only while one of the cue-stream helpers
+ * (speaker_gate_on/off, pit_channel2_set_divisor, below) is emitting; the
+ * mixer uses it to apply the effects volume to the shared PC speaker. */
+static int g_origin = SOUND_ORIGIN_MUSIC;
+
+int sound_backend_event_origin(void)
+{
+    return g_origin;
+}
+
 void sound_backend_opl_write(uint8_t reg, uint8_t val)
 {
     event_log_push(SOUND_EVENT_OPL_WRITE, reg, val);
-    audio_mixer_push_event(SOUND_EVENT_OPL_WRITE, (uint32_t)timer_ticks, reg, val);
+    audio_mixer_push_event_from(SOUND_EVENT_OPL_WRITE, (uint32_t)timer_ticks, reg, val, g_origin);
 }
 
 void sound_backend_pit_divisor(uint16_t divisor)
 {
     event_log_push(SOUND_EVENT_PIT_DIVISOR, divisor, 0);
-    audio_mixer_push_event(SOUND_EVENT_PIT_DIVISOR, (uint32_t)timer_ticks, divisor, 0);
+    audio_mixer_push_event_from(SOUND_EVENT_PIT_DIVISOR, (uint32_t)timer_ticks, divisor, 0, g_origin);
 }
 
 void sound_backend_speaker_gate(int enabled, int tandy_mode)
 {
     event_log_push(SOUND_EVENT_SPEAKER_GATE, (uint16_t)(enabled != 0), (uint16_t)(tandy_mode != 0));
-    audio_mixer_push_event(SOUND_EVENT_SPEAKER_GATE, (uint32_t)timer_ticks,
-                            (uint16_t)(enabled != 0), (uint16_t)(tandy_mode != 0));
+    audio_mixer_push_event_from(SOUND_EVENT_SPEAKER_GATE, (uint32_t)timer_ticks,
+                                (uint16_t)(enabled != 0), (uint16_t)(tandy_mode != 0), g_origin);
 }
 
 void sound_backend_nibble_port_write(uint8_t value)
 {
     event_log_push(SOUND_EVENT_NIBBLE_WRITE, value, 0);
-    audio_mixer_push_event(SOUND_EVENT_NIBBLE_WRITE, (uint32_t)timer_ticks, value, 0);
+    audio_mixer_push_event_from(SOUND_EVENT_NIBBLE_WRITE, (uint32_t)timer_ticks, value, 0, g_origin);
 }
 
 /* opl_write() (sound.h): the new backend primitive src/OPLREG.C's ported
@@ -1376,19 +1386,25 @@ static void stream_note_program(dos_int arg_byte, dos_int ah)
 /* F_CAD0 -- open the PC-speaker gate. */
 static void speaker_gate_on(void)
 {
+    g_origin = SOUND_ORIGIN_EFFECTS;
     sound_backend_speaker_gate(1, 0);
+    g_origin = SOUND_ORIGIN_MUSIC;
 }
 
 /* F_CADB -- close the PC-speaker gate. */
 static void speaker_gate_off(void)
 {
+    g_origin = SOUND_ORIGIN_EFFECTS;
     sound_backend_speaker_gate(0, 0);
+    g_origin = SOUND_ORIGIN_MUSIC;
 }
 
 /* F_CAE6 -- program PIT channel 2 with the divisor in `ax`. */
 static void pit_channel2_set_divisor(dos_int ax)
 {
+    g_origin = SOUND_ORIGIN_EFFECTS;
     sound_backend_pit_divisor((uint16_t)(dos_uint)ax);
+    g_origin = SOUND_ORIGIN_MUSIC;
 }
 
 /* ===========================================================================

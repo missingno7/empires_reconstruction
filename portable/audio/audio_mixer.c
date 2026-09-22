@@ -29,6 +29,7 @@ typedef struct {
     int kind;
     uint16_t a;
     uint16_t b;
+    int origin;                 /* enum audio_event_origin */
 } queued_event;
 
 static queued_event s_ring[EVENT_RING_CAPACITY];
@@ -57,25 +58,27 @@ static void ensure_mutex(void)
  * synth a +-1.0 square wave; both are far hotter than an AdLib line-out and
  * a PC-speaker cone next to each other, so the defaults sit well below unity
  * (a full-scale square wave has 3 dB more RMS than a sine of the same
- * amplitude, hence the extra drop on the speaker).  The master gain is the
- * user's volume knob (--volume / EMPIRES_VOLUME). */
+ * amplitude, hence the extra drop on the speaker).  On top sit the user's
+ * two volume knobs, music and effects (empires.json audio.*). */
 #define AUDIO_GAIN_OPL_DEFAULT      0.25f
 #define AUDIO_GAIN_SPEAKER_DEFAULT  0.06f
 static float s_gain_opl = AUDIO_GAIN_OPL_DEFAULT;
 static float s_gain_speaker = AUDIO_GAIN_SPEAKER_DEFAULT;
-static float s_gain_master = 1.0f;
+static float s_gain_music = 1.0f;
+static float s_gain_effects = 1.0f;
+static int s_speaker_origin = AUDIO_ORIGIN_MUSIC;   /* who wrote to the speaker last (render side) */
 
-void audio_mixer_set_master_volume(int percent)
+static float pct_to_gain(int percent)
 {
     if (percent < 0) percent = 0;
     if (percent > 200) percent = 200;
-    s_gain_master = (float)percent / 100.0f;
+    return (float)percent / 100.0f;
 }
 
-int audio_mixer_master_volume(void)
-{
-    return (int)(s_gain_master * 100.0f + 0.5f);
-}
+void audio_mixer_set_music_volume(int percent)   { s_gain_music = pct_to_gain(percent); }
+void audio_mixer_set_effects_volume(int percent) { s_gain_effects = pct_to_gain(percent); }
+int  audio_mixer_music_volume(void)   { return (int)(s_gain_music * 100.0f + 0.5f); }
+int  audio_mixer_effects_volume(void) { return (int)(s_gain_effects * 100.0f + 0.5f); }
 
 void audio_mixer_init(int sample_rate)
 {
@@ -112,6 +115,11 @@ uint64_t audio_mixer_ticks_to_samples(uint32_t ticks)
 
 void audio_mixer_push_event(int kind, uint32_t tick, uint16_t a, uint16_t b)
 {
+    audio_mixer_push_event_from(kind, tick, a, b, AUDIO_ORIGIN_MUSIC);
+}
+
+void audio_mixer_push_event_from(int kind, uint32_t tick, uint16_t a, uint16_t b, int origin)
+{
     ensure_mutex();
 
     /* Scheduled a fixed AUDIO_LATENCY_TICKS into the future relative to
@@ -135,6 +143,7 @@ void audio_mixer_push_event(int kind, uint32_t tick, uint16_t a, uint16_t b)
         slot->kind = kind;
         slot->a = a;
         slot->b = b;
+        slot->origin = origin;
         s_ring_head = (s_ring_head + 1) % EVENT_RING_CAPACITY;
         s_ring_count++;
     }
@@ -152,12 +161,14 @@ static void apply_event(const queued_event *e)
         break;
     case AUDIO_EVENT_PIT_DIVISOR:
         s_speaker.divisor = e->a;
+        s_speaker_origin = e->origin;
         break;
     case AUDIO_EVENT_SPEAKER_GATE:
         /* e->b (tandy_mode) is deliberately ignored here -- both gate
          * modes drive the same square-wave synth (audio.h's documented
          * approximation). */
         s_speaker.enabled = e->a != 0;
+        s_speaker_origin = e->origin;
         break;
     case AUDIO_EVENT_NIBBLE_WRITE:
         /* Logged (the applied-count below still advances) but not
@@ -231,7 +242,8 @@ void audio_render(int16_t *out, int frames)
             float opl_sample = opl_backend_generate();
             float spk_sample = speaker_synth_generate(&s_speaker, s_sample_rate);
 
-            float mixed = (opl_sample * s_gain_opl + spk_sample * s_gain_speaker) * s_gain_master;
+            float spk_gain = s_gain_speaker * (s_speaker_origin == AUDIO_ORIGIN_EFFECTS ? s_gain_effects : s_gain_music);
+            float mixed = opl_sample * s_gain_opl * s_gain_music + spk_sample * spk_gain;
             if (mixed > 1.0f)
                 mixed = 1.0f;
             else if (mixed < -1.0f)

@@ -170,8 +170,47 @@ speaker.  Mixed PCM is pushed to one SDL3 audio stream.  Event logs are the
 first parity artifact; PCM comes after.  Output level: fixed per-source
 gains (OPL 0.25, speaker 0.06 of full scale -- both synths are far hotter
 than the original hardware) under a user master volume (`--volume`,
-`EMPIRES_VOLUME`, `audio.volume` in `empires.json`); gains never touch
-the event timeline.
+`audio.music_volume` / `audio.sound_volume` in `empires.json`): the OPL
+chip is only ever driven by the music player, the PC speaker is shared,
+so the driver marks the cue-stream helpers' events (`speaker_gate_on/off`,
+`pit_channel2_set_divisor` -- the sound effects) with
+`SOUND_ORIGIN_EFFECTS` and the speaker synth takes the volume of whichever
+cluster wrote to it last.  Gains never touch the event timeline.
+
+## Frame interpolation
+
+The game draws one frame per `timer_deadline_arm(24)` ..
+`timer_deadline_wait()` window (~9.86 Hz) and knows nothing about host
+refresh rates.  `portable/gfx/gfx_tween.c` (`gfx_tween.h`) lets the SDL
+presenter show that window at the display's rate with the moving sprites
+interpolated, without touching game logic, its tick ratio or any pixel
+the game produces:
+
+- Capture (game thread): game code sets `gfx_tween_tag` around the
+  player draw (`turn_loop_run`, `level_run_loop`) and the actor-record
+  draws (`sprite_script_frame_driver`, `board_actors_draw`) -- plain
+  stores, no behavioural effect.  The VGA driver's `vga_copy_rect` /
+  `vga_vline` record a tagged blit (arguments, clip words, a copy of the
+  bitmap, the pixels it is about to cover) and then draw exactly as
+  before.
+- Publish (game thread): `timer_deadline_wait()` reports the frame
+  boundary through `timer_set_frame_observer`; the front end snapshots
+  VRAM, the op list and the frame period (deadline minus the previous
+  deadline, i.e. the game's own 24 ticks) as frame n.
+- Compose (presenter thread, every refresh): start from frame n's VRAM,
+  put back the covered pixels of every op (newest first), redraw each op
+  with the same driver clip/draw code at `lerp(frame n-1, frame n,
+  alpha)`, alpha being the host time's progress through the frame period
+  since the publish.  Ops match between frames by tag and order; a
+  per-axis jump over 48 px (projectile spawn, room change) is a teleport
+  and is not smoothed.  When the game presents something after the
+  publish without a new frame following (menus, dialogs, transitions),
+  the presenter falls back to the live VRAM.
+
+Interpolation is between consecutive game frames only: an actor whose
+bytecode moves it every N-th frame still steps every N frames.  Pinned
+deterministic replays keep it off; `test_gfx_tween` covers capture,
+matching, teleports and the fallback.
 
 ## Host configuration
 

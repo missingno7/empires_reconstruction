@@ -272,15 +272,22 @@ static void test_countdown_decrements_without_running_program(void)
     setup();
     board_record_index = 1;
 
+    /* asm/SPRITES.ASM decrement_delay: `dec byte ptr [di+0Ah]` then falls
+     * through into render_record -- a frozen record (flashlight beam hit,
+     * check_bounds) is still drawn every tick; only its bytecode pauses. */
+    resource_ptr_table[2] = make_bitmap(0, 0x42);
+
     actor_record_table[0] = 1;
     {
         struct actor_record *r0 = (struct actor_record *)&actor_state_table[0];
         r0->board_id = 1; r0->rendered = 0; r0->countdown = 3;
+        r0->active = 0; r0->x = 30; r0->y = 15; r0->sprite_frame = 2; r0->dir_flip = 0;
         r0->saved_pc = 0xFFFF; /* poison: if this were dereferenced it reads far out of any table */
     }
 
     sprite_script_frame_driver();
     check(t, ((struct actor_record *)&actor_state_table[0])->countdown == 2, "countdown decrements by exactly one per call");
+    check(t, g3924[15][30] == 0x42, "frozen record is still rendered (decrement_delay falls into render_record)");
 
     sprite_script_frame_driver();
     check(t, ((struct actor_record *)&actor_state_table[0])->countdown == 1, "countdown keeps decrementing");

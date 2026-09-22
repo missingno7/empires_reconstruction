@@ -335,8 +335,9 @@ static enum sprite_script_control op_move_clamped(struct actor_record *rec, dos_
     operand = sprite_script_fetch_byte_operand(si);
     rec->dir_flip = (dos_uchar)((operand >> 7) & 1u);
     candidate = (dos_uchar)((operand & 0x7Fu) + rec->sprite_frame);
-    if (candidate < rec->frame_limit_lo)      candidate = rec->frame_limit_hi; /* clamp_high: wraps to the HIGH bound */
-    else if (candidate > rec->frame_limit_hi) candidate = rec->frame_limit_lo; /* clamp_low: wraps to the LOW bound */
+    /* `cmp al,[di+0Bh]; jl` / `cmp al,[di+0Ch]; jg` -- SIGNED byte compares. */
+    if ((dos_char)candidate < (dos_char)rec->frame_limit_lo)      candidate = rec->frame_limit_hi; /* clamp_high: wraps to the HIGH bound */
+    else if ((dos_char)candidate > (dos_char)rec->frame_limit_hi) candidate = rec->frame_limit_lo; /* clamp_low: wraps to the LOW bound */
 
     /* velocity_store: */
     rec->sprite_frame = candidate;
@@ -385,7 +386,7 @@ static enum sprite_script_control op_set_position_and_frame(struct actor_record 
     rec->board_id = new_board;
     rec->dir_flip = (dos_uchar)((op2_lo >> 7) & 1u);
 
-    if (new_board == (dos_uchar)board_record_index) {
+    if ((dos_int)new_board == board_record_index) { /* cmp bx,ds:[BFBAh] -- zero-extended byte vs the full word */
         rec->sprite_frame = (dos_uchar)(op2_lo & 0x7Fu);
         if (rec->active != 1) {
             gfx_copy_rect(rec->x, rec->y, actor_record_bitmap(rec), rec->dir_flip);
@@ -511,8 +512,12 @@ void sprite_script_frame_driver(void)
         if (rec->rendered == 1) goto render_record;
 
         if (rec->countdown != 0) {
+            /* decrement_delay: `dec byte ptr [di+0Ah]` then FALLS THROUGH
+             * into render_record -- a frozen record (hit by the flashlight
+             * beam, see check_bounds) keeps being drawn and keeps running
+             * update_record/collision; only its bytecode is paused. */
             rec->countdown--;
-            continue; /* next_record */
+            goto render_record;
         }
 
         si = rec->saved_pc;

@@ -48,7 +48,7 @@ void gfx_tween_set_enabled(bool enabled);       /* also resets all state */
 bool gfx_tween_enabled(void);
 
 /* Called by the presenter when interpolation presentation is resumed after
- * showing live VRAM.  This invalidates only presenter-side base/timing state;
+ * showing live VRAM.  This discards only presenter-side queued/history state;
  * it does not touch the game-thread capture engine or allocate/reset it. */
 void gfx_tween_presenter_resume(void);
 

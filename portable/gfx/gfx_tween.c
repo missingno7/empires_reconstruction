@@ -188,8 +188,18 @@ void gfx_tween_presenter_resume(void)
     if (!s_lock_init)
         return;
     sync_mutex_lock(&s_lock);
+    /* While interpolation is off the game thread continues publishing, but
+     * the presenter shows live VRAM instead.  Those queued frames and their
+     * object history are no longer a valid interpolation origin when the
+     * presenter resumes.  Drop only presenter-owned state; leave staging and
+     * capture enabled so the game thread is never reset or raced. */
+    for (int i = 0; i < TWEEN_RING; i++)
+        if (s_ring[i]) s_ring[i]->valid = false;
+    s_ring_head = s_ring_count = 0;
     if (s_base)
         s_base->valid = false;
+    if (s_slots)
+        memset(s_slots, 0, sizeof(s_slots[0]) * TWEEN_SLOTS);
     s_first_newer_ms = -1.0;
     sync_mutex_unlock(&s_lock);
 }

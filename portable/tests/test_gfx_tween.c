@@ -158,6 +158,37 @@ static void test_live_present_falls_back(void)
     teardown();
 }
 
+static void test_presenter_resume_after_live_mode(void)
+{
+    uint8_t out[320 * 200];
+    int n, mx, my;
+    setup();
+    make_bitmap(0x42);
+
+    /* These frames were published while the presenter was effectively in
+     * live-VRAM mode.  Resuming must discard them rather than use stale
+     * presenter history as an interpolation origin. */
+    frame(GFX_TWEEN_TAG_PLAYER, 10, 20, 0.0, 100.0);
+    erase(10, 20);
+    frame(GFX_TWEEN_TAG_PLAYER, 30, 20, 100.0, 200.0);
+    gfx_tween_presenter_resume();
+
+    /* The first fresh frame establishes a new base. */
+    erase(30, 20);
+    frame(GFX_TWEEN_TAG_PLAYER, 50, 20, 200.0, 300.0);
+    CHECK(gfx_tween_compose(out, 250.0, gfx_vram_generation));
+    n = count_marker(out, 0x42, &mx, &my);
+    CHECK(n == 8 && mx == 50 && my == 20);
+
+    /* The following fresh pair must interpolate normally again. */
+    erase(50, 20);
+    frame(GFX_TWEEN_TAG_PLAYER, 70, 20, 300.0, 400.0);
+    CHECK(gfx_tween_compose(out, 350.0, gfx_vram_generation));
+    n = count_marker(out, 0x42, &mx, &my);
+    CHECK(n == 8 && mx == 60 && my == 20);
+    teardown();
+}
+
 static void test_disabled_and_untagged_capture_nothing(void)
 {
     uint8_t out[320 * 200];
@@ -295,6 +326,7 @@ int main(void)
     test_interpolates_between_frames();
     test_teleport_and_unmatched_draw_at_current();
     test_live_present_falls_back();
+    test_presenter_resume_after_live_mode();
     test_disabled_and_untagged_capture_nothing();
     if (s_failures) {
         fprintf(stderr, "test_gfx_tween: %d failure(s)\n", s_failures);

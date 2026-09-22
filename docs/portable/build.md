@@ -57,24 +57,24 @@ config you pass here; no reconfigure needed to switch).
 
 ## Run
 
-The executable lands at:
+The executable lands at
+`build-portable/portable/platform/sdl3/<Config>/empires.exe` (with
+`SDL3.dll` beside it).  It needs the original game data files `AE000.DAT`
+and `AE001.DAT`: put them next to the executable, or in `assets/` when
+running from the repository root, or pass `--assets DIR`.  Save slots are
+written as small overlay files (`AE000_061.rec` ...) into `--saves DIR`
+(default: the asset directory); the archives themselves are never modified.
 
-```
-build-portable/portable/platform/sdl3/Debug/empires.exe
-```
-
-(`Release/empires.exe` for a Release build.) Running it with no arguments
-opens a resizable window titled "Empires (portable)", integer-scaled from a
-320x200 logical framebuffer, showing a test gradient. Close the window,
-press Escape, or send SDL_EVENT_QUIT to exit.
-
-`--selftest` runs the loop for about 300 ms and then exits with status 0,
-with no human interaction required — this is what CI and automated checks
-should invoke:
-
-```
-build-portable/portable/platform/sdl3/Debug/empires.exe --selftest
-```
+Historical switches pass through (`-V` VGA is the default; `-M`, `-E`,
+`-T`, `-C` select the other display paths, `-I`/`-SI`/`-SA`/`-ST` the sound
+backend).  Bring-up options: `--demo` (primitive test scene), `--selftest`
+/ `--selftest-ms N` (exit after N ms), `--dump-vram FILE`
+(`--dump-interval MS`) to write the presented frame(s) as PPM
+(`python tools/portable/ppm2png.py in.ppm out.png`), `--script "..."` to
+inject keys (see `portable/platform/sdl3/main.c`), `--deterministic` to
+run on virtual time (reproducible replays).  Environment: `EMPIRES_TRACE=1`
+prints high-level flow markers, `EMPIRES_NOSOUND=1` disables the sound
+state machine.
 
 ## Tests
 
@@ -82,5 +82,13 @@ build-portable/portable/platform/sdl3/Debug/empires.exe --selftest
 ctest --test-dir build-portable -C Debug
 ```
 
-Tests that need `assets/AE000.DAT`/`AE001.DAT` (not committed to the repo)
-skip cleanly (exit code 77) when those files are absent.
+Unit tests cover the resource decoders (all 220 archive records against a
+SHA-256 manifest), the software graphics drivers (209 cases captured from
+the real 8086 code under MS-DOS Player), the timer, keyboard, CC.LIB
+compat, the ported assembler modules and the sound state machine.
+`replay_*` tests run the whole game headlessly (SDL dummy drivers) with a
+scripted input on virtual time and compare frame hashes
+(`portable/tests/replay/*.json`; refresh with
+`python tools/portable/replay_test.py <exe> <manifest> --update` after
+reviewing the frames).  Tests that need the original assets skip when they
+are absent.

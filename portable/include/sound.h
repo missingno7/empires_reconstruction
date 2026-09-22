@@ -152,23 +152,41 @@ size_t sound_event_log_count(void);
 const struct sound_event *sound_event_log_get(size_t index);
 
 /* ---------------------------------------------------------------------
- * Synthetic command-stream memory (see portable/audio/
- * sound_driver_internal.h's header comment for why these exist: snd_base/
- * snd_base2 are plain 16-bit DS-relative offsets, not pointers, and
- * snd_seg/snd_seg2 stay zero pending a real far-pointer-flattening fix in
- * plrldpub.c, which is out of this driver's ownership).  Tests build a
- * synthetic sound stream by writing command bytes into one of these
- * arrays and pointing snd_base (or a voice's cursor table entry) at the
- * chosen offset, exactly as sound_start()/stream_control_block_arm()
- * would once a real loader fills them in.
- *   sound_resource_mem -- stands in for the ES:_snd_seg segment (the
- *     loaded sound-resource block): the single "music stream" cluster
+ * Command-stream memory: two real pointers to the two historical far
+ * -pointer targets, owned by this driver.
+ *
+ *   sound_resource_block -- what snd_seg:snd_base pointed at: the loaded
+ *     "record 0x41" sound-resource block (portable/game/plrldpub.c's
+ *     resource_ptr).  Addresses the single "music stream" cluster
  *     (mus_ptr, stream_control_block_arm's far-pointer-table lookup).
- *   sound_voice_mem -- stands in for the ES:_snd_seg2 segment (the
- *     0x620-byte staging/scratch block): the up-to-4-voice cluster
- *     (voice_stream_cursor_table/voice_stream_base_table, populated by
- *     sound_voice_table_reload). */
-extern uint8_t sound_resource_mem[65537];
-extern uint8_t sound_voice_mem[65537];
+ *   sound_voice_block -- what snd_seg2:snd_base2 pointed at: gc5da, the
+ *     0x620-byte staging block portable/game/rescache.c fills (via
+ *     resource_load_record_into) before every sound_voice_table_reload()
+ *     call.  Addresses the up-to-4-voice cluster
+ *     (voice_stream_cursor_table/voice_stream_base_table).
+ *
+ * Every driver cursor into these blocks (mus_ptr, voice_stream_cursor_
+ * table, ...) stays a plain 16-bit offset relative to the block's own
+ * base, exactly like the historical ES:DI far-pointer addressing did
+ * within one DOS segment -- snd_seg/snd_seg2 are never read for
+ * addressing (portable/game/plrldpub.c leaves them at their generated
+ * zero default, unwritten, same as snd_base/snd_base2, which have no
+ * portable meaning once the far pointer is a real pointer).
+ *
+ * sound_set_resource_blocks() is how plrldpub.c publishes the two blocks
+ * right after allocating/loading them; call it again whenever a loader
+ * hands the driver a new resource_ptr/gc5da pair.  Both blocks start
+ * NULL (no resource loaded yet -- the state a fresh boot, or any tick
+ * serviced before player_record_load_publish() has run, is in): every
+ * ES:DI-style byte read in sound_driver.c goes through a small accessor
+ * that reads a NULL block as 0xFF, the SAME sentinel byte
+ * sound_voice_table_prime()'s "is this the end marker" check and every
+ * command-stream dispatcher's "0xF = terminator" opcode already use, so
+ * ticking with nothing loaded is inert (no crash, no spin) instead of
+ * undefined -- see portable/tests/test_sound.c's
+ * "unarmed_tick_returns_promptly" test. */
+extern uint8_t *sound_resource_block;
+extern uint8_t *sound_voice_block;
+void sound_set_resource_blocks(uint8_t *resource, uint8_t *staging);
 
 #endif /* PORTABLE_SOUND_H */

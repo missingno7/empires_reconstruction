@@ -10,11 +10,13 @@ int dos_compat_link_anchor(void) { return 0; }
 
 volatile unsigned empires_trace_seq;
 const char *volatile empires_trace_last;
+const char *volatile empires_trace_ring[EMPIRES_TRACE_RING];
 
 void empires_trace(const char *fmt, ...)
 {
     static int enabled = -1;
     empires_trace_last = fmt;
+    empires_trace_ring[empires_trace_seq % EMPIRES_TRACE_RING] = fmt;
     empires_trace_seq++;
     if (enabled < 0)
         enabled = getenv("EMPIRES_TRACE") != NULL;

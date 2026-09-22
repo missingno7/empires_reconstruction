@@ -25,26 +25,17 @@ void player_record_load_publish()
     gc5da = malloc((size_t)0x620L);
     resource_load_record_alloc(0x41, &resource_ptr);
 
-    /* PORT: snd_seg/snd_base historically held the segment (gc5e0) and
-       offset (gc5de) halves of the far pointer resource_load_record_alloc
-       just wrote.  Once far pointers flatten to real pointers there is no
-       segment half; per the brief's PLRLDPUB.C note ("the port has snd_base
-       as a real pointer") and docs/portable/state-map.md's "Segment-half
-       aliases" section (the same no-portable-object pattern documented for
-       gc5dc below), snd_seg is zeroed and snd_base carries the pointer's
-       low 16 bits.  portable/include/sound.h already documents the whole
-       snd_* interface as stub-only pending the Wave 4 sound driver, so this
-       is a harmless placeholder, not a working handoff. */
-    snd_seg = 0;
-    snd_base = (dos_uint)(uintptr_t)resource_ptr;
-
-    /* PORT: gc5dc (the historical segment half of gc5da, DS:C5DC) has no
-       portable object at all -- state-map.md: "gc5dc: historical segment
-       word of gc5da (DS:c5da) at DS:c5dc; no portable object" -- now that
-       gc5da is a real dos_char* (portable/generated/game_state.h).  Same
-       zero-segment/low-16-bits-of-pointer treatment as above. */
-    snd_seg2 = 0;
-    snd_base2 = (dos_uint)(uintptr_t)gc5da;
+    /* PORT: snd_seg:snd_base and snd_seg2:snd_base2 historically held the
+       far-pointer segment:offset pair resource_load_record_alloc's result
+       and gc5da (the 0x620-byte staging block) lived at.  Once far
+       pointers flatten to real pointers there is no segment half and no
+       portable 16-bit offset can carry a 64-bit pointer's value either --
+       those four historical words are left untouched at their generated
+       zero default (never written here) and portable/audio/sound_driver.c
+       (sound_set_resource_blocks()) owns the real pointers directly
+       instead, exactly like every other far-pointer flattening in this
+       tree (resource.h's own uint8_t** pattern). */
+    sound_set_resource_blocks(resource_ptr, (uint8_t *)gc5da);
 
     sound_backend_select_init();
 }

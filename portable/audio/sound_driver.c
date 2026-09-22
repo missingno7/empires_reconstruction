@@ -5,11 +5,11 @@
  * routine is translated for MEANING, not instruction-for-instruction: no
  * register variables, no segment arithmetic, SI (voice index x2 in the
  * original register ABI) becomes a plain `dos_int voice` (0..3) parameter,
- * ES:DI (the live command-stream far pointer) becomes an explicit byte
- * offset into one of the two synthetic arenas sound.h declares
- * (sound_resource_mem / sound_voice_mem -- see sound_driver_internal.h's
- * header comment for why two flat arenas replace the historical
- * segment:offset addressing). Every observable effect -- the bytes
+ * ES:DI (the live command-stream far pointer) becomes an explicit 16-bit
+ * byte offset into one of the two real blocks sound.h declares
+ * (sound_resource_block / sound_voice_block -- the actual buffers
+ * portable/game/plrldpub.c allocates and portable/game/rescache.c fills;
+ * see sound.h's header comment). Every observable effect -- the bytes
  * written to the DGROUP tables, the order and arguments of the backend
  * event calls, 16-bit wraparound, signed vs unsigned compares -- is
  * reproduced exactly; see this file's per-routine comments for the ASM
@@ -25,13 +25,59 @@
  */
 #include "game.h"
 #include "sound_driver_internal.h"
+#include "trace.h" /* a defensive iteration cap tripping is worth a trace line -- see the two "GUARD HIT" call sites below */
 
 /* ===========================================================================
- * Synthetic command-stream memory (sound.h) and event log
+ * Command-stream memory (sound.h) and event log
  * =========================================================================== */
 
-uint8_t sound_resource_mem[SOUND_MEM_SIZE];
-uint8_t sound_voice_mem[SOUND_MEM_SIZE];
+/* Real pointers to the historical far-pointer targets (sound.h's header
+ * comment has the full story): sound_resource_block is what snd_seg:
+ * snd_base pointed at (the loaded "record 0x41" sound resource,
+ * portable/game/plrldpub.c's resource_ptr), sound_voice_block is what
+ * snd_seg2:snd_base2 pointed at (gc5da, the 0x620-byte staging block
+ * portable/game/rescache.c fills per voice table before every
+ * sound_voice_table_reload() call). Both start NULL -- see
+ * resource_byte()/voice_byte() below for why that is safe, not a crash
+ * risk. */
+uint8_t *sound_resource_block;
+uint8_t *sound_voice_block;
+
+void sound_set_resource_blocks(uint8_t *resource, uint8_t *staging)
+{
+    sound_resource_block = resource;
+    sound_voice_block = staging;
+}
+
+/* Every ES:DI-style byte/word read in this file goes through one of these
+ * four helpers instead of indexing sound_resource_block/sound_voice_block
+ * directly. A NULL block (no resource loaded yet -- the exact state a
+ * fresh boot, or a tick serviced before player_record_load_publish() has
+ * ever run, is in) reads as 0xFF: the SAME sentinel byte
+ * sound_voice_table_prime()'s "is this entry the 0xFF end marker"
+ * check and every command-stream dispatcher's "0xF = terminator" opcode
+ * already use, so "nothing loaded" behaves exactly like "an
+ * already-exhausted stream" -- inert, not a crash, not a spin. See
+ * portable/tests/test_sound.c's "unarmed_tick_returns_promptly" test. */
+static uint8_t resource_byte(uint16_t off)
+{
+    return sound_resource_block ? sound_resource_block[off] : 0xFF;
+}
+
+static uint8_t voice_byte(uint16_t off)
+{
+    return sound_voice_block ? sound_voice_block[off] : 0xFF;
+}
+
+static uint16_t resource_word(uint16_t off)
+{
+    return (uint16_t)(resource_byte(off) | ((uint16_t)resource_byte((uint16_t)(off + 1)) << 8));
+}
+
+static uint16_t voice_word(uint16_t off)
+{
+    return (uint16_t)(voice_byte(off) | ((uint16_t)voice_byte((uint16_t)(off + 1)) << 8));
+}
 
 #define SOUND_EVENT_LOG_CAPACITY 4096u
 
@@ -191,11 +237,14 @@ void sound_tick_entry(void)
  * its reload baseline and re-prime (mode 0 + snd_flag2 set). ASM caveat:
  * nothing in this loop or its callees clears snd_flag2 or forces
  * snd_mode away from 0, so a persistent snd_flag2==1 while snd_mode==0
- * genuinely re-loops forever in the original binary too (an external
- * `g1776`/`g1784` write is what normally breaks the cycle -- see
- * sound-state.md's DS:1776 caveat). This port keeps that behaviour but
- * adds a defensive iteration cap so a test never hangs the process on an
- * unreachable-in-practice state combination; see the port report. */
+ * (e.g. no voice's command-stream entry ever arms, per
+ * sound_voice_table_prime's 0xFF check) genuinely re-loops in the
+ * original binary too (an external `g1776`/`g1784` write is what
+ * normally breaks the cycle -- see sound-state.md's DS:1776 caveat).
+ * This port keeps that behaviour but adds SOUND_LOOP_GUARD_MAX as a
+ * defensive iteration cap (sound_driver_internal.h) so the caller's
+ * thread never spins here for long enough to read as a freeze on a
+ * degenerate/not-yet-loaded state; see the port report. */
 static void sound_voice_pump_loop(void)
 {
     int guard;
@@ -203,7 +252,7 @@ static void sound_voice_pump_loop(void)
     if (snd_mode != 2)
         sound_voice_table_prime();
 
-    for (guard = 0; guard < 100000; guard++) {
+    for (guard = 0; guard < SOUND_LOOP_GUARD_MAX; guard++) {
         sound_voice_service_loop();
 
         if (snd_mode != 0 || snd_flag2 == 0)
@@ -216,6 +265,10 @@ static void sound_voice_pump_loop(void)
         }
         sound_voice_table_prime();
     }
+    if (guard >= SOUND_LOOP_GUARD_MAX - 1)
+        EMPIRES_TRACE("sound_voice_pump_loop GUARD HIT nvoices=%d mode=%d flag2=%d on=%d nv3=%d cur0=%d",
+                      (int)snd_nvoices, (int)snd_mode, (int)snd_flag2, (int)snd_on,
+                      (int)v_a[0], (int)voice_stream_cursor_table[0]);
 }
 
 /* F_C232 -- voice-table scanner: (re)prime every configured voice's
@@ -236,7 +289,7 @@ static void sound_voice_table_prime(void)
         dos_uint cursor = (dos_uint)voice_stream_cursor_table[voice];
 
         v_a[voice] = 0;
-        if (sound_voice_mem[cursor] != 0xFF) {
+        if (voice_byte((uint16_t)cursor) != 0xFF) {
             v_a[voice] = 2;
             v_ctr[voice] = 0;
             g17a4[voice] = 1;
@@ -297,10 +350,11 @@ static void sound_voice_service_loop(void)
  * back within the same tick). */
 static void sound_command_stream_dispatch(dos_int voice)
 {
-    for (;;) {
+    int guard;
+    for (guard = 0; guard < SOUND_LOOP_GUARD_MAX; guard++) {
         dos_uint cursor = (dos_uint)voice_stream_cursor_table[voice];
-        uint8_t cmd_byte = sound_voice_mem[cursor];
-        uint8_t arg_byte = sound_voice_mem[(uint16_t)(cursor + 1)];
+        uint8_t cmd_byte = voice_byte((uint16_t)cursor);
+        uint8_t arg_byte = voice_byte((uint16_t)(cursor + 1));
         dos_int al = (dos_int)(cmd_byte & 0x0F);
         dos_int ah = (dos_int)(cmd_byte >> 4);
 
@@ -331,6 +385,9 @@ static void sound_command_stream_dispatch(dos_int voice)
         if (v_ctr[voice] != 0)
             return;
     }
+    EMPIRES_TRACE("sound_command_stream_dispatch GUARD HIT voice=%d cur=%d byte0=%02x",
+                  (int)voice, (int)voice_stream_cursor_table[voice],
+                  (unsigned)voice_byte((uint16_t)voice_stream_cursor_table[voice]));
 }
 
 /* F_C359 -- select and submit one value from the sound control state
@@ -878,7 +935,7 @@ void sound_voice_table_reload(dos_int v)
         if (count < 0) count = 0;
 
         for (voice = 0; voice < count; voice++) {
-            dos_uint word = dos_rd16(&sound_voice_mem[di]);
+            dos_uint word = voice_word(di);
             dos_int value = (dos_int)dos_uadd16(word, (dos_uint)snd_base2);
 
             voice_stream_cursor_table[voice] = value;
@@ -993,7 +1050,7 @@ static void sound_tick_step(void)
  * former asm/F_C914.ASM.
  * =========================================================================== */
 
-/* F_C914 -- fetch the next music-stream command byte (sound_resource_mem
+/* F_C914 -- fetch the next music-stream command byte (sound_resource_block
  * at mus_ptr), split into opcode/argument nibbles, dispatch, and keep
  * dispatching while snd_delay stays 0 after advancing the cursor by 2.
  * The terminator (0xF) branch returns WITHOUT advancing mus_ptr or
@@ -1001,9 +1058,10 @@ static void sound_tick_step(void)
  * stop) it takes. */
 static void sound_stream_command_step(void)
 {
-    for (;;) {
-        uint8_t cmd_byte = sound_resource_mem[(uint16_t)mus_ptr];
-        uint8_t arg_byte = sound_resource_mem[(uint16_t)(mus_ptr + 1)];
+    int guard;
+    for (guard = 0; guard < SOUND_LOOP_GUARD_MAX; guard++) {
+        uint8_t cmd_byte = resource_byte((uint16_t)mus_ptr);
+        uint8_t arg_byte = resource_byte((uint16_t)(mus_ptr + 1));
         dos_int al = (dos_int)(cmd_byte & 0x0F);
         dos_int ah = (dos_int)(cmd_byte >> 4);
 
@@ -1037,6 +1095,8 @@ static void sound_stream_command_step(void)
         if (snd_delay != 0)
             return;
     }
+    EMPIRES_TRACE("sound_stream_command_step GUARD HIT mus_ptr=%d byte0=%02x mus_flag=%d",
+                  (int)mus_ptr, (unsigned)resource_byte((uint16_t)mus_ptr), (int)mus_flag);
 }
 
 /* ===========================================================================
@@ -1190,7 +1250,7 @@ void stream_control_block_arm(dos_int n)
     {
         uint16_t off = (uint16_t)((uint16_t)(dos_uint)n << 1);
         uint16_t di = (uint16_t)((uint16_t)(dos_uint)snd_base + off);
-        dos_uint word = dos_rd16(&sound_resource_mem[di]);
+        dos_uint word = resource_word(di);
 
         mus_ptr = (dos_int)dos_uadd16(word, (dos_uint)snd_base);
     }

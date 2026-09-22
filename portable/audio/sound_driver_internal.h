@@ -28,6 +28,22 @@
 
 #define SOUND_VOICE_COUNT_MAX 4
 
+/* Defensive iteration cap for sound_driver.c's three ASM `for(;;)`-style
+ * dispatch loops (sound_voice_pump_loop's rewind-and-reprime cycle,
+ * sound_command_stream_dispatch, sound_stream_command_step). None of
+ * these loops has an ASM-derived cap of its own -- a real command stream
+ * never chains more than a handful of zero-duration commands back to
+ * back, and a real per-voice table always has SOME voice either armed
+ * (v_a!=0) or genuinely 0xFF-terminated -- but degenerate/not-yet-loaded
+ * data (nothing armed, snd_flag2 pinned nonzero by an unrelated C write --
+ * see sound-state.md's DS:1776 caveat) can otherwise spin the caller's
+ * thread for a very long time doing no useful work, which read as a
+ * game-visible freeze even though it is technically bounded (see the
+ * port report). 256 is generous for any real stream while keeping the
+ * worst-case cost per tick negligible (256 * a few dozen bytes of work,
+ * not 100000+). */
+#define SOUND_LOOP_GUARD_MAX 256
+
 /* Byte offsets of the five word-tables packed into sound_region_17C4[40]. */
 #define SOUND_REGION_STATE_CURSOR_OFF        0
 #define SOUND_REGION_STATE_CURSOR_NEXT_OFF   8
@@ -98,22 +114,13 @@ static inline unsigned sound_stream_cursor_pos(uint16_t v)
  * Historically these were DOS far-pointer halves: ES:DI addressing where
  * ES = the segment word (snd_seg or snd_seg2) and DI = an offset computed
  * from the paired offset word (snd_base/snd_base2) plus a table entry.
- * portable/game/plrldpub.c (out of this task's file ownership) already
- * flattens the far pointer by zeroing snd_seg/snd_seg2 and storing only
- * the LOW 16 BITS of a real (64-bit) malloc'd pointer into snd_base/
- * snd_base2 -- explicitly documented there as "a harmless placeholder,
- * not a working handoff" pending this driver. Since snd_base/snd_base2
- * stay plain dos_uint words (game_data.h, not pointers) and every access
- * in asm/SOUND.ASM is a 16-bit DS-relative offset, this driver models
- * "the segment ES pointed at" as one fixed 64KB-ish arena per cluster and
- * treats snd_base/snd_base2 (and every cursor derived from them) as a
- * plain byte offset into that arena -- snd_seg/snd_seg2's VALUE is never
- * read for addressing (matching their current always-zero state). Tests
- * populate a synthetic stream by writing into these arenas directly and
- * pointing snd_base (or the voice cursor tables) at the chosen offset,
- * exactly as sound_start()/stream_control_block_arm() would once a real
- * loader fills them in. Sized with one extra byte so a 16-bit word read
- * at the last valid offset (0xFFFF) never reads past the array. */
-#define SOUND_MEM_SIZE 65537u
+ * This driver owns two real pointers instead (sound.h:
+ * sound_resource_block / sound_voice_block, set via
+ * sound_set_resource_blocks() -- see that header's comment for the full
+ * story and portable/game/plrldpub.c for the call site) and treats every
+ * ES:DI-style access as a plain 16-bit offset relative to one of them,
+ * through the resource_byte()/voice_byte()/resource_word()/voice_word()
+ * helpers in sound_driver.c -- snd_seg/snd_seg2/snd_base/snd_base2 are
+ * left at their generated zero default and never read for addressing. */
 
 #endif /* PORTABLE_AUDIO_SOUND_DRIVER_INTERNAL_H */

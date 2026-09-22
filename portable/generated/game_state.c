@@ -11,25 +11,7 @@ dos_char *objtab;
 
 dos_char actor_sprite_dims_table[672];
 
-dos_uchar b4374[3];
-
-dos_uchar b4377[3];
-
-dos_uchar b437a[6];
-
-dos_uchar b4380[6];
-
-dos_uchar b4386[6];
-
-dos_char b438c[10];
-
-dos_char b4396[10];
-
-dos_char b43a0[10];
-
-dos_char b43aa[10];
-
-struct record3e8 g43b4[10];
+uint8_t board_state_block[10064];
 
 dos_char g6ac4[482][1];
 
@@ -99,11 +81,7 @@ dos_char *resource_ptr_table[84];
 
 dos_char gb1cc[482][1];
 
-dos_uchar actor_record_table[385];
-
-dos_int gb52f[208];
-
-dos_uchar gb6cf;
+uint8_t level_state_block[3000];
 
 dos_uchar tile_height_table[84];
 

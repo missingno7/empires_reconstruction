@@ -8,7 +8,7 @@ DATA image: 14594 bytes (DS:0000..DS:3902), built from the `recipes/data/game-in
 
 - DATA components: 108 carry recipe bytes, 9 owned by a ported C file (their static initializers, not this generator, supply the bytes), 17 toolchain/alignment bytes not modeled at all (Turbo C startup/runtime-library data the port does not use; no bytes read or emitted for these).
 - game_data.c: 228 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
-- game_state.c: 168 objects emitted (166 typed, 2 untyped uint8_t fallback), 22 skipped (subsystem-owned).
+- game_state.c: 157 objects emitted (155 typed, 2 untyped uint8_t fallback), 22 skipped (subsystem-owned).
 - Symbol names merged from all six sources: 691, covering 465 distinct DGROUP offsets.
 - Offset-ambiguous names recorded during the merge (same name, two different offsets across sources -- the earlier-added source won): 0.
 - Alias type conflicts (same offset, incompatible declared types across its names): 15.
@@ -72,8 +72,19 @@ A name landing inside a fully-dimensioned declared array/struct type: the declar
 | `g13b8` | 0x13b8 | `dialog_slot_delete_confirm` (`struct dialog`) | `(dialog_slot_delete_confirm.text)` |
 | `DATA_011F01_PAD` | 0x22d1 | `g22b2` (`dos_int`) | `(*((dos_char *)(g22b2) + 31))` |
 | `g235d` | 0x235d | `g2356` (`struct dialog`) | `(g2356.text)` |
-| `b4375` | 0x4375 | `b4374` (`dos_uchar`) | `(b4374[1])` |
-| `b4376` | 0x4376 | `b4374` (`dos_uchar`) | `(b4374[2])` |
+| `b4374` | 0x4374 | `board_state_block` (`dos_uchar`) | `((dos_uchar *)(board_state_block + 0))` |
+| `g4374` | 0x4374 | `board_state_block` (`dos_uchar`) | `((dos_uchar *)(board_state_block + 0))` |
+| `b4375` | 0x4375 | `board_state_block` (`dos_uchar`) | `(*(dos_uchar *)(board_state_block + 1))` |
+| `b4376` | 0x4376 | `board_state_block` (`dos_uchar`) | `(*(dos_uchar *)(board_state_block + 2))` |
+| `b4377` | 0x4377 | `board_state_block` (`dos_uchar`) | `((dos_uchar *)(board_state_block + 3))` |
+| `b437a` | 0x437a | `board_state_block` (`dos_uchar`) | `((dos_uchar *)(board_state_block + 6))` |
+| `b4380` | 0x4380 | `board_state_block` (`dos_uchar`) | `((dos_uchar *)(board_state_block + 12))` |
+| `b4386` | 0x4386 | `board_state_block` (`dos_uchar`) | `((dos_uchar *)(board_state_block + 18))` |
+| `b438c` | 0x438c | `board_state_block` (`dos_char`) | `((dos_char *)(board_state_block + 24))` |
+| `b4396` | 0x4396 | `board_state_block` (`dos_char`) | `((dos_char *)(board_state_block + 34))` |
+| `b43a0` | 0x43a0 | `board_state_block` (`dos_char`) | `((dos_char *)(board_state_block + 44))` |
+| `b43aa` | 0x43aa | `board_state_block` (`dos_char`) | `((dos_char *)(board_state_block + 54))` |
+| `g43b4` | 0x43b4 | `board_state_block` (`struct record3e8`) | `((struct record3e8 *)(board_state_block + 64))` |
 | `g7352` | 0x7352 | `a72b2` (`dos_char`) | `(a72b2[40])` |
 | `g7356` | 0x7356 | `a72b2` (`dos_char`) | `(a72b2[41])` |
 | `g735a` | 0x735a | `a72b2` (`dos_char`) | `(a72b2[42])` |
@@ -81,8 +92,13 @@ A name landing inside a fully-dimensioned declared array/struct type: the declar
 | `g8bee` | 0x8bee | `xa` (`dos_int`) | `(xa[2])` |
 | `g8bf6` | 0x8bf6 | `ya` (`dos_int`) | `(ya[1])` |
 | `g8bf8` | 0x8bf8 | `ya` (`dos_int`) | `(ya[2])` |
-| `actor_state_table` | 0xb3ae | `actor_record_table` (`dos_uchar`) | `((struct gb3af_entry *)(actor_record_table + 1))` |
-| `gb3af` | 0xb3ae | `actor_record_table` (`dos_uchar`) | `actor_state_table` |
+| `actor_record_table` | 0xb3ae | `level_state_block` (`dos_uchar`) | `((dos_uchar *)(level_state_block + 0))` |
+| `gb3ae` | 0xb3ae | `level_state_block` (`dos_uchar`) | `((dos_uchar *)(level_state_block + 0))` |
+| `g0b3ae` | 0xb3ae | `level_state_block` (`dos_uchar`) | `((dos_uchar *)(level_state_block + 0))` |
+| `actor_state_table` | 0xb3af | `level_state_block` (`struct gb3af_entry`) | `((struct gb3af_entry *)(level_state_block + 1))` |
+| `gb3af` | 0xb3af | `level_state_block` (`struct gb3af_entry`) | `((struct gb3af_entry *)(level_state_block + 1))` |
+| `gb52f` | 0xb52f | `level_state_block` (`dos_int`) | `((dos_int *)(level_state_block + 385))` |
+| `gb6cf` | 0xb6cf | `level_state_block` (`dos_uchar`) | `(*(dos_uchar *)(level_state_block + 801))` |
 | `t4` | 0xbff2 | `buf` (`dos_char`) | `(buf[1])` |
 | `puzzle_held_piece` | 0xc132 | `gc132_tile` (`struct gc316_tile`) | `(gc132_tile.kind)` |
 | `gc133` | 0xc132 | `gc132_tile` (`struct gc316_tile`) | `(gc132_tile.rot)` |
@@ -379,16 +395,7 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `g40ce` | bss | 0x40ce | 2 | dos_int | generated |  |
 | `objtab` | bss | 0x40d0 | 4 | dos_char * | generated | `g40d0` |
 | `actor_sprite_dims_table` | bss | 0x40d4 | 672 | dos_char[672] | generated | `g40d4` |
-| `b4374` | bss | 0x4374 | 3 | dos_uchar[3] | generated | `g4374` |
-| `b4377` | bss | 0x4377 | 3 | dos_uchar[3] | generated |  |
-| `b437a` | bss | 0x437a | 6 | dos_uchar[6] | generated |  |
-| `b4380` | bss | 0x4380 | 6 | dos_uchar[6] | generated |  |
-| `b4386` | bss | 0x4386 | 6 | dos_uchar[6] | generated |  |
-| `b438c` | bss | 0x438c | 10 | dos_char[10] | generated |  |
-| `b4396` | bss | 0x4396 | 10 | dos_char[10] | generated |  |
-| `b43a0` | bss | 0x43a0 | 10 | dos_char[10] | generated |  |
-| `b43aa` | bss | 0x43aa | 10 | dos_char[10] | generated |  |
-| `g43b4` | bss | 0x43b4 | 10000 | struct record3e8[10] | generated |  |
+| `board_state_block` | bss | 0x4374 | 10064 | uint8_t[10064] | generated |  |
 | `g6ac4` | bss | 0x6ac4 | 482 | dos_char[482][1] | generated |  |
 | `g6ca6` | bss | 0x6ca6 | 482 | dos_char[482][1] | generated |  |
 | `g6e88` | bss | 0x6e88 | 162 | dos_char[162][1] | generated | `s6e88` |
@@ -423,9 +430,7 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `gb07a` | bss | 0xb07a | 2 | dos_int | generated |  |
 | `resource_ptr_table` | bss | 0xb07c | 336 | dos_char *[84] | generated | `gb07c` |
 | `gb1cc` | bss | 0xb1cc | 482 | dos_char[482][1] | generated |  |
-| `actor_record_table` | bss | 0xb3ae | 385 | dos_uchar[385] | generated |  |
-| `gb52f` | bss | 0xb52f | 416 | dos_int[208] | generated |  |
-| `gb6cf` | bss | 0xb6cf | 1 | dos_uchar | generated |  |
+| `level_state_block` | bss | 0xb3ae | 3000 | uint8_t[3000] | generated |  |
 | `tile_height_table` | bss | 0xbf66 | 84 | dos_uchar[84] | generated | `gbf66` |
 | `board_record_index` | bss | 0xbfba | 2 | dos_int | generated | `gbfba` |
 | `board_records` | bss | 0xbfbc | 4 | dos_char * | generated | `gbfbc`, `vram` |

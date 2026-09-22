@@ -9,6 +9,8 @@
 
 extern volatile unsigned empires_trace_seq;
 extern const char *volatile empires_trace_last;
+#define EMPIRES_TRACE_RING 64
+extern const char *volatile empires_trace_ring[EMPIRES_TRACE_RING];   /* marker seq -> fmt */
 
 /* Records the marker, then prints when EMPIRES_TRACE is set. */
 void empires_trace(const char *fmt, ...);

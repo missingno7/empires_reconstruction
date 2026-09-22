@@ -245,12 +245,16 @@ int main(int argc, char **argv)
                     s_script[cur + 1].marker[0])
                     cur = cur + 1;              /* look at the marker first */
                 if (cur < s_script_n && s_script[cur].marker[0]) {
-                    if (empires_trace_seq != seen_seq) {
-                        seen_seq = empires_trace_seq;
-                        if (empires_trace_last &&
-                            strncmp(empires_trace_last, s_script[cur].marker, strlen(s_script[cur].marker)) == 0) {
+                    unsigned end = empires_trace_seq;
+                    if (end - seen_seq > EMPIRES_TRACE_RING)
+                        seen_seq = end - EMPIRES_TRACE_RING;
+                    while (seen_seq != end) {
+                        const char *m = empires_trace_ring[seen_seq % EMPIRES_TRACE_RING];
+                        seen_seq++;
+                        if (m && strncmp(m, s_script[cur].marker, strlen(s_script[cur].marker)) == 0) {
                             s_script_next = cur + 1;
                             idle_since = now;
+                            break;
                         }
                     }
                 }

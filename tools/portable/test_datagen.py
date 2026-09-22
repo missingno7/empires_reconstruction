@@ -650,19 +650,64 @@ class DatagenTests(unittest.TestCase):
 
     def test_overrides_file_actor_record_table_and_gc132_tile_aliases(self):
         by_primary = {s['primary']: s for s in self.aux['symbols']}
-        art = by_primary['actor_record_table']
-        self.assertEqual(art['offset'], 0xB3AE)
-        self.assertEqual(art['size'], 385)
+        # actor_record_table now lives inside the level_state_block
+        # aggregate (see test_aggregate_override_...) as a view macro, not
+        # its own top-level object.
+        self.assertNotIn('actor_record_table', by_primary)
         tile = by_primary['gc132_tile']
         self.assertEqual(tile['offset'], 0xC132)
         self.assertEqual(tile['c_type'], 'struct gc316_tile')
         header = (self.out_root / 'portable/generated/game_state.h').read_text('utf-8')
         self.assertIn(
-            '#define actor_state_table ((struct gb3af_entry *)(actor_record_table + 1))', header)
-        self.assertIn('#define gb3af actor_state_table', header)
+            '#define actor_state_table ((struct gb3af_entry *)(level_state_block + 1))', header)
+        self.assertIn('#define gb3af ((struct gb3af_entry *)(level_state_block + 1))', header)
         self.assertIn('#define puzzle_held_piece (gc132_tile.kind)', header)
         self.assertIn('#define gc133 (gc132_tile.rot)', header)
         self.assertNotIn('puzzle_held_piece[', header)
+
+    def test_aggregate_override_keeps_whole_block_copy_zero_safe(self):
+        # GAME.C's `setmem(actor_record_table, 0xBB8, 0)` /
+        # `movmem(ui_gfx_shadow_a + d + 0x2754, actor_record_table, 0xBB8)`
+        # and `movmem(ui_gfx_shadow_a, g4374, 0x2750)` treat these two BSS
+        # spans as ONE block each; splitting them into separate objects
+        # (as the ordinary symbol-driven walk would) makes a whole-block
+        # copy/zero overrun. The "aggregate" override keeps each span ONE
+        # raw `uint8_t NAME[LEN]` object; every historical name inside
+        # becomes a typed pointer VIEW macro instead.
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        level_block = by_primary['level_state_block']
+        self.assertEqual(level_block['offset'], 0xB3AE)
+        self.assertEqual(level_block['size'], 0xBB8)
+        board_block = by_primary['board_state_block']
+        self.assertEqual(board_block['offset'], 0x4374)
+        self.assertEqual(board_block['size'], 0x2750)
+        header = (self.out_root / 'portable/generated/game_state.h').read_text('utf-8')
+        self.assertIn('extern uint8_t level_state_block[3000];', header)
+        self.assertIn('extern uint8_t board_state_block[10064];', header)
+        self.assertIn('#define actor_record_table ((dos_uchar *)(level_state_block + 0))', header)
+        self.assertIn('#define gb52f ((dos_int *)(level_state_block + 385))', header)
+        # gb6cf/b4375/b4376 are single-byte scalars in the historical
+        # source (`extern unsigned char b4374, b4375, b4376;`, `gb6cf =
+        # 0;` / `while(!gb6cf)`, `cursor_x = b4375;`) -- a dereferenced
+        # scalar view, not a bare pointer (which would make `gb6cf = 0` a
+        # compile error and `!gb6cf` always false). b4374/g4374 are the
+        # ONE exception: portable/game/game.c and asm_sprites.c already
+        # index them (`b4374[0]`, `b4374[operand]`) and use g4374 as
+        # movmem's whole-block base, so they need the array/pointer form
+        # despite being declared as a scalar historically -- an explicit
+        # `"count": 1` in the override JSON forces that.
+        self.assertIn('#define gb6cf (*(dos_uchar *)(level_state_block + 801))', header)
+        self.assertIn('#define b4374 ((dos_uchar *)(board_state_block + 0))', header)
+        self.assertIn('#define g4374 ((dos_uchar *)(board_state_block + 0))', header)
+        self.assertIn('#define b4375 (*(dos_uchar *)(board_state_block + 1))', header)
+        self.assertIn('#define b4376 (*(dos_uchar *)(board_state_block + 2))', header)
+        # Arrays/structs stay plain pointer views (array-index-compatible).
+        self.assertIn('#define b4377 ((dos_uchar *)(board_state_block + 3))', header)
+        self.assertIn('#define g43b4 ((struct record3e8 *)(board_state_block + 64))', header)
+        for name in ('actor_record_table', 'actor_state_table', 'gb52f', 'gb6cf', 'b4374', 'b4375',
+                     'b4376', 'b4377', 'b437a', 'b4380', 'b4386', 'b438c', 'b4396', 'b43a0',
+                     'b43aa', 'g43b4', 'gb3af', 'gb3ae', 'g0b3ae', 'g4374'):
+            self.assertNotIn(name, by_primary, name)
 
     # -- weak names do not terminate spans ---------------------------------
 

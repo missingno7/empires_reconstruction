@@ -18,14 +18,18 @@
     }
   },
   {
-    "name": "actor_record_table",
+    "name": "level_state_block",
     "offset": "0xB3AE",
-    "length": 385,
-    "c_type": "dos_uchar[385]",
-    "aliases": {
-      "actor_state_table": "((struct gb3af_entry *)(actor_record_table + 1))",
-      "gb3af": "actor_state_table"
-    }
+    "length": 3000,
+    "aggregate": true,
+    "views": [
+      {"name": "actor_record_table", "offset": 0, "c_type": "dos_uchar", "count": 385,
+       "aliases": ["gb3ae", "g0b3ae"]},
+      {"name": "actor_state_table", "offset": 1, "c_type": "struct gb3af_entry", "count": 12,
+       "aliases": ["gb3af"]},
+      {"name": "gb52f", "offset": 385, "c_type": "dos_int", "count": 208},
+      {"name": "gb6cf", "offset": 801, "c_type": "dos_uchar"}
+    ]
   },
   {
     "name": "gc132_tile",
@@ -89,6 +93,26 @@
          ["initial", "u8"], ["cx", "i16"], ["cy", "i16"], ["w", "i16"], ["lines", "i16"]
        ]}},
       {"name": "g1684", "offset": 21, "c_type": "dos_int", "count": 17}
+    ]
+  },
+  {
+    "name": "board_state_block",
+    "offset": "0x4374",
+    "length": 10064,
+    "aggregate": true,
+    "views": [
+      {"name": "b4374", "offset": 0, "c_type": "dos_uchar", "count": 1, "aliases": ["g4374"]},
+      {"name": "b4375", "offset": 1, "c_type": "dos_uchar"},
+      {"name": "b4376", "offset": 2, "c_type": "dos_uchar"},
+      {"name": "b4377", "offset": 3, "c_type": "dos_uchar", "count": 3},
+      {"name": "b437a", "offset": 6, "c_type": "dos_uchar", "count": 6},
+      {"name": "b4380", "offset": 12, "c_type": "dos_uchar", "count": 6},
+      {"name": "b4386", "offset": 18, "c_type": "dos_uchar", "count": 6},
+      {"name": "b438c", "offset": 24, "c_type": "dos_char", "count": 10},
+      {"name": "b4396", "offset": 34, "c_type": "dos_char", "count": 10},
+      {"name": "b43a0", "offset": 44, "c_type": "dos_char", "count": 10},
+      {"name": "b43aa", "offset": 54, "c_type": "dos_char", "count": 10},
+      {"name": "g43b4", "offset": 64, "c_type": "struct record3e8", "count": 10}
     ]
   }
 ]

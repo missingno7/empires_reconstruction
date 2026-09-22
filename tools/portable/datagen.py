@@ -529,6 +529,7 @@ def load_datagen_overrides():
         out.append({
             'name': e['name'], 'offset': offset, 'length': e['length'],
             'c_type': e.get('c_type'), 'struct': e.get('struct'), 'layout': e.get('layout'),
+            'aggregate': e.get('aggregate', False), 'views': e.get('views'),
             'aliases': e.get('aliases') or {},
         })
     return out
@@ -1497,6 +1498,51 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership, o
                 return refs
 
             section = 'data' if cursor < DATA_LEN else 'bss'
+            if ov.get('aggregate'):
+                # An "aggregate" override: the historical code treats this
+                # WHOLE span as one memory block (`setmem`/`movmem` over
+                # its full length -- e.g. GAME.C's `movmem(ui_gfx_shadow_a,
+                # g4374, 0x2750)`), so it must stay ONE object in the
+                # port too, or a whole-block copy/zero overruns into (or
+                # falls short of) whatever separate objects the ordinary
+                # symbol-driven walk would have carved it into. Emitted as
+                # one raw `uint8_t NAME[LEN]`; every historically-named
+                # symbol that used to live inside it becomes a typed
+                # POINTER macro view into that same storage (an array/
+                # struct view decays like a normal pointer, `((T *)(NAME +
+                # off))`; a single-byte scalar view dereferences once,
+                # `(*(T *)(NAME + off))`, matching how it was actually
+                # used -- `gb6cf = 0;`/`while(!gb6cf)`, not array-indexed)
+                # -- never a second, overlapping definition.
+                ident = c_ident(ov['name'])
+                sym = _make_symbol(cursor, ov['length'], section, ov['name'], [], [ov['name']], None,
+                                    'generated', f"override:{ov['name']}", 'uint8_t',
+                                    'manual aggregate override (tools/portable/datagen_overrides.json)',
+                                    [ov['length']], False, [], False, emit_path='flat')
+                symbols.append(sym)
+                for view in ov['views']:
+                    c_type = view['c_type']
+                    off = view['offset']
+                    # A view is an array/pointer form whenever the JSON
+                    # gives an EXPLICIT `count` (even 1 -- e.g. b4374: a
+                    # historically-scalar byte, but the ALREADY-PORTED
+                    # code indexes it as `b4374[operand]`/uses it as
+                    # movmem's whole-block base, so it needs to decay like
+                    # a pointer to the rest of the aggregate, not
+                    # dereference to one byte); omitting `count` means a
+                    # true single-value scalar (`gb6cf = 0;`), which
+                    # dereferences once so plain assignment/comparison
+                    # works.
+                    is_array = 'count' in view
+                    expr = (f'(({c_type} *)({ident} + {off}))' if is_array
+                            else f'(*({c_type} *)({ident} + {off}))')
+                    for name in [view['name'], *view.get('aliases', ())]:
+                        extra['interior_alias'].append({
+                            'name': name, 'offset': cursor + off, 'array_name': ov['name'],
+                            'array_offset': cursor, 'expr': expr, 'c_type': c_type,
+                        })
+                cursor += ov['length']
+                continue
             if ov.get('layout'):
                 # A "layout" override (menu-descriptor-style): several
                 # named sub-objects packed into one span whose bytes

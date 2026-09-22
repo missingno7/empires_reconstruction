@@ -22,36 +22,8 @@ extern dos_char *objtab;
 extern dos_char actor_sprite_dims_table[672];
 #define g40d4 actor_sprite_dims_table
 
-/* b4374  DS:4374  size 3 --  [extern g4374 @ src/GAME.C:440: unsigned char g4374[]] */
-extern dos_uchar b4374[3];
-#define g4374 b4374
-
-/* b4377  DS:4377  size 3 --  [extern b4377 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]] */
-extern dos_uchar b4377[3];
-
-/* b437a  DS:437A  size 6 --  [extern b437a @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]] */
-extern dos_uchar b437a[6];
-
-/* b4380  DS:4380  size 6 --  [extern b4380 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]] */
-extern dos_uchar b4380[6];
-
-/* b4386  DS:4386  size 6 --  [extern b4386 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]] */
-extern dos_uchar b4386[6];
-
-/* b438c  DS:438C  size 10 --  [extern b438c @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]] */
-extern dos_char b438c[10];
-
-/* b4396  DS:4396  size 10 --  [extern b4396 @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]] */
-extern dos_char b4396[10];
-
-/* b43a0  DS:43A0  size 10 --  [extern b43a0 @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]] */
-extern dos_char b43a0[10];
-
-/* b43aa  DS:43AA  size 10 --  [extern b43aa @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]] */
-extern dos_char b43aa[10];
-
-/* g43b4  DS:43B4  size 10000 --  [extern g43b4 @ src/BOARD.C:566: struct record3e8 g43b4[]] */
-extern struct record3e8 g43b4[10];
+/* board_state_block  DS:4374  size 10064 -- manual aggregate override (tools/portable/datagen_overrides.json) */
+extern uint8_t board_state_block[10064];
 
 /* g6ac4  DS:6AC4  size 482 --  [extern g6ac4 @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
 extern dos_char g6ac4[482][1];
@@ -177,14 +149,8 @@ extern dos_char *resource_ptr_table[84];
 /* gb1cc  DS:B1CC  size 482 --  [extern gb1cc @ src/BOARD.C:9: char g6e88[][1], gb1cc[][1], g9990[][1], g7904[][1], g6ac4[][1]] */
 extern dos_char gb1cc[482][1];
 
-/* actor_record_table  DS:B3AE  size 385 -- manual override (tools/portable/datagen_overrides.json) */
-extern dos_uchar actor_record_table[385];
-
-/* gb52f  DS:B52F  size 416 --  [extern gb52f @ src/LEVEL.C:39: int near gb52f[]] */
-extern dos_int gb52f[208];
-
-/* gb6cf  DS:B6CF  size 1 --  [extern gb6cf @ src/LEVEL.C:45: unsigned char gb6cf] */
-extern dos_uchar gb6cf;
+/* level_state_block  DS:B3AE  size 3000 -- manual aggregate override (tools/portable/datagen_overrides.json) */
+extern uint8_t level_state_block[3000];
 
 /* tile_height_table  DS:BF66  size 84 --  [extern tile_height_table @ src/LEVEL.C:14: unsigned char near tile_width_table[],tile_height_table[]] */
 extern dos_uchar tile_height_table[84];
@@ -606,8 +572,19 @@ extern dos_uint gca6d[11];
 #define tab_bias gca6d
 
 /* Rule B: interior alias expressions (see docs/portable/state-map.md "Interior aliases") */
-#define b4375 (b4374[1])
-#define b4376 (b4374[2])
+#define b4374 ((dos_uchar *)(board_state_block + 0))
+#define g4374 ((dos_uchar *)(board_state_block + 0))
+#define b4375 (*(dos_uchar *)(board_state_block + 1))
+#define b4376 (*(dos_uchar *)(board_state_block + 2))
+#define b4377 ((dos_uchar *)(board_state_block + 3))
+#define b437a ((dos_uchar *)(board_state_block + 6))
+#define b4380 ((dos_uchar *)(board_state_block + 12))
+#define b4386 ((dos_uchar *)(board_state_block + 18))
+#define b438c ((dos_char *)(board_state_block + 24))
+#define b4396 ((dos_char *)(board_state_block + 34))
+#define b43a0 ((dos_char *)(board_state_block + 44))
+#define b43aa ((dos_char *)(board_state_block + 54))
+#define g43b4 ((struct record3e8 *)(board_state_block + 64))
 #define g7352 (a72b2[40])
 #define g7356 (a72b2[41])
 #define g735a (a72b2[42])
@@ -615,8 +592,13 @@ extern dos_uint gca6d[11];
 #define g8bee (xa[2])
 #define g8bf6 (ya[1])
 #define g8bf8 (ya[2])
-#define actor_state_table ((struct gb3af_entry *)(actor_record_table + 1))
-#define gb3af actor_state_table
+#define actor_record_table ((dos_uchar *)(level_state_block + 0))
+#define gb3ae ((dos_uchar *)(level_state_block + 0))
+#define g0b3ae ((dos_uchar *)(level_state_block + 0))
+#define actor_state_table ((struct gb3af_entry *)(level_state_block + 1))
+#define gb3af ((struct gb3af_entry *)(level_state_block + 1))
+#define gb52f ((dos_int *)(level_state_block + 385))
+#define gb6cf (*(dos_uchar *)(level_state_block + 801))
 /* t4 -> (buf[1]) (short (<4 chars); no macro. See state-map.md "Short aliases") */
 #define puzzle_held_piece (gc132_tile.kind)
 #define gc133 (gc132_tile.rot)

@@ -100,7 +100,6 @@
     "g40c8": "result",
     "g40d0": "objtab",
     "g40d4": "actor_sprite_dims_table",
-    "g4374": "b4374",
     "g6f2a": "a6f2a",
     "g72c": "hud_scroll_cooldown_ticks",
     "g736": "cursor_x",
@@ -1042,20 +1041,6 @@
       "type_note": " [extern a893c @ src/BOARD.C:421: char a74a2[][0xbb], a6f2a[][0xe2], a893c[][0x62]]",
       "untyped": false
     },
-    "actor_record_table": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar[385]",
-      "component_id": "override:actor_record_table",
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 45998,
-      "owned_by": null,
-      "section": "bss",
-      "size": 385,
-      "type_note": "manual override (tools/portable/datagen_overrides.json)",
-      "untyped": false
-    },
     "actor_sprite_dims_table": {
       "alias_type_reports": [],
       "aliases": [
@@ -1070,142 +1055,6 @@
       "section": "bss",
       "size": 672,
       "type_note": " [extern actor_sprite_dims_table @ src/LEVEL.C:139: char actor_sprite_dims_table[]]",
-      "untyped": false
-    },
-    "b4374": {
-      "alias_type_reports": [
-        {
-          "compatible": true,
-          "file": "src/GAME.C",
-          "line": 496,
-          "name": "b4374",
-          "type_text": "unsigned char b4374, b4375, b4376"
-        }
-      ],
-      "aliases": [
-        "g4374"
-      ],
-      "c_type": "dos_uchar[3]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17268,
-      "owned_by": null,
-      "section": "bss",
-      "size": 3,
-      "type_note": " [extern g4374 @ src/GAME.C:440: unsigned char g4374[]]",
-      "untyped": false
-    },
-    "b4377": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar[3]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17271,
-      "owned_by": null,
-      "section": "bss",
-      "size": 3,
-      "type_note": " [extern b4377 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]]",
-      "untyped": false
-    },
-    "b437a": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar[6]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17274,
-      "owned_by": null,
-      "section": "bss",
-      "size": 6,
-      "type_note": " [extern b437a @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]]",
-      "untyped": false
-    },
-    "b4380": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar[6]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17280,
-      "owned_by": null,
-      "section": "bss",
-      "size": 6,
-      "type_note": " [extern b4380 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]]",
-      "untyped": false
-    },
-    "b4386": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar[6]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17286,
-      "owned_by": null,
-      "section": "bss",
-      "size": 6,
-      "type_note": " [extern b4386 @ src/BOARD.C:417: unsigned char b4377[], b437a[], b4380[], b4386[]]",
-      "untyped": false
-    },
-    "b438c": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char[10]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17292,
-      "owned_by": null,
-      "section": "bss",
-      "size": 10,
-      "type_note": " [extern b438c @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]]",
-      "untyped": false
-    },
-    "b4396": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char[10]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17302,
-      "owned_by": null,
-      "section": "bss",
-      "size": 10,
-      "type_note": " [extern b4396 @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]]",
-      "untyped": false
-    },
-    "b43a0": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char[10]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17312,
-      "owned_by": null,
-      "section": "bss",
-      "size": 10,
-      "type_note": " [extern b43a0 @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]]",
-      "untyped": false
-    },
-    "b43aa": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_char[10]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17322,
-      "owned_by": null,
-      "section": "bss",
-      "size": 10,
-      "type_note": " [extern b43aa @ src/GAME.C:51: char b438c[], b4396[], b43a0[], b43aa[]]",
       "untyped": false
     },
     "b740": {
@@ -1271,6 +1120,20 @@
       "section": "bss",
       "size": 4,
       "type_note": " [extern board_records @ src/BOARD.C:62: char far *board_records]",
+      "untyped": false
+    },
+    "board_state_block": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[10064]",
+      "component_id": "override:board_state_block",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 17268,
+      "owned_by": null,
+      "section": "bss",
+      "size": 10064,
+      "type_note": "manual aggregate override (tools/portable/datagen_overrides.json)",
       "untyped": false
     },
     "buf": {
@@ -2740,20 +2603,6 @@
       "type_note": " [extern g41e @ src/VIDEO.C:33: unsigned char g41e[]]",
       "untyped": false
     },
-    "g43b4": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "struct record3e8[10]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 17332,
-      "owned_by": null,
-      "section": "bss",
-      "size": 10000,
-      "type_note": " [extern g43b4 @ src/BOARD.C:566: struct record3e8 g43b4[]]",
-      "untyped": false
-    },
     "g6ac4": {
       "alias_type_reports": [],
       "aliases": [],
@@ -3517,20 +3366,6 @@
       "type_note": " [extern gb42 @ src/RESOURCE.C:70: char gb42[]]",
       "untyped": false
     },
-    "gb52f": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_int[208]",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 46383,
-      "owned_by": null,
-      "section": "bss",
-      "size": 416,
-      "type_note": " [extern gb52f @ src/LEVEL.C:39: int near gb52f[]]",
-      "untyped": false
-    },
     "gb6a": {
       "alias_type_reports": [],
       "aliases": [],
@@ -3543,20 +3378,6 @@
       "section": "data",
       "size": 2,
       "type_note": " [extern gb6a @ src/GAME.C:36: int raycast_trail_active, key_up_held, gb6a, key_up_left_held, key_up_right_held, key_up_released, g71e, g722, current_slot]",
-      "untyped": false
-    },
-    "gb6cf": {
-      "alias_type_reports": [],
-      "aliases": [],
-      "c_type": "dos_uchar",
-      "component_id": null,
-      "conflict": false,
-      "definition_site": "generated",
-      "ds_offset": 46799,
-      "owned_by": null,
-      "section": "bss",
-      "size": 1,
-      "type_note": " [extern gb6cf @ src/LEVEL.C:45: unsigned char gb6cf]",
       "untyped": false
     },
     "gb80": {
@@ -4810,6 +4631,20 @@
       "section": "data",
       "size": 4,
       "type_note": " [extern keyboard_state @ src/KEYBOARD.C:5: int near keyboard_state[]]",
+      "untyped": false
+    },
+    "level_state_block": {
+      "alias_type_reports": [],
+      "aliases": [],
+      "c_type": "uint8_t[3000]",
+      "component_id": "override:level_state_block",
+      "conflict": false,
+      "definition_site": "generated",
+      "ds_offset": 45998,
+      "owned_by": null,
+      "section": "bss",
+      "size": 3000,
+      "type_note": "manual aggregate override (tools/portable/datagen_overrides.json)",
       "untyped": false
     },
     "lookup_0119": {

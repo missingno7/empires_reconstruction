@@ -9,12 +9,13 @@
  * running sound_driver.c and recording its output -- see this file's
  * per-test comments for the arithmetic.
  *
- * Test (a)/(b) build a minimal per-voice command stream directly in
- * sound_voice_mem (the arena that stands in for the ES:_snd_seg2
- * "staging block" segment -- see portable/audio/sound_driver_internal.h)
- * and point voice_stream_cursor_table[0]/voice_stream_base_table[0] at
- * it, exactly the state sound_voice_table_reload() would have computed
- * from a real resource load. The stream is two commands:
+ * Test (a)/(b) build a minimal per-voice command stream in a small local
+ * buffer, publish it via sound_set_resource_blocks() as the voice block
+ * (what snd_seg2:snd_base2 historically pointed at -- see
+ * portable/include/sound.h's header comment), and point
+ * voice_stream_cursor_table[0]/voice_stream_base_table[0] at it, exactly
+ * the state sound_voice_table_reload() would have computed from a real
+ * resource load. The stream is two commands:
  *
  *   byte 0x100: 0x4D 0x05  -- secondary command 0xD, ah=4 ("scale a raw
  *                             0..63 value by 4"): g1788 = 5*4 = 20.
@@ -39,6 +40,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 static int g_failures = 0;
 
@@ -53,10 +55,17 @@ static void check(const char *test, int cond, const char *what)
     if (!cond) fail(test, what);
 }
 
+/* Local backing storage for sound_resource_block/sound_voice_block
+ * (portable/include/sound.h) -- stand-ins for the real resource_ptr/gc5da
+ * buffers portable/game/plrldpub.c allocates. 1024 bytes is far more than
+ * any test here needs (the real staging block is 0x620 == 1568 bytes). */
+static uint8_t s_resource_buf[1024];
+static uint8_t s_voice_buf[1024];
+
 /* Reset every DS:175E..1E96 sound-cluster object this driver touches to a
- * known baseline, and clear the two synthetic memory arenas + the event
- * log. Tests share one process (ctest links one executable), so each test
- * must start from a clean slate. */
+ * known baseline, rewire the resource blocks to freshly-zeroed local
+ * buffers, and clear the event log. Tests share one process (ctest links
+ * one executable), so each test must start from a clean slate. */
 static void reset_sound_state(dos_int backend_mode)
 {
     dos_int i;
@@ -98,13 +107,14 @@ static void reset_sound_state(dos_int backend_mode)
     g1e86 = 0;
     memset(g1e8c, 0, sizeof(g1e8c));
 
-    snd_base = 0;
-    snd_seg = 0;
-    snd_base2 = 0;
-    snd_seg2 = 0;
-
-    memset(sound_voice_mem, 0, sizeof(sound_voice_mem));
-    memset(sound_resource_mem, 0, sizeof(sound_resource_mem));
+    /* snd_base/snd_seg/snd_base2/snd_seg2 are left at their generated
+       zero default throughout -- portable/game/plrldpub.c no longer
+       writes them either (see that file and sound.h's header comment);
+       the driver addresses sound_resource_block/sound_voice_block
+       directly instead. */
+    memset(s_resource_buf, 0, sizeof(s_resource_buf));
+    memset(s_voice_buf, 0, sizeof(s_voice_buf));
+    sound_set_resource_blocks(s_resource_buf, s_voice_buf);
 
     /* OPLVOICE.C bank state (only relevant to the backend-mode-2 test,
        harmless to reset unconditionally). voice_bank_retune_on() (via
@@ -120,15 +130,15 @@ static void reset_sound_state(dos_int backend_mode)
 }
 
 /* Writes the two-command synthetic voice stream described in this file's
- * header comment at sound_voice_mem offset 0x100, and arms voice 0's
+ * header comment into the voice block at offset 0x100, and arms voice 0's
  * cursor at it (as sound_voice_table_reload() would have computed). */
 static void arm_synthetic_voice_stream(void)
 {
-    sound_voice_mem[0x100] = 0x4D;
-    sound_voice_mem[0x101] = 0x05;
-    sound_voice_mem[0x102] = 0x03;
-    sound_voice_mem[0x103] = 0x80;
-    sound_voice_mem[0x104] = 0x0F;
+    s_voice_buf[0x100] = 0x4D;
+    s_voice_buf[0x101] = 0x05;
+    s_voice_buf[0x102] = 0x03;
+    s_voice_buf[0x103] = 0x80;
+    s_voice_buf[0x104] = 0x0F;
 
     voice_stream_cursor_table[0] = 0x100;
     voice_stream_base_table[0] = 0x100;
@@ -274,12 +284,77 @@ static void test_opl_write_shared_log(void)
     check(t, opl_detect() == 1, "opl_detect() should always report 1 (no real hardware to probe)");
 }
 
+/* ---------------------------------------------------------------------
+ * Regression test for the intro freeze: sound_tick_entry() must return
+ * promptly even when nothing is armed, matching the exact global state
+ * observed at the freeze site (via EMPIRES_TRACE instrumentation):
+ *   sound_enabled=1, music_enabled=1 (the slot's "on" value),
+ *   snd_on=0 (sound_start()'s embedded sound_stop_reset() call clears
+ *     it), mus_flag=0, snd_flag2=1 (the intro sets it directly, per
+ *     sound-state.md's DS:1776 caveat: several non-sound C call sites
+ *     touch this address too), snd_backend_mode=2, snd_nvoices=4 (a
+ *     real sound_backend_select_init() already ran), snd_mode=1 (a real
+ *     sound_voice_table_reload() already ran, priming has not happened
+ *     yet this tick) -- and, critically, "before any stream is armed":
+ *     sound_resource_block/sound_voice_block still NULL (no
+ *     player_record_load_publish() has wired them in yet).
+ *
+ * Root cause (found via the exact trace above): sound_command_stream_
+ * dispatch() was reading command bytes from a stand-in arena that was
+ * never connected to the real resource data (the old "synthetic 64KB
+ * arena" design this driver no longer uses -- see sound.h/plrldpub.c);
+ * every byte in it read as 0x00 ("note off, derive a zero-duration
+ * value"), which is a legal command that never terminates and never
+ * produces a nonzero v_ctr, so the per-voice dispatch loop advanced its
+ * cursor forever. Two changes fix it: (1) sound_resource_block/
+ * sound_voice_block are real pointers now, so once a real loader wires
+ * them in the data is genuine, terminator-bearing resource content, not
+ * a disconnected stand-in; (2) a NULL block (this test's exact "nothing
+ * loaded yet" state) now reads as 0xFF -- the same sentinel
+ * sound_voice_table_prime()'s own "is this voice armed" check already
+ * uses -- so priming leaves v_a at 0 for every voice instead of wrongly
+ * arming one against garbage data. SOUND_LOOP_GUARD_MAX
+ * (sound_driver_internal.h) additionally caps every dispatch loop so a
+ * still-degenerate state (e.g. snd_flag2 staying pinned nonzero, which
+ * asm/SOUND.ASM itself has no internal way to clear -- see
+ * sound_voice_pump_loop's port comment) can only cost a bounded, small
+ * amount of work per tick instead of reading as a freeze. */
+static void test_unarmed_tick_returns_promptly(void)
+{
+    const char *t = "unarmed_tick_returns_promptly";
+    clock_t start;
+    double elapsed_s;
+    int tick;
+
+    reset_sound_state(2);
+    sound_set_resource_blocks(NULL, NULL); /* "before any stream is armed" -- nothing loaded yet */
+
+    sound_enabled = 1;
+    music_enabled = 1; /* stands in for "whatever the slot table set" */
+    snd_on = 0;
+    mus_flag = 0;
+    snd_flag2 = 1;    /* the intro's direct write, per sound-state.md's DS:1776 caveat */
+    snd_nvoices = 4;  /* sound_backend_select_init() already ran for backend mode 2 */
+    snd_mode = 1;     /* sound_voice_table_reload() already ran; not yet (re)primed this tick */
+
+    start = clock();
+    for (tick = 0; tick < 2000; tick++) /* ~8.4s of real 236.7 Hz ticks */
+        sound_tick_entry();
+    elapsed_s = (double)(clock() - start) / (double)CLOCKS_PER_SEC;
+
+    check(t, elapsed_s < 2.0, "2000 unarmed ticks should complete in well under 2s of CPU time, not spin");
+    check(t, !(v_a[0] || v_a[1] || v_a[2] || v_a[3]),
+          "no voice should ever get armed against a NULL (nothing-loaded) block");
+    check(t, sound_event_log_count() == 0, "an unarmed tick should never emit a single backend event");
+}
+
 int main(void)
 {
     test_backend_mode0_pit_and_gate();
     test_backend_mode2_opl_events();
     test_sound_stop_reset();
     test_opl_write_shared_log();
+    test_unarmed_tick_returns_promptly();
 
     if (g_failures) {
         fprintf(stderr, "test_sound: %d failure(s)\n", g_failures);

@@ -19,7 +19,7 @@ void player_select_quit_confirm(void)
        void function; C17 does not.  game_funcs.h agrees this is void, so
        the discarded "return 0" becomes a bare return. */
     if (dialog_run(&dialog_select_quit_confirm) == 1)
-        longjmp(game_abort_jmpbuf, 2);
+        game_abort(GAME_RETURN_MAP);
     return;
 }
 
@@ -31,7 +31,7 @@ void player_select_menu_confirm(void)
     si = dialog_run(&dialog_select_menu_confirm);
     if (si == 1) {
         slot_table_save();
-        longjmp(game_abort_jmpbuf, 1);
+        game_abort(GAME_RESTART);
     }
     return;
 }
@@ -48,7 +48,7 @@ void player_select_restart_confirm(void)
         sound_enabled = music_enabled = 0;
         sound_stop_reset();
         sound_voices_reset();
-        longjmp(game_abort_jmpbuf, 3);
+        game_abort(GAME_EXIT);
     }
     sound_request_count_dec();
     return;

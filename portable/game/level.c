@@ -288,7 +288,7 @@ dos_int level_run_loop(void)
                 if (slot_is_new_game()) level_display_init();
                 else {
                     gbc = 0; slot_reset_for_new_game(); snd_flag2 = 0; while (g1784) ; snd_flag2 = 1;
-                    dialog_run(&g1670); longjmp(game_abort_jmpbuf, 1);
+                    dialog_run(&g1670); game_abort(GAME_RESTART);
                 }
             }
         }

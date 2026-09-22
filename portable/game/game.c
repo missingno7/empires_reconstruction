@@ -626,13 +626,13 @@ void game_run(void)
 
     if (intro_run_chapter() == -1) return;
     hud_arena_init();
-    d = setjmp(game_abort_jmpbuf);
+    d = setjmp(game_abort_jmpbuf);   /* enum GameRunResult, see game_flow.h */
     s = -1;
     ui_overlay_reset();
     sound_request_count_clear();
     puzzle_free_resources();
-    if (d == 3) return;
-    if (d < 2) {
+    if (d == GAME_EXIT) return;
+    if (d < GAME_RETURN_MAP) {   /* GAME_FRESH or GAME_RESTART */
         if (slot_menu_run() == -1) return;
         energy_set(slot_table[current_slot].state);
         if ((n = slot_table[current_slot].resume_round) != 0) {
@@ -647,6 +647,12 @@ void game_run(void)
     slot_archive_and_delete();
 }
 
+
+/* Phase 11: the only longjmp in the port (see game_flow.h). */
+void game_abort(enum GameRunResult how)
+{
+    longjmp(game_abort_jmpbuf, (int)how);
+}
 
 /* ---- F_4A93 (original code at 0x4A93) ---- */
 /* F_4A93 -- main() (renamed game_main() -- rule: keep historical function

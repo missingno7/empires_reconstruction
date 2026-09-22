@@ -37,6 +37,7 @@
 #include "input.h"
 #include "sound.h"
 #include "startup.h"
+#include "game_flow.h"
 
 void game_main(void);   /* portable/game/game.c: the historical main() */
 

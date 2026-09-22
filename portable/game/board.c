@@ -853,5 +853,5 @@ void board_record_complete(void)
     slot_table[current_slot].value++;
     energy_set(slot_table[current_slot].state = 4);
     if (confirm_quit_dialog())
-        longjmp(game_abort_jmpbuf, 2);
+        game_abort(GAME_RETURN_MAP);
 }

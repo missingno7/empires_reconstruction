@@ -70,7 +70,9 @@ dos_int turn_loop_run(void)
     blink = lastcur = raycast_trail_active = lastobj = x;
     gbc = key_up_released = 1;
     keyboard_chain_disable();
+    EMPIRES_TRACE("turn_loop_run enter");
     for (;;) {
+        { static unsigned iter; if ((++iter % 200) == 1) EMPIRES_TRACE("turn iteration %u ticks=%lu", iter, (unsigned long)timer_ticks); }
         timer_deadline_arm(0x18);
         g40ce = dir = key = 0;
         if (keyboard_poll_nonblocking()) {
@@ -152,6 +154,8 @@ scanned:
         if (*record_table_root != 0) draw_queue_render();
         if (*icon_record_list_ptr != 0) icon_list_animate_draw();
         if (key_up_right_held != 0) {
+            EMPIRES_TRACE("turn: right held x=%d cur=(%d,%d) coll=%d", x, cursor_x, cursor_y,
+                          board_collision_span_or(cursor_x + 0x21, cursor_y + 1, 0x27));
             if (x == 0 || key_up_held == 0) {
                 x = 0;
                 cursor_facing_left = x;

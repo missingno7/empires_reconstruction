@@ -36,11 +36,12 @@ static Uint64 s_selftest_ms = 300;
 
 static volatile bool s_game_finished = false;
 
-/* --script "ms:scan[:ascii],..." injects historical make/break pairs for
+/* --script "ms:scan[:ascii[:hold_ms]],..." injects historical make/break pairs for
  * headless bring-up runs and replay tests.  Each entry fires once the game
  * has been continuously asking for a key (empty polls or blocking waits)
  * for at_ms, i.e. it is idle waiting for the user. */
-typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; char marker[32]; int repeat; } script_key;
+typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; Uint64 hold_ms; char marker[32]; int repeat; int timed; } script_key;
+static uint8_t s_held_scan; static Uint64 s_release_at;
 static script_key s_script[64];
 static int s_script_n, s_script_next;
 
@@ -64,12 +65,18 @@ static void parse_script(const char *spec)
             k.repeat = 1;
             spec++;
         }
+        if (*spec == '+') {                       /* wall-clock delay, not idle-gated */
+            k.timed = 1;
+            spec++;
+        }
         k.at_ms = (Uint64)strtoull(spec, &end, 10);
         if (*end != ':') break;
         k.scan = (uint8_t)strtoul(end + 1, &end, 16);
         k.ascii = 0;
         if (*end == ':')
             k.ascii = (uint8_t)strtoul(end + 1, &end, 16);
+        if (*end == ':')                          /* hold duration (ms) before the break */
+            k.hold_ms = (Uint64)strtoull(end + 1, &end, 10);
         s_script[s_script_n++] = k;
         spec = (*end == ',') ? end + 1 : end;
     }
@@ -231,10 +238,12 @@ int main(int argc, char **argv)
         /* Scripted input: an entry fires once the game has been asking for
          * a key (empty polls / blocking waits) continuously for at_ms. */
         {
-            static Uint64 idle_since; static uint32_t last_empty_seen;
+            static Uint64 idle_since, last_fire, last_ask; static uint32_t last_empty_seen;
             Uint64 now = SDL_GetTicks();
-            if (input_empty_reads == last_empty_seen && !input_blocked)
-                idle_since = now;               /* not asking: reset */
+            if (input_empty_reads != last_empty_seen || input_blocked)
+                last_ask = now;                 /* the game asked for a key */
+            if (now - last_ask > 500)
+                idle_since = now;               /* no request for 500 ms: not idle-waiting */
             last_empty_seen = input_empty_reads;
             /* A marker entry is satisfied when the game emits that trace;
              * a '*' key entry before it keeps firing (when idle) until then. */
@@ -254,19 +263,27 @@ int main(int argc, char **argv)
                         if (m && strncmp(m, s_script[cur].marker, strlen(s_script[cur].marker)) == 0) {
                             s_script_next = cur + 1;
                             idle_since = now;
+                            last_fire = now;
                             break;
                         }
                     }
                 }
                 if (s_script_next < s_script_n && !s_script[s_script_next].marker[0] &&
-                    now - idle_since >= s_script[s_script_next].at_ms) {
+                    now - (s_script[s_script_next].timed ? last_fire : idle_since) >= s_script[s_script_next].at_ms) {
                     const script_key *k = &s_script[s_script_next];
                     if (!k->repeat)
                         s_script_next++;
+                    if (s_held_scan) { input_key_event(s_held_scan, false, 0); s_held_scan = 0; }
                     input_key_event(k->scan, true, k->ascii);
-                    input_key_event(k->scan, false, 0);
+                    if (k->hold_ms) { s_held_scan = k->scan; s_release_at = now + k->hold_ms; }
+                    else input_key_event(k->scan, false, 0);
                     idle_since = now;
+                    last_fire = now;
                 }
+            }
+            if (s_held_scan && now >= s_release_at) {
+                input_key_event(s_held_scan, false, 0);
+                s_held_scan = 0;
             }
         }
         if (gfx_vram_generation != presented_generation || demo) {

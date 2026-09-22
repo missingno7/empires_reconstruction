@@ -99,6 +99,14 @@ void sdl_video_present(const uint8_t *vram8, const uint8_t *dac6)
     SDL_RenderPresent(s_renderer);
 }
 
+void sdl_video_toggle_fullscreen(void)
+{
+    if (!s_window)
+        return;
+    bool full = (SDL_GetWindowFlags(s_window) & SDL_WINDOW_FULLSCREEN) != 0;
+    SDL_SetWindowFullscreen(s_window, !full);
+}
+
 bool sdl_video_poll_events(void)
 {
     SDL_Event event;

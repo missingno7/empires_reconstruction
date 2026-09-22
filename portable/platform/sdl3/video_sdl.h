@@ -36,6 +36,10 @@ void sdl_video_shutdown(void);
  */
 void sdl_video_present(const uint8_t *vram8, const uint8_t *dac6);
 
+/* Toggle borderless fullscreen (Alt+Enter); the integer-scaled logical
+ * presentation keeps the original pixels square. */
+void sdl_video_toggle_fullscreen(void);
+
 /* Pump the SDL event queue.  Returns true once a quit has been requested
  * (SDL_EVENT_QUIT, window close, or the Escape key). */
 bool sdl_video_poll_events(void);

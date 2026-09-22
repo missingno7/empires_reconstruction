@@ -336,6 +336,9 @@ int main(int argc, char **argv)
         while (SDL_PollEvent(&ev)) {
             if (ev.type == SDL_EVENT_QUIT)
                 quit = true;
+            else if (ev.type == SDL_EVENT_KEY_DOWN && ev.key.key == SDLK_RETURN &&
+                     (ev.key.mod & SDL_KMOD_ALT) && !ev.key.repeat)
+                sdl_video_toggle_fullscreen();      /* host convenience, not a game key */
             else if (ev.type == SDL_EVENT_KEY_DOWN || ev.type == SDL_EVENT_KEY_UP)
                 input_sdl_handle_event(&ev);
         }

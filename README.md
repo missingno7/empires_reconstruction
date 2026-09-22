@@ -15,6 +15,30 @@ The runtime-block recovery workflow is still available: start with
 [generated status](docs/current/status.json), and
 [the ranked queue](docs/current/grinder-queue.json).
 
+## Portable Windows build (SDL3)
+
+Branch `portable-sdl3` carries a behavior-preserving native port under
+`portable/`: C17 game logic (every historical translation unit and all ten
+assembler modules reimplemented as typed C), an 8-bpp software renderer
+that reproduces the VGA overlay's primitives, the 236.7 Hz fixed-step
+timer, a BIOS-shaped keyboard service, the SOUND.ASM state machine driving
+Nuked OPL3 and a PC-speaker synthesizer, and SDL3 for window/input/audio.
+It needs only CMake, MSVC, git and the original `AE000.DAT`/`AE001.DAT`:
+
+```powershell
+cmake -S . -B build-portable -G "Visual Studio 18 2026" -A x64
+cmake --build build-portable --config Release
+build-portable\portable\platform\sdl3\Release\empires.exe --assets assets
+ctest --test-dir build-portable -C Release
+```
+
+See [docs/portable/architecture.md](docs/portable/architecture.md) (the
+contract), [docs/portable/build.md](docs/portable/build.md) (build, run,
+tests) and `docs/portable/*.md` for the inventories and audits.  The
+historical build above stays the oracle: its decoders, graphics primitives
+and sound driver are certified against the real 8086 code (MS-DOS Player /
+Unicorn fixtures under `portable/tests/fixtures`).
+
 ```powershell
 # Install the analysis-only decoder into the local ignored build directory.
 python -m pip install --no-user --target build/python-deps -r requirements-factory.txt

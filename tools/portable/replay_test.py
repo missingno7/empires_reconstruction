@@ -33,7 +33,8 @@ def main():
                 if f.startswith('frame.ppm'):
                     os.remove(os.path.join(work, f))
             cmd = [exe, '--deterministic', '--selftest-ms', str(run['virtual_ms']), '--script', run['script'],
-                   '--assets', assets, '--saves', work, '--dump-vram', dump, '--dump-interval', str(run['dump_interval_ms'])]
+                   '--assets', assets, '--saves', work, '--dump-vram', dump, '--dump-interval', str(run['dump_interval_ms']),
+                   '--config', os.path.join(work, 'empires.json')]   # isolate from the user's file next to the exe
             r = subprocess.run(cmd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=m.get('timeout_s', 300))
             if r.returncode != 0:
                 print('replay: executable failed (run %d)' % ri, r.returncode, r.stderr.decode(errors='replace')[-2000:]); return 1

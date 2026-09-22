@@ -170,7 +170,21 @@ speaker.  Mixed PCM is pushed to one SDL3 audio stream.  Event logs are the
 first parity artifact; PCM comes after.  Output level: fixed per-source
 gains (OPL 0.25, speaker 0.06 of full scale -- both synths are far hotter
 than the original hardware) under a user master volume (`--volume`,
-`EMPIRES_VOLUME`); gains never touch the event timeline.
+`EMPIRES_VOLUME`, `audio.volume` in `empires.json`); gains never touch
+the event timeline.
+
+## Host configuration
+
+`portable/compat/config.c` (`config.h`) is a flat dotted-key store that
+round-trips `empires.json` (strict JSON subset: nested objects of numbers,
+booleans, strings; no arrays).  It holds host-side preferences only --
+volume, fullscreen, directories, later tweening and in-game options --
+never game state, and nothing in `portable/game/` reads it: the front end
+resolves every setting at start-up and pushes it into the subsystem it
+belongs to (mixer gain, window flags, resource directories).  Precedence:
+built-in defaults < file < environment < command line; env/CLI overrides
+are per run and are not written back.  The file is created with the
+defaults on first run; a malformed file is reported and ignored.
 
 ## Testing
 

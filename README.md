@@ -32,9 +32,11 @@ build-portable\portable\platform\sdl3\Release\empires.exe --assets assets
 ctest --test-dir build-portable -C Release
 ```
 
-See [docs/portable/architecture.md](docs/portable/architecture.md) (the
+Settings (volume, fullscreen, data directories) persist in `empires.json`
+next to the executable, written with the defaults on first run.  See
+[docs/portable/architecture.md](docs/portable/architecture.md) (the
 contract), [docs/portable/build.md](docs/portable/build.md) (build, run,
-tests) and `docs/portable/*.md` for the inventories and audits.  The
+configuration, tests) and `docs/portable/*.md` for the inventories and audits.  The
 historical build above stays the oracle: its decoders, graphics primitives
 and sound driver are certified against the real 8086 code (MS-DOS Player /
 Unicorn fixtures under `portable/tests/fixtures`).

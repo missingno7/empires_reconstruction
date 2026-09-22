@@ -16,8 +16,10 @@
  * --deterministic (no tick thread: the game's own waits/polls advance the
  * 236.7 Hz clock, and --script/--selftest-ms/--dump-interval run on that
  * virtual time, so a run is reproducible for regression tests),
- * --volume PCT (master output volume, 0..200, default 100; also the
- * EMPIRES_VOLUME environment variable).
+ * --volume PCT (master output volume, 0..200; also EMPIRES_VOLUME),
+ * --fullscreen / --windowed, --config PATH (empires.json location, default:
+ * next to the executable; written with the defaults on first run).
+ * Switches and environment override the file for this run only.
  * Historical switches (-E/-C/-T/-M/-V, -I, -S?) pass through to
  * cmdline_parse_args().
  *
@@ -38,6 +40,7 @@
 #include "video_sdl.h"
 #include "audio_sdl.h"
 #include "audio.h"
+#include "config.h"
 
 static Uint64 s_selftest_ms = 300;
 static bool s_deterministic;   /* --deterministic: manual ticks, virtual time for scripts/dumps */
@@ -212,6 +215,34 @@ static void choose_asset_dir(char *out, size_t n, const char *explicit)
 }
 
 
+/* empires.json: `explicit` (--config PATH) or the file next to the
+ * executable.  Registers the built-in defaults (a loaded file wins), and
+ * writes the file when it does not exist yet so users can find it.  A
+ * malformed file is reported and ignored (defaults), never overwritten. */
+static void load_config(char *path, size_t n, const char *explicit)
+{
+    bool missing = false;
+    char err[256];
+
+    if (explicit) {
+        snprintf(path, n, "%s", explicit);
+    } else {
+        const char *base = SDL_GetBasePath();
+        snprintf(path, n, "%s%s", base ? base : "", "empires.json");
+    }
+    config_reset();
+    if (!config_load(path, &missing, err, sizeof err) && !missing)
+        fprintf(stderr, "%s: %s -- using defaults\n", path, err);
+
+    config_default_int("audio.volume", 100);         /* master volume, percent (0..200) */
+    config_default_bool("video.fullscreen", false);  /* borderless fullscreen at start */
+    config_default_string("paths.assets", "");       /* AE000.DAT/AE001.DAT directory; "" = auto */
+    config_default_string("paths.saves", "");        /* save-slot overlays; "" = asset directory */
+
+    if (missing && !config_save(path))
+        fprintf(stderr, "cannot write %s (continuing with defaults)\n", path);
+}
+
 static const char *s_dump_path;
 static Uint64 s_dump_interval, s_next_dump, s_start_ticks;
 static int s_dump_index;
@@ -300,9 +331,11 @@ int main(int argc, char **argv)
 {
     crash_handler_install();
     bool selftest = false, demo = false;
-    const char *assets = NULL, *saves = NULL;
-    int volume = -1;               /* --volume PCT / EMPIRES_VOLUME; -1 = mixer default */
+    const char *assets = NULL, *saves = NULL, *config_path = NULL;
+    int volume = -1;               /* --volume PCT / EMPIRES_VOLUME; -1 = config value */
+    int fullscreen = -1;           /* --fullscreen / --windowed; -1 = config value */
     char asset_dir[1024];
+    char config_file[1024];
     sync_thread game_thread = { NULL };
 
     for (int i = 1; i < argc; ++i) {
@@ -330,17 +363,36 @@ int main(int argc, char **argv)
             s_dump_interval = (Uint64)strtoull(argv[++i], NULL, 10);
         else if (strcmp(argv[i], "--volume") == 0 && i + 1 < argc)
             volume = (int)strtol(argv[++i], NULL, 10);
+        else if (strcmp(argv[i], "--fullscreen") == 0)
+            fullscreen = 1;
+        else if (strcmp(argv[i], "--windowed") == 0)
+            fullscreen = 0;
+        else if (strcmp(argv[i], "--config") == 0 && i + 1 < argc)
+            config_path = argv[++i];
     }
     if (volume < 0 && getenv("EMPIRES_VOLUME"))
         volume = (int)strtol(getenv("EMPIRES_VOLUME"), NULL, 10);
+
+    /* Configuration file: defaults < empires.json < environment < switches.
+     * Env/CLI overrides apply to this run only and are never written back. */
+    load_config(config_file, sizeof config_file, config_path);
+    if (volume < 0)
+        volume = config_get_int("audio.volume", 100);
+    if (fullscreen < 0)
+        fullscreen = config_get_bool("video.fullscreen", false) ? 1 : 0;
+    if (!assets && config_get_string("paths.assets", "")[0])
+        assets = config_get_string("paths.assets", "");
+    if (!saves && config_get_string("paths.saves", "")[0])
+        saves = config_get_string("paths.saves", "");
 
     if (!sdl_video_init("Empires (portable)")) {
         sdl_video_shutdown();
         return 1;
     }
+    if (fullscreen)
+        sdl_video_set_fullscreen(true);
     audio_sdl_init(); /* logs and continues without audio on failure -- see audio_sdl.h */
-    if (volume >= 0)
-        audio_mixer_set_master_volume(volume);
+    audio_mixer_set_master_volume(volume);
 
     startup_set_args(argc, argv);
     choose_asset_dir(asset_dir, sizeof asset_dir, assets);

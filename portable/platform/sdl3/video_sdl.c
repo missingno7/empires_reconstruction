@@ -107,6 +107,12 @@ void sdl_video_toggle_fullscreen(void)
     SDL_SetWindowFullscreen(s_window, !full);
 }
 
+void sdl_video_set_fullscreen(bool full)
+{
+    if (s_window)
+        SDL_SetWindowFullscreen(s_window, full);
+}
+
 bool sdl_video_poll_events(void)
 {
     SDL_Event event;

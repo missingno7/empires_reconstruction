@@ -72,10 +72,35 @@ backend).  Bring-up options: `--demo` (primitive test scene), `--selftest`
 (`--dump-interval MS`) to write the presented frame(s) as PPM
 (`python tools/portable/ppm2png.py in.ppm out.png`), `--script "..."` to
 inject keys (see `portable/platform/sdl3/main.c`), `--deterministic` to
-run on virtual time (reproducible replays), `--volume PCT` master output
-volume (0..200, default 100).  Environment: `EMPIRES_TRACE=1` prints
-high-level flow markers, `EMPIRES_NOSOUND=1` disables the sound state
-machine, `EMPIRES_VOLUME=PCT` is the same as `--volume`.
+run on virtual time (reproducible replays).  Environment: `EMPIRES_TRACE=1`
+prints high-level flow markers, `EMPIRES_NOSOUND=1` disables the sound
+state machine.
+
+### Configuration file
+
+Persistent settings live in `empires.json` next to the executable (or the
+file named by `--config PATH`).  It is written with the defaults on the
+first run, so it is always there to edit:
+
+```json
+{
+  "audio":  { "volume": 100 },
+  "paths":  { "assets": "", "saves": "" },
+  "video":  { "fullscreen": false }
+}
+```
+
+`audio.volume` is the master output level in percent (0..200);
+`video.fullscreen` starts in borderless fullscreen (Alt+Enter still
+toggles); `paths.assets` / `paths.saves` replace the automatic directory
+lookup when non-empty.  Command-line switches (`--volume PCT`,
+`--fullscreen` / `--windowed`, `--assets`, `--saves`) and the
+`EMPIRES_VOLUME` environment variable override the file for one run and
+are never written back.  A malformed file is reported on stderr and
+ignored (defaults), never overwritten.  Unknown keys are preserved, so
+later settings (tweening, in-game options) extend the same file; the
+store is `portable/include/config.h`, platform-independent and unit
+tested (`test_config`).
 
 ## Tests
 

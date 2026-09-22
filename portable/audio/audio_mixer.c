@@ -53,6 +53,30 @@ static void ensure_mutex(void)
     }
 }
 
+/* Output gains.  The OPL backend yields +-1.0 full scale and the speaker
+ * synth a +-1.0 square wave; both are far hotter than an AdLib line-out and
+ * a PC-speaker cone next to each other, so the defaults sit well below unity
+ * (a full-scale square wave has 3 dB more RMS than a sine of the same
+ * amplitude, hence the extra drop on the speaker).  The master gain is the
+ * user's volume knob (--volume / EMPIRES_VOLUME). */
+#define AUDIO_GAIN_OPL_DEFAULT      0.25f
+#define AUDIO_GAIN_SPEAKER_DEFAULT  0.06f
+static float s_gain_opl = AUDIO_GAIN_OPL_DEFAULT;
+static float s_gain_speaker = AUDIO_GAIN_SPEAKER_DEFAULT;
+static float s_gain_master = 1.0f;
+
+void audio_mixer_set_master_volume(int percent)
+{
+    if (percent < 0) percent = 0;
+    if (percent > 200) percent = 200;
+    s_gain_master = (float)percent / 100.0f;
+}
+
+int audio_mixer_master_volume(void)
+{
+    return (int)(s_gain_master * 100.0f + 0.5f);
+}
+
 void audio_mixer_init(int sample_rate)
 {
     ensure_mutex();
@@ -207,7 +231,7 @@ void audio_render(int16_t *out, int frames)
             float opl_sample = opl_backend_generate();
             float spk_sample = speaker_synth_generate(&s_speaker, s_sample_rate);
 
-            float mixed = opl_sample * 0.5f + spk_sample * 0.25f;
+            float mixed = (opl_sample * s_gain_opl + spk_sample * s_gain_speaker) * s_gain_master;
             if (mixed > 1.0f)
                 mixed = 1.0f;
             else if (mixed < -1.0f)

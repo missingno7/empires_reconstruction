@@ -132,6 +132,12 @@ void audio_mixer_init(int sample_rate);
  * compatibility. */
 void audio_mixer_shutdown(void);
 
+/* Master output volume in percent (0..200, default 100).  Scales the mix
+ * after the fixed per-source gains; does not touch the event timeline, so
+ * the sound state machine's output stays identical at any setting. */
+void audio_mixer_set_master_volume(int percent);
+int  audio_mixer_master_volume(void);
+
 /* Push one backend event, produced at tick `tick` (portable/game/timer.c's
  * timer_ticks at the moment of the historical hardware write).  Thread
  * -safe: called from the timer thread; audio_render() (below) drains the

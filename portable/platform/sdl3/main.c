@@ -15,7 +15,9 @@
  * ~300 ms), --dump-vram FILE (write the presented frame as PPM at exit),
  * --deterministic (no tick thread: the game's own waits/polls advance the
  * 236.7 Hz clock, and --script/--selftest-ms/--dump-interval run on that
- * virtual time, so a run is reproducible for regression tests).
+ * virtual time, so a run is reproducible for regression tests),
+ * --volume PCT (master output volume, 0..200, default 100; also the
+ * EMPIRES_VOLUME environment variable).
  * Historical switches (-E/-C/-T/-M/-V, -I, -S?) pass through to
  * cmdline_parse_args().
  *
@@ -35,6 +37,7 @@
 #include "input_sdl.h"
 #include "video_sdl.h"
 #include "audio_sdl.h"
+#include "audio.h"
 
 static Uint64 s_selftest_ms = 300;
 static bool s_deterministic;   /* --deterministic: manual ticks, virtual time for scripts/dumps */
@@ -298,6 +301,7 @@ int main(int argc, char **argv)
     crash_handler_install();
     bool selftest = false, demo = false;
     const char *assets = NULL, *saves = NULL;
+    int volume = -1;               /* --volume PCT / EMPIRES_VOLUME; -1 = mixer default */
     char asset_dir[1024];
     sync_thread game_thread = { NULL };
 
@@ -324,13 +328,19 @@ int main(int argc, char **argv)
             parse_script_file(argv[++i]);
         else if (strcmp(argv[i], "--dump-interval") == 0 && i + 1 < argc)
             s_dump_interval = (Uint64)strtoull(argv[++i], NULL, 10);
+        else if (strcmp(argv[i], "--volume") == 0 && i + 1 < argc)
+            volume = (int)strtol(argv[++i], NULL, 10);
     }
+    if (volume < 0 && getenv("EMPIRES_VOLUME"))
+        volume = (int)strtol(getenv("EMPIRES_VOLUME"), NULL, 10);
 
     if (!sdl_video_init("Empires (portable)")) {
         sdl_video_shutdown();
         return 1;
     }
     audio_sdl_init(); /* logs and continues without audio on failure -- see audio_sdl.h */
+    if (volume >= 0)
+        audio_mixer_set_master_volume(volume);
 
     startup_set_args(argc, argv);
     choose_asset_dir(asset_dir, sizeof asset_dir, assets);

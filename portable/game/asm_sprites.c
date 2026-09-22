@@ -624,18 +624,25 @@ void sprite_script_frame_driver(void)
                     if (g40ce == 0) {
                         g40ce = (dos_int)(dos_uint)(count - idx);
                     }
-                }
-            }
 
-        /* check_special_flags: */
-            if (rec->special_case != 0 && rec->special_handled != 1) {
-                if (rec->special_case != 1 || (dos_uchar)hud_scroll_cooldown_ticks != 0) {
-                    rec->call_return_pc = 0;
-                    rec->timer_11 = 0;
-                    rec->timer_13 = 0;
-                    rec->timer_15 = 0;
-                    rec->special_handled = 1;
-                    rec->saved_pc = rec->restart_pc;
+                    /* check_special_flags -- reached ONLY through the
+                     * overlap-confirmed path: every failed `jg` above jumps
+                     * to skip_collision, which falls into check_bounds and
+                     * bypasses this block.  (Running it unconditionally made
+                     * every projectile restart its +17h "explode" program on
+                     * its first tick.)  byte+19h selects the special case,
+                     * byte+1Bh marks it handled; case 1 additionally needs
+                     * ds:[72Ch] != 0. */
+                    if (rec->special_case != 0 && rec->special_handled != 1) {
+                        if (rec->special_case != 1 || (dos_uchar)hud_scroll_cooldown_ticks != 0) {
+                            rec->call_return_pc = 0;
+                            rec->timer_11 = 0;
+                            rec->timer_13 = 0;
+                            rec->timer_15 = 0;
+                            rec->special_handled = 1;
+                            rec->saved_pc = rec->restart_pc;
+                        }
+                    }
                 }
             }
 

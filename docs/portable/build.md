@@ -72,9 +72,10 @@ backend).  Bring-up options: `--demo` (primitive test scene), `--selftest`
 (`--dump-interval MS`) to write the presented frame(s) as PPM
 (`python tools/portable/ppm2png.py in.ppm out.png`), `--script "..."` to
 inject keys (see `portable/platform/sdl3/main.c`), `--deterministic` to
-run on virtual time (reproducible replays).  Environment: `EMPIRES_TRACE=1`
-prints high-level flow markers, `EMPIRES_NOSOUND=1` disables the sound
-state machine.
+run on virtual time (reproducible replays), `--volume PCT` master output
+volume (0..200, default 100).  Environment: `EMPIRES_TRACE=1` prints
+high-level flow markers, `EMPIRES_NOSOUND=1` disables the sound state
+machine, `EMPIRES_VOLUME=PCT` is the same as `--volume`.
 
 ## Tests
 

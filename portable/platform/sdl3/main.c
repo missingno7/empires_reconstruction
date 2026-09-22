@@ -356,6 +356,15 @@ int main(int argc, char **argv)
 
     if (s_dump_path)
         dump_vram_ppm(s_dump_path);
+    if (getenv("EMPIRES_TRACE")) {
+        size_t n = sound_event_log_count(), i, kinds[8] = {0};
+        for (i = 0; i < n; i++) {
+            const struct sound_event *e = sound_event_log_get(i);
+            if (e && (unsigned)e->kind < 8) kinds[e->kind]++;
+        }
+        fprintf(stderr, "[trace] sound events logged: %zu (opl=%zu pit=%zu gate=%zu nibble=%zu)\n",
+                n, kinds[0], kinds[1], kinds[2], kinds[3]);
+    }
 
     if (!demo) {
         if (s_game_finished) {

@@ -183,6 +183,17 @@ bool gfx_tween_enabled(void)
     return s_enabled;
 }
 
+void gfx_tween_presenter_resume(void)
+{
+    if (!s_lock_init)
+        return;
+    sync_mutex_lock(&s_lock);
+    if (s_base)
+        s_base->valid = false;
+    s_first_newer_ms = -1.0;
+    sync_mutex_unlock(&s_lock);
+}
+
 /* ---- capture (game thread) ------------------------------------------- */
 
 static uint8_t *arena_take(struct tween_frame *f, size_t n, uint32_t *off)

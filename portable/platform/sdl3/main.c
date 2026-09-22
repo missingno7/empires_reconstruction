@@ -499,6 +499,15 @@ int main(int argc, char **argv)
             bringup_step();
         bool interpolation_now = !s_deterministic && !demo && port_settings_interpolation();
         if (interpolation_now != last_interpolation) {
+            if (interpolation_now) {
+                /* Live-VRAM presentation may have advanced beyond the
+                 * tweener's old base while the preference was off.  Resync
+                 * presenter-side history before composing again; capture and
+                 * publication continue uninterrupted on the game thread. */
+                gfx_tween_presenter_resume();
+                presented_generation = 0;
+                s_last_presented = gfx_vram;
+            }
             last_interpolation = interpolation_now;
             sdl_video_set_vsync(interpolation_now);
         }

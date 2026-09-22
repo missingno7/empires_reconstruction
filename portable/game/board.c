@@ -41,9 +41,11 @@
 
 static void board_platform_copy_visible(int index, dos_int x, dos_int y, const uint8_t *bitmap)
 {
-    /* The board renderer first paints the platform into the off-screen
-     * 488-row board and then wipes that region into the visible 200-row
-     * viewport.  Only this final screen-space redraw is a tween object. */
+    /* The board renderer paints the platform into the off-screen 488-row
+     * board, but the visible background has already been copied out before
+     * this call.  Draw the platform once in screen space so tween capture
+     * sees the real background underneath it, not the platform copied from
+     * the source buffer. */
     gfx_tween_tag = GFX_TWEEN_TAG_PLATFORM(index);
     gfx_copy_rect(x, y, bitmap, 0);
     gfx_tween_tag = 0;
@@ -300,10 +302,10 @@ void board_update_moving_records(void)
                     else {
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 16, 56, (dos_int)x, (dos_int)y);
                         y -= 8;
+                        gfx_wipe_rect((dos_int)x, (dos_int)y, 16, 64, (dos_int)x, (dos_int)(y - 184));
                         p[2] -= 8;
                         g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ca6[0], 0); g96 = 159;
-                        gfx_wipe_rect((dos_int)x, (dos_int)y, 16, 64, (dos_int)x, (dos_int)(y - 184));
-                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y + 8 - 184), (const uint8_t *)g6ca6[0]);
+                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ca6[0]);
                         board_records[index - 38] = 7;
                         board_records[index + 190] = 0;
                     }
@@ -313,9 +315,9 @@ void board_update_moving_records(void)
                     else {
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 16, 56, (dos_int)x, (dos_int)y);
                         p[2] += 8;
-                        g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)(y + 8), (const uint8_t *)g6ca6[0], 0); g96 = 159;
                         gfx_wipe_rect((dos_int)x, (dos_int)y, 16, 64, (dos_int)x, (dos_int)(y - 184));
-                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ca6[0]);
+                        g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)(y + 8), (const uint8_t *)g6ca6[0], 0); g96 = 159;
+                        board_platform_copy_visible(i, (dos_int)x, (dos_int)(y + 8 - 184), (const uint8_t *)g6ca6[0]);
                         board_records[index + 228] = 7;
                         board_records[index] = 0;
                     }
@@ -327,9 +329,9 @@ void board_update_moving_records(void)
                     else {
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 56, 16, (dos_int)x, (dos_int)y);
                         x -= 8;
+                        gfx_wipe_rect((dos_int)x, (dos_int)y, 64, 16, (dos_int)x, (dos_int)(y - 184));
                         p[1] -= 4;
                         g96 = 359; gfx_copy_rect((dos_int)x, (dos_int)y, (const uint8_t *)g6ac4[0], 0); g96 = 159;
-                        gfx_wipe_rect((dos_int)x, (dos_int)y, 64, 16, (dos_int)x, (dos_int)(y - 184));
                         board_platform_copy_visible(i, (dos_int)x, (dos_int)(y - 184), (const uint8_t *)g6ac4[0]);
                         board_records[index - 1] = 7;
                         board_records[index + 5] = 0;
@@ -339,9 +341,9 @@ void board_update_moving_records(void)
                         *p = flag;
                     else {
                         gfx_wipe_rect((dos_int)x, (dos_int)(y + 144), 56, 16, (dos_int)x, (dos_int)y);
+                        gfx_wipe_rect((dos_int)x, (dos_int)y, 64, 16, (dos_int)x, (dos_int)(y - 184));
                         p[1] += 4;
                         g96 = 359; gfx_copy_rect((dos_int)(x + 8), (dos_int)y, (const uint8_t *)g6ac4[0], 0); g96 = 159;
-                        gfx_wipe_rect((dos_int)x, (dos_int)y, 64, 16, (dos_int)x, (dos_int)(y - 184));
                         board_platform_copy_visible(i, (dos_int)(x + 8), (dos_int)(y - 184), (const uint8_t *)g6ac4[0]);
                         board_records[index + 6] = 7;
                         board_records[index] = 0;
@@ -636,6 +638,7 @@ void board_scroll_transition(void)
 /* ---- F_329F (original code at 0x329F) ---- */
 void board_record_index_select(void)
 {
+    gfx_tween_scene_reset();
     board_records = (dos_char *)&g43b4[board_record_index];
     board_redraw_paint();
     rect_queue_write_ptr = ui_gfx_blob;

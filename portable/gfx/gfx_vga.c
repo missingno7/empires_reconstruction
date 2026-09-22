@@ -482,7 +482,12 @@ bool vga_copy_rect_clip(dos_int x, dos_int y, const uint8_t *bitmap, dos_int fli
     } else {                                                                      /* flip path, 09F9-0ABF */
         /* 09FC-0A02: bx = ((x + 2*header_bytes) >> 1) - 1, the rightmost
          * dest packed-pair column of the (unclipped) mirrored rect. */
-        uint16_t rightcol = (uint16_t)((uint16_t)(((uint16_t)x + 2u * header_bytes) >> 1) - 1u);
+        /* The original adds into 16-bit BX twice before shifting.  Keeping
+         * the additions explicitly 16-bit is important for negative x:
+         * x=-16 and a 16-byte sprite must wrap to rightcol=7, not become a
+         * large positive host integer. */
+        uint16_t right_edge = (uint16_t)((uint16_t)x + (uint16_t)(2u * header_bytes));
+        uint16_t rightcol = (uint16_t)((right_edge >> 1) - 1u);
         ax = (int16_t)((int16_t)rightcol - c98);                                       /* 0A03-0A05 */
         if (ax < 0) return false;                                                        /* 0A09 */
         ax = (int16_t)(ax + 1);                                                            /* 0A0B */

@@ -54,6 +54,11 @@ bool gfx_tween_enabled(void);
  * it does not touch the game-thread capture engine or allocate/reset it. */
 void gfx_tween_presenter_resume(void);
 
+/* Discard interpolation state at a new room/scene boundary.  Capture remains
+ * enabled, but no draw from the previous scene may be used as a tween origin
+ * or remain active while the new scene is being presented. */
+void gfx_tween_scene_reset(void);
+
 /* ---- driver hooks (gfx_vga.c) ----------------------------------------- */
 struct vga_copy_clip;
 void gfx_tween_capture_copy_rect(int tag, dos_int x, dos_int y, const uint8_t *bitmap,

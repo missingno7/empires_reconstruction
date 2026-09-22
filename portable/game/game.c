@@ -477,6 +477,7 @@ dos_int level_driver_run(void)
     EMPIRES_TRACE("level_driver_run node=%d", campaign_round_node_cursor);
     dos_int r;
 
+    gfx_tween_scene_reset();
     menu_backdrop_paint();
     menu_list_source_set_default();
     cursor_x = b4375;

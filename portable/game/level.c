@@ -172,6 +172,7 @@ dos_int chapter_map_sprites_wipe(void)
 dos_int level_chapter_driver(void)
 {
     dos_int i;
+    gfx_tween_scene_reset();
     menu_list_disable(); hud_panel_clear();
     board_record_index = gbc = raycast_trail_active = 0;
     g40ce = 1; g94 = g98 = 0; g96 = 0x1e8; g9a = 160;

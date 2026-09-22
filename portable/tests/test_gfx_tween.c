@@ -174,6 +174,22 @@ static void test_platform_tag_interpolates_between_frames(void)
     teardown();
 }
 
+static void test_platform_tag_interpolates_vertically(void)
+{
+    uint8_t out[320 * 200];
+    int n, mx, my;
+    setup();
+    make_bitmap(0x45);
+
+    frame(GFX_TWEEN_TAG_PLATFORM(5), 100, 60, 0.0, 100.0);
+    erase(100, 60);
+    frame(GFX_TWEEN_TAG_PLATFORM(5), 100, 68, 100.0, 200.0);
+    CHECK(gfx_tween_compose(out, 150.0, gfx_vram_generation));
+    n = count_marker(out, 0x45, &mx, &my);
+    CHECK(n == 8 && mx == 100 && my == 64);
+    teardown();
+}
+
 static void test_presenter_resume_after_live_mode(void)
 {
     uint8_t out[320 * 200];
@@ -202,6 +218,28 @@ static void test_presenter_resume_after_live_mode(void)
     CHECK(gfx_tween_compose(out, 350.0, gfx_vram_generation));
     n = count_marker(out, 0x42, &mx, &my);
     CHECK(n == 8 && mx == 60 && my == 20);
+    teardown();
+}
+
+static void test_scene_reset_drops_previous_room_history(void)
+{
+    uint8_t out[320 * 200];
+    int n, mx, my;
+    setup();
+    make_bitmap(0x44);
+
+    frame(GFX_TWEEN_TAG_ACTOR(2), 10, 20, 0.0, 100.0);
+    gfx_tween_scene_reset();
+
+    /* The first frame of the new room has the same logical actor tag at a
+     * different location.  It must be a new base, not a continuation of the
+     * old room's actor history. */
+    memset(g3924[20], 7, 320 * 2);
+    memset(gfx_vram, 7, sizeof gfx_vram);
+    frame(GFX_TWEEN_TAG_ACTOR(2), 100, 20, 100.0, 200.0);
+    CHECK(gfx_tween_compose(out, 150.0, gfx_vram_generation));
+    n = count_marker(out, 0x44, &mx, &my);
+    CHECK(n == 8 && mx == 100 && my == 20);
     teardown();
 }
 
@@ -341,9 +379,11 @@ int main(void)
     test_edge_clipping_matches_game();
     test_interpolates_between_frames();
     test_platform_tag_interpolates_between_frames();
+    test_platform_tag_interpolates_vertically();
     test_teleport_and_unmatched_draw_at_current();
     test_live_present_falls_back();
     test_presenter_resume_after_live_mode();
+    test_scene_reset_drops_previous_room_history();
     test_disabled_and_untagged_capture_nothing();
     if (s_failures) {
         fprintf(stderr, "test_gfx_tween: %d failure(s)\n", s_failures);

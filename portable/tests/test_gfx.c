@@ -1028,6 +1028,31 @@ static void vga_test_copy_rect(void)
             }
         }
     }
+
+    /* A left-facing player can be drawn at x=-16 while it is approaching a
+     * room transition.  The original VGA routine wraps the two 16-bit BX
+     * additions before deriving the mirrored right edge, so the first four
+     * packed source bytes remain visible at screen pixels 8..15.  This is a
+     * real-coordinate regression test, rather than a live-vs-composed
+     * comparison that could reproduce the same clipping error twice. */
+    {
+        const char *te = "vga_copy_rect_left_edge_flip";
+        static uint8_t edge[0x22 + 16];
+        memset(edge, 0, sizeof edge);
+        edge[0x10 + 1] = 0xA1;
+        edge[0x20] = 16; /* 32 pixels, 16 packed bytes per row */
+        edge[0x21] = 1;
+        for (int i = 0; i < 4; i++) edge[0x22 + i] = 0x11;
+
+        g94 = 0; g96 = 0; g98 = 4; g9a = 155;
+        fb_zero();
+        gbc = 0;
+        gfx_copy_rect(-16, 0, edge, 1);
+        for (int x = 0; x < 8; x++)
+            check(te, gfx_get_pixel((dos_int)x, 0) == 0, "bled into clipped-off pixels");
+        for (int x = 8; x < 16; x++)
+            check(te, gfx_get_pixel((dos_int)x, 0) == 0xA1, "partial left-edge sprite was clipped away");
+    }
 }
 
 /* gfx_box (present): for display_mode 5 this is a literal byte-for-byte

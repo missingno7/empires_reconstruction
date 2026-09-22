@@ -67,6 +67,7 @@ struct tween_frame {
     size_t arena_used;
     double publish_ms, deadline_ms;
     uint32_t generation;
+    uint32_t scene_generation;
     uint32_t seq;
     uint8_t vram[TWEEN_W * TWEEN_H];
     struct tween_op ops[TWEEN_MAX_OPS];
@@ -99,6 +100,7 @@ static struct tween_slot *s_slots;               /* presenter: TWEEN_SLOTS */
 static sync_mutex s_lock;
 static bool s_lock_init;
 static uint32_t s_seq;
+static uint32_t s_scene_generation = 1;
 static double s_first_newer_ms = -1.0;
 static unsigned s_stat_composed, s_stat_interpolated, s_stat_live, s_stat_published;
 
@@ -127,6 +129,7 @@ static void frame_copy(struct tween_frame *dst, const struct tween_frame *src)
     dst->publish_ms = src->publish_ms;
     dst->deadline_ms = src->deadline_ms;
     dst->generation = src->generation;
+    dst->scene_generation = src->scene_generation;
     dst->seq = src->seq;
     memcpy(dst->vram, src->vram, sizeof dst->vram);
     memcpy(dst->ops, src->ops, sizeof(src->ops[0]) * (size_t)src->nops);
@@ -201,6 +204,30 @@ void gfx_tween_presenter_resume(void)
     if (s_slots)
         memset(s_slots, 0, sizeof(s_slots[0]) * TWEEN_SLOTS);
     s_first_newer_ms = -1.0;
+    sync_mutex_unlock(&s_lock);
+}
+
+void gfx_tween_scene_reset(void)
+{
+    if (!s_lock_init)
+        return;
+
+    sync_mutex_lock(&s_lock);
+    /* The staging frame belongs to the game thread, so it is safe to clear
+     * it here.  Published frames are handed to the presenter under this same
+     * lock.  Presenter-owned base/history is cleared lazily by compose after
+     * it observes the generation change; this avoids touching presenter data
+     * from the game thread. */
+    if (s_staging) {
+        frame_reset_ops(s_staging);
+        s_staging->valid = false;
+    }
+    for (int i = 0; i < TWEEN_RING; i++)
+        if (s_ring[i]) s_ring[i]->valid = false;
+    s_ring_head = s_ring_count = 0;
+    if (++s_scene_generation == 0)
+        s_scene_generation = 1;
+    gfx_tween_tag = 0;
     sync_mutex_unlock(&s_lock);
 }
 
@@ -349,6 +376,7 @@ void gfx_tween_frame_publish(double now_ms, double deadline_ms, uint32_t vram_ge
     f->publish_ms = now_ms;
     f->deadline_ms = deadline_ms;
     f->generation = vram_generation;
+    f->scene_generation = s_scene_generation;
     f->seq = ++s_seq;
     f->valid = true;
     s_stat_published++;
@@ -535,6 +563,11 @@ bool gfx_tween_compose(uint8_t *out, double now_ms, uint32_t live_generation)
 
     /* Consume every frame published since the last look, in order. */
     sync_mutex_lock(&s_lock);
+    if (s_base->valid && s_base->scene_generation != s_scene_generation) {
+        s_base->valid = false;
+        memset(s_slots, 0, sizeof(s_slots[0]) * TWEEN_SLOTS);
+        s_first_newer_ms = -1.0;
+    }
     while (s_ring_count > 0) {
         struct tween_frame *f = s_ring[s_ring_head];
         consume_frame(f);

@@ -24,9 +24,6 @@
  * together); it calls into board.c, which is not part of this minimal
  * closure -- see test_asm_sprites.c's identical stub for the rationale.
  * Not exercised by any test in this file. */
-dos_char *record_field_skip_n(dos_int n) { (void)n; return NULL; }
-void board_run_unit_script(dos_uchar *s) { (void)s; }
-void board_advance_unit_moves(dos_int a) { (void)a; }
 
 static int g_failures = 0;
 

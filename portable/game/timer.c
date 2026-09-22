@@ -18,6 +18,7 @@
 #include "timer.h"
 
 #include <stdbool.h>
+#include <stdlib.h>
 
 /* DGROUP state this module owns (declared extern in timer.h). */
 /* timer_ticks (DS:0B76) is initialized DATA and lives in the generated
@@ -33,10 +34,14 @@ extern void sound_tick_entry(void);
 
 static bool s_manual = false;
 
+static int s_sound_service_enabled = -1;
+
 void timer_service_tick(void)
 {
     ++timer_ticks;
-    if (!sound_request_count && (sound_enabled || music_enabled))
+    if (s_sound_service_enabled < 0)
+        s_sound_service_enabled = getenv("EMPIRES_NOSOUND") == NULL;   /* bring-up switch */
+    if (s_sound_service_enabled && !sound_request_count && (sound_enabled || music_enabled))
         sound_tick_entry();
 }
 

@@ -14,6 +14,7 @@
  * rather than instruction-for-instruction.
  */
 #include "game.h"
+#include "trace.h"
 #include "asm_sprites.h"
 
 #ifdef _MSC_VER
@@ -103,6 +104,9 @@ void board_actors_draw(dos_int y0)
         if ((dos_int)rec->board_id != board_record_index) continue; /* skip_record */
         if (rec->active == 1) continue;                              /* skip_record */
 
+        if (!actor_record_bitmap(rec))
+            EMPIRES_TRACE("board_actors_draw: record %u frame %u has no bitmap (board %d)",
+                          (unsigned)i, (unsigned)rec->sprite_frame, (int)board_record_index);
         gfx_copy_rect(rec->x, (dos_int)(y0 + rec->y),
                       actor_record_bitmap(rec), rec->dir_flip);
 

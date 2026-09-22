@@ -141,21 +141,33 @@ struct gb3af_entry { dos_uchar flag; dos_char rest[31]; };
  * catalog record below -- a genuine conflict, not unified here; that
  * local shape stays out of this header (not part of the portable ABI).
  */
-struct gc0fe_record {
-    dos_int h0, h1, h2;            /* offset 0..5: opaque header ints (F_7964 .head / F_7D91 .a,.b,.c) */
-    dos_int count;                 /* offset 6: row count (F_7964 .count / F_7D91 .d, dialog lines) */
-    dos_char *text;                /* offset 8: label text (F_7964 .middle / F_7D91 .p, dialog text) */
-    void (*callbacks)(void);       /* offset 12: row handlers (F_7964 .callbacks; unused by F_7D91) */
-    dos_int width;                 /* offset 16: box width (F_7964 .width / F_7D91 .g, dialog w) */
-    dos_int x;                     /* offset 18: box x (F_7964 .x / F_7D91 .h, dialog cx) */
+/* Unified with include/GC0FE.H's F_7964 view AND src/MENULIST.C's
+ * `struct catalog_entry {char *a; int b; char pad[12]; int c;}` view of the
+ * SAME 20-byte historical record (offsets 0..5 -- three opaque ints there,
+ * `h0,h1,h2` -- are really MENULIST.C's `.a` (a far pointer, 4 bytes) and
+ * `.b` (2 bytes); every other field already agreed byte-for-byte, hence
+ * the shared name/offsets below). `gc0fe_record`/`gc0fe_catalog` are kept
+ * as macro aliases for any historical declaration still spelled that way.
+ */
+struct menu_record {
+    dos_char *label;                /* offset 0: MENULIST .a (F_7964 .h0/.h1 as one far ptr) */
+    dos_int label_width;            /* offset 4: MENULIST .b (F_7964 .h2) */
+    dos_int count;                  /* offset 6: row count (F_7964 .count / F_7D91 .d, dialog lines) */
+    dos_char *text;                 /* offset 8: label text (F_7964 .middle / F_7D91 .p, dialog text) */
+    void (**callbacks)(void);       /* offset 12: far pointer to an array of handler code pointers
+                                        (F_7964 .callbacks; unused by F_7D91) */
+    dos_int width;                  /* offset 16: box width (F_7964 .width / F_7D91 .g, dialog w) */
+    dos_int x;                      /* offset 18: box x (F_7964 .x / F_7D91 .h, dialog cx); MENULIST .c */
 };
+#define gc0fe_record menu_record
 
 /* The catalog gc0fe points at when used this way: a record count and a far
  * pointer to the record array (F_7964's struct catalog). */
-struct gc0fe_catalog {
+struct menu_catalog {
     dos_int count;                 /* offset 0 */
-    struct gc0fe_record *records;  /* offset 2 */
+    struct menu_record *records;   /* offset 2 */
 };
+#define gc0fe_catalog menu_catalog
 
 /* ---- include/GC316.H -------------------------------------------------------
  * puzzle_grid[4][6]: the 4x6 slot grid, one 2-byte tile per cell (DS:C316).

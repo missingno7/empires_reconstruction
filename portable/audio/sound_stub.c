@@ -1,72 +1,16 @@
-/* sound_stub.c -- placeholder sound-engine hooks for timer_service_tick()
- * and for every function portable/include/sound.h declares.
+/* sound_stub.c -- retired.
  *
- * portable/game/timer.c's INT 8 body (src/TIMER.C F_6BCF) reads
- * sound_request_count/sound_enabled/music_enabled and calls
- * sound_tick_entry() every tick; timer.c declares those three objects
- * itself (a local `extern`, not through a header) because
- * portable/generated/game_data.h does not yet expose them as individually
- * addressable symbols -- see sound.h's header comment for the full gap
- * writeup.  This file defines them here, plus no-op bodies for the rest of
- * sound.h's C-facing entry points and the opl_write/opl_detect backend
- * API, purely so empires_core (and anything that later calls into
- * sound.h) links before the real SOUND.ASM port
- * (portable/audio/sound_driver.c, Wave 4) exists.
+ * Every function portable/include/sound.h declares (the 8 asm/SOUND.ASM
+ * C-facing entry points, opl_write/opl_detect, and the 4 sound_backend_*
+ * event hooks) is now implemented by portable/audio/sound_driver.c (Phase
+ * 12 part 1 -- the real SOUND.ASM port). sound_request_count/
+ * sound_enabled/music_enabled are likewise real generated DATA objects
+ * (portable/generated/game_data.c) now, not ad hoc globals defined here.
  *
- * Remove this file (and the matching target_sources() line in
- * portable/audio/CMakeLists.txt) once portable/audio provides the real
- * sound_driver.c with these definitions -- sound.h's prototypes do not
- * need to change.
+ * Kept (rather than deleted) per this phase's brief ("keep the file for
+ * anything still unported") -- nothing in portable/include/sound.h remains
+ * unported, so this only anchors the translation unit (same pattern as
+ * portable/compat/dos_compat.c's own placeholder anchor).
  */
-#include "sound.h"
-
-/* sound_request_count (DS:237C), sound_enabled (DS:176E) and music_enabled
- * (DS:1772) are initialized DATA objects defined by the generated
- * game_data.c; this stub only supplies the entry points. */
-
-void sound_tick_entry(void)
-{
-}
-
-void sound_backend_select_init(void)
-{
-}
-
-void sound_voice_table_reload(dos_int v)
-{
-    (void)v;
-}
-
-void sound_voices_reset(void)
-{
-}
-
-void sound_voices_disable_all(void)
-{
-}
-
-void opl_register_write(dos_int reg, dos_int val)
-{
-    (void)reg;
-    (void)val;
-}
-
-void stream_control_block_arm(dos_int n)
-{
-    (void)n;
-}
-
-void sound_stop_reset(void)
-{
-}
-
-void opl_write(dos_uint reg, dos_uint val)
-{
-    (void)reg;
-    (void)val;
-}
-
-dos_int opl_detect(void)
-{
-    return 0;
-}
+#include "dos_types.h"
+int sound_stub_link_anchor(void) { return 0; }

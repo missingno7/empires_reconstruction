@@ -401,7 +401,7 @@ dos_int g0b7e = 0;
 
 dos_int menu_list_enabled = 0;
 
-dos_char g0bb4[320] = {
+dos_char g0bb4[100] = {
     0, 0, 0, 0, 0, 0, 72, 101, 108, 112, 32, 32,
     32, 70, 49, 0, 85, 115, 105, 110, 103, 32, 116, 104,
     101, 32, 75, 101, 121, 98, 111, 97, 114, 100, 10, 80,
@@ -410,88 +410,88 @@ dos_char g0bb4[320] = {
     110, 103, 32, 79, 98, 115, 116, 97, 99, 108, 101, 115,
     10, 80, 117, 122, 122, 108, 101, 115, 32, 97, 110, 100,
     32, 76, 111, 103, 105, 99, 32, 80, 114, 111, 98, 108,
-    101, 109, 115, 0, 92, -44, 113, -44, -121, -44, -99, -44,
-    70, 105, 108, 101, 32, 32, 32, 70, 50, 0, 72, 97,
-    108, 108, 32, 111, 102, 32, 70, 97, 109, 101, 10, 76,
-    105, 115, 116, 32, 111, 102, 32, 80, 108, 97, 121, 101,
-    114, 115, 10, 82, 101, 116, 117, 114, 110, 32, 116, 111,
-    32, 77, 97, 112, 32, 77, 101, 110, 117, 10, 83, 116,
-    97, 114, 116, 32, 78, 101, 119, 32, 71, 97, 109, 101,
-    10, 69, 120, 105, 116, 32, 97, 110, 100, 32, 83, 97,
-    118, 101, 0, 108, -52, 36, -51, -35, -51, 0, -50, 42,
-    -50, 72, 97, 108, 108, 32, 111, 102, 32, 70, 97, 109,
-    101, 10, 76, 105, 115, 116, 32, 111, 102, 32, 80, 108,
-    97, 121, 101, 114, 115, 10, 83, 116, 97, 114, 116, 32,
-    78, 101, 119, 32, 71, 97, 109, 101, 10, 69, 120, 105,
-    116, 32, 97, 110, 100, 32, 83, 97, 118, 101, 0, 108,
-    -52, 36, -51, 0, -50, 42, -50, 79, 112, 116, 105, 111,
-    110, 115, 32, 70, 51, 0, 78, 101, 119, 32, 85, 115,
-    101, 114, 32, 77, 101, 115, 115, 97, 103, 101, 115, 10,
-    77, 117, 115, 105, 99, 10, 83, 111, 117, 110, 100, 32,
-    69, 102, 102, 101, 99, 116, 115, 0
+    101, 109, 115, 0
 };
 
-struct DATA_010924_MENU_DESCRIPTORS_s DATA_010924_MENU_DESCRIPTORS = {
-    .descriptor_words_00 = {
-    52060, 52157, 52247
-},
-    .descriptor_pointer_006 = (dos_char *)(&g0bb4[6]),
-    .descriptor_words_01 = {
-    66, 4
-},
-    .descriptor_pointer_014 = (dos_char *)(&g0bb4[16]),
-    .descriptor_pointer_018 = (dos_uint *)(&g0bb4[100]),
-    .descriptor_words_02 = {
-    203, 1
-},
-    .descriptor_pointer_026 = (dos_char *)(&g0bb4[108]),
-    .descriptor_words_03 = {
-    63, 5
-},
-    .descriptor_pointer_034 = (dos_char *)(&g0bb4[118]),
-    .descriptor_pointer_038 = (dos_uint *)(&g0bb4[195]),
-    .descriptor_words_04 = {
-    181, 70
-},
-    .descriptor_pointer_046 = (dos_char *)(&g0bb4[271]),
-    .descriptor_words_05 = {
-    78, 3
-},
-    .descriptor_pointer_054 = (dos_char *)(&g0bb4[282]),
-    .descriptor_pointer_058 = (void *)(&DATA_010924_MENU_DESCRIPTORS),
-    .descriptor_words_06 = {
-    149, 136, 3
-},
-    .descriptor_pointer_068 = (void *)(&DATA_010924_MENU_DESCRIPTORS.descriptor_pointer_006),
-    .descriptor_pointer_072 = (dos_char *)(&g0bb4[6]),
-    .descriptor_words_07 = {
-    66, 4
-},
-    .descriptor_pointer_080 = (dos_char *)(&g0bb4[16]),
-    .descriptor_pointer_084 = (dos_uint *)(&g0bb4[100]),
-    .descriptor_words_08 = {
-    203, 1
-},
-    .descriptor_pointer_092 = (dos_char *)(&g0bb4[108]),
-    .descriptor_words_09 = {
-    63, 4
-},
-    .descriptor_pointer_100 = (dos_char *)(&g0bb4[205]),
-    .descriptor_pointer_104 = (dos_uint *)(&g0bb4[263]),
-    .descriptor_words_10 = {
-    181, 70
-},
-    .descriptor_pointer_112 = (dos_char *)(&g0bb4[271]),
-    .descriptor_words_11 = {
-    78, 3
-},
-    .descriptor_pointer_120 = (dos_char *)(&g0bb4[282]),
-    .descriptor_pointer_124 = (void *)(&DATA_010924_MENU_DESCRIPTORS),
-    .descriptor_words_12 = {
-    149, 136, 3
-},
-    .descriptor_pointer_134 = (void *)(&DATA_010924_MENU_DESCRIPTORS.descriptor_pointer_072),
-    .terminal_control = 31
+void (*menu_f2_handlers[4])(void) = {
+    (void (*)(void))help_topic_keyboard_show,
+    (void (*)(void))help_topic_playing_show,
+    (void (*)(void))help_topic_obstacles_show,
+    (void (*)(void))help_topic_puzzles_show
+};
+
+uint8_t DATA_010848_FILE_F2_TEXT[10] = {
+    70, 105, 108, 101, 32, 32, 32, 70, 50, 0
+};
+
+uint8_t DATA_01085A_MENU_TOPICS[77] = {
+    72, 97, 108, 108, 32, 111, 102, 32, 70, 97, 109, 101,
+    10, 76, 105, 115, 116, 32, 111, 102, 32, 80, 108, 97,
+    121, 101, 114, 115, 10, 82, 101, 116, 117, 114, 110, 32,
+    116, 111, 32, 77, 97, 112, 32, 77, 101, 110, 117, 10,
+    83, 116, 97, 114, 116, 32, 78, 101, 119, 32, 71, 97,
+    109, 101, 10, 69, 120, 105, 116, 32, 97, 110, 100, 32,
+    83, 97, 118, 101, 0
+};
+
+void (*menu_table_a_handlers[5])(void) = {
+    (void (*)(void))slot_backup_list_show,
+    (void (*)(void))slot_list_show,
+    (void (*)(void))player_select_quit_confirm,
+    (void (*)(void))player_select_menu_confirm,
+    (void (*)(void))player_select_restart_confirm
+};
+
+uint8_t DATA_0108A7_MENU_HALL[58] = {
+    72, 97, 108, 108, 32, 111, 102, 32, 70, 97, 109, 101,
+    10, 76, 105, 115, 116, 32, 111, 102, 32, 80, 108, 97,
+    121, 101, 114, 115, 10, 83, 116, 97, 114, 116, 32, 78,
+    101, 119, 32, 71, 97, 109, 101, 10, 69, 120, 105, 116,
+    32, 97, 110, 100, 32, 83, 97, 118, 101, 0
+};
+
+void (*menu_table_b_handlers[4])(void) = {
+    (void (*)(void))slot_backup_list_show,
+    (void (*)(void))slot_list_show,
+    (void (*)(void))player_select_menu_confirm,
+    (void (*)(void))player_select_restart_confirm
+};
+
+uint8_t DATA_0108A7_MENU_OPTIONS[11] = {
+    79, 112, 116, 105, 111, 110, 115, 32, 70, 51, 0
+};
+
+uint8_t DATA_0108FE_OPTION_TOPICS[38] = {
+    78, 101, 119, 32, 85, 115, 101, 114, 32, 77, 101, 115,
+    115, 97, 103, 101, 115, 10, 77, 117, 115, 105, 99, 10,
+    83, 111, 117, 110, 100, 32, 69, 102, 102, 101, 99, 116,
+    115, 0
+};
+
+void (*menu_handlers_0CF4[3])(void) = {
+    (void (*)(void))options_toggle_option,
+    (void (*)(void))options_toggle_music,
+    (void (*)(void))options_toggle_sound
+};
+
+struct menu_record menu_records_0CFA[3] = {
+    { .label = (dos_char *)&g0bb4[6], .label_width = 66, .count = 4, .text = (dos_char *)&g0bb4[16], .callbacks = (void (**)(void))menu_f2_handlers, .width = 203, .x = 1 },
+    { .label = (dos_char *)DATA_010848_FILE_F2_TEXT, .label_width = 63, .count = 5, .text = (dos_char *)DATA_01085A_MENU_TOPICS, .callbacks = (void (**)(void))menu_table_a_handlers, .width = 181, .x = 70 },
+    { .label = (dos_char *)DATA_0108A7_MENU_OPTIONS, .label_width = 78, .count = 3, .text = (dos_char *)DATA_0108FE_OPTION_TOPICS, .callbacks = (void (**)(void))menu_handlers_0CF4, .width = 149, .x = 136 }
+};
+
+struct menu_catalog g0d36 = { .count = 3, .records = (struct menu_record *)menu_records_0CFA };
+
+struct menu_record menu_records_0D3C[3] = {
+    { .label = (dos_char *)&g0bb4[6], .label_width = 66, .count = 4, .text = (dos_char *)&g0bb4[16], .callbacks = (void (**)(void))menu_f2_handlers, .width = 203, .x = 1 },
+    { .label = (dos_char *)DATA_010848_FILE_F2_TEXT, .label_width = 63, .count = 4, .text = (dos_char *)DATA_0108A7_MENU_HALL, .callbacks = (void (**)(void))menu_table_b_handlers, .width = 181, .x = 70 },
+    { .label = (dos_char *)DATA_0108A7_MENU_OPTIONS, .label_width = 78, .count = 3, .text = (dos_char *)DATA_0108FE_OPTION_TOPICS, .callbacks = (void (**)(void))menu_handlers_0CF4, .width = 149, .x = 136 }
+};
+
+struct menu_catalog g0d78 = { .count = 3, .records = (struct menu_record *)menu_records_0D3C };
+
+uint8_t data_010924_menu_descriptors_gap_0D7E[1] = {
+    31
 };
 
 uint8_t DATA_0109AF_GO_BACK[12] = {
@@ -799,18 +799,15 @@ dos_char g1660[15] = {
     109, 101, 0
 };
 
-struct DATA_01129F_LEVEL_CONTROL_s DATA_01129F_LEVEL_CONTROL = {
-    .header = {
-    0, 1, 0, 0, 0, 0, 0, 2
-},
-    .level_complete_text = (dos_char *)(DATA_0112D6_LEVEL_COMPLETE),
-    .sentinel_prefix = {
-    0, 255, 255, 255, 255, 255, 255, 255, 255
-},
-    .control_words = {
+uint8_t data_01129f_level_control_gap_166F[1] = {
+    0
+};
+
+struct dialog g1670 = { .kind = 1, .title = NULL, .sub = 2, .text = (dos_char *)DATA_0112D6_LEVEL_COMPLETE, .initial = 0, .cx = -1, .cy = -1, .w = -1, .lines = -1 };
+
+dos_int g1684[17] = {
     4, 6, 8, 10, 6, 4, 8, 10, 4, 8, 10, 6,
     -1, 6, 8, 10, -1
-}
 };
 
 uint8_t DATA_0112D6_LEVEL_COMPLETE[151] = {

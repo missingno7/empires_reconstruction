@@ -1,10 +1,12 @@
 /* menures.c -- portable port of src/MENURES.C. */
 #include "game.h"
+#include "trace.h"
 
 dos_int menu_resources_load(void)
 {
     dos_int i, j;
 
+    EMPIRES_TRACE("menu_resources_load g720=%d", g720);
     if (g720 == 1) return 0;   /* PORT: original had a bare `return;` on a
                                  * K&R implicit-int function; no caller was
                                  * found to depend on the return value. */
@@ -23,5 +25,6 @@ dos_int menu_resources_load(void)
     resource_load_record(25);
     memmove(actor_sprite_dims_table, ui_gfx_shadow_a, 672);
     g720 = 1;
+    EMPIRES_TRACE("menu_resources_load done: [0]=%p [43]=%p [63]=%p [83]=%p", (void *)resource_ptr_table[0], (void *)resource_ptr_table[43], (void *)resource_ptr_table[63], (void *)resource_ptr_table[83]);
     return 0;
 }

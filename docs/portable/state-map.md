@@ -7,7 +7,7 @@ DATA image: 14594 bytes (DS:0000..DS:3902), built from the `recipes/data/game-in
 ## Summary
 
 - DATA components: 108 carry recipe bytes, 9 owned by a ported C file (their static initializers, not this generator, supply the bytes), 17 toolchain/alignment bytes not modeled at all (Turbo C startup/runtime-library data the port does not use; no bytes read or emitted for these).
-- game_data.c: 213 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
+- game_data.c: 228 objects emitted, 0 skipped (subsystem-owned BSS aliasing a DATA base -- should not normally happen, DATA is always generated), 9 components skipped (ported-C owned), 17 components skipped (toolchain-opaque, no bytes).
 - game_state.c: 168 objects emitted (166 typed, 2 untyped uint8_t fallback), 22 skipped (subsystem-owned).
 - Symbol names merged from all six sources: 691, covering 465 distinct DGROUP offsets.
 - Offset-ambiguous names recorded during the merge (same name, two different offsets across sources -- the earlier-added source won): 0.
@@ -66,24 +66,12 @@ A name landing inside a fully-dimensioned declared array/struct type: the declar
 | `DATA_0103B2_POINTER_ATTRIBUTES` | 0x0782 | `b740` (`dos_uchar`) | `(b740[66])` |
 | `DATA_0103CE_RECORDS` | 0x079e | `b740` (`dos_uchar`) | `(b740[94])` |
 | `DATA_01052B_ZERO_PREFIX` | 0x08fb | `s8a8` (`dos_char`) | `(s8a8[83])` |
-| `gb31` | 0x0b31 | `gb2a` (`struct dialog`) | `(*(dos_char **)(((dos_char *)(&gb2a)) + 7))` |
+| `gb31` | 0x0b31 | `gb2a` (`struct dialog`) | `(gb2a.text)` |
 | `DATA_0107EA_HELP_TITLE` | 0x0bba | `g0bb4` (`dos_char`) | `(g0bb4[6])` |
 | `DATA_0107F4_HELP_TOPICS` | 0x0bc4 | `g0bb4` (`dos_char`) | `(g0bb4[16])` |
-| `DATA_010848_FILE_F2_TABLE` | 0x0c18 | `g0bb4` (`dos_char`) | `(g0bb4[100])` |
-| `DATA_010848_FILE_F2_TEXT` | 0x0c20 | `g0bb4` (`dos_char`) | `(g0bb4[108])` |
-| `DATA_01085A_MENU_TOPICS` | 0x0c2a | `g0bb4` (`dos_char`) | `(g0bb4[118])` |
-| `DATA_0108A7_MENU_TABLE_A` | 0x0c77 | `g0bb4` (`dos_char`) | `(g0bb4[195])` |
-| `DATA_0108A7_MENU_HALL` | 0x0c81 | `g0bb4` (`dos_char`) | `(g0bb4[205])` |
-| `DATA_0108A7_MENU_TABLE_B` | 0x0cbb | `g0bb4` (`dos_char`) | `(g0bb4[263])` |
-| `DATA_0108A7_MENU_OPTIONS` | 0x0cc3 | `g0bb4` (`dos_char`) | `(g0bb4[271])` |
-| `DATA_0108FE_OPTION_TOPICS` | 0x0cce | `g0bb4` (`dos_char`) | `(g0bb4[282])` |
-| `g0d36` | 0x0d36 | `DATA_010924_MENU_DESCRIPTORS` (`struct DATA_010924_MENU_DESCRIPTORS_s`) | `((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 66))` |
-| `g0d78` | 0x0d78 | `DATA_010924_MENU_DESCRIPTORS` (`struct DATA_010924_MENU_DESCRIPTORS_s`) | `((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 132))` |
 | `g13b8` | 0x13b8 | `dialog_slot_delete_confirm` (`struct dialog`) | `(dialog_slot_delete_confirm.text)` |
-| `g1670` | 0x1670 | `DATA_01129F_LEVEL_CONTROL` (`struct DATA_01129F_LEVEL_CONTROL_s`) | `(*(struct dialog *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 1))` |
-| `g1684` | 0x1684 | `DATA_01129F_LEVEL_CONTROL` (`struct DATA_01129F_LEVEL_CONTROL_s`) | `((dos_int *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 21))` |
 | `DATA_011F01_PAD` | 0x22d1 | `g22b2` (`dos_int`) | `(*((dos_char *)(g22b2) + 31))` |
-| `g235d` | 0x235d | `g2356` (`struct dialog`) | `(*(dos_char **)(((dos_char *)(&g2356)) + 7))` |
+| `g235d` | 0x235d | `g2356` (`struct dialog`) | `(g2356.text)` |
 | `b4375` | 0x4375 | `b4374` (`dos_uchar`) | `(b4374[1])` |
 | `b4376` | 0x4376 | `b4374` (`dos_uchar`) | `(b4374[2])` |
 | `g7352` | 0x7352 | `a72b2` (`dos_char`) | `(a72b2[40])` |
@@ -204,8 +192,21 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `g0b7e` | data | 0x0b7e | 2 | dos_int | generated | `gb7e` |
 | `gb80` | data | 0x0b80 | 6 |  | ported-C:F_75F3 |  |
 | `menu_list_enabled` | data | 0x0bb2 | 2 | dos_int | generated | `DATA_0107E2_PAD`, `gbb2` |
-| `g0bb4` | data | 0x0bb4 | 320 | dos_char[320] | generated |  |
-| `DATA_010924_MENU_DESCRIPTORS` | data | 0x0cf4 | 139 | struct DATA_010924_MENU_DESCRIPTORS_s | generated |  |
+| `g0bb4` | data | 0x0bb4 | 100 | dos_char[100] | generated |  |
+| `menu_f2_handlers` | data | 0x0c18 | 8 | void (*)(void)[4] | generated |  |
+| `DATA_010848_FILE_F2_TEXT` | data | 0x0c20 | 10 | uint8_t[10] | generated |  |
+| `DATA_01085A_MENU_TOPICS` | data | 0x0c2a | 77 | uint8_t[77] | generated |  |
+| `menu_table_a_handlers` | data | 0x0c77 | 10 | void (*)(void)[5] | generated |  |
+| `DATA_0108A7_MENU_HALL` | data | 0x0c81 | 58 | uint8_t[58] | generated |  |
+| `menu_table_b_handlers` | data | 0x0cbb | 8 | void (*)(void)[4] | generated |  |
+| `DATA_0108A7_MENU_OPTIONS` | data | 0x0cc3 | 11 | uint8_t[11] | generated |  |
+| `DATA_0108FE_OPTION_TOPICS` | data | 0x0cce | 38 | uint8_t[38] | generated |  |
+| `menu_handlers_0CF4` | data | 0x0cf4 | 6 | void (*)(void)[3] | generated |  |
+| `menu_records_0CFA` | data | 0x0cfa | 60 | struct menu_record[3] | generated |  |
+| `g0d36` | data | 0x0d36 | 6 | struct menu_catalog | generated |  |
+| `menu_records_0D3C` | data | 0x0d3c | 60 | struct menu_record[3] | generated |  |
+| `g0d78` | data | 0x0d78 | 6 | struct menu_catalog | generated |  |
+| `data_010924_menu_descriptors_gap_0D7E` | data | 0x0d7e | 1 | uint8_t[1] | generated |  |
 | `DATA_0109AF_GO_BACK` | data | 0x0d7f | 12 | uint8_t[12] | generated |  |
 | `DATA_0109BB_CONTROL_CODES` | data | 0x0d8b | 2 | struct DATA_0109BB_CONTROL_CODES_s | generated |  |
 | `DATA_0109BD_CONTINUE` | data | 0x0d8d | 13 | uint8_t[13] | generated |  |
@@ -245,7 +246,9 @@ A declared type genuinely overlaps a neighboring struct-shaped recipe component'
 | `DATA_0101140_DIFFICULTY_PROMPT` | data | 0x1510 | 224 | uint8_t[224] | generated |  |
 | `DATA_0101220_ENERGY_PROMPT` | data | 0x15f0 | 96 | uint8_t[96] | generated |  |
 | `g1660` | data | 0x1660 | 15 | dos_char[15] | generated | `TEXT_1660` |
-| `DATA_01129F_LEVEL_CONTROL` | data | 0x166f | 55 | struct DATA_01129F_LEVEL_CONTROL_s | generated |  |
+| `data_01129f_level_control_gap_166F` | data | 0x166f | 1 | uint8_t[1] | generated |  |
+| `g1670` | data | 0x1670 | 20 | struct dialog | generated |  |
+| `g1684` | data | 0x1684 | 34 | dos_int[17] | generated |  |
 | `DATA_0112D6_LEVEL_COMPLETE` | data | 0x16a6 | 151 | uint8_t[151] | generated |  |
 | `DATA_01136D_ARTIFACTS_REMAIN` | data | 0x173d | 30 | uint8_t[30] | generated |  |
 | `DATA_01138B_ZERO_PREFIX` | data | 0x175b | 3 | uint8_t[3] | generated |  |

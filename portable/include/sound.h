@@ -1,58 +1,38 @@
 /* sound.h -- SOUND.ASM/OPL C-facing entry points the game calls.
  *
- * Interim surface for Wave 4 (tu-porting-rules.md sec 5: "sound_*, voice_*
- * ASM publics -> sound.h (portable driver, Wave 4; stubs until then)").
- * This header only DECLARES the functions asm/SOUND.ASM exposed to C and
- * the backend primitives that replace OPLREG.C's direct port I/O; it does
- * not implement anything (stubs live in portable/audio/sound_stub.c) and it
- * does not declare any DGROUP object -- every SOUND.ASM/SOUND.H state
- * object is either generator-owned (game_state.h for BSS, game_data.h for
- * initialized DATA) or, per the gap this header documents below, missing
- * entirely from both.  #include "game_state.h" for the objects that ARE
- * there; do not add `extern` redeclarations of generated state here.
+ * Phase 12 part 1: portable/audio/sound_driver.c now implements every
+ * entry point this header declares (asm/SOUND.ASM's 41-routine game-owned
+ * sound state machine, reimplemented as ordinary typed C -- no register
+ * emulation).  This header only DECLARES the functions asm/SOUND.ASM
+ * exposed to C, the backend event API hardware output now routes through,
+ * and the two synthetic-memory arenas the driver addresses its command
+ * streams through; it does not declare any DGROUP object -- every
+ * SOUND.ASM/SOUND.H state object is generator-owned (game_data.h for the
+ * initialized DATA span DS:175E..1E96, all of it now individually
+ * addressable -- see below).  #include "game_state.h"/"game_data.h" (via
+ * game.h) for the objects themselves; do not add `extern` redeclarations
+ * of generated state here.
  *
  * ---------------------------------------------------------------------
- * GAP (task item 3 "check the names exist in game_state.h and report any
- * missing" -- reported, NOT fixed here; portable/generated is owned by a
- * different agent):
- *
- * None of include/SOUND.H's individually-named DGROUP objects
- * (sound_enabled, music_enabled, snd_on, mus_flag, snd_flag2,
+ * Superseded GAP note: an earlier draft of this header reported that none
+ * of include/SOUND.H's fields existed as individually-addressable symbols
+ * (the whole DS:176E..1E96 span captured as one opaque blob).  That has
+ * since been fixed by the generator: portable/generated/game_data.h now
+ * declares sound_enabled, music_enabled, snd_on, mus_flag, snd_flag2,
  * snd_backend_mode, snd_nvoices, v_b/voice_stream_cursor_table/
- * voice_stream_base_table/v_ctr/v_a/v_hold/v_len, notetab, opl_port,
- * snd_seg/snd_seg2/snd_base/snd_base2, mus_ptr, mus_arg, snd_len,
- * snd_delay, stream_note_delay, snd_one) exist as individually-addressable
- * symbols in game_state.h.  `docs/portable/state-map.md` line ~112 shows
- * the whole 1832-byte span DS:176E..1E96 was captured by
- * tools/portable/datagen.py as ONE opaque initialized-DATA blob,
- * `portable/generated/game_data.h`'s `struct DATA_01139E_SOUND_s`
- * (`state_words[71]`, `note_divisors[24]`, assorted `lookup_*` byte
- * arrays), with only `#define sound_enabled DATA_01139E_SOUND` (the whole
- * STRUCT INSTANCE, not an int field) surviving as an alias.  That means:
- *   - `sound_enabled` / `music_enabled` are currently macros for an
- *     aggregate; `if (sound_enabled)` (as src/TIMER.C, src/OPTIONS.C,
- *     src/SNDFXTGL.C all write it) will not compile once a ported .c file
- *     includes both this header's umbrella (game.h) and touches either
- *     name -- this is a REAL, load-bearing gap, not a style nit.
- *   - `snd_on` (read directly by src/ROUNDEND.C's `roundend_wait`:
- *     `while (snd_on) ;`) has no symbol at all, not even inside the blob
- *     alias list.
- *   - `sound_request_count` (DS:237C, src/TIMER.C/src/SNDREQ.C) is a
- *     SEPARATE address from the 175E..1E96 span entirely and also has no
- *     generated symbol anywhere; today it only exists as the ad hoc
- *     `dos_int sound_request_count;` portable/audio/sound_stub.c defines
- *     for timer.c's sake (timer.c declares it itself via a local `extern`,
- *     not through any header).
- * Fixing this needs either per-field decode of DATA_01139E_SOUND (turning
- * the blob into a real `struct` with named fields, still in game_data.h)
- * or moving the scalar control fields into game_state.h as BSS + adding
- * `sound_request_count`'s DS:237C object -- both are portable/generated
- * changes, out of this header's ownership.  Flagged for the generator
- * owner / Wave 4; portable/audio/sound_stub.c's ad hoc globals remain the
- * only working definitions of sound_request_count/sound_enabled/
- * music_enabled until that lands, and this header deliberately does NOT
- * redeclare them (that would conflict with game_data.h's macro once both
- * headers are included together).
+ * voice_stream_base_table/v_ctr/v_a/v_hold/v_len/voice_rest_table[4],
+ * g17f4[8], sound_region_17C4[40] (the LOW-confidence pause-overlay
+ * renderer fields packed 5-tables-of-8-bytes; see
+ * portable/audio/sound_driver_internal.h for the accessor layer),
+ * notetab[12]/note_divisors_octave[24], opl_port, sound_dispatch_182C[2]/
+ * sound_dispatch_1832[36] (both real C pointer arrays into constant note/
+ * OPL-byte-stream tables), snd_base/snd_seg/snd_base2/snd_seg2, mus_ptr,
+ * mus_arg, snd_len, snd_delay, stream_note_delay, snd_one, and
+ * sound_request_count (DS:237C) -- all as individually addressable
+ * symbols, plus sound_instrument_region/DATA_012C03_SOUND_INSTRUMENTS
+ * (the OPL instrument-bank data OPLVOICE.C/VOXSLOAD.C already consume).
+ * portable/audio/sound_stub.c's ad hoc globals are gone; game_data.c is
+ * the sole definition of every one of these objects now.
  * ---------------------------------------------------------------------
  */
 #ifndef PORTABLE_SOUND_H
@@ -116,9 +96,79 @@ void sound_stop_reset(void);
  * returns 1)").  These replace src/OPLREG.C's own port-I/O-based
  * opl_register_write/opl_detect outright (game_funcs.h's "provided by
  * services" list drops src/OPLREG.C's opl_detect() for exactly this
- * reason); the Wave 4 driver implements them against Nuked-OPL3 or a real
- * device.  Stubs: portable/audio/sound_stub.c. ---- */
+ * reason).  Implementation: portable/audio/sound_driver.c. ---- */
 void opl_write(dos_uint reg, dos_uint val);
 dos_int opl_detect(void);
+
+/* ---------------------------------------------------------------------
+ * Backend event interface (architecture.md "Audio model": the driver
+ * emits timestamped events instead of touching hardware directly).  Every
+ * historical hardware write asm/SOUND.ASM performed becomes exactly one
+ * call to one of the four hooks below:
+ *
+ *   sound_backend_opl_write(reg,val)     -- the OPL bus protocol
+ *     (opl_write()/opl_register_write()'s register+data pair).
+ *   sound_backend_pit_divisor(divisor)   -- PIT channel-2 divisor, port
+ *     0x42 (the driver combines the historical lo-then-hi byte writes
+ *     into one 16-bit event; _pit_channel2_set_divisor/the backend-mode-0
+ *     path of _sound_pit_divisor_program).
+ *   sound_backend_speaker_gate(enabled,tandy_mode) -- port 0x61 gate bits
+ *     (tandy_mode==0: `or al,3`/`and al,0FCh`, the plain PC-speaker gate
+ *     _speaker_gate_on/_off always use and backend-mode-0 voice_enable/
+ *     disable use; tandy_mode==1: `or al,60h`, backend-mode-1
+ *     voice_enable's Tandy/PCjr gate -- backend-mode-1 voice_disable does
+ *     NOT use this port at all, see sound_backend_nibble_port_write).
+ *   sound_backend_nibble_port_write(value) -- one raw byte to opl_port
+ *     with no register/data split (_opl_port_write_byte: backend-mode-1's
+ *     packed-nibble PIT-divisor emission, its voice reset byte, the
+ *     paused-mode single-register writes in _sound_control_value_select,
+ *     and the pause-overlay renderer _sound_control_block_advance).
+ *
+ * Default implementations (portable/audio/sound_driver.c) append to an
+ * in-memory ring log of {tick, kind, a, b} the sound_event_log_* API
+ * below reads back; real backends (Nuked-OPL3, a speaker synth) replace
+ * these bodies in a later phase without changing this header's shape. */
+enum sound_event_kind {
+    SOUND_EVENT_OPL_WRITE = 0,
+    SOUND_EVENT_PIT_DIVISOR,
+    SOUND_EVENT_SPEAKER_GATE,
+    SOUND_EVENT_NIBBLE_WRITE
+};
+
+struct sound_event {
+    uint32_t tick; /* count of sound_tick_entry() calls at event time, 0-based */
+    int kind;      /* enum sound_event_kind */
+    uint16_t a;
+    uint16_t b;
+};
+
+void sound_backend_opl_write(uint8_t reg, uint8_t val);
+void sound_backend_pit_divisor(uint16_t divisor);
+void sound_backend_speaker_gate(int enabled, int tandy_mode);
+void sound_backend_nibble_port_write(uint8_t value);
+
+void sound_event_log_clear(void);
+size_t sound_event_log_count(void);
+const struct sound_event *sound_event_log_get(size_t index);
+
+/* ---------------------------------------------------------------------
+ * Synthetic command-stream memory (see portable/audio/
+ * sound_driver_internal.h's header comment for why these exist: snd_base/
+ * snd_base2 are plain 16-bit DS-relative offsets, not pointers, and
+ * snd_seg/snd_seg2 stay zero pending a real far-pointer-flattening fix in
+ * plrldpub.c, which is out of this driver's ownership).  Tests build a
+ * synthetic sound stream by writing command bytes into one of these
+ * arrays and pointing snd_base (or a voice's cursor table entry) at the
+ * chosen offset, exactly as sound_start()/stream_control_block_arm()
+ * would once a real loader fills them in.
+ *   sound_resource_mem -- stands in for the ES:_snd_seg segment (the
+ *     loaded sound-resource block): the single "music stream" cluster
+ *     (mus_ptr, stream_control_block_arm's far-pointer-table lookup).
+ *   sound_voice_mem -- stands in for the ES:_snd_seg2 segment (the
+ *     0x620-byte staging/scratch block): the up-to-4-voice cluster
+ *     (voice_stream_cursor_table/voice_stream_base_table, populated by
+ *     sound_voice_table_reload). */
+extern uint8_t sound_resource_mem[65537];
+extern uint8_t sound_voice_mem[65537];
 
 #endif /* PORTABLE_SOUND_H */

@@ -226,47 +226,54 @@ extern dos_int menu_list_enabled;
 /* DATA_0107E2_PAD (recipe component id; nothing points at it) */
 #define gbb2 menu_list_enabled
 
-/* g0bb4  DS:0BB4  size 320  (flat, component DATA_0107E2_PAD) */
-extern dos_char g0bb4[320];
+/* g0bb4  DS:0BB4  size 100  (flat, component DATA_0107E2_PAD) */
+extern dos_char g0bb4[100];
 
-/* DATA_010924_MENU_DESCRIPTORS  DS:0CF4  size 139  (struct-component, component DATA_010924_MENU_DESCRIPTORS) */
-struct DATA_010924_MENU_DESCRIPTORS_s {
-    dos_uint descriptor_words_00[3];
-    dos_char *descriptor_pointer_006;
-    dos_uint descriptor_words_01[2];
-    dos_char *descriptor_pointer_014;
-    dos_uint *descriptor_pointer_018;
-    dos_uint descriptor_words_02[2];
-    dos_char *descriptor_pointer_026;
-    dos_uint descriptor_words_03[2];
-    dos_char *descriptor_pointer_034;
-    dos_uint *descriptor_pointer_038;
-    dos_uint descriptor_words_04[2];
-    dos_char *descriptor_pointer_046;
-    dos_uint descriptor_words_05[2];
-    dos_char *descriptor_pointer_054;
-    void *descriptor_pointer_058;
-    dos_uint descriptor_words_06[3];
-    void *descriptor_pointer_068;
-    dos_char *descriptor_pointer_072;
-    dos_uint descriptor_words_07[2];
-    dos_char *descriptor_pointer_080;
-    dos_uint *descriptor_pointer_084;
-    dos_uint descriptor_words_08[2];
-    dos_char *descriptor_pointer_092;
-    dos_uint descriptor_words_09[2];
-    dos_char *descriptor_pointer_100;
-    dos_uint *descriptor_pointer_104;
-    dos_uint descriptor_words_10[2];
-    dos_char *descriptor_pointer_112;
-    dos_uint descriptor_words_11[2];
-    dos_char *descriptor_pointer_120;
-    void *descriptor_pointer_124;
-    dos_uint descriptor_words_12[3];
-    void *descriptor_pointer_134;
-    dos_uchar terminal_control;
-};
-extern struct DATA_010924_MENU_DESCRIPTORS_s DATA_010924_MENU_DESCRIPTORS;
+/* menu_f2_handlers  DS:0C18  size 8  (flat, component override:menu_f2_handlers) */
+/* code-pointer table -- resolved via layout/production-plan.json publics */
+extern void (*menu_f2_handlers[4])(void);
+
+/* DATA_010848_FILE_F2_TEXT  DS:0C20  size 10  (flat, component DATA_010848_FILE_F2_TEXT) */
+extern uint8_t DATA_010848_FILE_F2_TEXT[10];
+
+/* DATA_01085A_MENU_TOPICS  DS:0C2A  size 77  (flat, component DATA_01085A_MENU_TOPICS) */
+extern uint8_t DATA_01085A_MENU_TOPICS[77];
+
+/* menu_table_a_handlers  DS:0C77  size 10  (flat, component override:menu_table_a_handlers) */
+/* code-pointer table -- resolved via layout/production-plan.json publics */
+extern void (*menu_table_a_handlers[5])(void);
+
+/* DATA_0108A7_MENU_HALL  DS:0C81  size 58  (flat, component DATA_0108A7_MENU_HALL) */
+extern uint8_t DATA_0108A7_MENU_HALL[58];
+
+/* menu_table_b_handlers  DS:0CBB  size 8  (flat, component override:menu_table_b_handlers) */
+/* code-pointer table -- resolved via layout/production-plan.json publics */
+extern void (*menu_table_b_handlers[4])(void);
+
+/* DATA_0108A7_MENU_OPTIONS  DS:0CC3  size 11  (flat, component DATA_0108A7_MENU_OPTIONS) */
+extern uint8_t DATA_0108A7_MENU_OPTIONS[11];
+
+/* DATA_0108FE_OPTION_TOPICS  DS:0CCE  size 38  (flat, component DATA_0108FE_OPTION_TOPICS) */
+extern uint8_t DATA_0108FE_OPTION_TOPICS[38];
+
+/* menu_handlers_0CF4  DS:0CF4  size 6  (flat, component override:DATA_010924_MENU_DESCRIPTORS.menu_handlers_0CF4) */
+/* code-pointer table -- resolved via layout/production-plan.json publics */
+extern void (*menu_handlers_0CF4[3])(void);
+
+/* menu_records_0CFA  DS:0CFA  size 60  (override-struct, component override:DATA_010924_MENU_DESCRIPTORS.menu_records_0CFA) */
+extern struct menu_record menu_records_0CFA[3];
+
+/* g0d36  DS:0D36  size 6  (override-struct, component override:DATA_010924_MENU_DESCRIPTORS.g0d36) */
+extern struct menu_catalog g0d36;
+
+/* menu_records_0D3C  DS:0D3C  size 60  (override-struct, component override:DATA_010924_MENU_DESCRIPTORS.menu_records_0D3C) */
+extern struct menu_record menu_records_0D3C[3];
+
+/* g0d78  DS:0D78  size 6  (override-struct, component override:DATA_010924_MENU_DESCRIPTORS.g0d78) */
+extern struct menu_catalog g0d78;
+
+/* data_010924_menu_descriptors_gap_0D7E  DS:0D7E  size 1  (flat, component override:DATA_010924_MENU_DESCRIPTORS.data_010924_menu_descriptors_gap_0D7E) */
+extern uint8_t data_010924_menu_descriptors_gap_0D7E[1];
 
 /* DATA_0109AF_GO_BACK  DS:0D7F  size 12  (flat, component DATA_0109AF_GO_BACK) */
 extern uint8_t DATA_0109AF_GO_BACK[12];
@@ -404,14 +411,14 @@ extern uint8_t DATA_0101220_ENERGY_PROMPT[96];
 extern dos_char g1660[15];
 /* TEXT_1660 (recipe component id; nothing points at it) */
 
-/* DATA_01129F_LEVEL_CONTROL  DS:166F  size 55  (struct-component, component DATA_01129F_LEVEL_CONTROL) */
-struct DATA_01129F_LEVEL_CONTROL_s {
-    dos_uchar header[8];
-    dos_char *level_complete_text;
-    dos_uchar sentinel_prefix[9];
-    dos_int control_words[17];
-};
-extern struct DATA_01129F_LEVEL_CONTROL_s DATA_01129F_LEVEL_CONTROL;
+/* data_01129f_level_control_gap_166F  DS:166F  size 1  (flat, component override:DATA_01129F_LEVEL_CONTROL.data_01129f_level_control_gap_166F) */
+extern uint8_t data_01129f_level_control_gap_166F[1];
+
+/* g1670  DS:1670  size 20  (override-struct, component override:DATA_01129F_LEVEL_CONTROL.g1670) */
+extern struct dialog g1670;
+
+/* g1684  DS:1684  size 34  (flat, component override:DATA_01129F_LEVEL_CONTROL.g1684) */
+extern dos_int g1684[17];
 
 /* DATA_0112D6_LEVEL_COMPLETE  DS:16A6  size 151  (flat, component DATA_0112D6_LEVEL_COMPLETE) */
 extern uint8_t DATA_0112D6_LEVEL_COMPLETE[151];
@@ -847,21 +854,9 @@ extern uint8_t sound_instrument_region[1924];
 #define DATA_01052B_ZERO_PREFIX (s8a8[83])
 #define DATA_0107EA_HELP_TITLE (g0bb4[6])
 #define DATA_0107F4_HELP_TOPICS (g0bb4[16])
-#define DATA_010848_FILE_F2_TABLE (g0bb4[100])
-#define DATA_010848_FILE_F2_TEXT (g0bb4[108])
-#define DATA_01085A_MENU_TOPICS (g0bb4[118])
-#define DATA_0108A7_MENU_TABLE_A (g0bb4[195])
-#define DATA_0108A7_MENU_HALL (g0bb4[205])
-#define DATA_0108A7_MENU_TABLE_B (g0bb4[263])
-#define DATA_0108A7_MENU_OPTIONS (g0bb4[271])
-#define DATA_0108FE_OPTION_TOPICS (g0bb4[282])
 #define g13b8 (dialog_slot_delete_confirm.text)
 #define DATA_011F01_PAD (*((dos_char *)(g22b2) + 31))
-#define gb31 (*(dos_char **)(((dos_char *)(&gb2a)) + 7))
-#define g0d36 ((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 66))
-#define g0d78 ((dos_char *)(((dos_char *)(&DATA_010924_MENU_DESCRIPTORS)) + 132))
-#define g1670 (*(struct dialog *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 1))
-#define g1684 ((dos_int *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 21))
-#define g235d (*(dos_char **)(((dos_char *)(&g2356)) + 7))
+#define gb31 (gb2a.text)
+#define g235d (g2356.text)
 
 #endif /* PORTABLE_GAME_DATA_H */

@@ -26,33 +26,8 @@
 #include <string.h>
 #include <stddef.h>
 
-/* record_field_skip_n/board_run_unit_script/board_advance_unit_moves are
- * declared in game_funcs.h (src/BOARD.C's port, portable/game/board.c) but
- * board.c is not part of this test's link closure (it pulls in a large,
- * still-incomplete UI/menu subsystem unrelated to sprite scripts) --
- * stubbed here per the TU brief's rule for not-yet-linkable callees. Only
- * OP_DISPATCH_2A2D/OP_DISPATCH_36F0 in sprite_script_frame_driver call
- * these; no test below exercises those two opcodes. */
-static int g_stub_board_run_unit_script_calls = 0;
-static int g_stub_board_advance_unit_moves_calls = 0;
-
-dos_char *record_field_skip_n(dos_int n)
-{
-    (void)n;
-    return NULL;
-}
-
-void board_run_unit_script(dos_uchar *s)
-{
-    (void)s;
-    g_stub_board_run_unit_script_calls++;
-}
-
-void board_advance_unit_moves(dos_int a)
-{
-    (void)a;
-    g_stub_board_advance_unit_moves_calls++;
-}
+/* board.c (record_field_skip_n/board_run_unit_script/board_advance_unit_moves)
+ * is part of empires_core now; no stubs needed. */
 
 static int g_failures = 0;
 
@@ -253,7 +228,7 @@ static void test_board_actors_draw_blits_and_vline(void)
  * can compute into this same array. */
 static dos_uint place_bytecode(dos_uint sub_offset, const dos_uchar *bytes, size_t n)
 {
-    dos_uchar *dst = &actor_sprite_dims_table[sub_offset];
+    dos_uchar *dst = (dos_uchar *)&actor_sprite_dims_table[sub_offset];
     ptrdiff_t diff;
     memcpy(dst, bytes, n);
     diff = dst - (dos_uchar *)actor_record_table;

@@ -33,13 +33,18 @@ dos_int dialog_draw_panel(struct gc0fe_record *p)
 /* ---- F_7DF1 (original code at 0x7DF1) ---- */
 void menu_list_source_set_default(void)
 {
-    menu_list_source_set(g0d36);
+    /* PORT: g0d36 is now a real `struct menu_catalog` (see
+       portable/include/game_structs.h) instead of a byte-offset macro --
+       menu_list_source_set/gc0fe want its ADDRESS, reinterpreted as a
+       byte pointer, exactly as menulist.c's `g0fecat` macro casts it
+       back to `struct gc0fe_catalog *` (== `struct menu_catalog *`). */
+    menu_list_source_set((dos_char *)&g0d36);
 }
 
 /* ---- F_7DFC (original code at 0x7DFC) ---- */
 void menu_list_source_set_players(void)
 {
-    menu_list_source_set(g0d78);
+    menu_list_source_set((dos_char *)&g0d78);
 }
 
 /* ---- F_7E07 (original code at 0x7E07) ----

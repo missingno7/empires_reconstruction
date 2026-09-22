@@ -478,21 +478,60 @@ class DatagenTests(unittest.TestCase):
 
     def test_typed_data_interior_names_are_field_or_byte_cast_macros(self):
         # gb31 lands exactly on DATA_01075A_FILE_ERROR_CONTROL's (gb2a's)
-        # own `.text` pointer field -- a real, typed pointer-value alias,
-        # not a second definition; the struct itself is untouched (still
-        # one real `struct dialog gb2a`). g1670 (a *different* struct
-        # dialog living entirely inside DATA_01129F_LEVEL_CONTROL) gets its
-        # own correctly-typed struct-dialog cast, not a field-name guess.
+        # own `.text` pointer field: a NAMED field-expression macro
+        # (`gb2a.text`), never a raw historical-byte-offset cast -- the
+        # portable struct's pointers are 8 bytes now, not the historical
+        # 4, so a byte-offset cast through a pointer-bearing struct reads
+        # the wrong bytes (the exact crash class bring-up hit in
+        # menu_list_draw). g235d (not pointer-bearing) still gets the
+        # plain byte-cast macro, which is safe for a non-pointer field.
         by_primary = {s['primary']: s for s in self.aux['symbols']}
         gb2a = by_primary['gb2a']
         self.assertEqual(gb2a['c_type'], 'struct dialog')
         self.assertEqual(gb2a['size'], 20)
-        for name in ('gb31', 'g0d36', 'g0d78', 'g1670', 'g1684', 'g235d'):
+        for name in ('gb31', 'g235d'):
             self.assertNotIn(name, by_primary, name)
         header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
-        self.assertIn('#define gb31 (*(dos_char **)(((dos_char *)(&gb2a)) + 7))', header)
-        self.assertIn('#define g1670 (*(struct dialog *)(((dos_char *)(&DATA_01129F_LEVEL_CONTROL)) + 1))',
-                       header)
+        self.assertIn('#define gb31 (gb2a.text)', header)
+        self.assertNotIn('#define gb31 (*(dos_char **)', header)
+
+    def test_pointer_bearing_records_get_a_layout_override_not_byte_cast_macros(self):
+        # DATA_010924_MENU_DESCRIPTORS (menu_list_draw's crash): a byte-
+        # offset macro is unsafe for ANY record containing pointer fields,
+        # since the portable struct's 8-byte pointers shift every offset
+        # after the first one. g0d36/g0d78 (struct menu_catalog) and
+        # menu_records_0CFA/menu_records_0D3C (struct menu_record[3]) are
+        # now real, independently-initialized objects -- not macros.
+        # Likewise g1670 (a second, unrelated struct dialog living inside
+        # DATA_01129F_LEVEL_CONTROL) is its own `struct dialog g1670`.
+        by_primary = {s['primary']: s for s in self.aux['symbols']}
+        for name in ('g0d36', 'g0d78', 'menu_records_0CFA', 'menu_records_0D3C', 'g1670', 'g1684'):
+            self.assertIn(name, by_primary, name)
+        g0d36, g0d78 = by_primary['g0d36'], by_primary['g0d78']
+        self.assertEqual(g0d36['c_type'], 'struct menu_catalog')
+        self.assertEqual(g0d78['c_type'], 'struct menu_catalog')
+        records0 = by_primary['menu_records_0CFA']
+        self.assertEqual(records0['c_type'], 'struct menu_record[3]')
+        g1670 = by_primary['g1670']
+        self.assertEqual(g1670['c_type'], 'struct dialog')
+        self.assertEqual(g1670['size'], 20)
+        header = (self.out_root / 'portable/generated/game_data.h').read_text('utf-8')
+        source = (self.out_root / 'portable/generated/game_data.c').read_text('utf-8')
+        self.assertIn('extern struct menu_catalog g0d36;', header)
+        self.assertIn('extern struct menu_record menu_records_0CFA[3];', header)
+        self.assertIn('extern struct dialog g1670;', header)
+        self.assertNotIn('#define g0d36 (*', header)
+        self.assertNotIn('#define g1670 (*', header)
+        # The catalog's `.records` points at the record array itself
+        # (array decay, not a byte offset), and each record's pointer
+        # fields resolve through the component's own refs.
+        self.assertIn('struct menu_catalog g0d36 = { .count = 3, '
+                      '.records = (struct menu_record *)menu_records_0CFA };', source)
+        # The two code-pointer tables the records' `.callbacks` fields
+        # point at (menu_f2_handlers etc.) resolve to real ported function
+        # names, same mechanism as g12a1.
+        self.assertIn('void (*menu_f2_handlers[4])(void) = {', source)
+        self.assertIn('(void (*)(void))help_topic_keyboard_show', source)
 
     def test_pointer_records_components_become_one_dialog_per_record(self):
         # DATA_010FA5_RECORDS (6 records) and DATA_011D90_RECORDS (8

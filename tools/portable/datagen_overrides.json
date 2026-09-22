@@ -37,5 +37,58 @@
       "gc133": "(gc132_tile.rot)",
       "gc132": "(gc132_tile.kind)"
     }
+  },
+  {
+    "name": "DATA_010924_MENU_DESCRIPTORS",
+    "offset": "0xCF4",
+    "length": 139,
+    "layout": [
+      {"name": "menu_handlers_0CF4", "offset": 0, "init": "codeptrs", "count": 3},
+      {"name": "menu_records_0CFA", "offset": 6, "count": 3,
+       "struct": {"tag": "menu_record", "fields": [
+         ["label", "farptr"], ["label_width", "i16"], ["count", "i16"],
+         ["text", "farptr"], ["callbacks", "farptr"], ["width", "i16"], ["x", "i16"]
+       ]}},
+      {"name": "g0d36", "offset": 66,
+       "struct": {"tag": "menu_catalog", "fields": [["count", "i16"], ["records", "farptr"]]}},
+      {"name": "menu_records_0D3C", "offset": 72, "count": 3,
+       "struct": {"tag": "menu_record", "fields": [
+         ["label", "farptr"], ["label_width", "i16"], ["count", "i16"],
+         ["text", "farptr"], ["callbacks", "farptr"], ["width", "i16"], ["x", "i16"]
+       ]}},
+      {"name": "g0d78", "offset": 132,
+       "struct": {"tag": "menu_catalog", "fields": [["count", "i16"], ["records", "farptr"]]}}
+    ]
+  },
+  {
+    "name": "menu_f2_handlers",
+    "offset": "0xC18",
+    "length": 8,
+    "c_type": "void (*)(void)[4]"
+  },
+  {
+    "name": "menu_table_a_handlers",
+    "offset": "0xC77",
+    "length": 10,
+    "c_type": "void (*)(void)[5]"
+  },
+  {
+    "name": "menu_table_b_handlers",
+    "offset": "0xCBB",
+    "length": 8,
+    "c_type": "void (*)(void)[4]"
+  },
+  {
+    "name": "DATA_01129F_LEVEL_CONTROL",
+    "offset": "0x166F",
+    "length": 55,
+    "layout": [
+      {"name": "g1670", "offset": 1,
+       "struct": {"tag": "dialog", "fields": [
+         ["kind", "i16"], ["title", "farptr"], ["sub", "u8"], ["text", "farptr"],
+         ["initial", "u8"], ["cx", "i16"], ["cy", "i16"], ["w", "i16"], ["lines", "i16"]
+       ]}},
+      {"name": "g1684", "offset": 21, "c_type": "dos_int", "count": 17}
+    ]
   }
 ]

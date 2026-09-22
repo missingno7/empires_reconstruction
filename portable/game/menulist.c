@@ -6,9 +6,8 @@
  * `struct gc0fe_catalog`/`struct gc0fe_record` (see that header's own
  * comment on gc0fe and portable/game/menuloop.c's `g0fecat` macro), so per
  * tu-porting-rules.md ("Struct tags come from game_structs.h only; never
- * re-declare a struct") this uses those types instead of re-declaring a
- * local shape.  catalog_entry.a/.b/.c correspond to gc0fe_record's
- * text/width/x fields.
+ * re-declare a struct") this uses the unified struct menu_record:
+ * catalog_entry.a/.b/.c are menu_record.label/label_width/x.
  */
 #include "game.h"
 
@@ -30,14 +29,14 @@ void menu_list_draw(dos_int n)
     gfx_clear_rect(1, 2, 318, 10);
     for (i = g0fecat->count - 1; i >= 0; i--) {
         r = g0fecat->records[i];
-        w = r.width;
+        w = r.label_width;   /* MENULIST.C: r.b (+4) */
         x = r.x;
         y = 2;
         if (i == n) {
             gfx_color_select(12);
             gfx_clear_rect(x, y, w + 2, 10);
             gfx_color_select(15);
-            text_draw_wrapped(++x, y, r.text);
+            text_draw_wrapped(++x, y, r.label);   /* r.a (+0) */
         } else {
             for (j = 0; j < 2; j++) {
                 gfx_color_select(7);
@@ -50,7 +49,7 @@ void menu_list_draw(dos_int n)
             gfx_color_select(15);
             gfx_clear_rect(x, y, w, 9);
             gfx_color_select(0);
-            text_draw_wrapped(x, y, r.text);
+            text_draw_wrapped(x, y, r.label);
         }
     }
     gfx_box(0, 0, 320, 12);

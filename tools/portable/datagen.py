@@ -472,6 +472,9 @@ OVERRIDE_FIELD_KIND = {
 # (`.records = (dos_char **)gc5ce`).
 OVERRIDE_STRUCT_FIELD_C_TYPES = {
     'input': {'title': 'dos_char *', 'records': 'dos_char **'},
+    'menu_record': {'label': 'dos_char *', 'text': 'dos_char *', 'callbacks': 'void (**)(void)'},
+    'menu_catalog': {'records': 'struct menu_record *'},
+    'dialog': {'title': 'dos_char *', 'text': 'dos_char *'},
 }
 
 # Which header declares a 'struct' override's tag, when it is not one of
@@ -525,7 +528,7 @@ def load_datagen_overrides():
         offset = int(off_field, 16) if isinstance(off_field, str) else off_field
         out.append({
             'name': e['name'], 'offset': offset, 'length': e['length'],
-            'c_type': e.get('c_type'), 'struct': e.get('struct'),
+            'c_type': e.get('c_type'), 'struct': e.get('struct'), 'layout': e.get('layout'),
             'aliases': e.get('aliases') or {},
         })
     return out
@@ -1478,18 +1481,102 @@ def resolve_symbols(components, table, friendly_of_offset, externs, ownership, o
         # [offset, offset+length) -- see tools/portable/datagen_overrides.json.
         if cursor in overrides_by_offset:
             ov = overrides_by_offset[cursor]
-            ov_refs = []
-            for c in components:
-                if c['kind'] != 'data':
-                    continue
-                c_lo, c_hi = c['ds_offset'], c['ds_offset'] + c['length']
-                if c_hi <= cursor or c_lo >= cursor + ov['length']:
-                    continue
-                for r in c.get('refs', ()):
-                    abs_off = c['ds_offset'] + r['offset']
-                    if cursor <= abs_off < cursor + ov['length']:
-                        ov_refs.append({**r, 'offset': abs_off - cursor})
+
+            def _collect_refs(abs_lo, length):
+                refs = []
+                for c in components:
+                    if c['kind'] != 'data':
+                        continue
+                    c_lo, c_hi = c['ds_offset'], c['ds_offset'] + c['length']
+                    if c_hi <= abs_lo or c_lo >= abs_lo + length:
+                        continue
+                    for r in c.get('refs', ()):
+                        abs_off = c['ds_offset'] + r['offset']
+                        if abs_lo <= abs_off < abs_lo + length:
+                            refs.append({**r, 'offset': abs_off - abs_lo})
+                return refs
+
             section = 'data' if cursor < DATA_LEN else 'bss'
+            if ov.get('layout'):
+                # A "layout" override (menu-descriptor-style): several
+                # named sub-objects packed into one span whose bytes
+                # cannot be exposed through a byte-offset macro at all,
+                # because the portable struct's pointers are wider than
+                # the historical ones -- every sub-offset after the first
+                # pointer field would be wrong. Each entry becomes its OWN
+                # real symbol (own refs, own emit_path), exactly as if it
+                # were its own top-level override at that absolute offset;
+                # any byte range no entry covers becomes an anonymous
+                # `uint8_t ..._gap_XXXX[N]` so the whole span still
+                # round-trips exactly.
+                covered = []
+                for entry in ov['layout']:
+                    abs_off = cursor + entry['offset']
+                    if entry.get('struct'):
+                        count = entry.get('count', 1)
+                        length = _override_struct_field_width(entry['struct']['fields']) * count
+                        c_type = f"struct {entry['struct']['tag']}"
+                        emit_path = 'override-struct'
+                        entry_override = {'struct': entry['struct'], 'count': count}
+                        entry_refs = _collect_refs(abs_off, length)
+                        dims = []
+                    elif entry.get('init') == 'codeptrs':
+                        count = entry['count']
+                        length = count * 2
+                        c_type = 'void (*)(void)'
+                        emit_path = 'flat'
+                        entry_override, entry_refs = None, []
+                        dims = [count]
+                    else:
+                        # Plain typed sub-object (no pointer fields of its
+                        # own): e.g. g1684, `dos_int g1684[17]` living
+                        # right after g1670 inside DATA_01129F_LEVEL_
+                        # CONTROL -- reuses the SAME 'flat' emitter as an
+                        # ordinary symbol-driven object, just placed
+                        # explicitly instead of inferred.
+                        count = entry.get('count', 1)
+                        base_type, _ = _parse_override_c_type(entry['c_type'])
+                        length = ELEM_SIZE_OF.get(base_type, 1) * count
+                        c_type = base_type
+                        emit_path = 'flat'
+                        entry_override, entry_refs = None, []
+                        dims = [count] if count > 1 else []
+                    sym = _make_symbol(abs_off, length, section, entry['name'], [], [entry['name']],
+                                        None, 'generated', f"override:{ov['name']}.{entry['name']}",
+                                        c_type, f"layout entry of {ov['name']!r} "
+                                        '(manual override, tools/portable/datagen_overrides.json)',
+                                        dims, False, [], False, emit_path=emit_path)
+                    if entry_override is not None:
+                        sym['override'] = entry_override
+                        sym['override_refs'] = entry_refs
+                    symbols.append(sym)
+                    covered.append((entry['offset'], entry['offset'] + length))
+                for alias, expr in ov.get('aliases', {}).items():
+                    extra['interior_alias'].append({
+                        'name': alias, 'offset': cursor, 'array_name': ov['name'],
+                        'array_offset': cursor, 'expr': expr, 'c_type': None,
+                    })
+                covered.sort()
+                pos = 0
+                for lo, hi in covered:
+                    if lo > pos:
+                        gap_name = f"{c_ident(ov['name']).lower()}_gap_{cursor + pos:04X}"
+                        symbols.append(_make_symbol(cursor + pos, lo - pos, section, gap_name, [],
+                                                     [gap_name], None, 'generated',
+                                                     f"override:{ov['name']}.{gap_name}",
+                                                     None, 'layout gap (unnamed bytes)', [], False,
+                                                     [], True, emit_path='flat'))
+                    pos = max(pos, hi)
+                if pos < ov['length']:
+                    gap_name = f"{c_ident(ov['name']).lower()}_gap_{cursor + pos:04X}"
+                    symbols.append(_make_symbol(cursor + pos, ov['length'] - pos, section, gap_name,
+                                                 [], [gap_name], None, 'generated',
+                                                 f"override:{ov['name']}.{gap_name}",
+                                                 None, 'layout gap (unnamed bytes)', [], False, [],
+                                                 True, emit_path='flat'))
+                cursor += ov['length']
+                continue
+            ov_refs = _collect_refs(cursor, ov['length'])
             if ov.get('struct'):
                 c_type, dims, is_ptr, emit_path = f"struct {ov['struct']['tag']}", [], False, 'override-struct'
             else:
@@ -2429,27 +2516,26 @@ DIALOG_FIELD_LAYOUT = [
 ]
 
 
-def _emit_override_struct(symbol, image, ident, resolver):
-    """tools/portable/datagen_overrides.json 'struct' entry: a designated
-    initializer assembled from `struct.fields` (kind-tagged byte spans),
-    with farptr/nearptr fields resolved through whatever recipe
-    component's ref falls at that byte (collected into
-    `symbol['override_refs']` by resolve_symbols, rebased to be relative
-    to this override's own base offset) -- or a literal NULL when the raw
-    bytes are all zero and nothing refs that offset. Scalar fields read
-    straight off the DATA image. A resolved pointer is cast to
-    OVERRIDE_STRUCT_FIELD_C_TYPES' declared field type when one is on
-    file, matching the struct's real (game_funcs.h-declared) field type.
-    """
-    ov = symbol['override']
-    tag = ov['struct']['tag']
-    base = symbol['offset']
-    raw = image[base:base + symbol['size']]
-    refs_by_off = {r['offset']: r for r in symbol['override_refs']}
+def _override_struct_field_width(fields):
+    """Total byte width of ONE record built from a 'struct' override's
+    `fields` list (farptr/nearptr/u8/i8/u16/i16/u32/i32/bytes:N)."""
+    total = 0
+    for _fname, kind in fields:
+        if kind == 'bytes' or kind.startswith('bytes:'):
+            total += int(kind.split(':', 1)[1]) if ':' in kind else 1
+        else:
+            total += OVERRIDE_FIELD_KIND[kind][0]
+    return total
+
+
+def _override_struct_record_parts(fields, tag, raw, refs_by_off, resolver):
+    """One record's `{ .field = value, ... }` part list -- shared by both
+    a scalar 'struct' override (count 1 or omitted) and an array of them
+    (count > 1, e.g. menu_records_0CFA[3]); `raw`/`refs_by_off` are
+    already sliced/rebased to THIS record's own [0, record_width)."""
     field_types = OVERRIDE_STRUCT_FIELD_C_TYPES.get(tag, {})
-    parts = []
-    sub = 0
-    for fname, kind in ov['struct']['fields']:
+    parts, sub = [], 0
+    for fname, kind in fields:
         if kind == 'bytes' or kind.startswith('bytes:'):
             n = int(kind.split(':', 1)[1]) if ':' in kind else 1
             parts.append(f'.{fname} = {c_int_array(list(raw[sub:sub + n]))}')
@@ -2471,14 +2557,61 @@ def _emit_override_struct(symbol, image, ident, resolver):
             value = struct.unpack_from(TYPED_SCALAR_STRUCT_FMT[kind], raw, sub)[0]
             parts.append(f'.{fname} = {value}')
         sub += width
-    assert sub == symbol['size'], f'override struct {tag!r} fields sum to {sub} bytes, not {symbol["size"]}'
+    return parts, sub
+
+
+def _emit_override_struct(symbol, image, ident, resolver):
+    """tools/portable/datagen_overrides.json 'struct' entry (top-level, or
+    one entry of a 'layout' override -- see resolve_symbols): a designated
+    initializer assembled from `struct.fields` (kind-tagged byte spans),
+    with farptr/nearptr fields resolved through whatever recipe
+    component's ref falls at that byte (collected into
+    `symbol['override_refs']` by resolve_symbols, rebased to be relative
+    to this override's own base offset) -- or a literal NULL when the raw
+    bytes are all zero and nothing refs that offset. Scalar fields read
+    straight off the DATA image. A resolved pointer is cast to
+    OVERRIDE_STRUCT_FIELD_C_TYPES' declared field type when one is on
+    file, matching the struct's real (game_funcs.h/game_structs.h-
+    declared) field type.
+
+    `symbol['override']['count']` (default 1), when > 1, repeats this same
+    field layout that many times -- one record every `record_width` bytes
+    -- and emits `struct TAG name[count] = { {...}, {...}, ... };` instead
+    of a bare scalar (e.g. menu_records_0CFA[3]).
+    """
+    ov = symbol['override']
+    tag = ov['struct']['tag']
+    fields = ov['struct']['fields']
+    count = ov.get('count', 1)
+    record_width = _override_struct_field_width(fields)
+    base = symbol['offset']
+    raw = image[base:base + symbol['size']]
+    refs_by_off = {r['offset']: r for r in symbol['override_refs']}
+    assert record_width * count == symbol['size'], \
+        f'override struct {tag!r}: {record_width} bytes/record * {count} != {symbol["size"]}'
+    records = []
+    for i in range(count):
+        rec_raw = raw[i * record_width:(i + 1) * record_width]
+        rec_refs = {off - i * record_width: r for off, r in refs_by_off.items()
+                    if i * record_width <= off < (i + 1) * record_width}
+        parts, consumed = _override_struct_record_parts(fields, tag, rec_raw, rec_refs, resolver)
+        assert consumed == record_width, f'override struct {tag!r} fields sum to {consumed}, not {record_width}'
+        records.append('{ ' + ', '.join(parts) + ' }')
     header_extra = []
     header_include = OVERRIDE_STRUCT_TAG_HEADER.get(tag)
     if header_include:
         header_extra.append(f'/* struct {tag} is declared in {header_include} */')
-    defn = f'struct {tag} {ident} = {{ ' + ', '.join(parts) + ' };\n'
-    return {'c_type': f'struct {tag}', 'emit_kind': 'struct', 'header_extra': header_extra,
-            'decl': f'extern struct {tag} {ident};', 'defn': defn, 'verify_bytes': raw}
+    if count > 1:
+        rows = ',\n    '.join(records)
+        defn = f'struct {tag} {ident}[{count}] = {{\n    {rows}\n}};\n'
+        c_type, decl = f'struct {tag}[{count}]', f'extern struct {tag} {ident}[{count}];'
+        emit_kind = 'record_array'
+    else:
+        defn = f'struct {tag} {ident} = {records[0]};\n'
+        c_type, decl = f'struct {tag}', f'extern struct {tag} {ident};'
+        emit_kind = 'struct'
+    return {'c_type': c_type, 'emit_kind': emit_kind, 'header_extra': header_extra,
+            'decl': decl, 'defn': defn, 'verify_bytes': raw}
 
 
 def _emit_as_known_struct(component, image, struct_name, field_layout, ident, resolver, comp_by_id):
@@ -2532,7 +2665,7 @@ def _emit_sound_ptr_array(symbol, resolver):
 
 def _interior_view_macros(component, table, friendly_of_offset, externs, base_expr,
                            container_local_base, include_gaps=True, gap_prefix='sound_instr_region',
-                           own_names=frozenset()):
+                           own_names=frozenset(), container_struct_type=None, container_ident=None):
     """Split `component`'s own byte range into named pieces (and, when
     `include_gaps`, byte gaps too), like _split_sound_component but with no
     pointer refs to resolve, and return them as (name, macro_expr) pairs
@@ -2551,7 +2684,21 @@ def _interior_view_macros(component, table, friendly_of_offset, externs, base_ex
     0 with a fully-dimensioned historical type (e.g. `struct dialog`) that
     would otherwise swallow the *entire* span in one step and hide any
     OTHER interior name (e.g. `gb31`) from ever being reached; skipped
-    byte-by-byte instead of measured, so the scan can keep going past them."""
+    byte-by-byte instead of measured, so the scan can keep going past them.
+
+    `container_struct_type`/`container_ident`: when the container ITSELF
+    is one of STRUCT_FIELD_LAYOUTS_FOR_ALIASING's known structs (e.g.
+    `gb2a`: `struct dialog`), an interior POINTER-valued name that lands
+    exactly on one of the container's OWN named fields (e.g. `gb31` on
+    `.text`) becomes a `(container.field)` dot-notation macro instead of a
+    raw `(*(T **)((dos_char *)&container + N))` byte-offset cast -- the
+    portable struct's pointer fields are 8 bytes now, not the historical
+    4/2, so a byte offset computed from the OLD layout silently reads the
+    wrong bytes (a real crash class: bring-up hit exactly this reading
+    `menu_list_draw`'s callbacks through a byte-offset macro). A field
+    reference the compiler resolves by name is immune to that; a raw
+    byte-offset one is used only when no such field mapping exists (the
+    container is a plain byte blob, not a real known struct)."""
     comp_base, length, comp_id = component['ds_offset'], component['length'], component['id']
 
     def names_at(local):
@@ -2602,7 +2749,18 @@ def _interior_view_macros(component, table, friendly_of_offset, externs, base_ex
             else:
                 c_type, dims = None, []
             size = measured
-        if c_type is None:
+        field_path = (_struct_field_path(container_struct_type, local)
+                      if is_ptr and container_struct_type and container_ident else None)
+        if field_path is not None:
+            # The container is a KNOWN struct and this interior name lands
+            # exactly on one of its own named pointer fields: reference it
+            # by NAME (`gb2a.text`), not by a historical byte offset --
+            # the compiler resolves `.field` through the REAL (wide-
+            # pointer) struct layout, so it is correct regardless of how
+            # much the portable struct's own field offsets have shifted
+            # from the historical ones.
+            expr = f'({container_ident}{field_path})'
+        elif c_type is None:
             expr = f'((uint8_t *)({base_expr} + {off}))'
         elif is_ptr:
             # The storage holds a POINTER VALUE (e.g. `char far *gb31`
@@ -2976,13 +3134,20 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
             _STRUCT_FIELD_REGISTRY[s['primary']] = [
                 (off, name, width, width) for off, name, _, width, _ in DIALOG_FIELD_LAYOUT]
         elif s['emit_path'] == 'override-struct':
-            _EMIT_KIND_REGISTRY[s['primary']] = 'struct'
-            fields, off = [], 0
-            for fname, kind in s['override']['struct']['fields']:
-                width = OVERRIDE_FIELD_KIND[kind][0]
-                fields.append((off, fname, width, width))
-                off += width
-            _STRUCT_FIELD_REGISTRY[s['primary']] = fields
+            if s['override'].get('count', 1) > 1:
+                # An ARRAY of the struct (e.g. menu_records_0CFA[3]) is
+                # only ever pointed at whole (array decay to its first
+                # element) by everything currently on file -- no per-
+                # element field registry needed for that.
+                _EMIT_KIND_REGISTRY[s['primary']] = 'record_array'
+            else:
+                _EMIT_KIND_REGISTRY[s['primary']] = 'struct'
+                fields, off = [], 0
+                for fname, kind in s['override']['struct']['fields']:
+                    width = OVERRIDE_FIELD_KIND[kind][0]
+                    fields.append((off, fname, width, width))
+                    off += width
+                _STRUCT_FIELD_REGISTRY[s['primary']] = fields
         else:
             # A plain scalar (no dims, not the untyped-fallback byte array)
             # needs `&name`, not array-decay, if something ever points at
@@ -3202,8 +3367,11 @@ def emit_game_data(image, components, symbols, table, externs, extra, qualifiers
         primary_ident = c_ident(s['primary'])
         base_expr = f'((dos_char *)(&{primary_ident}))'
         own_names = {s['primary'], *s['aliases']}
+        container_struct_type = s['c_type'] if s['c_type'] in STRUCT_FIELD_LAYOUTS_FOR_ALIASING else None
         for name, expr in _interior_view_macros(c, table, friendly_of_offset, externs, base_expr, 0,
-                                                  include_gaps=False, own_names=own_names):
+                                                  include_gaps=False, own_names=own_names,
+                                                  container_struct_type=container_struct_type,
+                                                  container_ident=primary_ident):
             extra['interior_alias'].append({
                 'name': name, 'offset': table.offset_by_name.get(name, c['ds_offset']),
                 'array_name': s['primary'], 'array_offset': c['ds_offset'],

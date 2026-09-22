@@ -23,9 +23,8 @@ void opl_backend_reset(uint32_t sample_rate);
  * translation is needed as long as reg stays a plain uint8_t). */
 void opl_backend_write(uint8_t reg, uint8_t val);
 
-/* One mono sample in roughly [-1, 1] (the chip's L/R pair averaged --
- * with OPL3 mode disabled and only bank-0 voices driven, both channels
- * carry the same content anyway). */
+/* One mono sample in roughly [-1, 1], taken from Nuked's left channel to
+ * match the historical OPL playback path. */
 float opl_backend_generate(void);
 
 #endif /* PORTABLE_AUDIO_OPL_BACKEND_H */

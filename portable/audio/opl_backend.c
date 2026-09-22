@@ -31,12 +31,17 @@ void opl_backend_reset(uint32_t sample_rate)
 
 void opl_backend_write(uint8_t reg, uint8_t val)
 {
-    OPL3_WriteReg(&s_chip, (uint16_t)reg, val);
+    /* Normal hardware writes are delayed by the OPL bus.  Nuked's buffered
+     * entry point models that delay; the immediate API is reserved for
+     * callers that explicitly need to bypass it. */
+    OPL3_WriteRegBuffered(&s_chip, (uint16_t)reg, val);
 }
 
 float opl_backend_generate(void)
 {
     int16_t buf[2];
     OPL3_GenerateResampled(&s_chip, buf);
-    return ((float)buf[0] + (float)buf[1]) / (2.0f * 32768.0f);
+    /* The historical OPL path consumes the first (left) channel.  Nuked's
+     * channel-sample-delay quirk means averaging L/R is not equivalent. */
+    return (float)buf[0] / 32768.0f;
 }

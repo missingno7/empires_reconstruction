@@ -1,5 +1,6 @@
 /* src/INTRO.C: Intro chapter driver and animation steps. */
 #include "game.h"
+#include "trace.h"
 
 
 /* PORT: `vmode` (src/INTRO.C local extern, "unsigned char vmode;" at DS:BFCD)
@@ -242,6 +243,7 @@ void intro_title_picture_redisplay(void) { hud_prompt_continue_clear(); anim_ste
 
 dos_int intro_run_chapter(void)
 {
+    EMPIRES_TRACE("intro_run_chapter");
     dos_int key = 0;  /* PORT: MSVC /W4 cannot prove the `again=1;`-guarded
                           while loop below always runs at least once (it
                           does; every path sets `key` before it is read);

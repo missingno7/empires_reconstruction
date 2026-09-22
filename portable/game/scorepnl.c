@@ -18,5 +18,5 @@ dos_int score_panel_draw(void)
     gfx_copy_rect_flip_h(0, 0x168, 40, 29, 80, 0x168);
     gfx_copy_rect_flip_v(80, 0x168, 40, 29, 160, 0x168);
     gfx_wipe_rect(160, 0x168, 40, 29, score_panel_x, score_panel_y);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }

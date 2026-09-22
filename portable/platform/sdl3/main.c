@@ -35,12 +35,14 @@ static Uint64 s_selftest_ms = 300;
 
 static volatile bool s_game_finished = false;
 
-/* --script "ms:scan[:ascii],..." injects historical make/break pairs at the
- * given times (set-1 scancode, optional BIOS ASCII value), for headless
- * bring-up runs and replay tests. */
+/* --script "ms:scan[:ascii],..." injects historical make/break pairs for
+ * headless bring-up runs and replay tests.  Each entry fires once the game
+ * has been continuously asking for a key (empty polls or blocking waits)
+ * for at_ms, i.e. it is idle waiting for the user. */
 typedef struct { Uint64 at_ms; uint8_t scan; uint8_t ascii; } script_key;
 static script_key s_script[64];
 static int s_script_n, s_script_next;
+
 
 static void parse_script(const char *spec)
 {
@@ -204,11 +206,20 @@ int main(int argc, char **argv)
             else if (ev.type == SDL_EVENT_KEY_DOWN || ev.type == SDL_EVENT_KEY_UP)
                 input_sdl_handle_event(&ev);
         }
-        while (s_script_next < s_script_n &&
-               SDL_GetTicks() - start_ticks >= s_script[s_script_next].at_ms) {
-            const script_key *k = &s_script[s_script_next++];
-            input_key_event(k->scan, true, k->ascii);
-            input_key_event(k->scan, false, 0);
+        /* Scripted input: an entry fires once the game has been asking for
+         * a key (empty polls / blocking waits) continuously for at_ms. */
+        {
+            static Uint64 idle_since; static uint32_t last_empty_seen;
+            Uint64 now = SDL_GetTicks();
+            if (input_empty_reads == last_empty_seen && !input_blocked)
+                idle_since = now;               /* not asking: reset */
+            last_empty_seen = input_empty_reads;
+            if (s_script_next < s_script_n && now - idle_since >= s_script[s_script_next].at_ms) {
+                const script_key *k = &s_script[s_script_next++];
+                input_key_event(k->scan, true, k->ascii);
+                input_key_event(k->scan, false, 0);
+                idle_since = now;
+            }
         }
         if (gfx_vram_generation != presented_generation || demo) {
             presented_generation = gfx_vram_generation;

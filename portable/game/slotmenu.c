@@ -21,6 +21,7 @@
                                      the same way the historical far-
                                      pointer strcpy was. */
 #include "game.h"
+#include "trace.h"
 
 /* music_track_handle (DS:237E) is ported-C-owned DATA defined by
  * portable/game/rescache.c; no generated header declares it (see that
@@ -46,7 +47,7 @@ dos_int slot_list_draw(void)
     } else if (!slot_used_count)
         hud_panel_clear();
     gfx_box(0, 0, 320, 200);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_A40A (original code at 0xA40A) ---- */
@@ -315,6 +316,7 @@ dos_int slot_list_select_loop(void)
  */
 dos_int slot_menu_run(void)
 {
+    EMPIRES_TRACE("slot_menu_run");
     dos_int y, saved;
     dos_int selected, i;
 

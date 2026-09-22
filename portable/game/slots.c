@@ -20,7 +20,7 @@ dos_int slot_menu_draw_header(void)
     resource_load_record(58);
     gfx_blit_bitmap(0, 457, ui_gfx_shadow_a);
     resource_load_record(57);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_A13F (original code at 0xA13F) ----

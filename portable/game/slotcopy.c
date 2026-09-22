@@ -53,5 +53,5 @@ dos_int slot_reset_for_new_game(void)
     slot_table[current_slot].round_progress[3] = 0;
     slot_table[current_slot].byte26 = 0;
     slot_table_save();
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }

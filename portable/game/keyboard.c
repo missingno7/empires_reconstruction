@@ -16,6 +16,8 @@
  * menu_loop_run) are stubbed in keyboard_stubs.c.
  */
 #include "input.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "sync.h"
 
 /* ---- DGROUP state: key_up_held/gb6a/key_up_left_held/key_up_right_held/
@@ -131,13 +133,23 @@ static void fifo_reset(void)
  * blocking_hotkeys() calls this instead of waiting on the condvar itself so
  * a caller with data already queued never blocks (tests pre-fill the FIFO
  * and rely on exactly that). */
+/* Diagnostic counter: bumped whenever the game asks for a key and the FIFO
+ * is empty (a blocking wait or an empty poll).  Scripted-input drivers use
+ * it to inject the next key only once the game is actually waiting. */
+volatile uint32_t input_empty_reads;
+volatile int input_blocked;
+
 void input_platform_wait_key(void)
 {
     fifo_ensure_init();
     sync_mutex_lock(&s_fifo_mutex);
+    if (s_fifo_count == 0)
+        input_empty_reads++;
+    input_blocked = 1;
     while (s_fifo_count == 0) {
         sync_cond_wait(&s_fifo_cond, &s_fifo_mutex);
     }
+    input_blocked = 0;
     sync_mutex_unlock(&s_fifo_mutex);
 }
 
@@ -222,6 +234,8 @@ dos_int keyboard_read_blocking_hotkeys(void)
 
     input_platform_wait_key();
     fifo_pop(&ascii, &scan); /* non-empty: single-reader game thread */
+    if (getenv("EMPIRES_TRACE"))
+        fprintf(stderr, "[key] read scan=%02x ascii=%02x\n", scan, ascii);
 
     if (ascii != 0) {
         return (dos_int)ascii; /* AH cleared */
@@ -243,6 +257,7 @@ dos_int keyboard_poll_nonblocking(void)
     uint8_t ascii, scan;
 
     if (!fifo_peek(&ascii, &scan)) {
+        input_empty_reads++;
         return 0;
     }
     if (ascii != 0) {

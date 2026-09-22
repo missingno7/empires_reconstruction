@@ -1,5 +1,6 @@
 /* src/PLAYERSL.C: Player-select screen. */
 #include "game.h"
+#include "trace.h"
 
 /* PORT: ui_gfx_alloc (F_D344, original src/PLAYERSL.C:254-263) is omitted
    from this file per the brief: its three-way carve of one 0xFA80-byte
@@ -196,6 +197,7 @@ dos_int player_select_close_wipe(void)
 /* ---- F_D26C (original code at 0xD26C) ---- */
 dos_int player_select_run(dos_int a)
 {
+    EMPIRES_TRACE("player_select_run(%d)", a);
     dos_int s;
 
     s = keyboard_chain_active();

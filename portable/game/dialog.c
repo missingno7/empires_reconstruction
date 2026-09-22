@@ -10,6 +10,7 @@
  * locally-defined tags game_funcs.h itself carries for the same reason).
  */
 #include "game.h"
+#include "trace.h"
 
 /* ---- F_7D91 (original code at 0x7D91) ---- */
 dos_int dialog_draw_panel(struct gc0fe_record *p)
@@ -26,7 +27,7 @@ dos_int dialog_draw_panel(struct gc0fe_record *p)
     q.w = p->width;
     q.lines = p->count;
     dialog_draw(&q, 1);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_7DF1 (original code at 0x7DF1) ---- */
@@ -387,6 +388,7 @@ dos_int dialog_run(struct dialog *p)
     dos_int a, b, c;
     dos_int i, n;
 
+    EMPIRES_TRACE("dialog_run kind=%d title=%s", p->kind, p->title ? (const char *)p->title : "(none)");
     n = 0;
     a = keyboard_chain_active();
     keyboard_chain_enable();

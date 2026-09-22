@@ -45,6 +45,7 @@
  *    compiles (movmem takes an untyped pointer, no static bound check).
  */
 #include "game.h"
+#include "trace.h"
 
 /* ---- F_3A75 (original code at 0x3A75) ---- */
 /* F_3A75 -- the turn loop.  Entry 13B75; the declared /24 player-query point
@@ -465,6 +466,7 @@ void menu_backdrop_paint(void)
    parameters, no locals, one register variable), which is what -k- gives. */
 dos_int level_driver_run(void)
 {
+    EMPIRES_TRACE("level_driver_run node=%d", campaign_round_node_cursor);
     dos_int r;
 
     menu_backdrop_paint();

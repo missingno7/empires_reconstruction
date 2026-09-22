@@ -37,11 +37,9 @@ dos_int menu_wait_key_animated(void)
             timer_deadline_arm(0x17);
         }
     }
-    keyboard_read_blocking_hotkeys();
-    return 0;   /* PORT: original body ended in a bare `return;` on a K&R
-                 * implicit-int function -- not valid for a declared
-                 * dos_int return; no caller was found to depend on the
-                 * (historically garbage) return value. */
+    /* The historical `return;` after the call returns whatever AX held:
+       the key just read (SLOTMENU.C switches on it). */
+    return keyboard_read_blocking_hotkeys();
 }
 
 /* ---- F_B09A (original code at 0xB09A) ---- */
@@ -55,7 +53,7 @@ dos_int fb09a(void)
     gfx_copy_rect(0x72, 0xd3, ui_gfx_shadow_a, 0);
     g96 = 0x9f;
     gfx_wipe_rect(6, 200, 0x134, 0x90, 6, 16);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_B122 (original code at 0xB122) ----
@@ -123,7 +121,7 @@ dos_int level_actor_sprite_dims_init(void)
     actor_sprite_dims_table[418] = 47; actor_sprite_dims_table[419] = 34;
     actor_sprite_dims_table[420] = 12; actor_sprite_dims_table[421] = 5;
     actor_sprite_dims_table[422] = 44; actor_sprite_dims_table[423] = 34;
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_B55E (original code at 0xB55E) ---- */
@@ -166,7 +164,7 @@ dos_int chapter_map_sprites_wipe(void)
             if (r >= 0) gfx_wipe_rect(x, y + 200, r - x + 1, b - y + 1, x, y);
         }
     }
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_B6CD (original code at 0xB6CD) ---- */
@@ -188,7 +186,7 @@ dos_int level_chapter_driver(void)
         timer_deadline_wait();
         if (++i == 200) snd_flag2 = 0;
     } while (i < 200 || g1784);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_B772 (original code at 0xB772) ---- */
@@ -211,7 +209,7 @@ dos_int fb772(void)
             q[2] = 0;
         }
     }
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_B7F9 (original code at 0xB7F9) ---- */

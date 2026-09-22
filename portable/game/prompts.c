@@ -62,7 +62,7 @@ dos_int hud_prompt_select_draw(dos_char *p)
     gfx_box(0, 0xbc, 0x140, 12);
     gfx_color_select(s);
     sprite_sheet_select(d);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }
 
 /* ---- F_7747 (original code at 0x7747) ---- */
@@ -102,5 +102,5 @@ dos_int hud_prompt_confirm_draw(dos_char *p, dos_int a, dos_int b, dos_int c, do
     gfx_box(6, 0xa2, 0x134, 0x24);
     gfx_color_select(s);
     sprite_sheet_select(d);
-    return 0;   /* PORT: original had no return statement (K&R implicit int) */
+    return 0;   /* PORT: value unused (K&R implicit int) */
 }

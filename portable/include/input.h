@@ -48,6 +48,10 @@ void    keyboard_buffer_drain(void);
  * Repeats are delivered as additional make events. */
 void input_key_event(uint8_t scancode, bool down, uint8_t ascii);
 
+/* Bumped on every empty poll / blocking wait (scripted-input pacing). */
+extern volatile uint32_t input_empty_reads;
+extern volatile int input_blocked;      /* 1 while the game thread sleeps in a blocking read */
+
 /* Block the game thread until the FIFO is non-empty (platform hook; tests
  * may make it return immediately). */
 void input_platform_wait_key(void);

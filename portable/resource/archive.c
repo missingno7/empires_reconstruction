@@ -427,6 +427,8 @@ dos_int resource_load_record(dos_uint packed)
         return 0;
     }
 
+    if (getenv("EMPIRES_TRACE"))
+        fprintf(stderr, "[res] load %u:%u\n", (unsigned)d, (unsigned)p);
     o1 = dos_rd32(a->data + 4u * (uint32_t)p);
     o2 = dos_rd32(a->data + 4u * ((uint32_t)p + 1u));
     /* `s = (int)o2 - (int)o1` -- 16-bit subtraction of the two longs'

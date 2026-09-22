@@ -2,6 +2,7 @@
  * See dosio.h for the mapping rationale.
  */
 #include "dosio.h"
+#include "timer.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -125,6 +126,10 @@ dos_ulong dosio_bios_ticks(void)
     struct tm tmv;
     double secs_since_midnight;
     double ticks;
+
+    /* Deterministic replays (manual timer) need a fixed seed. */
+    if (timer_service_is_manual())
+        return 0x1234u;
 
 #if defined(_WIN32)
     localtime_s(&tmv, &t);

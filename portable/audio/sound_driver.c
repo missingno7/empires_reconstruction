@@ -222,6 +222,148 @@ static void pit_channel2_set_divisor(dos_int ax);
 static dos_int voice_retune_base_table[SOUND_VOICE_COUNT_MAX];
 
 /* ===========================================================================
+ * Differential-oracle snapshot/restore (sound.h's header comment has the
+ * full contract). SOUND_BASE is DS:175E, the buffer's own byte 0;
+ * SOUND_OFF(addr) turns a historical DS address from docs/current/
+ * sound-state.md's field map into a buffer offset. Every field below is
+ * listed in the exact order that field map uses. Kept in one file (not a
+ * generic loop over a table) because the per-field width/array-count
+ * varies and this reads directly against the field map while auditing.
+ * =========================================================================== */
+
+#define SOUND_SNAPSHOT_BASE 0x175EU
+#define SOUND_OFF(addr) ((size_t)((addr) - SOUND_SNAPSHOT_BASE))
+#define SOUND_REQUEST_COUNT_OFF ((size_t)(SOUND_DRIVER_SNAPSHOT_SIZE - 2))
+
+static void snap_w(uint8_t *img, unsigned addr, dos_int value)
+{
+    dos_wr16(&img[SOUND_OFF(addr)], (uint16_t)value);
+}
+
+static dos_int snap_r(const uint8_t *img, unsigned addr)
+{
+    return (dos_int)dos_rd16(&img[SOUND_OFF(addr)]);
+}
+
+static void snap_w_arr(uint8_t *img, unsigned addr, const dos_int *arr, int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        dos_wr16(&img[SOUND_OFF(addr) + (size_t)i * 2], (uint16_t)arr[i]);
+}
+
+static void snap_r_arr(const uint8_t *img, unsigned addr, dos_int *arr, int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        arr[i] = (dos_int)dos_rd16(&img[SOUND_OFF(addr) + (size_t)i * 2]);
+}
+
+void sound_driver_snapshot(uint8_t *dgroup_image)
+{
+    memset(dgroup_image, 0, SOUND_DRIVER_SNAPSHOT_SIZE);
+
+    snap_w(dgroup_image, 0x175E, snd_base);
+    snap_w(dgroup_image, 0x1760, snd_seg);
+    snap_w(dgroup_image, 0x1762, snd_base2);
+    snap_w(dgroup_image, 0x1764, snd_seg2);
+    snap_w_arr(dgroup_image, 0x1766, voice_retune_base_table, SOUND_VOICE_COUNT_MAX);
+    snap_w(dgroup_image, 0x176E, sound_enabled);
+    snap_w(dgroup_image, 0x1770, snd_on);
+    snap_w(dgroup_image, 0x1772, music_enabled);
+    snap_w(dgroup_image, 0x1774, mus_flag);
+    snap_w(dgroup_image, 0x1776, snd_flag2);
+    snap_w(dgroup_image, 0x1778, snd_backend_mode);
+    snap_w(dgroup_image, 0x177A, snd_nvoices);
+    snap_w_arr(dgroup_image, 0x177C, v_b, SOUND_VOICE_COUNT_MAX);
+    snap_w(dgroup_image, 0x1784, snd_mode);
+    snap_w(dgroup_image, 0x1786, snd_hi);
+    snap_w(dgroup_image, 0x1788, g1788);
+    snap_w(dgroup_image, 0x178A, g178a);
+    snap_w_arr(dgroup_image, 0x178C, voice_stream_cursor_table, SOUND_VOICE_COUNT_MAX);
+    snap_w_arr(dgroup_image, 0x1794, voice_stream_base_table, SOUND_VOICE_COUNT_MAX);
+    snap_w_arr(dgroup_image, 0x179C, v_ctr, SOUND_VOICE_COUNT_MAX);
+    snap_w_arr(dgroup_image, 0x17A4, g17a4, SOUND_VOICE_COUNT_MAX);
+    snap_w_arr(dgroup_image, 0x17AC, v_a, SOUND_VOICE_COUNT_MAX);
+    snap_w_arr(dgroup_image, 0x17B4, v_hold, SOUND_VOICE_COUNT_MAX);
+    snap_w_arr(dgroup_image, 0x17BC, v_len, SOUND_VOICE_COUNT_MAX);
+    memcpy(&dgroup_image[SOUND_OFF(0x17C4)], sound_region_17C4, sizeof sound_region_17C4);
+    snap_w_arr(dgroup_image, 0x17EC, voice_rest_table, SOUND_VOICE_COUNT_MAX);
+    memcpy(&dgroup_image[SOUND_OFF(0x17F4)], g17f4, sizeof g17f4);
+    {
+        int i;
+        for (i = 0; i < 12; i++)
+            dos_wr16(&dgroup_image[SOUND_OFF(0x17FC) + (size_t)i * 2], (uint16_t)notetab[i]);
+    }
+    memcpy(&dgroup_image[SOUND_OFF(0x1814)], note_divisors_octave, sizeof note_divisors_octave);
+    /* 0x182C (sound_dispatch_182C) and 0x1832 (sound_dispatch_1832): real C
+     * pointer arrays, not byte-comparable with the historical raw words --
+     * left zero (sound.h's header comment). */
+    snap_w(dgroup_image, 0x1830, (dos_int)opl_port);
+    /* 0x187A..0x1E84: unrelated other-subsystem DGROUP state, left zero. */
+    snap_w(dgroup_image, 0x1E84, g1e84);
+    snap_w(dgroup_image, 0x1E86, g1e86);
+    snap_w(dgroup_image, 0x1E88, mus_ptr);
+    snap_w(dgroup_image, 0x1E8A, mus_arg);
+    memcpy(&dgroup_image[SOUND_OFF(0x1E8C)], g1e8c, sizeof g1e8c);
+    snap_w(dgroup_image, 0x1E8E, snd_len);
+    snap_w(dgroup_image, 0x1E90, snd_delay);
+    snap_w(dgroup_image, 0x1E92, stream_note_delay);
+    snap_w(dgroup_image, 0x1E94, snd_one);
+
+    dos_wr16(&dgroup_image[SOUND_REQUEST_COUNT_OFF], (uint16_t)sound_request_count);
+}
+
+void sound_driver_restore(const uint8_t *dgroup_image)
+{
+    snd_base = (dos_uint)snap_r(dgroup_image, 0x175E);
+    snd_seg = (dos_uint)snap_r(dgroup_image, 0x1760);
+    snd_base2 = (dos_uint)snap_r(dgroup_image, 0x1762);
+    snd_seg2 = (dos_uint)snap_r(dgroup_image, 0x1764);
+    snap_r_arr(dgroup_image, 0x1766, voice_retune_base_table, SOUND_VOICE_COUNT_MAX);
+    sound_enabled = snap_r(dgroup_image, 0x176E);
+    snd_on = snap_r(dgroup_image, 0x1770);
+    music_enabled = snap_r(dgroup_image, 0x1772);
+    mus_flag = snap_r(dgroup_image, 0x1774);
+    snd_flag2 = snap_r(dgroup_image, 0x1776);
+    snd_backend_mode = snap_r(dgroup_image, 0x1778);
+    snd_nvoices = snap_r(dgroup_image, 0x177A);
+    snap_r_arr(dgroup_image, 0x177C, v_b, SOUND_VOICE_COUNT_MAX);
+    snd_mode = snap_r(dgroup_image, 0x1784);
+    snd_hi = snap_r(dgroup_image, 0x1786);
+    g1788 = snap_r(dgroup_image, 0x1788);
+    g178a = snap_r(dgroup_image, 0x178A);
+    snap_r_arr(dgroup_image, 0x178C, voice_stream_cursor_table, SOUND_VOICE_COUNT_MAX);
+    snap_r_arr(dgroup_image, 0x1794, voice_stream_base_table, SOUND_VOICE_COUNT_MAX);
+    snap_r_arr(dgroup_image, 0x179C, v_ctr, SOUND_VOICE_COUNT_MAX);
+    snap_r_arr(dgroup_image, 0x17A4, g17a4, SOUND_VOICE_COUNT_MAX);
+    snap_r_arr(dgroup_image, 0x17AC, v_a, SOUND_VOICE_COUNT_MAX);
+    snap_r_arr(dgroup_image, 0x17B4, v_hold, SOUND_VOICE_COUNT_MAX);
+    snap_r_arr(dgroup_image, 0x17BC, v_len, SOUND_VOICE_COUNT_MAX);
+    memcpy(sound_region_17C4, &dgroup_image[SOUND_OFF(0x17C4)], sizeof sound_region_17C4);
+    snap_r_arr(dgroup_image, 0x17EC, voice_rest_table, SOUND_VOICE_COUNT_MAX);
+    memcpy(g17f4, &dgroup_image[SOUND_OFF(0x17F4)], sizeof g17f4);
+    /* notetab/note_divisors_octave: compile-time constants, never restored
+     * from a scenario fixture (the fixture's own copy is only there so the
+     * oracle's byte-for-byte snapshot has something to compare against a
+     * known-constant span; see gen_scenarios.py). sound_dispatch_182C/1832
+     * and the 187A..1E84 gap: never touched, per this file's snapshot
+     * comment. */
+    opl_port = (dos_uint)snap_r(dgroup_image, 0x1830);
+    g1e84 = snap_r(dgroup_image, 0x1E84);
+    g1e86 = snap_r(dgroup_image, 0x1E86);
+    mus_ptr = snap_r(dgroup_image, 0x1E88);
+    mus_arg = snap_r(dgroup_image, 0x1E8A);
+    memcpy(g1e8c, &dgroup_image[SOUND_OFF(0x1E8C)], sizeof g1e8c);
+    snd_len = snap_r(dgroup_image, 0x1E8E);
+    snd_delay = snap_r(dgroup_image, 0x1E90);
+    stream_note_delay = snap_r(dgroup_image, 0x1E92);
+    snd_one = snap_r(dgroup_image, 0x1E94);
+
+    sound_request_count = (dos_int)dos_rd16(&dgroup_image[SOUND_REQUEST_COUNT_OFF]);
+}
+
+/* ===========================================================================
  * former asm/M_C1A0_C232.ASM -- sound-tick entry, voice-pump, voice-table
  * scanner.
  * =========================================================================== */

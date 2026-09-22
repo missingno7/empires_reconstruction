@@ -189,4 +189,33 @@ extern uint8_t *sound_resource_block;
 extern uint8_t *sound_voice_block;
 void sound_set_resource_blocks(uint8_t *resource, uint8_t *staging);
 
+/* ---------------------------------------------------------------------
+ * Differential-oracle snapshot/restore (tools/portable/sound_oracle/,
+ * added alongside the Unicorn-based asm/SOUND.ASM oracle; coordinate any
+ * offset change with docs/portable/state-map.md and this header's own
+ * SOUND_FIELD_TABLE twin in tools/portable/sound_oracle/emu.py).
+ *
+ * Copies every named sound-related DGROUP object (docs/current/
+ * sound-state.md's field map, DS:175E..1E96 plus the scalar at DS:237C)
+ * to/from a caller-owned SOUND_DRIVER_SNAPSHOT_SIZE-byte buffer laid out
+ * in HISTORICAL byte order: buffer offset 0 == DS:175E, ...,
+ * buffer offset 0x737 == DS:1E95 (span 0x738 bytes), buffer offset 0x738
+ * == DS:237C (2 bytes, sound_request_count) -- total 0x73A (1850) bytes.
+ *
+ * Two historical spans inside that range are intentionally left alone by
+ * both functions: DS:182C (sound_dispatch_182C, 4 bytes) and DS:1832
+ * (sound_dispatch_1832, 72 bytes) are compile-time-constant POINTER
+ * arrays here (real C pointers into the decoded lookup_XXXX blobs), not
+ * byte-comparable with the historical raw DS-offset words asm/SOUND.ASM
+ * itself stored there -- see sound_driver_internal.h's header comment.
+ * sound_driver_snapshot() writes zero for those bytes (and for the
+ * unrelated DS:187A..1E84 gap between the two sound clusters);
+ * sound_driver_restore() ignores whatever the buffer holds there.
+ *
+ * These exist ONLY for the parity test (portable/tests/
+ * test_sound_parity.c): normal driver operation never calls them. */
+#define SOUND_DRIVER_SNAPSHOT_SIZE 1850
+void sound_driver_snapshot(uint8_t *dgroup_image);
+void sound_driver_restore(const uint8_t *dgroup_image);
+
 #endif /* PORTABLE_SOUND_H */

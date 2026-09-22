@@ -1,0 +1,7 @@
+{
+  "description": "REGRESSION FIXTURE FOR A KNOWN BUG, NOT YET FIXED (see QA notes / bug tracker): Intro -> sign-in (last player) -> map (Near East) -> level: dismiss tutorials, walk right and jump twice across the first chamber. Around cursor (232,112) the game silently blocks on an undocumented keypress and shows a garbled/static HUD prompt box instead of readable text -- consistent with portable/game/puzzle.c's f9402() dereferencing g0dc8, a global left null-initialized in portable/generated/game_data.c (`dos_uint *g0dc8 = 0;`) and never assigned by any resource-load call. Pin the expected hashes only once this is fixed; until then this manifest documents the last-known-bad frames so a fix is easy to confirm.",
+  "virtual_ms": 200000,
+  "dump_interval_ms": 3000,
+  "no_sound": true,
+  "script": "*2500:1c:0d,@slot_menu_run,3000:48,1500:1c:0d,@player_select_run,3000:1c:0d,@level_driver_run,3000:1c:0d,3000:1c:0d,+1000:4d:0:25000,+500:39:20:200,+1000:4d:0:25000,+500:39:20:200,+1000:4d:0:25000,5000:1c:0d,5000:1:1b,5000:1c:0d,5000:39:20"
+}

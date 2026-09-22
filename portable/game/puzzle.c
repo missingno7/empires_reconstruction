@@ -258,7 +258,7 @@ void f9402(dos_int i)
 {
     dos_int flag;
     flag = i && !slot_is_new_game();
-    hud_prompt_message_run((dos_char *)((dos_char *)g0dc8 + g0dc8[i] + 2));
+    hud_prompt_message_draw((dos_char *)((dos_char *)g0dc8 + g0dc8[i] + 2), flag);
 }
 
 

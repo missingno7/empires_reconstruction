@@ -1,0 +1,7 @@
+{
+  "description": "Intro (Enter through the pages) -> sign-in list is already full (10 factory default players ship in AE000.DAT) -> Enter on 'Start New Game' triggers the list-full dialog -> dismiss it -> Enter again selects the first player row -> 'y' confirms 'Remove A Player's Name' -> Enter selects the now-open 'Start New Game' row -> type a 4-letter name ('Test') -> Enter confirms -> Enter accepts the default 'Explorer' difficulty -> proceeds into the map and first level, dismissing the two new-user tutorial dialogs. Exercises: full-list detection, delete-confirm, name entry (auto-uppercase first letter), difficulty pick, and the map/level hand-off, all with no crash or bad rendering observed.",
+  "virtual_ms": 100000,
+  "dump_interval_ms": 3000,
+  "no_sound": true,
+  "script": "*2500:1c:0d,@slot_menu_run,3000:1c:0d,1500:1c:0d,1500:1c:0d,1500:15:79,1500:1c:0d,800:14:74,800:12:65,800:1f:73,800:14:74,1500:1c:0d,1500:1c:0d,@player_select_run,3000:1c:0d,@level_driver_run,3000:1c:0d"
+}

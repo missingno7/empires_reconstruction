@@ -179,8 +179,29 @@ first parity artifact; PCM comes after.
   toolchain + MS-DOS Player only to *generate* fixtures; end users never
   need it.
 
+## Deterministic replay
+
+`--deterministic` removes the tick thread: the game's own waits
+(`timer_wait_ticks`, `timer_deadline_wait`), polls (`timer_deadline_reached`,
+the two busy-poll sites through `timer_poll()`) and blocking key reads
+advance the 236.7 Hz clock themselves, scripted input and frame dumps run
+from the tick observer on that virtual time, and the RNG seed is fixed.  A
+scripted run is therefore byte-reproducible; `tools/portable/replay_test.py`
+pins the presented frames' hashes (`portable/tests/replay/*.json`, ctest
+`replay_*`, SDL dummy drivers).  Real-time mode is unchanged.
+
 ## Milestones
 
 A skeleton -> B resource parity -> C framebuffer renderer -> D intro/menu ->
 E first playable level -> F audio -> G full parity.  Historical build
 (`python tools/build_exe.py verify`) must stay green at every milestone.
+
+Status (2026-09-22): A-F reached; G in progress (sign-in, map, caverns,
+puzzles, save/resume, Help/File/Options menus exercised by pinned replays;
+the sound state machine is certified bit-exact against the original 8086
+code by the Unicorn oracle; round-end/score and later caverns still being
+swept).  Known intentional deviations: `farcoreleft()` mode downgrade and
+the DOS critical-error/disk-reset paths retired; save slots persist as
+overlay files instead of rewriting the archives; degenerate 0xN sprite
+records and `gfx_blit_image` widths not divisible by 4 (historically
+undefined) are no-ops / closed-form.

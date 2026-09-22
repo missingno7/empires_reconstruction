@@ -167,7 +167,10 @@ sound_driver.c`), serviced once per 236.7 Hz tick, emitting timestamped
 events (OPL register writes, PIT ch2 divisor, speaker gate).  Backends:
 Nuked-OPL3 (pinned) for OPL, a phase-continuous square-wave synth for the
 speaker.  Mixed PCM is pushed to one SDL3 audio stream.  Event logs are the
-first parity artifact; PCM comes after.
+first parity artifact; PCM comes after.  Output level: fixed per-source
+gains (OPL 0.25, speaker 0.06 of full scale -- both synths are far hotter
+than the original hardware) under a user master volume (`--volume`,
+`EMPIRES_VOLUME`); gains never touch the event timeline.
 
 ## Testing
 

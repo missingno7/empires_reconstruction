@@ -40,6 +40,8 @@ extern int gfx_tween_tag;                       /* 0 = untagged; set around a tw
 /* Flashlight beam trail pixel by age (0 = newest of the 24, 8 new per
  * frame): the presenter grows the head and shortens the tail progressively. */
 #define GFX_TWEEN_TAG_BEAM(age)   (0x200 + (int)(age))
+/* Moving blue platform records are stable in their 0..9 board-record slot. */
+#define GFX_TWEEN_TAG_PLATFORM(i) (0x300 + (int)(i))
 
 #define GFX_TWEEN_SNAP_DISTANCE   48            /* per-axis pixels; larger = teleport */
 

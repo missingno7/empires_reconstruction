@@ -192,6 +192,8 @@ dos_int intro_wait_key()
                 return (0x0d);
             else if (g8fc == 0x1b)
                 return (g8fc);
+            else if (g8fc == 0x20)
+                return (g8fc); /* portable shortcut: skip to player sign-in */
         }
     }
     return (-1);
@@ -279,6 +281,7 @@ top:
                 key = intro_wait_key();
                 switch (key) {
                 case 0x1b: if (dialog_run(&g139d) == 1) return -1; break;
+                case 0x20: goto skip_intro;
                 case -1:
                 case 0x0d: again = 0; break;
                 default:   break;
@@ -296,6 +299,7 @@ top:
                     key = intro_wait_key();
                     switch (key) {
                     case 0x1b: if (dialog_run(&g139d) == 1) return -1; break;
+                    case 0x20: goto skip_intro;
                     case -1:
                     case 0x0d: again = 0; break;
                 default:   break;
@@ -329,5 +333,19 @@ top:
         gfx_clear_rect(0, 0, 0x140, 0xc8);
         gfx_box(0, 0, 0x140, 0xc8);
     }
+    return 1;
+
+skip_intro:
+    /* Space is a host convenience shortcut.  Stop intro audio and free the
+     * chapter-owned allocations before continuing to slot_menu_run(). */
+    EMPIRES_TRACE("intro_skip_to_player_sign_in");
+    sound_stop_reset();
+    mus_flag = 0;
+    snd_on = 1;
+    g94 = 0x10; g96 = 0x9f; g98 = 4; g9a = 0x9b;
+    free(t1); free(t2); free(gbfde);
+    t1 = NULL;
+    t2 = NULL;
+    gbfde = NULL;
     return 1;
 }

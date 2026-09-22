@@ -44,8 +44,8 @@ void menu_loop_run(dos_int initial)
         done = 0;
         while (!done) {
             oldrow = row;
-            gfx_fill_rect(p->x + 4, row * 10 + 17, p->width, 10);
-            gfx_box(p->x + 4, row * 10 + 17, p->width, 10);
+            gfx_fill_rect(dialog_box_x + 4, row * 10 + 17, dialog_box_w - 10, 10);
+            gfx_box(dialog_box_x + 4, row * 10 + 17, dialog_box_w - 10, 10);
             key = keyboard_read_blocking_hotkeys();
             switch (key) {
             case 0x148: if (--row < 0) row = p->count - 1; break;
@@ -73,8 +73,8 @@ void menu_loop_run(dos_int initial)
                 break;
             }
             if (!done) {
-                gfx_fill_rect(p->x + 4, oldrow * 10 + 17, p->width, 10);
-                gfx_box(p->x + 4, oldrow * 10 + 17, p->width, 10);
+                gfx_fill_rect(dialog_box_x + 4, oldrow * 10 + 17, dialog_box_w - 10, 10);
+                gfx_box(dialog_box_x + 4, oldrow * 10 + 17, dialog_box_w - 10, 10);
             }
         }
         if (!cleared) dialog_restore_screen();

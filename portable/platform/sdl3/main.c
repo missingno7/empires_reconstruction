@@ -45,6 +45,7 @@
 #include "config.h"
 #include "gfx_tween.h"
 #include "port_options.h"
+#include "port_debug.h"
 #include "port_settings.h"
 
 static Uint64 s_selftest_ms = 300;
@@ -245,6 +246,7 @@ static void load_config(char *path, size_t n, const char *explicit)
     added |= config_default_int("audio.sound_volume", 100);   /* sound effects (cue stream), percent (0..200) */
     added |= config_default_bool("video.fullscreen", false);  /* borderless fullscreen at start */
     added |= config_default_bool("video.interpolation", true);/* present at host fps with interpolated sprites */
+    added |= config_default_bool("debug.enabled", false);     /* opt-in portable F4 Debug menu */
     added |= config_default_string("paths.assets", "");       /* AE000.DAT/AE001.DAT directory; "" = auto */
     added |= config_default_string("paths.saves", "");        /* save-slot overlays; "" = asset directory */
 
@@ -374,6 +376,7 @@ int main(int argc, char **argv)
     int sound_volume = -1;         /* --sound-volume PCT; -1 = config value */
     int fullscreen = -1;           /* --fullscreen / --windowed; -1 = config value */
     int interpolation = -1;        /* --interpolation on|off; -1 = config value */
+    bool debug_enabled;
     char asset_dir[1024];
     char config_file[1024];
     sync_thread game_thread = { NULL };
@@ -426,6 +429,7 @@ int main(int argc, char **argv)
     if (interpolation < 0)
         interpolation = s_deterministic ? 0 :   /* pinned replays present the game's own frames */
                         (config_get_bool("video.interpolation", true) ? 1 : 0);
+    debug_enabled = config_get_bool("debug.enabled", false);
     if (!assets && config_get_string("paths.assets", "")[0])
         assets = config_get_string("paths.assets", "");
     if (!saves && config_get_string("paths.saves", "")[0])
@@ -445,6 +449,8 @@ int main(int argc, char **argv)
         return 1;
     }
     port_options_install();
+    port_debug_init(debug_enabled);
+    port_debug_install_menu();
     if (!demo && !s_deterministic) {
         /* Allocate/capture once.  The menu toggles only the presenter-side
          * preference, so it never resets structures used by the game thread. */

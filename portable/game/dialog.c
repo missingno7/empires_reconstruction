@@ -26,6 +26,14 @@ dos_int dialog_draw_panel(struct gc0fe_record *p)
     q.cy = 13;
     q.w = p->width;
     q.lines = p->count;
+    /* Top-tab x and submenu x share the historical record field.  Calculate
+     * the real outer width first, then shift only the submenu when the
+     * requested tab position would put its frame past the 320px viewport. */
+    dialog_layout(&q);
+    if (q.cx + dialog_box_w > 320)
+        q.cx = 320 - dialog_box_w;
+    if (q.cx < 0)
+        q.cx = 0;
     dialog_draw(&q, 1);
     return 0;   /* PORT: value unused (K&R implicit int) */
 }

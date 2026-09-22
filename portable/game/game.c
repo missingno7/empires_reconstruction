@@ -46,6 +46,7 @@
  */
 #include "game.h"
 #include "gfx_tween.h"
+#include "port_debug.h"
 #include "trace.h"
 
 /* ---- F_3A75 (original code at 0x3A75) ---- */
@@ -82,6 +83,10 @@ dos_int turn_loop_run(void)
             if (key == 0xd) hud_tab_next();
             else if (key == 0x1b) player_select_restart_confirm();
             gbc = 1;
+        }
+        if (port_debug_take_complete_chamber_request()) {
+            gbc = 0;
+            return 1;
         }
         rect_queue_write_ptr = ui_gfx_blob;
         if ((obj = rect_table_hit_id((cursor_x >> 1) + 1, cursor_y + 1, 14, 0x27)) != 0 && obj != lastobj) {

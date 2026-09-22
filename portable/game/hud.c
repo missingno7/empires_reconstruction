@@ -1,5 +1,6 @@
 /* src/HUD.C: HUD panel, tabs, scrolling and the energy meter. */
 #include "game.h"
+#include "port_debug.h"
 
 /* ---- F_6FC3 (original code at 0x6FC3) ---- */
 dos_int hud_panel_clear(void) { hud_prompt_kind = 0; return 0; }
@@ -209,6 +210,7 @@ void energy_set(dos_int value) { energy_meter = value; }
 
 dos_int energy_adjust(dos_int n)
 {
+    n = port_debug_energy_delta(n);
     if (n != 0) {
         if (energy_meter == 2 && n < 0)
             tutorial_hint_dialog_show(4);

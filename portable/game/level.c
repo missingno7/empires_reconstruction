@@ -16,6 +16,7 @@
  */
 #include "game.h"
 #include "gfx_tween.h"
+#include "port_debug.h"
 
 /* ---- F_AF45 (original code at 0xAF45) ---- */
 dos_int menu_wait_key_animated(void)
@@ -298,6 +299,11 @@ dos_int level_run_loop(void)
             gbc = 0; key = keyboard_read_blocking_hotkeys();
             if (key == 13) hud_tab_next(); else if (key == 27) player_select_restart_confirm();
             gbc = 1;
+        }
+        if (port_debug_take_complete_chamber_request()) {
+            level_exit_transition_run();
+            gbc = 0;
+            return 1;
         }
         rect_queue_write_ptr = ui_gfx_blob; board_redraw_view(); sprite_table_wipe_active();
         if (raycast_trail_active) sprite_slots_redraw();

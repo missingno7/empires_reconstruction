@@ -22,6 +22,7 @@ static void test_parse_and_get(void)
     config_reset();
     CHECK(config_parse("{\n  \"audio\": { \"volume\": 75, \"gain\": 0.5 },\n"
                        "  \"video\": { \"fullscreen\": true },\n"
+                       "  \"debug\": { \"enabled\": true },\n"
                        "  \"paths\": { \"assets\": \"C:\\\\games\\\\ae\", \"saves\": \"\" },\n"
                        "  \"name\": \"caf\\u00e9\", \"neg\": -3, \"deep\": { \"a\": { \"b\": 1 } }\n}\n",
                        err, sizeof err));
@@ -30,6 +31,7 @@ static void test_parse_and_get(void)
     CHECK(config_get_number("audio.gain", 0) == 0.5);
     CHECK(config_get_int("audio.gain", 9) == 0);            /* truncates toward zero */
     CHECK(config_get_bool("video.fullscreen", false) == true);
+    CHECK(config_get_bool("debug.enabled", false) == true);
     CHECK(strcmp(config_get_string("paths.assets", ""), "C:\\games\\ae") == 0);
     CHECK(strcmp(config_get_string("paths.saves", "x"), "") == 0);
     CHECK(strcmp(config_get_string("name", ""), "caf\xc3\xa9") == 0);
@@ -49,9 +51,11 @@ static void test_defaults_and_set(void)
     config_default_int("audio.volume", 100);     /* file wins */
     config_default_int("audio.other", 7);        /* absent -> set */
     config_default_bool("video.fullscreen", false);
+    config_default_bool("debug.enabled", false);
     config_default_string("paths.assets", "");
     CHECK(config_get_int("audio.volume", 0) == 30);
     CHECK(config_get_int("audio.other", 0) == 7);
+    CHECK(config_get_bool("debug.enabled", true) == false);
     CHECK(config_set_bool("audio.volume", true));   /* setter replaces type */
     CHECK(config_get_bool("audio.volume", false) == true);
     CHECK(config_get_int("audio.volume", -1) == -1);
@@ -83,6 +87,7 @@ static void test_serialize_round_trip(void)
     config_reset();
     CHECK(config_set_int("video.fullscreen_hint", 2));
     CHECK(config_set_bool("video.fullscreen", false));
+    CHECK(config_set_bool("debug.enabled", true));
     CHECK(config_set_int("audio.volume", 100));
     CHECK(config_set_string("paths.assets", "a \"b\"\\c\n"));
     CHECK(config_set_number("tween.speed", 1.25));
@@ -95,6 +100,9 @@ static void test_serialize_round_trip(void)
                  "{\n"
                  "  \"audio\": {\n"
                  "    \"volume\": 100\n"
+                 "  },\n"
+                 "  \"debug\": {\n"
+                 "    \"enabled\": true\n"
                  "  },\n"
                  "  \"deep\": {\n"
                  "    \"a\": {\n"
@@ -122,6 +130,7 @@ static void test_serialize_round_trip(void)
     CHECK(config_parse(out, NULL, 0));
     CHECK(config_get_int("audio.volume", 0) == 100);
     CHECK(config_get_bool("video.fullscreen", true) == false);
+    CHECK(config_get_bool("debug.enabled", false) == true);
     CHECK(strcmp(config_get_string("paths.assets", ""), "a \"b\"\\c\n") == 0);
     CHECK(config_get_number("tween.speed", 0) == 1.25);
     CHECK(config_get_int("deep.a.c", 0) == 2 && config_get_int("deep.d", 0) == 3);

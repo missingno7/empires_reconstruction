@@ -516,7 +516,10 @@ int main(int argc, char **argv)
              * paces the loop), or the live VRAM when there is no frame to
              * interpolate. */
             uint32_t gen = gfx_vram_generation;
-            if (gfx_tween_compose(s_tween_frame, (double)SDL_GetTicksNS() / 1e6, gen)) {
+            /* Publish and compose must use the same clock domain.  SDL's
+             * ticks are relative to SDL initialization, while sync_now_ns()
+             * is the portable monotonic wall clock used by the game thread. */
+            if (gfx_tween_compose(s_tween_frame, (double)sync_now_ns() / 1e6, gen)) {
                 /* presented_generation stays what the live VRAM last shown
                  * had: a composed frame is not the live VRAM, so once the
                  * composer stops (menu, dialog, transition) whatever the

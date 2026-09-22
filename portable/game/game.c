@@ -88,6 +88,18 @@ dos_int turn_loop_run(void)
             gbc = 0;
             return 1;
         }
+        if (port_debug_take_collect_all_pieces_request()) {
+            /* Match the sixth artifact pickup: puzzle_deal_pieces() adds two
+             * pieces per artifact, and a full deal enters the same animated
+             * scroll/puzzle path as the real final pickup. */
+            while (puzzle_piece_count() < 0xc)
+                gb07a = puzzle_deal_pieces();
+            gb07a = 1;
+            rect_queue_write_ptr = ui_gfx_blob;
+            sprite_draw_cursor();
+            rect_queue_flush();
+            board_scroll_transition();
+        }
         rect_queue_write_ptr = ui_gfx_blob;
         if ((obj = rect_table_hit_id((cursor_x >> 1) + 1, cursor_y + 1, 14, 0x27)) != 0 && obj != lastobj) {
             if (obj < 7) {

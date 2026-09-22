@@ -65,10 +65,10 @@ static void test_disabled_then_overlay(void)
           g0d78.records[2].callbacks == port_options_menu_callbacks,
           "catalog B keeps the patched six-row F3 Options record");
 
-    check(g0d36.records[3].count == 2 && g0d78.records[3].count == 2,
-          "Debug submenu has exactly two rows");
+    check(g0d36.records[3].count == 3 && g0d78.records[3].count == 3,
+          "Debug submenu has exactly three rows");
     check(strcmp((char *)g0d36.records[3].text,
-                 "Complete Chamber\nUnlimited Energy") == 0,
+                 "Complete Chamber\nCollect All Pieces\nUnlimited Energy") == 0,
           "Debug submenu text is exact");
     check(g0d36.records[3].callbacks == port_debug_menu_callbacks &&
           g0d78.records[3].callbacks == port_debug_menu_callbacks,
@@ -77,7 +77,7 @@ static void test_disabled_then_overlay(void)
           "Debug tab occupies the right-hand top-bar region");
     check(g0d36.records[3].x + g0d36.records[3].label_width + 2 <= 320,
           "Debug tab fits in the 320px top bar");
-    check(320 - (g0d36.records[3].width + 10) == 170,
+    check(320 - (g0d36.records[3].width + 10) == 150,
           "Debug submenu has a calculable on-screen clamp position");
 
     /* Reinitialization to disabled restores the original catalog pointers. */
@@ -98,6 +98,9 @@ static void test_runtime_state(void)
     check(!port_debug_unlimited_energy() &&
           !port_debug_take_complete_chamber_request(),
           "disabled debug cannot enable cheats or queue completion");
+    port_debug_request_collect_all_pieces();
+    check(!port_debug_take_collect_all_pieces_request(),
+          "disabled debug cannot queue piece collection");
     check(port_debug_energy_delta(-1) == -1, "disabled debug preserves negative energy delta");
 
     port_debug_init(true);
@@ -111,6 +114,9 @@ static void test_runtime_state(void)
     port_debug_request_complete_chamber();
     check(port_debug_take_complete_chamber_request(), "completion request is consumed once");
     check(!port_debug_take_complete_chamber_request(), "completion request does not leak");
+    port_debug_request_collect_all_pieces();
+    check(port_debug_take_collect_all_pieces_request(), "piece collection request is consumed once");
+    check(!port_debug_take_collect_all_pieces_request(), "piece collection request does not leak");
     port_debug_set_unlimited_energy(false);
     check(port_debug_energy_delta(-1) == -1, "turning Unlimited Energy off restores deductions");
 }
@@ -119,7 +125,7 @@ static void test_panel_geometry(void)
 {
     static uint8_t fake_font[512];
     struct menu_record debug = {
-        .width = 140,
+        .width = 160,
         .x = 220
     };
     struct dialog q;
@@ -138,7 +144,7 @@ static void test_panel_geometry(void)
     q.cx = debug.x;
     q.cy = 13;
     q.w = debug.width;
-    q.lines = 2;
+    q.lines = 3;
     dialog_layout(&q);
     panel_x = q.cx;
     if (panel_x + dialog_box_w > 320)
@@ -147,7 +153,7 @@ static void test_panel_geometry(void)
         panel_x = 0;
     check(panel_x + dialog_box_w <= 320,
           "Debug submenu outer frame fits inside the logical screen");
-    check(panel_x == 170, "Debug submenu shifts left without moving its top tab");
+    check(panel_x == 150, "Debug submenu shifts left without moving its top tab");
 }
 
 int main(void)

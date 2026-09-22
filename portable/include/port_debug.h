@@ -15,10 +15,12 @@ dos_int port_debug_energy_delta(dos_int delta);
 
 void port_debug_request_complete_chamber(void);
 bool port_debug_take_complete_chamber_request(void);
+void port_debug_request_collect_all_pieces(void);
+bool port_debug_take_collect_all_pieces_request(void);
 
 void port_debug_install_menu(void);
 
 extern dos_char port_debug_menu_text[];
-extern void (*port_debug_menu_callbacks[2])(void);
+extern void (*port_debug_menu_callbacks[3])(void);
 
 #endif /* PORTABLE_PORT_DEBUG_H */

@@ -101,7 +101,8 @@ positions interpolated between consecutive frames (see "Frame
 interpolation" in architecture.md); `video.integer_scaling` keeps
 nearest-neighbour scaling to integer multiples when true, while false uses
 aspect-preserving letterbox scaling and is the default; `debug.enabled` opt-in enables the
-portable F4 Debug menu with only `Complete Chamber` and `Unlimited Energy`;
+portable F4 Debug menu with `Complete Chamber`, `Collect All Pieces` (deal all
+12 artifact pieces and enter the normal puzzle), and `Unlimited Energy`;
 it is disabled by default and Unlimited Energy is never saved;
 `paths.assets` / `paths.saves`
 replace the automatic directory lookup when non-empty.  Command-line

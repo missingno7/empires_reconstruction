@@ -9,6 +9,7 @@
 static bool s_enabled;
 static bool s_unlimited_energy;
 static bool s_complete_chamber;
+static bool s_collect_all_pieces;
 static bool s_menu_installed;
 static struct menu_record *s_saved_records_a;
 static struct menu_record *s_saved_records_b;
@@ -16,7 +17,7 @@ static dos_int s_saved_count_a;
 static dos_int s_saved_count_b;
 
 dos_char port_debug_menu_text[] =
-    "Complete Chamber\nUnlimited Energy\0";
+    "Complete Chamber\nCollect All Pieces\nUnlimited Energy\0";
 
 static dos_char port_debug_label[] = "Debug F4\0";
 
@@ -43,8 +44,15 @@ dos_int port_debug_unlimited_energy_dialog(void)
     return 1; /* redraw the Debug submenu */
 }
 
-void (*port_debug_menu_callbacks[2])(void) = {
+dos_int port_debug_collect_all_pieces(void)
+{
+    port_debug_request_collect_all_pieces();
+    return 0; /* close the F-key menu so gameplay can consume the request */
+}
+
+void (*port_debug_menu_callbacks[3])(void) = {
     (void (*)(void))port_debug_complete_chamber,
+    (void (*)(void))port_debug_collect_all_pieces,
     (void (*)(void))port_debug_unlimited_energy_dialog
 };
 
@@ -60,6 +68,7 @@ void port_debug_init(bool enabled)
     s_enabled = enabled;
     s_unlimited_energy = false;
     s_complete_chamber = false;
+    s_collect_all_pieces = false;
 }
 
 bool port_debug_enabled(void)
@@ -98,6 +107,19 @@ bool port_debug_take_complete_chamber_request(void)
     return requested;
 }
 
+void port_debug_request_collect_all_pieces(void)
+{
+    if (s_enabled)
+        s_collect_all_pieces = true;
+}
+
+bool port_debug_take_collect_all_pieces_request(void)
+{
+    bool requested = s_collect_all_pieces;
+    s_collect_all_pieces = false;
+    return requested;
+}
+
 void port_debug_install_menu(void)
 {
     static struct menu_record menu_a[4];
@@ -120,10 +142,10 @@ void port_debug_install_menu(void)
     menu_a[3] = (struct menu_record){
         .label = port_debug_label,
         .label_width = 78,
-        .count = 2,
+        .count = 3,
         .text = port_debug_menu_text,
         .callbacks = port_debug_menu_callbacks,
-        .width = 140,
+        .width = 160,
         .x = 220
     };
     menu_b[3] = menu_a[3];
